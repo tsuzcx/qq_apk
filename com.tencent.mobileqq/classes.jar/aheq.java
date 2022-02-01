@@ -1,57 +1,30 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
-import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class aheq
-  extends afwr
+class aheq
+  extends ClickableSpan
 {
-  public afzq a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public VoicePrintUtils.VoicePrintView a;
-  public BreathAnimationLayout a;
-  public PttAudioChangeView a;
-  public PttAudioPlayView a;
-  public PttAudioWaveView a;
-  public StringBuilder a;
-  private boolean a;
-  public ImageView b;
-  public TextView b;
-  public PttAudioChangeView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
+  aheq(ahed paramahed) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = blir.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131718782);
+      paramView.c(2131690580);
+      paramView.a(new aher(this));
+      paramView.a(new ahes(this, paramView));
+      paramView.show();
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    paramTextPaint.setColor(-12541697);
   }
 }
 

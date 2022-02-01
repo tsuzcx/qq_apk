@@ -19,9 +19,9 @@ class GuessPictureStageView$1
       ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.jdField_b_of_type_JavaLangRunnable);
       if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if ((this.this$0.jdField_a_of_type_AndroidViewView != null) && (this.this$0.jdField_a_of_type_AndroidViewView.getVisibility() == 8))
+        if ((this.this$0.jdField_b_of_type_AndroidViewView != null) && (this.this$0.jdField_b_of_type_AndroidViewView.getVisibility() == 8))
         {
-          this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.this$0.jdField_b_of_type_AndroidViewView.setVisibility(0);
           this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         }

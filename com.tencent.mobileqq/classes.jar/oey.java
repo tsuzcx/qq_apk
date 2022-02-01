@@ -1,16 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class oey
-  implements MiniAppLauncher.MiniAppLaunchListener
+class oey
+  implements PopupWindow.OnDismissListener
 {
-  public oey(CustomTabView paramCustomTabView) {}
+  oey(oex paramoex) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss()
   {
-    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
+    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
+    localLayoutParams.alpha = 1.0F;
+    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
   }
 }
 

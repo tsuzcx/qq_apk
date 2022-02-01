@@ -1,68 +1,58 @@
-import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
+import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
 
 public class bazl
-  extends PagerAdapter
+  extends bbak<ReceiptMessageDetailFragment>
 {
-  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  private bazl(ActionListActivity paramActionListActivity) {}
-  
-  public void a()
+  public bazl(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    try
+    super(paramReceiptMessageDetailFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bbch localbbch = (bbch)localIterator.next();
-        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
-        localGridView.setNumColumns(3);
-        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        localGridView.setSelector(new ColorDrawable(0));
-        localGridView.setScrollingCacheEnabled(false);
-        localGridView.setAdapter(new bazk(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localbbch.jdField_a_of_type_JavaUtilArrayList));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
-      }
+      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    try
     {
-      System.gc();
-      super.notifyDataSetChanged();
+      paramBundle = new oidb_0x985.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_code.get();
+      if (paramInt == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
+        }
+        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
+        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
+        paramBundle = paramBundle.rpt_msg_unread_list.get();
+        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
+        paramInt = paramArrayOfByte.size();
+        int i = paramArrayOfByte.size();
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
+        paramInt = paramArrayOfByte.size();
+        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+        return;
+      }
     }
-  }
-  
-  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramViewGroup.addView(localGridView);
-    return localGridView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
+      return;
+    }
+    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
   }
 }
 

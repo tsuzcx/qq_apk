@@ -1,67 +1,148 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.app.Notification;
+import android.graphics.Bitmap;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVPbInfo;
 
-public class lwv
-  extends anmu
+public abstract class lwv
+  extends Binder
+  implements lwu
 {
-  public lwv(QQServiceForAV paramQQServiceForAV) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public lwv()
   {
-    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
-    localIntent.putExtra("uin", paramString);
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.b.contains(paramString)) {
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
-    }
-    this.a.b.remove(paramString);
-    if (this.a.b()) {
-      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anmu);
-    }
+    attachInterface(this, "com.tencent.av.service.IAVServiceForQQ");
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public static lwu a(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
+    if (paramIBinder == null) {
+      return null;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    Intent localIntent;
-    if ((paramBoolean) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
-      localIntent.putExtra("uin", paramString);
-      localObject = (anmw)QQServiceForAV.m(this.a).getManager(51);
-      if (localObject == null) {
-        break label205;
-      }
-      localObject = ((anmw)localObject).e(paramString);
-      if (localObject == null) {
-        break label205;
-      }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceForQQ");
+    if ((localIInterface != null) && ((localIInterface instanceof lwu))) {
+      return (lwu)localIInterface;
     }
-    label205:
-    for (Object localObject = bglf.a((Friends)localObject);; localObject = paramString)
+    return new lww(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
     {
-      localIntent.putExtra("nick", (String)localObject);
-      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      if (this.a.b()) {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anmu);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVServiceForQQ");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(lws.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.createByteArray());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      b(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      c(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      if (paramParcel1.readInt() != 0)
+      {
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label292;
+        }
       }
-      return;
+      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+        bool = false;
+        break;
+      }
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramParcel2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (paramParcel1 = (Bitmap)Bitmap.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(paramParcel2, paramParcel1);
+        return true;
+      }
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readString());
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramParcel1 = a(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+      }
+      paramParcel2.writeInt(0);
+      return true;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readLong(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 12: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      label292:
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      if (paramParcel1.readInt() != 0) {
+        bool = true;
+      }
+      a(bool);
+      paramParcel2.writeNoException();
+      return true;
     }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+    c();
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

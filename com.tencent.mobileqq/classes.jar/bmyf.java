@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.AbsListView;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
 
-final class bmyf
-  implements atve
+public class bmyf
+  implements blih
 {
-  bmyf(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public bmyf(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public void a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    atvo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+    if (QZoneMsgFragment.a(this.a) != null) {
+      QZoneMsgFragment.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
   
-  public void b() {}
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QZoneMsgFragment.a(this.a) != null) {
+        QZoneMsgFragment.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      QZoneMsgFragment.a(this.a);
+    }
+  }
 }
 
 

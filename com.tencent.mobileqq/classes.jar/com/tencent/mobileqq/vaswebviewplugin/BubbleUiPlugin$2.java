@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import arpd;
+import aser;
 import com.tencent.qphone.base.util.QLog;
 
 class BubbleUiPlugin$2
-  extends arpd
+  extends aser
 {
   BubbleUiPlugin$2(BubbleUiPlugin paramBubbleUiPlugin) {}
   

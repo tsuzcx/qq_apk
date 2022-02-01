@@ -1,67 +1,48 @@
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-class aute
-  extends auto
+public final class aute
+  extends WebChromeClient
 {
-  aute(autd paramautd) {}
+  private final IHostInterface.IWebClient a;
   
-  protected void a(Object paramObject)
+  private aute(IHostInterface.IWebClient paramIWebClient)
   {
-    super.a(paramObject);
-    if ((paramObject instanceof ArrayList))
-    {
-      paramObject = (ArrayList)paramObject;
-      int j = paramObject.size();
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject;
-        GameCenterSessionInfo localGameCenterSessionInfo;
-        if ((paramObject.get(i) instanceof autc))
-        {
-          localObject = (autc)paramObject.get(i);
-          localGameCenterSessionInfo = this.a.b(((autc)localObject).jdField_b_of_type_JavaLangString);
-          if (localGameCenterSessionInfo != null)
-          {
-            localGameCenterSessionInfo.f(((autc)localObject).c);
-            localGameCenterSessionInfo.g(((autc)localObject).i);
-            localGameCenterSessionInfo.i(((autc)localObject).e);
-            localGameCenterSessionInfo.d(((autc)localObject).jdField_b_of_type_Int);
-            localGameCenterSessionInfo.c(((autc)localObject).k);
-            localGameCenterSessionInfo.h(((autc)localObject).d);
-            localGameCenterSessionInfo.a(((autc)localObject).j);
-            if (j <= 30) {
-              break label178;
-            }
-            if (i == j - 1) {
-              this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 3, this.a.a());
-            }
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label178:
-          if (localGameCenterSessionInfo.a() == 0)
-          {
-            localObject = this.a.c(localGameCenterSessionInfo.e());
-            if (QLog.isColorLevel()) {
-              QLog.d(autd.e(), 2, "[onGameUserInfoChangedNotify] folder session:" + localObject);
-            }
-            if ((localObject != null) && (((GameCenterSessionInfo)localObject).d().equals(localGameCenterSessionInfo.d()))) {
-              this.a.a("action_qgame_messgae_change", (GameCenterSessionInfo)localObject, 2, this.a.a());
-            }
-          }
-          else
-          {
-            this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 2, this.a.a());
-          }
-        }
-      }
+    this.a = paramIWebClient;
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
     }
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {}
+    do
+    {
+      return true;
+      if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+        return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+      }
+    } while (paramJsPromptResult == null);
+    paramJsPromptResult.cancel();
+    return true;
+  }
+  
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
 }
 

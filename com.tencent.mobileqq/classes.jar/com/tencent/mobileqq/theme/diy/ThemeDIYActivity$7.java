@@ -3,11 +3,11 @@ package com.tencent.mobileqq.theme.diy;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bdqf;
+import bejb;
 import com.tencent.qphone.base.util.QLog;
 
 class ThemeDIYActivity$7
-  implements bdqf
+  implements bejb
 {
   ThemeDIYActivity$7(ThemeDIYActivity paramThemeDIYActivity) {}
   

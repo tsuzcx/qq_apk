@@ -1,30 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import mqq.util.WeakReference;
 
-public class rjt
-  implements tii
+class rjt
+  extends Handler
 {
-  public rjt(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  private WeakReference<rjs> a;
   
-  public void a(int paramInt)
+  public rjt(rjs paramrjs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
-    }
+    this.a = new WeakReference(paramrjs);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
-    {
-      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
-      oat.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", pha.g(), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
-      }
+    super.handleMessage(paramMessage);
+    rjs localrjs = (rjs)this.a.get();
+    if (localrjs == null) {}
+    while (paramMessage.what != 101) {
+      return;
     }
+    rjs.a(localrjs);
   }
 }
 

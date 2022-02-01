@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class bbhs
-  implements View.OnClickListener
+public final class bbhs
+  extends BroadcastReceiver
 {
-  public bbhs(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  private bbhs(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      bbfg.a().b();
+      bbfg.a().a(new bbht(this));
+      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
   }
 }
 

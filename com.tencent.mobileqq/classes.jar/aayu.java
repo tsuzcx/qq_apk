@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
-class aayu
-  implements View.OnClickListener
+public class aayu
+  extends Handler
 {
-  aayu(aayr paramaayr) {}
+  public aayu(RefreshView paramRefreshView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    aayr.b(this.a).setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 

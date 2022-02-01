@@ -1,49 +1,51 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel;
 
 public class aiaw
-  extends anqd
+  implements aiaq<PokeAndEmoPanel>
 {
-  aiaw(aias paramaias) {}
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private PokeAndEmoPanel jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  aiaw(BaseChatPie paramBaseChatPie)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aias.g, 2, "[onUpdateSendMsgError], errMsg:" + paramString2 + ",replyCode:" + paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  public int a()
+  {
+    return 23;
+  }
+  
+  public PokeAndEmoPanel a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
+  }
+  
+  public PokeAndEmoPanel a(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel = ((PokeAndEmoPanel)View.inflate(paramContext, 2131558626, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 23) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel.a();
     }
-    ThreadManager.getUIHandler().post(new GameMsgChatPie.4.1(this, paramString2));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.a.a)) {
-      return;
+    if ((paramInt1 == 23) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel.c();
     }
-    this.a.t = true;
-    this.a.a(262144, paramanqa, paramLong);
   }
   
-  public void b(String paramString)
+  public boolean a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.f(131072);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.f(65536);
+    return false;
   }
 }
 

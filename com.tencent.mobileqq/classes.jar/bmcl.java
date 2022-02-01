@@ -1,17 +1,18 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.ui.QQComicFragment;
 
-final class bmcl
-  implements bmco
+public class bmcl
+  implements bipr
 {
-  public void a(boolean paramBoolean, Context paramContext, bmcp parambmcp)
+  public bmcl(QQComicFragment paramQQComicFragment) {}
+  
+  public Object a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
-    if (paramBoolean) {
-      bmcj.d(paramContext, parambmcp);
-    }
+    return new bmcm(this.a);
   }
 }
 

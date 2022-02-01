@@ -1,32 +1,91 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class afsz
-  implements View.OnClickListener
+  extends Handler
 {
-  public afsz(PositionActivatePage paramPositionActivatePage) {}
+  public afsz(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
-    {
-      Intent localIntent = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
-      localIntent.putExtra("key_msg_type", 1);
-      localIntent.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
-      localIntent.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(localIntent, 1000);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
-      bcst.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
+    if (paramMessage.what == 1) {
+      this.a.h();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      return;
+      if (paramMessage.what == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_OWNER_NAME");
+        }
+        this.a.a(2, this.a.a.getTroopOwnerName(), this.a.a.isFetchedTroopOwnerUin());
+        return;
+      }
+      if (paramMessage.what == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_INFO");
+        }
+        if ((this.a.a.dwGroupFlagExt & 0x800) != 0L) {
+          this.a.a(7, this.a.a.troopAuthenticateInfo, false);
+        }
+        this.a.a(2, this.a.a.troopOwnerNick, this.a.a.isFetchedTroopOwnerUin());
+        if ((this.a.a.troopOwnerNick == null) && (!TextUtils.isEmpty(this.a.a.troopowneruin))) {
+          TroopInfoActivity.c(this.a);
+        }
+        this.a.m();
+        this.a.c();
+        this.a.b();
+        if (!TextUtils.isEmpty(this.a.a.mRichFingerMemo)) {}
+        for (paramMessage = this.a.a.mRichFingerMemo;; paramMessage = this.a.getResources().getString(2131695507))
+        {
+          this.a.a(6, paramMessage, this.a.a.isOwnerOrAdim());
+          if (this.a.a.troopClass != null) {
+            break;
+          }
+          TroopInfoActivity.d(this.a);
+          return;
+        }
+      }
+      if (paramMessage.what == 5)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_CLASS");
+        }
+        this.a.a(4, this.a.a.troopClass, this.a.a.isOwnerOrAdim());
+        return;
+      }
+      if (paramMessage.what == 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_TAGS");
+        }
+        paramMessage = TroopInfoActivity.a(this.a, this.a.a);
+        this.a.a(8, paramMessage, true, 2, true);
+        return;
+      }
+      if (paramMessage.what == 7)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_INTEREST");
+        }
+        paramMessage = new ArrayList();
+        if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+          paramMessage.add(this.a.a.tribeName);
+        }
+        this.a.a(9, paramMessage, true, 1, true);
+        TroopInfoActivity.e(this.a);
+        return;
+      }
+    } while (paramMessage.what != 8);
+    TroopInfoActivity.e(this.a);
   }
 }
 

@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import com.tencent.tavcut.TAVCut.Callback;
 
-public final class bpbs
-  implements Parcelable.Creator<EditTakeVideoSource>
+class bpbs
+  implements TAVCut.Callback
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
-  {
-    return new EditTakeVideoSource(paramParcel);
-  }
+  bpbs(bpbr parambpbr) {}
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void onDone(int paramInt)
   {
-    return new EditTakeVideoSource[paramInt];
+    bpam.b("AEEditorProcessManager", "TAVCut init ret code = " + paramInt);
   }
 }
 

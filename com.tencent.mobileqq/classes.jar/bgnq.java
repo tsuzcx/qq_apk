@@ -1,6 +1,17 @@
-class bgnq
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+
+public class bgnq
+  implements View.OnTouchListener
 {
-  private static final bgno a = new bgno(null);
+  public bgnq(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

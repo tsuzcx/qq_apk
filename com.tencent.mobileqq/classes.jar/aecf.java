@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class aecf
-  extends anmu
+class aecf
+  implements DialogInterface.OnCancelListener
 {
-  public aecf(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  aecf(aece paramaece) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

@@ -1,47 +1,19 @@
-import android.os.Bundle;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
-import tencent.im.oidb.oidb_0xc2f.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qkb
-  extends nis
+class qkb
+  implements View.OnClickListener
 {
-  qkb(qjt paramqjt) {}
+  qkb(qka paramqka) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(paramView, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new oidb_0xc2f.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        qjt.a(this.a).mRecommendFollowInfos = rgf.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
-        if ((qjt.a(this.a).mRecommendFollowInfos.a != null) && (qjt.a(this.a).mRecommendFollowInfos.a.size() >= 3))
-        {
-          qjt.a(this.a).a(qjt.a(this.a).mRecommendFollowInfos.a);
-          qjt.a(this.a).isShowRecommendList = true;
-          qjt.a(this.a);
-          qjt.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

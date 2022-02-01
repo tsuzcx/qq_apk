@@ -1,43 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ybt
-  implements wld<ycg, ych>
+public class ybt
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xbt>
 {
-  ybt(ybs paramybs, JobContext paramJobContext, String paramString) {}
-  
-  public void a(@NonNull ycg paramycg, @Nullable ych paramych, @NonNull ErrorMessage paramErrorMessage)
+  public ybt(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xbt paramxbt)
+  {
+    if (paramxbt.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramxbt);
     }
-    if ((paramych == null) || (paramErrorMessage.isFail()))
-    {
-      yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      ybs.a(this.jdField_a_of_type_Ybs, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_Ybs.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((woy)wpm.a(15)).a(paramych.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramycg = new ybo(bool, paramych.a, paramych.b, paramych.c);
-      try
-      {
-        ybs.a(this.jdField_a_of_type_Ybs, paramycg);
-        return;
-      }
-      catch (NullPointerException paramycg)
-      {
-        yqp.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramycg);
-        ybs.b(this.jdField_a_of_type_Ybs, new ErrorMessage());
-        return;
-      }
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xbt.class;
   }
 }
 

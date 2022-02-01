@@ -14,14 +14,13 @@ public abstract class ILaunchManager$Stub
   implements ILaunchManager
 {
   private static final String DESCRIPTOR = "com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager";
-  static final int TRANSACTION_onAppLifecycle = 6;
-  static final int TRANSACTION_preloadDownloadPackage = 5;
-  static final int TRANSACTION_requestAync = 8;
-  static final int TRANSACTION_sendCmd = 7;
+  static final int TRANSACTION_onAppLifecycle = 5;
+  static final int TRANSACTION_preloadDownloadPackage = 4;
+  static final int TRANSACTION_requestAync = 7;
+  static final int TRANSACTION_sendCmd = 6;
   static final int TRANSACTION_startMiniApp = 1;
-  static final int TRANSACTION_stopAllMiniApp = 4;
+  static final int TRANSACTION_stopAllMiniApp = 3;
   static final int TRANSACTION_stopMiniApp = 2;
-  static final int TRANSACTION_stopMiniAppByAppId = 3;
   
   public ILaunchManager$Stub()
   {
@@ -60,11 +59,11 @@ public abstract class ILaunchManager$Stub
       {
         localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
         if (paramParcel1.readInt() == 0) {
-          break label191;
+          break label183;
         }
         localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
         if (paramParcel1.readInt() == 0) {
-          break label197;
+          break label189;
         }
       }
       for (paramParcel1 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
@@ -75,7 +74,7 @@ public abstract class ILaunchManager$Stub
         localObject1 = null;
         break;
         localObject2 = null;
-        break label150;
+        break label142;
       }
     case 2: 
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
@@ -88,15 +87,10 @@ public abstract class ILaunchManager$Stub
       }
     case 3: 
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
-      stopMiniAppByAppId(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
       stopAllMiniApp();
       paramParcel2.writeNoException();
       return true;
-    case 5: 
+    case 4: 
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
@@ -105,7 +99,7 @@ public abstract class ILaunchManager$Stub
         paramParcel2.writeNoException();
         return true;
       }
-    case 6: 
+    case 5: 
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
       paramInt1 = paramParcel1.readInt();
       localObject2 = paramParcel1.readString();
@@ -113,7 +107,7 @@ public abstract class ILaunchManager$Stub
       {
         localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
         if (paramParcel1.readInt() == 0) {
-          break label402;
+          break label374;
         }
       }
       for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
@@ -124,12 +118,12 @@ public abstract class ILaunchManager$Stub
         localObject1 = null;
         break;
       }
-    case 7: 
-      label150:
-      label191:
-      label197:
+    case 6: 
+      label142:
+      label183:
+      label189:
+      label374:
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
-      label402:
       localObject2 = paramParcel1.readString();
       String str = paramParcel1.readString();
       if (paramParcel1.readInt() != 0) {}
@@ -149,7 +143,7 @@ public abstract class ILaunchManager$Stub
       paramParcel1 = requestAync((String)localObject1, (String)localObject2, paramParcel1);
       paramParcel2.writeNoException();
       if (paramParcel1 == null) {
-        break label549;
+        break label521;
       }
       paramParcel2.writeInt(1);
       paramParcel1.writeToParcel(paramParcel2, 1);
@@ -159,14 +153,14 @@ public abstract class ILaunchManager$Stub
       return true;
       paramParcel1 = null;
       break;
-      label549:
+      label521:
       paramParcel2.writeInt(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager.Stub
  * JD-Core Version:    0.7.0.1
  */

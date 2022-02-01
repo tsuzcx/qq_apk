@@ -1,14 +1,11 @@
 package a.a.a.a;
 
-import a.a.a.b.f;
-import a.a.a.b.h;
+import a.a.a.b.i;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build.VERSION;
-import com.tencent.secprotocol.t.s;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,12 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import org.json.JSONObject;
 
 public class b
 {
-  public static Context a;
-  
   public static File a(Context paramContext, String paramString1, String paramString2)
   {
     localObject = paramContext.getPackageManager();
@@ -121,15 +115,15 @@ public class b
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 135	android/os/Build:CPU_ABI	Ljava/lang/String;
+    //   3: getstatic 134	android/os/Build:CPU_ABI	Ljava/lang/String;
     //   6: astore_0
     //   7: aload_0
     //   8: ifnull +20 -> 28
     //   11: aload_0
-    //   12: ldc 137
-    //   14: invokevirtual 98	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   12: ldc 136
+    //   14: invokevirtual 97	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   17: ifeq +11 -> 28
-    //   20: ldc 137
+    //   20: ldc 136
     //   22: astore_0
     //   23: ldc 2
     //   25: monitorexit
@@ -138,22 +132,22 @@ public class b
     //   28: aload_0
     //   29: ifnull +18 -> 47
     //   32: aload_0
-    //   33: ldc 139
-    //   35: invokevirtual 98	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   33: ldc 138
+    //   35: invokevirtual 97	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   38: ifeq +9 -> 47
-    //   41: ldc 139
+    //   41: ldc 138
     //   43: astore_0
     //   44: goto -21 -> 23
     //   47: aload_0
     //   48: ifnull +18 -> 66
     //   51: aload_0
-    //   52: ldc 141
-    //   54: invokevirtual 98	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   52: ldc 140
+    //   54: invokevirtual 97	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   57: ifeq +9 -> 66
-    //   60: ldc 137
+    //   60: ldc 136
     //   62: astore_0
     //   63: goto -40 -> 23
-    //   66: ldc 143
+    //   66: ldc 142
     //   68: astore_0
     //   69: goto -46 -> 23
     //   72: astore_0
@@ -171,39 +165,6 @@ public class b
     //   11	20	72	finally
     //   32	41	72	finally
     //   51	60	72	finally
-  }
-  
-  public static JSONObject a(int paramInt1, int paramInt2, String paramString, a.a.a.b.b paramb)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put(f.a(0), paramInt1);
-      localJSONObject.put(f.a(1), paramInt2);
-      localJSONObject.put(f.a(2), paramb.b);
-      localJSONObject.put(f.a(3), paramb.d);
-      localJSONObject.put(f.a(4), paramb.c);
-      localJSONObject.put(f.a(5), paramb.e);
-      localJSONObject.put(f.a(6), paramString);
-      localJSONObject.put(f.a(7), paramb.f);
-      localJSONObject.put(f.a(8), paramb.g);
-      localJSONObject.put(f.a(9), Build.VERSION.SDK_INT);
-      localJSONObject.put(f.a(10), s.b(paramb.a));
-      localJSONObject.put(f.a(11), paramb.h);
-      localJSONObject.put(f.a(12), System.currentTimeMillis());
-      localJSONObject.put(f.a(13), 1);
-      localJSONObject.put(f.a(14), "");
-      localJSONObject.put(f.a(15), s.getProcessName(a));
-      localJSONObject.put(f.a(16), s.c(a));
-      localJSONObject.put(f.a(17), s.d(a));
-      localJSONObject.put(f.a(18), s.e(a));
-      return localJSONObject;
-    }
-    finally
-    {
-      paramString.printStackTrace();
-    }
-    return null;
   }
   
   public static void a(InputStream paramInputStream, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -261,13 +222,13 @@ public class b
         }
         if ((paramString != null) && (paramString.exists()))
         {
-          if (h.a(paramString, null)) {
-            break label286;
+          if (i.a(paramString, null)) {
+            break label283;
           }
           paramString.delete();
-          bool1 = h.a(a(paramContext, str, (String)localObject2), null);
+          bool1 = i.a(a(paramContext, str, (String)localObject2), null);
           if (bool1) {
-            break label286;
+            break label283;
           }
         }
       }
@@ -296,7 +257,7 @@ public class b
         catch (UnsatisfiedLinkError paramContext)
         {
           Object localObject2;
-          label286:
+          label283:
           paramContext.printStackTrace();
         }
         paramString = paramString;

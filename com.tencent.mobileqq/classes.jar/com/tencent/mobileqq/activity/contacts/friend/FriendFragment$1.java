@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
-import bafv;
+import bayl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendFragment$1
@@ -10,7 +10,7 @@ public class FriendFragment$1
   
   public void run()
   {
-    ((bafv)FriendFragment.a(this.this$0).getManager(91)).a();
+    ((bayl)FriendFragment.a(this.this$0).getManager(91)).a();
   }
 }
 

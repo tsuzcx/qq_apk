@@ -1,20 +1,11 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.google.gson.reflect.TypeToken;
+import java.util.List;
+import kotlin.Metadata;
 
-public class rlg
-  implements View.OnClickListener
-{
-  public rlg(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion$getTargetList$1$1", "Lcom/google/gson/reflect/TypeToken;", "", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rlg
+  extends TypeToken<List<? extends String>>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

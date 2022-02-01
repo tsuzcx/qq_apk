@@ -1,238 +1,63 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
-import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
 public class alrl
-  extends anqo
+  implements OnCompositionLoadedListener
 {
-  public alrl(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public alrl(LoginAnimBtnView.2 param2) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onCompositionLoaded(LottieComposition arg1)
   {
-    paramObject = (Object[])paramObject;
-    int j = ((Integer)paramObject[0]).intValue();
-    int i = -1;
-    if (paramObject.length == 3) {
-      i = ((Integer)paramObject[2]).intValue();
-    }
-    if (this.a.jdField_a_of_type_Biau != null)
+    if ((??? == null) || (LoginAnimBtnView.a(this.a.this$0)))
     {
-      this.a.jdField_a_of_type_Biau.dismiss();
-      this.a.jdField_a_of_type_Biau = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CreateFaceToFaceDiscussionActivity", 2, "onGetNearFieldDiscussInfo " + paramBoolean + " mSessionId=" + this.a.jdField_a_of_type_Int + " sessionId=" + j);
-    }
-    if (paramBoolean)
-    {
-      paramObject = (String)paramObject[1];
-      if (j == this.a.jdField_a_of_type_Int)
-      {
-        if ((i != 0) || (!DiscussionInfo.isValidDisUin(paramObject))) {
-          break label256;
-        }
-        this.a.finish();
-        localObject = bglf.a(this.a.app, this.a.getActivity().getApplicationContext(), paramObject);
-        localIntent = afur.a(new Intent(this.a.getActivity(), SplashActivity.class), null);
-        localIntent.putExtra("uin", paramObject);
-        localIntent.putExtra("uintype", 3000);
-        localIntent.putExtra("uinname", (String)localObject);
-        localIntent.putExtra("isBack2Root", true);
-        this.a.startActivity(localIntent);
-      }
-    }
-    label256:
-    while (j != this.a.jdField_a_of_type_Int)
-    {
-      Object localObject;
-      Intent localIntent;
-      return;
-      if ((i == 2) || (i == 1))
-      {
-        this.a.finish();
-        localObject = afur.a(new Intent(this.a.getActivity(), SplashActivity.class), null);
-        ((Intent)localObject).putExtra("uin", paramObject);
-        ((Intent)localObject).putExtra("uintype", 1);
-        ((Intent)localObject).putExtra("uinname", bglf.h(this.a.app, this.a.app.getCurrentAccountUin()) + anni.a(2131701415));
-        ((Intent)localObject).putExtra("isBack2Root", true);
-        this.a.startActivity((Intent)localObject);
-        bcst.b(this.a.app, "dc00899", "Grp_create", "", "f2f", "cre_suc", 0, 0, paramObject, "", "", "");
-        return;
-      }
-      CreateFaceToFaceDiscussionActivity.a(this.a, 1, this.a.getString(2131691984));
+      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
       return;
     }
-    CreateFaceToFaceDiscussionActivity.b(this.a, 1, this.a.getString(2131691984));
-  }
-  
-  protected void a(boolean paramBoolean, List<nearfield_discuss.UserProfile> paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong)
-  {
+    int i = agej.a(70.0F, this.a.this$0.getResources());
+    int j = agej.a(70.0F, this.a.this$0.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
     if (QLog.isColorLevel()) {
-      QLog.i("CreateFaceToFaceDiscussionActivity", 2, "NearFieldDiscussObserver isSuccess = " + paramBoolean + " ; interval = " + paramInt1);
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
     }
-    Object localObject;
-    if (paramBoolean)
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new alrm(this.a.this$0.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+    }
+    LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
+    if (LoginAnimBtnView.a(this.a.this$0))
     {
-      if (paramInt1 > 0) {
-        this.a.jdField_a_of_type_Long = (paramInt1 * 1000);
-      }
-      if ((paramBusiRespHead != null) && (paramBusiRespHead.int32_reply_code.get() != 0))
-      {
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          paramList = paramBusiRespHead.str_result.get();
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramList, 0).a();
-          ((Animatable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-          if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("CreateFaceToFaceDiscussionActivity", 2, "head.int32_reply_code = " + paramBusiRespHead.int32_reply_code.get());
-        }
-        return;
-      }
-      paramBusiRespHead = "";
-      localObject = paramBusiRespHead;
-      if (paramList != null)
-      {
-        localObject = paramBusiRespHead;
-        if (paramLong != 0L)
-        {
-          localObject = paramBusiRespHead;
-          if (paramInt4 != 0)
-          {
-            Iterator localIterator = paramList.iterator();
-            localObject = paramBusiRespHead;
-            if (localIterator.hasNext())
-            {
-              localObject = (nearfield_discuss.UserProfile)localIterator.next();
-              if (((nearfield_discuss.UserProfile)localObject).uint64_uin.get() != paramLong) {
-                break label1110;
-              }
-              paramBusiRespHead = ((nearfield_discuss.UserProfile)localObject).str_nick.get();
-            }
-          }
-        }
-      }
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      LoginAnimBtnView.a(this.a.this$0, null);
     }
-    label1110:
     for (;;)
     {
-      break;
-      switch (paramInt4)
+      synchronized (LoginAnimBtnView.a(this.a.this$0))
       {
-      default: 
-        if (this.a.jdField_a_of_type_JavaUtilList == null)
-        {
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          label364:
-          this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_TencentImNearfield_discussNearfield_discuss$UserProfile);
-          if (paramList != null) {
-            this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          }
-          if ((paramList == null) && (QLog.isColorLevel())) {
-            QLog.i("CreateFaceToFaceDiscussionActivity", 2, "usrList == null");
-          }
-          if (this.a.jdField_a_of_type_Alrn != null)
-          {
-            this.a.jdField_a_of_type_Alrn.notifyDataSetChanged();
-            this.a.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
-          }
-          if (this.a.d)
-          {
-            this.a.d = false;
-            CreateFaceToFaceDiscussionActivity.a(this.a);
-            paramList = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramList, this.a.jdField_a_of_type_Long);
-          }
-        }
-        break;
-      }
-      for (;;)
-      {
-        ((Animatable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-        this.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        LoginAnimBtnView.a(this.a.this$0, null);
+        LoginAnimBtnView.a(this.a.this$0, null);
         return;
-        CreateFaceToFaceDiscussionActivity.a(this.a).setText(this.a.getString(2131689642));
-        CreateFaceToFaceDiscussionActivity.a(this.a).setContentDescription(this.a.getString(2131689642));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131717701));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.a.getString(2131717701));
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.getString(2131717702));
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.a.getString(2131717702));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.a.getResources().getColor(2131167017));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131701414));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(anni.a(2131701414));
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131717705));
-        break;
-        this.a.jdField_b_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131717707, new Object[] { localObject }));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131717703));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.getString(2131717703));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
-        break;
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131717706, new Object[] { localObject }));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131717704));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.getString(2131717704));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
-        break;
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        break label364;
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, anni.a(2131701412), 1).a();
-          if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
-        }
       }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CreateFaceToFaceDiscussionActivity", 2, "on push | isSuccess = " + paramBoolean);
-    }
-    if ((paramBoolean) && (((Integer)((Object[])(Object[])paramObject)[0]).intValue() == this.a.jdField_a_of_type_Int) && (this.a.isResume()))
-    {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      if (this.a.this$0.isEnabled())
+      {
+        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
+        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
     }
   }
 }

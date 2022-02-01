@@ -1,14 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class arty
-  implements aftz
+public abstract interface arty
 {
-  arty(arti paramarti) {}
+  public abstract void a(aruc paramaruc, arvz paramarvz, arvp paramarvp);
   
-  public void a()
-  {
-    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(List<aruc> paramList);
+  
+  public abstract void f();
 }
 
 

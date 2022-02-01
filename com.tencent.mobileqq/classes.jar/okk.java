@@ -1,46 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class okk
-  extends Handler
+  implements bliz
 {
-  public okk(ReadInJoyUploadAvatarFragment paramReadInJoyUploadAvatarFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public okk(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, blir paramblir) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {
-      return;
-    }
-    Intent localIntent = localFragmentActivity.getIntent();
-    Bundle localBundle = new Bundle();
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    default: 
-      localBundle.putString("msg", anni.a(2131711797));
-      localBundle.putInt("retCode", 3);
-      localIntent.putExtra("Bundle", localBundle);
-      localFragmentActivity.setResult(-1, localIntent);
     }
     for (;;)
     {
-      localFragmentActivity.finish();
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      localBundle.putString("url", (String)paramMessage.obj);
-      localBundle.putInt("retCode", 0);
-      localBundle.putString("msg", anni.a(2131711856));
-      localIntent.putExtra("Bundle", localBundle);
-      localFragmentActivity.setResult(-1, localIntent);
+      pfa.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
     }
   }
 }

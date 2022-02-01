@@ -1,23 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bgoj
-  extends anxg
+class bgoj
+  implements View.OnClickListener
 {
-  bgoj(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  bgoj(bgoi parambgoi) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
-    if (paramBoolean) {
-      bgol.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

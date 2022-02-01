@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tofumsg;
 
-import afwx;
-import bdqk;
+import aggr;
+import bejg;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class AIOTofuMsgHelper$1
   implements Runnable
 {
-  public AIOTofuMsgHelper$1(bdqk parambdqk) {}
+  public AIOTofuMsgHelper$1(bejg parambejg) {}
   
   public void run()
   {
-    ((afwx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a, 0);
+    ((aggr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a, 0);
   }
 }
 

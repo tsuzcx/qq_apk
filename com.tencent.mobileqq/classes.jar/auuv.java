@@ -1,76 +1,118 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.gamecenter.activities.GameCenterActivity;
-import com.tencent.mobileqq.gamecenter.view.NavBarQQGamePub;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 public class auuv
-  implements View.OnClickListener
 {
-  public auuv(NavBarQQGamePub paramNavBarQQGamePub) {}
+  public static String b;
+  protected int a;
+  protected Object a;
+  protected int b;
+  protected long b;
+  protected Object b;
+  protected int c;
+  protected final long c;
+  protected Object c;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public void onClick(View paramView)
+  static
   {
-    int i = 1;
-    if ((NavBarQQGamePub.a(this.a) != null) && (NavBarQQGamePub.a(this.a).getVisibility() == 0)) {
-      NavBarQQGamePub.a(this.a).setVisibility(4);
+    jdField_b_of_type_JavaLangString = "UniformDownloaderAssinfo<FileAssistant>";
+  }
+  
+  public auuv(long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public int a(String paramString, Bundle paramBundle)
+  {
+    if (a()) {
+      return 0;
     }
-    HashMap localHashMap = new HashMap();
-    String str = "";
-    if (NavBarQQGamePub.a(this.a) == 1)
-    {
-      Object localObject = auuc.b();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((((String)localObject).startsWith("http")) || (((String)localObject).startsWith("https"))))
+    if ((paramString == null) || (paramBundle == null)) {
+      try
       {
-        localObject = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
-        ((Intent)localObject).putExtra("url", auuc.b());
-        ((Intent)localObject).addFlags(268435456);
-        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_zf_games");
-        this.a.getContext().startActivity((Intent)localObject);
+        QLog.e(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. init param error");
+        return -1;
       }
-      i = 2;
+      finally {}
     }
-    for (;;)
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramBundle.getString("_PARAM_FILEPATH");
+    this.f = paramBundle.getString("_PARAM_TMP_FILEPATH");
+    this.d = paramBundle.getString("_PARAM_FILENAME");
+    this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
+    this.g = paramBundle.getString("_PARAM_COOKIE");
+    QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] init. ST:" + e() + " PGR:" + h());
+    c(1);
+    return 0;
+  }
+  
+  protected void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (!TextUtils.isEmpty(str)) {
-        localHashMap.put(Integer.valueOf(2), str);
-      }
-      localHashMap.put(Integer.valueOf(3), i + "");
-      localHashMap.put(Integer.valueOf(4), "8");
-      localHashMap.put(Integer.valueOf(24), "1");
-      aceh.a(ampj.a(), "770", "207023", "", "77002", "1", "160", localHashMap);
-      auue.a();
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Int = paramInt;
       return;
-      if (NavBarQQGamePub.a(this.a) == 2)
-      {
-        if ((!TextUtils.isEmpty(NavBarQQGamePub.a(this.a))) && ((NavBarQQGamePub.a(this.a).startsWith("http")) || (NavBarQQGamePub.a(this.a).startsWith("https")))) {
-          NavBarQQGamePub.a(this.a, NavBarQQGamePub.a(this.a));
-        }
-        str = NavBarQQGamePub.b(this.a);
-        this.a.a();
-        i = 3;
-      }
-      else if (NavBarQQGamePub.a(this.a) == 3)
-      {
-        if ((!TextUtils.isEmpty(NavBarQQGamePub.a(this.a))) && ((NavBarQQGamePub.a(this.a).startsWith("http")) || (NavBarQQGamePub.a(this.a).startsWith("https")))) {
-          NavBarQQGamePub.a(this.a, NavBarQQGamePub.a(this.a));
-        }
-        str = NavBarQQGamePub.b(this.a);
-        this.a.a();
-      }
-      else
-      {
-        i = 0;
-      }
+    }
+  }
+  
+  protected boolean a()
+  {
+    return e() >= 1;
+  }
+  
+  protected void b(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  protected void c(int paramInt)
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] setStatus. " + this.jdField_c_of_type_Int + "->" + paramInt);
+      this.jdField_c_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  public int e()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      int i = this.jdField_c_of_type_Int;
+      return i;
+    }
+  }
+  
+  protected int g()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      int i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public int h()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      int i = this.jdField_b_of_type_Int;
+      return i;
     }
   }
 }

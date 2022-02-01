@@ -3,13 +3,13 @@ package com.tencent.biz.qqcircle.polylike;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
-import vpe;
-import vpr;
+import vrn;
+import vsa;
 
 public class QCirclePolyLikeMoreView
   extends QCirclePolyBaseLikeView
 {
-  public vpe a;
+  public vrn a;
   
   public QCirclePolyLikeMoreView(@NonNull Context paramContext, int paramInt)
   {
@@ -18,7 +18,7 @@ public class QCirclePolyLikeMoreView
   
   public int a()
   {
-    return 2131560755;
+    return 2131560780;
   }
   
   public String a()
@@ -30,7 +30,7 @@ public class QCirclePolyLikeMoreView
   {
     super.a(paramContext, paramView);
     if (paramView != null) {
-      paramView.setOnClickListener(new vpr(this));
+      paramView.setOnClickListener(new vsa(this));
     }
   }
   

@@ -1,18 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
-public class aixf
-  implements View.OnClickListener
+class aixf
+  implements aqsa
 {
-  public aixf(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  aixf(aixd paramaixd) {}
   
-  public void onClick(View paramView)
+  public void a(ColorNote paramColorNote)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramColorNote == null) || (!aqsd.d(paramColorNote))) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "color note add." + paramColorNote);
+    }
+    aixd.a(this.a, paramColorNote, 1001);
+    bdll.b(null, "dc00898", "", "", "0X800AE81", "0X800AE81", aixg.a(paramColorNote).reportType, 0, "", "", "", "");
+  }
+  
+  public void b(ColorNote paramColorNote)
+  {
+    if ((paramColorNote == null) || (!aqsd.d(paramColorNote))) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "color note del." + paramColorNote);
+    }
+    aixd.a(this.a, paramColorNote, 1002);
   }
 }
 

@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
 import java.util.HashMap;
-import sgl;
-import sgm;
-import sgo;
-import slr;
+import rxp;
+import rxq;
+import rxs;
+import scv;
 
 public class VideoWebPreDownload$3$1
   implements Runnable
 {
-  public VideoWebPreDownload$3$1(sgm paramsgm, slr paramslr) {}
+  public VideoWebPreDownload$3$1(rxq paramrxq, scv paramscv) {}
   
   public void run()
   {
-    if (!sgl.a(this.jdField_a_of_type_Sgm.jdField_a_of_type_Sgl, this.jdField_a_of_type_Slr.a, this.jdField_a_of_type_Slr.b, this.jdField_a_of_type_Sgm.jdField_a_of_type_Int)) {
-      sgl.a(this.jdField_a_of_type_Sgm.jdField_a_of_type_Sgl, this.jdField_a_of_type_Slr.a, this.jdField_a_of_type_Slr.b, this.jdField_a_of_type_Sgm.jdField_a_of_type_Long, this.jdField_a_of_type_Sgm.jdField_a_of_type_Int);
+    if (!rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp, this.jdField_a_of_type_Scv.a, this.jdField_a_of_type_Scv.b, this.jdField_a_of_type_Rxq.jdField_a_of_type_Int)) {
+      rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp, this.jdField_a_of_type_Scv.a, this.jdField_a_of_type_Scv.b, this.jdField_a_of_type_Rxq.jdField_a_of_type_Long, this.jdField_a_of_type_Rxq.jdField_a_of_type_Int);
     }
     String str;
     do
@@ -23,10 +23,10 @@ public class VideoWebPreDownload$3$1
       do
       {
         return;
-      } while (sgl.a(this.jdField_a_of_type_Sgm.jdField_a_of_type_Sgl) == null);
-      str = (String)sgl.a(this.jdField_a_of_type_Sgm.jdField_a_of_type_Sgl).get(this.jdField_a_of_type_Slr.b);
+      } while (rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp) == null);
+      str = (String)rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp).get(this.jdField_a_of_type_Scv.b);
     } while (TextUtils.isEmpty(str));
-    sgl.a(this.jdField_a_of_type_Sgm.jdField_a_of_type_Sgl).a(this.jdField_a_of_type_Slr.b, 1, str);
+    rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp).a(this.jdField_a_of_type_Scv.b, 1, str);
   }
 }
 

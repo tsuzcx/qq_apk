@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aetc;
+import afcg;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class PermisionPrivacyActivity$16$1
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$1(aetc paramaetc, ContactSyncManager paramContactSyncManager, boolean paramBoolean) {}
+  public PermisionPrivacyActivity$16$1(afcg paramafcg, ContactSyncManager paramContactSyncManager, boolean paramBoolean) {}
   
   public void run()
   {

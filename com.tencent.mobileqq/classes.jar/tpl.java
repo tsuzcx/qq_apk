@@ -1,20 +1,48 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class tpl
-  extends tpg
+final class tpl
+  implements blih
 {
-  tpl(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
+  tpl(ReadInJoyCommentListView paramReadInJoyCommentListView, sph paramsph) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+    if (this.jdField_a_of_type_Sph != null) {
+      this.jdField_a_of_type_Sph.a(paramAbsListView);
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ThreadManager.executeOnSubThread(new SheetItemClickProcessor.JuBaoAction.1(this, paramString1));
+    if ((tpk.a() == null) || (tpk.a().size() == 0)) {}
+    for (;;)
+    {
+      return;
+      paramInt = tpk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView);
+      int i = paramAbsListView.getFirstVisiblePosition();
+      int j = paramAbsListView.getLastVisiblePosition();
+      paramAbsListView = tpk.a().iterator();
+      while (paramAbsListView.hasNext())
+      {
+        Object localObject = (tpm)paramAbsListView.next();
+        int k = ((tpm)localObject).jdField_a_of_type_Int;
+        localObject = (ReadInJoyArticleBottomVideoView)((tpm)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((k >= i - paramInt) && (k <= j - paramInt))
+        {
+          if (localObject != null) {
+            ((ReadInJoyArticleBottomVideoView)localObject).n();
+          }
+        }
+        else if (localObject != null) {
+          ((ReadInJoyArticleBottomVideoView)localObject).q();
+        }
+      }
+    }
   }
 }
 

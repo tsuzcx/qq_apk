@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.base.videoupload.task;
 
-import wjo;
+import wnj;
 
 public class BasePublishTaskManager$1
   implements Runnable
 {
-  public BasePublishTaskManager$1(wjo paramwjo) {}
+  public BasePublishTaskManager$1(wnj paramwnj) {}
   
   public void run()
   {

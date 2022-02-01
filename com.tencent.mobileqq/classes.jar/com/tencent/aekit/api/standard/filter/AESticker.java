@@ -485,6 +485,14 @@ public class AESticker
     return VideoMaterialUtil.isAnimojiMaterial(this.mVideoFilters.getMaterial());
   }
   
+  public boolean isCosFunEnableGAN()
+  {
+    if (this.mVideoFilters != null) {
+      return this.mVideoFilters.isCosFunEnableGAN();
+    }
+    return false;
+  }
+  
   public boolean isCosFunMaterial()
   {
     return VideoMaterialUtil.isCosFunMaterial(this.mVideoFilters.getMaterial());
@@ -718,9 +726,13 @@ public class AESticker
             localObject2 = this.mVideoFilters.updateAndRenderFilamentFilter((Frame)localObject1, paramPTFaceAttr);
           }
         }
-        localObject1 = this.mVideoFilters.updateAndRenderRapidNet((Frame)localObject2, paramPTFaceAttr);
-        localObject1 = this.mVideoFilters.updateAndRenderStyleChild((Frame)localObject1, paramPTFaceAttr);
-        localObject1 = this.mVideoFilters.updateAndRenderStyleChildWarp((Frame)localObject1, paramPTFaceAttr);
+        localObject1 = localObject2;
+        if (!this.mVideoFilters.isCosFunEnableGAN())
+        {
+          localObject1 = this.mVideoFilters.updateAndRenderRapidNet((Frame)localObject2, paramPTFaceAttr);
+          localObject1 = this.mVideoFilters.updateAndRenderStyleChild((Frame)localObject1, paramPTFaceAttr);
+          localObject1 = this.mVideoFilters.updateAndRenderStyleChildWarp((Frame)localObject1, paramPTFaceAttr);
+        }
         localObject1 = this.mVideoFilters.updateAndRenderStylyFilters(1, (Frame)localObject1);
         localObject2 = this.mVideoFilters.updateAndRenderDynamicStickers((Frame)localObject1, paramPTFaceAttr, paramAIAttr);
         localObject1 = localObject2;
@@ -763,6 +775,7 @@ public class AESticker
           paramFrame = this.mVideoFilters.updateAndRenderFilamentFilter((Frame)localObject1, paramPTFaceAttr);
         }
         paramFrame = this.mVideoFilters.blurAfterRender(paramFrame, paramPTFaceAttr, paramPTSegAttr);
+        paramFrame = this.mVideoFilters.renderCustomGroup(paramFrame);
         paramFrame = this.mVideoFilters.cosFunFilterGroupRender(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
         this.mVideoFilters.clearTouchPoint();
         if ((this.hairAttr != null) && (this.hairAttr.getMaskFrame() != null))
@@ -776,7 +789,7 @@ public class AESticker
         }
         localObject1 = this.mVideoFilters.doFabbyStroke(paramFrame, paramPTSegAttr.getMaskFrame(), paramPTFaceAttr);
         if (this.enableBGTransparent) {
-          break label1016;
+          break label1039;
         }
         GlUtil.setBlendMode(true);
         localObject2 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
@@ -786,7 +799,7 @@ public class AESticker
         localObject1 = localObject2;
         break;
       }
-      label1016:
+      label1039:
       continue;
       localObject1 = paramFrame;
     }

@@ -1,16 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class non
-  implements DialogInterface.OnClickListener
+final class non
+  implements bliz
 {
-  public non(Handler paramHandler) {}
+  non(blir paramblir, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.sendEmptyMessage(-1);
+    this.jdField_a_of_type_Blir.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
+      try
+      {
+        nok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
   }
 }
 

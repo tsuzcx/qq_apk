@@ -4,7 +4,7 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Lambda;
-import pea;
+import ows;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isSuccess", "", "invoke"}, k=3, mv={1, 1, 16})
 final class RIJCommentNetworkHelper$createSubComment$1$1

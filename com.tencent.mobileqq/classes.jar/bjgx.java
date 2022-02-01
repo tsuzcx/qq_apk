@@ -1,17 +1,22 @@
-class bjgx
-  extends bjha
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.qphone.base.util.QLog;
+
+public class bjgx
+  implements DialogInterface.OnDismissListener
 {
-  bjgx(bjgw parambjgw) {}
+  public bjgx(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  protected void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      bjgw.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
     }
-    bjgw.b(this.a);
+    ShareActionSheetV2.b(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
+    }
   }
 }
 

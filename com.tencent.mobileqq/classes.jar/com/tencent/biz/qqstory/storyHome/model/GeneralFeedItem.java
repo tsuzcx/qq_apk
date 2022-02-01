@@ -10,15 +10,15 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import wpm;
-import wpy;
-import xfe;
-import yir;
-import yqp;
-import zkb;
+import wth;
+import wtt;
+import xiz;
+import ymm;
+import yuk;
+import znw;
 
 public class GeneralFeedItem
-  extends VideoListFeedItem<yir, QQUserUIItem>
+  extends VideoListFeedItem<ymm, QQUserUIItem>
 {
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
   public String wsSchemaForMain = "default";
@@ -29,15 +29,15 @@ public class GeneralFeedItem
     GeneralFeedItem localGeneralFeedItem = new GeneralFeedItem();
     localGeneralFeedItem.feedId = makeFakeFeedId(QQStoryContext.a().b(), paramString);
     localGeneralFeedItem.setDate(paramString);
-    localGeneralFeedItem.mUserUIItem = ((wpy)wpm.a(2)).a();
+    localGeneralFeedItem.mUserUIItem = ((wtt)wth.a(2)).a();
     if (localGeneralFeedItem.mUserUIItem == null)
     {
       localGeneralFeedItem.mUserUIItem = new QQUserUIItem();
       localGeneralFeedItem.mUserUIItem.uid = QQStoryContext.a().b();
-      localGeneralFeedItem.mUserUIItem.qq = xfe.a().getCurrentAccountUin();
-      localGeneralFeedItem.mUserUIItem.nickName = xfe.a().getCurrentNickname();
+      localGeneralFeedItem.mUserUIItem.qq = xiz.a().getCurrentAccountUin();
+      localGeneralFeedItem.mUserUIItem.nickName = xiz.a().getCurrentNickname();
       localGeneralFeedItem.mUserUIItem.headUrl = "";
-      yqp.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localGeneralFeedItem.mUserUIItem.toString() });
+      yuk.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localGeneralFeedItem.mUserUIItem.toString() });
     }
     localGeneralFeedItem.ownerId = localGeneralFeedItem.mUserUIItem.getUnionId();
     localGeneralFeedItem.mViewTotalTime = 0L;
@@ -65,7 +65,7 @@ public class GeneralFeedItem
     if (paramObject.mUserUIItem != null)
     {
       this.mUserUIItem = paramObject.mUserUIItem;
-      zkb.a(this.mUserUIItem);
+      znw.a(this.mUserUIItem);
     }
     this.wsSchemaForMain = paramObject.wsSchemaForMain;
     this.wsSchemaForMemories = paramObject.wsSchemaForMemories;
@@ -105,8 +105,8 @@ public class GeneralFeedItem
       this.mHasPublicVideo = bool;
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((wpy)wpm.a(2)).a(paramString);
-      zkb.a(this.mUserUIItem);
+      this.mUserUIItem = ((wtt)wth.a(2)).a(paramString);
+      znw.a(this.mUserUIItem);
       this.ownerId = this.mUserUIItem.getUnionId();
       if (paramGeneralFeed.qim_sync_wording.has()) {
         this.mQimSyncWording = paramGeneralFeed.qim_sync_wording.get().toStringUtf8();
@@ -136,9 +136,9 @@ public class GeneralFeedItem
   }
   
   @NonNull
-  public yir generateHomeFeed()
+  public ymm generateHomeFeed()
   {
-    return new yir(this);
+    return new ymm(this);
   }
   
   public int getCommentLikeType()
@@ -166,15 +166,15 @@ public class GeneralFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mUserUIItem = ((wpy)wpm.a(2)).b(this.ownerId);
+    this.mUserUIItem = ((wtt)wth.a(2)).b(this.ownerId);
     if (this.mUserUIItem == null)
     {
       this.mUserUIItem = new QQUserUIItem();
       this.mUserUIItem.uid = QQStoryContext.a().b();
-      this.mUserUIItem.qq = xfe.a().getCurrentAccountUin();
-      this.mUserUIItem.nickName = xfe.a().getCurrentNickname();
+      this.mUserUIItem.qq = xiz.a().getCurrentAccountUin();
+      this.mUserUIItem.nickName = xiz.a().getCurrentNickname();
       this.mUserUIItem.headUrl = "";
-      yqp.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { this.mUserUIItem.toString() });
+      yuk.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { this.mUserUIItem.toString() });
     }
   }
   

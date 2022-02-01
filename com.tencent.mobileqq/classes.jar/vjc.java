@@ -1,19 +1,17 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
+import android.graphics.Bitmap;
+import com.tencent.component.media.utils.LruCache;
 
-public class vjc
-  implements zxw<uyk>
+class vjc
+  extends LruCache<Integer, Bitmap>
 {
-  public vjc(QCircleBaseAggregationFragment paramQCircleBaseAggregationFragment) {}
-  
-  public void a(zxz paramzxz, uyk paramuyk)
+  vjc(vjb paramvjb, int paramInt)
   {
-    if (paramzxz.e()) {
-      this.a.e();
-    }
-    while (!paramzxz.d()) {
-      return;
-    }
-    this.a.a(false);
+    super(paramInt);
+  }
+  
+  protected int a(Integer paramInteger, Bitmap paramBitmap)
+  {
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
 }
 

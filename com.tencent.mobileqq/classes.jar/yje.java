@@ -1,50 +1,42 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
 import java.util.List;
 
-final class yje
-  implements wld<wyd, wye>
+public class yje
+  extends QQUIEventReceiver<yja, yju>
 {
-  yje(yka paramyka) {}
-  
-  public void a(@NonNull wyd paramwyd, @Nullable wye paramwye, @NonNull ErrorMessage paramErrorMessage)
+  public yje(yja paramyja)
   {
-    yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
-    if (paramwye == null)
+    super(paramyja);
+  }
+  
+  public void a(@NonNull yja paramyja, @NonNull yju paramyju)
+  {
+    if (paramyju.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
-      new wye(paramErrorMessage);
-    }
-    do
-    {
-      do
+      paramyju = paramyju.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0; paramyju.hasNext(); i = ((MomeriesYearNode)paramyju.next()).videoCount + i) {}
+      if (i >= 0)
       {
-        return;
-        if (paramErrorMessage.isFail()) {
-          yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
+        yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
+        yja.a(paramyja, i);
+        if (paramyja.a != null)
+        {
+          paramyja.a.videoCount = yja.a(paramyja);
+          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramyja), 5, null, false);
         }
-      } while ((paramwye.jdField_a_of_type_JavaUtilList == null) || (paramwye.jdField_a_of_type_JavaUtilList.isEmpty()));
-      paramwyd = (woj)wpm.a(17);
-      paramwye = (wyf)paramwye.jdField_a_of_type_JavaUtilList.get(0);
-    } while (paramwye.jdField_a_of_type_JavaUtilList == null);
-    yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramwye.jdField_a_of_type_JavaLangString, Integer.valueOf(paramwye.jdField_a_of_type_Int), Integer.valueOf(paramwye.jdField_a_of_type_JavaUtilList.size()) });
-    paramwyd.a(paramwye.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
-    paramwyd = new ybk(paramErrorMessage, paramwye.jdField_a_of_type_JavaLangString, 1);
-    paramwyd.jdField_a_of_type_JavaUtilList = paramwye.jdField_a_of_type_JavaUtilList;
-    paramwyd.c = true;
-    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramwyd.jdField_a_of_type_Boolean = bool;
-      paramwyd.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
-      paramwyd.jdField_b_of_type_Int = paramwye.jdField_a_of_type_Int;
-      wfo.a().dispatch(paramwyd);
-      return;
+      }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return yju.class;
   }
 }
 

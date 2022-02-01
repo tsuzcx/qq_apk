@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class adyw
-  implements DialogInterface.OnDismissListener
+class adyw
+  implements axfu<Emoticon>
 {
-  public adyw(Conversation paramConversation) {}
+  adyw(adyv paramadyv, int paramInt1, int paramInt2, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Emoticon paramEmoticon)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
+    ahlt.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Adyv.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adyv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
   }
 }
 

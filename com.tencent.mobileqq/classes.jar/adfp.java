@@ -1,76 +1,111 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb3.SubMsgType0xb3.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb3.SubMsgType0xb3.PushAddFrdNotify;
 
-class adfp
-  implements BusinessObserver
+public class adfp
+  implements adci
 {
-  adfp(adfo paramadfo, String paramString, boolean paramBoolean) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static String a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
+    Object localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "decodeC2CMsgPkgSubMsgType0xb3 parse start");
     }
-    paramInt = paramBundle.getInt("code");
-    if (paramBoolean)
+    SubMsgType0xb3.PushAddFrdNotify localPushAddFrdNotify;
+    int i;
+    int j;
+    long l1;
+    MessageHandler localMessageHandler;
+    for (;;)
     {
-      localObject = new SdkAuthorize.GetAuthApiListResponse();
       try
       {
-        paramBundle = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-        paramInt = paramBundle.ret.get();
-        localObject = paramBundle.msg.get();
-        if (paramInt != 0)
+        paramArrayOfByte = (SubMsgType0xb3.MsgBody)new SubMsgType0xb3.MsgBody().mergeFrom(paramArrayOfByte);
+        if (paramArrayOfByte == null)
         {
-          adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramInt, (String)localObject);
-          return;
+          if (QLog.isColorLevel()) {
+            QLog.e("Q.msg.BaseMessageProcessor", 2, "decodeC2CMsgPkgSubMsgType0xb3 | msgBody is null.");
+          }
+          return null;
         }
       }
-      catch (Exception paramBundle)
+      catch (Exception paramArrayOfByte)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(adfo.jdField_a_of_type_JavaLangString, 2, "parse auth info error: \n" + paramBundle.getMessage());
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "decodeC2CMsgPkgSubMsgType0xb3 parse failed.", paramArrayOfByte);
         }
-        adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, -1, "parse auth info error");
-        return;
+        paramArrayOfByte = null;
+        continue;
+        if (!paramArrayOfByte.msg_add_frd_notify.has())
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "decodeC2CMsgPkgSubMsgType0xb3 | msg_add_frd_notify is null.");
+          return null;
+        }
+        localPushAddFrdNotify = (SubMsgType0xb3.PushAddFrdNotify)paramArrayOfByte.msg_add_frd_notify.get();
+        i = localPushAddFrdNotify.uint32_source_id.get();
+        j = localPushAddFrdNotify.uint32_subsource_id.get();
+        if (!localPushAddFrdNotify.uint64_req_uin.has()) {
+          break;
+        }
       }
-      localObject = (SdkAuthorize.AuthorizeResponse)paramBundle.auth_response.get();
-      if ((!adhc.jdField_a_of_type_Boolean) && (adfo.a(this.jdField_a_of_type_Adfo, paramBundle)) && (localObject != null) && (((SdkAuthorize.AuthorizeResponse)localObject).has()))
+      l1 = localPushAddFrdNotify.uint64_req_uin.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessorQ.nearby.follow", 2, "decodeC2CMsgPkgSubMsgType0xb3, sourceid:" + i + "|subSourceid:" + j + " |reqUin: " + l1);
+      }
+      if ((i != 3076) && (i != 3077) && (i != 2076) && (i != 2077) && (i != 10012) && (i != 10013))
       {
-        paramBundle = new adfn();
-        paramBundle.jdField_a_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).openid.get().toUpperCase();
-        paramBundle.jdField_b_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).access_token.get().toUpperCase();
-        paramBundle.jdField_a_of_type_Long = ((SdkAuthorize.AuthorizeResponse)localObject).expires_in.get();
-        paramBundle.jdField_b_of_type_Long = (paramBundle.jdField_a_of_type_Long + System.currentTimeMillis());
-        this.jdField_a_of_type_Adfo.jdField_a_of_type_Adfk.a(paramBundle);
-        adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramBundle.a());
-        return;
+        boolean bool = brlp.a(i);
+        localMessageHandler = (MessageHandler)paramQQAppInterface.a(0);
+        if (!bool) {
+          break label401;
+        }
+        if (!localPushAddFrdNotify.bytes_mobile.has()) {
+          break label388;
+        }
+        paramQQAppInterface = localPushAddFrdNotify.bytes_mobile.get().toStringUtf8();
       }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        adfo.a(this.jdField_a_of_type_Adfo);
-        return;
-      }
-      paramBundle = "";
-      paramInt = 0;
-      while (paramInt < this.jdField_a_of_type_Adfo.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = (bikw)this.jdField_a_of_type_Adfo.jdField_a_of_type_JavaUtilList.get(paramInt);
-        paramBundle = paramBundle + ((bikw)localObject).jdField_a_of_type_JavaLangString + "\n";
-        paramInt += 1;
-      }
-      adfo.a(this.jdField_a_of_type_Adfo, paramBundle);
-      return;
     }
-    adhh.a(this.jdField_a_of_type_Adfo.jdField_a_of_type_Adea, paramInt, "get auth info failure");
+    for (;;)
+    {
+      label286:
+      long l3 = localPushAddFrdNotify.uint64_fuin.get();
+      if (localPushAddFrdNotify.uint64_fuin_bubble_id.has()) {}
+      for (long l2 = localPushAddFrdNotify.uint64_fuin_bubble_id.get();; l2 = -1L)
+      {
+        paramArrayOfByte = localObject;
+        if (localPushAddFrdNotify.bytes_wording.has()) {
+          paramArrayOfByte = localPushAddFrdNotify.bytes_wording.get().toStringUtf8();
+        }
+        localMessageHandler.a(String.valueOf(l3), paramQQAppInterface, l2, paramArrayOfByte, localPushAddFrdNotify.fixed32_timestamp.get(), i, j, l1);
+        return String.valueOf(localPushAddFrdNotify.uint64_fuin.get());
+        l1 = 0L;
+        break;
+        label388:
+        paramQQAppInterface = null;
+        break label286;
+      }
+      label401:
+      paramQQAppInterface = null;
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

@@ -1,49 +1,18 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
 
 public class ajei
   implements View.OnClickListener
 {
-  public ajei(TroopActivity paramTroopActivity) {}
+  public ajei(SearchBaseActivity paramSearchBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    boolean bool = false;
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.b();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.a != null)
-      {
-        Intent localIntent = new Intent();
-        if (!this.a.a.isEmpty()) {
-          bool = true;
-        }
-        localIntent.putExtra("isDataChanged", bool);
-        this.a.setResult(-1, localIntent);
-      }
-      this.a.onBackPressed();
-      continue;
-      bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-      if (this.a.a())
-      {
-        this.a.b();
-      }
-      else
-      {
-        bcst.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
-        this.a.a();
-      }
-    }
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

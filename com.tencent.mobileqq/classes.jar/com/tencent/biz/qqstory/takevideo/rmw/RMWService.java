@@ -5,26 +5,26 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Messenger;
 import android.support.annotation.Nullable;
-import zfg;
-import zfi;
+import zjb;
+import zjd;
 
 public class RMWService
   extends Service
 {
   private static RMWService jdField_a_of_type_ComTencentBizQqstoryTakevideoRmwRMWService;
-  private Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new zfi(this));
+  private Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new zjd(this));
   
   @Nullable
   public IBinder onBind(Intent paramIntent)
   {
-    zfg.c("RMWService", "ON-BIND : " + System.identityHashCode(this) + " : " + paramIntent);
+    zjb.c("RMWService", "ON-BIND : " + System.identityHashCode(this) + " : " + paramIntent);
     return this.jdField_a_of_type_AndroidOsMessenger.getBinder();
   }
   
   public void onCreate()
   {
     super.onCreate();
-    zfg.c("RMWService", "ON-CREATE : " + System.identityHashCode(this));
+    zjb.c("RMWService", "ON-CREATE : " + System.identityHashCode(this));
     jdField_a_of_type_ComTencentBizQqstoryTakevideoRmwRMWService = this;
     new RMWService.2(this).start();
   }
@@ -32,19 +32,19 @@ public class RMWService
   public void onDestroy()
   {
     super.onDestroy();
-    zfg.c("RMWService", "ON-DESTROY : " + System.identityHashCode(this));
+    zjb.c("RMWService", "ON-DESTROY : " + System.identityHashCode(this));
     jdField_a_of_type_ComTencentBizQqstoryTakevideoRmwRMWService = null;
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    zfg.b("RMWService", "onStartCommand : " + paramIntent);
+    zjb.b("RMWService", "onStartCommand : " + paramIntent);
     return 2;
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    zfg.c("RMWService", "ON-UNBIND : " + System.identityHashCode(this) + " : " + paramIntent);
+    zjb.c("RMWService", "ON-UNBIND : " + System.identityHashCode(this) + " : " + paramIntent);
     return super.onUnbind(paramIntent);
   }
 }

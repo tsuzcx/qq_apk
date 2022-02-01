@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import alps;
-import alpt;
+import ambk;
+import ambl;
 
 public class LbsFilterStatusManager$3$1
   implements Runnable
 {
-  public LbsFilterStatusManager$3$1(alpt paramalpt) {}
+  public LbsFilterStatusManager$3$1(ambl paramambl) {}
   
   public void run()
   {
-    alps.a(this.a.a);
+    ambk.a(this.a.a);
   }
 }
 

@@ -1,22 +1,19 @@
-public class bnnv
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import mqq.app.QQPermissionCallback;
+
+class bnnv
+  implements QQPermissionCallback
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  bnnv(bnnu parambnnu) {}
   
-  public bnnv(boolean paramBoolean, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    bhlq.b(this.a.a.mRuntime.a());
   }
   
-  public int a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    bnnu.a(this.a);
   }
 }
 

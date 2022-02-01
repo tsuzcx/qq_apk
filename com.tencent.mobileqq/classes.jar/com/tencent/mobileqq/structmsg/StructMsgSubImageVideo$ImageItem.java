@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import bcvr;
-import bcxj;
+import bdok;
+import bdqc;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -16,23 +16,23 @@ public class StructMsgSubImageVideo$ImageItem
   public String schema;
   public String title;
   
-  private static ImageItem a(bcxj parambcxj)
+  private static ImageItem a(bdqc parambdqc)
   {
-    Iterator localIterator = parambcxj.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = parambdqc.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (bcxj)localIterator.next();
-      if ("title".equals(((bcxj)localObject3).b)) {
+      localObject3 = (bdqc)localIterator.next();
+      if ("title".equals(((bdqc)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("picture".equals(((bcxj)localObject3).b))
+      if ("picture".equals(((bdqc)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -42,11 +42,11 @@ public class StructMsgSubImageVideo$ImageItem
           return null;
         }
         localObject3 = new ImageItem();
-        ((ImageItem)localObject3).schema = parambcxj.a("url");
+        ((ImageItem)localObject3).schema = parambdqc.a("url");
         if (localObject2 == null) {}
-        for (parambcxj = "";; parambcxj = localObject2.jdField_a_of_type_JavaLangString)
+        for (parambdqc = "";; parambdqc = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((ImageItem)localObject3).title = parambcxj;
+          ((ImageItem)localObject3).title = parambdqc;
           ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
           return localObject3;
         }
@@ -61,19 +61,19 @@ public class StructMsgSubImageVideo$ImageItem
     this.schema = paramObjectInput.readUTF();
   }
   
-  public void toXml(bcvr parambcvr)
+  public void toXml(bdok parambdok)
   {
-    parambcvr.startTag(null, "item");
-    parambcvr.attribute(null, "apptype", "10");
-    parambcvr.attribute(null, "type", "0");
-    parambcvr.attribute(null, "url", this.schema);
-    parambcvr.startTag(null, "title");
+    parambdok.startTag(null, "item");
+    parambdok.attribute(null, "apptype", "10");
+    parambdok.attribute(null, "type", "0");
+    parambdok.attribute(null, "url", this.schema);
+    parambdok.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      parambcvr.text(str);
-      parambcvr.endTag(null, "title");
-      parambcvr.startTag(null, "picture");
+      parambdok.text(str);
+      parambdok.endTag(null, "title");
+      parambdok.startTag(null, "picture");
       if (this.imageUrl != null) {
         break label124;
       }
@@ -81,9 +81,9 @@ public class StructMsgSubImageVideo$ImageItem
     label124:
     for (String str = "";; str = this.imageUrl)
     {
-      parambcvr.attribute(null, "cover", str);
-      parambcvr.endTag(null, "picture");
-      parambcvr.endTag(null, "item");
+      parambdok.attribute(null, "cover", str);
+      parambdok.endTag(null, "picture");
+      parambdok.endTag(null, "item");
       return;
       str = this.title;
       break;

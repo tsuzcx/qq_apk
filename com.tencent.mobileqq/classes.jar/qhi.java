@@ -1,33 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSNavigateTo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
 public class qhi
-  implements ViewBase.OnClickListener
+  implements IPTSNavigateTo
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  snh jdField_a_of_type_Snh;
-  
-  public qhi(ArticleInfo paramArticleInfo, Context paramContext, snh paramsnh)
+  public void navigateTo(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Snh = paramsnh;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 3);
-    }
-    for (;;)
+    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
+    paramString = Pattern.compile("\\/").split(paramString);
+    if ((paramString != null) && (paramString.length > 0))
     {
-      pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Snh);
-      qhj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009440", "0X8009443");
-      return;
-      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 3);
+      paramString = paramString[(paramString.length - 1)];
+      Intent localIntent = new Intent();
+      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", paramString);
+      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
     }
   }
 }

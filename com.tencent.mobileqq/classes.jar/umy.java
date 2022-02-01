@@ -1,25 +1,74 @@
-public abstract interface umy
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+
+public class umy
+  extends umw<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public static final String a = String.valueOf(1000001);
-  public static final String b = String.valueOf(1000002);
-  public static final String c = String.valueOf(1000003);
-  public static final String d = String.valueOf(1000004);
-  public static final String e = String.valueOf(1000005);
-  public static final String f = String.valueOf(1000006);
-  public static final String g = String.valueOf(1001001);
-  public static final String h = String.valueOf(1001002);
-  public static final String i = String.valueOf(1001003);
-  public static final String j = String.valueOf(1003002);
-  public static final String k = String.valueOf(1003003);
-  public static final String l = String.valueOf(1003004);
-  public static final String m = String.valueOf(1003005);
-  public static final String n = String.valueOf(1003006);
-  public static final String o = String.valueOf(1003008);
-  public static final String p = String.valueOf(1003012);
-  public static final String q = String.valueOf(1004001);
-  public static final String r = String.valueOf(1004002);
-  public static final String s = String.valueOf(1007001);
-  public static final String t = String.valueOf(1007002);
+  private int a;
+  
+  public umy(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
+  {
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
+    }
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
+    {
+      ueg.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = uqt.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      uqt.a();
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
+      {
+        i = 2;
+        if (this.jdField_a_of_type_Umn != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        unx.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
+        }
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Umn).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
+      }
+      if (bool2) {}
+      for (;;)
+      {
+        unx.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
+    }
+  }
 }
 
 

@@ -1,68 +1,27 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ScannerView;
+import android.graphics.Bitmap;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class abdr
-  extends Handler
+  extends abdv
 {
-  public abdr(ScannerView paramScannerView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public abdr(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
   {
-    if (paramMessage.what == 9)
-    {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131690579), 1);
-      paramMessage.setGravity(17, 0, 0);
-      paramMessage.show();
-    }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
-      {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
-        {
-        default: 
-          localObject = ScannerView.a(this.a);
-        }
-        break;
-      }
-    } while (localObject == null);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((abdu)localObject).a(bool);
-      return;
-      ((abdv)localObject).a(String.valueOf(paramMessage.obj));
-      return;
-      ((abdv)localObject).c();
-      return;
-      ((abdv)localObject).b();
-      return;
-      ((abdv)localObject).a();
-      return;
-      ((abdt)localObject).a(String.valueOf(paramMessage.obj), 1, 1);
-      return;
-      ((abdt)localObject).a(1);
-      return;
-    }
+    super(paramAbsBaseWebViewActivity, null);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 

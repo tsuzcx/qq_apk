@@ -1,40 +1,20 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.style.CharacterStyle;
 
 public class biwb
 {
-  private static biwb jdField_a_of_type_Biwb;
-  private biwd jdField_a_of_type_Biwd = new biwd(this, null);
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new biwc(this, "Module_DownloaderGetCodeServer");
-  private Map<String, Bundle> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+  public int a;
+  public CharacterStyle a;
+  public String a;
+  public int b;
+  public int c;
   
-  public static biwb a()
+  public biwb(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
   {
-    if (jdField_a_of_type_Biwb == null) {}
-    try
-    {
-      jdField_a_of_type_Biwb = new biwb();
-      return jdField_a_of_type_Biwb;
-    }
-    finally {}
-  }
-  
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
   }
 }
 

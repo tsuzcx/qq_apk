@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class MiniAppGetUserSettingServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetUserSetting");
-      paramPacket.putSendData(bguc.a((byte[])localObject1));
+      paramPacket.putSendData(bhuf.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     }
     for (;;)

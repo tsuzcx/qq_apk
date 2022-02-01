@@ -5,9 +5,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import anhk;
-import bctj;
-import bgmg;
+import antf;
+import bdmc;
+import bhmi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
@@ -31,12 +31,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import nyq;
-import nyr;
-import uwj;
-import uwr;
-import uws;
-import uwt;
+import oal;
+import oam;
+import uxu;
+import uyc;
+import uyd;
+import uye;
 
 public class PublicAccountImageCollectionPreloadManager
 {
@@ -44,16 +44,16 @@ public class PublicAccountImageCollectionPreloadManager
   private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionPreloadManager";
   int jdField_a_of_type_Int = 0;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  public MQLruCache<String, uwr> a;
+  public MQLruCache<String, uyc> a;
   Object jdField_a_of_type_JavaLangObject = new Object();
   public HashMap<String, String> a;
   private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private nyr jdField_a_of_type_Nyr;
+  private oam jdField_a_of_type_Oam;
   volatile boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int = 0;
   private Object jdField_b_of_type_JavaLangObject = new Object();
   private List<String> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private nyr jdField_b_of_type_Nyr;
+  private oam jdField_b_of_type_Oam;
   int c = 0;
   
   private PublicAccountImageCollectionPreloadManager()
@@ -70,57 +70,57 @@ public class PublicAccountImageCollectionPreloadManager
     return jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager;
   }
   
-  private uwr a(ArticleComment.GetPhotoCollectionInfoResponse paramGetPhotoCollectionInfoResponse, String paramString)
+  private uyc a(ArticleComment.GetPhotoCollectionInfoResponse paramGetPhotoCollectionInfoResponse, String paramString)
   {
-    uwr localuwr = new uwr();
+    uyc localuyc = new uyc();
     if (paramGetPhotoCollectionInfoResponse.ret.has())
     {
       if (paramGetPhotoCollectionInfoResponse.article_share_url.has()) {
-        localuwr.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.article_share_url.get().toStringUtf8();
+        localuyc.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.article_share_url.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.puin.has()) {
-        localuwr.c = (paramGetPhotoCollectionInfoResponse.puin.get() + "");
+        localuyc.c = (paramGetPhotoCollectionInfoResponse.puin.get() + "");
       }
       if (paramGetPhotoCollectionInfoResponse.article_img_url.has()) {
-        localuwr.d = paramGetPhotoCollectionInfoResponse.article_img_url.get().toStringUtf8();
+        localuyc.d = paramGetPhotoCollectionInfoResponse.article_img_url.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.article_title.has()) {
-        localuwr.e = paramGetPhotoCollectionInfoResponse.article_title.get().toStringUtf8();
+        localuyc.e = paramGetPhotoCollectionInfoResponse.article_title.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.enable_comment.has()) {
-        localuwr.jdField_a_of_type_Int = paramGetPhotoCollectionInfoResponse.enable_comment.get();
+        localuyc.jdField_a_of_type_Int = paramGetPhotoCollectionInfoResponse.enable_comment.get();
       }
       if (paramGetPhotoCollectionInfoResponse.comment_url.has()) {
-        localuwr.f = paramGetPhotoCollectionInfoResponse.comment_url.get().toStringUtf8();
+        localuyc.f = paramGetPhotoCollectionInfoResponse.comment_url.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.firstItem.has())
       {
-        localuwr.jdField_a_of_type_Uws = new uws();
-        localuwr.jdField_a_of_type_Uws.jdField_a_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.url.get().toStringUtf8();
-        localuwr.jdField_a_of_type_Uws.d = paramGetPhotoCollectionInfoResponse.firstItem.photo_author_name.get().toStringUtf8();
-        localuwr.jdField_a_of_type_Uws.c = paramGetPhotoCollectionInfoResponse.firstItem.photo_time.get().toStringUtf8();
-        localuwr.jdField_a_of_type_Uws.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.publicaccount_name.get().toStringUtf8();
+        localuyc.jdField_a_of_type_Uyd = new uyd();
+        localuyc.jdField_a_of_type_Uyd.jdField_a_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.url.get().toStringUtf8();
+        localuyc.jdField_a_of_type_Uyd.d = paramGetPhotoCollectionInfoResponse.firstItem.photo_author_name.get().toStringUtf8();
+        localuyc.jdField_a_of_type_Uyd.c = paramGetPhotoCollectionInfoResponse.firstItem.photo_time.get().toStringUtf8();
+        localuyc.jdField_a_of_type_Uyd.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.publicaccount_name.get().toStringUtf8();
       }
       if ((paramGetPhotoCollectionInfoResponse.item.has()) && (paramGetPhotoCollectionInfoResponse.item.get().size() > 0))
       {
-        localuwr.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localuyc.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
         int j = paramGetPhotoCollectionInfoResponse.item.get().size();
         int i = 0;
         while (i < j)
         {
-          uwt localuwt = new uwt();
-          localuwt.jdField_a_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).url.get().toStringUtf8();
-          localuwt.jdField_b_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).content.get().toStringUtf8();
-          localuwt.c = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).static_url.get().toStringUtf8();
-          localuwt.jdField_a_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).width.get();
-          localuwt.jdField_b_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).height.get();
-          localuwr.jdField_a_of_type_JavaUtilArrayList.add(localuwt);
+          uye localuye = new uye();
+          localuye.jdField_a_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).url.get().toStringUtf8();
+          localuye.jdField_b_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).content.get().toStringUtf8();
+          localuye.c = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).static_url.get().toStringUtf8();
+          localuye.jdField_a_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).width.get();
+          localuye.jdField_b_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).height.get();
+          localuyc.jdField_a_of_type_JavaUtilArrayList.add(localuye);
           i += 1;
         }
       }
-      localuwr.jdField_a_of_type_JavaLangString = paramString;
+      localuyc.jdField_a_of_type_JavaLangString = paramString;
     }
-    return localuwr;
+    return localuyc;
   }
   
   private void a(String paramString, byte[] paramArrayOfByte)
@@ -138,7 +138,7 @@ public class PublicAccountImageCollectionPreloadManager
     if (paramString == null) {
       return;
     }
-    if (bgmg.b(anhk.cQ + paramString))
+    if (bhmi.b(antf.cQ + paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "loadPhotoCollectionInfo file exist");
@@ -195,13 +195,13 @@ public class PublicAccountImageCollectionPreloadManager
         QLog.d(jdField_a_of_type_JavaLangString, 2, "loadPhotoCollectionInfoFromServer articleId = " + paramString);
       }
       long l = NetConnInfoCenter.getServerTimeMillis();
-      nyq localnyq = (nyq)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(93);
-      if (this.jdField_b_of_type_Nyr == null)
+      oal localoal = (oal)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(93);
+      if (this.jdField_b_of_type_Oam == null)
       {
-        this.jdField_b_of_type_Nyr = new uwj(this, l);
-        localnyq.a(this.jdField_b_of_type_Nyr);
+        this.jdField_b_of_type_Oam = new uxu(this, l);
+        localoal.a(this.jdField_b_of_type_Oam);
       }
-      ThreadManager.executeOnSubThread(new PublicAccountImageCollectionPreloadManager.3(this, localnyq, paramString));
+      ThreadManager.executeOnSubThread(new PublicAccountImageCollectionPreloadManager.3(this, localoal, paramString));
     }
   }
   
@@ -218,9 +218,9 @@ public class PublicAccountImageCollectionPreloadManager
     return this.c;
   }
   
-  public uwr a(String paramString)
+  public uyc a(String paramString)
   {
-    paramString = (uwr)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+    paramString = (uyc)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
     if (paramString != null) {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "getPhotoCollectionInfoFromCache articleId =" + paramString.jdField_a_of_type_JavaLangString);
@@ -246,7 +246,7 @@ public class PublicAccountImageCollectionPreloadManager
     ??? = a(paramString);
     if (??? != null)
     {
-      b((uwr)???);
+      b((uyc)???);
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -262,34 +262,34 @@ public class PublicAccountImageCollectionPreloadManager
     }
   }
   
-  public void a(String paramString, nyr paramnyr)
+  public void a(String paramString, oam paramoam)
   {
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "getPhotoCollectionInfoFromFile");
     }
-    this.jdField_a_of_type_Nyr = paramnyr;
+    this.jdField_a_of_type_Oam = paramoam;
     c(paramString);
   }
   
-  public void a(nyr paramnyr)
+  public void a(oam paramoam)
   {
-    this.jdField_b_of_type_Nyr = paramnyr;
+    this.jdField_b_of_type_Oam = paramoam;
   }
   
-  void a(uwr paramuwr)
+  void a(uyc paramuyc)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PublicAccountImageCollectionPreloadManager.1(this, paramuwr));
+    this.jdField_a_of_type_AndroidOsHandler.post(new PublicAccountImageCollectionPreloadManager.1(this, paramuyc));
   }
   
-  public void a(uwr paramuwr, byte[] paramArrayOfByte)
+  public void a(uyc paramuyc, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramuwr.jdField_a_of_type_JavaLangString, paramuwr);
-    a(paramuwr.jdField_a_of_type_JavaLangString, paramArrayOfByte);
+    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramuyc.jdField_a_of_type_JavaLangString, paramuyc);
+    a(paramuyc.jdField_a_of_type_JavaLangString, paramArrayOfByte);
   }
   
   public void a(boolean paramBoolean)
   {
-    bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumHitStatics", paramBoolean, 0L, 0L, null, "");
+    bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumHitStatics", paramBoolean, 0L, 0L, null, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("\n");
@@ -302,7 +302,7 @@ public class PublicAccountImageCollectionPreloadManager
   {
     Object localObject = new HashMap();
     ((HashMap)localObject).put("photo_index", String.valueOf(paramInt));
-    bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumCacheHitStatics", paramBoolean, 0L, 0L, (HashMap)localObject, "");
+    bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumCacheHitStatics", paramBoolean, 0L, 0L, (HashMap)localObject, "");
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder("\n");
@@ -314,7 +314,7 @@ public class PublicAccountImageCollectionPreloadManager
   public void a(boolean paramBoolean, long paramLong)
   {
     paramLong = NetConnInfoCenter.getServerTimeMillis() - paramLong;
-    bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumTime", paramBoolean, paramLong, 0L, null, "");
+    bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumRequestAlbumTime", paramBoolean, paramLong, 0L, null, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("\n");
@@ -345,24 +345,24 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void b()
   {
-    this.jdField_b_of_type_Nyr = null;
+    this.jdField_b_of_type_Oam = null;
   }
   
-  public void b(uwr paramuwr)
+  public void b(uyc paramuyc)
   {
     if (!b()) {}
     for (;;)
     {
       return;
       LinkedList localLinkedList = new LinkedList();
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramuwr.jdField_a_of_type_JavaLangString) == null) {}
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramuyc.jdField_a_of_type_JavaLangString) == null) {}
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        uws localuws = paramuwr.jdField_a_of_type_Uws;
-        if ((localuws != null) && (localuws.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localuws.jdField_a_of_type_JavaLangString)))
+        uyd localuyd = paramuyc.jdField_a_of_type_Uyd;
+        if ((localuyd != null) && (localuyd.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localuyd.jdField_a_of_type_JavaLangString)))
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramuwr.jdField_a_of_type_JavaLangString, localuws.jdField_a_of_type_JavaLangString);
-          localLinkedList.add(localuws.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramuyc.jdField_a_of_type_JavaLangString, localuyd.jdField_a_of_type_JavaLangString);
+          localLinkedList.add(localuyd.jdField_a_of_type_JavaLangString);
         }
         if (localLinkedList == null) {
           continue;
@@ -376,7 +376,7 @@ public class PublicAccountImageCollectionPreloadManager
   public void b(boolean paramBoolean, long paramLong)
   {
     paramLong = NetConnInfoCenter.getServerTimeMillis() - paramLong;
-    bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumPreDownPhotoTime", paramBoolean, paramLong, 0L, null, "");
+    bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "eventPAAlbumPreDownPhotoTime", paramBoolean, paramLong, 0L, null, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("\n");

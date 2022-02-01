@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class zdq
-  implements DialogInterface.OnClickListener
+  implements zbe
 {
-  public zdq(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public zdq(DoodleLayout paramDoodleLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.a.a.g();
-    paramDialogInterface.dismiss();
-    this.a.dismiss();
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      yuk.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
+    }
   }
 }
 

@@ -1,20 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 
 class yud
-  extends SimpleJob<Object>
 {
-  yud(yty paramyty, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  public TextView a;
+  
+  public yud(View paramView)
   {
-    super(paramString1);
+    this.a = ((TextView)paramView.findViewById(2131378384));
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(zll paramzll, yuc paramyuc)
   {
-    yqu.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    if (TextUtils.isEmpty(paramzll.a))
+    {
+      this.a.setVisibility(8);
+      return;
+    }
+    this.a.setVisibility(0);
+    this.a.setText(yty.a(paramzll));
+    yty.a(this.a);
+    this.a.setOnClickListener(new yue(this, paramyuc, paramzll));
   }
 }
 

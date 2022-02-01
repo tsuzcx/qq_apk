@@ -1,432 +1,114 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.ad.tangram.analysis.AdAnalysis;
-import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
-import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.protocol.gdt_analysis_event;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.RewardedVideoAdPlugin;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackData;", "", "rewardedVideoAdPlugin", "Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;", "compId", "", "activity", "Lmqq/util/WeakReference;", "Landroid/app/Activity;", "event", "webView", "Lcom/tencent/mobileqq/mini/webview/JsRuntime;", "callbackId", "", "isMiniGame", "", "(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;Ljava/lang/String;Lmqq/util/WeakReference;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;IZ)V", "getActivity", "()Lmqq/util/WeakReference;", "getCallbackId", "()I", "getCompId", "()Ljava/lang/String;", "getEvent", "()Z", "getRewardedVideoAdPlugin", "()Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/RewardedVideoAdPlugin;", "getWebView", "()Lcom/tencent/mobileqq/mini/webview/JsRuntime;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "createKey", "equals", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class acrl
 {
-  private static gdt_analysis_event a(Context paramContext, int paramInt1, GdtAd paramGdtAd, int paramInt2, int paramInt3, String paramString)
+  public static final acrm a;
+  private static int jdField_b_of_type_Int;
+  private final int jdField_a_of_type_Int;
+  @NotNull
+  private final RewardedVideoAdPlugin jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin;
+  @NotNull
+  private final JsRuntime jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  @NotNull
+  private final WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
+  @NotNull
+  private final String jdField_b_of_type_JavaLangString;
+  
+  static
   {
-    paramString = AdUriUtil.parse(paramString);
-    paramGdtAd = AdReporterForAnalysis.createEventForAd(paramContext, paramInt1, paramGdtAd);
-    if (paramInt2 == 0)
+    jdField_a_of_type_Acrm = new acrm(null);
+  }
+  
+  public acrl(@NotNull RewardedVideoAdPlugin paramRewardedVideoAdPlugin, @NotNull String paramString1, @NotNull WeakReference<Activity> paramWeakReference, @NotNull String paramString2, @NotNull JsRuntime paramJsRuntime, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin = paramRewardedVideoAdPlugin;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime = paramJsRuntime;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final JsRuntime a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("REWARDED_PLUGIN_ACTION_MOTIVE_BROWSING_END#").append(this.jdField_a_of_type_JavaLangString).append('#').append(this.jdField_b_of_type_JavaLangString).append('#').append(this.jdField_a_of_type_Int).append('#').append(this.jdField_a_of_type_Boolean).append('#');
+    int i = jdField_b_of_type_Int;
+    jdField_b_of_type_Int = i + 1;
+    return i;
+  }
+  
+  @NotNull
+  public final WeakReference<Activity> a()
+  {
+    return this.jdField_a_of_type_MqqUtilWeakReference;
+  }
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      paramGdtAd.statisticsType = 101;
-      paramGdtAd.businessId = String.valueOf(paramInt3);
-      if (paramString == null) {
-        break label79;
-      }
-    }
-    label79:
-    for (paramContext = paramString.getHost();; paramContext = null)
-    {
-      paramGdtAd.hostName = paramContext;
-      return paramGdtAd;
-      if (paramInt2 == 1)
+      if ((paramObject instanceof acrl))
       {
-        paramGdtAd.statisticsType = 102;
-        break;
-      }
-      if (paramInt2 != 2) {
-        break;
-      }
-      paramGdtAd.statisticsType = 105;
-      break;
-    }
-  }
-  
-  private static gdt_analysis_event a(Context paramContext, int paramInt, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    Object localObject = null;
-    long l2 = -2147483648L;
-    int j = -2147483648;
-    int k = 1;
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    int i;
-    if (paramGdtInterstitialParams != null) {
-      if (paramGdtInterstitialParams.jdField_a_of_type_Int == 1) {
-        i = 0;
+        paramObject = (acrl)paramObject;
+        if ((!Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin, paramObject.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin)) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_a_of_type_MqqUtilWeakReference, paramObject.jdField_a_of_type_MqqUtilWeakReference)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime, paramObject.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime)) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean)) {}
       }
     }
-    for (;;)
-    {
-      label54:
-      label71:
-      long l1;
-      if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null))
-      {
-        paramContext = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;
-        paramGdtInterstitialParams = AdReporterForAnalysis.createEventForAd(localBaseApplication, paramInt, paramContext);
-        if (paramGdtInterstitialStatus == null) {
-          break label308;
-        }
-        paramInt = paramGdtInterstitialStatus.jdField_a_of_type_Int;
-        paramGdtInterstitialParams.activityStatus = paramInt;
-        paramContext = localObject;
-        if (paramGdtInterstitialStatus != null) {
-          paramContext = paramGdtInterstitialStatus.jdField_a_of_type_JavaLangString;
-        }
-        paramGdtInterstitialParams.androidFromProcessName = paramContext;
-        if (paramGdtInterstitialStatus == null) {
-          break label314;
-        }
-        l1 = paramGdtInterstitialStatus.a();
-        label103:
-        paramGdtInterstitialParams.duration = l1;
-        if (paramGdtInterstitialStatus == null) {
-          break label322;
-        }
-        l1 = paramGdtInterstitialStatus.b();
-        label119:
-        paramGdtInterstitialParams.duration2 = l1;
-        paramGdtInterstitialParams.orientation = i;
-        if (paramGdtInterstitialStatus == null) {
-          break label330;
-        }
-        paramInt = paramGdtInterstitialStatus.jdField_b_of_type_Int;
-        label140:
-        paramGdtInterstitialParams.reason = paramInt;
-        if ((paramGdtInterstitialStatus == null) || (!paramGdtInterstitialStatus.jdField_a_of_type_Boolean)) {
-          break label336;
-        }
-        paramInt = 1;
-        label158:
-        paramGdtInterstitialParams.status1 = paramInt;
-        if ((paramGdtInterstitialStatus == null) || (!paramGdtInterstitialStatus.jdField_b_of_type_Boolean)) {
-          break label341;
-        }
-        paramInt = 1;
-        label176:
-        paramGdtInterstitialParams.status2 = paramInt;
-        if ((paramGdtInterstitialStatus == null) || (!paramGdtInterstitialStatus.jdField_c_of_type_Boolean)) {
-          break label346;
-        }
-        paramInt = 1;
-        label194:
-        paramGdtInterstitialParams.status3 = paramInt;
-        if ((paramGdtInterstitialStatus == null) || (!paramGdtInterstitialStatus.jdField_e_of_type_Boolean)) {
-          break label351;
-        }
-        paramInt = 1;
-        label212:
-        paramGdtInterstitialParams.status4 = paramInt;
-        if ((paramGdtInterstitialStatus == null) || (!paramGdtInterstitialStatus.jdField_f_of_type_Boolean)) {
-          break label356;
-        }
-      }
-      label308:
-      label314:
-      label322:
-      label330:
-      label336:
-      label341:
-      label346:
-      label351:
-      label356:
-      for (paramInt = k;; paramInt = 0)
-      {
-        paramGdtInterstitialParams.status5 = paramInt;
-        l1 = l2;
-        if (paramGdtInterstitialStatus != null) {
-          l1 = paramGdtInterstitialStatus.jdField_a_of_type_Long;
-        }
-        paramGdtInterstitialParams.videoPositionMillis = l1;
-        paramInt = j;
-        if (paramGdtInterstitialStatus != null) {
-          paramInt = paramGdtInterstitialStatus.jdField_f_of_type_Int;
-        }
-        paramGdtInterstitialParams.videoStatus = paramInt;
-        return paramGdtInterstitialParams;
-        if (paramGdtInterstitialParams.jdField_a_of_type_Int == 0)
-        {
-          i = 1;
-          break;
-        }
-        if (paramGdtInterstitialParams.jdField_a_of_type_Int != 8) {
-          break label361;
-        }
-        i = 2;
-        break;
-        paramContext = null;
-        break label54;
-        paramInt = -2147483648;
-        break label71;
-        l1 = -2147483648L;
-        break label103;
-        l1 = -2147483648L;
-        break label119;
-        paramInt = -2147483648;
-        break label140;
-        paramInt = 0;
-        break label158;
-        paramInt = 0;
-        break label176;
-        paramInt = 0;
-        break label194;
-        paramInt = 0;
-        break label212;
-      }
-      label361:
-      i = -2147483648;
+    else {
+      return true;
     }
+    return false;
   }
   
-  public static void a(Context paramContext)
+  public int hashCode()
   {
-    paramContext = BaseApplicationImpl.getContext();
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1081, localgdt_analysis_event);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static void a(Context paramContext, long paramLong, int paramInt1, int paramInt2)
+  @NotNull
+  public String toString()
   {
-    long l = -2147483648L;
-    paramContext = BaseApplicationImpl.getContext();
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1082, localgdt_analysis_event);
-    if (paramLong != -2147483648L) {
-      l = System.currentTimeMillis() - paramLong;
-    }
-    localgdt_analysis_event.duration = l;
-    localgdt_analysis_event.internalErrorCode = paramInt1;
-    localgdt_analysis_event.errorCode1 = paramInt2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
-  }
-  
-  public static void a(Context paramContext, acrn paramacrn, int paramInt, long paramLong)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramacrn = a(paramContext, 1059, new GdtAd(paramacrn.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramacrn.jdField_a_of_type_Int, paramacrn.jdField_b_of_type_Int, null);
-    if (paramInt == 0)
-    {
-      paramacrn.internalErrorCode = 0;
-      paramacrn.errorCode1 = paramInt;
-      if (paramLong == -2147483648L) {
-        break label124;
-      }
-    }
-    label124:
-    for (paramLong = System.currentTimeMillis() - paramLong;; paramLong = -2147483648L)
-    {
-      paramacrn.duration = paramLong;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramacrn, 102));
-      return;
-      if (paramInt == 1)
-      {
-        paramacrn.internalErrorCode = 2;
-        break;
-      }
-      if (paramInt == 2)
-      {
-        paramacrn.internalErrorCode = 4;
-        break;
-      }
-      paramacrn.internalErrorCode = 0;
-      break;
-    }
-  }
-  
-  public static void a(Context paramContext, acrn paramacrn, String paramString)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramacrn = a(paramContext, 1056, new GdtAd(paramacrn.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramacrn.jdField_a_of_type_Int, paramacrn.jdField_b_of_type_Int, paramString);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramacrn, 102));
-  }
-  
-  public static void a(Context paramContext, acrn paramacrn, String paramString, int paramInt)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramacrn = a(paramContext, 1060, new GdtAd(paramacrn.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramacrn.jdField_a_of_type_Int, paramacrn.jdField_b_of_type_Int, paramString);
-    paramacrn.httpErrorCode = paramInt;
-    if (paramacrn.httpErrorCode == 200) {
-      paramacrn.internalErrorCode = 0;
-    }
-    for (;;)
-    {
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramacrn, 102));
-      return;
-      if (paramacrn.httpErrorCode == -1) {
-        paramacrn.internalErrorCode = 3;
-      } else {
-        paramacrn.internalErrorCode = 5;
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, acrn paramacrn, String paramString, int paramInt, long paramLong)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramacrn = a(paramContext, 1057, new GdtAd(paramacrn.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramacrn.jdField_a_of_type_Int, paramacrn.jdField_b_of_type_Int, paramString);
-    paramacrn.httpErrorCode = paramInt;
-    if (paramacrn.httpErrorCode == 200) {
-      paramacrn.internalErrorCode = 0;
-    }
-    for (;;)
-    {
-      paramacrn.duration = paramLong;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramacrn, 102));
-      return;
-      if (paramacrn.httpErrorCode == -1) {
-        paramacrn.internalErrorCode = 3;
-      } else {
-        paramacrn.internalErrorCode = 5;
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, GdtAd paramGdtAd, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtAd = a(paramContext, 1058, paramGdtAd, paramInt1, paramInt2, null);
-    if (paramBoolean) {}
-    for (paramInt1 = 0;; paramInt1 = 4)
-    {
-      paramGdtAd.internalErrorCode = paramInt1;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtAd, 102));
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, int paramInt)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1084, paramGdtInterstitialParams, null);
-    paramGdtInterstitialParams.internalErrorCode = paramInt;
-    paramGdtInterstitialParams.androidFromProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1088, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, int paramInt)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1086, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.errorCode3 = paramInt;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, int paramInt1, int paramInt2)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1085, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.internalErrorCode = paramInt1;
-    paramGdtInterstitialParams.errorCode3 = paramInt2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, String paramString1, String paramString2)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1071, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.api = paramString1;
-    paramGdtInterstitialParams.hostName = paramString2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void b(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, int paramInt)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1091, paramGdtInterstitialParams, null);
-    paramGdtInterstitialParams.internalErrorCode = paramInt;
-    paramGdtInterstitialParams.androidFromProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void b(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1089, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void b(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, int paramInt)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1093, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.internalErrorCode = paramGdtInterstitialStatus.jdField_c_of_type_Int;
-    paramGdtInterstitialParams.errorCode1 = paramGdtInterstitialStatus.d;
-    paramGdtInterstitialParams.errorCode2 = paramGdtInterstitialStatus.jdField_e_of_type_Int;
-    paramGdtInterstitialParams.errorCode3 = paramInt;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void b(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, int paramInt1, int paramInt2)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1087, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.internalErrorCode = paramInt1;
-    paramGdtInterstitialParams.errorCode1 = paramInt2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void b(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, String paramString1, String paramString2)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1072, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.api = paramString1;
-    paramGdtInterstitialParams.hostName = paramString2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void c(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1090, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void c(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus, int paramInt)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1096, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.internalErrorCode = paramGdtInterstitialStatus.jdField_c_of_type_Int;
-    paramGdtInterstitialParams.errorCode1 = paramGdtInterstitialStatus.d;
-    paramGdtInterstitialParams.errorCode2 = paramGdtInterstitialStatus.jdField_e_of_type_Int;
-    paramGdtInterstitialParams.errorCode3 = paramInt;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void d(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1092, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.internalErrorCode = paramGdtInterstitialStatus.jdField_c_of_type_Int;
-    paramGdtInterstitialParams.errorCode1 = paramGdtInterstitialStatus.d;
-    paramGdtInterstitialParams.errorCode2 = paramGdtInterstitialStatus.jdField_e_of_type_Int;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void e(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1094, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-  }
-  
-  public static void f(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
-  {
-    paramContext = BaseApplicationImpl.getContext();
-    paramGdtInterstitialParams = a(paramContext, 1095, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
+    return "RewardedBrowsingCallbackData(rewardedVideoAdPlugin=" + this.jdField_a_of_type_ComTencentMobileqqMiniAppbrandJsapiPluginsRewardedVideoAdPlugin + ", compId=" + this.jdField_a_of_type_JavaLangString + ", activity=" + this.jdField_a_of_type_MqqUtilWeakReference + ", event=" + this.jdField_b_of_type_JavaLangString + ", webView=" + this.jdField_a_of_type_ComTencentMobileqqMiniWebviewJsRuntime + ", callbackId=" + this.jdField_a_of_type_Int + ", isMiniGame=" + this.jdField_a_of_type_Boolean + ")";
   }
 }
 

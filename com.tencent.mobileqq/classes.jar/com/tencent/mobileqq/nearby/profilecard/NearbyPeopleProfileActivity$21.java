@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import apuc;
+import aqhs;
 import com.tencent.qphone.base.util.QLog;
 
 class NearbyPeopleProfileActivity$21

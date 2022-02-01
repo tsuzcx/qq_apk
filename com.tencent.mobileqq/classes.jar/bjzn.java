@@ -1,18 +1,92 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
 public class bjzn
-  implements DialogInterface.OnClickListener
 {
-  public bjzn(VideoJsProxyImpl.2 param2) {}
+  protected static bjzn a;
+  protected static final String a;
+  protected volatile WeakReference<SharedPreferences> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    bjzk.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    jdField_a_of_type_JavaLangString = bjzn.class.getName();
+  }
+  
+  public static bjzn a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Bjzn == null) {
+        jdField_a_of_type_Bjzn = new bjzn();
+      }
+      bjzn localbjzn = jdField_a_of_type_Bjzn;
+      return localbjzn;
     }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
+  public String a(String paramString, Bundle paramBundle)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(bjzm.a(bjjo.a().a(), "OpenSettings"));
+    }
+    String str1 = paramString;
+    String str2;
+    SharedPreferences localSharedPreferences;
+    String str3;
+    try
+    {
+      str2 = new URL(paramString).getHost();
+      if (str2 == null)
+      {
+        str1 = paramString;
+        bjtx.e(jdField_a_of_type_JavaLangString, "Get host error. url=" + paramString);
+        return paramString;
+      }
+      str1 = paramString;
+      localSharedPreferences = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      str1 = paramString;
+      if (localSharedPreferences == null) {
+        return str1;
+      }
+      str1 = paramString;
+      str3 = localSharedPreferences.getString(str2, null);
+      if (str3 != null)
+      {
+        str1 = paramString;
+        if (!str2.equals(str3)) {}
+      }
+      else
+      {
+        str1 = paramString;
+        bjtx.c(jdField_a_of_type_JavaLangString, "host=" + str2 + ", envHost=" + str3);
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      bjtx.e(jdField_a_of_type_JavaLangString, "getEnvUrl error. url=" + str1);
+      return str1;
+    }
+    if (paramBundle != null)
+    {
+      str1 = paramString;
+      paramBundle.putString("env", localSharedPreferences.getString("OpenEnvironment", "formal"));
+    }
+    str1 = paramString;
+    paramString = paramString.replace(str2, str3);
+    str1 = paramString;
+    bjtx.c(jdField_a_of_type_JavaLangString, "return environment url : " + paramString);
+    str1 = paramString;
+    return str1;
   }
 }
 

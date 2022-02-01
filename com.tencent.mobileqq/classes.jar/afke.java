@@ -1,57 +1,24 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity.30.1;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class afke
-  implements Observer
+  implements View.OnTouchListener
 {
-  public afke(TroopInfoActivity paramTroopInfoActivity) {}
+  public afke(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.isFinishing()) {}
-    do
+    switch (paramMotionEvent.getAction())
     {
-      do
-      {
-        return;
-      } while (!(paramObject instanceof bfuo));
-      paramObservable = (bfuo)paramObject;
-    } while (paramObservable.a != 1);
-    if (paramObservable.d == 1) {}
-    for (boolean bool = true;; bool = false)
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, String.format("update isAvatar=%b", new Object[] { Boolean.valueOf(bool) }));
-      }
-      if (bool)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar = false;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetNewTroopHead = true;
-          this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isUseClassAvatar()) {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.setUseClassAvatar(false);
-          }
-          this.a.c();
-        }
-      }
-      if (!this.a.isResume()) {
-        break;
-      }
-      this.a.runOnUiThread(new TroopInfoActivity.30.1(this, paramObservable));
-      return;
+      return false;
+      paramView.setAlpha(0.7F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

@@ -1,25 +1,23 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class olb
+  implements bljb
 {
-  public static void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, olj paramolj)
+  public olb(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void onDismiss()
   {
-    if (paramAdvertisementInfo == null) {
-      return;
-    }
-    ubb.a(paramActivity);
-    int i = paramAdvertisementInfo.clickPos;
-    boolean bool = oli.a(paramAdvertisementInfo, paramActivity, paramolj);
-    if (bool)
-    {
-      paramInt1 = nxw.T;
-      paramAdvertisementInfo.clickPos = i;
-    }
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
     for (;;)
     {
-      olm.a(bool, paramActivity, paramAdvertisementInfo, paramInt1, paramInt2, paramInt3);
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
       return;
+      bool = false;
     }
   }
 }

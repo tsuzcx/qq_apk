@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.46.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aeir
-  implements bdov
+  extends afjb
 {
-  public aeir(GeneralSettingActivity paramGeneralSettingActivity, int paramInt1, int paramInt2) {}
+  public aeir(Conversation paramConversation) {}
   
-  public void onCancel()
+  protected void a()
   {
-    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
-  }
-  
-  public void onConfirm()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.b();
-    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
+    ThreadManagerV2.getUIHandlerV2().post(new Conversation.46.1(this));
   }
 }
 

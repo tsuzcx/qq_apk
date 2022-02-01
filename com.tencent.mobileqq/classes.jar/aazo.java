@@ -1,28 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-public class aazo
-  extends aazs
+public abstract interface aazo
 {
-  public aazo(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
-  
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
-  }
+  public abstract void a();
 }
 
 

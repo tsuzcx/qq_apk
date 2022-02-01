@@ -1,26 +1,38 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initExposeSubCommentOneClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oyb
-  implements owp
+public class oyb
+  implements INetInfoHandler
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
-    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oyc(parampan, parampay));
-    parampay = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_one");
-    if ((parampay instanceof ped)) {
-      ((ped)parampay).a(parampan, (View)paramContainer, 0);
-    }
+    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(oxz.a());
+    oxz.a();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(oxz.a());
+    oxz.a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
+    bjwq.a().a("101480433");
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
+    bjwq.a().a("101480433");
   }
 }
 

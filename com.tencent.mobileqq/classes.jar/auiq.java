@@ -1,54 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auiq
-  extends auim
+class auiq
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
+  auiq(auip paramauip) {}
   
-  public auiq(bgpa parambgpa)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(parambgpa);
+    if ((paramBoolean) && (this.a.a != null))
+    {
+      this.a.a.a(paramInt);
+      this.a.b(paramInt);
+    }
   }
   
-  protected int a()
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bgpa.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297044)) / bgtn.a));
+    auip.a(this.a, false);
+    if ((this.a.a != null) && (!this.a.a.b(auip.a(this.a)))) {
+      this.a.a.d();
     }
-    return this.jdField_a_of_type_Int;
   }
   
-  protected View a()
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558991, null));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378459));
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new auir(this));
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardPreviewTextController", 2, " bindData ");
+    auip.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.e();
     }
-    if (paramString1 != null) {
-      a(paramString1);
-    }
-    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new bdnt(paramString2, 5, 20));
-    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

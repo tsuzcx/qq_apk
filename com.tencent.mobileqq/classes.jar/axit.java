@@ -1,51 +1,59 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class axit
-  implements ServiceConnection
+public class axit
+  extends axiy<MessageForMixedMsg>
 {
-  axit(axis paramaxis) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public axit(MessageForMixedMsg paramMessageForMixedMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "onServiceConnected");
-    }
-    this.a.jdField_a_of_type_Axin = axio.a(paramIBinder);
-    try
+    super(paramMessageForMixedMsg);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.jdField_a_of_type_Axin.a(this.a.jdField_a_of_type_Axiv);
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
-      }
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
+      Object localObject = (MessageRecord)localIterator.next();
+      if ((localObject instanceof MessageForPic))
       {
-        if (QLog.isDevelopLevel()) {
-          paramComponentName.printStackTrace();
-        }
+        localObject = axgs.a((MessageRecord)localObject);
+        ((axiy)localObject).a(this.a);
+        localArrayList.addAll(((axiy)localObject).a());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord instanceof MessageForPic)) {
+        axgs.a(localMessageRecord).a();
       }
     }
   }
   
-  public void onServiceDisconnected(ComponentName arg1)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "onServiceDisconnected");
-    }
-    synchronized (axis.a(this.a))
+    if (((MessageForMixedMsg)this.a).isSendFromLocal())
     {
-      this.a.jdField_a_of_type_Axin = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
-      }
-      return;
+      ((MessageForMixedMsg)this.a).issend = 2;
+      ((MessageForMixedMsg)this.a).prewrite();
     }
   }
 }

@@ -1,16 +1,17 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agsu
-  implements bkhw
+  implements View.OnClickListener
 {
-  agsu(agss paramagss, MessageForDeviceFile paramMessageForDeviceFile, bkho parambkho) {}
+  agsu(agss paramagss) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agss.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    this.jdField_a_of_type_Agss.b();
-    this.jdField_a_of_type_Bkho.dismiss();
+    this.a.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

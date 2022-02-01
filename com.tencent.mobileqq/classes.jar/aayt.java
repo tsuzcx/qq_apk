@@ -1,17 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.widget.PopupWindow;
 
 class aayt
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  aayt(aayr paramaayr) {}
+  aayt(aays paramaays) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    aayr.a(this.a).setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 

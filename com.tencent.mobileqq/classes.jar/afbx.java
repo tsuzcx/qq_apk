@@ -1,15 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class afbx
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public afbx(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public afbx(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a(this.a.b);
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

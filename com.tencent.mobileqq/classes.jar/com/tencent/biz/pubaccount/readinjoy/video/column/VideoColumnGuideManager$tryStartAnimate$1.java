@@ -4,21 +4,21 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import shi;
+import rym;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class VideoColumnGuideManager$tryStartAnimate$1
   extends Lambda
   implements Function0<Unit>
 {
-  public VideoColumnGuideManager$tryStartAnimate$1(shi paramshi)
+  public VideoColumnGuideManager$tryStartAnimate$1(rym paramrym)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    shi.c(this.this$0);
+    rym.c(this.this$0);
   }
 }
 

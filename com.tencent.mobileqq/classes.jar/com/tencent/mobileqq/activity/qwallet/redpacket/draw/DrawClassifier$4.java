@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import aggc;
-import akuo;
-import akut;
-import akvm;
-import akww;
+import agpd;
+import algd;
+import algi;
+import alhb;
+import alil;
 import com.tencent.qphone.base.util.QLog;
 
 public class DrawClassifier$4
   implements Runnable
 {
-  public DrawClassifier$4(akuo paramakuo, akut paramakut, aggc paramaggc) {}
+  public DrawClassifier$4(algd paramalgd, algi paramalgi, agpd paramagpd) {}
   
   public void run()
   {
     try
     {
-      if (!akuo.a(this.this$0))
+      if (!algd.a(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.e("DrawClassifier", 2, "not init ok or already close to recog");
         }
-        if (this.jdField_a_of_type_Akut != null) {
-          this.jdField_a_of_type_Akut.a(false);
+        if (this.jdField_a_of_type_Algi != null) {
+          this.jdField_a_of_type_Algi.a(false);
         }
       }
       long l = System.currentTimeMillis();
-      boolean bool = akuo.a(this.this$0).a(this.jdField_a_of_type_Aggc, akuo.c(this.this$0), this.this$0.a, akuo.a(this.this$0), akuo.a(this.this$0));
-      if (this.jdField_a_of_type_Akut != null) {
-        this.jdField_a_of_type_Akut.a(bool);
+      boolean bool = algd.a(this.this$0).a(this.jdField_a_of_type_Agpd, algd.c(this.this$0), this.this$0.a, algd.a(this.this$0), algd.a(this.this$0));
+      if (this.jdField_a_of_type_Algi != null) {
+        this.jdField_a_of_type_Algi.a(bool);
       }
       if (QLog.isColorLevel()) {
         QLog.i("DrawClassifier", 2, "recognize cost:" + (System.currentTimeMillis() - l));
@@ -40,11 +40,11 @@ public class DrawClassifier$4
       do
       {
         if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "recognition throwable:" + akww.a(localThrowable));
+          QLog.e("DrawClassifier", 2, "recognition throwable:" + alil.a(localThrowable));
         }
         localThrowable.printStackTrace();
-      } while (this.jdField_a_of_type_Akut == null);
-      this.jdField_a_of_type_Akut.a(false);
+      } while (this.jdField_a_of_type_Algi == null);
+      this.jdField_a_of_type_Algi.a(false);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.kingkong;
 
-import adax;
-import adaz;
+import adjv;
+import adjx;
 
 final class Common$1
   implements Runnable
@@ -9,7 +9,7 @@ final class Common$1
   public void run()
   {
     ReportUtil.a(2088, 0, 0, "");
-    adax.a("KingKongCommon", "QQ Login " + adaz.o());
+    adjv.a("KingKongCommon", "QQ Login " + adjx.o());
   }
 }
 

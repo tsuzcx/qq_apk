@@ -1,48 +1,56 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ztm
-  implements CompoundButton.OnCheckedChangeListener
+  implements blnt
 {
-  public ztm(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  private CopyOnWriteArraySet<blnt> a = new CopyOnWriteArraySet();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ztm(blnt paramblnt)
   {
+    if (paramblnt != null) {
+      this.a.add(paramblnt);
+    }
+  }
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((blnt)localIterator.next()).a(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
     boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "qqmute onCheckedChanged:", Boolean.valueOf(paramBoolean) });
-    }
-    if (!bgnt.g(this.a))
+    if (localIterator.hasNext())
     {
-      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131695415, 0).b(this.a.getTitleBarHeight());
-      if (!paramBoolean) {
-        bool = true;
+      blnt localblnt = (blnt)localIterator.next();
+      if ((bool) || (localblnt.a(paramInt, paramView, paramListView))) {}
+      for (bool = true;; bool = false) {
+        break;
       }
-      paramCompoundButton.setChecked(bool);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean)
-      {
-        bgpa localbgpa = bglp.a(QRLoginMgrActivity.a(this.a), 230);
-        localbgpa.setTitle(2131715839);
-        localbgpa.setMessage(2131715838);
-        localbgpa.setPositiveButton(2131694081, new ztn(this));
-        localbgpa.setNegativeButton(2131690582, new zto(this, paramCompoundButton));
-        localbgpa.show();
-        bcst.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        ((antz)this.a.app.a(10)).a(paramBoolean);
-      }
+    return bool;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((blnt)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((blnt)localIterator.next()).c(paramInt, paramView, paramListView);
     }
   }
 }

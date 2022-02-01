@@ -1,8 +1,10 @@
-public class axzp
-  extends axzq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class axzp
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

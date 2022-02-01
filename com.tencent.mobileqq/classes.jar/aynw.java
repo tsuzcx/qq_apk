@@ -1,18 +1,33 @@
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 class aynw
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aynw(aynq paramaynq, AutoReplyText paramAutoReplyText) {}
+  aynw(aynp paramaynp) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-    this.jdField_a_of_type_Aynq.a(i);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
+    if (i <= 0) {}
+    int j;
+    do
+    {
+      return;
+      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
+    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
+    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
+    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
   }
 }
 

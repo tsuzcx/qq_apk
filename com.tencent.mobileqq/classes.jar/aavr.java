@@ -1,42 +1,44 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-public class aavr
-  implements Manager
+public abstract class aavr
+  extends nkq
 {
-  protected static BaseApplicationImpl a;
-  public static boolean a;
-  private AppInterface a;
-  
-  static
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    jdField_a_of_type_Boolean = true;
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public aavr(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    a();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
   
-  public void a()
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    try
+    if (paramInt != 0)
     {
-      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = false;
-      }
-      aavz.a();
-      QLog.i("Q.videostory.VSManager", 1, "init");
+      a(false, paramInt, null, paramBundle);
       return;
     }
-    finally {}
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
-  
-  public void onDestroy() {}
 }
 
 

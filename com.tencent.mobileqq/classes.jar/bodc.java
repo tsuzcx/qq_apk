@@ -1,11 +1,14 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
-import java.util.ArrayList;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public abstract interface bodc
+public class bodc
+  implements bres
 {
-  public abstract void a(int paramInt);
+  public bodc(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public abstract void a(ArrayList<SmartFilterReqItem> paramArrayList);
+  public void a()
+  {
+    QIMEffectCameraCaptureUnit.d(this.a);
+  }
 }
 
 

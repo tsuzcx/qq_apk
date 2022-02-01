@@ -1,51 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.TextHook;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.trooponline.widget.RoundTextView;
 
-final class bhbb
-  extends bcni
+public class bhbb
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
-  {
-    paramInt = 0;
-    Object localObject1;
-    if (paramBoolean1)
-    {
-      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
-      if (!bcnj.b()) {
-        break label48;
-      }
-      localObject2 = TextHook.getFontPath((Context)localObject1);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        bhba.a((Context)localObject1, (String)localObject2);
-        bhba.a(false);
-      }
-    }
-    label48:
-    do
-    {
-      return;
-      localObject1 = bhba.a((Context)localObject1);
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Object localObject2 = atvo.a((String)localObject1).split("\\.");
-    try
-    {
-      int i = Integer.parseInt(localObject2[0]);
-      if (localObject2.length > 2) {
-        paramInt = Integer.parseInt(localObject2[1]);
-      }
-      bhba.b(i, paramInt);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
-      localNumberFormatException.printStackTrace();
-    }
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bhbd a;
+  public RoundTextView a;
+  public String a;
+  public StringBuilder a;
+  
+  public bhbb(bhay parambhay) {}
 }
 
 

@@ -14,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.media.ThumbnailUtils;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
@@ -48,116 +49,6 @@ public class ImageUtil
   public static final String FILE_THUMB_PATH = "thumb/";
   public static final int SIZE_1KB = 1024;
   public static final String TAG = "ImageUtil";
-  
-  /* Error */
-  private static String CompressJPGFile(InputStream paramInputStream, BitmapFactory.Options paramOptions, String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: aconst_null
-    //   2: aload_1
-    //   3: invokestatic 54	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   6: astore_0
-    //   7: aload_0
-    //   8: ifnonnull +5 -> 13
-    //   11: aconst_null
-    //   12: areturn
-    //   13: invokestatic 60	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   16: ifeq +42 -> 58
-    //   19: ldc 37
-    //   21: new 62	java/lang/StringBuilder
-    //   24: dup
-    //   25: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   28: ldc 65
-    //   30: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: aload_0
-    //   34: invokevirtual 75	android/graphics/Bitmap:getWidth	()I
-    //   37: invokevirtual 78	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   40: ldc 80
-    //   42: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: aload_0
-    //   46: invokevirtual 83	android/graphics/Bitmap:getHeight	()I
-    //   49: invokevirtual 78	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokestatic 91	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   58: aload_2
-    //   59: invokestatic 95	com/tencent/qqmini/sdk/core/utils/ImageUtil:createNewFile	(Ljava/lang/String;)Ljava/io/File;
-    //   62: astore_1
-    //   63: new 97	java/io/FileOutputStream
-    //   66: dup
-    //   67: aload_1
-    //   68: invokespecial 100	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   71: astore_1
-    //   72: aload_0
-    //   73: getstatic 106	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   76: bipush 100
-    //   78: iload_3
-    //   79: invokestatic 112	java/lang/Math:min	(II)I
-    //   82: aload_1
-    //   83: invokevirtual 116	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   86: pop
-    //   87: aload_2
-    //   88: astore_0
-    //   89: aload_1
-    //   90: ifnull +9 -> 99
-    //   93: aload_1
-    //   94: invokevirtual 121	java/io/OutputStream:close	()V
-    //   97: aload_2
-    //   98: astore_0
-    //   99: aload_0
-    //   100: areturn
-    //   101: astore_0
-    //   102: aconst_null
-    //   103: astore_1
-    //   104: aload_1
-    //   105: ifnull +49 -> 154
-    //   108: aload_1
-    //   109: invokevirtual 121	java/io/OutputStream:close	()V
-    //   112: aconst_null
-    //   113: astore_0
-    //   114: goto -15 -> 99
-    //   117: astore_0
-    //   118: aconst_null
-    //   119: astore_0
-    //   120: goto -21 -> 99
-    //   123: astore_0
-    //   124: aconst_null
-    //   125: astore_1
-    //   126: aload_1
-    //   127: ifnull +7 -> 134
-    //   130: aload_1
-    //   131: invokevirtual 121	java/io/OutputStream:close	()V
-    //   134: aload_0
-    //   135: athrow
-    //   136: astore_0
-    //   137: aload_2
-    //   138: astore_0
-    //   139: goto -40 -> 99
-    //   142: astore_1
-    //   143: goto -9 -> 134
-    //   146: astore_0
-    //   147: goto -21 -> 126
-    //   150: astore_0
-    //   151: goto -47 -> 104
-    //   154: aconst_null
-    //   155: astore_0
-    //   156: goto -57 -> 99
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	159	0	paramInputStream	InputStream
-    //   0	159	1	paramOptions	BitmapFactory.Options
-    //   0	159	2	paramString	String
-    //   0	159	3	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   63	72	101	java/lang/Exception
-    //   108	112	117	java/io/IOException
-    //   63	72	123	finally
-    //   93	97	136	java/io/IOException
-    //   130	134	142	java/io/IOException
-    //   72	87	146	finally
-    //   72	87	150	java/lang/Exception
-  }
   
   public static int calculateInSampleSize(BitmapFactory.Options paramOptions, float paramFloat1, float paramFloat2)
   {
@@ -200,7 +91,7 @@ public class ImageUtil
     //   8: astore 4
     //   10: aload_1
     //   11: ifnull +13 -> 24
-    //   14: getstatic 138	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   14: getstatic 64	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   17: aload_1
     //   18: if_acmpne +9 -> 27
     //   21: aload_0
@@ -211,15 +102,15 @@ public class ImageUtil
     //   29: istore_3
     //   30: ldc 10
     //   32: aload_0
-    //   33: invokevirtual 75	android/graphics/Bitmap:getWidth	()I
+    //   33: invokevirtual 70	android/graphics/Bitmap:getWidth	()I
     //   36: i2f
     //   37: fdiv
     //   38: ldc 8
     //   40: aload_0
-    //   41: invokevirtual 83	android/graphics/Bitmap:getHeight	()I
+    //   41: invokevirtual 73	android/graphics/Bitmap:getHeight	()I
     //   44: i2f
     //   45: fdiv
-    //   46: invokestatic 141	java/lang/Math:min	(FF)F
+    //   46: invokestatic 79	java/lang/Math:min	(FF)F
     //   49: fstore_2
     //   50: fload_2
     //   51: fconst_1
@@ -231,9 +122,9 @@ public class ImageUtil
     //   60: fmul
     //   61: f2i
     //   62: istore_3
-    //   63: new 143	java/io/ByteArrayOutputStream
+    //   63: new 81	java/io/ByteArrayOutputStream
     //   66: dup
-    //   67: invokespecial 144	java/io/ByteArrayOutputStream:<init>	()V
+    //   67: invokespecial 82	java/io/ByteArrayOutputStream:<init>	()V
     //   70: astore 5
     //   72: aload 5
     //   74: astore 4
@@ -241,12 +132,12 @@ public class ImageUtil
     //   77: aload_1
     //   78: iload_3
     //   79: aload 5
-    //   81: invokevirtual 116	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   81: invokevirtual 86	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   84: pop
     //   85: aload 5
     //   87: astore 4
     //   89: aload 5
-    //   91: invokevirtual 148	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   91: invokevirtual 90	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   94: astore_1
     //   95: aload 5
     //   97: astore 4
@@ -254,7 +145,7 @@ public class ImageUtil
     //   100: iconst_0
     //   101: aload_1
     //   102: arraylength
-    //   103: invokestatic 152	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   103: invokestatic 96	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   106: astore_1
     //   107: aload_1
     //   108: astore_0
@@ -263,7 +154,7 @@ public class ImageUtil
     //   112: aload 5
     //   114: ifnull -90 -> 24
     //   117: aload 5
-    //   119: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   119: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   122: aload_0
     //   123: areturn
     //   124: astore_1
@@ -275,21 +166,21 @@ public class ImageUtil
     //   131: aload_1
     //   132: astore 4
     //   134: ldc 37
-    //   136: new 62	java/lang/StringBuilder
+    //   136: new 101	java/lang/StringBuilder
     //   139: dup
-    //   140: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   143: ldc 155
-    //   145: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   143: ldc 104
+    //   145: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: aload 6
-    //   150: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokestatic 161	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokestatic 121	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   159: aload_0
     //   160: astore 4
     //   162: aload_1
     //   163: ifnull -139 -> 24
     //   166: aload_1
-    //   167: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   167: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   170: aload_0
     //   171: areturn
     //   172: astore_1
@@ -301,7 +192,7 @@ public class ImageUtil
     //   179: aload 4
     //   181: ifnull +8 -> 189
     //   184: aload 4
-    //   186: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   186: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   189: aload_0
     //   190: athrow
     //   191: astore_1
@@ -374,28 +265,28 @@ public class ImageUtil
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: new 178	java/io/File
+    //   3: new 140	java/io/File
     //   6: dup
     //   7: aload_0
-    //   8: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: invokespecial 143	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_0
     //   12: aload_0
     //   13: iload_2
     //   14: iload_3
-    //   15: invokestatic 185	com/tencent/qqmini/sdk/core/utils/ImageUtil:getSizeOpt	(Ljava/io/File;II)Landroid/graphics/BitmapFactory$Options;
+    //   15: invokestatic 147	com/tencent/qqmini/sdk/core/utils/ImageUtil:getSizeOpt	(Ljava/io/File;II)Landroid/graphics/BitmapFactory$Options;
     //   18: astore 6
-    //   20: new 187	java/io/FileInputStream
+    //   20: new 149	java/io/FileInputStream
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 188	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   25: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   28: astore_0
     //   29: aload_0
     //   30: aload 6
     //   32: aload_1
     //   33: bipush 100
     //   35: iload 4
-    //   37: invokestatic 112	java/lang/Math:min	(II)I
-    //   40: invokestatic 190	com/tencent/qqmini/sdk/core/utils/ImageUtil:CompressJPGFile	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Ljava/lang/String;
+    //   37: invokestatic 155	java/lang/Math:min	(II)I
+    //   40: invokestatic 159	com/tencent/qqmini/sdk/core/utils/ImageUtil:compressJPGFile	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Ljava/lang/String;
     //   43: astore_1
     //   44: aload_1
     //   45: astore 5
@@ -404,7 +295,7 @@ public class ImageUtil
     //   50: aload_0
     //   51: ifnull +10 -> 61
     //   54: aload_0
-    //   55: invokevirtual 193	java/io/InputStream:close	()V
+    //   55: invokevirtual 162	java/io/InputStream:close	()V
     //   58: aload 5
     //   60: astore_1
     //   61: aload_1
@@ -417,7 +308,7 @@ public class ImageUtil
     //   69: aload_0
     //   70: ifnull -9 -> 61
     //   73: aload_0
-    //   74: invokevirtual 193	java/io/InputStream:close	()V
+    //   74: invokevirtual 162	java/io/InputStream:close	()V
     //   77: aconst_null
     //   78: areturn
     //   79: astore_0
@@ -431,7 +322,7 @@ public class ImageUtil
     //   88: aload_0
     //   89: ifnull -28 -> 61
     //   92: aload_0
-    //   93: invokevirtual 193	java/io/InputStream:close	()V
+    //   93: invokevirtual 162	java/io/InputStream:close	()V
     //   96: aconst_null
     //   97: areturn
     //   98: astore_0
@@ -443,7 +334,7 @@ public class ImageUtil
     //   104: aload_0
     //   105: ifnull +7 -> 112
     //   108: aload_0
-    //   109: invokevirtual 193	java/io/InputStream:close	()V
+    //   109: invokevirtual 162	java/io/InputStream:close	()V
     //   112: aload_1
     //   113: athrow
     //   114: astore_0
@@ -478,6 +369,116 @@ public class ImageUtil
     //   29	44	122	finally
     //   29	44	126	java/lang/Error
     //   29	44	130	java/lang/Exception
+  }
+  
+  /* Error */
+  private static String compressJPGFile(InputStream paramInputStream, BitmapFactory.Options paramOptions, String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: aconst_null
+    //   2: aload_1
+    //   3: invokestatic 166	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   6: astore_0
+    //   7: aload_0
+    //   8: ifnonnull +5 -> 13
+    //   11: aconst_null
+    //   12: areturn
+    //   13: invokestatic 170	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
+    //   16: ifeq +42 -> 58
+    //   19: ldc 37
+    //   21: new 101	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   28: ldc 172
+    //   30: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: aload_0
+    //   34: invokevirtual 70	android/graphics/Bitmap:getWidth	()I
+    //   37: invokevirtual 175	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: ldc 177
+    //   42: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: aload_0
+    //   46: invokevirtual 73	android/graphics/Bitmap:getHeight	()I
+    //   49: invokevirtual 175	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokestatic 180	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: aload_2
+    //   59: invokestatic 184	com/tencent/qqmini/sdk/core/utils/ImageUtil:createNewFile	(Ljava/lang/String;)Ljava/io/File;
+    //   62: astore_1
+    //   63: new 186	java/io/FileOutputStream
+    //   66: dup
+    //   67: aload_1
+    //   68: invokespecial 187	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   71: astore_1
+    //   72: aload_0
+    //   73: getstatic 190	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   76: bipush 100
+    //   78: iload_3
+    //   79: invokestatic 155	java/lang/Math:min	(II)I
+    //   82: aload_1
+    //   83: invokevirtual 86	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   86: pop
+    //   87: aload_2
+    //   88: astore_0
+    //   89: aload_1
+    //   90: ifnull +9 -> 99
+    //   93: aload_1
+    //   94: invokevirtual 193	java/io/OutputStream:close	()V
+    //   97: aload_2
+    //   98: astore_0
+    //   99: aload_0
+    //   100: areturn
+    //   101: astore_0
+    //   102: aconst_null
+    //   103: astore_1
+    //   104: aload_1
+    //   105: ifnull +49 -> 154
+    //   108: aload_1
+    //   109: invokevirtual 193	java/io/OutputStream:close	()V
+    //   112: aconst_null
+    //   113: astore_0
+    //   114: goto -15 -> 99
+    //   117: astore_0
+    //   118: aconst_null
+    //   119: astore_0
+    //   120: goto -21 -> 99
+    //   123: astore_0
+    //   124: aconst_null
+    //   125: astore_1
+    //   126: aload_1
+    //   127: ifnull +7 -> 134
+    //   130: aload_1
+    //   131: invokevirtual 193	java/io/OutputStream:close	()V
+    //   134: aload_0
+    //   135: athrow
+    //   136: astore_0
+    //   137: aload_2
+    //   138: astore_0
+    //   139: goto -40 -> 99
+    //   142: astore_1
+    //   143: goto -9 -> 134
+    //   146: astore_0
+    //   147: goto -21 -> 126
+    //   150: astore_0
+    //   151: goto -47 -> 104
+    //   154: aconst_null
+    //   155: astore_0
+    //   156: goto -57 -> 99
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	paramInputStream	InputStream
+    //   0	159	1	paramOptions	BitmapFactory.Options
+    //   0	159	2	paramString	String
+    //   0	159	3	paramInt	int
+    // Exception table:
+    //   from	to	target	type
+    //   63	72	101	java/lang/Exception
+    //   108	112	117	java/io/IOException
+    //   63	72	123	finally
+    //   93	97	136	java/io/IOException
+    //   130	134	142	java/io/IOException
+    //   72	87	146	finally
+    //   72	87	150	java/lang/Exception
   }
   
   public static File createNewFile(String paramString)
@@ -661,7 +662,7 @@ public class ImageUtil
     //   10: astore_0
     //   11: aload_0
     //   12: areturn
-    //   13: new 187	java/io/FileInputStream
+    //   13: new 149	java/io/FileInputStream
     //   16: dup
     //   17: aload_0
     //   18: invokespecial 397	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
@@ -811,6 +812,47 @@ public class ImageUtil
     //   34	39	189	java/lang/OutOfMemoryError
   }
   
+  public static Bitmap getLocalBitmapwithHW(String paramString, int paramInt1, int paramInt2)
+  {
+    int k = 1;
+    if (StringUtil.isEmpty(paramString)) {}
+    BitmapFactory.Options localOptions;
+    int m;
+    int n;
+    do
+    {
+      return null;
+      localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramString, localOptions);
+      m = localOptions.outWidth;
+      n = localOptions.outHeight;
+    } while ((n < paramInt2) || (m < paramInt1));
+    localOptions.inJustDecodeBounds = false;
+    int i = 1;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (n / i <= paramInt2) {
+        break;
+      }
+      i += 1;
+    }
+    while (m / j > paramInt1) {
+      j += 1;
+    }
+    if (j < i) {}
+    for (;;)
+    {
+      localOptions.inSampleSize = j;
+      paramString = BitmapFactory.decodeFile(paramString, localOptions);
+      ThumbnailUtils.extractThumbnail(paramString, paramInt1, paramInt2);
+      return paramString;
+      j = i;
+    }
+  }
+  
   public static Bitmap getLocalCompressedBitmap(String paramString, BitmapFactory.Options paramOptions)
   {
     if ((StringUtil.isEmpty(paramString)) || (paramOptions == null)) {
@@ -936,20 +978,20 @@ public class ImageUtil
   public static ByteArrayInputStream getLocalNoBitmapImageStream(String paramString)
   {
     // Byte code:
-    //   0: new 178	java/io/File
+    //   0: new 140	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 143	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
     //   10: invokevirtual 196	java/io/File:exists	()Z
     //   13: ifne +5 -> 18
     //   16: aconst_null
     //   17: areturn
-    //   18: new 187	java/io/FileInputStream
+    //   18: new 149	java/io/FileInputStream
     //   21: dup
     //   22: aload_0
-    //   23: invokespecial 188	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   26: astore_2
     //   27: new 399	java/io/BufferedInputStream
     //   30: dup
@@ -957,9 +999,9 @@ public class ImageUtil
     //   32: sipush 8192
     //   35: invokespecial 402	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   38: astore_3
-    //   39: new 143	java/io/ByteArrayOutputStream
+    //   39: new 81	java/io/ByteArrayOutputStream
     //   42: dup
-    //   43: invokespecial 144	java/io/ByteArrayOutputStream:<init>	()V
+    //   43: invokespecial 82	java/io/ByteArrayOutputStream:<init>	()V
     //   46: astore_0
     //   47: aload_3
     //   48: astore 6
@@ -978,7 +1020,7 @@ public class ImageUtil
     //   70: astore 4
     //   72: aload_3
     //   73: aload 7
-    //   75: invokevirtual 481	java/io/BufferedInputStream:read	([B)I
+    //   75: invokevirtual 489	java/io/BufferedInputStream:read	([B)I
     //   78: istore_1
     //   79: iload_1
     //   80: iconst_m1
@@ -993,7 +1035,7 @@ public class ImageUtil
     //   94: aload 7
     //   96: iconst_0
     //   97: iload_1
-    //   98: invokevirtual 485	java/io/ByteArrayOutputStream:write	([BII)V
+    //   98: invokevirtual 493	java/io/ByteArrayOutputStream:write	([BII)V
     //   101: goto -38 -> 63
     //   104: astore 7
     //   106: aload_3
@@ -1003,11 +1045,11 @@ public class ImageUtil
     //   112: aload_2
     //   113: astore 4
     //   115: aload 7
-    //   117: invokevirtual 486	java/io/FileNotFoundException:printStackTrace	()V
+    //   117: invokevirtual 494	java/io/FileNotFoundException:printStackTrace	()V
     //   120: aload_0
     //   121: ifnull +7 -> 128
     //   124: aload_0
-    //   125: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   125: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   128: aload_3
     //   129: ifnull +7 -> 136
     //   132: aload_3
@@ -1029,16 +1071,16 @@ public class ImageUtil
     //   157: astore 5
     //   159: aload_2
     //   160: astore 4
-    //   162: new 460	java/io/ByteArrayInputStream
+    //   162: new 468	java/io/ByteArrayInputStream
     //   165: dup
     //   166: aload_0
-    //   167: invokevirtual 148	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   170: invokespecial 463	java/io/ByteArrayInputStream:<init>	([B)V
+    //   167: invokevirtual 90	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   170: invokespecial 471	java/io/ByteArrayInputStream:<init>	([B)V
     //   173: astore 7
     //   175: aload_0
     //   176: ifnull +7 -> 183
     //   179: aload_0
-    //   180: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   180: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   183: aload_3
     //   184: ifnull +7 -> 191
     //   187: aload_3
@@ -1071,7 +1113,7 @@ public class ImageUtil
     //   232: aload_0
     //   233: ifnull +7 -> 240
     //   236: aload_0
-    //   237: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   237: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   240: aload_3
     //   241: ifnull +7 -> 248
     //   244: aload_3
@@ -1097,7 +1139,7 @@ public class ImageUtil
     //   273: aload 5
     //   275: ifnull +8 -> 283
     //   278: aload 5
-    //   280: invokevirtual 153	java/io/ByteArrayOutputStream:close	()V
+    //   280: invokevirtual 99	java/io/ByteArrayOutputStream:close	()V
     //   283: aload_3
     //   284: ifnull +7 -> 291
     //   287: aload_3
@@ -1283,7 +1325,7 @@ public class ImageUtil
     }
     paramOptions = paramOptions.toLowerCase();
     if (paramOptions.indexOf("jpg") >= 0) {
-      return "jpeg";
+      return "jpg";
     }
     if (paramOptions.indexOf("jpeg") >= 0) {
       return "jpeg";
@@ -1293,6 +1335,9 @@ public class ImageUtil
     }
     if (paramOptions.indexOf("gif") >= 0) {
       return "gif";
+    }
+    if (paramOptions.indexOf("webp") >= 0) {
+      return "webp";
     }
     return "unknown";
   }
@@ -1340,17 +1385,17 @@ public class ImageUtil
     //   4: aload_1
     //   5: ifnonnull +4 -> 9
     //   8: return
-    //   9: new 178	java/io/File
+    //   9: new 140	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokevirtual 530	java/io/File:getParent	()Ljava/lang/String;
-    //   17: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokevirtual 538	java/io/File:getParent	()Ljava/lang/String;
+    //   17: invokespecial 143	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_2
     //   21: aload_2
     //   22: invokevirtual 196	java/io/File:exists	()Z
     //   25: ifeq +10 -> 35
     //   28: aload_2
-    //   29: invokevirtual 533	java/io/File:isDirectory	()Z
+    //   29: invokevirtual 541	java/io/File:isDirectory	()Z
     //   32: ifne +8 -> 40
     //   35: aload_2
     //   36: invokevirtual 212	java/io/File:mkdirs	()Z
@@ -1359,33 +1404,33 @@ public class ImageUtil
     //   41: invokevirtual 196	java/io/File:exists	()Z
     //   44: ifeq +10 -> 54
     //   47: aload_1
-    //   48: invokevirtual 536	java/io/File:isFile	()Z
+    //   48: invokevirtual 544	java/io/File:isFile	()Z
     //   51: ifne +8 -> 59
     //   54: aload_1
     //   55: invokevirtual 214	java/io/File:createNewFile	()Z
     //   58: pop
     //   59: aconst_null
     //   60: astore_2
-    //   61: new 538	java/io/BufferedOutputStream
+    //   61: new 546	java/io/BufferedOutputStream
     //   64: dup
-    //   65: new 97	java/io/FileOutputStream
+    //   65: new 186	java/io/FileOutputStream
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 100	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   73: invokespecial 541	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   70: invokespecial 187	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   73: invokespecial 549	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   76: astore_1
     //   77: aload_0
-    //   78: getstatic 106	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   78: getstatic 190	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   81: bipush 90
     //   83: aload_1
-    //   84: invokevirtual 116	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   84: invokevirtual 86	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   87: pop
     //   88: aload_1
-    //   89: invokevirtual 544	java/io/BufferedOutputStream:flush	()V
+    //   89: invokevirtual 552	java/io/BufferedOutputStream:flush	()V
     //   92: aload_1
     //   93: ifnull -85 -> 8
     //   96: aload_1
-    //   97: invokevirtual 545	java/io/BufferedOutputStream:close	()V
+    //   97: invokevirtual 553	java/io/BufferedOutputStream:close	()V
     //   100: return
     //   101: astore_0
     //   102: aconst_null
@@ -1393,7 +1438,7 @@ public class ImageUtil
     //   104: aload_1
     //   105: ifnull -97 -> 8
     //   108: aload_1
-    //   109: invokevirtual 545	java/io/BufferedOutputStream:close	()V
+    //   109: invokevirtual 553	java/io/BufferedOutputStream:close	()V
     //   112: return
     //   113: astore_0
     //   114: aload_2
@@ -1401,7 +1446,7 @@ public class ImageUtil
     //   116: aload_1
     //   117: ifnull +7 -> 124
     //   120: aload_1
-    //   121: invokevirtual 545	java/io/BufferedOutputStream:close	()V
+    //   121: invokevirtual 553	java/io/BufferedOutputStream:close	()V
     //   124: aload_0
     //   125: athrow
     //   126: astore_0
@@ -1445,11 +1490,11 @@ public class ImageUtil
     //   24: astore 4
     //   26: aload 5
     //   28: astore_3
-    //   29: new 178	java/io/File
+    //   29: new 140	java/io/File
     //   32: dup
     //   33: aload_1
-    //   34: invokevirtual 530	java/io/File:getParent	()Ljava/lang/String;
-    //   37: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokevirtual 538	java/io/File:getParent	()Ljava/lang/String;
+    //   37: invokespecial 143	java/io/File:<init>	(Ljava/lang/String;)V
     //   40: astore 6
     //   42: aload 5
     //   44: astore_3
@@ -1459,7 +1504,7 @@ public class ImageUtil
     //   53: aload 5
     //   55: astore_3
     //   56: aload 6
-    //   58: invokevirtual 533	java/io/File:isDirectory	()Z
+    //   58: invokevirtual 541	java/io/File:isDirectory	()Z
     //   61: ifne +12 -> 73
     //   64: aload 5
     //   66: astore_3
@@ -1474,7 +1519,7 @@ public class ImageUtil
     //   83: aload 5
     //   85: astore_3
     //   86: aload_1
-    //   87: invokevirtual 536	java/io/File:isFile	()Z
+    //   87: invokevirtual 544	java/io/File:isFile	()Z
     //   90: ifne +11 -> 101
     //   93: aload 5
     //   95: astore_3
@@ -1483,25 +1528,25 @@ public class ImageUtil
     //   100: pop
     //   101: aload 5
     //   103: astore_3
-    //   104: new 97	java/io/FileOutputStream
+    //   104: new 186	java/io/FileOutputStream
     //   107: dup
     //   108: aload_1
-    //   109: invokespecial 100	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   109: invokespecial 187	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   112: astore_1
     //   113: aload_1
     //   114: aload_0
-    //   115: invokevirtual 547	java/io/FileOutputStream:write	([B)V
+    //   115: invokevirtual 555	java/io/FileOutputStream:write	([B)V
     //   118: aload_1
-    //   119: invokevirtual 548	java/io/FileOutputStream:flush	()V
+    //   119: invokevirtual 556	java/io/FileOutputStream:flush	()V
     //   122: aload_1
     //   123: ifnull -105 -> 18
     //   126: aload_1
-    //   127: invokevirtual 549	java/io/FileOutputStream:close	()V
+    //   127: invokevirtual 557	java/io/FileOutputStream:close	()V
     //   130: iconst_1
     //   131: ireturn
     //   132: astore_0
     //   133: aload_0
-    //   134: invokevirtual 550	java/lang/Exception:printStackTrace	()V
+    //   134: invokevirtual 558	java/lang/Exception:printStackTrace	()V
     //   137: iconst_1
     //   138: ireturn
     //   139: astore_1
@@ -1514,23 +1559,23 @@ public class ImageUtil
     //   149: aload_0
     //   150: ifnull +7 -> 157
     //   153: aload_0
-    //   154: invokevirtual 549	java/io/FileOutputStream:close	()V
+    //   154: invokevirtual 557	java/io/FileOutputStream:close	()V
     //   157: iconst_0
     //   158: ireturn
     //   159: astore_0
     //   160: aload_0
-    //   161: invokevirtual 550	java/lang/Exception:printStackTrace	()V
+    //   161: invokevirtual 558	java/lang/Exception:printStackTrace	()V
     //   164: goto -7 -> 157
     //   167: astore_0
     //   168: aload_3
     //   169: ifnull +7 -> 176
     //   172: aload_3
-    //   173: invokevirtual 549	java/io/FileOutputStream:close	()V
+    //   173: invokevirtual 557	java/io/FileOutputStream:close	()V
     //   176: aload_0
     //   177: athrow
     //   178: astore_1
     //   179: aload_1
-    //   180: invokevirtual 550	java/lang/Exception:printStackTrace	()V
+    //   180: invokevirtual 558	java/lang/Exception:printStackTrace	()V
     //   183: goto -7 -> 176
     //   186: astore_0
     //   187: aload_1
@@ -1625,7 +1670,7 @@ public class ImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.ImageUtil
  * JD-Core Version:    0.7.0.1
  */

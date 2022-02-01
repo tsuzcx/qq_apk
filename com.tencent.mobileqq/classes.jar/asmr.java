@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.drawable.Drawable;
 
-final class asmr
-  implements DialogInterface.OnClickListener
+public abstract interface asmr
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(asmu paramasmu);
+  
+  public abstract void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable);
+  
+  public abstract boolean a(asmu paramasmu);
+  
+  public abstract void b();
+  
+  public abstract void b(asmu paramasmu);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void setting();
 }
 
 

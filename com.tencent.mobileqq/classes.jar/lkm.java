@@ -1,103 +1,73 @@
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.mobileqq.pb.CodedInputStreamMicro;
-import com.tencent.mobileqq.pb.WireFormatMicro;
-import java.io.IOException;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Random;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
 
-public abstract class lkm
+public class lkm
 {
-  private VcControllerImpl a;
+  private long jdField_a_of_type_Long;
+  private lkv jdField_a_of_type_Lkv;
+  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
   
-  public static byte a(byte[] paramArrayOfByte)
+  public lkm(lkl paramlkl) {}
+  
+  private void a()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 3)) {
-      return -1;
-    }
-    return paramArrayOfByte[2];
+    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
+    localPutinfoHead.enum_body_type.set(1);
+    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
+    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkv.jdField_a_of_type_JavaLangString.getBytes()));
+    localPutinfoHead.uint64_seq.set(new Random().nextLong());
+    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lkl.jdField_a_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
   }
   
-  public static boolean a(byte[] paramArrayOfByte)
+  private void b()
   {
-    paramArrayOfByte = CodedInputStreamMicro.newInstance(paramArrayOfByte);
-    try
-    {
-      for (;;)
-      {
-        int i = paramArrayOfByte.readTag();
-        if (i == 0) {
-          break;
-        }
-        if (WireFormatMicro.getTagFieldNumber(i) == 2) {
-          return true;
-        }
-        paramArrayOfByte.skipField(i);
-      }
-      return false;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
+    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Lkv.jdField_a_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Lkv.jdField_b_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
+    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkv.jdField_b_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkv.jdField_c_of_type_JavaLangString.getBytes()));
+    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Lkv.jdField_c_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Lkv.jdField_d_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Lkv.jdField_e_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Lkv.f);
+    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
+    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Lkv.g);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Lkv.h);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Lkv.i);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Lkv.j);
+    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
+    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkv.jdField_d_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Lkv.m);
+    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Lkv.l);
+    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkv.jdField_e_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
   }
   
-  public final byte a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public void a(long paramLong, lkv paramlkv)
   {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharp(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
-      }
-    }
-    return 1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Lkv = paramlkv;
   }
   
-  public final void a(VcControllerImpl paramVcControllerImpl)
+  public byte[] a()
   {
-    this.a = paramVcControllerImpl;
-  }
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void a(byte[] paramArrayOfByte, long paramLong);
-  
-  public final byte b(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharpC2SACK(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
-      }
-    }
-    return 1;
+    a();
+    b();
+    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arss;
-import aryf;
+import asig;
+import asnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonPanelFavHelper$3
   implements Runnable
 {
-  public EmoticonPanelFavHelper$3(aryf paramaryf) {}
+  public EmoticonPanelFavHelper$3(asnt paramasnt) {}
   
   public void run()
   {
     QQAppInterface localQQAppInterface = this.this$0.a.a;
     if (localQQAppInterface != null)
     {
-      ((arss)localQQAppInterface.getManager(141)).a();
+      ((asig)localQQAppInterface.getManager(141)).a();
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelFavHelper", 2, "vipComicMqqManager.uploadInitComicEmoStructMsgInfo");
       }

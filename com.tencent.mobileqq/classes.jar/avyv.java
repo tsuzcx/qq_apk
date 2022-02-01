@@ -1,28 +1,39 @@
-class avyv
-  implements avyr
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+
+public final class avyv
+  implements PluginManagerUpdater
 {
-  avyv(avys paramavys) {}
+  private final File a;
   
-  public void a(int paramInt)
+  public avyv(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      avys.b(this.a);
-      return;
-    case 1: 
-      avys.c(this.a);
-      return;
-    case 2: 
-      avys.a(this.a);
-      return;
-    case 3: 
-      avys.d(this.a);
-      return;
+    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
     }
-    avys.e(this.a);
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return aoik.a(16).submit(new avyx(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return aoik.a(16).submit(new avyw(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

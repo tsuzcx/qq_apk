@@ -1,61 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-class aklr
-  extends BroadcastReceiver
+public abstract interface aklr
 {
-  private aklr(aklj paramaklj) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    int i;
-    String str1;
-    String str2;
-    int j;
-    String str3;
-    akli localakli;
-    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
-    {
-      i = paramIntent.getIntExtra("grap_hb_state", 0);
-      paramContext = paramIntent.getStringExtra("listid");
-      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
-      str2 = paramIntent.getStringExtra("grap_hb_idiom");
-      j = paramIntent.getIntExtra("grap_hb_seq", 0);
-      str3 = paramIntent.getStringExtra("grap_idiom_alpha");
-      paramIntent = paramIntent.getStringExtra("grap_poem_rule");
-      localakli = this.a.a(paramContext);
-      QLog.i("PasswdRedBagManager", 1, "grapHbState=" + i + ",passwdRedBagInfo=" + localakli);
-      if ((i != 1) && (i != 10)) {
-        break label136;
-      }
-      aklj.a(this.a, paramContext, str1, 1, true);
-    }
-    label136:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (i != 12) {
-            break;
-          }
-        } while (localakli == null);
-        aklj.a(this.a, paramContext, str1, 1, false);
-        this.a.a(paramContext, str2, str3, j, paramIntent);
-        return;
-        if (i != 0) {
-          break;
-        }
-      } while (localakli.a() != 2);
-      aklj.a(this.a, paramContext, str1, 1, true);
-      return;
-    } while ((i != 14) || (localakli == null));
-    this.a.a(paramContext, str2, str3, j, paramIntent);
-  }
+  public abstract void a(RecentBaseData paramRecentBaseData);
 }
 
 

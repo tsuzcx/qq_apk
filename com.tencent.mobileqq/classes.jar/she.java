@@ -1,105 +1,18 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class she
+  implements ovw
 {
-  private static she a;
+  public she(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  private int a(String paramString)
+  public void a(int paramInt)
   {
-    return Math.round(((Float)bmqa.a(a(paramString), Float.valueOf(0.0F))).floatValue());
-  }
-  
-  private String a(String paramString)
-  {
-    return paramString + "_watch_length";
-  }
-  
-  public static she a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new she();
-      }
-      return a;
+    if (paramInt != 2) {
+      ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
     }
-    finally {}
-  }
-  
-  private boolean a(String paramString)
-  {
-    return Aladdin.getConfig(298).getIntegerFromString(paramString, 0) == 1;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    int k = a(paramString);
-    int j = Aladdin.getConfig(298).getIntegerFromString("default_predownload_count", 4);
-    int m = Aladdin.getConfig(298).getIntegerFromString("max_predownload_count", 4);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoPreloadStrategyConoller", 2, "getForwardPredownloadCount: enable:true, prediction=" + k + ", curPosition=" + paramInt + ", maxPreloadCount = " + m + ", defaultPreloadCount=" + j);
-    }
-    int i = j;
-    if (k > paramInt)
-    {
-      i = j;
-      if (a("watch_length_predict_enable")) {
-        i = Math.min(k - paramInt, m);
-      }
-    }
-    return i;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    float f = ((Float)bmqa.a(a(paramString), Float.valueOf(0.0F))).floatValue();
-    if (f > 0.0F) {}
-    for (f = f * 0.5F + paramInt * 0.5F;; f = paramInt)
-    {
-      bmqa.a(paramString + "_watch_length", Float.valueOf(f));
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPreloadStrategyConoller", 2, "reoprt: currentPredition=" + f);
-      }
-      return;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    long l1 = sgu.a().a();
-    float f = Aladdin.getConfig(298).getFloatFromString("bitrate_weight", 2.0F);
-    int i = Aladdin.getConfig(298).getIntegerFromString("idle_bandwith_threshold", 1500);
-    long l2 = ((float)l1 - paramInt / 8 * f);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoPreloadStrategyConoller", 2, "checkPreloadEnable: bandwidth=" + l1 + ", birate=" + paramInt + ", weight=" + f + ", idleBandwidth=" + l2 + ", idleThreshold=" + i + ", enable=" + a("idle_preload_limit_enable"));
-    }
-    if ((l1 <= 50L) || (paramInt <= 0) || (!a("idle_preload_limit_enable"))) {
-      return bgnt.h(BaseApplicationImpl.getContext());
-    }
-    return l2 > i;
-  }
-  
-  public boolean a(sfb paramsfb)
-  {
-    int j = 0;
-    int i = j;
-    if (paramsfb != null)
-    {
-      i = j;
-      if (paramsfb.b() > 0L) {
-        i = paramsfb.a;
-      }
-    }
-    return a(i);
   }
 }
 

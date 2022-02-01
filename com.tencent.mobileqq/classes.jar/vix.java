@@ -1,8 +1,8 @@
+import android.graphics.drawable.Drawable;
+
 public abstract interface vix
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(Drawable paramDrawable, int paramInt);
 }
 
 

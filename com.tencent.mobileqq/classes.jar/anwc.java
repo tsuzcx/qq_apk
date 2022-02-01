@@ -1,31 +1,60 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class anwc
-  extends RecyclablePool.Recyclable
+  extends MSFServlet
 {
-  public int a;
-  public long a;
-  ConcurrentHashMap<String, Long> a;
-  long b;
-  
-  public anwc()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onReceive called");
+    }
+    if (paramIntent == null)
+    {
+      QLog.e("DataLineServlet", 1, "onReceive : req is null");
+      return;
+    }
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    ((anvu)localQQAppInterface.a(8)).a(paramIntent, paramFromServiceMsg);
   }
   
-  public void recycle()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    super.recycle();
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onSend called");
+    }
+    if (paramIntent == null) {
+      QLog.e("DataLineServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwc
  * JD-Core Version:    0.7.0.1
  */

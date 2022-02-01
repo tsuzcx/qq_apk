@@ -1,54 +1,76 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
 
-class mgk
-  implements Animator.AnimatorListener
+public class mgk
+  extends BroadcastReceiver
 {
-  mgk(mgi parammgi, int paramInt, long paramLong) {}
+  public mgk(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 4;
-    if (this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    paramContext = paramIntent.getAction();
+    long l1 = paramIntent.getLongExtra("groupId", 0L);
+    long l2 = paramIntent.getLongExtra("roomId", 0L);
+    long l3 = this.a.a.d();
+    int i;
+    int j;
+    label61:
+    String str;
+    StringBuilder localStringBuilder;
+    if (this.a.b == l1)
     {
-      i = this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      if (this.jdField_a_of_type_Mgi.jdField_a_of_type_Boolean) {
-        break label173;
+      i = 1;
+      if (l3 != l2) {
+        break label231;
       }
-      this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      j = 1;
+      if (QLog.isColorLevel())
+      {
+        str = this.a.d;
+        localStringBuilder = new StringBuilder().append("handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=");
+        if ((i == 0) || (j == 0)) {
+          break label237;
+        }
+      }
     }
-    for (;;)
+    label231:
+    label237:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
-      QLog.w(this.jdField_a_of_type_Mgi.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationEnd, isShow[" + this.jdField_a_of_type_Mgi.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "], \nlastObjectAnimator[" + this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidAnimationObjectAnimator + "], \nanimation[" + paramAnimator + "]");
-      if (this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
-        this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      QLog.d(str, 2, bool + ";current roomId=" + l3 + ";groupId=" + this.a.b);
+      if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
+        mrl.a(paramIntent);
       }
-      return;
-      label173:
-      this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      if (this.jdField_a_of_type_Mgi.jdField_a_of_type_Mgl != null) {
-        this.jdField_a_of_type_Mgi.jdField_a_of_type_Mgl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      if ((paramContext.equalsIgnoreCase("tencent.video.q2v.GvideoMemInviteUpdate")) && (i != 0) && (j != 0)) {
+        paramContext = new submsgtype0x116.MsgBody();
       }
+      try
+      {
+        paramContext.mergeFrom(paramIntent.getByteArrayExtra("pushData"));
+        this.a.a.a(paramContext.rpt_msg_member_join, paramContext.rpt_msg_member_quit, paramContext.uint32_invite_list_total_count.get(), paramContext.enum_event_type.get());
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramContext)
+      {
+        do
+        {
+          paramContext.printStackTrace();
+        } while (!QLog.isColorLevel());
+        QLog.d(this.a.d, 2, "mMemberChangeEventReceiver throw exception");
+      }
+      i = 0;
+      break;
+      j = 0;
+      break label61;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    int i = 4;
-    if (this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      i = this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      this.jdField_a_of_type_Mgi.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    }
-    QLog.w(this.jdField_a_of_type_Mgi.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationStart, height[" + this.jdField_a_of_type_Int + "], isShow[" + this.jdField_a_of_type_Mgi.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

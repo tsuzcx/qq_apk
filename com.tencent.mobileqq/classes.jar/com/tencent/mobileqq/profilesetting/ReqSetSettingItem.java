@@ -3,8 +3,8 @@ package com.tencent.mobileqq.profilesetting;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azso;
-import azsp;
+import bale;
+import balf;
 import kotlin.Metadata;
 import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
@@ -16,15 +16,15 @@ public final class ReqSetSettingItem
 {
   @JvmField
   @NotNull
-  public static final Parcelable.Creator<ReqSetSettingItem> CREATOR = (Parcelable.Creator)new azsp();
-  public static final azso a;
+  public static final Parcelable.Creator<ReqSetSettingItem> CREATOR = (Parcelable.Creator)new balf();
+  public static final bale a;
   private int a;
   private int b;
   private int c;
   
   static
   {
-    jdField_a_of_type_Azso = new azso(null);
+    jdField_a_of_type_Bale = new bale(null);
   }
   
   public ReqSetSettingItem(int paramInt1, int paramInt2, int paramInt3)

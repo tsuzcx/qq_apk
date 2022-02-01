@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.widget.ImageView;
-import apfs;
+import apti;
 import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class ARScanEntryView$4$1
   implements Runnable
 {
-  public ARScanEntryView$4$1(apfs paramapfs) {}
+  public ARScanEntryView$4$1(apti paramapti) {}
   
   public void run()
   {

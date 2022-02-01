@@ -1,19 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class axmi
-  implements View.OnClickListener
 {
-  public axmi(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(View paramView)
-  {
-    ((Activity)this.a.getContext()).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public String a;
 }
 
 

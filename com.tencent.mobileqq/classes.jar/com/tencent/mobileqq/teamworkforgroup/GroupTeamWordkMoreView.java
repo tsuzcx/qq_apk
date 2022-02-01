@@ -31,9 +31,9 @@ public class GroupTeamWordkMoreView
   public GroupTeamWordkMoreView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560596, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373734));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373735));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560611, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373853));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373854));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   

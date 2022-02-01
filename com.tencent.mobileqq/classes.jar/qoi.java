@@ -1,118 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.2;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.4;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.5;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class qoi
+  implements View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile qoi jdField_a_of_type_Qoi;
-  public final boolean a;
-  private final String jdField_b_of_type_JavaLangString = nku.a("3980") + "3980";
-  private volatile boolean jdField_b_of_type_Boolean;
-  private final String c = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_engine";
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  qwe jdField_a_of_type_Qwe;
+  TextView b;
   
-  private qoi()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  protected qoi(ComponentContentHotSearch paramComponentContentHotSearch) {}
   
-  public static qoi a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Qoi == null) {}
+    Object localObject = new Intent(this.b.getContext(), PublicAccountBrowser.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Qwe.b);
+    this.b.getContext().startActivity((Intent)localObject);
+    localObject = ozs.a(this.jdField_a_of_type_Qwe.a, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).hotWordInfo.a.indexOf(this.jdField_a_of_type_Qwe) + 1);
     try
     {
-      if (jdField_a_of_type_Qoi == null) {
-        jdField_a_of_type_Qoi = new qoi();
+      ocd.a(null, "CliOper", "", "", "0X80096DD", "0X80096DD", 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
+      ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch), (int)ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).mChannelID);
+      localObject = new ArrayList();
+      ReportInfo localReportInfo = new ReportInfo();
+      localReportInfo.mUin = ozs.a();
+      localReportInfo.mOperation = 53;
+      localReportInfo.mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID;
+      localReportInfo.mHotWord = this.jdField_a_of_type_Qwe.a;
+      ((List)localObject).add(localReportInfo);
+      pfa.a().a((List)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e(ComponentContentHotSearch.a, 1, "onClick, e = " + localException);
       }
-      return jdField_a_of_type_Qoi;
-    }
-    finally {}
-  }
-  
-  private boolean b()
-  {
-    Object localObject = this.c + "/" + "libpts.so";
-    String str = this.c + "/" + "pts_config.json";
-    boolean bool1 = bgmg.a((String)localObject);
-    boolean bool2 = qom.a(str);
-    jdField_a_of_type_JavaLangString = qom.b(str);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[checkInnerPTSEngineIsValid]").append("\n").append(", ptsEngineVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
-    QLog.i("PTSEngineLoader", 1, ((StringBuilder)localObject).toString());
-    return (bool1) && (bool2);
-  }
-  
-  private void c()
-  {
-    ThreadManager.excute(new PTSEngineLoader.3(this), 128, null, true);
-  }
-  
-  private boolean c()
-  {
-    return false;
-  }
-  
-  private void d()
-  {
-    ThreadManager.excute(new PTSEngineLoader.4(this), 64, null, false);
-  }
-  
-  private void e()
-  {
-    if (c()) {
-      return;
-    }
-    if (a())
-    {
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts engine is ready, do not load again.");
-      return;
-    }
-    if (b())
-    {
-      PTSEngineLoader.5 local5 = new PTSEngineLoader.5(this);
-      qok.a().a(local5);
-      return;
-    }
-    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], inner dir is not valid, load pts engine failed.");
-    d();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    PTSEngineLoader.1 local1 = new PTSEngineLoader.1(this);
-    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_b_of_type_Boolean = false;
-      PTSEngineLoader.2 local2 = new PTSEngineLoader.2(this);
-      ThreadManager.getFileThreadHandler().post(local2);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
     }
   }
 }

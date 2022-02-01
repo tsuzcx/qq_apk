@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class obn
-  implements Parcelable.Creator<VideoInfo>
+class obn
+  extends BroadcastReceiver
 {
-  public VideoInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo(paramParcel);
-  }
+  obn(obj paramobj) {}
   
-  public VideoInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo[paramInt];
+    if (this.a.a == 2)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

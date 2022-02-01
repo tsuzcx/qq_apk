@@ -1,12 +1,20 @@
-import java.util.List;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bfjx
+  implements QQPermissionCallback
 {
-  public String a;
-  public List<ajtt> a;
-  public boolean a;
-  public int[] a;
-  public String[] a;
+  public bfjx(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.f();
+  }
 }
 
 

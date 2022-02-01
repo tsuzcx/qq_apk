@@ -1,16 +1,6 @@
-public abstract class svw
+public abstract interface svw
 {
-  private static int a = 7;
-  
-  public static int a()
-  {
-    return a;
-  }
-  
-  public static void a(int paramInt)
-  {
-    a = paramInt;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

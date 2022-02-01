@@ -1,6 +1,12 @@
-public abstract interface bqdt
+import android.view.View;
+import android.widget.ImageView;
+
+class bqdt
 {
-  public abstract void a();
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  
+  bqdt(bqds parambqds) {}
 }
 
 

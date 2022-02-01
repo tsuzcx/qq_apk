@@ -1,29 +1,20 @@
-import android.text.Editable;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import java.util.Comparator;
+import android.widget.TextView;
+import java.util.List;
 
-public class oza
-  implements Comparator<BiuNicknameSpan>
+class oza
+  implements sxn
 {
-  private Editable jdField_a_of_type_AndroidTextEditable;
+  oza(oyz paramoyz) {}
   
-  public oza(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
+  public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
-  }
-  
-  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
-  {
-    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
-    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
-    if (i > j) {
-      return 1;
+    this.a.jdField_a_of_type_Ozb.b.setText(paramString2);
+    this.a.jdField_a_of_type_Pqc.d = paramString2;
+    this.a.jdField_a_of_type_Pqc.c = paramString1;
+    if (this.a.jdField_a_of_type_Int < oyy.a(this.a.jdField_a_of_type_Oyy).size()) {
+      oyy.a(this.a.jdField_a_of_type_Oyy, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Pqc);
     }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
+    this.a.jdField_a_of_type_Oyy.a.dismiss();
   }
 }
 

@@ -4,20 +4,20 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import bnjl;
+import bokv;
 
 public class VideoStoryAIScenePart$21
   implements Runnable
 {
-  public VideoStoryAIScenePart$21(bnjl parambnjl) {}
+  public VideoStoryAIScenePart$21(bokv parambokv) {}
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bnjl.a(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bnjl.b(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bnjl.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bokv.a(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bokv.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bokv.b(this.this$0), "translationY", new float[] { 0.0F });
     Object localObject = new int[2];
-    bnjl.a(this.this$0).getLocationInWindow((int[])localObject);
+    bokv.a(this.this$0).getLocationInWindow((int[])localObject);
     localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
     ((AnimatorSet)localObject).setDuration(300L).start();

@@ -1,58 +1,82 @@
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.ListIterator;
-import java.util.Map.Entry;
-import java.util.WeakHashMap;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelAllMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ykz
+  extends nko
 {
-  private LinkedHashMap<zop, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
-  private WeakHashMap<ImageView, zop> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  public ykz(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public int a()
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-  }
-  
-  public ListIterator<Map.Entry<zop, WeakReference<ImageView>>> a()
-  {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
-  }
-  
-  public zop a(ImageView paramImageView)
-  {
-    paramImageView = (zop)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
-    if (paramImageView != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
+    int j = -1;
+    paramBundle = new qqstory_struct.ErrorInfo();
+    qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
     }
-    return paramImageView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-  }
-  
-  public void a(ImageView paramImageView, zop paramzop)
-  {
-    zop localzop = (zop)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramzop);
-    if (localzop != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localzop);
+    for (;;)
+    {
+      int m;
+      int k;
+      try
+      {
+        localRspDelAllMessage.mergeFrom(paramArrayOfByte);
+        if (!localRspDelAllMessage.errinfo.error_code.has()) {
+          break label239;
+        }
+        i = localRspDelAllMessage.errinfo.error_code.get();
+        j = i;
+        if (j == 0) {
+          i = 1;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        m = 0;
+        k = j;
+      }
+      try
+      {
+        paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
+        paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.msgList", 2, "receive delete all msg, code=" + paramInt + " bizCode=" + j);
+        }
+        if (i == 0) {
+          QQToast.a(this.a.getApplicationContext(), 1, anzj.a(2131713315), 0).a();
+        }
+        return paramBundle;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          k = j;
+          m = i;
+        }
+      }
+      int i = 0;
+      continue;
+      j = k;
+      i = m;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
+        j = k;
+        i = m;
+        continue;
+        label239:
+        i = 0;
+      }
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramzop, new WeakReference(paramImageView));
-  }
-  
-  public void a(zop paramzop)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramzop);
-  }
-  
-  public zop b(ImageView paramImageView)
-  {
-    return (zop)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
   }
 }
 

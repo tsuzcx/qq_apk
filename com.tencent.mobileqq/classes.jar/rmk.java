@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class rmk
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  rmk(rmj paramrmj, int paramInt) {}
+  rmk(rmj paramrmj) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Rmj.a.a(this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((rmj.a(this.a) != null) && (rmj.a(this.a).getStatus() == 1) && ((rmj.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)rmj.a(this.a).getCurrDrawable();
+      rmj.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

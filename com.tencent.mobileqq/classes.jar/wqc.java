@@ -1,33 +1,130 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class wqc
-  implements wld<wzv, xbg>
+final class wqc
+  implements wrk
 {
-  wqc(wqa paramwqa) {}
+  wqc(wpz paramwpz, CommentEntry paramCommentEntry, wse paramwse, boolean paramBoolean1, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean2) {}
   
-  public void a(@NonNull wzv paramwzv, @Nullable xbg paramxbg, @NonNull ErrorMessage paramErrorMessage)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    yqp.b("WeatherDataProvider", "requestWeather Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxbg != null))
+    if (this.jdField_a_of_type_Boolean)
     {
-      yqp.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramxbg.b));
-      this.a.jdField_a_of_type_JavaLangObject = new wqd(paramxbg.b, paramxbg.a);
-      yqp.c("WeatherDataProvider", "update local weather data.");
-      paramwzv = (wpf)wpm.a(10);
-      paramwzv.b("edit_video_weather_filter_data", Integer.valueOf(paramxbg.b));
-      paramwzv.b("edit_video_weather_desc", paramxbg.a);
-      wqa.a(this.a, System.currentTimeMillis() + 14400000L);
-      paramwzv.b("edit_video_weather_expiry_time", Long.valueOf(wqa.a(this.a)));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+      wqa.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int, this.jdField_a_of_type_Wpz, false, this.b);
+      int i;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply())
+      {
+        paramInt = 2;
+        i = yup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+        if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+          break label117;
+        }
+      }
+      label117:
+      for (paramBundle = "1";; paramBundle = "2")
+      {
+        yup.a("home_page", "comment_auto", i, paramInt, new String[] { paramBundle, yup.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+        return;
+        paramInt = 1;
+        break;
+      }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 2;
+    this.jdField_a_of_type_Wse.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, "ReqAddComment errorCode " + paramInt);
+    }
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131703286), 0).a();
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 2;
+    this.jdField_a_of_type_Wse.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    if (paramInt == 10407) {
+      yup.a("play_video", "exp_limit", 0, 0, new String[] { "", "", "", "" });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, "ReqAddComment fails: " + paramInt + "|" + paramString);
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = anzj.a(2131703321);
+    }
+    QQToast.a(BaseApplication.getContext(), 1, str, 0).a();
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    paramMessageMicro = (qqstory_service.RspAddFeedComment)paramMessageMicro;
+    if (this.jdField_a_of_type_Wpz.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, paramMessageMicro)) {
       return;
-      yqp.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramwzv });
-      this.a.a(false, null);
+    }
+    this.jdField_a_of_type_Wse.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId = paramMessageMicro.comment_id.get();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    this.jdField_a_of_type_Wse.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    wqw.a().a();
+    if ((this.jdField_a_of_type_Boolean) && (!paramBoolean))
+    {
+      wrc.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      return;
+    }
+    wqa.a(this.jdField_a_of_type_Int, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+    boolean bool;
+    int i;
+    label93:
+    label100:
+    String str2;
+    String str3;
+    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status == 0))
+    {
+      bool = true;
+      this.jdField_a_of_type_Wpz.a(bool, paramBundle, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      if (!this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply()) {
+        break label202;
+      }
+      i = 2;
+      if (!paramBoolean) {
+        break label207;
+      }
+      paramBundle = "comment_suc";
+      str2 = yup.a("home_page-comment_suc-d1");
+      str3 = wrc.a().a;
+      if (!this.b) {
+        break label213;
+      }
+    }
+    label202:
+    label207:
+    label213:
+    for (int j = 12;; j = yup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    {
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = "0";
+      }
+      yup.a("home_page", paramBundle, j, i, new String[] { str1, yup.a(this.jdField_a_of_type_Int), str3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      wrc.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      return;
+      bool = false;
+      break;
+      i = 1;
+      break label93;
+      paramBundle = "comment_fail";
+      break label100;
     }
   }
 }

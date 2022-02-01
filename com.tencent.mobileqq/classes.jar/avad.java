@@ -1,260 +1,134 @@
-import android.animation.ValueAnimator;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.ViewParent;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import android.app.Activity;
+import android.content.Intent;
+import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.forward.ForwardAioAlbumOption;
+import com.tencent.mobileqq.forward.ForwardApolloActionSendOption;
+import com.tencent.mobileqq.forward.ForwardApolloGameMsgOption;
+import com.tencent.mobileqq.forward.ForwardArkBabyqReplyMsgOption;
+import com.tencent.mobileqq.forward.ForwardArkFlashChatMsgOption;
+import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
+import com.tencent.mobileqq.forward.ForwardArkMsgOption;
+import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
+import com.tencent.mobileqq.forward.ForwardCompositeOption;
+import com.tencent.mobileqq.forward.ForwardEmojiPacketSendOption;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.mobileqq.forward.ForwardGameMsgOption;
+import com.tencent.mobileqq.forward.ForwardH5HongBaoOption;
+import com.tencent.mobileqq.forward.ForwardH5PTVOption;
+import com.tencent.mobileqq.forward.ForwardHiboomMsgOption;
+import com.tencent.mobileqq.forward.ForwardHyperTextOption;
+import com.tencent.mobileqq.forward.ForwardMapOption;
+import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
+import com.tencent.mobileqq.forward.ForwardMiniAppUpdatableMsgOption;
+import com.tencent.mobileqq.forward.ForwardMixedMsgOption;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
+import com.tencent.mobileqq.forward.ForwardQFavBatchOption;
+import com.tencent.mobileqq.forward.ForwardQQStoryAccountMsgOption;
+import com.tencent.mobileqq.forward.ForwardQQStoryMsgOption;
+import com.tencent.mobileqq.forward.ForwardQZoneRichImageOption;
+import com.tencent.mobileqq.forward.ForwardQzoneArkMsgOption;
+import com.tencent.mobileqq.forward.ForwardReadInJoyOption;
+import com.tencent.mobileqq.forward.ForwardRecommendFriendOption;
+import com.tencent.mobileqq.forward.ForwardReplyMsgOption;
+import com.tencent.mobileqq.forward.ForwardRobotOption;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.forward.ForwardSelectContactOption;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
+import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import com.tencent.mobileqq.forward.ForwardShortVideoOption;
+import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
+import com.tencent.mobileqq.forward.ForwardTextOption;
+import com.tencent.mobileqq.forward.ForwardTribeShortVideoMsgOption;
+import com.tencent.mobileqq.forward.ForwardTroopStoryMsgOption;
+import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import java.lang.reflect.Constructor;
 
 public class avad
-  implements ahqy, asag
 {
-  public static int a;
-  private float a;
-  protected BaseChatPie a;
-  protected QQAppInterface a;
-  protected RichTextPanel a;
-  protected int b;
-  protected int c;
-  private int d;
+  public static SparseArray<Class<? extends auxu>> a = new SparseArray(30);
   
-  public avad(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, RichTextPanel paramRichTextPanel)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel = paramRichTextPanel;
-    jdField_a_of_type_Int = (int)(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDisplayMetrics().heightPixels * 0.6D);
-    c();
+    a.put(0, ForwardFileOption.class);
+    a.put(1, ForwardPhotoOption.class);
+    a.put(-1, ForwardTextOption.class);
+    a.put(-2, ForwardMapOption.class);
+    a.put(-3, ForwardStructingMsgOption.class);
+    a.put(17, ForwardSendHongBaoOption.class);
+    a.put(18, ForwardH5HongBaoOption.class);
+    a.put(20, ForwardRecommendFriendOption.class);
+    a.put(24, ForwardRecommendFriendOption.class);
+    a.put(42, ForwardRobotOption.class);
+    a.put(11, ForwardSdkShareOption.class);
+    a.put(15, ForwardChooseFriendOption.class);
+    a.put(2, ForwardQZoneRichImageOption.class);
+    a.put(12, ForwardAioAlbumOption.class);
+    a.put(1001, ForwardPluginShareStructMsgOption.class);
+    a.put(-4, ForwardHyperTextOption.class);
+    a.put(13, ForwardVoiceCallOption.class);
+    a.put(14, ForwardEmojiPacketSendOption.class);
+    a.put(9, ForwardMarketFaceOption.class);
+    a.put(16, ForwardSelectContactOption.class);
+    a.put(21, ForwardShortVideoOption.class);
+    a.put(22, ForwardQFavBatchOption.class);
+    a.put(10, ForwardCompositeOption.class);
+    a.put(23, ForwardShareCardOption.class);
+    a.put(25, ForwardH5PTVOption.class);
+    a.put(27, ForwardArkMsgOption.class);
+    a.put(38, ForwardArkH5StructOption.class);
+    a.put(35, ForwardArkBabyqReplyMsgOption.class);
+    a.put(33, ForwardArkFlashChatMsgOption.class);
+    a.put(26, ForwardApolloActionSendOption.class);
+    a.put(-5, ForwardMixedMsgOption.class);
+    a.put(28, ForwardQQStoryMsgOption.class);
+    a.put(29, ForwardQQStoryAccountMsgOption.class);
+    a.put(32, ForwardTroopStoryMsgOption.class);
+    a.put(34, ForwardApolloGameMsgOption.class);
+    a.put(36, ForwardTribeShortVideoMsgOption.class);
+    a.put(37, ForwardHiboomMsgOption.class);
+    a.put(39, ForwardQzoneArkMsgOption.class);
+    a.put(41, ForwardGameMsgOption.class);
+    a.put(-6, ForwardReplyMsgOption.class);
+    a.put(44, ForwardMiniAppUpdatableMsgOption.class);
+    a.put(45, ForwardReadInJoyOption.class);
   }
   
-  public void a()
+  public static auxu a(Intent paramIntent)
   {
-    if (d())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichTextPanelExtendHelper", 2, "onShow.");
-      }
-      this.c = 0;
-      c();
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setInterceptListener(this);
-      }
+    int i = paramIntent.getIntExtra("forward_type", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardOptionBuilder", 2, "ForwardOptionBuilder forwardType=" + i);
     }
-  }
-  
-  protected void a(int paramInt)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { XPanelContainer.jdField_a_of_type_Int, paramInt });
-    localValueAnimator.setDuration(150L);
-    localValueAnimator.addUpdateListener(new avaf(this, paramInt));
-    localValueAnimator.start();
-  }
-  
-  protected void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.setDuration(paramInt1);
-    localValueAnimator.addUpdateListener(new avae(this));
-    localValueAnimator.start();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (d())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichTextPanelExtendHelper", 2, "onHide. openSoftInput: " + paramBoolean + " mOriginPanelHeight: " + this.b + " mOldPanelHeight: " + this.c);
-      }
-      if (paramBoolean) {
-        break label107;
-      }
-      XPanelContainer.jdField_a_of_type_Int = this.b;
-    }
-    for (;;)
-    {
-      this.c = 0;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setInterceptListener(null);
-      }
-      return;
-      label107:
-      if (this.c != 0) {
-        XPanelContainer.jdField_a_of_type_Int = this.c;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return XPanelContainer.jdField_a_of_type_Int == this.b;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (!b()) {}
-    float f;
-    int i;
-    do
-    {
-      do
+    Class localClass = (Class)a.get(i);
+    if (localClass != null) {
+      try
       {
-        return false;
-        switch (paramMotionEvent.getAction())
-        {
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel.getParent() == null);
-      this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel.getParent().requestDisallowInterceptTouchEvent(false);
-      return false;
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.d = XPanelContainer.jdField_a_of_type_Int;
-      return false;
-      f = paramMotionEvent.getY();
-      i = (int)(f - this.jdField_a_of_type_Float + 0.5F);
-    } while ((!d()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout == null) || (Math.abs(i) <= this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight() * 0.6F));
-    this.jdField_a_of_type_Float = f;
-    return true;
-  }
-  
-  public void b()
-  {
-    if (d())
-    {
-      this.c = XPanelContainer.jdField_a_of_type_Int;
-      XPanelContainer.jdField_a_of_type_Int = this.b;
-    }
-  }
-  
-  protected boolean b()
-  {
-    return (jdField_a_of_type_Int > this.b) && (d());
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    int j = 0;
-    if (!b()) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      int i = (int)(paramMotionEvent.getY() - this.jdField_a_of_type_Float + 0.5F);
-      j = XPanelContainer.jdField_a_of_type_Int;
-      XPanelContainer.jdField_a_of_type_Int -= i;
-      if (XPanelContainer.jdField_a_of_type_Int > jdField_a_of_type_Int) {
-        XPanelContainer.jdField_a_of_type_Int = jdField_a_of_type_Int;
+        paramIntent = (auxu)localClass.getDeclaredConstructor(new Class[] { Intent.class }).newInstance(new Object[] { paramIntent });
+        return paramIntent;
       }
-      while (XPanelContainer.jdField_a_of_type_Int != j)
+      catch (Exception paramIntent)
       {
-        AbstractGifImage.pauseAll();
-        if (!(this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel.getParent() instanceof XPanelContainer)) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel.getParent().requestLayout();
-        break;
-        if (XPanelContainer.jdField_a_of_type_Int < this.b) {
-          XPanelContainer.jdField_a_of_type_Int = this.b;
-        }
+        QLog.e("ForwardOption.ForwardOptionBuilder", 1, paramIntent, new Object[0]);
+        return null;
       }
-      int k = XPanelContainer.jdField_a_of_type_Int;
-      if ((k != jdField_a_of_type_Int) && (k != this.b))
-      {
-        if (k > this.d)
-        {
-          i = jdField_a_of_type_Int;
-          label176:
-          if (Math.abs(k - this.d) > 100) {
-            j = 1;
-          }
-          if (j == 0) {
-            break label239;
-          }
-          label197:
-          if ((j == 0) || (i != this.b)) {
-            break label247;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("RichTextPanelExtendHelper", 2, "report panel close");
-          }
-        }
-        for (;;)
-        {
-          a(i);
-          break;
-          i = this.b;
-          break label176;
-          label239:
-          i = this.d;
-          break label197;
-          label247:
-          if ((j != 0) && (i == jdField_a_of_type_Int) && (QLog.isColorLevel())) {
-            QLog.i("RichTextPanelExtendHelper", 2, "report panel open");
-          }
-        }
-      }
-      AbstractGifImage.resumeAll();
     }
+    QLog.e("ForwardOption.ForwardOptionBuilder", 1, "clazz should not be null!!");
+    return null;
   }
   
-  public void c()
+  public static auxu a(Intent paramIntent, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    this.b = XPanelContainer.jdField_a_of_type_Int;
-    if (jdField_a_of_type_Int > this.b) {}
-    for (boolean bool = true;; bool = false)
+    paramIntent.putExtra("emoInputType", 2);
+    paramIntent = a(paramIntent);
+    if (paramIntent != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichTextPanelExtendHelper", 2, "onShow " + AppSetting.g() + " init panelH " + this.b + " needExtendPanel" + bool);
-      }
-      return;
+      paramIntent.a(paramQQAppInterface, paramActivity);
+      paramIntent.a();
     }
-  }
-  
-  public boolean c()
-  {
-    return XPanelContainer.jdField_a_of_type_Int == jdField_a_of_type_Int;
-  }
-  
-  boolean d()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null);
-  }
-  
-  public void m()
-  {
-    if (!b()) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (XPanelContainer.jdField_a_of_type_Int != this.b);
-      a(200, XPanelContainer.jdField_a_of_type_Int, jdField_a_of_type_Int);
-    } while (!QLog.isColorLevel());
-    QLog.d("RichTextPanelExtendHelper", 2, "onPullUp");
-  }
-  
-  public void n()
-  {
-    if (!b()) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (XPanelContainer.jdField_a_of_type_Int != jdField_a_of_type_Int);
-      a(250, XPanelContainer.jdField_a_of_type_Int, this.b);
-    } while (!QLog.isColorLevel());
-    QLog.d("RichTextPanelExtendHelper", 2, "onPullDown");
+    return paramIntent;
   }
 }
 

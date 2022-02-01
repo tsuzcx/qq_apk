@@ -1,37 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.net.BaseCgiTask;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import com.tencent.widget.RangeButtonView;
 
 public class blpa
 {
-  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
-  private String jdField_a_of_type_JavaLangString;
+  public float a;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  String jdField_a_of_type_JavaLangString;
   
-  public blpa(BaseCgiTask paramBaseCgiTask, String paramString)
+  public blpa(String paramString, float paramFloat)
   {
-    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
+    this(paramString, paramFloat, null);
+  }
+  
+  public blpa(String paramString, float paramFloat, Point paramPoint)
+  {
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
   }
   
-  public String a()
+  public float a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_Float;
   }
   
-  public JSONObject a()
+  public int a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      return localJSONObject2;
+    return (int)RangeButtonView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint, blox paramblox)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPoint == null) {
+      return;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
-    }
-    return localJSONObject1;
+    paramPaint.setTextSize(this.jdField_a_of_type_Float);
+    int i = paramPaint.getColor();
+    paramPaint.setColor(paramblox.a);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramPaint);
+    paramPaint.setColor(i);
   }
 }
 

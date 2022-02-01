@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class teg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements tfg
 {
-  public teg(ZImageView paramZImageView) {}
+  public teg(BridgeModule paramBridgeModule) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.setAlpha(i);
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 

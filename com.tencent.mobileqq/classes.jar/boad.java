@@ -1,27 +1,92 @@
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.InternalTaskEntry.1;
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import java.util.concurrent.ScheduledFuture;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
+import cooperation.weiyun.channel.pb.WeiyunPB.RspMsgBody;
 
-public class boad
+class boad<T>
+  implements boab
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
-  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
+  private static final String jdField_a_of_type_JavaLangString = anzj.a(2131699865);
+  private final int jdField_a_of_type_Int;
+  private final boae<T> jdField_a_of_type_Boae;
   
-  public String toString()
+  boad(int paramInt, boae<T> paramboae)
   {
-    boolean bool2 = false;
-    long l = this.jdField_a_of_type_Long;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable != null)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boae = paramboae;
+  }
+  
+  public void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Boae == null) {
+      return;
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      bool1 = bool2;
-      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable)) {
-        bool1 = true;
+      this.jdField_a_of_type_Boae.a(paramInt, paramString, null);
+      return;
+    }
+    try
+    {
+      paramString = (WeiyunPB.MsgBody)new WeiyunPB.MsgBody().mergeFrom(paramArrayOfByte);
+      paramString = (WeiyunPB.RspMsgBody)paramString.RspMsg_body.get();
+      if (paramString == null)
+      {
+        boce.a().w("BaseCallback", "rspMsgBody is null.");
+        paramString = jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Boae.a(1828003, paramString, null);
+        return;
       }
     }
-    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
+    catch (Throwable paramString)
+    {
+      boce.a().w("BaseCallback", "decode Rsp Body failed.", paramString);
+      paramString = jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Boae.a(1828003, paramString, null);
+      return;
+    }
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      paramString = jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Boae.a(1828001, paramString, null);
+      return;
+    case 26113: 
+      this.jdField_a_of_type_Boae.a(paramString.LibInfoListGetMsgRsp_body);
+      return;
+    case 2402: 
+      this.jdField_a_of_type_Boae.a(paramString.DiskFileBatchDownloadMsgRsp_body);
+      return;
+    case 2414: 
+      this.jdField_a_of_type_Boae.a(paramString.DiskFileDocDownloadAbsMsgRsp_body);
+      return;
+    case 2509: 
+      this.jdField_a_of_type_Boae.a(paramString.DiskDirFileBatchDeleteExMsgRsp_body);
+      return;
+    case 2803: 
+      this.jdField_a_of_type_Boae.a(paramString.DiskPicBackupRsp_body);
+      return;
+    case 2804: 
+      this.jdField_a_of_type_Boae.a(paramString.DiskAlbumStatusReportRsp_body);
+      return;
+    case 11001: 
+      this.jdField_a_of_type_Boae.a(paramString.PwdQueryMsgRsp_body);
+      return;
+    case 11005: 
+      this.jdField_a_of_type_Boae.a(paramString.PwdVerifyMsgRsp_body);
+      return;
+    case 245700: 
+      this.jdField_a_of_type_Boae.a(paramString.CrossBidProxyCopyFileToOtherBidMsgRsp_body);
+      return;
+    case 245706: 
+      this.jdField_a_of_type_Boae.a(paramString.CrossBidProxyOfflineFileGetListMsgRsp_body);
+      return;
+    case 246000: 
+      this.jdField_a_of_type_Boae.a(paramString.QqSdkFileUploadMsgRsp_body);
+      return;
+    case 246001: 
+      this.jdField_a_of_type_Boae.a(paramString.AioPicAndVideoCopyToWeiyunMsgRsp_body);
+      return;
+    }
+    this.jdField_a_of_type_Boae.a(paramString.WeiyunShareAddFromMobileQQMsgRsp_body);
   }
 }
 

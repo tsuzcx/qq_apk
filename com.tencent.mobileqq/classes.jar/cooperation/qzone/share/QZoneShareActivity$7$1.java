@@ -1,9 +1,9 @@
 package cooperation.qzone.share;
 
 import android.text.TextUtils;
-import anni;
-import bmgj;
-import bmpg;
+import anzj;
+import bnhl;
+import bnqj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -24,11 +24,11 @@ class QZoneShareActivity$7$1
   {
     if (this.jdField_a_of_type_Int > this.b)
     {
-      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131716864, 0).a();
+      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131716980, 0).a();
       return;
     }
     this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.g();
-    String str1 = bmpg.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
+    String str1 = bnqj.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
     try
     {
       l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).f);
@@ -54,7 +54,7 @@ class QZoneShareActivity$7$1
           i = 0;
           if (i != 0)
           {
-            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bmgj.class);
+            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bnhl.class);
             ((NewIntent)localObject).putExtra("reason", str1);
             ((NewIntent)localObject).putExtra("uin", l1);
             ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0));
@@ -80,7 +80,7 @@ class QZoneShareActivity$7$1
         ThreadManager.postImmediately(new QZoneShareActivity.7.1.1(this, localException, str1), null, false);
         continue;
         label378:
-        QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, anni.a(2131711105), 0).a();
+        QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, anzj.a(2131711214), 0).a();
         continue;
         int i = 1;
         continue;

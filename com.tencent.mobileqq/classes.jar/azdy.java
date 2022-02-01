@@ -1,19 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azdy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public azdy(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  public azdy(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.b();
+      continue;
+      this.a.c();
+      continue;
+      this.a.d();
+      continue;
+      this.a.doOnBackPressed();
+    }
   }
 }
 

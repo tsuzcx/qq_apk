@@ -1,27 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.widget.RelativeLayout;
 
-public class ahxh
-  extends ahxe
+class ahxh
+  extends aggl
 {
-  public String b;
+  public RelativeLayout a;
   
-  public ahxh(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null) {
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.b);
-  }
+  private ahxh(ahxf paramahxf) {}
 }
 
 

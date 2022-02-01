@@ -1,99 +1,72 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-public abstract class amlo
-  implements amlq
+final class amlo
+  extends apck
 {
-  private AppInterface mApp;
-  private final boolean mInMainProcess;
-  
-  public amlo(AppInterface paramAppInterface, boolean paramBoolean)
+  amlo(String paramString, boolean paramBoolean, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface)
   {
-    this.mApp = paramAppInterface;
-    this.mInMainProcess = paramBoolean;
+    super(paramString, paramBoolean);
   }
   
-  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
-      QLog.e("cmgame_process.CmGameStartChecker", 1, "onDownloadGameResDown startCheckParam == null");
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "startLocation onLocationFinish");
     }
-    do
+    StringBuilder localStringBuilder;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      return;
-      if (!this.mInMainProcess) {
-        break;
+      localStringBuilder = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
+      if (paramSosoLbsInfo != null) {
+        break label158;
       }
-    } while (!(this.mApp instanceof QQAppInterface));
-    ApolloGameUtil.b((QQAppInterface)this.mApp, paramStartCheckParam);
-    return;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "onDownloadGameResDown", localBundle, null);
-  }
-  
-  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
-  
-  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt) {}
-  
-  public void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
-  
-  public void onGameCheckRetry(int paramInt) {}
-  
-  public void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (paramStartCheckParam == null) {
-      QLog.e("cmgame_process.CmGameStartChecker", 1, "onGameCheckStart startCheckParam == null");
+      bool = true;
     }
-    do
+    for (;;)
     {
-      return;
-      if (!this.mInMainProcess) {
-        break;
-      }
-    } while (!(this.mApp instanceof QQAppInterface));
-    ApolloGameUtil.a((QQAppInterface)this.mApp, paramStartCheckParam);
-    return;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "onGameCheckStart", localBundle, null);
-  }
-  
-  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
-  
-  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
-  
-  public void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString)
-  {
-    if (paramStartCheckParam == null) {
-      QLog.e("cmgame_process.CmGameStartChecker", 1, "onSsoCmdRuleRsp startCheckParam == null");
-    }
-    Object localObject;
-    do
-    {
-      return;
-      if (this.mInMainProcess)
+      QLog.d("weatherManager", 2, bool);
+      int i = j;
+      if (paramInt == 0)
       {
-        localObject = new Bundle();
-        ((Bundle)localObject).putSerializable("StartCheckParam", paramStartCheckParam);
-        ((Bundle)localObject).putString("rule", paramString);
-        paramStartCheckParam.mSSORule = paramString;
-        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_set_sso_rule", (Bundle)localObject, null);
-        return;
+        i = j;
+        if (paramSosoLbsInfo != null)
+        {
+          i = j;
+          if (paramSosoLbsInfo.a == null) {}
+        }
       }
-      localObject = ampj.a();
-    } while (localObject == null);
-    ((amrt)localObject).a(paramStartCheckParam.gameId, paramString);
+      try
+      {
+        i = Integer.parseInt(paramSosoLbsInfo.a.f);
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 2, "LocalInfo" + i);
+        }
+        this.jdField_a_of_type_MqqAppNewIntent.putExtra("adcode", i);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+        return;
+        label158:
+        bool = false;
+      }
+      catch (Throwable paramSosoLbsInfo)
+      {
+        for (;;)
+        {
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("weatherManager", 2, paramSosoLbsInfo, new Object[0]);
+            i = j;
+          }
+        }
+      }
+    }
   }
-  
-  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams) {}
 }
 
 

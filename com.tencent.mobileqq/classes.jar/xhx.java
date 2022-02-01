@@ -1,24 +1,11 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-final class xhx
-  extends SimpleJob<Object>
+public class xhx
+  extends xhu
 {
-  xhx(String paramString)
-  {
-    super(paramString);
-  }
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = xht.a();
-    if (paramJobContext != null) {
-      xht.b(paramJobContext);
-    }
-    return null;
-  }
+  public String a;
+  public boolean a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

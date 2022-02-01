@@ -1,64 +1,38 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
-import com.tencent.mobileqq.persistence.OGAbstractDao;
+import android.util.Log;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class aywb
-  extends OGAbstractDao
+  extends aywe
 {
-  public aywb()
-  {
-    this.columnLen = 2;
-  }
+  public aywb(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForArkApp paramMessageForArkApp) {}
   
-  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  public boolean onClick(View paramView)
   {
-    paramEntity = (TroopRemindSettingData)paramEntity;
-    if (paramNoColumnErrorHandler == null)
+    int i = 0;
+    ayxc.b(this.jdField_a_of_type_Int + 1, ayvz.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "1");
+    paramView = ayxi.a(ayxi.a(ayvz.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "fromid", String.valueOf(60013)), "startsrc", String.valueOf(60013));
+    try
     {
-      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramEntity.isOpenState = paramCursor.getInt(paramCursor.getColumnIndex("isOpenState"));
-      return paramEntity;
+      int j = Integer.parseInt(ayxi.a(paramView, "roomid"));
+      i = j;
     }
-    int i = paramCursor.getColumnIndex("troopUin");
-    if (i == -1) {
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
-    }
-    for (;;)
+    catch (Exception localException)
     {
-      i = paramCursor.getColumnIndex("isOpenState");
-      if (i != -1) {
-        break;
+      for (;;)
+      {
+        QLog.e("MessageReceivingAdapter", 4, localException, new Object[0]);
       }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isOpenState", Integer.TYPE));
-      return paramEntity;
-      paramEntity.troopUin = paramCursor.getString(i);
     }
-    paramEntity.isOpenState = paramCursor.getInt(i);
-    return paramEntity;
-  }
-  
-  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
-  {
-    paramEntity = (TroopRemindSettingData)paramEntity;
-    paramContentValues.put("troopUin", paramEntity.troopUin);
-    paramContentValues.put("isOpenState", Integer.valueOf(paramEntity.isOpenState));
-  }
-  
-  public String getCreateTableSql(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,isOpenState INTEGER)");
-    return localStringBuilder.toString();
+    Log.i("MessageReceivingAdapter", "jumpUrl = " + paramView);
+    return ayxg.a(MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter), paramView, i, 60012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aywb
  * JD-Core Version:    0.7.0.1
  */

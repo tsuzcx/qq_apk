@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class algq
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public algq(LoginView paramLoginView) {}
+  public algq(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    try
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
     {
-      paramDialogInterface.dismiss();
-      return;
+      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
+      akyd.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
     }
-    catch (Exception paramDialogInterface) {}
   }
 }
 

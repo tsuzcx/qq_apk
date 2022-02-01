@@ -1,149 +1,109 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
+import com.tencent.mobileqq.statistics.Reporting;
 
 public class azod
-  extends azkq<View>
+  extends OGAbstractDao
 {
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new azoe(this);
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public azod(azlw paramazlw, azfe paramazfe)
+  public azod()
   {
-    super(paramazlw, paramazfe);
+    this.columnLen = 6;
   }
   
-  private void a()
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    if (this.jdField_a_of_type_JavaLangObject != null)
+    paramEntity = (Reporting)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131561381, (ViewGroup)this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_AndroidViewView = ((View)this.jdField_a_of_type_JavaLangObject).findViewById(2131370670);
+      paramEntity.mTag = paramCursor.getString(paramCursor.getColumnIndex("mTag"));
+      paramEntity.mDetail = paramCursor.getString(paramCursor.getColumnIndex("mDetail"));
+      paramEntity.mCount = paramCursor.getInt(paramCursor.getColumnIndex("mCount"));
+      paramEntity.mLockedCount = paramCursor.getInt(paramCursor.getColumnIndex("mLockedCount"));
+      paramEntity.mSeqKey = paramCursor.getInt(paramCursor.getColumnIndex("mSeqKey"));
+      paramEntity.mDetailHashCode = paramCursor.getInt(paramCursor.getColumnIndex("mDetailHashCode"));
+      return paramEntity;
     }
-  }
-  
-  private void a(Message paramMessage)
-  {
-    try
+    int i = paramCursor.getColumnIndex("mTag");
+    if (i == -1)
     {
-      if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getWidth() <= 0) || (this.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
-        break label254;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mTag", String.class));
+      i = paramCursor.getColumnIndex("mDetail");
+      if (i != -1) {
+        break label345;
       }
-      ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView, 2, ((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard);
-      bool1 = false;
-    }
-    catch (Exception paramMessage)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (paramMessage.arg1 < 2)
-          {
-            Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-            localMessage.what = paramMessage.what;
-            paramMessage.arg1 += 1;
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
-            bool2 = bool1;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ProfileMediaWallComponent", 2, String.format("checkMedalGuide needResendMsg=%s", new Object[] { Boolean.valueOf(bool2) }));
-            if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard != null)
-            {
-              paramMessage = ((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard;
-              QLog.d("ProfileMediaWallComponent", 2, String.format("checkMedalGuide medalSwitchDisable=%s iMedalCount=%s iNewCount=%s iUpgradeCount=%s", new Object[] { Boolean.valueOf(paramMessage.medalSwitchDisable), Integer.valueOf(paramMessage.iMedalCount), Integer.valueOf(paramMessage.iNewCount), Integer.valueOf(paramMessage.iUpgradeCount) }));
-            }
-          }
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          boolean bool2;
-          continue;
-        }
-        paramMessage = paramMessage;
-        boolean bool1 = true;
-        QLog.e("ProfileMediaWallComponent", 1, "checkMedalGuide fail.", paramMessage);
-        bool2 = bool1;
-        continue;
-        label254:
-        bool1 = true;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mDetail", String.class));
+      label188:
+      i = paramCursor.getColumnIndex("mCount");
+      if (i != -1) {
+        break label360;
       }
-    }
-    bool2 = bool1;
-    if (bool1) {
-      bool2 = bool1;
-    }
-  }
-  
-  public int a()
-  {
-    return 1025;
-  }
-  
-  public String a()
-  {
-    return "ProfileMediaWallComponent";
-  }
-  
-  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    a();
-    if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Boolean = true;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mCount", Integer.TYPE));
+      label223:
+      i = paramCursor.getColumnIndex("mLockedCount");
+      if (i != -1) {
+        break label375;
       }
-      return;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mLockedCount", Integer.TYPE));
+      label258:
+      i = paramCursor.getColumnIndex("mSeqKey");
+      if (i != -1) {
+        break label390;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mSeqKey", Integer.TYPE));
     }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Boolean)
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 2000L);
+      i = paramCursor.getColumnIndex("mDetailHashCode");
+      if (i != -1) {
+        break label405;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mDetailHashCode", Integer.TYPE));
+      return paramEntity;
+      paramEntity.mTag = paramCursor.getString(i);
+      break;
+      label345:
+      paramEntity.mDetail = paramCursor.getString(i);
+      break label188;
+      label360:
+      paramEntity.mCount = paramCursor.getInt(i);
+      break label223;
+      label375:
+      paramEntity.mLockedCount = paramCursor.getInt(i);
+      break label258;
+      label390:
+      paramEntity.mSeqKey = paramCursor.getInt(i);
     }
+    label405:
+    paramEntity.mDetailHashCode = paramCursor.getInt(i);
+    return paramEntity;
   }
   
-  public void d()
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    super.d();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+    paramEntity = (Reporting)paramEntity;
+    paramContentValues.put("mTag", paramEntity.mTag);
+    paramContentValues.put("mDetail", paramEntity.mDetail);
+    paramContentValues.put("mCount", Integer.valueOf(paramEntity.mCount));
+    paramContentValues.put("mLockedCount", Integer.valueOf(paramEntity.mLockedCount));
+    paramContentValues.put("mSeqKey", Integer.valueOf(paramEntity.mSeqKey));
+    paramContentValues.put("mDetailHashCode", Integer.valueOf(paramEntity.mDetailHashCode));
   }
   
-  public void f()
+  public String getCreateTableSql(String paramString)
   {
-    MedalGuideView.a();
-    super.f();
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,mTag TEXT ,mDetail TEXT ,mCount INTEGER ,mLockedCount INTEGER ,mSeqKey INTEGER ,mDetailHashCode INTEGER,UNIQUE(mTag, mDetail) ON CONFLICT IGNORE)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azod
  * JD-Core Version:    0.7.0.1
  */

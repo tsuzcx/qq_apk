@@ -1,21 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-class blnt
-  extends anry
+public abstract interface blnt
 {
-  blnt(blns paramblns, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  public abstract void a(int paramInt, View paramView, ListView paramListView);
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
-  }
+  public abstract boolean a(int paramInt, View paramView, ListView paramListView);
+  
+  public abstract void b(int paramInt, View paramView, ListView paramListView);
+  
+  public abstract void c(int paramInt, View paramView, ListView paramListView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blnt
  * JD-Core Version:    0.7.0.1
  */

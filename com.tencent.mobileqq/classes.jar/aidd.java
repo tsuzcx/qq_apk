@@ -1,88 +1,117 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.LongTextDownloadCallback.1;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.LongTextDownloadCallback.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOLightVideoData;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.GestureSelectGridView;
 
-public class aidd
-  implements ayxc
+class aidd
+  implements bljm
 {
-  WeakReference<aicv> a;
+  aidd(aicy paramaicy) {}
   
-  public aidd(aicv paramaicv)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramaicv);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(ayxd paramayxd)
-  {
-    if (this.a == null) {}
-    label409:
+    boolean bool = true;
+    Object localObject1 = this.a.a.a(paramInt);
+    if (!aidw.class.isInstance(localObject1)) {}
+    label646:
     for (;;)
     {
       return;
-      aicv localaicv = (aicv)this.a.get();
-      if ((localaicv != null) && (localaicv.b != null))
-      {
-        aicv.a(localaicv).removeCallbacks(localaicv.b);
-        localaicv.b = null;
+      localObject1 = (aidw)localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + aicy.a(this.a).getFirstVisiblePosition() + " LastVisiblePosition " + aicy.b(this.a).getLastVisiblePosition());
       }
-      if ((paramayxd.jdField_a_of_type_Int == 0) && (paramayxd.jdField_a_of_type_ArrayOfByte != null))
+      Object localObject2;
+      int i;
+      if (aicy.a(this.a))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload success");
-        }
-        if (localaicv == null) {
-          continue;
-        }
-        Object localObject1 = new HashMap();
-        Object localObject2 = localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaicv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localaicv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localaicv.e);
-        localObject2 = localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramayxd.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, (MessageRecord)localObject2, null);
-        if ((localObject2 != null) && (((ArrayList)localObject2).size() == 1))
+        localObject2 = ((aidw)localObject1).a;
+        if (AIOFilePicData.class.isInstance(localObject2))
         {
-          if (((MessageRecord)((ArrayList)localObject2).get(0)).msgtype == -1035) {
-            ((awmg)localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(false, localaicv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+          if ((((AIOFilePicData)localObject2).a(20) == null) && (((AIOFilePicData)localObject2).a(18) == null) && (((AIOFilePicData)localObject2).a(16) == null))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AIOImageListScene", 2, "AIOFilePicData has null path,onItemClick: " + paramInt);
           }
-          awwm.a().a((HashMap)localObject1, localaicv.e, localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localObject1 = new ArrayList();
-          ((List)localObject1).add((ChatMessage)((ArrayList)localObject2).get(0));
-          localaicv.b((List)localObject1);
-          localObject1 = ChatActivityUtils.a(aicv.a(localaicv), localaicv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localObject1 = ChatActivityUtils.a(localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), localaicv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject1, -1L);
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - aicv.a(localaicv)));
+        }
+        else if (AIOLightVideoData.class.isInstance(((aidw)localObject1).a))
+        {
+          QQToast.a(aicy.l(this.a), anzj.a(2131699003), 0).a();
+          return;
+        }
+        i = this.a.a();
+        if (i == 1)
+        {
+          if (AIOShortVideoData.class.isInstance(localObject2)) {
+            QQToast.a(aicy.m(this.a), anzj.a(2131699010), 0).a();
           }
-          localaicv.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new MultiForwardChatPie.LongTextDownloadCallback.1(this, localaicv, (CharSequence)localObject1));
+        }
+        else if (i == 2)
+        {
+          if (AIOImageData.class.isInstance(localObject2)) {
+            QQToast.a(aicy.n(this.a), anzj.a(2131699008), 0).a();
+          }
+        }
+        else {
+          if ((i == 0) && (!AIOImageData.class.isInstance(localObject2))) {
+            break label481;
+          }
+        }
+        if (((aidw)localObject1).b() == 1)
+        {
+          i = 1;
+          label343:
+          localObject2 = this.a;
+          if (i != 0) {
+            break label510;
+          }
+          label354:
+          ((aicy)localObject2).a((aidw)localObject1, bool, false);
+          if (!this.a.a(paramView, (abkf)localObject1)) {
+            ((AbstractImageAdapter)paramAdapterView.getAdapter()).notifyDataSetChanged();
+          }
+          this.a.w();
         }
       }
       for (;;)
       {
-        if ((localaicv == null) || (localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break label409;
+        if (!QLog.isColorLevel()) {
+          break label646;
         }
-        ((awwg)localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(localaicv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaicv.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramayxd.jdField_a_of_type_Int, 2);
+        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + aicy.e(this.a).getFirstVisiblePosition() + " LastVisiblePosition " + aicy.f(this.a).getLastVisiblePosition() + " SelectedIndex = " + this.a.a.b());
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload failed");
-        }
-        if (localaicv == null) {
+        label481:
+        if ((AIOFilePicData.class.isInstance(localObject2)) || (!AIOShortVideoData.class.isInstance(localObject2))) {
           break;
         }
-        localaicv.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new MultiForwardChatPie.LongTextDownloadCallback.2(this, localaicv));
+        break;
+        i = 0;
+        break label343;
+        label510:
+        bool = false;
+        break label354;
+        if (AIOLightVideoData.class.isInstance(((aidw)localObject1).a))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOImageListScene", 2, "lightvideo could not be opened");
+          }
+          QQToast.a(aicy.o(this.a), anzj.a(2131699013), 0).a();
+          return;
+        }
+        if (AIOShortVideoData.class.isInstance(((aidw)localObject1).a)) {}
+        this.a.a.e(paramInt);
+        this.a.a.b(aicy.c(this.a).getFirstVisiblePosition());
+        this.a.a.c(aicy.d(this.a).getLastVisiblePosition());
+        this.a.t();
+        this.a.a("Multi_Pic_big", 1);
       }
     }
   }

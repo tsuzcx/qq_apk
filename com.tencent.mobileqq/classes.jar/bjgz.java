@@ -1,38 +1,18 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
 public class bjgz
+  implements DialogInterface.OnCancelListener
 {
-  int jdField_a_of_type_Int = 0;
-  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int b = 0;
+  public bjgz(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public bjgz(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MessageMicro<?> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    ShareActionSheetV2.b(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
+    }
   }
 }
 

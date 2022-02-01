@@ -1,23 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class avth
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avth(ListenTogetherManager paramListenTogetherManager) {}
+  public avth(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramIntent == null) {}
-    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
-      return;
-    }
-    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
-    ListenTogetherManager.c(this.a);
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.requestLayout();
   }
 }
 

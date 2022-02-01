@@ -1,437 +1,105 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.Process;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.pool.RecyclablePool;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.msf.service.protocol.pb.SubMsgType0x51.MsgBody;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Set;
-import mqq.app.Foreground;
-import mqq.app.Foreground.AppLifeCycleCallback;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bcte
-  implements Handler.Callback, Foreground.AppLifeCycleCallback
+  implements bctr
 {
-  private static bcte jdField_a_of_type_Bcte;
-  private int jdField_a_of_type_Int = 0;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("scene_tracker" + BaseApplicationImpl.sProcessId, 0);
-  public Handler a;
-  private anpr jdField_a_of_type_Anpr = new anpr();
-  private RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(bctf.class, 5);
-  private LinkedHashMap<String, bctf> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(4);
-  private LinkedList<bctf> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet(10);
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  
-  private bcte()
+  private void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
   {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_rand_time", 0L);
-    if (Math.abs(System.currentTimeMillis() - l) < 86400000L) {
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("rand_rs", false))
-      {
-        this.jdField_a_of_type_Int = i;
-        this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("rpt_nest_count", 0);
-        this.c = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("rpt_nnest_count", 0);
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
-        Foreground.registerLifeCycleCallback(this);
-        if (Foreground.sCountResume <= 0) {
-          break label308;
-        }
+    byte[] arrayOfByte = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv msg0x210.Submsgtype0x51");
+    }
+    if (paramMsgType0x210.sub_msg_type.get() != 81) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush submsgtype != 0x51");
       }
     }
-    label303:
-    label308:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      return;
-      i = 1;
-      break;
-      if (Math.random() < 0.0005000000237487257D)
-      {
-        bool1 = true;
-        label238:
-        if (!bool1) {
-          break label303;
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("last_rand_time", System.currentTimeMillis()).putBoolean("rand_rs", bool1).putInt("rpt_nest_count", 0).putInt("rpt_nnest_count", 0).apply();
-        break;
-        bool1 = false;
-        break label238;
-        i = 1;
-      }
-    }
-  }
-  
-  public static bcte a()
-  {
-    if (jdField_a_of_type_Bcte == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bcte == null) {
-        jdField_a_of_type_Bcte = new bcte();
-      }
-      return jdField_a_of_type_Bcte;
-    }
-    finally {}
-  }
-  
-  private void a(bctf parambctf)
-  {
-    if ((parambctf.jdField_a_of_type_Int > 0) && (Math.random() < 0.1500000059604645D)) {
-      if (parambctf.jdField_c_of_type_JavaLangString == null)
-      {
-        if (this.c >= 20) {
-          break label704;
-        }
-        this.c += 1;
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("rpt_nnest_count", this.c);
-      }
-    }
-    label704:
-    for (int i = 1;; i = 0) {
-      for (;;)
-      {
-        if (i != 0)
-        {
-          HashMap localHashMap = new HashMap(30);
-          localHashMap.put("stage", parambctf.jdField_a_of_type_JavaLangString);
-          localHashMap.put("nestStage", parambctf.jdField_c_of_type_JavaLangString);
-          localHashMap.put("fromStage", parambctf.jdField_b_of_type_JavaLangString);
-          localHashMap.put("model", Build.MODEL);
-          localHashMap.put("sdk_int", String.valueOf(Build.VERSION.SDK_INT));
-          localHashMap.put("HeapMax", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-          localHashMap.put("startPss", String.valueOf(parambctf.g / 1024L));
-          localHashMap.put("startHeap", String.valueOf(parambctf.jdField_a_of_type_Long / 1024L));
-          localHashMap.put("startCache", String.valueOf(parambctf.jdField_c_of_type_Long / 1024L));
-          localHashMap.put("startNativePss", String.valueOf(parambctf.h / 1024L));
-          if (parambctf.jdField_a_of_type_Int > 0)
-          {
-            localHashMap.put("avgPss", String.valueOf(parambctf.k / parambctf.jdField_a_of_type_Int / 1024L));
-            localHashMap.put("avgHeap", String.valueOf(parambctf.m / parambctf.jdField_a_of_type_Int / 1024L));
-            localHashMap.put("avgNativePss", String.valueOf(parambctf.l / parambctf.jdField_a_of_type_Int / 1024L));
-          }
-          localHashMap.put("maxPss", String.valueOf(parambctf.n / 1024L));
-          localHashMap.put("maxNativePss", String.valueOf(parambctf.o / 1024L));
-          localHashMap.put("maxHeap", String.valueOf(parambctf.p / 1024L));
-          localHashMap.put("endPss", String.valueOf(parambctf.i / 1024L));
-          localHashMap.put("endNativePss", String.valueOf(parambctf.j / 1024L));
-          localHashMap.put("endHeap", String.valueOf(parambctf.d / 1024L));
-          localHashMap.put("endCache", String.valueOf(parambctf.f / 1024L));
-          if (parambctf.jdField_a_of_type_Boolean)
-          {
-            ??? = "0";
-            localHashMap.put("firstTrack", ???);
-            localHashMap.put("processId", String.valueOf(BaseApplicationImpl.sProcessId));
-            bctj.a(BaseApplicationImpl.getContext()).a("", "actSceneMem", true, 0L, 0L, localHashMap, "");
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("SceneTracker", 2, new Object[] { parambctf.jdField_a_of_type_JavaLangString, "alloc:", Long.valueOf(parambctf.jdField_a_of_type_Long), "->", Long.valueOf(parambctf.d), "; free:", Long.valueOf(parambctf.jdField_b_of_type_Long), "->", Long.valueOf(parambctf.e) });
-        }
-        synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-        {
-          if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(parambctf)) {
-            this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(parambctf);
-          }
-          return;
-          if (this.b < 20)
-          {
-            this.b += 1;
-            this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("rpt_nest_count", this.b);
-            i = 1;
-            continue;
-            ??? = "1";
-          }
-        }
-      }
-    }
-  }
-  
-  private boolean a(anpr paramanpr, long paramLong1, long paramLong2, bctf parambctf)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        bctf localbctf = (bctf)localIterator.next();
-        if (localbctf != parambctf)
-        {
-          localbctf.m += paramLong1;
-          localbctf.l = paramanpr.jdField_b_of_type_Long;
-          localbctf.k += paramanpr.jdField_a_of_type_Long;
-          localbctf.n = Math.max(paramanpr.jdField_a_of_type_Long, localbctf.n);
-          localbctf.jdField_a_of_type_Int += 1;
-          localbctf.o = Math.max(paramanpr.jdField_b_of_type_Long, localbctf.o);
-          localbctf.p = Math.max(paramLong1, localbctf.p);
-        }
-      }
-    }
-    if ((this.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0) && (this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public String a()
-  {
-    ??? = null;
-    try
-    {
-      localStringBuilder = new StringBuilder();
-      try
-      {
-        for (;;)
-        {
-          synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-          {
-            int i = this.jdField_a_of_type_JavaUtilLinkedList.size() - 1;
-            if (i >= 0)
-            {
-              bctf localbctf = (bctf)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
-              long l1;
-              if (localbctf.d == 0L)
-              {
-                l1 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-                if (localbctf.e == 0L)
-                {
-                  l2 = Runtime.getRuntime().freeMemory();
-                  localStringBuilder.append(localbctf.jdField_a_of_type_JavaLangString).append("(From ").append(localbctf.jdField_b_of_type_JavaLangString).append(")").append(":Alloc ").append(localbctf.jdField_a_of_type_Long).append("->").append(l1).append(";Free ").append(localbctf.jdField_b_of_type_Long).append("->").append(l2).append("|");
-                  i -= 1;
-                }
-              }
-              else
-              {
-                l1 = localbctf.d;
-                continue;
-              }
-              long l2 = localbctf.e;
-            }
-            else
-            {
-              if (localStringBuilder != null) {
-                break;
-              }
-              return "Exception";
-            }
-          }
-        }
-      }
-      catch (Exception localException3) {}
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        Exception localException2 = localException3;
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, false);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Int == 0) {
-      return;
-    }
-    bctf localbctf2 = (bctf)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(bctf.class);
-    localbctf2.jdField_a_of_type_JavaLangString = paramString;
-    if (!this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbctf2.jdField_a_of_type_Boolean = bool;
-      if (localbctf2.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0)
-        {
-          bctf localbctf1 = null;
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
-          while (localIterator.hasNext()) {
-            localbctf1 = (bctf)localIterator.next();
-          }
-          localbctf2.jdField_b_of_type_JavaLangString = localbctf1.jdField_a_of_type_JavaLangString;
-          if (localbctf1.jdField_c_of_type_JavaLangString == null) {
-            localbctf1.jdField_c_of_type_JavaLangString = localbctf2.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, localbctf2);
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 8)
-        {
-          paramString = (bctf)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-          if ((!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsValue(paramString)) && (!paramString.jdField_b_of_type_Boolean)) {
-            this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(paramString);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localbctf2);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          localbctf2.jdField_a_of_type_Long = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
-          localbctf2.jdField_b_of_type_Long = Runtime.getRuntime().freeMemory();
-          return;
-        }
-      }
-      if (this.jdField_a_of_type_Int != 2) {
-        break;
-      }
-      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-      paramString.obj = localbctf2;
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 1000L);
-        return;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageAtFrontOfQueue(paramString);
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_Int == 0) {}
     do
     {
+      do
+      {
+        return;
+        if (paramMsgType0x210.msg_content != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
       return;
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        paramString = (bctf)this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
-        if (paramString == null) {
-          return;
-        }
+      paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+      if (paramMsgType0x210 != null) {
+        break;
       }
-      paramString.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramString.d = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
-        paramString.e = Runtime.getRuntime().freeMemory();
-        if (QLog.isColorLevel()) {
-          QLog.d("SceneTracker", 2, new Object[] { paramString.jdField_a_of_type_JavaLangString, "alloc:", Long.valueOf(paramString.jdField_a_of_type_Long), "->", Long.valueOf(paramString.d), "; free:", Long.valueOf(paramString.jdField_b_of_type_Long), "->", Long.valueOf(paramString.e) });
-        }
-        for (;;)
-        {
-          synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-          {
-            if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramString))
-            {
-              this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(paramString);
-              return;
-            }
-          }
-          paramString.jdField_b_of_type_Boolean = false;
-        }
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    ??? = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)???).obj = paramString;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)???, 2000L);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    long l1 = 0L;
-    long l2 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-    long l3 = Runtime.getRuntime().freeMemory();
-    MemoryManager.a(Process.myPid(), this.jdField_a_of_type_Anpr);
-    if (paramMessage.what == 0)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      paramMessage = (bctf)paramMessage.obj;
-      paramMessage.jdField_a_of_type_Long = l2;
-      paramMessage.jdField_b_of_type_Long = l3;
-      paramMessage.h = this.jdField_a_of_type_Anpr.jdField_b_of_type_Long;
-      if (BaseApplicationImpl.sImageCache != null)
-      {
-        l1 = BaseApplicationImpl.sImageCache.size();
-        paramMessage.jdField_c_of_type_Long = l1;
-        paramMessage.g = this.jdField_a_of_type_Anpr.jdField_a_of_type_Long;
-        if (a(this.jdField_a_of_type_Anpr, l2, l3, paramMessage)) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
-        }
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
+    return;
+    new SubMsgType0x51.MsgBody();
     for (;;)
     {
-      return false;
-      l1 = 0L;
-      break;
-      if (paramMessage.what == 1)
+      try
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        paramMessage = (bctf)paramMessage.obj;
-        paramMessage.d = l2;
-        paramMessage.e = l3;
-        paramMessage.j = this.jdField_a_of_type_Anpr.jdField_b_of_type_Long;
-        if (BaseApplicationImpl.sImageCache != null) {
-          l1 = BaseApplicationImpl.sImageCache.size();
+        SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
+        localMsgBody.mergeFrom(paramMsgType0x210);
+        if (!localMsgBody.bytes_qrsig_url.has()) {
+          break label335;
         }
-        paramMessage.f = l1;
-        paramMessage.i = this.jdField_a_of_type_Anpr.jdField_a_of_type_Long;
-        if (a(this.jdField_a_of_type_Anpr, l2, l3, null)) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
+        if (!localMsgBody.bytes_hint1.has()) {
+          break label330;
         }
-        a(paramMessage);
+        paramMsg = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
+        if (!localMsgBody.bytes_hint2.has()) {
+          break label324;
+        }
+        str = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
+        if (localMsgBody.bytes_login_conf.has()) {
+          arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
+        }
+        asvf.a().a(paramMessageHandler.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
+        return;
       }
-      else if (a(this.jdField_a_of_type_Anpr, l2, l3, null))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+      catch (Exception paramMsgType0x210) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
+      QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
+      return;
+      label324:
+      String str = null;
+      continue;
+      label330:
+      paramMsg = null;
+      continue;
+      label335:
+      paramMsgType0x210 = null;
     }
   }
   
-  public void onActivityCreated(Activity paramActivity)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    a(paramActivity.getClass().getSimpleName());
-  }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    b(paramActivity.getClass().getSimpleName());
-  }
-  
-  public void onRunningBackground()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onRunningForeground()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
+    }
+    a(paramMsgType0x210, paramMsg, paramMessageHandler);
+    bcrw.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcte
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
 public class xvh
-  extends xmr
+  implements xve
 {
-  public xvh(xvg paramxvg) {}
+  public xvh(MediaPlayer paramMediaPlayer) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(xvc paramxvc)
   {
-    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
-      this.a.b().finish();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Xva.b() < 2000000L) && (!this.a.jdField_a_of_type_Xva.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Xvi.sendMessage(this.a.jdField_a_of_type_Xvi.obtainMessage(200, 701, 0));
     }
   }
 }

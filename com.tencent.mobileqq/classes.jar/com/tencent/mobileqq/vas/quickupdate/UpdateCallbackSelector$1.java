@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.vas.quickupdate;
 
-import bhbw;
-import bhbz;
-import bhca;
-import bhcb;
-import bhcc;
-import bhcd;
-import bhce;
-import bhch;
+import bici;
+import bicl;
+import bicm;
+import bicn;
+import bico;
+import bicp;
+import bicq;
+import bict;
 import java.util.HashMap;
 
 public final class UpdateCallbackSelector$1
-  extends HashMap<Long, bhbw>
+  extends HashMap<Long, bici>
 {
   public UpdateCallbackSelector$1()
   {
-    bhbw[] arrayOfbhbw = new bhbw[7];
-    arrayOfbhbw[0] = bhce.a;
-    arrayOfbhbw[1] = bhcd.a;
-    arrayOfbhbw[2] = bhcb.a;
-    arrayOfbhbw[3] = bhbz.a;
-    arrayOfbhbw[4] = bhca.a;
-    arrayOfbhbw[5] = bhcc.a;
-    arrayOfbhbw[6] = bhch.a;
-    int j = arrayOfbhbw.length;
+    bici[] arrayOfbici = new bici[7];
+    arrayOfbici[0] = bicq.a;
+    arrayOfbici[1] = bicp.a;
+    arrayOfbici[2] = bicn.a;
+    arrayOfbici[3] = bicl.a;
+    arrayOfbici[4] = bicm.a;
+    arrayOfbici[5] = bico.a;
+    arrayOfbici[6] = bict.a;
+    int j = arrayOfbici.length;
     while (i < j)
     {
-      bhbw localbhbw = arrayOfbhbw[i];
-      put(Long.valueOf(localbhbw.getBID()), localbhbw);
+      bici localbici = arrayOfbici[i];
+      put(Long.valueOf(localbici.getBID()), localbici);
       i += 1;
     }
   }

@@ -1,49 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
 
-public class aiyl
-  extends aiyi
-  implements View.OnClickListener
+class aiyl
+  implements View.OnTouchListener
 {
-  public aiyl(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
-  {
-    super(paramContext, paramQQAppInterface, paramajae, paramajax);
-  }
+  aiyl(aiyk paramaiyk) {}
   
-  public View a(int paramInt, View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    View localView;
-    if (paramView != null)
-    {
-      localView = paramView;
-      if ((paramView.getTag() instanceof aiym)) {}
+    if (aiyk.a(this.a).a() != null) {
+      aiyk.a(this.a).a().a(paramMotionEvent);
     }
-    else
-    {
-      localView = LayoutInflater.from(this.a).inflate(2131561566, null);
-    }
-    localView.setOnClickListener(this);
-    localView.setTag(new aiym());
-    return localView;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
-    }
-    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
-    localIntent.putExtra("kSrouce", 15);
-    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return true;
   }
 }
 

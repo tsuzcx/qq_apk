@@ -1,24 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import java.util.ArrayList;
 
 public class aswi
-  extends Handler
+  extends asxh
 {
-  public aswi(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ArrayList<aswj> a;
   
-  public void handleMessage(Message paramMessage)
+  public aswi()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FileAssistantActivity.f(this.a);
+    this.mType = 6;
   }
 }
 

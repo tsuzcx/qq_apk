@@ -1,18 +1,16 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class urs
+class urs
+  implements View.OnClickListener
 {
-  public Object a;
-  public List<uru> a;
-  public boolean a;
-  public boolean b;
+  urs(urq paramurq) {}
   
-  public urs(List<uru> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    urq.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

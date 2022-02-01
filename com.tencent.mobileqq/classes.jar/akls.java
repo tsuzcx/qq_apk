@@ -1,19 +1,46 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class akls
+  implements agvc
 {
-  public int a;
-  public long a;
-  public long b;
+  private aklt jdField_a_of_type_Aklt;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public boolean a;
   
-  public boolean equals(Object paramObject)
+  public akls(aklt paramaklt)
   {
-    if ((paramObject instanceof akls))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaklt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramaklt.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_Aklt = paramaklt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramaklt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("MiniMultiForwardHelper", 2, "RESUME onMoveToState：=" + paramInt);
+    switch (paramInt)
     {
-      paramObject = (akls)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
-        return true;
-      }
+    default: 
+      return;
+    case 5: 
+      this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
+      BaseChatItemLayout.jdField_a_of_type_Boolean = false;
+      QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
+      return;
     }
-    return false;
+    BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 5, 9, 13 };
   }
 }
 

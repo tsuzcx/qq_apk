@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ExpandableListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
 
-class astl
-  implements View.OnClickListener
+public class astl
+  implements DialogInterface.OnKeyListener
 {
-  astl(asti paramasti, int paramInt) {}
+  public astl(RelatedEmotionPanel paramRelatedEmotionPanel, RelatedEmoSlideBottomPanel paramRelatedEmoSlideBottomPanel) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (asti.a(this.jdField_a_of_type_Asti).c(this.jdField_a_of_type_Int)) {
-      asti.a(this.jdField_a_of_type_Asti).b(this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    if (paramInt == 4)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      asti.a(this.jdField_a_of_type_Asti).a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel.a(4);
+      return true;
     }
+    return false;
   }
 }
 

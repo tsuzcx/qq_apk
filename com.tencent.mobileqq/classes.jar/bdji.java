@@ -1,25 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
 public class bdji
-  extends QIPCModule
+  extends SQLiteOpenHelper
 {
-  public bdji()
+  public bdji(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
   {
-    super("Module_TDFileChangeNameQIPCModule");
+    super(paramContext, paramString, null, paramInt);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    bisy.c(bdjg.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    if (paramString.equals("Action_url_2_fmdb")) {
-      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
-    }
-    return null;
-  }
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

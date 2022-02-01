@@ -1,65 +1,45 @@
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView.3.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.List;
 
-class avmk
-  implements bieu
+public class avmk
+  implements EIPCResultCallback
 {
-  private long jdField_a_of_type_Long;
+  public avmk(GameSessionView paramGameSessionView) {}
   
-  avmk(avmi paramavmi, Context paramContext) {}
-  
-  public boolean a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, "onCloseClick");
-    }
-    if (avmi.a(this.jdField_a_of_type_Avmi) == null) {
-      return true;
-    }
-    if (avmi.a(this.jdField_a_of_type_Avmi).isIsAdm())
+    List localList;
+    if (paramEIPCResult.code == 0)
     {
-      avmc.a(this.jdField_a_of_type_AndroidContentContext, 5, avmi.a(this.jdField_a_of_type_Avmi).getCurUin());
-      return true;
-    }
-    bcst.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_member", 0, 0, avmi.a(this.jdField_a_of_type_Avmi).getCurUin(), "", "", "");
-    this.jdField_a_of_type_Avmi.b();
-    return true;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
-    }
-    if ((avmi.a(this.jdField_a_of_type_Avmi) == null) || (avmi.a(this.jdField_a_of_type_Avmi) == null)) {
-      return false;
-    }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      }
-      return true;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramInt1 = avmi.a(this.jdField_a_of_type_Avmi).a();
-    if (paramInt1 == 1)
-    {
-      bdro.a(this.jdField_a_of_type_AndroidContentContext, 1, avmi.a(this.jdField_a_of_type_Avmi).getBigUrl(), null, new Bundle(), avmi.a(this.jdField_a_of_type_Avmi).getCurType());
-      this.jdField_a_of_type_Avmi.a(avmi.a(this.jdField_a_of_type_Avmi).getCurUin(), avmi.a(this.jdField_a_of_type_Avmi).getCurType(), false);
-    }
-    for (;;)
-    {
-      return true;
-      if (paramInt1 == 2)
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult != null)
       {
-        avmi.a(this.jdField_a_of_type_Avmi).a(avmi.a(this.jdField_a_of_type_Avmi).getSmallUrl());
-        bcst.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, avmi.a(this.jdField_a_of_type_Avmi).getCurUin(), "", "", "");
+        localList = (List)paramEIPCResult.getSerializable("key_get_game_msg");
+        if (GameSessionView.a(this.a)) {
+          break label97;
+        }
+        if (paramEIPCResult.getBoolean("key_get_game_gray_user", false)) {
+          break label62;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(GameSessionView.a, 0, "[setData] gray is not open. return.");
+        }
       }
     }
+    return;
+    label62:
+    GameSessionView.a(this.a, paramEIPCResult.getBoolean("key_get_game_show_on_list", false));
+    GameSessionView.a(paramEIPCResult.getBoolean("key_get_game_show_req_msg_unread", false));
+    GameSessionView.b(this.a, true);
+    label97:
+    QLog.e(GameSessionView.a, 1, "[onCallback] list:" + localList.size() + ",type:" + GameSessionView.a(this.a));
+    GameSessionView.a(this.a).post(new GameSessionView.3.1(this, localList));
   }
 }
 

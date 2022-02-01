@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.Doraemon.impl.webview;
 
-import adgc;
+import adpa;
 import android.util.LruCache;
-import awlp;
+import axeh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -12,12 +12,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import mqq.app.AppRuntime;
-import nir;
+import nkm;
 import tencent.im.oidb.oidb_0xb60.CheckUrlReq;
 import tencent.im.oidb.oidb_0xb60.ReqBody;
 
 public class VerifyUrlJobSegment
-  extends JobSegment<awlp, awlp>
+  extends JobSegment<axeh, axeh>
 {
   public static LruCache<String, Long> a;
   public String a;
@@ -32,16 +32,16 @@ public class VerifyUrlJobSegment
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void a(JobContext paramJobContext, awlp paramawlp)
+  protected void a(JobContext paramJobContext, axeh paramaxeh)
   {
-    paramJobContext = paramawlp.h + '_' + this.jdField_a_of_type_JavaLangString;
+    paramJobContext = paramaxeh.h + '_' + this.jdField_a_of_type_JavaLangString;
     Object localObject = (Long)jdField_a_of_type_AndroidUtilLruCache.get(paramJobContext);
     if ((localObject != null) && (((Long)localObject).longValue() > NetConnInfoCenter.getServerTimeMillis()))
     {
       if (QLog.isColorLevel()) {
         QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "cache hit");
       }
-      notifyResult(paramawlp);
+      notifyResult(paramaxeh);
     }
     do
     {
@@ -58,16 +58,16 @@ public class VerifyUrlJobSegment
       return;
       try
       {
-        int i = Integer.parseInt(paramawlp.jdField_a_of_type_JavaLangString);
+        int i = Integer.parseInt(paramaxeh.jdField_a_of_type_JavaLangString);
         oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
         localReqBody.check_url_req.setHasFlag(true);
         localReqBody.check_url_req.url.set(this.jdField_a_of_type_JavaLangString);
         localReqBody.check_url_req.appid.set(i);
-        localReqBody.check_url_req.app_type.set(paramawlp.jdField_a_of_type_Int);
+        localReqBody.check_url_req.app_type.set(paramaxeh.jdField_a_of_type_Int);
         if (QLog.isColorLevel()) {
-          QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "send type=" + paramawlp.jdField_a_of_type_Int + ", appid=" + paramawlp.jdField_a_of_type_JavaLangString + ", url=" + this.jdField_a_of_type_JavaLangString);
+          QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "send type=" + paramaxeh.jdField_a_of_type_Int + ", appid=" + paramaxeh.jdField_a_of_type_JavaLangString + ", url=" + this.jdField_a_of_type_JavaLangString);
         }
-        nir.a((AppRuntime)localObject, new adgc(this, paramawlp, paramJobContext), localReqBody.toByteArray(), "OidbSvc.0xb60_2", 2912, 2, null, 0L);
+        nkm.a((AppRuntime)localObject, new adpa(this, paramaxeh, paramJobContext), localReqBody.toByteArray(), "OidbSvc.0xb60_2", 2912, 2, null, 0L);
         return;
       }
       catch (NumberFormatException paramJobContext)

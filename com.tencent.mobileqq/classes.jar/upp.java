@@ -1,14 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
-final class upp
-  implements DialogInterface.OnShowListener
+public class upp
+  implements DialogInterface.OnClickListener
 {
-  upp(uoc paramuoc) {}
+  public upp(OuterInterceptManager.1 param1) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    uph.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 

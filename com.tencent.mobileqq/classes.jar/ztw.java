@@ -1,44 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import android.view.View.OnTouchListener;
 
-public class ztw
-  implements abdt
+class ztw
+  implements View.OnTouchListener
 {
-  public ztw(ScannerActivity paramScannerActivity) {}
+  ztw(ztv paramztv) {}
   
-  public void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    ScannerActivity.a(this.a).setVisibility(8);
-    bgpa localbgpa = bglp.a(this.a, 230);
-    if (paramInt == 2) {
-      localbgpa.setMessage(2131717439);
-    }
-    for (;;)
-    {
-      ztx localztx = new ztx(this);
-      localbgpa.setPositiveButton(2131694081, localztx);
-      localbgpa.setOnCancelListener(localztx);
-      localbgpa.show();
-      return;
-      localbgpa.setMessage(2131717448);
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    String str = "QR_CODE";
-    if (ScannerActivity.a(this.a) != null) {
-      str = ScannerActivity.a(this.a).a();
-    }
-    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
+    ztv.a(this.a);
+    return true;
   }
 }
 

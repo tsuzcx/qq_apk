@@ -1,38 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
-class rak
-  implements raa
+public class rak
+  implements DialogInterface.OnDismissListener
 {
-  rak(raj paramraj, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  public rak(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    rac localrac = raj.a(this.jdField_a_of_type_Raj);
-    if (paramInt == 0)
+    if (ReadInJoyDeliverUGCActivity.c(this.a))
     {
-      if (paramBoolean2) {
-        RIJRedPacketManager.a().d();
+      ReadInJoyDeliverUGCActivity.c(this.a, false);
+      ReadInJoyDeliverUGCActivity.e(this.a);
+      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
+        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131717105));
       }
-      if (paramBoolean1) {
-        RIJRedPacketManager.a().c();
-      }
-      if (localrac != null)
-      {
-        localrac.a(paramBoolean2, paramBoolean1);
-        if ((!paramBoolean2) || (paramBoolean1)) {
-          break label85;
-        }
-        localrac.a(paramString1, paramString2, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
+        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
       }
     }
-    label85:
-    while (raj.a(this.jdField_a_of_type_Raj) == null)
-    {
-      return;
-      localrac.j();
-      return;
-    }
-    localrac.j();
   }
 }
 

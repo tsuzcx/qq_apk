@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awrp
-  implements anql
+class awrp
+  implements View.OnClickListener
 {
-  public awrp(MultiAIOFragment paramMultiAIOFragment) {}
+  awrp(awrk paramawrk, Activity paramActivity, EditText paramEditText) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    MultiAIOFragment.a(this.a).a(paramString, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+    }
+    awrk.a(this.jdField_a_of_type_Awrk).setClickable(false);
+    awrk.a(this.jdField_a_of_type_Awrk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840550));
+    awrk.a(this.jdField_a_of_type_Awrk).a(true);
+    awrk.a(this.jdField_a_of_type_Awrk, awrk.a(this.jdField_a_of_type_Awrk).a());
+    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    }
+    for (;;)
+    {
+      bdll.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Awrk.a("");
+    }
   }
 }
 

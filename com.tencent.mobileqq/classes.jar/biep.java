@@ -1,17 +1,21 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
 
-public final class biep
-  implements DialogInterface.OnClickListener
+class biep
+  implements Drawable.Callback
 {
-  public biep(Context paramContext) {}
+  biep(bieo parambieo, biem parambiem) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    FloatingScreenPermission.requestPermission(this.a);
+    if (this.jdField_a_of_type_Biem != null) {
+      this.jdField_a_of_type_Biem.a(paramDrawable);
+    }
   }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
 }
 
 

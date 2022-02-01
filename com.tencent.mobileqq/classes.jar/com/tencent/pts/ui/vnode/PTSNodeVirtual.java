@@ -199,7 +199,7 @@ public abstract class PTSNodeVirtual<T extends View>
       if (localObject2 == null) {
         break;
       }
-      ((PTSAppInstance.PTSLiteAppInstance)this.mAppInstance).triggerLiteEvent(1, str1, localHashMap, getView());
+      ((PTSAppInstance.PTSLiteAppInstance)this.mAppInstance).triggerLiteEvent(1, str1, localHashMap, getView(), this.mAppInstance.getPtsComposer());
       return;
     }
   }

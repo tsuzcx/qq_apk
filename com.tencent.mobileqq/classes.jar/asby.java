@@ -1,14 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class asby
+class asby
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
+  asby(asbx paramasbx) {}
   
-  public asby(asbx paramasbx) {}
+  @QQPermissionDenied(1819)
+  public void denied()
+  {
+    QLog.e("CameraHelper", 1, "checkPermission user denied");
+    asbx.a(this.a);
+    asbx.a(this.a, false, 1830003);
+  }
+  
+  @QQPermissionGrant(1819)
+  public void grant()
+  {
+    QLog.d("CameraHelper", 1, "checkPermission user grant");
+    asbx.a(this.a);
+    asbx.a(this.a, true, 0);
+  }
 }
 
 

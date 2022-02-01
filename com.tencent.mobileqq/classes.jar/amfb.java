@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amfb
+class amfb
+  implements View.OnClickListener
 {
-  public int a;
-  public ShowExternalTroop a;
+  amfb(amez paramamez) {}
   
-  public amfb(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+    GroupManagerActivity.a((Activity)amez.a(this.a));
+    bdll.b(amez.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

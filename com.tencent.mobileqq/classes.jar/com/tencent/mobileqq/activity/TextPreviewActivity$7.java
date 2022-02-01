@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import auzk;
+import avrl;
 
 class TextPreviewActivity$7
   implements Runnable
 {
-  TextPreviewActivity$7(TextPreviewActivity paramTextPreviewActivity, auzk paramauzk) {}
+  TextPreviewActivity$7(TextPreviewActivity paramTextPreviewActivity, avrl paramavrl) {}
   
   public void run()
   {

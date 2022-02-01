@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
 public class adzg
-  extends anxo
+  implements QQPermissionCallback
 {
-  public adzg(Conversation paramConversation) {}
+  public adzg(BaseChatPie paramBaseChatPie) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!(paramObject instanceof String)) {
-      return;
-    }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    bhlq.b(this.a.a());
+    ((agwl)this.a.a(29)).b(2);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    agnx.a().a(this.a.jdField_a_of_type_AndroidContentContext);
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
+    aiaf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

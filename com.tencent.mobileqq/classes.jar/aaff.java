@@ -1,22 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class aaff
-  implements View.OnClickListener
+public class aaff
+  implements View.OnLongClickListener
 {
-  aaff(aafd paramaafd, CertifiedAccountMeta.StComment paramStComment) {}
+  public aaff(RecommendBannerItemView paramRecommendBannerItemView) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    if (aaet.a(this.jdField_a_of_type_Aafd.a) != null)
-    {
-      aaet.a(this.jdField_a_of_type_Aafd.a, aaet.a(this.jdField_a_of_type_Aafd.a).a(aaet.a(this.jdField_a_of_type_Aafd.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
-      aaet.c(this.jdField_a_of_type_Aafd.a, true);
+    if (RecommendBannerItemView.a(this.a) == null) {
+      return false;
     }
-    aaet.a(this.jdField_a_of_type_Aafd.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    aamr.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new aafg(this), new aafh(this));
+    if (RecommendBannerItemView.a(this.a)) {
+      abbe.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+    }
+    for (;;)
+    {
+      return true;
+      abbe.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
+    }
   }
 }
 

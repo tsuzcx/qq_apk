@@ -1,87 +1,35 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.subscribe.utils.TimeAndCountHelper.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import mqq.app.AppRuntime;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aajr
+  implements aajs
 {
-  private static volatile aajr jdField_a_of_type_Aajr;
-  private Map<String, Timer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public aajr(EmoView paramEmoView) {}
   
-  public static aajr a()
+  public boolean a()
   {
-    if (jdField_a_of_type_Aajr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aajr == null) {
-        jdField_a_of_type_Aajr = new aajr();
-      }
-      return jdField_a_of_type_Aajr;
+    if (EmoView.a(this.a) == null) {
+      return false;
     }
-    finally {}
+    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
+    return true;
   }
   
-  private String a(String paramString)
+  public boolean a(String paramString)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return paramString + "_" + str;
-  }
-  
-  private void a(Context paramContext, String paramString, aajs paramaajs)
-  {
-    paramContext = aajq.a(paramContext);
-    if (paramContext != null)
-    {
-      int i = paramContext.getInt(a(paramString), 0);
-      if (paramaajs != null) {
-        paramaajs.a(i + 1);
-      }
+    if (EmoView.a(this.a) == null) {
+      return false;
     }
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return aajq.a(paramContext).getInt(a(paramString), 0);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = aajq.a(paramContext);
-    SharedPreferences.Editor localEditor = paramContext.edit();
-    paramString = a(paramString);
-    localEditor.putInt(paramString, paramContext.getInt(paramString, 0) + paramInt);
-    localEditor.apply();
-  }
-  
-  public void a(Context paramContext, String paramString, int paramInt, aajs paramaajs)
-  {
-    if (paramInt > 0)
+    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
     {
-      a(paramString);
-      Timer localTimer = new Timer();
-      localTimer.schedule(new TimeAndCountHelper.1(this, paramContext, paramString, paramaajs), paramInt);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localTimer);
-      return;
+      QQToast.a(this.a.getContext(), 0, anzj.a(2131703020), 0);
+      return false;
     }
-    a(paramContext, paramString, paramaajs);
-  }
-  
-  public void a(String paramString)
-  {
-    Timer localTimer = (Timer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localTimer != null)
-    {
-      localTimer.cancel();
-      localTimer.purge();
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    }
+    EmoView.a(EmoView.a(this.a), paramString);
+    return true;
   }
 }
 

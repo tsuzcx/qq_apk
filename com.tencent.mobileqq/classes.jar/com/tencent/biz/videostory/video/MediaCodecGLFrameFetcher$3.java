@@ -1,8 +1,8 @@
 package com.tencent.biz.videostory.video;
 
-import aaxh;
-import aaxi;
-import aaxm;
+import abbk;
+import abbl;
+import abbp;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
@@ -10,20 +10,20 @@ import android.opengl.GLES20;
 public class MediaCodecGLFrameFetcher$3
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$3(aaxi paramaaxi) {}
+  public MediaCodecGLFrameFetcher$3(abbl paramabbl) {}
   
   public void run()
   {
-    if (aaxi.a(this.this$0) == null) {
+    if (abbl.a(this.this$0) == null) {
       return;
     }
-    aaxi.a(this.this$0).updateTexImage();
-    GLES20.glViewport(0, 0, aaxi.a(this.this$0), aaxi.b(this.this$0));
-    aaxi.a(this.this$0).a(aaxi.a(this.this$0), aaxi.c(this.this$0));
-    if ((aaxi.a(this.this$0) != null) && (!aaxi.a(this.this$0).isRecycled())) {
-      aaxi.a(this.this$0).recycle();
+    abbl.a(this.this$0).updateTexImage();
+    GLES20.glViewport(0, 0, abbl.a(this.this$0), abbl.b(this.this$0));
+    abbl.a(this.this$0).a(abbl.a(this.this$0), abbl.c(this.this$0));
+    if ((abbl.a(this.this$0) != null) && (!abbl.a(this.this$0).isRecycled())) {
+      abbl.a(this.this$0).recycle();
     }
-    aaxi.a(this.this$0, aaxh.a(aaxi.c(this.this$0), aaxi.a(this.this$0), aaxi.b(this.this$0)));
+    abbl.a(this.this$0, abbk.a(abbl.c(this.this$0), abbl.a(this.this$0), abbl.b(this.this$0)));
   }
 }
 

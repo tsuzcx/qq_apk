@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aekk
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public aekk(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aekk(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    CheckBox localCheckBox = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    this.a.finish();
   }
 }
 

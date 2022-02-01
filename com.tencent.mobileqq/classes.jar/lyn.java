@@ -1,92 +1,26 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
+import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
+import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.MyMsgListener.1;
 
 public class lyn
+  extends lgh<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
 {
-  public SmallScreenRelativeLayout a;
-  protected String a;
-  public lyt a;
-  protected int i;
-  protected int j;
-  protected int k;
+  public lym a;
   
-  public void a()
+  public lyn(AVSchema paramAVSchema, lym paramlym)
   {
-    this.jdField_a_of_type_Lyt.b();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.c();
-    this.jdField_a_of_type_Lyt = null;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
+    this.jdField_a_of_type_Lym = paramlym;
   }
   
-  public void a(Context paramContext, LayoutInflater paramLayoutInflater, lyo paramlyo)
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)paramLayoutInflater.inflate(this.i, null));
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.b();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setFloatListener(paramlyo);
-    this.jdField_a_of_type_Lyt = new lyt(paramContext, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setIsRotateSize(true);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-    a(this.jdField_a_of_type_Lyt.a());
-  }
-  
-  public void a(WindowManager.LayoutParams paramLayoutParams)
-  {
-    paramLayoutParams.flags = 136;
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      paramLayoutParams.type = 2038;
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
       return;
     }
-    if (lyu.a()) {}
-    for (int m = 2005;; m = 2002)
-    {
-      paramLayoutParams.type = m;
-      return;
-    }
-  }
-  
-  public void a(BaseSmallScreenService paramBaseSmallScreenService)
-  {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.f();
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    boolean bool = a();
-    if (paramBoolean)
-    {
-      if (!this.jdField_a_of_type_Lyt.b()) {
-        this.jdField_a_of_type_Lyt.a();
-      }
-      if (!bool)
-      {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(paramInt);
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.d();
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, show toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!bool);
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.e();
-    } while (!QLog.isDevelopLevel());
-    QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, hide toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a());
+    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaaf;
+import aaek;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -28,7 +28,7 @@ public class StatusView
   private int jdField_b_of_type_Int = -16777216;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString = getResources().getString(2131700284);
+  private String jdField_b_of_type_JavaLangString = getResources().getString(2131700391);
   private TextView c;
   private TextView d;
   
@@ -54,7 +54,7 @@ public class StatusView
   
   public int a()
   {
-    return 2131558771;
+    return 2131558769;
   }
   
   public ImageView a()
@@ -69,22 +69,22 @@ public class StatusView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376706);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369114));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369180));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379641));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379803));
-    this.c = ((TextView)paramView.findViewById(2131379931));
-    this.d = ((TextView)paramView.findViewById(2131379826));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370121));
-    setHintImageFilePath(aaaf.a() + "/certified_account_feed_error.png");
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376841);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369204));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369271));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379816));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379982));
+    this.c = ((TextView)paramView.findViewById(2131380115));
+    this.d = ((TextView)paramView.findViewById(2131380006));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370219));
+    setHintImageFilePath(aaek.a() + "/certified_account_feed_error.png");
     setBackgroundColor(-1);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    setHintImageFilePath(aaaf.a() + "/certified_account_feeds_empty.png");
-    a(anni.a(2131718340), 13, getResources().getColor(2131167163));
+    setHintImageFilePath(aaek.a() + "/certified_account_feeds_empty.png");
+    a(anzj.a(2131718476), 13, getResources().getColor(2131167175));
     if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -94,8 +94,8 @@ public class StatusView
   
   public void a(View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    setHintImageFilePath(aaaf.a() + "/certified_account_feeds_empty.png");
-    a(anni.a(2131718343), 13, getResources().getColor(2131167163));
+    setHintImageFilePath(aaek.a() + "/certified_account_feeds_empty.png");
+    a(anzj.a(2131718479), 13, getResources().getColor(2131167175));
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -109,15 +109,10 @@ public class StatusView
   public void a(String paramString, int paramInt1, int paramInt2)
   {
     setTextHint(paramString, paramInt1, paramInt2);
-    d();
+    c();
   }
   
-  public void c(String paramString)
-  {
-    a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-  }
-  
-  public void d()
+  public void c()
   {
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -128,7 +123,18 @@ public class StatusView
     a(true);
   }
   
+  public void d()
+  {
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    a(false);
+  }
+  
   public void d(String paramString)
+  {
+    a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void e(String paramString)
   {
     if (this.jdField_b_of_type_AndroidWidgetImageView != null)
     {
@@ -138,8 +144,8 @@ public class StatusView
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850868);
-      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130850868);
+      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850895);
+      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130850895);
       this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
       this.jdField_a_of_type_JavaLangString = paramString;
       a(true);
@@ -154,20 +160,14 @@ public class StatusView
     }
   }
   
-  public void e()
-  {
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    a(false);
-  }
-  
   public void setHintImageFilePath(String paramString)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850868);
-      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130850868);
+      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850895);
+      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130850895);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
       return;
     }

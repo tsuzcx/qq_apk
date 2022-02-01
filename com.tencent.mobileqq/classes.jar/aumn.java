@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import java.io.File;
-import java.io.FileFilter;
-
-public class aumn
-  implements FileFilter
+public abstract interface aumn
 {
-  public aumn(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  public abstract void a();
   
-  public boolean accept(File paramFile)
-  {
-    if (paramFile.getName().endsWith(".png")) {}
-    while (paramFile.getName().endsWith(".jpg")) {
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

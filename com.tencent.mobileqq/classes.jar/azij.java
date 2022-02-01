@@ -1,43 +1,9 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusFriendsPermissionItem;
+import java.util.List;
 
-public final class azij
-  implements arxd
+public abstract interface azij
 {
-  public azij(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
-  
-  public void a(arxg paramarxg)
-  {
-    if (paramarxg != null) {}
-    try
-    {
-      paramarxg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
-    }
-    catch (Throwable paramarxg) {}
-  }
-  
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    bdol.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public abstract void a(OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem, List<Integer> paramList);
 }
 
 

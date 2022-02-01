@@ -1,37 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class adop
-  extends WtloginObserver
+  implements View.OnClickListener
 {
-  adop(adoo paramadoo) {}
+  adop(adom paramadom) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0) {}
-    do
-    {
-      return;
-      adoo.a(this.a);
-    } while (adoo.a(this.a) == null);
-    paramString = new Intent(adoo.a(this.a), LoginActivity.class);
-    paramString.putExtra("uin", adoo.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    adoo.a(this.a).startActivity(paramString);
-    adoo.a(this.a).finish();
+    this.a.jdField_a_of_type_Adnb.d();
+    adqf.a(this.a.jdField_a_of_type_Admy, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

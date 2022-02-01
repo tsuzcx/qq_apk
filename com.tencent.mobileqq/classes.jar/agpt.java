@@ -1,8 +1,52 @@
-public abstract interface agpt
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+
+public class agpt
+  implements agpk
 {
-  public abstract boolean a(agpq paramagpq);
+  public agpt(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public abstract boolean a(agpq paramagpq, String paramString1, String paramString2);
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  {
+    if (paramDoodleData == null) {
+      return false;
+    }
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = agpj.a(paramDoodleData.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleData)
+    {
+      break label33;
+    }
+  }
+  
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  {
+    if (paramDoodleHeader == null) {
+      return false;
+    }
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = agpj.a(paramDoodleHeader.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleHeader)
+    {
+      break label33;
+    }
+  }
 }
 
 

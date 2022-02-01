@@ -1,9 +1,13 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
-public abstract interface atne
+public class atne
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList);
+  public atne(QfileLocalFileAppTabView.1.1 param1) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

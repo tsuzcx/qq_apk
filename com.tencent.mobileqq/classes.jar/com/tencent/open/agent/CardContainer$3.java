@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import bdwc;
+import beuv;
 import com.tencent.image.URLDrawable;
 
 class CardContainer$3
@@ -13,7 +13,7 @@ class CardContainer$3
   public void run()
   {
     Object localObject = this.this$0.a();
-    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(bdwc.a((String)localObject));
+    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(beuv.a((String)localObject));
     if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
     }

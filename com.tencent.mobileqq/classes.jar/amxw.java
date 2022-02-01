@@ -1,16 +1,29 @@
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
+import com.tencent.widget.HorizontalListView;
 
-public abstract interface amxw
+public class amxw
+  implements Animation.AnimationListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public amxw(CmGameDebugView paramCmGameDebugView) {}
   
-  public abstract void a(int[] paramArrayOfInt, int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (CmGameDebugView.a(this.a))
+    {
+      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
+      CmGameDebugView.a(this.a, false);
+    }
+    if (CmGameDebugView.b(this.a)) {
+      CmGameDebugView.b(this.a, 0);
+    }
+  }
   
-  public abstract void b(int paramInt);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void b(List<amxu> paramList);
-  
-  public abstract void e();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

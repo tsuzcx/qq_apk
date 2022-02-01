@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.transition;
 
-import vst;
+import vvm;
 
 public class QCircleTransitionImageView$1
   implements Runnable
 {
-  QCircleTransitionImageView$1(QCircleTransitionImageView paramQCircleTransitionImageView, float paramFloat1, float paramFloat2, vst paramvst) {}
+  QCircleTransitionImageView$1(QCircleTransitionImageView paramQCircleTransitionImageView, float paramFloat1, float paramFloat2, vvm paramvvm) {}
   
   public void run()
   {
-    QCircleTransitionImageView.a(this.this$0).a(1.0F, 1.0F, -1.0F + this.jdField_a_of_type_Float, -1.0F + this.b, QCircleTransitionImageView.a(this.this$0) / 2, this.jdField_a_of_type_Vst);
+    QCircleTransitionImageView.a(this.this$0).a(1.0F, 1.0F, -1.0F + this.jdField_a_of_type_Float, -1.0F + this.b, QCircleTransitionImageView.a(this.this$0) / 2, this.jdField_a_of_type_Vvm);
   }
 }
 

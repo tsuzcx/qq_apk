@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.widget;
 
-import afwy;
+import aggs;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewConfiguration;
-import beqr;
-import bgln;
+import bfpy;
+import bhlo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -23,7 +23,7 @@ public class ScrollerRunnable
   private long jdField_a_of_type_Long = -1L;
   private View jdField_a_of_type_AndroidViewView;
   @Nullable
-  private beqr jdField_a_of_type_Beqr;
+  private bfpy jdField_a_of_type_Bfpy;
   protected ListView a;
   protected Runnable a;
   HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -49,11 +49,11 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
     this.e = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledFadingEdgeLength();
-    if (bgln.d() / 1048576L > 512L) {}
+    if (bhlo.d() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131298998) + 0.5D));
+      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131299011) + 0.5D));
       return;
       bool = false;
     }
@@ -61,8 +61,8 @@ public class ScrollerRunnable
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Beqr != null) {
-      return this.jdField_a_of_type_Beqr.a(this.k);
+    if (this.jdField_a_of_type_Bfpy != null) {
+      return this.jdField_a_of_type_Bfpy.a(this.k);
     }
     return false;
   }
@@ -250,9 +250,9 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a(@Nullable beqr parambeqr)
+  public void a(@Nullable bfpy parambfpy)
   {
-    this.jdField_a_of_type_Beqr = parambeqr;
+    this.jdField_a_of_type_Bfpy = parambfpy;
   }
   
   public void a(boolean paramBoolean)
@@ -315,9 +315,9 @@ public class ScrollerRunnable
     if ((this.k == 5) && (this.jdField_a_of_type_Long > 0L))
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof afwy))
+      if ((localObject instanceof aggs))
       {
-        localObject = ((afwy)localObject).a();
+        localObject = ((aggs)localObject).a();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           i1 = ((List)localObject).size();

@@ -1,27 +1,14 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import java.util.ArrayList;
+import java.util.List;
 
-public class azgy
-  extends RecyclerView.ItemDecoration
+public final class azgy
+  implements asmy
 {
-  private int a;
-  private int b;
-  
-  public azgy(int paramInt1, int paramInt2)
+  public List<aspt> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.left = this.b;
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new aspt(7, 7, null));
+    return localArrayList;
   }
 }
 

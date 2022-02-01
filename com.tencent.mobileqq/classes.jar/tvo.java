@@ -1,9 +1,4 @@
-import android.widget.ImageView;
-
-public abstract interface tvo
-{
-  public abstract boolean a(ImageView paramImageView);
-}
+class tvo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

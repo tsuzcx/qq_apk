@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import baqr;
-import bavr;
+import bbjk;
+import bbok;
 
 public class ConnManager$3
   implements Runnable
 {
-  public ConnManager$3(baqr parambaqr, long paramLong) {}
+  public ConnManager$3(bbjk parambbjk, long paramLong) {}
   
   public void run()
   {
-    baqr.a(this.this$0).b(10);
-    this.this$0.a(baqr.a(this.this$0), this.a);
+    bbjk.a(this.this$0).b(10);
+    this.this$0.a(bbjk.a(this.this$0), this.a);
   }
 }
 

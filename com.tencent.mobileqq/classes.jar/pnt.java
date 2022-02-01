@@ -1,47 +1,61 @@
-import android.app.Activity;
-import android.content.Intent;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
-public class pnt
-  extends pnq
+class pnt
+  extends nkn
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  pnt(pns parampns, boolean paramBoolean) {}
   
-  public pnt(@NotNull pnr parampnr, Activity paramActivity)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(parampnr, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean c()
-  {
-    int j = 5;
-    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    int i = j;
-    if (localIntent != null)
+    if (paramInt == 0)
     {
-      i = j;
-      if (localIntent.hasExtra("launch_from")) {
-        i = localIntent.getIntExtra("launch_from", 5);
+      try
+      {
+        paramBundle = new oidb_0xb7e.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.rpt_top_item.has()) {
+          break label129;
+        }
+        List localList = paramBundle.rpt_top_item.get();
+        if ((localList == null) || (localList.size() <= 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(pns.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+          }
+          pfd.a().a(true, null);
+          pns.a(this.a, paramArrayOfByte, 0L);
+          return;
+        }
+        pns.a(this.a, paramArrayOfByte, System.currentTimeMillis());
+        if (!this.b) {
+          return;
+        }
+        pns.a(this.a, paramBundle);
+        return;
       }
+      catch (Exception paramArrayOfByte)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      QLog.e(pns.a, 2, "requestDiandianTopConfig parser failed");
+      return;
+      label129:
+      if (QLog.isColorLevel()) {
+        QLog.d(pns.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+      }
+      pns.a(this.a, paramArrayOfByte, 0L);
+      pfd.a().a(true, null);
+      return;
     }
-    if (i == 15) {}
-    for (boolean bool = true;; bool = false)
-    {
-      oqh.a("RIJDailyFloatingPopupStep", "isOpenFloatingWindow = " + bool);
-      return bool;
+    if (QLog.isColorLevel()) {
+      QLog.e(pns.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
     }
-  }
-  
-  protected void g() {}
-  
-  protected void h() {}
-  
-  public void i()
-  {
-    this.jdField_a_of_type_Boolean = c();
-    a(this.jdField_a_of_type_Boolean);
   }
 }
 

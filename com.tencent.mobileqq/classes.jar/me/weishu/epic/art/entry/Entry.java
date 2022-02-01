@@ -2,9 +2,9 @@ package me.weishu.epic.art.entry;
 
 import android.os.Build.VERSION;
 import android.util.Pair;
-import com.taobao.android.dexposed.DexposedBridge;
-import com.taobao.android.dexposed.utility.Debug;
-import com.taobao.android.dexposed.utility.Logger;
+import com.qq.android.dexposed.DexposedBridge;
+import com.qq.android.dexposed.utility.Debug;
+import com.qq.android.dexposed.utility.Logger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
@@ -35,14 +35,18 @@ public class Entry
     arrayOfClass[6] = Float.TYPE;
     arrayOfClass[7] = Double.TYPE;
     int j = arrayOfClass.length;
-    while (i < j)
+    for (;;)
     {
+      if (i >= j)
+      {
+        bridgeMethodMap.put(Object.class, "referenceBridge");
+        bridgeMethodMap.put(Void.TYPE, "voidBridge");
+        return;
+      }
       Class localClass = arrayOfClass[i];
       bridgeMethodMap.put(localClass, localClass.getName() + "Bridge");
       i += 1;
     }
-    bridgeMethodMap.put(Object.class, "referenceBridge");
-    bridgeMethodMap.put(Void.TYPE, "voidBridge");
   }
   
   private static boolean booleanBridge(int paramInt1, int paramInt2, int paramInt3)
@@ -62,199 +66,204 @@ public class Entry
   
   private static Pair<Object, Object[]> constructArguments(Epic.MethodInfo paramMethodInfo, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt2)
   {
-    boolean bool4 = paramMethodInfo.isStatic;
-    int i;
-    if (bool4) {
-      i = paramMethodInfo.paramNumber;
-    }
+    boolean bool = paramMethodInfo.isStatic;
+    int m;
     Object localObject;
+    int i;
     int[] arrayOfInt;
-    for (paramMethodInfo = paramMethodInfo.paramTypes;; paramMethodInfo = (Epic.MethodInfo)localObject)
+    int j;
+    label41:
+    byte[] arrayOfByte;
+    if (bool)
     {
-      localObject = new Object[i];
-      k = 4;
-      arrayOfInt = new int[i];
+      m = paramMethodInfo.paramNumber;
+      paramMethodInfo = paramMethodInfo.paramTypes;
+      localObject = new Object[m];
+      i = 4;
+      arrayOfInt = new int[m];
       j = 0;
-      while (j < i)
-      {
-        m = getTypeLength(paramMethodInfo[j]);
-        arrayOfInt[j] = k;
-        k += m;
-        j += 1;
+      if (j < m) {
+        break label211;
       }
-      i = paramMethodInfo.paramNumber + 1;
-      localObject = new Class[i];
-      localObject[0] = Object.class;
-      System.arraycopy(paramMethodInfo.paramTypes, 0, localObject, 1, paramMethodInfo.paramTypes.length);
-    }
-    byte[] arrayOfByte = new byte[k];
-    Logger.w("Entry", "constructArguments argTotalLength:" + k);
-    if (k <= 4) {
-      if (Build.VERSION.SDK_INT == 23)
-      {
-        Logger.w("Entry", "constructArguments for Android 6.0");
-        if (k > 12) {
-          break label459;
-        }
+      arrayOfByte = new byte[i];
+      if (i > 4) {
+        break label243;
       }
-    }
-    label293:
-    label457:
-    label459:
-    label499:
-    boolean bool3;
-    label412:
-    do
-    {
-      for (;;)
+      label60:
+      if ((Build.VERSION.SDK_INT == 23) && (i > 12))
       {
-        Logger.d("Entry", "argBytes: " + Debug.hexdump(arrayOfByte, 0L));
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramArrayOfByte1 = paramMethodInfo[paramInt2];
-          j = arrayOfInt[paramInt2];
-          localObject[paramInt2] = wrapArgument(paramArrayOfByte1, paramInt1, Arrays.copyOfRange(arrayOfByte, j, getTypeLength(paramArrayOfByte1) + j));
-          paramInt2 += 1;
-        }
-        if ((Build.VERSION.SDK_INT >= 23) && (i > 0) && (getTypeLength(paramMethodInfo[0]) == 8))
-        {
-          bool1 = true;
-          Logger.w("Entry", "constructArguments align:" + bool1);
-          if (!bool1) {
-            break label412;
-          }
-          System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 4, 4);
-          System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, 8, 4);
-          if (k <= 12) {
-            break;
-          }
-          System.arraycopy(EpicNative.get(paramInt2 + 12, 4), 0, arrayOfByte, 12, 4);
-        }
-        for (;;)
-        {
-          if (k <= 16) {
-            break label457;
-          }
-          System.arraycopy(EpicNative.get(paramInt2 + 16, k - 16), 0, arrayOfByte, 16, k - 16);
-          break;
-          bool1 = false;
-          break label293;
-          System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, 4);
-          if (k <= 8) {
-            break;
-          }
-          System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 8, 4);
-          if (k <= 12) {
-            break;
-          }
-          System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, 12, 4);
-        }
-        break;
-        if (k > 16) {
-          break label499;
+        if (i > 16) {
+          break label411;
         }
         if (getTypeLength(paramMethodInfo[0]) == 8) {
           System.arraycopy(EpicNative.get(paramInt2 + 44, 4), 0, arrayOfByte, 12, 4);
         }
       }
-      boolean bool1 = true;
-      bool3 = true;
-      boolean bool2;
-      if (i >= 2)
-      {
-        j = getTypeLength(paramMethodInfo[0]);
-        k = getTypeLength(paramMethodInfo[1]);
-        bool2 = bool3;
-        if (j == 4)
-        {
-          bool2 = bool3;
-          if (k == 8) {
-            bool2 = false;
-          }
-        }
-        bool1 = bool2;
-        if (i == 2)
-        {
-          bool1 = bool2;
-          if (j == 8)
-          {
-            bool1 = bool2;
-            if (k == 8)
-            {
-              System.arraycopy(EpicNative.get(paramInt2 + 44, 4), 0, arrayOfByte, 12, 4);
-              bool1 = false;
-            }
-          }
-        }
+      label112:
+      Logger.d("Entry", "argBytes: " + Debug.hexdump(arrayOfByte, 0L));
+      paramInt2 = 0;
+      label141:
+      if (paramInt2 < m) {
+        break label792;
       }
-      bool3 = bool1;
-      if (i >= 3)
-      {
-        j = getTypeLength(paramMethodInfo[0]);
-        k = getTypeLength(paramMethodInfo[1]);
-        m = getTypeLength(paramMethodInfo[2]);
-        bool2 = bool1;
-        if (j == 4)
-        {
-          bool2 = bool1;
-          if (k == 4)
-          {
-            bool2 = bool1;
-            if (m == 4) {
-              bool2 = false;
-            }
-          }
-        }
-        bool3 = bool2;
-        if (i == 3)
-        {
-          bool3 = bool2;
-          if (j == 8)
-          {
-            bool3 = bool2;
-            if (k == 4)
-            {
-              bool3 = bool2;
-              if (m == 8)
-              {
-                System.arraycopy(EpicNative.get(paramInt2 + 52, 4), 0, arrayOfByte, 12, 4);
-                bool3 = false;
-              }
-            }
-          }
-        }
+      paramArrayOfByte1 = null;
+      paramMethodInfo = EMPTY_OBJECT_ARRAY;
+      if (!bool) {
+        break label837;
       }
-      Logger.w("Entry", "constructArguments isR3Grabbed:" + bool3);
-    } while (!bool3);
-    paramArrayOfByte1 = Arrays.copyOfRange(arrayOfByte, 16, arrayOfByte.length);
-    int m = paramArrayOfByte1.length;
-    int k = 0;
-    int j = m + 16;
-    for (;;)
-    {
-      paramArrayOfByte2 = EpicNative.get(paramInt2 + j, m);
-      k += m;
-      if (Arrays.equals(paramArrayOfByte2, paramArrayOfByte1))
-      {
-        paramArrayOfByte1 = EpicNative.get(paramInt2 + j - 4, 4);
-        Logger.d("Entry", "found other arguments in stack, index:" + j + ", origin r3:" + Arrays.toString(paramArrayOfByte1));
-        System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 12, 4);
-        break;
-      }
-      if (k > 1024) {
-        throw new RuntimeException("can not found the modify r3 register!!!");
-      }
-      j += 4;
-    }
-    paramArrayOfByte1 = null;
-    paramMethodInfo = EMPTY_OBJECT_ARRAY;
-    if (bool4) {
       paramMethodInfo = (Epic.MethodInfo)localObject;
     }
     for (;;)
     {
       return Pair.create(paramArrayOfByte1, paramMethodInfo);
+      m = paramMethodInfo.paramNumber + 1;
+      localObject = new Class[m];
+      localObject[0] = Object.class;
+      System.arraycopy(paramMethodInfo.paramTypes, 0, localObject, 1, paramMethodInfo.paramTypes.length);
+      paramMethodInfo = (Epic.MethodInfo)localObject;
+      break;
+      label211:
+      int k = getTypeLength(paramMethodInfo[j]);
+      arrayOfInt[j] = i;
+      i += k;
+      j += 1;
+      break label41;
+      label243:
+      if ((Build.VERSION.SDK_INT >= 23) && (m > 0) && (getTypeLength(paramMethodInfo[0]) == 8))
+      {
+        j = 1;
+        if (j == 0) {
+          break label364;
+        }
+        System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 4, 4);
+        System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, 8, 4);
+        if (i <= 12) {
+          break label60;
+        }
+        System.arraycopy(EpicNative.get(paramInt2 + 12, 4), 0, arrayOfByte, 12, 4);
+      }
+      for (;;)
+      {
+        label270:
+        if (i <= 16) {
+          break label409;
+        }
+        System.arraycopy(EpicNative.get(paramInt2 + 16, i - 16), 0, arrayOfByte, 16, i - 16);
+        break;
+        j = 0;
+        break label270;
+        label364:
+        System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, 4);
+        if (i <= 8) {
+          break;
+        }
+        System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 8, 4);
+        if (i <= 12) {
+          break;
+        }
+        System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, 12, 4);
+      }
+      label409:
+      break label60;
+      label411:
+      i = 1;
+      k = 1;
+      int n;
+      int i1;
+      if (m >= 2)
+      {
+        n = getTypeLength(paramMethodInfo[0]);
+        i1 = getTypeLength(paramMethodInfo[1]);
+        j = k;
+        if (n == 4)
+        {
+          j = k;
+          if (i1 == 8) {
+            j = 0;
+          }
+        }
+        i = j;
+        if (m == 2)
+        {
+          i = j;
+          if (n == 8)
+          {
+            i = j;
+            if (i1 == 8)
+            {
+              System.arraycopy(EpicNative.get(paramInt2 + 44, 4), 0, arrayOfByte, 12, 4);
+              i = 0;
+            }
+          }
+        }
+      }
+      k = i;
+      if (m >= 3)
+      {
+        n = getTypeLength(paramMethodInfo[0]);
+        i1 = getTypeLength(paramMethodInfo[1]);
+        int i2 = getTypeLength(paramMethodInfo[2]);
+        j = i;
+        if (n == 4)
+        {
+          j = i;
+          if (i1 == 4)
+          {
+            j = i;
+            if (i2 == 4) {
+              j = 0;
+            }
+          }
+        }
+        k = j;
+        if (m == 3)
+        {
+          k = j;
+          if (n == 8)
+          {
+            k = j;
+            if (i1 == 4)
+            {
+              k = j;
+              if (i2 == 8)
+              {
+                System.arraycopy(EpicNative.get(paramInt2 + 52, 4), 0, arrayOfByte, 12, 4);
+                k = 0;
+              }
+            }
+          }
+        }
+      }
+      if (k == 0) {
+        break label112;
+      }
+      paramArrayOfByte1 = Arrays.copyOfRange(arrayOfByte, 16, arrayOfByte.length);
+      k = paramArrayOfByte1.length;
+      j = 0;
+      i = k + 16;
+      for (;;)
+      {
+        paramArrayOfByte2 = EpicNative.get(paramInt2 + i, k);
+        j += k;
+        if (Arrays.equals(paramArrayOfByte2, paramArrayOfByte1))
+        {
+          paramArrayOfByte1 = EpicNative.get(paramInt2 + i - 4, 4);
+          Logger.d("Entry", "found other arguments in stack, index:" + i + ", origin r3:" + Arrays.toString(paramArrayOfByte1));
+          System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 12, 4);
+          break;
+        }
+        if (j > 1024) {
+          throw new RuntimeException("can not found the modify r3 register!!!");
+        }
+        i += 4;
+      }
+      label792:
+      paramArrayOfByte1 = paramMethodInfo[paramInt2];
+      i = arrayOfInt[paramInt2];
+      localObject[paramInt2] = wrapArgument(paramArrayOfByte1, paramInt1, Arrays.copyOfRange(arrayOfByte, i, getTypeLength(paramArrayOfByte1) + i));
+      paramInt2 += 1;
+      break label141;
+      label837:
       paramArrayOfByte2 = localObject[0];
       paramInt1 = localObject.length;
       paramArrayOfByte1 = paramArrayOfByte2;
@@ -283,68 +292,67 @@ public class Entry
     //   0: getstatic 24	me/weishu/epic/art/entry/Entry:bridgeMethodMap	Ljava/util/Map;
     //   3: astore_1
     //   4: aload_0
-    //   5: invokevirtual 231	java/lang/Class:isPrimitive	()Z
-    //   8: ifeq +85 -> 93
+    //   5: invokevirtual 223	java/lang/Class:isPrimitive	()Z
+    //   8: ifeq +82 -> 90
     //   11: aload_1
     //   12: aload_0
-    //   13: invokeinterface 234 2 0
-    //   18: checkcast 236	java/lang/String
+    //   13: invokeinterface 226 2 0
+    //   18: checkcast 74	java/lang/String
     //   21: astore_0
     //   22: ldc 10
-    //   24: new 55	java/lang/StringBuilder
+    //   24: new 68	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   31: ldc 238
-    //   33: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_0
-    //   37: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc 240
-    //   42: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: getstatic 24	me/weishu/epic/art/entry/Entry:bridgeMethodMap	Ljava/util/Map;
-    //   48: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 246	com/taobao/android/dexposed/utility/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   57: ldc 2
-    //   59: aload_0
-    //   60: iconst_3
-    //   61: anewarray 26	java/lang/Class
-    //   64: dup
-    //   65: iconst_0
-    //   66: getstatic 44	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   69: aastore
-    //   70: dup
-    //   71: iconst_1
-    //   72: getstatic 44	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   75: aastore
-    //   76: dup
-    //   77: iconst_2
-    //   78: getstatic 44	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   81: aastore
-    //   82: invokevirtual 250	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   85: astore_0
-    //   86: aload_0
-    //   87: iconst_1
-    //   88: invokevirtual 256	java/lang/reflect/Method:setAccessible	(Z)V
-    //   91: aload_0
-    //   92: areturn
-    //   93: ldc 4
-    //   95: astore_0
-    //   96: goto -85 -> 11
-    //   99: astore_0
-    //   100: new 196	java/lang/RuntimeException
-    //   103: dup
-    //   104: ldc_w 258
-    //   107: aload_0
-    //   108: invokespecial 261	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   111: athrow
+    //   28: ldc 228
+    //   30: invokespecial 81	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   33: aload_0
+    //   34: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc 230
+    //   39: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: getstatic 24	me/weishu/epic/art/entry/Entry:bridgeMethodMap	Ljava/util/Map;
+    //   45: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokestatic 236	com/qq/android/dexposed/utility/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: ldc 2
+    //   56: aload_0
+    //   57: iconst_3
+    //   58: anewarray 26	java/lang/Class
+    //   61: dup
+    //   62: iconst_0
+    //   63: getstatic 44	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   66: aastore
+    //   67: dup
+    //   68: iconst_1
+    //   69: getstatic 44	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   72: aastore
+    //   73: dup
+    //   74: iconst_2
+    //   75: getstatic 44	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   78: aastore
+    //   79: invokevirtual 240	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   82: astore_0
+    //   83: aload_0
+    //   84: iconst_1
+    //   85: invokevirtual 246	java/lang/reflect/Method:setAccessible	(Z)V
+    //   88: aload_0
+    //   89: areturn
+    //   90: ldc 4
+    //   92: astore_0
+    //   93: goto -82 -> 11
+    //   96: astore_0
+    //   97: new 192	java/lang/RuntimeException
+    //   100: dup
+    //   101: ldc 248
+    //   103: aload_0
+    //   104: invokespecial 251	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   107: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	112	0	paramClass	Class<?>
+    //   0	108	0	paramClass	Class<?>
     //   3	9	1	localMap	Map
     // Exception table:
     //   from	to	target	type
-    //   0	11	99	java/lang/Throwable
-    //   11	91	99	java/lang/Throwable
+    //   0	11	96	java/lang/Throwable
+    //   11	88	96	java/lang/Throwable
   }
   
   private static int getTypeLength(Class<?> paramClass)
@@ -367,84 +375,47 @@ public class Entry
   
   private static boolean onHookBoolean(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return false;
-    }
-    return ((Boolean)paramObject1).booleanValue();
+    return ((Boolean)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).booleanValue();
   }
   
   private static byte onHookByte(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return 0;
-    }
-    return ((Byte)paramObject1).byteValue();
+    return ((Byte)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).byteValue();
   }
   
   private static char onHookChar(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return '\000';
-    }
-    return ((Character)paramObject1).charValue();
+    return ((Character)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).charValue();
   }
   
   private static double onHookDouble(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return 0.0D;
-    }
-    return ((Double)paramObject1).doubleValue();
+    return ((Double)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).doubleValue();
   }
   
   private static float onHookFloat(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return 0.0F;
-    }
-    return ((Float)paramObject1).floatValue();
+    return ((Float)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).floatValue();
   }
   
   private static int onHookInt(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return 0;
-    }
-    return ((Integer)paramObject1).intValue();
+    return ((Integer)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).intValue();
   }
   
   private static long onHookLong(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return 0L;
-    }
-    return ((Long)paramObject1).longValue();
+    return ((Long)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).longValue();
   }
   
   private static Object onHookObject(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject2 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    paramObject1 = paramObject2;
-    if (paramObject2 == null) {
-      paramObject1 = new Object();
-    }
-    return paramObject1;
+    return DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
   }
   
   private static short onHookShort(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
   {
-    paramObject1 = DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject);
-    if (paramObject1 == null) {
-      return 0;
-    }
-    return ((Short)paramObject1).shortValue();
+    return ((Short)DexposedBridge.handleHookedArtMethod(paramObject1, paramObject2, paramArrayOfObject)).shortValue();
   }
   
   private static void onHookVoid(Object paramObject1, Object paramObject2, Object[] paramArrayOfObject)
@@ -454,7 +425,7 @@ public class Entry
   
   private static Object referenceBridge(int paramInt1, int paramInt2, int paramInt3)
   {
-    Logger.i("Entry", "---------enter bridge function---------.");
+    Logger.i("Entry", "enter bridge function.");
     Logger.i("Entry", "struct:" + Long.toHexString(paramInt3));
     int i = ByteBuffer.wrap(EpicNative.get(paramInt3, 4)).order(ByteOrder.LITTLE_ENDIAN).getInt();
     Object localObject2 = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(paramInt1).array();
@@ -518,7 +489,6 @@ public class Entry
   
   private static Object wrapArgument(Class<?> paramClass, int paramInt, byte[] paramArrayOfByte)
   {
-    boolean bool = true;
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.LITTLE_ENDIAN);
     Logger.d("Entry", "wrapArgument: type:" + paramClass);
     if (paramClass.isPrimitive())
@@ -546,14 +516,10 @@ public class Entry
       }
       if (paramClass == Boolean.TYPE)
       {
-        paramInt = paramArrayOfByte.getInt();
-        Logger.d("Entry", "byteBuffer.getInt():" + paramInt);
-        if (paramInt == 1) {}
-        for (;;)
-        {
-          return Boolean.valueOf(bool);
-          bool = false;
+        if (paramArrayOfByte.getInt() == 0) {
+          return Boolean.valueOf(true);
         }
+        return Boolean.valueOf(false);
       }
       throw new RuntimeException("unknown type:" + paramClass);
     }

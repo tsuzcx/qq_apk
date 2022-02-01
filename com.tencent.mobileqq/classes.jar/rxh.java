@@ -1,25 +1,28 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
-class rxh
-  extends GestureDetector.SimpleOnGestureListener
+public class rxh
+  extends PhoneStateListener
 {
   rxh(rxg paramrxg) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    if ((rxg.a(this.a) != null) && (rxg.a(this.a).a != null)) {
-      this.a.a.a(rxg.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
     }
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((rxg.a(this.a) != null) && (rxg.a(this.a).b != null)) {
-      this.a.a.onClick(rxg.a(this.a).b);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c(true);
+      return;
+    case 2: 
+      this.a.c(true);
+      return;
     }
-    return true;
+    this.a.c();
   }
 }
 

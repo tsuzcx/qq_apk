@@ -1,63 +1,46 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import NS_MOBILE_OPERATION.operation_like_req;
+import com.qq.taf.jce.JceStruct;
 
-final class bmyp
+public class bmyp
+  extends bmsy
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final WeiyunPB.MsgHead jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private int a;
+  public JceStruct a;
   
-  bmyp(int paramInt, byte[] paramArrayOfByte)
+  public bmyp(Long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = a(paramInt);
-  }
-  
-  bmyp(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = paramMsgHead;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  private WeiyunPB.MsgHead a(int paramInt)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    WeiyunPB.MsgHead localMsgHead = new WeiyunPB.MsgHead();
-    localMsgHead.uin.set(localAppRuntime.getLongAccountUin());
-    localMsgHead.seq.set(a());
-    localMsgHead.type.set(1);
-    localMsgHead.cmd.set(paramInt);
-    localMsgHead.emulator_flag.set(0);
-    localMsgHead.appid.set(31532);
-    localMsgHead.encrypt.set(0);
-    localMsgHead.zip_flag.set(0);
-    localMsgHead.version.set(bnao.c());
-    localMsgHead.fix_version.set(bnao.d());
-    localMsgHead.nettype.set(nmd.a(localAppRuntime.getApplication()));
-    localMsgHead.major_version.set(bnao.a());
-    localMsgHead.minor_version.set(bnao.b());
-    return localMsgHead;
+    operation_like_req localoperation_like_req = new operation_like_req();
+    localoperation_like_req.uin = paramLong.longValue();
+    localoperation_like_req.action = paramInt1;
+    localoperation_like_req.appid = paramInt2;
+    localoperation_like_req.curkey = paramString1;
+    localoperation_like_req.unikey = paramString2;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = localoperation_like_req;
   }
   
   public int a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    return this.jdField_a_of_type_Int;
   }
   
-  public WeiyunPB.MsgHead a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public byte[] a()
+  public String getCmdString()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return "QzoneNewService.like";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return "like";
   }
 }
 

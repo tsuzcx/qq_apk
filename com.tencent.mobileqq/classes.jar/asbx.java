@@ -1,172 +1,124 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import mqq.app.AppActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class asbx
-  extends BaseAdapter
-  implements AdapterView.OnItemClickListener
+public final class asbx
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private asbz jdField_a_of_type_Asbz;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public asbx(Context paramContext, asbz paramasbz)
+  public asbx(WebViewPlugin paramWebViewPlugin)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Asbz = paramasbz;
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847826);
-    this.jdField_a_of_type_Int = afur.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
   }
   
-  public static URL a(String paramString1, String paramString2)
+  private AppActivity a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
-    localStringBuilder.append("://");
-    localStringBuilder.append(paramString1);
-    if (paramString2 != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)
     {
-      localStringBuilder.append("#");
-      localStringBuilder.append(paramString2);
+      localObject = null;
+      if (localObject != null) {
+        break label38;
+      }
+    }
+    label38:
+    for (Object localObject = null;; localObject = ((bioy)localObject).a())
+    {
+      if (!(localObject instanceof AppActivity)) {
+        break label46;
+      }
+      return (AppActivity)localObject;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime;
+      break;
+    }
+    label46:
+    return null;
+  }
+  
+  private void a(boolean paramBoolean, int paramInt)
+  {
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject1;
+    if (!TextUtils.isEmpty(str)) {
+      localObject1 = "";
     }
     try
     {
-      paramString1 = new URL(localStringBuilder.toString());
-      return paramString1;
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("granted", paramBoolean);
+      ((JSONObject)localObject2).put("errorCode", paramInt);
+      ((JSONObject)localObject2).put("cmd", "onPermissionResult");
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
     }
-    catch (MalformedURLException paramString1)
+    catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreviewThumbAdapter", 2, paramString1.getMessage(), paramString1);
-      }
-    }
-    return null;
-  }
-  
-  public LocalMediaInfo a(String paramString)
-  {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.mMediaType = 0;
-    localLocalMediaInfo.path = paramString;
-    localLocalMediaInfo.thumbWidth = this.jdField_a_of_type_Int;
-    localLocalMediaInfo.thumbHeight = this.jdField_a_of_type_Int;
-    return localLocalMediaInfo;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      paramView = new asby(this);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559579, paramViewGroup, false);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131378664));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131378662));
-      localView.setTag(paramView);
-    }
-    Object localObject2;
-    Object localObject1;
-    for (;;)
-    {
-      localObject2 = a(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject1 = (asby)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject1;
-    }
-    if (((String)localObject2).equals(this.jdField_a_of_type_JavaLangString)) {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    for (;;)
-    {
-      localObject1 = a((String)localObject2);
-      localObject2 = a((String)localObject2, "DEFAULT");
-      URLDrawable localURLDrawable = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
-      if ((localURLDrawable == null) || (!localURLDrawable.getURL().toString().equals(((URL)localObject2).toString())))
+      for (;;)
       {
-        localObject2 = bdzx.a((URL)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        ((URLDrawable)localObject2).setTag(localObject1);
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-        paramView.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject2);
+        QLog.e("CameraHelper", 1, "onPermissionResult error", localJSONException);
       }
-      break;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { localObject1 });
     }
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  private boolean a()
   {
-    if (this.jdField_a_of_type_Asbz != null) {
-      this.jdField_a_of_type_Asbz.a(paramInt);
+    AppActivity localAppActivity = a();
+    return (Build.VERSION.SDK_INT < 23) || (localAppActivity == null) || (localAppActivity.checkSelfPermission("android.permission.CAMERA") == 0);
+  }
+  
+  private void b()
+  {
+    AppActivity localAppActivity = a();
+    if (localAppActivity == null) {
+      return;
     }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    localAppActivity.requestPermissions(new asby(this), 1819, new String[] { "android.permission.CAMERA" });
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new asbz(this, Looper.getMainLooper());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = null;
+    c();
+    this.jdField_a_of_type_AndroidOsHandler = null;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("CameraHelper", 1, "checkPermission failed, callback is invalid.");
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (a())
+    {
+      a(true, 0);
+      return true;
+    }
+    b();
+    return false;
   }
 }
 

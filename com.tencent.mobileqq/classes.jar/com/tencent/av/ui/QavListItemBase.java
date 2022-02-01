@@ -7,8 +7,8 @@ import android.widget.LinearLayout;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mhk;
-import mhm;
+import mig;
+import mii;
 
 public abstract class QavListItemBase
   extends LinearLayout
@@ -17,7 +17,7 @@ public abstract class QavListItemBase
   protected int a;
   Context jdField_a_of_type_AndroidContentContext;
   final String jdField_a_of_type_JavaLangString;
-  mhk jdField_a_of_type_Mhk;
+  mig jdField_a_of_type_Mig;
   
   public QavListItemBase(Context paramContext)
   {
@@ -35,25 +35,25 @@ public abstract class QavListItemBase
   
   public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, mhk parammhk)
+  public void a(int paramInt, mig parammig)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Mhk = parammhk;
+    this.jdField_a_of_type_Mig = parammig;
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mhm parammhm, mhk parammhk);
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mii parammii, mig parammig);
   
-  public void a(mhm parammhm, int paramInt) {}
+  public void a(mii parammii, int paramInt) {}
   
   public abstract void b(int paramInt1, int paramInt2);
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Mhk != null)
+    if (this.jdField_a_of_type_Mig != null)
     {
       long l = AudioHelper.b();
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "], mPosition[" + this.jdField_a_of_type_Int + "]");
-      this.jdField_a_of_type_Mhk.a(l, this.jdField_a_of_type_Int, this);
+      this.jdField_a_of_type_Mig.a(l, this.jdField_a_of_type_Int, this);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

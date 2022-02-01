@@ -1,23 +1,55 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class astx
-  implements bkkl
+  extends anwy
 {
-  public astx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public astx(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramInt == this.a.jdField_a_of_type_Asti.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    switch (paramInt)
     {
-      if (!this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+    }
+    EmoticonResp localEmoticonResp;
+    int i;
+    label134:
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      localEmoticonResp = (EmoticonResp)paramObject;
+      if (paramBoolean)
+      {
+        i = localEmoticonResp.delEpId;
+        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
+          paramObject = anzj.a(2131698937);
+        }
       }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
+          break label134;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
+        return;
+        paramObject = localEmoticonResp.keySeq;
+        continue;
+        i = -404;
+        paramObject = anzj.a(2131698938);
+      }
+      localQQAppInterface = this.a.a();
+    } while (localQQAppInterface == null);
+    ((axfj)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new asty(this, paramInt, localQQAppInterface, i, paramObject));
   }
 }
 

@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
 
-public class biiz
-  implements DialogInterface.OnClickListener
+class biiz
+  extends MQLruCache<String, Object>
 {
-  public biiz(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  biiz(biiy parambiiy, int paramInt)
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new AuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Bitmap)))
+    {
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a = null;
+    return super.sizeOfObj(paramString, paramObject);
   }
 }
 

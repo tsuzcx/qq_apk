@@ -1,17 +1,29 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import android.content.Context;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tke
-  implements Function1<Canvas, Unit>
+  implements View.OnClickListener
 {
-  public tke(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public tke(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public Unit a(Canvas paramCanvas)
+  public final void onClick(View paramView)
   {
-    ColorBandVideoEntranceButton.b(this.a, paramCanvas);
-    return null;
+    if (!LimitWordCountEditText.a(this.a).hasFocus())
+    {
+      LimitWordCountEditText.a(this.a).requestFocus();
+      LimitWordCountEditText.a(this.a).setSelection(LimitWordCountEditText.a(this.a).getText().length());
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
+    if (localInputMethodManager != null) {
+      localInputMethodManager.showSoftInput(LimitWordCountEditText.a(this.a), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

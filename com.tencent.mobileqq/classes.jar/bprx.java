@@ -1,54 +1,45 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.Spanned;
 
-public abstract class bprx
+class bprx
+  extends bqlx
 {
-  protected final int a;
-  protected Context a;
-  protected bpry a;
-  protected final String a;
-  protected boolean a;
-  protected final String b;
-  protected boolean b;
-  protected boolean c = true;
-  
-  public bprx(Context paramContext, String paramString1, String paramString2, int paramInt)
+  bprx(bprw parambprw, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
   }
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public void a(bpry parambpry)
+  public int a(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Bpry = parambpry;
+    return 0;
   }
   
-  public void a(boolean paramBoolean)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    int j = 0;
+    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
+    int i;
+    if (paramInt2 - paramInt1 != str.length())
+    {
+      i = 1;
+      if (i == 0) {
+        break label92;
+      }
+      paramInt2 = str.length();
+      paramInt1 = j;
+      paramCharSequence = str;
+    }
+    label92:
+    for (;;)
+    {
+      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      if ((paramSpanned == null) && (i != 0))
+      {
+        return paramCharSequence;
+        i = 0;
+        break;
+      }
+      return paramSpanned;
+    }
   }
 }
 

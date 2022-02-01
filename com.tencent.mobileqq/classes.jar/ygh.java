@@ -2,28 +2,106 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ygh
-  extends wvr
-  implements wld<wzj, xaz>
+  extends wzm
+  implements woy<xcu, xeo>
 {
-  public String a;
-  private String b;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private ygj jdField_a_of_type_Ygj;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = 0;
   private String jdField_c_of_type_JavaLangString;
   private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  private void d()
+  public ygh(int paramInt, FeedVideoInfo paramFeedVideoInfo)
   {
-    wzj localwzj = new wzj();
-    localwzj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localwzj.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localwzj.jdField_b_of_type_Long = 0L;
-    localwzj.c = 10;
-    localwzj.d = 10;
-    wlb.a().a(localwzj, this);
-    yqp.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localwzj.toString());
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramFeedVideoInfo.feedId;
+    this.jdField_a_of_type_Int = paramFeedVideoInfo.mVideoPullType;
+    this.jdField_b_of_type_JavaLangString = paramFeedVideoInfo.mVideoNextCookie;
+    this.jdField_b_of_type_Int = paramFeedVideoInfo.mVideoSeq;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      yuk.e("Q.qqstory.home.data:VideoListPageLoader", "initial video page loader failed because feedId is null. from page %d.", new Object[] { Integer.valueOf(paramInt) });
+      znw.a(false, "initial video page loader failed because feedId is null. from page " + paramInt);
+    }
+  }
+  
+  public ygh(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = paramInt3;
+    this.d = true;
+    if (TextUtils.isEmpty(paramString))
+    {
+      yuk.e("Q.qqstory.home.data:VideoListPageLoader", "initial video page loader failed because feedId is null. from page %d.", new Object[] { Integer.valueOf(paramInt1) });
+      znw.a(false, "initial video page loader failed because feedId is null. from page " + paramInt1);
+    }
+  }
+  
+  private void a(ygk paramygk)
+  {
+    ygj localygj = this.jdField_a_of_type_Ygj;
+    if (localygj == null)
+    {
+      wjj.a().dispatch(this.jdField_c_of_type_JavaLangString, paramygk);
+      return;
+    }
+    localygj.a(paramygk);
+  }
+  
+  private void e()
+  {
+    if (VideoListFeedItem.isFakeFeedId(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = new ygk(new ErrorMessage(), this.jdField_a_of_type_JavaLangString);
+      ((ygk)localObject).jdField_a_of_type_Boolean = true;
+      ((ygk)localObject).jdField_c_of_type_Boolean = true;
+      wjj.a().dispatch((Dispatcher.Dispatchable)localObject);
+      return;
+    }
+    if ((this.d) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
+    {
+      f();
+      return;
+    }
+    Object localObject = new xcu();
+    ((xcu)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ((xcu)localObject).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    ((xcu)localObject).jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+    wow.a().a((wpa)localObject, this);
+    yuk.a("Q.qqstory.home.data:VideoListPageLoader", "send video list request. request=%s.", ((xcu)localObject).toString());
+  }
+  
+  private void f()
+  {
+    xce localxce = new xce();
+    localxce.jdField_a_of_type_JavaUtilList = new ArrayList(1);
+    localxce.jdField_a_of_type_JavaUtilList.add(new ylw(this.jdField_a_of_type_JavaLangString, 0, "", "0"));
+    wow.a().a(localxce, new ygi(this));
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
@@ -33,39 +111,59 @@ public class ygh
       return;
     }
     this.jdField_b_of_type_JavaLangString = "";
-    d();
+    e();
   }
   
-  public void a(@NonNull wzj paramwzj, @Nullable xaz paramxaz, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull xcu paramxcu, @Nullable xeo paramxeo, @NonNull ErrorMessage paramErrorMessage)
   {
-    yqp.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
+    yuk.a("Q.qqstory.home.data:VideoListPageLoader", "get video list return:%s", paramErrorMessage.toString());
     if (this.jdField_c_of_type_Boolean)
     {
-      yqp.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
+      yuk.c("Q.qqstory.home.data:VideoListPageLoader", "don't nothing after terminate");
       return;
     }
-    ygi localygi = new ygi(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
-    localygi.jdField_b_of_type_Boolean = false;
-    if ((paramxaz == null) || (paramErrorMessage.isFail()))
+    ygk localygk = new ygk(paramErrorMessage, this.jdField_a_of_type_JavaLangString);
+    localygk.d = this.jdField_a_of_type_Boolean;
+    if ((paramxeo == null) || (paramErrorMessage.isFail()))
     {
-      wfo.a().dispatch(localygi);
+      a(localygk);
       return;
     }
-    this.jdField_b_of_type_JavaLangString = paramxaz.jdField_a_of_type_JavaLangString;
-    localygi.jdField_a_of_type_JavaUtilList = paramxaz.jdField_a_of_type_JavaUtilArrayList;
-    localygi.jdField_a_of_type_Int = paramxaz.b;
-    localygi.jdField_a_of_type_Boolean = paramxaz.jdField_a_of_type_Boolean;
-    localygi.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramwzj.jdField_a_of_type_JavaLangString);
-    paramxaz = paramxaz.jdField_a_of_type_JavaUtilArrayList;
-    ((woz)wpm.a(19)).b(paramxaz, paramwzj.jdField_b_of_type_JavaLangString, localygi.jdField_c_of_type_Boolean);
+    boolean bool = TextUtils.isEmpty(paramxcu.jdField_a_of_type_JavaLangString);
+    this.jdField_b_of_type_JavaLangString = paramxeo.jdField_a_of_type_JavaLangString;
+    localygk.jdField_a_of_type_JavaUtilList = paramxeo.jdField_a_of_type_JavaUtilArrayList;
+    localygk.jdField_c_of_type_Boolean = bool;
+    localygk.jdField_a_of_type_Boolean = paramxeo.jdField_a_of_type_Boolean;
+    if ((!localygk.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
+      localygk.jdField_a_of_type_Boolean = true;
+    }
+    localygk.jdField_b_of_type_JavaLangString = paramxeo.jdField_c_of_type_JavaLangString;
+    localygk.jdField_a_of_type_JavaUtilList = ((yme)wth.a(11)).a(this.jdField_a_of_type_JavaLangString, localygk.jdField_a_of_type_JavaUtilList, bool);
+    localygk.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(paramxcu.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, localygk.jdField_a_of_type_Boolean);
+    paramxcu = new ArrayList(localygk.jdField_a_of_type_JavaUtilList.size());
+    paramxeo = localygk.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramxeo.hasNext()) {
+      paramxcu.add(((StoryVideoItem)paramxeo.next()).mVid);
+    }
+    xat.a(paramxcu);
     try
     {
       this.jdField_b_of_type_Boolean = true;
-      wfo.a().dispatch(localygi);
-      yqp.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localygi);
+      a(localygk);
+      yuk.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from network: %s", localygk);
       return;
     }
     finally {}
+  }
+  
+  public void a(ygj paramygj)
+  {
+    this.jdField_a_of_type_Ygj = paramygj;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
   }
   
   public void c()
@@ -74,7 +172,12 @@ public class ygh
     if (this.jdField_c_of_type_Boolean) {
       return;
     }
-    d();
+    e();
+  }
+  
+  public void d()
+  {
+    this.jdField_c_of_type_Boolean = true;
   }
 }
 

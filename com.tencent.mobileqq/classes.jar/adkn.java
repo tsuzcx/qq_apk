@@ -1,62 +1,76 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.SparseArray;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.config.Config;
 
 public class adkn
-  implements View.OnClickListener
 {
-  public adkn(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public static int a;
+  private static long a;
+  public static SparseArray<adko> a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.a != null)
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
+    jdField_a_of_type_Long = Math.round((float)(System.currentTimeMillis() / 86400000L));
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(18);
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, new adko(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(14, new adko(0L, 0));
+  }
+  
+  public static void a()
+  {
+    long l;
+    if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      l = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_start_date", 0L);
     }
-    Object localObject = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (!this.a.isFinishing())
+    int[] arrayOfInt;
+    int j;
+    int i;
+    int k;
+    for (;;)
+    {
+      if ((jdField_a_of_type_Long - l > 0L) && (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null))
       {
-        localObject = new njt(this.a);
-        ((njt)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131698679));
-        ((njt)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850427);
-        ((njt)localObject).a();
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_start_date", jdField_a_of_type_Long);
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", 0);
+        arrayOfInt = Config.Plugins;
+        j = arrayOfInt.length;
+        i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            k = arrayOfInt[i];
+            MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), 0);
+            jdField_a_of_type_AndroidUtilSparseArray.put(k, new adko(0L, 0));
+            i += 1;
+            continue;
+            l = jdField_a_of_type_Long;
+            break;
+          }
+        }
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
       }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (((String)localObject).length() > 90)
+      if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null)
       {
-        localObject = new ReportDialog(this.a, 2131755823);
-        ((Dialog)localObject).setContentView(2131562815);
-        ((TextView)((Dialog)localObject).findViewById(2131365475)).setText(this.a.getString(2131690952));
-        ((ProgressBar)((Dialog)localObject).findViewById(2131366957)).setVisibility(8);
-        ((ImageView)((Dialog)localObject).findViewById(2131380280)).setImageResource(2130839586);
-        ((Dialog)localObject).show();
-      }
-      else
-      {
-        this.a.a((String)localObject, true);
-        if (bgnt.d(this.a)) {
-          AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), (String)localObject, this.a.getIntent().getIntExtra("stat_option", 0), 2000);
-        } else {
-          QQToast.a(this.a, 1, 2131693948, 0).b(this.a.getTitleBarHeight());
+        jdField_a_of_type_Int = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_today_reported", 0);
+        if (jdField_a_of_type_Int >= Config.MAX_REPORT_NUM) {
+          break;
+        }
+        arrayOfInt = Config.Plugins;
+        j = arrayOfInt.length;
+        i = 0;
+        while (i < j)
+        {
+          k = arrayOfInt[i];
+          int m = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_plugin_" + String.valueOf(k), 0);
+          jdField_a_of_type_AndroidUtilSparseArray.put(k, new adko(0L, m));
+          i += 1;
         }
       }
     }

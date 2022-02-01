@@ -1,43 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nju
-  implements Handler.Callback
+public class nju
+  implements View.OnClickListener
 {
-  nju(njt paramnjt) {}
+  public nju(PoiMapActivity paramPoiMapActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i;
-    if (paramMessage.what == 291) {
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
-      paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Int += 1;
-      if (this.a.jdField_a_of_type_Int == 4) {
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
-      return false;
-      i = 2131695356;
-      continue;
-      i = 2131695357;
-      continue;
-      i = 2131695358;
-      continue;
-      i = 2131695359;
-    }
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

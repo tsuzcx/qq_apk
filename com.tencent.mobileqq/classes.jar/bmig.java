@@ -1,104 +1,188 @@
-import android.content.SharedPreferences;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.DeadObjectException;
+import android.os.Looper;
+import android.os.RemoteException;
 import android.text.TextUtils;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QzoneHardwareRestriction;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qappcenter.QAppCenterPluginProxyService;
+import cooperation.qappcenter.remote.RecvMsg;
+import cooperation.qappcenter.remote.RemoteServiceProxy.2;
+import cooperation.qappcenter.remote.RemoteServiceProxy.3;
+import cooperation.qappcenter.remote.SendMsg;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bmig
 {
-  public static final String a;
-  public static final boolean a;
-  public static final String b;
-  private static boolean b;
-  private static boolean c;
-  private static boolean d;
+  protected static ConcurrentHashMap<String, bmig> a;
+  protected volatile long a;
+  protected ServiceConnection a;
+  private bmhz jdField_a_of_type_Bmhz;
+  public volatile bmic a;
+  protected Object a;
+  private String jdField_a_of_type_JavaLangString;
+  public ConcurrentLinkedQueue<SendMsg> a;
+  private String b;
   
   static
   {
-    boolean bool = true;
-    jdField_a_of_type_JavaLangString = bmig.class.getSimpleName();
-    jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "animatedWebpMD5", "4c8590a921c2722051416111dfd57122");
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "ENABLE_ANIMATED_WEBP", 1) == 1) {}
-    for (;;)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public static boolean a()
+  public bmig(String paramString1, String paramString2)
   {
-    if (!c) {
-      if ((!jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean) || (!QzoneHardwareRestriction.meetHardwareRestriction(2, 1))) {
-        break label40;
-      }
-    }
-    label40:
-    for (boolean bool = true;; bool = false)
-    {
-      d = bool;
-      c = true;
-      return d;
-    }
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_AndroidContentServiceConnection = new bmih(this);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public static boolean b()
-  {
-    if (!a())
-    {
-      QZLog.i(jdField_a_of_type_JavaLangString, "enable animtedWebp false");
-      return false;
-    }
-    if ((!e()) && (c())) {
-      return d();
-    }
-    QzoneModuleManager.getInstance().downloadModule("animatedWebp.so", new bmih());
-    return false;
-  }
-  
-  public static boolean c()
-  {
-    String str = QzoneModuleManager.getInstance().getModuleFilePath("animatedWebp.so");
-    if (TextUtils.isEmpty(str))
-    {
-      QZLog.i(jdField_a_of_type_JavaLangString, "isWebp SO path not exit");
-      return false;
-    }
-    boolean bool = new File(str).exists();
-    QZLog.i(jdField_a_of_type_JavaLangString, "isWebp SO path exit : " + bool);
-    return bool;
-  }
-  
-  private static boolean d()
+  public static bmig a(String paramString)
   {
     try
     {
-      String str = QzoneModuleManager.getInstance().getModuleFilePath("animatedWebp.so");
-      if (TextUtils.isEmpty(str)) {
-        return false;
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) == null) {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, new bmig(null, paramString));
       }
-      System.load(str);
-      return true;
+      paramString = (bmig)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      return paramString;
     }
-    catch (Throwable localThrowable)
-    {
-      jdField_b_of_type_Boolean = true;
-      QZLog.e(jdField_a_of_type_JavaLangString, "load webp so fail", localThrowable);
-    }
-    return false;
+    finally {}
   }
   
-  private static boolean e()
+  public RecvMsg a(SendMsg paramSendMsg, String paramString)
   {
-    String str = bivg.a().getString("PREFERENCE_SO_MD5_KEY", null);
-    if (TextUtils.isEmpty(str)) {}
-    while (!str.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) {
-      return true;
+    paramSendMsg = new RecvMsg(paramSendMsg.a(), paramSendMsg.a());
+    paramSendMsg.a(1002, paramString);
+    return paramSendMsg;
+  }
+  
+  protected void a()
+  {
+    RemoteServiceProxy.2 local2 = new RemoteServiceProxy.2(this);
+    local2.setName("handleWaitSendProxyMsgThread");
+    local2.start();
+  }
+  
+  public void a(SendMsg paramSendMsg)
+  {
+    if (Looper.getMainLooper().getThread() == Thread.currentThread())
+    {
+      ThreadManager.post(new RemoteServiceProxy.3(this, paramSendMsg), 10, null, false);
+      return;
     }
-    return false;
+    this.jdField_a_of_type_Bmic.a(paramSendMsg);
+  }
+  
+  public void a(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
+  {
+    try
+    {
+      if (paramSendMsg.a() != null)
+      {
+        paramSendMsg.a().a(paramRecvMsg);
+        return;
+      }
+      if (this.jdField_a_of_type_Bmhz != null)
+      {
+        this.jdField_a_of_type_Bmhz.a(paramRecvMsg);
+        return;
+      }
+    }
+    catch (RemoteException paramSendMsg)
+    {
+      paramSendMsg.printStackTrace();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return this.jdField_a_of_type_Bmic != null;
+  }
+  
+  public void b()
+  {
+    long l = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Long == -1L) || (l - this.jdField_a_of_type_Long > 1000L))
+    {
+      this.jdField_a_of_type_Long = l;
+      c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RemoteServiceProxy", 2, "wait start " + this.jdField_a_of_type_JavaLangString + " service result, skiped...");
+  }
+  
+  public void b(SendMsg paramSendMsg)
+  {
+    try
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (a())
+        {
+          a(paramSendMsg);
+          return;
+        }
+        c(paramSendMsg);
+        b();
+      }
+      return;
+    }
+    catch (DeadObjectException localDeadObjectException)
+    {
+      c(paramSendMsg);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (this.jdField_a_of_type_Bmic == null)
+      {
+        c(paramSendMsg);
+        return;
+      }
+      localException.printStackTrace();
+    }
+  }
+  
+  void c()
+  {
+    try
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), QAppCenterPluginProxyService.class);
+      bmgt localbmgt = new bmgt(1);
+      localbmgt.b = "qappcenter_plugin.apk";
+      localbmgt.d = anzj.a(2131712273);
+      localbmgt.jdField_a_of_type_JavaLangString = this.b;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+      for (localbmgt.e = "com.tencent.plugin.qappcenter.remote.RemoteService";; localbmgt.e = this.jdField_a_of_type_JavaLangString)
+      {
+        localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
+        localbmgt.jdField_a_of_type_AndroidContentServiceConnection = this.jdField_a_of_type_AndroidContentServiceConnection;
+        bmgk.c(BaseApplicationImpl.getApplication(), localbmgt);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("RemoteServiceProxy", 2, " start service finish");
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  protected void c(SendMsg paramSendMsg)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramSendMsg);
   }
 }
 

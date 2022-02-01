@@ -1,21 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide;
+import kotlin.Metadata;
 
-public class tpg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "clickPos", "", "onAdGuideClick", "com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdVideo185UIStateUtil$onProgressUpdate$2$1"}, k=3, mv={1, 1, 16})
+final class tpg
+  implements tss
 {
-  public Activity a;
-  public JSONObject a;
-  public tpd b;
+  tpg(ReadInJoyAdVideoGuide paramReadInJoyAdVideoGuide, AdvertisementInfo paramAdvertisementInfo, rmg paramrmg, rwc paramrwc) {}
   
-  tpg(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
+  public final void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = paramtpd2;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    paramView = this.jdField_a_of_type_Rmg;
+    if (paramView != null) {
+      paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Rwc.a);
+    }
   }
-  
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt) {}
 }
 
 

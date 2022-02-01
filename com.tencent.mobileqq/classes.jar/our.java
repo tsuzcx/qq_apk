@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class our
-  implements View.OnClickListener
+class our
+  extends ovd
 {
-  public our(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  public void onClick(View paramView)
+  our(otv paramotv)
   {
-    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
-      this.a.d(ReadInJoyDeliverBiuActivity.l(this.a));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      oat.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-      this.a.finish();
-      ReadInJoyDeliverBiuActivity.a(this.a, false);
-    }
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    paramovg.onCommentListLoad(1, true, this.a.c(), otv.c(this.a), 6, 6);
   }
 }
 

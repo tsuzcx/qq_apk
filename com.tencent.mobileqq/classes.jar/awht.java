@@ -1,54 +1,148 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.support.annotation.Nullable;
+import android.support.v4.util.ArraySet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.io.ByteArrayInputStream;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-class awht
-  extends WtloginListener
+public class awht
+  extends WebViewPlugin
 {
-  awht(awhq paramawhq, biau parambiau, WtloginHelper paramWtloginHelper, Bundle paramBundle) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  @Nullable
+  private ArraySet<Integer> jdField_a_of_type_AndroidSupportV4UtilArraySet;
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public awht()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(awhq.a, 2, "jumpTimLogin OnException=" + paramErrMsg + ", cmd=" + paramInt);
-    }
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-      this.jdField_a_of_type_Biau.dismiss();
-    }
-    QQToast.a(awhq.a(this.jdField_a_of_type_Awhq).getApp(), 1, 2131718559, 0).a();
+    this.mPluginNameSpace = "Gdt";
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  private Activity a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(awhq.a, 2, "jumpTimLogin onGetA1WithA1 ret=" + paramInt2);
-    }
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-      this.jdField_a_of_type_Biau.dismiss();
-    }
-    if (paramInt2 != 0)
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  private void a(String paramString)
+  {
+    for (;;)
     {
-      QQToast.a(awhq.a(this.jdField_a_of_type_Awhq).getApp(), 1, 2131718559, 0).a();
+      Object localObject;
+      try
+      {
+        localObject = new JSONObject(paramString);
+        paramString = ((JSONObject)localObject).optString("businessId");
+        String str1 = ((JSONObject)localObject).optString("openlink");
+        String str2 = ((JSONObject)localObject).optString("packageName");
+        localObject = ((JSONObject)localObject).optString("callback");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label207;
+        }
+        awhu localawhu = new awhu(this, (String)localObject);
+        i = aqjx.a().a(localawhu);
+        if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {
+          this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
+        }
+        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Integer.valueOf(i));
+        try
+        {
+          if (!TextUtils.isEmpty(str1))
+          {
+            aqkc.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
+            return;
+          }
+          if (TextUtils.isEmpty(str2)) {
+            break label183;
+          }
+          bhny.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
+          return;
+        }
+        catch (ActivityNotFoundException paramString)
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
+          }
+        }
+        callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e(this.TAG, 1, paramString, new Object[0]);
+        return;
+      }
+      label183:
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
       return;
+      label207:
+      int i = 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(awhq.a, 2, "jumpTimLogin call TIM JumpActivity");
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    if ((paramLong == 8L) && (paramString != null)) {
+      try
+      {
+        if (((aqjz)aran.a().a(416)).a(paramString))
+        {
+          QLog.d(this.TAG, 1, "doInterceptRequest");
+          WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
+          return localWebResourceResponse;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(this.TAG, 1, localThrowable, new Object[0]);
+        return super.handleEvent(paramString, paramLong);
+      }
     }
-    paramArrayOfByte1 = new Intent();
-    paramArrayOfByte1.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.LoginJumpTeamWorkActivity"));
-    paramArrayOfByte1.setFlags(268435456);
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    awhq.a(this.jdField_a_of_type_Awhq).getApp().startActivity(paramArrayOfByte1);
+    return super.handleEvent(paramString, paramLong);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if ("Gdt".equals(paramString2))
+    {
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if (("Openlink".equals(paramString3)) && (paramVarArgs.length > 0)) {
+        a(paramVarArgs[0]);
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidAppActivity = a();
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        aqjx.a().a(i);
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+    }
+    super.onDestroy();
   }
 }
 

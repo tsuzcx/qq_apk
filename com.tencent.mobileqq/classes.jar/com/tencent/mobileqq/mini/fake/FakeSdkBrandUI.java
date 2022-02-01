@@ -14,10 +14,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import biip;
-import birv;
-import birw;
-import bjxj;
+import bjjo;
+import bjsu;
+import bjsv;
+import bkyl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -216,18 +216,18 @@ public class FakeSdkBrandUI
     long l1 = System.currentTimeMillis();
     try
     {
-      birw localbirw = new birw(biip.a().a());
-      birv localbirv = new birv();
-      localbirv.a(true);
-      long l2 = biip.a().a();
+      bjsv localbjsv = new bjsv(bjjo.a().a());
+      bjsu localbjsu = new bjsu();
+      localbjsu.a(true);
+      long l2 = bjjo.a().a();
       Object localObject = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       String str = ((TicketManager)localObject).getSkey(String.valueOf(l2));
       localObject = ((TicketManager)localObject).getPskey(String.valueOf(l2), "qzone.qq.com");
-      localbirv.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbirv.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbirv.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbirv.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbirw.a();
+      localbjsu.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjsu.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjsu.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjsu.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjsv.a();
       l2 = System.currentTimeMillis();
       QLog.e(AppBrandUI3.class.getSimpleName(), 1, "setCookie cost:" + (l2 - l1));
       return;
@@ -278,7 +278,7 @@ public class FakeSdkBrandUI
             QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
             this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
           }
-          bjxj.a();
+          bkyl.a();
           return true;
         }
         catch (Throwable localThrowable2)
@@ -336,7 +336,7 @@ public class FakeSdkBrandUI
     if (this.mUIProxy != null) {
       this.mUIProxy.onDetachActivity(paramBaseActivity);
     }
-    bjxj.b();
+    bkyl.b();
   }
   
   public void doOnNewIntent(BaseActivity paramBaseActivity, Intent paramIntent)

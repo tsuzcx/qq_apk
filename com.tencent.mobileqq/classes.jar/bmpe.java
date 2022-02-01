@@ -1,27 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
 
 public class bmpe
-  extends Handler
+  implements EnterCallback
 {
-  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  bmpe(bmpb parambmpb) {}
   
-  public bmpe(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
-  {
-    super(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
-  }
+  public void onCloseLoadingView() {}
   
-  public void handleMessage(Message paramMessage)
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
   {
-    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage != null) {
-      paramMessage.invalidateSelf();
-    }
+    bmpb.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
   }
 }
 

@@ -1,21 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class afkg
-  implements URLDrawable.URLDrawableListener
+  implements View.OnCreateContextMenuListener
 {
-  public afkg(TroopInfoActivity paramTroopInfoActivity) {}
+  public afkg(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    TroopInfoActivity.b(this.a);
+    paramContextMenu.clear();
   }
 }
 

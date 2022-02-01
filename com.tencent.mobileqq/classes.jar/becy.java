@@ -1,33 +1,17 @@
-import com.qq.taf.jce.HexUtil;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public class becy
-  extends becx
+class becy
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<bdyf> a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  public ArrayList<bdyf> b = new ArrayList();
-  public String c;
+  becy(becw parambecw) {}
   
-  public becy()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mUkey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" mIpv6List:").append(this.b.toString());
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    return localStringBuilder.toString();
+    if (this.a.a.b == 1) {
+      bdll.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
+    }
   }
 }
 

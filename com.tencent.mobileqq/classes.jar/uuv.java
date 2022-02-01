@@ -1,6 +1,37 @@
-public abstract interface uuv
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+
+public class uuv
+  extends utt
 {
-  public abstract void a();
+  public uuv(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  {
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+  }
+  
+  public utq a(int paramInt)
+  {
+    return new uvc(a(), this);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected boolean b()
+  {
+    if ((this.a != null) && (TextUtils.equals(this.a.a(), "aio_home_page"))) {
+      return false;
+    }
+    return super.b();
+  }
 }
 
 

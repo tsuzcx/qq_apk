@@ -1,8 +1,8 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnzb;
-import boik;
-import boim;
+import bpam;
+import bpkf;
+import bpkh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class AETextStickerAdapter$3
   implements Runnable
 {
-  public AETextStickerAdapter$3(boik paramboik, AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean) {}
+  public AETextStickerAdapter$3(bpkf parambpkf, AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean) {}
   
   public void run()
   {
@@ -18,11 +18,11 @@ public class AETextStickerAdapter$3
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.progress = 100;
-      bnzb.d("AETextStickerAdapter", "[onPrepareCompleted] success");
-      int i = boik.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
-      if (i == boik.c(this.this$0)) {
-        if (boik.a(this.this$0) != null) {
-          boik.a(this.this$0).a(i, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+      bpam.d("AETextStickerAdapter", "[onPrepareCompleted] success");
+      int i = bpkf.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+      if (i == bpkf.c(this.this$0)) {
+        if (bpkf.a(this.this$0) != null) {
+          bpkf.a(this.this$0).a(i, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
         }
       }
     }
@@ -30,10 +30,10 @@ public class AETextStickerAdapter$3
     {
       this.this$0.notifyDataSetChanged();
       return;
-      bnzb.a("AETextStickerAdapter", "[onPrepareCompleted] not last selected item");
+      bpam.a("AETextStickerAdapter", "[onPrepareCompleted] not last selected item");
       continue;
-      QQToast.a(BaseApplicationImpl.getContext(), 2131691658, 1).a();
-      bnzb.d("AETextStickerAdapter", "[onPrepareCompleted] failed");
+      QQToast.a(BaseApplicationImpl.getContext(), 2131691661, 1).a();
+      bpam.d("AETextStickerAdapter", "[onPrepareCompleted] failed");
     }
   }
 }

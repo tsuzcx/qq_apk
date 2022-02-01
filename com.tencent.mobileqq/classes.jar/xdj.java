@@ -1,27 +1,57 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
 
-class xdj
-  extends xbw
+public class xdj
+  extends wpa<xex>
 {
-  xdj(xcu paramxcu, StoryVideoItem paramStoryVideoItem, xec paramxec)
+  public final List<String> a;
+  
+  public xdj(List<String> paramList)
   {
-    super(paramStoryVideoItem);
+    this.a = paramList;
   }
   
-  public boolean b()
+  public String a()
   {
-    String str = (String)a("result");
-    zkb.a(str);
-    zkb.a(this.jdField_a_of_type_Xec.d);
-    if (this.jdField_a_of_type_Xec.d == null)
+    return "StorySvc.get_video_tag_778";
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
+    try
     {
-      this.jdField_a_of_type_Xec.d = "";
-      yqp.c(this.b, "imageLocalPath is null", new Throwable());
+      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
+      return new xex(localRspStoryPlayerTagInfo);
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Xec.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Xec.a));
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        yuk.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    localReqStoryPlayerTagInfo.client.set(2);
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
+    return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 

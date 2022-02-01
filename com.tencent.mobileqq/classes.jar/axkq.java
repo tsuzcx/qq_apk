@@ -1,8 +1,24 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axkq
+public class axkq
+  implements axmj
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public axkq(MultiAIOFragment paramMultiAIOFragment) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
+    }
+    MultiAIOFragment.a(this.a).setViewPagerBusy(true);
+    MultiAIOFragment.a(this.a).c(paramInt);
+    if (MultiAIOFragment.a(this.a).c() == 0) {
+      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+    }
+  }
 }
 
 

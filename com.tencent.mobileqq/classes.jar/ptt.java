@@ -1,191 +1,78 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ptt
 {
-  public static boolean a(int paramInt)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    Object localObject = (QQAppInterface)pha.a();
-    if (localObject != null)
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
     {
-      localObject = (pmm)((QQAppInterface)localObject).getManager(163);
-      if ((localObject != null) && (((pmm)localObject).a() != null))
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anzj.a(2131711850));
+      localJSONObject.put("id_gallery_cnt", localObject1);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
+      localJSONObject.put("id_gallery_img", localObject1);
+      localJSONObject.put("id_gallery_bg", new JSONObject());
+    }
+    Object localObject2;
+    Object localObject3;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    {
+      localObject2 = sel.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
+        return localJSONObject;
+      }
+      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
+      if (localObject1 == null)
       {
-        localObject = ((pmm)localObject).a().b();
-        if ((localObject == null) || (((List)localObject).isEmpty()))
-        {
-          QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = false, myChannelList is empty.");
-          return false;
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
+        if (localObject2 != null) {
+          break label280;
         }
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (paramInt == ((TabChannelCoverInfo)((Iterator)localObject).next()).mChannelCoverId)
-          {
-            QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = true, channelID = " + paramInt);
-            return true;
-          }
-        }
       }
-    }
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = false, channelID = " + paramInt);
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, true);
-  }
-  
-  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
-    {
-      QLog.d("ReadInJoyChannelGuidingJumpUtils", 1, "context or scheme is null");
-      return false;
-    }
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], scheme = " + paramString);
-    Object localObject = Uri.parse(paramString);
-    String str1 = ((Uri)localObject).getQueryParameter("target");
-    String str2 = ((Uri)localObject).getQueryParameter("channelid");
-    String str3 = ((Uri)localObject).getQueryParameter("ispush");
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], target = " + str1 + ", channelID = " + str2 + ", isPush = " + str3 + ",doDynamicOrder = " + paramBoolean);
-    int i = -1;
-    try
-    {
-      int j = Integer.parseInt(str2);
-      i = j;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+      label280:
+      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
       {
-        QLog.e("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], e = " + localNumberFormatException);
-      }
-      if (!paramBoolean) {
-        break label301;
-      }
-      paramBoolean = bmqa.B();
-      if ((!paramBoolean) || (!b(i))) {
-        break label362;
-      }
-      if (c(i)) {
-        break label318;
-      }
-      QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] channelID = " + str2 + " not my channel");
-      pmh.a().c(i, 1);
-      if (!a(str3, i)) {
-        break label400;
-      }
-      pha.a(paramContext, paramString, null);
-      for (;;)
-      {
-        return true;
-        QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] channelID = " + str2 + " is my channel");
-        pmh.a().a(i, 1, false, true);
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
+        localJSONObject.put("id_multi_img_1", localObject3);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        puo.a(paramBaseArticleInfo, localJSONObject, true);
+        puo.l(paramBaseArticleInfo, localJSONObject);
+        puo.i(paramBaseArticleInfo, localJSONObject);
+        puo.a(localJSONObject);
+        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
+        puo.a(localJSONObject, paramBaseArticleInfo);
+        return localJSONObject;
+        localObject1 = ((JSONObject)localObject1).optString("picture");
         break;
-        QLog.d("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] isDynamicOrderSwitchOn = " + paramBoolean + ", channelID = " + str2);
-        break;
-        paramContext.startActivity(ohp.b(paramContext, 0, i));
-      }
-      QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] failed, target = " + str1 + ", scheme = " + paramString);
-    }
-    localObject = ((Uri)localObject).getQueryParameter("v_url_base64");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      ReadInJoyViolaChannelFragment.a(i, (String)localObject);
-    }
-    if (("2".equals(str1)) && (!TextUtils.isEmpty(str2))) {
-      if (ptw.a(paramContext, paramString))
-      {
-        QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], jump to recommend channel, using floating window.");
-        return true;
       }
     }
-    label301:
-    label318:
-    label362:
-    return false;
-  }
-  
-  public static boolean a(String paramString, int paramInt)
-  {
-    boolean bool1 = TextUtils.equals(paramString, "1");
-    boolean bool2 = bmqa.h();
-    boolean bool3 = a(paramInt);
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[shouldPushNewPage, isPushBoolean = " + bool1 + ", KDTab = " + bool2 + ", isInMyChannel = " + bool3 + ", channelID = " + paramInt);
-    return (bool1) || (!bool2) || (!bool3);
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    boolean bool2 = false;
-    List localList = pmh.a().a();
-    boolean bool1 = bool2;
-    int i;
-    if (localList != null)
+    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
     {
-      bool1 = bool2;
-      if (localList.size() > 0) {
-        i = 0;
+      localObject1 = paramBaseArticleInfo.mSinglePicture;
+      label313:
+      localObject2 = ((URL)localObject1).getFile();
+      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+        break label363;
       }
     }
-    for (;;)
+    label363:
+    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
     {
-      bool1 = bool2;
-      rex localrex;
-      int j;
-      if (i < localList.size())
-      {
-        localrex = (rex)localList.get(i);
-        j = 0;
-      }
-      while (j < localrex.a.size())
-      {
-        if (paramInt == ((TabChannelCoverInfo)localrex.a.get(j)).mChannelCoverId)
-        {
-          bool1 = true;
-          return bool1;
-        }
-        j += 1;
-      }
-      i += 1;
-    }
-  }
-  
-  private static boolean c(int paramInt)
-  {
-    boolean bool2 = false;
-    Object localObject = pmh.a().a();
-    boolean bool1 = bool2;
-    int i;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((List)localObject).size() > 0)
-      {
-        localObject = (rex)((List)localObject).get(0);
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < ((rex)localObject).a.size())
-      {
-        if (paramInt == ((TabChannelCoverInfo)((rex)localObject).a.get(i)).mChannelCoverId) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
+      localObject3 = ((URL)localObject1).getFile();
+      localObject1 = localObject2;
+      localObject2 = localObject3;
+      break;
+      localObject1 = paramBaseArticleInfo.mPictures[0];
+      break label313;
     }
   }
 }

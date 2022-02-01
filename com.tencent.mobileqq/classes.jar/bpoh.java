@@ -1,14 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bpoh
-  extends bomu
+class bpoh
+  implements View.OnTouchListener
 {
-  public bpoh(EditTextEffectView paramEditTextEffectView) {}
+  bpoh(bpog parambpog) {}
   
-  public void e()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.e();
-    this.a.a();
+    return true;
   }
 }
 

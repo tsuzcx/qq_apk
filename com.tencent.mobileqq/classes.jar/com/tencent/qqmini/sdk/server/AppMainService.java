@@ -6,7 +6,9 @@ import android.os.IBinder;
 import android.os.Messenger;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniServer;
 
 @MiniKeep
 public class AppMainService
@@ -19,9 +21,13 @@ public class AppMainService
     String str = paramIntent.getStringExtra("mini_process_name");
     paramIntent = (Messenger)paramIntent.getParcelableExtra("mini_process_messenger");
     QMLog.i("AppMainService", "AppBrandMainService Service Binded. pName=" + str + " messenger:" + paramIntent);
-    LaunchManagerService localLaunchManagerService = MiniServer.g().getLaunchManagerService();
-    localLaunchManagerService.registerClientMessenger(str, paramIntent);
-    return localLaunchManagerService.getBinder();
+    IMiniServer localIMiniServer = AppLoaderFactory.g().getMiniServer();
+    if (localIMiniServer != null)
+    {
+      localIMiniServer.registerClientMessenger(str, paramIntent);
+      return localIMiniServer.getBinder();
+    }
+    return null;
   }
   
   public void onCreate()

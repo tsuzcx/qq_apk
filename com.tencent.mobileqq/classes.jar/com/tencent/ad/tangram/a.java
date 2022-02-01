@@ -145,6 +145,42 @@ public final class a
     return null;
   }
   
+  public int getBannerInvalidClickXPercent()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return -2147483648;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101164) {
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public int getBannerInvalidClickYPercent()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return -2147483648;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101166) {
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value);
+        }
+        i += 1;
+      }
+    }
+  }
+  
   public String getBusinessIdForXiJingOffline()
   {
     return null;
@@ -192,6 +228,28 @@ public final class a
   public String getJSONUrlForXiJingOffline()
   {
     return null;
+  }
+  
+  public long getMinIntervalMillisBetweenExposureAndClick()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return -2147483648L;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101168)
+        {
+          if (Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value) >= 1000) {
+            return 1000L;
+          }
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value);
+        }
+        i += 1;
+      }
+    }
   }
   
   public String getPosId()
@@ -436,6 +494,24 @@ public final class a
       while (i < localList.size())
       {
         if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 94735) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean isHitWithoutInstallSuccessPage()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return false;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101056) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
           return true;
         }
         i += 1;

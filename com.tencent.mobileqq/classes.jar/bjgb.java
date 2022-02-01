@@ -1,29 +1,54 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.widget.RelativeLayout;
 
-public class bjgb
-  implements bkhw
+class bjgb
+  implements Animator.AnimatorListener
 {
-  public bjgb(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  bjgb(bjfy parambjfy, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Bjfy.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label41;
       }
+      this.jdField_a_of_type_Bjfy.a.setAlpha(1.0F);
     }
     for (;;)
     {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      bjfy.b(this.jdField_a_of_type_Bjfy, this.jdField_a_of_type_Int);
       return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        }
+      label41:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Bjfy.a.setAlpha(0.0F);
+      }
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bjfy.b(this.jdField_a_of_type_Bjfy, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      bjfy.a(this.jdField_a_of_type_Bjfy, false);
+      this.jdField_a_of_type_Bjfy.a(false, new View[] { bjfy.a(this.jdField_a_of_type_Bjfy) });
+    }
+    bjfy.a(this.jdField_a_of_type_Bjfy);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bjfy.b(this.jdField_a_of_type_Bjfy, 2);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      bjfy.a(this.jdField_a_of_type_Bjfy, true);
+      if (bjfy.a(this.jdField_a_of_type_Bjfy) == 1) {
+        this.jdField_a_of_type_Bjfy.a(true, new View[] { bjfy.a(this.jdField_a_of_type_Bjfy) });
       }
     }
   }

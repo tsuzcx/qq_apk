@@ -1,22 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bmqv
-  extends Handler
+public final class bmqv
 {
-  bmqv(bmqu parambmqu, Looper paramLooper)
+  public static String a(Context paramContext)
   {
-    super(paramLooper);
+    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(Context paramContext, boolean paramBoolean, String paramString)
   {
-    if (paramMessage.what == 1)
-    {
-      this.a.jdField_a_of_type_Bmqr = null;
-      this.a.jdField_a_of_type_Boolean = false;
-    }
+    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
   }
 }
 

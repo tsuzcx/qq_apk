@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
 
-final class atdr
-  implements SDKInitListener
+public class atdr
 {
-  public void onSDKInited(boolean paramBoolean)
+  public int a;
+  public String a;
+  
+  public atdr(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
   {
-    if (!paramBoolean) {
-      QLog.e("FileVideoDownloadManager<FileAssistant>XOXO", 1, "initSDKAsync failed!");
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

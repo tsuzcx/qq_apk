@@ -1,17 +1,19 @@
-import android.view.View;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-public abstract class agip
+class agip
+  implements QQPermissionCallback
 {
-  private View a;
+  agip(agim paramagim, Bitmap paramBitmap) {}
   
-  public View a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.a;
+    bhlq.a(agim.a(this.jdField_a_of_type_Agim), paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a(View paramView)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = paramView;
+    this.jdField_a_of_type_Agim.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

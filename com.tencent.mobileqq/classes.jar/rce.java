@@ -1,12 +1,28 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.database.DataSetObserver;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IView;", "", "showFailedToast", "", "wording", "", "showSuccessToast", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rce
+public class rce
+  extends DataSetObserver
 {
-  public abstract void showFailedToast(@NotNull String paramString);
+  public rce(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public abstract void showSuccessToast(@NotNull String paramString);
+  public void onChanged()
+  {
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    {
+      ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
+      String str = this.a.getString(2131717303, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
+      ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(8);
+  }
 }
 
 

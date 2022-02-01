@@ -1,27 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bohx
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bohx(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
+  public bohx(AECropperImageView paramAECropperImageView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AEEditorTextControlPanel.b(this.a, false);
+    Matrix localMatrix = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    localMatrix.reset();
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    localMatrix.postScale((this.jdField_a_of_type_Float - this.b) * paramValueAnimator.intValue() / 20.0F + this.b, (this.jdField_a_of_type_Float - this.b) * paramValueAnimator.intValue() / 20.0F + this.b);
+    float f1 = (this.c - this.d) * paramValueAnimator.intValue() / 20.0F;
+    float f2 = this.d;
+    float f3 = this.e;
+    float f4 = this.f;
+    localMatrix.postTranslate(f1 + f2, paramValueAnimator.intValue() * (f3 - f4) / 20.0F + this.f);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(localMatrix);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AEEditorTextControlPanel.b(this.a, false);
-    AEEditorTextControlPanel.a(this.a);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

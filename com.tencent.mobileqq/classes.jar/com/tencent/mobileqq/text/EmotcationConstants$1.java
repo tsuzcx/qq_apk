@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import bdne;
+import befz;
 import java.io.File;
 
 public final class EmotcationConstants$1
@@ -16,7 +16,7 @@ public final class EmotcationConstants$1
     if (this.b.exists()) {
       this.b.delete();
     }
-    bdne.a(this.c);
+    befz.a(this.c);
   }
 }
 

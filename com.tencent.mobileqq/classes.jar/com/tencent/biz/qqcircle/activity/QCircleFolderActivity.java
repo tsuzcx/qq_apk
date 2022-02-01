@@ -1,6 +1,7 @@
 package com.tencent.biz.qqcircle.activity;
 
 import Override;
+import aaak;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,20 +13,20 @@ import android.view.Window;
 import com.tencent.biz.qqcircle.events.QCircleAtUpdateEvent;
 import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 import com.tencent.biz.qqcircle.fragments.main.QCircleFolderActivityFragment;
+import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
 import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import uxc;
-import uxh;
-import uxx;
-import uxz;
-import viy;
-import vri;
-import vrl;
-import vsc;
-import vtj;
-import zwp;
+import uyn;
+import uys;
+import uzg;
+import uzi;
+import vlc;
+import vtt;
+import vtw;
+import vup;
+import vwh;
 
 public class QCircleFolderActivity
   extends FragmentActivity
@@ -46,12 +47,12 @@ public class QCircleFolderActivity
     if (300001 == paramInt1)
     {
       QLog.d("QCircleFolderActivity", 1, "doOnActivityResult，return from qzone publish page");
-      vri.a().d(36);
+      vtt.a().d(36);
     }
     while (300002 != paramInt1) {
       return;
     }
-    zwp.a().a(new QCircleAtUpdateEvent(paramIntent));
+    aaak.a().a(new QCircleAtUpdateEvent(paramIntent));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -60,19 +61,20 @@ public class QCircleFolderActivity
     if (paramBundle != null) {
       paramBundle.remove("android:support:fragments");
     }
+    uyn.c();
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    uxx.a(this);
+    uzg.a(this);
     getWindow().setSoftInputMode(32);
-    setContentView(2131560710);
+    setContentView(2131560727);
     QCircleBaseTabFragment.a();
     this.a = new QCircleFolderActivityFragment();
-    getSupportFragmentManager().beginTransaction().add(2131373820, this.a).commit();
-    this.mFlingHandler = new uxz(this);
-    vri.a().a(0);
-    vtj.a().a();
-    viy.a().a(5, null, null);
+    getSupportFragmentManager().beginTransaction().add(2131373950, this.a).commit();
+    this.mFlingHandler = new uzi(this);
+    vtt.a().a(0);
+    vwh.a().a();
+    vlc.a().a(5, null, null);
     return true;
   }
   
@@ -80,12 +82,13 @@ public class QCircleFolderActivity
   {
     QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnDestroy");
     super.doOnDestroy();
-    vri.a().b(0);
-    uxh.a();
-    vrl.a().a();
+    uyn.d();
+    vtt.a().b(0);
+    uys.a();
+    vtw.a().a();
     VSNetworkHelper.a().a(this);
-    vsc.g();
-    uxc.b();
+    vup.h();
+    uyn.a(false);
     QCircleFeedPicLoader.a().a();
   }
   
@@ -102,7 +105,7 @@ public class QCircleFolderActivity
   public void doOnRestoreInstanceState(Bundle paramBundle)
   {
     super.doOnRestoreInstanceState(paramBundle);
-    getIntent().putExtra("key_is_publish", paramBundle.getBoolean("key_is_publish", false));
+    getIntent().putExtra("key_bundle_common_init_bean", getIntent().getSerializableExtra("key_bundle_common_init_bean"));
   }
   
   public void doOnResume()
@@ -110,7 +113,8 @@ public class QCircleFolderActivity
     boolean bool1 = true;
     QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnResume");
     super.doOnResume();
-    boolean bool2 = getIntent().getBooleanExtra("key_is_publish", false);
+    QCircleFolderBean localQCircleFolderBean = (QCircleFolderBean)getIntent().getSerializableExtra("key_bundle_common_init_bean");
+    boolean bool2 = localQCircleFolderBean.isPublish();
     StringBuilder localStringBuilder = new StringBuilder().append("doOnResume isWrite?").append(bool2).append(", mQCircleFragment?");
     if (this.a != null) {}
     for (;;)
@@ -119,7 +123,7 @@ public class QCircleFolderActivity
       if ((bool2) && (this.a != null))
       {
         this.a.a();
-        getIntent().putExtra("key_is_publish", false);
+        localQCircleFolderBean.setPublish(false);
       }
       return;
       bool1 = false;
@@ -129,13 +133,19 @@ public class QCircleFolderActivity
   public void doOnSaveInstanceState(Bundle paramBundle)
   {
     super.doOnSaveInstanceState(paramBundle);
-    paramBundle.putBoolean("key_is_publish", getIntent().getBooleanExtra("key_is_publish", false));
+    paramBundle.putSerializable("key_bundle_common_init_bean", getIntent().getSerializableExtra("key_bundle_common_init_bean"));
+  }
+  
+  public void doOnStop()
+  {
+    QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->doOnStop");
+    super.doOnStop();
   }
   
   public boolean onBackEvent()
   {
     QLog.d("QCircleFolderActivity", 1, "QCircleFolderActivity->onBackEvent");
-    viy.a().a(6, null, null);
+    vlc.a().a(6, null, null);
     if ((this.a != null) && (this.a.onBackEvent())) {
       return true;
     }

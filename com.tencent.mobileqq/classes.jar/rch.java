@@ -1,28 +1,17 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IPresenter;", "model", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;", "(Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;)V", "view", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IView;", "attachView", "", "detachView", "requestWatchWordUrl", "watchWord", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rch
+public class rch
+  implements bljm
 {
-  public static final rci a;
-  private final rca jdField_a_of_type_Rca;
-  private rcb jdField_a_of_type_Rcb;
+  public rch(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  static
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    jdField_a_of_type_Rci = new rci(null);
-  }
-  
-  public rch(@NotNull rca paramrca)
-  {
-    this.jdField_a_of_type_Rca = paramrca;
-  }
-  
-  public void a(@NotNull rcb paramrcb)
-  {
-    Intrinsics.checkParameterIsNotNull(paramrcb, "view");
-    this.jdField_a_of_type_Rcb = paramrcb;
+    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
+    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
   }
 }
 

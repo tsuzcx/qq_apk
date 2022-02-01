@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder.ChatVideoView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
 
-class ahld
-  implements View.OnClickListener
+public class ahld
+  extends aggl
 {
-  ahld(ahlc paramahlc) {}
+  public ImageView a;
+  public TextView a;
+  public LightVideoItemBuilder.ChatVideoView a;
+  public MessageProgressView a;
+  public TextView b;
   
-  public void onClick(View paramView)
+  public ahld(LightVideoItemBuilder paramLightVideoItemBuilder) {}
+  
+  public void a()
   {
-    ahlc.a(this.a);
-    bcst.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahlc.a(this.a), "空间");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("LightVideoItemBuilder", 2, String.format("onScrollOutScreen but not recycle, message:%d is playing", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) }));
+      }
+    }
+    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getStatus() != 1) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable() instanceof QQLiveDrawable))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("LightVideoItemBuilder", 2, "onScrollOutScreen(): recyleAndKeepPostion ");
+    }
+    ((QQLiveDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable()).recyleAndKeepPostion();
   }
 }
 

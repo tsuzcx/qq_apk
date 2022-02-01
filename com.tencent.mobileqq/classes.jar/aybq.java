@@ -1,56 +1,94 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class aybq
-  implements GestureDetector.OnGestureListener
+class aybq
+  implements aybo
 {
-  public aybq(OverCoverFrameLayout paramOverCoverFrameLayout) {}
+  private IBinder a;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  aybq(IBinder paramIBinder)
   {
-    return true;
+    this.a = paramIBinder;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public Message a(Message paramMessage)
   {
-    if (Math.abs(paramFloat2) <= this.a.e) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 < 0.0F) {
-      this.a.a();
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      return true;
-      this.a.b();
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramMessage != null)
+        {
+          localParcel1.writeInt(1);
+          paramMessage.writeToParcel(localParcel1, 0);
+          this.a.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
+            return paramMessage;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramMessage = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
     }
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    if (Math.abs(paramFloat2) <= this.a.d) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 > 0.0F) {
-      this.a.a();
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      return true;
-      this.a.b();
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramBasicTypeDataParcel != null)
+        {
+          localParcel1.writeInt(1);
+          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
+          this.a.transact(1, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
+            return paramBasicTypeDataParcel;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramBasicTypeDataParcel = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
     }
   }
   
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public IBinder asBinder()
   {
-    return false;
+    return this.a;
   }
 }
 

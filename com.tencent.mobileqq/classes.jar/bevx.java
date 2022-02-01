@@ -1,59 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class bevx
 {
-  public static int a;
-  public static String a;
-  public static int b = 1;
-  public static int c = 2;
+  public int a;
+  public bevw a;
+  public bevy a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public boolean b;
+  public int c = 3;
+  public int d = 25;
+  public int e = 450000;
   
-  static
+  public bevx()
   {
-    jdField_a_of_type_JavaLangString = "<TroopFile> ";
+    this.jdField_a_of_type_Int = 480000;
+    this.jdField_b_of_type_Int = 9;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  private static int a(int paramInt)
+  public void a()
   {
-    int j = 2;
-    int i;
-    if (jdField_a_of_type_Int == paramInt) {
-      i = 1;
-    }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (b == paramInt);
-      i = j;
-    } while (c != paramInt);
-    return 4;
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
-  }
-  
-  public static void b(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
-  }
-  
-  public static void c(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
-  }
-  
-  public static void d(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
+    this.jdField_a_of_type_Int = 30000;
+    this.jdField_b_of_type_Int = 1;
+    this.c = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bevx
  * JD-Core Version:    0.7.0.1
  */

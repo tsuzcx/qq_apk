@@ -1,22 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class awtn
-  extends GestureDetector.SimpleOnGestureListener
+  implements awpw
 {
-  public awtn(TabPageIndicator paramTabPageIndicator) {}
+  public awtn(MapWidget paramMapWidget) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
-    }
-    if (TabPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.a.a(paramLatLng, paramDouble, paramBoolean);
   }
 }
 

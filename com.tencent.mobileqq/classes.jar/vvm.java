@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class vvm
-  implements DialogInterface.OnClickListener
+public abstract interface vvm
 {
-  vvm(vvi paramvvi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract float a();
 }
 
 

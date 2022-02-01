@@ -1,17 +1,30 @@
+import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StNotice;
 
 public class vpd
-  implements View.OnClickListener
+  extends voq
 {
-  public vpd(QCirclePolyBaseLikeView paramQCirclePolyBaseLikeView) {}
-  
-  public void onClick(View paramView)
+  public vpd(int paramInt)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramInt);
+  }
+  
+  protected View.OnClickListener a()
+  {
+    return this.b;
+  }
+  
+  public void b(Context paramContext, View paramView)
+  {
+    super.b(paramContext, paramView);
+    this.b = new vpe(this, paramContext);
+  }
+  
+  public void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  {
+    super.b(paramStNotice, paramInt);
   }
 }
 

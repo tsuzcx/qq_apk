@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class adwm
-  implements awnc<bhdc>
+  implements bliz
 {
-  public adwm(ChatSettingForTroop paramChatSettingForTroop) {}
+  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
   
-  public void a(bhdc parambhdc)
+  public adwm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.f) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    localFormSimpleItem.setRightText(parambhdc.a);
-    localFormSimpleItem.setTag(2131374903, parambhdc);
-    bcst.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambhdc.c, 1, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+  }
+  
+  public void a(SubAccountInfo paramSubAccountInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
   }
 }
 

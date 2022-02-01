@@ -1,14 +1,8 @@
-import java.util.ArrayList;
+import android.graphics.SurfaceTexture;
 
-public class xvx
+public abstract interface xvx
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public xvx(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
 }
 
 

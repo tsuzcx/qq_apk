@@ -1,19 +1,6 @@
-import android.view.SurfaceHolder;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
-
-class amtn
-  implements IVideoViewBase.IVideoViewCallBack
+public abstract interface amtn
 {
-  amtn(amtm paramamtm) {}
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    amtm.a(this.a, true);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

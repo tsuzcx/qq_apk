@@ -1,22 +1,6 @@
-class ajlh
-  implements awna
-{
-  ajlh(ajld paramajld) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.c(false);
-    ajld.a(this.a);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
-}
+public class ajlh
+  extends ajjt
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

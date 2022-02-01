@@ -1,32 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.search.HistorySearchEntryModel.2.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-public class bbfo
-  implements View.OnClickListener
+public final class bbfo
+  implements Parcelable.Creator<FilterCategory>
 {
-  bbfo(bbfm parambbfm) {}
-  
-  public void onClick(View paramView)
+  public FilterCategory a(Parcel paramParcel)
   {
-    long l = ((Long)paramView.getTag(-1)).longValue();
-    int i = bbfm.a(this.a, this.a.a, l);
-    if (i == -1) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      SearchHistory localSearchHistory = (SearchHistory)((bbgl)this.a.a.get(i)).a();
-      if (localSearchHistory != null)
-      {
-        bbup.a("home_page", "del_history", new String[] { "" + i });
-        ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, localSearchHistory, l), null, true);
-      }
-    }
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
   }
 }
 

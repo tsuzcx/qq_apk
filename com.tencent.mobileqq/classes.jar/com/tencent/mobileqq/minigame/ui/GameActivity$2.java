@@ -10,8 +10,8 @@ class GameActivity$2
   
   public void run()
   {
-    if (!GameActivity.access$200(this.this$0).isDone()) {
-      QLog.e("[minigame] GameActivity", 1, "GameLaunchStuck for 10S GameLoadTaskExecutionStatics:\n" + GameActivity.access$300(this.this$0));
+    if (!GameActivity.access$300(this.this$0).isDone()) {
+      QLog.e("[minigame] GameActivity", 1, "GameLaunchStuck for 10S GameLoadTaskExecutionStatics:\n" + GameActivity.access$400(this.this$0));
     }
   }
 }

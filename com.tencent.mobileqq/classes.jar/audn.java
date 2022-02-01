@@ -1,74 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tbs.reader.TbsReaderView;
 
-public class audn
-  implements aqlb<String>
+class audn
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h = "1";
-  public String i = "";
+  audn(audj paramaudj, int paramInt, Activity paramActivity) {}
   
-  public audn()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "1";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_c_of_type_Int = 2;
-    this.jdField_d_of_type_Int = 3;
-    this.jdField_e_of_type_Int = 3;
-    this.jdField_f_of_type_Int = 60;
-    this.jdField_g_of_type_Int = 60;
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    int i;
+    if (this.jdField_a_of_type_Int == 5018)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("entry", "1");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("name", null);
-      this.jdField_d_of_type_JavaLangString = paramString.optString("icon", null);
-      this.jdField_f_of_type_JavaLangString = paramString.optString("actionI", null);
-      this.jdField_g_of_type_JavaLangString = paramString.optString("actionA", null);
-      this.jdField_c_of_type_JavaLangString = paramString.optString("url", null);
-      this.jdField_a_of_type_Int = paramString.optInt("scC", 2);
-      this.jdField_b_of_type_Int = paramString.optInt("hiC", 2);
-      this.jdField_c_of_type_Int = paramString.optInt("flC", 2);
-      this.jdField_d_of_type_Int = paramString.optInt("piC", 3);
-      this.jdField_e_of_type_Int = paramString.optInt("tvC", 3);
-      this.h = paramString.optString("recordRule", "1");
-      this.jdField_f_of_type_Int = paramString.optInt("pIn", 60);
-      this.jdField_g_of_type_Int = paramString.optInt("tvI", 60);
-      this.jdField_a_of_type_Boolean = "1".equals(paramString.optString("qimNotifyEnable", "0"));
-      this.jdField_b_of_type_Boolean = "1".equals(paramString.optString("qimPopUpEnable", "0"));
-      this.i = paramString.optString("qimNotifySource", "");
-      this.jdField_e_of_type_JavaLangString = paramString.optString("qimNotifyLogo", "");
-      return;
+      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      if (localDisplay.getWidth() > localDisplay.getHeight())
+      {
+        i = 0;
+        if (i == 0) {
+          break label61;
+        }
+        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+      }
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      QLog.e("FlashChat", 1, "handleFlashChatConfig failed" + paramString);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      break;
+      label61:
+      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      continue;
+      audj.a(this.jdField_a_of_type_Audj).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
     }
   }
 }

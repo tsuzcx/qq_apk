@@ -1,9 +1,9 @@
 package com.tencent.gdtad.util;
 
-import acse;
+import acwi;
 import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import lkw;
+import llk;
 
 public class GdtSmartBlur
 {
@@ -16,7 +16,7 @@ public class GdtSmartBlur
   
   public static GdtSmartBlur a()
   {
-    return acse.a;
+    return acwi.a;
   }
   
   private void a()
@@ -38,7 +38,7 @@ public class GdtSmartBlur
   
   public void a(Bitmap paramBitmap, int paramInt)
   {
-    int j = lkw.e();
+    int j = llk.e();
     int i = j;
     if (j <= 0) {
       i = 1;

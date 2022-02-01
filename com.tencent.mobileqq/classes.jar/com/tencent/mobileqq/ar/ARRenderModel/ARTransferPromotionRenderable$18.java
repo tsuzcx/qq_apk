@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aouh;
+import aphx;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 
 public class ARTransferPromotionRenderable$18
   implements Runnable
 {
-  public ARTransferPromotionRenderable$18(aouh paramaouh) {}
+  public ARTransferPromotionRenderable$18(aphx paramaphx) {}
   
   public void run()
   {
-    if ((aouh.a(this.this$0) != null) && (this.this$0.b <= 4)) {
-      aouh.a(this.this$0).native_startTranversalAnimation();
+    if ((aphx.a(this.this$0) != null) && (this.this$0.b <= 4)) {
+      aphx.a(this.this$0).native_startTranversalAnimation();
     }
   }
 }

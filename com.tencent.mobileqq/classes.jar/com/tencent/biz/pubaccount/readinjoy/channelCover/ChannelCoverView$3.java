@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
-import oat;
-import och;
+import ocd;
+import odr;
 import org.json.JSONObject;
-import pha;
-import skc;
+import ozs;
+import sbg;
 
 public final class ChannelCoverView$3
   implements Runnable
@@ -22,14 +22,14 @@ public final class ChannelCoverView$3
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
         ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
       }
-      ((JSONObject)localObject).put("network_type", och.a());
-      ((JSONObject)localObject).put("version", och.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("network_type", odr.a());
+      ((JSONObject)localObject).put("version", odr.jdField_a_of_type_JavaLangString);
       ((JSONObject)localObject).put("os", "1");
-      ((JSONObject)localObject).put("imei", pha.h());
-      ((JSONObject)localObject).put("imsi", pha.i());
-      ((JSONObject)localObject).put("kandian_mode_new", och.a());
-      ((JSONObject)localObject).put("kandian_mode", pha.e());
-      ((JSONObject)localObject).put("entrance", skc.a(this.jdField_a_of_type_Int));
+      ((JSONObject)localObject).put("imei", ozs.h());
+      ((JSONObject)localObject).put("imsi", ozs.i());
+      ((JSONObject)localObject).put("kandian_mode_new", odr.a());
+      ((JSONObject)localObject).put("kandian_mode", ozs.e());
+      ((JSONObject)localObject).put("entrance", sbg.a(this.jdField_a_of_type_Int));
       localObject = ((JSONObject)localObject).toString();
     }
     catch (Exception localException)
@@ -44,7 +44,7 @@ public final class ChannelCoverView$3
         }
       }
     }
-    oat.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
+    ocd.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
   }
 }
 

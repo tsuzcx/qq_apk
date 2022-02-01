@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aejf;
-import afen;
+import aesi;
+import afnr;
 import android.view.View;
-import bcnj;
+import bdgb;
 
 public class GeneralSettingActivity$ThemeCallback$1
   implements Runnable
 {
-  public GeneralSettingActivity$ThemeCallback$1(aejf paramaejf, afen paramafen, View paramView) {}
+  public GeneralSettingActivity$ThemeCallback$1(aesi paramaesi, afnr paramafnr, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Afen.a(bcnj.c(), false);
+    this.jdField_a_of_type_Afnr.a(bdgb.c(), false);
     this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
 }

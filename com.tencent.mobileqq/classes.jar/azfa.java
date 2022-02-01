@@ -1,12 +1,16 @@
-import android.util.Pair;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-class azfa
-  implements Comparator<Pair<Long, String>>
+public class azfa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  public azfa(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return azez.a((CharSequence)paramPair1.second) - azez.a((CharSequence)paramPair2.second);
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

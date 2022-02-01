@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dk3" android:layout_width="wrap_content" android:layout_height="27.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayk" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/nbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
-    <ImageView android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="6.5dip" android:src="@drawable/goc" />
-</LinearLayout>
+<RelativeLayout android:id="@id/mjx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.utils.QCircleSlidBottomView android:orientation="vertical" android:id="@id/nbp" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mju" app:qcircleBottomPaddingHeight="42.0dip" app:qcircleControllerHeight="68.0dip" app:qcircleControllerImgWidth="56.0dip" app:qcircleIsFixPanelHeight="true" app:qcircleShowRate="0.5" app:qcircleTopHeight="50.0dip">
+        <FrameLayout android:id="@id/nbm" android:background="@drawable/duq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/nbn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="77.0dip" />
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/nbq" android:layout_width="56.0dip" android:layout_height="16.0dip" android:layout_marginTop="7.0dip" android:src="@drawable/a4w" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <include android:id="@id/mjz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" layout="@layout/cna" />
+            <include android:id="@id/b42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="180.0dip" layout="@layout/eu" />
+        </FrameLayout>
+    </com.tencent.biz.qqcircle.utils.QCircleSlidBottomView>
+    <include android:id="@id/mju" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/cn9" />
+    <com.tencent.biz.qqcircle.widgets.QCircleRocketView android:id="@id/mjw" android:layout_width="115.0dip" android:layout_height="210.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="-22.0dip" android:layout_above="@id/mju" android:layout_alignParentRight="true" />
+</RelativeLayout>

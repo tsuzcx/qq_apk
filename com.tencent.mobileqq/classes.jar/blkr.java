@@ -1,55 +1,22 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.widget.DynamicGridView;
 
-public abstract class blkr
-  extends Binder
-  implements blkq
+public class blkr
+  extends AnimatorListenerAdapter
 {
-  public blkr()
+  public blkr(DynamicGridView paramDynamicGridView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    DynamicGridView.b(this.a, false);
+    DynamicGridView.a(this.a);
   }
   
-  public static blkq a(IBinder paramIBinder)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof blkq))) {
-      return (blkq)localIInterface;
-    }
-    return new blks(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-    paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramInt1, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    DynamicGridView.b(this.a, true);
+    DynamicGridView.a(this.a);
   }
 }
 

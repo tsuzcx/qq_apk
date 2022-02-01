@@ -1,30 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Context;
+import android.view.View;
 
-final class uwq
-  implements bihh
+public class uwq
 {
-  uwq(String paramString) {}
+  protected final View a;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  protected uwq(View paramView)
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      zvc.a(1, 2131718007);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      zvc.a(2, 2131718025);
-    }
+    this.a = paramView;
+  }
+  
+  protected Context a()
+  {
+    return this.a.getContext();
+  }
+  
+  protected <T extends View> T a(int paramInt)
+  {
+    return this.a.findViewById(paramInt);
   }
 }
 

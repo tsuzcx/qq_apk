@@ -1,62 +1,54 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyForCanvasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoCeilingFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import java.lang.ref.WeakReference;
 
 public class tko
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Map<Character, Float> jdField_a_of_type_JavaUtilMap = new HashMap(256);
-  private float b;
-  
-  public tko(Paint paramPaint)
+  public static GdtHandler.Params a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, tkr paramtkr)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
-    a();
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  float a(char paramChar)
-  {
-    if (paramChar == 0) {
-      return 0.0F;
+    if ((paramAdvertisementInfo == null) || (paramActivity == null)) {
+      return null;
     }
-    Float localFloat = (Float)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar));
-    if (localFloat != null) {
-      return localFloat.floatValue();
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    tkr localtkr = paramtkr;
+    if (paramtkr == null) {
+      localtkr = new tkr();
     }
-    float f = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(Character.toString(paramChar));
-    this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramChar), Float.valueOf(f));
-    return f;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.jdField_a_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top);
-    this.b = (-localFontMetrics.top);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public float b()
-  {
-    return this.b;
+    paramtkr = ubd.a(paramAdvertisementInfo);
+    localParams.c = 1;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramtkr);
+    localParams.jdField_a_of_type_Boolean = localtkr.jdField_a_of_type_Boolean;
+    localParams.jdField_b_of_type_Boolean = localtkr.jdField_b_of_type_Boolean;
+    if (paramAdvertisementInfo.clickPos > 0)
+    {
+      localParams.jdField_b_of_type_Int = paramAdvertisementInfo.clickPos;
+      paramAdvertisementInfo.resetClickPos();
+    }
+    localParams.jdField_a_of_type_Long = localtkr.jdField_a_of_type_Long;
+    if (ubd.a == null)
+    {
+      ubd.a = new GdtAppReceiver();
+      ubd.a.register(BaseApplicationImpl.getContext());
+    }
+    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(ubd.a);
+    long l = paramAdvertisementInfo.mChannelID;
+    if ((l != 3L) && (l != 4L) && (paramAdvertisementInfo.mAdJumpMode != 6) && (!localtkr.d) && (l != 2000001L))
+    {
+      localParams.jdField_a_of_type_JavaLangClass = ReadInJoyVideoCeilingFragment.class;
+      ubd.a(localParams, localtkr.c, paramAdvertisementInfo, paramActivity);
+    }
+    localParams.jdField_b_of_type_JavaLangClass = ReadInJoyForCanvasFragment.class;
+    localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
+    return localParams;
   }
 }
 

@@ -1,8 +1,33 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 class bcys
+  implements bdew
 {
-  View a;
+  bcys(bcyq parambcyq) {}
+  
+  public void a()
+  {
+    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
+    }
+  }
+  
+  public void a(Process paramProcess)
+  {
+    this.a.a = paramProcess;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
+    }
+  }
+  
+  public void b()
+  {
+    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
+    }
+  }
 }
 
 

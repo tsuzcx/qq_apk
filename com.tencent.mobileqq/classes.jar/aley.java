@@ -1,36 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import Wallet.RedInfoSyncRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aley
-  extends aleq
+class aley
+  implements BusinessObserver
 {
-  public int c;
+  aley(alex paramalex) {}
   
-  public aley(Context paramContext, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.c = paramInt;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_JavaLangString = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
     }
-    while (paramInt != 1) {
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
+        if (paramBundle == null) {
+          break label97;
+        }
+      }
+    }
+    label97:
+    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    {
+      QLog.d("QWalletRedManager", 2, paramBundle);
       return;
     }
-    this.jdField_a_of_type_JavaLangString = anni.a(2131714357);
-  }
-  
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if (((paramObject instanceof aley)) && (((aley)paramObject).c == 0))
-    {
-      paramObject = (aley)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-    }
-    paramObject = new aley(BaseApplication.getContext(), 0);
-    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-    return paramObject;
   }
 }
 

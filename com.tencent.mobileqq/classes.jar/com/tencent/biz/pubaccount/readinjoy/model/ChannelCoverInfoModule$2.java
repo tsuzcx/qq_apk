@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import pwl;
+import pox;
 
 public class ChannelCoverInfoModule$2
   implements Runnable
 {
-  public ChannelCoverInfoModule$2(pwl parampwl, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverInfoModule$2(pox parampox, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {

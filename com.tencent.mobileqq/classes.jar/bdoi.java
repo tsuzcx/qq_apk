@@ -1,92 +1,178 @@
-import android.text.Editable.Factory;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class bdoi
-  extends bdod
 {
-  public static Editable.Factory c = new bdoj();
+  int jdField_a_of_type_Int = -1;
+  long jdField_a_of_type_Long = -1L;
+  AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
+  Class<? extends AbsShareMsg> jdField_a_of_type_JavaLangClass;
+  String jdField_a_of_type_JavaLangString = "web";
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int = -1;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = null;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString = null;
+  int jdField_d_of_type_Int;
+  String jdField_d_of_type_JavaLangString = null;
+  int jdField_e_of_type_Int;
+  String jdField_e_of_type_JavaLangString = null;
+  String f = null;
+  String g = null;
+  String h = null;
+  String i = null;
+  String j = null;
+  String k = null;
+  String l = null;
+  String m = null;
+  String n = null;
+  String o = null;
+  String p = null;
+  String q = null;
   
-  public bdoi(CharSequence paramCharSequence, int paramInt)
+  public bdoi(Class<? extends AbsShareMsg> paramClass)
   {
-    super(paramCharSequence, paramInt);
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "web";
+    this.jdField_c_of_type_Int = 28;
   }
   
-  public bdoi(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public bdoi a(int paramInt)
   {
-    super(paramCharSequence, paramInt1, paramInt2);
+    this.jdField_e_of_type_Int = paramInt;
+    if ((paramInt & 0x1) == 1) {
+      this.jdField_d_of_type_Int = 1;
+    }
+    return this;
   }
   
-  public String a()
+  public bdoi a(long paramLong)
   {
-    int j = 0;
-    int m = length();
-    char[] arrayOfChar = new char[m];
-    getChars(0, m, arrayOfChar, 0);
-    StringBuilder localStringBuilder = new StringBuilder(m);
-    bdoa[] arrayOfbdoa = (bdoa[])getSpans(0, m, bdoa.class);
-    Arrays.sort(arrayOfbdoa, new bdok(this));
-    int n = arrayOfbdoa.length;
-    int i = 0;
-    Object localObject;
-    int i1;
-    int k;
-    if (i < n)
-    {
-      localObject = arrayOfbdoa[i];
-      i1 = getSpanStart(localObject);
-      k = getSpanEnd(localObject);
-      if ((localObject != null) && (i1 < k) && (k > 0)) {}
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public bdoi a(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public bdoi a(String paramString1, String paramString2)
+  {
+    this.n = paramString1;
+    this.m = paramString2;
+    if ((!TextUtils.isEmpty(paramString1)) || (!TextUtils.isEmpty(paramString2))) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    else
+    return this;
+  }
+  
+  public bdoi a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_e_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_c_of_type_JavaLangString = paramString4;
+    this.jdField_d_of_type_JavaLangString = paramString5;
+    return this;
+  }
+  
+  public AbsShareMsg a()
+  {
+    try
     {
-      if (j < m) {
-        localStringBuilder.append(arrayOfChar, j, m - j);
-      }
-      return localStringBuilder.toString();
-    }
-    if (i1 > j) {
-      localStringBuilder.append(arrayOfChar, j, i1 - j);
-    }
-    switch (((bdoa)localObject).c)
-    {
-    }
-    for (;;)
-    {
-      i += 1;
-      j = k;
-      break;
-      j = arvj.a(((bdoa)localObject).a);
-      if (j != -1)
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)this.jdField_a_of_type_JavaLangClass.newInstance());
+      label14:
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
       {
-        localStringBuilder.append(String.valueOf(Character.toChars(j)));
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgTemplateID = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID = this.jdField_b_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mVersion = this.jdField_c_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgAction = this.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData = this.jdField_b_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsg_A_ActionData = this.jdField_c_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsg_I_ActionData = this.jdField_d_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl = this.jdField_e_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgBrief = this.f;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mCompatibleText = this.g;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mFlag = this.jdField_e_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction = this.i;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl = this.h;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData = this.j;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData = this.k;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_I_ActionData = this.l;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.n;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.m;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mHasSource = this.jdField_a_of_type_Boolean;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mResid = this.o;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mFileName = this.p;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mFileSize = this.jdField_b_of_type_Long;
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSType = this.q;
       }
-      else
-      {
-        try
-        {
-          localObject = toString();
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).length() < k)) {
-            continue;
-          }
-          localStringBuilder.append(((String)localObject).substring(i1, k));
-        }
-        catch (Exception localException)
-        {
-          QLog.e("QzoneTextBuilder", 1, localException.getStackTrace());
-        }
-        continue;
-        localStringBuilder.append(localException.a());
-        continue;
-        String str = arvq.a(0x7FFFFFFF & localException.a);
-        if (!TextUtils.isEmpty(str)) {
-          localStringBuilder.append(str);
-        } else {
-          QLog.e("QzoneTextBuilder", 1, "不支持的表情");
-        }
-      }
+      return this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
     }
+    catch (InstantiationException localInstantiationException)
+    {
+      break label14;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      break label14;
+    }
+  }
+  
+  public bdoi b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bdoi b(String paramString)
+  {
+    this.o = paramString;
+    return this;
+  }
+  
+  public bdoi b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this.i = paramString1;
+    this.h = paramString2;
+    this.j = paramString3;
+    this.k = paramString4;
+    this.l = paramString5;
+    return this;
+  }
+  
+  public bdoi c(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bdoi c(String paramString)
+  {
+    this.p = paramString;
+    return this;
+  }
+  
+  public bdoi d(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public bdoi e(String paramString)
+  {
+    return a("web", paramString, null, null, null);
+  }
+  
+  public bdoi f(String paramString)
+  {
+    return b("web", paramString, null, null, null);
   }
 }
 

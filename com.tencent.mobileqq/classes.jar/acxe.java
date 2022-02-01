@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public abstract interface acxe
+class acxe
+  extends AdHttp.Params
 {
-  public abstract int a(StringBuilder paramStringBuilder);
+  public int a = -2147483648;
   
-  public abstract boolean a(ConversationInfo paramConversationInfo);
-  
-  public abstract boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean);
+  public boolean isSuccess()
+  {
+    return (super.isSuccess()) && (this.responseData != null);
+  }
 }
 
 

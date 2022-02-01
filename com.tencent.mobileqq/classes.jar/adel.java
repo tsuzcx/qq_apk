@@ -1,12 +1,20 @@
-class adel
-  implements adez
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class adel
+  implements adci
 {
-  adel(adek paramadek) {}
-  
-  public void a(awlp paramawlp, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.a.a = paramawlp;
-    adek.a(this.a, paramInt);
+    ((bbav)paramQQAppInterface.getManager(36)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

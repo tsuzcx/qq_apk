@@ -1,39 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-
-public class blkf
-  implements anil
+public abstract interface blkf
 {
-  private Handler a;
-  
-  public blkf(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-    }
-  }
+  public abstract void a();
 }
 
 

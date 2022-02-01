@@ -1,6 +1,16 @@
-public abstract interface atix
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+
+public class atix
+  extends atpa
 {
-  public abstract void a();
+  public atix(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  {
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

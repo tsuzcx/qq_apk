@@ -7,27 +7,35 @@ import com.qq.taf.jce.JceStruct;
 public final class VipMedalInfo
   extends JceStruct
 {
+  public int is_remind;
+  public int tips_times;
   public int type;
   public String value = "";
   
   public VipMedalInfo() {}
   
-  public VipMedalInfo(int paramInt, String paramString)
+  public VipMedalInfo(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    this.type = paramInt;
+    this.type = paramInt1;
     this.value = paramString;
+    this.is_remind = paramInt2;
+    this.tips_times = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.type = paramJceInputStream.read(this.type, 0, true);
     this.value = paramJceInputStream.readString(1, true);
+    this.is_remind = paramJceInputStream.read(this.is_remind, 2, false);
+    this.tips_times = paramJceInputStream.read(this.tips_times, 3, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.value, 1);
+    paramJceOutputStream.write(this.is_remind, 2);
+    paramJceOutputStream.write(this.tips_times, 3);
   }
 }
 

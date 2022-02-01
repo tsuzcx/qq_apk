@@ -1,19 +1,36 @@
-class aiak
-  implements afum
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+
+public class aiak
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  aiak(ahzy paramahzy) {}
+  public aiak(PEPanel paramPEPanel) {}
   
-  public void a(aimh paramaimh)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ((avwi)this.a.a(32)).a(1, paramaimh);
-    ((agnm)this.a.a(43)).b(1, paramaimh);
+    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
+    }
+    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
+      PEPanel.a(this.a).setVisibility(0);
+    }
   }
   
-  public void b(aimh paramaimh)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    ((avwi)this.a.a(32)).b(1, paramaimh);
-    ((agnm)this.a.a(43)).a(1, paramaimh);
+    this.a.setListViewVisibile(8);
   }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

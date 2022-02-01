@@ -1,12 +1,13 @@
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+
 public abstract interface zdu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(Animation paramAnimation);
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public abstract Bitmap b();
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void b(Animation paramAnimation);
 }
 
 

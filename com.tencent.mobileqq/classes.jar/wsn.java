@@ -1,31 +1,109 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CardEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wsn
-  implements wld<wss, wst>
+public class wsn
+  implements wsp
 {
-  wsn(wsm paramwsm, wff paramwff, wfg paramwfg) {}
+  private String a;
   
-  public void a(@NonNull wss paramwss, @Nullable wst paramwst, @NonNull ErrorMessage paramErrorMessage)
+  public wsn()
   {
-    if ((paramErrorMessage.isFail()) || (paramwst == null))
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory:DiscoverManager";
+  }
+  
+  private QQStoryContext a()
+  {
+    return QQStoryContext.a();
+  }
+  
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  private void a(CardItem paramCardItem)
+  {
+    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
     {
-      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+      CardEntry localCardEntry1 = paramCardItem.toCardEntry();
+      paramCardItem = a(localEntityManager, CardEntry.class, CardEntry.class.getSimpleName(), CardEntry.getCardIdSelection(), new String[] { paramCardItem.cardId });
+      if (paramCardItem == null) {
+        return;
+      }
+      paramCardItem = paramCardItem.iterator();
+      while (paramCardItem.hasNext())
+      {
+        CardEntry localCardEntry2 = (CardEntry)paramCardItem.next();
+        localCardEntry2.PBData = localCardEntry1.PBData;
+        localEntityManager.update(localCardEntry2);
+        yuk.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
+      }
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
+    localEntityManager.getTransaction().end();
+  }
+  
+  public DiscoverBannerVideoEntry a(String paramString)
+  {
+    paramString = a(QQStoryContext.a().a().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
+    if ((paramString != null) && (paramString.size() > 0)) {
+      return (DiscoverBannerVideoEntry)paramString.get(0);
+    }
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(String paramString, xek paramxek)
+  {
+    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
+    {
+      if (paramxek.jdField_b_of_type_JavaUtilList.size() == paramxek.jdField_a_of_type_JavaUtilList.size())
+      {
+        DiscoverBannerVideoEntry localDiscoverBannerVideoEntry = new DiscoverBannerVideoEntry();
+        localDiscoverBannerVideoEntry.bannerId = paramString;
+        localDiscoverBannerVideoEntry.totalCount = paramxek.jdField_b_of_type_Int;
+        paramString = new ArrayList(paramxek.jdField_b_of_type_JavaUtilList.size());
+        int i = 0;
+        while (i < paramxek.jdField_b_of_type_JavaUtilList.size())
+        {
+          DiscoverBannerVideoEntry.BannerInfo localBannerInfo = new DiscoverBannerVideoEntry.BannerInfo();
+          localBannerInfo.b = ((String)paramxek.jdField_b_of_type_JavaUtilList.get(i));
+          localBannerInfo.jdField_a_of_type_JavaLangString = ((String)paramxek.jdField_a_of_type_JavaUtilList.get(i));
+          paramString.add(localBannerInfo);
+          i += 1;
+        }
+        localDiscoverBannerVideoEntry.bannerInfoList = paramString;
+        localDiscoverBannerVideoEntry.nextCookie = paramxek.jdField_a_of_type_JavaLangString;
+        localEntityManager.persistOrReplace(localDiscoverBannerVideoEntry);
+      }
+      localEntityManager.getTransaction().commit();
       return;
     }
-    if (paramwst.b == 1)
+    finally
     {
-      this.jdField_a_of_type_Wsm.a(true);
-      this.jdField_a_of_type_Wff.b(2);
-      this.jdField_a_of_type_Wsm.a = 2;
+      localEntityManager.getTransaction().end();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramwst.b);
-    }
-    this.jdField_a_of_type_Wfg.a(paramwst.a);
   }
+  
+  public void b() {}
 }
 
 

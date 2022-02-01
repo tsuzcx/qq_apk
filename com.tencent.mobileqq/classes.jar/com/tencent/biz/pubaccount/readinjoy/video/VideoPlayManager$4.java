@@ -2,40 +2,40 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.Iterator;
 import java.util.Set;
-import seu;
-import sez;
-import sfb;
-import sfq;
+import rvy;
+import rwd;
+import rwf;
+import rwu;
 
 public class VideoPlayManager$4
   implements Runnable
 {
-  public VideoPlayManager$4(seu paramseu) {}
+  public VideoPlayManager$4(rvy paramrvy) {}
   
   public void run()
   {
-    seu.a(this.this$0, seu.a(this.this$0), seu.a(this.this$0), 7, null);
-    if (seu.a(this.this$0) != null)
+    rvy.a(this.this$0, rvy.a(this.this$0), rvy.a(this.this$0), 7, null);
+    if (rvy.a(this.this$0) != null)
     {
-      Iterator localIterator = seu.a(this.this$0).iterator();
+      Iterator localIterator = rvy.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        sez localsez = (sez)localIterator.next();
-        if (localsez != null) {
-          localsez.a(seu.a(this.this$0), seu.a(this.this$0).a());
+        rwd localrwd = (rwd)localIterator.next();
+        if (localrwd != null) {
+          localrwd.a(rvy.a(this.this$0), rvy.a(this.this$0).a());
         }
       }
     }
-    if (seu.a(this.this$0) != null)
+    if (rvy.a(this.this$0) != null)
     {
-      seu.a(this.this$0).e = -1;
-      seu.a(this.this$0).d = 0L;
-      seu.a(this.this$0, null);
+      rvy.a(this.this$0).e = -1;
+      rvy.a(this.this$0).d = 0L;
+      rvy.a(this.this$0, null);
     }
-    if (seu.a(this.this$0) != null)
+    if (rvy.a(this.this$0) != null)
     {
-      seu.a(this.this$0).l();
-      seu.a(this.this$0, null);
+      rvy.a(this.this$0).l();
+      rvy.a(this.this$0, null);
     }
   }
 }

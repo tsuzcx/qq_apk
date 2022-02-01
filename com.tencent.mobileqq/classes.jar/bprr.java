@@ -1,31 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import java.util.ArrayList;
 
-public class bprr
+public abstract class bprr
 {
-  @NonNull
-  protected final Friends a;
-  protected boolean a;
+  protected Paint a = new Paint();
   
-  public bprr(@NonNull Friends paramFriends)
+  public bprr()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
+  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
   
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public abstract void a(Canvas paramCanvas, ArrayList<bptj> paramArrayList, int paramInt1, int paramInt2);
 }
 
 

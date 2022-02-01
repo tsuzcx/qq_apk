@@ -1,6 +1,6 @@
 public abstract interface xtl
 {
-  public abstract void a();
+  public abstract void a(xtg paramxtg);
 }
 
 

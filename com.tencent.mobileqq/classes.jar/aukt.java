@@ -1,54 +1,60 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public class aukt
-  extends ankx
+class aukt
+  implements blkm
 {
-  public aukt(ForwardShareCardOption paramForwardShareCardOption) {}
+  aukt(aukp paramaukp) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public void F()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
-    }
-    if (!paramBoolean)
-    {
-      this.a.y();
-      switch (paramInt)
-      {
-      default: 
-        paramString1 = anni.a(2131703613);
-        ForwardShareCardOption.c(this.a, null);
-        ForwardShareCardOption.a(this.a, false);
-        QQToast.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
-      }
-    }
-    while ((ForwardShareCardOption.c(this.a) == null) || (Long.parseLong(ForwardShareCardOption.c(this.a)) != paramLong2)) {
-      for (;;)
-      {
-        return;
-        paramString1 = anni.a(2131703620);
-        continue;
-        paramString1 = anni.a(2131703619);
-      }
-    }
-    if (ForwardShareCardOption.a(this.a))
-    {
-      ForwardShareCardOption.c(this.a, paramString1);
-      ForwardShareCardOption.a(this.a, ForwardShareCardOption.c(this.a), true);
-    }
-    ForwardShareCardOption.a(this.a, false);
+    aukp.a(this.a, false);
+    this.a.jdField_a_of_type_Aukf.o();
+    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void G()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
+    aukp.a(this.a, false);
+    if (aukp.a(this.a)) {
+      this.a.f(true);
     }
-    if ((ForwardShareCardOption.c(this.a) != null) && (ForwardShareCardOption.c(this.a).equals(paramString))) {
-      ForwardShareCardOption.a(this.a, ForwardShareCardOption.c(this.a), false);
+    if (aukp.b(this.a)) {
+      this.a.g(true);
+    }
+    if (aukp.c(this.a)) {
+      this.a.b(true);
+    }
+  }
+  
+  public void H() {}
+  
+  public void a(float paramFloat)
+  {
+    aukp.a(this.a, true);
+    Drawable localDrawable;
+    if (aukp.a(this.a) != null)
+    {
+      localDrawable = aukp.a(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha(0);
+      }
+    }
+    if (aukp.b(this.a) != null)
+    {
+      localDrawable = aukp.b(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      }
+    }
+    if (paramFloat < 0.8F)
+    {
+      aukp.a(this.a).setVisibility(8);
+      aukp.c(this.a).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
   }
 }

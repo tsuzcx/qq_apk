@@ -1,8 +1,25 @@
-public abstract interface ajha
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+
+public class ajha
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(String paramString, int paramInt, float paramFloat);
+  public ajha(TroopView paramTroopView) {}
   
-  public abstract void c(boolean paramBoolean);
+  public void onGlobalLayout()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      TroopView.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+  }
 }
 
 

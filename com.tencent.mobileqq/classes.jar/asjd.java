@@ -1,68 +1,53 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XEditTextEx;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class asjd
-  implements TextWatcher
+class asjd
+  implements anje
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
+  asjd(asiw paramasiw, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public asjd(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount();
-    if (i > 30)
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label136;
+    paramString = new Bundle();
+    int i;
+    if (paramBoolean) {
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        paramArrayOfInt = ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        if (paramArrayOfInt == null) {
+          break label231;
+        }
+        i = paramArrayOfInt.apolloVipFlag;
+        paramInt2 = paramArrayOfInt.apolloVipLevel;
       }
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(this.jdField_a_of_type_Int);
     }
     for (;;)
     {
-      if (ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment) == null) {
-        ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, QQToast.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), "输入文字不要超过30行", 0));
-      }
-      if (!ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).c()) {
-        ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).a();
-      }
-      if (i != ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment))
-      {
-        ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, i);
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_Boolean = true;
-      }
+      paramString.putInt("apollo_apolloVipFlag", i);
+      paramString.putInt("apollo_apolloVipLevel", paramInt2);
+      paramString.putBoolean("apollo_is_super_yellow", amsx.c());
+      paramString.putInt("apollo_result", 0);
+      paramString.putInt("apollo_partnerRoleId", paramInt1);
+      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      paramString.putInt("apollo_previewAction", this.jdField_b_of_type_Int);
+      paramString.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
+      paramString.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
+      paramString.putString("title", this.c);
+      paramString.putString("subTitle", this.d);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
-      label136:
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() <= 30)
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-    }
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_JavaLangString = "";
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_JavaLangString.equals(paramCharSequence.toString())) && (!ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment)))
-    {
-      ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      paramString.putInt("apollo_result", 1);
+      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
+      label231:
+      paramInt2 = 0;
+      i = 0;
     }
-    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
   }
 }
 

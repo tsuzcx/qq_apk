@@ -1,15 +1,19 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bgat
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  public bgat(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.b).append("]");
-    return localStringBuilder.toString();
+    blgx.b(paramView);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,20 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class aksz
-  implements akph
+public class aksz
+  extends RecyclerView.OnScrollListener
 {
-  aksz(akss paramakss, ResultReceiver paramResultReceiver) {}
+  public aksz(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void a(String paramString1, String paramString2, akpb paramakpb)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("res", paramString2);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+    if (paramInt == 0)
+    {
+      adlb.a().a("list_photo", false);
+      return;
+    }
+    adlb.a().a("list_photo");
   }
 }
 

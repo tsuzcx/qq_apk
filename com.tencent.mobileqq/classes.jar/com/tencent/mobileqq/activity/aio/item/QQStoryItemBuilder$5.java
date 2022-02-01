@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfy;
+import ahpk;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 
 class QQStoryItemBuilder$5
   implements Runnable
 {
-  QQStoryItemBuilder$5(QQStoryItemBuilder paramQQStoryItemBuilder, ahfy paramahfy) {}
+  QQStoryItemBuilder$5(QQStoryItemBuilder paramQQStoryItemBuilder, ahpk paramahpk) {}
   
   public void run()
   {

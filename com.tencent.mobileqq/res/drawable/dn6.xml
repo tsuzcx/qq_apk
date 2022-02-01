@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#66000000" />
-    <corners android:radius="58.0dip" />
-</shape>
+    <item android:duration="40" android:drawable="@drawable/eeh" />
+    <item android:duration="40" android:drawable="@drawable/eei" />
+    <item android:duration="40" android:drawable="@drawable/eej" />
+    <item android:duration="40" android:drawable="@drawable/eek" />
+    <item android:duration="40" android:drawable="@drawable/eel" />
+    <item android:duration="40" android:drawable="@drawable/eem" />
+    <item android:duration="40" android:drawable="@drawable/een" />
+    <item android:duration="40" android:drawable="@drawable/eeo" />
+    <item android:duration="40" android:drawable="@drawable/eep" />
+    <item android:duration="40" android:drawable="@drawable/eeq" />
+    <item android:duration="40" android:drawable="@drawable/eer" />
+    <item android:duration="40" android:drawable="@drawable/ees" />
+    <item android:duration="40" android:drawable="@drawable/eet" />
+</animation-list>

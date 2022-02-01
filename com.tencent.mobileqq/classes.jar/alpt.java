@@ -1,33 +1,9 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import java.util.List;
 
-public class alpt
-  implements INetInfoHandler
+public abstract interface alpt
 {
-  alpt(alps paramalps) {}
-  
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    long l = Thread.currentThread().getId();
-    if (alps.a(this.a) == l) {
-      alps.a(this.a);
-    }
-    while (alps.a(this.a) == null) {
-      return;
-    }
-    alps.a(this.a).post(new LbsFilterStatusManager.3.1(this));
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public abstract List<View> onGetVisiableDragView();
 }
 
 

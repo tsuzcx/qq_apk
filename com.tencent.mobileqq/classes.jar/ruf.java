@@ -1,10 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface ruf
+class ruf
+  extends ual
 {
-  public abstract void a(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
+  ruf(rsx paramrsx) {}
   
-  public abstract void b(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    return this.a.a(paramInt, paramActionSheetItem);
+  }
 }
 
 

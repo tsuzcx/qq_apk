@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
 import android.os.Handler;
-import aunn;
-import awhv;
+import avfn;
+import axan;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -12,13 +12,13 @@ import mqq.os.MqqHandler;
 public class QQSettingChatOperationFragment$2$1
   implements Runnable
 {
-  public QQSettingChatOperationFragment$2$1(aunn paramaunn) {}
+  public QQSettingChatOperationFragment$2$1(avfn paramavfn) {}
   
   public void run()
   {
     QQSettingChatOperationFragment.a(this.a.a).a().d(true);
     QQSettingChatOperationFragment.a(this.a.a).a().h();
-    awhv.a().j(QQSettingChatOperationFragment.a(this.a.a));
+    axan.a().j(QQSettingChatOperationFragment.a(this.a.a));
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
     MqqHandler localMqqHandler = QQSettingChatOperationFragment.a(this.a.a).getHandler(Conversation.class);
     if (localMqqHandler != null) {

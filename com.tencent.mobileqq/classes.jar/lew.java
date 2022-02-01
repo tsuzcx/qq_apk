@@ -1,14 +1,6 @@
-import android.os.IBinder.DeathRecipient;
-
-class lew
-  implements IBinder.DeathRecipient
+public abstract interface lew
 {
-  lew(lev paramlev) {}
-  
-  public void binderDied()
-  {
-    lbc.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
-  }
+  public abstract void a(int paramInt);
 }
 
 

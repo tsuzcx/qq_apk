@@ -1,71 +1,130 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
-
-public class auom
-  implements TextWatcher
+public abstract interface auom
 {
-  public int a;
-  public CharSequence a;
-  public boolean a;
-  int b = -1;
-  int c = -1;
+  public abstract void A();
   
-  public auom(BlockableEditTextView paramBlockableEditTextView)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = "";
-  }
+  public abstract void B();
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
-    while (this.jdField_a_of_type_Int >= 0) {
-      return;
-    }
-    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
-  }
+  public abstract void C();
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
-    do
-    {
-      Editable localEditable;
-      auon[] arrayOfauon;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_Int = 0;
-          } while (paramInt3 == paramInt2);
-          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
-        } while (localEditable == null);
-        arrayOfauon = (auon[])localEditable.getSpans(paramInt1, paramInt1, auon.class);
-      } while ((arrayOfauon == null) || (arrayOfauon.length <= 0));
-      this.b = localEditable.getSpanStart(arrayOfauon[0]);
-      this.c = localEditable.getSpanEnd(arrayOfauon[0]);
-    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
-    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
-    this.jdField_a_of_type_Int = -1;
-  }
+  public abstract void D();
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void E();
+  
+  public abstract void F();
+  
+  public abstract void G();
+  
+  public abstract void H();
+  
+  public abstract void I();
+  
+  public abstract void J();
+  
+  public abstract void K();
+  
+  public abstract void L();
+  
+  public abstract void M();
+  
+  public abstract void N();
+  
+  public abstract void O();
+  
+  public abstract void P();
+  
+  public abstract void Q();
+  
+  public abstract void R();
+  
+  public abstract void S();
+  
+  public abstract void T();
+  
+  public abstract void U();
+  
+  public abstract void V();
+  
+  public abstract void W();
+  
+  public abstract void X();
+  
+  public abstract void Y();
+  
+  public abstract void Z();
+  
+  public abstract void a();
+  
+  public abstract void aa();
+  
+  public abstract void ab();
+  
+  public abstract void ac();
+  
+  public abstract void ad();
+  
+  public abstract void ae();
+  
+  public abstract void af();
+  
+  public abstract void ag();
+  
+  public abstract void ah();
+  
+  public abstract void ai();
+  
+  public abstract void aj();
+  
+  public abstract void ak();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void v();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

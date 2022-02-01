@@ -1,15 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
-import abcg;
+import abgj;
 
 public class QzoneWebViewOfflinePlugin$4
   implements Runnable
 {
-  public QzoneWebViewOfflinePlugin$4(abcg paramabcg, String paramString, long paramLong) {}
+  public QzoneWebViewOfflinePlugin$4(abgj paramabgj, String paramString, long paramLong) {}
   
   public void run()
   {
-    abcg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
+    abgj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.mRuntime);
   }
 }
 

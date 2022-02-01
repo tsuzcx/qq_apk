@@ -1,6 +1,19 @@
-abstract interface bnag
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.GpsInfo4LocalImage;
+
+public final class bnag
+  implements Parcelable.Creator<GpsInfo4LocalImage>
 {
-  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
+  public GpsInfo4LocalImage a(Parcel paramParcel)
+  {
+    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
+  }
+  
+  public GpsInfo4LocalImage[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

@@ -1,22 +1,33 @@
 package dov.com.qq.im.ae;
 
-import android.widget.ImageView;
-import bndy;
-import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
+import bofh;
+import bojx;
+import boqr;
+import bplq;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class AEPituCameraUnit$23
   implements Runnable
 {
-  public AEPituCameraUnit$23(bndy parambndy) {}
+  public AEPituCameraUnit$23(bofh parambofh) {}
   
   public void run()
   {
-    bndy.a(this.this$0).setVisibility(8);
-    if (bndy.a(this.this$0).getDrawable() != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager begin");
+    }
+    bojx localbojx = bofh.a(this.this$0);
+    if (bofh.b(this.this$0) == AECaptureMode.NORMAL) {}
+    for (boolean bool = true;; bool = false)
     {
-      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)bndy.a(this.this$0).getDrawable();
-      localLazyLoadAnimationDrawable.stop();
-      localLazyLoadAnimationDrawable.clear();
+      localbojx.c(bool);
+      ((boqr)bplq.a(18)).b(false);
+      bplz.c = 0;
+      if (QLog.isColorLevel()) {
+        QLog.d("AEPituCameraUnit", 2, "onResourceDownload update filterpager end");
+      }
+      return;
     }
   }
 }

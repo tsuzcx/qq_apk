@@ -1,28 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class qez
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  qez(qet paramqet, pxk parampxk, Container paramContainer, int paramInt) {}
+  qez(qev paramqev) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    Object localObject = this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = ((rhn)localObject).a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {}
-    for (;;)
+    oyj.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    paramViewBase = qeu.a(this.a.jdField_a_of_type_Qeu, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData());
+    if (paramViewBase == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.e("RecycleViewAdapterHelper", 1, "daily share info is null");
       return;
-      localObject = (rho)((rhn)localObject).a.get(0);
-      qet.a(this.jdField_a_of_type_Qet, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk.a(), (int)((rho)localObject).a, this.jdField_a_of_type_Pxk.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Pxk.a());
     }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("share_info_intent", paramViewBase.toString());
+    PublicFragmentActivity.a(qeu.a(this.a.jdField_a_of_type_Qeu).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
   }
 }
 

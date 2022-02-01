@@ -314,69 +314,73 @@ public class m
     }
   }
   
-  public static void a(boolean paramBoolean, d paramd, b paramb, int paramInt1, int paramInt2)
+  public static void a(boolean paramBoolean, d paramd, b paramb, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = -1;
     HashMap localHashMap;
-    int k;
     if (d.getStatReporter() != null)
     {
       localHashMap = new HashMap();
       if (paramd == null) {
-        break label355;
+        break label395;
       }
       localHashMap.put("TestType", "QualityTest");
       localHashMap.put("ProtoType", "" + paramd.a);
       paramb = new StringBuilder().append("");
       if (paramd.b == null) {
-        break label343;
+        break label377;
       }
-      k = paramd.b.size();
-      localHashMap.put("IpNum", k);
+      j = paramd.b.size();
+      localHashMap.put("IpNum", j);
       localHashMap.put("PkgNum", "" + paramd.c);
       paramb = new StringBuilder().append("");
       if (paramd.e == null) {
-        break label349;
+        break label383;
       }
-      k = paramd.e.length;
-      label168:
-      localHashMap.put("PkgDataSize", k);
+      j = paramd.e.length;
+      localHashMap.put("PkgDataSize", j);
       localHashMap.put("RepeatTimes", "" + paramd.f);
       paramb = new StringBuilder().append("");
-      if (paramd.g != null) {
-        j = paramd.g.length;
+      if (paramd.g == null) {
+        break label389;
       }
+      j = paramd.g.length;
       localHashMap.put("HeadDataSize", j);
       localHashMap.put("testPacketRecved", "" + paramInt1);
       localHashMap.put("testPacketSend", "" + paramInt2);
+      localHashMap.put("network_type", String.valueOf(paramInt3));
     }
-    for (;;)
-    {
-      d.getStatReporter().a("dim.Msf.NetTestResult", paramBoolean, 0L, paramInt1 + paramInt2, localHashMap, false, false);
-      return;
-      label343:
-      k = -1;
-      break;
-      label349:
-      k = -1;
-      break label168;
-      label355:
-      if (paramb != null)
+    label377:
+    label383:
+    while (paramb == null) {
+      for (;;)
       {
-        localHashMap.put("TestType", "MtuTest");
-        localHashMap.put("ProtoType", "" + paramb.a);
-        paramd = new StringBuilder().append("");
-        if (paramb.b != null) {
-          j = paramb.b.size();
-        }
-        localHashMap.put("IpNum", j);
-        localHashMap.put("PkgNum", "" + paramb.g);
-        localHashMap.put("PkgDataSize", b(paramb.c));
-        localHashMap.put("RepeatTimes", a(paramb.d));
-        localHashMap.put("HeadDataSize", b(paramb.e));
-        localHashMap.put("testPacketRecved", "" + paramInt1);
-        localHashMap.put("testPacketSend", "" + paramInt2);
+        d.getStatReporter().a("evt_net_test_result", paramBoolean, 0L, paramInt1 + paramInt2, localHashMap, false, false);
+        d.getStatReporter().a("dim.Msf.NetTestResult", paramBoolean, 0L, paramInt1 + paramInt2, localHashMap, false, false);
+        return;
+        j = -1;
+        continue;
+        j = -1;
+        continue;
+        j = -1;
       }
+    }
+    label389:
+    label395:
+    localHashMap.put("TestType", "MtuTest");
+    localHashMap.put("ProtoType", "" + paramb.a);
+    paramd = new StringBuilder().append("");
+    if (paramb.b != null) {}
+    for (int j = paramb.b.size();; j = -1)
+    {
+      localHashMap.put("IpNum", j);
+      localHashMap.put("PkgNum", "" + paramb.g);
+      localHashMap.put("PkgDataSize", b(paramb.c));
+      localHashMap.put("RepeatTimes", a(paramb.d));
+      localHashMap.put("HeadDataSize", b(paramb.e));
+      localHashMap.put("testPacketRecved", "" + paramInt1);
+      localHashMap.put("testPacketSend", "" + paramInt2);
+      localHashMap.put("network_type", String.valueOf(paramInt3));
+      break;
     }
   }
   

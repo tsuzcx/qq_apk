@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
-class bnsv
-  implements View.OnClickListener
+public class bnsv
+  implements QQPermissionCallback
 {
-  bnsv(bnss parambnss) {}
+  public bnsv(TroopHWJsPlugin paramTroopHWJsPlugin, Activity paramActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bnyh.a().ad();
-    bnss.a(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhlq.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.c = TroopHWJsPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
 }
 

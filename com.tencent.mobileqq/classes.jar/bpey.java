@@ -1,34 +1,15 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tribe.async.reactive.SimpleObserver;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
+import java.util.List;
 
-class bpey
-  extends SimpleObserver<Bitmap>
+public class bpey
 {
-  bpey(bpex parambpex) {}
+  public String a;
+  public List<YoutuResultItem> a;
   
-  public void a(Bitmap paramBitmap)
+  public bpey(String paramString, List<YoutuResultItem> paramList)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        yqp.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
-    }
-    else {
-      return;
-    }
-    yqp.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yqp.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

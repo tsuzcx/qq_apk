@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
 import android.widget.TextView;
-import aotc;
-import aotl;
+import apgs;
+import aphb;
 
 public class ARVideoRecordViewProxy$5
   implements Runnable
 {
-  public ARVideoRecordViewProxy$5(aotl paramaotl, int paramInt1, int paramInt2) {}
+  public ARVideoRecordViewProxy$5(aphb paramaphb, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    aotl.a(this.this$0).setText(aotc.a(this.a / 1000));
-    aotl.b(this.this$0).setText(aotc.b(this.b));
+    aphb.a(this.this$0).setText(apgs.a(this.a / 1000));
+    aphb.b(this.this$0).setText(apgs.b(this.b));
   }
 }
 

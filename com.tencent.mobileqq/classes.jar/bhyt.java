@@ -1,48 +1,22 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.image.Utils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bhyt
-  implements View.OnTouchListener
+  implements Sizeable
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
+  public int a;
+  public HashMap<Integer, Bitmap> a = new HashMap();
+  public int b;
   
-  public bhyt(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
+  public int getByteSize()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131373036);
-    if (paramView == null) {}
-    label100:
-    do
-    {
-      return false;
-      if (paramView.equals(Integer.valueOf(1))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (paramMotionEvent.getAction() != 0) {
-          break label100;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
-        return false;
-        if (!paramView.equals(Integer.valueOf(2))) {
-          break;
-        }
-      }
-    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
-    return false;
+    Iterator localIterator = this.a.values().iterator();
+    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
+    return i;
   }
 }
 

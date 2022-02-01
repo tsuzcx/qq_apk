@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import azdk;
-import azdm;
+import azvx;
+import azvz;
 import java.util.List;
 
 public class PLUploadManager$1
   implements Runnable
 {
-  public PLUploadManager$1(azdk paramazdk, List paramList, long paramLong) {}
+  public PLUploadManager$1(azvx paramazvx, List paramList, long paramLong) {}
   
   public void run()
   {

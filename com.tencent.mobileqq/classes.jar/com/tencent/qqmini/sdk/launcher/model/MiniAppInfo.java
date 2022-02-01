@@ -921,7 +921,7 @@ public class MiniAppInfo
         if (!isEngineTypeMiniGame()) {
           break;
         }
-      } while ((equalObj(this.appId, paramMiniAppInfo.appId)) && (equalObj(Integer.valueOf(this.verType), Integer.valueOf(paramMiniAppInfo.verType))) && (equalObj(this.version, paramMiniAppInfo.version)));
+      } while ((equalObj(this.appId, paramMiniAppInfo.appId)) && (equalObj(Integer.valueOf(this.verType), Integer.valueOf(paramMiniAppInfo.verType))));
       return false;
     } while ((equalObj(this.appId, paramMiniAppInfo.appId)) && (equalObj(Integer.valueOf(this.verType), Integer.valueOf(paramMiniAppInfo.verType))) && (equalObj(this.version, paramMiniAppInfo.version)));
     return false;

@@ -13,7 +13,7 @@ import feedcloud.FeedCloudMeta.StGPSV2;
 import feedcloud.FeedCloudRead.StGetFeedListReq;
 import feedcloud.FeedCloudRead.StGetFeedListRsp;
 import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
-import uzo;
+import vbe;
 
 public class QCircleGetGroupFeedListRequest
   extends QCircleBaseRequest
@@ -23,7 +23,7 @@ public class QCircleGetGroupFeedListRequest
   public FeedCloudRead.StGetFeedListReq mRequest = new FeedCloudRead.StGetFeedListReq();
   private FeedCloudRead.StGetFeedListReq mTabRequest;
   
-  public QCircleGetGroupFeedListRequest(long paramLong, uzo paramuzo, String paramString1, String paramString2, FeedCloudMeta.StGPSV2 paramStGPSV2)
+  public QCircleGetGroupFeedListRequest(long paramLong, vbe paramvbe, String paramString1, String paramString2, FeedCloudMeta.StGPSV2 paramStGPSV2)
   {
     if (paramString1 != null) {
       this.mRequest.feedAttchInfo.set(paramString1);
@@ -36,7 +36,7 @@ public class QCircleGetGroupFeedListRequest
     {
       this.mTabRequest.mergeFrom(this.mRequest.toByteArray());
       paramString1 = new QQCircleFeedBase.StFeedListBusiReqData();
-      paramString1.tabAttachInfo.set(paramuzo.b());
+      paramString1.tabAttachInfo.set(paramvbe.b());
       if (paramString2 != null)
       {
         paramString1.refreshAttachInfo.set(paramString2);

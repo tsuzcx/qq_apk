@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-public class ayoc
+class ayoc
   implements DialogInterface.OnClickListener
 {
-  public ayoc(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  ayoc(ayob paramayob, bhpc parambhpc) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      this.a.getActivity().finish();
-    }
+    this.jdField_a_of_type_Bhpc.dismiss();
+    this.jdField_a_of_type_Ayob.a.f();
   }
 }
 

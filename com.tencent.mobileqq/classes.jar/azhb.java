@@ -1,12 +1,21 @@
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+
 public class azhb
+  extends Editable.Factory
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  public azhb(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
+    }
+    return new begz(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+  }
 }
 
 

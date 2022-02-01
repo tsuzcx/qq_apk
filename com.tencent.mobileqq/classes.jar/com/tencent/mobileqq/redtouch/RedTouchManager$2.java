@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.redtouch;
 
-import baif;
+import bbav;
 
 public class RedTouchManager$2
   implements Runnable
 {
-  public RedTouchManager$2(baif parambaif) {}
+  public RedTouchManager$2(bbav parambbav) {}
   
   public void run()
   {
-    baif.a(this.this$0);
+    bbav.a(this.this$0);
   }
 }
 

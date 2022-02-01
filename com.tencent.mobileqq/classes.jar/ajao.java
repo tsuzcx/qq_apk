@@ -1,104 +1,37 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.bless.BlessTask;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ajao
-  extends anqd
+class ajao
+  extends biht
 {
-  public ajao(SystemRequestInfoView paramSystemRequestInfoView) {}
+  ajao(ajan paramajan, String paramString1, String paramString2) {}
   
-  protected void a(String paramString)
+  public void onCancel(bihu parambihu)
   {
-    if (this.a.a())
-    {
-      paramString = this.a.getResources().getString(2131718381);
-      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+    ajan.a(this.jdField_a_of_type_Ajan).remove(this.jdField_a_of_type_JavaLangString);
   }
   
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  public void onDone(bihu parambihu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
-    }
-    if (!this.a.a()) {
+    ajan.a(this.jdField_a_of_type_Ajan).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambihu.a() == 3)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
+        QLog.d("BlessManager", 2, "download finished " + this.b);
+      }
+      if ((this.b != null) && (ajan.a(this.jdField_a_of_type_Ajan) != null) && (this.b.equals(ajan.a(this.jdField_a_of_type_Ajan).starVideo))) {
+        ajan.b(this.jdField_a_of_type_Ajan);
       }
     }
-    long l1;
-    structmsg.StructMsg localStructMsg;
-    for (;;)
+    while (!QLog.isColorLevel())
     {
       return;
-      long l2 = bdgm.a().b();
-      l1 = l2;
-      if (!TextUtils.isEmpty(paramString1)) {}
-      try
-      {
-        l1 = Long.parseLong(paramString1);
-        localStructMsg = bdgm.a().a(Long.valueOf(l1));
-        if (!paramBoolean) {
-          if (!TextUtils.isEmpty(paramString3))
-          {
-            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
-            if (!bdgo.a(localStructMsg, paramInt3, paramString2, paramString4)) {
-              continue;
-            }
-            SystemRequestInfoView.a(this.a).finish();
-            return;
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          l1 = l2;
-          continue;
-          paramString3 = this.a.getResources().getString(2131717746);
-        }
-        bdgo.a(localStructMsg, paramInt1, paramString2, paramInt2);
-        paramString2 = null;
-        if (paramInt1 != 1) {
-          break label234;
-        }
-      }
-    }
-    SystemRequestInfoView.a(this.a).finish();
-    paramString1 = this.a.getResources().getString(2131692412);
-    for (;;)
-    {
-      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      ajan.a(this.jdField_a_of_type_Ajan);
       return;
-      label234:
-      paramString1 = paramString2;
-      if (paramInt1 == 0)
-      {
-        paramString1 = paramString2;
-        if (localStructMsg != null)
-        {
-          paramString1 = this.a.getResources().getString(2131692406);
-          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
-        }
-      }
     }
+    QLog.d("BlessManager", 2, "downloadFile failed: " + parambihu.b + " code=" + parambihu.a);
   }
-  
-  protected void b(boolean paramBoolean, String paramString) {}
 }
 
 

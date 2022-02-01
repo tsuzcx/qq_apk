@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
-
 public class apnb
-  extends apnq
 {
-  public apnb(ArkAiDictUpdateMgr.8 param8) {}
+  public int a;
+  public apnc a;
+  public String a;
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  public apnb()
   {
-    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Apnc = null;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Apnc + '}';
   }
 }
 

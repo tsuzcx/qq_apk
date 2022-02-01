@@ -1,16 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 
-public class aaze
-  extends RecyclerView.OnScrollListener
+class aaze
+  extends RecyclerView.ViewHolder
 {
-  public aaze(SmartMusicRecyclerView paramSmartMusicRecyclerView) {}
+  final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  aaze(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    SmartMusicRecyclerView.a(this.a, paramRecyclerView, paramInt);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131365184));
   }
 }
 

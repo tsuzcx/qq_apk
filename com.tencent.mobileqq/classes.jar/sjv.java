@@ -1,26 +1,70 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureAndUpload$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sjv
-  implements sjt
+public class sjv
 {
-  sjv(rtb paramrtb) {}
+  private static sjv jdField_a_of_type_Sjv;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private ubn jdField_a_of_type_Ubn;
+  private Integer b;
   
-  public void a()
+  public static sjv a(Activity paramActivity)
   {
-    rtb localrtb = this.jdField_a_of_type_Rtb;
-    if (localrtb != null) {
-      localrtb.a(1, "");
+    int i;
+    int j;
+    if (jdField_a_of_type_Sjv == null)
+    {
+      jdField_a_of_type_Sjv = new sjv();
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+      i = localDisplayMetrics.widthPixels;
+      j = localDisplayMetrics.heightPixels;
+    }
+    try
+    {
+      jdField_a_of_type_Sjv.jdField_a_of_type_Ubn = new ubn(paramActivity, i, j);
+      jdField_a_of_type_Sjv.jdField_a_of_type_Ubn.a(new sjw());
+      return jdField_a_of_type_Sjv;
+    }
+    catch (SecurityException paramActivity)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyScreenShotReporter", 1, "SecurityException error = " + paramActivity.toString());
+        jdField_a_of_type_Sjv.jdField_a_of_type_Ubn = null;
+      }
     }
   }
   
-  public void a(@NotNull Bitmap paramBitmap)
+  public void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
-    sjs.a(this.jdField_a_of_type_Sjs, paramBitmap, this.jdField_a_of_type_Rtb);
+    if (jdField_a_of_type_Sjv != null)
+    {
+      jdField_a_of_type_Sjv.jdField_a_of_type_JavaLangInteger = null;
+      jdField_a_of_type_Sjv.b = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Sjv != null)
+    {
+      jdField_a_of_type_Sjv.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
+      jdField_a_of_type_Sjv.b = new Integer(paramInt1);
+    }
+  }
+  
+  public void b()
+  {
+    if ((jdField_a_of_type_Sjv != null) && (jdField_a_of_type_Sjv.jdField_a_of_type_Ubn != null))
+    {
+      jdField_a_of_type_Sjv.jdField_a_of_type_Ubn.a();
+      jdField_a_of_type_Sjv.jdField_a_of_type_Ubn = null;
+    }
+    jdField_a_of_type_Sjv = null;
   }
 }
 

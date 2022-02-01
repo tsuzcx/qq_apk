@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
 import Override;
-import alvn;
-import alvo;
+import amhf;
+import amhg;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -15,10 +15,10 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import anni;
-import bcgx;
-import bclx;
-import bcmx;
+import anzj;
+import bczp;
+import bdep;
+import bdfp;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
@@ -28,7 +28,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PreviewVideoActivity
   extends PeakActivity
-  implements View.OnClickListener, bcmx
+  implements View.OnClickListener, bdfp
 {
   private int jdField_a_of_type_Int;
   private HWVideoPlayView jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView;
@@ -85,7 +85,7 @@ public class PreviewVideoActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    setContentView(2131562530);
+    setContentView(2131562571);
     try
     {
       if (VideoEnvironment.a("AVCodec", getApplicationContext()) != 0)
@@ -93,10 +93,10 @@ public class PreviewVideoActivity
         QLog.e("PreviewVideoActivity", 4, "load so failed");
         finish();
       }
-      bcgx.a();
+      bczp.a();
       if (getIntent() == null)
       {
-        Toast.makeText(getApplicationContext(), anni.a(2131707185), 1).show();
+        Toast.makeText(getApplicationContext(), anzj.a(2131707294), 1).show();
         finish();
         return;
       }
@@ -116,22 +116,22 @@ public class PreviewVideoActivity
         localObject2 = getIntent().getStringExtra("audio_path");
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          Toast.makeText(getApplicationContext(), anni.a(2131707184), 1).show();
+          Toast.makeText(getApplicationContext(), anzj.a(2131707293), 1).show();
           QLog.e("PreviewVideoActivity", 4, "videoPath is null");
           finish();
           return;
         }
-        paramBundle = new alvo();
+        paramBundle = new amhg();
         paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
         paramBundle.b = ((String)localObject2);
-        findViewById(2131376643).setVisibility(0);
-        findViewById(2131363893).setOnClickListener(this);
-        findViewById(2131363907).setOnClickListener(this);
+        findViewById(2131376776).setVisibility(0);
+        findViewById(2131363917).setOnClickListener(this);
+        findViewById(2131363931).setOnClickListener(this);
       }
       FrameLayout.LayoutParams localLayoutParams;
       for (;;)
       {
-        localObject1 = (FrameLayout)findViewById(2131380901);
+        localObject1 = (FrameLayout)findViewById(2131381081);
         localObject2 = getResources().getDisplayMetrics();
         localLayoutParams = new FrameLayout.LayoutParams(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, 17);
         if (paramBundle == null) {
@@ -146,7 +146,7 @@ public class PreviewVideoActivity
         int i = getIntent().getIntExtra("video_type", -1);
         if ((i != 0) && (i != 1))
         {
-          Toast.makeText(getApplicationContext(), anni.a(2131707183), 1).show();
+          Toast.makeText(getApplicationContext(), anzj.a(2131707292), 1).show();
           QLog.e("PreviewVideoActivity", 4, "init error, mVideoType=" + i);
           finish();
           return;
@@ -154,19 +154,19 @@ public class PreviewVideoActivity
         this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("video_source_path");
         if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
         {
-          Toast.makeText(getApplicationContext(), anni.a(2131707186), 1).show();
+          Toast.makeText(getApplicationContext(), anzj.a(2131707295), 1).show();
           QLog.e("PreviewVideoActivity", 4, "init error, mSourcePath=" + this.jdField_a_of_type_JavaLangString);
           finish();
           return;
         }
-        findViewById(2131378445).setVisibility(0);
-        findViewById(2131364961).setOnClickListener(this);
-        paramBundle = alvn.a(this.jdField_a_of_type_JavaLangString);
+        findViewById(2131378603).setVisibility(0);
+        findViewById(2131365008).setOnClickListener(this);
+        paramBundle = amhf.a(this.jdField_a_of_type_JavaLangString);
       }
       this.jdField_a_of_type_Int = getIntent().getBundleExtra("encode_video_params").getInt("sv_total_frame_count");
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = new ImageViewVideoPlayer(getApplicationContext());
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setCyclePlay(true);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.a(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, false, bclx.a(5.0F));
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.a(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, false, bdep.a(5.0F));
       ((FrameLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer, localLayoutParams);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPlayerEndListener(this);
     }
@@ -183,7 +183,7 @@ public class PreviewVideoActivity
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.c();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.e();
     }
-    bcgx.b();
+    bczp.b();
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.h();

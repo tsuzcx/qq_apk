@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 
-public class amwx
-  implements amkh
+public abstract interface amwx
 {
-  public amwx(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  public abstract void exeJsOnEngine(String paramString);
   
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
-      }
-      this.a.a.getRenderImpl().a(0L);
-    }
-  }
+  public abstract long getRenderThreadId();
   
-  public void a(int paramInt, String paramString) {}
+  public abstract long getRuntimeState();
+  
+  public abstract boolean isJsRuntime();
+  
+  public abstract void runRenderTask(IApolloRunnableTask paramIApolloRunnableTask);
 }
 
 

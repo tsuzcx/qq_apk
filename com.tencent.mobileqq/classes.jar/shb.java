@@ -1,60 +1,17 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
-abstract class shb
+public class shb
+  implements ovw
 {
-  protected long a;
-  private ArrayList<shb> a;
-  protected long b;
+  public shb(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, ovw paramovw) {}
   
-  shb()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  abstract long a(long paramLong);
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((shb)localIterator.next()).a();
+    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
+    if (this.jdField_a_of_type_Ovw != null) {
+      this.jdField_a_of_type_Ovw.a(paramInt);
     }
-    this.b = 0L;
-  }
-  
-  public void a(long paramLong)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((shb)localIterator.next()).a(paramLong);
-    }
-    this.b = a(paramLong);
-    if (this.b < 0L) {
-      this.b = 0L;
-    }
-    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
-    {
-      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
-      return;
-    }
-    this.jdField_a_of_type_Long = this.b;
-  }
-  
-  protected void a(shb paramshb)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramshb) < 0) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramshb);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((shb)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Long = 0L;
   }
 }
 

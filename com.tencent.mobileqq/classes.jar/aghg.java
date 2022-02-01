@@ -1,8 +1,18 @@
-import android.graphics.Bitmap;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 
-public abstract interface aghg
+public class aghg
+  extends QQLruCache<String, aigs>
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  public aghg(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, aigs paramaigs1, aigs paramaigs2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramaigs1, paramaigs2);
+  }
 }
 
 

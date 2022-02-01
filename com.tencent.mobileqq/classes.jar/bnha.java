@@ -1,50 +1,24 @@
-import dov.com.qq.im.ae.album.nocropper.AECropperGridView;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
-import dov.com.qq.im.ae.album.nocropper.AECropperView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bnha
-  implements bngv
+  implements DialogInterface.OnClickListener
 {
-  private bnha(AECropperView paramAECropperView) {}
+  public bnha(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    AECropperView.a(this.a, true);
-    AECropperGridView localAECropperGridView;
-    if (AECropperView.a(this.a) != null)
+    switch (paramInt)
     {
-      localAECropperGridView = AECropperView.a(this.a);
-      if (((AECropperView.a(this.a) != null) && (!AECropperView.a(this.a).a())) || (this.a.a == null) || (!this.a.a.b())) {
-        break label83;
-      }
-    }
-    for (;;)
-    {
-      localAECropperGridView.setShowGrid(bool);
+    default: 
       return;
-      label83:
-      bool = false;
     }
-  }
-  
-  public void b()
-  {
-    boolean bool2 = false;
-    AECropperView.a(this.a, false);
-    if (AECropperView.a(this.a) != null)
-    {
-      AECropperGridView localAECropperGridView = AECropperView.a(this.a);
-      boolean bool1 = bool2;
-      if (AECropperView.a(this.a) != null)
-      {
-        bool1 = bool2;
-        if (AECropperView.a(this.a).b()) {
-          bool1 = true;
-        }
-      }
-      localAECropperGridView.setShowGrid(bool1);
-    }
+    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getIntent());
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

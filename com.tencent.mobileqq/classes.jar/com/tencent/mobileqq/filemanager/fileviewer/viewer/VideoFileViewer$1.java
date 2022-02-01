@@ -3,24 +3,24 @@ package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import atsu;
+import aukp;
 
 public class VideoFileViewer$1
   implements Runnable
 {
-  public VideoFileViewer$1(atsu paramatsu) {}
+  public VideoFileViewer$1(aukp paramaukp) {}
   
   public void run()
   {
-    if (atsu.a(this.this$0).getVisibility() == 0)
+    if (aukp.a(this.this$0).getVisibility() == 0)
     {
-      Animation localAnimation = atsu.a(this.this$0).getAnimation();
+      Animation localAnimation = aukp.a(this.this$0).getAnimation();
       if (localAnimation != null) {
         localAnimation.cancel();
       }
-      atsu.a(this.this$0).clearAnimation();
+      aukp.a(this.this$0).clearAnimation();
     }
-    atsu.a(this.this$0).setVisibility(8);
+    aukp.a(this.this$0).setVisibility(8);
   }
 }
 

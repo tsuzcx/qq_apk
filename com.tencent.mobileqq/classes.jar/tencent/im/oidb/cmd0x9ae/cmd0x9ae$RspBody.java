@@ -1,17 +1,26 @@
 package tencent.im.oidb.cmd0x9ae;
 
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class cmd0x9ae$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "bool_has_been_authenticated", "bool_need_auth_tips", "msg_auth_tips" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), null }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_has_been_authenticated = PBField.initBool(false);
   public final PBBoolField bool_need_auth_tips = PBField.initBool(false);
+  public final PBBytesField bytes_jwt = PBField.initBytes(ByteStringMicro.EMPTY);
   public cmd0x9ae.AuthTips msg_auth_tips = new cmd0x9ae.AuthTips();
+  
+  static
+  {
+    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "bool_has_been_authenticated", "bool_need_auth_tips", "msg_auth_tips", "bytes_jwt" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), null, localByteStringMicro }, RspBody.class);
+  }
 }
 
 

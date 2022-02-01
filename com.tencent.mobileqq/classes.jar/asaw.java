@@ -1,26 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 public class asaw
-  implements Animator.AnimatorListener
+  implements Handler.Callback
 {
-  public asaw(EmotionSearchPanel paramEmotionSearchPanel) {}
+  private String a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public asaw(String paramString)
   {
-    if (!EmotionSearchPanel.b(this.a, true))
-    {
-      EmotionSearchPanel.a(this.a, 1.0F);
-      EmotionSearchPanel.b(this.a);
-    }
+    this.a = paramString;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    axwe.a(this.a, 1);
+    return true;
+  }
 }
 
 

@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class zsn
-  implements DialogInterface.OnCancelListener
+  implements blpr
 {
-  public zsn(QRDisplayActivity paramQRDisplayActivity) {}
+  public zsn(SegmentList paramSegmentList) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a_(View paramView) {}
+  
+  public void e(boolean paramBoolean)
   {
-    if (this.a.h) {
-      return;
-    }
-    this.a.i = -1;
-    this.a.h = true;
-    QRDisplayActivity.a(this.a).dismiss();
+    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
   }
+  
+  public void f() {}
 }
 
 

@@ -9,10 +9,10 @@ class QCircleRecommendImageView$5
   {
     if (this.a)
     {
-      QCircleRecommendImageView.c(this.this$0);
+      QCircleRecommendImageView.b(this.this$0);
       return;
     }
-    QCircleRecommendImageView.d(this.this$0);
+    QCircleRecommendImageView.c(this.this$0);
   }
 }
 

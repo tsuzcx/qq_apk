@@ -229,26 +229,31 @@ public class MiniAppEnv
     if (paramMiniAppInfo == null)
     {
       QMLog.e("MiniAppEnv", "Failed to getAppUIProxy, miniAppInfo is null, return default appUIProxy");
-      localObject = this.appUIProxy;
+      paramMiniAppInfo = this.appUIProxy;
     }
+    String str;
     IUIProxy localIUIProxy;
     do
     {
-      return localObject;
+      return paramMiniAppInfo;
       if (!paramMiniAppInfo.isEngineTypeMiniGame()) {
-        break label97;
+        break label131;
       }
-      localObject = (WeakReference)this.mUIProxyMap.get(paramMiniAppInfo.appId);
-      if (localObject == null) {
+      str = paramMiniAppInfo.appId + "_" + paramMiniAppInfo.verType;
+      paramMiniAppInfo = (WeakReference)this.mUIProxyMap.get(str);
+      if (paramMiniAppInfo == null) {
         break;
       }
-      localIUIProxy = (IUIProxy)((WeakReference)localObject).get();
-      localObject = localIUIProxy;
-    } while (localIUIProxy != null);
-    Object localObject = (IUIProxy)MiniAppDexLoader.g().create("com.tencent.qqmini.minigame.ui.GameUIProxy");
-    this.mUIProxyMap.put(paramMiniAppInfo.appId, new WeakReference(localObject));
-    return localObject;
-    label97:
+      localIUIProxy = (IUIProxy)paramMiniAppInfo.get();
+      if (localIUIProxy == null) {
+        break;
+      }
+      paramMiniAppInfo = localIUIProxy;
+    } while (!localIUIProxy.isDestroyed());
+    paramMiniAppInfo = (IUIProxy)MiniAppDexLoader.g().create("com.tencent.qqmini.minigame.ui.GameUIProxy");
+    this.mUIProxyMap.put(str, new WeakReference(paramMiniAppInfo));
+    return paramMiniAppInfo;
+    label131:
     if (paramMiniAppInfo.isInternalApp()) {
       return this.appInternalUIProxy;
     }

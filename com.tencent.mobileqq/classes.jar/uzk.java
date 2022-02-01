@@ -1,24 +1,32 @@
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleDitto.StSinglePicBanner;
 
-public class uzk
+class uzk
+  implements vyc
 {
-  public FeedCloudMeta.StComment a;
-  public FeedCloudMeta.StFeed a;
-  public FeedCloudMeta.StReply a;
+  uzk(uzj paramuzj) {}
   
-  public uzk(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment)
+  public void a()
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
+    QLog.d("QCircleInviteBannerBlock", 1, "clickBanner actionType" + uzj.a(this.a).actionType.get() + "   actionUrl" + uzj.a(this.a).actionUrl.get());
+    if ((uzj.a(this.a).actionType.get() == 1) || (uzj.a(this.a).actionType.get() == 2))
+    {
+      uyx.a(uzj.a(this.a), uzj.a(this.a).actionUrl.get());
+      return;
+    }
+    QLog.d("QCircleInviteBannerBlock", 1, "unDefined banner jump action:" + uzj.a(this.a).actionType.get());
+    uyx.a(uzj.b(this.a), uzj.a(this.a).actionUrl.get());
   }
   
-  public uzk(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  public void b()
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+    uyk.a().f();
+    aaak.a().a(new QCircleCloseBannerEvent());
+    this.a.a(false);
+    QLog.d("QCircleInviteBannerBlock", 1, "clickClose");
   }
 }
 

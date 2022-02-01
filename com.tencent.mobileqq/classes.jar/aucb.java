@@ -1,260 +1,396 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadBizInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader.ExtfC2CFileUploader.1;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Timer;
 
-public final class aucb
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, bkhx
+public class aucb
+  extends auca
+  implements atvs
 {
-  private final aubt jdField_a_of_type_Aubt;
-  private final aubu jdField_a_of_type_Aubu;
-  private bkho jdField_a_of_type_Bkho;
-  private final FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  private final FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private final List<String> jdField_a_of_type_JavaUtilList;
-  private final boolean jdField_a_of_type_Boolean;
-  private final FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  private final FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private static SparseIntArray a;
+  protected atvi a;
+  protected ExcitingTransferUploadResultRp a;
+  protected Timer a;
+  protected String b;
+  protected boolean b;
   
-  public aucb(aubt paramaubt, View paramView, boolean paramBoolean)
+  private aucb(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, aucc paramaucc, aucg paramaucg)
   {
-    this.jdField_a_of_type_Aubt = paramaubt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Aubu = new aubu();
-    paramaubt = BaseApplicationImpl.sApplication;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramaubt.getString(2131697436));
-    this.jdField_a_of_type_JavaUtilList.add(paramaubt.getString(2131697435));
-    this.jdField_a_of_type_JavaUtilList.add(paramaubt.getString(2131697437));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131377310));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 2131697438;
-      ((FormSimpleItem)localObject).setLeftText(paramaubt.getString(i));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(a()));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131377309));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131377322));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Aubu.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      b(false);
-      localObject = (TextView)paramView.findViewById(2131377324);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label333;
-      }
-    }
-    label333:
-    for (int i = 2131697441;; i = 2131697440)
-    {
-      ((TextView)localObject).setText(paramaubt.getString(i));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131377307));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Aubu.b);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-      paramView.findViewById(2131377308).setVisibility(8);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setBgType(0);
-      }
-      return;
-      i = 2131697434;
-      break;
-    }
+    super(paramQQAppInterface, paramLong1, paramLong2, 0, paramaucc, paramaucg);
+    this.jdField_b_of_type_JavaLangString = "";
+    f();
   }
   
-  private int a()
+  public static int a(int paramInt)
   {
-    int i = 1;
-    if (this.jdField_a_of_type_Aubu.jdField_a_of_type_Int == 1) {
-      i = 0;
-    }
-    while (this.jdField_a_of_type_Aubu.jdField_a_of_type_Int == 2) {
-      return i;
-    }
-    return 2;
+    return jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, 9001);
   }
   
-  private void b()
+  public static atvs a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, aucc paramaucc, aucg paramaucg)
   {
-    if (this.jdField_a_of_type_Bkho == null)
+    if (paramaucc == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader fileInfo is null");
+      }
+    }
+    do
     {
-      this.jdField_a_of_type_Bkho = ((bkho)bkif.b(this.jdField_a_of_type_Aubt.a(), null));
-      Object localObject = this.jdField_a_of_type_Bkho;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (int i = 2131697438;; i = 2131697434)
+      do
       {
-        ((bkho)localObject).a(i);
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject).hasNext())
+        do
         {
-          String str = (String)((Iterator)localObject).next();
-          this.jdField_a_of_type_Bkho.a(str, false);
+          return null;
+          if (paramaucg != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader svrInfo is null");
+        return null;
+        if (paramaucc.a()) {
+          break;
         }
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader fileInfo is err");
+      return null;
+      if (paramaucg.a()) {
+        break;
       }
-      this.jdField_a_of_type_Bkho.c(2131690582);
-      this.jdField_a_of_type_Bkho.a(this);
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader svrInfo is err");
+    return null;
+    return new aucb(paramQQAppInterface, paramLong1, paramLong2, paramaucc, paramaucg);
+  }
+  
+  private void b(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+  }
+  
+  private void d()
+  {
+    try
+    {
+      QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] need to wait sha calc done");
+      e();
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaUtilTimer = new Timer();
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new ExtfC2CFileUploader.1(this), 120000L);
+      return;
     }
-    this.jdField_a_of_type_Bkho.d();
-    this.jdField_a_of_type_Bkho.d(a());
-    if (!this.jdField_a_of_type_Bkho.isShowing()) {
-      this.jdField_a_of_type_Bkho.show();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  private void b(boolean paramBoolean)
+  private void e()
   {
-    FormSimpleItem localFormSimpleItem = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    aubu localaubu = this.jdField_a_of_type_Aubu;
-    Object localObject;
-    if (this.jdField_a_of_type_Aubu.jdField_a_of_type_Boolean)
+    try
     {
-      localObject = aubv.a(6);
-      localaubu.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localFormSimpleItem.setRightText((CharSequence)localObject);
-      localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-      if (!this.jdField_a_of_type_Aubu.jdField_a_of_type_Boolean) {
-        break label104;
-      }
-      i = 0;
-      label57:
-      ((FormSimpleItem)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (!this.jdField_a_of_type_Aubu.jdField_a_of_type_Boolean) {
-        break label110;
-      }
-    }
-    label104:
-    label110:
-    for (int i = 2;; i = 3)
-    {
-      ((FormSwitchItem)localObject).setBgType(i);
-      if (paramBoolean) {
-        this.jdField_a_of_type_Aubt.a();
+      this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      {
+        QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] cancel wait sha calc");
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
       }
       return;
-      localObject = "";
-      break;
-      i = 8;
-      break label57;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public aubu a()
+  private void f()
   {
-    return this.jdField_a_of_type_Aubu;
+    if (jdField_a_of_type_AndroidUtilSparseIntArray == null) {
+      jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+    }
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(0, 0);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 9004);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(2, 9004);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(3, 9045);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(4, 9052);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(5, 9032);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(6, 9052);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(7, 9005);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(8, 9003);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(9, 4606);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10, 4606);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(11, 9001);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(12, 9052);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(13, 9009);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(16, 9009);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(14, 9032);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(15, 9032);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(17, 9001);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(18, 9052);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(19, 9001);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(20, 9001);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(30, 9043);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(31, 9006);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(32, 9042);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(33, 9037);
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return (int)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uIpChangeCount;
+    }
+    return f();
+  }
+  
+  public long a()
+  {
+    return c();
+  }
+  
+  protected ExcitingTransferUploadChnConfigInfo a()
+  {
+    return aubf.a().a();
+  }
+  
+  public ExcitingTransferUploadResultRp a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  protected List<ExcitingTransferHostInfo> a()
+  {
+    Object localObject;
+    List localList;
+    if (atul.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1))
+    {
+      QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "[IPv6-File] exciting offlinefile upload. is config enable IPv6.");
+      localObject = aubf.a().a(false);
+      localList = atul.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+      if (localList != null)
+      {
+        if (localObject != null) {
+          break label162;
+        }
+        localObject = new ArrayList();
+      }
+    }
+    label162:
+    for (;;)
+    {
+      if (atul.a())
+      {
+        QLog.d("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "[IPv6-File] exciting offlinefile upload. debugIsDisableIPv4OnDoubleStack");
+        ((List)localObject).clear();
+      }
+      int i = localList.size() - 1;
+      while (i >= 0)
+      {
+        ((List)localObject).add(0, (ExcitingTransferHostInfo)localList.get(i));
+        i -= 1;
+      }
+      this.jdField_c_of_type_Int = 2;
+      QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "[IPv6-File] exciting offlinefile upload. use IPv6. iplist:" + localObject.toString());
+      return localObject;
+      this.jdField_c_of_type_Int = 1;
+      return localObject;
+      return super.a();
+    }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bkho != null)
-    {
-      this.jdField_a_of_type_Bkho.e();
-      this.jdField_a_of_type_Bkho = null;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
+    e();
+    b();
+    b(null);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    super.a(paramLong1, paramLong2, paramLong3);
+    if (this.jdField_a_of_type_Atvi != null) {
+      this.jdField_a_of_type_Atvi.a(paramLong1);
     }
   }
   
-  public void a(View paramView, int paramInt, String paramString)
+  public void a(atvi paramatvi)
   {
-    int i = 1;
-    if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing())) {
-      this.jdField_a_of_type_Bkho.dismiss();
-    }
-    if (paramInt == 0)
+    this.jdField_a_of_type_Atvi = paramatvi;
+  }
+  
+  protected void a(ExcitingTransferUploadBizInfo paramExcitingTransferUploadBizInfo)
+  {
+    super.a(paramExcitingTransferUploadBizInfo);
+    if ((this.jdField_a_of_type_Aucd instanceof aucc))
     {
-      paramInt = 1;
-      if (paramInt == this.jdField_a_of_type_Aubu.jdField_a_of_type_Int) {
-        break label90;
-      }
+      aucc localaucc = (aucc)this.jdField_a_of_type_Aucd;
+      paramExcitingTransferUploadBizInfo.bufUuid = localaucc.jdField_a_of_type_ArrayOfByte;
+      paramExcitingTransferUploadBizInfo.bufUploadKey = localaucc.b;
+      paramExcitingTransferUploadBizInfo.bUseMediaPlatform = localaucc.jdField_a_of_type_Boolean;
+      return;
     }
-    for (;;)
+    QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] onGetOtherSendBusInfo. no other info");
+  }
+  
+  protected void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    super.a(paramExcitingTransferUploadResultRp);
+    if (paramExcitingTransferUploadResultRp != null) {}
+    for (String str = paramExcitingTransferUploadResultRp.m_strFileUrl;; str = "")
     {
-      this.jdField_a_of_type_Aubu.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(paramString);
-      if (i != 0) {
-        this.jdField_a_of_type_Aubt.a();
+      this.jdField_b_of_type_JavaLangString = str;
+      b(paramExcitingTransferUploadResultRp);
+      if (this.jdField_a_of_type_Atvi != null) {
+        this.jdField_a_of_type_Atvi.g();
       }
       return;
-      if (paramInt == 1)
-      {
-        paramInt = 2;
-        break;
-      }
-      paramInt = 3;
-      break;
-      label90:
-      i = 0;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setEnabled(paramBoolean);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(paramBoolean);
-    }
-    if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setEnabled(paramBoolean);
-    }
-    if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(paramBoolean);
-    }
-  }
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    int i = 1;
-    boolean bool = true;
-    if (paramCompoundButton.equals(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())) {
-      if (this.jdField_a_of_type_Aubu.jdField_a_of_type_Boolean != paramBoolean)
-      {
-        this.jdField_a_of_type_Aubu.jdField_a_of_type_Boolean = paramBoolean;
-        b(bool);
-      }
-    }
-    while (!paramCompoundButton.equals(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())) {
-      for (;;)
-      {
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-        bool = false;
-      }
-    }
-    if (this.jdField_a_of_type_Aubu.b != paramBoolean) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Aubu.b = paramBoolean;
-      if (i == 0) {
-        break;
-      }
-      this.jdField_a_of_type_Aubt.a();
-      break;
-      i = 0;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
       return;
-      b();
+    }
+    QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] onFullShaCalcDone...");
+    e();
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      a(-2, null);
+      return;
+    }
+    this.jdField_a_of_type_Aucd.a(paramArrayOfByte);
+    b();
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Aucd != null)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize == this.jdField_a_of_type_Aucd.a()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] sendFile pos:" + paramLong);
+    this.jdField_a_of_type_Boolean = false;
+    c();
+    e();
+    b(null);
+    if ((this.jdField_a_of_type_Aucd.d() == null) || (this.jdField_a_of_type_Aucd.d().length == 0))
+    {
+      if (this.jdField_a_of_type_Atvi != null)
+      {
+        Bundle localBundle = new Bundle();
+        byte[] arrayOfByte = this.jdField_a_of_type_Atvi.a(localBundle);
+        if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+        {
+          int i = localBundle.getInt("_shaCalcProgress_", 0);
+          if (i == 1)
+          {
+            d();
+            return true;
+          }
+          this.jdField_a_of_type_Boolean = true;
+          QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] sendFile fail. fullsha calc fail or none. " + i);
+          return false;
+        }
+        this.jdField_a_of_type_Aucd.a(arrayOfByte);
+      }
+    }
+    else {
+      return b();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] sendFile fail. fullsha can not get");
+    return false;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return (int)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount;
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize;
+    }
+    return 0L;
+  }
+  
+  protected void b(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    super.b(paramInt, paramExcitingTransferUploadResultRp);
+    if (paramExcitingTransferUploadResultRp != null) {}
+    for (String str = paramExcitingTransferUploadResultRp.m_strFileUrl;; str = "")
+    {
+      this.jdField_b_of_type_JavaLangString = str;
+      b(paramExcitingTransferUploadResultRp);
+      paramInt = a(paramInt);
+      if (this.jdField_a_of_type_Atvi != null) {
+        this.jdField_a_of_type_Atvi.a(true, this.jdField_c_of_type_Long, paramInt, "", "");
+      }
+      return;
+    }
+  }
+  
+  protected int c()
+  {
+    return 69;
+  }
+  
+  protected int d()
+  {
+    return 0;
+  }
+  
+  protected int e()
+  {
+    return 3;
+  }
+  
+  public void onExcitingSubSenderResult(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
+  {
+    if (paramExcitingTransferUploaderRp != null) {}
+    for (String str = paramExcitingTransferUploaderRp.m_strFileUrl;; str = "")
+    {
+      this.jdField_b_of_type_JavaLangString = str;
+      super.onExcitingSubSenderResult(paramInt, paramExcitingTransferUploaderRp);
+      return;
     }
   }
 }

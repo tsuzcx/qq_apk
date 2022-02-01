@@ -1,16 +1,39 @@
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.TimeFormatterUtils.Proxy;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class bcpu
-  implements RecentRoute.TimeFormatterUtils.Proxy
+class bcpu
+  extends aqwp
 {
-  public String getRecentMessageDateTime(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
+  bcpu(bcpt parambcpt) {}
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    return bgsu.a(paramStringBuffer, paramLong, paramBoolean, paramString);
+    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
+    {
+      localObject = this.a.a("VideoSvc.Send");
+      if (localObject != null)
+      {
+        localObject = ((abiv)localObject).a(paramToServiceMsg, paramFromServiceMsg);
+        localMessageHandler = bcpt.a(this.a).a();
+        if ((localMessageHandler != null) && (localObject != null)) {
+          localMessageHandler.onReceive(paramToServiceMsg, paramFromServiceMsg, localObject);
+        }
+      }
+    }
+    while (paramFromServiceMsg == null)
+    {
+      Object localObject;
+      MessageHandler localMessageHandler;
+      return;
+    }
+    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcpu
  * JD-Core Version:    0.7.0.1
  */

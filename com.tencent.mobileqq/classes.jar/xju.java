@@ -1,14 +1,15 @@
-class xju
-  extends wez<xje>
+import android.content.DialogInterface;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+
+public class xju
+  extends bhme
 {
-  xju(xjt paramxjt) {}
+  public xju(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void a(xje paramxje)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramxje.a(new xjv(this));
+    paramDialogInterface.dismiss();
   }
-  
-  public void c() {}
 }
 
 

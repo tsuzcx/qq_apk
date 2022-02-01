@@ -1,36 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qqreader.QRBridgeUtil;
 import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bmoj
+public final class bmoj
+  implements WtTicketPromise
 {
-  private static Map<Integer, Long> a(long paramLong)
+  public bmoj(String paramString) {}
+  
+  public void Done(Ticket paramTicket)
   {
-    Map localMap = bmkv.a(LocalMultiProcConfig.getString("CTIME_MAP" + paramLong, ""));
-    if (!localMap.containsKey(Integer.valueOf(0))) {
-      localMap.put(Integer.valueOf(0), Long.valueOf(0L));
+    if (paramTicket != null)
+    {
+      bmqw.d("QRBridgeUtil", "preGetKeyInPreloadService : Done");
+      paramTicket = (byte[])paramTicket._pskey_map.get(this.a);
+      if (paramTicket != null) {
+        QRBridgeUtil.access$000().put(this.a, new String(paramTicket));
+      }
     }
-    return localMap;
   }
   
-  public static Map<Integer, Long> a(Long paramLong)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return a(paramLong.longValue());
+    bmqw.d("QRBridgeUtil", "preGetKeyInPreloadService failed " + paramErrMsg);
   }
   
-  public static void a(Integer paramInteger, Long paramLong)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    Map localMap = a(paramLong);
-    localMap.put(paramInteger, Long.valueOf(System.currentTimeMillis() / 1000L));
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizeH5Service", 2, "updateCTime: " + paramInteger + "timestamp: " + System.currentTimeMillis() / 1000L);
-    }
-    a(localMap, paramLong);
-  }
-  
-  public static void a(Map<Integer, Long> paramMap, Long paramLong)
-  {
-    LocalMultiProcConfig.putString("CTIME_MAP" + paramLong, bmkv.a(paramMap));
+    bmqw.d("QRBridgeUtil", "preGetKeyInPreloadService timeout!" + paramErrMsg);
   }
 }
 

@@ -4,12 +4,12 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import aaaf;
-import aakz;
-import aalm;
-import aaln;
-import aalp;
-import aaxb;
+import aaek;
+import aapa;
+import aapn;
+import aapo;
+import aapq;
+import abbe;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,7 +18,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -32,8 +32,8 @@ public class CommodityListView
   extends BaseWidgetView<ArrayList>
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private aaln jdField_a_of_type_Aaln;
-  private aalp jdField_a_of_type_Aalp;
+  private aapo jdField_a_of_type_Aapo;
+  private aapq jdField_a_of_type_Aapq;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
@@ -53,7 +53,7 @@ public class CommodityListView
   
   public int a()
   {
-    return 2131558767;
+    return 2131558765;
   }
   
   public String a()
@@ -95,23 +95,23 @@ public class CommodityListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aaln != null)
+    if (this.jdField_a_of_type_Aapo != null)
     {
-      this.jdField_a_of_type_Aaln.clearData();
-      this.jdField_a_of_type_Aaln.notifyDataSetChanged();
+      this.jdField_a_of_type_Aapo.clearData();
+      this.jdField_a_of_type_Aapo.notifyDataSetChanged();
     }
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376853));
-    this.b = ((TextView)paramView.findViewById(2131379957));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379876));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380413);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376991));
+    this.b = ((TextView)paramView.findViewById(2131380141));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380057));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380599);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Aaln = new aaln(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aaln);
+    this.jdField_a_of_type_Aapo = new aapo(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aapo);
   }
   
   protected void a(ArrayList paramArrayList) {}
@@ -119,14 +119,14 @@ public class CommodityListView
   public void setData(ArrayList paramArrayList)
   {
     super.setData(paramArrayList);
-    if (this.jdField_a_of_type_Aaln != null) {
-      this.jdField_a_of_type_Aaln.setDatas(paramArrayList);
+    if (this.jdField_a_of_type_Aapo != null) {
+      this.jdField_a_of_type_Aapo.setDatas(paramArrayList);
     }
   }
   
-  public void setOnDataChangeListener(aalp paramaalp)
+  public void setOnDataChangeListener(aapq paramaapq)
   {
-    this.jdField_a_of_type_Aalp = paramaalp;
+    this.jdField_a_of_type_Aapq = paramaapq;
   }
   
   public void setOrientation(int paramInt)
@@ -197,19 +197,19 @@ public class CommodityListView
     String str;
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
     {
-      aaxb.a(localStUser.id.get(), "auth_" + aakz.a(a()), "exp_shop", 0, 0, new String[0]);
+      abbe.a(localStUser.id.get(), "auth_" + aapa.a(a()), "exp_shop", 0, 0, new String[0]);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      str = anni.a(2131718322);
-      if (!aaaf.a(localStUser.attr.get())) {
+      str = anzj.a(2131718458);
+      if (!aaek.a(localStUser.attr.get())) {
         break label164;
       }
     }
     label164:
-    for (paramStFeed = anni.a(2131701025);; paramStFeed = localStUser.nick.get())
+    for (paramStFeed = anzj.a(2131701132);; paramStFeed = localStUser.nick.get())
     {
       localTextView.setText(String.format(str, new Object[] { paramStFeed }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aalm(this, localStUser));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aapn(this, localStUser));
       return;
     }
   }

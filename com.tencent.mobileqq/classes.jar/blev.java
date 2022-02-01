@@ -1,105 +1,70 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.ilive.IliveLaunchFragment;
-import java.lang.ref.WeakReference;
-
 public class blev
 {
-  private static WeakReference<blew> a;
-  public static boolean a;
-  public static boolean b;
-  private static boolean c = true;
+  public static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
-  public static void a()
+  public static String a(String paramString)
   {
-    if (jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    blew localblew;
-    do
-    {
-      return;
-      localblew = (blew)jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localblew == null);
-    localblew.onPreloadEnd();
+    return a(a(paramString));
   }
   
-  public static void a(Context paramContext, int paramInt)
+  public static String a(byte[] paramArrayOfByte)
   {
-    if (!aqyj.c().d()) {}
-    do
+    int i = 0;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16))
     {
-      return;
-      if ((paramInt == 1) && (!a()))
+      char[] arrayOfChar = new char[32];
+      int j = 0;
+      while (i < 16)
       {
-        QLog.e("IlivePreloadHelper", 1, "preloadLiveShopping checkDrawerSwitchEnable = false");
-        return;
+        int k = paramArrayOfByte[i];
+        int m = j + 1;
+        arrayOfChar[j] = a[(k >>> 4 & 0xF)];
+        j = m + 1;
+        arrayOfChar[m] = a[(k & 0xF)];
+        i += 1;
       }
-      QLog.e("IlivePreloadHelper", 1, "ilive start preloadLiveShopping , source = " + paramInt);
-      bhle.b(-1);
-      Intent localIntent = new Intent(paramContext, PreloadWebService.class);
-      localIntent.putExtra("isPreloadLiveShopping", true);
-      localIntent.putExtra("source", paramInt);
-      try
-      {
-        paramContext.startService(localIntent);
-        return;
-      }
-      catch (Throwable paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("IlivePreloadHelper", 2, "preDownloadIfNecessary=>" + paramContext.getMessage());
+      return new String(arrayOfChar);
+    }
+    return "";
   }
   
-  public static void a(Intent paramIntent)
+  /* Error */
+  public static byte[] a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IlivePreloadHelper", 2, "preload LiveShopping");
-    }
-    if ((!c) || (b))
-    {
-      c = false;
-      QLog.e("IlivePreloadHelper", 1, "ilive has preload");
-      return;
-    }
-    c = false;
-    jdField_a_of_type_Boolean = true;
-    QLog.i("IlivePreloadHelper", 1, "preload start");
-    IliveLaunchFragment localIliveLaunchFragment = new IliveLaunchFragment();
-    if (paramIntent != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("source", paramIntent.getIntExtra("source", 0));
-      localIliveLaunchFragment.setArguments(localBundle);
-    }
-    localIliveLaunchFragment.doLoading(true, BaseApplicationImpl.getApplication());
-  }
-  
-  public static void a(blew paramblew)
-  {
-    if (paramblew == null) {
-      jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramblew);
-  }
-  
-  private static boolean a()
-  {
-    boolean bool = true;
-    int i = QzoneConfig.getInstance().getConfig("qqLive", "drawerPreloadModelLevel", 21);
-    if (Build.VERSION.SDK_INT < i) {}
-    while (!blei.a()) {
-      return false;
-    }
-    if (QzoneConfig.getInstance().getConfig("qqLive", "drawerPreloadSwitch", 1) == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: ldc 48
+    //   8: invokestatic 54	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   11: astore_1
+    //   12: aload_0
+    //   13: ldc 56
+    //   15: invokevirtual 59	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   18: astore_0
+    //   19: aload_1
+    //   20: aload_0
+    //   21: invokevirtual 63	java/security/MessageDigest:digest	([B)[B
+    //   24: areturn
+    //   25: astore_0
+    //   26: aload_0
+    //   27: invokevirtual 66	java/lang/Exception:printStackTrace	()V
+    //   30: aconst_null
+    //   31: areturn
+    //   32: astore_0
+    //   33: aload_0
+    //   34: invokevirtual 67	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   37: aconst_null
+    //   38: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	39	0	paramString	String
+    //   11	9	1	localMessageDigest	java.security.MessageDigest
+    // Exception table:
+    //   from	to	target	type
+    //   6	12	25	java/lang/Exception
+    //   12	19	32	java/io/UnsupportedEncodingException
   }
 }
 

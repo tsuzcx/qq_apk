@@ -1,7 +1,7 @@
 package com.tencent.avgame.qav;
 
 import mqq.util.WeakReference;
-import nel;
+import nge;
 
 class SecurityPolicyChecker$1$1
   implements Runnable
@@ -10,9 +10,9 @@ class SecurityPolicyChecker$1$1
   
   public void run()
   {
-    nel localnel = (nel)this.jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker$1.a.get();
-    if (localnel != null) {
-      localnel.a(this.jdField_a_of_type_Boolean);
+    nge localnge = (nge)this.jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker$1.a.get();
+    if (localnge != null) {
+      localnge.a(this.jdField_a_of_type_Boolean);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.biz.viewplugin;
 
-import bcst;
-import nko;
+import bdll;
+import nmj;
 
 public final class ViewPluginManager$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class ViewPluginManager$1
   
   public void run()
   {
-    bcst.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, nko.a("1002"), this.a.getClass().getSimpleName(), null, null);
+    bdll.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, nmj.a("1002"), this.a.getClass().getSimpleName(), null, null);
   }
 }
 

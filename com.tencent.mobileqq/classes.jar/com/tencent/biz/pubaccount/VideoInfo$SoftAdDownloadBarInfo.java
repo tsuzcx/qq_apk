@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import obz;
-import omv;
+import odj;
+import tmd;
 
 public class VideoInfo$SoftAdDownloadBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new obz();
+  public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new odj();
   public int a;
   public UrlJumpInfo a;
   public String a;
-  public omv a;
+  public tmd a;
   public int b;
   public String b;
   public String c;

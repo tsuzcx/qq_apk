@@ -1,186 +1,102 @@
-import com.qq.jce.wup.UniAttribute;
-import com.qq.taf.RequestPacket;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceUtil;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
+import UserGrowth.stFriendLike;
+import UserGrowth.stFriendLikes;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class ujm
-  extends UniAttribute
 {
-  static HashMap<String, byte[]> a;
-  static HashMap<String, HashMap<String, byte[]>> b;
-  protected RequestPacket a;
+  private static int jdField_a_of_type_Int = bdep.e(BaseApplicationImpl.context) - bdep.a(30.0F);
+  private static String jdField_a_of_type_JavaLangString = "、";
   
-  public ujm()
+  private static String a()
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket = new RequestPacket();
-    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 2;
+    return " 赞了";
   }
   
-  private void a()
+  private static String a(int paramInt)
   {
-    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
-    localJceInputStream.setServerEncoding(this.encodeName);
-    if (jdField_a_of_type_JavaUtilHashMap == null)
+    return " 等" + c(paramInt) + "位好友赞了";
+  }
+  
+  @NotNull
+  private static ujn a(stSimpleMetaFeed paramstSimpleMetaFeed, stFriendLike paramstFriendLike, int paramInt)
+  {
+    return new ujn(paramstSimpleMetaFeed, paramstFriendLike.schema, paramInt);
+  }
+  
+  public static ujp a(stSimpleMetaFeed paramstSimpleMetaFeed, TextPaint paramTextPaint, int paramInt)
+  {
+    long l1 = System.currentTimeMillis();
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    stFriendLikes localstFriendLikes;
+    int k;
+    if (paramstSimpleMetaFeed != null)
     {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      jdField_a_of_type_JavaUtilHashMap.put("", new byte[0]);
-    }
-    this._newData = localJceInputStream.readMap(jdField_a_of_type_JavaUtilHashMap, 0, false);
-  }
-  
-  private void b()
-  {
-    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
-    localJceInputStream.setServerEncoding(this.encodeName);
-    if (b == null)
-    {
-      b = new HashMap();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("", new byte[0]);
-      b.put("", localHashMap);
-    }
-    this._data = localJceInputStream.readMap(b, 0, false);
-    this.cachedClassName = new HashMap();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.iTimeout = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = paramString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.iRequestId = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = paramString;
-  }
-  
-  public void decode(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
+      localstFriendLikes = paramstSimpleMetaFeed.friendLikes;
+      if (localstFriendLikes != null)
       {
-        a();
-        return;
-      }
-      this._newData = null;
-      b();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
-  }
-  
-  public void decodeVersion2(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      b();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
-  }
-  
-  public void decodeVersion3(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      a();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
-  }
-  
-  public byte[] encode()
-  {
-    if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 2)
-    {
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals(""))) {
-        throw new IllegalArgumentException("servantName can not is null");
-      }
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
-        throw new IllegalArgumentException("funcName can not is null");
+        k = localstFriendLikes.total;
+        if ((k > 0) && (paramTextPaint != null)) {
+          break label64;
+        }
       }
     }
-    else
+    uqf.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]friendLikes is empty，hide displayLine");
+    return new ujp(null, 0, "");
+    label64:
+    if (localstFriendLikes.likeFriends == null)
     {
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) {
-        this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = "";
-      }
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) {
-        this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = "";
-      }
+      uqf.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]friendLikes.likeFriends is empty，but friendLikes.total > 0，show the num");
+      return new ujp(null, 0, b(k));
     }
-    Object localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-    if ((this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 2) && (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 1)) {
-      ((JceOutputStream)localObject).write(this._newData, 0);
-    }
-    for (;;)
+    int m = localstFriendLikes.likeFriends.size();
+    int n = (int)paramTextPaint.measureText(a());
+    int i1 = (int)paramTextPaint.measureText(a(k));
+    int i2 = jdField_a_of_type_Int;
+    int i3 = jdField_a_of_type_Int;
+    float f = 0.0F;
+    int j = 0;
+    int i = 0;
+    while (j < m)
     {
-      this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      localObject = new JceOutputStream(0);
-      ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
-      localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      int i = localObject.length;
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-      return localByteBuffer.array();
-      ((JceOutputStream)localObject).write(this._data, 0);
+      stFriendLike localstFriendLike = (stFriendLike)localstFriendLikes.likeFriends.get(j);
+      String str2 = localstFriendLike.nick;
+      if (j == m - 1) {}
+      for (String str1 = str2;; str1 = str2 + jdField_a_of_type_JavaLangString)
+      {
+        localSpannableStringBuilder.append(str1);
+        f = paramTextPaint.measureText(localSpannableStringBuilder.toString());
+        if (f <= i2 - n) {
+          break;
+        }
+        l2 = System.currentTimeMillis();
+        uqf.a("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the cost of friendLikes'Parsing： " + (l2 - l1));
+        uqf.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the width of friendLikes is out of the max width，show with ...");
+        return new ujp(localSpannableStringBuilder, i3 - i1, a(k));
+      }
+      localSpannableStringBuilder.setSpan(a(paramstSimpleMetaFeed, localstFriendLike, paramInt), i, str2.length() + i, 33);
+      int i4 = str1.length();
+      j += 1;
+      i += i4;
     }
+    long l2 = System.currentTimeMillis();
+    uqf.a("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the cost of friendLikes'Parsing： " + (l2 - l1));
+    uqf.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the width of friendLikes is in the max width，show completely");
+    return new ujp(localSpannableStringBuilder, (int)f, a());
   }
   
-  public <T> void put(String paramString, T paramT)
+  private static String b(int paramInt)
   {
-    if (paramString.startsWith(".")) {
-      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
-    }
-    super.put(paramString, paramT);
+    return c(paramInt) + "位好友 赞了";
   }
   
-  public void useVersion3()
+  private static String c(int paramInt)
   {
-    super.useVersion3();
-    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 3;
+    return rpt.e(paramInt);
   }
 }
 

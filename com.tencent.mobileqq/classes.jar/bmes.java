@@ -1,71 +1,42 @@
-import BOSSStrategyCenter.tAdvAppInfo;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
+import org.json.JSONObject;
 
 public class bmes
-  extends QzoneExternalRequest
+  implements admy
 {
-  JceStruct a;
+  public bmes(HcePluginInstallActivity paramHcePluginInstallActivity) {}
   
-  public bmes(long paramLong, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    MobileQbossAdvReq localMobileQbossAdvReq = new MobileQbossAdvReq();
-    localMobileQbossAdvReq.uiUin = paramLong;
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Integer localInteger = (Integer)paramArrayList.next();
-      tAdvAppInfo localtAdvAppInfo = new tAdvAppInfo();
-      localtAdvAppInfo.app_id = localInteger.intValue();
-      localtAdvAppInfo.i_need_adv_cnt = 5;
-      localArrayList.add(localtAdvAppInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onFailure code:" + paramInt + "msg:" + paramString);
     }
-    localMobileQbossAdvReq.vecReqApp = localArrayList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localMobileQbossAdvReq.iPullAsExposeOper = i;
-      localMobileQbossAdvReq.iReqFlag = 1;
-      this.a = localMobileQbossAdvReq;
-      return;
+    QQToast.a(this.a.getApplicationContext(), anzj.a(2131704335), 0).a();
+    this.a.finish();
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onPermission " + paramInt);
     }
+    QQToast.a(this.a.getApplicationContext(), anzj.a(2131704337), 0).a();
+    this.a.finish();
   }
   
-  public static MobileQbossAdvRsp a(byte[] paramArrayOfByte)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (paramJSONObject != null) {
+      HcePluginInstallActivity.a(this.a, paramJSONObject.optString("openid"));
     }
-    paramArrayOfByte = (MobileQbossAdvRsp)decode(paramArrayOfByte, "get");
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    bmex.a(paramArrayOfByte);
-    return paramArrayOfByte;
+    HcePluginInstallActivity.b(this.a);
   }
   
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.get";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "get";
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

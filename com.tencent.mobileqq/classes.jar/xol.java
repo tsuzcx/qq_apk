@@ -1,93 +1,62 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.io.File;
 
-public class xol
-  extends JobSegment<StoryVideoItem, StoryVideoItem>
+class xol
+  extends wjm<xoj, yff>
 {
-  StoryVideoItem a;
-  
-  private xol(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  protected void a(StoryVideoItem paramStoryVideoItem)
+  xol(xoj paramxoj)
   {
-    if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8))
-    {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl);
-      super.notifyResult(paramStoryVideoItem);
-      return;
-    }
-    yqp.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "STATE_PREPARE_ED ignore");
+    super(paramxoj);
   }
   
-  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
+  public void a(@NonNull xoj paramxoj, @NonNull yff paramyff)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 7);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    paramJobContext = null;
-    File localFile = wgw.a(paramStoryVideoItem.mVid, 0, false, false);
-    if ((localFile != null) && (wgw.a(localFile))) {
-      paramJobContext = localFile.getAbsolutePath();
+    if ((!paramyff.jdField_a_of_type_JavaLangString.equals(xoj.a(paramxoj))) || (paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (xoj.a(paramxoj) == null)) {
+      yuk.b("Q.qqstory.player.CommentFloatDialogController", "ignore this comment list event. %s.", paramyff.toString());
     }
-    for (;;)
+    xos localxos;
+    do
     {
-      if (paramJobContext == null)
+      boolean bool2;
+      boolean bool1;
+      do
       {
-        yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "finalFileName null, hide loading view");
-        VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8);
-        VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-        yqp.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "setVideoPath, fileName is empty !!");
-        VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, anni.a(2131715107));
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "fileName null"));
         return;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b())
-        {
-          if ((!TextUtils.isEmpty(paramStoryVideoItem.mVideoUrl)) || (!TextUtils.isEmpty(paramStoryVideoItem.mTempVideoUrl)))
-          {
-            localFile = wgw.a(paramStoryVideoItem.mVid, 0, true, true);
-            if (localFile != null) {
-              paramJobContext = localFile.getAbsolutePath();
-            }
-            for (;;)
-            {
-              break;
-              yqp.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "showVideo, vid=%s, support stream, getLocalFile return null", new Object[] { paramStoryVideoItem.mVid });
-            }
-          }
+        yuk.a("Q.qqstory.player.CommentFloatDialogController", "receive comment list event. %s.", paramyff.toString());
+        bool2 = paramxoj.a();
+        bool1 = true;
+        if (paramyff.jdField_a_of_type_Int == 0) {
+          bool1 = false;
         }
-        else {
-          notifyError(new ErrorMessage(-1, "not tvk videoView, and videoFile has not downloaded."));
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(0);
-        yqp.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "set video view listeners ... and then setVideoPath");
-        VideoViewVideoHolder.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 0);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(new xom(this));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(new xon(this, paramJobContext, paramStoryVideoItem));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(new xoo(this, paramStoryVideoItem));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(new xop(this, paramStoryVideoItem));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(new xoq(this, paramStoryVideoItem));
-        ((wfy)wpm.a(28)).a(paramStoryVideoItem.mVid, 0, new xor(this, paramStoryVideoItem, paramJobContext));
-        return;
-      }
-      paramJobContext = null;
-    }
+        xoj.a(paramxoj).a(bool1);
+        xoj.a(paramxoj).a(bool1, paramyff.b);
+        xoj.a(paramxoj).a(bool1, paramyff.jdField_a_of_type_Boolean);
+        xoj.a(paramxoj).a(paramyff.jdField_a_of_type_JavaUtilList, paramyff.c, bool1);
+      } while (bool2 != bool1);
+      localxos = paramxoj.a();
+    } while (localxos == null);
+    localxos.a(xoj.a(paramxoj), paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
   
-  public void onCancel()
+  public Class acceptEventClass()
   {
-    super.onCancel();
-    yqp.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "VideoPrepareSegment onCancel");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a();
+    return yff.class;
+  }
+  
+  public void b(@NonNull xoj paramxoj, @NonNull yff paramyff)
+  {
+    boolean bool2 = paramxoj.a();
+    boolean bool1 = true;
+    if (paramyff.jdField_a_of_type_Int == 0) {
+      bool1 = false;
+    }
+    if (bool2 == bool1)
+    {
+      paramyff = paramxoj.a();
+      if (paramyff != null) {
+        paramyff.a(xoj.a(paramxoj), false);
+      }
+    }
   }
 }
 

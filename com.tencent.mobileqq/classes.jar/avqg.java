@@ -1,36 +1,62 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.util.Base64;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
 
 public class avqg
-  extends bhhe
 {
-  public avqg(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
+  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
   
-  public void onDone(bhhf parambhhf)
+  public static String a(String paramString)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
+    return a(paramString, a);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
     }
-    if (parambhhf.a == 0)
+    try
     {
-      parambhhf = bdsh.d(this.jdField_a_of_type_JavaLangString);
-      if (new File(parambhhf).exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambhhf, 0);
-        return;
-      }
+      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
+      return paramString1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+    int i = 0;
+    while (i < paramArrayOfByte1.length)
+    {
+      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
+      i += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static String b(String paramString)
+  {
+    return b(paramString, a);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
+    }
+    try
+    {
+      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
   }
 }
 

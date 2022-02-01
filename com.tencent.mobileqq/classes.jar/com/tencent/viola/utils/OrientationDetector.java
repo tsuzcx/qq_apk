@@ -63,23 +63,19 @@ public class OrientationDetector
     return true;
   }
   
-  private void innerEnable(boolean paramBoolean)
+  private void innerEnable(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ViolaSDKManager.getInstance().postOnThreadPool(new OrientationDetector.3(this, paramBoolean));
+    ViolaSDKManager.getInstance().postOnThreadPool(new OrientationDetector.3(this, paramBoolean1, paramBoolean2));
   }
   
   public void destroy()
   {
-    innerEnable(false);
-    synchronized (this.mLock)
+    ViolaLogUtils.d("OrientationDetector", "viola OrientationDetector destroy");
+    innerEnable(false, true);
+    if (this.mRotationObserver != null)
     {
-      this.mEventListener = null;
-      if (this.mRotationObserver != null)
-      {
-        this.mRotationObserver.unregisterObserver();
-        this.mRotationObserver = null;
-      }
-      return;
+      this.mRotationObserver.unregisterObserver();
+      this.mRotationObserver = null;
     }
   }
   
@@ -92,13 +88,13 @@ public class OrientationDetector
     {
       if (this.mRotateSettingSwitch)
       {
-        innerEnable(true);
+        innerEnable(true, false);
         return true;
       }
       ViolaLogUtils.d("OrientationDetector", "mRotateSettingSwitch is false : enable failure");
       return false;
     }
-    innerEnable(false);
+    innerEnable(false, false);
     return true;
   }
   

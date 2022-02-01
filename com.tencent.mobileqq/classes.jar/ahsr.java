@@ -1,35 +1,21 @@
-import android.app.Activity;
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.util.Locale;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
 class ahsr
-  implements ahry
+  extends aggl
 {
-  ahsr(ahsd paramahsd) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  View d;
   
-  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_Ahtj.a() != null) && ((this.a.jdField_a_of_type_Ahtj.a().a instanceof AIOImageData)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Ahtj.a().a;
-      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
-      {
-        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
-          break label127;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, ahsd.N(this.a).getString(2131694414), new Object[] { atwl.a(localAIOImageData.jdField_h_of_type_Long) }));
-      }
-    }
-    for (;;)
-    {
-      this.a.c(true);
-      return;
-      label127:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131694411);
-    }
-  }
+  ahsr(ahsp paramahsp) {}
 }
 
 

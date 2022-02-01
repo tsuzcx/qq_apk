@@ -1,17 +1,24 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class nvn
-  implements View.OnClickListener
+class nvn
 {
-  public nvn(VideoCoverView paramVideoCoverView) {}
+  private ViewGroup a;
   
-  public void onClick(View paramView)
+  public nvn(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, String paramString1, String paramString2)
   {
-    VideoCoverView.a(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = ((ViewGroup)paramLayoutInflater.inflate(2131558433, paramViewGroup));
+    paramLayoutInflater = (TextView)this.a.findViewById(2131361919);
+    paramViewGroup = (TextView)this.a.findViewById(2131361918);
+    paramLayoutInflater.setText(paramString1);
+    paramViewGroup.setText(paramString2);
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 

@@ -1,63 +1,69 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bcdb
-  extends MSFServlet
+public abstract class bcdb<M extends bcfo, V extends bcnx>
+  extends bcbj<M, V>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
+  private String jdField_a_of_type_JavaLangString;
+  private List<bcdf> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int;
+  private List<FTSEntity> jdField_b_of_type_JavaUtilList;
+  private int c;
+  private int d;
+  
+  public bcdb(ListView paramListView, aoof paramaoof, List<FTSEntity> paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    int i;
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      if (i != 1000) {
-        break label83;
-      }
-      paramIntent = bmeu.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent == null) {
-        break label68;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
-      }
-    }
-    label68:
-    label83:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-        i = -1;
-        break;
-      } while (!QLog.isColorLevel());
-      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
-      return;
-    }
-    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    super(paramListView, paramaoof);
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = paramFTSEntitySearchDetailActivity;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private void b()
   {
-    long l = paramIntent.getLongExtra("uin", 0L);
-    int i = paramIntent.getIntExtra("appId", 0);
-    int j = paramIntent.getIntExtra("taskId", 0);
-    Object localObject = paramIntent.getStringExtra("message");
-    bmeu localbmeu = new bmeu(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
-    localObject = localbmeu.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
-    {
-      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbmeu.uniKey());
-      paramIntent = new byte[4];
+    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
+      a();
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbmeu.uniKey());
-    paramPacket.putSendData(paramIntent);
+  }
+  
+  public void a()
+  {
+    ArrayList localArrayList = bhut.a(this.jdField_a_of_type_JavaLangString);
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i;
+    if (j + 50 < this.jdField_b_of_type_JavaUtilList.size()) {
+      i = j + 50;
+    }
+    while (j < i)
+    {
+      bcdf localbcdf = bcdh.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localArrayList, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(j));
+      if (localbcdf != null) {
+        this.jdField_a_of_type_JavaUtilList.add(localbcdf);
+      }
+      j += 1;
+      continue;
+      i = this.jdField_b_of_type_JavaUtilList.size();
+    }
+    a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.d = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    b();
   }
 }
 

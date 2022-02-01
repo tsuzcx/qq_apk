@@ -1,46 +1,20 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class nud
+class nud
   implements View.OnClickListener
 {
-  public nud(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nud(ntc paramntc, oag paramoag) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.c(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      nuu.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-      this.a.finish();
-      continue;
-      if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
-      {
-        PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
-        PublicAccountAdvertisementActivity.b(this.a, 1);
-        continue;
-        this.a.b();
-        continue;
-        bcst.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-        PublicAccountAdvertisementActivity.d(this.a);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 2);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 1);
-      }
-    }
+    aavs.b((Activity)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get(), new aavu(this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, ntc.a(this.jdField_a_of_type_Ntc));
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

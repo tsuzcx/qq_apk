@@ -1,14 +1,18 @@
-public class booz
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.view.AECompoundButton;
+
+class booz
+  implements Observer<bopg>
 {
-  public String a;
-  public String b;
-  public String c;
+  booz(boow paramboow) {}
   
-  public booz(String paramString1, String paramString2, String paramString3)
+  public void a(@Nullable bopg parambopg)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (parambopg == null) {
+      return;
+    }
+    boow.e(this.a).setSelected(parambopg.a());
   }
 }
 

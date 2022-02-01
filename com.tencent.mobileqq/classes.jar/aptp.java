@@ -1,31 +1,58 @@
-import android.content.Context;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import android.animation.Animator.AnimatorListener;
+import android.util.SparseArray;
 
 public class aptp
-  extends apto
 {
-  private float[] d = new float[16];
+  private int jdField_a_of_type_Int = 1;
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new aptq(this);
+  private SparseArray<aptm> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private aptr jdField_a_of_type_Aptr;
   
-  public aptp(Context paramContext, int paramInt, SensorManager paramSensorManager, aptg paramaptg)
+  private void a(int paramInt)
   {
-    super(paramContext, paramInt, paramSensorManager, paramaptg);
-    paramContext = paramSensorManager.getDefaultSensor(15);
-    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
-    {
-      this.a.add(paramContext);
-      return;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
+      ((aptm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
     }
-    throw new OrientationProviderNotFound(String.valueOf(15));
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  private void a(int paramInt1, int paramInt2)
   {
-    apti.a(this.d, paramSensorEvent);
-    super.a(this.d);
+    aptm localaptm1 = (aptm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    aptm localaptm2 = (aptm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    localaptm1.a(false, null);
+    localaptm2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
+  }
+  
+  public void a()
+  {
+    int i = 1;
+    while (i <= 3)
+    {
+      a(i);
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt, aptm paramaptm)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramaptm);
+  }
+  
+  public void a(int paramInt, aptr paramaptr)
+  {
+    if (this.jdField_a_of_type_Int == paramInt) {
+      return;
+    }
+    this.jdField_a_of_type_Aptr = paramaptr;
+    a(this.jdField_a_of_type_Int, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.jdField_a_of_type_Aptr = null;
   }
 }
 

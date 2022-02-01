@@ -1,66 +1,39 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.lang.ref.WeakReference;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import java.util.LinkedList;
+import java.util.List;
 
 public class zem
+  extends zei
 {
-  public final int a;
-  public final PublishVideoEntry a;
-  public final EditVideoParams.EditSource a;
-  public final EditVideoParams a;
-  public PublishParam a;
-  public TribeVideoPublishParams a;
-  public LpReportInfo_pf00064 a;
-  public String a;
-  public WeakReference<View> a;
-  public zeq a;
-  public zes a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public boolean b;
+  public Path a;
+  List<Integer> a;
+  public int b;
+  List<Integer> b;
   public int c;
-  public boolean c;
-  public boolean d;
   
-  public zem(EditVideoParams paramEditVideoParams)
+  public zem(Path paramPath, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
-    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("enable_flow_decode", Boolean.valueOf(basa.b));
+    super(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_b_of_type_JavaUtilList = new LinkedList();
   }
   
-  public View a()
+  public zem(zei paramzei, float paramFloat)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null)
+    super(paramzei.jdField_a_of_type_Int);
+    if ((paramzei instanceof zem))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
+      paramzei = (zem)paramzei;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramzei.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramzei.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = paramzei.jdField_b_of_type_Int;
+      this.c = ((int)(paramzei.c * paramFloat));
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  public String toString()
-  {
-    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
   }
 }
 

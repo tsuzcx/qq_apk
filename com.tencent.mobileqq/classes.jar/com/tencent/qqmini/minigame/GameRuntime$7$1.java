@@ -1,21 +1,25 @@
 package com.tencent.qqmini.minigame;
 
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.core.utils.ImageUtil;
-import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
+import com.tencent.mobileqq.triton.TritonEngine;
+import com.tencent.mobileqq.triton.engine.GameLaunchCallback;
+import com.tencent.mobileqq.triton.statistic.FirstFrameStatistic;
+import com.tencent.mobileqq.triton.statistic.GameLaunchStatistic;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 class GameRuntime$7$1
-  implements Runnable
+  implements GameLaunchCallback
 {
-  GameRuntime$7$1(GameRuntime.7 param7, Bitmap paramBitmap) {}
+  GameRuntime$7$1(GameRuntime.7 param7) {}
   
-  public void run()
+  public void onFirstFrame(@NotNull FirstFrameStatistic paramFirstFrameStatistic)
   {
-    if (this.this$1.val$screenshotCallback != null) {
-      this.this$1.val$screenshotCallback.onGetScreenshot(ImageUtil.cutAndSaveShareScreenshot(this.this$1.this$0, GameRuntime.access$1000(this.this$1.this$0), this.val$bitmap));
-    }
-    GameRuntime.access$900(this.this$1.this$0).isGettingScreenShot = false;
-    this.this$1.this$0.dismissShareScreenshotProgress();
+    GameRuntime.access$700(this.this$1.this$0, paramFirstFrameStatistic);
+  }
+  
+  public void onGameLaunched(@Nullable TritonEngine paramTritonEngine, @NotNull GameLaunchStatistic paramGameLaunchStatistic)
+  {
+    GameRuntime.access$600(this.this$1.this$0, paramTritonEngine, paramGameLaunchStatistic);
   }
 }
 

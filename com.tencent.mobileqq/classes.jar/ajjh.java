@@ -1,28 +1,6 @@
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class ajjh
-  extends aniz
+public abstract interface ajjh
 {
-  private ajjh(FriendFragment paramFriendFragment) {}
-  
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      FriendFragment.a(this.a, 1400L, false);
-    }
-  }
+  public abstract void a(ajov paramajov, int paramInt);
 }
 
 

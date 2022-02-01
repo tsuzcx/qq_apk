@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.applets;
 
-import aoqn;
-import aoqp;
+import aped;
+import apef;
 
 public class NewPublicAccountServlet$2
   implements Runnable
 {
-  public NewPublicAccountServlet$2(aoqp paramaoqp, aoqn paramaoqn) {}
+  public NewPublicAccountServlet$2(apef paramapef, aped paramaped) {}
   
   public void run()
   {

@@ -1,20 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeua
-  implements bkhw
+  implements View.OnClickListener
 {
-  public aeua(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
+  public aeua(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Bkho.cancel();
-    if (this.a.jdField_a_of_type_Bgpa == null) {
-      this.a.jdField_a_of_type_Bgpa = bglp.a(this.a, 230, anni.a(2131706811), anni.a(2131706801), anni.a(2131706789), anni.a(2131706792), new aeub(this), new aeuc(this));
-    }
-    if ((this.a.jdField_a_of_type_Bgpa != null) && (!this.a.jdField_a_of_type_Bgpa.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_Bgpa.show();
-    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

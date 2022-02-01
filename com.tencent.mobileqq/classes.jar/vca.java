@@ -1,11 +1,12 @@
-import feedcloud.FeedCloudMeta.StFeed;
-
-public class vca
+class vca
+  implements blkc
 {
-  public int a;
-  public FeedCloudMeta.StFeed a;
-  public String a;
-  public int b;
+  vca(vbr paramvbr) {}
+  
+  public void a()
+  {
+    vbr.a(this.a, 63);
+  }
 }
 
 

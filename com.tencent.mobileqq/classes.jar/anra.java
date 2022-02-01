@@ -1,23 +1,42 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 
 public class anra
-  extends BroadcastReceiver
 {
-  public anra(PeakAppInterface paramPeakAppInterface) {}
+  public float a;
+  public int a;
+  public ApolloActionData a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
+    return behh.a(paramContext.getResources(), this.i);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public String toString()
+  {
+    if (this.a != null)
     {
-      int i = paramIntent.getIntExtra("rsptype", 0);
-      paramContext = paramIntent.getByteArrayExtra("rspbody");
-      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
-      ((bavs)this.a.a(0)).a(i, paramContext);
+      StringBuilder localStringBuilder = new StringBuilder("[");
+      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
+      return localStringBuilder.toString();
     }
+    return "ApolloActionData is null";
   }
 }
 

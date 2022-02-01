@@ -1,20 +1,28 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-public class bbak
-  implements TextView.OnEditorActionListener
+abstract class bbak<T>
+  extends nkq
 {
-  public bbak(SignTextEditFragment paramSignTextEditFragment) {}
+  protected T a;
+  private WeakReference<T> a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  bbak(T paramT)
   {
-    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)) {
-      bkft.b(paramTextView);
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
   }
+  
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

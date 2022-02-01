@@ -1,45 +1,13 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class blrx
-  extends blrw
+class blrx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  newest_feeds_req a = new newest_feeds_req();
+  blrx(blrw paramblrw) {}
   
-  public blrx(long paramLong, Map<Long, Long> paramMap)
+  public void onGlobalLayout()
   {
-    this.a.cmd = 4;
-    this.a.login_uin = paramLong;
-    this.a.strQua = blru.a();
-    this.a.mapUinTimes = new HashMap();
-    this.a.mapUinTimes.putAll(paramMap);
-  }
-  
-  public int a()
-  {
-    return 1000;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getMsgNewestFeeds";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
-  }
-  
-  public String uniKey()
-  {
-    return "getMsgNewestFeeds";
+    blrw.a(this.a);
   }
 }
 

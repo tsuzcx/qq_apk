@@ -1,17 +1,17 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import may;
+import mbu;
 
 public class AVActivity$MyControlUIObserver$3
   implements Runnable
 {
-  public AVActivity$MyControlUIObserver$3(may parammay, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public AVActivity$MyControlUIObserver$3(mbu parammbu, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
     QavPanel localQavPanel = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a;
-    if (this.jdField_a_of_type_May.a.a.p) {}
+    if (this.jdField_a_of_type_Mbu.a.a.p) {}
     for (int i = 2;; i = 0)
     {
       localQavPanel.a(true, i, false);

@@ -1,61 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.tofumsg.AIOTofuMsgHelper.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
 
-public class bdqk
-  implements agma
+class bdqk
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  bdqs jdField_a_of_type_Bdqs;
-  public BaseChatPie a;
-  public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
+  bdqk(bdqi parambdqi) {}
   
-  public bdqk(BaseChatPie paramBaseChatPie)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if (this.a.a != null)
     {
-    }
-    do
-    {
-      return;
-      ThreadManager.executeOnSubThread(new AIOTofuMsgHelper.1(this));
-      return;
-      QLog.i("Tofu_AIOTofuMsgHelper", 1, "onMoveToState show_first.");
-      if (this.jdField_a_of_type_Bdqs == null) {
-        this.jdField_a_of_type_Bdqs = ((bdqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(368));
+      agjk localagjk = (agjk)this.a.a.get();
+      if (localagjk != null) {
+        return localagjk.onTouch(paramView, paramMotionEvent);
       }
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      localObject = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!((anmw)localObject).b(this.jdField_a_of_type_JavaLangString)));
-    boolean bool = ((aiyr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_JavaLangString);
-    Object localObject = this.jdField_a_of_type_Bdqs;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (bool) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      ((bdqs)localObject).a(str, paramInt);
-      return;
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13, 7 };
+    return false;
   }
 }
 

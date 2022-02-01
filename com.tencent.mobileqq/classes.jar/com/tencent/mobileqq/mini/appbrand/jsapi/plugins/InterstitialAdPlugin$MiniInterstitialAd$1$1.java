@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import acly;
+import acqa;
 import android.content.Intent;
 import com.tencent.mobileqq.mini.appbrand.jsapi.AdFrequencyLimit;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;

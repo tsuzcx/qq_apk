@@ -1,14 +1,27 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class afzt
-  extends bgmc
+  extends WtloginObserver
 {
-  public afzt(PlusPanel paramPlusPanel) {}
+  public afzt(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
+    }
+    if (paramInt2 == 0) {
+      return;
+    }
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

@@ -1,90 +1,292 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.Random;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.YTFace.cluster.FaceCluster;
+import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class apok
+  implements Handler.Callback
 {
-  public static int a;
-  private static boolean a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 4;
-  public static int f;
-  public static int g = 1;
-  public static int h = 2;
-  public static int i = 3;
+  apok(apoj paramapoj) {}
   
-  public static void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (a) {}
-    do
+    long l1;
+    long l2;
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    int i;
+    label292:
+    Object localObject5;
+    Object localObject6;
+    switch (paramMessage.what)
     {
-      return;
-      a = true;
-    } while (ArkEnvironmentManager.getInstance().isHardwareAcceleration());
-    a(null, "ark.lib.software.rendering", 0, 0, 0, 0, "", "");
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
-  {
-    bcst.b(paramQQAppInterface, "CliOper", "", "", "0X800776F", paramString1, paramInt1, 1, paramInt2, Integer.toString(paramInt3), Integer.toString(paramInt4), paramString2, paramString3);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if ((!ArkAppMgr.isValidAppName(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    case 2: 
+    default: 
+      return false;
+    case 1: 
+      l1 = System.currentTimeMillis();
+      this.a.jdField_e_of_type_Boolean = true;
+      paramMessage = (byte[])paramMessage.obj;
+      int j = 0;
+      l2 = SystemClock.uptimeMillis();
+      localObject2 = this.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.detectFace(paramMessage, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
+      l2 = SystemClock.uptimeMillis() - l2;
+      apog.b(l2);
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_DETECT_AND_RECOVER_FACE  detectFace[TimeCost] = " + l2);
+      }
+      if ((localObject2 != null) && (localObject2.length > 0) && (QLog.isColorLevel())) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_DETECT_AND_RECOVER_FACE  detectFaceCount = " + localObject2.length);
+      }
+      ??? = this.a.a((FaceStatus[])localObject2);
+      this.a.a((FaceStatus[])???, (FaceStatus[])localObject2);
+      if ((??? != null) && (???.length > 0) && (!this.a.jdField_c_of_type_Boolean))
+      {
+        j = ???.length;
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_DETECT_AND_RECOVER_FACE  detectFaceCount = " + j);
+        }
+        localObject3 = new float[j][];
+        localObject4 = new float[j][];
+        localObject2 = this.a.jdField_a_of_type_JavaLangObject;
+        i = 0;
+        if (i < j) {
+          try
+          {
+            if (!this.a.a(this.a.jdField_a_of_type_JavaUtilList, ???[i]))
+            {
+              localObject5 = new apom();
+              ((apom)localObject5).jdField_a_of_type_Boolean = true;
+              ((apom)localObject5).jdField_b_of_type_Int = this.a.jdField_f_of_type_Int;
+              localObject6 = this.a;
+              ((apoj)localObject6).jdField_f_of_type_Int += 1;
+              ((apom)localObject5).jdField_a_of_type_ComTencentYTFaceModelFaceStatus = ???[i];
+              this.a.jdField_b_of_type_JavaUtilList.add(localObject5);
+              localObject3[i] = ???[i].xys;
+              if (QLog.isColorLevel()) {
+                QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_DETECT_AND_RECOVER_FACE  add a tempFace ,faceInfo.faceID = " + ((apom)localObject5).jdField_b_of_type_Int);
+              }
+            }
+            else if (???[i].nativeFaceAlignmentPtr != 0L)
+            {
+              this.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.releaseNativeFaceStatus(???[i]);
+            }
+          }
+          finally {}
+        }
+        if ((this.a.jdField_b_of_type_AndroidOsHandler != null) && (this.a.jdField_b_of_type_AndroidOsHandler.hasMessages(1))) {
+          this.a.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
+        }
+        paramMessage = Message.obtain(this.a.jdField_b_of_type_AndroidOsHandler, new ARLocalFaceRecog.1.1(this, j, (float[][])localObject3, (float[][])localObject4, paramMessage));
+        paramMessage.what = 1;
+        i = j;
+        if (this.a.jdField_b_of_type_AndroidOsHandler != null)
+        {
+          this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramMessage);
+          i = j;
+        }
+      }
+      for (;;)
+      {
+        l2 = System.currentTimeMillis();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_DETECT_AND_RECOVER_FACE finish, faceCount = " + i + ",recoverMsgExeCost = " + (l2 - l1));
+        break;
+        this.a.jdField_e_of_type_Boolean = false;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_DETECT_AND_RECOVER_FACE  detect no face");
+          i = j;
+        }
+      }
+    case 3: 
+      if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean)) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE start");
+      }
+      l1 = System.currentTimeMillis();
+      this.a.jdField_f_of_type_Boolean = true;
+      localObject2 = (byte[])paramMessage.obj;
+      paramMessage = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        localObject3 = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        label726:
+        do
+        {
+          if (!((Iterator)localObject3).hasNext()) {
+            break label1404;
+          }
+          localObject4 = (apom)((Iterator)localObject3).next();
+          if (!((apom)localObject4).jdField_a_of_type_Boolean) {
+            break label1284;
+          }
+          if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean)) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face]MSG_TRACK_FACE realFace start ");
+          }
+          l2 = SystemClock.uptimeMillis();
+          i = this.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.trackSingleFace2((byte[])localObject2, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus, this.a.jdField_c_of_type_Int);
+          l2 = SystemClock.uptimeMillis() - l2;
+          if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean))
+          {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face]MSG_TRACK_FACE realFace,trackSingeFace[TimeCost] = " + l2);
+            apem.a().e(l2);
+          }
+          if (i == 0) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE Lost realFace  faceInfo.lostCount = " + ((apom)localObject4).jdField_c_of_type_Int);
+          }
+          ((apom)localObject4).jdField_c_of_type_Int += 1;
+        } while (((apom)localObject4).jdField_c_of_type_Int <= 0);
+        ((apom)localObject4).jdField_a_of_type_Boolean = false;
+        ((apom)localObject4).jdField_c_of_type_Int = 0;
+        localObject4 = this.a;
+        ((apoj)localObject4).d += 1;
+      }
+      ((apom)localObject4).jdField_c_of_type_Int = 0;
+      if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean)) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE Track realFace success,update");
+      }
+      localObject5 = new apjw();
+      ((apjw)localObject5).jdField_a_of_type_ArrayOfFloat = ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys;
+      ((apjw)localObject5).jdField_a_of_type_JavaLangString = ((apom)localObject4).jdField_a_of_type_JavaLangString;
+      ((apjw)localObject5).jdField_a_of_type_AndroidGraphicsRect = new Rect(((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.x, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.y, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.x + ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.width, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.y + ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.height);
+      ((apjw)localObject5).jdField_a_of_type_AndroidGraphicsRectF = apjw.a(((apjw)localObject5).jdField_a_of_type_AndroidGraphicsRect, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys);
+      ((apjw)localObject5).jdField_a_of_type_Int = ((apom)localObject4).jdField_b_of_type_Int;
+      ((apjw)localObject5).jdField_c_of_type_JavaLangString = ((apom)localObject4).jdField_b_of_type_JavaLangString;
+      ((apjw)localObject5).jdField_b_of_type_JavaLangString = ((apom)localObject4).jdField_c_of_type_JavaLangString;
+      ((apjw)localObject5).g = ((apom)localObject4).f;
+      if (((apom)localObject4).jdField_a_of_type_Int != 2) {}
+      break;
+    }
+    for (boolean bool = true;; bool = false)
     {
-      ArkAppCenter.c("ArkApp.DataReport", String.format("appInsideClickReport, invalid args, app=%s, opName=%s, entry=%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
-      return;
+      ((apjw)localObject5).jdField_b_of_type_Boolean = bool;
+      if (((apjw)localObject5).jdField_b_of_type_Boolean)
+      {
+        ((apjw)localObject5).jdField_c_of_type_Boolean = this.a.a(((apjw)localObject5).jdField_b_of_type_JavaLangString);
+        if (((apjw)localObject5).jdField_c_of_type_Boolean)
+        {
+          localObject6 = this.a.a(((apjw)localObject5).jdField_b_of_type_JavaLangString);
+          if (localObject6 != null)
+          {
+            ((apjw)localObject5).h = ((ARScanStarFaceActInfo)localObject6).f;
+            ((apjw)localObject5).f = ((ARScanStarFaceActInfo)localObject6).jdField_e_of_type_JavaLangString;
+          }
+        }
+        ((apjw)localObject5).d = ((apom)localObject4).jdField_e_of_type_JavaLangString;
+        ((apjw)localObject5).jdField_e_of_type_JavaLangString = ((apom)localObject4).d;
+      }
+      ((apjw)localObject5).jdField_a_of_type_Float = ((apom)localObject4).jdField_a_of_type_Float;
+      paramMessage.add(localObject5);
+      break label726;
+      label1284:
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE Try to recover realFace, isRecovering = " + this.a.jdField_e_of_type_Boolean);
+      }
+      if ((this.a.jdField_e_of_type_Boolean) || (this.a.jdField_c_of_type_Boolean)) {
+        break label726;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE Send Recover Msg");
+      }
+      if (apoj.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        apoj.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      localObject4 = Message.obtain();
+      ((Message)localObject4).what = 1;
+      ((Message)localObject4).obj = localObject2;
+      apoj.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject4);
+      break label726;
+      label1404:
+      localObject3 = this.a.jdField_b_of_type_JavaUtilList.iterator();
+      long l3;
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (apom)((Iterator)localObject3).next();
+        if (((apom)localObject4).jdField_a_of_type_Boolean)
+        {
+          if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean)) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face]MSG_TRACK_FACE tmpFace trackSingeFace start");
+          }
+          l2 = SystemClock.uptimeMillis();
+          i = this.a.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.trackSingleFace2((byte[])localObject2, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus, this.a.jdField_c_of_type_Int);
+          l3 = SystemClock.uptimeMillis();
+          if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean)) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face]MSG_TRACK_FACE [TimeCost] tmpFace trackSingeFace = " + (l3 - l2));
+          }
+          if (i != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE Lost tmpFace");
+            }
+            ((apom)localObject4).jdField_a_of_type_Boolean = false;
+            ((Iterator)localObject3).remove();
+            if ((((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus != null) && (((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.nativeFaceAlignmentPtr != 0L)) {
+              FaceCluster.getInstance().releaseNativeFaceStatus(((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus);
+            }
+          }
+          else
+          {
+            if ((QLog.isColorLevel()) && (apoj.jdField_a_of_type_Boolean)) {
+              QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE Track tmpFace success,update ,faceInfo.faceID = " + ((apom)localObject4).jdField_b_of_type_Int);
+            }
+            localObject5 = new apjw();
+            ((apjw)localObject5).jdField_a_of_type_ArrayOfFloat = ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys;
+            ((apjw)localObject5).jdField_a_of_type_JavaLangString = ((apom)localObject4).jdField_a_of_type_JavaLangString;
+            ((apjw)localObject5).jdField_a_of_type_Int = ((apom)localObject4).jdField_b_of_type_Int;
+            ((apjw)localObject5).jdField_a_of_type_AndroidGraphicsRect = new Rect(((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.x, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.y, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.x + ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.width, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.y + ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.height);
+            ((apjw)localObject5).jdField_a_of_type_AndroidGraphicsRectF = apjw.a(((apjw)localObject5).jdField_a_of_type_AndroidGraphicsRect, ((apom)localObject4).jdField_a_of_type_ComTencentYTFaceModelFaceStatus.xys);
+            ((apjw)localObject5).jdField_e_of_type_Boolean = true;
+            paramMessage.add(localObject5);
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE  tmpFace not tracked ,error!");
+        }
+      }
+      l2 = System.currentTimeMillis();
+      if ((!this.a.jdField_c_of_type_Boolean) && (this.a.jdField_a_of_type_Apol != null))
+      {
+        ??? = new apon();
+        ((apon)???).jdField_a_of_type_JavaUtilArrayList = paramMessage;
+        ((apon)???).jdField_a_of_type_Long = this.a.jdField_b_of_type_Long;
+        this.a.jdField_a_of_type_Apol.a((apon)???);
+        if ((this.a.jdField_c_of_type_Long > 0L) && (paramMessage.size() > 0))
+        {
+          l3 = System.currentTimeMillis() - this.a.jdField_c_of_type_Long;
+          apog.a().f = l3;
+          apog.c();
+          this.a.jdField_c_of_type_Long = -1L;
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARLocalFaceRecog", 2, "[DEBUG_SCAN_yt_face] MSG_TRACK_FACE update UI,firstlocalRecogCost = " + l3);
+          }
+        }
+      }
+      this.a.jdField_f_of_type_Boolean = false;
+      if ((!QLog.isColorLevel()) || (!apoj.jdField_a_of_type_Boolean)) {
+        break;
+      }
+      QLog.d("AREngine_ARLocalFaceRecog", 2, "MSG_TRACK_FACE finish, dataSize = " + paramMessage.size() + ",trackMsgExeCost = " + (l2 - l1) + ",curTrackFrameIndex = " + this.a.jdField_b_of_type_Long + ",mIsPause = " + this.a.jdField_c_of_type_Boolean);
+      break;
+      i += 1;
+      break label292;
     }
-    ArkAppCenter.c("ArkApp.DataReport", String.format("appInsideClickReport, app=%s, op-name=%s, entry=%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
-    bcrm.a(paramQQAppInterface, paramString1, "__app__", paramString2, 0L, paramInt, 0L, 0L, 0L, "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, String paramString3, String paramString4)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (!ArkAppMgr.isValidAppName(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      ArkAppCenter.c("ArkApp.DataReport", String.format("platformEventReport, invalid args, app-name=%s, op-name=%s", new Object[] { paramString1, paramString2 }));
-      return;
-    }
-    if (!"HTTPTaskResult".equals(paramString2)) {
-      ArkAppCenter.c("ArkApp.DataReport", String.format("platformEventReport, app=%s, op-name=%s, entry=%d, result=%d, r1=%d, r2=%d, r3=%s, r4=%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), paramString3, paramString4 }));
-    }
-    bcrm.a(paramQQAppInterface, paramString1, "__platform__", paramString2, paramInt1, paramInt2, paramLong1, paramLong2, paramLong3, paramString3, paramString4);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    if (paramString3 == null) {
-      paramString3 = "";
-    }
-    for (;;)
-    {
-      a(paramQQAppInterface, paramString2, paramString1, 0, paramInt3, 0L, paramInt1, paramInt2, paramString3, "");
-      return;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    a(null, paramString, 0, 0, 0, 0, "", "");
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    while (new Random().nextInt(1000) >= 10) {
-      return;
-    }
-    a(paramQQAppInterface, paramString1, "UnsafeURLAccess", 0, paramInt, 0L, 0L, 0L, paramString2, "");
   }
 }
 

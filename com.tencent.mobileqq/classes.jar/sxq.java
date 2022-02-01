@@ -1,14 +1,15 @@
-import android.database.DataSetObserver;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-class sxq
-  extends DataSetObserver
+public class sxq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sxq(sxp paramsxp) {}
+  public sxq(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void onChanged()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
+    this.a.invalidate();
   }
 }
 

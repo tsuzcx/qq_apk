@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import nfs;
+import nhn;
 
 class AVGamePosterView$1$1
   implements Runnable

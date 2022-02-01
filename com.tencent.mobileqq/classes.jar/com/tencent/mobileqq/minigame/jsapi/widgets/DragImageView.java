@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.graphics.PorterDuff.Mode;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -19,11 +20,12 @@ import com.tencent.mobileqq.minigame.utils.GameLog;
 public class DragImageView
   extends ImageView
 {
-  public static final int MOVE_DELTA = 20;
+  public static final int MOVE_DELTA = 10;
   public static final String TAG = "DragImageView";
   private float mDownPosX;
   private float mDownPosY;
   private boolean mHasMove;
+  private boolean mHasScale;
   private int mLastAction;
   private float mLastPosX;
   private float mLastPosY;
@@ -113,6 +115,13 @@ public class DragImageView
     return this.mMarginTop;
   }
   
+  private void getOriginSize()
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
+    this.mOriginViewHeight = localMarginLayoutParams.height;
+    this.mOriginViewWidth = localMarginLayoutParams.width;
+  }
+  
   private void getScreenConfig()
   {
     Object localObject = (WindowManager)getContext().getSystemService("window");
@@ -139,7 +148,8 @@ public class DragImageView
   
   private boolean handleActionDown(MotionEvent paramMotionEvent)
   {
-    scaleView();
+    getOriginSize();
+    setColorFilter();
     this.mDownPosX = paramMotionEvent.getRawX();
     this.mDownPosY = paramMotionEvent.getRawY();
     this.mLastPosX = this.mDownPosX;
@@ -158,12 +168,18 @@ public class DragImageView
     setX(f4);
     setY(f3);
     this.mHasMove = isMovingOrNot(this.mDownPosX, this.mDownPosY, f1, f2);
+    if (this.mHasMove)
+    {
+      resetColorFilter();
+      scaleView();
+    }
     bringToFront();
     return true;
   }
   
   private boolean handleActionUp()
   {
+    resetColorFilter();
     restoreScale();
     if (this.mLastAction == 0) {
       performClick();
@@ -181,7 +197,7 @@ public class DragImageView
   
   private boolean isMovingOrNot(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return (Math.abs(paramFloat1 - paramFloat3) > 20.0F) || (Math.abs(paramFloat2 - paramFloat4) > 20.0F);
+    return (Math.abs(paramFloat1 - paramFloat3) > 10.0F) || (Math.abs(paramFloat2 - paramFloat4) > 10.0F);
   }
   
   private void landSide()
@@ -192,6 +208,11 @@ public class DragImageView
       animate().setInterpolator(new DecelerateInterpolator()).x(getLimitX(i)).setDuration(300L).start();
       return;
     }
+  }
+  
+  private void resetColorFilter()
+  {
+    clearColorFilter();
   }
   
   private void resetMargin()
@@ -211,6 +232,10 @@ public class DragImageView
   
   private void restoreScale()
   {
+    if (!this.mHasScale) {
+      return;
+    }
+    this.mHasScale = false;
     float f1 = this.mScaleWidth;
     float f2 = this.mOriginViewWidth;
     float f3 = this.mScaleHeight;
@@ -223,23 +248,31 @@ public class DragImageView
   
   private void scaleView()
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
-    this.mOriginViewHeight = localMarginLayoutParams.height;
-    this.mOriginViewWidth = localMarginLayoutParams.width;
-    if ((this.mScaleHeight > 0.0F) && (this.mScaleWidth > 0.0F))
+    if (this.mHasScale) {}
+    do
     {
-      float f1 = this.mScaleWidth;
-      float f2 = this.mOriginViewWidth;
-      float f3 = this.mScaleHeight;
-      float f4 = this.mOriginViewHeight;
-      float f5 = getX();
-      setX((f1 - f2) / 2.0F + f5);
-      setY(getY() + (f3 - f4) / 2.0F);
-      this.mScaleX = (this.mScaleWidth / this.mViewWidth);
-      this.mScaleY = (this.mScaleHeight / this.mViewHeight);
-      this.mOnTouch = true;
-      requestLayout();
-    }
+      return;
+      this.mHasScale = true;
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
+      this.mOriginViewHeight = localMarginLayoutParams.height;
+      this.mOriginViewWidth = localMarginLayoutParams.width;
+    } while ((this.mScaleHeight <= 0.0F) || (this.mScaleWidth <= 0.0F));
+    float f1 = this.mScaleWidth;
+    float f2 = this.mOriginViewWidth;
+    float f3 = this.mScaleHeight;
+    float f4 = this.mOriginViewHeight;
+    float f5 = getX();
+    setX((f1 - f2) / 2.0F + f5);
+    setY(getY() + (f3 - f4) / 2.0F);
+    this.mScaleX = (this.mScaleWidth / this.mViewWidth);
+    this.mScaleY = (this.mScaleHeight / this.mViewHeight);
+    this.mOnTouch = true;
+    requestLayout();
+  }
+  
+  private void setColorFilter()
+  {
+    setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)

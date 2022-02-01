@@ -1,24 +1,17 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
+import android.view.View;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-class zng
+public abstract interface zng
 {
-  static String a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
-  }
+  public abstract void a();
   
-  static String b(Context paramContext)
-  {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
-  }
+  public abstract void a(int paramInt, View paramView);
+  
+  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
+  
+  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
+  
+  public abstract boolean a(View paramView, int paramInt);
 }
 
 

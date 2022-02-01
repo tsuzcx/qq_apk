@@ -1,71 +1,114 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.LbsShareChangePushInfo;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.NotifyMsgBody;
+import tencent.im.oidb.location.qq_lbs_share.PushExtInfo;
 
 public class awqe
-  extends awqg<MessageForPtt>
 {
-  public awqe(MessageForPtt paramMessageForPtt)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong, TroopTips0x857.NotifyMsgBody paramNotifyMsgBody)
   {
-    super(paramMessageForPtt);
-  }
-  
-  protected int a()
-  {
-    return 3;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    MsgBackupResEntity localMsgBackupResEntity = a();
-    localMsgBackupResEntity.msgSubType = 15;
-    localMsgBackupResEntity.filePath = ((MessageForPtt)this.a).getLocalFilePath();
-    if (!a(localMsgBackupResEntity.filePath)) {
-      return null;
+    paramNotifyMsgBody = (TroopTips0x857.LbsShareChangePushInfo)paramNotifyMsgBody.opt_lbs_share_change_plus_info.get();
+    awpq localawpq = awpq.a(paramQQAppInterface);
+    long l = paramNotifyMsgBody.uint64_group_id.get();
+    int i = paramNotifyMsgBody.uint32_msg_type.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "processPacket: invoked. ", "msgSeq = [" + paramInt + "], msgTime = [" + paramLong + "], ", " pushType: ", Integer.valueOf(i), " sessionUin: ", Long.valueOf(l) });
     }
-    a(localMsgBackupResEntity.filePath, localMsgBackupResEntity);
-    Object localObject = a(15);
-    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
-    ((HashMap)localObject).put("uuid", ((MessageForPtt)this.a).urlAtServer);
-    ((HashMap)localObject).put("md5", ((MessageForPtt)this.a).md5);
-    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
-    if (((MessageForPtt)this.a).istroop == 1) {
-      ((HashMap)localObject).put("chatType", "1");
+    if (i == 4)
+    {
+      awtz.b(paramQQAppInterface, String.valueOf(l));
+      localawpq.notifyUI(5, true, new Object[] { Integer.valueOf(1), String.valueOf(l) });
+      awua.a(paramQQAppInterface);
     }
     for (;;)
     {
-      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localMsgBackupResEntity);
-      return localObject;
-      if (((MessageForPtt)this.a).istroop == 3000) {
-        ((HashMap)localObject).put("chatType", "2");
-      } else {
-        ((HashMap)localObject).put("chatType", "3");
+      localawpq.notifyUI(3, true, new Object[] { paramNotifyMsgBody });
+      return;
+      if ((i == 1) || (i == 2))
+      {
+        awua.a(paramQQAppInterface, 1, String.valueOf(l), true);
+      }
+      else
+      {
+        if (i == 5)
+        {
+          paramInt = 4;
+          try
+          {
+            byte[] arrayOfByte = paramNotifyMsgBody.bytes_ext_info.get().toByteArray();
+            qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
+            localPushExtInfo.mergeFrom(arrayOfByte);
+            i = localPushExtInfo.client_type.get();
+            paramInt = i;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+          {
+            for (;;)
+            {
+              localInvalidProtocolBufferMicroException.printStackTrace();
+            }
+          }
+          awtz.b(paramQQAppInterface, String.valueOf(l));
+          localawpq.notifyUI(6, true, new Object[] { Integer.valueOf(1), String.valueOf(l), Integer.valueOf(paramInt) });
+          awua.a(paramQQAppInterface);
+          continue;
+        }
+        if (i == 3) {
+          a(paramQQAppInterface, paramNotifyMsgBody.uint64_oper_uin.get(), l);
+        }
       }
     }
   }
   
-  public void a()
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
   {
-    Object localObject = (MessageForPtt)this.a;
-    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
-    localObject = ((MessageForPtt)this.a).getRichText();
-    ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onDecodeTroopLbsUserQuitRoom: invoked. ", " operateUin: ", Long.valueOf(paramLong1), " sessionUin: ", Long.valueOf(paramLong2) });
+    }
+    if (paramLong1 == paramQQAppInterface.getLongAccountUin()) {
+      awpq.a(paramQQAppInterface).a(new awpk(1, String.valueOf(paramLong2)), false);
+    }
   }
   
-  public void b()
+  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo)
   {
-    ((MessageForPtt)this.a).url = awqf.a(((MessageForPtt)this.a).md5, ((MessageForPtt)this.a).selfuin);
-    if (((MessageForPtt)this.a).isSendFromLocal()) {
-      ((MessageForPtt)this.a).issend = 2;
+    paramQQAppInterface = awpq.a(paramQQAppInterface);
+    long l = paramLbsShareChangePushInfo.uint64_group_id.get();
+    paramQQAppInterface.a.a(1, String.valueOf(l));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onPushRoomMemberChanged: invoked. ", " troopUin: ", Long.valueOf(l) });
     }
-    ((MessageForPtt)this.a).isReadPtt = true;
-    ((MessageForPtt)this.a).serial();
+  }
+  
+  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo, int paramInt)
+  {
+    paramQQAppInterface = awpq.a(paramQQAppInterface);
+    long l1 = paramLbsShareChangePushInfo.uint64_group_id.get();
+    long l2 = paramLbsShareChangePushInfo.uint64_oper_uin.get();
+    paramLbsShareChangePushInfo = new awpk(1, String.valueOf(l1));
+    paramQQAppInterface.a.a(1, String.valueOf(l1));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopLocationPushDecoder", 2, new Object[] { "[venue] troop onPushRoomVenueChanged: invoked. roomKey: ", paramLbsShareChangePushInfo + " opt: " + paramInt + " optUin: " + l2 });
+      }
+      return;
+      paramQQAppInterface.a(paramLbsShareChangePushInfo, String.valueOf(l2));
+      continue;
+      paramQQAppInterface.a(paramLbsShareChangePushInfo);
+      continue;
+      paramQQAppInterface.b(paramLbsShareChangePushInfo);
+    }
   }
 }
 

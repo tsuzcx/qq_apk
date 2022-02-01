@@ -1,156 +1,63 @@
-import android.content.ComponentName;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
-import com.tencent.mobileqq.now.widget.DecoratorViewPager;
-import com.tencent.mobileqq.now.widget.SimpleCircleIndicator;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class aydj
-  extends ayco
+class aydj
+  extends nkp
 {
-  private int jdField_a_of_type_Int;
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new aydk(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageReceivingAdapter jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter;
-  private DecoratorViewPager jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager;
-  private SimpleCircleIndicator jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator;
-  private boolean jdField_a_of_type_Boolean;
+  aydj(aydi paramaydi) {}
   
-  public aydj(FragmentActivity paramFragmentActivity, RecyclerView paramRecyclerView, View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramFragmentActivity.app;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = new aidp(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_Int = 1008;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370668));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager = ((DecoratorViewPager)paramView.findViewById(2131380895));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setNestedpParent(paramRecyclerView);
-    this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter = new MessageReceivingAdapter(paramFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator = ((SimpleCircleIndicator)paramView.findViewById(2131364493));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setMaxCount(3);
-    b();
-  }
-  
-  private void a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(bgsu.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 3, paramChatMessage.time * 1000L, true));
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)this.itemView.getLayoutParams();
-    if (paramBoolean) {}
-    for (int i = bclx.a(255.0F);; i = 0)
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      localLayoutParams.height = i;
-      this.itemView.setLayoutParams(localLayoutParams);
-      return;
-    }
-  }
-  
-  private void b()
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(ayck.a, 1008, -1L, true);
-    ArrayList localArrayList = new ArrayList();
-    int i;
-    if (localList != null)
-    {
-      i = localList.size() - 1;
-      if (i >= 0)
+      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
+      try
       {
-        ChatMessage localChatMessage = (ChatMessage)localList.get(i);
-        if (!TextUtils.isEmpty(aydg.a(localChatMessage))) {
-          localArrayList.add(localChatMessage);
+        localRspBody.mergeFrom(paramArrayOfByte);
+        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
+        if (!localRspBody.busi_buf.has()) {
+          break label202;
         }
-        for (;;)
+        if ((this.a.jdField_a_of_type_Aydk != null) && (paramInt == 0))
         {
-          i -= 1;
-          break;
-          if ((localChatMessage instanceof MessageForArkApp)) {
-            localArrayList.add(localChatMessage);
-          }
+          this.a.jdField_a_of_type_Aydk.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
+          return;
+        }
+        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
+        if (this.a.jdField_a_of_type_Aydl == null) {
+          return;
+        }
+        this.a.jdField_a_of_type_Aydl.a(paramInt, paramArrayOfByte);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
+        if (this.a.jdField_a_of_type_Aydl == null) {
+          return;
         }
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.a(localArrayList);
-    if (this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.getCount() > 0)
-    {
-      a(true);
-      if (this.jdField_a_of_type_Int < localArrayList.size()) {}
-      for (i = this.jdField_a_of_type_Int;; i = localArrayList.size() - 1)
-      {
-        a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.a(i));
-        this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setCurrentItem(i);
-        this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.invalidate();
-        return;
-      }
-    }
-    a(false);
-  }
-  
-  private void c()
-  {
-    Object localObject = aydy.a();
-    if (localObject != null)
-    {
-      localObject = (anrs)((AppInterface)localObject).getManager(56);
-      if (localObject == null) {}
-    }
-    for (localObject = ((anrs)localObject).a(ayck.a);; localObject = null)
-    {
-      Intent localIntent = new Intent();
-      Bundle localBundle = new Bundle();
-      localIntent.setComponent(new ComponentName(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ChatActivity.class));
-      localBundle.putString("uin", ayck.a);
-      localBundle.putInt("uintype", 1008);
-      if (localObject != null) {}
-      for (localObject = ((AccountDetail)localObject).name;; localObject = "")
-      {
-        localBundle.putString("uinname", (String)localObject);
-        localIntent.putExtras(localBundle);
-        localIntent.setFlags(67108864);
-        localIntent.putExtra("isforceRequestDetail", false);
-        localIntent.putExtra("jump_from", 2);
-        this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(localIntent);
-        return;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      b();
+      this.a.jdField_a_of_type_Aydl.a(paramInt, null);
       return;
+      label202:
+      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
+      if (this.a.jdField_a_of_type_Aydl != null) {
+        this.a.jdField_a_of_type_Aydl.a(paramInt, null);
+      }
     }
-    this.jdField_a_of_type_Boolean = true;
+    else
+    {
+      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
+      if (this.a.jdField_a_of_type_Aydl != null) {
+        this.a.jdField_a_of_type_Aydl.a(paramInt, null);
+      }
+    }
   }
 }
 

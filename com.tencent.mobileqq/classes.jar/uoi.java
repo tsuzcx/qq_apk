@@ -1,222 +1,169 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.TextUtils;
-import android.text.style.StyleSpan;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.net.URLDecoder;
-import java.util.ArrayList;
+import com.tencent.component.network.module.common.NetworkState;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 
 public class uoi
 {
-  private static HashMap<String, Drawable> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("@?\\{uid:.+?,nick:.*?\\}", 2);
-  private static final Pattern b = Pattern.compile("#?\\{tid:.+?,name:.*?\\}", 2);
-  private static final Pattern c = Pattern.compile("\\[em\\]e\\d+\\[/em\\]", 2);
+  private static uoh a;
   
-  private static ArrayList<uon> a(uol paramuol, uoh paramuoh)
+  @NotNull
+  public static Map<String, String> a(ukz paramukz, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramuol)) {
-      return null;
-    }
-    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramuol);
-    int i = 0;
-    localArrayList = new ArrayList();
-    try
+    Object localObject = paramukz.jdField_a_of_type_Ulc;
+    HashMap localHashMap;
+    if (localObject == null)
     {
-      while (localMatcher.find())
-      {
-        int j = localMatcher.start() - i;
-        int k = localMatcher.end();
-        String str1 = localMatcher.group();
-        uon localuon = a(str1, ",nick:");
-        String str2 = localuon.a;
-        String str3 = " @" + localuon.b + " ";
-        paramuol.replace(j, k - i, str3);
-        i += str1.length() - str3.length();
-        k = str3.length() + j;
-        paramuol.setSpan(new uoj(paramuoh, str2), j, k, 33);
-        paramuol.setSpan(new StyleSpan(1), j, k, 33);
-        localArrayList.add(localuon);
-      }
-      return localArrayList;
-    }
-    catch (Exception paramuoh)
-    {
-      paramuoh.printStackTrace();
-      paramuol.a(localArrayList);
-    }
-  }
-  
-  public static uol a(CharSequence paramCharSequence, int paramInt, uoh paramuoh, Drawable.Callback paramCallback)
-  {
-    uol localuol = null;
-    if (!TextUtils.isEmpty(paramCharSequence))
-    {
-      localuol = new uol(paramCharSequence);
-      a(localuol, paramuoh);
-      b(localuol, paramuoh);
-      a(localuol, paramInt, paramCallback);
-    }
-    return localuol;
-  }
-  
-  private static uom a(String paramString1, String paramString2)
-  {
-    int j = paramString1.indexOf("tid:");
-    int k = "tid:".length();
-    int i = paramString1.indexOf(paramString2);
-    if (i == -1) {
-      return new uom("", "");
-    }
-    String str = paramString1.substring(j + k, i);
-    j = paramString1.length();
-    paramString1 = paramString1.substring(i + paramString2.length(), j - 1);
-    try
-    {
-      paramString2 = URLDecoder.decode(paramString1, "UTF-8");
-      paramString1 = paramString2;
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramString2.printStackTrace();
+      localObject = "0";
+      paramukz = paramukz.jdField_a_of_type_Uld;
+      localHashMap = new HashMap();
+      localHashMap.put("video_total_time", String.valueOf(paramukz.c));
+      localHashMap.put("video_play_time", localObject);
+      localHashMap.put("videoid", paramukz.a);
+      localHashMap.put("feedid", paramukz.a);
+      localHashMap.put("author_uin", paramukz.jdField_e_of_type_JavaLangString);
+      if (NetworkState.g().getNetworkType() != 1) {
+        break label154;
       }
     }
-    return new uom(str, paramString1);
-  }
-  
-  private static uon a(String paramString1, String paramString2)
-  {
-    int j = paramString1.indexOf("uid:");
-    int k = "uid:".length();
-    int i = paramString1.indexOf(paramString2);
-    if (i == -1) {
-      return new uon("", "");
-    }
-    String str = paramString1.substring(j + k, i);
-    j = paramString1.length();
-    paramString1 = paramString1.substring(i + paramString2.length(), j - 1);
-    try
+    label154:
+    for (int i = 1;; i = 2)
     {
-      paramString2 = URLDecoder.decode(paramString1, "UTF-8");
-      paramString1 = paramString2;
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramString2.printStackTrace();
-      }
-    }
-    return new uon(str, paramString1);
-  }
-  
-  private static void a(uol paramuol, int paramInt, Drawable.Callback paramCallback)
-  {
-    if (paramuol == null) {
-      return;
-    }
-    Matcher localMatcher = c.matcher(paramuol);
-    label14:
-    int i;
-    int j;
-    String str;
-    if (localMatcher.find())
-    {
-      i = localMatcher.start();
-      j = localMatcher.end();
-      str = paramuol.subSequence(i, j).toString();
-      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {
-        break label288;
-      }
-    }
-    label288:
-    for (Object localObject = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str);; localObject = null)
-    {
-      paramCallback = (Drawable.Callback)localObject;
-      if (localObject == null) {
-        paramCallback = bmpg.a(str);
-      }
-      localObject = paramCallback;
-      int k;
-      if (paramCallback == null)
-      {
-        k = aagc.a(str);
-        localObject = paramCallback;
-        if (k > -1)
-        {
-          localObject = paramCallback;
-          if (k < aagc.b.length) {
-            localObject = aafs.a(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
-          }
-        }
-      }
-      paramCallback = (Drawable.Callback)localObject;
-      if (localObject == null)
-      {
-        k = aagc.b(str);
-        upe.b("emotion", "emotion code:" + str + ",index:" + k);
-        paramCallback = (Drawable.Callback)localObject;
-        if (k > -1)
-        {
-          paramCallback = (Drawable.Callback)localObject;
-          if (k < aagc.c.length) {
-            paramCallback = aafs.b(k, BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density, BaseApplicationImpl.getContext(), null);
-          }
-        }
-      }
-      if (paramCallback == null) {
-        break label14;
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(str, paramCallback);
-      paramCallback.setBounds(new Rect(0, 0, paramInt, paramInt));
-      paramuol.setSpan(new VerticalCenterImageSpan(paramCallback, 0), i, j, 33);
-      break label14;
+      localHashMap.put("network", String.valueOf(i));
+      localHashMap.put("video_type", String.valueOf(paramukz.jdField_e_of_type_Int));
+      return localHashMap;
+      localObject = String.valueOf(((ulc)localObject).b(paramBoolean));
       break;
     }
   }
   
-  private static ArrayList<uom> b(uol paramuol, uoh paramuoh)
+  public static void a()
   {
-    if (TextUtils.isEmpty(paramuol)) {
-      return null;
+    if (a == null) {
+      return;
     }
-    Matcher localMatcher = b.matcher(paramuol);
-    int i = 0;
-    localArrayList = new ArrayList();
-    try
+    a.d();
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (a == null) {
+      return;
+    }
+    a.a(paramInt);
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    if (a == null) {
+      return;
+    }
+    a.a(paramInt1, paramInt2);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (a == null) {
+      return;
+    }
+    a.c(paramString);
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (a == null) {
+      return;
+    }
+    a.a(paramString, paramInt1, paramInt2);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (a != null)
     {
-      while (localMatcher.find())
-      {
-        int j = localMatcher.start() - i;
-        int k = localMatcher.end();
-        String str1 = localMatcher.group();
-        uom localuom = a(str1, ",name:");
-        String str2 = localuom.a;
-        String str3 = " #" + localuom.b + " ";
-        paramuol.replace(j, k - i, str3);
-        i += str1.length() - str3.length();
-        k = str3.length() + j;
-        paramuol.setSpan(new uok(paramuoh, str2), j, k, 33);
-        paramuol.setSpan(new StyleSpan(1), j, k, 33);
-        localArrayList.add(localuom);
-      }
-      return localArrayList;
+      a.b(paramString2);
+      a.a(paramString1);
     }
-    catch (Exception paramuoh)
-    {
-      paramuoh.printStackTrace();
-      paramuol.b(localArrayList);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    a = new uoh(uof.a(paramString1));
+    a(paramString2, paramString3);
+  }
+  
+  public static void a(ukz paramukz, boolean paramBoolean)
+  {
+    if (a == null) {}
+    while ((paramukz == null) || (paramukz.jdField_a_of_type_Uld == null)) {
+      return;
     }
+    paramukz = a(paramukz, paramBoolean);
+    a.a(paramukz);
+  }
+  
+  public static void b()
+  {
+    if (a == null) {
+      return;
+    }
+    a.a();
+  }
+  
+  public static void b(int paramInt)
+  {
+    if (a == null) {
+      return;
+    }
+    a.b(paramInt);
+  }
+  
+  public static void b(String paramString, int paramInt1, int paramInt2)
+  {
+    if (a == null) {
+      return;
+    }
+    a.b(paramString, paramInt1, paramInt2);
+  }
+  
+  public static void c()
+  {
+    if (a == null) {
+      return;
+    }
+    a.b();
+  }
+  
+  public static void c(String paramString, int paramInt1, int paramInt2)
+  {
+    if (a == null) {
+      return;
+    }
+    a.c(paramString, paramInt1, paramInt2);
+  }
+  
+  public static void d()
+  {
+    if (a == null) {
+      return;
+    }
+    a.c();
+  }
+  
+  public static void e()
+  {
+    if (a == null) {
+      return;
+    }
+    a.e();
+  }
+  
+  public static void f()
+  {
+    if (a == null) {
+      return;
+    }
+    a.f();
   }
 }
 

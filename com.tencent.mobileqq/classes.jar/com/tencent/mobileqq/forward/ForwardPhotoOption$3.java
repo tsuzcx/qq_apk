@@ -2,9 +2,9 @@ package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import auii;
-import auij;
-import bgpa;
+import avah;
+import avai;
+import bhpc;
 
 public class ForwardPhotoOption$3
   implements Runnable
@@ -17,14 +17,14 @@ public class ForwardPhotoOption$3
     {
       ForwardPhotoOption.a(this.this$0).a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, false);
       if (ForwardPhotoOption.a(this.this$0)) {
-        this.this$0.s();
+        this.this$0.t();
       }
     }
     else
     {
       return;
     }
-    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new auii(this));
+    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new avah(this));
   }
 }
 

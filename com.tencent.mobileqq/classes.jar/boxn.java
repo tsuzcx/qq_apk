@@ -1,26 +1,46 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class boxn
-  extends AnimatorListenerAdapter
+  implements boyw
 {
-  public boxn(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public boxn(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString, Bitmap paramBitmap, long paramLong) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(List<boyx> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView 50ms end");
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, new ArrayList());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        boyx localboyx = (boyx)paramList.next();
+        if (localboyx.jdField_a_of_type_Boolean)
+        {
+          String str = AETemplateInfoFragment.jdField_a_of_type_JavaLangString + System.currentTimeMillis();
+          BitmapUtils.saveBitmap(localboyx.jdField_a_of_type_AndroidGraphicsBitmap, str);
+          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(str);
+          BitmapUtils.recycle(localboyx.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        else
+        {
+          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, true);
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.setStatus(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView begin");
+    for (;;)
+    {
+      AETemplateInfoFragment.b(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, false);
+      return;
+      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      QLog.e("AETemplateInfoFragment", 1, "changeFace---failed to get face changed bitmaps");
     }
   }
 }

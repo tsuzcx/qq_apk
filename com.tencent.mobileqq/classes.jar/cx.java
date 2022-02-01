@@ -14,7 +14,7 @@ public class cx
     if (paramBoolean)
     {
       PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691210);
+      PrinterOptionActivity.a(this.a).setText(2131691213);
     }
     for (;;)
     {
@@ -23,7 +23,7 @@ public class cx
       if (PrinterOptionActivity.b(this.a))
       {
         PrinterOptionActivity.a(this.a).setVisibility(0);
-        PrinterOptionActivity.a(this.a).setText(2131691190);
+        PrinterOptionActivity.a(this.a).setText(2131691193);
       }
       else
       {

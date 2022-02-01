@@ -1,65 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
 
 public class bggv
+  implements URLDrawable.URLDrawableListener
 {
-  private bggx jdField_a_of_type_Bggx;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public bggv(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
   
-  public bggv(QQAppInterface paramQQAppInterface)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
-  private bggx a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    bggx localbggx = new bggx(new bggw(this));
-    if (QLog.isColorLevel()) {
-      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbggx);
-    }
-    return localbggx;
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bggx != null)
-    {
-      this.jdField_a_of_type_Bggx.a();
-      this.jdField_a_of_type_Bggx = null;
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(String paramString)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_Bggx == null) {
-      this.jdField_a_of_type_Bggx = a();
-    }
-    this.jdField_a_of_type_Bggx.a(2, paramString, null, null, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Bggx == null) {
-      this.jdField_a_of_type_Bggx = a();
-    }
-    this.jdField_a_of_type_Bggx.a(3, paramString1, paramString2, paramString3, paramBundle);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_Bggx == null) {
-      this.jdField_a_of_type_Bggx = a();
-    }
-    this.jdField_a_of_type_Bggx.a(1, paramString, null, null, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_Bggx == null) {
-      this.jdField_a_of_type_Bggx = a();
-    }
-    this.jdField_a_of_type_Bggx.a(4, paramString, null, null, null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 

@@ -1,40 +1,245 @@
-import java.io.File;
-import java.io.IOException;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.ArrayList;
+import java.util.List;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bdub
+  extends bdon
 {
-  File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  public ArrayList<bduc> a;
+  public int o;
+  public int p;
+  public int q;
   
-  bdub(bdua parambdua, String paramString)
+  public bdub()
   {
-    if (!parambdua.jdField_a_of_type_JavaIoFile.exists()) {
-      parambdua.jdField_a_of_type_JavaIoFile.mkdirs();
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoFile = new File(parambdua.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
+    this.jdField_a_of_type_JavaLangString = "checklist";
+    c("12");
   }
   
-  public File a()
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    File localFile = this.jdField_a_of_type_Bdua.a(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      return localFile;
-    }
-    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
+    Drawable localDrawable;
+    int i;
+    label75:
+    int k;
+    if (paramView == null)
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      throw new IOException("write 0 length file or null File");
+      paramView = new LinearLayout(paramContext);
+      paramView.setId(2131379733);
+      paramView.setOrientation(1);
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        break label320;
+      }
+      localDrawable = paramContext.getResources().getDrawable(2130850469);
+      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (!TextUtils.isEmpty(this.af)) {
+        break label184;
+      }
+      i = f();
+      k = i / 2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() != paramView.getChildCount()) {
+        break label196;
+      }
+      i = 1;
+      label98:
+      if ((i == 0) && (paramView.getChildCount() > 0)) {
+        paramView.removeAllViews();
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 2) {
+        break label202;
+      }
     }
-    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
-    return localFile;
+    int j;
+    bduc localbduc;
+    label184:
+    label196:
+    label202:
+    for (paramBundle = this.jdField_a_of_type_JavaUtilArrayList.subList(0, 2);; paramBundle = this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      j = 0;
+      for (;;)
+      {
+        if (j >= paramBundle.size()) {
+          break label320;
+        }
+        localbduc = (bduc)paramBundle.get(j);
+        if (localbduc != null) {
+          break;
+        }
+        j += 1;
+      }
+      paramView = (LinearLayout)paramView;
+      break;
+      i = Integer.parseInt(this.af);
+      break label75;
+      i = 0;
+      break label98;
+    }
+    if (i != 0) {}
+    for (TextView localTextView = (TextView)paramView.getChildAt(j);; localTextView = new TextView(paramContext))
+    {
+      localTextView.setSingleLine();
+      localTextView.setEllipsize(a());
+      localTextView.setGravity(16);
+      localTextView.setTextSize(k);
+      localTextView.setCompoundDrawables(localDrawable, null, null, null);
+      localTextView.setText(" " + localbduc.b);
+      if (i != 0) {
+        break;
+      }
+      paramView.addView(localTextView);
+      break;
+    }
+    label320:
+    paramView.setTag(this);
+    return paramView;
   }
   
-  public void a(boolean paramBoolean)
+  public String a()
   {
-    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
-      this.jdField_a_of_type_JavaIoFile.delete();
+    return "Vote";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.p = paramObjectInput.readInt();
+    this.o = paramObjectInput.readInt();
+    this.q = paramObjectInput.readInt();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.q);
+    int i = 0;
+    while (i < this.q)
+    {
+      String str1 = paramObjectInput.readUTF();
+      String str2 = paramObjectInput.readUTF();
+      this.jdField_a_of_type_JavaUtilArrayList.add(new bduc(this, str1, str2));
+      i += 1;
     }
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.p);
+    paramObjectOutput.writeInt(this.o);
+    paramObjectOutput.writeInt(this.q);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() == this.q))
+    {
+      int i = 0;
+      if (i < this.q)
+      {
+        bduc localbduc = (bduc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localbduc != null)
+        {
+          if (localbduc.jdField_a_of_type_JavaLangString != null) {
+            break label127;
+          }
+          str = "";
+          label95:
+          paramObjectOutput.writeUTF(str);
+          if (localbduc.b != null) {
+            break label136;
+          }
+        }
+        label136:
+        for (String str = "";; str = localbduc.b)
+        {
+          paramObjectOutput.writeUTF(str);
+          i += 1;
+          break;
+          label127:
+          str = localbduc.jdField_a_of_type_JavaLangString;
+          break label95;
+        }
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.e("StructMsg", 2, "StructMsgItemVote writeExternal() mOptions is null, or size is error!");
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "checklist");
+    paramXmlSerializer.attribute(null, "min", String.valueOf(this.p));
+    paramXmlSerializer.attribute(null, "max", String.valueOf(this.o));
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    {
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        bduc localbduc = (bduc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localbduc != null)
+        {
+          paramXmlSerializer.startTag(null, localbduc.jdField_a_of_type_JavaLangString);
+          if (localbduc.b != null) {
+            break label147;
+          }
+        }
+        label147:
+        for (String str = "";; str = localbduc.b)
+        {
+          paramXmlSerializer.attribute(null, "min", str);
+          paramXmlSerializer.endTag(null, localbduc.jdField_a_of_type_JavaLangString);
+          i += 1;
+          break;
+        }
+      }
+    }
+    paramXmlSerializer.endTag(null, "checklist");
+  }
+  
+  public boolean a(bdqc parambdqc)
+  {
+    if (parambdqc == null) {}
+    for (;;)
+    {
+      return true;
+      Object localObject = parambdqc.a("min");
+      String str = parambdqc.a("max");
+      try
+      {
+        this.p = Integer.parseInt((String)localObject);
+        this.o = Integer.parseInt(str);
+        this.q = parambdqc.a();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.q);
+        int i = 0;
+        while (i < this.q)
+        {
+          localObject = parambdqc.a(i);
+          if (localObject != null) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(new bduc(this, (bdqc)localObject));
+          }
+          i += 1;
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, localNumberFormatException.getMessage());
+          }
+        }
+      }
+    }
+  }
+  
+  protected int c()
+  {
+    return 2131380193;
   }
 }
 

@@ -17,7 +17,6 @@ final class ABTestApi$2
   {
     ABTestLog.error("expose：" + this.val$isExpose + " get data unsuccessfully", new Object[0]);
     this.val$listener.getExperimentFailed(paramInt, paramString);
-    this.val$listener.getExperimentSucceed(this.val$expEntities);
   }
   
   public void updateExperimentsSucceed(JSONObject paramJSONObject)
@@ -51,7 +50,6 @@ final class ABTestApi$2
     {
       ABTestLog.error("expose：" + this.val$isExpose + "  " + paramJSONObject.getMessage(), new Object[0]);
       this.val$listener.getExperimentFailed(1007, "get res error");
-      this.val$listener.getExperimentSucceed(this.val$expEntities);
     }
   }
 }

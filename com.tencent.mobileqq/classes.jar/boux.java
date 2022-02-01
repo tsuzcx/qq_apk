@@ -1,16 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import dov.com.qq.im.capture.view.StoryToastView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class boux
-  extends AnimatorListenerAdapter
+class boux
+  implements View.OnClickListener
 {
-  public boux(StoryToastView paramStoryToastView) {}
+  boux(boun paramboun) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    StoryToastView.a(this.a).sendEmptyMessageDelayed(1, 1500L);
+    boun.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,19 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akez
-  implements bkhw
+public class akez
+  implements View.OnClickListener
 {
-  akez(akey paramakey, bkho parambkho) {}
+  public akez(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt != this.jdField_a_of_type_Akey.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_Akey.a(paramInt);
-      this.jdField_a_of_type_Akey.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
-    }
-    this.jdField_a_of_type_Bkho.dismiss();
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

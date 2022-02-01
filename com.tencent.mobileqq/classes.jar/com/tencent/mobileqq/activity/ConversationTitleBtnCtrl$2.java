@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aeav;
+import aejz;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
-import vqu;
+import vtf;
 
 public class ConversationTitleBtnCtrl$2
   implements Runnable
 {
-  public ConversationTitleBtnCtrl$2(aeav paramaeav) {}
+  public ConversationTitleBtnCtrl$2(aejz paramaejz) {}
   
   public void run()
   {
-    ((vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance", null);
+    ((vtf)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance", null);
   }
 }
 

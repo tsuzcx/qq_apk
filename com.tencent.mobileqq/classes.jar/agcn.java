@@ -1,16 +1,33 @@
-import android.support.annotation.IntRange;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public abstract interface agcn
+public class agcn
+  implements BusinessObserver
 {
-  public abstract void a();
+  public agcn(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
-  
-  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramInt == 2002)
+    {
+      if (paramBoolean) {}
+      try
+      {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
+        return;
+      }
+      catch (Throwable paramBundle)
+      {
+        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
+      }
+      this.a.b(3, "system error");
+      return;
+    }
+  }
 }
 
 

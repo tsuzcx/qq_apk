@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import com.tencent.widget.Gallery;
-import sqf;
-import sqg;
+import shj;
+import shk;
 
 public class ReadInJoyGallery
   extends Gallery
@@ -15,8 +15,8 @@ public class ReadInJoyGallery
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
-  protected sqf a;
-  private sqg jdField_a_of_type_Sqg;
+  protected shj a;
+  private shk jdField_a_of_type_Shk;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   boolean jdField_b_of_type_Boolean = false;
@@ -56,8 +56,8 @@ public class ReadInJoyGallery
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super.a(paramInt1, paramInt2, paramBoolean);
-    if (this.jdField_a_of_type_Sqg != null) {
-      this.jdField_a_of_type_Sqg.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Shk != null) {
+      this.jdField_a_of_type_Shk.a(paramInt1, paramInt2);
     }
   }
   
@@ -127,8 +127,8 @@ public class ReadInJoyGallery
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Sqf != null) {
-      this.jdField_a_of_type_Sqf.a();
+    if (this.jdField_a_of_type_Shj != null) {
+      this.jdField_a_of_type_Shj.a();
     }
     return super.onDoubleTap(paramMotionEvent);
   }
@@ -186,14 +186,14 @@ public class ReadInJoyGallery
     this.k = paramBoolean;
   }
   
-  public void setOnDoubleTapListener(sqf paramsqf)
+  public void setOnDoubleTapListener(shj paramshj)
   {
-    this.jdField_a_of_type_Sqf = paramsqf;
+    this.jdField_a_of_type_Shj = paramshj;
   }
   
-  public void setOnScrollChangeListener(sqg paramsqg)
+  public void setOnScrollChangeListener(shk paramshk)
   {
-    this.jdField_a_of_type_Sqg = paramsqg;
+    this.jdField_a_of_type_Shk = paramshk;
   }
 }
 

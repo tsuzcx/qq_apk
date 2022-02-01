@@ -1,216 +1,207 @@
-import android.content.Context;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomController.RequestFetchRunnable;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONObject;
 
-public class lsc
-  implements lsj
+public abstract class lsc
+  extends lrw
 {
-  public lsc(RandomController paramRandomController) {}
+  private static int k;
+  boolean a;
+  protected Bitmap b;
+  private boolean b;
+  private boolean c = true;
+  private boolean d;
   
-  public void a(int paramInt, lsp paramlsp)
+  protected lsc()
   {
-    if (this.a.jdField_a_of_type_Ley == null) {}
-    label517:
-    label1010:
-    do
+    super(null, 0);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private Bitmap b()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
     {
-      do
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a();
+      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
       {
-        do
-        {
-          for (;;)
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("RandomController", 2, "rsp.rsptype = " + paramlsp.a + ", errCode = " + paramInt);
-            }
-            if ((paramlsp.a == 1) || (paramlsp.a == 2))
-            {
-              switch (paramInt)
-              {
-              case -2: 
-              default: 
-                RandomController.b(this.a);
-                return;
-              case 1: 
-                if (RandomController.a(this.a).get() >= 3)
-                {
-                  RandomController.a(this.a);
-                  return;
-                }
-                paramlsp = (lsq)paramlsp;
-                RandomController.a(this.a).a(paramlsp);
-                RandomController.a(this.a).a().postDelayed(RandomController.a(this.a), paramlsp.h);
-                return;
-              case 0: 
-                RandomController.a(this.a, paramlsp);
-                return;
-              case -1: 
-                RandomController.a(this.a);
-                return;
-              }
-              RandomController.b(this.a, paramlsp);
-              return;
-            }
-            if ((paramlsp.a == -100) || (paramlsp.a == 3))
-            {
-              if (RandomController.a(this.a) == 1)
-              {
-                if ((paramInt == 0) && ((paramlsp instanceof lsr)))
-                {
-                  paramlsp = (lsr)paramlsp;
-                  this.a.jdField_a_of_type_Ley.a.a = paramlsp.a;
-                  if (this.a.jdField_a_of_type_Ley.l())
-                  {
-                    paramlsp = RandomController.a(this.a).iterator();
-                    while (paramlsp.hasNext()) {
-                      ((lsi)paramlsp.next()).a();
-                    }
-                  }
-                }
-              }
-              else if (RandomController.a(this.a) == 2)
-              {
-                Object localObject2;
-                Object localObject1;
-                if ((paramInt == 0) && ((paramlsp instanceof lst)))
-                {
-                  localObject2 = (lst)paramlsp;
-                  if (((lst)localObject2).f != 0) {
-                    if (((lst)localObject2).f != 2) {
-                      break label517;
-                    }
-                  }
-                  for (localObject1 = ((lst)localObject2).e;; localObject1 = String.valueOf(((lst)localObject2).jdField_a_of_type_Long))
-                  {
-                    if (!TextUtils.isEmpty((CharSequence)localObject1))
-                    {
-                      lco locallco = RandomController.a(this.a).a((String)localObject1);
-                      if (locallco != null)
-                      {
-                        locallco.c = ((lst)localObject2).c;
-                        RandomController.a(this.a).a((String)localObject1, ((lst)localObject2).b, ((lst)localObject2).c);
-                        if (QLog.isColorLevel()) {
-                          QLog.d("RandomController", 2, "RSP_MULTI_PULL uin:" + locallco.jdField_a_of_type_Long + ", headUrl:" + locallco.c);
-                        }
-                      }
-                    }
-                    localObject1 = RandomController.a(this.a).iterator();
-                    while (((Iterator)localObject1).hasNext()) {
-                      ((lsi)((Iterator)localObject1).next()).a();
-                    }
-                  }
-                }
-                if (paramInt == 100)
-                {
-                  localObject2 = RandomController.a(this.a).c();
-                  localObject1 = new StringBuilder();
-                  localObject2 = ((ArrayList)localObject2).iterator();
-                  while (((Iterator)localObject2).hasNext()) {
-                    ((StringBuilder)localObject1).append(((lco)((Iterator)localObject2).next()).jdField_a_of_type_Long).append("|");
-                  }
-                  if ((!this.a.jdField_b_of_type_Boolean) && (RandomController.a(this.a) != null)) {
-                    RandomController.a(this.a).a(RandomController.b(this.a), 5, ((StringBuilder)localObject1).toString(), this.a.a(RandomController.a(this.a).getAccount()), this.a.jdField_a_of_type_Long);
-                  }
-                }
-                if ((paramlsp instanceof lst))
-                {
-                  paramlsp = (lst)paramlsp;
-                  if ((!TextUtils.isEmpty(paramlsp.d)) && (TextUtils.isEmpty(this.a.jdField_a_of_type_Ley.a.e)))
-                  {
-                    this.a.jdField_a_of_type_Ley.a.e = (RandomController.a(this.a).getApp().getString(2131695091) + " “" + paramlsp.d + "” ");
-                    RandomController.a(this.a, paramlsp.d);
-                    if (QLog.isColorLevel()) {
-                      QLog.d("RandomController", 2, "RSP_MULTI_PULL talkTips : " + this.a.jdField_a_of_type_Ley.a.e);
-                    }
-                  }
-                }
-              }
-              if (paramInt == -3)
-              {
-                paramlsp = RandomController.a(this.a).iterator();
-                while (paramlsp.hasNext()) {
-                  ((lsi)paramlsp.next()).a();
-                }
-              }
-            }
-            else
-            {
-              if ((!(paramlsp instanceof lsu)) || (paramlsp.a != 5)) {
-                break label1010;
-              }
-              if (paramInt != 0) {
-                break;
-              }
-              paramlsp = (lsu)paramlsp;
-              if (QLog.isColorLevel()) {
-                QLog.d("RandomController", 2, "request room owner room owner change push，uin " + paramlsp.b + " [random room owner]");
-              }
-              this.a.jdField_b_of_type_Int = 5;
-              this.a.g = paramlsp.b;
-              paramlsp = RandomController.a(this.a).iterator();
-              while (paramlsp.hasNext()) {
-                ((lsi)paramlsp.next()).a();
-              }
-            }
-          }
-        } while ((paramInt != -4) || (!QLog.isColorLevel()));
-        QLog.e("RandomController", 2, "[random room owner] pull room fail fail");
-        return;
-      } while ((!(paramlsp instanceof lsu)) || (4 != paramlsp.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("RandomController", 2, "[random room owner] RSP_MULTI_KICK_MEMBER");
+        int i = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
+        int j = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
+        if (this.e == -1) {
+          a(i, j);
+        }
       }
-      RandomController.a(this.a).a().removeCallbacks(RandomController.a(this.a));
-      RandomController.a(this.a, false);
-      paramlsp = (lsu)paramlsp;
-      long l = paramlsp.jdField_a_of_type_OrgJsonJSONObject.optInt("groupid");
-      this.a.jdField_a_of_type_JavaLangString = bgmj.a(paramlsp.jdField_a_of_type_OrgJsonJSONObject.optString("wording").trim());
-      if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-        this.a.jdField_a_of_type_JavaLangString = RandomController.a(this.a).getApp().getApplicationContext().getString(2131695084);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RandomController", 2, "[random room owner] KICK_MEMBER success groupId = " + l + ", mCurrGroupId = " + this.a.jdField_a_of_type_Long);
-      }
-      if (l == this.a.jdField_a_of_type_Long)
+    }
+    return this.jdField_b_of_type_AndroidGraphicsBitmap;
+  }
+  
+  private void c(lqt paramlqt)
+  {
+    Bitmap localBitmap = b();
+    if (localBitmap != null) {
+      try
       {
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RandomController", 2, "[random room owner] KICK_MEMBER success");
-          }
-          this.a.jdField_b_of_type_Int = 6;
+        int i = localBitmap.getWidth();
+        int j = localBitmap.getHeight();
+        int m = e();
+        int n = f();
+        if (this.jdField_a_of_type_ArrayOfInt == null) {
+          this.jdField_a_of_type_ArrayOfInt = new int[1];
+        }
+        this.jdField_a_of_type_ArrayOfInt[0] = paramlqt.a().a();
+        paramlqt.a(this);
+        if ((i == m) && (j == n)) {
+          paramlqt.a(this, localBitmap);
         }
         for (;;)
         {
-          paramlsp = RandomController.a(this.a).iterator();
-          while (paramlsp.hasNext()) {
-            ((lsi)paramlsp.next()).a();
-          }
-          break;
-          if (paramInt == -4)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("RandomController", 2, "[random room owner] KICK_MEMBER fail" + paramlsp.jdField_a_of_type_JavaLangString);
+          e();
+          a(paramlqt);
+          this.jdField_b_of_type_Int = 1;
+          this.jdField_b_of_type_Boolean = true;
+          return;
+          i = GLUtils.getInternalFormat(localBitmap);
+          j = GLUtils.getType(localBitmap);
+          paramlqt.a(this, i, j);
+          paramlqt.a(this, 0, 0, localBitmap, i, j);
+        }
+        this.jdField_b_of_type_Int = -1;
+      }
+      finally
+      {
+        e();
+      }
+    }
+    throw new RuntimeException("Texture load fail, no bitmap");
+  }
+  
+  private void e()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    {
+      a(this.jdField_b_of_type_AndroidGraphicsBitmap);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public static boolean e()
+  {
+    return k > 100;
+  }
+  
+  public static void g()
+  {
+    k = 0;
+  }
+  
+  protected abstract Bitmap a();
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
+      e();
+    }
+  }
+  
+  protected abstract void a(Bitmap paramBitmap);
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public boolean a(lqt paramlqt)
+  {
+    b(paramlqt);
+    return true;
+  }
+  
+  public lru[] a(lqt paramlqt)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+    }
+    return super.a(paramlqt);
+  }
+  
+  public void b(lqt paramlqt)
+  {
+    if (!c()) {
+      if (this.d)
+      {
+        int i = k + 1;
+        k = i;
+        if (i <= 100) {}
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        c(paramlqt);
+        return;
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          Bitmap localBitmap = b();
+          if (localBitmap != null) {
+            try
+            {
+              if (!localBitmap.isRecycled())
+              {
+                paramlqt.a(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
+                e();
+                this.jdField_b_of_type_Boolean = true;
+                return;
+              }
             }
-            this.a.jdField_b_of_type_Int = 7;
+            catch (IllegalArgumentException paramlqt) {}
           }
         }
       }
     } while (!QLog.isColorLevel());
-    QLog.d("RandomController", 2, "KICK_MEMBER success groupid != mCurrGroupId  [random room owner]");
+    QLog.e("UploadedTexture", 2, "WL_DEBUG updateContent e = " + paramlqt);
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public int c()
+  {
+    if (this.e == -1) {
+      b();
+    }
+    return this.e;
+  }
+  
+  public int d()
+  {
+    if (this.e == -1) {
+      b();
+    }
+    return this.f;
+  }
+  
+  protected void f()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
+      e();
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.e = -1;
+    this.f = -1;
+  }
+  
+  public int g()
+  {
+    return 3553;
   }
 }
 

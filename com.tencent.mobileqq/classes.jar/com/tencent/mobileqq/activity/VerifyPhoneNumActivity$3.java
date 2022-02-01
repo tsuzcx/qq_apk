@@ -9,9 +9,9 @@ class VerifyPhoneNumActivity$3
 {
   public void run()
   {
-    this.this$0.a = new ReportDialog(this.this$0, 2131755823);
+    this.this$0.a = new ReportDialog(this.this$0, 2131755824);
     this.this$0.a.setContentView(2131558434);
-    ((TextView)this.this$0.a.findViewById(2131365475)).setText(this.this$0.getString(this.a));
+    ((TextView)this.this$0.a.findViewById(2131365519)).setText(this.this$0.getString(this.a));
     this.this$0.a.show();
   }
 }

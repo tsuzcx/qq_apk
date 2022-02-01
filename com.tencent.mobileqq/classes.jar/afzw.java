@@ -1,15 +1,31 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class afzw
   implements DialogInterface.OnClickListener
 {
-  public afzw(PlusPanel paramPlusPanel) {}
+  public afzw(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.n();
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.e();
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
+      this.a.f();
+    }
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nnr.a(), paramDialogInterface, "1");
+      return;
+    }
   }
 }
 

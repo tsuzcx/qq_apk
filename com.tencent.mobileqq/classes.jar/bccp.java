@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.servlet.LoginVerifyServlet.4;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bccp
-  implements HostnameVerifier
+  implements View.OnClickListener
 {
-  public bccp(LoginVerifyServlet.4 param4, URL paramURL) {}
+  public bccp(GroupSearchFragment paramGroupSearchFragment) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void onClick(View paramView)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
-    if (!bool) {
-      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    this.a.g = 1;
+    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
+      this.a.g = 1;
     }
-    return bool;
+    this.a.h();
+    this.a.b.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

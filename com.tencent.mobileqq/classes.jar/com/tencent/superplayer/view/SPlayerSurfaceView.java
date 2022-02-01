@@ -16,7 +16,7 @@ public class SPlayerSurfaceView
   private int mType = 0;
   private int mVideoHeight;
   private int mVideoWidth;
-  private ISPlayerViewBase.viewCreateCallBack mViewCallBack;
+  private ISPlayerViewBase.ViewCreateCallBack mViewCallBack;
   private int radioHeight = 0;
   private int radioWidth = 0;
   
@@ -153,10 +153,12 @@ public class SPlayerSurfaceView
     this.mVideoHeight = paramInt2;
   }
   
-  public void setViewCallBack(ISPlayerViewBase.viewCreateCallBack paramviewCreateCallBack)
+  public void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack)
   {
-    this.mViewCallBack = paramviewCreateCallBack;
+    this.mViewCallBack = paramViewCreateCallBack;
   }
+  
+  public void setViewViewTagId(String paramString) {}
   
   public void setXYaxis(int paramInt)
   {

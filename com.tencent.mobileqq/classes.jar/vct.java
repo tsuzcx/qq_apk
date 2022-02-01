@@ -1,31 +1,49 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.Collections;
+import java.util.List;
 
 class vct
-  implements aqiv
+  implements vjt
 {
-  vct(vcq paramvcq, IphonePickerView paramIphonePickerView, bkho parambkho) {}
+  vct(vcn paramvcn) {}
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing())) {
-      this.jdField_a_of_type_Bkho.dismiss();
+    QLog.d("QCircleDataEditContentP", 1, "onClickSend()");
+    if ((this.a.a().isFinishing()) || (vcn.a(this.a) == null))
+    {
+      QLog.d("QCircleDataEditContentP", 1, "onCommentSend(): mTroopAddInputPopupWindow null");
+      return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    vcq.a(this.jdField_a_of_type_Vcq).setText(vcq.a(this.jdField_a_of_type_Vcq).a(0, paramInt1));
-    if (vcq.a(this.jdField_a_of_type_Vcq) == null) {
-      vcq.a(this.jdField_a_of_type_Vcq, new QQCirclePrivateMsgShow.StPMSettingData());
+    String str = vcn.a(this.a).a();
+    if (TextUtils.isEmpty(str.trim())) {
+      QQToast.a(this.a.a(), this.a.a().getString(2131697348), 0).a();
     }
-    vcq.a(this.jdField_a_of_type_Vcq).fuelCost.set(Integer.parseInt(vcq.a(this.jdField_a_of_type_Vcq).a(0, paramInt1)));
-    QLog.i("QCirclePrivateMessageSettingContentPart", 1, "fuelUseNumSelect() setSelection  row : " + paramInt2 + " , fuelCost : " + vcq.a(this.jdField_a_of_type_Vcq).fuelCost.get());
-    vrf.a(String.valueOf(uxx.a()), 11, 39, 2, vcq.a(this.jdField_a_of_type_Vcq).a(0, paramInt1), "", "", "", "", this.jdField_a_of_type_Vcq.b());
+    for (;;)
+    {
+      vtq.a(vcn.a(this.a).id.get(), 11, 25, 5, "", str, "", "", "", this.a.b());
+      return;
+      if (!NetworkUtils.isNetworkAvailable(this.a.a()))
+      {
+        QQToast.a(this.a.a(), 1, this.a.a().getString(2131693974), 0).a();
+      }
+      else if (vcn.a(this.a).contains(Long.valueOf(Long.parseLong(str))))
+      {
+        QQToast.a(this.a.a(), 1, this.a.a().getString(2131697350), 0).a();
+      }
+      else
+      {
+        vcn.a(this.a).g();
+        vcn.a(this.a).c("");
+        vcn.a(this.a, Collections.singletonList(Long.valueOf(Long.parseLong(str))));
+      }
+    }
   }
 }
 

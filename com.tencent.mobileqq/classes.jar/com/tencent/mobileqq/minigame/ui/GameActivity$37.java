@@ -1,62 +1,13 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ackn;
-import acko;
-import com.tencent.ad.tangram.util.AdExposureChecker;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.mobileqq.mini.util.AdUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 class GameActivity$37
-  implements acko
+  implements Runnable
 {
   GameActivity$37(GameActivity paramGameActivity) {}
   
-  public void onAdClicked(GdtAd paramGdtAd)
+  public void run()
   {
-    QLog.i("[minigame] GameActivity", 1, "bannerad onAdClicked");
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null) && (AdUtils.isHitReport50ViewAndOneSecond(paramGdtAd.getAd())))
-    {
-      AdExposureChecker.onClick(this.this$0, paramGdtAd.getAd(), new WeakReference(this.this$0.mAdExposureCheckerCallback));
-      return;
-    }
-    QLog.i("[minigame] GameActivity", 1, "ad null");
-  }
-  
-  public void onAdClosed(GdtAd paramGdtAd)
-  {
-    QLog.i("[minigame] GameActivity", 1, "bannerad onAdClosed");
-  }
-  
-  public void onAdFailedToLoad(GdtAd paramGdtAd, ackn paramackn)
-  {
-    int i;
-    if (paramackn != null)
-    {
-      i = paramackn.a();
-      if (paramackn == null) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramGdtAd = paramackn.a();; paramGdtAd = "")
-    {
-      QLog.i("[minigame] GameActivity", 1, "bannerad onAdFailedToLoad code=" + i + ", msg=" + paramGdtAd);
-      return;
-      i = -1;
-      break;
-    }
-  }
-  
-  public void onAdImpression(GdtAd paramGdtAd)
-  {
-    QLog.i("[minigame] GameActivity", 1, "bannerad onAdImpression");
-  }
-  
-  public void onAdLoaded(GdtAd paramGdtAd)
-  {
-    QLog.i("[minigame] GameActivity", 1, "bannerad onAdLoaded");
+    this.this$0.moveTaskToBack(true);
   }
 }
 

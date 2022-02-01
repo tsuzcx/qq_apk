@@ -1,33 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-
-public class nsx
-  implements bkhw
+public abstract interface nsx
 {
-  public nsx(AccountDetailActivity paramAccountDetailActivity) {}
+  public abstract void f();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.F();
-      continue;
-      this.a.H();
-      continue;
-      AccountDetailActivity.d(this.a);
-    }
-  }
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

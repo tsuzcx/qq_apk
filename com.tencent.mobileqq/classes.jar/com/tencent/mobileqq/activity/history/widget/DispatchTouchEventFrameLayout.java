@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history.widget;
 
-import ajva;
+import akgj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class DispatchTouchEventFrameLayout
   extends FrameLayout
 {
-  private ajva a;
+  private akgj a;
   
   public DispatchTouchEventFrameLayout(Context paramContext)
   {
@@ -34,9 +34,9 @@ public class DispatchTouchEventFrameLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setOnDispatchListener(ajva paramajva)
+  public void setOnDispatchListener(akgj paramakgj)
   {
-    this.a = paramajva;
+    this.a = paramakgj;
   }
 }
 

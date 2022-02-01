@@ -1,82 +1,45 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public class oen
+class oen
+  extends biht
 {
-  public static oek a()
+  private WeakReference<oek> a;
+  
+  oen(oek paramoek)
   {
-    oek localoek2 = oem.a();
-    oek localoek1 = localoek2;
-    if (localoek2 == null) {
-      localoek1 = new oek();
-    }
-    return localoek1;
+    this.a = new WeakReference(paramoek);
   }
   
-  public static oel a(int paramInt)
+  public void onDone(bihu parambihu)
   {
-    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    super.onDone(parambihu);
+    if (this.a != null)
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject = (oek)this.a.get();
+      if (localObject != null)
       {
-        oel localoel = (oel)((Iterator)localObject).next();
-        if (localoel.jdField_a_of_type_Int == paramInt) {
-          return localoel;
+        QQAppInterface localQQAppInterface = ((oek)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if ((parambihu.a == 0) && (localQQAppInterface != null))
+        {
+          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambihu.i).commit();
+          ((oek)localObject).b();
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new File(oek.jdField_a_of_type_JavaLangString);
+          long l = 0L;
+          if (((File)localObject).exists()) {
+            l = ((File)localObject).lastModified();
+          }
+          QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambihu.a() + ",errCode=" + parambihu.a + ",httpCode=" + parambihu.f + ",local lastModify=" + l + ",server lastModify=" + parambihu.i);
         }
       }
-    }
-    return new oel();
-  }
-  
-  public static oeo a()
-  {
-    return oep.a();
-  }
-  
-  public static boolean a()
-  {
-    return a(oem.a());
-  }
-  
-  public static boolean a(oek paramoek)
-  {
-    return a(paramoek, 1, 1);
-  }
-  
-  public static boolean a(oek paramoek, int paramInt1, int paramInt2)
-  {
-    if ((paramoek == null) || (paramoek.jdField_a_of_type_JavaUtilArrayList == null) || (paramoek.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return false;
-    }
-    paramoek = paramoek.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (paramoek.hasNext())
-    {
-      oel localoel = (oel)paramoek.next();
-      if ((localoel.b == paramInt1) && (localoel.jdField_a_of_type_Int == paramInt2)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    oek localoek = a();
-    if (localoek == null) {}
-    for (String str = "false";; str = localoek.jdField_a_of_type_Int + "")
-    {
-      QLog.i("EcshopEcshopConfUtil", 2, str);
-      if (localoek != null) {
-        break;
-      }
-      return false;
-    }
-    if (localoek.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
     }
   }
 }

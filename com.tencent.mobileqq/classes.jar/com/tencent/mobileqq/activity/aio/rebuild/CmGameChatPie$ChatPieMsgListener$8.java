@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahyk;
-import ahyw;
-import amoi;
+import aihy;
+import aiik;
+import anac;
 
 public class CmGameChatPie$ChatPieMsgListener$8
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$8(ahyw paramahyw, ahyk paramahyk, int paramInt, long paramLong, String paramString) {}
+  public CmGameChatPie$ChatPieMsgListener$8(aiik paramaiik, aihy paramaihy, int paramInt, long paramLong, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ahyk.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-    if (ahyk.a(this.jdField_a_of_type_Ahyk) != null) {
-      ahyk.a(this.jdField_a_of_type_Ahyk).dismiss();
+    this.jdField_a_of_type_Aihy.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    if (aihy.a(this.jdField_a_of_type_Aihy) != null) {
+      aihy.a(this.jdField_a_of_type_Aihy).dismiss();
     }
   }
 }

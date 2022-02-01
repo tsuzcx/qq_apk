@@ -1,117 +1,212 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.hotpatch.PatchResolveForDalvik;
-import com.tencent.mobileqq.utils.SoLoadUtil;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import java.io.File;
-import java.util.Arrays;
-import java.util.Locale;
+import cooperation.comic.VipProxyPreLoadComicProcess;
+import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import mqq.app.AppRuntime;
 
 public class bmbc
+  extends bmau
 {
-  private static boolean a;
+  public final bmat a;
+  private boolean c;
+  private String d;
+  private int e = 0;
   
-  public static boolean a(String paramString1, Context paramContext, ClassLoader paramClassLoader, String paramString2, bmav parambmav)
+  bmbc(int paramInt)
   {
-    return a(paramString1, paramContext, paramClassLoader, paramString2, parambmav, false);
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_JavaLangString = "comic_plugin.apk";
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_c_of_type_JavaLangString = "comic_plugin.apk";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bmat = new bmat(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    if (paramInt == 6) {
+      this.jdField_a_of_type_Bmat.jdField_a_of_type_Avsk = new avsk("comic_leba_preload", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    }
+    do
+    {
+      return;
+      if (paramInt == 5)
+      {
+        this.jdField_a_of_type_Bmat.jdField_a_of_type_Avsk = new avsk("comic_activity_preload", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+        return;
+      }
+    } while (paramInt != 9999);
+    this.jdField_a_of_type_Bmat.jdField_a_of_type_Avsk = new avsk("comic_web_preload", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
   }
   
-  public static boolean a(String paramString1, Context paramContext, ClassLoader paramClassLoader, String paramString2, bmav parambmav, boolean paramBoolean)
+  private String a()
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  protected void a()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneModuleLoader", 2, "classloader is: " + paramClassLoader + " , classloader class is: " + paramClassLoader.getClass());
+      QLog.d("QQComicDebug", 2, "doPreload start");
     }
-    QLog.d("QzoneModuleLoader", 4, "load module: " + paramString1);
-    if (TextUtils.isEmpty(paramString1)) {}
+    if (!QIPCServerHelper.getInstance().isModuleRunning(this.jdField_c_of_type_JavaLangString)) {
+      VasWebviewUtil.reportVasStatus("qqcomic", "launch_plugin_action", "0", 0, 201);
+    }
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), VipProxyPreLoadComicProcess.class);
+    localIntent.putExtra("userQqResources", 2);
+    localIntent.putExtra("useSkinEngine", false);
+    localIntent.putExtra("params_remote_connect_at_launch", true);
+    localIntent.putExtra("isPreloadProcess", true);
+    localIntent.putExtra("preloadEntry", this.jdField_c_of_type_Int);
+    localIntent.putExtra("sendTime", SystemClock.elapsedRealtime());
+    bmcw.a(BaseApplicationImpl.getApplication().getRuntime(), 1, 1, 0L);
+    bmcx.a(localIntent);
+    if ((bhyk.a() instanceof Serializable)) {
+      localIntent.putExtra("urlMap", (Serializable)bhyk.a());
+    }
+    bmgt localbmgt = new bmgt(0);
+    localbmgt.jdField_b_of_type_JavaLangString = "comic_plugin.apk";
+    localbmgt.jdField_d_of_type_JavaLangString = "comic_plugin";
+    localbmgt.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localbmgt.e = "com.qqcomic.app.VipPreloadComicProcess";
+    this.jdField_a_of_type_Bmat.a(this.e, a(), this.jdField_d_of_type_Int);
+    localbmgt.jdField_a_of_type_Avsk = this.jdField_a_of_type_Bmat.jdField_a_of_type_Avsk;
+    localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
+    bmgk.b(BaseApplicationImpl.getContext(), localbmgt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicDebug", 2, "doPreload end");
+    }
+  }
+  
+  public void a(bmba parambmba)
+  {
+    if (parambmba == null) {
+      return;
+    }
+    this.e = parambmba.jdField_a_of_type_Int;
+    this.jdField_d_of_type_JavaLangString = parambmba.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected boolean a(bmba parambmba)
+  {
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name(), "0|24|0|24");
+    if (localObject != null)
+    {
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length < 4) {}
+    }
+    for (boolean bool = "1".equals(localObject[2]);; bool = false)
+    {
+      if (parambmba != null)
+      {
+        parambmba.jdField_a_of_type_Int = 2;
+        if (!bool) {
+          break label132;
+        }
+      }
+      label132:
+      for (localObject = "preload:ok:dpc";; localObject = "preload:fail:dpc")
+      {
+        parambmba.jdField_a_of_type_JavaLangString = ((String)localObject);
+        parambmba = (bmbb)BaseApplicationImpl.getApplication().getRuntime().getManager(142);
+        if (parambmba != null)
+        {
+          parambmba.a();
+          if (parambmba.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null)
+          {
+            this.jdField_a_of_type_Int = ((bmax)parambmba.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).jdField_b_of_type_Int;
+            this.jdField_c_of_type_Boolean = ((bmax)parambmba.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).jdField_b_of_type_Boolean;
+          }
+        }
+        return bool;
+      }
+    }
+  }
+  
+  protected boolean b(bmba parambmba)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (parambmba == null) {
+      parambmba = new bmba();
+    }
     for (;;)
     {
-      return bool1;
-      if (!new File(paramString1).exists()) {
-        continue;
-      }
-      long l = System.nanoTime();
-      try
-      {
-        paramBoolean = bmbb.a(paramContext, paramClassLoader, paramString1, paramString2, paramBoolean);
-        l = (System.nanoTime() - l) / 1000000L;
-        QLog.d("QzoneModuleLoader", 1, "loaded module success ? " + paramBoolean + " --module:  " + paramString1 + " , classloader: " + paramClassLoader + ", cost:" + l);
-        bool1 = paramBoolean;
-        if (parambmav == null) {
-          continue;
-        }
-        bmbg.b(parambmav, paramBoolean, l);
-        return paramBoolean;
-      }
-      catch (Throwable paramContext)
-      {
-        for (;;)
+      bmbb localbmbb = (bmbb)BaseApplicationImpl.getApplication().getRuntime().getManager(142);
+      int i;
+      if (localbmbb != null) {
+        if ((localbmbb.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null) && (((bmax)localbmbb.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).jdField_a_of_type_Boolean))
         {
-          QLog.e("QzoneModuleLoader", 1, "inject failed, catch an exception:", paramContext);
-          paramBoolean = bool2;
-        }
-      }
-    }
-  }
-  
-  public static boolean a(String paramString1, Context paramContext, String paramString2, bmav parambmav)
-  {
-    long l = System.nanoTime();
-    boolean bool = a(paramString1, paramContext, QzoneModuleConst.class.getClassLoader(), paramString2, parambmav, true);
-    if (bool)
-    {
-      if (Build.VERSION.SDK_INT < 21) {}
-      for (;;)
-      {
-        try
-        {
-          if (!a)
-          {
-            if ((!Build.CPU_ABI.toLowerCase(Locale.US).contains("x86")) && (!SoLoadUtil.b())) {
-              continue;
-            }
-            QLog.d("QzoneModuleLoader", 4, "is x86,so call loadNativeLibrary.");
-            a = SoLoadUtil.a(paramContext.getApplicationContext(), "qq_patch", 0, false, false);
+          i = 1;
+          if (this.jdField_c_of_type_Int != 5) {
+            break label218;
           }
-          if (!a) {
-            continue;
+          if ((i != 0) && (localbmbb.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1)) {
+            break label164;
           }
-          i = PatchResolveForDalvik.a(Arrays.asList(parambmav.h.split(";")), parambmav.a);
+          parambmba.jdField_a_of_type_Int = 1;
+          parambmba.jdField_a_of_type_JavaLangString = "preload:ok:publicaccount";
+          label105:
+          bool2 = bool1;
+          if (localbmbb.b.get() != null) {
+            this.jdField_d_of_type_Int = ((bmaw)localbmbb.b.get()).jdField_a_of_type_Int;
+          }
         }
-        catch (Throwable paramContext)
+      }
+      for (bool2 = bool1;; bool2 = false)
+      {
+        this.e = parambmba.jdField_a_of_type_Int;
+        this.jdField_d_of_type_JavaLangString = parambmba.jdField_a_of_type_JavaLangString;
+        return bool2;
+        i = 0;
+        break;
+        label164:
+        if (localbmbb.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {}
+        for (bool1 = bool2;; bool1 = false)
         {
-          QLog.e("QzoneModuleLoader", 1, "catch an exception:", paramContext);
-          i = -1;
-          continue;
-          QLog.e("QzoneModuleLoader", 1, "resolvePatchClass failed: " + paramString1 + " ,load so failed.");
-          bmbg.a(parambmav, "-1", (System.nanoTime() - l) / 1000000L);
-        }
-        if (i == 0) {
+          if (!bool1) {
+            break label203;
+          }
+          parambmba.jdField_a_of_type_Int = 2;
+          parambmba.jdField_a_of_type_JavaLangString = "preload:ok:publicaccount";
           break;
         }
-        QLog.e("QzoneModuleLoader", 1, "resolvePatchClass failed: " + paramString1 + " ,resolveRes: " + i + ",classIdCount:" + parambmav.a);
-        paramString1 = bmbb.a(QzoneModuleConst.class.getClassLoader(), 0);
-        l = (System.nanoTime() - l) / 1000000L;
-        bmbg.a(parambmav, "0", l);
-        QLog.i("QzoneModuleLoader", 1, "----------unloadDexElement " + paramString1 + " , cost:" + l);
-        return false;
-        a = SoLoadUtilNew.loadSoByName(paramContext.getApplicationContext(), "qq_patch");
-        continue;
-        int i = 0;
+        label203:
+        parambmba.jdField_a_of_type_Int = 2;
+        parambmba.jdField_a_of_type_JavaLangString = "preload:fail:publicaccount";
+        break label105;
+        label218:
+        if (this.jdField_c_of_type_Int == 6)
+        {
+          if ((i != 0) && (localbmbb.b.get() != null))
+          {
+            bool1 = a((bmaw)localbmbb.b.get(), String.valueOf(1113), localbmbb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.android.animation", localbmbb.a(), localbmbb.a(), localbmbb.a(), parambmba);
+            break label105;
+          }
+          parambmba.jdField_a_of_type_Int = 1;
+          parambmba.jdField_a_of_type_JavaLangString = "preload:fail:normal";
+          bool1 = false;
+          break label105;
+        }
+        if (this.jdField_c_of_type_Int == 9999)
+        {
+          parambmba.jdField_a_of_type_Int = 1;
+          parambmba.jdField_a_of_type_JavaLangString = "preload:ok:web";
+          break label105;
+        }
+        parambmba.jdField_a_of_type_Int = 1;
+        parambmba.jdField_a_of_type_JavaLangString = "preload:fail:unknownentry";
+        bool1 = false;
+        break label105;
       }
-      l = (System.nanoTime() - l) / 1000000L;
-      QLog.i("QzoneModuleLoader", 1, "----------resolve class successful, cost:" + l);
-      bmbg.a(parambmav, "1", l);
-      return true;
     }
-    QLog.e("QzoneModuleLoader", 1, "loadModule failed: " + paramString1);
-    bmbg.a(parambmav, "0", (System.nanoTime() - l) / 1000000L);
-    return bool;
   }
 }
 

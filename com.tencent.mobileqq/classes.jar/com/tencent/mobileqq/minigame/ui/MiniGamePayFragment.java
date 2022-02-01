@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
+import anzj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -58,7 +58,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", anni.a(2131705623));
+        paramString1.put("resultMsg", anzj.a(2131705730));
         if (paramString1 != null) {
           paramString1 = paramString1.toString();
         }
@@ -88,7 +88,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", anni.a(2131705628));
+        paramString1.put("errMsg", anzj.a(2131705735));
         paramString1 = paramString1.toString();
         if (paramString1 != null) {
           handleNativeResponse(paramString3, paramString1, paramInt2);

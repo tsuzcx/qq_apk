@@ -1,25 +1,11 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class alov
-  implements Comparable<alov>
+class alov
+  extends alnm
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  public alov(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(alov paramalov)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramalov.jdField_a_of_type_Long);
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

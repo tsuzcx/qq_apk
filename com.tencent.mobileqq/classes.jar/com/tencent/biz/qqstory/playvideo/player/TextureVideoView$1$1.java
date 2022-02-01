@@ -2,24 +2,24 @@ package com.tencent.biz.qqstory.playvideo.player;
 
 import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
-import xqe;
-import xrt;
+import xtz;
+import xvo;
 
 public class TextureVideoView$1$1
   implements Runnable
 {
-  public TextureVideoView$1$1(xqe paramxqe, xrt paramxrt) {}
+  public TextureVideoView$1$1(xtz paramxtz, xvo paramxvo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Xqe.a.d = this.jdField_a_of_type_Xrt.c();
-    this.jdField_a_of_type_Xqe.a.e = this.jdField_a_of_type_Xrt.d();
-    if ((this.jdField_a_of_type_Xqe.a.d != 0) && (this.jdField_a_of_type_Xqe.a.e != 0))
+    this.jdField_a_of_type_Xtz.a.d = this.jdField_a_of_type_Xvo.c();
+    this.jdField_a_of_type_Xtz.a.e = this.jdField_a_of_type_Xvo.d();
+    if ((this.jdField_a_of_type_Xtz.a.d != 0) && (this.jdField_a_of_type_Xtz.a.e != 0))
     {
       if (Build.VERSION.SDK_INT >= 15) {
-        this.jdField_a_of_type_Xqe.a.getSurfaceTexture().setDefaultBufferSize(this.jdField_a_of_type_Xqe.a.d, this.jdField_a_of_type_Xqe.a.e);
+        this.jdField_a_of_type_Xtz.a.getSurfaceTexture().setDefaultBufferSize(this.jdField_a_of_type_Xtz.a.d, this.jdField_a_of_type_Xtz.a.e);
       }
-      this.jdField_a_of_type_Xqe.a.requestLayout();
+      this.jdField_a_of_type_Xtz.a.requestLayout();
     }
   }
 }

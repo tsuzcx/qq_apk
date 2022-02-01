@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import afmb;
+import afvf;
 
 public class TroopMemberListActivity$28$2
   implements Runnable
 {
-  public TroopMemberListActivity$28$2(afmb paramafmb) {}
+  public TroopMemberListActivity$28$2(afvf paramafvf) {}
   
   public void run()
   {

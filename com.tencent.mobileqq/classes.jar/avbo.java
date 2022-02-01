@@ -1,16 +1,26 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
 public class avbo
-  implements StaggeredGridLayoutManager.ExceptionListener
+  implements DialogInterface.OnClickListener
 {
-  public avbo(HotPicPageView paramHotPicPageView) {}
+  public avbo(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    paramDialogInterface.setFlags(268435456);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

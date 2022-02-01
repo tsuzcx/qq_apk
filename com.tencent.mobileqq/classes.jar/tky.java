@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class tky
-  implements View.OnClickListener
+public abstract interface tky
 {
-  public tky(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    CommonSuspensionGestureLayout.a(this.a).a(true, 0, 5);
-    CommonSuspensionGestureLayout.a(this.a, 5);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(tqt paramtqt, int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

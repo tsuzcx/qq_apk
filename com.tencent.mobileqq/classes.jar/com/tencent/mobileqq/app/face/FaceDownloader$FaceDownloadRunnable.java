@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.face;
 
 import android.os.Process;
-import aocf;
+import aoor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashSet;

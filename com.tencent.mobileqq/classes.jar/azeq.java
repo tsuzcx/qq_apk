@@ -1,71 +1,27 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
 public class azeq
-  implements AdapterView.OnItemClickListener
+  extends QQBroadcastReceiver
 {
-  azeq(azep paramazep) {}
+  public azeq(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
-    }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719199;
-      }
-    }
-    for (;;)
+    if (paramIntent == null) {}
+    do
     {
-      if (i != -1) {
-        zvc.a(1, i);
+      return;
+      paramAppRuntime = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
       }
-      for (;;)
-      {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label233;
-        }
-        i = 2131719200;
-        break;
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          zvc.a(1, 2131698164);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_Azes.a(true);
-          switch ((int)paramLong)
-          {
-          default: 
-            break;
-          case 0: 
-            ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
-            break;
-          case 1: 
-            ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
-            break;
-          case 2: 
-          case 3: 
-            ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
-          }
-        }
-      }
-      label233:
-      i = -1;
-    }
+    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
+    ScanTorchActivity.a(this.a);
   }
 }
 

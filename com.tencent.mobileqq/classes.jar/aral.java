@@ -1,51 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aral
+final class aral
 {
-  private Map<String, List<aram>> a = new HashMap();
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  private final String c;
   
-  public static aral a(aqlg[] paramArrayOfaqlg)
+  public aral(int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      return null;
-    }
-    localaral = new aral();
-    try
-    {
-      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
-      Iterator localIterator = paramArrayOfaqlg.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONArray localJSONArray = paramArrayOfaqlg.getJSONArray(str);
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(aram.a(localJSONArray.getJSONObject(i)));
-          i += 1;
-        }
-        localaral.a.put(str, localArrayList);
-      }
-      return localaral;
-    }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfaqlg);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramString2;
+    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
   }
   
-  public Map<String, List<aram>> a()
+  public boolean equals(Object paramObject)
   {
-    return this.a;
+    if (!(paramObject instanceof aral)) {}
+    do
+    {
+      return false;
+      paramObject = (aral)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.c.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
   }
 }
 

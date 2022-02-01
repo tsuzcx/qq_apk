@@ -1,18 +1,161 @@
+import android.os.Environment;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
+import android.support.annotation.NonNull;
+import com.google.gson.Gson;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.io.File;
+import java.util.HashMap;
 
-public final class aotx
-  implements Parcelable.Creator<ARRelationShipAIOMsg>
+public class aotx
 {
-  public ARRelationShipAIOMsg a(Parcel paramParcel)
+  private static volatile boolean b;
+  private volatile long jdField_a_of_type_Long;
+  private volatile Parcel jdField_a_of_type_AndroidOsParcel;
+  private volatile Thread jdField_a_of_type_JavaLangThread;
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  @NonNull
+  private PermissionMonitor.Listener a()
   {
-    return new ARRelationShipAIOMsg(paramParcel);
+    return new aoty(this);
   }
   
-  public ARRelationShipAIOMsg[] a(int paramInt)
+  private void a(aosy paramaosy, String paramString)
   {
-    return new ARRelationShipAIOMsg[paramInt];
+    paramaosy = new Gson().toJson(paramaosy);
+    String str = bigv.a(Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/MessageHandlerOnReceive/");
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    bhmi.a(str, System.currentTimeMillis() + "-" + paramString + ".json", paramaosy);
+  }
+  
+  private void a(Thread paramThread, Parcel paramParcel, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private byte[] a(FromServiceMsg paramFromServiceMsg)
+  {
+    Parcel localParcel = Parcel.obtain();
+    Number localNumber = ShadowParcel.a();
+    b(Thread.currentThread(), localParcel, localNumber.longValue());
+    paramFromServiceMsg.writeToParcel(localParcel, 0);
+    a(Thread.currentThread(), localParcel, localNumber.longValue());
+    paramFromServiceMsg = ShadowParcel.a(localNumber.intValue());
+    localParcel.recycle();
+    return paramFromServiceMsg;
+  }
+  
+  private byte[] a(ToServiceMsg paramToServiceMsg)
+  {
+    Parcel localParcel = Parcel.obtain();
+    Number localNumber = ShadowParcel.a();
+    b(Thread.currentThread(), localParcel, localNumber.longValue());
+    paramToServiceMsg.mSkipBinderWhenMarshall = true;
+    paramToServiceMsg.writeToParcel(localParcel, 0);
+    paramToServiceMsg.mSkipBinderWhenMarshall = false;
+    a(Thread.currentThread(), localParcel, localNumber.longValue());
+    paramToServiceMsg = ShadowParcel.a(localNumber.intValue());
+    localParcel.recycle();
+    return paramToServiceMsg;
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener b()
+  {
+    return new aotz(this);
+  }
+  
+  private void b(Thread paramThread, Parcel paramParcel, long paramLong)
+  {
+    if (!b)
+    {
+      b = true;
+      PermissionMonitor.Listener localListener1 = i();
+      PermissionMonitor.Listener localListener2 = h();
+      PermissionMonitor.Listener localListener3 = e();
+      PermissionMonitor.Listener localListener4 = a();
+      PermissionMonitor.Listener localListener5 = b();
+      PermissionMonitor.Listener localListener6 = c();
+      PermissionMonitor.Listener localListener7 = d();
+      PermissionMonitor.Listener localListener8 = f();
+      PermissionMonitor.Listener localListener9 = g();
+      PermissionMonitor.getInstance().config(new PermissionMonitor.Listener[] { localListener1, localListener2, localListener3, localListener4, localListener5, localListener6, localListener7, localListener8, localListener9 }, new String[] { "android/os/Parcel$ReadWriteHelper", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel" }, new String[] { "writeString", "writeStringNoHelper", "writeInt", "writeLong", "writeFloat", "writeDouble", "writeByteArray", "writeBlob", "setDataPosition" }, new String[] { "(Landroid/os/Parcel;Ljava/lang/String;)V", "(Ljava/lang/String;)V", "(I)V", "(J)V", "(F)V", "(D)V", "([BII)V", "([BII)V", "(I)V" }).start();
+    }
+    this.jdField_a_of_type_JavaLangThread = paramThread;
+    this.jdField_a_of_type_AndroidOsParcel = paramParcel;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener c()
+  {
+    return new aoua(this);
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener d()
+  {
+    return new aoub(this);
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener e()
+  {
+    return new aouc(this);
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener f()
+  {
+    return new aoud(this);
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener g()
+  {
+    return new aoue(this);
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener h()
+  {
+    return new aouf(this);
+  }
+  
+  @NonNull
+  private PermissionMonitor.Listener i()
+  {
+    return new aoug(this);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = bhjx.a(a(paramToServiceMsg));
+    if (QLog.isColorLevel()) {
+      QLog.d("ParcelHooker", 2, "printParams reqData=[" + paramToServiceMsg + "]");
+    }
+    Object localObject = paramFromServiceMsg.attributes.remove("FromServiceMsg");
+    String str = bhjx.a(a(paramFromServiceMsg));
+    paramFromServiceMsg.attributes.put("FromServiceMsg", localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ParcelHooker", 2, "printParams respData=[" + str + "]");
+    }
+    localObject = new aosy();
+    ((aosy)localObject).jdField_a_of_type_JavaLangString = paramToServiceMsg;
+    ((aosy)localObject).jdField_b_of_type_JavaLangString = str;
+    ((aosy)localObject).c = "placeholder for MessageRecord's metadata";
+    ((aosy)localObject).jdField_b_of_type_Int = 1;
+    ((aosy)localObject).jdField_a_of_type_Int = 1;
+    a((aosy)localObject, paramFromServiceMsg.getServiceCmd());
   }
 }
 

@@ -1,64 +1,51 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
-class agme
-  implements avwu
+public class agme
 {
-  agme(agmd paramagmd) {}
+  public Bitmap a;
+  public NinePatch a;
   
-  public void a(avwp paramavwp, int paramInt)
+  public void a()
   {
-    if ((agmd.a(this.a) == agmd.a(this.a).a().a()) && (agmd.a(this.a, paramavwp.a(), paramavwp.a()))) {
-      agmd.a(this.a).a().a();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
   }
   
-  public void a(avwp paramavwp, int paramInt1, int paramInt2) {}
-  
-  public void a(avwp paramavwp, LocationRoom.Venue paramVenue, List<avwn> paramList)
+  public void a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareHelper", 2, "[queryLocationRoom] onUpdateUserLocations: invoked. sessionUin: " + paramavwp.a() + " itemList: " + paramList.size());
-    }
-    paramVenue = awbw.a(agmd.a(this.a).a).a().a();
-    if ((paramVenue != null) && (paramVenue.equals(paramavwp))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareHelper", 2, new Object[] { "onUpdateUserLocations: invoked. ", " roomKey: ", paramavwp, " currentFloatWindowVisibleRoomKey: ", paramVenue });
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
+      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
       }
     }
-    do
+    else
     {
-      do
-      {
-        return;
-      } while (!agmd.a(this.a, paramavwp.a(), paramavwp.a()));
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        break;
-      }
-    } while (agmd.a(this.a) != agmd.a(this.a).a().a());
-    agmd.a(this.a).a().a();
-    return;
-    paramVenue = new ArrayList();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      paramVenue.add(((avwn)paramList.get(i)).a());
-      i += 1;
+      return;
     }
-    boolean bool = paramVenue.contains(agmd.a(this.a).a.c());
-    agmd.a(this.a).a(bool, agmd.a(this.a, paramavwp, (String)paramVenue.get(0)), paramList.size(), paramVenue);
-    agmd.a(this.a).a().a(agmd.a(this.a), new Object[0]);
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
   }
   
-  public void b(avwp paramavwp, int paramInt)
+  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
   {
-    if ((agmd.a(this.a) == agmd.a(this.a).a().a()) && (agmd.a(this.a, paramavwp.a(), paramavwp.a()))) {
-      agmd.a(this.a).a().a();
+    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
+      if (paramPaint != null) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
+      }
     }
+    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
   }
 }
 

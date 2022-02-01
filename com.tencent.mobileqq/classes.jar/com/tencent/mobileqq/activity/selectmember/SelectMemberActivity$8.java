@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import bcst;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
-import muc;
+import mvb;
 
 class SelectMemberActivity$8
   implements Runnable
@@ -11,7 +11,7 @@ class SelectMemberActivity$8
   
   public void run()
   {
-    bcst.b(this.this$0.app, "dc00899", "invite_friend", "", "friend_list", this.a, 0, 0, this.this$0.c, muc.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), this.this$0.c) + "", "", "");
+    bdll.b(this.this$0.app, "dc00899", "invite_friend", "", "friend_list", this.a, 0, 0, this.this$0.c, mvb.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), this.this$0.c) + "", "", "");
   }
 }
 

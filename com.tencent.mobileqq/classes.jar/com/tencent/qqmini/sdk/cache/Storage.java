@@ -15,9 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Storage
 {
   public static final int CACHE_VERSION = 1;
+  public static final Object LOCK = new Object();
   public static final int MAX_SIZE = 10485760;
   private static final String TAG = "Storage";
-  public static final Object lock = new Object();
   private static final ConcurrentHashMap<String, Storage> mMapList = new ConcurrentHashMap();
   private String mApkname;
   private WeakReference<Context> mContextRef;
@@ -139,7 +139,7 @@ public class Storage
     //   36: astore_3
     //   37: aload 4
     //   39: ifnonnull +59 -> 98
-    //   42: getstatic 35	com/tencent/qqmini/sdk/cache/Storage:lock	Ljava/lang/Object;
+    //   42: getstatic 35	com/tencent/qqmini/sdk/cache/Storage:LOCK	Ljava/lang/Object;
     //   45: astore 7
     //   47: aload 7
     //   49: monitorenter
@@ -358,7 +358,7 @@ public class Storage
     //   103: monitorenter
     //   104: aload_0
     //   105: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
-    //   108: ldc 9
+    //   108: ldc 11
     //   110: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
     //   113: invokevirtual 126	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
     //   116: invokeinterface 282 1 0
@@ -392,7 +392,7 @@ public class Storage
     //   165: astore 4
     //   167: aload_2
     //   168: astore_3
-    //   169: ldc 13
+    //   169: ldc 15
     //   171: aload_1
     //   172: invokevirtual 107	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   175: aload_1
@@ -517,13 +517,13 @@ public class Storage
     //   11: invokevirtual 318	java/lang/String:length	()I
     //   14: ldc_w 319
     //   17: if_icmplt +25 -> 42
-    //   20: ldc 13
+    //   20: ldc 15
     //   22: ldc_w 321
     //   25: invokestatic 104	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: iconst_0
     //   29: ireturn
     //   30: astore_1
-    //   31: ldc 13
+    //   31: ldc 15
     //   33: ldc_w 323
     //   36: aload_1
     //   37: invokestatic 110	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -552,7 +552,7 @@ public class Storage
     //   84: ldc2_w 80
     //   87: lcmp
     //   88: ifle +34 -> 122
-    //   91: ldc 13
+    //   91: ldc 15
     //   93: ldc_w 321
     //   96: invokestatic 104	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   99: aload_0
@@ -596,7 +596,7 @@ public class Storage
     //   167: monitorenter
     //   168: aload_0
     //   169: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
-    //   172: ldc 9
+    //   172: ldc 11
     //   174: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
     //   177: invokevirtual 126	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
     //   180: invokeinterface 282 1 0
@@ -618,7 +618,7 @@ public class Storage
     //   210: aload_2
     //   211: athrow
     //   212: astore_1
-    //   213: ldc 13
+    //   213: ldc 15
     //   215: aload_1
     //   216: invokevirtual 107	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   219: aload_1

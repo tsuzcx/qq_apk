@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import arqk;
-import arxr;
-import bgnt;
+import asfy;
+import asnf;
+import bhnv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class EmoticonPanelCameraHelper$6
   implements Runnable
 {
-  public EmoticonPanelCameraHelper$6(arxr paramarxr, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  public EmoticonPanelCameraHelper$6(asnf paramasnf, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if ((!bgnt.d(this.jdField_a_of_type_AndroidContentContext)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+    if ((!bhnv.d(this.jdField_a_of_type_AndroidContentContext)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return;
     }
-    ((arqk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).b();
+    ((asfy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).b();
   }
 }
 

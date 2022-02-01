@@ -1,52 +1,20 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.menu.AbsMenuFlag;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.BaseRecentUser;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.os.ResultReceiver;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aldu
-  extends AbsMenuFlag
+class aldu
+  implements EIPCResultCallback
 {
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  aldu(aldt paramaldt, ResultReceiver paramResultReceiver) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return false;
-    }
-    paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
-    paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
-    int i;
-    if ((((RecentUserBaseData)paramRecentBaseData).mUser.getType() == 1) && (!axbp.a(paramIMCoreAppRuntime, (RecentUser)((RecentUserBaseData)paramRecentBaseData).mUser)))
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(52);
-      int j = paramRecentBaseData.mMenuFlag;
-      if (paramIMCoreAppRuntime.b(((RecentUserBaseData)paramRecentBaseData).mUser.uin))
-      {
-        i = 32;
-        label93:
-        paramRecentBaseData.mMenuFlag = (i | j);
-      }
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
+      return;
     }
-    for (;;)
-    {
-      paramRecentBaseData.mMenuFlag &= 0xF0FFFFFF;
-      if (((RecentUserBaseData)paramRecentBaseData).mUser.isHiddenChat != 1) {
-        break;
-      }
-      paramRecentBaseData.mMenuFlag |= 0x1000000;
-      return false;
-      i = 16;
-      break label93;
-      FriendsStatusUtil.a(paramIMCoreAppRuntime, (RecentUser)((RecentUserBaseData)paramRecentBaseData).mUser);
-      if ((((RecentUserBaseData)paramRecentBaseData).mUser.showUpTime == 0L) && (9223372036854775807L - ((RecentUserBaseData)paramRecentBaseData).mUser.lastmsgtime > 4L)) {
-        paramRecentBaseData.mMenuFlag |= 0x10;
-      } else {
-        paramRecentBaseData.mMenuFlag |= 0x20;
-      }
-    }
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
   }
 }
 

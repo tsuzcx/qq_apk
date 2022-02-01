@@ -1,55 +1,47 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class akkt
-  extends akif
+  extends ahgk
 {
-  protected akkt(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  boolean a;
+  
+  public akkt(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    super(paramNewPhotoPreviewActivity);
+    super(paramContext, paramQQAppInterface, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void initData(Intent paramIntent)
+  private boolean a(int paramInt)
   {
-    int i = ((NewPhotoPreviewActivity)this.mActivity).getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
-    ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    ArrayList localArrayList2 = new ArrayList();
-    if (localArrayList1 != null) {
-      localArrayList2.addAll(localArrayList1);
-    }
-    super.initData(paramIntent);
-    this.a.paths.clear();
-    this.a.paths = localArrayList2;
-    this.a.totalPicCount = this.a.paths.size();
-    this.a.firstSelectedPostion = i;
-    if (this.a.firstSelectedPostion >= this.a.totalPicCount) {
-      this.a.firstSelectedPostion = -1;
-    }
-    this.mPhotoCommonData.selectedIndex.clear();
-    this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(this.a.firstSelectedPostion));
-    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-    if (this.mPhotoCommonData.selectedPhotoList == null) {
-      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
-    }
-    for (;;)
-    {
-      if ((paramIntent != null) && (!paramIntent.equals(""))) {
-        this.mPhotoCommonData.selectedPhotoList.add(paramIntent);
+    return (paramInt == 62) || (paramInt == 96) || (paramInt == 75);
+  }
+  
+  public aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage))) {
+      if (this.jdField_a_of_type_Akkx == null) {
+        this.jdField_a_of_type_Akkx = new akkx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
       }
-      QLog.d("PhotoPreviewLogicScanEntry", 1, new Object[] { "count=", Integer.valueOf(this.a.totalPicCount), " pos=", Integer.valueOf(this.a.firstSelectedPostion) });
-      return;
-      this.mPhotoCommonData.selectedPhotoList.clear();
+    }
+    for (paramChatMessage = a(this.jdField_a_of_type_Akkx, paramBaseAdapter);; paramChatMessage = super.a(paramChatMessage, paramBaseAdapter))
+    {
+      if ((paramChatMessage instanceof BaseBubbleBuilder)) {
+        ((BaseBubbleBuilder)paramChatMessage).b = true;
+      }
+      return paramChatMessage;
     }
   }
   
-  public void initUI()
+  public void a(boolean paramBoolean)
   {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

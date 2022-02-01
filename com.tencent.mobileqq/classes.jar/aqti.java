@@ -1,72 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.PorterDuff.Mode;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqti
-  extends aqkz<aqtj>
+  implements OnCompositionLoadedListener
 {
-  public static aqtj a()
-  {
-    return (aqtj)aqlk.a().a(647);
-  }
+  public aqti(DefaultItemBuilder.1 param1) {}
   
-  @NonNull
-  public aqtj a(int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    return new aqtj();
-  }
-  
-  @Nullable
-  public aqtj a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqtj.a(paramArrayOfaqlg);
+    if (paramLottieComposition == null)
+    {
+      QLog.e("DefaultItemBuilder", 1, "getLottieDrawable onCompositionLoaded failed");
+      return;
     }
-    return null;
-  }
-  
-  public void a(aqtj paramaqtj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaHttpsConfProcessor", 2, "RichmediaHttpsConfProcessor onUpdate");
-    }
-  }
-  
-  public Class<aqtj> clazz()
-  {
-    return aqtj.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 647;
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    localLottieDrawable.setColorFilter(-16777216, PorterDuff.Mode.MULTIPLY);
+    this.a.a.a = localLottieDrawable;
+    ThreadManagerV2.getUIHandlerV2().post(new DefaultItemBuilder.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqti
  * JD-Core Version:    0.7.0.1
  */

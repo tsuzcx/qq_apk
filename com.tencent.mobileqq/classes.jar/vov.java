@@ -1,18 +1,21 @@
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader.PicDownLoadTask;
-import java.util.Comparator;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class vov
-  implements Comparator<Runnable>
+class vov
+  implements wak
 {
-  public vov(QCircleFeedPicLoader paramQCircleFeedPicLoader) {}
+  vov(vou paramvou) {}
   
-  public int a(Runnable paramRunnable1, Runnable paramRunnable2)
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    if (((paramRunnable1 instanceof QCircleFeedPicLoader.PicDownLoadTask)) && ((paramRunnable2 instanceof QCircleFeedPicLoader.PicDownLoadTask))) {
-      return ((QCircleFeedPicLoader.PicDownLoadTask)paramRunnable1).a().d() - ((QCircleFeedPicLoader.PicDownLoadTask)paramRunnable2).a().d();
+    vud localvud = vud.a();
+    vuf localvuf = new vuf().a("followbutton");
+    if (paramBoolean) {}
+    for (String str = "follow";; str = "unfollow")
+    {
+      localvud.a(localvuf.b(str).a(this.a.a()).c(paramStUser.id.get()));
+      return;
     }
-    return 0;
   }
 }
 

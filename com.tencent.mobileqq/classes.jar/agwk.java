@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
-
-public class agwk
+public abstract interface agwk
 {
-  public int a;
-  public String a;
-  
-  public agwk(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  public abstract void a(int paramInt);
 }
 
 

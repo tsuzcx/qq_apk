@@ -1,263 +1,129 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.util.NearbyProfileUtil.2;
-import tencent.sso.accretion.flower_info.SFlowerInfoRsp;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class bght
+public abstract class bght
+  extends bghq
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  public static final String[] d;
-  public static final String[] e;
-  
-  static
+  public bght(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "男", "女" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845524, 2130845532 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "保密", "单身", "恋爱中", "已婚" };
-    c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
-    d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
-    e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130845882, 2130844919, 2130844919, 2130844919, 2130845640, 2130845640, 2130845900, 2130845900, 2130845424, 2130845424, 2130845424, 2130845882, 2130845882, 2130845701, 2130845882 };
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
   }
   
-  public static final int a(int paramInt)
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    if ((paramInt >= 0) && (paramInt <= 1)) {
-      return jdField_a_of_type_ArrayOfInt[paramInt];
-    }
-    return 0;
-  }
-  
-  public static final int a(byte[] paramArrayOfByte)
-  {
-    int j = 0;
-    int i = j;
-    flower_info.SFlowerInfoRsp localSFlowerInfoRsp;
-    if (paramArrayOfByte != null) {
-      localSFlowerInfoRsp = new flower_info.SFlowerInfoRsp();
-    }
-    try
+    bfpe localbfpe = bfpe.a(paramInt1, paramLong1, paramInt2);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    Object localObject;
+    if (!bhnm.a(paramList))
     {
-      localSFlowerInfoRsp.mergeFrom(paramArrayOfByte);
-      i = j;
-      if (localSFlowerInfoRsp.num.has()) {
-        i = localSFlowerInfoRsp.num.get();
+      localObject = this.jdField_a_of_type_AndroidContentContext;
+      if (paramInt1 == 17)
+      {
+        paramInt1 = 2131693899;
+        if (paramList.size() <= 99) {
+          break label366;
+        }
+        paramObject = "99+";
+        label73:
+        paramObject = ((Context)localObject).getString(paramInt1, new Object[] { paramObject });
+        localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        if (localObject == null) {
+          break label492;
+        }
+        localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((localObject == null) || (!((TroopInfo)localObject).hasOrgs())) {
+          break label380;
+        }
+        paramInt1 = 1;
       }
-      return i;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
+      label138:
+      label184:
+      label187:
+      label235:
+      boolean bool1;
+      if (paramInt1 != 0)
+      {
+        if (paramList.size() == 1) {
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_work", "", "use", "focus", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        }
+      }
+      else
+      {
+        paramList = paramObject;
+        if (!MessageForQQWalletMsg.isRedPacketMsg(localMessageRecord)) {
+          break label471;
+        }
+        paramList = (MessageForQQWalletMsg)localMessageRecord;
+        if ((paramList.messageType != 7) && (paramList.messageType != 8)) {
+          break label455;
+        }
+        paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131717894);
+        localbfpe.b = true;
+        if ((localMessageRecord == null) || (!a(localMessageRecord, paramLong2, paramLong3))) {
+          break label482;
+        }
+        paramObject = localMessageRecord.senderuin;
+        bool1 = true;
+      }
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localObject = this.jdField_a_of_type_JavaLangString + ".troop.special_msg.special_attention";
+          localStringBuilder = new StringBuilder().append("需要定位的第一条消息是否已经拉到本地：");
+          if (localMessageRecord == null) {
+            break label474;
+          }
+        }
+        label455:
+        label471:
+        label474:
+        for (boolean bool2 = true;; bool2 = false)
+        {
+          QLog.d((String)localObject, 2, bool2 + ", isShow = " + bool1);
+          if (!bool1) {
+            break label480;
+          }
+          return new bghs(true, paramList, localbfpe, paramObject);
+          paramInt1 = 2131698513;
+          break;
+          label366:
+          paramObject = Integer.valueOf(paramList.size());
+          break label73;
+          label380:
+          paramInt1 = 0;
+          break label138;
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_work", "", "use", "msg_owner", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramList.size() + "", "", "");
+          break label184;
+          paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131718324);
+          break label187;
+          paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131717880);
+          localbfpe.a = true;
+          break label235;
+        }
+        label480:
+        return null;
+        label482:
+        bool1 = false;
+        paramObject = "";
       }
+      label492:
+      paramInt1 = 0;
     }
-  }
-  
-  private static final long a()
-  {
-    return 0L | 0x4 | 0x800 | 0x1000 | 0x8000;
-  }
-  
-  public static final String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < jdField_b_of_type_ArrayOfJavaLangString.length)) {
-      return jdField_b_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return "";
-  }
-  
-  public static final void a(axeq paramaxeq, QQAppInterface paramQQAppInterface, long paramLong1, String paramString, int paramInt1, byte[] paramArrayOfByte, long paramLong2, boolean paramBoolean1, long paramLong3, boolean paramBoolean2, long paramLong4, int paramInt2)
-  {
-    if (paramLong1 > 0L)
-    {
-      if (ProfileActivity.d(paramInt1))
-      {
-        paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 45, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (ProfileActivity.b(paramInt1))
-      {
-        paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 39, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 16)
-      {
-        paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 46, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 38)
-      {
-        paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 47, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 100)
-      {
-        paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 49, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      if (paramInt1 == 51)
-      {
-        paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 51, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-        return;
-      }
-      paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), "0", 41, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-      return;
-    }
-    if (paramString.equals(paramQQAppInterface.getCurrentAccountUin()))
-    {
-      paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentAccountUin(), 0, 0L, (byte)0, 0L, 0L, null, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-      return;
-    }
-    int i = 6;
-    if (ProfileActivity.c(paramInt1)) {
-      i = 42;
-    }
-    for (;;)
-    {
-      paramaxeq.a(paramQQAppInterface.getCurrentAccountUin(), paramString, i, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
-      return;
-      if (ProfileActivity.d(paramInt1)) {
-        i = 45;
-      } else if (ProfileActivity.b(paramInt1)) {
-        i = 39;
-      } else if (paramInt1 == 16) {
-        i = 46;
-      } else if (paramInt1 == 38) {
-        i = 47;
-      } else if (paramInt1 == 51) {
-        i = 51;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_is_nearby_people_card", true);
-    localBundle.putShort("key_new_profile_modified_flag", (short)1);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putShort("key_flower_visible_switch", (short)i);
-      localBundle.putBoolean("key_nearby_people_card_force_update", true);
-      axeq localaxeq = (axeq)paramQQAppInterface.a(60);
-      if (localaxeq == null) {
-        break;
-      }
-      paramQQAppInterface.a(new NearbyProfileUtil.2(localaxeq, localBundle));
-      return;
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -1) || ((paramInt >= 0) && (paramInt < d.length));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return true;
-    }
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
-    paramQQAppInterface = null;
-    Object localObject = null;
-    if (localEntityManager != null)
-    {
-      paramQQAppInterface = localObject;
-      if (!bgsp.a(str)) {
-        paramQQAppInterface = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { str });
-      }
-      localEntityManager.close();
-    }
-    boolean bool;
-    if (paramQQAppInterface != null) {
-      if (paramQQAppInterface.switchGiftVisible == 0L) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      bool = false;
-      continue;
-      bool = true;
-    }
-  }
-  
-  public static final int b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 14)) {
-      return jdField_b_of_type_ArrayOfInt[paramInt];
-    }
-    return 0;
-  }
-  
-  public static final String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 1)) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return "";
-  }
-  
-  public static int c(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 5) {
-      return 2;
-    }
-    if (ProfileActivity.c(paramInt)) {
-      return 3;
-    }
-    if (paramInt == 21) {
-      return 4;
-    }
-    if (ProfileActivity.d(paramInt)) {
-      return 5;
-    }
-    return 99;
-  }
-  
-  public static final String c(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 12)) {
-      return c[paramInt];
-    }
-    return "";
-  }
-  
-  public static final String d(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 14)) {
-      return e[paramInt];
-    }
-    return "";
-  }
-  
-  public static final String e(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 14)) {
-      return d[paramInt];
-    }
-    return "";
   }
 }
 

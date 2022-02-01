@@ -1,25 +1,42 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import com.tencent.vas.update.callback.ICmdManager;
+import com.tencent.vas.update.callback.ICommonManager;
+import com.tencent.vas.update.callback.IDbManager;
+import com.tencent.vas.update.callback.IHttpDownloader;
+import com.tencent.vas.update.callback.IReportManager;
+import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.callback.IVasUpdateFactory;
 
-@TargetApi(21)
 public class bied
-  extends ViewOutlineProvider
+  implements IVasUpdateFactory
 {
-  private float a;
-  
-  public bied(float paramFloat)
+  public ICmdManager getCmdManager()
   {
-    this.a = paramFloat;
+    return new bidw();
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public ICommonManager getCommonManager()
   {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    return new bidx();
+  }
+  
+  public IDbManager getDbManager()
+  {
+    return new bidy();
+  }
+  
+  public IHttpDownloader getHttpDownloader()
+  {
+    return new bidz();
+  }
+  
+  public IVasLog getLog()
+  {
+    return new bieb();
+  }
+  
+  public IReportManager getReportManager()
+  {
+    return new biec();
   }
 }
 

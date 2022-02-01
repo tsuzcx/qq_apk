@@ -1,19 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.1.1;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public class bmpm
-  implements bmpx
+class bmpm
+  extends bmqd
 {
-  bmpm(bmpl parambmpl) {}
+  bmpm(bmpk parambmpk) {}
   
-  public void a(int paramInt, Drawable paramDrawable)
+  public void a(bmqc parambmqc)
   {
-    if (paramInt == 0)
-    {
-      bmpl.a(this.a).a.b(0);
-      this.a.a.post(new ZipAnimationDrawable.1.1(this));
+    parambmqc = parambmqc.a();
+    if (parambmqc == null) {
+      bmqw.a("ReaderTabConfigDataHelper", "Response json is null");
     }
+    do
+    {
+      return;
+      if (parambmqc.length() == 0)
+      {
+        bmqw.a("ReaderTabConfigDataHelper", "后台数据异常");
+        return;
+      }
+    } while (!bmpk.a(this.a, parambmqc, false));
+    bmpk.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), parambmqc.toString()).apply();
   }
 }
 

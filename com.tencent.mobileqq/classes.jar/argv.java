@@ -1,32 +1,72 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.FeedsManager.2.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class argv
-  implements ThreadExcutor.IThreadListener
+  extends arac<argu>
 {
-  public argv(FeedsManager paramFeedsManager) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  @NonNull
+  public argu a(int paramInt)
   {
-    FeedsManager.access$102(this.a, true);
-    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
-    if (FeedsManager.access$300(this.a))
+    return new argu();
+  }
+  
+  @Nullable
+  public argu a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      FeedsManager.access$302(this.a, false);
-      this.a.updateQzoneFeeds();
+      argu localargu = argu.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      }
+      return localargu;
+    }
+    return null;
+  }
+  
+  public void a(argu paramargu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramargu.toString());
     }
   }
   
-  public void onPreRun() {}
+  public Class<argu> clazz()
+  {
+    return argu.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 488;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argv
  * JD-Core Version:    0.7.0.1
  */

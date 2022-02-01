@@ -1,80 +1,14 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.program.YUVTextureAliasingProgram;
-import com.tencent.av.opengl.program.YUVTextureProgram;
-import java.util.HashMap;
-import java.util.Map;
+import javax.microedition.khronos.opengles.GL11;
 
-public class lqw
+public abstract interface lqw
 {
-  static Map<String, TextureProgram> a = new HashMap();
+  public abstract int a();
   
-  public static TextureProgram a(int paramInt)
-  {
-    int j = 1;
-    for (;;)
-    {
-      int i;
-      try
-      {
-        String str = paramInt + "_" + Thread.currentThread().getId();
-        localObject1 = (TextureProgram)a.get(str);
-        if (localObject1 == null)
-        {
-          i = 1;
-          if (i != 0) {
-            break label173;
-          }
-          GLES20.glUseProgram(((TextureProgram)localObject1).a());
-          if (lrz.a() != 0)
-          {
-            i = j;
-            break label173;
-            localObject1 = new TextureProgram();
-            a.put(str, localObject1);
-            return localObject1;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        i = 0;
-      }
-      finally {}
-      Object localObject1 = new YUVTextureProgram();
-      continue;
-      Object localObject3 = new YUVTextureAliasingProgram();
-      continue;
-      localObject3 = new lqv();
-      continue;
-      localObject3 = new lqu();
-      continue;
-      localObject3 = new lqt();
-      continue;
-      label173:
-      if (i != 0) {
-        switch (paramInt)
-        {
-        }
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
   
-  public static void a()
-  {
-    try
-    {
-      a.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class awbf
-  implements View.OnClickListener
+public abstract interface awbf
 {
-  awbf(awbe paramawbe, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    awbe.a(this.jdField_a_of_type_Awbe).a(this.jdField_a_of_type_JavaLangString);
-    bcst.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
 }
 
 

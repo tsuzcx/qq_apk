@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bhmv;
-import bhql;
-import bidh;
+import binq;
+import birg;
+import bjef;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
-import ost;
-import pog;
+import phe;
+import tsl;
 
 public class ReadInJoyAdPopSheetBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -40,9 +40,9 @@ public class ReadInJoyAdPopSheetBrowserFragment
       getActivity().finish();
       return;
     }
-    localObject = ost.a(getActivity(), this.b, this.c, this.d);
-    ((ost)localObject).a(new pog(this));
-    ((ost)localObject).show();
+    localObject = tsl.a(getActivity(), this.b, this.c, this.d);
+    ((tsl)localObject).a(new phe(this));
+    ((tsl)localObject).show();
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)

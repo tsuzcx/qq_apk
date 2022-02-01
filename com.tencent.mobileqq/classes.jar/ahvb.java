@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class ahvb
-  implements DialogInterface.OnClickListener
+  implements wkz
 {
-  public ahvb(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  long jdField_a_of_type_Long;
+  ahvc jdField_a_of_type_Ahvc;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

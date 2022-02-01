@@ -77,17 +77,24 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
       return false;
     }
     int j = TVKUtils.optInt(paramCGIRequest.playbackParam.videoInfo().getConfigMapValue("sysplayer_hevc_cap", ""), 0);
-    int i = j;
-    if (j == 1) {
+    int i;
+    if (j == 1)
+    {
       i = 28;
+      if (TVKPlayerUtils.getDefnHevcLevel(paramTVKNetVideoInfo.getCurDefinition().getDefn(), i) > 0) {
+        break label107;
+      }
     }
-    j = i;
-    if (i == 2) {
-      j = 33;
-    }
-    if (TVKPlayerUtils.getDefnHevcLevel(paramTVKNetVideoInfo.getCurDefinition().getDefn(), j) <= 0) {}
-    for (boolean bool = true;; bool = false) {
+    label107:
+    for (boolean bool = true;; bool = false)
+    {
       return bool;
+      i = j;
+      if (j != 2) {
+        break;
+      }
+      i = 33;
+      break;
     }
   }
   
@@ -116,11 +123,6 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
     return false;
   }
   
-  public void OnSuccess(int paramInt, TVKVideoInfo paramTVKVideoInfo)
-  {
-    TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.2(this, paramInt, paramTVKVideoInfo));
-  }
-  
   public void onFailure(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
     TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.1(this, paramInt1, paramInt2, paramString1, paramInt3, paramString2));
@@ -134,6 +136,11 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
   public void onGetLiveInfoSucceed(int paramInt, TVKLiveVideoInfo paramTVKLiveVideoInfo)
   {
     TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.3(this, paramInt, paramTVKLiveVideoInfo));
+  }
+  
+  public void onSuccess(int paramInt, TVKVideoInfo paramTVKVideoInfo)
+  {
+    TVKPlayerWrapperCGIModel.access$300(this.this$0).post(new TVKPlayerWrapperCGIModel.CGICombineCallback.2(this, paramInt, paramTVKVideoInfo));
   }
 }
 

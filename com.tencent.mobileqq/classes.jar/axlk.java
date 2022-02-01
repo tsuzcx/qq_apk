@@ -1,29 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import java.util.Comparator;
 
-class axlk
-  implements bihh
+public final class axlk
+  implements Comparator<axlp>
 {
-  axlk(axlj paramaxlj) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public int a(axlp paramaxlp1, axlp paramaxlp2)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Axlm != null) {
-        this.a.jdField_a_of_type_Axlm.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Axlm == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Axlm.a(false);
+    return paramaxlp1.a - paramaxlp2.a;
   }
 }
 

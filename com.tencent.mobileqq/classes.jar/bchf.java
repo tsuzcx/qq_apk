@@ -1,8 +1,13 @@
-public abstract interface bchf
+import com.tencent.mobileqq.search.mostused.MostUsedSearch;
+import java.util.Comparator;
+
+final class bchf
+  implements Comparator<MostUsedSearch>
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
+  {
+    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
+  }
 }
 
 

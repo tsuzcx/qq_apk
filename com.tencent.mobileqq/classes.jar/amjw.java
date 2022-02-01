@@ -1,40 +1,27 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amjw
-  implements amjz
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 12440;
+  public amjw(SpecailCareListActivity paramSpecailCareListActivity, amkn paramamkn) {}
   
-  private amjw(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
+    this.jdField_a_of_type_Amkn.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131368212);
+    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
+    this.jdField_a_of_type_Amkn.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Amkn.a.setVisibility(4);
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
-    {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      amkb.a("eglDestroyContex", paramEGL10.eglGetError());
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

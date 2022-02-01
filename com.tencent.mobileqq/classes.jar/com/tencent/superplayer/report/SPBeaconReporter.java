@@ -18,7 +18,7 @@ public class SPBeaconReporter
   
   public static void report(String paramString, Map<String, String> paramMap)
   {
-    ThreadUtil.runOnSubThread(new SPBeaconReporter.1(paramString, new HashMap(paramMap)));
+    ThreadUtil.runOnThreadPool(new SPBeaconReporter.1(paramString, new HashMap(paramMap)));
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzo;
+import tzq;
 
 public class ReadinjoySPEventReport$9
   implements Runnable
@@ -35,7 +35,7 @@ public class ReadinjoySPEventReport$9
     }
     for (int i = 17;; i = 16)
     {
-      tzo.a(i, localArrayList);
+      tzq.a(i, localArrayList);
       return;
     }
   }

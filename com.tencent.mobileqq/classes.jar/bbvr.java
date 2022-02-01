@@ -1,26 +1,21 @@
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import com.tencent.widget.HorizontalListView;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbvr
   extends bbvn
-  implements bkle
 {
-  public bbnm a;
-  public HorizontalListView a;
-  
-  public bbvr(ViewGroup paramViewGroup, int paramInt)
+  public bbvr(CommentsView paramCommentsView, int paramInt, String paramString)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131377062));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
+    super(paramInt);
   }
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4097) {
-      this.jdField_a_of_type_Bbnm.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

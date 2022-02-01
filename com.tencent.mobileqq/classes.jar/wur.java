@@ -1,81 +1,100 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wur
-  extends SimpleObserver<List<xfb>>
+public class wur
 {
-  wur(wui paramwui, wrs paramwrs, View paramView, Activity paramActivity) {}
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
   
-  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
+  private wur(JSONObject paramJSONObject)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
-      paramString1 = "NO_SUCH_FEED_ID";
-    }
-    for (;;)
+    int k;
+    try
     {
-      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Wrs.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
-      paramString1.a(this.jdField_a_of_type_Wui.a());
-      paramString1 = paramString1.a();
-      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
-      {
-        xho.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
-        return;
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
       }
-      xho.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
-      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
     }
   }
   
-  public void a(List<xfb> paramList)
+  public static wur a(@Nullable String paramString)
   {
-    Object localObject = xjk.a(paramList);
-    String str1;
-    if (localObject != null)
+    try
     {
-      str1 = ((xfb)localObject).a;
-      localObject = ((xfb)localObject).b;
+      paramString = a(new JSONObject(paramString));
+      return paramString;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      ArrayList localArrayList = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      for (;;)
-      {
-        String str2;
-        if (i < paramList.size())
-        {
-          str2 = ((xfb)paramList.get(i)).b;
-          if (!TextUtils.isEmpty(str2)) {}
-        }
-        else
-        {
-          a(str1, (String)localObject, localArrayList, localHashMap);
-          return;
-        }
-        localArrayList.add(str2);
-        localHashMap.put(str2, ((xfb)paramList.get(i)).a);
-        i += 1;
-      }
-      localObject = null;
-      str1 = null;
+      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
     }
+    catch (NullPointerException paramString)
+    {
+      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
   }
   
-  public void onError(@NonNull Error paramError)
+  public static wur a(JSONObject paramJSONObject)
   {
-    a("", "", null, null);
+    try
+    {
+      paramJSONObject = new wur(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

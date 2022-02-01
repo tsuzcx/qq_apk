@@ -1,197 +1,120 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/config/AutoOnlineStatusParser;", "", "()V", "parse", "Lcom/tencent/mobileqq/onlinestatus/config/AutoStatusElement;", "content", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayrz
+public class ayrz
+  extends BaseAdapter
+  implements aoog
 {
-  public static final ayrz a = new ayrz();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ayqv jdField_a_of_type_Ayqv;
+  private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
+  private List<aysk> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  @JvmStatic
-  @NotNull
-  public static final aysa a(@NotNull String paramString)
+  public ayrz(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "content");
-    localaysa = new aysa((List)new ArrayList(), new aypi(), (List)new ArrayList(), "", new aypi());
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoOnlineStatusParser", 2, "[status][parser] parse json: " + localJSONObject);
-      }
-      Object localObject2 = new HashMap();
-      paramString = localJSONObject.optJSONArray("sensors");
-      int j;
-      int i;
-      int k;
-      Object localObject4;
-      if (paramString != null)
-      {
-        j = paramString.length();
-        i = 0;
-        while (i < j)
-        {
-          localObject1 = paramString.getJSONObject(i);
-          k = ((JSONObject)localObject1).optInt("id", -1);
-          if (k > 0)
-          {
-            localObject3 = ((JSONObject)localObject1).optString("type");
-            localObject4 = new aysd(k, (String)localObject3, ((JSONObject)localObject1).optInt("min"), ((JSONObject)localObject1).optInt("max"), ((JSONObject)localObject1).optInt("sample_count"));
-            if (StringsKt.equals((String)localObject3, "step", true))
-            {
-              ((aysd)localObject4).e = ((JSONObject)localObject1).optInt("main_sensor", 1);
-              ((aysd)localObject4).f = ((JSONObject)localObject1).optInt("secondary_sensor", 3);
-            }
-            if (StringsKt.equals((String)localObject3, "gps", true))
-            {
-              ((aysd)localObject4).g = ((JSONObject)localObject1).optInt("internal_update_status", ayqi.c / 1000);
-              ((aysd)localObject4).h = ((JSONObject)localObject1).optInt("slow_mode_count", ayqi.o);
-              ((aysd)localObject4).i = ((JSONObject)localObject1).optInt("fast_mode_count", ayqi.p);
-              ((aysd)localObject4).j = ((JSONObject)localObject1).optInt("internal_slow_mode", ayqi.m / 1000);
-              ((aysd)localObject4).k = ((JSONObject)localObject1).optInt("internal_fast_mode", ayqi.n / 1000);
-              ((aysd)localObject4).l = ((JSONObject)localObject1).optInt("internal_exit_step", ayqi.q / 1000);
-              ((aysd)localObject4).m = ((JSONObject)localObject1).optInt("internal_exit_still", ayqi.r / 1000);
-              ((aysd)localObject4).n = ((JSONObject)localObject1).optInt("session_enter_accuracy", ayqi.s);
-            }
-            if (StringsKt.equals((String)localObject3, "dist", true))
-            {
-              ((aysd)localObject4).o = ((JSONObject)localObject1).optInt("dist_accuracy", ayqi.F);
-              ((aysd)localObject4).p = ((JSONObject)localObject1).optInt("dist_thread_hold", ayqi.G);
-              ((aysd)localObject4).q = ((JSONObject)localObject1).optInt("dist_step_thread_hold", ayqi.M);
-              ((aysd)localObject4).r = ((JSONObject)localObject1).optInt("dist_enable", 1);
-              ((aysd)localObject4).s = ((JSONObject)localObject1).optInt("dist_req_time", ayqi.H);
-              ((aysd)localObject4).t = ((JSONObject)localObject1).optInt("dist_acceler_enable", 1);
-              ((aysd)localObject4).v = ((JSONObject)localObject1).optInt("dist_speed_req_time", ayqi.I);
-              ((aysd)localObject4).u = ((JSONObject)localObject1).optInt("dist_speed_thread_hold", ayqi.J);
-              ((aysd)localObject4).w = ((JSONObject)localObject1).optInt("dist_moving_max", ayqi.K);
-              ((aysd)localObject4).x = ((JSONObject)localObject1).optInt("dist_not_moving_min", ayqi.L);
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("AutoOnlineStatusParser", 2, "[status][parser] parse sensor: " + localObject4);
-            }
-            ((Map)localObject2).put(Integer.valueOf(k), localObject4);
-          }
-          localObject1 = Unit.INSTANCE;
-          i += 1;
-        }
-        paramString = Unit.INSTANCE;
-      }
-      Object localObject3 = localJSONObject.optJSONArray("auto_status");
-      long l;
-      if (localObject3 != null)
-      {
-        j = ((JSONArray)localObject3).length();
-        i = 0;
-        if (i < j)
-        {
-          localObject1 = ((JSONArray)localObject3).getJSONObject(i);
-          l = ((JSONObject)localObject1).optLong("id");
-          localObject4 = ((JSONObject)localObject1).optString("title");
-          String str1 = ((JSONObject)localObject1).optString("type");
-          Object localObject5 = ((JSONObject)localObject1).optJSONObject("category");
-          paramString = (aysc)null;
-          label808:
-          String str2;
-          boolean bool;
-          if (localObject5 != null)
-          {
-            paramString = new aysc(((JSONObject)localObject5).optInt("level", 1), ((JSONObject)localObject5).optString("name"), ((JSONObject)localObject5).optInt("internal", ayqi.h / 1000), ((JSONObject)localObject5).optInt("poi_count", ayqi.d), ((JSONObject)localObject5).optInt("poi_distance", ayqi.g), ((JSONObject)localObject5).optInt("loc_distance", ayqi.f), ((JSONObject)localObject5).optInt("loc_accuracy", ayqi.e), ((JSONObject)localObject5).optDouble("valid_rate", ayqi.a), ((JSONObject)localObject5).optInt("cache_size", ayqi.j), ((JSONObject)localObject5).optInt("cache_distance", ayqi.l));
-            localObject5 = Unit.INSTANCE;
-            localObject5 = ((JSONObject)localObject1).optString("icon");
-            k = ((JSONObject)localObject1).optInt("sensor", -1);
-            str2 = ((JSONObject)localObject1).optString("sub_title");
-            bool = ((JSONObject)localObject1).optBoolean("hide");
-            if (k >= 0) {
-              break label958;
-            }
-          }
-          label958:
-          for (localObject1 = null;; localObject1 = (aysd)((HashMap)localObject2).get(Integer.valueOf(k)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AutoOnlineStatusParser", 2, "[status][parser] parse: " + (String)localObject4 + " sensorId: " + k + " sensor: " + localObject1);
-            }
-            paramString = new aysb(l, (String)localObject4, str1, paramString, (String)localObject5, (aysd)localObject1, str2, bool);
-            localaysa.jdField_a_of_type_JavaUtilList.add(paramString);
-            paramString = Unit.INSTANCE;
-            i += 1;
-            break;
-            break label808;
-          }
-        }
-        paramString = Unit.INSTANCE;
-      }
-      localObject2 = localJSONObject.optJSONObject("smart_status_item");
-      if (localObject2 != null)
-      {
-        l = ((JSONObject)localObject2).optLong("id");
-        paramString = ((JSONObject)localObject2).optString("title");
-        localObject1 = ((JSONObject)localObject2).optString("icon");
-        localObject2 = ((JSONObject)localObject2).optString("sub_title");
-        paramString = new aypi(l, paramString, (String)localObject1);
-        paramString.c = ((String)localObject2);
-        localaysa.jdField_a_of_type_Aypi = paramString;
-        paramString = Unit.INSTANCE;
-      }
-      localObject2 = localJSONObject.optJSONObject("smart_status_on_earth");
-      if (localObject2 != null)
-      {
-        l = ((JSONObject)localObject2).optLong("id");
-        paramString = ((JSONObject)localObject2).optString("title");
-        localObject1 = ((JSONObject)localObject2).optString("icon");
-        localObject2 = ((JSONObject)localObject2).optString("sub_title");
-        paramString = new aypi(l, paramString, (String)localObject1);
-        paramString.c = ((String)localObject2);
-        localaysa.jdField_b_of_type_Aypi = paramString;
-        paramString = Unit.INSTANCE;
-      }
-      paramString = localJSONObject.optString("weather_jump_schema", "");
-      if (paramString != null)
-      {
-        localaysa.jdField_a_of_type_JavaLangString = paramString;
-        paramString = Unit.INSTANCE;
-      }
-      Object localObject1 = localJSONObject.optJSONArray("weather_url");
-      if (localObject1 != null)
-      {
-        i = ((JSONArray)localObject1).length();
-        j = 0;
-        label1191:
-        if (j >= i) {
-          break label1290;
-        }
-        if (localObject1 == null) {
-          break label1284;
-        }
-      }
-      label1284:
-      for (paramString = ((JSONArray)localObject1).getJSONObject(j);; paramString = null)
-      {
-        if (paramString != null)
-        {
-          paramString = new ayse(paramString.optString("weather_id", ""), paramString.optString("weather_small_url", ""), paramString.optString("weather_big_url", ""), paramString.optString("weather_aio_url", ""));
-          localaysa.jdField_b_of_type_JavaUtilList.add(paramString);
-          paramString = Unit.INSTANCE;
-        }
-        j += 1;
-        break label1191;
-        i = 0;
-        break;
-      }
-      return localaysa;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (paramQQAppInterface != null) {
+      this.jdField_a_of_type_Ayqv = new ayqv(paramQQAppInterface, paramContext);
     }
-    catch (JSONException paramString) {}
+  }
+  
+  public List<aysk> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(NearbyPeopleCard paramNearbyPeopleCard)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
+  }
+  
+  public void a(List<aysk> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<aysk> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (this.jdField_a_of_type_Ayqv == null) {
+      return -1;
+    }
+    return this.jdField_a_of_type_Ayqv.a((aysk)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (this.jdField_a_of_type_Ayqv == null) {
+      localView = null;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      aysk localaysk = (aysk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      int i = this.jdField_a_of_type_Ayqv.a(localaysk);
+      ayqg localayqg = this.jdField_a_of_type_Ayqv.a(i);
+      localView = paramView;
+      if (localayqg != null)
+      {
+        localayqg.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+        localView = localayqg.a(localaysk, this.jdField_a_of_type_AndroidContentContext, paramView);
+      }
+      paramView = localView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    if (this.jdField_a_of_type_Ayqv == null) {
+      return 1;
+    }
+    return this.jdField_a_of_type_Ayqv.a();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
+      return;
+    }
+    notifyDataSetChanged();
   }
 }
 

@@ -1,40 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class ateh
-  implements aten
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ateh
+  implements View.OnClickListener
 {
-  ateh(atee paramatee, TroopFileTransferManager.Item paramItem, long paramLong) {}
+  ateh(ated paramated) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
+  public final void onClick(View paramView)
   {
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. Item.Id=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId() + " errCode:" + paramInt1);
-    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
+    if (this.a.isShowing())
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeLevel = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeMsg = paramString1;
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeDetailUrl = paramString2;
-      bevg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      if ((this.jdField_a_of_type_Atee.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null))
-      {
-        FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atee.a.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.troopuin, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString());
-        if (localFileManagerEntity != null)
-        {
-          QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. Item.Id=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId() + " update about entity:" + localFileManagerEntity.nSessionId);
-          localFileManagerEntity.apkSafeLevel = paramInt2;
-          localFileManagerEntity.apkSafeMsg = paramString1;
-          localFileManagerEntity.apkSafeDetailUrl = paramString2;
-          this.jdField_a_of_type_Atee.a.a().c(localFileManagerEntity);
-        }
-      }
+      this.a.dismiss();
+      bdll.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
     }
-    if (this.jdField_a_of_type_Atee.a != null) {
-      ((anie)this.jdField_a_of_type_Atee.a.a(22)).e(new Object[] { this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -99,7 +99,7 @@ public class BrowserBaseScene
   public AnimationView createAnimationView()
   {
     AnimationView localAnimationView = new AnimationView(this.mContext, null);
-    localAnimationView.setId(2131362678);
+    localAnimationView.setId(2131362694);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
@@ -111,7 +111,7 @@ public class BrowserBaseScene
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558756, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558752, null);
   }
   
   protected AbstractProgressView createProgressBar()
@@ -244,9 +244,9 @@ public class BrowserBaseScene
     }
     for (;;)
     {
-      this.rootView = this.mRoot.findViewById(2131376788);
-      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376265));
-      this.bgView = this.mRoot.findViewById(2131363219);
+      this.rootView = this.mRoot.findViewById(2131376925);
+      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376405));
+      this.bgView = this.mRoot.findViewById(2131363243);
       this.progressView = createProgressBar();
       if (this.progressView != null) {
         this.progressView.init(this.mContext, this);

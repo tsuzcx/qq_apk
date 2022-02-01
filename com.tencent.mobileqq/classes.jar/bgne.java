@@ -1,129 +1,57 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardPresenter.5.1;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.Observable;
+import java.util.Observer;
 
 public class bgne
-  extends bgkv
+  implements Observer
 {
-  private static volatile bgne jdField_a_of_type_Bgne;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_safe_jump_whitelist", 0);
-  private List<Pair<String, String>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  bgne(bgna parambgna) {}
   
-  static
+  public void update(Observable paramObservable, Object paramObject)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaLangString = localBaseApplication.getFilesDir().getAbsoluteFile() + File.separator + "jumpConfig/";
-    b = jdField_a_of_type_JavaLangString + "qq_safe_jump_whitelist.xml";
-  }
-  
-  public static bgne a()
-  {
-    if (jdField_a_of_type_Bgne == null) {}
-    try
+    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {}
+    do
     {
-      if (jdField_a_of_type_Bgne == null) {
-        jdField_a_of_type_Bgne = new bgne();
-      }
-      return jdField_a_of_type_Bgne;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "reportIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    bctj.a(BaseApplicationImpl.getApplication()).a(null, "JumpIllegal", true, 0L, 0L, localHashMap, null);
-  }
-  
-  protected int a()
-  {
-    return 2131886091;
-  }
-  
-  public long a()
-  {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_jump_whitelist_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "getConfigVersion version=" + l);
-    }
-    return l;
-  }
-  
-  protected Object a(XmlPullParser paramXmlPullParser)
-  {
-    if (paramXmlPullParser == null) {
-      return null;
-    }
-    long l1 = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    for (int i = paramXmlPullParser.getEventType(); i != 1; i = paramXmlPullParser.next()) {
-      if ((i == 2) && (paramXmlPullParser.getName().equalsIgnoreCase("Item")))
+      do
       {
-        String str1 = paramXmlPullParser.getAttributeValue(null, "pkg");
-        String str2 = paramXmlPullParser.getAttributeValue(null, "cmp");
-        if ((str1 != null) && (str2 != null)) {
-          localArrayList.add(new Pair(str1, str2));
+        return;
+      } while (!(paramObject instanceof bgup));
+      paramObservable = (bgup)paramObject;
+    } while (paramObservable.a != 1);
+    if (paramObservable.d == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramObservable = bgna.a(this.a);
+      bgna.a(this.a).a(bgna.a(this.a).troopUin);
+      if (bool)
+      {
+        bgna.a(this.a).hasSetNewTroopHead = true;
+        if (bgna.a(this.a).hasSetNewTroopName) {
+          bgna.a(this.a).isNewTroop = false;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpFilterHelper", 2, "doParseRules pkg=" + str1 + ";cmp=" + str2);
+        if (bgna.a(this.a).isUseClassAvatar) {
+          bgna.a(this.a).isUseClassAvatar = false;
+        }
+        if ((paramObservable != null) && (paramObservable.a != null))
+        {
+          paramObservable.a.hasSetNewTroopHead = true;
+          paramObservable.a.isNewTroop = bgna.a(this.a).isNewTroop;
+          if (paramObservable.a.isUseClassAvatar()) {
+            paramObservable.a.setUseClassAvatar(false);
+          }
+          this.a.c();
         }
       }
-    }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "doParseRules :  cost time:" + (l2 - l1) + "ms;size=" + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "updateConfigVersion version=" + paramLong);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_jump_whitelist_version", paramLong).commit();
-  }
-  
-  protected void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    Pair localPair = new Pair(paramString1, paramString2);
-    if (!this.jdField_a_of_type_Boolean) {}
-    synchronized (jdField_a_of_type_Bgne)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        a(paramContext);
+      if (!bgna.a(this.a).isResume()) {
+        break;
       }
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localPair))
-      {
-        a(paramString1, paramString2);
-        return true;
-      }
+      bgna.a(this.a).runOnUiThread(new VisitorTroopCardPresenter.5.1(this, bool));
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "isIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    return false;
   }
 }
 

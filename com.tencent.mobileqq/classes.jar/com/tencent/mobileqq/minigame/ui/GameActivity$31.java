@@ -1,37 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import anni;
-import com.tencent.mobileqq.minigame.debug.DebugWebSocket.DebuggerStateListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager.PREPARE_FROM;
 
 class GameActivity$31
-  implements DebugWebSocket.DebuggerStateListener
+  implements Runnable
 {
   GameActivity$31(GameActivity paramGameActivity) {}
   
-  public void onDebuggerBreakPointPaused()
+  public void run()
   {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger BreakPointPaused");
-    GameActivity.access$4400(this.this$0, anni.a(2131703797), null, true);
-  }
-  
-  public void onDebuggerConnectedNormal()
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger connected ");
-    GameActivity.access$4400(this.this$0, anni.a(2131703791), null, false);
-    GameActivity.access$4500(this.this$0);
-  }
-  
-  public void onDebuggerDisconnect(String paramString)
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Disconnect");
-    GameActivity.access$4400(this.this$0, anni.a(2131703796), anni.a(2131703801), false);
-  }
-  
-  public void onDebuggerReconnecting(String paramString)
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Reconnecting");
-    GameActivity.access$4400(this.this$0, anni.a(2131703793), anni.a(2131703792), false);
+    GameRuntimeLoaderManager.g().prepare(BaseApplicationImpl.getApplication(), GameRuntimeLoaderManager.PREPARE_FROM.FIRST_FRAME);
   }
 }
 

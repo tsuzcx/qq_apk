@@ -1,215 +1,266 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import dov.com.qq.im.aeeditor.arch.AEEditorBaseFragment;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Environment;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import com.tencent.weiyun.utils.NetworkUtils;
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
-public class bnzp
+public final class bnzp
 {
-  private static final String jdField_a_of_type_JavaLangString = bnzp.class.getSimpleName();
-  private FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private HashMap<Class<? extends AEEditorBaseFragment>, AEEditorBaseFragment> jdField_a_of_type_JavaUtilHashMap;
+  private static final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray;
+  private static String jdField_a_of_type_JavaLangString;
+  private static final Map<Integer, String> jdField_a_of_type_JavaUtilMap;
+  private static boolean jdField_a_of_type_Boolean = false;
+  private static String b;
+  private static String c;
+  private static String d;
   
-  public bnzp(FragmentManager paramFragmentManager)
+  static
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentManager = paramFragmentManager;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaLangString = "";
+    b = "";
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), "16*16");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), "32*32");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), "64*64");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), "128*128");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), "320*320");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), "384*384");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(6), "640*640");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(7), "750*750");
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(8), "1024*1024");
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(9);
+    jdField_a_of_type_AndroidUtilSparseArray.put(0, "/16");
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, "/32");
+    jdField_a_of_type_AndroidUtilSparseArray.put(2, "/64");
+    jdField_a_of_type_AndroidUtilSparseArray.put(3, "/128");
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, "/320");
+    jdField_a_of_type_AndroidUtilSparseArray.put(5, "/384");
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, "/640");
+    jdField_a_of_type_AndroidUtilSparseArray.put(7, "/750");
+    jdField_a_of_type_AndroidUtilSparseArray.put(8, "/1024");
   }
   
-  private AEEditorBaseFragment a()
+  public static PluginRuntime a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((AEEditorBaseFragment)localEntry.getValue()).isVisible()) {
-        return (AEEditorBaseFragment)localEntry.getValue();
-      }
+      Class localClass = Class.forName("com.weiyun.plugin.app.WeiyunRuntime");
+      paramBaseApplicationImpl = localClass;
     }
-    return null;
-  }
-  
-  private void a(AEEditorBaseFragment paramAEEditorBaseFragment, Class<? extends AEEditorBaseFragment> paramClass, String paramString, Bundle paramBundle, boolean paramBoolean)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass)) || (this.jdField_a_of_type_JavaUtilHashMap.get(paramClass) == null)) {}
-    AEEditorBaseFragment localAEEditorBaseFragment;
-    for (;;)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      Map.Entry localEntry;
       try
       {
-        localAEEditorBaseFragment = (AEEditorBaseFragment)paramClass.newInstance();
-        localAEEditorBaseFragment.a(this);
-        if (localAEEditorBaseFragment.getArguments() != null) {
-          break label227;
-        }
-        localAEEditorBaseFragment.setArguments(paramBundle);
-        localAEEditorBaseFragment.jdField_a_of_type_JavaLangString = paramString;
-        paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-        paramString = null;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localEntry = (Map.Entry)localIterator.next();
-        if ((!paramBoolean) || (paramAEEditorBaseFragment == null) || (!((AEEditorBaseFragment)localEntry.getValue()).equals(paramAEEditorBaseFragment))) {
-          break label240;
-        }
-        paramString = (Class)localEntry.getKey();
-        continue;
-        localAEEditorBaseFragment = (AEEditorBaseFragment)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass);
+        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "WeiyunPlugin.apk");
+        paramBaseApplicationImpl = localClassLoader.loadClass("com.weiyun.plugin.app.WeiyunRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
       }
-      catch (IllegalAccessException paramAEEditorBaseFragment)
+      catch (ClassNotFoundException paramBaseApplicationImpl)
       {
-        bnzb.d(jdField_a_of_type_JavaLangString, "replaceFragment: " + Log.getStackTraceString(paramAEEditorBaseFragment));
-        return;
+        paramBaseApplicationImpl.printStackTrace();
       }
-      catch (InstantiationException paramAEEditorBaseFragment)
-      {
-        bnzb.d(jdField_a_of_type_JavaLangString, "replaceFragment: " + Log.getStackTraceString(paramAEEditorBaseFragment));
-        return;
-      }
-      localAEEditorBaseFragment.a(this);
-      continue;
-      label227:
-      localAEEditorBaseFragment.getArguments().putAll(paramBundle);
-      continue;
-      label240:
-      paramBundle.hide((Fragment)localEntry.getValue());
-    }
-    if ((paramBoolean) && (paramAEEditorBaseFragment != null))
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-      }
-      paramBundle.remove(paramAEEditorBaseFragment);
-    }
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag(paramClass.getName()) == null) {
-      paramBundle.add(2131362277, localAEEditorBaseFragment, paramClass.getName()).commit();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass, localAEEditorBaseFragment);
-      return;
-      paramBundle.show(localAEEditorBaseFragment).commit();
-    }
-  }
-  
-  private void a(Class<? extends AEEditorBaseFragment> paramClass, String paramString, Bundle paramBundle)
-  {
-    a(null, paramClass, paramString, paramBundle, false);
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    a(paramActivity, false);
-  }
-  
-  public void a(Activity paramActivity, boolean paramBoolean)
-  {
-    if (paramActivity == null) {}
-    AEEditorBaseFragment localAEEditorBaseFragment;
-    do
-    {
-      boolean bool1;
       do
       {
-        do
-        {
-          return;
-          localAEEditorBaseFragment = a();
-        } while (localAEEditorBaseFragment == null);
-        boolean bool2 = false;
-        bool1 = bool2;
-        if (localAEEditorBaseFragment.isVisible())
-        {
-          bool1 = bool2;
-          if (paramBoolean) {
-            bool1 = false | localAEEditorBaseFragment.a();
-          }
-        }
-      } while (bool1);
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof PluginRuntime)));
+      paramBaseApplicationImpl = (PluginRuntime)paramBaseApplicationImpl;
+      return paramBaseApplicationImpl;
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    if (paramBaseApplicationImpl == null) {
+      return null;
+    }
+  }
+  
+  public static Pair<Pair<String, String>, Long> a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return new Pair(new Pair(paramString, paramString), Long.valueOf(0L));
+    }
+    String str = (String)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    paramString = new StringBuilder(paramString);
+    if (paramBoolean)
+    {
+      str = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      if (!TextUtils.isEmpty(str)) {
+        paramString.append(str);
+      }
+      paramString = paramString.toString();
+      l = paramString.hashCode() * 31;
+      return new Pair(new Pair(paramString, paramString), Long.valueOf(l));
+    }
+    paramInt = NetworkUtils.getNetworkType(BaseApplicationImpl.getApplication());
+    paramString.append("&nettype=").append(paramInt);
+    if (!TextUtils.isEmpty(str)) {
+      paramString.append("&size=").append(str);
+    }
+    paramString = paramString.toString();
+    str = paramString.replaceFirst("cn=\\d", "").replaceFirst("nettype=\\d", "");
+    long l = str.hashCode() * 31;
+    return new Pair(new Pair(paramString, str), Long.valueOf(l));
+  }
+  
+  public static String a()
+  {
+    return c;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    paramString1 = String.format("https://jump.weiyun.com/?from=30001&aid=%s", new Object[] { paramString2 });
+    QLog.d("Weiyun.AlbumBackup", 2, "weiyun vip payurl : " + paramString1);
+    return paramString1;
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {
       try
       {
-        localAEEditorBaseFragment.a();
-        if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null) && (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorVideoEdit")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoClip")))
+        if (!jdField_a_of_type_Boolean)
         {
-          paramActivity = new Bundle(localAEEditorBaseFragment.getArguments());
-          c(localAEEditorBaseFragment.a(), paramActivity);
-          return;
+          BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+          bnzb.a(localBaseApplicationImpl, false);
+          boaf.a(localBaseApplicationImpl);
+          a(localBaseApplicationImpl);
+          jdField_a_of_type_Boolean = true;
         }
-      }
-      catch (Throwable paramActivity)
-      {
-        bnzb.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(paramActivity));
         return;
       }
-      if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null) && (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorVideoClip")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
+      finally {}
+    }
+  }
+  
+  private static void a(Application paramApplication)
+  {
+    c = aumo.a().b();
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    for (paramApplication = new File(bigv.a(antf.ba));; paramApplication = paramApplication.getCacheDir())
+    {
+      d = new File(paramApplication, "diskcache").getAbsolutePath();
+      return;
+    }
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext.sendBroadcast(new Intent("enter_file_assit"), "com.tencent.msg.permission.pushnotify");
+  }
+  
+  public static void a(Context paramContext, long paramLong)
+  {
+    boaf.a(paramContext, paramLong);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      jdField_a_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      b = paramString2;
+    }
+  }
+  
+  public static String[] a()
+  {
+    return new String[] { jdField_a_of_type_JavaLangString, b };
+  }
+  
+  public static String b()
+  {
+    return d;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    paramString1 = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString2 });
+    QLog.d("Weiyun.AlbumBackup", 2, "qq vip payurl : " + paramString1);
+    return paramString1;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean) {
+      try
       {
-        a(localAEEditorBaseFragment, null, new Bundle(localAEEditorBaseFragment.getArguments()), true);
+        if (jdField_a_of_type_Boolean)
+        {
+          bnzb.a(false, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          jdField_a_of_type_Boolean = false;
+        }
         return;
       }
-    } while (localAEEditorBaseFragment.jdField_a_of_type_JavaLangString != null);
-    bnzb.b(jdField_a_of_type_JavaLangString, "goBack finish activity");
-    b(paramActivity);
-    paramActivity.finish();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    bnzb.b(jdField_a_of_type_JavaLangString, "enter");
-    if (bnzo.a(paramBundle))
-    {
-      a(null, paramBundle);
-      return;
+      finally {}
     }
-    if (bnzo.b(paramBundle))
-    {
-      b(null, paramBundle);
-      return;
-    }
-    throw new RuntimeException("invalid editor type");
   }
   
-  public void a(AEEditorBaseFragment paramAEEditorBaseFragment, String paramString, Bundle paramBundle, boolean paramBoolean)
+  public static String c()
   {
-    bnzb.b(jdField_a_of_type_JavaLangString, "gotoVideoClipModule from " + paramString);
-    a(paramAEEditorBaseFragment, AEEditorVideoClipFragment.class, paramString, paramBundle, paramBoolean);
+    QLog.d("Weiyun.AlbumBackup", 2, "weiyun shapce payurl : " + "https://jump.weiyun.com/?from=3047");
+    return "https://jump.weiyun.com/?from=3047";
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public static void c()
   {
-    bnzb.b(jdField_a_of_type_JavaLangString, "gotoImageEditModule from " + paramString);
-    a(AEEditorImageEditFragment.class, paramString, paramBundle);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    paramActivity.finish();
-  }
-  
-  public void b(String paramString, Bundle paramBundle)
-  {
-    bnzb.b(jdField_a_of_type_JavaLangString, "gotoVideoClipModule from " + paramString);
-    a(AEEditorVideoClipFragment.class, paramString, paramBundle);
-  }
-  
-  public void c(String paramString, Bundle paramBundle)
-  {
-    bnzb.b(jdField_a_of_type_JavaLangString, "gotoVideoEditModule from " + paramString);
-    a(AEEditorVideoEditFragment.class, paramString, paramBundle);
+    jdField_a_of_type_JavaLangString = "";
+    b = "";
   }
 }
 

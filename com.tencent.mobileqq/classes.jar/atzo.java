@@ -1,24 +1,155 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class atzo
+  extends atzn
 {
-  public final int a;
-  final long jdField_a_of_type_Long;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  public aucp a;
-  public final String a;
-  final int b;
+  private axow jdField_a_of_type_Axow;
+  private axpl jdField_a_of_type_Axpl;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForReplyText jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText;
+  private String jdField_a_of_type_JavaLangString;
+  HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, ArrayList<MessageRecord>> b;
   
-  public atzo(atzj paramatzj, Bundle paramBundle, int paramInt1, aucp paramaucp, long paramLong, int paramInt2)
+  public atzo(QQAppInterface paramQQAppInterface, axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Aucp = paramaucp;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramaucp.a();
-    this.b = paramInt2;
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Axpl = paramaxpl;
+    this.jdField_a_of_type_Axow = paramaxow;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      paramQQAppInterface = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      do
+      {
+        if (!paramQQAppInterface.hasNext()) {
+          break;
+        }
+        paramaxpl = (String)paramQQAppInterface.next();
+        paramHashMap = ((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramaxpl)).iterator();
+        while (paramHashMap.hasNext())
+        {
+          paramaxow = (MessageRecord)paramHashMap.next();
+          if ((paramaxow instanceof MessageForReplyText))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText = ((MessageForReplyText)paramaxow);
+            this.jdField_a_of_type_JavaLangString = paramaxpl;
+          }
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText == null);
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Axpl == null) {}
+    while (this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return -1;
+    }
+    return this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Axpl == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+  }
+  
+  public HashMap<String, ArrayList<MessageRecord>> a()
+  {
+    if (this.b == null)
+    {
+      this.b = new HashMap();
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
+        Object localObject2;
+        if ((localObject1 instanceof MessageForFile))
+        {
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject1).uniseq, ((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
+          if ((localObject2 != null) && (((FileManagerEntity)localObject2).getCloudType() == 0))
+          {
+            QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find online file.");
+            localObject2 = anzj.a(2131712282) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a((MessageRecord)localObject1, (String)localObject2, true);
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject2);
+          }
+        }
+        if (aunj.a((MessageRecord)localObject1))
+        {
+          int i = a();
+          if ((i != 0) && (i != 3000) && (i != 1))
+          {
+            QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find unsupport chatType file.");
+            localObject2 = anzj.a(2131712279) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a((MessageRecord)localObject1, (String)localObject2, true);
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject1);
+          }
+        }
+        localObject1 = new ArrayList(1);
+        ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage());
+        this.b.put(this.jdField_a_of_type_JavaLangString, localObject1);
+      }
+    }
+    return this.b;
+  }
+  
+  public void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2)
+  {
+    a(this.b, this.jdField_a_of_type_JavaUtilHashMap);
+    if (paramInt == 1)
+    {
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
+      paramList2 = anzj.a(2131712281) + paramList1.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramList1, paramList2, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramList1);
+      this.jdField_a_of_type_Axow.a(1, 2, this.jdField_a_of_type_Axpl);
+      return;
+    }
+    paramList2 = new ArrayList();
+    if ((paramList1 != null) && (paramList1.size() > 0)) {
+      paramList2.addAll(paramList1);
+    }
+    this.jdField_a_of_type_Axow.a(0, 2, this.jdField_a_of_type_Axpl);
+  }
+  
+  public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
+  {
+    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
+    paramList = anzj.a(2131712280) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramList, false);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
+    QLog.i("ReplyMsgForwardRequest<QFile>", 1, "replaceDropForwardMsg hint[ + " + paramList + "reason[" + paramString + "]");
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_Axpl == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
   }
 }
 

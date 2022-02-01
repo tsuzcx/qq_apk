@@ -1,24 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class atyc
-  implements atve
+class atyc
+  extends atxd
 {
-  public atyc(SendBottomBar paramSendBottomBar) {}
-  
-  public void a()
+  public atyc(atwy paramatwy)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(athc.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a).finish();
+    super(paramatwy);
   }
   
-  public void b() {}
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 8);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Atxd = new atya(this.jdField_a_of_type_Atwy);
+  }
 }
 
 

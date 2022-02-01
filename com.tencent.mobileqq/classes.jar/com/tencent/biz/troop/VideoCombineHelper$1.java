@@ -1,17 +1,17 @@
 package com.tencent.biz.troop;
 
-import aapa;
-import aapi;
-import aapk;
+import aatd;
+import aatl;
+import aatn;
 
 public class VideoCombineHelper$1
   implements Runnable
 {
-  public VideoCombineHelper$1(aapa paramaapa, aapk paramaapk, aapi paramaapi) {}
+  public VideoCombineHelper$1(aatd paramaatd, aatn paramaatn, aatl paramaatl) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Aapk, this.jdField_a_of_type_Aapi);
+    this.this$0.a(this.jdField_a_of_type_Aatn, this.jdField_a_of_type_Aatl);
   }
 }
 

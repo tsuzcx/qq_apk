@@ -1,34 +1,15 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Random;
+import java.io.File;
 
 public class asrt
-  implements View.OnClickListener
 {
-  public asrt(FilePreviewActivity paramFilePreviewActivity) {}
+  public int a;
+  View jdField_a_of_type_AndroidViewView;
+  public bhwo a;
+  public File a;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
-  {
-    this.a.startTitleProgress();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131694296);
-    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    if (this.a.jdField_a_of_type_Athl != null)
-    {
-      athl localathl = this.a.jdField_a_of_type_Athl;
-      localathl.a += 1;
-    }
-    int i = new Random(System.currentTimeMillis()).nextInt(1500);
-    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  asrt(asro paramasro) {}
 }
 
 

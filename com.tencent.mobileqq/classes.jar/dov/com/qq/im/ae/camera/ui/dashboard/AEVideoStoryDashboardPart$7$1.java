@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bnls;
-import bnlz;
-import bnma;
+import bonf;
+import bonm;
+import bonn;
 import java.util.List;
 
 public class AEVideoStoryDashboardPart$7$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$7$1(bnlz parambnlz, List paramList) {}
+  public AEVideoStoryDashboardPart$7$1(bonm parambonm, List paramList) {}
   
   public void run()
   {
-    bnls.a(this.jdField_a_of_type_Bnlz.a).a(this.jdField_a_of_type_JavaUtilList);
+    bonf.a(this.jdField_a_of_type_Bonm.a).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,11 +1,26 @@
-import com.tencent.pts.utils.PTSReportUtil.DefaultPTSReport;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-final class qpd
-  extends PTSReportUtil.DefaultPTSReport
+public class qpd
+  implements pre
 {
-  public void reportEvent(String paramString1, String paramString2, int paramInt)
+  public qpd(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    qpk.a("0X800B241", "", "", "", new qpl().a("tag", paramString1).a("msg", paramString2).a("reportType", "" + paramInt).a());
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131717203, 0).a();
   }
 }
 

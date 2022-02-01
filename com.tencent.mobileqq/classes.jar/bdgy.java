@@ -1,73 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class bdgy
-  extends BaseAdapter
+class bdgy
+  implements bdgt
 {
-  public bdgy(TableQueryViewer paramTableQueryViewer) {}
+  bdgy(bdgx parambdgx, LoadParam paramLoadParam) {}
   
-  private int a()
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    return a().size();
-  }
-  
-  private List<bdgp> a()
-  {
-    return TableQueryViewer.a(this.a);
-  }
-  
-  public int getCount()
-  {
-    return a();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return a().get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    synchronized (bdgx.a(this.jdField_a_of_type_Bdgx))
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131562946, paramViewGroup, false);
-      paramView = new bdgx(this.a, localView);
-      localView.setTag(paramView);
-      localObject = (bdgp)a().get(paramInt);
-      paramView.a.setText(((bdgp)localObject).b);
-      paramView.d.setText(((bdgp)localObject).k);
-      paramView.b.setText(((bdgp)localObject).c);
-      paramView.c.setText(((bdgp)localObject).f);
-      if (paramInt % 2 != 0) {
-        break label168;
+      Object localObject2 = (List)bdgx.a(this.jdField_a_of_type_Bdgx).get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
+      bdgx.a(this.jdField_a_of_type_Bdgx).remove(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
+      if (QLog.isColorLevel()) {
+        QLog.i("SoLoadWidget.SoLoadManager", 2, "load resCode=" + paramInt + ", loadExtResult=" + paramLoadExtResult + ",loadParam=" + this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam + ",ls=" + localObject2);
       }
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166562));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bdgx)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label168:
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167279));
+      if (localObject2 != null)
+      {
+        ??? = ((List)localObject2).iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject2 = (bdgt)((Iterator)???).next();
+          if (localObject2 != null) {
+            ((bdgt)localObject2).onLoadResult(paramInt, paramLoadExtResult);
+          }
+        }
+      }
     }
   }
 }

@@ -1,341 +1,51 @@
-import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class zdx
-  extends zef
+  implements zez
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<zea> jdField_a_of_type_JavaUtilList;
+  private zdx(DoodleLayout paramDoodleLayout) {}
   
-  public zdx(Context paramContext, String paramString, int paramInt, @NonNull List<zea> paramList, QQAppInterface paramQQAppInterface)
+  private void a()
   {
-    super(paramContext, paramString, paramInt);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a.a(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+    this.a.a(false);
+    this.a.b(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView });
+    this.a.setDoodleGLViewVisibility(0);
+    this.a.c(0);
+    this.a.d(0);
   }
   
-  private zeb a(int paramInt)
+  public void a(zbv paramzbv, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int i = c();
-    if ((paramInt < 0) || (paramInt >= i)) {
-      throw new IllegalStateException("getViewType Exception, innerPos:" + paramInt + ",LineCount:" + i);
-    }
-    Object localObject1;
-    if (paramInt == 0)
+    yuk.a("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s ", paramzbv, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
+    a();
+    zbb localzbb = new zbb(paramFloat1, paramFloat2 + this.a.a(), paramFloat3, 0.0F, 0.0F, 0.0F, paramzbv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramzbv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3))
     {
-      localObject1 = new zeb(null);
-      ((zeb)localObject1).jdField_a_of_type_Int = 1;
-      return localObject1;
+      LpReportInfo_pf00064.allReport(615, 6);
+      LpReportInfo_pf00064.allReport(615, 4, 2);
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    i = 0;
-    if (((Iterator)localObject2).hasNext())
+    if (this.a.a().a(paramzbv.jdField_a_of_type_JavaLangString, paramzbv.b, paramzbv.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localzbb))
     {
-      localObject1 = (zea)((Iterator)localObject2).next();
-      i += 1;
-      if (i == paramInt)
-      {
-        localObject2 = new zeb(null);
-        ((zeb)localObject2).jdField_a_of_type_Int = 2;
-        ((zeb)localObject2).jdField_a_of_type_Zea = ((zea)localObject1);
-        return localObject2;
-      }
-      if (!zea.a((zea)localObject1)) {
-        break label253;
-      }
-      if (paramInt <= ((zea)localObject1).a().size() + i)
-      {
-        localObject2 = (zdz)((zea)localObject1).a().get(paramInt - i - 1);
-        zeb localzeb = new zeb(null);
-        localzeb.jdField_a_of_type_Int = 3;
-        localzeb.jdField_a_of_type_Zea = ((zea)localObject1);
-        localzeb.jdField_a_of_type_Zdz = ((zdz)localObject2);
-        return localzeb;
-      }
-      i = ((zea)localObject1).a().size() + i;
-    }
-    label253:
-    for (;;)
-    {
-      break;
-      throw new IllegalStateException("can not find item with innerPos:" + paramInt);
+      DoodleLayout.a("clk_oneface");
+      yuq.a("0X80076CA");
+      yuq.b("0X80075DF");
     }
   }
   
-  private void a(View paramView)
+  public void a(zfb paramzfb)
   {
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131364225);
-    Object localObject = (ImageView)paramView.findViewById(2131364235);
-    TextView localTextView = (TextView)paramView.findViewById(2131364232);
-    paramView = paramView.findViewById(2131364226);
-    localTextView.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ((ImageView)localObject).setVisibility(0);
-      localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      if (!this.b) {
-        break label138;
-      }
-      localCheckBox.setChecked(true);
+    yuk.b("DoodleLayout", "onLocationFaceSelected, pictureUrl:" + paramzfb.d);
+    a();
+    this.a.a(paramzfb);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3) {
+      LpReportInfo_pf00064.report(615, 6);
     }
-    for (((RelativeLayout.LayoutParams)localObject).leftMargin = zlx.a(this.jdField_a_of_type_AndroidContentContext, 32.0F);; ((RelativeLayout.LayoutParams)localObject).leftMargin = 0)
-    {
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      int i = -2170912;
-      QQStoryContext.a();
-      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-        i = -16444373;
-      }
-      paramView.setBackgroundColor(i);
-      return;
-      ((ImageView)localObject).setVisibility(4);
-      break;
-      label138:
-      localCheckBox.setChecked(false);
-    }
-  }
-  
-  private void a(View paramView, zea paramzea)
-  {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131367657);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131367659);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131367630);
-    paramView = (CheckBox)paramView.findViewById(2131367632);
-    localTextView1.setText(paramzea.a.group_name);
-    localTextView2.setText(String.format("(%s/%s)", new Object[] { Integer.valueOf(paramzea.a()), Integer.valueOf(paramzea.b()) }));
-    if (paramzea.b() == 0)
-    {
-      paramView.setVisibility(4);
-      if (!paramzea.a()) {
-        break label146;
-      }
-      paramView.setChecked(true);
-      label111:
-      if (!zea.a(paramzea)) {
-        break label154;
-      }
-      localCheckBox.setChecked(true);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(new zdy(this, paramzea));
-      return;
-      paramView.setVisibility(0);
-      break;
-      label146:
-      paramView.setChecked(false);
-      break label111;
-      label154:
-      localCheckBox.setChecked(false);
-    }
-  }
-  
-  private void a(View paramView, zea paramzea, zdz paramzdz)
-  {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131367182);
-    Object localObject1 = (TextView)paramView.findViewById(2131367202);
-    Object localObject2 = (CheckBox)paramView.findViewById(2131367165);
-    paramView = paramView.findViewById(2131367164);
-    ((TextView)localObject1).setText(paramzdz.jdField_a_of_type_ComTencentMobileqqDataFriends.remark);
-    if (paramzdz.jdField_a_of_type_Boolean)
-    {
-      ((CheckBox)localObject2).setChecked(true);
-      localObject1 = bgmo.b();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label226;
-      }
-      localObject2 = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramzdz.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 3, (Drawable)localObject1, (Drawable)localObject1);
-      if (localObject2 == null) {
-        break label207;
-      }
-      localImageView.setImageDrawable((Drawable)localObject2);
-    }
-    for (;;)
-    {
-      paramView.setVisibility(4);
-      if (this.jdField_a_of_type_JavaUtilList.indexOf(paramzea) == this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        paramzea = paramzea.a();
-        if (paramzea.indexOf(paramzdz) == paramzea.size() - 1)
-        {
-          int i = -2170912;
-          QQStoryContext.a();
-          if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-            i = -16444373;
-          }
-          paramView.setBackgroundColor(i);
-          paramView.setVisibility(0);
-        }
-      }
-      return;
-      ((CheckBox)localObject2).setChecked(false);
-      break;
-      label207:
-      yqp.e("Q.qqstory.publish.edit.ComplexPart", "FaceDrawable is null.");
-      localImageView.setImageDrawable((Drawable)localObject1);
-      continue;
-      label226:
-      yqp.e("Q.qqstory.publish.edit.ComplexPart", "QQAppInterface is null.");
-      localImageView.setImageDrawable((Drawable)localObject1);
-    }
-  }
-  
-  private void a(zeb paramzeb)
-  {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean) {
-      if (!this.b) {
-        bool = true;
-      }
-    }
-    for (this.b = bool;; this.b = true)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  private void b(zeb paramzeb)
-  {
-    paramzeb.jdField_a_of_type_Zea.a();
-  }
-  
-  private int c()
-  {
-    if (!this.b) {
-      return 1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 1;
-    if (localIterator.hasNext())
-    {
-      zea localzea = (zea)localIterator.next();
-      List localList = localzea.a();
-      i += 1;
-      if (!zea.a(localzea)) {
-        break label72;
-      }
-      i = localList.size() + i;
-    }
-    label72:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  private void c(zeb paramzeb)
-  {
-    paramzeb.jdField_a_of_type_Zea.a(paramzeb.jdField_a_of_type_Zdz);
-  }
-  
-  public int a()
-  {
-    return c();
-  }
-  
-  public int a(int paramInt)
-  {
-    return a(paramInt).jdField_a_of_type_Int;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    switch (a(paramInt).jdField_a_of_type_Int)
-    {
-    default: 
-      return null;
-    case 1: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561756, null);
-    case 2: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561758, null);
-    }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561757, null);
-  }
-  
-  @NonNull
-  public List<zdz> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((zea)localIterator.next()).b());
-    }
-    return localArrayList;
-  }
-  
-  public void a(int paramInt)
-  {
-    zeb localzeb = a(paramInt);
-    switch (localzeb.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      a(localzeb);
-      return;
-    case 2: 
-      b(localzeb);
-      return;
-    }
-    c(localzeb);
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    zeb localzeb = a(paramInt);
-    switch (localzeb.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramView);
-      return;
-    case 2: 
-      a(paramView, localzeb.jdField_a_of_type_Zea);
-      return;
-    }
-    a(paramView, localzeb.jdField_a_of_type_Zea, localzeb.jdField_a_of_type_Zdz);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator1.hasNext())
-    {
-      zea localzea = (zea)localIterator1.next();
-      Iterator localIterator2 = localzea.a().iterator();
-      while (localIterator2.hasNext())
-      {
-        zdz localzdz = (zdz)localIterator2.next();
-        if (paramList.contains(localzdz.a())) {
-          localzea.b(localzdz);
-        }
-      }
-    }
+    yuq.b("0X80075E3");
   }
 }
 

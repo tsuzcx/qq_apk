@@ -1,6 +1,27 @@
-public abstract interface biif
+import android.text.TextUtils;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import dualsim.common.IPhoneInfoBridge;
+
+public class biif
+  implements IPhoneInfoBridge
 {
-  public abstract void exec(String paramString, biic parambiic);
+  public biif(KCWraperV2.1 param1) {}
+  
+  public String a(String paramString)
+  {
+    if ("imei".equals(paramString)) {
+      return blhc.a("a4bd32");
+    }
+    if ("imsi".equals(paramString)) {
+      return blhc.b("a4bd32");
+    }
+    return "";
+  }
+  
+  public boolean isAllow(String paramString)
+  {
+    return !TextUtils.isEmpty(a(paramString));
+  }
 }
 
 

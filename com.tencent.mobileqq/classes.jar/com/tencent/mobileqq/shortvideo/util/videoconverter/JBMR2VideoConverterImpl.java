@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import bcmt;
-import bcmv;
+import bdfl;
+import bdfn;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
 @TargetApi(18)
 public class JBMR2VideoConverterImpl
-  implements bcmv
+  implements bdfn
 {
   private WeakReference<Thread> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean = false;
@@ -24,12 +24,12 @@ public class JBMR2VideoConverterImpl
     return false;
   }
   
-  public boolean a(File paramFile, bcmt parambcmt, boolean paramBoolean)
+  public boolean a(File paramFile, bdfl parambdfl, boolean paramBoolean)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, parambcmt), "VideoConvert");
+      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, parambdfl), "VideoConvert");
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
       paramFile.start();
       if (paramBoolean) {}

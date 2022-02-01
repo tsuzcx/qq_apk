@@ -1,17 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class ztn
-  implements DialogInterface.OnClickListener
+public class ztn
+  extends Handler
 {
-  ztn(ztm paramztm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ztn(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    ((antz)this.a.a.app.a(10)).a(true);
-    bcst.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
+    {
+      yuk.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
+      }
+    }
   }
 }
 

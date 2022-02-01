@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
 public class alws
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public alws(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public alws(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 10) {
+      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
+    }
+  }
 }
 
 

@@ -1,10 +1,10 @@
 package cooperation.qqreader.host.colornote;
 
-import aqck;
+import aqrn;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class ReaderColorNoteController$2
-  implements aqck
+  implements aqrn
 {
   ReaderColorNoteController$2(ReaderColorNoteController paramReaderColorNoteController, IReaderServiceInfo paramIReaderServiceInfo) {}
   

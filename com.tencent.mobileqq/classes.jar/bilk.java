@@ -1,61 +1,69 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import java.io.File;
 
 public class bilk
-  extends bioy
 {
-  public bilk(FriendChooser paramFriendChooser) {}
+  public static final int a = ListenChangeVoicePanel.a.length;
   
-  public int getCount()
+  public static String a(String paramString)
   {
-    return this.a.b.size();
+    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
+    new File(paramString).renameTo(new File(str));
+    return str;
   }
   
-  public Object getItem(int paramInt)
+  public static String a(String paramString, int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-      return this.a.b.get(paramInt);
-    }
-    return null;
+    int i = paramString.lastIndexOf(".");
+    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static void a(String paramString1, String paramString2)
   {
-    Friend localFriend = (Friend)getItem(paramInt);
-    Object localObject;
-    Bitmap localBitmap;
-    if (paramView == null)
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    while (i < a)
     {
-      localObject = new bilq();
-      paramView = this.a.getLayoutInflater().inflate(2131559281, null);
-      ((bilq)localObject).a = ((ImageView)paramView.findViewById(2131366164));
-      paramView.setTag(localObject);
-      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-        localFriend.d = biph.a(this.a.a(), localFriend.a);
-      }
-      localBitmap = bipe.a().a(localFriend.d);
-      if (localBitmap != null) {
-        break label182;
-      }
-      ((bilq)localObject).a.setImageResource(2130840264);
-      localObject = ((bilq)localObject).a;
-      bipe.a().a(localFriend.d, new bill(this, (ImageView)localObject));
+      new File(a(paramString1, i)).delete();
+      i += 1;
     }
-    for (;;)
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    String str = null;
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    paramString2 = str;
+    if (i < a)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject = (bilq)paramView.getTag();
-      break;
-      label182:
-      ((bilq)localObject).a.setImageBitmap(localBitmap);
+      str = a(paramString1, i);
+      if (i == paramInt) {
+        paramString2 = str;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        new File(str).delete();
+      }
+    }
+    if (paramString2 != null) {
+      new File(paramString2).renameTo(new File(paramString1));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    new File(paramString1).deleteOnExit();
+    new File(paramString2).deleteOnExit();
+    int i = 0;
+    while (i < a)
+    {
+      new File(a(paramString1, i)).deleteOnExit();
+      i += 1;
     }
   }
 }

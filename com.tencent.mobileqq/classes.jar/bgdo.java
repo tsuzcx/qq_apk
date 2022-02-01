@@ -1,34 +1,59 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import java.util.List;
 
 class bgdo
-  implements View.OnClickListener
+  extends Handler
 {
-  bgdo(bgdl parambgdl, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  bgdo(bgdn parambgdn, Looper paramLooper)
   {
-    bisy.b("NewUpgradeDialog", bipz.a(10010, bgdl.a(), 2, 200));
-    bipx.a().a(17, bipz.a(10010, bgdl.a(), 2, 200));
-    if (bgdl.a() == 2) {
-      bcst.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_Bgdq == null) {}
+    WordInfo localWordInfo;
+    do
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgdl, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bivr.a().b(bgdl.a(this.jdField_a_of_type_Bgdl));
-        this.jdField_a_of_type_Bgdl.dismiss();
-      }
-      bgdl.a(this.jdField_a_of_type_Bgdl, true);
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bcst.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        localWordInfo = (WordInfo)paramMessage.obj;
+        this.a.jdField_a_of_type_Bgdq.a(localWordInfo);
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null) {
+          this.a.a(localWordInfo);
+        }
+        break;
+      }
+    } while ((!localWordInfo.isDetected) || (localWordInfo.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
+    paramMessage = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(localWordInfo.paragraphPos)).generateOrGetWordInfoList(localWordInfo.paragraphPos);
+    int i = localWordInfo.wordPos + 1;
+    label148:
+    if (i < paramMessage.size())
+    {
+      localWordInfo = (WordInfo)paramMessage.get(i);
+      if ((localWordInfo == null) || (!localWordInfo.isNormalWord())) {}
+    }
+    for (i = 0; i != 0; i = 1)
+    {
+      this.a.b();
+      return;
+      i += 1;
+      break label148;
+      this.a.jdField_a_of_type_Bgdq.g();
+      return;
+      this.a.jdField_a_of_type_Bgdq.a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = 0;
+      return;
     }
   }
 }

@@ -1,10 +1,9 @@
-import java.util.List;
-
-public abstract interface bprm
+public class bprm
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<Long> paramList);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
 }
 
 

@@ -1,80 +1,85 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import android.view.View.OnClickListener;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+import com.tencent.qphone.base.util.QLog;
 
-public class bpvq
-  extends BaseAdapter
+public final class bpvq
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<zhp> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private zhp jdField_a_of_type_Zhp;
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final bpvs jdField_a_of_type_Bpvs;
   
-  public bpvq(Context paramContext)
+  public bpvq(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Bpvs = new bpvs(paramView);
   }
   
-  @Nullable
-  public zhp a()
+  public static void a(View paramView, long paramLong, View.OnClickListener paramOnClickListener)
   {
-    return this.jdField_a_of_type_Zhp;
-  }
-  
-  public void a(List<zhp> paramList)
-  {
-    if (paramList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
+    paramView = new bpvr(paramView, paramOnClickListener);
+    localValueAnimator.setDuration(paramLong);
+    localValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    localValueAnimator.addUpdateListener(paramView);
+    localValueAnimator.addListener(paramView);
+    localValueAnimator.start();
   }
   
-  public void a(@Nullable zhp paramzhp)
+  public static void a(View paramView, long paramLong, View.OnClickListener paramOnClickListener, float... paramVarArgs)
   {
-    this.jdField_a_of_type_Zhp = paramzhp;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561822, null);
-      localObject = new bpvr(paramView);
-      paramView.setTag(localObject);
+    if (paramView == null) {
+      return;
     }
-    for (;;)
+    paramVarArgs = ValueAnimator.ofFloat(paramVarArgs);
+    paramView = new bpvr(paramView, paramOnClickListener);
+    paramVarArgs.setDuration(paramLong);
+    paramVarArgs.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    paramVarArgs.addUpdateListener(paramView);
+    paramVarArgs.addListener(paramView);
+    paramVarArgs.start();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      ((bpvr)localObject).a((zhp)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Zhp);
-      localObject = ((bpvr)localObject).a;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = (bpvr)paramView.getTag();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bpvs);
     }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bpvs);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    int i = this.jdField_a_of_type_AndroidViewView.getPaddingLeft();
+    int j = this.jdField_a_of_type_AndroidViewView.getRight() - this.jdField_a_of_type_AndroidViewView.getLeft() - this.jdField_a_of_type_AndroidViewView.getPaddingRight();
+    int m = this.jdField_a_of_type_AndroidViewView.getPaddingTop();
+    int n = this.jdField_a_of_type_AndroidViewView.getBottom();
+    int i1 = this.jdField_a_of_type_AndroidViewView.getTop();
+    int i2 = this.jdField_a_of_type_AndroidViewView.getPaddingBottom();
+    int k = (i + j) / 2;
+    m = (m + (n - i1 - i2)) / 2;
+    paramCanvas.scale(this.jdField_a_of_type_Bpvs.a, this.jdField_a_of_type_Bpvs.a, k, m);
+    if (QLog.isColorLevel()) {
+      QLog.d("PressScaleAnimDelegate ", 2, "draw, left=" + i + ",right=" + j + ",centerX=" + k + ",centerY=" + m + ",scale=" + this.jdField_a_of_type_Bpvs.a);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bpvs.a != 1.0F;
   }
 }
 

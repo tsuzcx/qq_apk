@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import wrx;
-import wsa;
-import wsw;
-import wsx;
+import wvs;
+import wvv;
+import wwr;
+import wws;
 
 public class MsgTabNodeListLoader$2$1
   implements Runnable
 {
-  public MsgTabNodeListLoader$2$1(wsa paramwsa, wsw paramwsw, wsx paramwsx, ErrorMessage paramErrorMessage) {}
+  public MsgTabNodeListLoader$2$1(wvv paramwvv, wwr paramwwr, wws paramwws, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wsa.a.a(this.jdField_a_of_type_Wsw, this.jdField_a_of_type_Wsx, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.jdField_a_of_type_Wvv.a.a(this.jdField_a_of_type_Wwr, this.jdField_a_of_type_Wws, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

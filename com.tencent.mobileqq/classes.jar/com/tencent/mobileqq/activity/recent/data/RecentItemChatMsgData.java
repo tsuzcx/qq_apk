@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import QQService.EVIPSPEC;
-import abqn;
-import abrv;
-import abux;
-import acda;
-import aglw;
-import ahvz;
-import ahzf;
-import aiyr;
+import abur;
+import abvz;
+import abzb;
+import ache;
+import aguy;
+import aifn;
+import aiit;
+import ajka;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anhk;
-import anmw;
-import anni;
-import antq;
-import anuk;
-import aoeq;
-import aqbp;
-import audn;
-import autf;
-import awmz;
-import awzp;
-import axap;
-import axbb;
-import azwe;
-import azwh;
-import bbyp;
-import bdol;
-import bgjw;
-import bglf;
-import bgnr;
-import bjft;
+import antf;
+import anyw;
+import anzj;
+import aoga;
+import aogu;
+import aorf;
+import aqqr;
+import auvi;
+import avlf;
+import axfr;
+import axsi;
+import axtj;
+import axtt;
+import baou;
+import baox;
+import bcrg;
+import behh;
+import bhjx;
+import bhlg;
+import bhnt;
+import bkgt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
@@ -66,7 +66,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
-import nmp;
+import nok;
 
 public class RecentItemChatMsgData
   extends RecentItemChatMsgBaseData
@@ -74,6 +74,8 @@ public class RecentItemChatMsgData
   private static final String IS_LAST_RECEIPT = "lastIsReceipt";
   private static final String IS_SIGN_MSG = "IS_SIGN_MSG";
   private static final String IS_SPECIAL_CARE_FRIEND = "isSpecialCareFriend";
+  @ParcelAnnotation.NotParcel
+  private static ArrayList<Integer> sC2CLikeUINType = new RecentItemChatMsgData.1(32);
   public int haloState;
   public int mBubbleID;
   public String mQimIconUrl;
@@ -113,8 +115,8 @@ public class RecentItemChatMsgData
     }
     if ((this.msg != null) && (this.msg.msgtype == -2041))
     {
-      localObject = paramContext.getString(2131690075);
-      paramContext = paramContext.getString(2131690074);
+      localObject = paramContext.getString(2131690083);
+      paramContext = paramContext.getString(2131690082);
       this.msgSummary.strContent = ((String)localObject + " " + paramContext);
     }
   }
@@ -122,29 +124,29 @@ public class RecentItemChatMsgData
   private void a(Context paramContext, QQMessageFacade.Message paramMessage, MessageForStructing paramMessageForStructing)
   {
     String str1 = paramMessageForStructing.structingMsg.mMsgBrief;
-    String str2 = paramContext.getString(2131697707);
+    String str2 = paramContext.getString(2131697791);
     if ((!paramMessageForStructing.isread) && (!TextUtils.isEmpty(str1))) {}
     for (this.mMsgExtroInfo = str2;; this.mMsgExtroInfo = "")
     {
       paramMessage.msg = str1;
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167145);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167157);
       return;
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    if ((this.mUser.getType() == 1024) && (!bjft.b(paramQQAppInterface, this.mUser.uin))) {
-      this.mAuthenIconId = nmp.a(paramQQAppInterface, this.mUser.uin);
+    if ((this.mUser.getType() == 1024) && (!bkgt.b(paramQQAppInterface, this.mUser.uin))) {
+      this.mAuthenIconId = nok.a(paramQQAppInterface, this.mUser.uin);
     }
-    if (bgjw.b(this.mUser.uin)) {
-      this.mAuthenIconId = 2130841741;
+    if (bhjx.b(this.mUser.uin)) {
+      this.mAuthenIconId = 2130841751;
     }
   }
   
-  private boolean a(anmw paramanmw, String paramString)
+  private boolean a(anyw paramanyw, String paramString)
   {
-    if ((paramanmw == null) || (TextUtils.isEmpty(paramString))) {}
+    if ((paramanyw == null) || (TextUtils.isEmpty(paramString))) {}
     boolean bool1;
     boolean bool2;
     do
@@ -152,10 +154,10 @@ public class RecentItemChatMsgData
       do
       {
         return false;
-        paramanmw = paramanmw.b(paramString);
-      } while ((paramanmw == null) || (!paramanmw.isFriend()));
-      bool1 = paramanmw.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP);
-      bool2 = paramanmw.isServiceEnabled(EVIPSPEC.E_SP_QQVIP);
+        paramanyw = paramanyw.b(paramString);
+      } while ((paramanyw == null) || (!paramanyw.isFriend()));
+      bool1 = paramanyw.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP);
+      bool2 = paramanyw.isServiceEnabled(EVIPSPEC.E_SP_QQVIP);
     } while ((!bool1) && (!bool2));
     return true;
   }
@@ -167,7 +169,7 @@ public class RecentItemChatMsgData
   
   private void b()
   {
-    if ((anhk.E.equals(this.mUser.uin)) && (this.msg != null) && (this.msg.msg != null)) {
+    if ((antf.E.equals(this.mUser.uin)) && (this.msg != null) && (this.msg.msg != null)) {
       this.msgSummary.strContent = this.msg.msg;
     }
   }
@@ -189,9 +191,9 @@ public class RecentItemChatMsgData
   
   private void b(QQAppInterface paramQQAppInterface)
   {
-    anmw localanmw = (anmw)paramQQAppInterface.getManager(51);
-    if ((this.mUser.getType() == 0) && (localanmw.b(this.mUser.uin))) {
-      if (ahvz.a().a(paramQQAppInterface) != 1) {
+    anyw localanyw = (anyw)paramQQAppInterface.getManager(51);
+    if ((this.mUser.getType() == 0) && (localanyw.b(this.mUser.uin))) {
+      if (aifn.a().a(paramQQAppInterface) != 1) {
         break label159;
       }
     }
@@ -199,16 +201,16 @@ public class RecentItemChatMsgData
     for (int i = 1;; i = 0)
     {
       this.mQimOnline = 0;
-      if ((i != 0) && (ahvz.a().a()))
+      if ((i != 0) && (aifn.a().a()))
       {
-        Friends localFriends = localanmw.e(this.mUser.uin);
+        Friends localFriends = localanyw.e(this.mUser.uin);
         if ((localFriends != null) && (localFriends.netTypeIconId == 11))
         {
           this.mQimOnline = 1;
-          ThreadManager.post(new RecentItemChatMsgData.1(this, paramQQAppInterface), 5, null, true);
+          ThreadManager.post(new RecentItemChatMsgData.2(this, paramQQAppInterface), 5, null, true);
         }
       }
-      if ((this.mUser.getType() == 0) && (localanmw.a(this.mUser.uin) == 1)) {
+      if ((this.mUser.getType() == 0) && (localanyw.a(this.mUser.uin) == 1)) {
         this.mQimIconUrl = ((FlashChatManager)paramQQAppInterface.getManager(217)).a.d;
       }
       return;
@@ -230,11 +232,11 @@ public class RecentItemChatMsgData
   private void b(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage)
   {
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
-    this.mTitleName = paramContext.getString(2131695779);
+    this.mTitleName = paramContext.getString(2131695822);
     String str = "";
     Object localObject = null;
     if (localQQMessageFacade != null) {
-      localObject = localQQMessageFacade.b(anhk.D, 4000);
+      localObject = localQQMessageFacade.b(antf.D, 4000);
     }
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -243,7 +245,7 @@ public class RecentItemChatMsgData
         if (((MessageRecord)localObject).msgtype == -1033)
         {
           paramQQAppInterface = ((MessageRecord)localObject).msg;
-          paramQQAppInterface = anni.a(2131711938) + paramQQAppInterface;
+          paramQQAppInterface = anzj.a(2131712047) + paramQQAppInterface;
         }
       }
     }
@@ -256,22 +258,22 @@ public class RecentItemChatMsgData
         return;
         if (((MessageRecord)localObject).msgtype == -1030)
         {
-          if ((awmz)paramQQAppInterface.getManager(11) != null) {}
-          paramQQAppInterface = anni.a(2131711941) + "";
+          if ((axfr)paramQQAppInterface.getManager(11) != null) {}
+          paramQQAppInterface = anzj.a(2131712050) + "";
           continue;
         }
         if (((MessageRecord)localObject).msgtype == -1039)
         {
-          paramQQAppInterface = (antq)paramQQAppInterface.getManager(22);
+          paramQQAppInterface = (aoga)paramQQAppInterface.getManager(22);
           if (paramQQAppInterface == null) {
             break label313;
           }
-          paramQQAppInterface = paramContext.getResources().getString(2131695781) + paramQQAppInterface.a();
+          paramQQAppInterface = paramContext.getResources().getString(2131695824) + paramQQAppInterface.a();
           continue;
         }
         if (((MessageRecord)localObject).msgtype == -1040)
         {
-          paramContext = (antq)paramQQAppInterface.getManager(22);
+          paramContext = (aoga)paramQQAppInterface.getManager(22);
           paramQQAppInterface = str;
           if (paramContext != null) {
             paramQQAppInterface = paramContext.a();
@@ -306,11 +308,11 @@ public class RecentItemChatMsgData
       if (this.mUnreadNum <= 0) {
         break label129;
       }
-      str1 = paramContext.getString(2131692875);
+      str1 = paramContext.getString(2131692883);
       str2 = this.msg.msg;
       if ((!TextUtils.isEmpty(str2)) && (str2.startsWith(str1)))
       {
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
         if (!TextUtils.isEmpty(this.mMsgExtroInfo)) {
           break label104;
         }
@@ -331,7 +333,7 @@ public class RecentItemChatMsgData
   {
     if (AppSetting.c)
     {
-      anmw localanmw = (anmw)paramQQAppInterface.getManager(51);
+      anyw localanyw = (anyw)paramQQAppInterface.getManager(51);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.mTitleName).append(",");
       Object localObject;
@@ -340,7 +342,7 @@ public class RecentItemChatMsgData
         if (this.mMsgExtroInfo != null) {
           localStringBuilder.append(this.mMsgExtroInfo + ",");
         }
-        String str = bdol.e(this.mLastMsg.toString());
+        String str = behh.e(this.mLastMsg.toString());
         localObject = str;
         if (this.msg != null)
         {
@@ -348,15 +350,15 @@ public class RecentItemChatMsgData
           if (this.msg.msgtype == -5040)
           {
             localObject = str;
-            if (axbb.a(paramQQAppInterface, this.msg)) {
-              localObject = axbb.a(str);
+            if (axtt.a(paramQQAppInterface, this.msg)) {
+              localObject = axtt.a(str);
             }
           }
         }
         localStringBuilder.append((String)localObject).append(",").append(this.mShowTime);
-        if ((this.mUser.getType() == 0) && (localanmw.b(this.mUser.uin)))
+        if ((this.mUser.getType() == 0) && (localanyw.b(this.mUser.uin)))
         {
-          paramQQAppInterface = awzp.a(paramQQAppInterface, this.mUser.uin, false, 5);
+          paramQQAppInterface = axsi.a(paramQQAppInterface, this.mUser.uin, false, 5);
           if (paramQQAppInterface != null) {
             paramQQAppInterface = paramQQAppInterface.iterator();
           }
@@ -369,10 +371,10 @@ public class RecentItemChatMsgData
           if (!paramQQAppInterface.hasNext()) {
             break label347;
           }
-          localObject = (axap)paramQQAppInterface.next();
-          if (!TextUtils.isEmpty(((axap)localObject).d))
+          localObject = (axtj)paramQQAppInterface.next();
+          if (!TextUtils.isEmpty(((axtj)localObject).d))
           {
-            localStringBuilder.append(((axap)localObject).d).append(",");
+            localStringBuilder.append(((axtj)localObject).d).append(",");
             continue;
             if (this.mUnreadNum == 1)
             {
@@ -390,7 +392,7 @@ public class RecentItemChatMsgData
             localStringBuilder.append("有").append(this.mUnreadNum).append("条未读,");
             break;
           }
-          localStringBuilder.append(((axap)localObject).a).append(",");
+          localStringBuilder.append(((axtj)localObject).a).append(",");
         }
       }
       label347:
@@ -400,9 +402,18 @@ public class RecentItemChatMsgData
   
   private void c(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    switch (this.mUser.getType())
+    int i = this.mUser.getType();
+    if (sC2CLikeUINType.contains(Integer.valueOf(i)))
+    {
+      d(paramQQAppInterface, paramContext);
+      return;
+    }
+    switch (i)
     {
     default: 
+      return;
+    case 1006: 
+      m(paramQQAppInterface, paramContext);
       return;
     case 9501: 
       n(paramQQAppInterface, paramContext);
@@ -410,33 +421,8 @@ public class RecentItemChatMsgData
     case 1008: 
       a(paramQQAppInterface, paramContext, this.msg);
       return;
-    case 1006: 
-      m(paramQQAppInterface, paramContext);
-      return;
     case 1021: 
       l(paramQQAppInterface, paramContext);
-      return;
-    case 0: 
-    case 1000: 
-    case 1003: 
-    case 1004: 
-    case 1005: 
-    case 1020: 
-    case 1022: 
-    case 1023: 
-    case 1024: 
-    case 1025: 
-    case 1037: 
-    case 1044: 
-    case 1045: 
-    case 7400: 
-    case 10004: 
-    case 10005: 
-    case 10007: 
-    case 10008: 
-    case 10009: 
-    case 10010: 
-      d(paramQQAppInterface, paramContext);
       return;
     case 4000: 
       b(paramQQAppInterface, paramContext, this.msg);
@@ -490,9 +476,9 @@ public class RecentItemChatMsgData
               }
             }
           }
-          for (paramMessage.nickName = paramQQAppInterface.getApp().getString(2131693908);; paramMessage.nickName = bglf.b(paramQQAppInterface, paramMessage.senderuin, true))
+          for (paramMessage.nickName = paramQQAppInterface.getApp().getString(2131693925);; paramMessage.nickName = bhlg.b(paramQQAppInterface, paramMessage.senderuin, true))
           {
-            bgnr.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), this.msgSummary, paramMessage.nickName, true, false);
+            bhnt.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), this.msgSummary, paramMessage.nickName, true, false);
             return;
             if (localMessageForDevPtt.fileSize != -3L) {
               break label123;
@@ -514,7 +500,7 @@ public class RecentItemChatMsgData
             return;
           }
         } while (paramContext.videoFileStatus != 1002);
-        paramQQAppInterface = ((abux)paramQQAppInterface.a(49)).a();
+        paramQQAppInterface = ((abzb)paramQQAppInterface.a(49)).a();
         if (paramQQAppInterface != null) {}
         for (i = 1;; i = 0)
         {
@@ -541,8 +527,8 @@ public class RecentItemChatMsgData
           return;
         }
       } while (paramContext.videoFileStatus != 1002);
-      paramQQAppInterface = ((abux)paramQQAppInterface.a(49)).a();
-      if (!ahzf.b(paramContext))
+      paramQQAppInterface = ((abzb)paramQQAppInterface.a(49)).a();
+      if (!aiit.b(paramContext))
       {
         if (paramQQAppInterface != null) {
           i = 1;
@@ -563,18 +549,18 @@ public class RecentItemChatMsgData
     if ("device_groupchat".equals(paramMessage.extStr))
     {
       if (paramMessage.isSend()) {}
-      for (paramMessage.nickName = paramQQAppInterface.getApp().getString(2131693908);; paramMessage.nickName = bglf.b(paramQQAppInterface, paramMessage.senderuin, true))
+      for (paramMessage.nickName = paramQQAppInterface.getApp().getString(2131693925);; paramMessage.nickName = bhlg.b(paramQQAppInterface, paramMessage.senderuin, true))
       {
-        bgnr.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), this.msgSummary, paramMessage.nickName, true, false);
+        bhnt.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), this.msgSummary, paramMessage.nickName, true, false);
         return;
       }
     }
-    bgnr.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), this.msgSummary, null, true, false);
+    bhnt.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), this.msgSummary, null, true, false);
   }
   
   private void d()
   {
-    this.mTitleName = anni.a(2131711958);
+    this.mTitleName = anzj.a(2131712067);
     this.msgSummary.strContent = "可连接ArkIDE进行真机调试";
     this.mUnreadNum = 0;
   }
@@ -587,8 +573,8 @@ public class RecentItemChatMsgData
       localMessageForAIOStoryVideo.msg = this.msg.msg;
       localMessageForAIOStoryVideo.mIsParsed = false;
       localMessageForAIOStoryVideo.parse();
-      this.mMsgExtroInfo = anni.a(2131711932);
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167060);
+      this.mMsgExtroInfo = anzj.a(2131712041);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167070);
     }
   }
   
@@ -596,7 +582,7 @@ public class RecentItemChatMsgData
   {
     if (this.mUnreadNum > 0)
     {
-      this.mBubbleID = ((anuk)paramQQAppInterface.a(13)).a(this.msg);
+      this.mBubbleID = ((aogu)paramQQAppInterface.a(13)).a(this.msg);
       return;
     }
     this.mBubbleID = 0;
@@ -626,28 +612,28 @@ public class RecentItemChatMsgData
     if (this.mUser.getType() != 0)
     {
       processC2CDisplayTimeInner();
-      this.mTitleName = bglf.b(paramQQAppInterface, this.mUser.uin, true);
+      this.mTitleName = bhlg.b(paramQQAppInterface, this.mUser.uin, true);
       buildMessageBody(this.msg, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
     }
   }
   
   private void f(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    boolean bool = aqbp.a(paramQQAppInterface).b(this.mUser.uin);
+    boolean bool = aqqr.a(paramQQAppInterface).b(this.mUser.uin);
     this.mArgsBundle.putBoolean("isSpecialCareFriend", bool);
     if ((this.mUnreadNum > 0) && (bool))
     {
-      this.mMsgExtroInfo = paramContext.getString(2131716036);
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
+      this.mMsgExtroInfo = paramContext.getString(2131716145);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
     }
   }
   
   private void g(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((this.mUser.getType() == 0) && (((aiyr)paramQQAppInterface.getManager(34)).b(this.mUser.uin)))
+    if ((this.mUser.getType() == 0) && (((ajka)paramQQAppInterface.getManager(34)).b(this.mUser.uin)))
     {
-      this.mMsgExtroInfo = paramContext.getString(2131693963);
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
+      this.mMsgExtroInfo = paramContext.getString(2131693980);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
     }
   }
   
@@ -683,13 +669,13 @@ public class RecentItemChatMsgData
       if ((l == this.msg.msgUid) && (((MessageForStructing)localObject2).structingMsg.mMsgServiceID == 76))
       {
         localObject2 = ((MessageForStructing)localObject2).structingMsg.mMsgBrief;
-        String str = paramContext.getString(2131696933);
+        String str = paramContext.getString(2131696982);
         if ((!((MessageRecord)localObject1).isread) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).startsWith(str))) {
           this.mMsgExtroInfo = str;
         }
         for (this.msg.msg = ((String)localObject2).substring(str.length());; this.msg.msg = ((String)localObject2))
         {
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167064);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167074);
           buildMessageBody(this.msg, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
           return;
           this.mMsgExtroInfo = "";
@@ -704,17 +690,17 @@ public class RecentItemChatMsgData
   
   private void i(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (anhk.J.equals(this.mUser.uin)) {
-      this.mTitleName = paramContext.getString(2131718366);
+    if (antf.J.equals(this.mUser.uin)) {
+      this.mTitleName = paramContext.getString(2131718502);
     }
     do
     {
       do
       {
         return;
-        if (anhk.E.equals(this.mUser.uin))
+        if (antf.E.equals(this.mUser.uin))
         {
-          this.mTitleName = paramContext.getString(2131718398);
+          this.mTitleName = paramContext.getString(2131718534);
           return;
         }
         if (this.mUser.getType() != 1000) {
@@ -723,21 +709,21 @@ public class RecentItemChatMsgData
         paramContext = (TroopManager)paramQQAppInterface.getManager(52);
       } while (paramContext == null);
       paramContext = paramContext.b(this.mUser.troopUin);
-      this.mTitleName = bglf.a(paramQQAppInterface, this.mUser.uin, paramContext, this.mUser.troopUin, true, null);
+      this.mTitleName = bhlg.a(paramQQAppInterface, this.mUser.uin, paramContext, this.mUser.troopUin, true, null);
       return;
       if (this.mUser.getType() != 1004) {
         break;
       }
-      this.mTitleName = bglf.c(paramQQAppInterface, this.mUser.troopUin, this.mUser.uin);
+      this.mTitleName = bhlg.c(paramQQAppInterface, this.mUser.troopUin, this.mUser.uin);
     } while ((this.mTitleName == null) || (!this.mTitleName.equals(this.mUser.uin)));
-    this.mTitleName = bglf.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mTitleName = bhlg.b(paramQQAppInterface, this.mUser.uin, true);
     return;
     if (this.mUser.getType() == 10007)
     {
-      this.mTitleName = autf.a(this.mUser.uin, paramQQAppInterface);
+      this.mTitleName = avlf.a(this.mUser.uin, paramQQAppInterface);
       return;
     }
-    this.mTitleName = bglf.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mTitleName = bhlg.b(paramQQAppInterface, this.mUser.uin, true);
   }
   
   private void j(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -751,28 +737,28 @@ public class RecentItemChatMsgData
       if (paramQQAppInterface.a().f(this.msg.frienduin) >= localMessageForRichState.time) {
         break label105;
       }
-      this.mMsgExtroInfo = anni.a(2131711956);
+      this.mMsgExtroInfo = anzj.a(2131712065);
     }
-    for (this.mExtraInfoColor = paramContext.getResources().getColor(2131167064);; this.mExtraInfoColor = paramContext.getResources().getColor(2131167060))
+    for (this.mExtraInfoColor = paramContext.getResources().getColor(2131167074);; this.mExtraInfoColor = paramContext.getResources().getColor(2131167070))
     {
       this.mArgsBundle.putBoolean("IS_SIGN_MSG", true);
       return;
       label105:
-      this.mMsgExtroInfo = anni.a(2131711955);
+      this.mMsgExtroInfo = anzj.a(2131712064);
     }
   }
   
   private void k(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     boolean bool;
-    if (a((anmw)paramQQAppInterface.getManager(51), this.mUser.uin))
+    if (a((anyw)paramQQAppInterface.getManager(51), this.mUser.uin))
     {
       this.mUnreadFlag = 4;
       if (FriendsStatusUtil.a(this.mUser.uin, paramQQAppInterface)) {
         this.mUnreadFlag = 3;
       }
-      bool = aglw.a(this.mUser.uin, this.mUser.getType(), paramQQAppInterface);
-      if ((!bool) || (aoeq.a(paramQQAppInterface.c(), paramContext))) {
+      bool = aguy.a(this.mUser.uin, this.mUser.getType(), paramQQAppInterface);
+      if ((!bool) || (aorf.a(paramQQAppInterface.c(), paramContext))) {
         break label95;
       }
       this.mUnreadFlag = 0;
@@ -789,7 +775,7 @@ public class RecentItemChatMsgData
   
   private void l(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.mTitleName = bglf.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mTitleName = bhlg.b(paramQQAppInterface, this.mUser.uin, true);
     buildMessageBody(this.msg, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
     if ((this.msg != null) && ((this.msg.getMessageText() != null) || ((this.msg.msgtype == -2011) && (this.msg.msgData != null))))
     {
@@ -801,10 +787,10 @@ public class RecentItemChatMsgData
   
   private void m(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    String str = bglf.e(paramQQAppInterface, this.mUser.uin);
-    Object localObject = (awmz)paramQQAppInterface.getManager(11);
+    String str = bhlg.e(paramQQAppInterface, this.mUser.uin);
+    Object localObject = (axfr)paramQQAppInterface.getManager(11);
     if (localObject != null) {}
-    for (localObject = ((awmz)localObject).c(this.mUser.uin);; localObject = null)
+    for (localObject = ((axfr)localObject).c(this.mUser.uin);; localObject = null)
     {
       if (localObject != null) {
         this.mTitleName = ((PhoneContact)localObject).name;
@@ -818,7 +804,7 @@ public class RecentItemChatMsgData
         this.mDisplayTime = this.msg.time;
         return;
         if (str != null) {
-          this.mTitleName = bglf.b(paramQQAppInterface, str, true);
+          this.mTitleName = bhlg.b(paramQQAppInterface, str, true);
         } else {
           this.mTitleName = this.mUser.uin;
         }
@@ -835,7 +821,7 @@ public class RecentItemChatMsgData
       this.msgSummary.strContent = this.msg.msg;
       this.mDisplayTime = this.msg.time;
       this.mAuthenIconId = 0;
-      if ((this.msg.msgtype != -4502) || (!this.msg.frienduin.equals(anhk.y))) {
+      if ((this.msg.msgtype != -4502) || (!this.msg.frienduin.equals(antf.y))) {
         break label125;
       }
       this.mTitleName = "QQ物联";
@@ -849,9 +835,9 @@ public class RecentItemChatMsgData
       c(paramQQAppInterface, paramContext, this.msg);
       return;
       label125:
-      DeviceInfo localDeviceInfo = ((abqn)paramQQAppInterface.a(51)).a(Long.parseLong(this.msg.frienduin));
+      DeviceInfo localDeviceInfo = ((abur)paramQQAppInterface.a(51)).a(Long.parseLong(this.msg.frienduin));
       if (localDeviceInfo != null) {
-        this.mTitleName = acda.a(localDeviceInfo);
+        this.mTitleName = ache.a(localDeviceInfo);
       }
     }
   }
@@ -860,12 +846,12 @@ public class RecentItemChatMsgData
   {
     if (this.msg != null)
     {
-      paramQQAppInterface = azwe.a(paramQQAppInterface, this.msg.frienduin, this.msg.istroop, this.mUnreadNum, this.msg);
+      paramQQAppInterface = baou.a(paramQQAppInterface, this.msg.frienduin, this.msg.istroop, this.mUnreadNum, this.msg);
       this.mUnreadNum += paramQQAppInterface.a();
       if (paramQQAppInterface.a() > 0)
       {
         this.mMsgExtroInfo = paramQQAppInterface.a();
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
       }
     }
   }
@@ -879,8 +865,8 @@ public class RecentItemChatMsgData
       if (!TextUtils.isEmpty(str))
       {
         this.msgSummary.strContent = str;
-        this.mMsgExtroInfo = anni.a(2131711936);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167064);
+        this.mMsgExtroInfo = anzj.a(2131712045);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167074);
         if (!FeedsManager.isShowStatus(getRecentUserUin())) {
           FeedsManager.showStatus(getRecentUserUin());
         }

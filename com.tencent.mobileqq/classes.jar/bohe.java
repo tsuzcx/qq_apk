@@ -1,8 +1,9 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.CheckBox;
 
 public abstract interface bohe
 {
-  public abstract void a(@NonNull bogx parambogx, boolean paramBoolean, @NonNull String paramString);
+  public abstract void a(View paramView, int paramInt, CheckBox paramCheckBox);
 }
 
 

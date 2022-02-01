@@ -44,6 +44,11 @@ public abstract class ChatMessage
     return this.mViewHeight;
   }
   
+  public boolean isFollowMessage()
+  {
+    return this.isFlowMessage;
+  }
+  
   public boolean isSend()
   {
     if (this.fakeSenderType == 1) {

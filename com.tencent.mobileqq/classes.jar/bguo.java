@@ -1,10 +1,23 @@
-public abstract interface bguo
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
+
+public class bguo
+  implements HostnameVerifier
 {
-  public abstract void a(bgun parambgun, float paramFloat1, float paramFloat2);
+  public bguo(TroopUploadingThread paramTroopUploadingThread, HttpsURLConnection paramHttpsURLConnection) {}
   
-  public abstract void a(bgun parambgun, bgup parambgup, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(bgun parambgun, float paramFloat1, float paramFloat2);
+  public boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    String str = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getRequestProperty("Host");
+    paramString = str;
+    if (str == null) {
+      paramString = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getURL().getHost();
+    }
+    return HttpsURLConnection.getDefaultHostnameVerifier().verify(paramString, paramSSLSession);
+  }
 }
 
 

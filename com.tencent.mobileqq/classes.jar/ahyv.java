@@ -1,34 +1,13 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahyv
-  implements ViewTreeObserver.OnPreDrawListener
+public class ahyv
+  implements ahyf
 {
-  ahyv(ahyk paramahyk, ahyx paramahyx) {}
-  
-  public boolean onPreDraw()
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    ahyk.a(this.jdField_a_of_type_Ahyk).getViewTreeObserver().removeOnPreDrawListener(this);
-    if (this.jdField_a_of_type_Ahyx.b == 1)
-    {
-      ahyk.a(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#1fa4fc"), 5.0F, afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources()), afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources())));
-      ahyk.b(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#1fa4fc"), 5.0F, ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
-      ahyk.a(this.jdField_a_of_type_Ahyk).setImageResource(2130839204);
-    }
-    for (;;)
-    {
-      ahyk.a(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#b2b5bd"), 5.0F, ahyk.a(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.a(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
-      ahyk.c(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#b2b5bd"), 5.0F, ahyk.c(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.c(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
-      return true;
-      ahyk.a(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#ff5fb5"), 5.0F, afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources()), afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources())));
-      ahyk.b(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#ff5fb5"), 5.0F, ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
-      ahyk.a(this.jdField_a_of_type_Ahyk).setImageResource(2130839203);
-    }
+    paramahed.d(paramahfq, paramString);
   }
 }
 

@@ -1,23 +1,28 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import java.lang.ref.WeakReference;
 
-public class asjq
-  extends anmu
+class asjq
+  implements baaa
 {
-  public asjq(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  asjq(asiw paramasiw) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSearchFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    paramString = this.a.a.a(this.a.c);
-    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    MessengerService localMessengerService = (MessengerService)this.a.a.get();
+    if (localMessengerService != null)
     {
-      paramString.mAddFriendVerified = true;
-      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.2.1(this));
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt2);
+      localBundle.putInt("code", paramInt1);
+      localBundle.putString("url", paramString);
+      paramBundle.putBundle("response", localBundle);
+      localMessengerService.a(paramBundle);
+      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
+        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
+      }
     }
   }
 }

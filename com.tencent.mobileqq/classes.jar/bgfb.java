@@ -1,45 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class bgfb
-  implements DownloadParams.DecodeHandler
+public class bgfb
+  extends bgff<bgef>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public ImageView c;
+  
+  public bgfb(View paramView)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    do
-    {
-      do
-      {
-        Object localObject;
-        do
-        {
-          do
-          {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 4);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
-        }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = bgmo.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2], paramDownloadParams[3]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(bgey.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363019));
+    this.c = ((ImageView)paramView.findViewById(2131376599));
+    this.b = ((ImageView)paramView.findViewById(2131364599));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363028));
   }
 }
 

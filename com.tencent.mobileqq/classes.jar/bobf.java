@@ -1,21 +1,6 @@
-import android.util.Log;
-
-class bobf
-  implements bobm
+public abstract interface bobf
 {
-  bobf(bobe parambobe) {}
-  
-  public void a(int paramInt)
-  {
-    Log.d("ModuleController", "onScrolling() top => " + paramInt);
-    this.a.d(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
-    this.a.c(paramInt);
-  }
+  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
 }
 
 

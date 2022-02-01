@@ -1,44 +1,103 @@
-import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberCard;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 class bbcf
-  implements EIPCResultCallback
+  extends aojs
 {
-  bbcf(bbce parambbce) {}
+  bbcf(bbcd parambbcd) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramEIPCResult.data == null) {}
-    do
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2))) {
+      this.a.g(paramString);
+    }
+  }
+  
+  protected void a(String paramString, List<Pair<String, String>> paramList)
+  {
+    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null)
     {
-      do
+      i = 0;
+      QLog.i("IceBreak.HotPic", 2, i);
+      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
+        break label76;
+      }
+    }
+    label76:
+    while (!paramString.equals(bbcd.a(this.a)))
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    localObject = (anyw)this.a.a.getManager(51);
+    String str1 = this.a.a.getCurrentAccountUin();
+    int k = paramList.size();
+    int j = 0;
+    int i = 0;
+    label133:
+    if (j < k)
+    {
+      String str2 = (String)((Pair)paramList.get(j)).first;
+      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((anyw)localObject).b(str2))) {
+        break label283;
+      }
+      i += 1;
+    }
+    label283:
+    for (;;)
+    {
+      j += 1;
+      break label133;
+      float f = bbcd.a(this.a) / 100.0F;
+      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
+      if (1.0F * i / (paramList.size() - 1) <= f) {
+        break;
+      }
+      this.a.f(paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    this.a.g(paramString);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
       {
-        do
+        paramObject = (Object[])paramObject;
+        long l = ((Long)paramObject[0]).longValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (String.valueOf(l).equals(bbcd.a(this.a)))
         {
-          return;
-          switch (paramEIPCResult.data.getInt("notify_type"))
-          {
-          default: 
+          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
+          if (paramObject.lastSpeak > paramObject.joinTime) {
             return;
           }
-        } while (paramEIPCResult.code != 0);
-        i = paramEIPCResult.data.getInt("id");
-        paramEIPCResult = paramEIPCResult.data.getString("url");
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature.TOOL", 2, "mSignatureManagerIPCCallback get action id = " + i + " url = " + paramEIPCResult);
+          bbcd.a(this.a, String.valueOf(l));
+          return;
         }
-      } while (TextUtils.isEmpty(paramEIPCResult));
-      bbce.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
-      bbce.b(this.a);
-      this.a.notifyObservers(Integer.valueOf(4));
-      return;
-    } while (paramEIPCResult.code != 0);
-    int i = paramEIPCResult.data.getInt("id");
-    this.a.a(i, true);
+      }
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
+      }
+    }
   }
 }
 

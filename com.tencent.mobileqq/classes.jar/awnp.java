@@ -1,16 +1,34 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.graphics.Paint.Align;
 
-class awnp
-  implements Handler.Callback
+public abstract interface awnp
 {
-  awnp(awno paramawno) {}
+  public abstract int a();
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    awno.a(this.a, paramMessage);
-    return true;
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setAlign(Paint.Align paramAlign);
+  
+  public abstract void setLineMaxWidth(int paramInt);
+  
+  public abstract void setLyric(awwm paramawwm, int paramInt);
+  
+  public abstract void setOnSizeChangeListener(awoa paramawoa);
+  
+  public abstract void setSongId(String paramString);
+  
+  public abstract void setStrokeColor(int paramInt);
+  
+  public abstract void setStrokeWidth(int paramInt);
 }
 
 

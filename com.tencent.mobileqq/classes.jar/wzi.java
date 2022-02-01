@@ -1,51 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wzi
-  extends wlf<xay>
+  extends wip
 {
-  private final String a;
-  public List<String> a;
+  public boolean a;
+  public boolean b;
+  public boolean c = true;
+  public boolean d;
   
-  public wzi()
+  public wzi(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_share_group_info");
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  public String a()
+  public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
-    try
-    {
-      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
-      return new xay(localRspGetShareGroupInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yqp.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqGetShareGroupInfo.share_group_id_list.add(str);
-    }
-    return localReqGetShareGroupInfo.toByteArray();
+    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
   }
 }
 

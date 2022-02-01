@@ -1,20 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class uvg
-  extends Handler
+class uvg
+  implements View.OnTouchListener
 {
-  public uvg(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
+  uvg(uve paramuve) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionActivity.a(this.a);
+    uve.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

@@ -1,321 +1,205 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.KBPDUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
-import com.tencent.biz.pubaccount.util.Achilles;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.res.Configuration;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
+import tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.ModuleInfo;
+import tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.TextCardInfo;
 
 public class pfh
+  implements anui
 {
-  private static long jdField_a_of_type_Long;
-  private static pfi jdField_a_of_type_Pfi = new pfi(null);
-  private static pfj jdField_a_of_type_Pfj = new pfj(null);
+  public void a(float paramFloat, int paramInt) {}
   
-  private static SharedPreferences a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "getSharedPreferences: return null for runtime is null");
-      return null;
-    }
-    paramAppRuntime = "readinjoy_sp_kb_predownload_" + paramAppRuntime.getAccount();
-    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
-  }
+  public void a(int paramInt) {}
   
-  private static String a()
-  {
-    label235:
-    for (;;)
-    {
-      try
-      {
-        bmqa.f();
-        Object localObject2 = Achilles.a();
-        if ((localObject2 == null) || (((Set)localObject2).isEmpty()))
-        {
-          QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] empty param set.");
-          return "";
-        }
-        Object localObject1 = null;
-        Iterator localIterator = ((Set)localObject2).iterator();
-        if (localIterator.hasNext())
-        {
-          localObject2 = (AchillesParams)localIterator.next();
-          if (TextUtils.equals(((AchillesParams)localObject2).getPackageName(), "com.tencent.reading"))
-          {
-            localObject1 = localObject2;
-            break label235;
-          }
-        }
-        else
-        {
-          if (localObject1 == null)
-          {
-            QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] param not found for com.tencent.reading");
-            return "";
-          }
-          localObject2 = bixg.a().a("com.tencent.reading");
-          boolean bool;
-          if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).l)))
-          {
-            bool = new File(((DownloadInfo)localObject2).l).exists();
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("app_id", "101480433");
-            ((JSONObject)localObject2).put("download_url", localObject1.getDownloadUrl());
-            if (bool)
-            {
-              i = 1;
-              ((JSONObject)localObject2).put("download_finished", i);
-              if (!localObject1.isEnable()) {
-                continue;
-              }
-              i = 1;
-              ((JSONObject)localObject2).put("enable_predownload", i);
-              return ((JSONObject)localObject2).toString();
-            }
-          }
-          else
-          {
-            QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] download info not found");
-            bool = false;
-            continue;
-          }
-          int i = 0;
-          continue;
-          i = 0;
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("KBPreDownloadUtils", 1, "[queryKBDownloadInfo] ", localException);
-        return "";
-      }
-    }
-  }
+  public void a(int paramInt1, int paramInt2) {}
   
-  public static String a(AppRuntime paramAppRuntime)
-  {
-    Object localObject = a();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      return localObject;
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("app_id", "101480433");
-      ((JSONObject)localObject).put("download_url", b(paramAppRuntime, "sp_key_kb_download_url"));
-      if (a())
-      {
-        i = 1;
-        ((JSONObject)localObject).put("download_finished", i);
-        if (!b(paramAppRuntime, "sp_key_enable_pre_download")) {
-          break label90;
-        }
-      }
-      label90:
-      for (int i = 1;; i = 0)
-      {
-        ((JSONObject)localObject).put("enable_predownload", i);
-        paramAppRuntime = ((JSONObject)localObject).toString();
-        return paramAppRuntime;
-        i = 0;
-        break;
-      }
-      return "";
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[queryKBDownloadInfo] ", paramAppRuntime);
-    }
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
   
-  public static void a()
-  {
-    int i = new Random().nextInt(5000);
-    QLog.i("KBPreDownloadUtils", 1, "[maybePDKB] delay= " + i + "ms");
-    ThreadManager.getFileThreadHandler().postDelayed(new KBPDUtils.1(), i);
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, ppc paramppc) {}
   
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
-  {
-    if (paramString2 == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[setString] val for key: " + paramString1 + " is null.");
-      return;
-    }
-    QLog.d("KBPreDownloadUtils", 2, "[setString] set: " + paramString1 + " to: " + paramString2);
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[setString] sp is null");
-      return;
-    }
-    paramAppRuntime.edit().putString(paramString1, paramString2).apply();
-  }
+  public void a(int paramInt, long paramLong, String paramString) {}
   
-  public static void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[setBoolean] set: " + paramString + " to: " + paramBoolean);
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[setBoolean] sp is null");
-      return;
-    }
-    paramAppRuntime.edit().putBoolean(paramString, paramBoolean).apply();
-  }
+  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3) {}
   
-  private static boolean a()
-  {
-    String str = b(pha.a(), "sp_key_local_apk_path");
-    QLog.d("KBPreDownloadUtils", 2, "[isPkgExist] localApkPath=" + str);
-    return (!TextUtils.isEmpty(str)) && (new File(str).exists());
-  }
+  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean) {}
   
-  private static String b(AppRuntime paramAppRuntime, String paramString)
-  {
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[getString] sp is null");
-      return null;
-    }
-    return paramAppRuntime.getString(paramString, null);
-  }
+  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData) {}
   
-  private static void b(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
-    if (paramContext != null)
-    {
-      a(pha.a(), "sp_key_current_app_version_name", paramContext.versionName);
-      QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] versionName: " + paramContext.versionName);
-      paramContext = bita.a(paramString);
-      if (paramContext == null) {
-        break label129;
-      }
-    }
-    label129:
-    for (paramContext = paramContext.toLowerCase();; paramContext = null)
-    {
-      a(pha.a(), "sp_key_local_apk_path", paramString);
-      a(pha.a(), "sp_key_current_app_md5", paramContext);
-      QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] md5: " + paramContext);
-      return;
-      QLog.e("KBPreDownloadUtils", 1, "[saveVersionInfo] package info is null");
-      break;
-    }
-  }
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2) {}
   
-  private static void b(String paramString1, String paramString2)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[persistDownloadInfo] url=" + paramString1 + " savedPath=" + paramString2);
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.c = "101480433";
-    localDownloadInfo.g = 2;
-    localDownloadInfo.jdField_d_of_type_JavaLangString = paramString1;
-    localDownloadInfo.l = paramString2;
-    localDownloadInfo.e = "com.tencent.reading";
-    localDownloadInfo.h = "ANDROIDQQ.QNREADING";
-    localDownloadInfo.a = false;
-    localDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
-    localDownloadInfo.jdField_d_of_type_Boolean = false;
-    localDownloadInfo.m = "biz_src_feeds_kandian";
-    bixg.a().a(localDownloadInfo);
-  }
+  public void a(int paramInt, Object paramObject) {}
   
-  private static void b(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    String str = pha.a();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    bctj.a(pha.a().getApplication()).a(str, "actKBPreDownload", paramBoolean, paramLong, 0L, localHashMap, null, false);
-  }
+  public void a(int paramInt, List<Long> paramList) {}
   
-  private static boolean b(Context paramContext)
-  {
-    boolean bool2 = false;
-    paramContext = b(pha.a(), "sp_key_current_app_version_name");
-    String str1 = b(pha.a(), "sp_key_latest_app_version_name");
-    String str2 = b(pha.a(), "sp_key_current_app_md5");
-    String str3 = b(pha.a(), "sp_key_latest_app_md5");
-    QLog.d("KBPreDownloadUtils", 2, "[isCurrentVersionLatest] currentAppVersion: " + paramContext + " latestAppVersion: " + str1 + " currentAppMd5: " + str2 + " latestAppMd5: " + str3);
-    boolean bool1;
-    if ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str1))) {
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (!a())
-        {
-          QLog.i("KBPreDownloadUtils", 1, "[isCurrentVersionLatest] pkg not exists");
-          return false;
-        }
-        if ((str3 == null) || (str2 == null)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!TextUtils.equals(str3.toLowerCase(), str2.toLowerCase()));
-      if ((TextUtils.isEmpty(paramContext)) || (TextUtils.isEmpty(str1))) {
-        break;
-      }
-      bool1 = bool2;
-    } while (Achilles.a(paramContext, str1) < 0);
-    return true;
-  }
+  public void a(int paramInt, qwk paramqwk) {}
   
-  private static boolean b(AppRuntime paramAppRuntime, String paramString)
-  {
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[getBoolean] sp is null");
-      return false;
-    }
-    return paramAppRuntime.getBoolean(paramString, false);
-  }
+  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
   
-  private static void c()
-  {
-    try
-    {
-      String str = b(pha.a(), "sp_key_local_apk_path");
-      if (str != null) {
-        bgmg.d(str);
-      }
-      for (;;)
-      {
-        bixg.a().a("101480433");
-        return;
-        QLog.i("KBPreDownloadUtils", 1, "[clearDownloadInfo] won't delete since apkPath is null");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[clearDownloadInfo] ", localException);
-    }
-  }
+  public void a(long paramLong, int paramInt, String paramString) {}
+  
+  public void a(long paramLong, boolean paramBoolean) {}
+  
+  public void a(Configuration paramConfiguration) {}
+  
+  public void a(View paramView) {}
+  
+  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean) {}
+  
+  public void a(TabChannelCoverInfo paramTabChannelCoverInfo) {}
+  
+  public void a(TopBannerInfo paramTopBannerInfo) {}
+  
+  public void a(Object paramObject, int paramInt, boolean paramBoolean, String... paramVarArgs) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4) {}
+  
+  public void a(String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt) {}
+  
+  public void a(ArrayList<String> paramArrayList) {}
+  
+  public void a(List<String> paramList, List<TopicInfo> paramList1) {}
+  
+  public void a(tay paramtay) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1) {}
+  
+  public void a(boolean paramBoolean, int paramInt, SparseArray<ChannelInfo> paramSparseArray) {}
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  
+  public void a(boolean paramBoolean, List<TabChannelCoverInfo> paramList) {}
+  
+  public void a(boolean paramBoolean1, List<qwb> paramList, long paramLong, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1) {}
+  
+  public void a_(List<twi> paramList) {}
+  
+  public void as_() {}
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt, List<Long> paramList) {}
+  
+  public void b(long paramLong, boolean paramBoolean) {}
+  
+  public void b(String paramString) {}
+  
+  public void b(String paramString, int paramInt) {}
+  
+  public void b(List<InterestLabelInfo> paramList) {}
+  
+  public void b(List<oidb_cmd0xe7e.ModuleInfo> paramList, List<oidb_cmd0xe7e.TextCardInfo> paramList1) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
+  
+  public void b(boolean paramBoolean1, List<qwb> paramList, long paramLong, boolean paramBoolean2) {}
+  
+  public void c(int paramInt) {}
+  
+  public void c(int paramInt, List<Long> paramList) {}
+  
+  public void c(String paramString) {}
+  
+  public void c(List<TagInfo> paramList) {}
+  
+  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
+  
+  public void c(boolean paramBoolean1, List<qwb> paramList, long paramLong, boolean paramBoolean2) {}
+  
+  public void d(int paramInt) {}
+  
+  public void d(int paramInt, List<oor> paramList) {}
+  
+  public void d(boolean paramBoolean) {}
+  
+  public void d(boolean paramBoolean, List<DiandianTopConfig> paramList) {}
+  
+  public void e() {}
+  
+  public void e(int paramInt) {}
+  
+  public void e(boolean paramBoolean, List<ChannelInfo> paramList) {}
+  
+  public void f() {}
+  
+  public void f(int paramInt) {}
+  
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList) {}
+  
+  public void g() {}
+  
+  public void g(int paramInt) {}
+  
+  public void g(boolean paramBoolean, List<Integer> paramList) {}
+  
+  public void h() {}
+  
+  public void h(int paramInt) {}
+  
+  public void h(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
+  
+  public void i() {}
+  
+  public void i(int paramInt) {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  public void m() {}
+  
+  public void n() {}
+  
+  public void o() {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  
+  public void p() {}
 }
 
 

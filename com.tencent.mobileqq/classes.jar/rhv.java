@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import android.widget.TextView;
 
-public final class rhv
-  implements Parcelable.Creator<SocializeFeedsInfo.UGCVoiceInfo>
+class rhv
 {
-  public SocializeFeedsInfo.UGCVoiceInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.UGCVoiceInfo(paramParcel);
-  }
-  
-  public SocializeFeedsInfo.UGCVoiceInfo[] a(int paramInt)
-  {
-    return new SocializeFeedsInfo.UGCVoiceInfo[paramInt];
-  }
+  public int a;
+  public TextView a;
 }
 
 

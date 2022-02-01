@@ -1,18 +1,68 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StImageUrl;
+import feedcloud.FeedCloudMeta.StPushList;
 import feedcloud.FeedCloudMeta.StUser;
+import java.util.Iterator;
+import java.util.List;
 
 public class vwl
-  implements vux
 {
-  public vwl(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StReply paramStReply) {}
-  
-  public void a()
+  public static void a(FeedCloudMeta.StFeed paramStFeed, int paramInt)
   {
-    vrc.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.a().clone().setElementIdStr("portrait"));
+    if (paramStFeed == null) {
+      QLog.d("QCircleProtoUtil", 1, "adjustFeedPicUrl stFeed is null");
+    }
+    for (;;)
+    {
+      return;
+      if (paramStFeed.images.size() > 0)
+      {
+        paramStFeed = (FeedCloudMeta.StImage)paramStFeed.images.get(0);
+        if ((paramStFeed == null) || (paramStFeed.vecImageUrl.size() <= 0)) {
+          break;
+        }
+        Iterator localIterator = paramStFeed.vecImageUrl.get().iterator();
+        while (localIterator.hasNext())
+        {
+          FeedCloudMeta.StImageUrl localStImageUrl = (FeedCloudMeta.StImageUrl)localIterator.next();
+          if (localStImageUrl.levelType.get() == paramInt)
+          {
+            QLog.d("QCircleProtoUtil", 1, "setPic levelType:" + paramInt + "   url:" + localStImageUrl.url.get());
+            paramStFeed.picUrl.set(localStImageUrl.url.get());
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(FeedCloudMeta.StPushList paramStPushList, int paramInt)
+  {
+    int j = paramInt - paramStPushList.hasClickCount.get();
+    Object localObject = paramStPushList.status;
+    if (paramInt > 0) {}
+    for (int i = 1;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      if (j >= 0) {
+        break;
+      }
+      QLog.d("QCircleProtoUtil", 1, "updateTotalPushTimeAndStatus error State");
+      return;
+    }
+    localObject = paramStPushList.vecUser.get();
+    if ((paramInt > 0) && ((((List)localObject).size() <= 0) || (!((FeedCloudMeta.StUser)((List)localObject).get(0)).id.get().equals(uyn.a()))))
+    {
+      QLog.d("QCircleProtoUtil", 1, "is not in pushList add user");
+      ((List)localObject).add(0, uyn.a());
+      paramStPushList.count.set(paramStPushList.count.get() + 1);
+    }
+    paramStPushList.totalClickCount.set(paramStPushList.totalClickCount.get() + j);
+    paramStPushList.hasClickCount.set(paramInt);
   }
 }
 

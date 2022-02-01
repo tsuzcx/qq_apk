@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<shape android:name="shape_phone_bind_button"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#99000000" android:endColor="#00000000" android:angle="270.0" />
+    <corners android:radius="13.0dip" />
+    <size android:height="26.0dip" />
+    <solid android:color="#ffebedf4" />
 </shape>

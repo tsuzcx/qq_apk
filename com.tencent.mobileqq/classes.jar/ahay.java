@@ -1,17 +1,34 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForAutoReply;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ahay
-  extends ahbl
+  extends ClickableSpan
 {
-  ahay(agwz paramagwz)
+  ahay(ahax paramahax, MessageForAutoReply paramMessageForAutoReply, ahtx paramahtx) {}
+  
+  public void onClick(@NonNull View paramView)
   {
-    super(paramagwz, null);
+    ahax.a(this.jdField_a_of_type_Ahax, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply);
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    return new ahce(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply.senderuin.equals(this.jdField_a_of_type_Ahax.a.getCurrentAccountUin()))
+    {
+      paramTextPaint.setColor(this.jdField_a_of_type_Ahtx.d.getCurrentTextColor());
+      paramTextPaint.setUnderlineText(true);
+      return;
+    }
+    paramTextPaint.setColor(BaseApplication.context.getResources().getColor(2131167008));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

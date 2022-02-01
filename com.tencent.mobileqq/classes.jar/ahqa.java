@@ -1,13 +1,30 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahqa
-  implements ahor
+final class ahqa
+  extends bcyj
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahqa(MessageForShortVideo paramMessageForShortVideo, MessageForReplyText paramMessageForReplyText, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, bcyb parambcyb)
   {
-    paramagup.b(paramagwc, paramContext.getString(2131718935));
+    if (parambcyb.jdField_a_of_type_Int == 0)
+    {
+      parambcyb = (azpq)parambcyb.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath = parambcyb.b;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
+      ahpx.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView);
+      return;
+    }
+    QLog.d("ReplyTextItemBuilder", 2, "reply render get thumbPath Fail");
   }
 }
 

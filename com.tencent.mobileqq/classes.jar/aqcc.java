@@ -1,204 +1,110 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.1;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.2;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.3;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.4;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.5;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
 public class aqcc
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new aqcd(this);
-  private aqce jdField_a_of_type_Aqce;
-  private aqcf jdField_a_of_type_Aqcf = new aqcf();
+  private static final aqcc jdField_a_of_type_Aqcc = new aqcc(1);
+  private static boolean jdField_a_of_type_Boolean;
+  private static final aqcc jdField_b_of_type_Aqcc = new aqcc(2);
+  private static aqcc jdField_c_of_type_Aqcc = jdField_b_of_type_Aqcc;
+  private final int jdField_a_of_type_Int;
+  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private final String jdField_a_of_type_JavaLangString;
+  private final SharedPreferences jdField_b_of_type_AndroidContentSharedPreferences;
+  private final String jdField_b_of_type_JavaLangString;
+  private final String jdField_c_of_type_JavaLangString;
   
-  public aqcc()
+  private aqcc(int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
-    if ((localObject instanceof QQAppInterface))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = a(paramInt);
+    this.jdField_c_of_type_JavaLangString = b(paramInt);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = a(paramInt);
+    this.jdField_b_of_type_AndroidContentSharedPreferences = b(paramInt);
+    if (paramInt == 1)
     {
-      localQQAppInterface = (QQAppInterface)localObject;
-      if (localQQAppInterface != null) {
-        break label74;
-      }
-      localObject = null;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aqcf.a(localQQAppInterface);
-      this.jdField_a_of_type_Aqcf.a((aqcv)localObject);
-      return;
-      localQQAppInterface = null;
-      break;
-      label74:
-      if (localQQAppInterface.a() == null) {
-        localObject = null;
-      } else {
-        localObject = localQQAppInterface.a().a();
-      }
-    }
-  }
-  
-  private boolean c()
-  {
-    return Looper.getMainLooper() == Looper.myLooper();
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    a(paramInt, paramString, 0);
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
+      this.jdField_b_of_type_JavaLangString = "test.ark.qq.com";
       return;
     }
-    b(paramInt1, paramString, paramInt2);
+    this.jdField_b_of_type_JavaLangString = "cgi.ark.qq.com";
   }
   
-  public void a(int paramInt, String paramString, boolean paramBoolean)
+  private static SharedPreferences a(int paramInt)
   {
-    if (c())
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfigDebug", 0);
+  }
+  
+  public static aqcc a()
+  {
+    if (!jdField_a_of_type_Boolean)
     {
-      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
-      return;
+      jdField_a_of_type_Boolean = true;
+      ArkAppCenter.c("ArkApp", "ArkTemp.getCurrent sso env isTestEnv=" + false);
     }
-    b(paramInt, paramString, paramBoolean);
+    jdField_c_of_type_Aqcc = jdField_b_of_type_Aqcc;
+    return jdField_c_of_type_Aqcc;
   }
   
-  public void a(Bundle paramBundle)
+  private static String a(int paramInt)
   {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
-      return;
+    String str = e();
+    if (paramInt == 1) {
+      return str + "/ArkAppTest";
     }
-    b(paramBundle);
+    return str + "/ArkApp";
   }
   
-  public void a(aqce paramaqce)
+  private static SharedPreferences b(int paramInt)
   {
-    this.jdField_a_of_type_Aqce = paramaqce;
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfigDebug", 0);
   }
   
-  public void a(ColorNote paramColorNote)
+  private static String b(int paramInt)
   {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
-      return;
+    String str = e();
+    if (paramInt == 1) {
+      return str + "/pddata/prd/arkapp/test";
     }
-    b(paramColorNote);
+    return str + "/pddata/prd/arkapp";
   }
   
-  public boolean a()
+  private static String e()
   {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      return this.jdField_a_of_type_Aqcf.c();
-    }
-    return aqdc.a().c();
+    return BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath();
   }
   
-  public boolean a(int paramInt, String paramString)
+  public int a()
   {
-    return aqdc.a().a(paramInt, paramString);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public String a()
   {
-    boolean bool = aqcf.b(paramInt1, paramString, paramInt2);
-    Message localMessage = Message.obtain();
-    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
-    if (bool) {}
-    for (localMessage.what = 5;; localMessage.what = 6)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void b(int paramInt, String paramString, boolean paramBoolean)
+  public String b()
   {
-    Bundle localBundle = aqcf.a(paramInt, paramString, paramBoolean);
-    if (localBundle == null) {
-      return;
-    }
-    localBundle.putInt("key_service_type", paramInt);
-    localBundle.putString("key_sub_type", paramString);
-    paramString = Message.obtain();
-    paramString.what = 9;
-    paramString.obj = localBundle;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+    return this.jdField_c_of_type_JavaLangString + "/Dict";
   }
   
-  public void b(Bundle paramBundle)
+  public String c()
   {
-    boolean bool = this.jdField_a_of_type_Aqcf.a(paramBundle);
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramBundle;
-    if (bool) {}
-    for (localMessage.what = 3;; localMessage.what = 4)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
-    }
+    return this.jdField_a_of_type_JavaLangString + "/Debug";
   }
   
-  public void b(ColorNote paramColorNote)
+  public String d()
   {
-    Object localObject = paramColorNote.getUniKey();
-    boolean bool2 = true;
-    if (paramColorNote.mMainTitle != null) {
-      bool2 = aqcf.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);
-    }
-    boolean bool1 = bool2;
-    if (paramColorNote.mSubTitle != null) {
-      bool1 = bool2 & aqcf.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
-    }
-    bool2 = bool1;
-    if (paramColorNote.mPicUrl != null) {
-      bool2 = bool1 & aqcf.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
-    }
-    localObject = Message.obtain();
-    if (bool2) {}
-    for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
-    {
-      ((Message)localObject).obj = paramColorNote;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return aqdc.a().b();
-  }
-  
-  public void c(ColorNote paramColorNote)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
-      return;
-    }
-    d(paramColorNote);
-  }
-  
-  public void d(ColorNote paramColorNote)
-  {
-    aqcf.a(paramColorNote);
+    return this.jdField_a_of_type_JavaLangString + "/Crash";
   }
 }
 

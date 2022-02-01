@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -13,9 +13,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import aqjw;
-import asno;
-import asnp;
+import aqyz;
+import atds;
+import atdt;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ExtendFriendMultiLinesTagsView
   implements View.OnClickListener
 {
   public int a;
-  public asno a;
+  public atds a;
   public int b = 30;
   
   public ExtendFriendMultiLinesTagsView(Context paramContext)
@@ -48,11 +48,11 @@ public class ExtendFriendMultiLinesTagsView
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof asnp))
+    if ((paramView.getTag() instanceof atdt))
     {
-      asnp localasnp = (asnp)paramView.getTag();
-      if (this.jdField_a_of_type_Asno != null) {
-        this.jdField_a_of_type_Asno.a(localasnp.jdField_a_of_type_JavaLangString, localasnp.jdField_a_of_type_Int);
+      atdt localatdt = (atdt)paramView.getTag();
+      if (this.jdField_a_of_type_Atds != null) {
+        this.jdField_a_of_type_Atds.a(localatdt.jdField_a_of_type_JavaLangString, localatdt.jdField_a_of_type_Int);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -131,9 +131,9 @@ public class ExtendFriendMultiLinesTagsView
     setMeasuredDimension(m, paramInt1);
   }
   
-  public void setOnItemClickListener(asno paramasno)
+  public void setOnItemClickListener(atds paramatds)
   {
-    this.jdField_a_of_type_Asno = paramasno;
+    this.jdField_a_of_type_Atds = paramatds;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList)
@@ -144,8 +144,8 @@ public class ExtendFriendMultiLinesTagsView
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    int j = afur.a(13.0F, getResources());
-    int k = afur.a(26.0F, getResources());
+    int j = agej.a(13.0F, getResources());
+    int k = agej.a(26.0F, getResources());
     int i = 0;
     while (i < paramArrayList.size())
     {
@@ -153,8 +153,8 @@ public class ExtendFriendMultiLinesTagsView
       if (!TextUtils.isEmpty(str))
       {
         TextView localTextView = new TextView(getContext());
-        localTextView.setText(aqjw.a(str, 8.5F));
-        localTextView.setTag(new asnp(this, i, str));
+        localTextView.setText(aqyz.a(str, 8.5F));
+        localTextView.setTag(new atdt(this, i, str));
         localTextView.setContentDescription(str);
         localTextView.setOnClickListener(this);
         localTextView.setTextSize(1, 14.0F);
@@ -163,8 +163,8 @@ public class ExtendFriendMultiLinesTagsView
         localTextView.setClickable(true);
         localTextView.setFocusable(true);
         localTextView.setPadding(j, 0, j, 0);
-        localTextView.setBackgroundResource(2130845172);
-        localTextView.setTextColor(getResources().getColorStateList(2131166341));
+        localTextView.setBackgroundResource(2130845187);
+        localTextView.setTextColor(getResources().getColorStateList(2131166345));
         localTextView.setEllipsize(TextUtils.TruncateAt.END);
         localTextView.setSingleLine();
         localTextView.setMaxLines(1);

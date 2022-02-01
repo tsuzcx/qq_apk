@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aebs
-  extends aniz
+public final class aebs
+  implements DialogInterface.OnClickListener
 {
-  public aebs(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aebs(aebz paramaebz) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-      }
-      return;
+    if (this.a != null) {
+      this.a.a();
     }
+    paramDialogInterface.dismiss();
   }
 }
 

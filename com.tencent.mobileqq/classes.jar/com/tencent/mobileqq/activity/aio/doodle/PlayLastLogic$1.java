@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aghu;
+import agqv;
 
 public class PlayLastLogic$1
   implements Runnable
 {
-  public PlayLastLogic$1(aghu paramaghu) {}
+  public PlayLastLogic$1(agqv paramagqv) {}
   
   public void run()
   {
     if (this.this$0.a == 0) {
-      aghu.a(this.this$0, true);
+      agqv.a(this.this$0, true);
     }
   }
 }

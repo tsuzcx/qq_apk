@@ -1,5 +1,11 @@
 package com.tencent.biz.richframework.part.demo;
 
+import aabd;
+import aabe;
+import aaci;
+import aacj;
+import aacl;
+import aacm;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,27 +15,21 @@ import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import java.util.ArrayList;
 import java.util.List;
-import zxi;
-import zxj;
-import zym;
-import zyn;
-import zyp;
-import zyq;
 
 public class ADemoFragment
   extends QCircleBaseFragment
 {
-  private zxi a()
+  private aabd a()
   {
     Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(new zyn(new Bundle()));
-    ((ArrayList)localObject).add(new zyp(new Bundle()));
-    ((ArrayList)localObject).add(new zyq(new Bundle()));
-    localObject = new zxi(0, (List)localObject, 3, 2);
-    ((zxi)localObject).a().setEnableLoadMore(true);
-    ((zxi)localObject).a().setEnableRefresh(true);
+    ((ArrayList)localObject).add(new aacj(new Bundle()));
+    ((ArrayList)localObject).add(new aacl(new Bundle()));
+    ((ArrayList)localObject).add(new aacm(new Bundle()));
+    localObject = new aabd(0, (List)localObject, 3, 2);
+    ((aabd)localObject).a().setEnableLoadMore(true);
+    ((aabd)localObject).a().setEnableRefresh(true);
     ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();
-    ((zxi)localObject).a().setExtraTypeInfo(localExtraTypeInfo);
+    ((aabd)localObject).a().setExtraTypeInfo(localExtraTypeInfo);
     return localObject;
   }
   
@@ -38,10 +38,10 @@ public class ADemoFragment
     return 0;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new zym());
+    localArrayList.add(new aaci());
     localArrayList.add(a());
     return localArrayList;
   }

@@ -1,75 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnDownloadListener;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 
-class wee
-  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
+public class wee
+  implements vyy
 {
-  WeakReference<wdx> a;
+  public wee(QCircleInsFeedItemView paramQCircleInsFeedItemView, Object paramObject) {}
   
-  public wee(wdx paramwdx)
+  public void a()
   {
-    this.a = new WeakReference(paramwdx);
-  }
-  
-  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
-  {
-    int i = -1;
-    if ((this.a.get() == null) || (wdx.a((wdx)this.a.get()) != 2)) {
-      yqp.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
-    }
-    while (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if ((paramString2.contains("\"callBackType\":\"4\"")) && (wdx.b((wdx)this.a.get()) != -1))
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      yqp.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
-      if (bgnt.d(BaseApplication.getContext())) {
-        break label209;
-      }
-      wdx.a((wdx)this.a.get());
-    }
-    for (;;)
-    {
-      wdx.a((wdx)this.a.get(), i);
-      ((wdx)this.a.get()).a();
-      return;
-      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (wdx.b((wdx)this.a.get()) == 0)) {
-        break;
-      }
-      yqp.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
-      wdx.a((wdx)this.a.get(), 0);
-      ((wdx)this.a.get()).a();
-      return;
-      label209:
-      i = -2;
-    }
-  }
-  
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
-  {
-    if ((this.a.get() == null) || (wdx.a((wdx)this.a.get()) != 2)) {
-      yqp.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
-    }
-    while (paramInt != 5) {
-      return;
-    }
-    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
-    {
-      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-      if ((paramString.model != 122) || (paramString.what != 204)) {}
-    }
-    for (paramInt = -1;; paramInt = -2)
-    {
-      yqp.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
-      wdx.a((wdx)this.a.get());
-      wdx.a((wdx)this.a.get(), paramInt);
-      ((wdx)this.a.get()).a();
-      return;
+      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
+      aaak.a().a(new QCircleDoublePraiseAnimationEvent(str, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType, QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)));
+      QLog.d("QCircleDoubleClickLayout", 1, "dispatchEvent id:" + str + " pageType:" + this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a().pageType);
+      vud.a().a(new vuf().a("content").b("like").a((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView.a()).a(QCircleInsFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView)).c(((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).poster.id.get()));
     }
   }
 }

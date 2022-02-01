@@ -1,18 +1,75 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SearchHistory;
 
-public final class bbya
-  implements Parcelable.Creator<FriendListInfo>
+public class bbya
+  extends bbzf
 {
-  public FriendListInfo a(Parcel paramParcel)
+  private SearchHistory a;
+  
+  public bbya(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
   {
-    return new FriendListInfo(paramParcel);
+    this.a = paramSearchHistory;
   }
   
-  public FriendListInfo[] a(int paramInt)
+  public Drawable a()
   {
-    return new FriendListInfo[paramInt];
+    return null;
+  }
+  
+  public SearchHistory a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.extralInfo;
+  }
+  
+  public void a(String paramString) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    switch (this.a.type)
+    {
+    default: 
+    case 3000: 
+    case 1: 
+    case 1006: 
+    case 56938: 
+    case 1008: 
+      do
+      {
+        return 1;
+        return 101;
+        return 4;
+        return 11;
+      } while (!TextUtils.equals(this.a.uin, antf.az));
+      return 110;
+    }
+    return 111;
+  }
+  
+  public String c()
+  {
+    return this.a.displayName;
+  }
+  
+  public String d()
+  {
+    return this.a.uin;
   }
 }
 

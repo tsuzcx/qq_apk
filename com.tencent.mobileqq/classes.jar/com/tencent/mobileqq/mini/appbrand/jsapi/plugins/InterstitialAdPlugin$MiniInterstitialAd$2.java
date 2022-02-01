@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import acly;
+import acqa;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
@@ -53,11 +53,11 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
             paramJSONObject = ((String)localObject).substring(0, 1024);
             QLog.i("[minigame] MiniInterstitialAd", 1, paramJSONObject);
             if (j != 0) {
-              break label564;
+              break label571;
             }
             paramBoolean = TextUtils.isEmpty((CharSequence)localObject);
             if (paramBoolean) {
-              break label564;
+              break label571;
             }
             try
             {
@@ -87,12 +87,13 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
       paramJSONObject = paramJSONObject.getJSONArray("ads_info").getJSONObject(0);
       Object localObject = new GdtInterstitialParams();
       ((GdtInterstitialParams)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = InterstitialAdPlugin.MiniInterstitialAd.access$600(this.this$0, paramJSONObject);
+      ((GdtInterstitialParams)localObject).jdField_a_of_type_Int = 0;
       if (InterstitialAdPlugin.MiniInterstitialAd.access$700(this.this$0))
       {
         i = 0;
-        ((GdtInterstitialParams)localObject).jdField_a_of_type_Int = i;
+        ((GdtInterstitialParams)localObject).b = i;
         ((GdtInterstitialParams)localObject).jdField_a_of_type_Boolean = true;
-        InterstitialAdPlugin.MiniInterstitialAd.access$102(this.this$0, new acly(this.val$activity, (GdtInterstitialParams)localObject));
+        InterstitialAdPlugin.MiniInterstitialAd.access$102(this.this$0, new acqa(this.val$activity, (GdtInterstitialParams)localObject));
         InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0, true, "operateInterstitialAd", this.val$compId, j, this.val$callbackId);
         InterstitialAdPlugin.MiniInterstitialAd.access$800(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
         if (localStGetAdRsp == null) {}
@@ -119,7 +120,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
         }
       }
     }
-    label564:
+    label571:
     int i = PluginConst.AdConst.getRetCodeByServerResult(j);
     if (i != -1)
     {

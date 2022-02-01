@@ -1,52 +1,63 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Iterator;
+import java.util.List;
 
-class wgq
-  implements bcfq
+public class wgq
+  extends JobSegment<List<wgg>, List<wgg>>
 {
-  wgq(wgp paramwgp, String paramString) {}
+  private wgu a;
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, bcfj parambcfj)
+  public wgq(wgu paramwgu)
   {
-    wgv localwgv;
-    if (parambcfj.jdField_a_of_type_Int == 0)
-    {
-      parambcfj = (ayxd)parambcfj.jdField_a_of_type_JavaLangObject;
-      localwgv = (wgv)this.jdField_a_of_type_Wgp.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      if (localwgv != null)
-      {
-        if (!new File(parambcfj.b).exists()) {
-          break label99;
-        }
-        localwgv.b = (System.currentTimeMillis() - localwgv.jdField_a_of_type_Long);
-        if (localwgv.jdField_a_of_type_Wgo != null) {
-          localwgv.jdField_a_of_type_Wgo.a(localwgv, new ErrorMessage(0, "onDownload"));
-        }
-      }
-    }
-    label99:
-    do
-    {
-      do
-      {
-        return;
-        yqp.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-        return;
-        yqp.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(parambcfj.jdField_a_of_type_Int) });
-        localwgv = (wgv)this.jdField_a_of_type_Wgp.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      } while (localwgv == null);
-      localwgv.b = (System.currentTimeMillis() - localwgv.jdField_a_of_type_Long);
-    } while (localwgv.jdField_a_of_type_Wgo == null);
-    localwgv.jdField_a_of_type_Wgo.a(localwgv, new ErrorMessage(parambcfj.jdField_a_of_type_Int, "onFailed"));
+    this.a = paramwgu;
   }
   
-  public void a(int paramInt, ArrayList<bcfj> paramArrayList) {}
-  
-  public void b(int paramInt, bcfj parambcfj) {}
+  protected void a(JobContext paramJobContext, List<wgg> paramList)
+  {
+    int i = 1;
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(paramList);
+      return;
+    }
+    paramJobContext = paramList.iterator();
+    while (paramJobContext.hasNext()) {
+      ((wgg)paramJobContext.next()).a(this.a);
+    }
+    wfv.a(paramList);
+    wfv localwfv = (wfv)wth.a(30);
+    wfn localwfn = localwfv.a();
+    paramJobContext = paramList;
+    if (!this.a.a())
+    {
+      paramJobContext = paramList;
+      if (paramList.size() > localwfn.a())
+      {
+        yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localwfn.a());
+        paramJobContext = paramList.subList(0, localwfn.a());
+      }
+    }
+    if (localwfv.a(paramJobContext, this.a.a()))
+    {
+      long l2;
+      for (long l1 = ((wgg)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
+      {
+        long l3 = ((wgg)paramJobContext.get(i)).e();
+        l2 = l1;
+        if (l3 > l1) {
+          l2 = l3;
+        }
+        i += 1;
+      }
+      this.a.a(((wgg)paramJobContext.get(0)).e());
+      notifyResult(paramJobContext);
+      return;
+    }
+    notifyError(new ErrorMessage(3, "save to db occur error!"));
+  }
 }
 
 

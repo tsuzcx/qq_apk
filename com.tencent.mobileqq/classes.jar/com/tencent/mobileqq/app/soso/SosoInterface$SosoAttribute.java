@@ -3,12 +3,12 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aopb;
+import apcr;
 
 public final class SosoInterface$SosoAttribute
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoAttribute> CREATOR = new aopb();
+  public static final Parcelable.Creator<SosoAttribute> CREATOR = new apcr();
   public String a;
   public boolean a;
   public String b;

@@ -1,21 +1,17 @@
-public class wra
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public final class wra
+  implements View.OnClickListener
 {
-  @zkv(a="pkIconUrl")
-  public String a;
-  @zkv(a="pkWording")
-  public String b;
-  @zkv(a="pkAction")
-  public String c;
-  @zkv(a="pkIconUrlSelf")
-  public String d;
-  @zkv(a="pkWordingSelf")
-  public String e;
-  @zkv(a="pkActionSelf")
-  public String f;
+  public wra(EditText paramEditText) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
+    this.a.append("@");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

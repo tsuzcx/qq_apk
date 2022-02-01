@@ -1,13 +1,19 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class scb
-  implements snc
+  extends sbh
 {
-  scb(sby paramsby) {}
+  scb(sbi paramsbi) {}
   
-  public void a(View paramView)
+  public int a()
   {
-    paramView.setTag(new rxv(paramView));
+    return 2;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    sbi.a(this.a).d(paramString + "&sourcefrom=6");
   }
 }
 

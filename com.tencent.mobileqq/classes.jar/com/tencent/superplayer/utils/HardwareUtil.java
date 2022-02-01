@@ -1,18 +1,14 @@
 package com.tencent.superplayer.utils;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -227,7 +223,7 @@ public class HardwareUtil
     //   0	101	0	paramString	String
     //   40	48	1	i	int
     //   42	18	2	j	int
-    //   24	8	3	localBufferedReader	BufferedReader
+    //   24	8	3	localBufferedReader	java.io.BufferedReader
     //   73	12	3	localObject1	Object
     //   93	1	3	localObject2	Object
     //   97	1	3	localIOException	IOException
@@ -270,37 +266,156 @@ public class HardwareUtil
     }
   }
   
+  /* Error */
   public static String getHardWare()
   {
-    try
-    {
-      BufferedReader localBufferedReader = new BufferedReader(new FileReader("/proc/cpuinfo"));
-      String str;
-      for (Object localObject = "";; localObject = str)
-      {
-        str = localBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-      }
-      if (((String)localObject).contains("Hardware"))
-      {
-        localObject = localObject.split(":\\s+", 2)[1];
-        return localObject;
-      }
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-      return Build.HARDWARE;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
+    // Byte code:
+    //   0: new 270	java/io/FileReader
+    //   3: dup
+    //   4: ldc 167
+    //   6: invokespecial 271	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   9: astore_1
+    //   10: aload_1
+    //   11: astore_0
+    //   12: new 177	java/io/BufferedReader
+    //   15: dup
+    //   16: aload_1
+    //   17: invokespecial 185	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   20: astore 4
+    //   22: ldc_w 273
+    //   25: astore_2
+    //   26: aload_1
+    //   27: astore_0
+    //   28: aload 4
+    //   30: invokevirtual 188	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   33: astore_3
+    //   34: aload_3
+    //   35: ifnull +8 -> 43
+    //   38: aload_3
+    //   39: astore_2
+    //   40: goto -14 -> 26
+    //   43: aload_1
+    //   44: astore_0
+    //   45: aload_2
+    //   46: ldc_w 275
+    //   49: invokevirtual 279	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   52: ifeq +29 -> 81
+    //   55: aload_1
+    //   56: astore_0
+    //   57: aload_2
+    //   58: ldc_w 281
+    //   61: iconst_2
+    //   62: invokevirtual 285	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   65: iconst_1
+    //   66: aaload
+    //   67: astore_2
+    //   68: aload_1
+    //   69: invokevirtual 286	java/io/FileReader:close	()V
+    //   72: aload_2
+    //   73: areturn
+    //   74: astore_0
+    //   75: aload_0
+    //   76: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   79: aload_2
+    //   80: areturn
+    //   81: aload_1
+    //   82: invokevirtual 286	java/io/FileReader:close	()V
+    //   85: getstatic 292	android/os/Build:HARDWARE	Ljava/lang/String;
+    //   88: areturn
+    //   89: astore_0
+    //   90: aload_0
+    //   91: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   94: goto -9 -> 85
+    //   97: astore_2
+    //   98: aconst_null
+    //   99: astore_1
+    //   100: aload_1
+    //   101: astore_0
+    //   102: aload_2
+    //   103: invokevirtual 293	java/io/FileNotFoundException:printStackTrace	()V
+    //   106: aload_1
+    //   107: invokevirtual 286	java/io/FileReader:close	()V
+    //   110: goto -25 -> 85
+    //   113: astore_0
+    //   114: aload_0
+    //   115: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   118: goto -33 -> 85
+    //   121: astore_2
+    //   122: aconst_null
+    //   123: astore_1
+    //   124: aload_1
+    //   125: astore_0
+    //   126: aload_2
+    //   127: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   130: aload_1
+    //   131: invokevirtual 286	java/io/FileReader:close	()V
+    //   134: goto -49 -> 85
+    //   137: astore_0
+    //   138: aload_0
+    //   139: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   142: goto -57 -> 85
+    //   145: astore_1
+    //   146: aconst_null
+    //   147: astore_0
+    //   148: aload_0
+    //   149: invokevirtual 286	java/io/FileReader:close	()V
+    //   152: aload_1
+    //   153: athrow
+    //   154: astore_0
+    //   155: aload_0
+    //   156: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   159: goto -7 -> 152
+    //   162: astore_1
+    //   163: goto -15 -> 148
+    //   166: astore_2
+    //   167: goto -43 -> 124
+    //   170: astore_2
+    //   171: goto -71 -> 100
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   11	46	0	localFileReader1	java.io.FileReader
+    //   74	2	0	localException1	java.lang.Exception
+    //   89	2	0	localException2	java.lang.Exception
+    //   101	1	0	localFileReader2	java.io.FileReader
+    //   113	2	0	localException3	java.lang.Exception
+    //   125	1	0	localFileReader3	java.io.FileReader
+    //   137	2	0	localException4	java.lang.Exception
+    //   147	2	0	localObject1	Object
+    //   154	2	0	localException5	java.lang.Exception
+    //   9	122	1	localFileReader4	java.io.FileReader
+    //   145	8	1	localObject2	Object
+    //   162	1	1	localObject3	Object
+    //   25	55	2	localObject4	Object
+    //   97	6	2	localFileNotFoundException1	java.io.FileNotFoundException
+    //   121	6	2	localIOException1	IOException
+    //   166	1	2	localIOException2	IOException
+    //   170	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   33	6	3	str	String
+    //   20	9	4	localBufferedReader	java.io.BufferedReader
+    // Exception table:
+    //   from	to	target	type
+    //   68	72	74	java/lang/Exception
+    //   81	85	89	java/lang/Exception
+    //   0	10	97	java/io/FileNotFoundException
+    //   106	110	113	java/lang/Exception
+    //   0	10	121	java/io/IOException
+    //   130	134	137	java/lang/Exception
+    //   0	10	145	finally
+    //   148	152	154	java/lang/Exception
+    //   12	22	162	finally
+    //   28	34	162	finally
+    //   45	55	162	finally
+    //   57	68	162	finally
+    //   102	106	162	finally
+    //   126	130	162	finally
+    //   12	22	166	java/io/IOException
+    //   28	34	166	java/io/IOException
+    //   45	55	166	java/io/IOException
+    //   57	68	166	java/io/IOException
+    //   12	22	170	java/io/FileNotFoundException
+    //   28	34	170	java/io/FileNotFoundException
+    //   45	55	170	java/io/FileNotFoundException
+    //   57	68	170	java/io/FileNotFoundException
   }
   
   public static String getModel()
@@ -327,8 +442,22 @@ public class HardwareUtil
         j = i;
         if (i == -1)
         {
-          i = new File("/sys/devices/system/cpu/").listFiles(CPU_FILTER).length;
-          return i;
+          Object localObject = new File("/sys/devices/system/cpu/");
+          j = i;
+          if (localObject != null)
+          {
+            j = i;
+            if (((File)localObject).exists())
+            {
+              localObject = ((File)localObject).listFiles(CPU_FILTER);
+              j = i;
+              if (localObject != null)
+              {
+                i = localObject.length;
+                return i;
+              }
+            }
+          }
         }
       }
       catch (SecurityException localSecurityException)
@@ -340,52 +469,88 @@ public class HardwareUtil
     return -1;
   }
   
-  @TargetApi(16)
+  /* Error */
+  @android.annotation.TargetApi(16)
   public static long getTotalMemory(Context paramContext)
   {
-    if (paramContext == null) {
-      return -1L;
-    }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null) {
-        paramContext.getMemoryInfo(localMemoryInfo);
-      }
-      if (localMemoryInfo != null) {
-        return localMemoryInfo.totalMem;
-      }
-      return -1L;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramContext = new FileInputStream("/proc/meminfo");
-      }
-      catch (IOException paramContext)
-      {
-        int i;
-        long l = -1L;
-        continue;
-      }
-      try
-      {
-        i = parseFileForValue("MemTotal", paramContext);
-        l = i * 1024L;
-        try
-        {
-          return l;
-        }
-        catch (IOException paramContext) {}
-        return l;
-      }
-      finally
-      {
-        paramContext.close();
-      }
-    }
+    // Byte code:
+    //   0: ldc2_w 76
+    //   3: lstore 4
+    //   5: aload_0
+    //   6: ifnonnull +7 -> 13
+    //   9: ldc2_w 76
+    //   12: lreturn
+    //   13: getstatic 306	android/os/Build$VERSION:SDK_INT	I
+    //   16: bipush 16
+    //   18: if_icmplt +38 -> 56
+    //   21: new 89	android/app/ActivityManager$MemoryInfo
+    //   24: dup
+    //   25: invokespecial 90	android/app/ActivityManager$MemoryInfo:<init>	()V
+    //   28: astore 6
+    //   30: aload_0
+    //   31: ldc 79
+    //   33: invokevirtual 85	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   36: checkcast 87	android/app/ActivityManager
+    //   39: astore_0
+    //   40: aload_0
+    //   41: ifnull +9 -> 50
+    //   44: aload_0
+    //   45: aload 6
+    //   47: invokevirtual 94	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
+    //   50: aload 6
+    //   52: getfield 324	android/app/ActivityManager$MemoryInfo:totalMem	J
+    //   55: lreturn
+    //   56: lload 4
+    //   58: lstore_2
+    //   59: new 145	java/io/FileInputStream
+    //   62: dup
+    //   63: ldc_w 326
+    //   66: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   69: astore_0
+    //   70: ldc_w 328
+    //   73: aload_0
+    //   74: invokestatic 174	com/tencent/superplayer/utils/HardwareUtil:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   77: istore_1
+    //   78: iload_1
+    //   79: i2l
+    //   80: ldc2_w 329
+    //   83: lmul
+    //   84: lstore 4
+    //   86: lload 4
+    //   88: lstore_2
+    //   89: aload_0
+    //   90: invokevirtual 165	java/io/FileInputStream:close	()V
+    //   93: lload 4
+    //   95: lreturn
+    //   96: astore_0
+    //   97: aload_0
+    //   98: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   101: lload_2
+    //   102: lreturn
+    //   103: astore 6
+    //   105: lload 4
+    //   107: lstore_2
+    //   108: aload_0
+    //   109: invokevirtual 165	java/io/FileInputStream:close	()V
+    //   112: lload 4
+    //   114: lstore_2
+    //   115: aload 6
+    //   117: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	paramContext	Context
+    //   77	2	1	i	int
+    //   58	57	2	l1	long
+    //   3	110	4	l2	long
+    //   28	23	6	localMemoryInfo	ActivityManager.MemoryInfo
+    //   103	13	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   59	70	96	java/io/IOException
+    //   89	93	96	java/io/IOException
+    //   108	112	96	java/io/IOException
+    //   115	118	96	java/io/IOException
+    //   70	78	103	finally
   }
   
   private static int judgeCPU()

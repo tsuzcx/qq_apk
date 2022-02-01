@@ -1,37 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class wtz
-  extends QQUIEventReceiver<wtu, wwh>
+  extends wip
 {
-  public wtz(@NonNull wtu paramwtu)
+  public long a;
+  public String a;
+  public String b;
+  
+  public wtz(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    super(paramwtu);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
+    this.b = paramStoryVideoItem.mVid;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
+    }
   }
   
-  public void a(@NonNull wtu paramwtu, @NonNull wwh paramwwh)
+  public String toString()
   {
-    if (paramwwh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      }
-      if (paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
-        paramwtu.a(paramwtu.a.a(8, paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramwwh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramwwh.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwh.class;
+    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
   }
 }
 

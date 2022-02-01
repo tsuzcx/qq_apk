@@ -1,34 +1,60 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import org.json.JSONObject;
 
-class tih
-  implements ViewTreeObserver.OnPreDrawListener
+public class tih
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
   
-  tih(tig paramtig, int paramInt1, int paramInt2)
+  public tih() {}
+  
+  public tih(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (paramJSONObject == null) {}
+    do
+    {
+      return;
+      if (paramJSONObject.has("busiType")) {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
+      }
+      if (paramJSONObject.has("vid")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
+      }
+      if (paramJSONObject.has("width")) {
+        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+      }
+      if (paramJSONObject.has("height")) {
+        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+      }
+      if (paramJSONObject.has("duration")) {
+        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
+      }
+      if (paramJSONObject.has("poster")) {
+        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
+      }
+      if (paramJSONObject.has("title")) {
+        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
+      }
+      if (paramJSONObject.has("xgFileSize")) {
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
+      }
+      if (paramJSONObject.has("videoUrl")) {
+        this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
+      }
+    } while (!paramJSONObject.has("fromType"));
+    this.e = paramJSONObject.getInt("fromType");
   }
   
-  public boolean onPreDraw()
+  public String toString()
   {
-    this.jdField_a_of_type_Tig.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a) + tig.a(this.jdField_a_of_type_Tig));
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tig.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tig.a) + tig.b(this.jdField_a_of_type_Tig));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a).setVisibility(0);
-    }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a, this.jdField_a_of_type_Tig.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a)));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a).setVisibility(4);
-    }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tig.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", xgFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
   }
 }
 

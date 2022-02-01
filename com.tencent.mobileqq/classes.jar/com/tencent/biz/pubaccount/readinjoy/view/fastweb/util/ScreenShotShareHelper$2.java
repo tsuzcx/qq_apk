@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import tcf;
+import stb;
 
 public class ScreenShotShareHelper$2
   implements Runnable
 {
-  public ScreenShotShareHelper$2(tcf paramtcf) {}
+  public ScreenShotShareHelper$2(stb paramstb) {}
   
   public void run()
   {

@@ -1,210 +1,288 @@
-import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tribe.async.async.JobContext;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
+import com.tencent.aekit.openrender.UniformParam.Float3fParam;
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.UniformParam.Mat4Param;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.model.DoodleItem;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
+import com.tencent.ttpic.openapi.util.MatrixUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@TargetApi(10)
 public class zep
-  extends zez<zem, zem>
+  extends VideoFilterBase
 {
-  private final String a;
-  public WeakReference<yrd> a;
+  public int a;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  protected UniformParam.TextureBitmapParam a;
+  private DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
+  private String jdField_a_of_type_JavaLangString = "doodle_image";
+  List<PointF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  public int b;
+  List<Bitmap> b;
+  public int c = 1080;
+  public int d = 1440;
   
-  public zep()
+  public zep(DoodleItem paramDoodleItem, String paramString)
   {
-    this(null);
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = 320;
+    this.jdField_b_of_type_Int = 480;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
+    initParams();
+    a(paramString);
+    paramDoodleItem.width = 25;
+    paramDoodleItem.height = 25;
   }
   
-  public zep(String paramString)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Bitmap localBitmap = (Bitmap)this.jdField_b_of_type_JavaUtilList.get(0);
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam != null)
+    {
+      this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.swapTextureBitmap(localBitmap);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, false);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
+    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
   }
   
-  private Bitmap a(zem paramzem, Bitmap paramBitmap)
+  private void a(String paramString)
   {
-    Object localObject = null;
-    if (paramBitmap == null) {
-      return null;
+    paramString = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(paramString + "/" + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_JavaLangString + "_0.png"), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+    if (BitmapUtils.isLegal(paramString)) {
+      this.jdField_b_of_type_JavaUtilList.add(paramString);
     }
-    baug localbaug = new baug();
-    localbaug.a(paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramzem = (zem)localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      paramzem = (zem)localObject;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {}
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    try
+    QLog.d("Personality", 2, "PersonalityGlareFilter init bitmap is null");
+  }
+  
+  public void ApplyGLSLFilter()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramzem = ((yrd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(0);
-      localObject = paramBitmap;
-      if (paramzem != null)
-      {
-        localObject = (bauk)bauf.a(106);
-        ((bauk)localObject).a(paramzem);
-        ((bauk)localObject).init();
-        paramzem = localbaug.a(paramBitmap, (GPUBaseFilter)localObject);
-        yqp.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, mosaicThumbBitmap = %s", paramzem);
-        if (paramzem != null) {
-          paramBitmap = paramzem;
-        }
-        ((bauk)localObject).destroy();
-        localObject = paramBitmap;
-      }
-      localbaug.a();
-      return localObject;
-    }
-    catch (Exception paramzem)
-    {
-      for (;;)
-      {
-        yqp.e("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "generateMosaicThumbBitmap, read mosaic bitmap " + paramzem.toString());
-        paramzem = (zem)localObject;
-      }
+      this.jdField_a_of_type_Boolean = true;
+      super.ApplyGLSLFilter();
     }
   }
   
-  protected void a(JobContext paramJobContext, zem paramzem)
+  PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4, float paramFloat)
   {
-    String str1;
-    if (((paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || ((paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)))
+    PointF localPointF1 = new PointF((paramPointF3.x - paramPointF1.x) * 0.5F, (paramPointF3.y - paramPointF1.y) * 0.5F);
+    PointF localPointF2 = new PointF((paramPointF3.x - paramPointF2.x) * 3.0F - (paramPointF4.x - paramPointF2.x) * 0.5F - 2.0F * 0.5F * (paramPointF3.x - paramPointF1.x), (paramPointF3.y - paramPointF2.y) * 3.0F - (paramPointF4.y - paramPointF2.y) * 0.5F - 2.0F * 0.5F * (paramPointF3.y - paramPointF1.y));
+    float f1 = paramPointF3.x;
+    float f2 = paramPointF2.x;
+    float f3 = paramPointF4.x;
+    float f4 = paramPointF2.x;
+    float f5 = paramPointF3.x;
+    float f6 = paramPointF1.x;
+    float f7 = paramPointF3.y;
+    float f8 = paramPointF2.y;
+    float f9 = paramPointF4.y;
+    float f10 = paramPointF2.y;
+    paramPointF1 = new PointF((f1 - f2) * -2.0F + (f3 - f4) * 0.5F + (f5 - f6) * 0.5F, 0.5F * (paramPointF3.y - paramPointF1.y) + ((f7 - f8) * -2.0F + (f9 - f10) * 0.5F));
+    f1 = paramPointF1.x;
+    f2 = localPointF2.x;
+    f3 = localPointF1.x;
+    f4 = paramPointF2.x;
+    f5 = paramPointF1.y;
+    f6 = localPointF2.y;
+    return new PointF(f1 * paramFloat * paramFloat * paramFloat + f2 * paramFloat * paramFloat + f3 * paramFloat + f4, localPointF1.y * paramFloat + (f6 * paramFloat * paramFloat + f5 * paramFloat * paramFloat * paramFloat) + paramPointF2.y);
+  }
+  
+  void a(ArrayList<PointF> paramArrayList)
+  {
+    float f3 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.c;
+    int i = 3;
+    float f1;
+    float f2;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      str1 = this.jdField_a_of_type_JavaLangString;
-      if (str1 != null) {
-        break label481;
+      f1 = (float)zet.a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 3), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 2));
+      f2 = (float)zet.a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 2), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 1));
+      f1 = 1.0F / ((int)(((float)zet.a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 1), (PointF)this.jdField_a_of_type_JavaUtilList.get(i)) + (f1 + f2)) / (f3 * 1.5F)) * 12 * 1.0F);
+      if (f1 > 0.1F) {
+        f1 = 0.1F;
       }
-      str1 = zfc.a(paramzem.jdField_a_of_type_Int, paramzem.b, ".jpg");
     }
-    label407:
-    label414:
-    label429:
-    label473:
-    label478:
-    label481:
+    label286:
     for (;;)
     {
-      long l2 = 0L;
-      if ((paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) {
-        l2 = ((EditLocalVideoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int;
-      }
-      String str2 = paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-      paramJobContext = null;
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+      f2 = 0.0F;
       for (;;)
       {
-        try
+        if (f2 < 1.0F)
         {
-          localMediaMetadataRetriever.setDataSource(str2);
-          if (!paramzem.jdField_a_of_type_Zes.a) {
-            continue;
-          }
-          l1 = 0L;
-          if ((paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
-          {
-            int i = ((EditLocalVideoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).b;
-            l1 = i;
-          }
-        }
-        catch (IllegalArgumentException paramJobContext)
-        {
-          long l1;
-          Object localObject;
-          boolean bool;
-          yqp.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "Video Source is Invalid ! " + str2, paramJobContext);
-          if (localMediaMetadataRetriever == null) {
-            break label473;
-          }
-          localMediaMetadataRetriever.release();
-          paramJobContext = null;
+          paramArrayList.add(a((PointF)this.jdField_a_of_type_JavaUtilList.get(i - 3), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 2), (PointF)this.jdField_a_of_type_JavaUtilList.get(i - 1), (PointF)this.jdField_a_of_type_JavaUtilList.get(i), f2));
+          f2 += f1;
           continue;
+          if (f1 >= 0.01F) {
+            break label286;
+          }
+          f1 = 0.01F;
+          break;
         }
-        finally
-        {
-          if (localMediaMetadataRetriever == null) {
-            continue;
-          }
-          localMediaMetadataRetriever.release();
-        }
-        try
-        {
-          paramJobContext = localMediaMetadataRetriever.getFrameAtTime(l1 * 1000L);
-          if (localMediaMetadataRetriever == null) {
-            break label478;
-          }
-          localMediaMetadataRetriever.release();
-          localObject = paramJobContext;
-          if (paramJobContext != null)
-          {
-            localObject = paramJobContext;
-            if (paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate) {
-              localObject = zlx.a(paramJobContext, 90.0F);
-            }
-          }
-          paramJobContext = (JobContext)localObject;
-          if ((paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
-            paramJobContext = a(paramzem, (Bitmap)localObject);
-          }
-          if (paramJobContext == null) {
-            break label429;
-          }
-          bool = zkh.a(paramJobContext, Bitmap.CompressFormat.JPEG, 80, str1);
-          paramJobContext.recycle();
-          if (!bool) {
-            break label407;
-          }
-          paramJobContext = new File(str1);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile())) {
-            break label414;
-          }
-          yqp.a("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "success : %s", str1);
-          paramzem.jdField_a_of_type_JavaLangString = str1;
-          super.notifyResult(paramzem);
-          return;
-          paramJobContext = localMediaMetadataRetriever.extractMetadata(9);
-          if (paramJobContext == null) {
-            continue;
-          }
-          l1 = Long.valueOf(paramJobContext).longValue();
-          continue;
-        }
-        catch (OutOfMemoryError paramJobContext)
-        {
-          yqp.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime endTime * 1000L oom", paramJobContext);
-          paramJobContext = null;
-          continue;
-        }
-        try
-        {
-          localObject = localMediaMetadataRetriever.getFrameAtTime(1000L * l2);
-          paramJobContext = (JobContext)localObject;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          yqp.c("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime startTime * 1000L oom", localOutOfMemoryError);
-        }
-        continue;
-        yqp.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "compressToFile error");
-        for (;;)
-        {
-          notifyError(new ErrorMessage(-1, "GenerateLocalVideoSegment error"));
-          return;
-          yqp.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "getFrameAtTime error : startTime = %s", new Object[] { Long.valueOf(l2) });
-          continue;
-          yqp.d("Q.qqstory.publish.edit.GenerateLocalVideoSegment", "parameters error : %s", new Object[] { paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource });
-        }
-        paramJobContext = null;
+      }
+      i += 1;
+      break;
+      return;
+    }
+  }
+  
+  public void a(List<PointF> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((this.jdField_b_of_type_JavaUtilList.size() < 1) || (this.jdField_a_of_type_AndroidGraphicsPoint == null)) {}
+    for (;;)
+    {
+      return;
+      a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        PointF localPointF = (PointF)paramList.next();
+        localPointF = new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+        this.jdField_a_of_type_JavaUtilList.add(localPointF);
       }
     }
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
+      return false;
+    }
+    System.currentTimeMillis();
+    zet.a(2);
+    float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.c * 1.5F;
+    float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.d * 1.5F;
+    ArrayList localArrayList = new ArrayList();
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList.size() <= 3)
+    {
+      i = 3;
+      j = 0;
+    }
+    float f3;
+    float f4;
+    for (;;)
+    {
+      if ((j >= this.jdField_a_of_type_JavaUtilList.size()) || (j >= i)) {
+        break label343;
+      }
+      if (j > 0)
+      {
+        localObject1 = (PointF)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+        localObject2 = (PointF)this.jdField_a_of_type_JavaUtilList.get(j);
+        int m = (int)((float)zet.a((PointF)localObject1, (PointF)localObject2) / f1 * 18.0F) + 1;
+        int k = m;
+        if (m < 6) {
+          k = 6;
+        }
+        f3 = (((PointF)localObject2).x - ((PointF)localObject1).x) / (k * 1.0F);
+        f4 = (((PointF)localObject2).y - ((PointF)localObject1).y) / (k * 1.0F);
+        m = 0;
+        for (;;)
+        {
+          if (m < k)
+          {
+            localArrayList.add(new PointF(((PointF)localObject1).x + m * f3, ((PointF)localObject1).y + m * f4));
+            m += 1;
+            continue;
+            i = 2;
+            break;
+          }
+        }
+        if (!((PointF)localArrayList.get(localArrayList.size() - 1)).equals(((PointF)localObject2).x, ((PointF)localObject2).y)) {
+          localArrayList.add(localObject1);
+        }
+      }
+      j += 1;
+    }
+    label343:
+    if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+      a(localArrayList);
+    }
+    Object localObject1 = new float[localArrayList.size() * 8];
+    Object localObject2 = new float[localArrayList.size() * 8];
+    int i = 0;
+    while (i < localArrayList.size())
+    {
+      PointF localPointF = (PointF)localArrayList.get(i);
+      float f6 = localPointF.x - f1 / 2.0F;
+      float f5 = this.height - localPointF.y + f2 / 2.0F;
+      f3 = f6 / this.width * 2.0F - 1.0F;
+      f4 = f5 / this.height * 2.0F - 1.0F;
+      f6 = (f6 + f1) / this.width * 2.0F - 1.0F;
+      f5 = (f5 - f2) / this.height * 2.0F - 1.0F;
+      localObject1[(i * 8 + 0)] = f3;
+      localObject1[(i * 8 + 1)] = f5;
+      localObject1[(i * 8 + 2)] = f6;
+      localObject1[(i * 8 + 3)] = f5;
+      localObject1[(i * 8 + 4)] = f3;
+      localObject1[(i * 8 + 5)] = f4;
+      localObject1[(i * 8 + 6)] = f6;
+      localObject1[(i * 8 + 7)] = f4;
+      localObject2[(i * 8 + 0)] = 0.0F;
+      localObject2[(i * 8 + 1)] = 1.0F;
+      localObject2[(i * 8 + 2)] = 1.0F;
+      localObject2[(i * 8 + 3)] = 1.0F;
+      localObject2[(i * 8 + 4)] = 0.0F;
+      localObject2[(i * 8 + 5)] = 0.0F;
+      localObject2[(i * 8 + 6)] = 1.0F;
+      localObject2[(i * 8 + 7)] = 0.0F;
+      i += 1;
+    }
+    super.setPositions((float[])localObject1);
+    super.setTexCords((float[])localObject2);
+    super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
+    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
+    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+    super.OnDrawFrameGLSL();
+    GLES20.glDrawArrays(5, 0, localArrayList.size() * 4);
+    GLES20.glFlush();
+    zet.a(0);
+    System.currentTimeMillis();
+    return true;
+  }
+  
+  public void initParams()
+  {
+    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
+    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
+    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
+    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
+    super.addParam(new UniformParam.IntParam("blendMode", this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.blendMode));
+    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+    super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
+  }
+  
+  public void updatePreview(Object paramObject) {}
+  
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
+  {
+    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
+    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
   }
 }
 

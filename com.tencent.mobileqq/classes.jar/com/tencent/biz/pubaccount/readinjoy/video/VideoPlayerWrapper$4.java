@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import sfb;
-import sip;
+import rwf;
+import rzt;
 
 public class VideoPlayerWrapper$4
   implements Runnable
 {
-  public VideoPlayerWrapper$4(sfb paramsfb, boolean paramBoolean) {}
+  public VideoPlayerWrapper$4(rwf paramrwf, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((sfb.a(this.this$0) != null) && (sfb.a(this.this$0).get() != 6) && (sfb.a(this.this$0).get() != 8)) {
-      sfb.a(this.this$0).b(this.a);
+    if ((rwf.a(this.this$0) != null) && (rwf.a(this.this$0).get() != 6) && (rwf.a(this.this$0).get() != 8)) {
+      rwf.a(this.this$0).b(this.a);
     }
   }
 }

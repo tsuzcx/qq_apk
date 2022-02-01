@@ -1,12 +1,15 @@
-public class bfsm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bfsm
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
+  bfsm(bfsf parambfsf, bfrs parambfrs) {}
   
-  public bfsm(String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    bgrn.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).c(this.jdField_a_of_type_Bfrs);
+    paramDialogInterface.dismiss();
   }
 }
 

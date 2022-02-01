@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ztj
-  implements DialogInterface.OnClickListener
+class ztj
+  implements View.OnClickListener
 {
-  public ztj(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  ztj(zti paramzti) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

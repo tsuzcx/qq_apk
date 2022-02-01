@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaep;
-import aaet;
+import aaiq;
+import aaiu;
 import com.tribe.async.dispatch.Dispatcher;
-import wfo;
+import wjj;
 
 public class CommentPresenter$14
   implements Runnable
 {
-  public CommentPresenter$14(aaet paramaaet) {}
+  public CommentPresenter$14(aaiu paramaaiu) {}
   
   public void run()
   {
-    wfo.a().dispatch(new aaep(1, new Object[0]));
+    wjj.a().dispatch(new aaiq(1, new Object[0]));
   }
 }
 

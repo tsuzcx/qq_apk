@@ -1,17 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class bhbd
 {
-  public static int a(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < 0)
-    {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "unknown DynamicSource", new RuntimeException("DynamicFaceDrawable don't have " + paramInt));
-      i = 7;
-    }
-    return i;
-  }
+  public int a = 1;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

@@ -1,157 +1,198 @@
-import com.tencent.ad.tangram.canvas.views.form.AdFormData;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormTableData;
-import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
-import com.tencent.ad.tangram.canvas.views.xijing.a;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class acsp
 {
-  public static AdFormData a(JSONObject paramJSONObject, int paramInt)
+  private static String a(InputStream paramInputStream)
   {
-    int i = 0;
-    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
+    paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+    StringBuffer localStringBuffer = new StringBuffer();
+    for (;;)
     {
-      acqy.d("AdFormDataBuilder", "getFormComponent error");
-      return null;
-    }
-    AdFormData localAdFormData = new AdFormData();
-    Object localObject;
-    try
-    {
-      localAdFormData.formId = paramJSONObject.getLong("formId");
-      localAdFormData.padding = acsj.b(paramInt, 60);
-      localAdFormData.backgroundColor = acsj.a(paramJSONObject.getString("backgroundColor"), 0);
-      localObject = paramJSONObject.getJSONObject("title");
-      if (((JSONObject)localObject).getBoolean("visible"))
-      {
-        localAdFormData.title = new AdTextData();
-        localAdFormData.title.text = ((JSONObject)localObject).getString("text");
-        localAdFormData.title.color = acsj.a(((JSONObject)localObject).getString("fontColor"), 0);
-        localAdFormData.title.size = acsj.b(paramInt, ((JSONObject)localObject).getInt("fontSize"));
+      String str = paramInputStream.readLine();
+      if (str == null) {
+        break;
       }
-      localObject = paramJSONObject.getJSONObject("submitButton");
-      localAdFormData.button.text.text = ((JSONObject)localObject).getString("text");
-      localAdFormData.button.text.color = acsj.a(((JSONObject)localObject).getString("fontColor"), 0);
-      localAdFormData.button.text.size = acsj.b(paramInt, 40);
-      localAdFormData.button.borderCornerRadius = acsj.b(paramInt, 6);
-      localAdFormData.button.backgroundColor = acsj.a(((JSONObject)localObject).getString("backgroundColor"), 0);
-      localAdFormData.buttonHeight = acsj.b(paramInt, 124);
-      localAdFormData.table.borderCornerRadius = acsj.b(paramInt, 6);
-      localAdFormData.table.borderWidth = acsj.b(paramInt, 3);
-      localAdFormData.table.borderColor = acsj.a("#EAEAEB", 0);
-      localAdFormData.table.borderColorError = acsj.a("#FE6C6C", 0);
-      paramJSONObject = paramJSONObject.getJSONArray("items");
-      if (paramJSONObject.length() <= 0)
-      {
-        acqy.d("AdFormDataBuilder", "getFormComponent error");
-        return null;
-      }
+      localStringBuffer.append(str);
     }
-    catch (JSONException paramJSONObject)
-    {
-      acqy.d("AdFormDataBuilder", "getFormComponent", paramJSONObject);
-      return null;
-    }
-    while (i < paramJSONObject.length())
-    {
-      localObject = a(paramJSONObject.getJSONObject(i), paramInt);
-      if (!localAdFormData.table.addItem((AdFormItemData)localObject)) {
-        acqy.d("AdFormDataBuilder", "getFormComponent error");
-      }
-      i += 1;
-    }
-    return localAdFormData;
+    return localStringBuffer.toString();
   }
   
-  private static AdFormItemData a(JSONObject paramJSONObject, int paramInt)
+  /* Error */
+  public com.tencent.gdtad.api.motivevideo.GdtMvAppBtnData a(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
-    {
-      acqy.d("AdFormDataBuilder", "getFormItem error");
-      return null;
-    }
-    int i;
-    try
-    {
-      i = paramJSONObject.getInt("type");
-      switch (i)
-      {
-      default: 
-        acqy.d("AdFormDataBuilder", "getFormItem error");
-        return null;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      acqy.d("AdFormDataBuilder", "getFormItem", paramJSONObject);
-      return null;
-    }
-    return a(paramJSONObject, paramInt, i);
-  }
-  
-  private static GdtFormItemTextBoxData a(JSONObject paramJSONObject, int paramInt1, int paramInt2)
-  {
-    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)))
-    {
-      acqy.d("AdFormDataBuilder", "getFormItemTextBox error");
-      return null;
-    }
-    GdtFormItemTextBoxData localGdtFormItemTextBoxData = new GdtFormItemTextBoxData();
-    if (!a(paramJSONObject, paramInt1, localGdtFormItemTextBoxData, paramInt2))
-    {
-      acqy.d("AdFormDataBuilder", "getFormItemTextBox error");
-      return null;
-    }
-    localGdtFormItemTextBoxData.regexType = paramJSONObject.optInt("regexType", -2147483648);
-    localGdtFormItemTextBoxData.content.color = acsj.a("#333333", 0);
-    localGdtFormItemTextBoxData.content.size = acsj.b(paramInt1, 40);
-    localGdtFormItemTextBoxData.content.lengthMax = paramJSONObject.optInt("maxLength", -2147483648);
-    return localGdtFormItemTextBoxData;
-  }
-  
-  private static boolean a(JSONObject paramJSONObject, int paramInt1, AdFormItemData paramAdFormItemData, int paramInt2)
-  {
-    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)) || (paramAdFormItemData == null))
-    {
-      acqy.d("AdFormDataBuilder", "initFormItem error");
-      return false;
-    }
-    try
-    {
-      if (paramJSONObject.getInt("type") != paramInt2)
-      {
-        acqy.d("AdFormDataBuilder", "initFormItem type error");
-        return false;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      acqy.d("AdFormDataBuilder", "initFormItem", paramJSONObject);
-      return false;
-    }
-    paramAdFormItemData.paddingTop = acsj.b(paramInt1, 60);
-    paramAdFormItemData.paddingBottom = acsj.b(paramInt1, 60);
-    paramAdFormItemData.backgroundColor = acsj.a("#FDFEFF", 0);
-    paramAdFormItemData.required = paramJSONObject.getBoolean("require");
-    paramAdFormItemData.title.text = paramJSONObject.getString("name");
-    paramAdFormItemData.title.color = acsj.a("#333333", 0);
-    paramAdFormItemData.title.size = acsj.b(paramInt1, 40);
-    paramAdFormItemData.titlePaddingLeft = acsj.b(paramInt1, 60);
-    paramAdFormItemData.titlePaddingRight = acsj.b(paramInt1, 15);
-    paramAdFormItemData.contentPaddingLeft = acsj.b(paramInt1, 15);
-    paramAdFormItemData.contentPaddingRight = acsj.b(paramInt1, 60);
-    if (paramJSONObject.has("placeholder"))
-    {
-      paramAdFormItemData.placeholder = new AdTextData();
-      paramAdFormItemData.placeholder.text = paramJSONObject.optString("placeholder");
-      paramAdFormItemData.placeholder.color = acsj.a("#B9BDC2", 0);
-      paramAdFormItemData.placeholder.size = acsj.b(paramInt1, 40);
-    }
-    return true;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 5
+    //   9: aload 5
+    //   11: astore 4
+    //   13: aload_1
+    //   14: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   17: ifne +14 -> 31
+    //   20: aload_2
+    //   21: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   24: ifeq +10 -> 34
+    //   27: aload 5
+    //   29: astore 4
+    //   31: aload 4
+    //   33: areturn
+    //   34: ldc 46
+    //   36: new 48	java/lang/StringBuilder
+    //   39: dup
+    //   40: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   43: ldc 51
+    //   45: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: iload_3
+    //   49: invokevirtual 57	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokestatic 64	acvc:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: new 48	java/lang/StringBuilder
+    //   61: dup
+    //   62: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   65: aload_1
+    //   66: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: aload_2
+    //   70: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: astore_1
+    //   77: ldc 46
+    //   79: new 48	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   86: ldc 66
+    //   88: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: aload_1
+    //   92: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 64	acvc:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: new 68	java/net/URL
+    //   104: dup
+    //   105: aload_1
+    //   106: invokespecial 71	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   109: invokevirtual 75	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   112: checkcast 77	java/net/HttpURLConnection
+    //   115: astore_2
+    //   116: aload_2
+    //   117: ldc 79
+    //   119: invokevirtual 82	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   122: aload_2
+    //   123: ldc 84
+    //   125: ldc 86
+    //   127: invokevirtual 89	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: aload_2
+    //   131: ldc 91
+    //   133: ldc 93
+    //   135: invokevirtual 89	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   138: aload_2
+    //   139: sipush 3000
+    //   142: invokevirtual 97	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   145: aload_2
+    //   146: sipush 3000
+    //   149: invokevirtual 100	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   152: aload_2
+    //   153: invokevirtual 104	java/net/HttpURLConnection:getResponseCode	()I
+    //   156: sipush 200
+    //   159: if_icmpne +85 -> 244
+    //   162: aload_2
+    //   163: invokevirtual 108	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   166: invokestatic 110	acsp:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   169: astore_1
+    //   170: aload_1
+    //   171: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   174: ifne +28 -> 202
+    //   177: new 112	org/json/JSONObject
+    //   180: dup
+    //   181: aload_1
+    //   182: invokespecial 113	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   185: invokestatic 119	com/tencent/gdtad/api/motivevideo/GdtMvAppBtnData:parseJsonForMv	(Lorg/json/JSONObject;)Lcom/tencent/gdtad/api/motivevideo/GdtMvAppBtnData;
+    //   188: astore_1
+    //   189: aload_1
+    //   190: astore 4
+    //   192: aload_2
+    //   193: ifnull -162 -> 31
+    //   196: aload_2
+    //   197: invokevirtual 122	java/net/HttpURLConnection:disconnect	()V
+    //   200: aload_1
+    //   201: areturn
+    //   202: ldc 46
+    //   204: ldc 124
+    //   206: invokestatic 127	acvc:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   209: aload 7
+    //   211: astore_1
+    //   212: goto -23 -> 189
+    //   215: astore 4
+    //   217: aload_2
+    //   218: astore_1
+    //   219: aload 4
+    //   221: astore_2
+    //   222: ldc 46
+    //   224: ldc 129
+    //   226: aload_2
+    //   227: invokestatic 132	acvc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   230: aload 5
+    //   232: astore 4
+    //   234: aload_1
+    //   235: ifnull -204 -> 31
+    //   238: aload_1
+    //   239: invokevirtual 122	java/net/HttpURLConnection:disconnect	()V
+    //   242: aconst_null
+    //   243: areturn
+    //   244: ldc 46
+    //   246: ldc 134
+    //   248: invokestatic 127	acvc:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   251: aload 7
+    //   253: astore_1
+    //   254: goto -65 -> 189
+    //   257: astore_1
+    //   258: aload_2
+    //   259: ifnull +7 -> 266
+    //   262: aload_2
+    //   263: invokevirtual 122	java/net/HttpURLConnection:disconnect	()V
+    //   266: aload_1
+    //   267: athrow
+    //   268: astore_1
+    //   269: aload 6
+    //   271: astore_2
+    //   272: goto -14 -> 258
+    //   275: astore 4
+    //   277: aload_1
+    //   278: astore_2
+    //   279: aload 4
+    //   281: astore_1
+    //   282: goto -24 -> 258
+    //   285: astore_2
+    //   286: aconst_null
+    //   287: astore_1
+    //   288: goto -66 -> 222
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	291	0	this	acsp
+    //   0	291	1	paramString1	String
+    //   0	291	2	paramString2	String
+    //   0	291	3	paramInt	int
+    //   11	180	4	localObject1	Object
+    //   215	5	4	localException	java.lang.Exception
+    //   232	1	4	localObject2	Object
+    //   275	5	4	localObject3	Object
+    //   7	224	5	localObject4	Object
+    //   4	266	6	localObject5	Object
+    //   1	251	7	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   116	189	215	java/lang/Exception
+    //   202	209	215	java/lang/Exception
+    //   244	251	215	java/lang/Exception
+    //   116	189	257	finally
+    //   202	209	257	finally
+    //   244	251	257	finally
+    //   101	116	268	finally
+    //   222	230	275	finally
+    //   101	116	285	java/lang/Exception
   }
 }
 

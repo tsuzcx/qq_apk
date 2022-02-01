@@ -1,59 +1,90 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.util.ArrayList;
 
 public class bncu
+  extends bncs
 {
-  public static int a;
-  private static QQFilterRenderManager a;
-  public static int b;
-  private static QQFilterRenderManager b;
-  public static int c = 2;
-  private static int d;
-  
-  static
+  public bncu(boolean paramBoolean)
   {
-    bndd.a();
-    bann.a(false);
-    jdField_b_of_type_Int = 1;
+    super(paramBoolean);
   }
   
-  public static int a()
+  public int a()
   {
-    return d;
+    return 3;
   }
   
-  public static QQFilterRenderManager a()
+  protected void a()
   {
-    return new QQFilterRenderManager(new int[] { 70, 80, 90, 184 });
+    this.jdField_c_of_type_Float = 90.0F;
   }
   
-  public static QQFilterRenderManager a(int paramInt)
+  public int b()
   {
-    if (paramInt == c) {
-      return a;
-    }
-    return EffectsCameraCaptureView.b();
+    return 2;
   }
   
-  public static void a(QQFilterRenderManager paramQQFilterRenderManager)
+  protected void b()
   {
-    a = paramQQFilterRenderManager;
-  }
-  
-  public static QQFilterRenderManager b()
-  {
-    try
+    Object localObject = bnjz.a().a();
+    if ((localObject == null) || (((ArrayList)localObject).size() != 2)) {}
+    do
     {
-      if ((jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.isSurfaceDestroyed())) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
+      return;
+      float[] arrayOfFloat = (float[])((ArrayList)localObject).get(0);
+      if (arrayOfFloat != null)
+      {
+        this.jdField_a_of_type_Int = (arrayOfFloat.length / 3);
+        this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+        this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
       }
-      if (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = a();
-      }
-      QQFilterRenderManager localQQFilterRenderManager = jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-      return localQQFilterRenderManager;
+      localObject = (float[])((ArrayList)localObject).get(1);
+    } while (localObject == null);
+    this.jdField_b_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.jdField_b_of_type_JavaNioFloatBuffer.put((float[])localObject);
+    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_b_of_type_Float > 90.0F) {
+      this.jdField_b_of_type_Float = 90.0F;
     }
-    finally {}
+    for (;;)
+    {
+      if (this.d != 0.0F)
+      {
+        float f = (float)(Math.toDegrees(Math.atan(this.d)) * 2.0D);
+        if (Build.VERSION.SDK_INT >= 14) {
+          Matrix.perspectiveM(this.jdField_b_of_type_ArrayOfFloat, 0, f, this.e, 1.0F, 500.0F);
+        }
+        Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, -2.0F);
+      }
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_b_of_type_Float, 1.0F, 0.0F, 0.0F);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_c_of_type_Float, 0.0F, 1.0F, 0.0F);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 0.0F, 1.0F);
+      if (this.jdField_a_of_type_Bnct != null) {
+        this.jdField_a_of_type_Bnct.a((int)this.jdField_f_of_type_Float, -this.jdField_b_of_type_Float, -this.jdField_c_of_type_Float, this.d);
+      }
+      return;
+      if (this.jdField_b_of_type_Float < -90.0F) {
+        this.jdField_b_of_type_Float = -90.0F;
+      }
+    }
+  }
+  
+  public void d()
+  {
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_f_of_type_Int);
+    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, a(), 0);
+    GLES20.glDrawArrays(4, 0, c());
   }
 }
 

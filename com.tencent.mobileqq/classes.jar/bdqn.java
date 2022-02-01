@@ -1,49 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class bdqn
+  extends bdon
 {
-  public static final int[] a = { 1, 2, 3, 4 };
+  public boolean c;
+  public int o;
+  public int p = 3;
   
-  public static final int a(int paramInt)
+  public bdqn()
   {
-    if ((paramInt >= 0) && (paramInt < a.length)) {
-      return a[paramInt];
-    }
-    return -1;
+    this(null);
   }
   
-  public static final String a(int paramInt)
+  public bdqn(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "unknown";
-    case 0: 
-      return "BUSID_INTIMATE_ANNIVERSARY";
-    case 1: 
-      return "BUSID_BASE_PROFILE";
-    case 2: 
-      return "BUSID_NICE_PICS";
-    }
-    return "BUSID_NEWFRD_MINI_CARD";
+    super(paramString, "content");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public String a()
   {
-    bcst.b(paramQQAppInterface, "dc00898", "", paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt, 0, "0", "0", "", "");
+    return "Content";
   }
   
-  public static final int b(int paramInt)
+  public int b()
   {
-    int i = 0;
-    while (i < a.length)
-    {
-      if (a[i] == paramInt) {
-        return i;
-      }
-      i += 1;
+    return this.p;
+  }
+  
+  public int c()
+  {
+    return 2131379761;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.o != 0)) {
+      return -1;
     }
-    return -1;
+    return -8355712;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 

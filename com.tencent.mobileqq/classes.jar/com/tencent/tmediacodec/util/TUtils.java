@@ -24,7 +24,7 @@ public final class TUtils
   @NonNull
   public static final String CSD_2 = "csd-2";
   @NonNull
-  private static final String[] CSD_INDEX_ARRAY = { "csd-0", "csd-1", "csd-2" };
+  public static final String[] CSD_INDEX_ARRAY = { "csd-0", "csd-1", "csd-2" };
   @NonNull
   public static final String TAG = "TUtils";
   private static boolean deviceNeedsSetOutputSurfaceWorkaround;

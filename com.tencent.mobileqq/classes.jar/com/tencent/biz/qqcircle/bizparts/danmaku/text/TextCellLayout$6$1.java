@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
-import vgl;
-import vgp;
+import vip;
+import vit;
 
 public class TextCellLayout$6$1
   implements Runnable
 {
-  public TextCellLayout$6$1(vgp paramvgp, String paramString) {}
+  public TextCellLayout$6$1(vit paramvit, String paramString) {}
   
   public void run()
   {
-    vgl.a(this.jdField_a_of_type_Vgp.jdField_a_of_type_Vgl, this.jdField_a_of_type_Vgp.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vgp.b);
+    vip.a(this.jdField_a_of_type_Vit.jdField_a_of_type_Vip, this.jdField_a_of_type_Vit.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vit.b);
   }
 }
 

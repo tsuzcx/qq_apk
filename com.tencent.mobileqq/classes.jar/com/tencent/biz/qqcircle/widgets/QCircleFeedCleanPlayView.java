@@ -7,15 +7,14 @@ import android.view.View;
 import android.widget.SeekBar;
 import com.tencent.superplayer.api.ISuperPlayer;
 import feedcloud.FeedCloudMeta.StFeed;
-import vrg;
-import vuq;
-import waj;
+import vtr;
+import vxr;
 
 public class QCircleFeedCleanPlayView
   extends QCircleBaseVideoView
 {
   private int jdField_a_of_type_Int;
-  waj jdField_a_of_type_Waj;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private boolean d;
   
   public QCircleFeedCleanPlayView(@NonNull Context paramContext, int paramInt)
@@ -31,6 +30,9 @@ public class QCircleFeedCleanPlayView
   
   public SeekBar a()
   {
+    if (this.jdField_a_of_type_AndroidWidgetSeekBar != null) {
+      return this.jdField_a_of_type_AndroidWidgetSeekBar;
+    }
     return null;
   }
   
@@ -42,9 +44,6 @@ public class QCircleFeedCleanPlayView
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Vuq != null) {
-      this.jdField_a_of_type_Vuq.a();
-    }
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
@@ -56,7 +55,7 @@ public class QCircleFeedCleanPlayView
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         str = paramInt2 + ":" + paramInt1;
       }
-      vrg.a(2, 7, 1, this.jdField_a_of_type_Int, paramLong1, paramLong2, this.d, str, localStFeed, vrg.a(localStFeed), b());
+      vtr.a(2, 7, 1, this.jdField_a_of_type_Int, paramLong1, paramLong2, this.d, str, localStFeed, vtr.a(localStFeed), b());
     }
   }
   
@@ -88,7 +87,15 @@ public class QCircleFeedCleanPlayView
   {
     FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
     if (localStFeed != null) {
-      vrg.a(2, 4, 1, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, vrg.a(localStFeed), b());
+      vtr.a(2, 4, 1, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, vtr.a(localStFeed), b());
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_Vxr != null) {
+      this.jdField_a_of_type_Vxr.a();
     }
   }
   
@@ -100,8 +107,8 @@ public class QCircleFeedCleanPlayView
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Vuq != null) {
-        this.jdField_a_of_type_Vuq.a("", paramMessage.arg2, paramMessage.arg1);
+      if (this.jdField_a_of_type_Vxr != null) {
+        this.jdField_a_of_type_Vxr.a("", paramMessage.arg2, paramMessage.arg1);
       }
     }
   }
@@ -110,19 +117,21 @@ public class QCircleFeedCleanPlayView
   {
     super.onVideoPrepared(paramISuperPlayer);
     paramISuperPlayer.setXYaxis(2);
-    if (this.jdField_a_of_type_Vuq != null) {
-      this.jdField_a_of_type_Vuq.a(paramISuperPlayer);
+    if (this.jdField_a_of_type_Vxr != null) {
+      this.jdField_a_of_type_Vxr.a(paramISuperPlayer);
     }
-  }
-  
-  public void setFeedPresenter(waj paramwaj)
-  {
-    this.jdField_a_of_type_Waj = paramwaj;
   }
   
   public void setIsAutoPlay(boolean paramBoolean)
   {
     this.d = paramBoolean;
+  }
+  
+  public void setProgressBar(SeekBar paramSeekBar)
+  {
+    if (paramSeekBar != null) {
+      this.jdField_a_of_type_AndroidWidgetSeekBar = paramSeekBar;
+    }
   }
 }
 

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
+<RelativeLayout android:paddingLeft="15.0dip" android:paddingBottom="17.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/eq9" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView android:id="@id/mhq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/myl" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/cancel" />
+    <ViewStub android:id="@id/nyj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/o00" android:layout_alignParentLeft="true" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/o00" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/o08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="分享" android:drawableTop="@drawable/h95" />
+        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/nyx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="评论" android:drawableTop="@drawable/h7f" />
+        <RelativeLayout android:id="@id/nzr" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="15.0dip">
+            <ImageView android:id="@id/nzt" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bkd" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/nzs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h7w" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="13.0sp" android:textColor="#ccffffff" android:id="@id/nzu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赞" android:layout_below="@id/nzt" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/nzq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="18.0dip" />
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

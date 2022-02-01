@@ -1,19 +1,61 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaaw
-  implements aabv
+  extends ProtoBufRequest
 {
-  public aaaw(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
   
-  public void a()
+  public aaaw(int paramInt, CLIENT.StUinTime paramStUinTime)
   {
-    if (RecommendBannerFeedItemView.a(this.a) == null) {
-      return;
+    this.a.listType.set(paramInt);
+    this.a.uinTime.set(paramStUinTime);
+    this.a.listNum.set(10);
+  }
+  
+  @Nullable
+  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
+    {
+      a("data is null");
+      return null;
     }
-    aaxb.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    paramArrayOfByte = decode(paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      a("storyData is null");
+      return null;
+    }
+    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
+    try
+    {
+      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetStoryFeedListRsp;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      a("onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
+    }
+  }
+  
+  public byte[] getBusiBuf()
+  {
+    return this.a.toByteArray();
   }
 }
 

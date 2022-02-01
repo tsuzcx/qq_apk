@@ -1,57 +1,15 @@
-import android.view.View;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class zpr
-  implements bkmq
+class zpr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private CopyOnWriteArraySet<bkmq> a = new CopyOnWriteArraySet();
+  zpr(zpq paramzpq) {}
   
-  public zpr(bkmq parambkmq)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (parambkmq != null) {
-      this.a.add(parambkmq);
-    }
-  }
-  
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bkmq)localIterator.next()).a(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      bkmq localbkmq = (bkmq)localIterator.next();
-      if ((bool) || (localbkmq.a(paramInt, paramView, paramListView))) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
-    }
-    return bool;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bkmq)localIterator.next()).b(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bkmq)localIterator.next()).c(paramInt, paramView, paramListView);
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    zpq.a(this.a, f);
   }
 }
 

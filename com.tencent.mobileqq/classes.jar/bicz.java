@@ -1,33 +1,214 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.view.Window;
-import android.widget.TextView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bicz
-  extends ReportDialog
 {
-  private TextView a;
-  
-  public bicz(Context paramContext)
+  public static Intent a(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, 2131755165);
-    getWindow().setFlags(16, 16);
-    getWindow().setFlags(8, 8);
-    getWindow().setGravity(17);
-    setContentView(2131561572);
-    this.a = ((TextView)findViewById(2131378958));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      this.a.setTextColor(Color.parseColor("#FF737373"));
-    }
-    setCancelable(false);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("qqvip_pubaccount_msg_list", a(paramQQAppInterface));
+    return localIntent;
   }
   
-  public void a(String paramString)
+  public static AppInterface a()
   {
-    this.a.setText(paramString);
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject instanceof ToolAppRuntime))
+      {
+        localObject = ((AppRuntime)localObject).getAppRuntime("modular_web");
+        if (!(localObject instanceof AppInterface)) {
+          break label53;
+        }
+        return (AppInterface)localObject;
+      }
+      if ((localObject instanceof QQAppInterface)) {
+        return (QQAppInterface)localObject;
+      }
+    }
+    return null;
+    label53:
+    return null;
+  }
+  
+  public static ArrayList<QQVipMsgInfo> a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().a(antf.aX, 1008, 50);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    {
+      int i = paramQQAppInterface.size() - 1;
+      while (i >= 0)
+      {
+        Object localObject = (MessageRecord)paramQQAppInterface.get(i);
+        if (antf.aX.equals(((MessageRecord)localObject).frienduin))
+        {
+          if (((localObject instanceof MessageForArkApp)) || ((localObject instanceof MessageForPubAccount)) || ((localObject instanceof MessageForStructing)))
+          {
+            localObject = QQVipMsgInfo.parseMessageRecord((MessageRecord)localObject);
+            if ((localObject != null) && (((QQVipMsgInfo)localObject).msgType != 0)) {
+              localArrayList.add(localObject);
+            }
+          }
+          if (localArrayList.size() == 4) {
+            return localArrayList;
+          }
+        }
+        i -= 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void a(int paramInt1, QQVipMsgInfo paramQQVipMsgInfo, int paramInt2)
+  {
+    if (paramQQVipMsgInfo == null) {}
+    String str;
+    do
+    {
+      return;
+      str = "";
+      if (!TextUtils.isEmpty(paramQQVipMsgInfo.advId)) {
+        str = paramQQVipMsgInfo.advId;
+      }
+    } while (TextUtils.isEmpty(str));
+    apeg.a(paramInt1, paramInt2, str);
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    int i = 0;
+    String[] arrayOfString = new String[11];
+    arrayOfString[0] = "OpenUrl";
+    arrayOfString[1] = "NavigateTo";
+    arrayOfString[2] = "SendMessage";
+    arrayOfString[3] = "OpenView";
+    arrayOfString[4] = "OpenVideo";
+    arrayOfString[5] = "ChooseImage";
+    arrayOfString[6] = "CloseView";
+    arrayOfString[7] = "ShareView";
+    arrayOfString[8] = "ShowShareMenu";
+    arrayOfString[9] = "HideShareMenu";
+    arrayOfString[10] = "PreviewImage";
+    for (;;)
+    {
+      if ((i >= arrayOfString.length) || (arrayOfString[i].equals(paramString))) {
+        if ((paramActivity instanceof PublicFragmentActivityForTool))
+        {
+          paramActivity = ((PublicFragmentActivityForTool)paramActivity).a();
+          if ((paramActivity instanceof QQVipFeedWedFragment))
+          {
+            i = ((QQVipFeedWedFragment)paramActivity).a();
+            paramActivity = ((QQVipFeedWedFragment)paramActivity).a();
+            bmzn.a().a("QQVipAccount", "1", "1", i + 1 + "", "", "1", 102, 1);
+          }
+        }
+      }
+      do
+      {
+        try
+        {
+          a(118, paramActivity, i);
+          return;
+        }
+        catch (Throwable paramActivity)
+        {
+          paramActivity.printStackTrace();
+        }
+      } while (i == arrayOfString.length - 1);
+      i += 1;
+    }
+  }
+  
+  public static void a(Context paramContext)
+  {
+    Intent localIntent = a((QQAppInterface)a());
+    PublicFragmentActivityForTool.b((Activity)paramContext, localIntent, QQVipFeedWedFragment.class, 10000);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    Object localObject = (aody)((QQAppInterface)a()).getManager(56);
+    if (localObject != null)
+    {
+      localObject = ((aody)localObject).b(antf.aX);
+      if (localObject != null) {
+        return ((AccountDetail)localObject).isRecvPush;
+      }
+      c(paramContext);
+    }
+    return false;
+  }
+  
+  public static void b(Context paramContext)
+  {
+    PublicFragmentActivityForTool.b(paramContext, a((QQAppInterface)a()), QQVipFeedWedFragment.class);
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (arnu.c() != null)
+    {
+      bool1 = bool2;
+      if (arnu.c().a().booleanValue())
+      {
+        bool1 = bool2;
+        if (a(paramContext)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static void c(Context paramContext)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)a();
+    paramContext = new NewIntent(paramContext, ocj.class);
+    paramContext.putExtra("cmd", "get_detail_info");
+    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    localGetPublicAccountDetailInfoRequest.seqno.set(0);
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.5,3,4745");
+    try
+    {
+      localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(antf.aX));
+      label68:
+      paramContext.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
+      localGetPublicAccountDetailInfoRequest.version.set(1);
+      paramContext.setObserver(new bida(localQQAppInterface));
+      localQQAppInterface.startServlet(paramContext);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label68;
+    }
   }
 }
 

@@ -1,6 +1,11 @@
+import com.tencent.mobileqq.data.TroopFeedItem;
+
 public class bgxd
 {
-  public static final String a = bhgg.a(anhk.ba + "rbt");
+  int jdField_a_of_type_Int;
+  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
+  
+  public bgxd(bgwy parambgwy) {}
 }
 
 

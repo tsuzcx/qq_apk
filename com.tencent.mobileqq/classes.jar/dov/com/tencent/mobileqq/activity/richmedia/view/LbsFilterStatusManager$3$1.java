@@ -1,16 +1,16 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bqab;
-import bqac;
+import brbw;
+import brbx;
 
 public class LbsFilterStatusManager$3$1
   implements Runnable
 {
-  public LbsFilterStatusManager$3$1(bqac parambqac) {}
+  public LbsFilterStatusManager$3$1(brbx parambrbx) {}
   
   public void run()
   {
-    bqab.a(this.a.a);
+    brbw.a(this.a.a);
   }
 }
 

@@ -1,25 +1,80 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 class abus
+  implements Handler.Callback
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<arhm> b;
+  abus(abur paramabur) {}
   
-  public abus(abur paramabur, View paramView, arhm paramarhm)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramarhm);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public arhm a()
-  {
-    return (arhm)this.b.get();
+    int i = 0;
+    boolean bool1 = false;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.a();
+      return true;
+      try
+      {
+        paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        boolean bool2 = bnrt.a().a(paramMessage);
+        boolean bool3 = bhnv.h(BaseApplicationImpl.getContext());
+        boolean bool4 = bhlo.e();
+        if (bhmi.a() <= 1.048576E+008F) {
+          bool1 = true;
+        }
+        abur.a(this.a, "SmartDeviceProxyMgr check plugin: isInstalled " + bool2 + " isWifiConnected " + bool3 + " lowPhone = " + bool4 + " lowMemory = " + bool1);
+        if ((bool2) || (!bool3) || (bool4) || (bool1)) {
+          continue;
+        }
+        bnrt.a().a();
+        return true;
+      }
+      catch (Exception paramMessage)
+      {
+        return true;
+      }
+      try
+      {
+        if (abur.a(this.a) != null)
+        {
+          paramMessage = new Bundle();
+          paramMessage.putString("notify_cmd", "getServerDeviceList");
+          paramMessage = abur.a(this.a).a(paramMessage);
+          if (paramMessage != null)
+          {
+            paramMessage = paramMessage.getParcelableArray("devicelist");
+            if (paramMessage != null)
+            {
+              DeviceInfo[] arrayOfDeviceInfo = new DeviceInfo[paramMessage.length];
+              while (i < paramMessage.length)
+              {
+                arrayOfDeviceInfo[i] = ((DeviceInfo)paramMessage[i]);
+                i += 1;
+              }
+              abur.a(this.a, arrayOfDeviceInfo);
+              if (arrayOfDeviceInfo != null)
+              {
+                this.a.notifyUI(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
+                return true;
+              }
+            }
+          }
+        }
+      }
+      catch (Exception paramMessage) {}
+    }
+    return true;
   }
 }
 

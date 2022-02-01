@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
 public class qjs
-  implements ViewBase.IBuilder
+  extends qjr
 {
-  public ViewBase build(VafContext paramVafContext)
+  public qjs(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    return new qjr(paramVafContext);
+    super(paramContext, paramaoof, paramsel);
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

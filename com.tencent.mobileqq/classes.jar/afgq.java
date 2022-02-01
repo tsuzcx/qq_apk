@@ -1,20 +1,10 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class afgq
-  implements View.OnFocusChangeListener
 {
-  public afgq(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

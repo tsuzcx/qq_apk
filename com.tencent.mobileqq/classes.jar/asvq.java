@@ -1,34 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager.9;
+import com.tencent.qphone.base.util.QLog;
 
 public class asvq
-  implements View.OnClickListener
+  extends apck
 {
-  public asvq(QfileFavFileTabView paramQfileFavFileTabView) {}
-  
-  public void onClick(View paramView)
+  public asvq(ExtendFriendManager.9 param9, String paramString, boolean paramBoolean)
   {
-    if ((paramView.getTag() instanceof asvg)) {}
-    for (FavFileInfo localFavFileInfo = (FavFileInfo)((asvg)paramView.getTag()).a;; localFavFileInfo = null)
-    {
-      QfileFavFileTabView localQfileFavFileTabView;
-      if (localFavFileInfo != null)
-      {
-        localQfileFavFileTabView = this.a;
-        if (paramView.getId() != 2131366555) {
-          break label60;
-        }
-      }
-      label60:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileFavFileTabView.a(localFavFileInfo, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManager", 2, "getExtendFriendLocationInfoSync onLocationFinish " + paramInt);
     }
   }
 }

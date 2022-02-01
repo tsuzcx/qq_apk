@@ -1,21 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class bnsa
-  extends RecyclerView.ViewHolder
+  extends Handler
 {
-  TextView a;
-  
-  public bnsa(View paramView)
+  bnsa(bnrz parambnrz, Looper paramLooper)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131374038));
+    super(paramLooper);
   }
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.itemView.setSelected(paramBoolean);
+    if (paramMessage.what == 1)
+    {
+      this.a.jdField_a_of_type_Bnrw = null;
+      this.a.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 

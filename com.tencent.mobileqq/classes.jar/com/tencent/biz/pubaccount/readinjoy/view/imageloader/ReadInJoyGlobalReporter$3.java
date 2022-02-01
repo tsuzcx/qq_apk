@@ -3,21 +3,21 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tdx;
+import sup;
 
 public class ReadInJoyGlobalReporter$3
   implements Runnable
 {
-  public ReadInJoyGlobalReporter$3(tdx paramtdx) {}
+  public ReadInJoyGlobalReporter$3(sup paramsup) {}
   
   public void run()
   {
     try
     {
-      if (tdx.b(this.this$0) == 1)
+      if (sup.b(this.this$0) == 1)
       {
         BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.a);
-        tdx.a(this.this$0, 0);
+        sup.a(this.this$0, 0);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener");

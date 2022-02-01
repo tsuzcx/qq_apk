@@ -1,17 +1,55 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xdg
-  extends xbw
+public class xdg
+  extends wpa
 {
-  xdg(xcu paramxcu, StoryVideoItem paramStoryVideoItem, xea paramxea)
+  public List<String> a = new ArrayList();
+  
+  public String a()
   {
-    super(paramStoryVideoItem);
+    return wnu.a("StorySvc.get_date_video_list");
   }
   
-  public boolean b()
+  public wov a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Xea.a = ((String)a("result"));
-    return true;
+    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
+    try
+    {
+      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
+      return new xew(localRspSimpleInfoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
+    ArrayList localArrayList = new ArrayList();
+    if (this.a != null)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
+      }
+    }
+    localReqSimpleInfoList.vid_list.addAll(localArrayList);
+    return localReqSimpleInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
   }
 }
 

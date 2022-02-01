@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_gravity="bottom" android:id="@id/o0q" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/n5t" android:layout_width="fill_parent" android:layout_height="69.0dip">
-        <TextView android:textSize="16.0dip" android:textColor="#ff262626" android:id="@id/n5v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/x4u" />
-        <TextView android:textSize="13.0dip" android:textColor="#ff737373" android:id="@id/n5s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/x4v" android:layout_below="@id/n5v" android:layout_alignLeft="@id/n5v" />
-        <ImageView android:id="@id/n5u" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g15" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
-    <RelativeLayout android:id="@id/n5x" android:layout_width="fill_parent" android:layout_height="69.0dip">
-        <TextView android:textSize="16.0dip" android:textColor="#ff262626" android:id="@id/n5z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/x4t" />
-        <TextView android:textSize="13.0dip" android:textColor="#ff737373" android:id="@id/n5w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/x4w" android:layout_below="@id/n5z" android:layout_alignLeft="@id/n5z" />
-        <ImageView android:id="@id/n5y" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g15" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
-    <RelativeLayout android:id="@id/n3v" android:layout_width="fill_parent" android:layout_height="69.0dip">
-        <TextView android:textSize="16.0dip" android:textColor="#ff262626" android:id="@id/n3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/x4k" />
-        <TextView android:textSize="13.0dip" android:textColor="#ff737373" android:id="@id/n3u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/x4l" android:layout_below="@id/n3x" android:layout_alignLeft="@id/n3x" />
-        <ImageView android:id="@id/n3w" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g15" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mh6" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/cancel" />
-</LinearLayout>
+    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar android:id="@id/o0h" android:visibility="visible" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="5.5dip" android:layout_marginBottom="10.0dip" />
+</FrameLayout>

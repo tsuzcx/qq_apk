@@ -1,9 +1,19 @@
-import java.io.File;
+import android.content.Context;
 
-public class bndp
+final class bndp
+  implements bnfe
 {
-  public static final String a = bndv.b + File.separator + "gif";
-  public static final String b = a + File.separator + "gifPreview";
+  bndp(Context paramContext, bndr parambndr, bndq parambndq) {}
+  
+  public void a(bndl parambndl)
+  {
+    if (parambndl == null)
+    {
+      bnfc.a(this.jdField_a_of_type_AndroidContentContext, this);
+      return;
+    }
+    parambndl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr, this.jdField_a_of_type_Bndq);
+  }
 }
 
 

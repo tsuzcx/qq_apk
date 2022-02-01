@@ -14,11 +14,11 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import axig;
-import axih;
-import bdwn;
-import bgey;
+import anzj;
+import ayaz;
+import ayba;
+import bevg;
+import bhez;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -30,10 +30,10 @@ public class InterestTagItemView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axig(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ayaz(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axih jdField_a_of_type_Axih;
+  private ayba jdField_a_of_type_Ayba;
   private URLDrawable.URLDrawableOptions jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
   private InterestTagInfo jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo;
   private boolean jdField_a_of_type_Boolean;
@@ -48,13 +48,13 @@ public class InterestTagItemView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561272, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368530));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380133));
-    this.b = ((ImageView)paramContext.findViewById(2131368512));
-    setBackgroundResource(2130845050);
-    int i = getResources().getColor(2131166331);
-    findViewById(2131380413).setBackgroundColor(i);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561310, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368603));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380318));
+    this.b = ((ImageView)paramContext.findViewById(2131368585));
+    setBackgroundResource(2130845065);
+    int i = getResources().getColor(2131166335);
+    findViewById(2131380599).setBackgroundColor(i);
     this.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
@@ -63,16 +63,16 @@ public class InterestTagItemView
   
   public void a()
   {
-    boolean bool = this.jdField_a_of_type_Axih.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo);
+    boolean bool = this.jdField_a_of_type_Ayba.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo);
     if ((!bool) && (this.jdField_a_of_type_Boolean == true)) {
-      this.b.setImageResource(2130847103);
+      this.b.setImageResource(2130847120);
     }
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
       return;
       if ((bool == true) && (!this.jdField_a_of_type_Boolean)) {
-        this.b.setImageResource(2130847104);
+        this.b.setImageResource(2130847121);
       }
     }
   }
@@ -98,7 +98,7 @@ public class InterestTagItemView
     }
     if ((this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 6))
     {
-      localObject1 = getResources().getDrawable(2131165853);
+      localObject1 = getResources().getDrawable(2131165854);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
       label66:
@@ -118,13 +118,13 @@ public class InterestTagItemView
         localObject3 = localObject4;
         localObject2 = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
         localObject3 = localObject4;
-        i = getResources().getDimensionPixelSize(2131297339);
+        i = getResources().getDimensionPixelSize(2131297351);
         localObject3 = localObject4;
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
         localObject3 = localObject4;
         localObject2 = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
         localObject3 = localObject4;
-        j = getResources().getDimensionPixelSize(2131297338);
+        j = getResources().getDimensionPixelSize(2131297350);
         localObject3 = localObject4;
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = j;
         localObject3 = localObject4;
@@ -132,15 +132,15 @@ public class InterestTagItemView
         localObject3 = localObject4;
         this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
         localObject3 = localObject4;
-        localObject2 = URLDrawable.getDrawable(bdwn.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo.tagIconUrl), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
+        localObject2 = URLDrawable.getDrawable(bevg.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo.tagIconUrl), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
         localObject3 = localObject2;
         if (this.jdField_a_of_type_Int != 7) {
           continue;
         }
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setTag(bgey.b(j, i, (int)(10.0F * this.jdField_a_of_type_Float)));
+        ((URLDrawable)localObject2).setTag(bhez.b(j, i, (int)(10.0F * this.jdField_a_of_type_Float)));
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setDecodeHandler(bgey.c);
+        ((URLDrawable)localObject2).setDecodeHandler(bhez.c);
       }
       catch (Exception localException)
       {
@@ -162,9 +162,9 @@ public class InterestTagItemView
           continue;
         }
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setTag(bgey.a(j, i));
+        ((URLDrawable)localObject2).setTag(bhez.a(j, i));
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setDecodeHandler(bgey.a);
+        ((URLDrawable)localObject2).setDecodeHandler(bhez.a);
         continue;
         localObject1 = localObject2;
         continue;
@@ -184,38 +184,38 @@ public class InterestTagItemView
       if (!AppSetting.c) {
         break;
       }
-      setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + anni.a(2131704591));
+      setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + anzj.a(2131704698));
       return;
       if (this.jdField_a_of_type_Int == 7)
       {
         localObject1 = new GradientDrawable();
-        ((GradientDrawable)localObject1).setColor(getResources().getColor(2131165853));
+        ((GradientDrawable)localObject1).setColor(getResources().getColor(2131165854));
         ((GradientDrawable)localObject1).setCornerRadius(10.0F * this.jdField_a_of_type_Float);
         ((GradientDrawable)localObject1).setShape(0);
-        i = getResources().getDimensionPixelSize(2131297337);
+        i = getResources().getDimensionPixelSize(2131297349);
         ((GradientDrawable)localObject1).setSize(i, i);
         this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
         this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
         break label66;
       }
       localObject1 = new GradientDrawable();
-      ((GradientDrawable)localObject1).setColor(getResources().getColor(2131165853));
+      ((GradientDrawable)localObject1).setColor(getResources().getColor(2131165854));
       ((GradientDrawable)localObject1).setShape(1);
-      i = getResources().getDimensionPixelSize(2131297337);
+      i = getResources().getDimensionPixelSize(2131297349);
       ((GradientDrawable)localObject1).setSize(i, i);
       break label66;
       localObject3 = localObject4;
       localObject2 = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
       localObject3 = localObject4;
-      i = getResources().getDimensionPixelSize(2131297337);
+      i = getResources().getDimensionPixelSize(2131297349);
       localObject3 = localObject4;
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
     }
   }
   
-  public void setCallback(axih paramaxih)
+  public void setCallback(ayba paramayba)
   {
-    this.jdField_a_of_type_Axih = paramaxih;
+    this.jdField_a_of_type_Ayba = paramayba;
   }
 }
 

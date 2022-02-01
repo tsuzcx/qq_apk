@@ -1,37 +1,39 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ardp
-  implements View.OnClickListener
+public class ardp
 {
-  ardp(ardm paramardm, String paramString) {}
+  public int a;
   
-  public void onClick(View paramView)
+  public static ardp a(String paramString)
   {
-    ardm.a(this.jdField_a_of_type_Ardm).removeCallbacks(ardm.a(this.jdField_a_of_type_Ardm));
-    ardm.a(this.jdField_a_of_type_Ardm).run();
-    int i = ardm.a(this.jdField_a_of_type_Ardm).a.getSelectionStart();
-    Editable localEditable = ardm.a(this.jdField_a_of_type_Ardm).a.getEditableText();
-    if ((i < 0) || (i >= localEditable.length())) {
-      localEditable.append(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    if (paramString == null) {}
+    do
     {
-      bcst.b(ardm.a(this.jdField_a_of_type_Ardm).a(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
-    }
+      return null;
+      try
+      {
+        ardp localardp = new ardp();
+        localardp.a = new JSONObject(paramString).optInt("kDeviceManageShowMuteKey", 0);
+        QLog.d("DeviceManageConfProcessor", 2, "confBean = " + localardp.toString());
+        return localardp;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("DeviceManageConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("kDeviceManageShowMuteKey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardp
  * JD-Core Version:    0.7.0.1
  */

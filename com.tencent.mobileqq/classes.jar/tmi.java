@@ -1,45 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class tmi
-  implements VRefreshLayout.onRefreshStateChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "", "secondStateTime", "", "thirdStateTime", "(II)V", "getSecondStateTime", "()I", "getThirdStateTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tmi
 {
-  tmi(tmh paramtmh, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  private final int a;
+  private final int b;
   
-  public void onRefreshMove(int paramInt)
+  public tmi()
   {
-    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
-    if ((paramInt <= i) && (!tmh.a(this.jdField_a_of_type_Tmh)))
+    this(0, 0, 3, null);
+  }
+  
+  public tmi(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.a;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
+      if ((paramObject instanceof tmi))
+      {
+        paramObject = (tmi)paramObject;
+        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
+      }
     }
+    else {
+      return true;
+    }
+    return false;
   }
   
-  public void onStateEnd()
+  public int hashCode()
   {
-    tmh.a(this.jdField_a_of_type_Tmh, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+    return this.a * 31 + this.b;
   }
   
-  public void onStateFinish(boolean paramBoolean, String paramString)
+  @NotNull
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
-  }
-  
-  public void onStateIdel()
-  {
-    tmh.a(this.jdField_a_of_type_Tmh, false);
-  }
-  
-  public void onStatePulling() {}
-  
-  public void onStateRefreshing()
-  {
-    tmh.a(this.jdField_a_of_type_Tmh, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
+    return "VideoGuide(secondStateTime=" + this.a + ", thirdStateTime=" + this.b + ")";
   }
 }
 

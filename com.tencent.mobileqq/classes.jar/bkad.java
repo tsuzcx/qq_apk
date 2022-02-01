@@ -1,29 +1,55 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-final class bkad
-  extends niv
+public class bkad
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static String a(String paramString)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
+    String str = paramString;
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      if (!TextUtils.isEmpty(paramString))
+      {
+        str = paramString;
+        if (!paramString.startsWith("##@")) {
+          str = "##@" + paramString;
+        }
       }
-      return;
+      return str;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    catch (Throwable localThrowable) {}
+    return paramString;
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    paramString2 = "step" + paramInt + "-->" + paramString2;
+    QLog.d("WadlStep." + paramString1, 2, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, a(paramString2));
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, a(paramString2));
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, a(paramString2));
   }
 }
 

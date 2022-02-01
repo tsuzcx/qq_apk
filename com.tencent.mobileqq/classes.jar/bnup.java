@@ -1,12 +1,15 @@
+import android.text.TextUtils;
+
 public class bnup
+  extends bkfo
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
-  
-  public bnup(bnum parambnum) {}
+  public void i(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+      return;
+    }
+    super.i(paramString1, paramString2);
+  }
 }
 
 

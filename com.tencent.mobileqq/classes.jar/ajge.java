@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajge
-  extends anqd
+class ajge
+  extends apck
 {
-  public ajge(TroopView paramTroopView) {}
-  
-  protected void a()
+  ajge(ajgd paramajgd, String paramString, aoip paramaoip, boolean paramBoolean)
   {
-    this.a.j();
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactFindTroopRTLW", 1, "getRecommendTroopList onLocationFinish, errorCode=" + paramInt);
+    }
+    this.jdField_a_of_type_Aoip.a(1, this.jdField_a_of_type_Ajgd.b, 25, this.jdField_a_of_type_Boolean, ajgd.a(this.jdField_a_of_type_Ajgd));
   }
 }
 

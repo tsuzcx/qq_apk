@@ -1,56 +1,65 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.qphone.base.util.QLog;
 
-final class awev
-  extends Drawable.ConstantState
+class awev
+  implements bjft
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Shader.TileMode jdField_a_of_type_AndroidGraphicsShader$TileMode = null;
-  boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int jdField_b_of_type_Int;
-  Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = null;
-  String[] jdField_b_of_type_ArrayOfJavaLangString;
-  int c = 119;
-  int d = 160;
+  private long jdField_a_of_type_Long;
   
-  public awev(awfg paramawfg)
-  {
-    if (paramawfg == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PngFrameDrawable", 2, "【ramdom magic】 png frame param is null.");
-      }
-      throw new IllegalArgumentException("【ramdom magic】 png frame param is null.");
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramawfg.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramawfg.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_Int = paramawfg.c;
-    this.jdField_b_of_type_Int = paramawfg.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramawfg.jdField_a_of_type_Boolean;
-  }
+  awev(awet paramawet, Context paramContext) {}
   
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new awet(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
+  public boolean a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PngFrameDrawable", 2, "func newDrawable");
+      QLog.d("WatchFloatingWindowController", 2, "onCloseClick");
     }
-    return new awet(this, paramResources, null);
+    if (awet.a(this.jdField_a_of_type_Awet) == null) {
+      return true;
+    }
+    if (awet.a(this.jdField_a_of_type_Awet).isIsAdm())
+    {
+      awen.a(this.jdField_a_of_type_AndroidContentContext, 5, awet.a(this.jdField_a_of_type_Awet).getCurUin());
+      return true;
+    }
+    bdll.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_member", 0, 0, awet.a(this.jdField_a_of_type_Awet).getCurUin(), "", "", "");
+    this.jdField_a_of_type_Awet.b();
+    return true;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    }
+    if ((awet.a(this.jdField_a_of_type_Awet) == null) || (awet.a(this.jdField_a_of_type_Awet) == null)) {
+      return false;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      }
+      return true;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramInt1 = awet.a(this.jdField_a_of_type_Awet).a();
+    if (paramInt1 == 1)
+    {
+      bekk.a(this.jdField_a_of_type_AndroidContentContext, 1, awet.a(this.jdField_a_of_type_Awet).getBigUrl(), null, new Bundle(), awet.a(this.jdField_a_of_type_Awet).getCurType());
+      this.jdField_a_of_type_Awet.a(awet.a(this.jdField_a_of_type_Awet).getCurUin(), awet.a(this.jdField_a_of_type_Awet).getCurType(), false);
+    }
+    for (;;)
+    {
+      return true;
+      if (paramInt1 == 2)
+      {
+        awet.a(this.jdField_a_of_type_Awet).a(awet.a(this.jdField_a_of_type_Awet).getSmallUrl());
+        bdll.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, awet.a(this.jdField_a_of_type_Awet).getCurUin(), "", "", "");
+      }
+    }
   }
 }
 

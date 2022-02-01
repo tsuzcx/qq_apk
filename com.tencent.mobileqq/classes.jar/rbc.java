@@ -1,52 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient;", "", "()V", "TAG", "", "<set-?>", "Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijAidlInterface", "getRijAidlInterface", "()Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijServiceConnection", "Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient$RIJServiceConnection;", "bindService", "", "context", "Landroid/content/Context;", "getInstance", "unbindService", "RIJServiceConnection", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rbc
+public class rbc
+  implements rbd
 {
-  @Nullable
-  private static raz jdField_a_of_type_Raz;
-  public static final rbc a;
-  private static final rbd jdField_a_of_type_Rbd = new rbd();
+  public rbc(ReadInJoyDraftboxFragment.1 param1) {}
   
-  static
+  public void a(List<ReadInJoyDraftboxItem> paramList)
   {
-    jdField_a_of_type_Rbc = new rbc();
-  }
-  
-  @JvmStatic
-  @NotNull
-  public static final rbc a()
-  {
-    return jdField_a_of_type_Rbc;
-  }
-  
-  @Nullable
-  public final raz a()
-  {
-    return jdField_a_of_type_Raz;
-  }
-  
-  public final void a(@NotNull Context paramContext)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    try
-    {
-      paramContext.bindService(new Intent(paramContext, KandianVideoUploadService.class), (ServiceConnection)jdField_a_of_type_Rbd, 1);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("RIJAidlClient", 1, QLog.getStackTraceString((Throwable)paramContext));
-    }
+    ThreadManager.getUIHandler().post(new ReadInJoyDraftboxFragment.1.1.1(this, paramList));
   }
 }
 

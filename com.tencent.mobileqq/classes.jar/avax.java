@@ -1,37 +1,42 @@
-import android.content.Context;
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class avax
+class avax
+  extends avay
 {
-  protected Context a;
-  protected avav a;
-  protected avav b;
-  protected avav c;
+  public ImageView a;
+  public TextView a;
   
-  public avax(Context paramContext)
+  public avax(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramView);
+    this.jdField_a_of_type_Int = avar.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368580));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380309));
+    paramView.setTag(this);
   }
   
-  public avav a(int paramInt, avap paramavap)
+  public void a(String paramString1, String paramString2, aoof paramaoof)
   {
-    switch (paramInt)
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new begp((CharSequence)localObject, 2));
+    localObject = paramaoof.a(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
     {
-    default: 
-      if (this.jdField_a_of_type_Avav == null) {
-        this.jdField_a_of_type_Avav = new avaw(this.jdField_a_of_type_AndroidContentContext, 2130845876, paramavap);
+      localObject = bhmq.a();
+      paramString2 = (String)localObject;
+      if (!paramaoof.a())
+      {
+        paramaoof.a(paramString1, 1, false);
+        paramString2 = (String)localObject;
       }
-      return this.jdField_a_of_type_Avav;
-    case 2: 
-      if (this.c == null) {
-        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842555, paramavap);
-      }
-      return this.c;
     }
-    if (this.b == null) {
-      this.b = new avaw(this.jdField_a_of_type_AndroidContentContext, 2130845880, paramavap);
-    }
-    return this.b;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
 }
 

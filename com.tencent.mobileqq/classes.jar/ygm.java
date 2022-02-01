@@ -1,6 +1,21 @@
-public abstract interface ygm
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class ygm
+  implements TextView.OnEditorActionListener
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  ygm(ygl paramygl) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
+  }
 }
 
 

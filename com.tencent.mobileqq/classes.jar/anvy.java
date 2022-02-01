@@ -1,65 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.SingleThreadExecutor;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class anvy
-  extends AbstractExecutorService
+class anvy
+  implements INetInfoHandler
 {
-  private final int a;
+  anvy(anvu paramanvu) {}
   
-  protected anvy(int paramInt)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    this.a = paramInt;
+    this.a.b();
   }
   
-  public static ExecutorService a(int paramInt)
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
   {
-    return new anvy(paramInt);
+    this.a.b();
   }
   
-  public static ExecutorService b(int paramInt)
+  public void onNetWifi2Mobile(String paramString)
   {
-    return new SingleThreadExecutor(paramInt);
+    this.a.c();
   }
   
-  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
+  public void onNetWifi2None()
   {
-    return false;
-  }
-  
-  public void execute(@NonNull Runnable paramRunnable)
-  {
-    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
-  }
-  
-  public boolean isShutdown()
-  {
-    return false;
-  }
-  
-  public boolean isTerminated()
-  {
-    return false;
-  }
-  
-  public void shutdown()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  @NonNull
-  public List<Runnable> shutdownNow()
-  {
-    throw new UnsupportedOperationException();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvy
  * JD-Core Version:    0.7.0.1
  */

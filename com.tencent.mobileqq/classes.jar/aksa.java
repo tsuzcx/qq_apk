@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
 
-public abstract interface aksa
+public final class aksa
+  implements Parcelable.Creator<TroopClipPic>
 {
-  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
+  public TroopClipPic a(Parcel paramParcel)
+  {
+    return new TroopClipPic(paramParcel);
+  }
+  
+  public TroopClipPic[] a(int paramInt)
+  {
+    return new TroopClipPic[paramInt];
+  }
 }
 
 

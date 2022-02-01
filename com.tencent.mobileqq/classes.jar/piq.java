@@ -1,46 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-public class piq
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+class piq
+  implements View.OnClickListener
 {
-  public static String a = "HomePageConfigHandler";
+  piq(pin parampin, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = phv.a(paramString);
-    Object localObject = paramString.keySet();
+    Object localObject = new Intent(this.jdField_a_of_type_Pin.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_attachment_jump_url.get().toStringUtf8());
+    this.jdField_a_of_type_Pin.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+    localObject = oxw.a(this.jdField_a_of_type_Pin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Pin.a(), (ArticleInfo)this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
     try
     {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
-          bmqa.l(Integer.parseInt(str2));
-        }
-      }
-      return true;
+      ((JSONObject)localObject).put("exptime", System.currentTimeMillis());
+      ((JSONObject)localObject).put("proxy_bytes", this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.galleryReprotExdData);
+      ((JSONObject)localObject).put("operation_id", this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_operation_id.get().toStringUtf8());
+      oxy localoxy = new oxy(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      localoxy.e = String.valueOf(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+      localoxy.f = String.valueOf(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+      localoxy.g = ((JSONObject)localObject).toString();
+      localoxy.a = String.valueOf(this.jdField_a_of_type_Pin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.publishUin);
+      localoxy.b = "0X8009A7B";
+      localoxy.c = "0X8009A7B";
+      oxw.a(localoxy);
+      label236:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    catch (Throwable paramString)
+    catch (Exception localException)
     {
-      paramString.printStackTrace();
+      break label236;
     }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bmqa.l(0);
   }
 }
 

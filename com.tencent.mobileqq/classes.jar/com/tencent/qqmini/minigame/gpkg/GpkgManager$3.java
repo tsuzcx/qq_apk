@@ -18,7 +18,9 @@ final class GpkgManager$3
   public void onDownloadFailed(int paramInt, String paramString)
   {
     QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin failed " + paramInt + " " + this.val$pluginInfo);
-    this.val$listener.onPluginDownloadComplete(false, null, null);
+    if (this.val$listener != null) {
+      this.val$listener.onPluginDownloadComplete(false, null, null);
+    }
   }
   
   public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
@@ -32,18 +34,24 @@ final class GpkgManager$3
       if ((this.val$pluginInfo.packageSize != 0) && (this.val$pluginInfo.packageSize != this.val$pkgFile.length()))
       {
         QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin file-size mismatch " + this.val$pluginInfo);
-        this.val$listener.onPluginDownloadComplete(false, new RuntimeException("file size mismatch, expected:" + this.val$pluginInfo.packageSize + " got:" + this.val$pkgFile.length()), null);
+        if (this.val$listener != null) {
+          this.val$listener.onPluginDownloadComplete(false, new RuntimeException("file size mismatch, expected:" + this.val$pluginInfo.packageSize + " got:" + this.val$pkgFile.length()), null);
+        }
         return;
       }
       FileUtils.delete(this.val$folder.getAbsolutePath(), false);
       if (!WxapkgUnpacker.unpackSync(this.val$pkgFile.getAbsolutePath(), this.val$folder.getAbsolutePath()))
       {
         QMLog.e("[minigame] GpkgManager", "[Gpkg] download plugin unpack failed " + this.val$pluginInfo);
-        this.val$listener.onPluginDownloadComplete(false, new RuntimeException("unpack file failed"), null);
+        if (this.val$listener != null) {
+          this.val$listener.onPluginDownloadComplete(false, new RuntimeException("unpack file failed"), null);
+        }
         return;
       }
       QMLog.i("[minigame] GpkgManager", "[Gpkg] download plugin success " + this.val$pluginInfo);
-      this.val$listener.onPluginDownloadComplete(true, null, GpkgManager.access$000(paramDownloadResult));
+      if (this.val$listener != null) {
+        this.val$listener.onPluginDownloadComplete(true, null, GpkgManager.access$000(paramDownloadResult));
+      }
       return;
     }
     finally

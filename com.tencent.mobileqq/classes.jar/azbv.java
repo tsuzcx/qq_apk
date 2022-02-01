@@ -1,153 +1,108 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.RedPacketServlet;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.ocr.view.TranslateLanguageOptionsView.1;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class azbv
-  extends BroadcastReceiver
+  extends PopupWindow
+  implements RadioGroup.OnCheckedChangeListener
 {
-  private azbv(PortalManager paramPortalManager) {}
+  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
+  private azbw jdField_a_of_type_Azbw;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private azbv(Context paramContext, View paramView, int paramInt1, int paramInt2)
   {
-    int j = 1;
-    int i = 1;
-    int k = paramIntent.getIntExtra("portal_type_key", -1);
-    int m = paramIntent.getIntExtra("bc_seq", -1);
-    paramContext = paramIntent.getStringExtra("portal_agrs");
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager", 2, "PortalSwictherReceiver, " + paramIntent.getExtras());
+    super(paramView, paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131365079));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
+  }
+  
+  public static azbv a(Activity paramActivity, List<azbx> paramList, int paramInt, azbw paramazbw)
+  {
+    if ((paramActivity == null) || (paramList == null) || (paramList.size() <= 0)) {
+      return null;
     }
-    Object localObject;
-    int n;
-    switch (k)
+    Resources localResources = paramActivity.getResources();
+    int m = agej.a(36.0F, localResources);
+    int k = agej.a(150.0F, localResources);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131561384, null);
+    BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131364002);
+    RadioGroup localRadioGroup = (RadioGroup)localView.findViewById(2131365079);
+    Object localObject = null;
+    int j = 0;
+    int i = 78;
+    RadioButton localRadioButton;
+    if (j < paramList.size())
     {
-    default: 
-    case 1010: 
-    case 1011: 
-      do
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject();
-          paramIntent = paramContext.put("errorCode", 0);
-          if (this.a.a() != -1)
-          {
-            paramIntent.put("result", i);
-            PortalManager.a(this.a, k, paramContext.toString(), m);
-            return;
-          }
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-            try
-            {
-              paramContext = new JSONObject();
-              paramContext.put("errorCode", -1);
-              PortalManager.a(this.a, k, paramContext.toString(), m);
-              return;
-            }
-            catch (JSONException paramContext)
-            {
-              paramContext.printStackTrace();
-              return;
-            }
-            i = 0;
-          }
-          if (!TextUtils.isEmpty(paramContext)) {
-            break;
-          }
-          PortalManager.a(this.a, k, m, null, -1, "params is null");
-          return;
-        }
-        catch (Exception paramContext) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("PortalManager", 2, "", paramContext);
-      return;
-      paramContext = new JSONObject(paramContext);
-      paramIntent = paramContext.getString("key");
-      localObject = azby.b(paramIntent);
-      localObject = bglf.l(PortalManager.a(this.a), (String)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
+      azbx localazbx = (azbx)paramList.get(j);
+      localRadioButton = (RadioButton)LayoutInflater.from(paramActivity).inflate(2131561383, null);
+      localRadioButton.setText(localazbx.a);
+      localRadioButton.setTag(localazbx);
+      localRadioButton.setId(j);
+      if (j != paramInt) {
+        break label297;
       }
-      for (;;)
-      {
-        PortalManager.a(this.a, k, paramContext.toString(), m);
-        return;
-        paramContext.put("errorCode", -1).put("key", paramIntent);
-      }
-    case 1008: 
-      if (TextUtils.isEmpty(paramContext))
-      {
-        PortalManager.a(this.a, k, m, null, -1, "params is null");
-        return;
-      }
-      paramContext = new JSONObject(paramContext);
-      int i1 = paramContext.getInt("type");
-      n = paramContext.getInt("count");
-      i = j;
-      switch (i1)
-      {
-      }
-      break;
+      localRadioButton.setChecked(true);
+      localObject = localRadioButton;
     }
+    label297:
     for (;;)
     {
-      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
-      return;
-      if (TextUtils.isEmpty(paramContext))
-      {
-        PortalManager.a(this.a, k, m, null, -1, "params is null");
-        return;
+      localRadioGroup.addView(localRadioButton, j, new LinearLayout.LayoutParams(-1, -2));
+      j += 1;
+      i += m;
+      break;
+      paramInt = i;
+      if (i > agej.a(300.0F, localResources)) {
+        paramInt = agej.a(300.0F, localResources);
       }
-      paramContext = new JSONObject(paramContext).getString("key");
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        paramIntent = azby.b(paramContext);
-        localObject = PortalManager.a(this.a).a(paramIntent, false);
-        if (localObject != null)
-        {
-          paramIntent = azby.a((Bitmap)localObject);
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("errorCode", 0);
-          ((JSONObject)localObject).put("key", paramContext);
-          ((JSONObject)localObject).put("result", paramIntent);
-          PortalManager.a(this.a, k, ((JSONObject)localObject).toString(), m);
-          return;
-        }
-        localObject = new azbu();
-        ((azbu)localObject).jdField_a_of_type_JavaLangString = paramContext;
-        ((azbu)localObject).b = k;
-        ((azbu)localObject).jdField_a_of_type_Int = m;
-        this.a.a.put(paramIntent, localObject);
-        if ((PortalManager.a(this.a).a(paramIntent, true) != null) || (!QLog.isColorLevel())) {
-          break;
-        }
-        paramIntent = bglf.j(PortalManager.a(this.a), String.valueOf(paramIntent));
-        QLog.d("PortalManager", 2, "昵称为" + paramIntent + "，本地不存在头像，key = " + paramContext);
-        return;
+      if (localObject != null) {
+        localBounceScrollView.post(new TranslateLanguageOptionsView.1(localObject, localBounceScrollView));
       }
-      PortalManager.a(this.a, k, m, null, -1, "key is null");
-      return;
-      i = j;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+      paramActivity = new azbv(paramActivity, localView, k, paramInt);
+      paramActivity.setAnimationStyle(2131755031);
+      paramActivity.setBackgroundDrawable(new ColorDrawable(0));
+      paramActivity.setFocusable(true);
+      paramActivity.setOutsideTouchable(true);
+      paramActivity.a(paramazbw);
+      return paramActivity;
     }
+  }
+  
+  public void a(azbw paramazbw)
+  {
+    this.jdField_a_of_type_Azbw = paramazbw;
+  }
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    try
+    {
+      azbx localazbx = (azbx)((RadioButton)paramRadioGroup.getChildAt(paramInt)).getTag();
+      if (this.jdField_a_of_type_Azbw != null) {
+        this.jdField_a_of_type_Azbw.a(paramInt, localazbx);
+      }
+      dismiss();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

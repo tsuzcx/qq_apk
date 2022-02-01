@@ -1,47 +1,56 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.QQBrowserSwipeLayout;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class affl
-  implements CompoundButton.OnCheckedChangeListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public affl(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  private float jdField_a_of_type_Float;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public affl(QQBrowserSwipeLayout paramQQBrowserSwipeLayout, Context paramContext)
   {
-    int i = 1;
-    label61:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    boolean bool = false;
+    if (QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null) {
+      bool = QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, paramMotionEvent1);
+    }
+    if ((!QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout)) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    if ((f1 < 0.0F) && (f2 < 0.5F) && (!bool))
     {
-      SoundAndVibrateActivity.b(this.a, 0);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839448);
-      if (this.a.app.b() == 0)
+      if (!(QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) instanceof Activity)) {
+        break label175;
+      }
+      QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, true);
+      if (QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
       {
-        this.a.b.setChecked(false);
-        this.a.app.f(1);
-        localQQAppInterface = this.a.app;
-        if (!paramBoolean) {
-          break label157;
-        }
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).flingLToR();
+        QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
       }
     }
     for (;;)
     {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      this.a.b.setChecked(true);
-      break;
-      SoundAndVibrateActivity.b(this.a, 8);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839432);
-      this.a.app.f(0);
-      break label61;
-      label157:
-      i = 0;
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label175:
+      if (QQBrowserSwipeLayout.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+      {
+        QQBrowserSwipeLayout.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).flingLToR();
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+      }
     }
   }
 }

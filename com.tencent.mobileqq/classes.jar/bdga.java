@@ -1,31 +1,43 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2;
-import com.tencent.qphone.base.util.QLog;
-
 public class bdga
-  implements MediaPlayer.OnSeekCompleteListener
+  implements anui
 {
-  public bdga(VideoSprite.2 param2) {}
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
+    switch (paramInt)
     {
-      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.this$0.g = true;
-      if (this.a.this$0.jdField_a_of_type_Bdge != null) {
-        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
-      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramObject = (Object[])paramObject;
+          } while ((paramObject == null) || (paramObject.length != 4));
+          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+          return;
+          paramObject = (Object[])paramObject;
+        } while ((paramObject == null) || (paramObject.length != 5));
+        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
+        return;
+        paramObject = (Object[])paramObject;
+      } while ((paramObject == null) || (paramObject.length != 3));
+      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
       return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
-    }
+      paramObject = (Object[])paramObject;
+    } while ((paramObject == null) || (paramObject.length != 3));
+    a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
   }
 }
 

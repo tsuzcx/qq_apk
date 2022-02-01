@@ -1,26 +1,17 @@
-import com.tencent.qapmsdk.base.reporter.ab.AbType;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
 
-public class adbr
-  extends AbType
+public abstract interface adbr
 {
-  public void active()
-  {
-    setPerfTimeout(1, 9223372036854775807L);
-    setPerfTimeout(4, 9223372036854775807L);
-    setPerfTimeout(2, 9223372036854775807L);
-  }
+  public abstract int a();
   
-  public String getDescription()
-  {
-    return "AIO3D背景";
-  }
+  public abstract void a(List<adbr> paramList);
   
-  public void unActive()
-  {
-    setPerfTimeout(1, 3000L);
-    setPerfTimeout(2, 2000L);
-    setPerfTimeout(4, 9223372036854775807L);
-  }
+  public abstract boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre);
+  
+  public abstract boolean a(im_msg_body.Elem paramElem);
 }
 
 

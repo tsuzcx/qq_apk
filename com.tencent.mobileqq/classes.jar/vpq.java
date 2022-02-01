@@ -1,39 +1,41 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
-import qqcircle.QQCircleFeedBase.StBusiInfoData;
-import qqcircle.QQCircleFeedBase.StRewardData;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vpq
-  implements zxa<FeedCloudRead.StGetBusiInfoRsp>
+public class vpq
+  implements RadioGroup.OnCheckedChangeListener
 {
-  vpq(vpp paramvpp, QCircleGetTabListRequest paramQCircleGetTabListRequest, boolean paramBoolean) {}
+  public vpq(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    QLog.d(vpp.a(), 1, vpp.a() + "->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L))
+    if (QCirclePersonalBottomView.a(this.a).getId() == paramInt)
     {
-      paramString = new QQCircleFeedBase.StBusiInfoData();
-      paramStGetBusiInfoRsp = paramStGetBusiInfoRsp.busiRspData.get().toByteArray();
+      QCirclePersonalBottomView.a(this.a).setCurrentItem(0);
+      QCirclePersonalBottomView.a(this.a, 0);
+      QCirclePersonalBottomView.a(this.a, 19, 6);
     }
-    try
+    for (;;)
     {
-      paramString.mergeFrom(paramStGetBusiInfoRsp);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Vpp.a(paramString.allPolyInfo.get());
-      }
-      if (paramString.rewardData.myMoney.get() >= 0L) {
-        this.jdField_a_of_type_Vpp.a((float)paramString.rewardData.myMoney.get());
-      }
+      this.a.a();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
+      if (QCirclePersonalBottomView.b(this.a).getId() == paramInt)
+      {
+        QCirclePersonalBottomView.a(this.a).setCurrentItem(1);
+        QCirclePersonalBottomView.a(this.a, 1);
+        QCirclePersonalBottomView.a(this.a, 20, 2);
+      }
+      else if (QCirclePersonalBottomView.c(this.a).getId() == paramInt)
+      {
+        QCirclePersonalBottomView.a(this.a).setCurrentItem(2);
+        QCirclePersonalBottomView.a(this.a, 2);
+        QCirclePersonalBottomView.a(this.a, 21, 2);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramString) {}
   }
 }
 

@@ -1,18 +1,10 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
-
-class bdno
-  extends bdns
+public abstract class bdno
 {
-  bdno(@NonNull String paramString)
-  {
-    super(0, paramString);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  float a(@NonNull Paint paramPaint)
-  {
-    return paramPaint.measureText(a());
-  }
+  public abstract String a();
 }
 
 

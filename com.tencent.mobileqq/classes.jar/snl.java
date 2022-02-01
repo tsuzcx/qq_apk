@@ -1,15 +1,18 @@
-class snl
-  implements sez
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+
+public class snl
+  implements tbx
 {
-  snl(snh paramsnh) {}
+  public snl(FastWebActivity paramFastWebActivity) {}
   
-  public void a(sey paramsey, boolean paramBoolean)
+  public int a()
   {
-    if (paramBoolean) {}
-    while ((this.a.c == 0) || (this.a.c == 56) || (rvr.c)) {
-      return;
-    }
-    this.a.a(paramsey);
+    return FastWebActivity.a(this.a);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

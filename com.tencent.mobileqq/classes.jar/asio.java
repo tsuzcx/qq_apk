@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 
 public class asio
-  implements DialogInterface.OnClickListener
+  implements asko
 {
-  public asio(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public asio(MessengerService paramMessengerService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    }
   }
 }
 

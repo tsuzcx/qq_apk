@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import bepz;
-import beqk;
-import beqm;
+import bfpg;
+import bfpr;
+import bfpt;
 import java.util.List;
 
 public class TroopAioKeywordTipManager$4$1
   implements Runnable
 {
-  public TroopAioKeywordTipManager$4$1(beqm parambeqm, List paramList) {}
+  public TroopAioKeywordTipManager$4$1(bfpt parambfpt, List paramList) {}
   
   public void run()
   {
-    bepz.a(this.jdField_a_of_type_Beqm.a.a, this.jdField_a_of_type_JavaUtilList);
+    bfpg.a(this.jdField_a_of_type_Bfpt.a.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
-public class asjn
-  implements asno
+class asjn
+  extends biht
 {
-  public asjn(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
+  asjn(asiw paramasiw) {}
   
-  public void a(String paramString, int paramInt)
+  public void onCancel(bihu parambihu) {}
+  
+  public void onDone(bihu parambihu)
   {
-    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
-    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
-    ExtendFriendSearchBaseFragment.a(this.a, paramString);
+    super.onDone(parambihu);
   }
+  
+  public void onDoneFile(bihu parambihu) {}
+  
+  public void onPause(bihu parambihu) {}
+  
+  public void onProgress(bihu parambihu) {}
 }
 
 

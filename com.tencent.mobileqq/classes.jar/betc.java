@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
 class betc
-  implements DialogInterface.OnClickListener
 {
-  betc(besy parambesy, besl parambesl) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b = false;
+  public boolean c = false;
+  public boolean d = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public betc(betb parambetb)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (besy.a(this.jdField_a_of_type_Besy) == 0);
-    TroopFileTransferManager.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).c(this.jdField_a_of_type_Besl.a);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

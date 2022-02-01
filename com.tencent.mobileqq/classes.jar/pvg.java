@@ -1,61 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class pvg
-  extends nis
+  implements View.OnClickListener
 {
-  pvg(pvf parampvf, boolean paramBoolean) {}
+  pvg(puz parampuz, sel paramsel, ppu paramppu) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      try
-      {
-        paramBundle = new oidb_0xb7e.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.rpt_top_item.has()) {
-          break label129;
-        }
-        List localList = paramBundle.rpt_top_item.get();
-        if ((localList == null) || (localList.size() <= 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(pvf.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
-          }
-          pmk.a().a(true, null);
-          pvf.a(this.a, paramArrayOfByte, 0L);
-          return;
-        }
-        pvf.a(this.a, paramArrayOfByte, System.currentTimeMillis());
-        if (!this.b) {
-          return;
-        }
-        pvf.a(this.a, paramBundle);
-        return;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-      }
-      QLog.e(pvf.a, 2, "requestDiandianTopConfig parser failed");
-      return;
-      label129:
-      if (QLog.isColorLevel()) {
-        QLog.d(pvf.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
-      }
-      pvf.a(this.a, paramArrayOfByte, 0L);
-      pmk.a().a(true, null);
-      return;
+    sgf localsgf = this.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, this.jdField_a_of_type_Ppu.a(), 1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.e(pvf.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

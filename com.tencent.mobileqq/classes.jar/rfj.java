@@ -1,11 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class rfj
+  implements URLDrawable.URLDrawableListener
 {
-  public String a;
-  public List<RecommendFollowInfo> a = new ArrayList();
+  public rfj(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AbsPublishColumnFragment.b(this.a);
+  }
 }
 
 

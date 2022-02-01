@@ -1,27 +1,54 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-final class bmlu
-  implements DialogInterface.OnClickListener
+public abstract class bmlu
+  extends Binder
+  implements bmlt
 {
-  bmlu(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmlu()
   {
-    try
-    {
-      if (blru.a().indexOf("GM") < 0) {
-        bmls.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
+    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+  }
+  
+  public static bmlt a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    catch (Exception paramDialogInterface)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof bmlt))) {
+      return (bmlt)localIInterface;
+    }
+    return new bmlv(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }

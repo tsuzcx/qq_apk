@@ -1,20 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class bqjk
+class bqjk
+  implements Animator.AnimatorListener
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
+  bqjk(bqji parambqji) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(paramInt);
-    localScaleAnimation.setFillEnabled(true);
-    localScaleAnimation.setFillBefore(true);
-    localScaleAnimation.setFillAfter(true);
-    if (paramAnimationListener != null) {
-      localScaleAnimation.setAnimationListener(paramAnimationListener);
-    }
-    paramView.startAnimation(localScaleAnimation);
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 

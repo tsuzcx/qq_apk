@@ -2,10 +2,10 @@ package com.tencent.qqmini.flutter.core.task;
 
 import android.content.Context;
 import android.util.Log;
-import com.tencent.qqmini.flutter.core.service.AppV8JsService;
 import com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime;
 import com.tencent.qqmini.miniapp.core.service.AbsAppBrandService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandService;
+import com.tencent.qqmini.miniapp.core.service.AppV8JsService;
 import com.tencent.qqmini.miniapp.task.BaselibLoadAsyncTask;
 import com.tencent.qqmini.miniapp.task.ServiceInitTask;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
@@ -41,12 +41,12 @@ public class V8ServiceInitTask
       {
         localMiniAppInfo = this.appBrandRuntime.getMiniAppInfo();
         MiniReportManager.reportEventType(localMiniAppInfo, 100, "0");
-        localAppV8JsService = new AppV8JsService(this.appBrandRuntime);
+        localAppV8JsService = new AppV8JsService(this.appBrandRuntime, true);
         if (this.appBrandRuntime == null) {
-          break label168;
+          break label169;
         }
       }
-      label168:
+      label169:
       for (MiniAppInfo localMiniAppInfo = this.appBrandRuntime.getMiniAppInfo();; localMiniAppInfo = null)
       {
         MiniReportManager.reportEventType(localMiniAppInfo, 101, "0");

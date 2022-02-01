@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
 class altk
+  implements agfs
 {
-  public int a;
-  public Friends a;
+  altk(altj paramaltj) {}
   
-  public altk(Friends paramFriends, int paramInt)
+  public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    if (altj.a(this.a))
+    {
+      altj.a(this.a, false);
+      altj.a(this.a);
+    }
   }
+  
+  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

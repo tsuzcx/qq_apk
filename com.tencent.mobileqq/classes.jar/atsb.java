@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atsb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  atsb(atrw paramatrw) {}
+  atsb(atrz paramatrz, atsf paramatsf) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
+    bdll.b(null, "dc00898", "", "", "0X800AE41", "0X800AE41", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Atsf != null) {
+      this.jdField_a_of_type_Atsf.b();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsb
  * JD-Core Version:    0.7.0.1
  */

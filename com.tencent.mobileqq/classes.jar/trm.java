@@ -1,127 +1,83 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import java.util.ArrayList;
 import java.util.List;
 
 public class trm
-  extends rux
+  extends ReportDialog
+  implements View.OnClickListener
 {
-  private trm(VideoPlayManager paramVideoPlayManager) {}
+  private int jdField_a_of_type_Int = -1;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private List<GiftServiceBean> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private tro jdField_a_of_type_Tro;
+  private trp jdField_a_of_type_Trp;
+  private LinearLayout b;
   
-  public void a(sfb paramsfb)
+  public trm(Context paramContext, int paramInt)
   {
-    trp localtrp = VideoPlayManager.a(this.a);
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    super(paramContext, 2131755339);
+    requestWindowFeature(1);
+    getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(17170445)));
+    setContentView(2131560202);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370442));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370453));
+    this.jdField_a_of_type_Trp = new trp(this);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Trp);
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new trn(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370453));
+    this.b = ((LinearLayout)findViewById(2131370459));
+    this.b.setOnClickListener(this);
+    uad.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, agej.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    uad.a(this.jdField_a_of_type_AndroidWidgetListView, agej.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    setCanceledOnTouchOutside(true);
+  }
+  
+  public void a(List<GiftServiceBean> paramList, tro paramtro, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Tro = paramtro;
+    this.jdField_a_of_type_Trp.notifyDataSetChanged();
+    int i = 0;
+    for (;;)
     {
-      localStringBuilder = new StringBuilder().append("播放状态回调 onCompletion() vid=");
-      if (localtrp == null) {
-        break label93;
+      if (i < paramList.size())
+      {
+        paramtro = (GiftServiceBean)paramList.get(i);
+        if ((!TextUtils.isEmpty(paramtro.t)) && (paramtro.t.equals(paramString))) {
+          this.jdField_a_of_type_Int = i;
+        }
       }
-    }
-    label93:
-    for (paramsfb = localtrp.a.a;; paramsfb = "param null")
-    {
-      QLog.d("Viola.VideoPlayManager", 2, paramsfb);
-      paramsfb = VideoPlayManager.a(this.a).iterator();
-      while (paramsfb.hasNext()) {
-        ((trq)paramsfb.next()).h(localtrp);
+      else
+      {
+        return;
       }
+      i += 1;
     }
   }
   
-  public void a(sfb paramsfb, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Viola.VideoPlayManager", 2, "onVideoPrepared(VideoPlayerWrapper player, Object tag) ");
-    }
-    paramsfb = VideoPlayManager.a(this.a);
-    if ((paramsfb != null) && (QLog.isColorLevel())) {
-      QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onVideoPrepared() vid=" + paramsfb.a.a + ", mIsOpenedVideo = " + VideoPlayManager.a(this.a));
-    }
-    if (!VideoPlayManager.a(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "onVideoPrepared  return isOpenedVideo false");
-      }
-      return;
-    }
-    VideoPlayManager.a(this.a, false);
-    VideoPlayManager.a(this.a).removeMessages(0);
-    VideoPlayManager.a(this.a).sendEmptyMessage(0);
-    paramObject = VideoPlayManager.a(this.a).iterator();
-    while (paramObject.hasNext()) {
-      ((trq)paramObject.next()).c(paramsfb);
-    }
-    if (VideoPlayManager.b(this.a))
-    {
-      this.a.a();
-      return;
-    }
-    VideoPlayManager.b(this.a, true);
-  }
-  
-  public void a(sfb paramsfb, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Viola.VideoPlayManager", 2, "onConnectQualityCallback json= " + paramString);
-    }
-    if (VideoPlayManager.a(this.a) != null) {
-      shd.a().a(paramsfb, VideoPlayManager.a(this.a).a.d, paramsfb.d());
-    }
-  }
-  
-  public boolean a(sfb paramsfb, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    paramString = new StringBuilder().append("model : ").append(paramInt1).append(" what : ").append(paramInt2).append(" extra : ").append(paramInt3).append("detailInfo : ").append(paramString).append(" obj : ");
-    if (paramObject != null) {}
-    for (paramsfb = paramObject.toString();; paramsfb = "")
-    {
-      paramString = paramsfb;
-      paramsfb = VideoPlayManager.a(this.a);
-      if ((paramsfb != null) && (paramsfb.a != null) && (QLog.isColorLevel())) {
-        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onError() " + paramString + ", vid=" + paramsfb.a.a);
-      }
-      paramString = sid.a(paramInt1, paramInt2, paramInt3);
-      paramObject = VideoPlayManager.a(this.a).iterator();
-      while (paramObject.hasNext()) {
-        ((trq)paramObject.next()).a(paramsfb, paramInt1, paramInt2, paramString);
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(sfb paramsfb, int paramInt, Object paramObject)
-  {
-    paramsfb = VideoPlayManager.a(this.a);
-    switch (paramInt)
+    switch (paramView.getId())
     {
     }
     for (;;)
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_START_BUFFERING");
-      }
-      paramObject = VideoPlayManager.a(this.a).iterator();
-      while (paramObject.hasNext()) {
-        ((trq)paramObject.next()).f(paramsfb);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_ENDOF_BUFFERING");
-      }
-      paramObject = VideoPlayManager.a(this.a).iterator();
-      while (paramObject.hasNext()) {
-        ((trq)paramObject.next()).g(paramsfb);
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_DECODER_BLOCK");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("Viola.VideoPlayManager", 2, "播放状态回调 onInfo() PLAYER_INFO_HW_DECODE_FAILED");
-        }
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      dismiss();
     }
   }
 }

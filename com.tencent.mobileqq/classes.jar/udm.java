@@ -1,48 +1,25 @@
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 class udm
-  implements adea
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
   udm(udl paramudl) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    upe.g("WSQQConnectAuthManager", "getOpenIdAndAccessToken onFailure: " + paramInt + " , " + paramString);
-    udl.a(this.a, false);
-    if (paramInt == 1) {
-      udl.a(this.a);
-    }
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    upe.g("WSQQConnectAuthManager", "getOpenIdAndAccessToken onPermission: " + paramInt);
-    udl.a(this.a, false);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
     {
-    default: 
+      uqf.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
       return;
     }
-    udl.a(this.a);
   }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    udl.a(this.a, false);
-    if (paramJSONObject != null)
-    {
-      upe.f("WSQQConnectAuthManager", "getOpenIdAndAccessToken onSuccess: " + paramJSONObject.toString());
-      udl.a(this.a, paramJSONObject);
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udm
  * JD-Core Version:    0.7.0.1
  */

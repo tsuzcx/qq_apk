@@ -1,29 +1,6 @@
-public class uze
+public abstract interface uze
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  
-  private uze(uzg paramuzg)
-  {
-    this.a = paramuzg.a;
-    this.b = paramuzg.b;
-    this.c = paramuzg.c;
-    this.d = paramuzg.d;
-    this.e = paramuzg.e;
-    this.f = paramuzg.f;
-    this.g = paramuzg.g;
-    this.h = paramuzg.h;
-    this.i = paramuzg.j;
-    this.j = paramuzg.i;
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import abba;
+import abfd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public final class NewerGuidePlugin$PhoneInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhoneInfo> CREATOR = new abba();
+  public static final Parcelable.Creator<PhoneInfo> CREATOR = new abfd();
   public String a;
   public String b;
   public String c;

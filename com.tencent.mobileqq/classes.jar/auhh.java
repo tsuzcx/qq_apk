@@ -1,25 +1,16 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auhh
-  implements View.OnTouchListener
+class auhh
+  implements View.OnClickListener
 {
-  public auhh(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
+  auhh(auha paramauha) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
-    }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    return false;
+    aunj.a(this.a.a, this.a.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sfb;
+import rwf;
 
 class VideoFeedsPlayManager$7
   implements Runnable
 {
-  VideoFeedsPlayManager$7(VideoFeedsPlayManager paramVideoFeedsPlayManager, sfb paramsfb) {}
+  VideoFeedsPlayManager$7(VideoFeedsPlayManager paramVideoFeedsPlayManager, rwf paramrwf) {}
   
   public void run()
   {

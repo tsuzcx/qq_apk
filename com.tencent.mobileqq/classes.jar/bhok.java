@@ -1,28 +1,31 @@
-import android.graphics.Bitmap;
-import android.net.Uri;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class bhok
-  extends bhon
+final class bhok
+  extends aojs
 {
-  bhok(bhoi parambhoi)
-  {
-    super(parambhoi);
-  }
+  bhok(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.isForMainFrame());
+    if (this.jdField_a_of_type_Long != paramLong) {
+      return;
+    }
+    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
+    if ((paramInt1 & 0x1) != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
+      if (paramInt1 != 480) {
+        break;
+      }
+      if (paramBoolean) {
+        bhon.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      return;
+    }
   }
 }
 

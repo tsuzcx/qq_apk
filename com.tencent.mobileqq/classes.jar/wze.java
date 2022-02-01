@@ -1,23 +1,35 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FriendViewHolder.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class wze
-  extends wkz
+  extends wzd
 {
-  public List<yib> a = new ArrayList();
+  private aoot a;
   
-  public wze(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
+  public void a(wvn paramwvn)
   {
-    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
-    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspProfileStoryFeedIdList.hasNext())
+    super.a(paramwvn);
+    this.itemView.setTag(paramwvn.a);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
-      this.a.add(new yib(localFeedSeqInfo));
+      localObject = (QQAppInterface)localObject;
+      String str1 = String.valueOf(paramwvn.b);
+      this.jdField_a_of_type_Aoot = aoot.a((AppInterface)localObject, 1, str1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Aoot);
+      String str2 = bhlg.m((QQAppInterface)localObject, str1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject, str1), 8, null, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramwvn.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_Aoot);
+      }
     }
   }
 }

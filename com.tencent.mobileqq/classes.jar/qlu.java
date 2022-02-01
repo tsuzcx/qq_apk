@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
 
 public class qlu
-  implements View.OnClickListener
+  extends qjh
 {
-  public qlu(NativeUsersCommentsView paramNativeUsersCommentsView) {}
-  
-  public void onClick(View paramView)
+  public qlu(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    this.a.callOnClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, paramaoof, paramsel);
+  }
+  
+  public qjh a()
+  {
+    return this;
+  }
+  
+  public qjh d()
+  {
+    return this;
+  }
+  
+  public qjh e()
+  {
+    return null;
   }
 }
 

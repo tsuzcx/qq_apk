@@ -1,34 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class bimu
-  extends Handler
+public abstract interface bimu
 {
-  public bimu(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

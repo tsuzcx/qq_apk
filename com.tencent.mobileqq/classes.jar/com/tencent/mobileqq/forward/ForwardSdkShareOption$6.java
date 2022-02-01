@@ -2,7 +2,7 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.os.Bundle;
-import aufw;
+import auxr;
 import com.tencent.qphone.base.util.QLog;
 
 class ForwardSdkShareOption$6
@@ -20,12 +20,12 @@ class ForwardSdkShareOption$6
         QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
       }
       this.this$0.j = true;
-      this.this$0.y();
+      this.this$0.z();
     } while (!ForwardSdkShareOption.a(this.this$0));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aufw.e.intValue());
-    this.this$0.l();
+    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
+    this.this$0.m();
   }
 }
 

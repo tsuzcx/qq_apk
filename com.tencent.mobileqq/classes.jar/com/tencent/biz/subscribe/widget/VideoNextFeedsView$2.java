@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
-import aalg;
+import aaph;
 import android.os.Handler;
 import java.util.TimerTask;
 

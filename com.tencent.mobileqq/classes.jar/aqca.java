@@ -1,51 +1,90 @@
+import android.text.TextUtils;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.Random;
+
 public class aqca
 {
-  public static final int a(int paramInt)
+  public static int a;
+  private static boolean a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
+  public static int f;
+  public static int g = 1;
+  public static int h = 2;
+  public static int i = 3;
+  
+  public static void a()
   {
-    switch (paramInt)
+    if (a) {}
+    do
     {
-    default: 
-      return 0;
-    case 16842752: 
-      return 3;
-    case 16908288: 
-      return 1;
-    case 17039360: 
-      return 2;
-    case 16908290: 
-      return 4;
-    case 16908289: 
-      return 5;
-    case 16973824: 
-      return 6;
-    case 17104896: 
-      return 7;
-    case 16908292: 
-      return 8;
-    case 16908291: 
-      return 9;
-    }
-    return 10;
+      return;
+      a = true;
+    } while (ArkEnvironmentManager.getInstance().isHardwareAcceleration());
+    a(null, "ark.lib.software.rendering", 0, 0, 0, 0, "", "");
   }
   
-  public static int b(int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
   {
-    switch (paramInt)
+    bdll.b(paramQQAppInterface, "CliOper", "", "", "0X800776F", paramString1, paramInt1, 1, paramInt2, Integer.toString(paramInt3), Integer.toString(paramInt4), paramString2, paramString3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    if ((!ArkAppMgr.isValidAppName(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-    default: 
-      return 0;
-    case 16908288: 
-      return 1;
-    case 17039360: 
-      return 2;
-    case 16908290: 
-      return 3;
-    case 16908289: 
-      return 4;
-    case 16842752: 
-      return 5;
+      ArkAppCenter.c("ArkApp.DataReport", String.format("appInsideClickReport, invalid args, app=%s, opName=%s, entry=%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
+      return;
     }
-    return 6;
+    ArkAppCenter.c("ArkApp.DataReport", String.format("appInsideClickReport, app=%s, op-name=%s, entry=%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
+    bdke.a(paramQQAppInterface, paramString1, "__app__", paramString2, 0L, paramInt, 0L, 0L, 0L, "", "");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, String paramString3, String paramString4)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (!ArkAppMgr.isValidAppName(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      ArkAppCenter.c("ArkApp.DataReport", String.format("platformEventReport, invalid args, app-name=%s, op-name=%s", new Object[] { paramString1, paramString2 }));
+      return;
+    }
+    if (!"HTTPTaskResult".equals(paramString2)) {
+      ArkAppCenter.c("ArkApp.DataReport", String.format("platformEventReport, app=%s, op-name=%s, entry=%d, result=%d, r1=%d, r2=%d, r3=%s, r4=%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), paramString3, paramString4 }));
+    }
+    bdke.a(paramQQAppInterface, paramString1, "__platform__", paramString2, paramInt1, paramInt2, paramLong1, paramLong2, paramLong3, paramString3, paramString4);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    if (paramString3 == null) {
+      paramString3 = "";
+    }
+    for (;;)
+    {
+      a(paramQQAppInterface, paramString2, paramString1, 0, paramInt3, 0L, paramInt1, paramInt2, paramString3, "");
+      return;
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    a(null, paramString, 0, 0, 0, 0, "", "");
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    while (new Random().nextInt(1000) >= 10) {
+      return;
+    }
+    a(paramQQAppInterface, paramString1, "UnsafeURLAccess", 0, paramInt, 0L, 0L, 0L, paramString2, "");
   }
 }
 

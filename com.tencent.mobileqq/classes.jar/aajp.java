@@ -1,6 +1,27 @@
-public abstract interface aajp
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.comment.EmoView;
+
+public class aajp
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public aajp(EmoView paramEmoView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i;
+    if (paramMessage.what == 0)
+    {
+      i = EmoView.a(this.a) + 1;
+      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
+    }
+    else
+    {
+      return;
+    }
+    EmoView.a(this.a, i);
+    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
+  }
 }
 
 

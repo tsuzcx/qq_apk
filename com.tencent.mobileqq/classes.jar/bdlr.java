@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
 public class bdlr
-  extends bdix
 {
-  public bdlr(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public static void a(String paramString1, String paramString2)
   {
-    GroupTeamWorkListActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
     }
+    paramString1 = new Exception(paramString1);
+    if (paramString2 == null)
+    {
+      bdkh.a(paramString1);
+      return;
+    }
+    bdkh.a(paramString1, paramString2);
   }
 }
 

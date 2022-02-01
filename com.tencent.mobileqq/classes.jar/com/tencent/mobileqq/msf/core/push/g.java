@@ -58,7 +58,7 @@ import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.msf.sdk.y;
+import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.mobileqq.msf.service.u;
@@ -1871,22 +1871,22 @@ public class g
     }
   }
   
-  public void a(y paramy, ToServiceMsg paramToServiceMsg)
+  public void a(z paramz, ToServiceMsg paramToServiceMsg)
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + u.b(paramToServiceMsg) + " registerProcess" + paramy.b + " callbacker=" + paramy.e + " appid=" + paramy.a + " ProxyRegisterInfo=" + paramy);
-      if (!this.i.containsKey(paramy.b)) {
-        this.i.putIfAbsent(paramy.b, new a(paramy.b));
+      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + u.b(paramToServiceMsg) + " registerProcess" + paramz.b + " callbacker=" + paramz.e + " appid=" + paramz.a + " ProxyRegisterInfo=" + paramz);
+      if (!this.i.containsKey(paramz.b)) {
+        this.i.putIfAbsent(paramz.b, new a(paramz.b));
       }
-      Object localObject = (a)this.i.get(paramy.b);
-      ((a)localObject).a = paramy.a;
-      ((a)localObject).m = paramy.e;
-      ((a)localObject).l = paramy.d;
+      Object localObject = (a)this.i.get(paramz.b);
+      ((a)localObject).a = paramz.a;
+      ((a)localObject).m = paramz.e;
+      ((a)localObject).l = paramz.d;
       localObject = w.a(paramToServiceMsg);
       ((FromServiceMsg)localObject).setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, (FromServiceMsg)localObject);
-      f(paramy.b);
+      f(paramz.b);
       return;
     }
     finally {}
@@ -2163,7 +2163,7 @@ public class g
       if (!this.i.containsKey(str)) {
         this.i.putIfAbsent(str, new a(str));
       }
-      localPushRegisterInfo = z.b(paramToServiceMsg);
+      localPushRegisterInfo = aa.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " recv regPush  ,regPushReason:" + paramRegPushReason);
       }

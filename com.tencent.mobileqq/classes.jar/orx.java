@@ -1,61 +1,29 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.widget.AbsListView;
 
-class orx
-  extends BaseAdapter
+public class orx
+  implements blih
 {
-  orx(oru paramoru) {}
+  public orx(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public int getCount()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return oru.a(this.a).size();
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
-  public Object getItem(int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return oru.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560189, null);
-      paramView = new ory(this.a);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379942));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369077));
-      localView.setTag(paramView);
-      localObject = (GiftServiceBean)getItem(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
-      if (oru.a(this.a) != paramInt) {
-        break label143;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842842);
+    if (!ReadInJoyCommentListFragment.a(this.a).a().a().a()) {
+      ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (ory)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label143:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842843);
+      if ((ReadInJoyCommentListFragment.a(this.a) != null) && (ReadInJoyCommentListFragment.a(this.a).a() != null)) {
+        ReadInJoyCommentListFragment.a(this.a).a().a(ReadInJoyCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoyCommentListFragment.a(this.a).getLastVisiblePosition());
+      }
+      return;
+      ((ReadInJoyCommentListView)paramAbsListView).d();
     }
   }
 }

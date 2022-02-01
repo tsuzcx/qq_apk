@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import lct;
+import lda;
 
 public class VideoProcessExitMonitor$1
   implements Runnable
 {
-  public VideoProcessExitMonitor$1(lct paramlct) {}
+  public VideoProcessExitMonitor$1(lda paramlda) {}
   
   public void run()
   {
-    lct.a(this.this$0);
+    lda.a(this.this$0);
   }
 }
 

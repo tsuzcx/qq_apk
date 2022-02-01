@@ -1,19 +1,19 @@
 package com.tencent.avgame.gameroom;
 
-import nag;
-import nam;
-import nbn;
+import nbk;
+import nbq;
+import nda;
 
 public class GameRoomPresenterImp$4
   implements Runnable
 {
-  public GameRoomPresenterImp$4(nag paramnag) {}
+  public GameRoomPresenterImp$4(nbk paramnbk) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Nbn.b();
-    this.this$0.jdField_a_of_type_Nbn.a(false);
-    this.this$0.jdField_a_of_type_Nam.c();
+    this.this$0.jdField_a_of_type_Nda.b();
+    this.this$0.jdField_a_of_type_Nda.a(false);
+    this.this$0.jdField_a_of_type_Nbq.c();
   }
 }
 

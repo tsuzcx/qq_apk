@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bexk;
-import bexo;
-import bexq;
+import bfxe;
+import bfxi;
+import bfxk;
 
 public class TroopFileThumbnailMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailMgr$1(bexq parambexq) {}
+  public TroopFileThumbnailMgr$1(bfxk parambfxk) {}
   
   public void run()
   {
-    bexq.a(this.this$0).b();
-    bexq.a(this.this$0).b();
+    bfxk.a(this.this$0).b();
+    bfxk.a(this.this$0).b();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class QFlutterEngineData
   extends XmlData
 {
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String libEngineSoMD5 = "";
   
   public String getSharedPreferencesName()

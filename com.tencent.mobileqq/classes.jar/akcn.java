@@ -1,69 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class akcn
-  extends aywi
+  implements DialogInterface.OnClickListener
 {
-  public akcn(BindVerifyActivity paramBindVerifyActivity) {}
+  public akcn(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aeef paramaeef) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
-    }
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0)) {
-        this.a.b();
-      }
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
-      return;
-      if (i == 107)
-      {
-        this.a.a(paramBundle);
-      }
-      else if (i == 106)
-      {
-        this.a.a();
-        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
-          bcst.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
-        }
-      }
-      else
-      {
-        this.a.a(1, a(i));
-        continue;
-        this.a.a(1, this.a.getString(2131717326));
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
-    }
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
-      BindVerifyActivity.a(this.a, null);
-      return;
-      this.a.a(1, this.a.getString(2131717326));
-    }
+    this.jdField_a_of_type_Aeef.a(false);
   }
 }
 

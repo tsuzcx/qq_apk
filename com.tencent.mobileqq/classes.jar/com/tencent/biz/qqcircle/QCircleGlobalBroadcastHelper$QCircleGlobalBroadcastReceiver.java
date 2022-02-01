@@ -1,17 +1,20 @@
 package com.tencent.biz.qqcircle;
 
+import aaak;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.qqcircle.events.QCircleFeedListRefreshEvent;
 import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
+import com.tencent.biz.qqcircle.events.QCirclePopWindowUpdateBalanceEvent;
 import com.tencent.biz.qqcircle.events.QCircleRefreshHippyPageEvent;
 import com.tencent.qphone.base.util.QLog;
-import vof;
-import vot;
-import vtj;
-import zwp;
+import vqn;
+import vrc;
+import vry;
+import vvw;
+import vwh;
 
 public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
   extends BroadcastReceiver
@@ -32,7 +35,6 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
       {
         do
         {
-          int i;
           do
           {
             do
@@ -56,22 +58,22 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
               i = paramIntent.getIntExtra("type", -1);
             } while ((TextUtils.isEmpty(paramContext)) || (i == -1));
             QLog.d(QCircleGlobalBroadcastHelper.a(), 1, "updateFollowManager uin:" + paramContext + " type:" + i);
-            vtj localvtj;
+            vwh localvwh;
             if (i == 1)
             {
               bool1 = true;
-              vof.a().a(paramContext, bool1);
-              zwp.a().a(new QCircleFollowUpdateEvent(i, paramContext));
+              vqn.a().a(paramContext, bool1);
+              aaak.a().a(new QCircleFollowUpdateEvent(i, paramContext));
               i = paramIntent.getIntExtra("isDoubly", 0);
               paramIntent = paramIntent.getStringExtra("nick");
-              localvtj = vtj.a();
+              localvwh = vwh.a();
               if (i != 1) {
                 break label242;
               }
             }
             for (bool1 = bool2;; bool1 = false)
             {
-              localvtj.a(paramContext, paramIntent, bool1);
+              localvwh.a(paramContext, paramIntent, bool1);
               return;
               bool1 = false;
               break;
@@ -86,7 +88,7 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
           if (i == 1) {}
           for (;;)
           {
-            vot.a().a(paramContext, bool1);
+            vrc.a().a(paramContext, bool1);
             return;
             bool1 = false;
           }
@@ -95,11 +97,23 @@ public class QCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver
           break;
         }
       } while (!"focus".equals(paramIntent.getStringExtra("pageType")));
-      zwp.a().a(new QCircleFeedListRefreshEvent(1));
+      aaak.a().a(new QCircleFeedListRefreshEvent(1));
       return;
-    } while (!TextUtils.equals(paramContext, "action_refresh_hippy_page"));
-    paramContext = paramIntent.getStringExtra("pageType");
-    zwp.a().a(new QCircleRefreshHippyPageEvent(paramContext));
+      if (TextUtils.equals(paramContext, "action_refresh_hippy_page"))
+      {
+        paramContext = paramIntent.getStringExtra("pageType");
+        aaak.a().a(new QCircleRefreshHippyPageEvent(paramContext));
+        return;
+      }
+      if (TextUtils.equals(paramContext, "com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify"))
+      {
+        vvw.a(true);
+        return;
+      }
+    } while (!TextUtils.equals(paramContext, "action_update_native_balance"));
+    paramContext = paramIntent.getStringExtra("uin");
+    int i = paramIntent.getIntExtra("balance", (int)vry.a().a());
+    aaak.a().a(new QCirclePopWindowUpdateBalanceEvent(paramContext, i));
   }
 }
 

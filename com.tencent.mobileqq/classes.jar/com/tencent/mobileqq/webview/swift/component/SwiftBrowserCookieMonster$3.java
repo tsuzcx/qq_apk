@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import nmj;
+import noe;
 import oicq.wlogin_sdk.request.Ticket;
 
 final class SwiftBrowserCookieMonster$3
@@ -29,12 +29,12 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString)) {
           break label361;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, nmj.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, noe.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
       }
     }
     for (;;)
     {
-      Ticket localTicket = ((TicketManager)???).GetLocalTicket(str, 4096);
+      Ticket localTicket = ((TicketManager)???).getLocalTicket(str, 4096);
       if (localTicket != null) {
         QLog.i("SwiftBrowserCookieMonster", 1, "last refresh skey time: " + localTicket._create_time);
       }
@@ -47,9 +47,9 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.d)) {
           break label372;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, nmj.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, noe.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
         label270:
-        localTicket = ((TicketManager)???).GetLocalTicket(str, 32);
+        localTicket = ((TicketManager)???).getLocalTicket(str, 32);
         if (localTicket != null) {
           QLog.i("SwiftBrowserCookieMonster", 1, "last refresh sTwxWeb time: " + localTicket._create_time);
         }

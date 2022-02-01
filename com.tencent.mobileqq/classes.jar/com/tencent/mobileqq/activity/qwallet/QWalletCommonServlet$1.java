@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akmf;
+import akxq;
 import android.os.Bundle;
 import mqq.observer.BusinessObserver;
 
 public class QWalletCommonServlet$1
   implements Runnable
 {
-  public QWalletCommonServlet$1(akmf paramakmf, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public QWalletCommonServlet$1(akxq paramakxq, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {

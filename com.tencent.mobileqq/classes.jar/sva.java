@@ -1,16 +1,46 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class sva
-  implements View.OnLongClickListener
+  implements ComplementFileStringLoader
 {
-  public sva(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private svh jdField_a_of_type_Svh;
   
-  public boolean onLongClick(View paramView)
+  public sva(Context paramContext, String paramString)
   {
-    ReadinjoyTabFrame.b(this.a);
-    return true;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Svh = new svh(paramContext, paramString);
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
+    {
+      InputStream localInputStream = this.jdField_a_of_type_Svh.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      }
+      localObject = svr.a((InputStream)localObject);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

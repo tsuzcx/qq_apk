@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +11,12 @@ import org.json.JSONObject;
 class SensorJsPlugin$RotationSensorJsPlugin
   implements SensorEventListener
 {
-  private SensorJsPlugin$RotationSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin) {}
+  JsRuntime runtime;
+  
+  SensorJsPlugin$RotationSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin, @NonNull JsRuntime paramJsRuntime)
+  {
+    this.runtime = paramJsRuntime;
+  }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
@@ -23,7 +29,7 @@ class SensorJsPlugin$RotationSensorJsPlugin
       localJSONObject.put("alpha", paramSensorEvent.values[0]);
       localJSONObject.put("beta", paramSensorEvent.values[1]);
       localJSONObject.put("gamma", paramSensorEvent.values[2]);
-      this.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onDeviceMotionChange", localJSONObject.toString(), 0);
+      this.runtime.evaluateSubcribeJS("onDeviceMotionChange", localJSONObject.toString(), 0);
       return;
     }
     catch (JSONException paramSensorEvent)

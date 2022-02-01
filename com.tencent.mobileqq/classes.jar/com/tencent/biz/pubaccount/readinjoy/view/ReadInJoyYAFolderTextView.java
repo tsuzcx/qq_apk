@@ -17,9 +17,9 @@ import android.util.Pair;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import anni;
-import bdnt;
-import bdoa;
+import anzj;
+import begp;
+import begw;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -29,11 +29,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 import org.jetbrains.annotations.NotNull;
-import pil;
-import pxk;
-import stg;
-import sth;
-import tkt;
+import pbd;
+import ppu;
+import skk;
+import skl;
+import tbm;
 
 public class ReadInJoyYAFolderTextView
   extends TextView
@@ -49,10 +49,10 @@ public class ReadInJoyYAFolderTextView
   private Object jdField_a_of_type_JavaLangObject;
   private String jdField_a_of_type_JavaLangString = "...";
   private Vector<ClickableSpan> jdField_a_of_type_JavaUtilVector = new Vector();
-  protected tkt a;
+  protected tbm a;
   private boolean jdField_a_of_type_Boolean;
   protected int b;
-  private String jdField_b_of_type_JavaLangString = anni.a(2131711825);
+  private String jdField_b_of_type_JavaLangString = anzj.a(2131711934);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   public boolean c;
@@ -105,7 +105,7 @@ public class ReadInJoyYAFolderTextView
   
   private SpannableStringBuilder a(SpannableStringBuilder paramSpannableStringBuilder)
   {
-    Object localObject = (bdoa[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), bdoa.class);
+    Object localObject = (begw[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), begw.class);
     int i = paramSpannableStringBuilder.length();
     if ((localObject != null) && (localObject.length > 0))
     {
@@ -241,7 +241,7 @@ public class ReadInJoyYAFolderTextView
     paramInt = paramDynamicLayout.getLineEnd(paramInt - 1);
     paramDynamicLayout = paramDynamicLayout.getText();
     String str1 = paramDynamicLayout.subSequence(i, paramInt).toString();
-    String str2 = anni.a(2131711511);
+    String str2 = anzj.a(2131711620);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     if ((str1.equals(str2.substring(1))) || (str1.equals(str2.substring(2))) || (str1.equals(str2.substring(3))))
     {
@@ -333,7 +333,7 @@ public class ReadInJoyYAFolderTextView
   
   private void b()
   {
-    setMovementMethod(stg.a());
+    setMovementMethod(skk.a());
   }
   
   public int a(ArticleInfo paramArticleInfo)
@@ -346,7 +346,7 @@ public class ReadInJoyYAFolderTextView
       l = paramArticleInfo.mChannelID;
       if (paramArticleInfo.isPGCShortContent())
       {
-        if ((l == 0L) || (pil.c((int)l)))
+        if ((l == 0L) || (pbd.c((int)l)))
         {
           AladdinConfig localAladdinConfig = Aladdin.getConfig(168);
           int i = localAladdinConfig.getIntegerFromString("main_channel_textlines", 3);
@@ -379,8 +379,8 @@ public class ReadInJoyYAFolderTextView
       if (localIterator.hasNext())
       {
         ClickableSpan localClickableSpan = (ClickableSpan)localIterator.next();
-        if ((localClickableSpan instanceof sth)) {
-          ((sth)localClickableSpan).a(false);
+        if ((localClickableSpan instanceof skl)) {
+          ((skl)localClickableSpan).a(false);
         }
         localIterator.remove();
       }
@@ -396,6 +396,7 @@ public class ReadInJoyYAFolderTextView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidTextSpannableStringBuilder.clear();
     TextPaint localTextPaint = getPaint();
+    this.jdField_a_of_type_AndroidTextSpannableStringBuilder = new SpannableStringBuilder();
     float f1 = a(localTextPaint, this.jdField_a_of_type_AndroidTextSpannableStringBuilder);
     this.jdField_a_of_type_AndroidTextSpannableStringBuilder.clear();
     ArrayList localArrayList = a();
@@ -501,10 +502,10 @@ public class ReadInJoyYAFolderTextView
           break label452;
         }
         bool1 = bool3;
-        if (!(arrayOfClickableSpan[0] instanceof sth)) {
+        if (!(arrayOfClickableSpan[0] instanceof skl)) {
           break label452;
         }
-        ((sth)arrayOfClickableSpan[0]).a(true);
+        ((skl)arrayOfClickableSpan[0]).a(true);
         this.jdField_a_of_type_JavaUtilVector.add(arrayOfClickableSpan[0]);
         return true;
       }
@@ -526,8 +527,8 @@ public class ReadInJoyYAFolderTextView
       this.jdField_a_of_type_JavaLangObject = null;
       if ((this.d >= 0) && (this.e >= this.d))
       {
-        if ((arrayOfClickableSpan[0] instanceof sth)) {
-          ((sth)arrayOfClickableSpan[0]).a(false);
+        if ((arrayOfClickableSpan[0] instanceof skl)) {
+          ((skl)arrayOfClickableSpan[0]).a(false);
         }
         Selection.removeSelection(paramMotionEvent);
         this.d = -1;
@@ -538,9 +539,9 @@ public class ReadInJoyYAFolderTextView
       label349:
       if ((this.d >= 0) && (this.e >= this.d))
       {
-        if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof sth)))
+        if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof skl)))
         {
-          ((sth)this.jdField_a_of_type_JavaLangObject).a(false);
+          ((skl)this.jdField_a_of_type_JavaLangObject).a(false);
           this.jdField_a_of_type_JavaLangObject = null;
         }
         Selection.removeSelection(paramMotionEvent);
@@ -562,9 +563,9 @@ public class ReadInJoyYAFolderTextView
   
   public void setCustomViewLinkTextColor(int paramInt)
   {
-    if (this.jdField_a_of_type_Tkt != null)
+    if (this.jdField_a_of_type_Tbm != null)
     {
-      this.jdField_a_of_type_Tkt.a(paramInt);
+      this.jdField_a_of_type_Tbm.a(paramInt);
       QLog.d("ReadInJoyYAFolderTextView", 1, "setCustomViewLinkTextColor | link color " + paramInt);
     }
   }
@@ -585,10 +586,10 @@ public class ReadInJoyYAFolderTextView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setModel(pxk parampxk)
+  public void setModel(ppu paramppu)
   {
-    if ((parampxk != null) && (parampxk.a() != null)) {
-      this.jdField_a_of_type_Tkt = parampxk.a().articleViewModel;
+    if ((paramppu != null) && (paramppu.a() != null)) {
+      this.jdField_a_of_type_Tbm = paramppu.a().articleViewModel;
     }
   }
   
@@ -610,7 +611,7 @@ public class ReadInJoyYAFolderTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     Object localObject = paramCharSequence;
-    if ((paramCharSequence instanceof bdnt)) {
+    if ((paramCharSequence instanceof begp)) {
       localObject = new SpannableStringBuilder(paramCharSequence);
     }
     super.setText((CharSequence)localObject, paramBufferType);

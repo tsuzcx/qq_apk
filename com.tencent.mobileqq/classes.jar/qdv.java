@@ -1,45 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.widget.AdapterView;
 
 public class qdv
-  implements qft
+  implements bljm
 {
-  private BaseTemplateFactory a;
+  public qdv(NativeGridImageView paramNativeGridImageView) {}
   
-  public qdv(VafContext paramVafContext)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramVafContext.getTemplateFactory();
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    if (this.a != null) {
-      return this.a.getTemplateBean(paramJSONObject);
-    }
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return new qba().M(paramBaseArticleInfo).B(paramBaseArticleInfo).a();
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
-    if ((paramContainer instanceof qly)) {
-      ((qly)paramContainer).a(parampxk);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    return false;
+    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
   }
 }
 

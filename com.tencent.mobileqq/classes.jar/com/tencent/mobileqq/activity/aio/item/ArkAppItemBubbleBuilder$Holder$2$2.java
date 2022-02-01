@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqe;
-import agqg;
+import agzk;
+import agzm;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ArkAppItemBubbleBuilder$Holder$2$2
   implements Runnable
 {
-  public ArkAppItemBubbleBuilder$Holder$2$2(agqg paramagqg, String paramString) {}
+  public ArkAppItemBubbleBuilder$Holder$2$2(agzm paramagzm, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agqg.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Agqg.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_Agqg.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Agzm.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Agzm.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_Agzm.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

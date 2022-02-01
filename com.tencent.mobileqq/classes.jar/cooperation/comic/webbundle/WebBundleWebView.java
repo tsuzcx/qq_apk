@@ -2,10 +2,10 @@ package cooperation.comic.webbundle;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import aqlk;
-import aqsf;
-import aqsg;
-import blci;
+import aran;
+import arhp;
+import arhs;
+import bmdl;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.smtt.sdk.WebBackForwardList;
@@ -40,8 +40,8 @@ public class WebBundleWebView
       if (localObject != null)
       {
         localObject = ((WebHistoryItem)localObject).getUrl();
-        aqsf localaqsf = (aqsf)aqlk.a().a(534);
-        if ((localaqsf != null) && (localaqsf.a.a.equals(localObject))) {
+        arhp localarhp = (arhp)aran.a().a(534);
+        if ((localarhp != null) && (localarhp.a.a.equals(localObject))) {
           return super.canGoBackOrForward(-2);
         }
       }
@@ -61,7 +61,7 @@ public class WebBundleWebView
   
   public void setOnPageFinishedListener(@NotNull IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener)
   {
-    setWebViewClient(new blci(this, paramOnPageFinishedListener));
+    setWebViewClient(new bmdl(this, paramOnPageFinishedListener));
   }
 }
 

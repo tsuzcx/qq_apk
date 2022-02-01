@@ -1,73 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class wyj
-  extends wlf
+class wyj
+  extends RecyclerView.OnScrollListener
 {
-  public static final String a;
-  public List<yib> a;
-  public List<String> b = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.homepage_batch_feeds_detail_720");
-  }
+  wyj(wyd paramwyd) {}
   
-  public wyj()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
-    try
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new wyk(localRspStoryFeed);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Wyd.jdField_a_of_type_Wxp.d();
       }
+      return;
     }
+    wyd.a(this.jdField_a_of_type_Wyd);
   }
   
-  protected byte[] a()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      yib localyib = (yib)localIterator.next();
-      if (localyib != null) {
-        if (TextUtils.isEmpty(localyib.jdField_a_of_type_JavaLangString)) {
-          yqp.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
-        } else {
-          localArrayList.add(localyib.a());
-        }
+      if (this.jdField_a_of_type_Wyd.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Wyd.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
       }
+      return;
     }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
-    }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
   }
 }
 

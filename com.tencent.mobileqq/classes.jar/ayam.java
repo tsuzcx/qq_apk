@@ -1,63 +1,27 @@
-import android.app.Application;
-import android.content.Context;
-import android.telephony.TelephonyManager;
-import androidx.core.app.ActivityCompat;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
 public class ayam
+  implements aybd
 {
-  public static int a(Context paramContext)
-  {
-    int i = bgnt.b(paramContext);
-    if (i == 1) {
-      return 2;
-    }
-    if (i == 2) {
-      return 3;
-    }
-    if (i == 3) {
-      return 4;
-    }
-    return 1;
-  }
+  public ayam(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public static String a()
+  public void a(long paramLong)
   {
-    try
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
     {
-      String str = bgln.a();
-      return str;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("", 4, "no phone permission");
-    }
-    return "";
-  }
-  
-  public static String a(Application paramApplication)
-  {
-    for (;;)
-    {
-      try
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
       {
-        Object localObject = (TelephonyManager)paramApplication.getSystemService("phone");
-        if (ActivityCompat.checkSelfPermission(paramApplication, "android.permission.READ_PHONE_STATE") == 0)
-        {
-          paramApplication = ((TelephonyManager)localObject).getDeviceId();
-          localObject = paramApplication;
-          if (paramApplication == null) {
-            localObject = "unknown";
-          }
-          return localObject;
-        }
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
       }
-      catch (Exception paramApplication)
-      {
-        QLog.w("", 4, " get client info error " + paramApplication.getMessage());
-        return "unknown";
-      }
-      paramApplication = "unknown";
+      i += 1;
     }
   }
 }

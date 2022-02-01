@@ -1,27 +1,47 @@
-import android.view.View;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUAlphaBlendFilter;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
 
-public abstract interface bbmy
-  extends bbmv
+public class bbmy
 {
-  public abstract int a();
+  public static GPUBaseFilter a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new GPUBaseFilter();
+    case 101: 
+      return new GPUBaseFilter();
+    case 102: 
+      return new GPUOESBaseFilter();
+    case 0: 
+      return new bbna();
+    case 7: 
+      return new bbnc();
+    case 5: 
+      return new bbne();
+    case 6: 
+      return new bbnf();
+    case 4: 
+      return new bbnb();
+    case 106: 
+      return new bbnd();
+    }
+    return new GPUAlphaBlendFilter();
+  }
   
-  public abstract CharSequence a();
-  
-  public abstract String a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(View paramView);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract CharSequence b();
-  
-  public abstract CharSequence c();
-  
-  public abstract CharSequence d();
+  public static boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    case 3: 
+    default: 
+      return false;
+    }
+    return true;
+  }
 }
 
 

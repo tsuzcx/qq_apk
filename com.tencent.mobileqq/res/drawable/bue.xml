@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector android:exitFadeDuration="@android:integer/config_mediumAnimTime"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/e_u" />
-    <item android:state_pressed="false" android:drawable="@drawable/e_p" />
-</selector>
+<animated-rotate android:drawable="@drawable/f8k" android:pivotX="50.0%" android:pivotY="50.0%"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

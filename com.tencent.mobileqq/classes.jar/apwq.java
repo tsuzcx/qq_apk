@@ -1,133 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apwq
+class apwq
+  implements agzu
 {
-  public double a;
-  public int a;
-  public apwn a;
-  @Deprecated
-  public apxz a;
-  public String a;
-  public ArrayList<apwn> a;
-  public HashMap<String, apxy> a;
-  public HashSet<String> a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public apwn b;
-  public ArrayList<Integer> b;
-  public HashMap<String, apxp> b;
-  public boolean b;
-  public int c;
-  public apwn c;
-  public ArrayList<String> c;
-  public int d;
-  public apwn d;
-  public int e;
-  public apwn e;
-  public int f = -1;
-  public apwn f;
-  public int g = 2;
-  
-  public apwq(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private boolean a(File paramFile, String paramString)
-  {
-    boolean bool2 = false;
-    paramFile = new File(paramFile, paramString);
-    boolean bool1 = bool2;
-    if (paramFile.exists())
-    {
-      bool1 = bool2;
-      if (paramFile.isDirectory())
-      {
-        paramFile = paramFile.list();
-        bool1 = bool2;
-        if (paramFile != null)
-        {
-          bool1 = bool2;
-          if (paramFile.length > 0) {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public int a()
-  {
-    if (a()) {
-      return ((Integer)this.b.get(this.e)).intValue();
-    }
-    return -1;
-  }
+  apwq(apwn paramapwn, long paramLong) {}
   
   public void a()
   {
-    if (a())
-    {
-      this.e = ((this.e + 1) % this.b.size());
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleConfig", 2, "now change bubble sub id: " + this.b.get(this.e));
-      }
-      return;
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apwn.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    this.e = 0;
   }
   
-  public boolean a()
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    return (this.b != null) && (this.b.size() > 0);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (this.b != null) && (this.b.contains(Integer.valueOf(paramInt)));
-  }
-  
-  public boolean a(File paramFile)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext()) {
-      if (a(paramFile, (String)localIterator.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((this.c != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext()) {
-        if (paramString.indexOf(((String)localIterator.next()).toLowerCase()) != -1) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("[ bubbleId=" + this.jdField_a_of_type_Int).append(",");
-    localStringBuffer.append("name=" + this.jdField_a_of_type_JavaLangString).append(" ]");
-    return localStringBuffer.toString();
+    this.jdField_a_of_type_Apwn.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

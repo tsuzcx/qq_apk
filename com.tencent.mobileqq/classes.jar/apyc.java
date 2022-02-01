@@ -1,13 +1,16 @@
-import android.view.MotionEvent;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-class apyc
-  implements bhwq
+final class apyc
+  extends apzh
 {
-  apyc(apyb paramapyb) {}
+  apyc(ArrayList paramArrayList) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return apyb.a(this.a, paramMotionEvent);
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("Uin", ""));
+    }
   }
 }
 

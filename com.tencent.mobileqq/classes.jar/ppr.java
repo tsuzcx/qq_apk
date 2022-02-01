@@ -1,49 +1,160 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.text.SpannableString;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.oidb_0xbfe.RspBody;
 
-class ppr
-  implements View.OnClickListener
+public class ppr
+  extends pqj
 {
-  ppr(ppp paramppp, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private ppt jdField_a_of_type_Ppt;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public ppr(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qfo paramqfo, Handler paramHandler)
   {
-    ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment).a(paramView, this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Ppp.a());
-    JSONObject localJSONObject = pfe.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Ppp.a(), (ArticleInfo)this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    try
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqfo, paramHandler);
+  }
+  
+  public static void a(String paramString)
+  {
+    int i;
+    switch (bhnv.a(BaseApplicationImpl.getApplication().getApplicationContext()))
     {
-      localJSONObject.put("card_type", 8);
-      pfg localpfg = new pfg(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      localpfg.e = String.valueOf(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
-      localpfg.f = String.valueOf(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
-      localpfg.g = localJSONObject.toString();
-      if (this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
-        localpfg.a = String.valueOf(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
+    default: 
+      i = 2;
+    }
+    for (;;)
+    {
+      ocd.a(null, "", paramString, paramString, 0, 0, "" + i, ozs.a(), "0", null, false);
+      return;
+      i = 1;
+      continue;
+      i = 0;
+    }
+  }
+  
+  public static CharSequence b()
+  {
+    Object localObject = anzj.a(2131703758);
+    int i = ((String)localObject).indexOf("领取1G流量");
+    localObject = new SpannableString((CharSequence)localObject);
+    ((SpannableString)localObject).setSpan(new pps(), i, i + 6, 33);
+    return localObject;
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool = true;
+    paramToServiceMsg = new oidb_0xbfe.RspBody();
+    int i = qfq.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    QLog.d("FreeNetFlowInfoModule", 2, new Object[] { "handle0xBe6FreeNetFlowInfo result = ", Integer.valueOf(i) });
+    if (i == 0) {
+      if (paramToServiceMsg.has())
+      {
+        if (this.jdField_a_of_type_Ppt == null) {
+          this.jdField_a_of_type_Ppt = new ppt();
+        }
+        if (paramToServiceMsg.uint32_receive_status.has()) {
+          this.jdField_a_of_type_Ppt.jdField_a_of_type_Int = paramToServiceMsg.uint32_receive_status.get();
+        }
+        if (paramToServiceMsg.bytes_jump_url.has()) {
+          this.jdField_a_of_type_Ppt.jdField_a_of_type_JavaLangString = paramToServiceMsg.bytes_jump_url.get().toStringUtf8();
+        }
+        if (paramToServiceMsg.uint32_flag.has())
+        {
+          paramFromServiceMsg = this.jdField_a_of_type_Ppt;
+          if (paramToServiceMsg.uint32_flag.get() != 1) {
+            break label223;
+          }
+          paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FreeNetFlowInfoModule", 2, "free netflow, status: " + this.jdField_a_of_type_Ppt.jdField_a_of_type_Int + ", jumpUrl: " + this.jdField_a_of_type_Ppt.jdField_a_of_type_JavaLangString + ", isActive: " + this.jdField_a_of_type_Ppt.jdField_a_of_type_Boolean);
+        }
       }
-      localpfg.b = "0X8009A78";
-      localpfg.c = "0X8009A78";
-      pfe.a(localpfg);
-      localJSONObject = new JSONObject();
-      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
-      localJSONObject.put("channel_id", this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a());
-      localJSONObject.put("folder_status", pha.d);
-      localJSONObject.put("kandian_mode", pha.e());
-      localJSONObject.put("feeds_type", "1008");
-      localJSONObject.put("rowkey", ube.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-      oat.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
     }
-    catch (Exception localException)
+    label223:
+    do
     {
-      label296:
-      break label296;
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_Boolean = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("FreeNetFlowInfoModule", 2, "get free netflow error, result code: " + paramFromServiceMsg.getResultCode());
+  }
+  
+  public CharSequence a()
+  {
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+      this.jdField_a_of_type_JavaLangCharSequence = b();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    Object localObject = null;
+    if (this.jdField_a_of_type_Ppt != null)
+    {
+      String str = this.jdField_a_of_type_Ppt.jdField_a_of_type_JavaLangString;
+      localObject = str;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("FreeNetFlowInfoModule", 2, "get url from freeNetFlow: " + str);
+        localObject = str;
+      }
+    }
+    return localObject;
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbfe")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("FreeNetFlowInfoModule", 2, "setShowingFreeNetFlow: " + paramBoolean);
+      }
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ppt != null)) {
+        this.jdField_a_of_type_Ppt.a();
+      }
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (!this.b) && (this.jdField_a_of_type_Ppt != null) && (this.jdField_a_of_type_Ppt.a());
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

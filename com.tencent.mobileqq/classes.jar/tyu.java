@@ -1,170 +1,109 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.JSApiWebServerResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class tyu
-  implements BusinessObserver
+final class tyu
+  implements aasd
 {
-  tyu(tym paramtym, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
+  tyu(tfg paramtfg, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void callback(Bundle paramBundle)
   {
-    if (paramBoolean)
+    Object localObject1 = paramBundle.getString("action");
+    if ("onCommentSend".equals(localObject1)) {}
+    for (;;)
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject != null)
+      String str;
+      Object localObject2;
+      int i;
+      try
       {
-        paramBundle = new mobileqq_mp.JSApiWebServerResponse();
-        label650:
-        label807:
-        for (;;)
+        localObject1 = paramBundle.getString("commentId", "");
+        str = paramBundle.getString("rowKey", "");
+        localObject2 = paramBundle.getString("commentContent", "");
+        i = paramBundle.getInt("firstLevelComment");
+        paramBundle = paramBundle.getString("parentCommentId", "");
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("type", "onCommentSend");
+        localJSONObject.put("commentId", localObject1);
+        localJSONObject.put("rowKey", str);
+        localJSONObject.put("commentContent", localObject2);
+        localJSONObject.put("firstLevelComment", i + 1);
+        localJSONObject.put("parentCommentID", paramBundle);
+        localJSONObject.put("result", "success");
+        if (this.jdField_a_of_type_Tfg != null) {
+          this.jdField_a_of_type_Tfg.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
+        }
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      if ("onCommentLike".equals(localObject1)) {
+        try
         {
-          try
-          {
-            paramBundle.mergeFrom((byte[])localObject);
-            localObject = (mobileqq_mp.RetInfo)paramBundle.ret_info.get();
-            paramBundle = paramBundle.body.get();
-            int i = ((mobileqq_mp.RetInfo)localObject).ret_code.get();
-            localObject = ((mobileqq_mp.RetInfo)localObject).err_info.get();
-            new JSONObject();
-            if (i != 0) {
-              break label650;
-            }
-            localObject = new JSONObject(paramBundle);
-            int j = ((JSONObject)localObject).optInt("ret");
-            paramBundle = ((JSONObject)localObject).optString("msg");
-            i = ((JSONObject)localObject).optInt("subcmd");
-            if (j != 0) {
-              break label494;
-            }
-            j = ((JSONObject)localObject).optInt("type");
-            paramBundle = "";
-            if (j == 2)
-            {
-              paramBundle = ((JSONObject)localObject).optString("url");
-              localObject = ((JSONObject)localObject).optString("mediaid");
-              if (paramBundle.equals(""))
-              {
-                JSONObject localJSONObject = new JSONObject();
-                try
-                {
-                  localJSONObject.put("retCode", -1);
-                  localJSONObject.put("msg", "mediaId for serverId error");
-                  this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-                  this.jdField_a_of_type_Tym.c((String)localObject);
-                  bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-                  break label807;
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest serverId = " + paramBundle + "  type = " + paramInt + " subCom=" + i);
-                  return;
-                }
-                catch (JSONException localJSONException4)
-                {
-                  localJSONException4.printStackTrace();
-                  continue;
-                }
-              }
-            }
-            if (j != 4) {
-              continue;
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return;
-            this.jdField_a_of_type_Tym.a(this.jdField_a_of_type_Int, paramBundle, (String)localObject, true, this.jdField_a_of_type_JavaLangString);
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return;
-          }
-          paramBundle = ((JSONObject)localObject).optString("file_uuid");
-          if (paramBundle.equals(""))
-          {
-            localObject = new JSONObject();
-            try
-            {
-              ((JSONObject)localObject).put("retCode", -1);
-              ((JSONObject)localObject).put("msg", "mediaId for serverId error");
-              this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-              bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-            }
-            catch (JSONException localJSONException3)
-            {
-              for (;;)
-              {
-                localJSONException3.printStackTrace();
-              }
-            }
-          }
-          else
-          {
-            localObject = ((JSONObject)localObject).optString("mediaid");
-            this.jdField_a_of_type_Tym.a(this.jdField_a_of_type_Int, paramBundle, (String)localObject, false, this.jdField_a_of_type_JavaLangString);
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          paramBundle = paramBundle.getString("likeStatus", "");
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("type", "onCommentLike");
+          ((JSONObject)localObject2).put("rowKey", str);
+          ((JSONObject)localObject2).put("commentId", localObject1);
+          ((JSONObject)localObject2).put("likeStatus", paramBundle);
+          ((JSONObject)localObject2).put("result", "success");
+          if (this.jdField_a_of_type_Tfg == null) {
             continue;
-            label494:
-            if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest errorMsg = " + paramBundle);
-            }
-            paramBundle = new JSONObject();
-            try
-            {
-              paramBundle.put("retCode", -1);
-              paramBundle.put("msg", "mediaId for serverId error");
-              this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-              if (this.jdField_a_of_type_Boolean)
-              {
-                this.jdField_a_of_type_Tym.c(this.b);
-                bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-                return;
-              }
-            }
-            catch (JSONException localJSONException1)
-            {
-              for (;;)
-              {
-                localJSONException1.printStackTrace();
-              }
-              bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-              return;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest errorMsg = " + localJSONException1);
-            }
-            paramBundle = new JSONObject();
-            try
-            {
-              paramBundle.put("retCode", -1);
-              paramBundle.put("msg", "mediaId for serverId error");
-              this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-              if (this.jdField_a_of_type_Boolean)
-              {
-                this.jdField_a_of_type_Tym.c(this.b);
-                bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-                return;
-              }
-            }
-            catch (JSONException localJSONException2)
-            {
-              for (;;)
-              {
-                localJSONException2.printStackTrace();
-              }
-              bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-              return;
-            }
           }
+          this.jdField_a_of_type_Tfg.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onCommentDelete".equals(localObject1)) {
+        try
+        {
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          i = paramBundle.getInt("totalDeleteCount", 0);
+          paramBundle = new JSONObject();
+          paramBundle.put("type", "onCommentDelete");
+          paramBundle.put("totalDelete", i);
+          paramBundle.put("commentID", localObject1);
+          paramBundle.put("rowKey", str);
+          paramBundle.put("result", "success");
+          if (this.jdField_a_of_type_Tfg == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Tfg.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onPanelClose".equals(localObject1)) {
+        try
+        {
+          paramBundle = paramBundle.getString("rowKey", "");
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("type", "onPanelClose");
+          ((JSONObject)localObject1).put("rowKey", paramBundle);
+          ((JSONObject)localObject1).put("result", "success");
+          if (this.jdField_a_of_type_Tfg != null)
+          {
+            this.jdField_a_of_type_Tfg.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
+            return;
+          }
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
         }
       }
     }
@@ -172,7 +111,7 @@ class tyu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tyu
  * JD-Core Version:    0.7.0.1
  */

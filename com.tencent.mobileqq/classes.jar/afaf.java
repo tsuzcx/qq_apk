@@ -1,35 +1,22 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afaf
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public afaf(RegisterActivity paramRegisterActivity) {}
+  public afaf(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afaf
  * JD-Core Version:    0.7.0.1
  */

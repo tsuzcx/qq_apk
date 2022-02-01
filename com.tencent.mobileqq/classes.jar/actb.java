@@ -1,27 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class actb
-  implements TextWatcher
+class actb
+  implements DialogInterface.OnClickListener
 {
-  public actb(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  actb(acsz paramacsz) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
-    {
-      acqy.d("GdtFormItemTextBoxView", "afterTextChanged error");
-      return;
-    }
-    acqy.b("GdtFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
-    this.a.a().content.text = paramEditable.toString();
+    QLog.i("GdtMvViewController", 1, " DialogInterface onClick confirm");
+    acsz.a(this.a, false);
+    this.a.f();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

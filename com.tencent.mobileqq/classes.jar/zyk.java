@@ -1,18 +1,20 @@
-import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.VoiceScan.1;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class zyk
-  extends zxg
+  implements bivv
 {
-  private final MutableLiveData<Object> a = new MutableLiveData();
+  public zyk(VoiceScan.1 param1) {}
   
-  public MutableLiveData<Object> a()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return "DemoBaseViewModel";
+    paramClickableColorSpanTextView = new Intent(zyj.a(this.a.this$0), QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    zyj.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
   }
 }
 

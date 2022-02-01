@@ -1,47 +1,55 @@
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.observer.ServerNotifyObserver;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class afqj
-  extends ServerNotifyObserver
+  extends Handler
 {
-  public afqj(VerifyCodeActivity paramVerifyCodeActivity) {}
-  
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public afqj(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131718992), 0).a();
-    }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bggl.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
-      return;
-    }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131718989), 1).show();
+    super(paramLooper);
   }
   
-  public void onVerifyClose()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.finish();
+    switch (paramMessage.what)
+    {
+    default: 
+    case 100: 
+    case 16: 
+    case 18: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(biwl.a());
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Gc.a(this.a.e));
+          return;
+        } while (!(paramMessage.obj instanceof Drawable));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+        return;
+      } while (!(paramMessage.obj instanceof Bitmap));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afqj
  * JD-Core Version:    0.7.0.1
  */

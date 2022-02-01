@@ -1,9 +1,14 @@
-import android.widget.TextView;
-
-class asqv
-  extends amcl
+public abstract interface asqv
 {
-  TextView a;
+  public abstract int a();
+  
+  public abstract String a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
 }
 
 

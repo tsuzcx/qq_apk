@@ -3,26 +3,26 @@ package com.tencent.av.utils;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import msb;
-import msf;
+import msz;
+import mtd;
 
 public class PhoneStatusMonitor$2
   implements Runnable
 {
-  public PhoneStatusMonitor$2(msb parammsb) {}
+  public PhoneStatusMonitor$2(msz parammsz) {}
   
   public void run()
   {
-    boolean bool = msf.d(msb.a(this.this$0));
+    boolean bool = mtd.d(msz.a(this.this$0));
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, "checkCalling, end, pre[" + msb.a(this.this$0) + "], cur[" + bool + "]");
+      QLog.d("PhoneStatusMonitor", 2, "checkCalling, end, pre[" + msz.a(this.this$0) + "], cur[" + bool + "]");
     }
-    msb.a(this.this$0, bool);
-    Handler localHandler = msb.a(this.this$0);
-    if ((localHandler != null) && (msb.a(this.this$0).get())) {
-      localHandler.postDelayed(msb.a(this.this$0), 10000L);
+    msz.a(this.this$0, bool);
+    Handler localHandler = msz.a(this.this$0);
+    if ((localHandler != null) && (msz.a(this.this$0).get())) {
+      localHandler.postDelayed(msz.a(this.this$0), 10000L);
     }
-    msb.b(this.this$0).set(false);
+    msz.b(this.this$0).set(false);
   }
 }
 

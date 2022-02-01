@@ -19,8 +19,8 @@ import android.view.animation.GridLayoutAnimationController.AnimationParameters;
 import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import bkha;
-import bkhf;
+import blid;
+import blii;
 import com.tencent.util.VersionUtils;
 
 public class GridView
@@ -1428,7 +1428,7 @@ public class GridView
   
   protected void layoutChildren()
   {
-    bkhf localbkhf = null;
+    blii localblii = null;
     int n = -1;
     boolean bool1 = this.mBlockLayoutRequests;
     if (!bool1) {
@@ -1471,7 +1471,7 @@ public class GridView
           j = 0;
           localObject3 = localObject1;
           localObject1 = localObject4;
-          localObject4 = localbkhf;
+          localObject4 = localblii;
           bool2 = this.mDataChanged;
           if (bool2) {
             handleDataChanged();
@@ -1500,24 +1500,24 @@ public class GridView
           localObject1 = null;
           localObject3 = null;
           j -= m;
-          localObject4 = localbkhf;
+          localObject4 = localblii;
           continue;
           setSelectedPositionInt(this.mNextSelectedPosition);
           int i3 = this.mFirstPosition;
-          localbkhf = this.mRecycler;
+          localblii = this.mRecycler;
           if (bool2)
           {
             m = 0;
             if (m < i2)
             {
-              localbkhf.a(getChildAt(m), i3 + m);
+              localblii.a(getChildAt(m), i3 + m);
               m += 1;
               continue;
             }
           }
           else
           {
-            localbkhf.a(i2, i3);
+            localblii.a(i2, i3);
           }
           detachAllViewsFromParent();
           switch (this.mLayoutMode)
@@ -1541,7 +1541,7 @@ public class GridView
             label436:
             setSelectedPositionInt(j);
             localObject1 = a(k);
-            localbkhf.c();
+            localblii.c();
             if (localObject1 == null) {
               break label804;
             }
@@ -1648,13 +1648,13 @@ public class GridView
       localView = null;
       localObject3 = null;
       j = 0;
-      localObject4 = localbkhf;
+      localObject4 = localblii;
       break label180;
       break;
       localView = null;
       localObject3 = null;
       j = 0;
-      localObject4 = localbkhf;
+      localObject4 = localblii;
       break label180;
       break label404;
       label909:
@@ -1892,7 +1892,7 @@ public class GridView
       this.mItemCount = this.mAdapter.getCount();
       this.mDataChanged = true;
       checkFocus();
-      this.mDataSetObserver = new bkha(this);
+      this.mDataSetObserver = new blid(this);
       this.mAdapter.registerDataSetObserver(this.mDataSetObserver);
       this.mRecycler.a(this.mAdapter.getViewTypeCount());
       if (this.mStackFromBottom)
@@ -2019,7 +2019,7 @@ public class GridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.GridView
  * JD-Core Version:    0.7.0.1
  */

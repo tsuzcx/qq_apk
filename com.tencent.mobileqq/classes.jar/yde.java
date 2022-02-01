@@ -1,12 +1,16 @@
-public abstract interface yde
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+
+public class yde
+  implements ydt
 {
-  public abstract void b(boolean paramBoolean);
+  public yde(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public abstract boolean b();
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d();
+  public void a(String paramString)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramString);
+    }
+  }
 }
 
 

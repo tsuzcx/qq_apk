@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import abbs;
-import adea;
+import abfv;
+import admy;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgmo;
-import bhmv;
-import bhos;
-import bhpv;
-import bhqc;
-import bhql;
-import bhqo;
-import bmqa;
+import bhmq;
+import binq;
+import bipn;
+import biqq;
+import biqx;
+import birg;
+import birj;
+import bnrf;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -39,8 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import ohu;
-import tzo;
+import ojc;
+import tzq;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   extends WebViewFragment
@@ -106,7 +106,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         ThreadManager.post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3(this, l2, l1, i, bool), 8, null, true);
       }
       return;
-      if (bhqc.s)
+      if (biqx.s)
       {
         i = 1;
         break;
@@ -115,7 +115,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       break;
       label103:
       i = j;
-      if (!bhqc.r) {
+      if (!biqx.r) {
         i = 0;
       }
     }
@@ -130,9 +130,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     ThreadManager.getUIHandler().post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2(this));
   }
   
-  public bhos createComponentsProvider()
+  public bipn createComponentsProvider()
   {
-    return new bhos(this, 127, new ohu(this));
+    return new bipn(this, 127, new ojc(this));
   }
   
   @TargetApi(12)
@@ -142,9 +142,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     Bundle localBundle = this.intent.getExtras();
     String str = localBundle.getString("url");
     Object localObject = str;
-    if (tzo.f(str))
+    if (tzq.f(str))
     {
-      localObject = tzo.a(str);
+      localObject = tzq.a(str);
       localBundle.putString("url", (String)localObject);
       this.intent.putExtra("url", (String)localObject);
     }
@@ -157,9 +157,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       paramBundle = localBundle.getString("preload_iamge_url");
       if (this.mPluginEngine != null)
       {
-        localObject = (abbs)this.mPluginEngine.a("pubAccountPreload");
+        localObject = (abfv)this.mPluginEngine.a("pubAccountPreload");
         if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
-          ((abbs)localObject).a(paramBundle, true);
+          ((abfv)localObject).a(paramBundle, true);
         }
       }
       b();
@@ -180,10 +180,10 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     super.initTitleBar(paramIntent, paramString);
     if ((this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      if ((this.mUIStyleHandler.jdField_a_of_type_Bhqo.jdField_b_of_type_Boolean) || (this.mUIStyle.m)) {
+      if ((this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_b_of_type_Boolean) || (this.mUIStyle.m)) {
         break label94;
       }
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849518);
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849526);
       this.mSwiftTitleUI.c(-16777216);
     }
     for (;;)
@@ -191,7 +191,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
       label94:
-      paramIntent = bgmo.a(getResources().getDrawable(2130849518), -1);
+      paramIntent = bhmq.a(getResources().getDrawable(2130849526), -1);
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramIntent);
       this.mSwiftTitleUI.c(-1);
     }
@@ -250,7 +250,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       this.jdField_b_of_type_Boolean = true;
       paramWebView = BaseApplicationImpl.getApplication().getRuntime();
       if (paramWebView != null) {
-        if (!bmqa.B(paramWebView)) {
+        if (!bnrf.B(paramWebView)) {
           break label62;
         }
       }
@@ -273,24 +273,24 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     }
   }
   
-  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, adea paramadea)
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, admy paramadmy)
   {
-    this.mSwiftTitleUI.a(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramadea);
+    this.mSwiftTitleUI.a(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramadmy);
     if ((this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup != null) && (!paramBoolean) && (paramInt1 == 4))
     {
-      if ((this.mUIStyleHandler.jdField_a_of_type_Bhqo.jdField_b_of_type_Boolean) || (this.mUIStyle.m)) {
+      if ((this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_b_of_type_Boolean) || (this.mUIStyle.m)) {
         break label130;
       }
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849518);
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849526);
       this.mSwiftTitleUI.c(-16777216);
     }
     for (;;)
     {
-      ((bhpv)this.mComponentsProvider.a(4)).d();
+      ((biqq)this.mComponentsProvider.a(4)).d();
       this.mUIStyleHandler.l();
       return;
       label130:
-      paramString1 = bgmo.a(getResources().getDrawable(2130849518), -1);
+      paramString1 = bhmq.a(getResources().getDrawable(2130849526), -1);
       this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString1);
       this.mSwiftTitleUI.c(-1);
     }
@@ -301,9 +301,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     boolean bool = super.showPreview();
     if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849527);
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839369);
-      if ((!this.mUIStyleHandler.jdField_a_of_type_Bhqo.jdField_b_of_type_Boolean) && (!this.mUIStyle.m))
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849534);
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839377);
+      if ((!this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_b_of_type_Boolean) && (!this.mUIStyle.m))
       {
         this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(0);
         this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
@@ -317,8 +317,8 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         }
         this.mSwiftTitleUI.d(-16777216);
         this.mSwiftTitleUI.f(-16777216);
-        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849526);
-        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849518);
+        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849533);
+        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849526);
         this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }

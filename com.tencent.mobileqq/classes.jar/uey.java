@@ -1,23 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
 
-class uey
-  implements View.OnClickListener
+public class uey
+  implements asmr
 {
-  uey(uex paramuex, int paramInt) {}
+  public void a(asmu paramasmu) {}
   
-  public void onClick(View paramView)
+  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
+  
+  public boolean a(asmu paramasmu)
   {
-    if (uex.a(this.jdField_a_of_type_Uex) != null) {
-      uex.a(this.jdField_a_of_type_Uex).a(paramView, 12, this.jdField_a_of_type_Int, uex.a(this.jdField_a_of_type_Uex));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
+  
+  public void b() {}
+  
+  public void b(asmu paramasmu) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uey
  * JD-Core Version:    0.7.0.1
  */

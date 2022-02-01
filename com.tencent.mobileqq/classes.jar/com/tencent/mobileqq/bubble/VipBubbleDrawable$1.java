@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
-import apym;
+import aqmm;
 
 public class VipBubbleDrawable$1
   implements Runnable
 {
-  public VipBubbleDrawable$1(apym paramapym) {}
+  public VipBubbleDrawable$1(aqmm paramaqmm) {}
   
   public void run()
   {

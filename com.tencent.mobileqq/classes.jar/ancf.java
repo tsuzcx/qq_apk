@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
 
 class ancf
-  implements Comparator<ApolloActionData>
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  ancf(ancd paramancd) {}
+  ancf(anbz paramanbz) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
-      return 0;
-    }
-    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
-      return 1;
-    }
-    return -1;
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 

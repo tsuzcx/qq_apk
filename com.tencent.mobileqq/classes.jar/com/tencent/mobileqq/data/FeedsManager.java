@@ -2,17 +2,17 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_NEWEST_FEEDS.feed_info;
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import aezu;
-import afwx;
+import afjb;
+import aggr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aong;
-import argv;
-import arii;
-import blrx;
-import blsb;
+import apaw;
+import arwk;
+import arxx;
+import bmsz;
+import bmtd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -55,9 +55,9 @@ public class FeedsManager
     intCache();
   }
   
-  private blrx buildRequest(HashMap<Long, Long> paramHashMap)
+  private bmsz buildRequest(HashMap<Long, Long> paramHashMap)
   {
-    return new blrx(this.app.getLongAccountUin(), paramHashMap);
+    return new bmsz(this.app.getLongAccountUin(), paramHashMap);
   }
   
   public static String convertAtStruct(String paramString)
@@ -171,7 +171,7 @@ public class FeedsManager
   
   private void intCache()
   {
-    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new argv(this), true);
+    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new arwk(this), true);
   }
   
   public static boolean isShowStatus(String paramString)
@@ -216,7 +216,7 @@ public class FeedsManager
       }
     }
     if (!this.feedInfoCache.isEmpty()) {
-      this.app.notifyObservers(aezu.class, 10000, true, null);
+      this.app.notifyObservers(afjb.class, 10000, true, null);
     }
   }
   
@@ -315,7 +315,7 @@ public class FeedsManager
   {
     int i = 0;
     ArrayList localArrayList = new ArrayList();
-    int k = blsb.f();
+    int k = bmtd.f();
     if (k <= 0)
     {
       QLog.w("FeedsManager", 1, "wns  下发的最大请求个数是 小于0，");
@@ -360,7 +360,7 @@ public class FeedsManager
   public String getSummary(String paramString)
   {
     Object localObject = null;
-    if (blsb.p())
+    if (bmtd.p())
     {
       QLog.i("FeedsManager", 2, "getSummary 下发配置隐藏新动态");
       return localObject;
@@ -421,7 +421,7 @@ public class FeedsManager
       paramString.isExpose = true;
       paramString = new LpReportInfo_pf00064(722, 1, 1);
       LpReportManager.getInstance().reportToPF00064(paramString, false, false);
-      paramString = (afwx)this.app.getManager(282);
+      paramString = (aggr)this.app.getManager(282);
       if (paramString != null) {
         paramString.a(1, 2);
       }
@@ -456,7 +456,7 @@ public class FeedsManager
   
   public void updateQzoneFeeds()
   {
-    if (blsb.p()) {
+    if (bmtd.p()) {
       QLog.i("FeedsManager", 2, "updateQzoneFeeds 下发配置隐藏新动态");
     }
     do
@@ -492,7 +492,7 @@ public class FeedsManager
           localHashMap.put(localLong, Long.valueOf(l));
         }
       }
-      localObject = new QzoneCommonIntent(this.app.getApp(), arii.class);
+      localObject = new QzoneCommonIntent(this.app.getApp(), arxx.class);
     }
     catch (Throwable localThrowable)
     {
@@ -500,11 +500,11 @@ public class FeedsManager
       return;
     }
     ((QzoneCommonIntent)localObject).setObserver(this);
-    blrx localblrx = buildRequest(localThrowable);
+    bmsz localbmsz = buildRequest(localThrowable);
     if (QLog.isColorLevel()) {
-      QLog.i("FeedsManager", 2, String.valueOf(localblrx));
+      QLog.i("FeedsManager", 2, String.valueOf(localbmsz));
     }
-    ((QzoneCommonIntent)localObject).setRequest(localblrx);
+    ((QzoneCommonIntent)localObject).setRequest(localbmsz);
     this.app.startServlet((NewIntent)localObject);
     saveLastReqTime(System.currentTimeMillis());
   }

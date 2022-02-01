@@ -318,7 +318,7 @@ public class q
             paramInt2 += 1;
             paramInt1 = i1;
             break;
-            if (((localCharacterStyle instanceof bdoa)) || ((localCharacterStyle instanceof bbaw)))
+            if (((localCharacterStyle instanceof begw)) || ((localCharacterStyle instanceof bbtp)))
             {
               if (!a(localCharacterStyle, i3, i1, 2, bool)) {
                 continue;
@@ -446,9 +446,9 @@ public class q
   {
     boolean bool = false;
     Object localObject;
-    if ((paramCharacterStyle instanceof bdoa))
+    if ((paramCharacterStyle instanceof begw))
     {
-      localObject = ((bdoa)paramCharacterStyle).a().getBounds();
+      localObject = ((begw)paramCharacterStyle).a().getBounds();
       paramInt2 = ((Rect)localObject).width();
       paramInt1 = ((Rect)localObject).height();
     }
@@ -490,12 +490,12 @@ public class q
       while (!paramBoolean)
       {
         return bool;
-        if (!(paramCharacterStyle instanceof bbaw)) {
+        if (!(paramCharacterStyle instanceof bbtp)) {
           break label423;
         }
-        localObject = (bbaw)paramCharacterStyle;
-        paramInt2 = ((bbaw)localObject).a();
-        paramInt1 = ((bbaw)localObject).b();
+        localObject = (bbtp)paramCharacterStyle;
+        paramInt2 = ((bbtp)localObject).a();
+        paramInt1 = ((bbtp)localObject).b();
         break;
         this.p += ((w)localObject).jdField_b_of_type_Int;
         ((w)localObject).jdField_d_of_type_Int = this.w;
@@ -1036,12 +1036,12 @@ public class q
     }
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      a(anni.a(2131703645));
+      a(anzj.a(2131703752));
       return false;
     }
     if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
     {
-      a(anni.a(2131703644));
+      a(anzj.a(2131703751));
       return false;
     }
     c();
@@ -1253,15 +1253,15 @@ public class q
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int - i2, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_d_of_type_Int + localw.jdField_b_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bdoa))
+      if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw))
       {
-        ((bdoa)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((begw)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbaw))
+      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtp))
       {
-        localObject = (bbaw)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((bbaw)localObject).jdField_a_of_type_Boolean = false;
-        ((bbaw)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (bbtp)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((bbtp)localObject).jdField_a_of_type_Boolean = false;
+        ((bbtp)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }

@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.view.View;
 
-public final class boly
-  implements Parcelable.Creator<QIMFilterCategoryItem>
+class boly
+  extends LinearSmoothScroller
 {
-  public QIMFilterCategoryItem a(Parcel paramParcel)
+  public boly(bolx parambolx, Context paramContext)
   {
-    return new QIMFilterCategoryItem(paramParcel);
+    super(paramContext);
   }
   
-  public QIMFilterCategoryItem[] a(int paramInt)
+  public int calculateDxToMakeVisible(View paramView, int paramInt)
   {
-    return new QIMFilterCategoryItem[paramInt];
+    return bolx.a(this.a).a(-this.a.g);
+  }
+  
+  public int calculateDyToMakeVisible(View paramView, int paramInt)
+  {
+    return bolx.a(this.a).b(-this.a.g);
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * bolx.a(this.a));
+  }
+  
+  @Nullable
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return new PointF(bolx.a(this.a).a(this.a.g), bolx.a(this.a).b(this.a.g));
   }
 }
 

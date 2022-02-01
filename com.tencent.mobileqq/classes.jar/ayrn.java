@@ -1,203 +1,72 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedStuct;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Arrays;
+import java.util.List;
 
 public class ayrn
-  extends ayrp
 {
-  private static File jdField_a_of_type_JavaIoFile;
-  private final int jdField_a_of_type_Int;
-  
-  ayrn(String paramString, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, ayrv paramayrv)
   {
-    super(paramString);
-    jdField_a_of_type_JavaLangString = "DiskLoader";
-    this.jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_JavaIoFile = new File(BaseApplicationImpl.getApplication().getCacheDir(), "/poi/");
-    jdField_a_of_type_JavaIoFile.mkdirs();
-  }
-  
-  private void a()
-  {
-    Object localObject1 = null;
-    int i = a();
-    if (i > this.jdField_a_of_type_Int - 1)
+    ilive_feeds_read.ReadNearUserFeedsReq localReadNearUserFeedsReq = new ilive_feeds_read.ReadNearUserFeedsReq();
+    try
     {
-      int k = i - this.jdField_a_of_type_Int + 1;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] handlerCacheSizeLimit. curCacheSize: " + i + " mDiskCacheSizeLimit: " + this.jdField_a_of_type_Int + " overFlowSize: " + k);
-      }
-      i = 0;
-      while (i < k)
+      localReadNearUserFeedsReq.uin.set(Long.valueOf(paramString).longValue());
+      localReadNearUserFeedsReq.pos.set(paramInt2);
+      localReadNearUserFeedsReq.num.set(paramInt3);
+      localReadNearUserFeedsReq.nowid.set(paramLong);
+      localReadNearUserFeedsReq.id_type.set(paramInt1);
+      paramString = SosoInterface.b();
+      if ((paramString != null) && (paramString.a != null))
       {
-        File[] arrayOfFile = jdField_a_of_type_JavaIoFile.listFiles();
-        int m = arrayOfFile.length;
-        int j = 0;
-        if (j < m)
-        {
-          File localFile = arrayOfFile[j];
-          Object localObject2;
-          if (localObject1 == null) {
-            localObject2 = localFile;
-          }
-          for (;;)
-          {
-            j += 1;
-            localObject1 = localObject2;
-            break;
-            localObject2 = localFile;
-            if (localFile.lastModified() >= localObject1.lastModified()) {
-              localObject2 = localObject1;
-            }
-          }
-        }
-        if (localObject1 != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] handlerCacheSizeLimit. delete: " + localObject1.getAbsolutePath() + " lastModified: " + localObject1.lastModified());
-          }
-          localObject1.delete();
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  private void a(PoiBean paramPoiBean, File paramFile)
-  {
-    Gson localGson = new GsonBuilder().create();
-    paramFile = new FileWriter(paramFile);
-    localGson.toJson(paramPoiBean, paramFile);
-    paramFile.flush();
-    paramFile.close();
-  }
-  
-  public int a()
-  {
-    String[] arrayOfString = jdField_a_of_type_JavaIoFile.list();
-    if (arrayOfString == null) {
-      return 0;
-    }
-    return arrayOfString.length;
-  }
-  
-  PoiBean a(File paramFile)
-  {
-    return (PoiBean)new GsonBuilder().create().fromJson(new FileReader(paramFile), PoiBean.class);
-  }
-  
-  public LatLng a(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    String[] arrayOfString = paramFile.split("-");
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] disk getLatLngFromPoiFile file: " + paramFile + " array: " + Arrays.toString(arrayOfString));
-    }
-    if (arrayOfString.length >= 3) {
-      try
-      {
-        paramFile = new LatLng(Double.parseDouble(arrayOfString[1]), Double.parseDouble(arrayOfString[2]));
-        return paramFile;
-      }
-      catch (NumberFormatException paramFile)
-      {
+        paramString = paramString.a;
+        localReadNearUserFeedsReq.lat.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.a)));
+        localReadNearUserFeedsReq.lng.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.b)));
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] PoiCache Parse File To LatLng Error", paramFile);
+          QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + paramString.a + ",req.lng=" + paramString.b);
         }
       }
-    }
-    return null;
-  }
-  
-  public File a(LatLng paramLatLng)
-  {
-    return new File(jdField_a_of_type_JavaIoFile, "poi-" + paramLatLng.latitude + "-" + paramLatLng.longitude);
-  }
-  
-  public void a(LatLng paramLatLng, int paramInt, PoiBean paramPoiBean)
-  {
-    if (a(paramLatLng, paramInt, new ayro(this, paramLatLng, paramInt, paramPoiBean))) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] diskPut [fail already exist]. latLng: " + paramLatLng + " acceptAccuracy: " + paramInt + " poiBean: " + paramPoiBean);
-      }
-    }
-    do
-    {
+      new aydi(paramQQAppInterface).a(24624).b(10).a(new ayrp(paramInt2, paramayrv)).a(new ayro(paramayrv, paramInt2)).a(localReadNearUserFeedsReq.toByteArray());
       return;
-      a();
-      try
-      {
-        a("diskPut", paramPoiBean);
-        File localFile = a(paramLatLng);
-        localFile.createNewFile();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] diskPut. latLng: " + paramLatLng + " cacheFile: " + localFile.getName() + " poiBean: " + paramPoiBean);
-        }
-        a(paramPoiBean, localFile);
-        return;
-      }
-      catch (IOException paramLatLng) {}
-    } while (!QLog.isColorLevel());
-    QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] PoiCache diskPut Error", paramLatLng);
+    }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      QLog.i("NearbyMomentProtocol", 1, "getNearbyMomentsList, transfer uin error, uin=" + paramString);
+    }
   }
   
-  public boolean a(LatLng paramLatLng, int paramInt, ayry paramayry)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt, ayru paramayru)
   {
-    File[] arrayOfFile = jdField_a_of_type_JavaIoFile.listFiles();
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] diskGet. latLng: " + paramLatLng + " no cache files found");
-      }
-      return false;
-    }
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      File localFile = arrayOfFile[i];
-      if (a(a(localFile), paramLatLng, paramInt)) {
-        try
-        {
-          PoiBean localPoiBean = a(localFile);
-          a("diskGet", localPoiBean);
-          paramayry.a(localPoiBean);
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] diskGet. latLng: " + paramLatLng + " result: " + localPoiBean);
-          }
-          if (!localFile.setLastModified(System.currentTimeMillis()))
-          {
-            long l1 = localFile.lastModified();
-            a(localPoiBean, localFile);
-            long l2 = localFile.lastModified();
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] diskGet. poiCacheFile: " + localFile + " oldTime: " + l1 + " newTime: " + l2);
-            }
-          }
-          return true;
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] PoiCache diskGet Error", localException);
-          }
-        }
-      }
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] diskGet. latLng: " + paramLatLng + " result: null");
-    }
-    return false;
+    ilive_feeds_write.DelFeedReq localDelFeedReq = new ilive_feeds_write.DelFeedReq();
+    ilive_feeds_write.DelFeedStuct localDelFeedStuct = new ilive_feeds_write.DelFeedStuct();
+    localDelFeedStuct.feed_id.set(ByteStringMicro.copyFromUtf8(paramString));
+    localDelFeedStuct.timestamp.set(paramLong);
+    localDelFeedStuct.feed_type.set(paramInt);
+    localDelFeedReq.del_type.set(2);
+    localDelFeedReq.select_all.set(0);
+    localDelFeedReq.del_st.get().add(localDelFeedStuct);
+    localDelFeedReq.uid.set(Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+    new aydi(paramQQAppInterface).a(22528).b(5).a(new ayrr(paramayru, paramString)).a(new ayrq(paramayru, paramString)).a(localDelFeedReq.toByteArray());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, ayrw paramayrw)
+  {
+    new aydm(paramQQAppInterface).a(paramString, new ayrs(paramayrw), null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, ayrx paramayrx)
+  {
+    new aydm(paramQQAppInterface).b(paramString, new ayrt(paramayrx), null);
   }
 }
 

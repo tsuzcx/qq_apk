@@ -1,35 +1,23 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Arrays;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class vma
-  implements Observer<uzl>
+  implements wex
 {
-  public vma(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
+  public vma(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void a(@Nullable uzl paramuzl)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((QCircleFolderFollowTabFragment.a(this.a) != null) && (QCircleFolderFollowTabFragment.a(this.a) != null) && (QCircleFolderFollowTabFragment.b(this.a).a != null))
+    if (!QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage))
     {
-      if (paramuzl == null) {
-        break label119;
-      }
-      paramuzl.a(uxn.a(QCircleFolderFollowTabFragment.c(this.a).a.urlInfo.get(), "NoticeListUrl"));
-      boolean bool = paramuzl.a();
-      QCircleFolderFollowTabFragment.a(this.a).a(bool);
-      if (bool)
+      QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage, true);
+      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
       {
-        vrf.a("", 18, 1);
-        QCircleFolderFollowTabFragment.a(this.a).setDatas(new ArrayList(Arrays.asList(new uzl[] { paramuzl })));
+        vtr.a(67, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, QCircleContentImage.d(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.e(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
+        QLog.d("QCircleContentImage", 4, "onScaleChange report success. pos: " + QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
       }
     }
-    return;
-    label119:
-    QCircleFolderFollowTabFragment.a(this.a).a(false);
   }
 }
 

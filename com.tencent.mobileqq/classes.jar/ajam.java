@@ -1,85 +1,125 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.SwipListView;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajam
-  implements bkhe
 {
-  public ajam(SystemMsgListView paramSystemMsgListView) {}
+  public static String a = "BlessJsApiUtils";
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(Activity paramActivity, String paramString1, String paramString2)
   {
-    SystemMsgListView.a(this.a, paramInt1);
-    SystemMsgListView.a(this.a, paramInt1 + paramInt2 - 1);
-    if (SystemMsgListView.a(this.a).b() == 23)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString1.trim())))
     {
-      if (paramInt1 >= 1)
-      {
-        paramAbsListView = (aiyi)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
-        if ((paramAbsListView instanceof aiye)) {
-          ((aiye)paramAbsListView).c();
-        }
-      }
-      if (paramInt1 + paramInt2 < paramInt3)
-      {
-        paramAbsListView = (aiyi)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
-        if ((paramAbsListView instanceof aiye)) {
-          ((aiye)paramAbsListView).c();
-        }
-      }
+      QQToast.a(paramActivity, 2131690517, 1).a();
+      return;
     }
+    Intent localIntent = new Intent(paramActivity, BlessSelectMemberActivity.class);
+    localIntent.putExtra("param_type", 9003);
+    localIntent.putExtra("param_entrance", 15);
+    localIntent.putExtra("param_only_friends", true);
+    localIntent.putExtra("param_donot_need_contacts", true);
+    localIntent.putExtra("param_title", paramActivity.getString(2131690523));
+    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131690912));
+    localIntent.putExtra("param_exit_animation", 1);
+    localIntent.putExtra("param_blesstype", 1);
+    localIntent.putExtra("param_blessword_content", paramString1);
+    localIntent.putExtra("param_web_callback", paramString2);
+    paramActivity.startActivity(localIntent);
+    paramActivity.overridePendingTransition(2130771992, 2130771993);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static boolean a(AppInterface paramAppInterface)
   {
-    int i = 0;
-    int j;
-    int k;
-    if (SystemMsgListView.a(this.a) != null)
+    boolean bool = VideoEnvironment.b(paramAppInterface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d(a, 2, "isMobileSupportPTV fasle");
+    }
+    return bool;
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "startBlessPtvActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", unfoldDDStr:" + paramString5 + ", dDCategoryName:" + paramString6 + ", dDItemID:" + paramString7 + ", unfoldFilter:" + paramString9 + ", filterCategoryName:" + paramString10 + ", filterItemID:" + paramString11 + ", callback:" + paramString12);
+    }
+    boolean bool1 = "1".equals(paramString1);
+    boolean bool2 = "1".equals(paramString2);
+    if ("1".equals(paramString3)) {}
+    boolean bool3;
+    boolean bool4;
+    boolean bool5;
+    boolean bool6;
+    for (int i = 2;; i = 1)
     {
-      if ((paramInt == 0) || (paramInt == 1)) {
-        break label240;
+      bool3 = "1".equals(paramString4);
+      bool4 = "1".equals(paramString8);
+      bool5 = "1".equals(paramString5);
+      bool6 = "1".equals(paramString9);
+      if (bbgg.a()) {
+        break;
       }
-      SystemMsgListView.a(this.a).e();
-      if (paramInt == 0)
-      {
-        SystemMsgListView.a(this.a).k();
-        j = SystemMsgListView.a(this.a).b();
-        if (SystemMsgListView.a(this.a) >= SystemMsgListView.a(this.a).getCount() - 2)
-        {
-          paramAbsListView = SystemMsgListView.a(this.a).a();
-          if ((paramAbsListView != null) && (paramAbsListView.a()) && (paramAbsListView.a >= 0) && (SystemMsgListView.a(this.a).a(j)))
-          {
-            Bundle localBundle = new Bundle();
-            localBundle.putString("from", "4");
-            SystemMsgListView.a(this.a).b(4, paramAbsListView.a, localBundle);
-          }
-        }
-        k = SystemMsgListView.a(this.a).getFirstVisiblePosition();
-        paramAbsListView = SystemMsgListView.a(this.a).getChildAt(0);
-        if (paramAbsListView != null) {
-          break label263;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i(a, 2, "supportMediaCodec = false");
+      }
+      QQToast.a(paramActivity, paramActivity.getString(2131690521), 0).a();
+      return false;
+    }
+    paramAppInterface = boea.a(bool1, bool2, i, true, bool3, bool5, paramString6, paramString7, bool4, bool6, paramString10, paramString11, boea.e, "", "", null, "", "", "", "", null);
+    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
+    paramString1.putExtras(paramAppInterface);
+    paramString1.putExtra(boea.p, true);
+    paramString1.putExtra("jump_action", 7);
+    paramActivity.startActivity(paramString1);
+    return true;
+  }
+  
+  public static boolean b(AppInterface paramAppInterface)
+  {
+    boolean bool = bdek.a();
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d(a, 2, "issupportFilterSo false");
+    }
+    return bool;
+  }
+  
+  public static boolean c(AppInterface paramAppInterface)
+  {
+    boolean bool = true;
+    if (paramAppInterface.getCurrentAccountUin() == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i(a, 2, "isAccLoginSuccess false.");
       }
     }
-    label263:
-    for (paramInt = i;; paramInt = paramAbsListView.getTop())
+    do
     {
-      SystemMsgListView.a(this.a).remove(j);
-      if (SystemMsgListView.a(this.a).isShown())
+      do
       {
-        paramAbsListView = new aixs(j, k, paramInt);
-        SystemMsgListView.a(this.a).put(j, paramAbsListView);
+        do
+        {
+          return false;
+        } while (!a(paramAppInterface));
+        if (bork.a(borf.b) == 1) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
+      return false;
+    } while (!bbgg.a());
+    if (ShortVideoUtils.a()) {}
+    for (;;)
+    {
+      return bool;
+      ShortVideoUtils.a(paramAppInterface);
+      if (!ShortVideoUtils.a()) {
+        bool = false;
       }
-      return;
-      label240:
-      SystemMsgListView.a(this.a).g();
-      SystemMsgListView.a(this.a).d();
-      break;
     }
   }
 }

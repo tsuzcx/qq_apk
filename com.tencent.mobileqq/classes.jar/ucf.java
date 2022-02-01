@@ -1,23 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ucf
-  implements anil
+final class ucf
+  implements DialogInterface.OnClickListener
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.viola.core.ViolaInstance;
 
 public class tiz
-  implements tjl
+  extends tin
+  implements tig
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public tiz(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
+  public tiz(Activity paramActivity, tia paramtia, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
-    }
+    super(paramActivity, paramtia, paramVVideoView, paramViolaInstance);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public void I_() {}
+  
+  public void J_() {}
+  
+  public void K_() {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import aqpu;
-import aqpv;
+import arfc;
+import arfd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -79,9 +79,9 @@ public class MiniAppLocalSearchManager
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    aqpu localaqpu = aqpv.a();
-    if (localaqpu != null) {}
-    for (boolean bool = localaqpu.b();; bool = false)
+    arfc localarfc = arfd.a();
+    if (localarfc != null) {}
+    for (boolean bool = localarfc.b();; bool = false)
     {
       if (!bool)
       {

@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class anob
+class anob
+  implements Comparator<ApolloActionData>
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
-    }
-  }
+  anob(annx paramannx) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a();
-    paramString = (RecentUser)paramQQAppInterface.findRecentUser(paramString, 1);
-    if (paramString != null) {
-      paramQQAppInterface.delRecentUser(paramString);
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
     }
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
+    }
+    return -1;
   }
 }
 

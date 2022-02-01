@@ -1,220 +1,250 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
-import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbbv
-  extends BaseAdapter
 {
-  private bbbv(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public static final long[] a;
+  public double a;
+  public float a;
+  public int a;
+  public long a;
+  public float b;
+  public int b;
+  public long[] b;
+  public int c = 15;
+  public int d = 2;
+  public int e = 3;
+  public int f = 3;
+  public int g = 10;
+  public int h = 1;
+  public int i = 21;
+  public int j = 3;
+  public int k = 5;
+  public int l = 1;
+  public int m = 1;
+  public int n = 5;
+  public int o = 1;
+  public int p = 10;
+  public int q = 1;
+  public int r;
+  public int s = 200;
+  public int t = 24;
+  public int u = 48;
   
-  public int getCount()
+  static
   {
-    int i = SignatureHistoryFragment.b(this.a).size();
-    if (i == 0) {
-      return 1;
-    }
-    return i + 1;
+    jdField_a_of_type_ArrayOfLong = new long[] { 10009L, 10010L, 10011L, 32L };
   }
   
-  public Object getItem(int paramInt)
+  public bbbv(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt >= SignatureHistoryFragment.b(this.a).size()) {
-      return null;
-    }
-    return SignatureHistoryFragment.b(this.a).get(paramInt);
+    this.jdField_a_of_type_Double = 3.0D;
+    this.jdField_b_of_type_ArrayOfLong = new long[] { 10009L, 10010L, 10011L, 32L };
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 100;
+    this.jdField_a_of_type_Long = 1514736000L;
+    this.jdField_a_of_type_Float = 0.01F;
+    this.jdField_b_of_type_Float = 0.5F;
+    a(bhsi.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), "batch_add_friend_for_troop_config"));
   }
   
-  public long getItemId(int paramInt)
+  public int a(int paramInt)
   {
-    return getItemViewType(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    int i = SignatureHistoryFragment.b(this.a).size();
-    if (i == 0) {
-      return 2;
-    }
-    if (paramInt < i) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = getItemViewType(paramInt);
-    if (i == 2)
+    switch (paramInt)
     {
-      SignatureHistoryFragment.a(this.a).setLayoutParams(new AbsListView.LayoutParams(this.a.jdField_a_of_type_ComTencentWidgetXListView.getWidth(), this.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight()));
-      paramView = SignatureHistoryFragment.a(this.a);
+    default: 
+      return 10;
+    case 2: 
+      return this.g;
+    case 3: 
+      return this.k;
+    case 4: 
+      return this.n;
+    }
+    return this.r;
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 4, "update content is null!");
+      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      if (i == 0)
+      return;
+      try
       {
-        localObject2 = (HistorySignItem)SignatureHistoryFragment.b(this.a).get(paramInt);
-        if (paramView == null)
+        paramString = new JSONObject(paramString);
+        if (paramString.has("switchOn")) {
+          this.jdField_a_of_type_Int = paramString.getInt("switchOn");
+        }
+        if (paramString.has("troopMemberNumLimit")) {
+          this.jdField_b_of_type_Int = paramString.getInt("troopMemberNumLimit");
+        }
+        if (paramString.has("troopJoinDayLimit")) {
+          this.c = paramString.getInt("troopJoinDayLimit");
+        }
+        if (paramString.has("commonFriendProportionLimit")) {
+          this.jdField_a_of_type_Float = ((float)paramString.getDouble("commonFriendProportionLimit"));
+        }
+        Object localObject;
+        if (paramString.has("troopJoinLine")) {
+          localObject = paramString.getString("troopJoinLine");
+        }
+        try
         {
-          localObject1 = new BoxShadowLayout(this.a.getActivity());
-          paramView = this.a.a((View)localObject1);
-          localObject1 = new bbdj(this.a.getActivity(), this.a.getActivity().app, (View)localObject1, SignatureHistoryFragment.a(this.a));
-          SignatureHistoryFragment.a(this.a).add(localObject1);
-          ((bbdj)localObject1).a(this.a);
-          ((bbdj)localObject1).a(this.a);
-          Object localObject3 = (LinearLayout)((bbdj)localObject1).b();
-          ((bbdj)localObject1).c().setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-          ((bbdj)localObject1).c().setOnClickListener(this.a);
-          LayoutInflater.from(this.a.getActivity()).inflate(2131561542, (ViewGroup)localObject3);
-          paramView.setTag(localObject1);
-          label252:
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364240));
-          ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView = ((CommentsView)paramView.findViewById(2131364589));
-          ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.setOnSpanItemClick(new bbbw(this));
-          ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.setOnItemClickListener(new bbbx(this, (HistorySignItem)localObject2));
-          ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.setOnItemLongClickListener(new bbby(this, (HistorySignItem)localObject2));
-          ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView = ((LikesView)paramView.findViewById(2131370180));
-          ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.setOnItemClickListener(new bbca(this));
-          paramView.setTag(localObject1);
-          paramView.setClickable(true);
-          if ((localObject2 == null) || (((HistorySignItem)localObject2).richStatus == null) || (((HistorySignItem)localObject2).richStatus.feedsId == null)) {
-            break label675;
+          this.jdField_a_of_type_Long = (new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse((String)localObject).getTime() / 1000L);
+          if (paramString.has("nonFriendProportionLimit")) {
+            this.jdField_b_of_type_Float = ((float)paramString.getDouble("nonFriendProportionLimit"));
           }
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setTag(((HistorySignItem)localObject2).richStatus.feedsId);
-          label413:
-          if (!SignatureHistoryFragment.b(this.a)) {
-            break label689;
+          if (paramString.has("tipsTotalCountForTroopEveryday")) {
+            this.e = paramString.getInt("tipsTotalCountForTroopEveryday");
           }
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-          label447:
-          if ((localObject2 == null) || (((HistorySignItem)localObject2).richStatus == null) || (((HistorySignItem)localObject2).richStatus.feedsId == null)) {
-            break label714;
+          if (paramString.has("tipsTotalCountForUin")) {
+            this.f = paramString.getInt("tipsTotalCountForUin");
           }
-          if (!SignatureHistoryFragment.a(this.a).contains(((HistorySignItem)localObject2).richStatus.feedsId)) {
-            break label702;
-          }
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-          label501:
-          ((bbdj)localObject1).jdField_a_of_type_Int = paramInt;
-          ((bbdj)localObject1).c = SignatureHistoryFragment.a(this.a);
-          localObject3 = ((HistorySignItem)localObject2).richStatus;
-          ((bbdj)localObject1).b = ((RichStatus)localObject3);
-          ((bbdj)localObject1).a((RichStatus)localObject3);
-          if (((((HistorySignItem)localObject2).likeItemList == null) || (((HistorySignItem)localObject2).likeItemList.size() <= 0)) && ((((HistorySignItem)localObject2).commentItemList == null) || (((HistorySignItem)localObject2).commentItemList.size() <= 0))) {
-            break label726;
-          }
-          if (((bbdj)localObject1).b() != null)
+          if (paramString.has("activeUser"))
           {
-            ((bbdj)localObject1).b().setVisibility(0);
-            ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a(((HistorySignItem)localObject2).likeItemList, ((HistorySignItem)localObject2).totalLikeNum);
-            ((bbdj)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.a(((HistorySignItem)localObject2).commentItemList);
+            localObject = paramString.getJSONObject("activeUser");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("totalCommonFriends")) {
+                this.g = ((JSONObject)localObject).getInt("totalCommonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.h = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
+          }
+          if (paramString.has("highFreqInteract"))
+          {
+            localObject = paramString.getJSONObject("highFreqInteract");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("interactDuration")) {
+                this.i = ((JSONObject)localObject).getInt("interactDuration");
+              }
+              if (((JSONObject)localObject).has("interactRounds")) {
+                this.j = ((JSONObject)localObject).getInt("interactRounds");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.k = ((JSONObject)localObject).getInt("commonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.l = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
+          }
+          if (paramString.has("newMember"))
+          {
+            localObject = paramString.getJSONObject("newMember");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("newMemberIndex")) {
+                this.m = ((JSONObject)localObject).getInt("newMemberIndex");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.n = ((JSONObject)localObject).getInt("commonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.o = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
+          }
+          if (paramString.has("atMeOrReplyMe"))
+          {
+            localObject = paramString.getJSONObject("atMeOrReplyMe");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("maxDateLenth")) {
+                this.jdField_a_of_type_Double = ((JSONObject)localObject).getDouble("maxDateLenth");
+              }
+              if (((JSONObject)localObject).has("maxMsgCount")) {
+                this.p = ((JSONObject)localObject).getInt("maxMsgCount");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.q = ((JSONObject)localObject).getInt("switchOn");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.r = ((JSONObject)localObject).getInt("commonFriends");
+              }
+            }
+          }
+          if (paramString.has("troopMemberCount_ahn")) {
+            this.s = paramString.getInt("troopMemberCount_ahn");
+          }
+          if (!paramString.has("troopType_ahn")) {
+            break label991;
+          }
+          localObject = paramString.getJSONArray("troopType_ahn");
+          this.jdField_b_of_type_ArrayOfLong = new long[((JSONArray)localObject).length()];
+          int i1 = 0;
+          while (i1 < this.jdField_b_of_type_ArrayOfLong.length)
+          {
+            this.jdField_b_of_type_ArrayOfLong[i1] = ((JSONArray)localObject).optInt(i1);
+            i1 += 1;
           }
         }
-        for (;;)
+        catch (Throwable localThrowable)
         {
-          ((bbdj)localObject1).f = SignatureHistoryFragment.a(this.a, ((HistorySignItem)localObject2).likeItemList, SignatureHistoryFragment.b(this.a));
-          ((bbdj)localObject1).j();
-          break;
-          localObject1 = (bbdj)paramView.getTag();
-          break label252;
-          label675:
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setTag("");
-          break label413;
-          label689:
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-          break label447;
-          label702:
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-          break label501;
-          label714:
-          ((bbdj)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-          break label501;
-          label726:
-          if (((bbdj)localObject1).b() != null) {
-            ((bbdj)localObject1).b().setVisibility(8);
+          for (;;)
+          {
+            localThrowable.printStackTrace();
           }
         }
+        if (!QLog.isColorLevel()) {}
       }
-      Object localObject1 = paramView;
-      if (paramView == null)
+      catch (Exception paramString)
       {
-        localObject1 = this.a.getActivity().getLayoutInflater().inflate(2131559480, null);
-        ((View)localObject1).setBackgroundColor(this.a.getResources().getColor(2131167224));
-        paramView = new bbcb();
-        ((View)localObject1).setTag(paramView);
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject1).findViewById(2131376313));
-        ((View)localObject1).findViewById(2131370192).setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131371326));
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165343));
-      }
-      if (SignatureHistoryFragment.a(this.a) == 1)
-      {
-        SignatureHistoryFragment.a(this.a, 2);
-        this.a.a(false, false);
-      }
-      paramView = (bbcb)((View)localObject1).getTag();
-      Object localObject2 = new AbsListView.LayoutParams(-1, -2);
-      if (SignatureHistoryFragment.a(this.a) == 3)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712886));
-        ((AbsListView.LayoutParams)localObject2).height = afur.a(60.0F, this.a.getResources());
-        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        paramView = (View)localObject1;
-      }
-      else if (SignatureHistoryFragment.a(this.a) == 2)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712872));
-        ((AbsListView.LayoutParams)localObject2).height = afur.a(60.0F, this.a.getResources());
-        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        paramView = (View)localObject1;
-      }
-      else
-      {
-        if (SignatureHistoryFragment.a(this.a) == 0)
+        if (QLog.isColorLevel())
         {
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-          ((AbsListView.LayoutParams)localObject2).height = (bclx.b / 4);
-          ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          paramString.printStackTrace();
+          QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, "update exception ", paramString);
         }
-        paramView = (View)localObject1;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, String.format(Locale.getDefault(), "update {switchOn: %s, troopMemberNumLimit: %s, troopJoinDayLimit: %s, commonFriendProportionLimit:%s, troopJoinLine: %s, insertGrayTipLimit: %s, nonFriendProportionLimit: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Float.valueOf(this.jdField_a_of_type_Float), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.d), Float.valueOf(this.jdField_b_of_type_Float) }));
+      QLog.d("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, "update tipsTotalCountForTroopEveryday = " + this.e + ",tipsTotalCountForUin = " + this.f + ",au_totalCommonFriends = " + this.g + ",au_switchOn = " + this.h + ",hfi_interactDuration = " + this.i + ",hfi_interactRounds = " + this.j + ",hfi_commonFriends = " + this.k + ",nm_newMemberIndex = " + this.m + ",nm_commonFriends = " + this.n + ",nm_switchOn = " + this.o + ",aor_maxDateLength = " + this.jdField_a_of_type_Double + ",aor_maxMsgCount = " + this.p + ",aor_switchOn = " + this.q + ",aor_commonFriends = " + this.r + ",troopMemberCount_ahn = " + this.s + ",troopType_ahn = " + Arrays.toString(this.jdField_b_of_type_ArrayOfLong) + ",cacheTimeCmnFrdCntData = " + this.t + ",cacheTimeRemarkData = " + this.u);
+      return;
+      label991:
+      if (paramString.has("cacheTimeCmnFrdCntData")) {
+        this.t = paramString.getInt("cacheTimeCmnFrdCntData");
+      }
+      if (paramString.has("cacheTimeRemarkData")) {
+        this.u = paramString.getInt("cacheTimeRemarkData");
       }
     }
   }
   
-  public int getViewTypeCount()
+  public boolean a(TroopInfo paramTroopInfo, long[] paramArrayOfLong)
   {
-    return 3;
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return 2 != getItemViewType(paramInt);
+    if (paramTroopInfo == null) {}
+    for (;;)
+    {
+      return false;
+      int i2 = paramArrayOfLong.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        long l1 = paramArrayOfLong[i1];
+        if (paramTroopInfo.dwGroupClassExt == l1) {
+          return true;
+        }
+        i1 += 1;
+      }
+    }
   }
 }
 

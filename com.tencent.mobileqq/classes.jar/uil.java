@@ -1,35 +1,57 @@
-class uil
-  implements uos
+import UserGrowth.stFeed;
+import UserGrowth.stSplitBlock;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class uil
+  extends blsy<stFeed>
 {
-  uil(uik paramuik, uii paramuii, uos paramuos) {}
+  private TextView a;
+  private TextView b;
+  
+  private uil(ViewGroup paramViewGroup, ucr paramucr)
+  {
+    super(paramViewGroup, 2131560389);
+    b();
+  }
+  
+  public static uil a(ViewGroup paramViewGroup, ucr paramucr)
+  {
+    return new uil(paramViewGroup, paramucr);
+  }
+  
+  private void b()
+  {
+    this.a = ((TextView)a(2131381494));
+    this.b = ((TextView)a(2131381495));
+  }
   
   public void a()
   {
-    uik.a(this.jdField_a_of_type_Uik, this.jdField_a_of_type_Uii);
-    if (this.jdField_a_of_type_Uos != null) {
-      this.jdField_a_of_type_Uos.a();
-    }
+    uns.a(1);
   }
   
-  public void b()
+  public void a(stFeed paramstFeed)
   {
-    if (this.jdField_a_of_type_Uos != null) {
-      this.jdField_a_of_type_Uos.b();
+    if (paramstFeed == null) {}
+    do
+    {
+      return;
+      paramstFeed = paramstFeed.recommend_splitter;
+    } while (paramstFeed == null);
+    if (TextUtils.isEmpty(paramstFeed.text)) {
+      this.a.setVisibility(8);
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Uos != null) {
-      this.jdField_a_of_type_Uos.c();
+    while (TextUtils.isEmpty(paramstFeed.tips))
+    {
+      this.b.setVisibility(8);
+      return;
+      this.a.setVisibility(0);
+      this.a.setText(paramstFeed.text);
     }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Uos != null) {
-      this.jdField_a_of_type_Uos.d();
-    }
+    this.b.setVisibility(0);
+    this.b.setText(paramstFeed.tips);
   }
 }
 

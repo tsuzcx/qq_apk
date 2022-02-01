@@ -1,27 +1,60 @@
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bcpb
-  implements QQPermissionCallback
+public class bcpb
+  extends bckw
 {
-  public bcpb(bcpg parambcpg, AppActivity paramAppActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private bcpc jdField_a_of_type_Bcpc;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bcpb(bckk parambckk, Context paramContext)
   {
-    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bcpg);
+    super(parambckk, paramContext);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private void a()
   {
-    if (this.jdField_a_of_type_Bcpg != null) {
-      this.jdField_a_of_type_Bcpg.a();
+    String str = a();
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
+      }
+      this.jdField_a_of_type_Bcpc.a();
+      this.jdField_a_of_type_Bcpc.a(str);
+      this.jdField_a_of_type_Bcpc.b();
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
+  }
+  
+  private void b(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559818, null, false);
+    this.jdField_a_of_type_Bcpc.a(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public View a(Context paramContext)
+  {
+    this.jdField_a_of_type_Bcpc = new bcpc(paramContext);
+    b(paramContext);
+    a();
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void e()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpb
  * JD-Core Version:    0.7.0.1
  */

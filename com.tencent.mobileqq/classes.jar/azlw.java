@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-public abstract interface azlw
-  extends azlx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azlw
+  implements View.OnClickListener
 {
-  public abstract azlv a(int paramInt);
+  public static final azlw a = new azlw();
   
-  public abstract void a(azlv paramazlv);
-  
-  public abstract void a(BaseActivity paramBaseActivity);
-  
-  public abstract void b(azlv paramazlv);
+  public final void onClick(View paramView) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import android.support.v4.app.FragmentActivity;
-import bglf;
+import bhlg;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.qphone.base.util.QLog;
 
@@ -19,7 +19,7 @@ class RedPacketKuaKuaFragment$2
       }
       return;
     }
-    bglf.c(this.this$0.getActivity().app, this.this$0.a.senderuin, true);
+    bhlg.c(this.this$0.getActivity().app, this.this$0.a.senderuin, true);
   }
 }
 

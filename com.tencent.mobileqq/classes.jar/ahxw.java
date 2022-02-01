@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahxw
-  implements View.OnClickListener
+public class ahxw
+  implements ahyf
 {
-  ahxw(ahxt paramahxt) {}
-  
-  public void onClick(View paramView)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    afur.n = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramahed.c(paramMessageRecord, paramahfq);
   }
 }
 

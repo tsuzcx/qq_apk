@@ -1,10 +1,23 @@
-import android.widget.TextView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
 public class amcu
+  extends MqqHandler
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  public amcu(ContactsInnerFrame paramContactsInnerFrame) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    ContactsInnerFrame.a(this.a);
+  }
 }
 
 

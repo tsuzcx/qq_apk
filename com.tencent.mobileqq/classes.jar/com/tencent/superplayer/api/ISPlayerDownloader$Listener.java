@@ -4,21 +4,21 @@ import java.util.Map;
 
 public abstract interface ISPlayerDownloader$Listener
 {
-  public abstract void onDownloadCdnUrlExpired(Map<String, String> paramMap);
+  public abstract void onDownloadCdnUrlExpired(int paramInt, Map<String, String> paramMap);
   
-  public abstract void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4);
+  public abstract void onDownloadCdnUrlInfoUpdate(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
   
-  public abstract void onDownloadCdnUrlUpdate(String paramString);
+  public abstract void onDownloadCdnUrlUpdate(int paramInt, String paramString);
   
-  public abstract void onDownloadError(int paramInt1, int paramInt2, String paramString);
+  public abstract void onDownloadError(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
-  public abstract void onDownloadFinish();
+  public abstract void onDownloadFinish(int paramInt);
   
-  public abstract void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public abstract void onDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString);
   
-  public abstract void onDownloadProtocolUpdate(String paramString1, String paramString2);
+  public abstract void onDownloadProtocolUpdate(int paramInt, String paramString1, String paramString2);
   
-  public abstract void onDownloadStatusUpdate(int paramInt);
+  public abstract void onDownloadStatusUpdate(int paramInt1, int paramInt2);
 }
 
 

@@ -1,20 +1,59 @@
-import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaFeed;
+import android.view.ViewGroup;
 
 public class uiq
-  extends uig
 {
-  public uiq(uii paramuii)
+  public static blsy<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, udq paramudq)
   {
-    super(paramuii);
+    return uip.a(paramViewGroup, paramudq, paramInt);
   }
   
-  public boolean a(uii paramuii)
+  public static uir a(int paramInt)
   {
-    uee.a(paramuii.a(), paramuii.a().H5Url);
-    if (paramuii.a() != null) {
-      paramuii.a().c();
-    }
-    return true;
+    uir localuir = new uir();
+    localuir.jdField_a_of_type_Int = paramInt;
+    localuir.jdField_a_of_type_Boolean = b(paramInt);
+    localuir.b = c(paramInt);
+    localuir.c = d(paramInt);
+    localuir.d = e(paramInt);
+    localuir.e = f(paramInt);
+    localuir.f = g(paramInt);
+    return localuir;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10);
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    return (paramInt == 6) || (paramInt == 7);
+  }
+  
+  private static boolean c(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3);
+  }
+  
+  private static boolean d(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean e(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3);
+  }
+  
+  private static boolean f(int paramInt)
+  {
+    return (paramInt == 6) || (paramInt == 7);
+  }
+  
+  private static boolean g(int paramInt)
+  {
+    return (paramInt == 3) || (paramInt == 7) || (paramInt == 8);
   }
 }
 

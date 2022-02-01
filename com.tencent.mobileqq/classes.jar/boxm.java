@@ -1,26 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class boxm
-  extends AnimatorListenerAdapter
+  implements boyz
 {
-  public boxm(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public boxm(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    this.a.a.d = 5;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
-    }
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
-    }
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
   }
 }
 

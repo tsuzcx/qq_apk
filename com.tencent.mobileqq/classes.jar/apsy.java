@@ -1,56 +1,24 @@
-import com.tencent.common.app.AppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class apsy
+  implements View.OnTouchListener
 {
-  public static final String a;
-  public apta[] a;
+  public apsy(ARScanEntryView paramARScanEntryView) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_JavaLangString = aptb.class.getSimpleName() + "." + apsy.class.getSimpleName();
-  }
-  
-  public apsy()
-  {
-    this.jdField_a_of_type_ArrayOfApta = new apta[7];
-  }
-  
-  public apta a(AppInterface paramAppInterface, int paramInt)
-  {
-    int i;
-    if (paramInt >= 0)
+    switch (paramMotionEvent.getAction())
     {
-      i = paramInt;
-      if (paramInt <= 7) {}
-    }
-    else
-    {
-      i = 0;
-    }
-    Object localObject = this.jdField_a_of_type_ArrayOfApta[i];
-    paramAppInterface = (AppInterface)localObject;
-    if (localObject == null)
-    {
-      paramAppInterface = (AppInterface)localObject;
-      switch (i)
-      {
-      default: 
-        paramAppInterface = (AppInterface)localObject;
-      }
     }
     for (;;)
     {
-      localObject = paramAppInterface;
-      if (paramAppInterface == null) {
-        localObject = new apsz();
-      }
-      this.jdField_a_of_type_ArrayOfApta[i] = localObject;
-      return localObject;
-      paramAppInterface = new lts();
+      return false;
+      paramView.setAlpha(0.5F);
       continue;
-      paramAppInterface = new aosf();
-      continue;
-      paramAppInterface = new myv();
+      paramView.setAlpha(1.0F);
     }
   }
 }

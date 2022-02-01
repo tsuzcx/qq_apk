@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import aulk;
+import avdk;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private aulk a;
+  private avdk a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -49,9 +49,9 @@ public class PerfRelativeLayout
     }
   }
   
-  public void setOnDrawCompleteListener(aulk paramaulk)
+  public void setOnDrawCompleteListener(avdk paramavdk)
   {
-    this.a = paramaulk;
+    this.a = paramavdk;
   }
 }
 

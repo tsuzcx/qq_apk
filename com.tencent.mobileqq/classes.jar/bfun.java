@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
 
 public class bfun
-  implements HostnameVerifier
 {
-  public bfun(TroopUploadingThread paramTroopUploadingThread, HttpsURLConnection paramHttpsURLConnection) {}
+  public int a;
+  public TroopEssenceMsgItem a;
+  public String a;
+  public String b;
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public bfun(TroopEssenceMsgItem paramTroopEssenceMsgItem, int paramInt, String paramString1, String paramString2)
   {
-    String str = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getRequestProperty("Host");
-    paramString = str;
-    if (str == null) {
-      paramString = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getURL().getHost();
+    this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem = paramTroopEssenceMsgItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("msgItem:");
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem != null) {}
+    for (String str = this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.toString();; str = "null")
+    {
+      localStringBuilder2.append(str).append(" ");
+      localStringBuilder1.append("graytipmsgseq:").append(this.jdField_a_of_type_Int).append(" ");
+      localStringBuilder1.append("opNickName:").append(this.jdField_a_of_type_JavaLangString).append(" ");
+      localStringBuilder1.append("senderNickName:").append(this.b);
+      return localStringBuilder1.toString();
     }
-    return HttpsURLConnection.getDefaultHostnameVerifier().verify(paramString, paramSSLSession);
   }
 }
 

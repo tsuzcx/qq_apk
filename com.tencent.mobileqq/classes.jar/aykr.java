@@ -1,15 +1,24 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aykr
+public class aykr
   implements View.OnClickListener
 {
-  aykr(ayko paramayko, ayld paramayld) {}
+  public aykr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ayld.a.b();
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    this.a.c();
+    this.a.b(true);
+    bdll.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

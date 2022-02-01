@@ -1,34 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.mobileqq.app.DataMigrationService;
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class anwe
-  extends niv
+public class anwe
+  extends WtloginListener
 {
-  anwe(anwd paramanwd) {}
+  public anwe(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    if (paramInt == 0)
-    {
-      paramBundle = new oidb_0x496.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        anwd.a(this.a, paramBundle);
-        anwd.b(this.a, paramBundle);
-        anwd.c(this.a, paramBundle);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
     }
-    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
+    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
+    }
+    if (paramInt2 != 0)
+    {
+      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
+    }
+    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
   }
 }
 

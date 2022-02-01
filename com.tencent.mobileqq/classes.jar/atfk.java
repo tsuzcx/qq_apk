@@ -1,29 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class atfk
-  extends atfi
+  implements DialogInterface.OnClickListener
 {
-  public atfk(atfe paramatfe)
-  {
-    super(paramatfe);
-  }
+  atfk(atfi paramatfi) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateCancelUploadWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 11, 9);
-    atfe.c(this.jdField_a_of_type_Atfe, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Atfi = new atfl(this.jdField_a_of_type_Atfe);
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 

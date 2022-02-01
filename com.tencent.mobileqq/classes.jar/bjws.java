@@ -1,13 +1,18 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadManager.17;
 
-class bjws
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener
+public class bjws
+  implements DialogInterface.OnClickListener
 {
-  bjws(bjwn parambjwn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener) {}
+  public bjws(DownloadManager.17 param17) {}
   
-  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_Bjwn, paramInt1, paramInt2);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bjwo.r, false);
+    bjwk.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 

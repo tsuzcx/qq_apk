@@ -1,136 +1,94 @@
-import android.os.Build;
-import android.os.Environment;
-import android.os.StatFs;
-import android.text.TextUtils;
-import java.io.File;
-import java.lang.reflect.Method;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
+import com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipsLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 public class bgjq
+  implements ajsj
 {
-  public static String a;
-  static boolean a;
-  static boolean b;
+  public Context a;
+  private final View jdField_a_of_type_AndroidViewView;
+  public bgjt a;
+  public IndexBar a;
+  public IndexBarTipsLayout a;
+  public QQAppInterface a;
+  public XListView a;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  static
+  public bgjq(QQAppInterface paramQQAppInterface, Context paramContext, TroopChatPie paramTroopChatPie, View paramView, XListView paramXListView)
   {
-    jdField_a_of_type_JavaLangString = "SystemUtil";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Bgjt = new bgjt(this, paramTroopChatPie);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bgjt);
+    a();
   }
   
-  public static long a()
+  private void a()
   {
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
-    }
-    catch (Exception localException) {}
-    return 0L;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368625));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368624));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setOnIndexBarTouchListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setVisibility(8);
   }
   
-  public static String a(String paramString)
+  public void a(String paramString, int paramInt, float paramFloat)
   {
-    try
-    {
-      Class localClass = Class.forName("android.os.SystemProperties");
-      paramString = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString, null });
-      return paramString;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setText(paramString, paramFloat);
     }
-    catch (Exception paramString)
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
     {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    boolean bool2 = true;
-    jdField_a_of_type_Boolean = true;
-    boolean bool1 = bool2;
-    if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
-    {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
-        if (TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
-          break label50;
-        }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (!"★".equals(paramString)) {
+        break label50;
       }
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
     }
     label50:
-    for (bool1 = bool2;; bool1 = false)
+    do
     {
-      b = bool1;
       return;
-    }
+      paramInt = this.jdField_a_of_type_Bgjt.a(paramString);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(paramInt + this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount());
   }
   
-  public static boolean a()
+  public void c(boolean paramBoolean)
   {
-    boolean bool1 = false;
-    try
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    IndexBarTipsLayout localIndexBarTipsLayout;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null)
     {
-      boolean bool2 = Environment.getExternalStorageState().equals("mounted");
-      if (bool2) {
-        bool1 = true;
+      localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
+      if (!paramBoolean) {
+        break label67;
       }
-      return bool1;
     }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static long b()
-  {
-    try
+    for (;;)
     {
-      StatFs localStatFs = new StatFs("/data/data/com.tencent.mobileqq/files/");
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
+      localIndexBarTipsLayout.setVisibility(i);
+      return;
+      label67:
+      i = 8;
     }
-    catch (Exception localException) {}
-    return 0L;
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return b;
-    }
-    a();
-    return b;
-  }
-  
-  public static boolean c()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean d()
-  {
-    boolean bool = false;
-    try
-    {
-      Method localMethod = Build.class.getMethod("hasSmartBar", new Class[0]);
-      if (localMethod != null) {
-        bool = true;
-      }
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static boolean e()
-  {
-    return (!TextUtils.isEmpty(a("ro.meizu.product.model"))) || ("meizu".equalsIgnoreCase(Build.BRAND)) || ("22c4185e".equalsIgnoreCase(Build.BRAND));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgjq
  * JD-Core Version:    0.7.0.1
  */

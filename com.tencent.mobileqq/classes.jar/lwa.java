@@ -1,433 +1,311 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class lwa
-  implements lvy
+public class lwa
 {
-  private IBinder a;
-  
-  lwa(IBinder paramIBinder)
+  public static RedTouch a(VideoAppInterface paramVideoAppInterface, View paramView, int paramInt)
   {
-    this.a = paramIBinder;
-  }
-  
-  public int a(long paramLong, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeLong(paramLong);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(7, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramInt = localParcel2.readInt();
-      return paramInt;
+    if ((paramVideoAppInterface == null) || (paramView == null)) {
+      return null;
     }
-    finally
+    String str = a(paramInt);
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(paramVideoAppInterface, paramInt);
+    if (a(localAppInfo))
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public com.tencent.av.service.AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_2
-    //   15: aload_1
-    //   16: invokevirtual 58	android/os/Parcel:writeByteArray	([B)V
-    //   19: aload_0
-    //   20: getfield 15	lwa:a	Landroid/os/IBinder;
-    //   23: bipush 9
-    //   25: aload_2
-    //   26: aload_3
-    //   27: iconst_0
-    //   28: invokeinterface 43 5 0
-    //   33: pop
-    //   34: aload_3
-    //   35: invokevirtual 46	android/os/Parcel:readException	()V
-    //   38: aload_3
-    //   39: invokevirtual 50	android/os/Parcel:readInt	()I
-    //   42: ifeq +26 -> 68
-    //   45: getstatic 64	com/tencent/av/service/AVPbInfo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   48: aload_3
-    //   49: invokeinterface 70 2 0
-    //   54: checkcast 60	com/tencent/av/service/AVPbInfo
-    //   57: astore_1
-    //   58: aload_3
-    //   59: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   62: aload_2
-    //   63: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   66: aload_1
-    //   67: areturn
-    //   68: aconst_null
-    //   69: astore_1
-    //   70: goto -12 -> 58
-    //   73: astore_1
-    //   74: aload_3
-    //   75: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   78: aload_2
-    //   79: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   82: aload_1
-    //   83: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	this	lwa
-    //   0	84	1	paramArrayOfByte	byte[]
-    //   3	76	2	localParcel1	Parcel
-    //   7	68	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	58	73	finally
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      this.a.transact(12, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeLong(paramLong);
-      this.a.transact(11, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeLong(paramLong);
-      localParcel1.writeString(paramString);
-      this.a.transact(10, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel.writeString(paramString);
-      this.a.transact(8, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString, android.graphics.Bitmap paramBitmap)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: aload_1
-    //   12: invokevirtual 74	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   15: aload_2
-    //   16: ifnull +34 -> 50
-    //   19: aload_3
-    //   20: iconst_1
-    //   21: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: invokevirtual 81	android/graphics/Bitmap:writeToParcel	(Landroid/os/Parcel;I)V
-    //   30: aload_0
-    //   31: getfield 15	lwa:a	Landroid/os/IBinder;
-    //   34: bipush 6
-    //   36: aload_3
-    //   37: aconst_null
-    //   38: iconst_1
-    //   39: invokeinterface 43 5 0
-    //   44: pop
-    //   45: aload_3
-    //   46: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   49: return
-    //   50: aload_3
-    //   51: iconst_0
-    //   52: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   55: goto -25 -> 30
-    //   58: astore_1
-    //   59: aload_3
-    //   60: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   63: aload_1
-    //   64: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	this	lwa
-    //   0	65	1	paramString	String
-    //   0	65	2	paramBitmap	android.graphics.Bitmap
-    //   3	57	3	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	15	58	finally
-    //   19	30	58	finally
-    //   30	45	58	finally
-    //   50	55	58	finally
-  }
-  
-  public void a(lvv paramlvv)
-  {
-    IBinder localIBinder = null;
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      if (paramlvv != null) {
-        localIBinder = paramlvv.asBinder();
+      Object localObject = paramView.getParent();
+      if ((localObject instanceof RedTouch)) {}
+      for (localObject = (RedTouch)localObject;; localObject = new RedTouch(paramVideoAppInterface.getApplication(), paramView).a(53).a())
+      {
+        ((RedTouch)localObject).a(localAppInfo);
+        paramVideoAppInterface.e(str);
+        QLog.d("AVRedTouchUtil", 1, "tryGetRedTouchAndShowRedDot suc. appId[" + str + "], view[" + paramView + "], redTouch[" + localObject + "]");
+        return localObject;
       }
-      localParcel.writeStrongBinder(localIBinder);
-      this.a.transact(1, localParcel, null, 1);
-      return;
     }
-    finally
-    {
-      localParcel.recycle();
-    }
+    QLog.d("AVRedTouchUtil", 1, "tryGetRedTouchAndShowRedDot fail. appId[" + str + "], view[" + paramView + "], appInfo[" + localAppInfo + "], hasRedDot[false]");
+    return null;
   }
   
-  public void a(boolean paramBoolean)
+  public static BusinessInfoCheckUpdate.AppInfo a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if (paramVideoAppInterface == null) {
+      paramVideoAppInterface = null;
+    }
+    Object localObject;
+    do
     {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      if (paramBoolean) {
-        i = 1;
+      return paramVideoAppInterface;
+      int j = 0;
+      localObject = paramVideoAppInterface.a();
+      int i = j;
+      if (localObject != null)
+      {
+        i = j;
+        if (((VideoController)localObject).a() != null) {
+          i = ((VideoController)localObject).a().d;
+        }
       }
-      localParcel1.writeInt(i);
-      this.a.transact(14, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      localObject = a(paramInt);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        QLog.d("AVRedTouchUtil", 1, "tryGetRedTouch failed. appId[" + (String)localObject + "]");
+        return null;
+      }
+      if (!a(paramVideoAppInterface, paramInt, i))
+      {
+        QLog.d("AVRedTouchUtil", 1, "tryGetRedTouch failed. can not show red touch. appId = " + (String)localObject);
+        return null;
+      }
+      localObject = a(paramVideoAppInterface, (String)localObject);
+      paramVideoAppInterface = (VideoAppInterface)localObject;
+    } while (a((BusinessInfoCheckUpdate.AppInfo)localObject));
+    return null;
+  }
+  
+  public static BusinessInfoCheckUpdate.AppInfo a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = null;
+    if (paramVideoAppInterface != null) {
+      localAppInfo = paramVideoAppInterface.a(paramString);
+    }
+    return localAppInfo;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 9: 
+      return "105000.105100.105140";
+    case 6: 
+      return "105000.105100.105120";
+    case 1: 
+      return "105000.105100";
+    case 2: 
+      return "105000.105100.105110";
+    case 3: 
+      return "105000.105100.105110.105111";
+    case 4: 
+      return "105000.105100.105110.105111.105116";
+    case 5: 
+      return "105000.105100.105110.105111.105117";
+    case 7: 
+      return "105000.105100.105130";
+    }
+    return "105000.105100.105130.105131";
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, RedTouch paramRedTouch, int paramInt)
+  {
+    if ((paramVideoAppInterface == null) || (paramRedTouch == null)) {
       return;
     }
-    finally
+    String str = a(paramInt);
+    if (TextUtils.isEmpty(str))
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean, android.app.Notification paramNotification)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   10: astore 5
-    //   12: aload 4
-    //   14: ldc 25
-    //   16: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   19: iload_1
-    //   20: ifeq +58 -> 78
-    //   23: aload 4
-    //   25: iload_3
-    //   26: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: ifnull +53 -> 83
-    //   33: aload 4
-    //   35: iconst_1
-    //   36: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   39: aload_2
-    //   40: aload 4
-    //   42: iconst_0
-    //   43: invokevirtual 96	android/app/Notification:writeToParcel	(Landroid/os/Parcel;I)V
-    //   46: aload_0
-    //   47: getfield 15	lwa:a	Landroid/os/IBinder;
-    //   50: iconst_5
-    //   51: aload 4
-    //   53: aload 5
-    //   55: iconst_0
-    //   56: invokeinterface 43 5 0
-    //   61: pop
-    //   62: aload 5
-    //   64: invokevirtual 46	android/os/Parcel:readException	()V
-    //   67: aload 5
-    //   69: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   72: aload 4
-    //   74: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   77: return
-    //   78: iconst_0
-    //   79: istore_3
-    //   80: goto -57 -> 23
-    //   83: aload 4
-    //   85: iconst_0
-    //   86: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   89: goto -43 -> 46
-    //   92: astore_2
-    //   93: aload 5
-    //   95: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   98: aload 4
-    //   100: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   103: aload_2
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	lwa
-    //   0	105	1	paramBoolean	boolean
-    //   0	105	2	paramNotification	android.app.Notification
-    //   1	79	3	i	int
-    //   5	94	4	localParcel1	Parcel
-    //   10	84	5	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	92	finally
-    //   23	29	92	finally
-    //   33	46	92	finally
-    //   46	67	92	finally
-    //   83	89	92	finally
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel.writeByteArray(paramArrayOfByte);
-      this.a.transact(2, localParcel, null, 1);
+      QLog.d("AVRedTouchUtil", 1, "clearRedDot falied. appId[" + str + "], redTouch[" + paramRedTouch + "]");
       return;
     }
-    finally
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(paramVideoAppInterface, str);
+    if (a(localAppInfo))
     {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      this.a.transact(13, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      paramVideoAppInterface.d(str);
+      paramRedTouch.d();
+      QLog.d("AVRedTouchUtil", 1, "clearRedDot successfully. appId[" + str + "], redTouch[" + paramRedTouch + "]");
       return;
     }
-    finally
+    QLog.d("AVRedTouchUtil", 1, "clearRedDot falied. appId[" + str + "], redTouch[" + paramRedTouch + "], appInfo[" + localAppInfo + "], hasRedDot[" + a(localAppInfo) + "]");
+  }
+  
+  private static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    String str = a(paramInt);
+    if (TextUtils.isEmpty(str))
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      QLog.d("AVRedTouchUtil", 1, "hasRedDot falied. appId = " + str);
+      return false;
+    }
+    paramVideoAppInterface = a(paramVideoAppInterface, str);
+    if (a(paramVideoAppInterface)) {
+      return true;
+    }
+    QLog.d("AVRedTouchUtil", 1, "hasRedDot falied. appId = " + str + ", appInfo = " + paramVideoAppInterface + ", hasRedDot = false");
+    return false;
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = false;
+    boolean bool4 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool7 = false;
+    boolean bool1 = false;
+    boolean bool3 = true;
+    if (paramVideoAppInterface == null)
+    {
+      bool2 = bool1;
+      return bool2;
+    }
+    bool1 = bool2;
+    switch (paramInt1)
+    {
+    default: 
+      bool1 = bool2;
+    case 4: 
+    case 1: 
+    case 2: 
+    case 3: 
+      for (;;)
+      {
+        bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("AVRedTouchUtil", 2, "canShowRedTouch, id[" + paramInt1 + "], show[" + bool1 + "]");
+        return bool1;
+        bool2 = a(paramVideoAppInterface, 1);
+        bool1 = bool2;
+        if (bool2)
+        {
+          bool2 = a(paramVideoAppInterface, 2, paramInt2);
+          bool1 = bool2;
+          if (!bool2) {
+            bool1 = a(paramVideoAppInterface, 6, paramInt2);
+          }
+          bool2 = bool1;
+          if (!bool1) {
+            bool2 = a(paramVideoAppInterface, 7, paramInt2);
+          }
+          bool1 = bool2;
+          if (!bool2)
+          {
+            bool1 = a(paramVideoAppInterface, 9, paramInt2);
+            continue;
+            if (paramInt2 != 2)
+            {
+              bool1 = bool4;
+              if (paramInt2 != 4) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+            bool2 = bool1;
+            if (bool1) {
+              bool2 = a(paramVideoAppInterface, 2);
+            }
+            bool1 = bool2;
+            if (bool2)
+            {
+              bool1 = a(paramVideoAppInterface, 3, paramInt2);
+              continue;
+              if (paramInt2 != 2)
+              {
+                bool1 = bool5;
+                if (paramInt2 != 4) {}
+              }
+              else
+              {
+                bool1 = true;
+              }
+              bool2 = bool1;
+              if (bool1) {
+                bool2 = a(paramVideoAppInterface, 3);
+              }
+              bool1 = bool2;
+              if (bool2)
+              {
+                bool2 = a(paramVideoAppInterface, 4, paramInt2);
+                bool1 = bool2;
+                if (!bool2) {
+                  bool1 = a(paramVideoAppInterface, 5, paramInt2);
+                }
+              }
+            }
+          }
+        }
+      }
+    case 5: 
+      if (paramInt2 != 2) {
+        break;
+      }
+    }
+    for (bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = a(paramVideoAppInterface, 5);
+      }
+      if (bool2)
+      {
+        if ((lpm.b()) && (loy.b())) {}
+        for (bool1 = bool3;; bool1 = false) {
+          break;
+        }
+        bool1 = a(paramVideoAppInterface, 6);
+        break;
+        bool1 = a(paramVideoAppInterface, 9);
+        break;
+        if (paramInt2 != 2)
+        {
+          bool1 = bool6;
+          if (paramInt2 != 4) {}
+        }
+        else
+        {
+          bool1 = lpm.b();
+        }
+        bool2 = bool1;
+        if (bool1) {
+          bool2 = a(paramVideoAppInterface, 7);
+        }
+        bool1 = bool2;
+        if (!bool2) {
+          break;
+        }
+        bool1 = a(paramVideoAppInterface, 8, paramInt2);
+        break;
+        if (paramInt2 != 2)
+        {
+          bool2 = bool7;
+          if (paramInt2 != 4) {}
+        }
+        else
+        {
+          bool2 = true;
+        }
+        bool1 = bool2;
+        if (!bool2) {
+          break;
+        }
+        bool1 = lpm.b();
+        break;
+      }
+      bool1 = bool2;
+      break;
     }
   }
   
-  public void b(byte[] paramArrayOfByte)
+  public static boolean a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    if (paramAppInfo == null) {}
+    while ((paramAppInfo.iNewFlag.get() == 0) || (paramAppInfo.exposure_max.get() < 0) || (paramAppInfo.red_display_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get().size() == 0)) {
+      return false;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void c()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      this.a.transact(15, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void c(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    return true;
   }
 }
 

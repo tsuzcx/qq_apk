@@ -1,8 +1,17 @@
-import android.view.View;
+import com.tencent.aladdin.config.utils.SpUtils.IAladdinSpOperator;
 
-public abstract interface pat
+final class pat
+  implements SpUtils.IAladdinSpOperator
 {
-  public abstract void a(int paramInt, View paramView);
+  public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
+  {
+    return bnrf.a(paramString, paramT, paramBoolean);
+  }
+  
+  public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
+  {
+    bnrf.a(paramString, paramT, paramBoolean);
+  }
 }
 
 

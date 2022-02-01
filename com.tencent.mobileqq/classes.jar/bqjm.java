@@ -1,31 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class bqjm
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
   bqjm(bqjl parambqjl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramIntent.getAction() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.b();
-      } while ((this.a.jdField_a_of_type_Bqjn == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.a();
-        this.a.jdField_a_of_type_Bqjn.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Bqjn.a(1, this.a.jdField_a_of_type_JavaLangString);
+    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.k();
   }
 }
 

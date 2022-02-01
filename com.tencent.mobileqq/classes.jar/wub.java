@@ -1,35 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
 
-public final class wub
-  extends QQUIEventReceiver<wtu, wqe>
+public class wub
 {
-  public wub(@NonNull wtu paramwtu)
-  {
-    super(paramwtu);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(@NonNull wtu paramwtu, @NonNull wqe paramwqe)
+  public FilterItem a()
   {
-    yqp.a(this.TAG, "onEvent, %s", String.valueOf(paramwqe));
-    wrs localwrs = paramwtu.a.a(3, "");
-    if ((localwrs != null) && (paramwqe.jdField_b_of_type_JavaLangString.equals(localwrs.jdField_e_of_type_JavaLangString)))
+    try
     {
-      yqp.b(this.TAG, "onEvent, guideInfoNode read");
-      paramwtu = new wta();
-      paramwtu.jdField_b_of_type_JavaLangString = localwrs.jdField_a_of_type_JavaLangString;
-      paramwtu.c = localwrs.jdField_a_of_type_Int;
-      paramwtu.d = 5;
-      paramwtu.jdField_b_of_type_Long = localwrs.jdField_e_of_type_Long;
-      wlb.a().a(paramwtu, null);
-      return;
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
     }
-    paramwtu.a.a(paramwqe.jdField_a_of_type_JavaLangString, paramwqe.jdField_a_of_type_Long);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wqe.class;
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
+    }
   }
 }
 

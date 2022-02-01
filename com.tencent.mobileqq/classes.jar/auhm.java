@@ -1,40 +1,54 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 class auhm
-  implements DialogInterface.OnClickListener
+  implements aufa
 {
-  auhm(auhk paramauhk) {}
+  auhm(auha paramauha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(augl paramaugl)
   {
-    if (paramInt == 1)
+    paramaugl = ((aufd)paramaugl).a();
+    if (paramaugl == null) {}
+    Object localObject;
+    do
     {
-      auhk.a(this.a).k(true);
-      paramDialogInterface = new Intent(auhk.a(this.a), LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface = afur.a(paramDialogInterface, new int[] { 2 });
-      paramDialogInterface.putExtra("key_action", auhk.class.getSimpleName());
-      paramDialogInterface.putExtra("uin", auhk.a(this.a).jdField_a_of_type_JavaLangString);
-      paramDialogInterface.putExtra("uintype", auhk.a(this.a).jdField_a_of_type_Int);
-      paramDialogInterface.putExtra("thridparty_pull_aio", true);
-      paramDialogInterface.putExtra("pull_aio_audio", auhk.a(this.a));
-      paramDialogInterface.putExtra("pull_aio_video", auhk.b(this.a));
-      paramDialogInterface.putExtra("openid", auhk.a(this.a));
-      paramDialogInterface.putExtra("appid", auhk.b(this.a));
-      paramDialogInterface.putExtra("pull_aio_audio", auhk.a(this.a));
-      paramDialogInterface.putExtra("pull_aio_video", auhk.b(this.a));
-      paramDialogInterface.putExtra("uinname", auhk.a(this.a).d);
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      auhk.a(this.a).dismiss();
-      auhk.a(this.a).startActivity(paramDialogInterface);
-    }
+      do
+      {
+        return;
+      } while ((aunj.a(paramaugl.a()) != 0) || (TextUtils.isEmpty(paramaugl.a())) || (!TextUtils.isEmpty(paramaugl.g())));
+      FileManagerEntity localFileManagerEntity = paramaugl.a();
+      if (localFileManagerEntity == null)
+      {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
+        return;
+      }
+      localObject = bgsk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
+      }
+      if (TextUtils.isEmpty(((bftf)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
+        }
+        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
+        if (localFileManagerEntity.strTroopFileID == null)
+        {
+          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramaugl.a(), localFileManagerEntity.busId, 640);
+          return;
+        }
+        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
+      }
+    } while (this.a.jdField_a_of_type_Augo == null);
+    this.a.jdField_a_of_type_Augo.a(((bftf)localObject).e, ((bftf)localObject).c);
   }
 }
 

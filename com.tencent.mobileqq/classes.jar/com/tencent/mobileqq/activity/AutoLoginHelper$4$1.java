@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adoo;
-import ador;
+import adxp;
+import adxs;
 
 public class AutoLoginHelper$4$1
   implements Runnable
 {
-  public AutoLoginHelper$4$1(ador paramador) {}
+  public AutoLoginHelper$4$1(adxs paramadxs) {}
   
   public void run()
   {
-    adoo.a(this.a.a).a(2131715770, 1);
+    adxp.a(this.a.a).a(2131715879, 1);
   }
 }
 

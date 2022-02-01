@@ -1,20 +1,25 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 
-class adtd
-  implements DialogInterface.OnCancelListener
+public class adtd
+  implements bliz
 {
-  adtd(adtc paramadtc) {}
+  public adtd(AddFriendVerifyActivity paramAddFriendVerifyActivity, blir paramblir) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    switch (paramInt)
+    {
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
+      continue;
+      aksj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
+    }
   }
 }
 

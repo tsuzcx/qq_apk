@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bhru;
+import bisp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -19,13 +19,13 @@ final class MiniAppUtils$4
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bhru))
+    if ((paramMessage.obj instanceof bisp))
     {
-      bhru localbhru = (bhru)paramMessage.obj;
-      if (localbhru.c == 0)
+      bisp localbisp = (bisp)paramMessage.obj;
+      if (localbisp.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.4.1(this, localbhru));
+        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.4.1(this, localbisp));
       }
     }
   }

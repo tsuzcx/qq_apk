@@ -14,13 +14,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import awvj;
-import awvk;
-import awvl;
-import awvm;
-import bgtn;
-import bkkq;
-import bkkr;
+import axoc;
+import axod;
+import axoe;
+import axof;
+import bhtq;
+import bllt;
+import bllu;
 import com.tencent.widget.FitSystemWindowsRelativeLayout;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -29,14 +29,14 @@ public class MultiCardRootLayout
   extends FitSystemWindowsRelativeLayout
 {
   private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float jdField_a_of_type_Float = bgtn.b(18.0F);
+  private float jdField_a_of_type_Float = bhtq.b(18.0F);
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bkkq jdField_a_of_type_Bkkq;
-  private bkkr jdField_a_of_type_Bkkr;
-  private WeakReference<awvm> jdField_a_of_type_JavaLangRefWeakReference;
+  private bllt jdField_a_of_type_Bllt;
+  private bllu jdField_a_of_type_Bllu;
+  private WeakReference<axof> jdField_a_of_type_JavaLangRefWeakReference;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private boolean jdField_b_of_type_Boolean = true;
   private boolean c = true;
@@ -71,10 +71,10 @@ public class MultiCardRootLayout
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new awvj(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new axoc(this), new Handler(Looper.getMainLooper()));
     }
-    this.jdField_a_of_type_Bkkq = new awvk(this);
-    this.jdField_a_of_type_Bkkr = new awvl(this);
+    this.jdField_a_of_type_Bllt = new axod(this);
+    this.jdField_a_of_type_Bllu = new axoe(this);
     a(true);
   }
   
@@ -87,13 +87,13 @@ public class MultiCardRootLayout
       if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167031));
+        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167037));
         this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       }
       if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167032));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167038));
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       }
       if (this.jdField_b_of_type_Boolean)
@@ -153,8 +153,8 @@ public class MultiCardRootLayout
   {
     if (paramBoolean)
     {
-      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bkkr);
-      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bkkq);
+      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bllu);
+      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bllt);
       return;
     }
     super.setOnInterceptTouchEventListener(null);
@@ -186,14 +186,14 @@ public class MultiCardRootLayout
     super.onDraw(paramCanvas);
   }
   
-  public void setListener(awvm paramawvm)
+  public void setListener(axof paramaxof)
   {
-    if (paramawvm == null)
+    if (paramaxof == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawvm);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxof);
   }
 }
 

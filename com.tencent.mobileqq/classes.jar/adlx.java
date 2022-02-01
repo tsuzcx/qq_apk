@@ -1,13 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class adlx
-  implements View.OnClickListener
+  implements adkz
 {
-  public adlx(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public adlx(MemoryDumpHelper.5 param5) {}
   
-  public void onClick(View paramView) {}
+  public void a()
+  {
+    adlu.c(this.a.this$0);
+  }
 }
 
 

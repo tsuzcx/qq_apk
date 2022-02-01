@@ -1,49 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.image.URLDrawable;
-import java.util.concurrent.ConcurrentHashMap;
-
-class zmb
+public class zmb
+  extends zmc
 {
-  public static ConcurrentHashMap<zlz, Boolean> a;
-  private static volatile zmb a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static zmb a()
-  {
-    if (jdField_a_of_type_Zmb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Zmb == null) {
-        jdField_a_of_type_Zmb = new zmb();
-      }
-      return jdField_a_of_type_Zmb;
-    }
-    finally {}
-  }
-  
-  public static void a(URLDrawable paramURLDrawable, String paramString)
-  {
-    paramString = new zlz(a(), paramURLDrawable, paramString);
-    paramURLDrawable.setDownloadListener(paramString);
-    paramURLDrawable.setURLDrawableListener(paramString);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public void a(@NonNull zlz paramzlz)
-  {
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramzlz);
-    yqp.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
-    if (!bool) {
-      bcrp.a(zls.a(anni.a(2131714538), null), "Story.UIUtils.monitor " + paramzlz.toString());
-    }
-    paramzlz.a.setDownloadListener(null);
-    paramzlz.a.setURLDrawableListener(null);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramzlz);
-  }
+  public static final int[] a = { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
+  public static final int[] b = { 2130846769, 2130846770, 2130846771, 2130846772, 2130846773, 2130846774, 2130846775, 2130846776, 2130846777, 2130846778, 2130846779, 2130846780, 2130846782 };
 }
 
 

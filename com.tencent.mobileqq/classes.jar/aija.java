@@ -1,84 +1,76 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.List;
-import org.apache.http.Header;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class aija
-  implements URLDrawableDownListener
+  extends BroadcastReceiver
 {
-  aija(aiiz paramaiiz) {}
+  aija(aiit paramaiit) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    aiiz.a(this.a, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    l2 = -1L;
-    try
+    if (paramIntent != null)
     {
-      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
-      l1 = l2;
-      if (localObject != null)
+      if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceUnBindRst")) {
+        break label72;
+      }
+      paramContext = paramIntent.getExtras();
+      if (paramContext != null) {
+        break label26;
+      }
+    }
+    label26:
+    label72:
+    do
+    {
+      do
       {
-        localObject = ((Header)localObject).getValue();
-        l1 = l2;
-        if (localObject != null)
+        do
         {
-          l1 = Long.parseLong((String)localObject);
-          long l3 = System.currentTimeMillis();
-          l1 = l3 - l1;
+          long l;
+          do
+          {
+            return;
+            l = paramContext.getLong("deviceopdin", 0L);
+          } while ((paramContext.getInt("deviceoprstcode", 0) != 0) || (Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) != l));
+          this.a.I();
+          return;
+          if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ProductFetchRst")) {
+            break;
+          }
+          paramContext = paramIntent.getExtras();
+        } while ((paramContext == null) || (paramContext.getInt("deviceoprstcode", 0) != 0));
+        this.a.bo();
+        return;
+        if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_receiveVasFlagResult")) {
+          break;
         }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      int i = paramContext.getInt("Flag", 0);
+      paramContext = (abzb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49);
+      if (i == 1)
       {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
-          l1 = l2;
-        }
+        aiit.W = true;
+        paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691637) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691376);
+        paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, bcrg.a(), true, false, 0);
+        return;
       }
-    }
-    aiiz.a(this.a, paramURLDrawable, l1);
-    paramView = paramView.getTag();
-    if (aijp.b((aiit)paramView))
-    {
-      paramView = (aijj)paramView;
-      if ((aijp.b(paramView)) && (!aiiz.a(this.a).contains(paramView.j())))
+      aiit.W = false;
+      paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691637) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691375) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691358);
+      paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, bcrg.a(), true, false, 2);
+      return;
+      if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgProgress"))
       {
-        aiiz.a(this.a).add(paramView.j());
-        paramURLDrawable = paramView.l();
-        aiiz.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.j()));
+        aiit.a(this.a, paramIntent);
+        return;
       }
-    }
+    } while (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgSendRet"));
+    aiit.b(this.a, paramIntent);
   }
 }
 

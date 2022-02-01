@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-class bnju
-  implements Animation.AnimationListener
+final class bnju
+  implements QQPermissionCallback
 {
-  bnju(bnjl parambnjl, boolean paramBoolean, int paramInt, String paramString) {}
+  bnju(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bnjl.a(this.jdField_a_of_type_Bnjl, false);
-    bnjl.b(this.jdField_a_of_type_Bnjl).setVisibility(8);
-    bnjl.a(this.jdField_a_of_type_Bnjl).setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (!bnjl.a(this.jdField_a_of_type_Bnjl).get())) {
-      bnjl.a(this.jdField_a_of_type_Bnjl, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
+    bhlq.b(bnjs.a(this.jdField_a_of_type_AndroidAppActivity));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bnjl.a(this.jdField_a_of_type_Bnjl, true);
+    bnjs.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

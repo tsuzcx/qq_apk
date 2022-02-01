@@ -47,7 +47,7 @@ public class TransactionWorker
   private static final int[] round_array = { 0, 0, 1, 0, 0, 1, 2 };
   private static final AtomicInteger seqFactory = new AtomicInteger(new Random().nextInt(100000));
   private HwEngine engine;
-  private volatile int index;
+  private volatile int index = 0;
   private SparseArray<ArrayList<Transaction>> transQueues = new SparseArray();
   private ArrayList<Transaction> transWaitForSessionKeyQueue = new ArrayList();
   

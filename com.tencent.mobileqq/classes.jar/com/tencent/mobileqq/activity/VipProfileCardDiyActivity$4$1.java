@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import afqv;
-import bkgm;
+import afzz;
+import blhq;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import nlw;
+import nnr;
 
 public class VipProfileCardDiyActivity$4$1
   implements Runnable
 {
-  public VipProfileCardDiyActivity$4$1(afqv paramafqv, Card paramCard) {}
+  public VipProfileCardDiyActivity$4$1(afzz paramafzz, Card paramCard) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Afqv.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet)) {
-      this.jdField_a_of_type_Afqv.a.a.sendEmptyMessage(0);
+    if (this.jdField_a_of_type_Afzz.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet)) {
+      this.jdField_a_of_type_Afzz.a.a.sendEmptyMessage(0);
     }
     for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, nlw.a(), "0", String.valueOf(this.jdField_a_of_type_Afqv.a.j));
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, nnr.a(), "0", String.valueOf(this.jdField_a_of_type_Afzz.a.j));
       return;
-      this.jdField_a_of_type_Afqv.a.a.sendEmptyMessage(1);
+      this.jdField_a_of_type_Afzz.a.a.sendEmptyMessage(1);
     }
   }
 }

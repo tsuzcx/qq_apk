@@ -1,6 +1,14 @@
-public abstract interface bhku
+final class bhku
+  implements bimf
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  bhku(avsm paramavsm) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
+    }
+  }
 }
 
 

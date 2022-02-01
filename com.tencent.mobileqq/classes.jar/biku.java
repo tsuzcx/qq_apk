@@ -1,18 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardContainer;
-
 public class biku
-  extends AnimatorListenerAdapter
 {
-  public biku(CardContainer paramCardContainer, ImageView paramImageView) {}
+  public long a;
+  public String a = "";
+  public long b;
+  public String b = "";
+  public long c;
+  public String c = "";
+  public long d;
+  public String d;
+  public long e;
+  public long f;
   
-  public void onAnimationStart(Animator paramAnimator)
+  public biku()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.jdField_d_of_type_Long = 999L;
+    this.jdField_d_of_type_JavaLangString = "";
   }
 }
 

@@ -1,15 +1,10 @@
-import com.tencent.common.app.AppInterface;
+import android.graphics.Bitmap;
 
-public abstract class bojn
+public abstract interface bojn
 {
-  public AppInterface a()
-  {
-    return bojl.a();
-  }
+  public abstract void a(Bitmap paramBitmap);
   
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void b(int paramInt);
 }
 
 

@@ -1,32 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uhq
-  implements upz
+  implements View.OnClickListener
 {
-  uhq(uhk paramuhk) {}
+  uhq(uhp paramuhp) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    upg.a(uhk.a(this.a), "biz_src_jc_gzh_weishi", paramString);
-    uhk.a(this.a, "content", umy.c);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b(String paramString, int paramInt) {}
-  
-  public void c(String paramString, int paramInt)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = 0;
-    localWSDownloadParams.mEventId = 700;
-    localWSDownloadParams.mTestId = ups.a(9);
-    localWSDownloadParams.mScheme = paramString;
-    ugx.a((Activity)uhk.b(this.a), localWSDownloadParams, false);
-    uhk.a(this.a, "content", umy.b);
-  }
-  
-  public void d(String paramString, int paramInt) {}
 }
 
 

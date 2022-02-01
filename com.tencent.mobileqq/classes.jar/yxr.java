@@ -1,28 +1,178 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.IEventReceiver;
 
-class yxr
-  extends AnimatorListenerAdapter
+public abstract class yxr
+  implements IEventReceiver
 {
-  yxr(yxo paramyxo) {}
+  @NonNull
+  public final yxt a;
+  public yze a;
+  protected long c;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public yxr(@NonNull yxt paramyxt)
   {
-    yqp.b("TextLayer", "scaleAnimator cancel!");
+    this.jdField_a_of_type_Yxt = paramyxt;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  private void f()
   {
-    yqp.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
+    if (this.jdField_a_of_type_Yze == null) {
+      throw new IllegalStateException("have not attached ui");
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void W_()
   {
-    yqp.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    f();
+  }
+  
+  public void Y_()
+  {
+    f();
+  }
+  
+  @NonNull
+  public Context a()
+  {
+    f();
+    return this.jdField_a_of_type_Yze.a();
+  }
+  
+  @NonNull
+  public Resources a()
+  {
+    f();
+    return this.jdField_a_of_type_Yze.a().getResources();
+  }
+  
+  @NonNull
+  protected View a(int paramInt)
+  {
+    f();
+    View localView = this.jdField_a_of_type_Yze.a().findViewById(paramInt);
+    if (localView == null) {
+      throw new IllegalArgumentException("can not find view by id " + paramInt);
+    }
+    return localView;
+  }
+  
+  protected String a(int paramInt)
+  {
+    f();
+    return a().getString(paramInt);
+  }
+  
+  public yxs a(Class<? extends yxs> paramClass)
+  {
+    f();
+    return this.jdField_a_of_type_Yxt.a(paramClass);
+  }
+  
+  @NonNull
+  public yze a()
+  {
+    f();
+    return this.jdField_a_of_type_Yze;
+  }
+  
+  public void a()
+  {
+    f();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    f();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a(paramInt2, paramObject);
+  }
+  
+  public void a(int paramInt, Object paramObject) {}
+  
+  public void a(int paramInt, @NonNull zih paramzih)
+  {
+    a(paramzih);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    f();
+  }
+  
+  public void a(Class<? extends yxs> paramClass, yxs paramyxs)
+  {
+    f();
+    this.jdField_a_of_type_Yxt.a(paramClass, paramyxs);
+  }
+  
+  public void a(@NonNull Error paramError) {}
+  
+  public void a(yze paramyze)
+  {
+    if (this.jdField_a_of_type_Yze != null) {
+      throw new IllegalStateException("attach context duplicate");
+    }
+    if (paramyze == null) {
+      throw new IllegalArgumentException("ui should not be null");
+    }
+    this.jdField_a_of_type_Yze = paramyze;
+  }
+  
+  @Deprecated
+  public void a(@NonNull zih paramzih) {}
+  
+  public boolean a()
+  {
+    f();
+    return false;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    return false;
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    f();
+  }
+  
+  public void b(@NonNull zih paramzih) {}
+  
+  public final boolean b(@NonNull Message paramMessage)
+  {
+    boolean bool = a(paramMessage);
+    paramMessage.recycle();
+    return bool;
+  }
+  
+  public void c()
+  {
+    f();
+  }
+  
+  public void d()
+  {
+    f();
+  }
+  
+  public void h()
+  {
+    f();
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Yxt.isValidate();
   }
 }
 

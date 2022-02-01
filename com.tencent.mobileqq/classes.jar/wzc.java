@@ -1,55 +1,31 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public class wzc
-  extends wlf<xaw>
+class wzc
+  extends wyv
 {
-  public final int c;
-  public final int d;
-  public final int e;
-  
-  public wzc(int paramInt1, int paramInt2)
+  public wzc(ViewGroup paramViewGroup)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = 1;
+    super(paramViewGroup, 2131561785);
   }
   
-  public String a()
+  public void a(String paramString)
   {
-    return wjz.a("StorySvc.video_poi_posters_get");
+    b(paramString);
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void a(wvn paramwvn)
   {
-    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
-    try
-    {
-      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
-      return new xaw(localRspGetPOIPosters);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    super.a(paramwvn);
+    yuk.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramwvn);
+    a(zpp.b(paramwvn.g));
+    this.a.setNodeName(paramwvn.c, 2130846658);
   }
   
-  protected byte[] a()
+  protected void b(wvn paramwvn)
   {
-    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.lng.set(this.c);
-    localGpsMsg.lat.set(this.d);
-    localReqGetPOIPosters.coordinate.set(this.e);
-    localReqGetPOIPosters.gps.set(localGpsMsg);
-    return localReqGetPOIPosters.toByteArray();
+    this.a.setDisplayState(6);
+    this.a.a(paramwvn);
   }
 }
 

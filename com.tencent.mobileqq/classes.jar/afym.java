@@ -1,25 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afym
+public class afym
+  implements View.OnTouchListener
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<afyl> b;
+  public afym(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public afym(afyj paramafyj, View paramView, afyl paramafyl)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramafyl);
-  }
-  
-  public afyl a()
-  {
-    return (afyl)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
+    }
+    return true;
   }
 }
 

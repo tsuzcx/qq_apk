@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import vdc;
+import vfg;
 
 public class QCircleRichMediaDownLoadPart$1
   implements Runnable
 {
-  public QCircleRichMediaDownLoadPart$1(vdc paramvdc, String paramString, Object paramObject) {}
+  public QCircleRichMediaDownLoadPart$1(vfg paramvfg, String paramString, Object paramObject) {}
   
   public void run()
   {
     if ("rich_media_download_show".equals(this.jdField_a_of_type_JavaLangString)) {
-      vdc.a(this.this$0);
+      vfg.a(this.this$0);
     }
     do
     {
@@ -21,10 +21,10 @@ public class QCircleRichMediaDownLoadPart$1
           break;
         }
       } while (!(this.jdField_a_of_type_JavaLangObject instanceof Boolean));
-      vdc.a(this.this$0, ((Boolean)this.jdField_a_of_type_JavaLangObject).booleanValue());
+      vfg.a(this.this$0, ((Boolean)this.jdField_a_of_type_JavaLangObject).booleanValue());
       return;
     } while ((!"rich_meida_download_progress".equals(this.jdField_a_of_type_JavaLangString)) || (!(this.jdField_a_of_type_JavaLangObject instanceof Integer)));
-    vdc.a(this.this$0, ((Integer)this.jdField_a_of_type_JavaLangObject).intValue());
+    vfg.a(this.this$0, ((Integer)this.jdField_a_of_type_JavaLangObject).intValue());
   }
 }
 

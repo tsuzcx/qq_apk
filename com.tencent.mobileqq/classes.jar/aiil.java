@@ -1,41 +1,27 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class aiil
-  implements aiim
 {
-  public aiil(StickerBubbleListView paramStickerBubbleListView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(View paramView)
+  public String toString()
   {
-    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
-    {
-      ((StickerBubbleImageView)paramView).a();
-      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
-        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
-      }
-      paramView = (View)paramView.getParent();
-      View localView = (View)paramView.getParent();
-      if (StickerBubbleListView.a(this.a) == null) {
-        StickerBubbleListView.a(this.a, new Rect());
-      }
-      Rect localRect = StickerBubbleListView.a(this.a);
-      int i = localView.getLeft();
-      int j = paramView.getLeft();
-      int k = localView.getTop();
-      int m = paramView.getTop();
-      int n = localView.getLeft();
-      int i1 = paramView.getRight();
-      int i2 = localView.getTop();
-      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
-      }
-    }
+    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
+    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", headPic='").append(this.d).append('\'');
+    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", uin='").append(this.e).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

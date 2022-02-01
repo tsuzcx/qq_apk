@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emotionintegrate;
 
 import android.text.TextUtils;
-import bdsh;
-import bdzx;
-import bgmg;
+import beqz;
+import beyq;
+import bhmi;
 import com.tencent.mobileqq.data.MessageForPic;
 import java.net.URL;
 
@@ -14,12 +14,12 @@ class SearchEmoticonFragment$2
   
   public void run()
   {
-    Object localObject = bdzx.a(this.a, 1, null);
-    if ((localObject != null) && (bdsh.a(((URL)localObject).toString()) == null))
+    Object localObject = beyq.a(this.a, 1, null);
+    if ((localObject != null) && (beqz.a(((URL)localObject).toString()) == null))
     {
-      localObject = bdsh.d(((URL)localObject).toString());
+      localObject = beqz.d(((URL)localObject).toString());
       if ((!TextUtils.isEmpty(this.a.path)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        bgmg.d(this.a.path, (String)localObject);
+        bhmi.d(this.a.path, (String)localObject);
       }
     }
   }

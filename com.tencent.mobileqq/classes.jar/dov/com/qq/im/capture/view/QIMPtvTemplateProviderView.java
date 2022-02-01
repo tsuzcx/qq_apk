@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import afur;
+import agej;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,18 +17,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcha;
-import bckg;
-import bgtn;
-import bojv;
-import boke;
-import boma;
-import bomu;
-import boty;
-import boum;
-import bouq;
-import bour;
-import bqgc;
+import bczs;
+import bdcy;
+import bhtq;
+import bplq;
+import bplz;
+import bpnv;
+import bpop;
+import bpvt;
+import bpwh;
+import bpwl;
+import bpwm;
+import brhn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQViewPager;
@@ -39,21 +39,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import zmi;
+import zqd;
 
 public class QIMPtvTemplateProviderView
   extends ProviderView
-  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, bcha, bouq
+  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, bczs, bpwl
 {
   int jdField_a_of_type_Int = 1;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boma jdField_a_of_type_Boma;
-  public bomu a;
-  bqgc jdField_a_of_type_Bqgc;
+  private bpnv jdField_a_of_type_Bpnv;
+  public bpop a;
+  brhn jdField_a_of_type_Brhn;
   QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   QIMPtvTemplateViewPagerAdapter jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter;
-  List<boma> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  List<bpnv> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -66,26 +66,26 @@ public class QIMPtvTemplateProviderView
   public QIMPtvTemplateProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bomu = new boum(this);
+    this.jdField_a_of_type_Bpop = new bpwh(this);
   }
   
-  private ArrayList<bour> a()
+  private ArrayList<bpwm> a()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_Bqgc != null) {}
-    for (int i = this.jdField_a_of_type_Bqgc.a();; i = -1)
+    if (this.jdField_a_of_type_Brhn != null) {}
+    for (int i = this.jdField_a_of_type_Brhn.a();; i = -1)
     {
       int j = 0;
       while (j < this.jdField_a_of_type_JavaUtilList.size())
       {
-        boma localboma = (boma)this.jdField_a_of_type_JavaUtilList.get(j);
-        if ((i != -1) && (i == localboma.jdField_a_of_type_Int)) {
+        bpnv localbpnv = (bpnv)this.jdField_a_of_type_JavaUtilList.get(j);
+        if ((i != -1) && (i == localbpnv.jdField_a_of_type_Int)) {
           this.jdField_a_of_type_Int = j;
         }
-        bour localbour = new bour();
-        localbour.jdField_a_of_type_JavaLangString = localboma.jdField_a_of_type_JavaLangString;
-        localbour.jdField_b_of_type_Boolean = localboma.jdField_a_of_type_Boolean;
-        localArrayList.add(localbour);
+        bpwm localbpwm = new bpwm();
+        localbpwm.jdField_a_of_type_JavaLangString = localbpnv.jdField_a_of_type_JavaLangString;
+        localbpwm.jdField_b_of_type_Boolean = localbpnv.jdField_a_of_type_Boolean;
+        localArrayList.add(localbpwm);
         j += 1;
       }
       return localArrayList;
@@ -94,7 +94,7 @@ public class QIMPtvTemplateProviderView
   
   protected int a()
   {
-    return 2131560970;
+    return 2131561001;
   }
   
   protected Bundle a()
@@ -105,12 +105,12 @@ public class QIMPtvTemplateProviderView
       int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
       if ((this.jdField_a_of_type_JavaUtilList != null) && (i >= 0) && (i < this.jdField_a_of_type_JavaUtilList.size()))
       {
-        boma localboma = (boma)this.jdField_a_of_type_JavaUtilList.get(i);
-        String str = localboma.jdField_a_of_type_JavaLangString;
+        bpnv localbpnv = (bpnv)this.jdField_a_of_type_JavaUtilList.get(i);
+        String str = localbpnv.jdField_a_of_type_JavaLangString;
         if (!TextUtils.isEmpty(str))
         {
           if (QLog.isColorLevel()) {
-            QLog.i("PtvTemplateProviderView", 2, "save " + localboma.jdField_a_of_type_JavaLangString);
+            QLog.i("PtvTemplateProviderView", 2, "save " + localbpnv.jdField_a_of_type_JavaLangString);
           }
           localBundle.putString("ProviderView.select_item_category", str);
         }
@@ -126,20 +126,20 @@ public class QIMPtvTemplateProviderView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boty != null) {
-      this.jdField_a_of_type_Boty.a(null);
+    if (this.jdField_a_of_type_Bpvt != null) {
+      this.jdField_a_of_type_Bpvt.a(null);
     }
-    if (this.jdField_a_of_type_Bqgc != null)
+    if (this.jdField_a_of_type_Brhn != null)
     {
-      this.jdField_a_of_type_Bqgc.a("0", 0, "");
-      boke.c = 0;
-      this.jdField_a_of_type_Bqgc.a(null);
-      this.jdField_a_of_type_Bqgc.a(111);
-      this.jdField_a_of_type_Bqgc.a(113);
-      this.jdField_a_of_type_Bqgc.a(112);
+      this.jdField_a_of_type_Brhn.a("0", 0, "");
+      bplz.c = 0;
+      this.jdField_a_of_type_Brhn.a(null);
+      this.jdField_a_of_type_Brhn.a(111);
+      this.jdField_a_of_type_Brhn.a(113);
+      this.jdField_a_of_type_Brhn.a(112);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bomu);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bpop);
     }
     super.a();
   }
@@ -158,7 +158,7 @@ public class QIMPtvTemplateProviderView
     }
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if ((paramInt != -1) && (((boma)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt)) {
+      if ((paramInt != -1) && (((bpnv)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt)) {
         paramInt = i;
       }
     }
@@ -166,12 +166,12 @@ public class QIMPtvTemplateProviderView
     {
       label130:
       a().a(paramInt);
-      localObject = (boma)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
+      localObject = (bpnv)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
       i = 0;
       label162:
-      if (i < ((boma)localObject).jdField_a_of_type_JavaUtilList.size())
+      if (i < ((bpnv)localObject).jdField_a_of_type_JavaUtilList.size())
       {
-        paramString1 = (PtvTemplateManager.PtvTemplateInfo)((boma)localObject).jdField_a_of_type_JavaUtilList.get(i);
+        paramString1 = (PtvTemplateManager.PtvTemplateInfo)((bpnv)localObject).jdField_a_of_type_JavaUtilList.get(i);
         if (!paramString1.id.equals(paramString2)) {}
       }
       for (;;)
@@ -182,13 +182,13 @@ public class QIMPtvTemplateProviderView
         if (paramString1 != null)
         {
           if (paramString1.isWsBanner()) {
-            zmi.a(this.jdField_a_of_type_AndroidContentContext, paramString1);
+            zqd.a(this.jdField_a_of_type_AndroidContentContext, paramString1);
           }
         }
         else
         {
           return;
-          if ((paramString1 != null) && (paramString1.equals(((boma)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString)))
+          if ((paramString1 != null) && (paramString1.equals(((bpnv)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString)))
           {
             paramInt = i;
             break label130;
@@ -212,18 +212,18 @@ public class QIMPtvTemplateProviderView
     super.a(paramBundle);
     this.jdField_e_of_type_Boolean = false;
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560970, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561001, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131380863));
-    this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter = new QIMPtvTemplateViewPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boty, this.jdField_g_of_type_Int);
-    this.jdField_a_of_type_Bqgc = ((bqgc)bojv.a(3));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131381041));
+    this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter = new QIMPtvTemplateViewPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bpvt, this.jdField_g_of_type_Int);
+    this.jdField_a_of_type_Brhn = ((brhn)bplq.a(3));
     this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a(new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.getViewTreeObserver().addOnScrollChangedListener(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bomu);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bpop);
     g();
   }
   
@@ -240,7 +240,7 @@ public class QIMPtvTemplateProviderView
     if (!this.d) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Bqgc.a(paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Brhn.a(paramBoolean);
     int j = this.jdField_a_of_type_Int;
     int i = j;
     if (!paramBoolean)
@@ -255,8 +255,8 @@ public class QIMPtvTemplateProviderView
             break label362;
           }
           i = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
-          boma localboma1 = this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a(i);
-          if (localboma1 == null) {
+          bpnv localbpnv1 = this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a(i);
+          if (localbpnv1 == null) {
             break label362;
           }
           i = 0;
@@ -264,8 +264,8 @@ public class QIMPtvTemplateProviderView
           if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
             break label362;
           }
-          boma localboma2 = (boma)this.jdField_a_of_type_JavaUtilList.get(i);
-          if ((localboma2 == null) || (TextUtils.isEmpty(localboma2.jdField_a_of_type_JavaLangString)) || (!localboma2.jdField_a_of_type_JavaLangString.equals(localboma1.jdField_a_of_type_JavaLangString))) {
+          bpnv localbpnv2 = (bpnv)this.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localbpnv2 == null) || (TextUtils.isEmpty(localbpnv2.jdField_a_of_type_JavaLangString)) || (!localbpnv2.jdField_a_of_type_JavaLangString.equals(localbpnv1.jdField_a_of_type_JavaLangString))) {
             break label346;
           }
         }
@@ -327,7 +327,7 @@ public class QIMPtvTemplateProviderView
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {}
     for (Object localObject = BaseApplicationImpl.sApplication.getRuntime();; localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface)
     {
-      localObject = getContext().getSharedPreferences(bckg.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4);
+      localObject = getContext().getSharedPreferences(bdcy.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4);
       if (!((SharedPreferences)localObject).getBoolean(paramInt1 + "&" + paramInt2, false)) {
         break;
       }
@@ -356,15 +356,15 @@ public class QIMPtvTemplateProviderView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Boty != null)
+    if (this.jdField_a_of_type_Bpvt != null)
     {
-      this.jdField_a_of_type_Boty.a(null, "");
-      this.jdField_a_of_type_Boty.a(null);
+      this.jdField_a_of_type_Bpvt.a(null, "");
+      this.jdField_a_of_type_Bpvt.a(null);
     }
-    if (this.jdField_a_of_type_Bqgc != null)
+    if (this.jdField_a_of_type_Brhn != null)
     {
-      this.jdField_a_of_type_Bqgc.a("0", 0, "");
-      boke.c = 0;
+      this.jdField_a_of_type_Brhn.a("0", 0, "");
+      bplz.c = 0;
     }
     if (QLog.isColorLevel()) {
       QLog.d("PtvTemplateProviderView", 2, "onClear");
@@ -412,14 +412,14 @@ public class QIMPtvTemplateProviderView
     if (QLog.isColorLevel()) {
       QLog.d("PtvTemplateProviderView", 2, "random tab template onResume");
     }
-    if ((boke.jdField_b_of_type_Int == 0) && (boke.jdField_b_of_type_JavaLangString.equals("0"))) {}
+    if ((bplz.jdField_b_of_type_Int == 0) && (bplz.jdField_b_of_type_JavaLangString.equals("0"))) {}
   }
   
   public void f()
   {
     super.f();
-    if (this.jdField_a_of_type_Bqgc != null) {
-      this.jdField_a_of_type_Bqgc.f();
+    if (this.jdField_a_of_type_Brhn != null) {
+      this.jdField_a_of_type_Brhn.g();
     }
   }
   
@@ -438,7 +438,7 @@ public class QIMPtvTemplateProviderView
       if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      if (this.jdField_a_of_type_Boma != null) {
+      if (this.jdField_a_of_type_Bpnv != null) {
         if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
           break label192;
         }
@@ -447,10 +447,10 @@ public class QIMPtvTemplateProviderView
     label192:
     for (Object localObject = BaseApplicationImpl.sApplication.getRuntime();; localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface)
     {
-      String str = this.jdField_a_of_type_Boma.jdField_a_of_type_Int + "&" + this.jdField_a_of_type_Boma.jdField_b_of_type_Int;
-      localObject = getContext().getSharedPreferences(bckg.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4).edit();
+      String str = this.jdField_a_of_type_Bpnv.jdField_a_of_type_Int + "&" + this.jdField_a_of_type_Bpnv.jdField_b_of_type_Int;
+      localObject = getContext().getSharedPreferences(bdcy.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4).edit();
       ((SharedPreferences.Editor)localObject).putBoolean(str, true);
-      ((SharedPreferences.Editor)localObject).putInt(String.valueOf(this.jdField_a_of_type_Boma.jdField_a_of_type_Int), this.jdField_a_of_type_Boma.jdField_b_of_type_Int);
+      ((SharedPreferences.Editor)localObject).putInt(String.valueOf(this.jdField_a_of_type_Bpnv.jdField_a_of_type_Int), this.jdField_a_of_type_Bpnv.jdField_b_of_type_Int);
       ((SharedPreferences.Editor)localObject).commit();
       return;
     }
@@ -496,12 +496,12 @@ public class QIMPtvTemplateProviderView
       return;
       if (!this.jdField_g_of_type_Boolean)
       {
-        localObject1 = this.jdField_a_of_type_Bqgc.a(false);
+        localObject1 = this.jdField_a_of_type_Brhn.a(false);
         i = 0;
         if (i < ((ArrayList)localObject1).size())
         {
-          this.jdField_a_of_type_Boma = ((boma)((ArrayList)localObject1).get(i));
-          if ((this.jdField_a_of_type_Boma.jdField_b_of_type_JavaLangString == null) || (a(this.jdField_a_of_type_Boma.jdField_a_of_type_Int, this.jdField_a_of_type_Boma.jdField_b_of_type_Int))) {
+          this.jdField_a_of_type_Bpnv = ((bpnv)((ArrayList)localObject1).get(i));
+          if ((this.jdField_a_of_type_Bpnv.jdField_b_of_type_JavaLangString == null) || (a(this.jdField_a_of_type_Bpnv.jdField_a_of_type_Int, this.jdField_a_of_type_Bpnv.jdField_b_of_type_Int))) {
             break label975;
           }
           this.jdField_b_of_type_Int = i;
@@ -510,17 +510,17 @@ public class QIMPtvTemplateProviderView
           this.c = ((View)this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.b().get(this.jdField_b_of_type_Int));
         }
       }
-      if ((this.c != null) && (this.jdField_a_of_type_Boma != null))
+      if ((this.c != null) && (this.jdField_a_of_type_Bpnv != null))
       {
         i = this.c.getLeft();
         j = this.c.getRight();
         m = this.c.getWidth();
         if ((i != 0) || (j != 0))
         {
-          i2 = bgtn.a();
+          i2 = bhtq.a();
           i1 = this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.getScrollX();
           j = m / 2 + i - i1;
-          k = afur.a(30.0F, getContext().getResources());
+          k = agej.a(30.0F, getContext().getResources());
           if ((j <= 0) || (j + k >= i2)) {
             break label982;
           }
@@ -541,36 +541,36 @@ public class QIMPtvTemplateProviderView
             localObject3 = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
             localContext = getContext();
             this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(localContext);
-            this.jdField_a_of_type_AndroidWidgetImageView.setId(2131377445);
-            if (!this.jdField_a_of_type_Boma.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_AndroidWidgetImageView.setId(2131377599);
+            if (!this.jdField_a_of_type_Bpnv.jdField_a_of_type_Boolean) {
               break label1005;
             }
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849722);
-            localLayoutParams = new RelativeLayout.LayoutParams(afur.a(20.0F, localContext.getResources()), afur.a(10.0F, localContext.getResources()));
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849733);
+            localLayoutParams = new RelativeLayout.LayoutParams(agej.a(20.0F, localContext.getResources()), agej.a(10.0F, localContext.getResources()));
             localLayoutParams.addRule(2, ((View)localObject3).getId());
             localLayoutParams.addRule(9);
-            localLayoutParams.leftMargin = (m / 2 + i - afur.a(20.0F, localContext.getResources()) / 2);
+            localLayoutParams.leftMargin = (m / 2 + i - agej.a(20.0F, localContext.getResources()) / 2);
             localLayoutParams.bottomMargin = 5;
             ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
             this.jdField_a_of_type_AndroidWidgetTextView = new TextView(localContext);
-            this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Boma.jdField_b_of_type_JavaLangString);
-            k = afur.a(5.0F, localContext.getResources());
-            n = afur.a(5.0F, localContext.getResources());
-            if (!this.jdField_a_of_type_Boma.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bpnv.jdField_b_of_type_JavaLangString);
+            k = agej.a(5.0F, localContext.getResources());
+            n = agej.a(5.0F, localContext.getResources());
+            if (!this.jdField_a_of_type_Bpnv.jdField_a_of_type_Boolean) {
               break label1018;
             }
             this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FBD49D"));
-            this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849724);
-            this.jdField_a_of_type_AndroidWidgetTextView.setPadding(afur.a(30.0F, localContext.getResources()), k, n, k);
+            this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849735);
+            this.jdField_a_of_type_AndroidWidgetTextView.setPadding(agej.a(30.0F, localContext.getResources()), k, n, k);
             this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
             this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
             this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
             this.jdField_a_of_type_AndroidWidgetTextView.measure(-2, -2);
             k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-            if (!this.jdField_a_of_type_Boma.jdField_a_of_type_Boolean) {
+            if (!this.jdField_a_of_type_Bpnv.jdField_a_of_type_Boolean) {
               break label1066;
             }
-            k += afur.a(17.0F, localContext.getResources());
+            k += agej.a(17.0F, localContext.getResources());
           }
         }
       }
@@ -589,23 +589,23 @@ public class QIMPtvTemplateProviderView
       }
       break label1069;
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(2, 2131377445);
+      localLayoutParams.addRule(2, 2131377599);
       localLayoutParams.addRule(9);
-      if (this.jdField_a_of_type_Boma.jdField_a_of_type_Boolean) {
-        localLayoutParams.setMargins(afur.a(17.0F, localContext.getResources()) + k, 0, i, 0);
+      if (this.jdField_a_of_type_Bpnv.jdField_a_of_type_Boolean) {
+        localLayoutParams.setMargins(agej.a(17.0F, localContext.getResources()) + k, 0, i, 0);
       }
       for (;;)
       {
         ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-        if (this.jdField_a_of_type_Boma.jdField_a_of_type_Boolean)
+        if (this.jdField_a_of_type_Bpnv.jdField_a_of_type_Boolean)
         {
           this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(localContext);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849725);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849736);
           localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
           localLayoutParams.addRule(2, ((View)localObject3).getId());
           localLayoutParams.addRule(9);
           localLayoutParams.leftMargin = k;
-          localLayoutParams.bottomMargin = afur.a(3.0F, localContext.getResources());
+          localLayoutParams.bottomMargin = agej.a(3.0F, localContext.getResources());
           ((RelativeLayout)localObject1).addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
         }
         if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (j == 0)) {
@@ -634,11 +634,11 @@ public class QIMPtvTemplateProviderView
         localObject3 = this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView;
         break label311;
         label1005:
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849721);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849732);
         break label360;
         label1018:
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849723);
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849734);
         this.jdField_a_of_type_AndroidWidgetTextView.setPadding(n, k, n, k);
         break label561;
         localLayoutParams.setMargins(k, 0, i, 0);

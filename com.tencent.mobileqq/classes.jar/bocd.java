@@ -1,24 +1,48 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-class bocd
-  implements bodc
+public class bocd
 {
-  bocd(bocc parambocc, AppInterface paramAppInterface, boce paramboce, bocz parambocz) {}
+  private static String a;
+  private static String b;
   
-  public void a(int paramInt)
+  public static String a()
   {
-    bnzb.b(bocc.a(), "proxy onProcessFailed: errCode=" + paramInt);
-    if (this.jdField_a_of_type_Boce != null) {
-      this.jdField_a_of_type_Boce.a(paramInt, this.jdField_a_of_type_Bocz.a());
+    if (a != null) {
+      return a;
+    }
+    Object localObject1 = BaseApplicationImpl.sApplication.getExternalFilesDir(null);
+    if (localObject1 == null) {}
+    for (localObject1 = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath();; localObject1 = ((File)localObject1).getAbsolutePath())
+    {
+      Object localObject2 = localObject1;
+      if (!((String)localObject1).endsWith("/")) {
+        localObject2 = (String)localObject1 + "/";
+      }
+      a = (String)localObject2;
+      return localObject2;
     }
   }
   
-  public void a(ArrayList<SmartFilterReqItem> paramArrayList)
+  public static String a(long paramLong)
   {
-    bnzb.b(bocc.a(), "proxy onDataReadyForRequest");
-    bocc.a(this.jdField_a_of_type_Bocc, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList);
+    return b(paramLong) + "disk_file_cache" + "/";
+  }
+  
+  public static String b()
+  {
+    if (b != null) {
+      return b;
+    }
+    String str = a();
+    str = str + "Tencent" + "/" + "weiyun" + "/";
+    b = str;
+    return str;
+  }
+  
+  private static String b(long paramLong)
+  {
+    return b() + paramLong + "/";
   }
 }
 

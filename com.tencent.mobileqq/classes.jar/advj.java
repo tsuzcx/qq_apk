@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.33.1;
+import com.tencent.widget.HeightAdaptableListView;
 
-class advj
-  implements atve
+public class advj
+  implements ajwl
 {
-  advj(advh paramadvh, FileManagerEntity paramFileManagerEntity) {}
+  public advj(AssistantSettingActivity paramAssistantSettingActivity) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Advh.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    anjx localanjx;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localanjx = (anjx)this.jdField_a_of_type_Advh.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localanjx.a(localArrayList));
-    atvf.a(2131692313);
-    return;
-    this.jdField_a_of_type_Advh.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.a.post(new AssistantSettingActivity.33.1(this));
+    AssistantSettingActivity.c(this.a);
   }
-  
-  public void b() {}
 }
 
 

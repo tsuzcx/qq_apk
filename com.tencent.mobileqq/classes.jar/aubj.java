@@ -1,48 +1,101 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class aubj
-  extends WebChromeClient
+public class aubj
 {
-  private final IHostInterface.IWebClient a;
+  int a;
+  protected long a;
+  protected aube a;
+  protected final QQAppInterface a;
+  protected ExcitingTransferOneSlotComplete a;
+  int b;
+  int c = 0;
   
-  private aubj(IHostInterface.IWebClient paramIWebClient)
+  public aubj(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramIWebClient;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  protected String a()
   {
-    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
-      return super.onConsoleMessage(paramConsoleMessage);
-    }
-    return true;
+    return "actGroupPDSlot";
   }
   
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public void a()
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {}
-    do
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Aube == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete == null))
     {
-      return true;
-      if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
-        return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-      }
-    } while (paramJsPromptResult == null);
-    paramJsPromptResult.cancel();
-    return true;
+      QLog.e("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloaderDataReport err. param err");
+      return;
+    }
+    HashMap localHashMap = this.jdField_a_of_type_Aube.a();
+    localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete.getReportData());
+    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_stackType", String.valueOf(auoo.b()));
+    localHashMap.put("param_loginType", String.valueOf(auoo.c()));
+    localHashMap.put("param_ishttps", String.valueOf(this.c));
+    QLog.i("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloaderDataReport:act=" + a() + localHashMap.toString());
+    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str2 = a();
+    if (this.jdField_a_of_type_Aube.jdField_b_of_type_Long == 0L) {}
+    for (;;)
+    {
+      localbdmc.a(str1, str2, bool, 0L, 0L, localHashMap, "");
+      this.jdField_a_of_type_Aube = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = null;
+      return;
+      bool = false;
+    }
   }
   
-  @Override
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void a(int paramInt)
   {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    super.onProgressChanged(paramWebView, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_Aube = new aube();
+    this.jdField_a_of_type_Aube.jdField_a_of_type_Long = paramInt;
+    this.jdField_a_of_type_Aube.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Aube.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aube.d = paramLong2;
+    this.jdField_a_of_type_Aube.c = paramLong3;
+    this.jdField_a_of_type_Aube.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Aube.jdField_b_of_type_Int = 1;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = paramExcitingTransferOneSlotComplete;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.c = i;
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
   }
 }
 

@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class awpp
-  implements DialogInterface.OnClickListener
+public abstract interface awpp
 {
-  public awpp(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public abstract void a(awpk paramawpk, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(awpk paramawpk, int paramInt1, int paramInt2);
+  
+  public abstract void a(awpk paramawpk, LocationRoom.Venue paramVenue, List<awpi> paramList);
+  
+  public abstract void b(awpk paramawpk, int paramInt);
 }
 
 

@@ -8,19 +8,19 @@ import android.net.wifi.WifiInfo;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.SparseArray;
-import annl;
-import anno;
-import annq;
-import anny;
-import anob;
-import anqt;
-import avam;
-import axby;
-import axdz;
-import axei;
-import bbyp;
-import beue;
-import bgmg;
+import anzm;
+import anzp;
+import anzr;
+import anzz;
+import aoac;
+import aocz;
+import avsn;
+import axup;
+import axws;
+import axxb;
+import bcrg;
+import bftl;
+import bhmi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -75,8 +75,8 @@ public class HotChatManager
   int jdField_a_of_type_Int = 0;
   public long a;
   SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  anny jdField_a_of_type_Anny = null;
-  avam jdField_a_of_type_Avam;
+  anzz jdField_a_of_type_Anzz = null;
+  avsn jdField_a_of_type_Avsn;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   Boolean jdField_a_of_type_JavaLangBoolean = null;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -116,16 +116,16 @@ public class HotChatManager
     {
     default: 
       if (paramInt1 == 2) {
-        return 2130842502;
+        return 2130842515;
       }
       break;
     case 1: 
-      return 2130842513;
+      return 2130842526;
     }
     if (paramInt1 == 3) {
-      return 2130842512;
+      return 2130842525;
     }
-    return 2130842510;
+    return 2130842523;
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -135,7 +135,7 @@ public class HotChatManager
   
   public static int a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    int j = 2130842514;
+    int j = 2130842527;
     HotChatManager localHotChatManager = paramQQAppInterface.a(false);
     paramQQAppInterface = null;
     if (localHotChatManager != null) {
@@ -146,7 +146,7 @@ public class HotChatManager
     {
       i = j;
       if (!paramQQAppInterface.isWifiHotChat) {
-        i = a(paramQQAppInterface.hotThemeGroupFlag, 2130842514);
+        i = a(paramQQAppInterface.hotThemeGroupFlag, 2130842527);
       }
     }
     return i;
@@ -295,7 +295,7 @@ public class HotChatManager
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      axei.a("HotChatManager", new Object[] { "saveSupportHotChatFlag", Boolean.valueOf(paramBoolean), Boolean.valueOf(jdField_b_of_type_Boolean) });
+      axxb.a("HotChatManager", new Object[] { "saveSupportHotChatFlag", Boolean.valueOf(paramBoolean), Boolean.valueOf(jdField_b_of_type_Boolean) });
     }
     Object localObject = paramQQAppInterface.getPreferences().edit();
     ((SharedPreferences.Editor)localObject).putBoolean("DOES_SUPPORT_HOT_CHAT", paramBoolean);
@@ -306,9 +306,9 @@ public class HotChatManager
       localObject = (HotChatManager)paramQQAppInterface.getManager(60);
       ((HotChatManager)localObject).d = true;
       if (QLog.isColorLevel()) {
-        axei.a("HotChatManager", new Object[] { "saveSupportHotChatFlag", "needGetMessage", Boolean.valueOf(((HotChatManager)localObject).d) });
+        axxb.a("HotChatManager", new Object[] { "saveSupportHotChatFlag", "needGetMessage", Boolean.valueOf(((HotChatManager)localObject).d) });
       }
-      ((anno)paramQQAppInterface.a(35)).a();
+      ((anzp)paramQQAppInterface.a(35)).a();
     }
   }
   
@@ -364,7 +364,7 @@ public class HotChatManager
         }
       }
       if (!paramBoolean) {
-        anqt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramList);
+        aocz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramList);
       }
     }
   }
@@ -568,12 +568,12 @@ public class HotChatManager
     return BaseApplicationImpl.sApplication.getSharedPreferences("Config_Before_load_RU" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
   }
   
-  public avam a(boolean paramBoolean)
+  public avsn a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Avam == null) && (paramBoolean)) {
-      this.jdField_a_of_type_Avam = new avam(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if ((this.jdField_a_of_type_Avsn == null) && (paramBoolean)) {
+      this.jdField_a_of_type_Avsn = new avsn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    return this.jdField_a_of_type_Avam;
+    return this.jdField_a_of_type_Avsn;
   }
   
   public HotChatInfo a()
@@ -707,9 +707,9 @@ public class HotChatManager
       EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
       localEntityManager.persistOrReplace(paramHotChatInfo);
       localEntityManager.close();
-      anqt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramHotChatInfo.troopUin);
+      aocz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramHotChatInfo.troopUin);
       b(paramHotChatInfo, paramInt);
-      anob.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      aoac.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       paramHotChatInfo = a().edit();
       if (this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
         break label197;
@@ -724,7 +724,7 @@ public class HotChatManager
       if (paramHotChatInfo.adminLevel != 1) {
         break;
       }
-      ((axby)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)).a(paramHotChatInfo.ownerUin);
+      ((axup)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)).a(paramHotChatInfo.ownerUin);
       break;
     }
   }
@@ -737,8 +737,8 @@ public class HotChatManager
     if ((paramHotChatInfo == null) || (paramHotChatStateWrapper == null)) {
       return;
     }
-    ((axby)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)).a(paramHotChatInfo.ownerUin);
-    anob.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((axup)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)).a(paramHotChatInfo.ownerUin);
+    aoac.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     int i = paramHotChatStateWrapper.targetState;
     paramHotChatInfo.onExit(i);
     paramHotChatStateWrapper = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
@@ -764,8 +764,8 @@ public class HotChatManager
     {
       paramHotChatStateWrapper.putBoolean("HAS_USING_HOTCHAT", bool);
       paramHotChatStateWrapper.commit();
-      anqt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(paramHotChatInfo.troopUin);
-      ((annl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(255)).a(paramHotChatInfo.troopUin, i);
+      aocz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(paramHotChatInfo.troopUin);
+      ((anzm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(255)).a(paramHotChatInfo.troopUin, i);
       return;
       paramHotChatStateWrapper.update(paramHotChatInfo);
       break;
@@ -795,7 +795,7 @@ public class HotChatManager
     if (QLog.isColorLevel()) {
       QLog.i("HotChatManager", 2, "handleGetHotchatVList, json:" + paramString2);
     }
-    bgmg.a(BaseApplicationImpl.getContext().getFilesDir() + File.separator + paramString1 + "_nearby_hotchat_v_list", paramString2);
+    bhmi.a(BaseApplicationImpl.getContext().getFilesDir() + File.separator + paramString1 + "_nearby_hotchat_v_list", paramString2);
     ArrayList localArrayList;
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
@@ -815,10 +815,10 @@ public class HotChatManager
         }
         this.jdField_a_of_type_JavaUtilList.clear();
         this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-        if (this.jdField_a_of_type_Anny == null) {
+        if (this.jdField_a_of_type_Anzz == null) {
           return;
         }
-        this.jdField_a_of_type_Anny.a();
+        this.jdField_a_of_type_Anzz.a();
       }
       if (paramString1 != null)
       {
@@ -846,7 +846,7 @@ public class HotChatManager
       if (paramInt != 1) {
         break label90;
       }
-      annq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692895), true);
+      anzr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692903), true);
     }
     for (;;)
     {
@@ -856,13 +856,13 @@ public class HotChatManager
       {
         if (paramPbGetGroupMsgResp.isWifiHotChat)
         {
-          annq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692892, new Object[] { paramPbGetGroupMsgResp.name }), true);
+          anzr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692900, new Object[] { paramPbGetGroupMsgResp.name }), true);
           return;
         }
         if (1 == paramPbGetGroupMsgResp.adminLevel) {
           break;
         }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692891, new Object[] { paramPbGetGroupMsgResp.name });
+        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692899, new Object[] { paramPbGetGroupMsgResp.name });
         Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramPbGetGroupMsgResp.troopUin, 1, 10);
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
@@ -871,13 +871,13 @@ public class HotChatManager
           {
             MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
             if (((localMessageRecord instanceof MessageForNewGrayTips)) && (localMessageRecord.msg.equals(paramString))) {
-              axei.a("HotChatManager", new Object[] { "onPullRecentGroupMsg", "grayTips exist in last 10 msgs" });
+              axxb.a("HotChatManager", new Object[] { "onPullRecentGroupMsg", "grayTips exist in last 10 msgs" });
             }
           }
         }
         for (paramInt = 0; paramInt != 0; paramInt = 1)
         {
-          annq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, paramString, true);
+          anzr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, paramString, true);
           return;
         }
       }
@@ -894,7 +894,7 @@ public class HotChatManager
       return;
     }
     if (QLog.isColorLevel()) {
-      axei.a("HotChatManager", new Object[] { "onGetJoinedHotChatList", Integer.valueOf(paramList.size()), Boolean.valueOf(this.d) });
+      axxb.a("HotChatManager", new Object[] { "onGetJoinedHotChatList", Integer.valueOf(paramList.size()), Boolean.valueOf(this.d) });
     }
     HashSet localHashSet = new HashSet();
     ArrayList localArrayList = new ArrayList();
@@ -902,7 +902,7 @@ public class HotChatManager
     paramList = a();
     boolean bool = paramList.getBoolean("qq_update_5.9", true);
     a(paramBoolean, localHashSet, localArrayList, bool, a());
-    anob.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    aoac.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     paramList = paramList.edit();
     if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {}
     for (paramBoolean = true;; paramBoolean = false)
@@ -1025,7 +1025,7 @@ public class HotChatManager
     if (this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong)) != null)
     {
       if (QLog.isColorLevel()) {
-        axei.a("HotChatManager", new Object[] { "checkHotChatInfo", Long.valueOf(paramLong) });
+        axxb.a("HotChatManager", new Object[] { "checkHotChatInfo", Long.valueOf(paramLong) });
       }
       return;
     }
@@ -1038,7 +1038,7 @@ public class HotChatManager
     ((HotChatInfo)localObject).isWifiHotChat = false;
     ((HotChatInfo)localObject).adminLevel = 2;
     if (QLog.isColorLevel()) {
-      axei.a("HotChatManager", new Object[] { "checkHotChatInfo", "need AddHotChatInfoRunnable", Long.valueOf(paramLong) });
+      axxb.a("HotChatManager", new Object[] { "checkHotChatInfo", "need AddHotChatInfoRunnable", Long.valueOf(paramLong) });
     }
     localObject = new HotChatManager.AddHotChatInfoRunnable(this, (HotChatInfo)localObject);
     ThreadManager.getSubThreadHandler().post((Runnable)localObject);
@@ -1047,7 +1047,7 @@ public class HotChatManager
   public void b(HotChatInfo paramHotChatInfo, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      axei.a("HotChatManager", new Object[] { "pullRecentGroupMsg", Integer.valueOf(paramInt), paramHotChatInfo.troopUin, paramHotChatInfo.name });
+      axxb.a("HotChatManager", new Object[] { "pullRecentGroupMsg", Integer.valueOf(paramInt), paramHotChatInfo.troopUin, paramHotChatInfo.name });
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramHotChatInfo.troopUin, paramInt);
   }
@@ -1112,7 +1112,7 @@ public class HotChatManager
         }
       } while ((i <= 250) || (str == null));
       int j = Math.max(i - 200, 50);
-      ((beue)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1)).a(paramString, 1, true, false, str, j);
+      ((bftl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1)).a(paramString, 1, true, false, str, j);
     } while (!QLog.isColorLevel());
     QLog.d("HotChatManager", 2, "clearLimitCountHotChatMsgCache, count=" + i);
   }
@@ -1139,7 +1139,7 @@ public class HotChatManager
       {
         bool1 = bool2;
         if (paramString.supportDemo) {
-          bool1 = ((Boolean)axdz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "supportHotChatDemo", Boolean.valueOf(false))).booleanValue();
+          bool1 = ((Boolean)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "supportHotChatDemo", Boolean.valueOf(false))).booleanValue();
         }
       }
     }
@@ -1151,7 +1151,7 @@ public class HotChatManager
   
   public void d(String paramString)
   {
-    bgmg.a(BaseApplicationImpl.getApplication().getFilesDir() + "/hotchatclassify", paramString);
+    bhmi.a(BaseApplicationImpl.getApplication().getFilesDir() + "/hotchatclassify", paramString);
     d();
     if (QLog.isColorLevel()) {
       QLog.i("HotChatManager", 2, "updateClassifyInfo, xmldata = " + paramString);

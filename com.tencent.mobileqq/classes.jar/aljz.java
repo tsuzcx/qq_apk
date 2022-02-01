@@ -1,23 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aljz
-  implements Animation.AnimationListener
+class aljz
+  implements View.OnClickListener
 {
-  public aljz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  aljz(aljw paramaljw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
-    }
+    Intent localIntent = new Intent(aljw.a(this.a), NotifyPushSettingActivity.class);
+    aljw.a(this.a).startActivity(localIntent);
+    bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
+    bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

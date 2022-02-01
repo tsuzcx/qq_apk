@@ -1,35 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ania
-  extends anuu
+  implements DialogInterface.OnClickListener
 {
-  public void a()
+  public ania(ApolloGameActivity paramApolloGameActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = BaseActivity.sTopActivity;
-    if (localObject == null) {
-      ScreenShot.a("MyShakeListener - top activity is null");
-    }
-    do
-    {
-      return;
-      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
-      {
-        ScreenShot.a("MyShakeListener - shake flag is false");
-        return;
-      }
-    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
-    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
-    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ania
  * JD-Core Version:    0.7.0.1
  */

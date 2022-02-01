@@ -10,7 +10,7 @@ public class i
 {
   protected static long a;
   Context b = null;
-  public boolean c = false;
+  public volatile boolean c = false;
   
   public i(Context paramContext)
   {
@@ -363,25 +363,30 @@ public class i
         StrategyQueryModule.getInstance(this.b).setAtLeastAComQuerySuccess(true);
         return;
       }
-      localObject = this.b;
-      localInterruptedException.a(new l((Context)localObject, 0, 100, com.tencent.beacon.core.info.g.b((Context)localObject).a()));
+      localObject = com.tencent.beacon.core.info.g.b(this.b).a();
+      com.tencent.beacon.core.e.d.a("[strategy] strategy UploadData appKey: " + (String)localObject, new Object[0]);
+      localInterruptedException.a(new l(this.b, 0, 100, (String)localObject));
       return;
     }
     com.tencent.beacon.core.e.d.h("[strategy] uphandler is null", new Object[0]);
   }
   
-  public void d()
+  void d()
   {
-    k localk = d.b(this.b, 101);
-    if ((localk != null) && (localk.b == 101) && (localk.c != null)) {}
     try
     {
-      com.tencent.beacon.core.d.g localg = StrategyQueryModule.getInstance(this.b).getStrategyHandler();
-      if (localg != null)
+      k localk = d.b(this.b, 101);
+      if ((localk != null) && (localk.b == 101) && (localk.c != null))
       {
-        localg.a(101, localk.c, false);
-        com.tencent.beacon.core.e.d.e("common strategy setted by local db", new Object[0]);
+        com.tencent.beacon.core.d.g localg = StrategyQueryModule.getInstance(this.b).getStrategyHandler();
+        if (localg != null)
+        {
+          localg.a(101, localk.c, false);
+          com.tencent.beacon.core.e.d.e("common strategy setted by local db", new Object[0]);
+        }
+        return;
       }
+      com.tencent.beacon.core.e.d.b("local strategy data == null", new Object[0]);
       return;
     }
     catch (Throwable localThrowable)

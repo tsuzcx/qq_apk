@@ -1,32 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajfl
-  implements View.OnClickListener
+  extends Handler
 {
-  public ajfl(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ajfl(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!(paramView.getTag() instanceof ajdm)) {}
-    for (;;)
+    if (paramMessage.what == 5)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ajdm localajdm = (ajdm)paramView.getTag();
-      if (localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
-      {
-        this.a.a(localajdm);
-        if (localajdm.jdField_a_of_type_Int == 82) {
-          bcst.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-        }
-      }
+      Face2FaceAddContactFragment.a(this.a).setText(2131691968);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
     }
+    do
+    {
+      return;
+      if (paramMessage.what == 301)
+      {
+        Face2FaceAddContactFragment.a(this.a);
+        return;
+      }
+      if (paramMessage.what == 500)
+      {
+        Face2FaceAddContactFragment.b(this.a);
+        return;
+      }
+      if (paramMessage.what == 401)
+      {
+        removeMessages(301);
+        this.a.d();
+        return;
+      }
+    } while (paramMessage.what != 6);
+    Face2FaceAddContactFragment.c(this.a);
+    QQToast.a(this.a.getActivity(), this.a.getString(2131690896), 0).a();
   }
 }
 

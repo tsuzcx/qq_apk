@@ -1,9 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-
-public abstract interface bghk
+class bghk
+  implements bgpm
 {
-  public abstract void a(View paramView, Drawable paramDrawable);
+  bghk(bghh parambghh) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.a(bgpk.b(paramInt));
+  }
 }
 
 

@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bgmg;
-import pha;
-import tsl;
+import bhmi;
+import ozs;
+import tji;
 
 public class ViolaBaseView$3$1
   implements Runnable
 {
-  public ViolaBaseView$3$1(tsl paramtsl) {}
+  public ViolaBaseView$3$1(tji paramtji) {}
   
   public void run()
   {
-    Object localObject = bgmg.a("viola_cache_file_viola_qq_page_data_new_main_js_" + pha.a());
+    Object localObject = bhmi.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ozs.a());
     if (localObject == null) {
-      bgmg.a("viola_cache_file_viola_qq_page_data_new_main_js_" + pha.a(), ViolaBaseView.a(this.a.a));
+      bhmi.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ozs.a(), ViolaBaseView.a(this.a.a));
     }
     while ((!(localObject instanceof String)) || (ViolaBaseView.a(this.a.a).equals(localObject))) {
       return;
     }
-    bgmg.a("viola_cache_file_viola_qq_page_data_new_main_js_" + pha.a(), ViolaBaseView.a(this.a.a));
+    bhmi.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ozs.a(), ViolaBaseView.a(this.a.a));
   }
 }
 

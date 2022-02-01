@@ -1,77 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
+import com.tencent.widget.ListView;
 
 public class bccu
-  extends MSFServlet
+  extends bcbj<bcfr, bcnz>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bccu(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, aoof paramaoof)
   {
-    paramIntent.getStringExtra("key_cmd_string");
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = paramFromServiceMsg.getWupBuffer();
-      arrayOfInt = new int[1];
-      paramIntent = blsy.a(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1001, true, paramFromServiceMsg, ayev.class);
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      int[] arrayOfInt;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-      }
-      notifyObserver(null, 1001, false, new Bundle(), ayev.class);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
-    }
-    notifyObserver(null, 1001, false, new Bundle(), ayev.class);
+    super(paramListView, paramaoof);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected bcil<bcfr, bcnz> a(int paramInt)
   {
-    if (paramIntent == null) {}
-    long l1;
-    do
-    {
-      return;
-      l1 = paramIntent.getLongExtra("selfuin", 0L);
-      localObject1 = paramIntent.getLongArrayExtra("hostuin");
-    } while (localObject1 == null);
-    Object localObject2 = new ArrayList(localObject1.length);
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
-      i += 1;
-    }
-    long l2 = paramIntent.getLongExtra("lasttime", 0L);
-    i = paramIntent.getIntExtra("src", 0);
-    localObject2 = new blsy(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
-    Object localObject1 = ((blsy)localObject2).encode();
-    paramIntent.putExtra("key_cmd_string", ((blsy)localObject2).getCmdString());
-    if (localObject1 == null) {}
-    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
-    {
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
-      paramPacket.putSendData(paramIntent);
-      return;
-    }
+    return new bcji(this.a.a);
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcpp(paramViewGroup, 2131562879);
   }
 }
 

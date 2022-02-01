@@ -1,22 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class wty
-  extends QQUIEventReceiver<wtu, wor>
 {
-  public wty(@NonNull wtu paramwtu)
-  {
-    super(paramwtu);
-  }
+  public final int a;
+  public final String a;
   
-  public void a(@NonNull wtu paramwtu, @NonNull wor paramwor)
+  public wty(int paramInt, String paramString)
   {
-    paramwtu.a.b(paramwor);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wor.class;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,15 +1,19 @@
-import android.text.Editable;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-final class bfjl
-  implements Comparator
+public final class bfjl
+  implements QQPermissionCallback
 {
-  bfjl(Editable paramEditable) {}
+  public bfjl(BaseActivity paramBaseActivity) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    if (!this.a.isFinishing()) {
+      bhlq.b(this.a);
+    }
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

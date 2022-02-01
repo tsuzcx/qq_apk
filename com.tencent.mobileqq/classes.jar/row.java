@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import android.content.BroadcastReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class row
-  implements DialogInterface.OnClickListener
 {
-  public row(EditColumnFragment paramEditColumnFragment) {}
+  private static int jdField_a_of_type_Int = 5;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new rox();
+  private static final String jdField_a_of_type_JavaLangString = row.class.getSimpleName();
+  private static Thread jdField_a_of_type_JavaLangThread;
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static AtomicInteger b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.a.a(false);
-    this.a.i();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    b = new AtomicInteger(0);
+  }
+  
+  private static long b()
+  {
+    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
+    return l;
   }
 }
 

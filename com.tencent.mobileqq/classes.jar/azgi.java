@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import mqq.app.AppRuntime.Status;
 
-public class azgi
-  implements DialogInterface.OnClickListener
+public abstract interface azgi
 {
-  public azgi(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.f();
-  }
+  public abstract void a(AppRuntime.Status paramStatus);
 }
 
 

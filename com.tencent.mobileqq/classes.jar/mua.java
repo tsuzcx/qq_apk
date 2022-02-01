@@ -1,263 +1,63 @@
-import android.media.MediaPlayer.OnCompletionListener;
 import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioSession;
-import java.util.Arrays;
-import java.util.List;
-import mqq.util.WeakReference;
+import java.io.File;
 
-class mua
-  implements bkeg
+final class mua
+  implements beuq
 {
-  mua(mts parammts) {}
+  mua(muc parammuc) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void onResp(bevm parambevm)
   {
-    if (paramInt1 != 0) {}
-    while (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Int = paramInt2;
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().C = paramInt2;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onGetConnectedDeviceRes err is: " + paramInt + " device name is: " + paramString);
-    }
-    if (mts.a(this.a) != null) {
-      mts.a(this.a).a(paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeSessionHelper", 1, "onConnectDeviceRes, err[" + paramInt + "], strDeviceName[" + paramString + "], bIsConnected[" + paramBoolean + "], seq[" + l + "]");
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().c != 3) {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().b("onConnectDeviceRes", paramString);
-      }
-      this.a.a();
-    } while (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null);
-    this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.b(l);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    int i = 0;
-    if (paramInt != 0) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel())
-      {
-        paramString2 = new StringBuilder();
-        paramInt = 0;
-        while (paramInt < paramArrayOfString.length)
-        {
-          paramString2.append(paramArrayOfString[paramInt]).append(" ");
-          paramInt += 1;
-        }
-        QLog.d("TraeSessionHelper", 2, "onGetDeviceListRes strDeviceList: " + paramString2.toString());
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-      {
-        paramString2 = this.a.jdField_a_of_type_ComTencentAvVideoController.a().q;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().a = paramArrayOfString;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().b("onGetDeviceListRes", paramString1);
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().r = paramString3;
-        mts.a(this.a, paramArrayOfString);
-        mts.a(this.a, paramString2, paramString1);
-        if (paramArrayOfString != null)
-        {
-          paramInt = i;
-          while (paramInt < paramArrayOfString.length)
-          {
-            if (paramArrayOfString[paramInt].equals("DEVICE_WIREDHEADSET")) {
-              mqw.k(this.a.jdField_a_of_type_ComTencentAvVideoController);
-            }
-            paramInt += 1;
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().C = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeSessionHelper", 1, "onStreamTypeUpdate, streamType[" + paramInt + "], seq[" + paramLong + "]");
-    }
-    this.a.a(paramLong, this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-  }
-  
-  public void a(long paramLong, int paramInt, String paramString)
-  {
-    MediaPlayer.OnCompletionListener localOnCompletionListener = this.a.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener;
-    this.a.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener = null;
-    QLog.w("TraeSessionHelper", 1, "onRingCompletion, err[" + paramInt + "], userData[" + paramString + "], mRingComListener[" + localOnCompletionListener + "], seq[" + paramLong + "]");
-    if (localOnCompletionListener != null) {
-      localOnCompletionListener.onCompletion(null);
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)))
-    {
+    if (parambevm.jdField_a_of_type_Int == 3) {
       if (QLog.isColorLevel()) {
-        QLog.w("TraeSessionHelper", 1, "ConnectDeviceWhenServiceOn, deviceName[" + this.a.jdField_b_of_type_JavaLangString + "], seq[" + paramLong + "]");
+        QLog.i("ScoreManager", 1, "Download init. url = " + ((beum)parambevm.jdField_a_of_type_Bevl).a);
       }
-      this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString);
     }
-  }
-  
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    int j = 0;
-    Object localObject;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      i = 0;
-      while (i < paramArrayOfString.length)
-      {
-        ((StringBuilder)localObject).append(paramArrayOfString[i]).append(" ");
-        i += 1;
-      }
-      QLog.w("TraeSessionHelper", 1, "onDeviceListUpdate, strConnectedDeviceName[" + paramString1 + "], strPrevConnectedDeviceName[" + paramString2 + "], bluetoothName[" + paramString3 + "], strDeviceList[" + ((StringBuilder)localObject).toString() + "], seq[" + paramLong + "]");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    label393:
     do
     {
-      do
+      for (;;)
       {
         return;
-        localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-        paramString2 = "";
-        String[] arrayOfString = ((ley)localObject).a;
-        if (((ley)localObject).c != 3)
+        if (parambevm.jdField_a_of_type_Int == 0)
         {
-          paramString2 = ((ley)localObject).q;
-          ((ley)localObject).b("onDeviceListUpdate", paramString1);
-        }
-        ((ley)localObject).a = paramArrayOfString;
-        ((ley)localObject).r = paramString3;
-        mts.a(this.a, paramArrayOfString);
-        mts.a(this.a, paramString2, paramString1);
-        if (mts.a(this.a) != null) {
-          mts.a(this.a).notifyDataSetChanged();
-        }
-        this.a.a();
-        if ((this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession != null) && (arrayOfString != null) && (paramArrayOfString != null))
-        {
-          paramString2 = Arrays.asList(arrayOfString);
-          paramString3 = Arrays.asList(paramArrayOfString);
-          if ((paramString3.contains("DEVICE_BLUETOOTHHEADSET")) && (paramString3.contains("DEVICE_WIREDHEADSET")))
+          File localFile = new File(((beum)parambevm.jdField_a_of_type_Bevl).c);
+          String str = azul.a(localFile.getAbsolutePath());
+          if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.a.b)))
           {
-            if ((!paramString2.contains("DEVICE_BLUETOOTHHEADSET")) || (paramString2.contains("DEVICE_WIREDHEADSET"))) {
-              break label393;
+            if (!QLog.isColorLevel()) {
+              break;
             }
-            if ("DEVICE_BLUETOOTHHEADSET".equals(paramString1)) {
-              this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramLong, "DEVICE_WIREDHEADSET");
-            }
+            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((beum)parambevm.jdField_a_of_type_Bevl).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
+            return;
           }
-        }
-        while (paramArrayOfString != null)
-        {
-          i = j;
-          while (i < paramArrayOfString.length)
+          try
           {
-            if (paramArrayOfString[i].equals("DEVICE_WIREDHEADSET")) {
-              mqw.k(this.a.jdField_a_of_type_ComTencentAvVideoController);
+            parambevm = new File(this.a.c);
+            apqh.a(this.a.c, parambevm.getParentFile().getAbsolutePath() + File.separator);
+            if (QLog.isColorLevel()) {
+              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + parambevm.getParentFile().getAbsolutePath());
             }
-            i += 1;
+            if (QLog.isColorLevel())
+            {
+              QLog.i("ScoreManager", 1, "qav_score_good : " + msq.a("qav_score_good.jpg") + ", qav_score_normal : " + msq.a("qav_score_normal.jpg") + ", qav_score_bad : " + msq.a("qav_score_bad.jpg"));
+              return;
+            }
           }
-          if ((!paramString2.contains("DEVICE_BLUETOOTHHEADSET")) && (paramString2.contains("DEVICE_WIREDHEADSET")) && ("DEVICE_WIREDHEADSET".equals(paramString1))) {
-            this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramLong, "DEVICE_BLUETOOTHHEADSET");
+          catch (Exception parambevm)
+          {
+            new File(this.a.c).delete();
           }
         }
-        if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().t.equals("DEVICE_NONE"))
-        {
-          if (!paramString1.equals(this.a.jdField_a_of_type_ComTencentAvVideoController.a().t)) {
-            this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramLong, this.a.jdField_a_of_type_ComTencentAvVideoController.a().t);
-          }
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().t = "DEVICE_NONE";
-        }
-      } while (mts.a(this.a) == null);
-      mts.a(this.a).a(null, new mty(paramArrayOfString));
-    } while (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null);
-    this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.b(paramLong);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ScoreManager", 1, "Download end. uncompressZip error.");
   }
   
-  public void a(String paramString)
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onBeginConnectDevice connectedDev: " + paramString);
-    }
-    if ("DEVICE_BLUETOOTHHEADSET".equals(paramString)) {
-      maf.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onAudioRouteSwitchEnd connectedDev: " + paramString + " timsMs: " + paramLong);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onAudioRoteSwitchStart fromDev: " + paramString1 + " toDev: " + paramString2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    Button localButton;
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
-      } while (((i == 1) || (i == 2)) && ((!this.a.jdField_a_of_type_ComTencentAvVideoController.e()) || (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().l()) || (this.a.jdField_b_of_type_MqqUtilWeakReference == null)));
-      localButton = (Button)this.a.jdField_b_of_type_MqqUtilWeakReference.get();
-    } while ((localButton == null) || (paramBoolean == localButton.isClickable()));
-    localButton.setClickable(paramBoolean);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TraeSessionHelper", 2, "onGetConnectingDeviceRes strDeviceName: " + paramString);
+      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((beum)parambevl).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
     }
   }
 }

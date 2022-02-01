@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzl;
+import bnan;
 
 public class PictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<PictureUrl> CREATOR = new blzl();
+  public static final Parcelable.Creator<PictureUrl> CREATOR = new bnan();
   public float a;
   public int a;
   public String a;

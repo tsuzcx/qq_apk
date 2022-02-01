@@ -1,20 +1,24 @@
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
 
-public abstract interface ayyq
+public class ayyq
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(int paramInt);
+  public ayyq(OCRResultActivity paramOCRResultActivity) {}
   
-  public abstract void a(int paramInt, ayxy paramayxy);
-  
-  public abstract void a(int paramInt, ArrayList<ayxy> paramArrayList);
-  
-  public abstract void a_(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, ayxy paramayxy);
-  
-  public abstract void c(int paramInt, ayxy paramayxy);
-  
-  public abstract void d(int paramInt, ayxy paramayxy);
+  public void onDismiss()
+  {
+    this.a.a = null;
+    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
+    {
+      Drawable localDrawable = this.a.getResources().getDrawable(2130845640);
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    }
+  }
 }
 
 

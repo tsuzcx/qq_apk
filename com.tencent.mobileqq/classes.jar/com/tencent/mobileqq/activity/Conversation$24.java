@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import nzz;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import ozs;
 
 class Conversation$24
   implements Runnable
@@ -9,7 +10,7 @@ class Conversation$24
   
   public void run()
   {
-    nzz.a().a(this.this$0.a);
+    ozs.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
   }
 }
 

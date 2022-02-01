@@ -1,34 +1,65 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class xdx
-  implements xdw
+  extends wpa<xfg>
 {
-  private xcu jdField_a_of_type_Xcu;
-  private xdz jdField_a_of_type_Xdz;
+  public static final String a;
+  public List<xbo> a;
+  public String b;
   
-  public xdx(xcu paramxcu, xdz paramxdz)
+  static
   {
-    this.jdField_a_of_type_Xcu = paramxcu;
-    this.jdField_a_of_type_Xdz = paramxdz;
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.get_colleciton_view_count");
   }
   
-  public void a()
+  public xdx()
   {
-    if (this.jdField_a_of_type_Xcu != null) {
-      this.jdField_a_of_type_Xcu.c(this.jdField_a_of_type_Xdz);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
+    try
+    {
+      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
+      return new xfg(this.b, localRspCollectionViewCount);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        yuk.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
+      }
     }
   }
   
-  public void b()
+  protected byte[] a()
   {
-    if (this.jdField_a_of_type_Xcu != null) {
-      this.jdField_a_of_type_Xcu.d(this.jdField_a_of_type_Xdz);
+    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      xbo localxbo = (xbo)localIterator.next();
+      localReqCollectionViewCount.collection_id.add(localxbo.a());
     }
+    return localReqCollectionViewCount.toByteArray();
   }
   
-  public void c()
+  public String toString()
   {
-    if (this.jdField_a_of_type_Xcu != null) {
-      this.jdField_a_of_type_Xcu.e(this.jdField_a_of_type_Xdz);
-    }
+    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

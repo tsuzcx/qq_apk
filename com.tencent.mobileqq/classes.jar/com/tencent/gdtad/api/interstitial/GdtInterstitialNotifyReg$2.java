@@ -1,13 +1,13 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acmc;
+import acqe;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 
 public class GdtInterstitialNotifyReg$2
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$2(acmc paramacmc, AdHttp.Params paramParams) {}
+  public GdtInterstitialNotifyReg$2(acqe paramacqe, AdHttp.Params paramParams) {}
   
   public void run()
   {

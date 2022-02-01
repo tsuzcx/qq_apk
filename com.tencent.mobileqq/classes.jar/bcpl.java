@@ -1,26 +1,51 @@
-import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public final class bcpl
-  implements IDiniFlyQLog
+public class bcpl
+  implements bcny
 {
-  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  
+  public bcpl(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
-    switch (paramInt1)
-    {
-    case 4: 
-    default: 
-      QLog.i(paramString1, paramInt2, paramString2, null);
-      return;
-    case 5: 
-      QLog.w(paramString1, paramInt2, paramString2, null);
-      return;
-    case 6: 
-      QLog.e(paramString1, paramInt2, paramString2, null);
-      return;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
+    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320);
+    if ((paramViewGroup != null) && (paramInt2 > 0)) {
+      paramViewGroup.setImageResource(paramInt2);
     }
-    QLog.d(paramString1, paramInt2, paramString2, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369569));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
+    if (paramInt3 == 12) {
+      this.b.setText(anzj.a(2131712537) + tyi.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + anzj.a(2131712536));
+    }
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public List<bcnz> a()
+  {
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

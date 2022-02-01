@@ -1,21 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.smtt.sdk.WebView;
+
 public class oax
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  public oax(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
   
-  public oax(oau paramoau, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
+    if (paramDialogInterface == null) {}
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (paramInt != 1);
+    paramDialogInterface.loadUrl("javascript:" + this.b);
   }
 }
 

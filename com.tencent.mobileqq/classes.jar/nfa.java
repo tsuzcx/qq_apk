@@ -1,27 +1,26 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class nfa
-  extends RecyclerView.ItemDecoration
+class nfa
+  implements nas
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  final WeakReference<nez> a;
   
-  public nfa(new paramnew, int paramInt1, int paramInt2)
+  nfa(nez paramnez)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = new WeakReference(paramnez);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    paramRect.bottom = 0;
-    paramRect.top = 0;
-    paramRect.right = 0;
-    paramRect.left = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameServerIPCModule_GameRC", 2, "GameResultCallback onReslut, playId[" + paramString1 + "], fileType[" + paramInt + "], url[" + paramString2 + "]");
+    }
+    nez localnez = (nez)this.a.get();
+    if (localnez == null) {
+      return;
+    }
+    localnez.a(true, paramString1, paramInt, paramString2);
   }
 }
 

@@ -1,27 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class boxg
-  extends AnimatorListenerAdapter
+class boxg
+  implements View.OnClickListener
 {
-  public boxg(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  boxg(boxb paramboxb) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView 50ms delay=90ms end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.setStatus(false);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView begin");
-    }
+    boxb.e(this.a);
+    boxb.b(this.a).setVisibility(8);
+    bozz.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
+    PeakAppInterface.a.a(1010);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

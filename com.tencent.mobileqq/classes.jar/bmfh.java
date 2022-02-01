@@ -1,8 +1,6 @@
-import android.os.Bundle;
-
 public abstract interface bmfh
 {
-  public abstract void onWebEvent(String paramString, Bundle paramBundle);
+  public abstract void a();
 }
 
 

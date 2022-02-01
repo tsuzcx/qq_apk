@@ -1,24 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListView.SavedState;
 
-public class bllp
-  implements DialogInterface.OnDismissListener
+public final class bllp
+  implements Parcelable.Creator<ExpandableListView.SavedState>
 {
-  public bllp(QfavJumpActivity paramQfavJumpActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ExpandableListView.SavedState a(Parcel paramParcel)
   {
-    if (QfavJumpActivity.a(this.a))
-    {
-      QfavJumpActivity.a(this.a, false);
-      this.a.finish();
-    }
+    return new ExpandableListView.SavedState(paramParcel, null);
+  }
+  
+  public ExpandableListView.SavedState[] a(int paramInt)
+  {
+    return new ExpandableListView.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bllp
  * JD-Core Version:    0.7.0.1
  */

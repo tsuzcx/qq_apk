@@ -1,8 +1,19 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface bmki
+class bmki
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(Handler paramHandler);
+  bmki(bmkd parambmkd) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (!this.a.b) {
+      bmkd.a(this.a, 1);
+    }
+    this.a.b = false;
+    this.a.a = null;
+  }
 }
 
 

@@ -1,20 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class twd
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  twd(tvx paramtvx) {}
+  twd(tvz paramtvz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a(tvx.a(this.a));
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,49 +1,56 @@
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class afkk
-  implements ajer
+  extends AccountObserver
 {
-  public afkk(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  public afkk(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      ajeq.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
-      ajeq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
-        this.a.jdField_a_of_type_Biau.dismiss();
-      }
-      return;
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
-    }
-    TroopInviteStatusFragment.a(this.a, 2);
+    RegisterQQNumberActivity.a(this.a);
+    paramString1 = new Intent(this.a, LoginActivity.class);
+    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString1.putExtra("tab_index", MainFragment.b);
+    paramString1.addFlags(131072);
+    this.a.startActivity(paramString1);
+    this.a.finish();
   }
   
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  public void onLoginSuccess(String paramString1, String paramString2)
   {
-    if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
-      this.a.jdField_a_of_type_Biau.dismiss();
-    }
+    super.onLoginSuccess(paramString1, paramString2);
     if (QLog.isColorLevel()) {
-      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
     }
-    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131689969;; paramInt1 = 2131689968)
-    {
-      QQToast.a(paramString1, paramInt1, 1).a();
-      return;
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterQQNumberActivity.a(this.a);
+    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }

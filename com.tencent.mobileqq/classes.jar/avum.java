@@ -1,169 +1,79 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.Set;
 
 public class avum
-  extends QIPCModule
+  extends BaseAdapter
 {
-  private ArrayList<avup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean;
+  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  public List<HotPicTagInfo> a;
+  boolean jdField_a_of_type_Boolean;
   
-  private avum()
+  public avum(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    super("ListenTogetherIPCModuleWebClient");
+    this.jdField_a_of_type_JavaUtilList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
+    boolean bool;
+    this.jdField_a_of_type_Boolean = bool;
   }
   
-  public static avum a()
+  public int getCount()
   {
-    return avuo.a();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  private EIPCResult a(String arg1, Bundle paramBundle, int paramInt)
+  public Object getItem(int paramInt)
   {
-    if ((!"action_status_changed".equals(???)) || (paramBundle == null)) {}
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      localObject = new avuo(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
+      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558616, null);
+      ((avuo)localObject).a = ((TextView)paramView.findViewById(2131368154));
+      paramView.setTag(localObject);
+    }
     for (;;)
     {
-      return null;
-      paramBundle = paramBundle.getString("data");
-      try
+      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
+      localObject = ((avuo)localObject).a;
+      ((TextView)localObject).setText(str);
+      ((TextView)localObject).setTextSize(2, HotPicTab.b());
+      ((TextView)localObject).setTextColor(HotPicTab.c());
+      ((TextView)localObject).setPadding(0, 0, 0, 0);
+      ((TextView)localObject).setFocusable(true);
+      ((TextView)localObject).setGravity(17);
+      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
+      paramView.setContentDescription(str);
+      paramView.setFocusable(true);
+      paramView.setOnHoverListener(new avun(this));
+      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
       {
-        paramBundle = new JSONObject(paramBundle);
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "statusChanged action:" + ??? + " data=" + paramBundle);
-        }
-        if (paramBundle != null) {
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (localIterator.hasNext())
-            {
-              avup localavup = (avup)localIterator.next();
-              if (localavup != null) {
-                localavup.a(paramBundle);
-              }
-            }
-          }
-        }
+        bdll.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
+        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
       }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          QLog.i("ListenTogetherIPCModuleWebClient", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
-        }
-        ??? = new EIPCResult();
-        ???.code = 0;
-      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localObject = (avuo)paramView.getTag();
     }
-    return ???;
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("data", paramJSONObject.toString());
-    QIPCClientHelper.getInstance().getClient().callServer("ListenTogetherIPCModuleMainServer", "action_status_changed", localBundle, null);
-  }
-  
-  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("data", paramJSONObject.toString());
-    QIPCClientHelper.getInstance().getClient().callServer("ListenTogetherIPCModuleMainServer", paramString, localBundle, paramEIPCResultCallback);
-  }
-  
-  public void a(avup paramavup)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "register callback:" + paramavup);
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavup)) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        ??? = a();
-      }
-      try
-      {
-        QIPCClientHelper.getInstance().register((QIPCModule)???);
-        this.jdField_a_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register real");
-        }
-      }
-      catch (Exception localException)
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramavup);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-          return;
-          localException = localException;
-          QLog.e("ListenTogetherIPCModuleWebClient", 1, "register ipc module error.", localException);
-        }
-      }
-    }
-  }
-  
-  public void b(avup paramavup)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister callback:" + paramavup + " mHasRegistered:" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavup)) {}
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramavup);
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-      }
-      if ((!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (!this.jdField_a_of_type_Boolean)) {}
-    }
-    try
-    {
-      if (QIPCClientHelper.getInstance().getClient() != null)
-      {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister real");
-        }
-      }
-      return;
-    }
-    catch (Exception paramavup)
-    {
-      QLog.e("ListenTogetherIPCModuleWebClient", 1, "unregister ipc module error.", paramavup);
-    }
-    paramavup = finally;
-    throw paramavup;
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.i("ListenTogetherIPCModuleWebClient", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    while (!"action_status_changed".equals(paramString)) {
-      return null;
-    }
-    return a(paramString, paramBundle, paramInt);
   }
 }
 

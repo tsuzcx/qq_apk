@@ -1,54 +1,39 @@
-import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
+import java.util.ArrayList;
 
-public class ysz
-  implements ytb
+class ysz
+  extends yop
 {
-  private long jdField_a_of_type_Long;
+  ysz(ysw paramysw, boolean paramBoolean) {}
   
-  public ysz(EditVideoFilter paramEditVideoFilter) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public void a(int paramInt, View paramView, Object paramObject, yqw paramyqw)
   {
-    yrd localyrd = (yrd)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(yrd.class);
-    if (localyrd != null) {
-      localyrd.a(paramMotionEvent);
+    if (paramView == paramyqw.a()) {
+      ysw.a(this.jdField_a_of_type_Ysw, paramInt, (StoryVideoItem)ysw.a(this.jdField_a_of_type_Ysw).a().get(paramInt), paramView);
     }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
-  {
-    if (paramMotionEvent2 != null)
+    do
     {
-      yrd localyrd = (yrd)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(yrd.class);
-      if (localyrd != null) {}
-      for (boolean bool = localyrd.a(paramMotionEvent2);; bool = false)
-      {
-        if (bool)
-        {
-          a(paramMotionEvent1);
-          a(paramMotionEvent2);
-        }
-        return bool;
-      }
-    }
-    return false;
-  }
-  
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 300L)
-    {
-      this.jdField_a_of_type_Long = l;
-      paramView = (yrd)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(yrd.class);
-      if (paramView != null) {
-        paramView.f_();
-      }
       return;
-    }
-    yqp.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
+      if (paramView == paramyqw.a(2131374659))
+      {
+        paramView = (StoryCoverView)paramyqw.a(2131374658);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ysw.a(this.jdField_a_of_type_Ysw, paramInt, (StoryVideoItem)ysw.a(this.jdField_a_of_type_Ysw).a().get(paramInt), paramView);
+          return;
+        }
+        ysw.b(this.jdField_a_of_type_Ysw, paramInt, (StoryVideoItem)ysw.a(this.jdField_a_of_type_Ysw).a().get(paramInt), paramView);
+        return;
+      }
+      if ((paramView == paramyqw.a(2131374714)) || (paramView == paramyqw.a(2131374661)))
+      {
+        ysw.a(this.jdField_a_of_type_Ysw, paramInt, (StoryVideoItem)ysw.a(this.jdField_a_of_type_Ysw).a().get(paramInt));
+        return;
+      }
+    } while (paramView != paramyqw.a(2131374710));
+    this.jdField_a_of_type_Ysw.a(paramyqw, paramInt);
   }
 }
 

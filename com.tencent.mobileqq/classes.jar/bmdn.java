@@ -1,83 +1,103 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
-import com.tencent.component.network.module.report.ImageDownloadReporter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.content.Context;
+import com.tencent.TMG.sdk.AVCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-class bmdn
-  implements Downloader.DownloadListener
+public class bmdn
 {
-  bmdo jdField_a_of_type_Bmdo;
+  static bmdn jdField_a_of_type_Bmdn;
+  private static String b = "GMEAVEngineWalper";
+  int jdField_a_of_type_Int = 0;
+  public Context a;
+  public bkti a;
+  private bmdy jdField_a_of_type_Bmdy = new bmdt(this);
+  bmea jdField_a_of_type_Bmea;
+  private AVCallback jdField_a_of_type_ComTencentTMGSdkAVCallback = new bmds(this);
+  String jdField_a_of_type_JavaLangString = "";
+  Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
   
-  public bmdn(bmdl parambmdl, bmdo parambmdo)
+  public static bmdn a()
   {
-    this.jdField_a_of_type_Bmdo = parambmdo;
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 1, "plugin download canceled, url=" + paramString);
+    if (jdField_a_of_type_Bmdn == null) {
+      jdField_a_of_type_Bmdn = new bmdn();
     }
-    paramString = Message.obtain(this.jdField_a_of_type_Bmdl.a, 2);
-    paramString.obj = this.jdField_a_of_type_Bmdo;
-    paramString.sendToTarget();
+    return jdField_a_of_type_Bmdn;
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  private void a()
   {
-    paramString = Message.obtain(this.jdField_a_of_type_Bmdl.a, 3);
-    paramString.obj = this.jdField_a_of_type_Bmdo;
-    paramString.arg1 = -9999;
-    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
-    for (;;)
+    bmeb.a().a(this.jdField_a_of_type_Bmea, new bmdo(this));
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Bmea = new bmea(paramInt, paramString1, paramString2);
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    QLog.e("Begin:TMGProformanceHelper", 1, bmdz.a());
+    QLog.e("AVEngineWalper", 1, "InitSDKEngine() strAppid=" + paramString2 + ", strUin=" + paramString1 + ", strAccountType=" + paramString3);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Bmdy);
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_AndroidContentContext);
+    paramContext = new bmdw();
+    paramContext.jdField_a_of_type_JavaLangString = paramString2;
+    paramContext.b = paramString3;
+    paramContext.d = paramString4;
+    paramContext.c = paramString1;
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a(paramContext);
+    a();
+  }
+  
+  public void a(bkti parambkti)
+  {
+    this.jdField_a_of_type_Bkti = parambkti;
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "ExitRoom!!!, strRoomID" + paramString);
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a();
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a(paramString, paramBoolean1, paramBoolean2, this.jdField_a_of_type_Int, new bmdp(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (bmdu.a(this.jdField_a_of_type_AndroidContentContext).a() == paramBoolean)
     {
-      try
-      {
-        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
-        paramString.arg1 = paramDownloadResult.retCode;
-        if (!AppNetConnInfo.isNetSupport()) {
-          continue;
-        }
-        i = 1;
-        paramString.arg2 = i;
-        QLog.w("QZonePluginManger", 1, "plugin download failed, code=" + paramDownloadResult.retCode + ", arg2=" + paramString.arg2);
+      QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + 0);
+      if (this.jdField_a_of_type_Bkti != null) {
+        this.jdField_a_of_type_Bkti.a(paramBoolean, 0);
       }
-      catch (Exception paramDownloadResult)
-      {
-        int i;
-        QLog.w("QZonePluginManger", 1, "onDownloadFailed", paramDownloadResult);
-        continue;
-      }
-      paramString.sendToTarget();
       return;
-      i = 0;
     }
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new bmdq(this));
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    bmdl.a(this.jdField_a_of_type_Bmdl, (int)(100.0F * paramFloat));
-    paramString = Message.obtain(this.jdField_a_of_type_Bmdl.a, 5);
-    bmdo.a(this.jdField_a_of_type_Bmdo).progress = paramFloat;
-    paramString.obj = this.jdField_a_of_type_Bmdo;
-    paramString.sendToTarget();
+    a(paramString, paramBoolean1, paramBoolean2);
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
+    if (bmdu.a(this.jdField_a_of_type_AndroidContentContext).b() == paramBoolean)
     {
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, downloaded path:" + paramDownloadResult.getPath());
-      paramString = bmei.e(bmdl.a(this.jdField_a_of_type_Bmdl), bmdo.a(this.jdField_a_of_type_Bmdo));
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, saved path:" + paramString + ", exsit:" + paramString.exists());
+      QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + 0);
+      if (this.jdField_a_of_type_Bkti != null) {
+        this.jdField_a_of_type_Bkti.b(paramBoolean, 0);
+      }
+      return;
     }
-    paramString = Message.obtain(this.jdField_a_of_type_Bmdl.a, 4);
-    paramString.obj = this.jdField_a_of_type_Bmdo;
-    paramString.sendToTarget();
+    bmdu.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new bmdr(this));
   }
 }
 

@@ -13,7 +13,7 @@ public class MiniAppGlobal
   public static final String APP_ROOT = "/data/data/com.tencent.mobileqq/";
   public static final String CAPSULE_CLOSE_DARK_URL;
   public static final String CAPSULE_CLOSE_URL;
-  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.17.0.00206";
+  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.18.0.00132";
   public static final String DEFAULT_APPID_WHITE_LIST = "1108291530,1108164955,1108961705,1109048181";
   public static final String DEFAULT_OUTSITE_BLACK_LIST = "";
   public static final String INNER_JSSDK_ASSETS_PATH = "mini";

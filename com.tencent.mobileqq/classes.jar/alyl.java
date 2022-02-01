@@ -1,42 +1,6 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-
-public class alyl
-  implements bkmq
+public abstract interface alyl
 {
-  public alyl(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (bgnt.d(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((bafv)this.a.app.getManager(91)).a();
-      return true;
-    }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public abstract void a(long paramLong1, long paramLong2, String paramString1, String paramString2, boolean paramBoolean);
 }
 
 

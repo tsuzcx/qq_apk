@@ -3,25 +3,25 @@ package com.tencent.mobileqq.structmsg.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import bcvw;
-import bdaz;
-import bdbh;
+import bdop;
+import bdts;
+import bdua;
 
 public class StructMsgItemVideo$3
   implements Runnable
 {
-  public StructMsgItemVideo$3(bdaz parambdaz, Context paramContext, View paramView) {}
+  public StructMsgItemVideo$3(bdts parambdts, Context paramContext, View paramView) {}
   
   public void run()
   {
-    String str = bcvw.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.Z, bdaz.a(this.this$0));
+    String str = bdop.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.ab, bdts.a(this.this$0));
     this.this$0.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
     if (!TextUtils.isEmpty(str))
     {
-      bdaz.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
+      bdts.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
       return;
     }
-    bdaz.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
+    bdts.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

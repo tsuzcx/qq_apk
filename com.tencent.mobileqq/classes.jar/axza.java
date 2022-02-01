@@ -1,6 +1,18 @@
-public abstract interface axza
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
+public class axza
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public int a;
+  public View a;
+  public ImageButton a;
+  public ImageView a;
+  public TextView a;
+  
+  private axza(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

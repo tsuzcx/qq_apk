@@ -1,43 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PathMeasure;
+import com.tencent.mobileqq.doutu.combo.ComboMasterView;
 
 public class ascs
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private ascs(asco paramasco) {}
+  public ascs(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new StickerGestureDetector.StickerAnimationListener.1(this));
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aY();
-      this.a.jdField_b_of_type_Double = 1.0D;
-      this.a.jdField_a_of_type_Double = 0.0D;
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
-        this.a.c = null;
-      }
-      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
-      {
-        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
-        this.a.jdField_b_of_type_AndroidViewView = null;
-      }
-      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

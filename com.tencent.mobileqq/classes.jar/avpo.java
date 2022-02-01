@@ -1,39 +1,15 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
 public class avpo
-  implements aaob
+  implements DialogInterface.OnClickListener
 {
-  public avpo(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public avpo(JefsClass.8 param8) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramBundle = paramBundle.getString("sayhiinfo");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      if (TextUtils.isEmpty(paramBundle)) {
-        localJSONObject.put("result", "fail");
-      }
-      for (;;)
-      {
-        paramBundle = localJSONObject.toString();
-        QLog.i("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback result = " + paramBundle);
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-        return;
-        localJSONObject.put("result", "success");
-        localJSONObject.put("data", new JSONObject(paramBundle));
-      }
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.e("UiApiPlugin", 1, "getTribeSayHelloRedInfo callback Exception:", paramBundle);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

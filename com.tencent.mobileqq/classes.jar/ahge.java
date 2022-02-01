@@ -1,21 +1,26 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+import android.animation.ValueAnimator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class ahge
-  extends afwr
 {
-  public long a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public QQWalletTransferBubbleView a;
-  public TextView b;
-  public QQWalletTransferBubbleView b;
-  public TextView c;
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public Scroller a;
+  public boolean a;
+  public float b;
+  public int b;
+  public Scroller b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public ahge(ahgb paramahgb) {}
+  public ahge(HeartCombolEffectView paramHeartCombolEffectView) {}
 }
 
 

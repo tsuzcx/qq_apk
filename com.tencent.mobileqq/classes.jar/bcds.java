@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import java.util.List;
 
 public class bcds
-  implements bdvw
 {
-  public bcds(PtvTemplateManager.5 param5) {}
+  public int a;
+  public String a;
+  public List<bcft> a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onResp(bdwt parambdwt)
+  public bcds() {}
+  
+  public bcds(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, List<bcft> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + parambdwt.c);
-    }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
-    {
-      nmk.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (IOException parambdwt)
-    {
-      while (!QLog.isColorLevel()) {}
-      parambdwt.printStackTrace();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

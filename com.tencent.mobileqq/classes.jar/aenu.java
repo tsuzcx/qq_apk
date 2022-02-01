@@ -1,16 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.widget.ImageView;
 
-public class aenu
-  extends ayes
+class aenu
 {
-  public aenu(LoginInfoActivity paramLoginInfoActivity) {}
+  aens jdField_a_of_type_Aens;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
-  }
+  aenu(aent paramaent) {}
 }
 
 

@@ -1,8 +1,17 @@
-public abstract interface bial
+import android.annotation.TargetApi;
+import android.os.Handler;
+
+class bial
+  extends biht
 {
-  public abstract void a(biaj parambiaj);
+  bial(biak parambiak) {}
   
-  public abstract void a(biaj parambiaj, int paramInt1, int paramInt2);
+  @TargetApi(9)
+  public void onDone(bihu parambihu)
+  {
+    super.onDone(parambihu);
+    biak.a(this.a).sendMessage(biak.a(this.a).obtainMessage(10002, parambihu.a(), 0, parambihu.a()));
+  }
 }
 
 

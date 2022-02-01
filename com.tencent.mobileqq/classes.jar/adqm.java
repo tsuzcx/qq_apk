@@ -1,167 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adqm
-  extends asyw
+  implements View.OnClickListener
 {
-  private adqm(BaseChatPie paramBaseChatPie) {}
+  public adqm(AboutActivity paramAboutActivity) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void a(int paramInt, long paramLong, String paramString)
-  {
-    atvo.a(paramLong, paramInt, paramString);
-    bnaz.a(null, paramInt);
-    if (this.a.jdField_a_of_type_Afwy != null) {
-      this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2)
-  {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((paramString2 != null) && (paramString2.length() > 0))
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
     {
-      atvo.a(paramString2);
-      return;
+      bdll.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", bhdu.a(), "");
+      UpgradeDetailActivity.a(this.a, bhdu.a().a(), false, false, true);
     }
-    atvo.a(paramLong);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      atvo.a(paramString);
-    }
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void a(athr paramathr)
-  {
-    if (paramathr == null) {}
-    label4:
-    do
-    {
-      FileManagerEntity localFileManagerEntity;
-      do
-      {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (!(paramathr.a instanceof FileManagerEntity));
-          localFileManagerEntity = (FileManagerEntity)paramathr.a;
-          if ((paramathr.b == null) || (paramathr.b.length() <= 0)) {
-            break;
-          }
-          localFileManagerEntity.strThumbPath = paramathr.b;
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-        } while (this.a.jdField_a_of_type_Afwy == null);
-        this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-        return;
-      } while (localFileManagerEntity.thumbInvalidCode != 1);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-    } while (this.a.jdField_a_of_type_Afwy == null);
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    if (this.a.jdField_a_of_type_Afwy != null) {
-      this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-    }
-    atvo.a(paramLong, paramInteger.intValue(), paramString);
-    bnaz.a(null, paramInteger.intValue());
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
-      if (bmxr.a(paramInt2))
-      {
-        if (!paramBoolean) {
-          break label154;
-        }
-        bmyl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.a());
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-      return;
-      label154:
-      if (bmxr.b())
-      {
-        bmxr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      else
-      {
-        if (!TextUtils.isEmpty(paramString2)) {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString2, 1).b(this.a.a());
-        }
-        for (;;)
-        {
-          bnaz.a(null, paramInt2);
-          break;
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692438, 1).b(this.a.a());
-        }
-        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-        {
-          atvo.a(paramLong2, paramInt2, paramString2);
-          bnaz.a(null, paramInt2);
-        }
-      }
-    }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void c()
-  {
-    this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-  }
-  
-  protected void d()
-  {
-    if (this.a.jdField_a_of_type_Afwy != null) {
-      this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

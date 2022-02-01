@@ -1,35 +1,28 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.LikeEntry;
 import java.util.List;
 
 public class yga
-  extends QQUIEventReceiver<yfw, yfz>
+  extends wip
 {
-  public yga(yfw paramyfw)
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  
+  public yga(ErrorMessage paramErrorMessage, String paramString)
   {
-    super(paramyfw);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(@NonNull yfw paramyfw, @NonNull yfz paramyfz)
+  public String toString()
   {
-    if (paramyfz.jdField_a_of_type_Boolean)
-    {
-      if (paramyfz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-      {
-        yfw.a(paramyfw, paramyfz.jdField_a_of_type_JavaUtilList, true);
-        yfw.a(paramyfw).a(true);
-      }
-      return;
-    }
-    yfw.a(paramyfw, paramyfz);
-    yfw.a(paramyfw).remove(yfw.b());
-    yfw.a(paramyfw);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return yfz.class;
+    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

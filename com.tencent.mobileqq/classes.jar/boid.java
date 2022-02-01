@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class boid
-  implements View.OnClickListener
+public abstract interface boid
 {
-  boid(boib paramboib) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    bnyh.a().A();
-    boib.a(this.a);
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

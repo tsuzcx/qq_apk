@@ -1,36 +1,22 @@
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-class avrp
-  extends avru
+final class avrp
+  implements avre
 {
-  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
+  public String a()
   {
-    paramQQAppInterface = ((baif)paramQQAppInterface.getManager(36)).a(0, paramString);
-    if ((RedTouch.a(paramQQAppInterface)) && (paramQQAppInterface.type.get() != 5) && (paramQQAppInterface.red_display_info.has()) && (paramQQAppInterface.red_display_info.get() != null) && (paramQQAppInterface.red_display_info.red_type_info.has()) && (paramQQAppInterface.red_display_info.red_type_info.get() != null))
-    {
-      paramString = paramQQAppInterface.red_display_info.red_type_info.get().iterator();
-      while (paramString.hasNext())
-      {
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.next();
-        if (localRedTypeInfo.red_type.get() == 11) {
-          localRedTypeInfo.red_type.set(0);
-        }
-      }
-    }
-    return paramQQAppInterface;
+    return azzf.a;
   }
   
-  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void a(int paramInt)
   {
-    paramRedTouch.a(paramAppInfo);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
+    }
   }
 }
 

@@ -1,37 +1,95 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.player.MoviePlayer;
-import dov.com.qq.im.ae.play.AEVideoPreviewFragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bnwh
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public bnwh(AEVideoPreviewFragment paramAEVideoPreviewFragment) {}
+  private static bnwh jdField_a_of_type_Bnwh;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
+  private boolean b;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  private int a()
   {
-    float f = paramInt / 1000.0F / 1000.0F;
-    if (paramBoolean)
-    {
-      paramSeekBar = new CMTime(f);
-      this.a.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.seekToTime(paramSeekBar);
+    if (this.b) {
+      return this.jdField_a_of_type_Int;
     }
-    paramSeekBar = bojc.a((f * 1000.0F));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramSeekBar);
+    this.b = true;
+    long l = a(BaseApplicationImpl.getApplication());
+    if (b(BaseApplicationImpl.getApplication()) > l) {}
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
+      return this.jdField_a_of_type_Int;
+    }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public static long a(Context paramContext)
   {
-    AEVideoPreviewFragment.a(this.a);
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public static bnwh a()
   {
-    AEVideoPreviewFragment.b(this.a);
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    if (jdField_a_of_type_Bnwh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bnwh == null) {
+        jdField_a_of_type_Bnwh = new bnwh();
+      }
+      return jdField_a_of_type_Bnwh;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
+    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
+    localEditor.apply();
+  }
+  
+  public static long b(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
+    }
+    while (a() != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
+    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
+    a();
   }
 }
 

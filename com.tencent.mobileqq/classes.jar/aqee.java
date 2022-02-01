@@ -1,352 +1,198 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
-import com.tencent.mobileqq.dinifly.Cancellable;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class aqee
-  implements aqeg
+final class aqee
+  extends aqbg
 {
-  private Cancellable a;
+  aqee(String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  private void a(Context paramContext, aqdu paramaqdu, String paramString1, String paramString2, boolean paramBoolean)
+  /* Error */
+  public void b(boolean paramBoolean, long paramLong, byte[] arg4)
   {
-    if ((paramaqdu.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof aqco))
-    {
-      if (!paramBoolean) {
-        a(paramaqdu);
-      }
-      return;
-    }
-    ThreadManagerV2.excute(new DefaultItemBuilder.1(this, paramString1, paramContext, paramString2, paramaqdu, paramBoolean), 16, null, true);
-  }
-  
-  private void a(aqdu paramaqdu)
-  {
-    if ((paramaqdu == null) || (paramaqdu.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
-    {
-      QLog.e("DefaultItemBuilder", 1, "lottie loaded but still null");
-      return;
-    }
-    QLog.d("DefaultItemBuilder", 4, "play animation");
-    LottieDrawable localLottieDrawable = (LottieDrawable)paramaqdu.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    localLottieDrawable.setRepeatCount(-1);
-    localLottieDrawable.playAnimation();
-    int i = afur.a(24.0F, paramaqdu.jdField_a_of_type_AndroidWidgetTextView.getResources());
-    localLottieDrawable.setBounds(new Rect(0, 0, i, i));
-    paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramaqdu.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-  }
-  
-  protected int a(ColorNote paramColorNote)
-  {
-    int i = 2130840264;
-    switch (aqda.a(paramColorNote.getServiceType()) & 0xFFFF0000)
-    {
-    default: 
-      i = 2130844375;
-    case 17170432: 
-    case 17235968: 
-      return i;
-    case 16973824: 
-      return 2130844317;
-    case 17039360: 
-      return 2130839215;
-    case 16842752: 
-      return 2130839216;
-    case 16908288: 
-      return 2130839217;
-    }
-    return 2130844128;
-  }
-  
-  public int a(ColorNote paramColorNote, boolean paramBoolean)
-  {
-    int i;
-    switch (paramColorNote.getServiceType() & 0xFFFF0000)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      if (aqda.b(paramColorNote))
-      {
-        if (!paramBoolean) {
-          break;
-        }
-        i = 2130839236;
-      }
-      return i;
-      if (paramBoolean)
-      {
-        i = 2130839228;
-      }
-      else
-      {
-        i = 2130839229;
-        continue;
-        if (paramBoolean)
-        {
-          i = 2130839222;
-        }
-        else
-        {
-          i = 2130839223;
-          continue;
-          if (paramBoolean)
-          {
-            i = 2130839225;
-          }
-          else
-          {
-            i = 2130839226;
-            continue;
-            if (paramBoolean)
-            {
-              i = 2130839234;
-            }
-            else
-            {
-              i = 2130839235;
-              continue;
-              if (paramBoolean)
-              {
-                i = 2130839231;
-              }
-              else
-              {
-                i = 2130839232;
-                continue;
-                if (paramBoolean) {
-                  i = 2130839238;
-                } else {
-                  i = 2130839239;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return 2130839237;
-  }
-  
-  public void a(aqdu paramaqdu, int paramInt, boolean paramBoolean)
-  {
-    localColorNote = paramaqdu.a(paramInt);
-    localResources = paramaqdu.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources();
-    paramInt = a(localColorNote);
-    for (;;)
-    {
-      try
-      {
-        localObject = new URL(localColorNote.getPicUrl());
-        bool = "resdrawable".equals(((URL)localObject).getProtocol());
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        boolean bool;
-        localObject = localResources.getDrawable(paramInt);
-        QLog.e("DefaultItemBuilder", 1, localMalformedURLException, new Object[0]);
-        continue;
-        if (!"uindrawable".equals(((URL)localObject).getProtocol())) {
-          continue;
-        }
-        localObject = aqej.a(((URL)localObject).getQuery());
-        continue;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = afur.a(40.0F, localResources);
-        localURLDrawableOptions.mRequestHeight = afur.a(40.0F, localResources);
-        localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(paramInt);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-        continue;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        Object localObject = localResources.getDrawable(paramInt);
-        QLog.e("DefaultItemBuilder", 1, localNullPointerException, new Object[0]);
-        continue;
-        paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramaqdu.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-        ((aqcn)paramaqdu.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a(300);
-        localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839228;
-        ((View)localObject).setBackgroundResource(paramInt);
-        paramaqdu.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839242);
-        continue;
-        paramInt = 2130839229;
-        continue;
-        paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839222;
-        ((View)localObject).setBackgroundResource(paramInt);
-        paramaqdu.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839240);
-        continue;
-        paramInt = 2130839223;
-        continue;
-        paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839225;
-        ((View)localObject).setBackgroundResource(paramInt);
-        paramaqdu.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839241);
-        continue;
-        paramInt = 2130839226;
-        continue;
-        paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839234;
-        ((View)localObject).setBackgroundResource(paramInt);
-        paramaqdu.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839244);
-        continue;
-        paramInt = 2130839235;
-        continue;
-        paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839231;
-        ((View)localObject).setBackgroundResource(paramInt);
-        paramaqdu.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839243);
-        continue;
-        paramInt = 2130839232;
-        continue;
-        localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          continue;
-        }
-        paramInt = 2130839238;
-        ((View)localObject).setBackgroundResource(paramInt);
-        paramaqdu.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839246);
-        if (!aqda.c(localColorNote)) {
-          continue;
-        }
-        a(paramaqdu.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramaqdu, "colornote/data_black.json", "colornote/images", false);
-        continue;
-        paramInt = 2130839239;
-        continue;
-        paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        continue;
-        paramInt = 2130839237;
-        continue;
-      }
-      try
-      {
-        localObject = localResources.getDrawable(Integer.parseInt(((URL)localObject).getHost()));
-        paramaqdu.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        bool = aqda.b(localColorNote);
-        switch (aqda.a(localColorNote.getServiceType() & 0xFFFF0000))
-        {
-        default: 
-          paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-          if (bool)
-          {
-            localObject = paramaqdu.jdField_a_of_type_AndroidViewView;
-            if (paramBoolean)
-            {
-              paramInt = 2130839236;
-              ((View)localObject).setBackgroundResource(paramInt);
-            }
-          }
-          else
-          {
-            paramaqdu.jdField_a_of_type_AndroidWidgetTextView.setText(localColorNote.getMainTitle());
-            paramaqdu.jdField_b_of_type_AndroidWidgetTextView.setText(localColorNote.getSubTitle());
-            return;
-          }
-          break;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localObject = localResources.getDrawable(paramInt);
-        QLog.e("DefaultItemBuilder", 1, "service type: " + localColorNote.getServiceType() + " url error.", localThrowable);
-      }
-    }
-  }
-  
-  public void a(ColorNote paramColorNote, View paramView, ImageView paramImageView, boolean paramBoolean)
-  {
-    i = a(paramColorNote, paramBoolean);
-    if (i != 0) {
-      paramView.setBackgroundResource(i);
-    }
-    localResources = paramView.getContext().getResources();
-    i = a(paramColorNote);
-    for (;;)
-    {
-      try
-      {
-        paramView = new URL(paramColorNote.getPicUrl());
-        paramBoolean = "resdrawable".equals(paramView.getProtocol());
-        if (!paramBoolean) {
-          continue;
-        }
-      }
-      catch (MalformedURLException paramView)
-      {
-        paramColorNote = localResources.getDrawable(i);
-        QLog.e("DefaultItemBuilder", 1, paramView, new Object[0]);
-        continue;
-        if (!"uindrawable".equals(paramView.getProtocol())) {
-          continue;
-        }
-        paramColorNote = aqej.a(paramView.getQuery());
-        continue;
-        paramColorNote = URLDrawable.URLDrawableOptions.obtain();
-        paramColorNote.mRequestWidth = afur.a(40.0F, localResources);
-        paramColorNote.mRequestHeight = afur.a(40.0F, localResources);
-        paramColorNote.mLoadingDrawable = localResources.getDrawable(i);
-        paramColorNote.mFailedDrawable = paramColorNote.mLoadingDrawable;
-        paramColorNote = URLDrawable.getDrawable(paramView, paramColorNote);
-        continue;
-      }
-      catch (NullPointerException paramView)
-      {
-        paramColorNote = localResources.getDrawable(i);
-        QLog.e("DefaultItemBuilder", 1, paramView, new Object[0]);
-        continue;
-      }
-      try
-      {
-        paramView = localResources.getDrawable(Integer.parseInt(paramView.getHost()));
-        paramColorNote = paramView;
-      }
-      catch (Throwable localThrowable)
-      {
-        paramView = localResources.getDrawable(i);
-        QLog.e("DefaultItemBuilder", 1, "service type: " + paramColorNote.getServiceType() + " url error.", localThrowable);
-        paramColorNote = paramView;
-      }
-    }
-    paramImageView.setImageDrawable(paramColorNote);
+    // Byte code:
+    //   0: iload_1
+    //   1: ifeq +271 -> 272
+    //   4: aload 4
+    //   6: ifnull +266 -> 272
+    //   9: aconst_null
+    //   10: astore 6
+    //   12: aconst_null
+    //   13: astore 7
+    //   15: aload 6
+    //   17: astore 5
+    //   19: new 30	java/io/File
+    //   22: dup
+    //   23: aload_0
+    //   24: getfield 13	aqee:a	Ljava/lang/String;
+    //   27: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;)V
+    //   30: astore 8
+    //   32: aload 6
+    //   34: astore 5
+    //   36: aload 8
+    //   38: invokevirtual 37	java/io/File:exists	()Z
+    //   41: ifeq +13 -> 54
+    //   44: aload 6
+    //   46: astore 5
+    //   48: aload 8
+    //   50: invokevirtual 40	java/io/File:delete	()Z
+    //   53: pop
+    //   54: aload 6
+    //   56: astore 5
+    //   58: aload 8
+    //   60: invokevirtual 43	java/io/File:createNewFile	()Z
+    //   63: pop
+    //   64: aload 6
+    //   66: astore 5
+    //   68: new 45	java/io/FileOutputStream
+    //   71: dup
+    //   72: aload 8
+    //   74: invokespecial 48	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   77: astore 6
+    //   79: aload 6
+    //   81: aload 4
+    //   83: invokevirtual 52	java/io/FileOutputStream:write	([B)V
+    //   86: aload 6
+    //   88: ifnull +8 -> 96
+    //   91: aload 6
+    //   93: invokevirtual 55	java/io/FileOutputStream:close	()V
+    //   96: aload_0
+    //   97: getfield 15	aqee:b	Ljava/lang/String;
+    //   100: aload_0
+    //   101: getfield 17	aqee:c	Ljava/lang/String;
+    //   104: aload_0
+    //   105: getfield 17	aqee:c	Ljava/lang/String;
+    //   108: aload_0
+    //   109: getfield 19	aqee:d	Ljava/lang/String;
+    //   112: invokestatic 60	aqed:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   115: ifeq +142 -> 257
+    //   118: iconst_4
+    //   119: invokestatic 63	aqed:a	(I)V
+    //   122: ldc 65
+    //   124: iconst_2
+    //   125: ldc 67
+    //   127: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   130: aload_0
+    //   131: getfield 19	aqee:d	Ljava/lang/String;
+    //   134: ldc 75
+    //   136: invokestatic 78	aqed:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   139: invokestatic 81	aqed:a	()Ljava/lang/Object;
+    //   142: astore 4
+    //   144: aload 4
+    //   146: monitorenter
+    //   147: iconst_0
+    //   148: invokestatic 84	aqed:a	(Z)Z
+    //   151: pop
+    //   152: aload 4
+    //   154: monitorexit
+    //   155: return
+    //   156: astore 4
+    //   158: ldc 65
+    //   160: iconst_1
+    //   161: aload 4
+    //   163: iconst_0
+    //   164: anewarray 86	java/lang/Object
+    //   167: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   170: goto -74 -> 96
+    //   173: astore 6
+    //   175: aload 7
+    //   177: astore 4
+    //   179: aload 4
+    //   181: astore 5
+    //   183: ldc 65
+    //   185: iconst_1
+    //   186: aload 6
+    //   188: iconst_0
+    //   189: anewarray 86	java/lang/Object
+    //   192: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   195: aload 4
+    //   197: ifnull -101 -> 96
+    //   200: aload 4
+    //   202: invokevirtual 55	java/io/FileOutputStream:close	()V
+    //   205: goto -109 -> 96
+    //   208: astore 4
+    //   210: ldc 65
+    //   212: iconst_1
+    //   213: aload 4
+    //   215: iconst_0
+    //   216: anewarray 86	java/lang/Object
+    //   219: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   222: goto -126 -> 96
+    //   225: astore 4
+    //   227: aload 5
+    //   229: ifnull +8 -> 237
+    //   232: aload 5
+    //   234: invokevirtual 55	java/io/FileOutputStream:close	()V
+    //   237: aload 4
+    //   239: athrow
+    //   240: astore 5
+    //   242: ldc 65
+    //   244: iconst_1
+    //   245: aload 5
+    //   247: iconst_0
+    //   248: anewarray 86	java/lang/Object
+    //   251: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   254: goto -17 -> 237
+    //   257: iconst_5
+    //   258: invokestatic 63	aqed:a	(I)V
+    //   261: ldc 65
+    //   263: iconst_2
+    //   264: ldc 92
+    //   266: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: goto -130 -> 139
+    //   272: bipush 6
+    //   274: invokestatic 63	aqed:a	(I)V
+    //   277: ldc 65
+    //   279: iconst_2
+    //   280: ldc 94
+    //   282: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   285: goto -146 -> 139
+    //   288: astore 5
+    //   290: aload 4
+    //   292: monitorexit
+    //   293: aload 5
+    //   295: athrow
+    //   296: astore 4
+    //   298: aload 6
+    //   300: astore 5
+    //   302: goto -75 -> 227
+    //   305: astore 5
+    //   307: aload 6
+    //   309: astore 4
+    //   311: aload 5
+    //   313: astore 6
+    //   315: goto -136 -> 179
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	318	0	this	aqee
+    //   0	318	1	paramBoolean	boolean
+    //   0	318	2	paramLong	long
+    //   17	216	5	localObject1	java.lang.Object
+    //   240	6	5	localIOException	java.io.IOException
+    //   288	6	5	localObject2	java.lang.Object
+    //   300	1	5	localException1	java.lang.Exception
+    //   305	7	5	localException2	java.lang.Exception
+    //   10	82	6	localFileOutputStream	java.io.FileOutputStream
+    //   173	135	6	localException3	java.lang.Exception
+    //   313	1	6	localObject3	java.lang.Object
+    //   13	163	7	localObject4	java.lang.Object
+    //   30	43	8	localFile	java.io.File
+    // Exception table:
+    //   from	to	target	type
+    //   91	96	156	java/io/IOException
+    //   19	32	173	java/lang/Exception
+    //   36	44	173	java/lang/Exception
+    //   48	54	173	java/lang/Exception
+    //   58	64	173	java/lang/Exception
+    //   68	79	173	java/lang/Exception
+    //   200	205	208	java/io/IOException
+    //   19	32	225	finally
+    //   36	44	225	finally
+    //   48	54	225	finally
+    //   58	64	225	finally
+    //   68	79	225	finally
+    //   183	195	225	finally
+    //   232	237	240	java/io/IOException
+    //   147	155	288	finally
+    //   290	293	288	finally
+    //   79	86	296	finally
+    //   79	86	305	java/lang/Exception
   }
 }
 

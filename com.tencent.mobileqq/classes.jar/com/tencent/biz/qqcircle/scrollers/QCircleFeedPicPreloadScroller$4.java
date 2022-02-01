@@ -1,32 +1,36 @@
 package com.tencent.biz.qqcircle.scrollers;
 
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.util.Pair;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StImage;
-import feedcloud.FeedCloudMeta.StVideo;
-import java.util.concurrent.ConcurrentHashMap;
-import uxx;
-import vou;
-import vrx;
-import vsb;
+import java.util.Iterator;
+import java.util.List;
+import vuj;
+import vwk;
 
 public class QCircleFeedPicPreloadScroller$4
   implements Runnable
 {
-  public QCircleFeedPicPreloadScroller$4(vrx paramvrx, FeedCloudMeta.StFeed paramStFeed) {}
+  public QCircleFeedPicPreloadScroller$4(vuj paramvuj, FeedCloudMeta.StFeed paramStFeed) {}
   
   public void run()
   {
-    Object localObject = uxx.a(this.a, this.a.video.width.get(), this.a.video.height.get());
-    localObject = new vou().b(true).a(true).d(vou.b).a(this.a.cover.picUrl.get()).c(((Integer)((Pair)localObject).first).intValue()).b(((Integer)((Pair)localObject).second).intValue());
-    String str = QCircleFeedPicLoader.a().a((vou)localObject);
-    if (!vrx.a(this.this$0).containsKey(str))
+    Iterator localIterator = this.a.images.get().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
-      QCircleFeedPicLoader.a().a((vou)localObject, new vsb(this));
-      vrx.a(this.this$0).put(str, Boolean.valueOf(true));
+      FeedCloudMeta.StImage localStImage = (FeedCloudMeta.StImage)localIterator.next();
+      Pair localPair = vwk.a(this.a, localStImage.width.get(), localStImage.height.get());
+      vuj localvuj = this.this$0;
+      if (i == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        i = localvuj.a(i, bool, localStImage.picUrl.get(), localPair);
+        break;
+      }
     }
   }
 }

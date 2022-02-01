@@ -12,6 +12,10 @@ public class HippyQQConstants
   public static final int FRAGMENT_DESTROYED = -11;
   public static final String HIPPY_BID = "1011";
   public static final String HIPPY_LIBRARY_CDN = "https://static.res.qq.com/hippy/Library/HippyLibs.zip?v_bid=1011";
+  public static final String HIPPY_LIB_BRIDGE = "hippybridge";
+  public static final String HIPPY_LIB_FLEXBOX = "flexbox";
+  public static final String HIPPY_LIB_SHARED = "mtt_shared";
+  public static final String HIPPY_LIB_V8 = "mttv8";
   public static final String HIPPY_REACT = "react";
   public static final String HIPPY_TAG = "Hippy";
   public static final String HIPPY_VUE = "vue";

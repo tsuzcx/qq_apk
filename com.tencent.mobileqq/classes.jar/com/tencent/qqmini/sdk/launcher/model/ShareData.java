@@ -11,7 +11,7 @@ public class ShareData
   implements Parcelable
 {
   public static final Parcelable.Creator<ShareData> CREATOR = new ShareData.1();
-  protected final String TAG = "ShareData";
+  protected static final String TAG = "ShareData";
   public boolean isLocalPic;
   protected MiniAppInfo miniAppInfo;
   public boolean needShareCallback;
@@ -40,17 +40,17 @@ public class ShareData
       this.isLocalPic = bool1;
       this.targetUrl = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
-        break label135;
+        break label129;
       }
       bool1 = true;
-      label93:
+      label87:
       this.needShareCallback = bool1;
       if (paramParcel.readInt() != 1) {
-        break label140;
+        break label134;
       }
     }
-    label135:
-    label140:
+    label129:
+    label134:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.shareInMiniProcess = bool1;
@@ -59,7 +59,7 @@ public class ShareData
       bool1 = false;
       break;
       bool1 = false;
-      break label93;
+      break label87;
     }
   }
   

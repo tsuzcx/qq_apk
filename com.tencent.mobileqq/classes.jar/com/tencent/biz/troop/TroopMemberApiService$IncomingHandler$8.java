@@ -1,16 +1,16 @@
 package com.tencent.biz.troop;
 
-import aaor;
-import pmh;
+import aast;
+import pfa;
 
 public class TroopMemberApiService$IncomingHandler$8
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$8(aaor paramaaor, long paramLong, int paramInt) {}
+  public TroopMemberApiService$IncomingHandler$8(aast paramaast, long paramLong, int paramInt) {}
   
   public void run()
   {
-    pmh.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, true);
+    pfa.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, true);
   }
 }
 

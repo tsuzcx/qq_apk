@@ -1,121 +1,263 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.TimeZone;
-import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.util.NearbyProfileUtil.2;
+import tencent.sso.accretion.flower_info.SFlowerInfoRsp;
 
 public class bhhu
 {
-  private static long a;
+  public static final int[] a;
+  public static final String[] a;
+  public static final int[] b;
+  public static final String[] b;
+  public static final String[] c;
+  public static final String[] d;
+  public static final String[] e;
   
-  @NotNull
-  public static MessageMicro a(byte[] paramArrayOfByte)
+  static
   {
-    paramArrayOfByte = ByteStringMicro.copyFrom(paramArrayOfByte);
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    PBUInt64Field localPBUInt64Field = localStQWebReq.Seq;
-    long l = a + 1L;
-    a = l;
-    localPBUInt64Field.set(l);
-    localStQWebReq.qua.set(blru.a());
-    localStQWebReq.deviceInfo.set(a());
-    localStQWebReq.busiBuff.set(paramArrayOfByte);
-    localStQWebReq.traceid.set(b());
-    return localStQWebReq;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "男", "女" };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130845539, 2130845547 };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "保密", "单身", "恋爱中", "已婚" };
+    c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
+    d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
+    e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130845897, 2130844933, 2130844933, 2130844933, 2130845655, 2130845655, 2130845915, 2130845915, 2130845439, 2130845439, 2130845439, 2130845897, 2130845897, 2130845716, 2130845897 };
   }
   
-  public static String a()
+  public static final int a(int paramInt)
   {
-    Object localObject2 = blrt.a().c();
-    Object localObject1 = localObject2;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() > 0)
-      {
-        localObject1 = new StringBuilder((String)localObject2);
-        ((StringBuilder)localObject1).append('&');
-        ((StringBuilder)localObject1).append("timezone=").append(TimeZone.getDefault().getID());
-        localObject2 = aoor.a("qqcircle");
-        if ((localObject2 != null) && (((SosoInterface.SosoLbsInfo)localObject2).a != null))
-        {
-          ((StringBuilder)localObject1).append('&');
-          ((StringBuilder)localObject1).append("latitude=").append(String.valueOf(((SosoInterface.SosoLbsInfo)localObject2).a.a));
-          ((StringBuilder)localObject1).append('&');
-          ((StringBuilder)localObject1).append("longitude=").append(String.valueOf(((SosoInterface.SosoLbsInfo)localObject2).a.b));
-        }
-        localObject1 = ((StringBuilder)localObject1).toString();
-      }
+    if ((paramInt >= 0) && (paramInt <= 1)) {
+      return jdField_a_of_type_ArrayOfInt[paramInt];
     }
-    return localObject1;
+    return 0;
   }
   
-  public static void a(String paramString, MessageMicro paramMessageMicro, Class paramClass, anil paramanil)
+  public static final int a(byte[] paramArrayOfByte)
   {
-    ((VasExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(71)).a(paramString, paramMessageMicro, paramClass, paramanil);
-  }
-  
-  public static void a(String paramString1, String paramString2, anil paramanil)
-  {
-    ((VasExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(71)).a(paramString1, paramString2, paramanil);
-  }
-  
-  public static void a(String paramString, byte[] paramArrayOfByte, anil paramanil)
-  {
-    ((VasExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(71)).a(paramString, paramArrayOfByte, paramanil);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    int j = 0;
+    int i = j;
+    flower_info.SFlowerInfoRsp localSFlowerInfoRsp;
+    if (paramArrayOfByte != null) {
+      localSFlowerInfoRsp = new flower_info.SFlowerInfoRsp();
     }
     try
     {
-      paramArrayOfByte = a(paramArrayOfByte);
-      ((Long)paramArrayOfByte[0]).longValue();
-      String str = (String)paramArrayOfByte[1];
-      paramArrayOfByte = ((ByteStringMicro)paramArrayOfByte[2]).toByteArray();
-      return paramArrayOfByte;
+      localSFlowerInfoRsp.mergeFrom(paramArrayOfByte);
+      i = j;
+      if (localSFlowerInfoRsp.num.has()) {
+        i = localSFlowerInfoRsp.num.get();
+      }
+      return i;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramArrayOfByte.printStackTrace();
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    return null;
   }
   
-  public static Object[] a(byte[] paramArrayOfByte)
+  private static final long a()
   {
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    localStQWebRsp.mergeFrom(paramArrayOfByte);
-    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
+    return 0L | 0x4 | 0x800 | 0x1000 | 0x8000;
   }
   
-  public static String b()
+  public static final String a(int paramInt)
   {
-    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
+    if ((paramInt >= 0) && (paramInt < jdField_b_of_type_ArrayOfJavaLangString.length)) {
+      return jdField_b_of_type_ArrayOfJavaLangString[paramInt];
+    }
+    return "";
+  }
+  
+  public static final void a(axxj paramaxxj, QQAppInterface paramQQAppInterface, long paramLong1, String paramString, int paramInt1, byte[] paramArrayOfByte, long paramLong2, boolean paramBoolean1, long paramLong3, boolean paramBoolean2, long paramLong4, int paramInt2)
+  {
+    if (paramLong1 > 0L)
+    {
+      if (ProfileActivity.d(paramInt1))
+      {
+        paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 45, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        return;
+      }
+      if (ProfileActivity.b(paramInt1))
+      {
+        paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 39, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        return;
+      }
+      if (paramInt1 == 16)
+      {
+        paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 46, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        return;
+      }
+      if (paramInt1 == 38)
+      {
+        paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 47, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        return;
+      }
+      if (paramInt1 == 100)
+      {
+        paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 49, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        return;
+      }
+      if (paramInt1 == 51)
+      {
+        paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 51, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+        return;
+      }
+      paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), "0", 41, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, paramLong1, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      return;
+    }
+    if (paramString.equals(paramQQAppInterface.getCurrentAccountUin()))
+    {
+      paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentAccountUin(), 0, 0L, (byte)0, 0L, 0L, null, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      return;
+    }
+    int i = 6;
+    if (ProfileActivity.c(paramInt1)) {
+      i = 42;
+    }
+    for (;;)
+    {
+      paramaxxj.a(paramQQAppInterface.getCurrentAccountUin(), paramString, i, paramLong2, (byte)0, 0L, 0L, paramArrayOfByte, "", a(), 10004, null, 0L, true, paramBoolean1, paramLong3, paramBoolean2, paramLong4, paramInt2);
+      return;
+      if (ProfileActivity.d(paramInt1)) {
+        i = 45;
+      } else if (ProfileActivity.b(paramInt1)) {
+        i = 39;
+      } else if (paramInt1 == 16) {
+        i = 46;
+      } else if (paramInt1 == 38) {
+        i = 47;
+      } else if (paramInt1 == 51) {
+        i = 51;
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_is_nearby_people_card", true);
+    localBundle.putShort("key_new_profile_modified_flag", (short)1);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putShort("key_flower_visible_switch", (short)i);
+      localBundle.putBoolean("key_nearby_people_card_force_update", true);
+      axxj localaxxj = (axxj)paramQQAppInterface.a(60);
+      if (localaxxj == null) {
+        break;
+      }
+      paramQQAppInterface.a(new NearbyProfileUtil.2(localaxxj, localBundle));
+      return;
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == -1) || ((paramInt >= 0) && (paramInt < d.length));
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return true;
+    }
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
+    paramQQAppInterface = null;
+    Object localObject = null;
+    if (localEntityManager != null)
+    {
+      paramQQAppInterface = localObject;
+      if (!bhsr.a(str)) {
+        paramQQAppInterface = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { str });
+      }
+      localEntityManager.close();
+    }
+    boolean bool;
+    if (paramQQAppInterface != null) {
+      if (paramQQAppInterface.switchGiftVisible == 0L) {
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      bool = false;
+      continue;
+      bool = true;
+    }
+  }
+  
+  public static final int b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 14)) {
+      return jdField_b_of_type_ArrayOfInt[paramInt];
+    }
+    return 0;
+  }
+  
+  public static final String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 1)) {
+      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    }
+    return "";
+  }
+  
+  public static int c(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 5) {
+      return 2;
+    }
+    if (ProfileActivity.c(paramInt)) {
+      return 3;
+    }
+    if (paramInt == 21) {
+      return 4;
+    }
+    if (ProfileActivity.d(paramInt)) {
+      return 5;
+    }
+    return 99;
+  }
+  
+  public static final String c(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= 12)) {
+      return c[paramInt];
+    }
+    return "";
+  }
+  
+  public static final String d(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 14)) {
+      return e[paramInt];
+    }
+    return "";
+  }
+  
+  public static final String e(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= 14)) {
+      return d[paramInt];
+    }
+    return "";
   }
 }
 

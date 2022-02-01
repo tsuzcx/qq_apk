@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.data.KplCard;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aemc
-  extends aniz
+  implements View.OnClickListener
 {
-  public aemc(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public aemc(EditActivity paramEditActivity) {}
   
-  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
     }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
-    {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

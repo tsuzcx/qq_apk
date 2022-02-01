@@ -1,16 +1,30 @@
-import org.json.JSONObject;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface adea
+public class adea
+  implements adci
 {
-  public abstract void onComplete();
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationHelper", 2, "get notice from handleC2COnlinePushMsg0x210Resp");
+    }
+    bcts.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
+    long l1 = paramMsgInfo.lFromUin;
+    int i = paramMsgInfo.shMsgSeq;
+    long l2 = paramMsgInfo.lMsgUid;
+    int j = paramMsgInfo.shMsgType;
+    bcrw.a(paramQQAppInterface.a(), l1, i, l2, j);
+  }
   
-  public abstract void onFailure(int paramInt, String paramString);
-  
-  public abstract void onPermission(int paramInt);
-  
-  public abstract void onSuccess(JSONObject paramJSONObject);
-  
-  public abstract void onTrigger(JSONObject paramJSONObject);
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
+  }
 }
 
 

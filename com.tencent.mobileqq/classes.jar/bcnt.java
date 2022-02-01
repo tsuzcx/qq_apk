@@ -1,23 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class bcnt
-  implements akse
+public class bcnt
+  extends bcpp
 {
-  bcnt(bcnp parambcnp, String paramString, long paramLong, int paramInt) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public bcnt(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downRFiles] download resCode=" + paramInt + ",pathRes=" + paramPathResult);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    super(paramView);
+  }
+  
+  public bcnt(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131377768));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131380059);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      bcnp.a(this.jdField_a_of_type_Bcnp, paramPathResult.folderPath, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
       return;
     }
-    bcnp.a(this.jdField_a_of_type_Bcnp, 11);
+  }
+  
+  public TextView e()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

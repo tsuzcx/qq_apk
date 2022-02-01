@@ -1,46 +1,74 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class anfd
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, aimj paramaimj, AppInterface paramAppInterface, String paramString, anfe paramanfe)
+  public static String a;
+  public double a;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  
+  static
   {
-    a(paramBoolean, paramActivity, paramaimj, paramAppInterface, paramString, paramanfe, true);
+    jdField_a_of_type_JavaLangString = "cmgame_process.CmGameADInfo";
   }
   
-  public static void a(boolean paramBoolean1, Activity paramActivity, aimj paramaimj, AppInterface paramAppInterface, String paramString, anfe paramanfe, boolean paramBoolean2)
+  public anfd()
   {
-    if (paramanfe == null)
+    this.jdField_a_of_type_Double = 0.0D;
+  }
+  
+  public static anfd a(String paramString)
+  {
+    anfd localanfd = new anfd();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
+      JSONObject localJSONObject2 = new JSONObject(paramString);
+      localanfd.jdField_b_of_type_Int = localJSONObject2.optInt("product_type");
+      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("display_info");
+      JSONObject localJSONObject1 = localJSONObject3.optJSONObject("video_info");
+      localanfd.jdField_b_of_type_JavaLangString = localJSONObject1.optString("tencent_video_id");
+      localanfd.jdField_a_of_type_Int = localJSONObject3.optInt("creative_size");
+      JSONObject localJSONObject4 = localJSONObject3.optJSONObject("basic_info");
+      localanfd.h = localJSONObject4.optString("img");
+      localanfd.e = localJSONObject4.optString("txt");
+      localJSONObject3 = localJSONObject3.optJSONObject("advertiser_info");
+      localanfd.jdField_c_of_type_Int = localJSONObject3.optInt("advertiser_id");
+      localanfd.f = localJSONObject3.optString("corporate_logo");
+      localanfd.d = localJSONObject3.optString("corporate_image_name");
+      localJSONObject3 = localJSONObject2.optJSONObject("report_info");
+      localanfd.g = localJSONObject3.optString("click_url");
+      localanfd.jdField_c_of_type_JavaLangString = localJSONObject3.optString("exposure_url");
+      localJSONObject2 = localJSONObject2.optJSONObject("app_info");
+      localanfd.jdField_a_of_type_Long = localJSONObject2.optLong("download_num");
+      localanfd.j = localJSONObject1.optString("video_url");
+      if ((!TextUtils.isEmpty(localanfd.j)) && (localanfd.j.startsWith("https://"))) {
+        localanfd.j = localanfd.j.replaceFirst("https://", "http://");
       }
-      return;
+      if (localJSONObject2.has("app_score_num")) {
+        localanfd.jdField_a_of_type_Double = localJSONObject2.optDouble("app_score_num");
+      }
+      localanfd.i = paramString;
+      return localanfd;
     }
-    if ((paramActivity == null) || (paramAppInterface == null))
+    catch (Throwable paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramanfe.a(false, null);
-      return;
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
     }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramaimj = amrr.a(paramString);
-      if ((paramaimj == null) || (paramaimj.a == null) || (paramaimj.a.get() != paramActivity))
-      {
-        paramanfe.a(false, paramaimj);
-        return;
-      }
-      paramanfe.a(true, paramaimj);
-      return;
-    }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramanfe));
+    return localanfd;
   }
 }
 

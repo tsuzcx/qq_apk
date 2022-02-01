@@ -1,38 +1,24 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 
 public class bbhr
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public bbhr(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public bbhr(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
-    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
-      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
-      ActiveEntitySearchActivity.a(this.a, 2);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
+      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

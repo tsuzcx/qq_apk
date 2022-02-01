@@ -1,8 +1,10 @@
-public abstract interface yaw
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+
+abstract interface yaw<T>
 {
-  public abstract void a();
-  
-  public abstract void b();
+  @NonNull
+  public abstract Stream<T> a(yas paramyas);
 }
 
 

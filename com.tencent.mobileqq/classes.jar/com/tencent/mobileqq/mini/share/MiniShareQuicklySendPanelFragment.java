@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import afur;
+import agej;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import bben;
-import bpti;
+import bbxg;
+import bqvd;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MiniShareQuicklySendPanelFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, bpti
+  implements View.OnClickListener, bqvd
 {
   public static final int QUCIKLY_SHARE_REQUEST_CODE = 678;
   public static final String TAG = MiniShareQuicklySendPanelFragment.class.getSimpleName();
@@ -41,7 +41,7 @@ public class MiniShareQuicklySendPanelFragment
   private boolean isCallback;
   private boolean isShowedPanel;
   private XListView listView;
-  private bben mHelper;
+  private bbxg mHelper;
   private View mRootView;
   private Handler mainHandler;
   private boolean needShareCallback;
@@ -57,15 +57,15 @@ public class MiniShareQuicklySendPanelFragment
   private View getBottomView()
   {
     View localView = new View(getActivity());
-    localView.setLayoutParams(new AbsListView.LayoutParams(-1, afur.a(130.0F, getResources())));
-    localView.setBackgroundResource(2130850338);
+    localView.setLayoutParams(new AbsListView.LayoutParams(-1, agej.a(130.0F, getResources())));
+    localView.setBackgroundResource(2130850350);
     return localView;
   }
   
   private void initData()
   {
     Bundle localBundle = getActivity().getIntent().getExtras();
-    this.mHelper = new bben();
+    this.mHelper = new bbxg();
     List localList = this.mHelper.a(getActivity(), getActivity().app);
     if (localBundle != null)
     {
@@ -138,7 +138,7 @@ public class MiniShareQuicklySendPanelFragment
   public void displayPanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130849661);
+      this.arrowView.setBackgroundResource(2130849671);
     }
   }
   
@@ -165,7 +165,7 @@ public class MiniShareQuicklySendPanelFragment
   public void hidePanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130849660);
+      this.arrowView.setBackgroundResource(2130849670);
     }
   }
   
@@ -224,16 +224,16 @@ public class MiniShareQuicklySendPanelFragment
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
       this.mainHandler = new Handler(Looper.getMainLooper());
-      this.mRootView = paramLayoutInflater.inflate(2131562887, paramViewGroup, false);
-      this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131377641));
-      this.contentView = this.mRootView.findViewById(2131365031);
-      this.listView = ((XListView)this.mRootView.findViewById(2131369914));
-      this.footerView = this.mRootView.findViewById(2131377207);
-      this.backgroundView = this.mRootView.findViewById(2131363219);
-      this.arrowView = ((ImageView)this.mRootView.findViewById(2131379084));
+      this.mRootView = paramLayoutInflater.inflate(2131562921, paramViewGroup, false);
+      this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131377789));
+      this.contentView = this.mRootView.findViewById(2131365079);
+      this.listView = ((XListView)this.mRootView.findViewById(2131370012));
+      this.footerView = this.mRootView.findViewById(2131377347);
+      this.backgroundView = this.mRootView.findViewById(2131363243);
+      this.arrowView = ((ImageView)this.mRootView.findViewById(2131379248));
       this.listView.addFooterView(getBottomView());
       this.slidePanel.setSlidePanelListener(this);
-      this.footerView.findViewById(2131377174).setOnClickListener(this);
+      this.footerView.findViewById(2131377314).setOnClickListener(this);
       initData();
     }
   }

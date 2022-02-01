@@ -1,28 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
-class yxp
-  implements ValueAnimator.AnimatorUpdateListener
+public class yxp
+  extends Handler
 {
-  yxp(yxo paramyxo) {}
+  public yxp(EditVideoMusic paramEditVideoMusic) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (yxm.a(this.a.a) == null) {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.l = (this.a.d + this.a.f * f);
-    this.a.m = (this.a.e + this.a.g * f);
-    this.a.j = (this.a.b + this.a.h * f);
-    this.a.k = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      yxm.a(this.a.a, null);
-    }
-    yxm.a(this.a.a);
+    this.a.b();
   }
 }
 

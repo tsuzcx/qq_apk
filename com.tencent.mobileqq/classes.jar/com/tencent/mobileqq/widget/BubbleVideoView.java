@@ -15,14 +15,14 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import aqlk;
-import bhur;
+import aran;
+import bivm;
 import com.tencent.util.VersionUtils;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static bhur a;
+  private static bivm a;
   private Bitmap b;
   private boolean c;
   
@@ -43,14 +43,14 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Bhur != null) {
-      jdField_a_of_type_Bhur.a(this, paramCanvas);
+    if (jdField_a_of_type_Bivm != null) {
+      jdField_a_of_type_Bivm.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(bhur parambhur)
+  public static void setDrawListener(bivm parambivm)
   {
-    jdField_a_of_type_Bhur = parambhur;
+    jdField_a_of_type_Bivm = parambivm;
   }
   
   protected void a()
@@ -132,7 +132,7 @@ public class BubbleVideoView
       if (Build.VERSION.SDK_INT >= 28)
       {
         this.g = true;
-        Object localObject = (String)aqlk.a().a(462);
+        Object localObject = (String)aran.a().a(462);
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
           localObject = ((String)localObject).split("\\|");

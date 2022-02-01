@@ -1,30 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aojp
-  extends aojt
+  implements aojm
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public int a;
+  public String a;
+  public String b;
+  
+  private aojp(TroopManager paramTroopManager) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    paramQQAppInterface = new aojo(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qqidentifier";
-    paramQQAppInterface.c = "web";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin))) {
+      return;
     }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
-    {
-      paramString = paramContext[i].split("=");
-      if (paramString.length == 2) {
-        paramQQAppInterface.a(paramString[0], paramString[1]);
-      }
-      i += 1;
+    paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.", 2, "newRealLevel:" + this.jdField_a_of_type_Int + ",troopUin : " + this.b + ",memberUin" + this.jdField_a_of_type_JavaLangString);
     }
-    return paramQQAppInterface;
+    if (paramTroopMemberInfo.getStatus() == 1000) {
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
   }
 }
 

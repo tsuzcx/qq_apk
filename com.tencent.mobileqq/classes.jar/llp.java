@@ -1,24 +1,14 @@
-import java.io.BufferedReader;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class llp
-  extends llo
+class llp
 {
-  private float a;
-  private float b;
+  long jdField_a_of_type_Long = AudioHelper.a();
+  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
   
-  public float a()
+  llp(AVFunDrawing.MessageBody paramMessageBody)
   {
-    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * llg.a();
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Float = lll.a(paramBufferedReader, "lowMin");
-    this.b = lll.a(paramBufferedReader, "lowMax");
+    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
   }
 }
 

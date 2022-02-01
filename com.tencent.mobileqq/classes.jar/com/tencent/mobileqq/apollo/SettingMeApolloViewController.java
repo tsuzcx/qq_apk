@@ -1,24 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import afur;
-import amhd;
-import amhs;
-import amir;
-import amkk;
-import amkl;
-import ammo;
-import ammp;
-import ammq;
-import ammr;
-import ammt;
-import ammv;
-import ammw;
-import amuo;
-import amur;
-import amux;
-import anaw;
-import anca;
-import ancb;
+import agej;
+import amsx;
+import amtm;
+import amul;
+import amwe;
+import amwf;
+import amyi;
+import amyj;
+import amyk;
+import amyl;
+import amyn;
+import amyp;
+import amyq;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,13 +29,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import anec;
-import anej;
-import anll;
-import baif;
-import bgln;
-import bgzm;
-import bkgm;
+import angi;
+import angl;
+import angr;
+import anmq;
+import annu;
+import annv;
+import anpx;
+import anqe;
+import anxh;
+import bbav;
+import bhlo;
+import bhzs;
+import blhq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.activity.QQSettingMe;
@@ -75,13 +75,13 @@ public class SettingMeApolloViewController
   public static long a;
   protected float a;
   public int a;
-  public ammo a;
-  private amur jdField_a_of_type_Amur = new amkl(this);
-  private amux jdField_a_of_type_Amux;
+  public amyi a;
   protected View a;
-  private anej jdField_a_of_type_Anej;
-  public bgzm a;
-  bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
+  private angl jdField_a_of_type_Angl = new amwf(this);
+  private angr jdField_a_of_type_Angr;
+  private anqe jdField_a_of_type_Anqe;
+  public bhzs a;
+  blhq jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
   public ApolloTextureView a;
   private SettingMeApolloViewController.RefreshApolloTask jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController$RefreshApolloTask;
   protected ApolloBoxEnterView a;
@@ -103,24 +103,24 @@ public class SettingMeApolloViewController
   
   public SettingMeApolloViewController(QQSettingMe paramQQSettingMe, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Bgzm = new amkk(this);
+    this.jdField_a_of_type_Bhzs = new amwe(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
     this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramViewGroup);
     this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController$RefreshApolloTask = new SettingMeApolloViewController.RefreshApolloTask(paramQQSettingMe, this);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView = ((ApolloBoxEnterView)paramViewGroup.findViewById(2131362729));
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView = ((ApolloBoxEnterView)paramViewGroup.findViewById(2131362747));
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setContentDescription(BaseApplicationImpl.getContext().getResources().getString(2131690046));
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView = ((FrameGifView)paramViewGroup.findViewById(2131362774));
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setContentDescription(BaseApplicationImpl.getContext().getResources().getString(2131690054));
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView = ((FrameGifView)paramViewGroup.findViewById(2131362792));
     this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131362778);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131362796);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_Ammo = new ammo();
+    this.jdField_a_of_type_Amyi = new amyi();
   }
   
   @TargetApi(14)
-  private void a(amhs paramamhs)
+  private void a(amtm paramamtm)
   {
-    if (paramamhs == null) {}
+    if (paramamtm == null) {}
     label682:
     label1110:
     for (;;)
@@ -136,21 +136,21 @@ public class SettingMeApolloViewController
           if (localViewGroup != null)
           {
             long l1 = System.currentTimeMillis();
-            Object localObject = (amhd)localQQAppInterface.getManager(153);
+            Object localObject = (amsx)localQQAppInterface.getManager(153);
             int j = this.jdField_b_of_type_Int;
-            int k = ammp.a(this.jdField_c_of_type_Int);
-            if (((amhd)localObject).d) {}
+            int k = amyj.a(this.jdField_c_of_type_Int);
+            if (((amsx)localObject).d) {}
             for (int i = 0;; i = 1)
             {
               VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "drawer_show", j, k, new String[] { "", String.valueOf(i) });
               if (QLog.isColorLevel()) {
-                QLog.d("SettingMeApolloViewController", 2, new Object[] { "roleId->" + paramamhs.jdField_a_of_type_Int + " apolloStatus->" + this.jdField_b_of_type_Int + " needStatic->" + paramamhs.jdField_a_of_type_Boolean, ",mApolloDrawerStatus->", Integer.valueOf(this.jdField_c_of_type_Int) });
+                QLog.d("SettingMeApolloViewController", 2, new Object[] { "roleId->" + paramamtm.jdField_a_of_type_Int + " apolloStatus->" + this.jdField_b_of_type_Int + " needStatic->" + paramamtm.jdField_a_of_type_Boolean, ",mApolloDrawerStatus->", Integer.valueOf(this.jdField_c_of_type_Int) });
               }
               if (!this.jdField_c_of_type_Boolean) {
                 break;
               }
               QLog.i("SettingMeApolloViewController", 1, "checkApolloUI on DrawerClosed!");
-              anaw.a(paramamhs.e, 11, 106, new Object[] { "DrawerClosed" });
+              anmq.a(paramamtm.e, 11, 106, new Object[] { "DrawerClosed" });
               return;
             }
             this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -162,15 +162,15 @@ public class SettingMeApolloViewController
             if ((this.jdField_c_of_type_Int == 1) || (this.jdField_c_of_type_Int == 6)) {
               if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null)
               {
-                anaw.a(paramamhs.e, 11, 0, new Object[] { "checkUI done" });
-                anaw.a(paramamhs.e, 100);
-                long l2 = bgln.i();
-                i = (int)((float)bgln.j() * 0.4F);
-                j = ammp.a(i, l2);
+                anmq.a(paramamtm.e, 11, 0, new Object[] { "checkUI done" });
+                anmq.a(paramamtm.e, 100);
+                long l2 = bhlo.i();
+                i = (int)((float)bhlo.j() * 0.4F);
+                j = amyj.a(i, l2);
                 localObject = BaseApplicationImpl.getContext().getResources();
-                l2 = Math.max(bgln.h(), bgln.g());
-                this.jdField_a_of_type_Float = ((j - afur.a(66.0F, (Resources)localObject)) / bgln.a());
-                f2 = anll.a() / 16.0F;
+                l2 = Math.max(bhlo.h(), bhlo.g());
+                this.jdField_a_of_type_Float = ((j - agej.a(66.0F, (Resources)localObject)) / bhlo.a());
+                f2 = anxh.a() / 16.0F;
                 if (f2 != 0.0F)
                 {
                   if (f2 > 1.0F)
@@ -182,50 +182,50 @@ public class SettingMeApolloViewController
                 else
                 {
                   f1 = (float)(l2 >> 2) / 368.0F;
-                  if (l2 != bgln.j()) {
-                    QLog.e("SettingMeApolloViewController", 1, "DeviceInfoUtil.getPortraitHeight():" + bgln.j() + " height:" + l2);
+                  if (l2 != bhlo.j()) {
+                    QLog.e("SettingMeApolloViewController", 1, "DeviceInfoUtil.getPortraitHeight():" + bhlo.j() + " height:" + l2);
                   }
-                  this.jdField_a_of_type_Amux = new amux(localQQAppInterface);
-                  this.jdField_a_of_type_Amux.a(f1, this.jdField_a_of_type_Float, 15);
-                  this.jdField_a_of_type_Anej = new anej(this.jdField_a_of_type_Amux, 1);
+                  this.jdField_a_of_type_Angr = new angr(localQQAppInterface);
+                  this.jdField_a_of_type_Angr.a(f1, this.jdField_a_of_type_Float, 15);
+                  this.jdField_a_of_type_Anqe = new anqe(this.jdField_a_of_type_Angr, 1);
                   this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = new ApolloTextureView(localViewGroup.getContext(), null);
-                  this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init(this.jdField_a_of_type_Anej);
-                  this.jdField_a_of_type_Amux.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+                  this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init(this.jdField_a_of_type_Anqe);
+                  this.jdField_a_of_type_Angr.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
                   ThreadManager.post(new SettingMeApolloViewController.4(this), 10, null, true);
-                  this.jdField_a_of_type_Int = paramamhs.jdField_a_of_type_Int;
-                  this.jdField_a_of_type_ArrayOfInt = paramamhs.jdField_a_of_type_ArrayOfInt;
+                  this.jdField_a_of_type_Int = paramamtm.jdField_a_of_type_Int;
+                  this.jdField_a_of_type_ArrayOfInt = paramamtm.jdField_a_of_type_ArrayOfInt;
                   this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mIsDrawerView = true;
                   this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mManHeight = ((float)(l2 >> 2));
-                  localQQAppInterface.addObserver(this.jdField_a_of_type_Anej);
+                  localQQAppInterface.addObserver(this.jdField_a_of_type_Anqe);
                   this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setDispatchEvent2Native(true);
-                  this.jdField_a_of_type_Amux.a(this.jdField_a_of_type_Amur);
+                  this.jdField_a_of_type_Angr.a(this.jdField_a_of_type_Angl);
                   if (localQQSettingMe.a() == null) {
                     break label984;
                   }
                   f1 = localQQSettingMe.a().a();
                   f1 = localQQSettingMe.a().b();
-                  paramamhs = new RelativeLayout.LayoutParams(j, i);
-                  paramamhs.addRule(12, -1);
-                  paramamhs.addRule(11, -1);
-                  localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, paramamhs);
+                  paramamtm = new RelativeLayout.LayoutParams(j, i);
+                  paramamtm.addRule(12, -1);
+                  paramamtm.addRule(11, -1);
+                  localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, paramamtm);
                   if ((localViewGroup instanceof SettingMeRelativeLayout)) {
                     ((SettingMeRelativeLayout)localViewGroup).setSurfaceView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView, 0.0F, 0.0F);
                   }
                   this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.bringToFront();
                   this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
                   this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                  float f3 = anll.a() / 16.0F;
+                  float f3 = anxh.a() / 16.0F;
                   f2 = f3;
                   if (f3 == 0.0F) {
                     f2 = 1.0F;
                   }
-                  f2 = bgln.a() / f2;
-                  paramamhs = new RelativeLayout.LayoutParams((int)(45.0F * f2), (int)(45.0F * f2));
-                  paramamhs.addRule(11, -1);
-                  paramamhs.addRule(12, -1);
-                  paramamhs.rightMargin = ((int)(f1 + 66.0F * f2 + afur.a(8.0F, (Resources)localObject)));
-                  paramamhs.bottomMargin = ((int)(f2 * 5.0F));
-                  this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setLayoutParams(paramamhs);
+                  f2 = bhlo.a() / f2;
+                  paramamtm = new RelativeLayout.LayoutParams((int)(45.0F * f2), (int)(45.0F * f2));
+                  paramamtm.addRule(11, -1);
+                  paramamtm.addRule(12, -1);
+                  paramamtm.rightMargin = ((int)(f1 + 66.0F * f2 + agej.a(8.0F, (Resources)localObject)));
+                  paramamtm.bottomMargin = ((int)(f2 * 5.0F));
+                  this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setLayoutParams(paramamtm);
                   if (this.jdField_c_of_type_Int != 1) {
                     break label1016;
                   }
@@ -254,18 +254,18 @@ public class SettingMeApolloViewController
               break;
               label984:
               f1 = (float)(((Resources)localObject).getDisplayMetrics().density * 100.0F + 0.5D);
-              f1 = ((Resources)localObject).getDimensionPixelSize(2131298356);
+              f1 = ((Resources)localObject).getDimensionPixelSize(2131298369);
               break label682;
               label1016:
               this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
               break label897;
-              anaw.a(paramamhs.e, 11, 107, new Object[] { "already init" });
+              anmq.a(paramamtm.e, 11, 107, new Object[] { "already init" });
               if (this.jdField_c_of_type_Int != 1) {
                 break label897;
               }
               this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a(localQQAppInterface, "drawer", localQQAppInterface.getCurrentAccountUin(), -1);
               break label897;
-              anaw.a(paramamhs.e, 11, 108, new Object[] { "mApolloDrawerStatus:", Integer.valueOf(this.jdField_c_of_type_Int) });
+              anmq.a(paramamtm.e, 11, 108, new Object[] { "mApolloDrawerStatus:", Integer.valueOf(this.jdField_c_of_type_Int) });
             }
           }
         }
@@ -310,7 +310,7 @@ public class SettingMeApolloViewController
       localViewGroup = (ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get();
     } while (localViewGroup == null);
     if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.getVisibility() == 0) {}
-    ammq localammq;
+    amyk localamyk;
     Object localObject;
     for (int j = 1;; j = 0)
     {
@@ -324,31 +324,31 @@ public class SettingMeApolloViewController
         localIntent.putExtra("key_box_type", this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a());
       }
       localIntent.putExtra("extra_key_box_from", "drawer");
-      localammq = this.jdField_a_of_type_Ammo.a();
-      amhd localamhd = (amhd)localQQAppInterface.getManager(153);
-      String str1 = localamhd.k;
+      localamyk = this.jdField_a_of_type_Amyi.a();
+      amsx localamsx = (amsx)localQQAppInterface.getManager(153);
+      String str1 = localamsx.k;
       if (QLog.isColorLevel()) {
         QLog.d("SettingMeApolloViewController", 2, new Object[] { "[onNotifyStatusChanged] lastTab=", str1 });
       }
       localObject = str1;
-      if (localammq != null)
+      if (localamyk != null)
       {
         localObject = str1;
-        if ((localammq instanceof ammw))
+        if ((localamyk instanceof amyq))
         {
-          ammw localammw = (ammw)localammq;
+          amyq localamyq = (amyq)localamyk;
           localObject = str1;
-          if (localammw.jdField_b_of_type_Boolean)
+          if (localamyq.jdField_b_of_type_Boolean)
           {
             localObject = str1;
-            if (localammw.a != null)
+            if (localamyq.a != null)
             {
-              String str3 = localammw.a.scheme;
+              String str3 = localamyq.a.scheme;
               localObject = str1;
               if (!TextUtils.isEmpty(str3))
               {
                 str1 = str3.trim();
-                localammw.a(localQQAppInterface);
+                localamyq.a(localQQAppInterface);
                 localObject = str1;
                 if (QLog.isColorLevel())
                 {
@@ -360,37 +360,37 @@ public class SettingMeApolloViewController
           }
         }
       }
-      localObject = localamhd.a(1, (String)localObject);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(ancb.ai))) {
+      localObject = localamsx.a(1, (String)localObject);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(annv.ai))) {
         localIntent.putExtra("extra_key_url_append", "&tab=interactive&suin=" + str2);
       }
       ApolloUtil.a(localViewGroup.getContext(), localIntent, "drawer", (String)localObject, null);
-      localObject = (amhd)localQQAppInterface.getManager(153);
+      localObject = (amsx)localQQAppInterface.getManager(153);
       if ((TextUtils.isEmpty(paramString)) || (!paramString.contains("pet"))) {
         break label521;
       }
-      VipUtils.a(null, "cmshow", "Apollo", "drawerpetclick", 0, 0, new String[] { ((amhd)localObject).a(localQQAppInterface.c()) });
+      VipUtils.a(null, "cmshow", "Apollo", "drawerpetclick", 0, 0, new String[] { ((amsx)localObject).a(localQQAppInterface.c()) });
       if (j != 0)
       {
         VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "0X80065C0", 0, 0, new String[] { "0" });
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
       }
       localQQSettingMe.H();
-      if (!(localammq instanceof ammv)) {
+      if (!(localamyk instanceof amyp)) {
         break;
       }
-      ((ammv)localammq).a(localQQAppInterface);
+      ((amyp)localamyk).a(localQQAppInterface);
       return;
     }
     label521:
     int k = this.jdField_b_of_type_Int;
-    int m = ammp.a(this.jdField_c_of_type_Int);
+    int m = amyj.a(this.jdField_c_of_type_Int);
     label544:
     int i;
     if (j != 0)
     {
       paramString = "0";
-      if ((localammq == null) || (!localammq.jdField_b_of_type_Boolean)) {
+      if ((localamyk == null) || (!localamyk.jdField_b_of_type_Boolean)) {
         break label600;
       }
       i = 2;
@@ -402,7 +402,7 @@ public class SettingMeApolloViewController
       paramString = "1";
       break label544;
       label600:
-      if (((amhd)localObject).d) {
+      if (((amsx)localObject).d) {
         i = 0;
       } else {
         i = 1;
@@ -418,9 +418,9 @@ public class SettingMeApolloViewController
     {
       return;
       localObject = ((QQSettingMe)localObject).a();
-    } while ((localObject == null) || (!BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean(((QQAppInterface)localObject).getAccount() + "apollo_settingme_first_enter", true)) || (ammp.a(this.jdField_c_of_type_Int)));
-    localObject = new ammt((QQAppInterface)localObject);
-    this.jdField_a_of_type_Ammo.a((ammq)localObject);
+    } while ((localObject == null) || (!BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean(((QQAppInterface)localObject).getAccount() + "apollo_settingme_first_enter", true)) || (amyj.a(this.jdField_c_of_type_Int)));
+    localObject = new amyn((QQAppInterface)localObject);
+    this.jdField_a_of_type_Amyi.a((amyk)localObject);
   }
   
   public void a()
@@ -493,7 +493,7 @@ public class SettingMeApolloViewController
           {
             ((DrawerPushItem)localObject2).show_counts = localJSONObject.optInt("showCounts");
             ((DrawerPushItem)localObject2).reddotPath = paramString1;
-            paramString1 = (amhd)((QQAppInterface)localObject1).getManager(153);
+            paramString1 = (amsx)((QQAppInterface)localObject1).getManager(153);
             if (!paramBoolean) {
               break label542;
             }
@@ -503,7 +503,7 @@ public class SettingMeApolloViewController
             if (paramInt != 1) {
               break;
             }
-            ((DrawerPushItem)localObject2).ext_url = ancb.T;
+            ((DrawerPushItem)localObject2).ext_url = annv.T;
           }
         }
       }
@@ -524,8 +524,8 @@ public class SettingMeApolloViewController
       paramString1.b(paramString2);
       break label622;
       label570:
-      if ((!paramBoolean) && ((this.jdField_a_of_type_Ammo.a() instanceof ammw)) && (((JSONObject)localObject2).has(String.valueOf(ammw.d)))) {
-        ((amhd)((QQAppInterface)localObject1).getManager(153)).b(ammw.d);
+      if ((!paramBoolean) && ((this.jdField_a_of_type_Amyi.a() instanceof amyq)) && (((JSONObject)localObject2).has(String.valueOf(amyq.d)))) {
+        ((amsx)((QQAppInterface)localObject1).getManager(153)).b(amyq.d);
       }
     }
     label622:
@@ -540,9 +540,9 @@ public class SettingMeApolloViewController
     {
       return;
       localObject = ((QQSettingMe)localObject).a();
-    } while ((localObject == null) || (this.jdField_a_of_type_Ammo == null));
-    localObject = new ammr((QQAppInterface)localObject);
-    this.jdField_a_of_type_Ammo.a((ammq)localObject);
+    } while ((localObject == null) || (this.jdField_a_of_type_Amyi == null));
+    localObject = new amyl((QQAppInterface)localObject);
+    this.jdField_a_of_type_Amyi.a((amyk)localObject);
   }
   
   public void c()
@@ -560,13 +560,13 @@ public class SettingMeApolloViewController
           return;
           localObject1 = ((QQSettingMe)localObject1).a();
         } while ((localObject1 == null) || (localObject1 == null) || (Build.VERSION.SDK_INT < 14));
-        localObject2 = (baif)((QQAppInterface)localObject1).getManager(36);
+        localObject2 = (bbav)((QQAppInterface)localObject1).getManager(36);
       } while (!ApolloGameUtil.a((QQAppInterface)localObject1));
       localObject1 = new ArrayList();
       i = 0;
-      while (i < ancb.b.length)
+      while (i < annv.b.length)
       {
-        localObject3 = ((baif)localObject2).a(ancb.b[i]);
+        localObject3 = ((bbav)localObject2).a(annv.b[i]);
         if ((localObject3 != null) && (!TextUtils.isEmpty(((BusinessInfoCheckUpdate.AppInfo)localObject3).buffer.get()))) {
           ((List)localObject1).add(localObject3);
         }
@@ -605,22 +605,22 @@ public class SettingMeApolloViewController
         return;
         localObject1 = ((QQSettingMe)localObject1).a();
       } while (localObject1 == null);
-      localObject2 = (amhd)((QQAppInterface)localObject1).getManager(153);
+      localObject2 = (amsx)((QQAppInterface)localObject1).getManager(153);
     } while (!ApolloGameUtil.a((QQAppInterface)localObject1));
-    Object localObject2 = ((amhd)localObject2).a(0, ammp.b(this.jdField_c_of_type_Int));
+    Object localObject2 = ((amsx)localObject2).a(0, amyj.b(this.jdField_c_of_type_Int));
     if (localObject2 != null)
     {
       QLog.d("SettingMeApolloViewController", 1, new Object[] { "showPushInfo item:", localObject2 });
-      localObject2 = new ammw((QQAppInterface)localObject1, (DrawerPushItem)localObject2);
-      this.jdField_a_of_type_Ammo.a((ammq)localObject2);
+      localObject2 = new amyq((QQAppInterface)localObject1, (DrawerPushItem)localObject2);
+      this.jdField_a_of_type_Amyi.a((amyk)localObject2);
     }
     for (;;)
     {
       long l = ((QQAppInterface)localObject1).getApp().getSharedPreferences("apollo_sp" + ((QQAppInterface)localObject1).c(), 0).getLong("hire_end", 0L);
-      if ((NetConnInfoCenter.getServerTime() < l) && (!ammp.a(this.jdField_c_of_type_Int)))
+      if ((NetConnInfoCenter.getServerTime() < l) && (!amyj.a(this.jdField_c_of_type_Int)))
       {
-        localObject1 = new ammv((QQAppInterface)localObject1);
-        this.jdField_a_of_type_Ammo.a((ammq)localObject1);
+        localObject1 = new amyp((QQAppInterface)localObject1);
+        this.jdField_a_of_type_Amyi.a((amyk)localObject1);
       }
       m();
       return;
@@ -640,7 +640,7 @@ public class SettingMeApolloViewController
       {
         return;
         QLog.d("SettingMeApolloViewController", 1, new Object[] { "refreshApolloView isResume:", Boolean.valueOf(localQQSettingMe.a()) });
-        this.jdField_a_of_type_Bkgm.removeMessages(65537);
+        this.jdField_a_of_type_Blhq.removeMessages(65537);
       } while ((localQQSettingMe.a()) && (!this.jdField_b_of_type_Boolean));
       this.jdField_b_of_type_Boolean = false;
       bool = a(this.jdField_c_of_type_Int);
@@ -650,9 +650,9 @@ public class SettingMeApolloViewController
     } while (!QLog.isColorLevel());
     QLog.d("SettingMeApolloViewController", 2, new Object[] { "refreshApolloView not show apollo,needShowApollo:", Boolean.valueOf(bool) });
     return;
-    anec.a("drawer_pre");
-    if (this.jdField_a_of_type_Amux != null) {
-      this.jdField_a_of_type_Amux.c();
+    anpx.a("drawer_pre");
+    if (this.jdField_a_of_type_Angr != null) {
+      this.jdField_a_of_type_Angr.c();
     }
     ThreadManagerV2.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController$RefreshApolloTask, 16);
     ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController$RefreshApolloTask, 16, null, true);
@@ -664,8 +664,8 @@ public class SettingMeApolloViewController
     if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Amux != null) {
-      this.jdField_a_of_type_Amux.b();
+    if (this.jdField_a_of_type_Angr != null) {
+      this.jdField_a_of_type_Angr.b();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
@@ -682,8 +682,8 @@ public class SettingMeApolloViewController
       return;
       localObject = ((QQSettingMe)localObject).a();
     } while (localObject == null);
-    if (this.jdField_a_of_type_Ammo != null) {
-      this.jdField_a_of_type_Ammo.a((QQAppInterface)localObject, this.jdField_a_of_type_Amux);
+    if (this.jdField_a_of_type_Amyi != null) {
+      this.jdField_a_of_type_Amyi.a((QQAppInterface)localObject, this.jdField_a_of_type_Angr);
     }
     QLog.i("SettingMeApolloViewController", 1, "onPause");
   }
@@ -712,7 +712,7 @@ public class SettingMeApolloViewController
       localObject = ((QQSettingMe)localObject).a();
     } while (localObject == null);
     this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Int = ((amhd)((QQAppInterface)localObject).getManager(153)).b();
+    this.jdField_c_of_type_Int = ((amsx)((QQAppInterface)localObject).getManager(153)).b();
     QLog.d("SettingMeApolloViewController", 1, new Object[] { "initApolloDrawerStatus:", Integer.valueOf(this.jdField_c_of_type_Int) });
   }
   
@@ -731,11 +731,11 @@ public class SettingMeApolloViewController
         if (this.jdField_c_of_type_Boolean)
         {
           QLog.i("SettingMeApolloViewController", 1, "MSG_CODE_REFRESH_APOLLO on DrawerClosed!");
-          anaw.a(amuo.b(1), 11, 106, new Object[] { "DrawerClosed" });
+          anmq.a(angi.b(1), 11, 106, new Object[] { "DrawerClosed" });
           return false;
         }
-      } while (!(paramMessage.obj instanceof amhs));
-      a((amhs)paramMessage.obj);
+      } while (!(paramMessage.obj instanceof amtm));
+      a((amtm)paramMessage.obj);
       return false;
     }
     QLog.i("SettingMeApolloViewController", 1, "MSG_CODE_DESTROY_APOLLO_ON_BACKGROUND");
@@ -763,15 +763,15 @@ public class SettingMeApolloViewController
       if ((localViewGroup instanceof SettingMeRelativeLayout)) {
         ((SettingMeRelativeLayout)localViewGroup).setSurfaceView(null, null, 1.0F, 0.0F);
       }
-      if (this.jdField_a_of_type_Amux != null)
+      if (this.jdField_a_of_type_Angr != null)
       {
-        this.jdField_a_of_type_Amux.d();
-        this.jdField_a_of_type_Amux = null;
+        this.jdField_a_of_type_Angr.d();
+        this.jdField_a_of_type_Angr = null;
       }
-      if ((localObject != null) && (this.jdField_a_of_type_Anej != null))
+      if ((localObject != null) && (this.jdField_a_of_type_Anqe != null))
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Anej);
-        this.jdField_a_of_type_Anej = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Anqe);
+        this.jdField_a_of_type_Anqe = null;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
       {
@@ -786,7 +786,7 @@ public class SettingMeApolloViewController
   public void j()
   {
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(Integer.valueOf(65537));
+    this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(Integer.valueOf(65537));
   }
   
   public void k()
@@ -797,26 +797,26 @@ public class SettingMeApolloViewController
     if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, null, "Bubble");
     }
-    if (this.jdField_a_of_type_Ammo != null)
+    if (this.jdField_a_of_type_Amyi != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("SettingMeApolloViewController", 2, "set apollodrawer status 9999");
       }
-      this.jdField_a_of_type_Ammo.a();
+      this.jdField_a_of_type_Amyi.a();
     }
-    QLog.i("SettingMeApolloViewController", 1, "onDrawerClosed sDisableDestroySettingmeSwitch:" + anca.jdField_c_of_type_Boolean);
+    QLog.i("SettingMeApolloViewController", 1, "onDrawerClosed sDisableDestroySettingmeSwitch:" + annu.jdField_c_of_type_Boolean);
     Object localObject = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localObject == null) {}
     do
     {
       return;
       localObject = ((QQSettingMe)localObject).a();
-    } while ((localObject == null) || (amhd.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin()) != 2) || (anca.jdField_c_of_type_Boolean));
-    this.jdField_a_of_type_Bkgm.removeMessages(65537);
-    if (anca.jdField_b_of_type_Int > 0) {
-      jdField_a_of_type_Long = anca.jdField_b_of_type_Int * 1000;
+    } while ((localObject == null) || (amsx.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin()) != 2) || (annu.jdField_c_of_type_Boolean));
+    this.jdField_a_of_type_Blhq.removeMessages(65537);
+    if (annu.jdField_b_of_type_Int > 0) {
+      jdField_a_of_type_Long = annu.jdField_b_of_type_Int * 1000;
     }
-    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(65537, jdField_a_of_type_Long);
+    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(65537, jdField_a_of_type_Long);
     QLog.d("SettingMeApolloViewController", 1, new Object[] { "send delay msg MSG_CODE_DESTROY_APOLLO_ON_BACKGROUND sDestroyTimeOut:", Long.valueOf(jdField_a_of_type_Long) });
   }
   
@@ -847,7 +847,7 @@ public class SettingMeApolloViewController
       localQQAppInterface = localQQSettingMe.a();
     } while (localQQAppInterface == null);
     Intent localIntent = new Intent();
-    if (paramView.getId() == 2131362729)
+    if (paramView.getId() == 2131362747)
     {
       localIntent.putExtra("extra_key_url_append", "&tab=interactive&suin=" + localQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("extra_key_box_uin", localQQAppInterface.getCurrentAccountUin());
@@ -859,22 +859,22 @@ public class SettingMeApolloViewController
       }
       localIntent.putExtra("extra_key_box_from", "drawer");
       VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "0X80065C0", 0, 0, new String[] { "0" });
-      ApolloUtil.a(paramView.getContext(), localIntent, "drawer", ancb.ai, null);
+      ApolloUtil.a(paramView.getContext(), localIntent, "drawer", annv.ai, null);
       label235:
       if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.getVisibility() != 0) {
         break label317;
       }
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
-      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "drawer_clk", this.jdField_b_of_type_Int, ammp.a(this.jdField_c_of_type_Int), new String[] { "1", "" });
+      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "drawer_clk", this.jdField_b_of_type_Int, amyj.a(this.jdField_c_of_type_Int), new String[] { "1", "" });
     }
     for (;;)
     {
       localQQSettingMe.H();
       break;
-      ApolloUtil.a(paramView.getContext(), localIntent, "drawer", ancb.ah, null);
+      ApolloUtil.a(paramView.getContext(), localIntent, "drawer", annv.ah, null);
       break label235;
       label317:
-      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "drawer_clk", this.jdField_b_of_type_Int, ammp.a(this.jdField_c_of_type_Int), new String[] { "0", "" });
+      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "drawer_clk", this.jdField_b_of_type_Int, amyj.a(this.jdField_c_of_type_Int), new String[] { "0", "" });
     }
   }
 }

@@ -1,20 +1,9 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordPanel.2.1;
-import com.tencent.qphone.base.util.QLog;
-
-public class azsw
-  extends azst
+public final class azsw
+  extends azsa
 {
-  public azsw(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  protected int a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
-    }
-    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
+    return 515;
   }
 }
 

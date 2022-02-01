@@ -1,21 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import android.annotation.TargetApi;
+import java.util.List;
 
+@TargetApi(14)
 public class wli
-  extends Job<Object, Object, Object>
+  implements wkt
 {
-  public wli(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wlf paramwlf)
+  public int a;
+  
+  public void a()
   {
-    super(paramString);
+    ((wlb)wth.a(6)).a(this.a);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Wlf.a().a(880001, "no network", null);
-    return null;
+    this.a = paramInt;
+  }
+  
+  public void a(List<wkq> paramList, boolean paramBoolean)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ((wlb)wth.a(6)).a(paramList, this.a, paramBoolean);
+  }
+  
+  public void a(wku paramwku)
+  {
+    ((wlb)wth.a(6)).a(paramwku);
   }
 }
 

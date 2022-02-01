@@ -1,61 +1,26 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 
-public class yag
-  implements yaq
+class yag
+  extends nkq
 {
-  public yag(QQStoryMainActivity paramQQStoryMainActivity) {}
+  yag(yab paramyab, boolean paramBoolean) {}
   
-  public View a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return QQStoryMainActivity.a(this.a);
-  }
-  
-  public ImageView a()
-  {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (paramInt != 0)
     {
-      this.a.startTitleProgress();
-      return;
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(7, bool);
+        this.a.a(0, this.a.a.getString(2131718978));
+        return;
+      }
     }
-    this.a.stopTitleProgress();
+    ((wta)wth.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
   }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QQStoryMainActivity.a(this.a, wes.a, anni.a(2131709717));
-      return;
-    }
-    a(wes.a);
-  }
-  
-  public void c() {}
 }
 
 

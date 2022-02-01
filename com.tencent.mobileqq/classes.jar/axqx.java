@@ -1,33 +1,21 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-class axqx
-  implements URLDrawableDownListener
+public final class axqx
+  implements axcc
 {
-  axqx(axqw paramaxqw, axqy paramaxqy, int paramInt) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int, false);
-    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < 10000)) {
-      this.jdField_a_of_type_Axqy.b(this.jdField_a_of_type_Int, paramInt / 100);
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
+      return;
     }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_Axqy.a(this.jdField_a_of_type_Int);
+    QQPlayerService.c(BaseApplicationImpl.getContext());
   }
 }
 

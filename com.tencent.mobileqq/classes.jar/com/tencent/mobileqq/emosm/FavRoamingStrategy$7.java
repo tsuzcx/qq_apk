@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.emosm;
 
-import arpz;
-import arrp;
-import bgnt;
+import asfn;
+import ashd;
+import bhnv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FavRoamingStrategy$7
   implements Runnable
 {
-  public FavRoamingStrategy$7(arpz paramarpz) {}
+  public FavRoamingStrategy$7(asfn paramasfn) {}
   
   public void run()
   {
-    if ((this.this$0.a == null) || (!bgnt.d(this.this$0.a.getApp()))) {
+    if ((this.this$0.a == null) || (!bhnv.d(this.this$0.a.getApp()))) {
       return;
     }
-    ((arrp)this.this$0.a.getManager(103)).b();
+    ((ashd)this.this$0.a.getManager(103)).b();
   }
 }
 

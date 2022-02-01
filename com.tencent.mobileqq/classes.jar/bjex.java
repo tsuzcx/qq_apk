@@ -1,38 +1,37 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.widget.ksong.KSongTextView;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import cooperation.qwallet.plugin.QwAdapter.IViewHolder;
 
 public class bjex
-  extends BaseJsModule
+  implements QwAdapter.IViewHolder<awwo>
 {
-  public String getModuleName()
+  public KSongTextView a;
+  
+  public bjex(KSongView paramKSongView) {}
+  
+  public void a(int paramInt, View paramView, awwo paramawwo)
   {
-    return "mqq";
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a();
+    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
+    if (TextUtils.isEmpty(paramawwo.a)) {}
+    for (paramView = "";; paramView = paramawwo.a)
+    {
+      localKSongTextView.setText(paramView);
+      return;
+    }
   }
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public QwAdapter.IViewHolder clone()
   {
-    boolean bool = false;
-    if ("getQQVersion".equals(paramString)) {
-      paramString = new JSONObject();
-    }
-    while (!"getQQVersionSync".equals(paramString)) {
-      try
-      {
-        paramString.putOpt("version", "8.4.1");
-        bool = paramInvokeCallback.exec(0, paramString);
-        return bool;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-    }
-    return false;
+    return (QwAdapter.IViewHolder)super.clone();
+  }
+  
+  public View initView(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)paramView.findViewById(2131374781));
+    return paramView;
   }
 }
 

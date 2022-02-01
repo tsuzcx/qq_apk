@@ -2,9 +2,9 @@ package dov.com.qq.im;
 
 import android.os.Handler;
 import android.os.Message;
-import bann;
-import bnpt;
-import bnpy;
+import bbgg;
+import borf;
+import bork;
 import com.tencent.qphone.base.util.QLog;
 
 class QIMEffectCameraCaptureUnit$3
@@ -15,7 +15,7 @@ class QIMEffectCameraCaptureUnit$3
   public void run()
   {
     Handler localHandler;
-    if ((bnpy.a(bnpt.b)) && (bnpy.b(bnpt.b)))
+    if ((bork.a(borf.b)) && (bork.b(borf.b)))
     {
       i = 1;
       localHandler = this.this$0.a;
@@ -29,7 +29,7 @@ class QIMEffectCameraCaptureUnit$3
       localHandler.obtainMessage(1001, i, 0).sendToTarget();
       if (this.a)
       {
-        boolean bool = bann.b();
+        boolean bool = bbgg.b();
         if (QLog.isColorLevel()) {
           QLog.d("QIMEffectCameraCaptureUnit", 2, new Object[] { "onNotifyFilterReady soLoaded: ", Boolean.valueOf(bool) });
         }

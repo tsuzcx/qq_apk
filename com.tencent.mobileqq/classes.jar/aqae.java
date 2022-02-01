@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import java.util.List;
 
-public final class aqae
-  implements Parcelable.Creator<CardOCRInfo>
+public abstract interface aqae
 {
-  public CardOCRInfo a(Parcel paramParcel)
-  {
-    return new CardOCRInfo(paramParcel);
-  }
-  
-  public CardOCRInfo[] a(int paramInt)
-  {
-    return new CardOCRInfo[paramInt];
-  }
+  public abstract void a(List<aqax> paramList);
 }
 
 

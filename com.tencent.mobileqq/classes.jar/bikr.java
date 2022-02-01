@@ -1,33 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 
 public class bikr
-  extends Handler
+  implements View.OnTouchListener
 {
-  public bikr(CardContainer paramCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bikr(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      CardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
+    return true;
   }
 }
 

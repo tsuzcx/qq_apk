@@ -1,46 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pjk
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements pks
 {
-  public static String a = "ViolaPicDetailConfigHandler";
+  public pjk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void a()
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = phv.a(paramString);
-    Object localObject = localMap.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)localMap.get(str1);
-        if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
-          bmqa.c(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bmqa.c(0);
+    ReadInJoySelfFragment.a(this.a, 12);
   }
 }
 

@@ -1,23 +1,40 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 class set
-  extends ocg
+  implements sga
 {
-  private set(seo paramseo) {}
+  set(sel paramsel) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
-    }
-    if (paramBoolean)
+    boolean bool = true;
+    ArticleInfo localArticleInfo1;
+    String str;
+    ArticleInfo localArticleInfo2;
+    sel localsel;
+    if (paramView.getId() == 2131369862)
     {
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      seo.a(this.a).addAll(seo.a(this.a).a(paramBundle));
-      this.a.f();
+      localArticleInfo1 = (ArticleInfo)((pmy)paramView.getTag()).a;
+      str = ((pmy)paramView.getTag()).b.innerUniqueID;
+      localArticleInfo2 = localArticleInfo1;
+      localsel = this.a;
+      if (paramView.getId() != 2131369862) {
+        break label124;
+      }
+    }
+    for (;;)
+    {
+      localsel.a(bool, localArticleInfo2, localArticleInfo1, str);
+      return;
+      localArticleInfo2 = (ArticleInfo)((pmy)paramView.getTag()).b;
+      str = ((pmy)paramView.getTag()).a.innerUniqueID;
+      localArticleInfo1 = (ArticleInfo)((pmy)paramView.getTag()).a;
+      localArticleInfo2.isTwoItem = true;
+      break;
+      label124:
+      bool = false;
     }
   }
 }

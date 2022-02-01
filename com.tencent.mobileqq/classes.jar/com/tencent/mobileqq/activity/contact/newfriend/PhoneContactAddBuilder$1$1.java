@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aizv;
-import ajae;
+import ajle;
+import ajln;
 
 class PhoneContactAddBuilder$1$1
   implements Runnable

@@ -1,13 +1,20 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aoyq
-  extends aorg
+  implements View.OnClickListener
 {
   aoyq(aoyp paramaoyp) {}
   
-  public void a(aozl paramaozl)
+  public void onClick(View paramView)
   {
-    if (aoyp.a(this.a) != null) {
-      aoyp.a(this.a).a(paramaozl);
+    if ((aoyp.a(this.a) != null) && (aoyp.a(this.a).isShowing())) {
+      aoyp.a(this.a).dismiss();
     }
+    aoyp.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

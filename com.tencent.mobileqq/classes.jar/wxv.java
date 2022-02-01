@@ -1,14 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wxv
-  extends weu
+  extends QQUIEventReceiver<wxp, xqa>
 {
-  public List<StoryVideoItem> a;
-  
-  public String toString()
+  public wxv(@NonNull wxp paramwxp)
   {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
+    super(paramwxp);
+  }
+  
+  public void a(@NonNull wxp paramwxp, @NonNull xqa paramxqa)
+  {
+    if ((paramwxp.a.a().equals(paramxqa.jdField_a_of_type_JavaLangString)) && ((paramxqa.jdField_a_of_type_Xms instanceof xng))) {
+      paramwxp.a(((xng)paramxqa.jdField_a_of_type_Xms).a(), paramxqa.b);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xqa.class;
   }
 }
 

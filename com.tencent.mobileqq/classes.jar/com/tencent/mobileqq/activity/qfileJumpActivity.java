@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anhk;
-import bgnf;
+import antf;
+import bhnh;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -24,16 +24,16 @@ public class qfileJumpActivity
   private int a()
   {
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {}
-    while ((!anhk.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!anhk.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    while ((!antf.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!antf.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
       return -1;
     }
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (!anhk.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+      if (!antf.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
         return -2;
       }
     }
-    else if (!anhk.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    else if (!antf.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
       return -2;
     }
     return 0;
@@ -115,12 +115,12 @@ public class qfileJumpActivity
     try
     {
       super.doOnCreate(paramBundle);
-      if (!bgnf.a(this, true))
+      if (!bhnh.a(this, true))
       {
         super.finish();
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = anhk.z;
+      this.jdField_a_of_type_JavaLangString = antf.z;
       paramBundle = getIntent();
       if (paramBundle != null)
       {
@@ -131,7 +131,7 @@ public class qfileJumpActivity
         {
           QLog.w("qfileJump", 1, "targetparam no match, modify it " + i);
           this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaLangString = anhk.z;
+          this.jdField_a_of_type_JavaLangString = antf.z;
           paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
           paramBundle.putExtra("targetUin", this.jdField_a_of_type_JavaLangString);
         }
@@ -187,7 +187,7 @@ public class qfileJumpActivity
   {
     try
     {
-      boolean bool = bgnf.a(this);
+      boolean bool = bhnh.a(this);
       if (bool) {
         return true;
       }

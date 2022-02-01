@@ -1,13 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.Comparator;
+import java.util.Map;
 
 class benz
-  extends beob
+  implements Comparator<String>
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  benz(beny parambeny) {}
+  
+  public int a(String paramString1, String paramString2)
+  {
+    paramString1 = (Long)beny.a(this.a).get(paramString1);
+    paramString2 = (Long)beny.a(this.a).get(paramString2);
+    if (paramString1 == null) {
+      return 1;
+    }
+    if (paramString2 == null) {
+      return -1;
+    }
+    return (int)(paramString2.longValue() - paramString1.longValue());
+  }
 }
 
 

@@ -1,35 +1,24 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class bmbo
-  implements ScaleGestureDetector.OnScaleGestureListener
+public class bmbo
+  implements bmcz
 {
-  bmbo(bmbn parambmbn) {}
+  private WeakReference<Handler> a;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public bmbo(Handler paramHandler)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    bmbn.a(this.a, 1.0F - f + bmbn.b(this.a));
-    if (bmbn.a(this.a) == 0) {
-      bmbn.a(this.a, Math.max(bmbn.c(this.a), Math.min(1.5F, bmbn.b(this.a))));
-    }
-    for (;;)
-    {
-      bmbn.b(this.a, bmbn.b(this.a) / bmbn.d(this.a));
-      if (bmbn.a(this.a) != null) {
-        bmbn.a(this.a).a(bmbn.b(this.a));
-      }
-      return true;
-      bmbn.a(this.a, Math.max(bmbn.c(this.a), Math.min(1.0F, bmbn.b(this.a))));
-    }
+    this.a = new WeakReference(paramHandler);
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public void a(int paramInt, String paramString)
   {
-    return true;
+    Handler localHandler = (Handler)this.a.get();
+    if (localHandler != null) {
+      localHandler.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
+    }
   }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aebd;
+import aekh;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 public class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1
   implements Runnable
 {
-  public DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1(aebd paramaebd, boolean paramBoolean) {}
+  public DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1(aekh paramaekh, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,11 +19,11 @@ public class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1
     try
     {
       QLog.d("DevlockQuickLoginActivity", 1, "handleSetPCVerify: isSuccess: " + this.a);
-      if (aebd.a(this.this$0)) {
+      if (aekh.a(this.this$0)) {
         return;
       }
-      BaseActivity localBaseActivity = (BaseActivity)aebd.a(this.this$0).get();
-      localTextView = (TextView)aebd.b(this.this$0).get();
+      BaseActivity localBaseActivity = (BaseActivity)aekh.a(this.this$0).get();
+      localTextView = (TextView)aekh.b(this.this$0).get();
       if (localBaseActivity.isFinishing())
       {
         QLog.e("DevlockQuickLoginActivity", 1, "handleSetPCVerify error: activity.isFinishing()");
@@ -38,10 +38,10 @@ public class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1
     if (this.a)
     {
       localTextView.setVisibility(4);
-      QQToast.a(BaseApplication.getContext(), 2, 2131697828, 1).a();
+      QQToast.a(BaseApplication.getContext(), 2, 2131697912, 1).a();
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131697827, 1).a();
+    QQToast.a(BaseApplication.getContext(), 1, 2131697911, 1).a();
   }
 }
 

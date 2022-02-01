@@ -1,54 +1,16 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 
 public class qun
-  extends qup
 {
-  public qun(Context paramContext, aobu paramaobu, snh paramsnh)
-  {
-    super(paramContext, paramaobu, paramsnh);
-  }
+  public String a;
   
-  public qqt g()
+  public static qun a(oidb_0x5bd.AdReport paramAdReport)
   {
-    this.jdField_a_of_type_Qqs = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Qqs != null)
-    {
-      if ((this.jdField_a_of_type_Qqs instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Qqs).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
-      }
-      this.jdField_a_of_type_Qqs.a(ComponentContentGridImage.a(((pxk)this.jdField_a_of_type_JavaLangObject).a()));
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    qun localqun = new qun();
+    localqun.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localqun;
   }
 }
 

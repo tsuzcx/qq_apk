@@ -1,34 +1,12 @@
-public class zzk
+public abstract interface zzk
 {
-  public static <T> String a(String paramString, zzj<T> paramzzj)
-  {
-    return zzl.a().a(paramString, paramzzj);
-  }
+  public abstract void a();
   
-  public static void a(String paramString)
-  {
-    zzl.a().a(paramString);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public static <T> void a(String paramString, zzq<T> paramzzq)
-  {
-    zzl.a().a(paramString, paramzzq);
-  }
+  public abstract void b(boolean paramBoolean);
   
-  public static void a(Throwable paramThrowable)
-  {
-    yqp.a("PreLoader", "", paramThrowable);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return zzl.a().a(paramString);
-  }
-  
-  public static void b(String paramString)
-  {
-    yqp.b("PreLoader", paramString);
-  }
+  public abstract void c();
 }
 
 

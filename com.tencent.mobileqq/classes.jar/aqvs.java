@@ -1,42 +1,21 @@
-import android.text.TextUtils;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aqvs
-  implements aqlb<String>
+class aqvs
+  implements EIPCResultCallback
 {
-  public String a;
-  public boolean a;
+  aqvs(aqvr paramaqvr) {}
   
-  public aqvs()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaLangString = "{}";
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, "onParse: but configContent is null!");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("dialogSwitch")) {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
-    }
+    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvs
  * JD-Core Version:    0.7.0.1
  */

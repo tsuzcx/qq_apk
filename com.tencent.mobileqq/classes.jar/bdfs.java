@@ -1,56 +1,122 @@
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdfs
-  extends bdfw
+  extends bdft
 {
-  private Paint a;
-  private String b = "";
-  private int g = 20;
-  private int h = -1;
+  float jdField_a_of_type_Float = 0.0F;
+  int jdField_a_of_type_Int = -1;
+  public boolean a;
+  int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  int d = 0;
+  public int e;
   
-  public bdfs(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
+  public bdfs(TCProgressBar paramTCProgressBar)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    e(paramInt1);
-    f(paramInt2);
-    a(paramSpriteGLView, paramString);
+    super(paramTCProgressBar);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Boolean = true;
   }
   
-  public void a(SpriteGLView paramSpriteGLView, String paramString)
+  public int a()
   {
-    if (paramString.equals(this.b)) {
+    return this.f + this.d;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
+    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
+    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
+    if (this.jdField_a_of_type_Boolean) {
+      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
+      super.a(paramCanvas);
+      return;
+      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
+    }
+  }
+  
+  void a(Canvas paramCanvas, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      }
+      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
       return;
     }
-    this.b = paramString;
-    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(paramString);
-    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
-    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Bdfz != null) {
-      this.jdField_a_of_type_Bdfz.c();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_c_of_type_Int < 0) {}
+    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
+      return true;
     }
-    this.jdField_a_of_type_Bdfz = new bdfz(paramSpriteGLView, paramString);
-    g();
-    f();
+    return false;
   }
   
-  public void e(int paramInt)
+  public boolean a(float paramFloat)
   {
-    this.h = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
+    }
+    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
   }
   
-  public void f(int paramInt)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    this.g = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
+    float f = paramMotionEvent.getX();
+    int i = paramMotionEvent.getAction();
+    switch (i)
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return true;
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Float = f;
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Boolean = false;
+        return true;
+        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
+        this.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Float = f;
+        this.jdField_b_of_type_Int += 1;
+        this.jdField_c_of_type_Boolean = false;
+      } while (!a());
+      this.f += this.jdField_c_of_type_Int;
+      return true;
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    return true;
   }
 }
 

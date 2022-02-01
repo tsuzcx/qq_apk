@@ -1,21 +1,21 @@
-import android.support.v4.app.Fragment;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awrz
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public awrz(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  public awrz(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof MultiAIOFragment))) {
-      ((MultiAIOFragment)localFragment).a(this.a.getView(), paramMotionEvent);
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+    bdll.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import mqq.app.QQPermissionCallback;
-
-public class apza
-  implements QQPermissionCallback
+public abstract interface apza
 {
-  public apza(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.denied();
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
-  }
+  public abstract void a(String paramString1, long paramLong, String paramString2, String paramString3);
 }
 
 

@@ -27,6 +27,11 @@ public class DialogFromBottom
     super(paramContext, 2131755055);
   }
   
+  public DialogFromBottom(@NonNull Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+  }
+  
   private void animateDown()
   {
     if (this.mContentView == null) {

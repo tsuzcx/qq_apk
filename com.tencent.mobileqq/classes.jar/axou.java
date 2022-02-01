@@ -1,56 +1,61 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class axou
-  implements axkz
+public class axou
+  extends axot
 {
-  axou(axop paramaxop, VideoData paramVideoData) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public axou(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    super(paramQQAppInterface);
+  }
+  
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
+      return;
+    }
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + axop.a(this.jdField_a_of_type_Axop));
-        }
-        if (paramBundle.busi_buf.has())
+        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
         {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Axop.f(true);
-          this.jdField_a_of_type_Axop.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = axop.a(this.jdField_a_of_type_Axop);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = true;
-          axop.b(this.jdField_a_of_type_Axop, false);
-          axop.b(this.jdField_a_of_type_Axop, false);
-          ((axyl)this.jdField_a_of_type_Axop.a.getManager(263)).a(axop.a(this.jdField_a_of_type_Axop), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
+          String str = anzj.a(2131692063) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+          localArrayList.set(i, this.a.a().a().a(localMessageRecord, str, true));
         }
-        return;
+        i += 1;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    }
+  }
+  
+  public void a(axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow)
+  {
+    if (paramaxpl == null) {
+      return;
+    }
+    if ((paramaxpl.b == 8) || (paramaxpl.b == 9)) {}
+    for (paramaxpl = new atzo(this.a, paramaxpl, paramHashMap, paramaxow);; paramaxpl = new atzm(this.a, paramaxpl, paramHashMap, paramaxow))
+    {
+      this.a.a().a().a(paramaxpl, paramHashMap);
+      return;
+      if (paramaxpl.b == 2)
       {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + axop.a(this.jdField_a_of_type_Axop) + "  e:" + paramArrayOfByte);
+        a(paramHashMap);
+        paramaxow.a(0, 2, paramaxpl);
         return;
       }
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + axop.a(this.jdField_a_of_type_Axop));
-    axop.b(this.jdField_a_of_type_Axop, false);
   }
 }
 

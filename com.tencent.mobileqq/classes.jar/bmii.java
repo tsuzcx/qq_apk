@@ -1,22 +1,18 @@
-import java.util.Calendar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-public class bmii
+public final class bmii
+  implements Parcelable.Creator<SendMsg>
 {
-  public static final String a = anni.a(2131701641);
-  public static final String b = anni.a(2131701612);
-  public static final String c = anni.a(2131701593);
-  public static final String d = anni.a(2131701633);
-  public static final String e = anni.a(2131701603);
-  public static final String f = anni.a(2131701597);
-  public static final String g = anni.a(2131701636);
-  
-  public static boolean a(long paramLong1, long paramLong2)
+  public SendMsg a(Parcel paramParcel)
   {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong2);
-    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

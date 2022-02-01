@@ -1,15 +1,12 @@
 public class oml
 {
-  public long a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  private static Integer jdField_a_of_type_JavaLangInteger;
   
-  public oml() {}
-  
-  public oml(boolean paramBoolean)
+  public static void a()
   {
-    this.a = paramBoolean;
+    jdField_a_of_type_JavaLangBoolean = null;
+    jdField_a_of_type_JavaLangInteger = null;
   }
 }
 

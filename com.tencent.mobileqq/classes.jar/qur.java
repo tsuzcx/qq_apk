@@ -1,90 +1,91 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.Calendar;
 
 public class qur
-  extends qqt
 {
-  public qur(Context paramContext, aobu paramaobu, snh paramsnh)
+  public static int a;
+  private static qur jdField_a_of_type_Qur;
+  private SparseArray<qus> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  
+  static
   {
-    super(paramContext, paramaobu, paramsnh);
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain create");
-    }
+    jdField_a_of_type_Int = 1;
   }
   
-  public qqt a()
+  public static String a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return d(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().l().g().n().j();
+    Calendar localCalendar = Calendar.getInstance();
+    if (localCalendar == null) {
+      return "";
+    }
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    return String.valueOf(i) + j + k;
   }
   
-  public qqt d()
+  public static qur a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain layout");
+    try
+    {
+      if (jdField_a_of_type_Qur == null) {
+        jdField_a_of_type_Qur = new qur();
+      }
+      qur localqur = jdField_a_of_type_Qur;
+      return localqur;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
+    finally {}
   }
   
-  public qqt e()
+  private qus a(int paramInt)
   {
-    return null;
+    qus localqus2 = (qus)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    qus localqus1 = localqus2;
+    if (localqus2 == null)
+    {
+      localqus1 = qut.a(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localqus1);
+    }
+    return localqus1;
   }
   
-  public qqt g()
+  public String a(BaseArticleInfo paramBaseArticleInfo, int paramInt, TemplateBean paramTemplateBean, ViewBase paramViewBase)
   {
-    return super.g();
+    qus localqus = a(paramInt);
+    if (localqus == null) {
+      return "";
+    }
+    return localqus.a(paramBaseArticleInfo, paramTemplateBean, paramViewBase);
   }
   
-  public qqt o()
+  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
+    qus localqus = a(paramInt);
+    if (localqus == null) {
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    localqus.a(paramBaseArticleInfo, paramBoolean1, paramBoolean2);
   }
   
-  public qqt p()
+  public void a(Object paramObject, int paramInt)
   {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_Qrb);
+    qus localqus = a(paramInt);
+    if (localqus == null) {
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a(this.jdField_a_of_type_Qrb);
+    localqus.a(paramObject);
+  }
+  
+  public boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean, int paramInt)
+  {
+    qus localqus = a(paramInt);
+    if (localqus == null) {
+      return false;
     }
-    return this;
+    return localqus.a(paramBaseArticleInfo, paramBoolean);
   }
 }
 

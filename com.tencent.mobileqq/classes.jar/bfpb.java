@@ -1,14 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.6.1.1;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
 
-public class bfpb
-  implements bdfn
+final class bfpb
+  implements TextUtils.EllipsizeCallback
 {
-  bfpb(bfpa parambfpa) {}
+  bfpb(bfpc parambfpc, String paramString) {}
   
-  public void a()
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    this.a.a.a.post(new AIOAnimationControlManager.6.1.1(this));
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_Bfpc.c.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_Bfpc.c.setText(new begp(nnr.b(nnr.c(str + "...")), 3, 14));
   }
 }
 

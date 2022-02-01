@@ -1,23 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bakb
-  implements DialogInterface.OnDismissListener
+  extends bajz
 {
-  WeakReference<DialogInterface.OnDismissListener> jdField_a_of_type_MqqUtilWeakReference;
+  public bakb(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  bakb(baka parambaka, DialogInterface.OnDismissListener paramOnDismissListener)
+  public void a(boolean paramBoolean, String paramString, Card paramCard)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnDismissListener);
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, "onGetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
+    }
+    if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString = this.a;
+      if (paramCard != null) {}
+      for (;;)
+      {
+        InterestSwitchEditActivity.a(paramString, paramCard);
+        balc.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a));
+        InterestSwitchEditActivity.a(this.a);
+        return;
+        paramCard = InterestSwitchEditActivity.a(this.a);
+      }
+    }
+    QQToast.a(this.a, anzj.a(2131704699), 0).b(this.a.getTitleBarHeight());
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, String paramString, Card paramCard, ArrayList<ReqSetSettingItem> paramArrayList)
   {
-    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localOnDismissListener != null) {
-      localOnDismissListener.onDismiss(paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, "onSetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
     }
+    if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      QQToast.a(BaseApplicationImpl.sApplication, 2131718517, 0).b(this.a.getTitleBarHeight());
+      if (paramArrayList != null)
+      {
+        paramString = paramArrayList.iterator();
+        while (paramString.hasNext())
+        {
+          paramCard = (ReqSetSettingItem)paramString.next();
+          balc.a.a(paramCard.a(), InterestSwitchEditActivity.a(this.a)).c(paramCard.b());
+        }
+      }
+    }
+    InterestSwitchEditActivity.a(this.a);
   }
 }
 

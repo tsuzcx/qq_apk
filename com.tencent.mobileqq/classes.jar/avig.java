@@ -1,162 +1,288 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
-import android.os.SystemClock;
+import android.content.res.Resources;
+import android.os.HandlerThread;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.util.ArrayMap;
+import android.support.v4.util.ArraySet;
+import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader.1;
-import java.io.File;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFuDai;
+import com.tencent.mobileqq.widget.FilterRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
 public class avig
+  extends BaseBubbleBuilder
 {
-  private static Context jdField_a_of_type_AndroidContentContext;
-  private static Map<String, avig> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public static int[] a;
-  private static boolean d;
-  private static boolean e;
-  private long jdField_a_of_type_Long;
-  protected BroadcastReceiver a;
-  private avil jdField_a_of_type_Avil;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<avii> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString = "GroupVideoManager.IVPluginLoader";
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  @Nullable
+  private static ArraySet<WeakReference<CustomFrameAnimationDrawable>> jdField_a_of_type_AndroidSupportV4UtilArraySet;
+  private static final SparseArrayCompat<String[]> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private final ArrayMap<String, Boolean> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+  private ArraySet<Long> b = new ArraySet();
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
-  static
+  public avig(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 3, 7, 9, 5, 10 };
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    paramQQAppInterface = paramContext.getResources();
+    this.c = paramQQAppInterface.getDimensionPixelSize(2131297069);
+    this.d = paramQQAppInterface.getDimensionPixelSize(2131297068);
+    this.jdField_e_of_type_Int = paramQQAppInterface.getDimensionPixelSize(2131297073);
+    this.f = paramQQAppInterface.getDimensionPixelSize(2131297072);
+    this.g = paramQQAppInterface.getDimensionPixelSize(2131297075);
+    this.h = paramQQAppInterface.getDimensionPixelSize(2131297074);
+    this.i = paramQQAppInterface.getDimensionPixelSize(2131297071);
+    this.j = paramQQAppInterface.getDimensionPixelSize(2131297070);
   }
   
-  private avig(Context paramContext, String paramString)
+  @Nullable
+  private BaseChatPie a()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new avih(this);
-    jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static avig a(Context paramContext, String paramString)
-  {
-    avig localavig2 = (avig)jdField_a_of_type_JavaUtilMap.get(paramString);
-    avig localavig1 = localavig2;
-    if (localavig2 == null)
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
     {
-      localavig1 = new avig(paramContext, paramString);
-      jdField_a_of_type_JavaUtilMap.put(paramString, localavig1);
-    }
-    return localavig1;
-  }
-  
-  private void a(int paramInt)
-  {
-    yqu.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "8.4.1" });
-    switch (paramInt)
-    {
-    case 4: 
-    case 8: 
-    default: 
-      return;
-    case 2: 
-      avjb.b("2856626");
-      return;
-    case 3: 
-      avjb.b("2856627");
-      return;
-    case 5: 
-      avjb.b("2856629");
-      return;
-    case 6: 
-      avjb.b("2856630");
-      return;
-    case 7: 
-      avjb.b("2856631");
-      return;
-    }
-    avjb.b("2856647");
-  }
-  
-  public static boolean a()
-  {
-    if (e) {
-      return d;
-    }
-    try
-    {
-      File localFile = new File(jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null).getPath(), "versionchecker.test");
-      if (localFile != null)
-      {
-        d = localFile.exists();
-        e = true;
+      ChatFragment localChatFragment = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if (localChatFragment == null) {
+        return null;
       }
-      return d;
+      return localChatFragment.a();
     }
-    catch (Throwable localThrowable)
+    return null;
+  }
+  
+  private String a(MessageForFuDai paramMessageForFuDai)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMessageForFuDai.aioTails);
+    if (paramMessageForFuDai.isExpired()) {
+      localStringBuilder.append("，").append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692431));
+    }
+    for (;;)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        Object localObject = null;
+      return localStringBuilder.toString();
+      if (paramMessageForFuDai.isGrabByMe()) {
+        localStringBuilder.append("，").append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692430));
+      } else if (paramMessageForFuDai.isEmpty()) {
+        localStringBuilder.append("，").append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692432));
       }
+    }
+  }
+  
+  private void a(avih paramavih)
+  {
+    avih.a(paramavih).setFilter(-1711276033);
+    avih.c(paramavih).setVisibility(0);
+    avih.d(paramavih).setVisibility(8);
+    avih.a(paramavih).setImageResource(2130845263);
+    avih.c(paramavih).setImageResource(2130845264);
+  }
+  
+  private void a(MessageForFuDai paramMessageForFuDai, int paramInt) {}
+  
+  public static void e()
+  {
+    if (jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
+      while (localIterator.hasNext())
+      {
+        CustomFrameAnimationDrawable localCustomFrameAnimationDrawable = (CustomFrameAnimationDrawable)((WeakReference)localIterator.next()).get();
+        if (localCustomFrameAnimationDrawable != null) {
+          localCustomFrameAnimationDrawable.e();
+        }
+      }
+    }
+  }
+  
+  public static void f()
+  {
+    if (jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
+      while (localIterator.hasNext())
+      {
+        CustomFrameAnimationDrawable localCustomFrameAnimationDrawable = (CustomFrameAnimationDrawable)((WeakReference)localIterator.next()).get();
+        if (localCustomFrameAnimationDrawable != null) {
+          localCustomFrameAnimationDrawable.d();
+        }
+      }
+    }
+  }
+  
+  public int a(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  public aggl a()
+  {
+    return new avih();
+  }
+  
+  public View a(ChatMessage paramChatMessage, aggl paramaggl, View paramView, BaseChatItemLayout paramBaseChatItemLayout, agjk paramagjk)
+  {
+    paramaggl = (avih)paramaggl;
+    MessageForFuDai localMessageForFuDai = (MessageForFuDai)paramChatMessage;
+    paramChatMessage = paramView;
+    if (paramView == null)
+    {
+      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561233, paramBaseChatItemLayout, false);
+      avih.a(paramaggl, paramChatMessage);
+      paramChatMessage.setOnLongClickListener(paramagjk);
+      paramChatMessage.setOnTouchListener(paramagjk);
+      avih.a(paramaggl).setOnClickListener(this);
+      avih.a(paramaggl).setOnTouchListener(paramagjk);
+      avih.a(paramaggl).setOnLongClickListener(paramagjk);
+    }
+    if (jdField_e_of_type_Boolean)
+    {
+      paramView = a(localMessageForFuDai);
+      bhga.a(avih.a(paramaggl), paramView, View.class.getName());
+      paramChatMessage.setContentDescription(paramView);
+    }
+    avih.a(paramaggl, localMessageForFuDai);
+    if (TextUtils.isEmpty(localMessageForFuDai.aioTails))
+    {
+      avih.a(paramaggl).setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.d("FudaiItemBuilder", 2, "no logo res");
+      }
+      avih.b(paramaggl).setVisibility(8);
+      if (!localMessageForFuDai.isExpired()) {
+        break label255;
+      }
+      a(paramaggl);
+      avih.b(paramaggl).setVisibility(0);
+      avih.b(paramaggl).setText(2131692431);
+    }
+    for (;;)
+    {
+      if (!this.b.contains(Long.valueOf(localMessageForFuDai.uniseq)))
+      {
+        this.b.add(Long.valueOf(localMessageForFuDai.uniseq));
+        a(localMessageForFuDai, 110);
+      }
+      return paramChatMessage;
+      avih.a(paramaggl).setVisibility(0);
+      avih.a(paramaggl).setText(localMessageForFuDai.aioTails);
+      break;
+      label255:
+      if (localMessageForFuDai.isGrabByMe())
+      {
+        a(paramaggl);
+        avih.b(paramaggl).setVisibility(8);
+      }
+      else if (localMessageForFuDai.isEmpty())
+      {
+        a(paramaggl);
+        avih.b(paramaggl).setVisibility(0);
+        avih.b(paramaggl).setText(2131692432);
+      }
+    }
+  }
+  
+  public String a(ChatMessage paramChatMessage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (bhnt.a(paramChatMessage.issend)) {
+      localStringBuilder.append("发出");
+    }
+    for (;;)
+    {
+      localStringBuilder.append(a((MessageForFuDai)paramChatMessage));
+      return localStringBuilder.toString();
+      localStringBuilder.append("发来");
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Avil != null) {
-      this.jdField_a_of_type_Avil.a();
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    }
+    if (jdField_a_of_type_AndroidSupportV4UtilArraySet != null) {
+      jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
     }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, avii paramavii)
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      localObject = new IntentFilter(avip.a(this.jdField_a_of_type_JavaLangString));
-      ((IntentFilter)localObject).addAction(avip.b(this.jdField_a_of_type_JavaLangString));
-      jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      this.jdField_a_of_type_Boolean = true;
+    default: 
+      super.a(paramInt, paramContext, paramChatMessage);
+      return;
+    case 2131365352: 
+      aean.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      return;
     }
-    this.jdField_b_of_type_Boolean = TextUtils.equals(paramString5, "slientDownload");
-    this.c = TextUtils.equals(paramString5, "download");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavii);
-    paramavii = IVPluginInfo.a();
-    Object localObject = (IVPluginInfo)paramavii.get(this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(paramString3)) {}
-    try
+    super.d(paramChatMessage);
+  }
+  
+  public boolean a(aggl paramaggl)
+  {
+    return paramaggl instanceof avih;
+  }
+  
+  public bhum[] a(View paramView)
+  {
+    bhuk localbhuk = new bhuk();
+    paramView = agej.a(paramView);
+    a(paramView, localbhuk);
+    aean.a(localbhuk, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    b(paramView, localbhuk);
+    super.c(localbhuk, this.jdField_a_of_type_AndroidContentContext);
+    super.e(localbhuk, this.jdField_a_of_type_AndroidContentContext);
+    return localbhuk.a();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      ((IVPluginInfo)localObject).jdField_a_of_type_Long = Long.parseLong(paramString3);
-      if (!TextUtils.isEmpty(paramString6)) {
-        ((IVPluginInfo)localObject).e = paramString6;
-      }
-      ((IVPluginInfo)localObject).h = paramString7;
-      ((IVPluginInfo)localObject).c = paramInt;
-      ((IVPluginInfo)localObject).i = paramString8;
-      ((IVPluginInfo)localObject).j = paramString9;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        avjb.b("2856624");
-        this.jdField_a_of_type_Avil = avil.a(jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString1);
-        ThreadManagerV2.executeOnSubThread(new IVPluginLoader.1(this, paramString2, paramString1, paramString4, paramString5, paramavii));
-        return;
-      }
+    default: 
+      super.onClick(paramView);
     }
-    catch (NumberFormatException paramString3)
+    for (;;)
     {
-      for (;;)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      BaseChatPie localBaseChatPie = a();
+      if (localBaseChatPie != null)
       {
-        paramString3.printStackTrace();
-        continue;
-        if (this.c)
-        {
-          avjb.b("2856625");
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          yqu.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.4.1" });
-        }
+        MessageForFuDai localMessageForFuDai = (MessageForFuDai)((avih)agej.a(paramView)).a;
+        a(localMessageForFuDai, 111);
+        ((avif)localBaseChatPie.a(2)).a(localMessageForFuDai);
       }
     }
   }

@@ -1,17 +1,24 @@
-import android.content.Intent;
+import java.util.Comparator;
 
-public class bhjf
+final class bhjf
+  implements Comparator
 {
-  public bhji a;
-  
-  public bhjf(Intent paramIntent)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.a = new bhji(paramIntent.getStringExtra("lh_uin"), paramIntent.getStringExtra("lh_light"));
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
+    }
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhjf
  * JD-Core Version:    0.7.0.1
  */

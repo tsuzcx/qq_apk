@@ -1,9 +1,11 @@
-import java.util.HashMap;
-
 public class apns
 {
-  public int a;
-  public final HashMap<String, apnt> a = new HashMap();
+  public int a = 3000;
+  
+  public String toString()
+  {
+    return "ARCloudRecogReqSceneRecogInfo{timeout = " + this.a + '}';
+  }
 }
 
 

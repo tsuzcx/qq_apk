@@ -56,7 +56,7 @@ public final class AdExposureListHolder
       return;
       localLinkedList = getExposuredTraceIdList();
     } while ((localLinkedList == null) || (localLinkedList.size() <= 0));
-    AdThreadManager.INSTANCE.post(new AdExposureListHolder.2(this, localLinkedList, paramContext), 5);
+    AdThreadManager.INSTANCE.post(new AdExposureListHolder.2(this, paramContext), 5);
   }
   
   private LinkedList<String> getExposuredTraceIdList()

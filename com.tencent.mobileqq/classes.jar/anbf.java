@@ -1,55 +1,24 @@
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class anbf
+final class anbf
+  implements BusinessObserver
 {
-  public static void a(String paramString, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    int i;
-    do
+    try
     {
-      String str;
-      for (;;)
-      {
-        return;
-        try
-        {
-          if (anba.a())
-          {
-            i = paramBundle.getInt("featureId");
-            str = paramBundle.getString("featureKey");
-            if ("action_begin_trace".equals(paramString))
-            {
-              anba.a().a(i, str, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("TraceReport", 1, paramString, new Object[0]);
-          return;
-        }
+      paramInt = paramBundle.getInt("extra_result_code");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
       }
-      if ("action_end_trace".equals(paramString))
-      {
-        anba.a().b(i, str, paramBundle);
-        return;
-      }
-      if ("action_report_span".equals(paramString))
-      {
-        anba.a().c(i, str, paramBundle);
-        return;
-      }
-      if ("action_update_trace".equals(paramString))
-      {
-        anba.a().a(i, paramBundle);
-        return;
-      }
-    } while (!"action_enable_trace".equals(paramString));
-    boolean bool = paramBundle.getBoolean("enable");
-    anba.a().a(i, bool);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
+    }
   }
 }
 

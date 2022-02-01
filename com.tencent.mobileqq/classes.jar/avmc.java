@@ -1,183 +1,292 @@
-import android.app.Dialog;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nonnull;
-import mqq.app.MobileQQ;
+import cooperation.wadl.ipc.WadlParams;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class avmc
 {
-  private static volatile String a;
+  public static int a;
+  public static String a;
+  public static List<String> a;
+  public static int b;
+  public static int c;
+  public static int d = 7;
   
-  public static int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  static
   {
-    int i = 1;
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {}
-    do
-    {
-      try
-      {
-        paramContext = new Intent();
-        paramContext.setAction("action_show_together_floating_windows");
-        paramContext.setPackage(MobileQQ.getContext().getPackageName());
-        paramContext.putExtra("com.tencent.mobileqq.webprocess.together.floating.data", paramWatchTogetherFloatingData);
-        paramContext.setComponent(new ComponentName(MobileQQ.getContext(), "com.tencent.mobileqq.webprocess.WebProcessReceiver"));
-        BaseApplicationImpl.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow main..., data=", paramWatchTogetherFloatingData.toString() });
-        }
-        i = 0;
-        return i;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
-      }
-    } while (avmi.a().a(paramContext, paramWatchTogetherFloatingData) == 0);
-    return 2;
+    jdField_a_of_type_Int = 3;
+    b = 30000;
+    c = 7000;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilList = new ArrayList(3);
   }
   
-  public static Dialog a(Context paramContext)
+  public static int a()
   {
-    if (paramContext == null) {
-      return null;
+    return arhx.a().b;
+  }
+  
+  public static String a()
+  {
+    String str2 = arhv.a().jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
     }
-    bier.b();
-    paramContext = bglp.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690582), paramContext.getString(2131694081), new avmd(paramContext), null);
-    paramContext.setCancelable(false);
-    return paramContext;
+    return str1;
   }
   
-  public static Dialog a(Context paramContext, Intent paramIntent)
-  {
-    paramContext = bkho.a(paramContext);
-    paramContext.b(2131715887);
-    paramContext.a(2131690732, 3);
-    paramContext.c(2131690582);
-    paramContext.a(new avme(paramIntent, paramContext));
-    return paramContext;
-  }
-  
-  public static void a()
-  {
-    a = "";
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
-    {
-      Bundle localBundle = new Bundle();
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new avmh());
-      return;
-    }
-    avmi.a().b();
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
-    localIntent.putExtra("key_dialog_type", paramInt);
-    localIntent.putExtra("cur_uin", paramString);
-    localIntent.addFlags(805306368);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
-  {
-    if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getQQProcessName() == null)) {}
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      return;
-      if (BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {
-        break;
-      }
-      bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
-      bool2 = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
-      }
-    } while ((!bool1) && (!bool2));
-    a = "";
-    paramContext = new Bundle();
-    paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new avmg());
-    return;
-    avmi.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
-  }
-  
-  public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  public static void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "setIsWatchFloatingShow isShow=", Boolean.valueOf(paramBoolean1), " uin=", paramString, " sessionType=", Integer.valueOf(paramInt) });
+      QLog.d("QQGameConfigUtil", 2, "pauseDownload from=" + paramInt + ",appId=" + paramString);
     }
-    if (!paramBoolean1) {}
-    for (a = "";; a = "2_" + paramString + "_" + paramInt)
-    {
-      if (7 == BaseApplicationImpl.sProcessId)
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
-        localBundle.putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
-        localBundle.putString("BUNDLE_SET_KEY_UIN", paramString);
-        localBundle.putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
-        QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", localBundle, new avmf());
-      }
+    bnyp.a();
+    bnyp.a().a(paramInt, paramString);
+  }
+  
+  public static void a(Context paramContext, FeedsItemData.GameInfo paramGameInfo)
+  {
+    if (paramGameInfo == null) {}
+    while (bhny.a(paramContext, paramGameInfo.gamePkgName)) {
       return;
     }
+    bnyp.a();
+    paramContext = new WadlParams();
+    paramContext.d = 0;
+    paramContext.b(7);
+    paramContext.c = "10000144";
+    paramContext.jdField_e_of_type_JavaLangString = paramGameInfo.gameApkUrl;
+    paramContext.jdField_a_of_type_JavaLangString = paramGameInfo.gameAppId;
+    paramContext.jdField_e_of_type_Int = Integer.parseInt(paramGameInfo.gameVersionCode);
+    paramContext.jdField_f_of_type_JavaLangString = paramGameInfo.gamePkgName;
+    paramContext.p = "biz_src_zf_games";
+    paramContext.l = "publicAccount";
+    paramContext.j = paramGameInfo.gameName;
+    paramContext.k = paramGameInfo.gameIcon;
+    paramContext.b = 2;
+    paramContext.m = "publicAccount";
+    bnyp.a().a(paramContext);
+  }
+  
+  public static void a(Bundle paramBundle, String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "downloadGame appId=" + paramString + ",isRes=" + paramBoolean + ",resType=" + paramInt + ",req=" + paramBundle);
+    }
+    String str = paramBundle.getString("packageName");
+    if ((paramBundle == null) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str))) {
+      return;
+    }
+    Object localObject2 = paramBundle.getString("apkChannel");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "10000144";
+    }
+    bnyp.a();
+    localObject2 = new WadlParams();
+    ((WadlParams)localObject2).d = paramBundle.getInt("from");
+    ((WadlParams)localObject2).b(paramBundle.getInt("flags"));
+    ((WadlParams)localObject2).c = ((String)localObject1);
+    ((WadlParams)localObject2).jdField_e_of_type_JavaLangString = paramBundle.getString("apkUrl");
+    ((WadlParams)localObject2).jdField_a_of_type_JavaLangString = paramString;
+    ((WadlParams)localObject2).jdField_e_of_type_Int = paramBundle.getInt("versionCode");
+    ((WadlParams)localObject2).jdField_f_of_type_JavaLangString = str;
+    localObject1 = paramBundle.getString("appName");
+    paramString = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString = ((WadlParams)localObject2).jdField_f_of_type_JavaLangString;
+    }
+    ((WadlParams)localObject2).j = paramString;
+    ((WadlParams)localObject2).p = "biz_src_zf_games";
+    ((WadlParams)localObject2).l = paramBundle.getString("via");
+    ((WadlParams)localObject2).b = 2;
+    ((WadlParams)localObject2).o = paramBundle.getString("ext");
+    ((WadlParams)localObject2).m = paramBundle.getString("fromWebUrl", "");
+    ((WadlParams)localObject2).jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
+    {
+      ((WadlParams)localObject2).jdField_g_of_type_Int = paramInt;
+      ((WadlParams)localObject2).jdField_f_of_type_Int = paramBundle.getInt("resIndex");
+      ((WadlParams)localObject2).h = paramBundle.getString("resName");
+      ((WadlParams)localObject2).jdField_g_of_type_JavaLangString = paramBundle.getString("resVersionName");
+      ((WadlParams)localObject2).i = paramBundle.getString("resMD5");
+    }
+    bnyp.a().a((WadlParams)localObject2);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("game_center_sp", 0);
+    String str = "sp_key_game_center_feeds_show_float_window_date" + paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = "sp_key_game_center_feeds_float_window_showed_games" + paramQQAppInterface.getCurrentAccountUin();
+    jdField_a_of_type_JavaLangString = localSharedPreferences.getString(str, "");
+    if (c().equals(jdField_a_of_type_JavaLangString))
+    {
+      paramQQAppInterface = localSharedPreferences.getString(paramQQAppInterface, "");
+      if ((TextUtils.isEmpty(paramQQAppInterface)) || (paramQQAppInterface.split(";").length == 0)) {
+        jdField_a_of_type_JavaUtilList = new ArrayList(3);
+      }
+      for (;;)
+      {
+        return;
+        paramQQAppInterface = paramQQAppInterface.split(";");
+        jdField_a_of_type_JavaUtilList = new ArrayList(3);
+        while (i < paramQQAppInterface.length)
+        {
+          jdField_a_of_type_JavaUtilList.add(paramQQAppInterface[i]);
+          i += 1;
+        }
+      }
+    }
+    jdField_a_of_type_JavaLangString = c();
+    jdField_a_of_type_JavaUtilList = new ArrayList(3);
+  }
+  
+  public static void a(WadlParams paramWadlParams)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "installGame params=" + paramWadlParams);
+    }
+    bnyp.a();
+    bnyp.a().b(paramWadlParams);
   }
   
   public static boolean a()
   {
-    return TextUtils.isEmpty(a);
+    arhu localarhu = arhv.a();
+    if ((localarhu != null) && (localarhu.jdField_a_of_type_Int > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = false");
+    }
+    return false;
   }
   
-  public static boolean a(int paramInt1, String paramString, int paramInt2)
+  public static boolean a(String paramString)
   {
-    if (paramInt1 != 2) {}
+    if (jdField_a_of_type_JavaUtilList == null) {
+      jdField_a_of_type_JavaUtilList = new ArrayList(3);
+    }
+    return (jdField_a_of_type_JavaUtilList.size() < 3) && (!jdField_a_of_type_JavaUtilList.contains(paramString));
+  }
+  
+  public static String b()
+  {
+    String str2 = arhv.a().b;
+    String str1;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
+    }
     do
     {
       do
       {
-        return false;
-        if (QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool")) {
+        return str1;
+        if (TextUtils.isEmpty(str2)) {
           break;
         }
-        a = null;
-      } while (!QLog.isColorLevel());
-      QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
-      return false;
-    } while ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId));
-    paramString = paramInt1 + "_" + paramString + "_" + paramInt2;
+        str1 = str2;
+      } while (str2.startsWith("http://"));
+      str1 = str2;
+    } while (str2.startsWith("https://"));
+    return "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "key=", paramString, " info=", a });
+      QLog.d("QQGameConfigUtil", 2, "deleteDownload from=" + paramInt + ",appId=" + paramString);
     }
-    return TextUtils.equals(paramString, a);
+    bnyp.a();
+    bnyp.a().c(paramInt, paramString);
   }
   
   public static boolean b()
   {
-    return a == null;
+    aref localaref = areg.a();
+    if ((localaref != null) && (localaref.jdField_a_of_type_Int > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameConfigUtil", 2, "isGcEntryOptimizeSwitch = true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isGcEntryOptimizeSwitch = false");
+    }
+    return false;
   }
   
-  public static boolean b(int paramInt1, String paramString, int paramInt2)
+  public static String c()
   {
-    return TextUtils.equals(paramInt1 + "_" + paramString + "_" + paramInt2, a);
+    Date localDate = new Date();
+    return new SimpleDateFormat("yyyy-MM-dd").format(localDate);
+  }
+  
+  public static boolean c()
+  {
+    boolean bool2 = false;
+    Object localObject = arhv.a();
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((arhu)localObject).c > 0)
+      {
+        localObject = ((arhu)localObject).jdField_a_of_type_JavaLangString;
+        bool1 = bool2;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          bool1 = bool2;
+          if (blhn.a((String)localObject)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static String d()
+  {
+    String str2 = arhx.a().jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "https://imgcache.qq.com/ogame/sgame-official-account/precache.html";
+    }
+    return str1;
+  }
+  
+  public static boolean d()
+  {
+    arhw localarhw = arhx.a();
+    if ((localarhw != null) && (localarhw.jdField_a_of_type_Int > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameConfigUtil", 2, "isPreloadSwitch = true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isPreloadSwitch = false");
+    }
+    return false;
   }
 }
 

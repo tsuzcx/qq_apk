@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import avxq;
-import avyf;
-import awbw;
-import bglp;
-import bgpa;
+import awql;
+import awra;
+import awuo;
+import bhlq;
+import bhpc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,15 +18,15 @@ public final class LocationDialogUtil$7
   
   public void run()
   {
-    if (awbw.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a)
+    if (awuo.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationDialogUtil", 2, "showBadNetDialog: invoked. 当前如果展示悬浮窗，就不显示这个弹窗了");
       }
       return;
     }
-    bgpa localbgpa = bglp.a(this.a, 230, null, this.a.getResources().getString(2131718115), 2131694081, 2131690582, null, new avyf(this));
-    avxq.a(this.a, localbgpa);
+    bhpc localbhpc = bhlq.a(this.a, 230, null, this.a.getResources().getString(2131718248), 2131694098, 2131690580, null, new awra(this));
+    awql.a(this.a, localbhpc);
   }
 }
 

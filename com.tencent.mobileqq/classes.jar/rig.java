@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import com.tencent.widget.ListView;
 
-public final class rig
-  implements Parcelable.Creator<TopicInfo>
+public class rig
+  extends bcbj<bcfr, bcnz>
 {
-  public TopicInfo a(Parcel paramParcel)
+  public rig(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, aoof paramaoof)
   {
-    return new TopicInfo(paramParcel);
+    super(paramListView, paramaoof);
   }
   
-  public TopicInfo[] a(int paramInt)
+  protected bcil<bcfr, bcnz> a(int paramInt)
   {
-    return new TopicInfo[paramInt];
+    if (((bcfr)a(paramInt) instanceof bcec)) {
+      return new bcju(this.jdField_a_of_type_Aoof, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    }
+    return new ric(this.jdField_a_of_type_Aoof, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcnt(paramViewGroup, 2131562874);
   }
 }
 

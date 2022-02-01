@@ -1,20 +1,42 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class bgmx
-  extends axbm
+public class bgmx
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  bgmx(bgmp parambgmp, long paramLong) {}
+  public bgmx(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void onPageSelected(int paramInt)
   {
-    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L)) {
-      bghy.a((BaseActivity)this.jdField_a_of_type_Bgmp.a, paramLong2, this.jdField_a_of_type_Long + "", null, 20003);
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
+    {
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
+      }
+    }
+    label85:
+    label91:
+    for (String str2 = bhju.a(this.a.a);; str2 = "1")
+    {
+      bhju.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+      return;
+      str1 = "grpData_visitor";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgmx
  * JD-Core Version:    0.7.0.1
  */

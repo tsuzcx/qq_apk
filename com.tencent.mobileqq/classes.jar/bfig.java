@@ -1,74 +1,342 @@
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
+import android.graphics.Path.FillType;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class bfig
-  extends bfhs
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public bfig(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  protected int a;
+  public Bitmap a;
+  protected Drawable a;
+  protected LayoutInflater a;
+  protected URLDrawable.URLDrawableOptions a;
+  protected ExtendGridView a;
+  protected CharSequence a;
+  private HashMap<String, Drawable.ConstantState> a;
+  protected List<String> a;
+  protected boolean a;
+  protected int b;
+  protected CharSequence b;
+  
+  public bfig(Context paramContext, ExtendGridView paramExtendGridView)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 9;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView = paramExtendGridView;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847845);
+    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getText(2131695579);
+    this.jdField_b_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131716964);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseMemoryCache = false;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    a(paramContext);
   }
   
-  public int a(int paramInt)
+  private void c()
   {
-    return 2130847464;
-  }
-  
-  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
-  {
-    paramTextView1.setText(paramString);
-    paramTextView2.setText(2131698408);
-    paramTextView2.setVisibility(0);
-    paramTextView1.setVisibility(0);
-  }
-  
-  public void a(int paramInt1, bepx parambepx, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
-  {
-    super.a(paramInt1, parambepx, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
-    paramString = null;
-    if (paramLong != bfhz.a) {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong);
-    }
-    if (paramString != null) {
-      paramTextView1.setText(bglf.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString.senderuin));
-    }
-    if (((paramString instanceof MessageForQQWalletMsg)) && (MessageForQQWalletMsg.isRedPacketMsg(paramString)))
+    long l = System.currentTimeMillis();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramString = (MessageForQQWalletMsg)paramString;
-      if ((paramString.messageType == 7) || (paramString.messageType == 8))
-      {
-        paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131717763));
-        parambepx.b = true;
+      String str = (String)localIterator.next();
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(str))) {
+        localHashMap.put(str, this.jdField_a_of_type_JavaUtilHashMap.get(str));
       }
     }
-    while (paramInt2 <= 0)
-    {
-      return;
-      paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131717749));
-      parambepx.a = true;
-      return;
-    }
-    parambepx.a = false;
-    paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
-    if (paramInt2 > 99) {}
-    for (parambepx = "99+";; parambepx = Integer.valueOf(paramInt2))
-    {
-      paramTextView1.setText(paramString.getString(2131698411, new Object[] { parambepx }));
-      return;
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_JavaUtilHashMap.putAll(localHashMap);
+    localHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopBar", 2, "!!!clearDirtyCache time is " + (System.currentTimeMillis() - l));
     }
   }
   
-  public void a(int paramInt, Object paramObject, String paramString) {}
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
   
-  public void b(int paramInt, Object paramObject, String paramString) {}
+  @TargetApi(16)
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView == null) {
+      return;
+    }
+    int j = getCount();
+    int i = j;
+    if (j == this.jdField_a_of_type_Int + 1) {
+      i = j - 1;
+    }
+    i = (int)Math.ceil(i / this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getNumColumns());
+    Object localObject = getView(0, null, this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView);
+    ((View)localObject).measure(0, 0);
+    this.jdField_b_of_type_Int = ((View)localObject).getMeasuredHeight();
+    j = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getVerticalSpacing();
+    int k = this.jdField_b_of_type_Int;
+    int m = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getPaddingTop();
+    int n = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getPaddingBottom();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = (i * k + j * (i - 1) + m + n);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+  }
+  
+  protected void a(Context paramContext)
+  {
+    int i = (int)bhmg.a(paramContext, 60.0F);
+    int j = (int)bhmg.a(paramContext, 5.0F);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
+    paramContext = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    Paint localPaint = new Paint();
+    localPaint.setAntiAlias(true);
+    RectF localRectF = new RectF(0.0F, 0.0F, i, i);
+    localPaint.setAlpha(0);
+    paramContext.drawRect(0.0F, 0.0F, i, i, localPaint);
+    localPaint.setARGB(255, 255, 255, 255);
+    Path localPath = new Path();
+    localPath.addRoundRect(localRectF, j, j, Path.Direction.CW);
+    localPath.setFillType(Path.FillType.INVERSE_WINDING);
+    paramContext.drawPath(localPath, localPaint);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    a();
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    if (paramBoolean2) {
+      notifyDataSetChanged();
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (this.jdField_a_of_type_Boolean) && (paramInt == getCount() - 1);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+  }
+  
+  public int getCount()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      i = this.jdField_a_of_type_JavaUtilList.size();
+    }
+    int j = i;
+    if (this.jdField_a_of_type_Boolean) {
+      j = i + 1;
+    }
+    return j;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (a(paramInt))) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return paramInt;
+    }
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (a(paramInt)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int k = 2147483647;
+    long l = System.currentTimeMillis();
+    View localView;
+    bfih localbfih;
+    int i;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559922, null);
+      localbfih = new bfih();
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131380506));
+      localbfih.b = ((ImageView)localView.findViewById(2131368522));
+      localbfih.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376959));
+      localView.setTag(localbfih);
+      i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
+      paramView = localView.getLayoutParams();
+      if ((paramView != null) && ((paramView instanceof AbsListView.LayoutParams))) {
+        break label260;
+      }
+      paramView = new AbsListView.LayoutParams(i, i);
+      label129:
+      localView.setLayoutParams((AbsListView.LayoutParams)paramView);
+      if (!a(paramInt)) {
+        break label275;
+      }
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842477);
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+      localbfih.b.setVisibility(8);
+    }
+    label260:
+    label275:
+    String str;
+    do
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopBar", 2, "---getView time is " + (System.currentTimeMillis() - l));
+      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localbfih = (bfih)paramView.getTag();
+      localView = paramView;
+      break;
+      paramView.width = i;
+      paramView.height = i;
+      break label129;
+      str = (String)getItem(paramInt);
+    } while (TextUtils.isEmpty(str));
+    int j;
+    if (i < 0)
+    {
+      j = 2147483647;
+      label303:
+      j = Math.min(100, j);
+      if (i >= 0) {
+        break label484;
+      }
+      i = k;
+      label321:
+      i = Math.min(100, i);
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
+      paramView = new File(str);
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 18) {
+        c();
+      }
+      Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      if (((paramInt == 0) && (paramViewGroup.getChildCount() == 0)) || (localConstantState == null)) {
+        break label487;
+      }
+      paramView = localConstantState.newDrawable();
+    }
+    for (;;)
+    {
+      paramView.setBounds(0, 0, j, i);
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
+      localbfih.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
+      localbfih.b.setVisibility(0);
+      localbfih.b.setTag(Integer.valueOf(paramInt));
+      localbfih.b.setOnClickListener(this);
+      localbfih.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      break;
+      j = i;
+      break label303;
+      label484:
+      break label321;
+      try
+      {
+        label487:
+        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth = j;
+        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight = i;
+        this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mPlayGifImage = true;
+        if (paramView.exists()) {}
+        for (paramView = URLDrawable.getDrawable(paramView.toURL(), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);; paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+        {
+          if (paramView != null) {
+            break label558;
+          }
+          paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          break;
+        }
+      }
+      catch (MalformedURLException paramView)
+      {
+        for (;;)
+        {
+          paramView = null;
+        }
+        label558:
+        this.jdField_a_of_type_JavaUtilHashMap.put(str, paramView.getConstantState());
+      }
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Integer localInteger = (Integer)paramView.getTag();
+      Intent localIntent = new Intent("key_photo_delete_action");
+      localIntent.putExtra("key_photo_delete_position", localInteger.intValue());
+      BaseApplication.getContext().sendBroadcast(localIntent);
+    }
+  }
 }
 
 

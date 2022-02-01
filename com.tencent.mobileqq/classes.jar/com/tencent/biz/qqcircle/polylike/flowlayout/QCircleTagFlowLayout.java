@@ -16,21 +16,21 @@ import com.tencent.mobileqq.R.styleable;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import vqe;
-import vqf;
-import vqg;
-import vqh;
-import vqi;
+import vsn;
+import vso;
+import vsp;
+import vsq;
+import vsr;
 
 public class QCircleTagFlowLayout
   extends QCircleFlowLayout
-  implements vqf
+  implements vso
 {
   private int jdField_a_of_type_Int = -1;
   private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private vqe jdField_a_of_type_Vqe;
-  private vqh jdField_a_of_type_Vqh;
-  private vqi jdField_a_of_type_Vqi;
+  private vsn jdField_a_of_type_Vsn;
+  private vsq jdField_a_of_type_Vsq;
+  private vsr jdField_a_of_type_Vsr;
   
   public QCircleTagFlowLayout(Context paramContext)
   {
@@ -58,12 +58,12 @@ public class QCircleTagFlowLayout
   private void a()
   {
     removeAllViews();
-    vqe localvqe = this.jdField_a_of_type_Vqe;
-    HashSet localHashSet = this.jdField_a_of_type_Vqe.a();
+    vsn localvsn = this.jdField_a_of_type_Vsn;
+    HashSet localHashSet = this.jdField_a_of_type_Vsn.a();
     int i = 0;
-    if (i < localvqe.a())
+    if (i < localvsn.a())
     {
-      View localView = localvqe.a(this, i, localvqe.a(i));
+      View localView = localvsn.a(this, i, localvsn.a(i));
       QCircleFlowLayoutItemView localQCircleFlowLayoutItemView = new QCircleFlowLayoutItemView(getContext());
       localView.setDuplicateParentStateEnabled(true);
       if (localView.getLayoutParams() != null) {
@@ -77,11 +77,11 @@ public class QCircleTagFlowLayout
         if (localHashSet.contains(Integer.valueOf(i))) {
           a(i, localQCircleFlowLayoutItemView);
         }
-        if (this.jdField_a_of_type_Vqe.a(i, localvqe.a(i))) {
+        if (this.jdField_a_of_type_Vsn.a(i, localvsn.a(i))) {
           a(i, localQCircleFlowLayoutItemView);
         }
         localView.setClickable(false);
-        localQCircleFlowLayoutItemView.setOnClickListener(new vqg(this, localQCircleFlowLayoutItemView, i));
+        localQCircleFlowLayoutItemView.setOnClickListener(new vsp(this, localQCircleFlowLayoutItemView, i));
         i += 1;
         break;
         ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-2, -2);
@@ -95,7 +95,7 @@ public class QCircleTagFlowLayout
   private void a(int paramInt, QCircleFlowLayoutItemView paramQCircleFlowLayoutItemView)
   {
     paramQCircleFlowLayoutItemView.setChecked(true);
-    this.jdField_a_of_type_Vqe.a(paramInt, paramQCircleFlowLayoutItemView.a());
+    this.jdField_a_of_type_Vsn.a(paramInt, paramQCircleFlowLayoutItemView.a());
   }
   
   private void a(QCircleFlowLayoutItemView paramQCircleFlowLayoutItemView, int paramInt)
@@ -113,8 +113,8 @@ public class QCircleTagFlowLayout
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Vqh != null) {
-        this.jdField_a_of_type_Vqh.a(new HashSet(this.jdField_a_of_type_JavaUtilSet));
+      if (this.jdField_a_of_type_Vsq != null) {
+        this.jdField_a_of_type_Vsq.a(new HashSet(this.jdField_a_of_type_JavaUtilSet));
       }
       do
       {
@@ -131,7 +131,7 @@ public class QCircleTagFlowLayout
   private void b(int paramInt, QCircleFlowLayoutItemView paramQCircleFlowLayoutItemView)
   {
     paramQCircleFlowLayoutItemView.setChecked(false);
-    this.jdField_a_of_type_Vqe.b(paramInt, paramQCircleFlowLayoutItemView.a());
+    this.jdField_a_of_type_Vsn.b(paramInt, paramQCircleFlowLayoutItemView.a());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -200,10 +200,10 @@ public class QCircleTagFlowLayout
     return localBundle;
   }
   
-  public void setAdapter(vqe paramvqe)
+  public void setAdapter(vsn paramvsn)
   {
-    this.jdField_a_of_type_Vqe = paramvqe;
-    this.jdField_a_of_type_Vqe.a(this);
+    this.jdField_a_of_type_Vsn = paramvsn;
+    this.jdField_a_of_type_Vsn.a(this);
     this.jdField_a_of_type_JavaUtilSet.clear();
     a();
   }
@@ -218,14 +218,14 @@ public class QCircleTagFlowLayout
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnSelectListener(vqh paramvqh)
+  public void setOnSelectListener(vsq paramvsq)
   {
-    this.jdField_a_of_type_Vqh = paramvqh;
+    this.jdField_a_of_type_Vsq = paramvsq;
   }
   
-  public void setOnTagClickListener(vqi paramvqi)
+  public void setOnTagClickListener(vsr paramvsr)
   {
-    this.jdField_a_of_type_Vqi = paramvqi;
+    this.jdField_a_of_type_Vsr = paramvsr;
   }
 }
 

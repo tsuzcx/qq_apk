@@ -1,55 +1,145 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianProfileCardActivity;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenStatusReceiver;
+import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.3;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class bjfw
-  extends anmu
+  extends bjfv
+  implements awuy, bjfj
 {
-  public bjfw(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public bjfw(Context paramContext)
   {
-    super.onUpdateCustomHead(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      if (!paramString.equals(this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_JavaLangString)) {
-        break label86;
-      }
-      if (!bcnj.b()) {
-        break label64;
-      }
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(paramString, (byte)2, false);
-      this.a.c();
+    super(paramContext);
+    f();
+  }
+  
+  private awuo a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return awuo.a((QQAppInterface)localAppRuntime);
     }
-    label64:
-    label86:
-    do
+    return null;
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setOnDragListener(this);
+    if (a() != null) {
+      a().a().a(this);
+    }
+  }
+  
+  private void g()
+  {
+    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374498);
+    localView.setContentDescription("位置共享悬浮窗");
+    if (blqj.a())
     {
+      localView.setBackgroundColor(Color.parseColor("#4D000000"));
       return;
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(paramString, false);
-      break;
-      paramString = (bjgr)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    } while (paramString == null);
-    this.a.a(paramString.jdField_a_of_type_Int, (URLImageView)paramString.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString.jdField_a_of_type_JavaLangString, true);
+    }
+    localView.setBackgroundColor(Color.parseColor("#00000000"));
   }
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramObject)))) {
-      this.a.b();
+    FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
+    if (paramFloatingScreenParams == null)
+    {
+      if (this.jdField_a_of_type_AndroidContentContext != null) {
+        localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().build();
+      }
+    }
+    else
+    {
+      paramFloatingScreenParams = new FloatingLocationWrapper.2(this, paramView, localFloatingScreenParams);
+      ThreadManager.getUIHandlerV2().postDelayed(paramFloatingScreenParams, 500L);
+      return 0;
+    }
+    return 2;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingLocationWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingLocationWrapper" });
+    }
+    g();
+  }
+  
+  public void a(Context paramContext)
+  {
+    super.a(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("关闭位置共享悬浮窗");
+    g();
+  }
+  
+  public void a(FloatingScreenParams paramFloatingScreenParams)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4);
+    int i = localSharedPreferences.getInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", -2147483648);
+    int j = localSharedPreferences.getInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", -2147483648);
+    if ((i != -2147483648) && (j != -2147483648))
+    {
+      paramFloatingScreenParams.setFloatingCenterX(i);
+      paramFloatingScreenParams.setFloatingCenterY(j);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingLocationWrapper", 2, new Object[] { "restoreLastCenterPosition: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j) });
     }
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void b()
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_JavaLangString != null) && (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_Azfe.a)) && (this.a.jdField_a_of_type_Anmw != null) && (this.a.jdField_a_of_type_Anmw.b(this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())))
+    bdll.b(null, "CliOper", "", "", "0X800A977", "0X800A977", 0, 0, "", "0", "0", "");
+  }
+  
+  public void b(int paramInt)
+  {
+    FloatingLocationWrapper.3 local3 = new FloatingLocationWrapper.3(this, paramInt);
+    ThreadManager.getUIHandlerV2().post(local3);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver == null)
     {
-      this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_Int = 1;
-      QidianProfileCardActivity.b(this.a, this.a.jdField_a_of_type_Azfe.a.jdField_a_of_type_JavaLangString);
-      this.a.b();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver = new FloatingScreenStatusReceiver(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver.a(1, new bjfx(this));
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer != null)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
+      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a();
+      int j = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
+      localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", i);
+      localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", j);
+      localEditor.apply();
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatingLocationWrapper", 2, new Object[] { "saveFloatingCenter: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j), " isSmallFloating: ", Boolean.valueOf(bool) });
+      }
     }
   }
 }

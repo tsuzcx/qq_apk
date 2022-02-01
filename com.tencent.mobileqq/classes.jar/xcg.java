@@ -1,63 +1,33 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public class xcg
-  extends xce
+public class xcg<REQ extends MessageMicro>
+  extends wpa<xee>
 {
-  private final String c;
+  public final Bundle a;
+  public final REQ a;
+  public final String a;
   
-  private boolean a(xww paramxww)
+  public xcg(String paramString, REQ paramREQ, Bundle paramBundle)
   {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramxww.a(), paramxww.b(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawColor(-1);
-      localCanvas.drawBitmap(paramxww.a(), 0.0F, 0.0F, null);
-      bgmo.a(bgmo.a(localBitmap, 100), new File(this.c));
-      bool = true;
-    }
-    catch (IOException paramxww)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramxww, new Object[0]);
-      return false;
-    }
-    catch (OutOfMemoryError paramxww)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramxww, new Object[0]);
-    }
-    return bool;
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  protected void a(Error paramError)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
-    }
-    b(false);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(Map<String, Object> paramMap)
+  public wov a(byte[] paramArrayOfByte)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
-    }
+    return new xee(paramArrayOfByte);
   }
   
-  protected void a(xww paramxww)
+  protected byte[] a()
   {
-    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramxww), 8, null, true);
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
   }
 }
 

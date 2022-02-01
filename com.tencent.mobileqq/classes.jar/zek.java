@@ -1,10 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class zek
+public abstract interface zek
 {
-  protected ImageView a;
-  protected TextView a;
+  public abstract void a();
 }
 
 

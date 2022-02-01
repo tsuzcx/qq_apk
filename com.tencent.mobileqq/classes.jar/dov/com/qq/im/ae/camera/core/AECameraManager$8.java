@@ -1,29 +1,29 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bann;
-import bcgv;
-import bcio;
-import bnho;
-import bnhq;
+import bbgg;
+import bczn;
+import bdbg;
+import boiw;
+import boiy;
 
 public class AECameraManager$8
   implements Runnable
 {
-  public AECameraManager$8(bnho parambnho, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2) {}
+  public AECameraManager$8(boiw paramboiw, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (bnho.a(this.this$0) == null) {
+    if (boiw.a(this.this$0) == null) {
       return;
     }
-    bcgv localbcgv = new bcgv();
-    localbcgv.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    localbcgv.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    localbcgv.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbcgv.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbcgv.jdField_a_of_type_Alkl = bnho.a(this.this$0);
-    localbcgv.c = bann.c(bnho.b(this.this$0));
-    bnho.a(this.this$0).a(localbcgv, new bnhq(this));
+    bczn localbczn = new bczn();
+    localbczn.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    localbczn.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
+    localbczn.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbczn.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localbczn.jdField_a_of_type_Alwd = boiw.a(this.this$0);
+    localbczn.c = bbgg.c(boiw.b(this.this$0));
+    boiw.a(this.this$0).a(localbczn, new boiy(this));
   }
 }
 

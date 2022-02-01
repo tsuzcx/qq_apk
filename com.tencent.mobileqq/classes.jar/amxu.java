@@ -1,30 +1,6 @@
-public class amxu
-  implements Comparable
+public abstract interface amxu
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  
-  public int compareTo(Object paramObject)
-  {
-    paramObject = (amxu)paramObject;
-    if (this.d < paramObject.d) {
-      return 1;
-    }
-    if (this.d > paramObject.d) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,51 +1,24 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.TMG.opengl.GraphicRendererMgr;
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.TMG.utils.QLog;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
 
 public class amgt
-  implements SurfaceHolder.Callback
+  extends aacq
 {
-  amgt(amgs paramamgs) {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public amgt(ShoppingFragment paramShoppingFragment, Bundle paramBundle)
   {
-    if (paramSurfaceHolder.getSurface() == null) {
-      return;
-    }
-    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
+    super(paramBundle);
   }
   
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
   {
-    if (GraphicRendererMgr.getInstance() != null)
-    {
-      anai.a(amgs.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
-      anai.a(amgs.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new amgu(this));
-      anai.a(amgs.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new amgv(this));
-    }
-    for (;;)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
-      return;
-      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
-    }
+    return ShoppingFragment.a(this.a);
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = this.a.a();
-    if (paramSurfaceHolder == null)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
-      return;
-    }
-    paramSurfaceHolder.enableCamera(0, false, new amgw(this));
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
-  }
+  public void loadData(aabu paramaabu) {}
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

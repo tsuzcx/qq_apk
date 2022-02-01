@@ -1,90 +1,19 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBag.2.1;
-
 public class mos
-  extends lfe
 {
-  mos(moq parammoq) {}
+  public float a;
+  public int a;
+  public int b;
   
-  protected void a(long paramLong)
+  public mos(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = this.a.a.a().a().d;
-    if ((i == 2) || (i == 1))
-    {
-      mpt.a(this.a.a.a().c());
-      mpt.g();
-      d(3);
-      return;
-    }
-    mpt.a(0L);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramInt3;
   }
   
-  protected void b(long paramLong)
+  public String toString()
   {
-    moy localmoy = this.a.a();
-    if (localmoy != null) {
-      localmoy.b("onResumeVideo");
-    }
-  }
-  
-  protected void b(long paramLong, String paramString, boolean paramBoolean)
-  {
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.c(paramBoolean);
-    }
-    mpt.h();
-  }
-  
-  protected void c()
-  {
-    moy localmoy = this.a.a();
-    if (localmoy != null) {
-      localmoy.b("onPauseVideo");
-    }
-  }
-  
-  protected void c(String paramString, boolean paramBoolean)
-  {
-    paramString = this.a.a();
-    if (paramString == null) {}
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        i = this.a.a.a().a().d;
-      } while ((i != 2) && (i != 1));
-      if (paramBoolean)
-      {
-        if (paramString.a != null) {
-          paramString.a.a("onPeerSwitchTerminal");
-        }
-        paramString.b("onPeerSwitchTerminal");
-        return;
-      }
-      paramString.a("onPeerSwitchTerminal");
-    } while (paramString.a == null);
-    paramString.a(paramString.a.b);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (paramInt <= 0) {
-      return;
-    }
-    moy localmoy = this.a.a();
-    if (localmoy != null)
-    {
-      localmoy.a("onConnected:" + paramInt);
-      if (localmoy.a != null) {
-        localmoy.a(localmoy.a.b);
-      }
-    }
-    this.a.a.a().postDelayed(new AVRedBag.2.1(this, paramInt), 1100L);
+    return this.jdField_a_of_type_Int + "_" + this.b + "_" + this.jdField_a_of_type_Float;
   }
 }
 

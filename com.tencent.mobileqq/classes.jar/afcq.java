@@ -1,19 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class afcq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public afcq(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public afcq(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

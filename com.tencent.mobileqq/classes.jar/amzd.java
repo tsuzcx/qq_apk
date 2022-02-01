@@ -1,38 +1,28 @@
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Process;
 
-class amzd
+public class amzd
 {
-  public int a;
-  public String a;
-  public final List<amze> a;
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = bhlo.e();
+    jdField_b_of_type_JavaLangString = bhlo.i();
+    jdField_c_of_type_JavaLangString = bhlo.g();
+    jdField_a_of_type_Int = bhlo.b();
+    jdField_a_of_type_Long = bhlo.a();
+  }
   
   public amzd()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((amze)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    this.jdField_b_of_type_Long = bhlo.a(Process.myPid());
+    this.jdField_c_of_type_Long = bhlo.f();
   }
 }
 

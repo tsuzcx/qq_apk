@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 final class upy
-  implements Animation.AnimationListener
+  implements bljb
 {
-  upy(View paramView) {}
+  upy(bljb parambljb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss()
   {
-    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
-    {
-      this.a.clearAnimation();
-      this.a.setVisibility(8);
-      this.a.setTag(-1, null);
+    uqf.b("WSFeedUtils", "onDismiss entered");
+    if (this.a != null) {
+      this.a.onDismiss();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

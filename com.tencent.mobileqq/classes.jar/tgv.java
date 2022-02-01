@@ -1,20 +1,29 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DebugBridgeInvokeHandler.register.1;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public class tgv
-  implements TypeEvaluator<Rect>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DebugBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tgv
+  extends tgo
 {
-  public tgv(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  public static final tgw a = new tgw(null);
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public tgv(@NotNull BridgeModule paramBridgeModule)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    super(paramBridgeModule);
   }
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  @NotNull
+  public String a()
   {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    return "debug";
+  }
+  
+  public void a()
+  {
+    a("detailLog", (Function2)new DebugBridgeInvokeHandler.register.1(this));
   }
 }
 

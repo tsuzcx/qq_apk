@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import vyl;
+import wbx;
 
 public class QCircleRocketView$1$1
   implements Runnable
 {
-  public QCircleRocketView$1$1(vyl paramvyl) {}
+  public QCircleRocketView$1$1(wbx paramwbx) {}
   
   public void run()
   {

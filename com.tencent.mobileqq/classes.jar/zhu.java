@@ -1,12 +1,31 @@
-public abstract interface zhu
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Friends;
+
+public class zhu
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
+  @NonNull
+  protected final Friends a;
+  protected boolean a;
   
-  public abstract void a(String paramString);
+  public zhu(@NonNull Friends paramFriends)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+  }
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString);
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+  }
   
-  public abstract boolean a();
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
 }
 
 

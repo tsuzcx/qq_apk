@@ -1,147 +1,107 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class arls
-  implements Handler.Callback
+  extends arac<arlr>
 {
-  public long a;
-  private anmu a;
-  public QQAppInterface a;
-  protected EntityManager a;
-  public Set<String> a;
-  protected ConcurrentHashMap<String, String> a;
-  public MqqHandler a;
-  public boolean a;
-  
-  public arls(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public arlr a(int paramInt)
   {
-    this.jdField_a_of_type_Anmu = new arlt(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet(20);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bgli(ThreadManager.getSubThreadLooper(), this);
+    return new arlr();
   }
   
-  public static String a(int paramInt1, int paramInt2, String paramString)
+  @Nullable
+  public arlr a(araj[] paramArrayOfaraj)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    if (paramInt1 == 4) {
-      localStringBuilder.append("troop_").append(paramString);
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      if (paramInt1 == 32) {
-        localStringBuilder.append("stranger_").append(paramInt2).append("_").append(paramString);
-      } else if (paramInt1 == 16) {
-        localStringBuilder.append("qcall_").append(paramInt2).append("_").append(paramString);
-      } else {
-        localStringBuilder.append(paramString);
-      }
-    }
-  }
-  
-  public static String a(int paramInt, String paramString, byte paramByte1, byte paramByte2)
-  {
-    return MsfSdkUtils.insertMtype("QQHeadIcon", paramString + String.valueOf(640));
-  }
-  
-  private void a(String paramString)
-  {
-    localSet = this.jdField_a_of_type_JavaUtilSet;
-    if (paramString == null) {}
-    for (;;)
-    {
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaraj != null) {
       try
       {
-        this.jdField_a_of_type_JavaUtilSet.clear();
-        if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
+        if (paramArrayOfaraj.length > 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
-          this.jdField_a_of_type_Boolean = false;
+          paramArrayOfaraj = (arlr)arax.a(paramArrayOfaraj[0].a, arlr.class);
+          return paramArrayOfaraj;
         }
-        return;
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+      catch (QStorageInstantiateException paramArrayOfaraj)
+      {
+        QLog.e("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaraj.getMessage());
+      }
     }
+    return null;
   }
   
-  public String a(String paramString, int paramInt, boolean paramBoolean)
+  public void a(arlr paramarlr)
   {
-    if ((TextUtils.isEmpty(paramString)) || ((paramInt != 200) && (paramInt != 202) && (paramInt != 204)))
+    if (paramarlr != null)
     {
-      arkw.a("StrangerHdHeadUrlFetcher", new Object[] { "uinOrMobileNum is null or empty" });
-      return "";
-    }
-    String str2 = a(32, paramInt, paramString);
-    String str1 = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
-    if (TextUtils.isEmpty(str1))
-    {
-      ??? = (Setting)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Setting.class, str2);
-      if ((??? != null) && (!TextUtils.isEmpty(((Setting)???).url)))
-      {
-        str1 = a(32, ((Setting)???).url, ((Setting)???).bHeadType, ((Setting)???).bFaceFlags);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, str1);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
       }
     }
-    for (;;)
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      if (localObject != null)
       {
-        this.jdField_a_of_type_JavaUtilSet.remove(str2);
-        ThreadManager.post(new StrangerHdHeadUrlFetcher.1(this, paramString, paramInt, paramBoolean, str2), 8, null, false);
-        return str1;
+        if (TextUtils.isEmpty(paramarlr.a)) {
+          paramarlr.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_groupfile_excitingdownload", paramarlr.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramarlr.a + "]");
+        localObject = (atsh)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((atsh)localObject).a(paramarlr);
+        }
       }
-    }
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilSet)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilSet.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       return;
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public Class<arlr> clazz()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      long l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      if ((l < 0L) || (l > 60000L)) {
-        a(null);
-      } else if (!this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageAtTime(1, 60000L);
-      }
-    }
+    return arlr.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public int type()
+  {
+    return 555;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arls
  * JD-Core Version:    0.7.0.1
  */

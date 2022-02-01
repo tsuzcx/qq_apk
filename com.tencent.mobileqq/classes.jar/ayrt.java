@@ -1,50 +1,83 @@
-import com.tencent.lbssearch.httpresponse.BaseObject;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
-import com.tencent.map.tools.net.http.HttpResponseListener;
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class ayrt
-  implements HttpResponseListener<BaseObject>
+final class ayrt
+  implements aydt
 {
-  private final ayry jdField_a_of_type_Ayry;
-  private final LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  ayrt(ayrx paramayrx) {}
   
-  public ayrt(ayrs paramayrs, LatLng paramLatLng, ayry paramayry)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Ayry = paramayry;
-  }
-  
-  public void a(int paramInt, BaseObject paramBaseObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ayrp.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Ayrs.b + "] netGet onSuccess. resultCode : " + paramInt + " result : " + paramBaseObject);
+    bool3 = true;
+    boolean bool2 = true;
+    int j = 0;
+    int k = 0;
+    i = 0;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
     }
-    if ((paramBaseObject instanceof Geo2AddressResultObject))
+    for (;;)
     {
-      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
-      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null) && (paramBaseObject.result.pois.size() > 0))
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(ayrp.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Ayrs.b + "]  netGet invoked success. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poi_size : " + paramBaseObject.result.pois.size());
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (paramArrayOfByte.ret.has())
+          {
+            paramInt = paramArrayOfByte.ret.get();
+            if (paramInt == 0) {
+              i = k;
+            }
+          }
         }
-        Poi[] arrayOfPoi = new Poi[paramBaseObject.result.pois.size()];
-        paramBaseObject = new PoiBean(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, (Poi[])paramBaseObject.result.pois.toArray(arrayOfPoi));
-        this.jdField_a_of_type_Ayrs.a("netGet", paramBaseObject);
-        this.jdField_a_of_type_Ayry.a(paramBaseObject);
       }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = false;
+        paramInt = j;
+      }
+      try
+      {
+        j = paramArrayOfByte.total.get();
+        paramInt = j;
+        bool1 = bool2;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          i = j;
+          QLog.i("NearbyMomentProtocol", 2, "unlike success, total:   " + j);
+          bool1 = bool2;
+          paramInt = j;
+        }
+        if (this.a != null) {
+          this.a.a(bool1, paramInt);
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramInt = i;
+          bool1 = bool3;
+        }
+      }
+      QLog.i("NearbyMomentProtocol", 1, "unlike error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
+      bool1 = false;
+      paramInt = i;
+      continue;
+      paramArrayOfByte.printStackTrace();
     }
-  }
-  
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
-  {
-    QLog.e(ayrp.a, 1, paramThrowable, new Object[] { "[status][poiLoader][" + this.jdField_a_of_type_Ayrs.b + "] netGet invoked fail. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " errorCode : " + paramInt + " errorMsg : " + paramString });
-    this.jdField_a_of_type_Ayry.a(null);
   }
 }
 

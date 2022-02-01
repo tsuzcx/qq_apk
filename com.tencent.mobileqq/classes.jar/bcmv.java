@@ -1,12 +1,46 @@
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
-public abstract interface bcmv
+class bcmv
+  implements Comparator<bcfn>
 {
-  public abstract boolean a();
+  bcmv(bcmu parambcmu) {}
   
-  public abstract boolean a(File paramFile, bcmt parambcmt, boolean paramBoolean);
-  
-  public abstract boolean b();
+  public int a(bcfn parambcfn1, bcfn parambcfn2)
+  {
+    int i = -1;
+    parambcfn1 = (bchb)parambcfn1;
+    parambcfn2 = (bchb)parambcfn2;
+    anyw localanyw = (anyw)this.a.a.getManager(51);
+    boolean bool1 = localanyw.b((String)parambcfn1.a());
+    boolean bool2 = localanyw.b((String)parambcfn2.a());
+    if ((!bool1) && (!bool2))
+    {
+      bool1 = localanyw.d((String)parambcfn1.a());
+      bool2 = localanyw.d((String)parambcfn2.a());
+      if ((!bool1) && (!bool2)) {
+        return parambcfn2.f() - parambcfn1.f();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return parambcfn2.f() - parambcfn1.f();
+    }
+    if (bool1 != bool2)
+    {
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+    }
+    return parambcfn2.f() - parambcfn1.f();
+  }
 }
 
 

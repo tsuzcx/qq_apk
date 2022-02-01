@@ -2,11 +2,11 @@ package com.tencent.mobileqq.troop.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anhk;
-import atwl;
-import atwp;
-import besl;
-import bety;
+import antf;
+import auog;
+import auok;
+import bfrs;
+import bftf;
 import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -45,7 +45,7 @@ public class TroopFileTransferManager$Item
   public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic;
   public transient boolean isFileExist;
   public transient String mExcitingSpeed;
-  public atwp mForwardCallback;
+  public auok mForwardCallback;
   public transient int retryTimes;
   public transient String rspHeadStr;
   public transient int thumbInvalidCode;
@@ -55,21 +55,21 @@ public class TroopFileTransferManager$Item
   
   public TroopFileTransferManager$Item() {}
   
-  public TroopFileTransferManager$Item(besl parambesl)
+  public TroopFileTransferManager$Item(bfrs parambfrs)
   {
-    this.Id = parambesl.jdField_a_of_type_JavaUtilUUID;
-    this.LocalFile = parambesl.jdField_h_of_type_JavaLangString;
-    this.Status = parambesl.jdField_e_of_type_Int;
-    this.FilePath = parambesl.jdField_b_of_type_JavaLangString;
-    this.FileName = parambesl.jdField_c_of_type_JavaLangString;
-    this.ProgressTotal = parambesl.jdField_a_of_type_Long;
-    this.UploadTime = parambesl.a();
-    this.BusId = parambesl.jdField_a_of_type_Int;
-    if ((parambesl.jdField_i_of_type_JavaLangString != null) && (parambesl.jdField_i_of_type_JavaLangString.length() > 0))
+    this.Id = parambfrs.jdField_a_of_type_JavaUtilUUID;
+    this.LocalFile = parambfrs.jdField_h_of_type_JavaLangString;
+    this.Status = parambfrs.jdField_e_of_type_Int;
+    this.FilePath = parambfrs.jdField_b_of_type_JavaLangString;
+    this.FileName = parambfrs.jdField_c_of_type_JavaLangString;
+    this.ProgressTotal = parambfrs.jdField_a_of_type_Long;
+    this.UploadTime = parambfrs.a();
+    this.BusId = parambfrs.jdField_a_of_type_Int;
+    if ((parambfrs.jdField_i_of_type_JavaLangString != null) && (parambfrs.jdField_i_of_type_JavaLangString.length() > 0))
     {
       bool1 = true;
       this.HasThumbnailFile_Small = bool1;
-      if ((parambesl.jdField_j_of_type_JavaLangString == null) || (parambesl.jdField_j_of_type_JavaLangString.length() <= 0)) {
+      if ((parambfrs.jdField_j_of_type_JavaLangString == null) || (parambfrs.jdField_j_of_type_JavaLangString.length() <= 0)) {
         break label140;
       }
     }
@@ -77,8 +77,8 @@ public class TroopFileTransferManager$Item
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.HasThumbnailFile_Large = bool1;
-      this.NickName = parambesl.n;
-      this.mParentId = parambesl.f;
+      this.NickName = parambfrs.n;
+      this.mParentId = parambfrs.f;
       return;
       bool1 = false;
       break;
@@ -199,43 +199,43 @@ public class TroopFileTransferManager$Item
     new File(getThumbnailFile(paramLong, 640)).delete();
   }
   
-  public final bety getInfo(long paramLong)
+  public final bftf getInfo(long paramLong)
   {
-    bety localbety = new bety();
-    localbety.jdField_b_of_type_Long = paramLong;
-    localbety.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localbety.jdField_d_of_type_Long = this.ProgressValue;
-    localbety.jdField_b_of_type_Int = this.Status;
-    localbety.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localbety.jdField_c_of_type_Int = this.ErrorCode;
-    localbety.jdField_h_of_type_Int = this.BusId;
+    bftf localbftf = new bftf();
+    localbftf.jdField_b_of_type_Long = paramLong;
+    localbftf.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localbftf.jdField_d_of_type_Long = this.ProgressValue;
+    localbftf.jdField_b_of_type_Int = this.Status;
+    localbftf.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localbftf.jdField_c_of_type_Int = this.ErrorCode;
+    localbftf.jdField_h_of_type_Int = this.BusId;
     if (this.HasThumbnailFile_Small)
     {
       str = getThumbnailFile(paramLong, 128);
-      localbety.jdField_b_of_type_JavaLangString = str;
+      localbftf.jdField_b_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Large) {
         break label403;
       }
       str = getThumbnailFile(paramLong, 640);
       label107:
-      localbety.jdField_c_of_type_JavaLangString = str;
+      localbftf.jdField_c_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Middle) {
         break label425;
       }
       str = getThumbnailFile(paramLong, 383);
       label129:
-      localbety.jdField_d_of_type_JavaLangString = str;
-      localbety.jdField_c_of_type_Long = this.ProgressTotal;
-      localbety.jdField_d_of_type_Int = this.UploadTime;
-      localbety.jdField_e_of_type_JavaLangString = this.FilePath;
+      localbftf.jdField_d_of_type_JavaLangString = str;
+      localbftf.jdField_c_of_type_Long = this.ProgressTotal;
+      localbftf.jdField_d_of_type_Int = this.UploadTime;
+      localbftf.jdField_e_of_type_JavaLangString = this.FilePath;
       if ((TextUtils.isEmpty(this.NameForSave)) || (this.SafeCheckRes != 2)) {
         break label447;
       }
-      localbety.jdField_g_of_type_JavaLangString = this.NameForSave;
+      localbftf.jdField_g_of_type_JavaLangString = this.NameForSave;
       label189:
-      localbety.jdField_a_of_type_JavaLangString = this.LocalFile;
-      localbety.jdField_h_of_type_JavaLangString = this.NickName;
-      localbety.jdField_e_of_type_Long = this.entrySessionID;
+      localbftf.jdField_a_of_type_JavaLangString = this.LocalFile;
+      localbftf.jdField_h_of_type_JavaLangString = this.NickName;
+      localbftf.jdField_e_of_type_Long = this.entrySessionID;
       if (!TextUtils.isEmpty(this.mParentId)) {
         break label459;
       }
@@ -246,24 +246,24 @@ public class TroopFileTransferManager$Item
     label459:
     for (String str = "/";; str = this.mParentId)
     {
-      localbety.jdField_i_of_type_JavaLangString = str;
-      localbety.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
-      if ((localbety.jdField_b_of_type_Boolean) && (!atwl.b(localbety.jdField_d_of_type_JavaLangString))) {
-        localbety.jdField_d_of_type_JavaLangString = null;
+      localbftf.jdField_i_of_type_JavaLangString = str;
+      localbftf.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
+      if ((localbftf.jdField_b_of_type_Boolean) && (!auog.b(localbftf.jdField_d_of_type_JavaLangString))) {
+        localbftf.jdField_d_of_type_JavaLangString = null;
       }
-      localbety.jdField_e_of_type_Int = this.width;
-      localbety.f = this.height;
-      localbety.jdField_g_of_type_Int = this.duration;
-      localbety.jdField_j_of_type_JavaLangString = this.mExcitingSpeed;
-      localbety.jdField_j_of_type_Int = this.thumbInvalidCode;
-      localbety.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
-      localbety.k = this.yybApkPackageName;
-      localbety.l = this.yybApkName;
-      localbety.m = this.yybApkIconUrl;
-      localbety.jdField_i_of_type_Int = this.apkSafeLevel;
-      localbety.n = this.apkSafeMsg;
-      localbety.o = this.apkSafeDetailUrl;
-      return localbety;
+      localbftf.jdField_e_of_type_Int = this.width;
+      localbftf.f = this.height;
+      localbftf.jdField_g_of_type_Int = this.duration;
+      localbftf.jdField_j_of_type_JavaLangString = this.mExcitingSpeed;
+      localbftf.jdField_j_of_type_Int = this.thumbInvalidCode;
+      localbftf.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
+      localbftf.k = this.yybApkPackageName;
+      localbftf.l = this.yybApkName;
+      localbftf.m = this.yybApkIconUrl;
+      localbftf.jdField_i_of_type_Int = this.apkSafeLevel;
+      localbftf.n = this.apkSafeMsg;
+      localbftf.o = this.apkSafeDetailUrl;
+      return localbftf;
       if (canFetchThumbnailFile(128))
       {
         str = null;
@@ -285,7 +285,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label129;
-      localbety.jdField_g_of_type_JavaLangString = this.FileName;
+      localbftf.jdField_g_of_type_JavaLangString = this.FileName;
       break label189;
     }
   }
@@ -293,12 +293,12 @@ public class TroopFileTransferManager$Item
   public final String getThumbnailFile(long paramLong, int paramInt)
   {
     if (paramInt == 128) {
-      return anhk.bs + "[Thumb]" + paramLong + "-" + this.Id.toString();
+      return antf.bs + "[Thumb]" + paramLong + "-" + this.Id.toString();
     }
     if (paramInt == 383) {
-      return anhk.bs + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
+      return antf.bs + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
     }
-    return anhk.bs + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
+    return antf.bs + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
   }
 }
 

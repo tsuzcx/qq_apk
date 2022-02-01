@@ -1,21 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-
 class oht
-  extends arpd
+  implements pgb
 {
-  oht(ohs paramohs) {}
+  oht(ohp paramohp) {}
   
-  public void onBindedToClient()
+  public void l()
   {
-    ReadInJoyArticleDetailActivity.a(this.a.a);
+    ohp.d(this.a);
   }
   
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public void m()
+  {
+    ohp.e(this.a);
+  }
 }
 
 

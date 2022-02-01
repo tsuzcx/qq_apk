@@ -1,20 +1,113 @@
-public abstract interface uko
+import android.os.Handler;
+import android.os.Looper;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceStruct;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+
+public class uko
+  implements ukc
 {
-  public abstract void a(int paramInt);
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  protected static final ukk a;
+  public static boolean a;
+  public int a;
+  public long a;
+  public transient UniAttribute a;
+  public Object a;
+  public transient String a;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  public HashMap<Object, Object> a;
+  public transient ukd a;
+  public uke a;
+  public ukl a;
+  public int b;
+  public int c;
+  public int d;
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  static
+  {
+    jdField_a_of_type_Ukk = ukk.a();
+  }
   
-  public abstract void a(int paramInt, Object paramObject);
+  public uko()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
   
-  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  public uko(ukl paramukl, Handler paramHandler, ukd paramukd, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Ukl = paramukl;
+    this.c = paramInt;
+    this.jdField_a_of_type_Ukd = paramukd;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramHandler != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
+    }
+  }
   
-  public abstract void a(uke paramuke);
+  private String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1000005: 
+    default: 
+      return "";
+    case 1000006: 
+      QZLog.i("QZLog", 1, "WeishiTask\t 网络无连接");
+      return QzoneConfig.getInstance().getConfig("QZoneTextSetting", "NetWorkNotConnect", "网络无连接");
+    case 1000004: 
+      return "";
+    }
+    return "";
+  }
   
-  public abstract void a(uke paramuke, boolean paramBoolean);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Ukl != null)
+    {
+      this.jdField_a_of_type_Ukl.a(this.d);
+      if (jdField_a_of_type_Boolean)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (this.jdField_a_of_type_Ukl.a != null) {
+          this.jdField_a_of_type_Ukl.a.display(localStringBuilder, 0);
+        }
+      }
+      uqf.a("WeishiTask", "startRunTask: " + this.jdField_a_of_type_Ukl.getCmdString() + ", " + this.jdField_a_of_type_Ukl.toString());
+    }
+    int i = jdField_a_of_type_Ukk.a(this.jdField_a_of_type_Ukl, this);
+    if (i != 0) {
+      a(null, i, i, a(i), false, this.jdField_a_of_type_Uke);
+    }
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, uke paramuke)
+  {
+    if ((paramObject instanceof UniAttribute)) {
+      this.jdField_a_of_type_ComQqJceWupUniAttribute = ((UniAttribute)paramObject);
+    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Uke = paramuke;
+    if (1000006 == paramInt1) {
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131715699);
+    }
+    ukh.a().b(this);
+  }
   
-  public abstract void b(uke paramuke);
+  public boolean a()
+  {
+    return (this.b == 0) || (this.b == 1000) || ((Math.abs(this.b) <= 19999) && (Math.abs(this.b) >= 19000));
+  }
 }
 
 

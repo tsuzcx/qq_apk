@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.ocr.activity;
 
 import android.text.TextUtils;
-import ayhi;
-import ayhj;
+import azab;
+import azac;
 import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScanOcrActivity$8$1
   implements Runnable
 {
-  public ScanOcrActivity$8$1(ayhi paramayhi, String paramString, int paramInt, OcrRecogResult paramOcrRecogResult, long paramLong) {}
+  public ScanOcrActivity$8$1(azab paramazab, String paramString, int paramInt, OcrRecogResult paramOcrRecogResult, long paramLong) {}
   
   public void run()
   {
-    if ((!ScanOcrActivity.b(this.jdField_a_of_type_Ayhi.a)) || (TextUtils.isEmpty(ScanOcrActivity.b(this.jdField_a_of_type_Ayhi.a))) || (!ScanOcrActivity.b(this.jdField_a_of_type_Ayhi.a).equals(this.jdField_a_of_type_JavaLangString)))
+    if ((!ScanOcrActivity.b(this.jdField_a_of_type_Azab.a)) || (TextUtils.isEmpty(ScanOcrActivity.b(this.jdField_a_of_type_Azab.a))) || (!ScanOcrActivity.b(this.jdField_a_of_type_Azab.a).equals(this.jdField_a_of_type_JavaLangString)))
     {
-      QLog.d("Q.ocr.ScanOcrActivity", 1, "OcrCallback onResult is not In recog, mRecogPicPath:" + ScanOcrActivity.b(this.jdField_a_of_type_Ayhi.a) + " ,imagePath:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("Q.ocr.ScanOcrActivity", 1, "OcrCallback onResult is not In recog, mRecogPicPath:" + ScanOcrActivity.b(this.jdField_a_of_type_Azab.a) + " ,imagePath:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (!ScanOcrActivity.c(this.jdField_a_of_type_Ayhi.a))
+    if (!ScanOcrActivity.c(this.jdField_a_of_type_Azab.a))
     {
-      ScanOcrActivity.a(this.jdField_a_of_type_Ayhi.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      ScanOcrActivity.a(this.jdField_a_of_type_Azab.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
       return;
     }
-    ScanOcrActivity.a(this.jdField_a_of_type_Ayhi.a, new ayhj());
-    ScanOcrActivity.a(this.jdField_a_of_type_Ayhi.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    ScanOcrActivity.a(this.jdField_a_of_type_Ayhi.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult;
-    ScanOcrActivity.a(this.jdField_a_of_type_Ayhi.a).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    ScanOcrActivity.a(this.jdField_a_of_type_Ayhi.a).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    ScanOcrActivity.a(this.jdField_a_of_type_Azab.a, new azac());
+    ScanOcrActivity.a(this.jdField_a_of_type_Azab.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    ScanOcrActivity.a(this.jdField_a_of_type_Azab.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult;
+    ScanOcrActivity.a(this.jdField_a_of_type_Azab.a).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ScanOcrActivity.a(this.jdField_a_of_type_Azab.a).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 

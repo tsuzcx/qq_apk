@@ -1,18 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Map;
 
 class bnca
-  implements View.OnClickListener
+  implements Downloader.DownloadListener
 {
   bnca(bnbz parambnbz) {}
   
-  public void onClick(View paramView)
+  public void onDownloadCanceled(String paramString)
   {
-    this.a.a.performClick();
-    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.back", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    Message localMessage = Message.obtain(bnbz.a(this.a));
+    localMessage.what = 5;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(bnbz.a(this.a));
+    paramDownloadResult.what = 3;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    paramString = (bncb)bnbz.a(this.a).get(paramString);
+    if (paramString != null) {
+      paramString.a = Float.valueOf(paramFloat);
+    }
+    Message localMessage = Message.obtain(bnbz.a(this.a));
+    localMessage.what = 6;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(bnbz.a(this.a));
+    paramDownloadResult.what = 2;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
   }
 }
 

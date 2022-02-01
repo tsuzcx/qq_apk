@@ -1,14 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
-class ajwh
-  implements DialogInterface.OnClickListener
+public class ajwh
 {
-  ajwh(ajvr paramajvr) {}
+  public int a;
+  public Object a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a()
   {
-    paramDialogInterface.dismiss();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    boolean bool2;
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = this.c;
+      }
+      if (!bool2) {
+        return bool2;
+      }
+      switch (this.jdField_a_of_type_Int)
+      {
+      default: 
+        if (this.jdField_a_of_type_Short == 0) {
+          break;
+        }
+      case 1: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+        return true;
+      }
+    }
+    return false;
+    return bool2;
   }
 }
 

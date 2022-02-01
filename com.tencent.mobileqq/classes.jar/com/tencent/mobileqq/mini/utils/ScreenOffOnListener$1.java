@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bgsp;
+import bhsr;
 
 class ScreenOffOnListener$1
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ class ScreenOffOnListener$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bgsp.a(paramIntent.getAction())) {}
+    if (bhsr.a(paramIntent.getAction())) {}
     while (ScreenOffOnListener.access$000(this.this$0) == null) {
       return;
     }

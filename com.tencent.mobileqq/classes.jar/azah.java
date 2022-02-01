@@ -1,9 +1,16 @@
-public final class azah
-  extends ayzn
+import com.tencent.qphone.base.util.QLog;
+
+final class azah
+  implements anwh
 {
-  protected int a()
+  public void a(boolean paramBoolean)
   {
-    return 560;
+    if (paramBoolean) {
+      azag.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
+    }
   }
 }
 

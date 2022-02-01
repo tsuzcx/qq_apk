@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awsc
-  implements bkhe
+  implements View.OnClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public awsc(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public awsc(MultiAIOItemFragment paramMultiAIOItemFragment, bkhe parambkhe) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.jdField_a_of_type_Bkhe.onScrollStateChanged(paramAbsListView, paramInt);
-    if (paramInt == 0)
-    {
-      paramAbsListView = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-      if ((paramAbsListView != null) && (paramAbsListView.a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) && (!this.jdField_a_of_type_Boolean))
-      {
-        MultiAIOFragment.a("0X8009F80", 0);
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

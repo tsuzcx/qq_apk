@@ -6,8 +6,8 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import ley;
-import mtn;
+import lff;
+import mum;
 
 class VideoControlUI$ShowSharpInfoRunnable
   implements Runnable
@@ -16,12 +16,12 @@ class VideoControlUI$ShowSharpInfoRunnable
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.f == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {
+    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.g == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {
       return;
     }
     Object localObject1 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (VideoLayerUIBase.a((ley)localObject1)) {}
-    for (Object localObject2 = ((ley)localObject1).b;; localObject2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a())
+    if (VideoLayerUIBase.a((lff)localObject1)) {}
+    for (Object localObject2 = ((lff)localObject1).b;; localObject2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a())
     {
       localObject1 = localObject2;
       if (localObject2 == null) {
@@ -47,7 +47,7 @@ class VideoControlUI$ShowSharpInfoRunnable
       {
         localObject2 = (String)localObject2 + "\r\n";
         localObject1 = localObject2;
-        localObject2 = (String)localObject2 + mtn.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a()).a();
+        localObject2 = (String)localObject2 + mum.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a()).a();
         localObject1 = localObject2;
         localObject2 = (String)localObject2 + "\r\n";
         localObject1 = localObject2;
@@ -57,7 +57,7 @@ class VideoControlUI$ShowSharpInfoRunnable
         label208:
         break label208;
       }
-      this.this$0.f.setText((CharSequence)localObject1);
+      this.this$0.g.setText((CharSequence)localObject1);
       QLog.w(this.this$0.d, 1, "ShowSharpInfo\n" + (String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
       return;

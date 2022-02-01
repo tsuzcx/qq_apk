@@ -1,24 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import java.io.File;
-import java.net.URI;
 
-public class wlo
+class wlo
+  implements Comparable<wlo>
 {
-  private boolean a;
+  public final long a;
+  public final File a;
   
-  private void a(Context paramContext, String paramString1, String paramString2)
+  public wlo(wln paramwln, File paramFile)
   {
-    paramString1 = new File(paramString1);
-    if (!paramString1.exists()) {
-      return;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(wlo paramwlo)
+  {
+    if (this.jdField_a_of_type_Long < paramwlo.jdField_a_of_type_Long) {
+      return -1;
     }
-    paramString1 = Uri.parse(paramString1.toURI().toString());
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setDataAndType(paramString1, paramString2);
-    localIntent.addFlags(268435456);
-    paramContext.startActivity(localIntent);
+    if (this.jdField_a_of_type_Long == paramwlo.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

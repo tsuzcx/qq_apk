@@ -1,56 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class otx
+class otx
+  extends ovd
 {
-  private JSONObject a = new JSONObject();
-  
-  public String a()
+  otx(otv paramotv, int paramInt)
   {
-    return this.a.toString();
+    super(paramotv, null);
   }
   
-  public otx a()
+  void a(ovg paramovg)
   {
-    try
-    {
-      this.a.put("network", pfe.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-      this.a.put("version", och.a);
-      this.a.put("os", "1");
-      this.a.put("uin", pha.a());
-      this.a.put("city", pfe.b());
-      return this;
+    if (this.jdField_a_of_type_Int == 1) {
+      paramovg.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
     }
-    return this;
-  }
-  
-  public otx a(int paramInt)
-  {
-    int i = 0;
-    if (paramInt == 41516) {
-      i = 3;
-    }
-    for (;;)
-    {
-      try
-      {
-        this.a.put("source", i);
-        return this;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if (paramInt == 41522) {
-        i = 16;
-      }
-    }
-    return this;
+    paramovg.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 

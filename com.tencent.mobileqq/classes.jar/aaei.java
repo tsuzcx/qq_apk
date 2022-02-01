@@ -1,20 +1,27 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
+import org.json.JSONObject;
 
-class aaei
-  implements zxa<CertifiedAccountWrite.StDoReplyRsp>
+public class aaei
+  extends JSONObject
 {
-  aaei(aaec paramaaec, CertifiedAccountMeta.StReply paramStReply, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
+  public aaei(aaeg paramaaeg, String paramString)
   {
-    if ((paramStDoReplyRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply != null)) {
-      paramStDoReplyRsp.reply.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get());
+    super(paramString);
+  }
+  
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
     }
-    wfo.a().dispatch(this.jdField_a_of_type_Aaec.a(new Object[] { Integer.valueOf(6), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, Integer.valueOf(this.jdField_a_of_type_Aaec.hashCode()) }));
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
   }
 }
 

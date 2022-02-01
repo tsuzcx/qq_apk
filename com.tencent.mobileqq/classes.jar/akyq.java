@@ -1,27 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-class akyq
-  implements DialogInterface.OnClickListener
+public class akyq
+  extends bjet
 {
-  akyq(akyp paramakyp) {}
+  public akyq(RedPacketKSongFragment paramRedPacketKSongFragment, bjeu parambjeu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (amrr.a() != null) {
-      ampj.a();
-    }
-    paramDialogInterface = ampj.a();
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
-      }
-    }
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
+    this.jdField_a_of_type_Bjeu.a();
   }
 }
 

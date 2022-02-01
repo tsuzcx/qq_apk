@@ -1,27 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
 
-public class alrh
-  implements View.OnClickListener
+public abstract interface alrh
 {
-  public alrh(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.a.c) {
-      bcst.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(2130771988, 2130771989);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcst.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
 }
 
 

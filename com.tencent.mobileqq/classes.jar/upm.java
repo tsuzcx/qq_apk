@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-final class upm
-  implements DialogInterface.OnCancelListener
+public class upm
 {
-  upm(uoc paramuoc) {}
+  public String a;
+  public String b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public upm() {}
+  
+  public upm(String paramString1, String paramString2)
   {
-    uph.b(this.a);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

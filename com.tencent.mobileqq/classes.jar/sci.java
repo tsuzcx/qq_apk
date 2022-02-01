@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.jetbrains.annotations.NotNull;
 
 class sci
-  implements DialogInterface.OnShowListener
+  extends ual
 {
-  sci(sce paramsce, bkho parambkho) {}
+  sci(sbi paramsbi) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    sce.a(this.jdField_a_of_type_Sce, "mShareActionSheet onShow()");
-    this.jdField_a_of_type_Bkho.getWindow().clearFlags(8);
+    return this.a.a(paramInt, paramActionSheetItem);
   }
 }
 

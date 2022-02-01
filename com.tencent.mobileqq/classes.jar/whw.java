@@ -1,65 +1,48 @@
-import android.annotation.TargetApi;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
+import java.util.List;
 
-@TargetApi(14)
-public class whw
-  extends who
+class whw
+  extends Handler
 {
-  public whw(@NonNull String[] paramArrayOfString)
+  public whw(whs paramwhs, Looper paramLooper)
   {
-    super(paramArrayOfString);
+    super(paramLooper);
   }
   
-  protected void a(String[] paramArrayOfString, whp paramwhp)
+  public void handleMessage(Message paramMessage)
   {
-    int n = paramArrayOfString.length;
-    int i = 0;
-    if (i < n)
+    switch (paramMessage.what)
     {
-      File localFile1 = new File(paramArrayOfString[i]);
-      double d = a(localFile1);
-      File[] arrayOfFile = localFile1.listFiles();
-      if (arrayOfFile == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = System.currentTimeMillis();
-        int i1 = arrayOfFile.length;
-        int k = 0;
-        int j = 0;
-        for (;;)
-        {
-          if (j < i1)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile2 = arrayOfFile[j];
-              int m = k;
-              if (l - localFile2.lastModified() > 86400000L)
-              {
-                a(localFile2);
-                m = k + 1;
-              }
-              j += 1;
-              k = m;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                yqp.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
-        paramwhp.jdField_b_of_type_Double = (d - a(localFile1) + paramwhp.jdField_b_of_type_Double);
-        paramwhp.jdField_b_of_type_Int = (k + paramwhp.jdField_b_of_type_Int);
-      }
     }
+    do
+    {
+      return;
+      yuk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
+    } while ((whs.a(this.a) != 1) || (whs.a(this.a) == null));
+    Object localObject = whs.a(this.a);
+    int i = whs.a(this.a, (List)localObject, whs.c(this.a));
+    int j = whs.a(this.a, (List)localObject, i + 1);
+    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
+    {
+      whs.b(this.a);
+      yuk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
+      return;
+    }
+    whs.a(this.a, j);
+    paramMessage = (wgh)((List)localObject).get(i);
+    localObject = (wgh)((List)localObject).get(j);
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, whs.a(this.a));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((wgh)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, whs.a(this.a));
+    paramMessage = AnimationUtils.loadAnimation(whs.a(this.a), 2130772244);
+    paramMessage.setAnimationListener(new whx(this));
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
+    yuk.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
   }
 }
 

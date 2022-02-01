@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
-import vlg;
-import vlj;
+import vnk;
+import vnn;
 
 public class ScrollMoreGuideView$3$1
   implements Runnable
 {
-  public ScrollMoreGuideView$3$1(vlj paramvlj) {}
+  public ScrollMoreGuideView$3$1(vnn paramvnn) {}
   
   public void run()
   {

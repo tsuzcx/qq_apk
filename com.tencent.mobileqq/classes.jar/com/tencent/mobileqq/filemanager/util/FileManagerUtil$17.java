@@ -6,11 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Build.VERSION;
-import atvo;
-import bgme;
-import bgrj;
-import bgvf;
-import bgvi;
+import aunj;
+import bhmg;
+import bhrl;
+import bhvi;
+import bhvl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -32,25 +32,25 @@ public final class FileManagerUtil$17
       if (localObject2 == null) {
         return;
       }
-      int i = bgme.a(this.jdField_a_of_type_AndroidContentContext);
+      int i = bhmg.a(this.jdField_a_of_type_AndroidContentContext);
       localObject1 = localObject2;
       if (((Bitmap)localObject2).getWidth() != i) {
-        if (bgvi.c) {
+        if (bhvl.c) {
           break label163;
         }
       }
       label163:
-      for (localObject1 = bgvf.a().a((Bitmap)localObject2, i); Build.VERSION.SDK_INT < 26; localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, i, false))
+      for (localObject1 = bhvi.a().a((Bitmap)localObject2, i); Build.VERSION.SDK_INT < 26; localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, i, false))
       {
         localObject2 = new Intent("android.intent.action.MAIN");
         ((Intent)localObject2).addCategory("android.intent.category.LAUNCHER");
         ((Intent)localObject2).putExtra(this.jdField_a_of_type_JavaLangString, true);
         ((Intent)localObject2).setClassName(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class.getName());
         ((Intent)localObject2).setFlags(337641472);
-        bgrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject2, this.b, (Bitmap)localObject1);
+        bhrl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject2, this.b, (Bitmap)localObject1);
         return;
       }
-      atvo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      aunj.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
       return;
     }
     catch (Exception localException) {}

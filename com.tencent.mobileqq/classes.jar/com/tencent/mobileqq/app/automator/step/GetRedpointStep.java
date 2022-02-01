@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import antv;
+import aogf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -15,7 +15,7 @@ public class GetRedpointStep
     if (QLog.isColorLevel()) {
       QLog.i("GetRedpointStep", 2, "GetRedpointStep");
     }
-    ((antv)this.a.app.a(87)).a(false, false);
+    ((aogf)this.a.app.a(87)).a(false, false);
     ((MedalWallMng)this.a.app.getManager(250)).a();
     return 7;
   }

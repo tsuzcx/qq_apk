@@ -1,44 +1,34 @@
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
 
-public class anaz
+class anaz
+  implements anjf
 {
-  int jdField_a_of_type_Int;
-  private anbj jdField_a_of_type_Anbj;
-  private anbk jdField_a_of_type_Anbk;
-  private anbm jdField_a_of_type_Anbm;
-  String jdField_a_of_type_JavaLangString;
-  int b = 30000;
+  anaz(anav paramanav, int paramInt) {}
   
-  public anax a()
+  public void a(boolean paramBoolean, String paramString, List<anjd> paramList)
   {
-    if (this.jdField_a_of_type_Anbm == null) {
-      this.jdField_a_of_type_Anbm = new anbi();
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      paramString = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
     }
-    if (this.jdField_a_of_type_Anbk == null) {
-      this.jdField_a_of_type_Anbk = new anbh();
-    }
-    if (this.jdField_a_of_type_Anbj == null) {
-      this.jdField_a_of_type_Anbj = new anav();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new IllegalArgumentException("appId required.");
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new IllegalArgumentException("current account uid is required.");
-    }
-    return new anax(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Anbm, this.jdField_a_of_type_Anbk, this.jdField_a_of_type_Anbj, null);
   }
   
-  public anaz a(int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public anaz a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    if (paramBoolean) {}
+    for (paramInt1 = 0;; paramInt1 = -1)
+    {
+      paramString = EIPCResult.createResult(paramInt1, null);
+      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
+    }
   }
 }
 

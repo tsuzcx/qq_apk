@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afck
-  extends anmu
+  implements View.OnClickListener
 {
-  public afck(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public afck(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    bhxv.a(this.a, "settings");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

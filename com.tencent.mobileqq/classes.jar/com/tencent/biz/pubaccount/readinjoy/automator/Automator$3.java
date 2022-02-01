@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
 import java.util.LinkedList;
-import oub;
+import omo;
 
 public class Automator$3
   implements Runnable
 {
-  public Automator$3(oub paramoub) {}
+  public Automator$3(omo paramomo) {}
   
   public void run()
   {
-    oub.a(this.this$0).clear();
-    oub.a(this.this$0).addAll(oub.a(this.this$0));
-    oub.a(this.this$0);
+    omo.a(this.this$0).clear();
+    omo.a(this.this$0).addAll(omo.a(this.this$0));
+    omo.a(this.this$0);
   }
 }
 

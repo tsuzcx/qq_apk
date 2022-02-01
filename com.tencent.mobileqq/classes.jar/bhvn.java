@@ -1,66 +1,82 @@
-import android.graphics.Rect;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.method.Touch;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class bhvn
-  extends LinkMovementMethod
+public final class bhvn
 {
-  private static bhvn a;
-  
-  public static MovementMethod a()
+  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    if (a == null) {
-      a = new bhvn();
-    }
-    return a;
+    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
+    paramString.setAccessible(true);
+    return paramString.invoke(paramObject, paramArrayOfObject);
   }
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
   {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
+  }
+  
+  public static Object a(String paramString1, Object paramObject, String paramString2)
+  {
+    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
+    paramString1.setAccessible(true);
+    return paramString1.get(paramObject);
+  }
+  
+  public static Object a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, (Object[])null);
+  }
+  
+  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
+  {
+    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
+  }
+  
+  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
+  {
+    paramString1 = Class.forName(paramString1);
+    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
+  }
+  
+  private static Class<?>[] a(Object[] paramArrayOfObject)
+  {
+    Object localObject = (Class[])null;
+    if (paramArrayOfObject != null)
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
+      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
+      int i = 0;
+      int j = paramArrayOfObject.length;
+      localObject = arrayOfClass;
+      if (i < j)
       {
-        if (i == 1) {
-          localObject[0].onClick(paramTextView);
+        if (paramArrayOfObject[i] != null)
+        {
+          arrayOfClass[i] = paramArrayOfObject[i].getClass();
+          label45:
+          if (arrayOfClass[i] != Integer.class) {
+            break label77;
+          }
+          arrayOfClass[i] = Integer.TYPE;
         }
         for (;;)
         {
-          return true;
-          if (i == 0)
-          {
-            Rect localRect = new Rect();
-            paramTextView.getGlobalVisibleRect(localRect);
-            if (localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-              Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-            }
+          i += 1;
+          break;
+          arrayOfClass[i] = String.class;
+          break label45;
+          label77:
+          if (arrayOfClass[i] == Boolean.class) {
+            arrayOfClass[i] = Boolean.TYPE;
           }
         }
       }
     }
-    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhvn
  * JD-Core Version:    0.7.0.1
  */

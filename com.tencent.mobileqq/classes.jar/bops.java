@@ -1,48 +1,17 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ReplacementSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.openapi.model.WMEditItem;
 
-public class bops
-  extends ReplacementSpan
+class bops
+  implements View.OnClickListener
 {
-  private final float a;
-  private final float b;
+  bops(bopo parambopo, bopw parambopw, WMEditItem paramWMEditItem) {}
   
-  public bops(float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, @IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
-  {
-    if (paramCharSequence != null)
-    {
-      paramPaint.setTextSize(this.a);
-      paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4, paramPaint);
-    }
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, @IntRange(from=0L) int paramInt1, @IntRange(from=0L) int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    if (paramCharSequence == null) {
-      return 0;
-    }
-    paramPaint.setTextSize(this.a);
-    if (paramFontMetricsInt != null)
-    {
-      Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-      paramFontMetricsInt.top = ((int)(localFontMetricsInt.top * this.b));
-      paramFontMetricsInt.ascent = ((int)(localFontMetricsInt.ascent * this.b));
-      paramFontMetricsInt.descent = localFontMetricsInt.descent;
-      paramFontMetricsInt.bottom = localFontMetricsInt.bottom;
-      paramFontMetricsInt.leading = localFontMetricsInt.leading;
-    }
-    return Math.round(paramPaint.measureText(paramCharSequence, paramInt1, paramInt2));
+    bopo.a(this.jdField_a_of_type_Bopo, this.jdField_a_of_type_Bopw.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adut
-  implements advd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adut(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public adut(AssistantSettingActivity paramAssistantSettingActivity, anyw paramanyw) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      bmyc.a(this.a);
-    }
-    return false;
+    this.jdField_a_of_type_Anyw.a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

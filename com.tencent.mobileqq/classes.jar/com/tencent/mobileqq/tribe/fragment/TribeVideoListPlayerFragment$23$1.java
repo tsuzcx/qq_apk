@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import beej;
+import bfdi;
 
 public class TribeVideoListPlayerFragment$23$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$23$1(beej parambeej) {}
+  public TribeVideoListPlayerFragment$23$1(bfdi parambfdi) {}
   
   public void run()
   {

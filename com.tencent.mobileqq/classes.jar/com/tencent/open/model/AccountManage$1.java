@@ -1,6 +1,7 @@
 package com.tencent.open.model;
 
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.observer.SSOAccountObserver;
 
@@ -12,9 +13,12 @@ class AccountManage$1
   public void run()
   {
     SSOAccountObserver localSSOAccountObserver = (SSOAccountObserver)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localSSOAccountObserver != null) {
+    if (localSSOAccountObserver != null)
+    {
       localSSOAccountObserver.onGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, this.b.getBytes(), 4096, this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
+    QLog.d("open_log", 1, "delegateGetTicketNoPasswd observer1 == null");
   }
 }
 

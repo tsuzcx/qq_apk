@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pmk;
-import pyf;
+import pfd;
+import pqp;
 
 public class RecommendFollowForChangeModule$1
   implements Runnable
 {
-  public RecommendFollowForChangeModule$1(pyf parampyf, boolean paramBoolean, long paramLong, List paramList) {}
+  public RecommendFollowForChangeModule$1(pqp parampqp, boolean paramBoolean, long paramLong, List paramList) {}
   
   public void run()
   {
-    pmk.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList);
+    pfd.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

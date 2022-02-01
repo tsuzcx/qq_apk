@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anmw;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
 
@@ -11,7 +11,7 @@ class BaseChatPie$79
   
   public void run()
   {
-    ((anmw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).c();
+    ((anyw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).c();
     this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(64));
   }
 }

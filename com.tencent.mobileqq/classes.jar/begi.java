@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public class begi
-  implements QQPermissionCallback
+class begi
+  extends bego
 {
-  public begi(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  begi(@NonNull String paramString)
   {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+    super(1, paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  float a(@NonNull Paint paramPaint)
   {
-    this.a.a(this.a, this.a);
+    return paramPaint.measureText(a());
   }
 }
 

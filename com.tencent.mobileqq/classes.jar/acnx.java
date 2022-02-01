@@ -1,31 +1,27 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.ResultReceiver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
-class acnx
-  implements acpf
+public class acnx
+  implements AdQQMINIProgramAdapter
 {
-  acnx(acnw paramacnw) {}
-  
-  public Activity a()
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
   {
-    return acnw.a(this.a);
-  }
-  
-  public void a()
-  {
-    this.a.dismiss();
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    if (acnw.a(this.a) == null)
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      QLog.i("GdtMotiveVideoDialog", 1, "mResultReceiver == null");
-      return;
+      acvc.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
     }
-    acnw.a(this.a).send(paramInt, paramIntent.getExtras());
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    acvc.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new acny(this, paramParams, localGdtAd));
+    return new AdError(0);
   }
 }
 

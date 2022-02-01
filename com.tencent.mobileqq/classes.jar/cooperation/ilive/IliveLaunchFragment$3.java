@@ -3,8 +3,8 @@ package cooperation.ilive;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import bldz;
-import blet;
+import bmfc;
+import bmfw;
 import com.tencent.qphone.base.util.QLog;
 
 class IliveLaunchFragment$3
@@ -14,10 +14,10 @@ class IliveLaunchFragment$3
   
   public void run()
   {
-    blet.a("IliveLaunch executeOnSubThread");
-    bldz.a().b();
-    bldz.a().a(this.this$0);
-    IliveLaunchFragment.access$102(this.this$0, bldz.a().b());
+    bmfw.a("IliveLaunch executeOnSubThread");
+    bmfc.a().b();
+    bmfc.a().a(this.this$0);
+    IliveLaunchFragment.access$102(this.this$0, bmfc.a().b());
     QLog.e("IliveLaunchActivity", 1, "onCreateView thread isPluginFileExist = " + IliveLaunchFragment.access$100(this.this$0) + " mIsSoLoadSuccess = " + IliveLaunchFragment.access$200(this.this$0));
     if ((IliveLaunchFragment.access$100(this.this$0)) && (IliveLaunchFragment.access$200(this.this$0)))
     {
@@ -42,7 +42,7 @@ class IliveLaunchFragment$3
       IliveLaunchFragment.access$300(this.this$0);
     }
     IliveLaunchFragment.access$400(this.this$0);
-    blet.b("IliveLaunch executeOnSubThread");
+    bmfw.b("IliveLaunch executeOnSubThread");
   }
 }
 

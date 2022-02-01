@@ -1,39 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.graphics.Bitmap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class saz
-  extends ucf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureAndUpload$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class saz
+  implements sax
 {
-  private saz(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  saz(rjx paramrjx) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    int i;
-    do
-    {
-      String str;
-      do
-      {
-        return;
-        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
-        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
-      } while (str == null);
-      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
-    } while (paramBundle == null);
-    if (i == 1) {
-      paramBundle.r = true;
+    rjx localrjx = this.jdField_a_of_type_Rjx;
+    if (localrjx != null) {
+      localrjx.a(1, "");
     }
-    for (;;)
-    {
-      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
-      return;
-      if (i == 0) {
-        paramBundle.r = false;
-      }
-    }
+  }
+  
+  public void a(@NotNull Bitmap paramBitmap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
+    saw.a(this.jdField_a_of_type_Saw, paramBitmap, this.jdField_a_of_type_Rjx);
   }
 }
 

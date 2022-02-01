@@ -1,12 +1,12 @@
 package com.tencent.biz.troop;
 
-import aapl;
+import aato;
 import java.util.ArrayList;
 
 public class VideoCombineHelper$CombineTask$3
   extends ArrayList<Object>
 {
-  public VideoCombineHelper$CombineTask$3(aapl paramaapl, String paramString1, String paramString2)
+  public VideoCombineHelper$CombineTask$3(aato paramaato, String paramString1, String paramString2)
   {
     add(this.val$inputPath);
     add(this.val$tsFilePath);

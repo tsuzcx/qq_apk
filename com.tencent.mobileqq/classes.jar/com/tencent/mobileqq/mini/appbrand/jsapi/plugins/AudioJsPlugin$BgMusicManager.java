@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awxz;
+import axqs;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.sdk.BridgeInfo;

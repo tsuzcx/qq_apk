@@ -1,15 +1,26 @@
-import android.content.Context;
+import UserGrowth.stRedDotRsp;
 
-public abstract class uly<MSG extends ulp, INFO extends ulq>
+class uly
+  implements ukd
 {
-  MSG a;
+  uly(ulx paramulx) {}
   
-  public uly(MSG paramMSG)
+  public void a(uko paramuko)
   {
-    this.a = paramMSG;
+    if ((this.a.a() != null) && (paramuko != null) && (paramuko.a()) && (paramuko.a != null) && ((paramuko.a instanceof stRedDotRsp)))
+    {
+      paramuko = (stRedDotRsp)paramuko.a;
+      ulx.a(this.a, paramuko.notificationReddot);
+      ulx.b(this.a, paramuko.menu);
+      if (this.a.a() != null) {
+        ((umk)this.a.a()).a(paramuko);
+      }
+    }
+    while (this.a.a() == null) {
+      return;
+    }
+    ((umk)this.a.a()).a();
   }
-  
-  public abstract boolean a(Context paramContext, INFO paramINFO);
 }
 
 

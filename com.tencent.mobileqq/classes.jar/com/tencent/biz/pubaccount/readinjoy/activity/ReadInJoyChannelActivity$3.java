@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import tdx;
+import sup;
 
 class ReadInJoyChannelActivity$3
   implements Runnable
@@ -9,8 +9,8 @@ class ReadInJoyChannelActivity$3
   
   public void run()
   {
-    tdx.a().a();
-    tdx.a().b(this.this$0.app);
+    sup.a().a();
+    sup.a().b(this.this$0.app);
   }
 }
 

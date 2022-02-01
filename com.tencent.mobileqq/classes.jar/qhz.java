@@ -1,116 +1,95 @@
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class qhz
 {
-  public static void a(@NonNull View paramView, String paramString)
+  private JSONObject a;
+  
+  public qhz()
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramView, localJSONObject);
-      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
-    }
+    this.a = new JSONObject();
+    a();
   }
   
-  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
+  public qhz(String paramString)
   {
-    int i = paramView.getLeft();
-    int j = paramView.getRight();
-    int k = paramView.getTop();
-    int m = paramView.getBottom();
-    Object localObject1 = paramView.getClass().getSimpleName();
-    Object localObject2 = new Rect(i, k, j, m);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject1);
-    localJSONObject.put("visibility", paramView.getVisibility());
-    localJSONObject.put("bounds", localObject2);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramView instanceof ViewGroup))
-    {
-      j = ((ViewGroup)paramView).getChildCount();
-      localObject1 = new JSONArray();
-      i = 0;
-      while (i < j)
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        localObject2 = new JSONObject();
-        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
-        ((JSONArray)localObject1).put(localObject2);
-        i += 1;
+        this.a = new JSONObject(paramString);
+        a();
+        return;
       }
-      paramJSONObject.put("children", localObject1);
-    }
-  }
-  
-  public static void a(@NonNull ViewBase paramViewBase, String paramString)
-  {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramViewBase, localJSONObject);
-      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
-    }
-  }
-  
-  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
-  {
-    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
-    Object localObject2 = paramViewBase.getClass().getSimpleName();
-    Object localObject3 = paramViewBase.getName();
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject2);
-    localJSONObject.put("id", localObject3);
-    localJSONObject.put("visibility", paramViewBase.getVisibility());
-    localJSONObject.put("bounds", localObject1);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramViewBase instanceof Layout))
-    {
-      localObject1 = ((Layout)paramViewBase).getSubViews();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      catch (JSONException paramString)
       {
-        paramViewBase = new JSONArray();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        QLog.e("PTSReport", 1, "e = " + paramString);
+        this.a = new JSONObject();
+        a();
+        return;
+      }
+    }
+    this.a = new JSONObject();
+    a();
+  }
+  
+  private void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        this.a.put("os", "1");
+        this.a.put("version", "8.4.5");
+        this.a.put("pts_engine_version", qgu.a().a());
+        this.a.put("pts_app_version", qgs.a().a());
+        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
+        JSONObject localJSONObject = this.a;
+        if (!TextUtils.isEmpty(Build.BRAND))
         {
-          localObject2 = (ViewBase)((Iterator)localObject1).next();
-          localObject3 = new JSONObject();
-          a((ViewBase)localObject2, (JSONObject)localObject3);
-          paramViewBase.put(localObject3);
+          String str1 = Build.BRAND;
+          localJSONObject.put("device_brand", str1);
+          localJSONObject = this.a;
+          if (!TextUtils.isEmpty(Build.MODEL))
+          {
+            str1 = Build.MODEL;
+            localJSONObject.put("device_model", str1);
+            this.a.put("is_debug", "0");
+            return;
+          }
+          str1 = "";
+          continue;
         }
-        paramJSONObject.put("children", paramViewBase);
+        String str2 = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
+        return;
       }
     }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public String a()
   {
-    QLog.d(paramString1, 1, paramString2);
+    return this.a.toString();
   }
   
-  public static boolean a()
+  public qhz a(String paramString1, String paramString2)
   {
-    return true;
+    try
+    {
+      this.a.put(paramString1, paramString2);
+      return this;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
+    }
+    return this;
   }
 }
 

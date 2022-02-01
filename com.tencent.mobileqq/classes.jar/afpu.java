@@ -1,22 +1,20 @@
 import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class afpu
-  implements TextWatcher
+  implements View.OnFocusChangeListener
 {
-  private afpu(TroopTransferActivity paramTroopTransferActivity) {}
+  public afpu(SubLoginActivity paramSubLoginActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
+    if (true == paramBoolean) {
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

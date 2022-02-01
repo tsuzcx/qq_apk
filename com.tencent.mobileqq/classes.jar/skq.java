@@ -1,18 +1,28 @@
-class skq
-  implements bkia
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+
+public class skq
+  implements Animator.AnimatorListener
 {
-  skq(skp paramskp) {}
+  public skq(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
   
-  public void ak_()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ske.c(this.a.a))
-    {
-      ske.c(this.a.a, false);
-      ske.a(this.a.a).a(ske.a(this.a.a), ske.b(this.a.a), true, false);
-      return;
+    this.a.setScaleX(1.0F);
+    this.a.setScaleY(1.0F);
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
+    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
+      this.a.a(0);
     }
-    ske.a(this.a.a).a(ske.a(this.a.a), ske.b(this.a.a), true, true);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
 import android.app.Activity;
-import avfh;
+import avxk;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 
 public class IdentificationPoseReflect$1
   implements Runnable
 {
-  public IdentificationPoseReflect$1(avfh paramavfh, Activity paramActivity) {}
+  public IdentificationPoseReflect$1(avxk paramavxk, Activity paramActivity) {}
   
   public void run()
   {

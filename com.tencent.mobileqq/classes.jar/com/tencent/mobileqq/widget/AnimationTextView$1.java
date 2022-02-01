@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import bhue;
+import biuz;
 
 class AnimationTextView$1
   implements Runnable
@@ -10,13 +10,13 @@ class AnimationTextView$1
   
   public void run()
   {
-    if (this.this$0.getTag(2131368238) != null) {}
-    for (boolean bool = ((Boolean)this.this$0.getTag(2131368238)).booleanValue();; bool = false)
+    if (this.this$0.getTag(2131368312) != null) {}
+    for (boolean bool = ((Boolean)this.this$0.getTag(2131368312)).booleanValue();; bool = false)
     {
       if ((this.this$0.isSingleClick) && (this.this$0.onSingleClick != null) && (!bool)) {
         this.this$0.onSingleClick.a(this.this$0);
       }
-      this.this$0.setTag(2131368238, Boolean.valueOf(false));
+      this.this$0.setTag(2131368312, Boolean.valueOf(false));
       return;
     }
   }

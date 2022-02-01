@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aglj;
+import aguk;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class FullScreenInputHelper$8
   implements Runnable
 {
-  public FullScreenInputHelper$8(aglj paramaglj) {}
+  public FullScreenInputHelper$8(aguk paramaguk) {}
   
   public void run()
   {
-    QQToast localQQToast = new QQToast(aglj.a(this.this$0));
+    QQToast localQQToast = new QQToast(aguk.a(this.this$0));
     localQQToast.a(QQToast.a(1));
     localQQToast.b(1);
     localQQToast.d(2000);
-    localQQToast.c(2131693491);
+    localQQToast.c(2131693503);
     localQQToast.a();
   }
 }

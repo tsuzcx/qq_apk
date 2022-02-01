@@ -1,67 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.YybHandleUtil.1;
-import java.io.File;
-import java.text.DecimalFormat;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
 public class bixb
+  implements Animation.AnimationListener
 {
-  public static String a = "YybHandleUtil";
-  public static String b = "APK/MobileAssistant_main.apk";
-  public static String c = "yyb.apk";
-  public static final String d = anni.a(2131715696);
+  public bixb(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
   
-  public static String a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt < 0) {
-      return null;
-    }
-    float f2 = paramInt;
-    paramInt = 0;
-    float f1;
-    String str2;
-    String str1;
-    if (f2 / 1048576.0F > 1.0F)
-    {
-      f1 = f2 / 1048576.0F;
-      paramInt = 2;
-      str2 = new DecimalFormat("#.#").format(f1);
-      if (paramInt != 2) {
-        break label92;
-      }
-      str1 = "MB";
-    }
-    for (;;)
-    {
-      return str2 + str1;
-      f1 = f2;
-      if (f2 / 1024.0F <= 1.0F) {
-        break;
-      }
-      f1 = f2 / 1024.0F;
-      paramInt = 1;
-      break;
-      label92:
-      if (paramInt == 1) {
-        str1 = "KB";
-      } else {
-        str1 = "B";
-      }
-    }
+    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
+    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
   }
   
-  public static void a()
-  {
-    bisy.c(a, "---deleteYYBApkPackage--");
-    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static boolean a()
-  {
-    String str = biip.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
-    return biub.a(biip.a().a(), str);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

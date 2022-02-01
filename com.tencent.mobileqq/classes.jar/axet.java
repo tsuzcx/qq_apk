@@ -1,41 +1,189 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Process;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.tfs.AsyncTask;
+import com.tencent.mobileqq.minigame.manager.EngineChannel;
+import com.tencent.mobileqq.minigame.manager.EngineChannel.Receiver;
+import com.tencent.mobileqq.minigame.manager.InstalledEngine;
 import com.tencent.qphone.base.util.QLog;
-import tencent.nearby.nearby_ice_break.IceRsp;
+import java.util.ArrayList;
 
-class axet
-  implements axkq
+public class axet
+  extends AsyncTask
+  implements EngineChannel.Receiver
 {
-  axet(axeq paramaxeq) {}
+  private int jdField_a_of_type_Int = 3;
+  private axes jdField_a_of_type_Axes;
+  private MiniAppInfo jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo;
+  private EngineChannel jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel;
+  private InstalledEngine jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine;
+  private int b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public axet(Context paramContext)
   {
-    paramBundle = new nearby_ice_break.IceRsp();
-    try
+    super(paramContext);
+  }
+  
+  private void a(int paramInt, Bundle paramBundle)
+  {
+    paramBundle.putInt("baseLibType", this.jdField_a_of_type_Int);
+    paramBundle.putInt("enginePid", Process.myPid());
+    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]installEngineRequestCount " + this.b);
+    if (this.b >= 2)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.result.has())
+      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]GET_INSTALLED_ENGINE_LIST requestCount reaches max 2");
+      onTaskFailed(103, anzj.a(2131705698));
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel.send(paramInt, paramBundle);
+    } while (paramInt != 3);
+    this.b += 1;
+  }
+  
+  private void a(InstalledEngine paramInstalledEngine)
+  {
+    for (;;)
+    {
+      try
       {
-        if (paramBundle.result.get() == 0)
+        if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine == null)
         {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.i("NearbyCardHandler", 2, "sendPoBingMsg. success");
+          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]mEngine == null, loadEngineTask is reset?");
           return;
         }
-        QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. result=" + paramBundle.result.get() + " errorMsg=" + paramBundle.err_msg.get());
-        return;
+        long l = System.currentTimeMillis();
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine");
+        if (paramInstalledEngine != null) {
+          axeu.a().a(paramInstalledEngine);
+        }
+        if (!axeu.a().a())
+        {
+          QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine fail");
+          onTaskFailed();
+          continue;
+        }
+        QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]loadSo cost time " + (System.currentTimeMillis() - l));
       }
+      finally {}
+      onTaskSucceed();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  private boolean a(InstalledEngine paramInstalledEngine, MiniAppInfo paramMiniAppInfo)
+  {
+    boolean bool = true;
+    if (paramInstalledEngine == null) {
+      bool = false;
+    }
+    while (paramMiniAppInfo != null) {
+      return bool;
+    }
+    return true;
+  }
+  
+  public void a(axes paramaxes)
+  {
+    this.jdField_a_of_type_Axes = paramaxes;
+  }
+  
+  public void a(EngineChannel paramEngineChannel)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel = paramEngineChannel;
+  }
+  
+  public void executeAsync()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel == null)
     {
-      QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. error=" + QLog.getStackTraceString(paramArrayOfByte));
+      onTaskFailed(1, anzj.a(2131705693));
       return;
     }
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. no result");
+    EngineChannel localEngineChannel = new EngineChannel();
+    localEngineChannel.setName("AppEngine(" + Process.myPid() + ")");
+    localEngineChannel.setReceiver(this);
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("engineChannel", localEngineChannel);
+    a(1, localBundle);
+  }
+  
+  public void onReceiveData(int paramInt, Bundle paramBundle)
+  {
+    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] onReceiveData what=" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+    }
+    if (paramInt == 51) {
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
+        if (paramBundle != null)
+        {
+          paramInt = paramBundle.size();
+          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList success " + paramInt);
+          if (paramInt > 0)
+          {
+            paramBundle = (InstalledEngine)paramBundle.get(0);
+            if (a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo))
+            {
+              this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = paramBundle;
+              a(paramBundle);
+            }
+          }
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        onTaskFailed(101, anzj.a(2131705695));
+        return;
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
+        a(3, new Bundle());
+        return;
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList miniAppEngineList is null");
+        onTaskFailed(102, anzj.a(2131705691));
+        return;
+        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList data is null");
+        onTaskFailed(102, anzj.a(2131705690));
+        return;
+        if (paramInt == 52)
+        {
+          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
+          return;
+        }
+        if (paramInt != 53) {
+          break;
+        }
+      } while (paramBundle == null);
+      paramBundle = paramBundle.getString("engineInstallerMessage");
+      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS " + paramBundle);
+      return;
+    } while (paramInt != 54);
+    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
+    a(1, new Bundle());
+  }
+  
+  public void reset()
+  {
+    try
+    {
+      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]" + this + " reset ");
+      this.b = 0;
+      this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo = null;
+      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = null;
+      super.reset();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

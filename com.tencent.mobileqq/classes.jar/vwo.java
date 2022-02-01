@@ -1,66 +1,32 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class vwo
-  implements uxv
+  implements Animator.AnimatorListener
 {
-  public vwo(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
+  public vwo(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext() == null) {
-      QLog.e("QCircleFeedCommentWidget", 1, "onSticky mContext is null");
+    if (this.a.getContext() != null) {
+      uzg.a((Activity)this.a.getContext());
     }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt == uxw.a)
-        {
-          if (QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment))
-          {
-            localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().getString(2131697249);
-            bglp.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext(), 230, (String)localObject, null, 2131690582, 2131690566, new vwp(this), new vwq(this)).show();
-            return;
-          }
-          QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-          return;
-        }
-        if (paramInt == uxw.b)
-        {
-          localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().getString(2131697123);
-          bglp.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext(), 230, (String)localObject, null, 2131690582, 2131690566, new vwr(this), new vws(this)).show();
-          return;
-        }
-        if (paramInt != uxw.c) {
-          break;
-        }
-        localObject = (ClipboardManager)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().getSystemService("clipboard");
-      } while (localObject == null);
-      ((ClipboardManager)localObject).setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.content.get()));
-      return;
-      if (paramInt == uxw.e)
-      {
-        if (uxx.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.get())) {}
-        for (paramInt = 0;; paramInt = 2)
-        {
-          localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().getString(2131697128);
-          bglp.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext(), 230, (String)localObject, null, 2131690582, 2131690566, new vwt(this, paramInt), new vwu(this)).show();
-          return;
-        }
-      }
-    } while (paramInt != uxw.d);
-    Object localObject = new uzh().e(String.valueOf(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.createTime.get())).c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get()).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get()).b(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()).a();
-    vtl.a(new uzg().a("wezone_comment").b("25041").c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get()).d((String)localObject).a());
+    if (QCircleSlidBottomView.a(this.a) != null) {
+      QCircleSlidBottomView.a(this.a).b();
+    }
+    this.a.setVisibility(8);
+    QCircleSlidBottomView.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QCircleSlidBottomView.a(this.a, true);
   }
 }
 

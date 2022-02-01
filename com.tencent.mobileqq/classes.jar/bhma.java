@@ -1,69 +1,31 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class bhma
-  extends WebViewPlugin
+final class bhma
+  implements DialogInterface.OnClickListener
 {
-  public bhma()
-  {
-    this.mPluginNameSpace = "forceHttps";
-  }
+  bhma(Activity paramActivity, bdhy parambdhy) {}
   
-  private boolean a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool2 = false;
-    nhe localnhe = nhe.a();
-    boolean bool1 = bool2;
-    if (localnhe.e(paramString))
+    if (paramInt == 1)
     {
-      bool1 = bool2;
-      if (!localnhe.f(paramString)) {
-        bool1 = true;
-      }
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
     }
-    return bool1;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    if (!nhe.a().d()) {
-      return false;
+    while (this.jdField_a_of_type_Bdhy == null) {
+      return;
     }
-    if (("http".equals(paramString2)) && (a(paramString1)))
-    {
-      paramString2 = this.mRuntime.a();
-      if ((paramString2 != null) && (paramString2.mStatistics != null)) {
-        paramString2.mStatistics.C = true;
-      }
-      paramString2 = "https" + paramString1.substring("http".length());
-      CustomWebView localCustomWebView = this.mRuntime.a();
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("need switch url=").append(nmj.b(paramString1, new String[0]));
-        if (localCustomWebView != null) {
-          break label155;
-        }
-      }
-      label155:
-      for (paramString1 = ", view==null";; paramString1 = "")
-      {
-        QLog.i("forceHttps", 2, paramString1);
-        if (localCustomWebView == null) {
-          break;
-        }
-        localCustomWebView.loadUrl(paramString2);
-        return true;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Bdhy.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhma
  * JD-Core Version:    0.7.0.1
  */

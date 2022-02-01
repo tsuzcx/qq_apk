@@ -1,49 +1,103 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.EntityManager;
-import mqq.manager.Manager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arkt
-  implements Manager
+  extends arac<arkr>
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  protected EntityManager a;
-  
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public static arkr a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    arkr localarkr2 = (arkr)aran.a().a(583);
+    arkr localarkr1 = localarkr2;
+    if (localarkr2 == null) {
+      localarkr1 = new arkr();
     }
-    if (!axei.c())
-    {
-      axdz.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      axdz.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      axdz.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
-    }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
+    return localarkr1;
   }
   
-  public void onDestroy()
+  @NonNull
+  public arkr a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new arkr();
+  }
+  
+  @Nullable
+  public arkr a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendBannerProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendBannerProcessor", 2, "onParsed " + paramArrayOfaraj.length);
+      }
+      return arkr.a(paramArrayOfaraj[0]);
+    }
+    return null;
+  }
+  
+  public void a(arkr paramarkr)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramarkr == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramarkr = paramarkr.toString();; paramarkr = " empty")
+    {
+      QLog.d("ExtendFriendBannerProcessor", 2, paramarkr);
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+  }
+  
+  public Class<arkr> clazz()
+  {
+    return arkr.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "onReqFailed " + paramInt);
     }
+  }
+  
+  public int type()
+  {
+    return 583;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkt
  * JD-Core Version:    0.7.0.1
  */

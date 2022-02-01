@@ -1,30 +1,33 @@
-import UserGrowth.stSchema;
-import com.tencent.common.app.BaseApplicationImpl;
+import UserGrowth.stH5OpInfo;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-public class uit
-  implements uir
+class uit
+  implements ura
 {
-  private uig b(uii paramuii)
+  uit(uis paramuis, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if (zmi.a(BaseApplicationImpl.getContext())) {
-      return new uik(paramuii);
-    }
-    return new uim(paramuii);
+    uis.a(this.jdField_a_of_type_Uis, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
+    unx.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
   
-  public uig a(uii paramuii)
+  public void b(String paramString, int paramInt)
   {
-    switch (paramuii.a().type)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new uin(paramuii);
-    case 2: 
-      return b(paramuii);
-    }
-    return new uiq(paramuii);
+    uis.a(this.jdField_a_of_type_Uis, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
+  
+  public void c(String paramString, int paramInt)
+  {
+    uis.a(this.jdField_a_of_type_Uis, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    unx.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import aohl;
+import aouq;
 
 public class MessageCleanManager$3
   implements Runnable
 {
-  public MessageCleanManager$3(aohl paramaohl) {}
+  public MessageCleanManager$3(aouq paramaouq) {}
   
   public void run()
   {
-    if (!aohl.a(this.this$0)) {
-      aohl.c(this.this$0);
+    if (!aouq.a(this.this$0)) {
+      aouq.c(this.this$0);
     }
   }
 }

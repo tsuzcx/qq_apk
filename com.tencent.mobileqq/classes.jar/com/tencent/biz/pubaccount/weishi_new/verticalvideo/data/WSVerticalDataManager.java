@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.data;
 
 import UserGrowth.stSimpleGetFeedListRsp;
 import UserGrowth.stSimpleMetaFeed;
-import acqy;
+import acvc;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
@@ -20,30 +20,31 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pnp;
+import pgj;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import uen;
-import ugb;
-import ujk;
-import ujn;
-import uju;
-import ulf;
-import unx;
-import upe;
-import ups;
-import ure;
-import uro;
-import urp;
-import urq;
-import urr;
-import urs;
-import urt;
-import uru;
-import urv;
-import uuf;
+import uep;
+import ugd;
+import uke;
+import ukh;
+import ukl;
+import uko;
+import unu;
+import uoy;
+import uqf;
+import uqt;
+import usf;
+import usp;
+import usq;
+import usr;
+import uss;
+import ust;
+import usu;
+import usv;
+import usw;
+import uvh;
 
 public class WSVerticalDataManager
 {
@@ -56,9 +57,28 @@ public class WSVerticalDataManager
     jdField_a_of_type_JavaLangString = "";
   }
   
+  private stSimpleMetaFeed a(ArrayList<stSimpleMetaFeed> paramArrayList)
+  {
+    Object localObject = null;
+    int i = 0;
+    if (i < paramArrayList.size())
+    {
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramArrayList.get(i);
+      if (localstSimpleMetaFeed.video_type == 2) {}
+      do
+      {
+        i += 1;
+        break;
+        localObject = localstSimpleMetaFeed;
+      } while (TextUtils.isEmpty(localstSimpleMetaFeed.feed_desc));
+      return localstSimpleMetaFeed;
+    }
+    return localObject;
+  }
+  
   public static WSVerticalDataManager a()
   {
-    return urt.a();
+    return usu.a();
   }
   
   private String a(boolean paramBoolean)
@@ -66,10 +86,10 @@ public class WSVerticalDataManager
     if (!paramBoolean) {
       return "";
     }
-    WSRedDotPushMsg localWSRedDotPushMsg = ups.a();
-    pnp localpnp = ups.a();
-    if (localpnp != null) {
-      localpnp.a(null);
+    WSRedDotPushMsg localWSRedDotPushMsg = uqt.a();
+    pgj localpgj = uqt.a();
+    if (localpgj != null) {
+      localpgj.a(null);
     }
     if (localWSRedDotPushMsg == null) {
       return "";
@@ -77,7 +97,7 @@ public class WSVerticalDataManager
     return localWSRedDotPushMsg.mMsgData;
   }
   
-  private ArrayList<String> a(boolean paramBoolean, List<uru> paramList, String paramString)
+  private ArrayList<String> a(boolean paramBoolean, List<usv> paramList, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if ((TextUtils.equals(paramString, "aio_home_page")) && (paramBoolean))
@@ -95,7 +115,7 @@ public class WSVerticalDataManager
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          paramString = (uru)paramList.next();
+          paramString = (usv)paramList.next();
           if ((paramString != null) && ((paramString.a() instanceof stSimpleMetaFeed))) {
             localArrayList.add(((stSimpleMetaFeed)paramString.a()).id);
           }
@@ -104,25 +124,25 @@ public class WSVerticalDataManager
     }
   }
   
-  private void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, ure paramure)
+  private void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, usf paramusf, int paramInt)
   {
-    if ((paramure instanceof uuf))
+    if ((paramusf instanceof uvh))
     {
-      paramure = ((uuf)paramure).a();
-      if (!(paramure instanceof WSVerticalPageFragment)) {
-        break label83;
+      paramusf = ((uvh)paramusf).a();
+      if (!(paramusf instanceof WSVerticalPageFragment)) {
+        break label82;
       }
     }
-    label83:
-    for (paramure = (WSVerticalPageFragment)paramure;; paramure = null)
+    label82:
+    for (paramusf = (WSVerticalPageFragment)paramusf;; paramusf = null)
     {
-      if ((paramure != null) && (paramure.getActivity() != null))
+      if ((paramusf != null) && (paramusf.getActivity() != null))
       {
-        if (!paramure.getActivity().isFinishing()) {
-          ugb.a().a(paramstSimpleGetFeedListRsp.config, "global_key_video_layer");
+        if (!paramusf.getActivity().isFinishing()) {
+          ugd.a().a(paramInt, paramstSimpleGetFeedListRsp.config);
         }
-        if (TextUtils.equals(paramure.a(), "aio_home_page")) {
-          ugb.a().b(paramstSimpleGetFeedListRsp.config);
+        if (TextUtils.equals(paramusf.a(), "aio_home_page")) {
+          ugd.a().b(paramstSimpleGetFeedListRsp.config);
         }
       }
       return;
@@ -146,7 +166,7 @@ public class WSVerticalDataManager
       }
       catch (JSONException paramString)
       {
-        acqy.d("WSVerticalDataManagerLog", "setGdtArgs", paramString);
+        acvc.d("WSVerticalDataManagerLog", "setGdtArgs", paramString);
       }
     }
     for (;;)
@@ -157,65 +177,85 @@ public class WSVerticalDataManager
     }
   }
   
-  private void a(String paramString, boolean paramBoolean, ure paramure)
+  private void a(String paramString, boolean paramBoolean, usf paramusf)
   {
     if ((!paramBoolean) || (!TextUtils.equals(paramString, "aio_home_page"))) {
       return;
     }
-    paramString = ups.a();
+    paramString = uqt.a();
     if (paramString != null)
     {
-      a(paramure, paramString);
+      a(paramusf, paramString);
       return;
     }
-    a(paramure);
+    a(paramusf);
   }
   
-  private void a(uju paramuju, boolean paramBoolean1, ure paramure, boolean paramBoolean2, Object paramObject, Subscriber<? super urs> paramSubscriber, String paramString)
+  private void a(ArrayList<stSimpleMetaFeed> paramArrayList)
   {
-    if (!paramuju.a())
+    if (CollectionUtils.isEmpty(paramArrayList)) {}
+    pgj localpgj;
+    do
     {
-      upe.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramuju.jdField_a_of_type_Int + ", msg:" + paramuju.jdField_a_of_type_JavaLangString);
-      paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramuju.jdField_a_of_type_Int, paramuju.jdField_a_of_type_JavaLangString));
+      return;
+      pgj.b((stSimpleMetaFeed)paramArrayList.get(0));
+      paramArrayList = a(paramArrayList);
+      localpgj = uqt.a();
+    } while ((localpgj == null) || (paramArrayList == null));
+    uqf.a("WSVerticalDataManagerLog", "saveLastFeedInfo");
+    localpgj.a(paramArrayList);
+  }
+  
+  private void a(uko paramuko, boolean paramBoolean1, usf paramusf, boolean paramBoolean2, Object paramObject, Subscriber<? super ust> paramSubscriber, String paramString)
+  {
+    if (!paramuko.a())
+    {
+      uqf.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramuko.jdField_a_of_type_Int + ", msg:" + paramuko.jdField_a_of_type_JavaLangString);
+      paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString));
       return;
     }
-    if ((paramuju.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp))
+    if ((paramuko.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp))
     {
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)paramuju.jdField_a_of_type_JavaLangObject;
+      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)paramuko.jdField_a_of_type_JavaLangObject;
       if (paramBoolean1) {
-        a(localstSimpleGetFeedListRsp, paramure);
+        if (paramuko.jdField_a_of_type_Ukl == null) {
+          break label293;
+        }
       }
-      this.c = localstSimpleGetFeedListRsp.attach_info;
-      this.b = localstSimpleGetFeedListRsp.session;
-      a(localstSimpleGetFeedListRsp.gdt_args);
-      ulf.c(localstSimpleGetFeedListRsp.gdt_args);
-      if (!TextUtils.isEmpty(localstSimpleGetFeedListRsp.gdt_args)) {
-        jdField_a_of_type_JavaLangString = localstSimpleGetFeedListRsp.gdt_args;
+      label293:
+      for (int i = paramuko.jdField_a_of_type_Ukl.b();; i = 2)
+      {
+        a(localstSimpleGetFeedListRsp, paramusf, i);
+        this.c = localstSimpleGetFeedListRsp.attach_info;
+        this.b = localstSimpleGetFeedListRsp.session;
+        a(localstSimpleGetFeedListRsp.gdt_args);
+        if (paramuko.jdField_a_of_type_Uke != null) {
+          unu.a().a(localstSimpleGetFeedListRsp.trace_id, paramuko.jdField_a_of_type_Uke.a);
+        }
+        paramuko = localstSimpleGetFeedListRsp.feeds;
+        a(paramuko);
+        paramuko = a(paramuko, paramString);
+        uqf.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] itemDataList size:" + paramuko.size() + ", isRefresh:" + paramBoolean2 + ", isFirst:" + paramBoolean1 + ", mAttachInfo:" + this.c + ", mLastSession:" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
+        paramSubscriber.onNext(new ust(paramuko, paramBoolean2, paramBoolean1, paramObject));
+        return;
       }
-      if (paramuju.jdField_a_of_type_Ujk != null) {
-        ugb.a().a(localstSimpleGetFeedListRsp.trace_id, paramuju.jdField_a_of_type_Ujk.a);
-      }
-      paramuju = a(localstSimpleGetFeedListRsp.feeds, paramString);
-      upe.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] itemDataList size:" + paramuju.size() + ", isRefresh:" + paramBoolean2 + ", isFirst:" + paramBoolean1 + ", mAttachInfo:" + this.c + ", mLastSession:" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
-      paramSubscriber.onNext(new urs(paramuju, paramBoolean2, paramBoolean1, paramObject));
-      return;
     }
-    upe.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-    paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramuju.jdField_a_of_type_Int, paramuju.jdField_a_of_type_JavaLangString));
+    uqf.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
+    paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString));
   }
   
-  private void a(uju paramuju, boolean paramBoolean1, boolean paramBoolean2, ure paramure, Object paramObject, String paramString)
+  private void a(uko paramuko, boolean paramBoolean1, boolean paramBoolean2, usf paramusf, Object paramObject, String paramString)
   {
-    Observable.create(new urr(this, paramuju, paramBoolean2, paramure, paramBoolean1, paramObject, paramString)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new urq(this, paramure));
+    Observable.create(new uss(this, paramuko, paramBoolean2, paramusf, paramBoolean1, paramObject, paramString)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new usr(this, paramusf));
   }
   
-  private void a(ure paramure)
+  private void a(usf paramusf)
   {
-    upe.a("WSVerticalDataManagerLog", "fetchVerticalListDataFromLocal");
-    uen.a().c(new urp(this, paramure));
+    uqf.a("WSVerticalDataManagerLog", "fetchVerticalListDataFromLocal");
+    uep.a().c(new usq(this, paramusf));
   }
   
-  private void a(ure paramure, WSRedDotPushMsg paramWSRedDotPushMsg)
+  private void a(usf paramusf, WSRedDotPushMsg paramWSRedDotPushMsg)
   {
     IWSPushBaseStrategy localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
     if (TextUtils.isEmpty(paramWSRedDotPushMsg.mFeedIds)) {}
@@ -224,18 +264,18 @@ public class WSVerticalDataManager
       do
       {
         return;
-      } while ((localIWSPushBaseStrategy == null) || (localIWSPushBaseStrategy.getType() == 2) || (((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel == null));
+      } while ((localIWSPushBaseStrategy == null) || (localIWSPushBaseStrategy.getType() == 2) || (((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel == null) || (TextUtils.isEmpty(((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel.jdField_a_of_type_JavaLangString)));
       paramWSRedDotPushMsg = ((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel.a(paramWSRedDotPushMsg.mFeedIds);
-    } while (paramure == null);
-    paramure.a(a(Arrays.asList(new stSimpleMetaFeed[] { paramWSRedDotPushMsg })), false, true, null);
+    } while (paramusf == null);
+    paramusf.a(a(Arrays.asList(new stSimpleMetaFeed[] { paramWSRedDotPushMsg })), false, true, null);
   }
   
   private String b()
   {
-    pnp localpnp = ups.a();
+    pgj localpgj = uqt.a();
     String str = "";
-    if (localpnp != null) {
-      str = localpnp.c();
+    if (localpgj != null) {
+      str = localpgj.c();
     }
     return str;
   }
@@ -254,16 +294,16 @@ public class WSVerticalDataManager
     }
     catch (JSONException paramJSONObject1)
     {
-      acqy.d("WSVerticalDataManagerLog", "onResult", paramJSONObject1);
+      acvc.d("WSVerticalDataManagerLog", "onResult", paramJSONObject1);
     }
   }
   
-  public List<uru> a(List paramList)
+  public List<usv> a(List paramList)
   {
     return a(paramList, "");
   }
   
-  public List<uru> a(List paramList, String paramString)
+  public List<usv> a(List paramList, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (!CollectionUtils.isEmpty(paramList))
@@ -274,15 +314,15 @@ public class WSVerticalDataManager
         if ((paramList.get(i) instanceof stSimpleMetaFeed))
         {
           stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(i);
-          uru localuru = new uru();
+          usv localusv = new usv();
           if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.gdt_ad_type == 1) && (localstSimpleMetaFeed.gdt_ad_info != null))
           {
-            urv.a(localstSimpleMetaFeed);
-            urv.a(BaseApplicationImpl.getContext(), localstSimpleMetaFeed, paramString);
-            localuru.a(urv.a(localstSimpleMetaFeed));
+            usw.a(localstSimpleMetaFeed);
+            usw.a(BaseApplicationImpl.getContext(), localstSimpleMetaFeed, paramString);
+            localusv.a(usw.a(localstSimpleMetaFeed));
           }
-          localuru.a(localstSimpleMetaFeed);
-          localArrayList.add(localuru);
+          localusv.a(localstSimpleMetaFeed);
+          localArrayList.add(localusv);
         }
         i += 1;
       }
@@ -297,37 +337,38 @@ public class WSVerticalDataManager
     jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString, List<uru> paramList, ure paramure, Object paramObject)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString, List<usv> paramList, usf paramusf, Object paramObject)
   {
-    upe.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][fetchVerticalListData] scene:" + paramInt + ", isRefresh:" + paramBoolean1 + ", isFirst:" + paramBoolean2 + ", from:" + paramString + ", attachInfo:" + this.c + ", lastSession" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
-    a(paramString, paramBoolean2, paramure);
+    uqf.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][fetchVerticalListData] scene:" + paramInt + ", isRefresh:" + paramBoolean1 + ", isFirst:" + paramBoolean2 + ", from:" + paramString + ", attachInfo:" + this.c + ", lastSession" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
+    a(paramString, paramBoolean2, paramusf);
     paramList = a(paramBoolean2, paramList, paramString);
     String str = a(paramBoolean2);
-    paramure = new uro(this, System.currentTimeMillis(), paramBoolean2, paramBoolean1, paramure, paramObject, paramString);
+    paramusf = new usp(this, System.currentTimeMillis(), paramBoolean2, paramBoolean1, paramusf, paramObject, paramString);
+    a("");
     byte b1;
     if (paramBoolean1)
     {
       paramString = "";
       if (!paramBoolean1) {
-        break label224;
+        break label229;
       }
       b1 = 1;
-      label157:
+      label162:
       if (!paramBoolean2) {
-        break label230;
+        break label235;
       }
     }
-    label224:
-    label230:
+    label229:
+    label235:
     for (byte b2 = 1;; b2 = 0)
     {
-      paramString = new uju(new unx(paramString, b1, b2, paramList, paramInt, jdField_a_of_type_JavaLangString, "", this.b, str), null, paramure, 1001);
-      ujn.a().a(paramString);
+      paramString = new uko(new uoy(paramString, b1, b2, paramList, paramInt, jdField_a_of_type_JavaLangString, "", this.b, str), null, paramusf, 1001);
+      ukh.a().a(paramString);
       return;
       paramString = this.c;
       break;
       b1 = 0;
-      break label157;
+      break label162;
     }
   }
 }

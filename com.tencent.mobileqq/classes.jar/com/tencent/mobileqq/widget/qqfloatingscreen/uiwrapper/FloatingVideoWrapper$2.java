@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
 import android.view.View;
-import biez;
+import bjfy;
 
 public class FloatingVideoWrapper$2
   implements Runnable
 {
-  public FloatingVideoWrapper$2(biez parambiez) {}
+  public FloatingVideoWrapper$2(bjfy parambjfy) {}
   
   public void run()
   {
-    this.this$0.a(false, new View[] { biez.b(this.this$0) });
+    this.this$0.a(false, new View[] { bjfy.b(this.this$0) });
   }
 }
 

@@ -1,54 +1,27 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.widget.EditText;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
-class adha
-  extends adhb
+public class adha
+  extends adic
 {
-  adha(adgz paramadgz) {}
-  
-  public void onSuccess(JSONObject paramJSONObject)
+  public int a()
   {
-    super.onSuccess(paramJSONObject);
-    try
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("appfriends");
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("rankingID", 11001);
-      JSONArray localJSONArray1 = new JSONArray();
-      int i = 0;
-      int j = paramJSONObject.length();
-      while (i < j)
-      {
-        Object localObject = paramJSONObject.getJSONObject(i).getString("openid");
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("openid", localObject);
-        localJSONObject2.put("score", (int)Math.floor(Math.random() * 1000.0D));
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("key", "test_key");
-        ((JSONObject)localObject).put("value", (int)Math.floor(Math.random() * 100.0D));
-        ((JSONObject)localObject).put("type", 1);
-        JSONArray localJSONArray2 = new JSONArray();
-        localJSONArray2.put(localObject);
-        localJSONObject2.put("extraList", localJSONArray2);
-        localJSONArray1.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("scoreList", localJSONArray1);
-      this.a.a.jdField_a_of_type_Aded.a("reportScore", localJSONObject1, new adhb(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
-      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null) {
-        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
-      }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().d(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (20 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

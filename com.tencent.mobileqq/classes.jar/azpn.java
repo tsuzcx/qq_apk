@@ -1,225 +1,217 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Vector;
 
 public class azpn
-  extends azpm
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private azpg jdField_a_of_type_Azpg;
-  private String jdField_a_of_type_JavaLangString;
-  private Vector<Drawable> jdField_a_of_type_JavaUtilVector = new Vector();
+  public long a;
+  private SharedPreferences a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  private long f;
+  private long g;
   
-  public azpn(azlw paramazlw, azfe paramazfe)
+  public azpn()
   {
-    super("VasProfileBackgroundComponent", paramazlw, paramazfe);
+    a();
   }
   
-  private void a()
+  void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(b(), 2, "releaseBackground");
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable)) {
-        ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
-      }
-      if (bhbt.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
-        bhbt.a().a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_pic_predown", 0);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_update_time", System.currentTimeMillis());
+    this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_xg_c2c", 0L);
+    this.c = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_xg_grp", 0L);
+    this.d = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_wifi_c2c", 0L);
+    this.e = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_wifi_grp", 0L);
   }
   
-  private boolean a(long paramLong, String paramString1, String paramString2, File paramFile)
+  /* Error */
+  public boolean a(long paramLong)
   {
-    Object localObject = (Boolean)azff.b.get(Long.valueOf(paramLong));
-    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
-    {
-      localObject = "profilecard:" + paramString1;
-      BaseApplicationImpl.sImageCache.remove(localObject);
-      azff.b.remove(Long.valueOf(paramLong));
-    }
-    localObject = new azpp(this, paramLong, paramString2, null).a();
-    if (((azpp)localObject).a()) {}
-    do
-    {
-      do
-      {
-        return true;
-        paramFile = new azpo(this, paramString2, paramFile, ((azpp)localObject).a()).a();
-      } while (paramFile.a());
-      localObject = paramFile.a();
-      paramFile = (File)localObject;
-      if (localObject != null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangString = null;
-      paramString1 = bghy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), paramString2, paramString1);
-      paramFile = paramString1;
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break;
-      }
-      paramFile = paramString1;
-      if (!(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable)) {
-        break;
-      }
-      paramString2 = ((FriendProfileCardBgDrawable)paramString1).a();
-      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
-      paramFile = paramString1;
-      if (localObject == null) {
-        break;
-      }
-      paramFile = paramString1;
-      if (localObject != paramString2) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(b(), 2, "initProfileCardBackground newBitmap == currentBitmap");
-    return true;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_JavaUtilVector.add(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(b(), 2, String.format("initProfileCardBackground bgDrawable=%s", new Object[] { paramFile }));
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramFile;
-    return true;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 69	azpn:f	J
+    //   6: lconst_0
+    //   7: lcmp
+    //   8: ifne +47 -> 55
+    //   11: invokestatic 75	java/util/TimeZone:getDefault	()Ljava/util/TimeZone;
+    //   14: aload_0
+    //   15: getfield 50	azpn:jdField_a_of_type_Long	J
+    //   18: invokevirtual 79	java/util/TimeZone:getOffset	(J)I
+    //   21: i2l
+    //   22: lstore_3
+    //   23: aload_0
+    //   24: aload_0
+    //   25: getfield 50	azpn:jdField_a_of_type_Long	J
+    //   28: lload_3
+    //   29: ladd
+    //   30: ldc2_w 80
+    //   33: ldiv
+    //   34: ldc2_w 80
+    //   37: lmul
+    //   38: lload_3
+    //   39: lsub
+    //   40: putfield 83	azpn:g	J
+    //   43: aload_0
+    //   44: aload_0
+    //   45: getfield 83	azpn:g	J
+    //   48: ldc2_w 80
+    //   51: ladd
+    //   52: putfield 69	azpn:f	J
+    //   55: lload_1
+    //   56: aload_0
+    //   57: getfield 69	azpn:f	J
+    //   60: lcmp
+    //   61: ifgt +12 -> 73
+    //   64: lload_1
+    //   65: aload_0
+    //   66: getfield 83	azpn:g	J
+    //   69: lcmp
+    //   70: ifge +46 -> 116
+    //   73: aload_0
+    //   74: lconst_0
+    //   75: putfield 69	azpn:f	J
+    //   78: aload_0
+    //   79: lconst_0
+    //   80: putfield 83	azpn:g	J
+    //   83: aload_0
+    //   84: lconst_0
+    //   85: putfield 66	azpn:e	J
+    //   88: aload_0
+    //   89: lconst_0
+    //   90: putfield 62	azpn:d	J
+    //   93: aload_0
+    //   94: lconst_0
+    //   95: putfield 58	azpn:c	J
+    //   98: aload_0
+    //   99: lconst_0
+    //   100: putfield 54	azpn:b	J
+    //   103: aload_0
+    //   104: lload_1
+    //   105: putfield 50	azpn:jdField_a_of_type_Long	J
+    //   108: iconst_0
+    //   109: istore 5
+    //   111: aload_0
+    //   112: monitorexit
+    //   113: iload 5
+    //   115: ireturn
+    //   116: iconst_1
+    //   117: istore 5
+    //   119: goto -8 -> 111
+    //   122: astore 6
+    //   124: aload_0
+    //   125: monitorexit
+    //   126: aload 6
+    //   128: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	129	0	this	azpn
+    //   0	129	1	paramLong	long
+    //   22	17	3	l	long
+    //   109	9	5	bool	boolean
+    //   122	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	55	122	finally
+    //   55	73	122	finally
+    //   73	108	122	finally
   }
   
-  private boolean a(azpg paramazpg)
+  public boolean a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(b(), 2, String.format("initProfileCardBackground styleId=%s bgId=%s url=%s strZipUrl=%s heroUrl=%s", new Object[] { Long.valueOf(paramazpg.a()), Long.valueOf(paramazpg.b()), paramazpg.a(), paramazpg.b(), paramazpg.c() }));
-    }
-    if (!TextUtils.isEmpty(paramazpg.a())) {
+    boolean bool = false;
+    for (;;)
+    {
       try
       {
-        Object localObject;
-        if ((paramazpg.b() == 160L) || (paramazpg.b() == 1600L))
+        long l = System.currentTimeMillis();
+        int i;
+        if (!a(l))
         {
-          localObject = bghy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazpg.a());
-          if (!TextUtils.isEmpty(paramazpg.b())) {
-            break label259;
+          i = 1;
+          if (!paramBoolean1) {
+            break label112;
+          }
+          if (paramBoolean2)
+          {
+            this.b += paramLong;
+            if (Math.abs(l - this.jdField_a_of_type_Long) <= 60000L) {
+              break label143;
+            }
+            j = 1;
+            this.jdField_a_of_type_Long = l;
+            if (i == 0)
+            {
+              paramBoolean1 = bool;
+              if (j == 0) {}
+            }
+            else
+            {
+              paramBoolean1 = true;
+            }
+            return paramBoolean1;
           }
         }
-        for (String str = "";; str = azff.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazpg.b()) + ".dynamic")
+        else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(b(), 2, String.format("initProfileCardBackground fileName=%s dynamicFileDirectory=%s", new Object[] { localObject, str }));
-          }
-          File localFile = new File((String)localObject);
-          boolean bool1 = localFile.isFile();
-          boolean bool2 = localFile.exists();
-          if (QLog.isColorLevel()) {
-            QLog.d(b(), 2, String.format("initProfileCardBackground isFile=%s exists=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-          }
-          if ((!bool1) || (!bool2)) {
-            break label355;
-          }
-          return a(paramazpg.b(), (String)localObject, str, localFile);
-          localObject = azff.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazpg.a(), paramazpg.b());
-          break;
-          label259:
-          str = azff.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazpg.b()) + "dynamicBottom.jpg";
-          if (new File(str).exists()) {
-            localObject = str;
-          }
+          i = 0;
+          continue;
         }
-        return false;
-      }
-      catch (Throwable paramazpg)
-      {
-        QLog.e(b(), 1, "initProfileCardBackground fail.", paramazpg);
-      }
-    }
-  }
-  
-  private void i()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(b(), 2, String.format("clearBGCache size=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
-    while (localIterator.hasNext())
-    {
-      Drawable localDrawable = (Drawable)localIterator.next();
-      if ((localDrawable instanceof FriendProfileCardBgDrawable)) {
-        ((FriendProfileCardBgDrawable)localDrawable).a();
-      } else if (bhbt.a(localDrawable)) {
-        bhbt.a().a(localDrawable);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilVector.clear();
-  }
-  
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramBaseActivity);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("qqvip_bg");
-    ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public boolean a(azpj paramazpj)
-  {
-    if (paramazpj.a() == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(b());
-    }
-    while ((paramazpj.a().equals(this.jdField_a_of_type_Azpg)) && (b())) {
-      return true;
-    }
-    this.jdField_a_of_type_Azpg = paramazpj.a();
-    boolean bool = a(this.jdField_a_of_type_Azpg);
-    if (QLog.isColorLevel()) {
-      QLog.d(b(), 2, "onCardUpdate initConfigResult=" + bool);
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if (bhbt.b(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
-        a("card-video");
-      }
-      for (;;)
-      {
-        a(true);
-        return true;
-        if (bhbt.c(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
-          a("card-etc");
-        } else if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable)) {
-          if (((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).d) {
-            a("card-dynamic");
-          } else {
-            a("card-static");
-          }
+        this.c += paramLong;
+        continue;
+        if (!paramBoolean2) {
+          break label130;
         }
       }
+      finally {}
+      label112:
+      this.d += paramLong;
+      continue;
+      label130:
+      this.e += paramLong;
+      continue;
+      label143:
+      int j = 0;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(b());
-    a("card-default");
-    a(false);
-    return true;
   }
   
-  public void f()
+  public long[] a()
   {
-    super.f();
-    i();
-    a();
-    ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    try
+    {
+      a(System.currentTimeMillis());
+      long l1 = this.b;
+      long l2 = this.c;
+      long l3 = this.d;
+      long l4 = this.e;
+      return new long[] { l1, l2, l3, l4 };
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor.putLong("key_update_time", this.jdField_a_of_type_Long);
+      localEditor.putLong("key_xg_c2c", this.b);
+      localEditor.putLong("key_xg_grp", this.c);
+      localEditor.putLong("key_wifi_c2c", this.d);
+      localEditor.putLong("key_wifi_grp", this.e);
+      localEditor.commit();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

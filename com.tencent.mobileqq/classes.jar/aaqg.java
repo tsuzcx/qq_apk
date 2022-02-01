@@ -1,30 +1,28 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaqg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class aaqg
+  implements View.OnClickListener
 {
-  aaqg(aaqa paramaaqa, int paramInt) {}
+  public aaqg(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = this.jdField_a_of_type_Aaqa.b - this.jdField_a_of_type_Aaqa.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      aaej.a(ServiceFolderFollowPBHeadView.a(this.a));
     }
-    if (this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
+    for (;;)
     {
-      localLayoutParams.height = (i - 5);
-      this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    }
-    if ((this.jdField_a_of_type_Aaqa.jdField_a_of_type_Besk != null) && (this.jdField_a_of_type_Aaqa.d) && (this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
-      this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      bdll.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
     }
   }
 }

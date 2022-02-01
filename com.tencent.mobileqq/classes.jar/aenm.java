@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aenm
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnClickListener
 {
-  public aenm(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public aenm(FontSettingActivity paramFontSettingActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
-      this.a.b(this.a.a);
-    }
+    FontSettingActivity.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,104 +1,95 @@
-import android.view.View;
-import android.view.ViewStub;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.1;
-import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.2;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bnnb
-  extends bnil
+  extends bnnn
 {
-  private AEProviderContainerView a;
+  private static final String a;
+  private static String b = "";
   
-  public bnnb(ViewStub paramViewStub)
+  static
   {
-    super(paramViewStub);
+    jdField_a_of_type_JavaLangString = bnnf.class.getSimpleName();
   }
   
-  protected void a(View paramView)
+  private void a(bioy parambioy, String[] paramArrayOfString)
   {
-    this.a = ((AEProviderContainerView)paramView.findViewById(2131363345));
-  }
-  
-  public void a(banb parambanb)
-  {
-    a(new BeautyAndFilterPanelViewStubHolder.1(this, parambanb));
-  }
-  
-  public void a(bnii parambnii, bnvb parambnvb)
-  {
-    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambnii, parambnvb));
-  }
-  
-  public void a(AECaptureMode paramAECaptureMode)
-  {
-    if (!a()) {
+    try
+    {
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+      b = paramArrayOfString.getString("callback");
+      parambioy = new Bundle();
+      parambioy.putInt("key_personal_album_enter_model", 0);
+      parambioy.putBoolean("key_pass_result_by_bundle", true);
+      parambioy.putString("key_accept_album_anonymity", paramArrayOfString.optString("acceptType"));
+      parambioy.putString("key_deny_delect_tips", paramArrayOfString.optString("denyTips"));
+      parambioy.putBoolean("key_can_new_album", false);
+      parambioy.putString("key_from_type", paramArrayOfString.optString("fromType"));
+      paramArrayOfString = bmtk.a();
+      paramArrayOfString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getCurrentAccountUin();
+      parambioy.putBoolean("key_need_change_to_jpg", false);
+      bmtd.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramArrayOfString, parambioy, bmtd.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, 7));
       return;
     }
-    this.a.setCaptureMode(paramAECaptureMode);
+    catch (Exception parambioy)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w(jdField_a_of_type_JavaLangString, 2, "handlePickQzoneAlbum,decode param error");
+    }
   }
   
-  public void b()
+  public void a(Intent paramIntent, byte paramByte, int paramInt)
   {
-    a();
-    this.a.setVisibility(0);
-    this.a.b();
+    switch (paramByte)
+    {
+    }
+    do
+    {
+      return;
+    } while ((TextUtils.isEmpty(b)) || (paramIntent == null));
+    String str1 = paramIntent.getStringExtra("key_selected_albuminfo.id");
+    String str2 = paramIntent.getStringExtra("key_selected_albuminfo.name");
+    paramIntent.getStringExtra("key_selected_albuminfo.cover");
+    paramIntent.getIntExtra("key_selected_albuminfo.permission", 0);
+    paramByte = paramIntent.getIntExtra("key_selected_albuminfo.type", 0);
+    paramInt = paramIntent.getIntExtra("key_selected_albuminfo.anonymity", 0);
+    paramIntent = new JSONObject();
+    try
+    {
+      paramIntent.put("albumid", str1);
+      paramIntent.put("albumtype", paramByte);
+      paramIntent.put("albumname", str2);
+      paramIntent.put("albumanonymity", paramInt);
+      if (QLog.isDevelopLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, paramIntent.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(b, new String[] { paramIntent.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
-  public boolean b()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (!a()) {
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
+    while (!paramString3.equalsIgnoreCase("PickQzoneAlbum")) {
       return false;
     }
-    return this.a.b();
-  }
-  
-  public void c()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.a();
-  }
-  
-  public void d()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.d();
-  }
-  
-  public void e()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void f()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.c();
-  }
-  
-  public void g()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.g();
-  }
-  
-  public void h()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.h();
+    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+    return true;
   }
 }
 

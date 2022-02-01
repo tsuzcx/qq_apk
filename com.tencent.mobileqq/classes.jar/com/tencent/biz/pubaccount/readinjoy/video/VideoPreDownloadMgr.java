@@ -9,35 +9,35 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import nxw;
-import pha;
-import sfd;
-import sff;
-import sfh;
-import sfi;
-import sfj;
-import sfk;
-import sfl;
-import sir;
-import sis;
-import siy;
-import siz;
-import sja;
-import slm;
+import nzq;
+import ozs;
+import rwh;
+import rwj;
+import rwl;
+import rwm;
+import rwn;
+import rwo;
+import rwp;
+import rzv;
+import rzw;
+import sac;
+import sad;
+import sae;
+import scq;
 
 public class VideoPreDownloadMgr
-  implements sff
+  implements rwj
 {
   private static String jdField_a_of_type_JavaLangString = "Q.readinjoy.video.VideoPreDownloadMgr";
   private static Set<String> c = new HashSet();
   public Context a;
-  private List<sfk> jdField_a_of_type_JavaUtilList;
+  private List<rwo> jdField_a_of_type_JavaUtilList;
   private Set<String> jdField_a_of_type_JavaUtilSet;
-  private sfd jdField_a_of_type_Sfd;
-  private sfj jdField_a_of_type_Sfj;
-  public sfl a;
-  private sis jdField_a_of_type_Sis;
-  private sja jdField_a_of_type_Sja;
+  private rwh jdField_a_of_type_Rwh;
+  private rwn jdField_a_of_type_Rwn;
+  public rwp a;
+  private rzw jdField_a_of_type_Rzw;
+  private sae jdField_a_of_type_Sae;
   private String jdField_b_of_type_JavaLangString;
   private Set<String> jdField_b_of_type_JavaUtilSet;
   
@@ -49,14 +49,14 @@ public class VideoPreDownloadMgr
     a(paramContext);
   }
   
-  private sja a(String paramString1, String paramString2, int paramInt)
+  private sae a(String paramString1, String paramString2, int paramInt)
   {
     if (paramString1 == null) {
-      return new sja(1, paramString2);
+      return new sae(1, paramString2);
     }
     if (1 == paramInt) {}
     for (paramInt = 104;; paramInt = 101) {
-      return new sja(paramInt, paramString2, new String[] { paramString1 });
+      return new sae(paramInt, paramString2, new String[] { paramString1 });
     }
   }
   
@@ -65,8 +65,8 @@ public class VideoPreDownloadMgr
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 正式开始预下载 vid=" + paramString2 + ", url=" + paramString1 + ", urlType=" + paramInt1 + ", duration=" + paramInt2);
     }
-    sis localsis = this.jdField_a_of_type_Sis;
-    if (localsis == null) {
+    rzw localrzw = this.jdField_a_of_type_Rzw;
+    if (localrzw == null) {
       if (QLog.isColorLevel()) {
         QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() start preload ERROR cacheMgr == null!");
       }
@@ -83,17 +83,17 @@ public class VideoPreDownloadMgr
         }
         else
         {
-          str = nxw.a(paramString1);
+          str = nzq.a(paramString1);
         }
       }
-      this.jdField_a_of_type_Sja = a(paramString1, str, paramInt1);
-      localsis.a(this.jdField_a_of_type_Sja, paramInt2, 2000L);
-    } while ((!paramBoolean) || (this.jdField_a_of_type_Sfl == null));
-    paramString1 = this.jdField_a_of_type_Sfl;
+      this.jdField_a_of_type_Sae = a(paramString1, str, paramInt1);
+      localrzw.a(this.jdField_a_of_type_Sae, paramInt2, 2000L);
+    } while ((!paramBoolean) || (this.jdField_a_of_type_Rwp == null));
+    paramString1 = this.jdField_a_of_type_Rwp;
     paramString1.i += 1;
   }
   
-  private void a(List<sfk> paramList)
+  private void a(List<rwo> paramList)
   {
     ThreadManager.post(new VideoPreDownloadMgr.PreDownloadSerialTask(this, paramList), 5, null, true);
   }
@@ -105,8 +105,8 @@ public class VideoPreDownloadMgr
   
   private void e()
   {
-    sis localsis = this.jdField_a_of_type_Sis;
-    if (localsis == null) {
+    rzw localrzw = this.jdField_a_of_type_Rzw;
+    if (localrzw == null) {
       return;
     }
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
@@ -115,7 +115,7 @@ public class VideoPreDownloadMgr
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "initSerialPreDownload() 设置mCacheMgr回调");
     }
-    localsis.a(new sfh(this));
+    localrzw.a(new rwl(this));
   }
   
   private void f()
@@ -123,10 +123,10 @@ public class VideoPreDownloadMgr
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "releaseSerialPredownload()");
     }
-    if (this.jdField_a_of_type_Sis != null)
+    if (this.jdField_a_of_type_Rzw != null)
     {
-      this.jdField_a_of_type_Sis.a(null);
-      this.jdField_a_of_type_Sis.b();
+      this.jdField_a_of_type_Rzw.a(null);
+      this.jdField_a_of_type_Rzw.b();
     }
   }
   
@@ -141,16 +141,16 @@ public class VideoPreDownloadMgr
       {
         try
         {
-          localsfk1 = (sfk)localList.get(0);
-          localsfk2 = localsfk1;
+          localrwo1 = (rwo)localList.get(0);
+          localrwo2 = localrwo1;
         }
         catch (Exception localException1)
         {
           try
           {
             localList.remove(0);
-            localsfk2 = localsfk1;
-            if ((localsfk2 != null) && (!TextUtils.isEmpty(localsfk2.jdField_a_of_type_JavaLangString))) {
+            localrwo2 = localrwo1;
+            if ((localrwo2 != null) && (!TextUtils.isEmpty(localrwo2.jdField_a_of_type_JavaLangString))) {
               break;
             }
             g();
@@ -158,51 +158,51 @@ public class VideoPreDownloadMgr
           }
           catch (Exception localException2)
           {
-            sfk localsfk1;
-            sfk localsfk2;
+            rwo localrwo1;
+            rwo localrwo2;
             int i;
             break label64;
           }
           localException1 = localException1;
-          localsfk1 = null;
+          localrwo1 = null;
         }
         if (QLog.isColorLevel())
         {
           QLog.e(jdField_a_of_type_JavaLangString, 2, "preDownloadVideoNotAlreadyList.remove(0) ERROR = " + localException1.getMessage());
-          localsfk2 = localsfk1;
+          localrwo2 = localrwo1;
         }
       }
-      this.jdField_b_of_type_JavaLangString = localsfk2.jdField_a_of_type_JavaLangString;
-      i = localsfk2.b;
-      if (2 == localsfk2.jdField_a_of_type_Int)
+      this.jdField_b_of_type_JavaLangString = localrwo2.jdField_a_of_type_JavaLangString;
+      i = localrwo2.b;
+      if (2 == localrwo2.jdField_a_of_type_Int)
       {
-        slm.a().a(localsfk2.jdField_a_of_type_JavaLangString, new sfi(this, i));
+        scq.a().a(localrwo2.jdField_a_of_type_JavaLangString, new rwm(this, i));
         return;
       }
-      if (5 == localsfk2.jdField_a_of_type_Int)
+      if (5 == localrwo2.jdField_a_of_type_Int)
       {
-        if (a(localsfk2.jdField_a_of_type_JavaLangString, localsfk2.jdField_a_of_type_JavaLangString))
+        if (a(localrwo2.jdField_a_of_type_JavaLangString, localrwo2.jdField_a_of_type_JavaLangString))
         {
           if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 缓冲已存在，跳过, vid=" + localsfk2.jdField_a_of_type_JavaLangString);
+            QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 缓冲已存在，跳过, vid=" + localrwo2.jdField_a_of_type_JavaLangString);
           }
           this.jdField_b_of_type_JavaLangString = null;
           g();
           return;
         }
-        b(localsfk2.jdField_a_of_type_JavaLangString, localsfk2.jdField_a_of_type_JavaLangString, 0, i);
+        b(localrwo2.jdField_a_of_type_JavaLangString, localrwo2.jdField_a_of_type_JavaLangString, 0, i);
         return;
       }
-      if (a(null, localsfk2.jdField_a_of_type_JavaLangString))
+      if (a(null, localrwo2.jdField_a_of_type_JavaLangString))
       {
         if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 缓冲已存在，跳过, vid=" + localsfk2.jdField_a_of_type_JavaLangString);
+          QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 缓冲已存在，跳过, vid=" + localrwo2.jdField_a_of_type_JavaLangString);
         }
         this.jdField_b_of_type_JavaLangString = null;
         g();
         return;
       }
-      b(null, localsfk2.jdField_a_of_type_JavaLangString, 0, i);
+      b(null, localrwo2.jdField_a_of_type_JavaLangString, 0, i);
       return;
     }
     QLog.i(jdField_a_of_type_JavaLangString, 2, "已完成预下载，队列为空");
@@ -210,7 +210,7 @@ public class VideoPreDownloadMgr
   
   public void a()
   {
-    a(true);
+    b(true);
   }
   
   public void a(int paramInt)
@@ -220,17 +220,17 @@ public class VideoPreDownloadMgr
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Sfj == null) {}
+    if (this.jdField_a_of_type_Rwn == null) {}
     do
     {
       List localList;
       do
       {
         return;
-        if (this.jdField_a_of_type_Sis == null) {
+        if (this.jdField_a_of_type_Rzw == null) {
           break;
         }
-        localList = this.jdField_a_of_type_Sfj.a(paramInt, paramBoolean);
+        localList = this.jdField_a_of_type_Rwn.a(paramInt, paramBoolean);
       } while ((localList == null) || (localList.size() <= 0));
       if (QLog.isColorLevel()) {
         QLog.i(jdField_a_of_type_JavaLangString, 2, "requestPreDownload() 外部触发预下载逻辑 size = " + localList.size());
@@ -244,11 +244,11 @@ public class VideoPreDownloadMgr
   public void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sfd = new sfd();
-    this.jdField_a_of_type_Sfd.a(this);
-    if (!this.jdField_a_of_type_Sfd.a())
+    this.jdField_a_of_type_Rwh = new rwh();
+    this.jdField_a_of_type_Rwh.a(this);
+    if (!this.jdField_a_of_type_Rwh.a())
     {
-      this.jdField_a_of_type_Sfd.a();
+      this.jdField_a_of_type_Rwh.a();
       return;
     }
     c();
@@ -262,57 +262,45 @@ public class VideoPreDownloadMgr
   
   public void a(String paramString, boolean paramBoolean)
   {
-    sfl localsfl = this.jdField_a_of_type_Sfl;
-    if (localsfl == null) {}
+    rwp localrwp = this.jdField_a_of_type_Rwp;
+    if (localrwp == null) {}
     do
     {
       return;
       if (!paramBoolean) {
         break;
       }
-      localsfl.g += 1;
+      localrwp.g += 1;
       if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.contains(paramString)))
       {
-        localsfl.j += 1;
+        localrwp.j += 1;
         if ((this.jdField_b_of_type_JavaUtilSet != null) && (!this.jdField_b_of_type_JavaUtilSet.contains(paramString)))
         {
           this.jdField_b_of_type_JavaUtilSet.add(paramString);
-          localsfl.k += 1;
+          localrwp.k += 1;
         }
       }
     } while (!c.contains(paramString));
-    localsfl.l += 1;
+    localrwp.l += 1;
     return;
-    localsfl.h += 1;
+    localrwp.h += 1;
   }
   
-  public void a(sfj paramsfj)
+  public void a(rwn paramrwn)
   {
-    this.jdField_a_of_type_Sfj = paramsfj;
+    this.jdField_a_of_type_Rwn = paramrwn;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "destroy()");
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.1(this), 5, null, true);
-    if ((paramBoolean) && (this.jdField_a_of_type_Sfl != null))
-    {
-      pha.b(BaseApplication.getContext(), pha.a(), true, this.jdField_a_of_type_Sfl.a());
-      this.jdField_a_of_type_Sfl = null;
-    }
-    if (this.jdField_a_of_type_Sfd != null)
-    {
-      this.jdField_a_of_type_Sfd.b();
-      this.jdField_a_of_type_Sfd = null;
-    }
+    c();
+    e();
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    sis localsis = this.jdField_a_of_type_Sis;
-    if (localsis == null) {}
+    rzw localrzw = this.jdField_a_of_type_Rzw;
+    if (localrzw == null) {}
     String str;
     do
     {
@@ -326,13 +314,13 @@ public class VideoPreDownloadMgr
         }
         else
         {
-          str = nxw.a(paramString1);
+          str = nzq.a(paramString1);
         }
       }
       paramString1 = a(paramString1, str, 101);
       try
       {
-        i = localsis.a(paramString1);
+        i = localrzw.a(paramString1);
         if ((i == 2) || (i == 1))
         {
           if (QLog.isColorLevel()) {
@@ -365,30 +353,42 @@ public class VideoPreDownloadMgr
     e();
   }
   
-  public void c()
+  public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Sis == null) {
-      this.jdField_a_of_type_Sis = siy.a.a().a();
-    }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "VideoPreDownloadController initCacheMgr mCacheMgr=" + this.jdField_a_of_type_Sis);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "destroy()");
     }
-    if (this.jdField_a_of_type_Sis == null) {}
+    ThreadManager.post(new VideoPreDownloadMgr.1(this), 5, null, true);
+    if ((paramBoolean) && (this.jdField_a_of_type_Rwp != null))
+    {
+      ozs.b(BaseApplication.getContext(), ozs.a(), true, this.jdField_a_of_type_Rwp.a());
+      this.jdField_a_of_type_Rwp = null;
+    }
+    if (this.jdField_a_of_type_Rwh != null)
+    {
+      this.jdField_a_of_type_Rwh.b();
+      this.jdField_a_of_type_Rwh = null;
+    }
   }
   
-  public void c(boolean paramBoolean)
+  public void c()
   {
-    c();
-    e();
+    if (this.jdField_a_of_type_Rzw == null) {
+      this.jdField_a_of_type_Rzw = sac.a.a().a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "VideoPreDownloadController initCacheMgr mCacheMgr=" + this.jdField_a_of_type_Rzw);
+    }
+    if (this.jdField_a_of_type_Rzw == null) {}
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Sis != null) && (this.jdField_a_of_type_Sja != null)) {
-      this.jdField_a_of_type_Sis.a();
+    if ((this.jdField_a_of_type_Rzw != null) && (this.jdField_a_of_type_Sae != null)) {
+      this.jdField_a_of_type_Rzw.a();
     }
     this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Sja = null;
+    this.jdField_a_of_type_Sae = null;
   }
 }
 

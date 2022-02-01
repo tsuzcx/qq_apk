@@ -1,20 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.SubAccountObserver;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.widget.AuthorizationItem;
 
-class acwm
-  extends SubAccountObserver
+public class acwm
 {
-  acwm(acwk paramacwk, bdeh parambdeh) {}
+  public int a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  private acwm(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString3 == null) || (this.jdField_a_of_type_Acwk.a == null) || (paramString1 == null)) {}
-    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Acwk.a.getAccount())) {
-      return;
+    this(paramString1, paramString2, paramString3, 0);
+  }
+  
+  private acwm(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private static acwm b()
+  {
+    return new acwm("", "", "", 1);
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
+      return this.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_Bdeh.a(paramString2, paramString3, true);
-    bddy.a(this.jdField_a_of_type_Acwk.a, (byte)1, paramString2);
-    bddy.a(this.jdField_a_of_type_Acwk.a, paramString2, false);
+    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
+      return this.b;
+    }
+    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
+      return this.c;
+    }
+    return "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
   }
 }
 

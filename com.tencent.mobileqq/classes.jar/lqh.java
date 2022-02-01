@@ -1,13 +1,28 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-class lqh
-  implements lqo
+public class lqh
 {
-  lqh(lqg paramlqg) {}
+  public PendantItem a;
+  public FilterDesc a;
+  public VideoMaterial a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void a(Frame paramFrame, lql paramlql)
+  public lqh()
   {
-    lqg.a(this.a, paramFrame);
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
   }
 }
 

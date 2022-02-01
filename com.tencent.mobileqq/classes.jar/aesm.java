@@ -1,27 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesm
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aesm(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  public aesm(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (String str1 = "1";; str1 = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    Intent localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(localIntent, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

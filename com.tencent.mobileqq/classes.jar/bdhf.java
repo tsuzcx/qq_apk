@@ -1,47 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.net.ssl.SSLSocket;
-
-class bdhf
-  extends bdhe
+public class bdhf
 {
-  private bdhf(bdhc parambdhc, SSLSocket paramSSLSocket)
-  {
-    super(parambdhc, paramSSLSocket);
-  }
+  public araj[] a = new araj[0];
   
-  public void setEnabledProtocols(String[] paramArrayOfString)
+  public String toString()
   {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
+    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
+    if (this.a != null)
     {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
+      araj[] arrayOfaraj = this.a;
+      int j = arrayOfaraj.length;
+      int i = 0;
+      while (i < j)
       {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
+        araj localaraj = arrayOfaraj[i];
+        if (localaraj != null) {
+          localStringBuilder.append("confItem ").append(localaraj.jdField_a_of_type_Int).append(":").append(localaraj.jdField_a_of_type_JavaLangString).append("\n");
         }
+        i += 1;
       }
     }
-    for (;;)
-    {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
-      }
-      return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
-    }
+    return localStringBuilder.toString();
   }
 }
 

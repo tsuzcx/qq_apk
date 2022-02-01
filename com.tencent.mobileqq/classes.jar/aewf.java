@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
 public class aewf
-  implements aqgg
 {
-  public aewf(QQBrowserActivity paramQQBrowserActivity) {}
-  
-  public void a()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
-  }
-  
-  public void b()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
-  }
+  public int a;
+  public View a;
+  public arsh a;
+  public bbav a;
+  public BusinessInfoCheckUpdate.AppInfo a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
 }
 
 

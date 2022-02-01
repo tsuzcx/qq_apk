@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agfz;
-import agga;
-import aggk;
-import aggl;
-import aggx;
+import agpa;
+import agpb;
+import agpl;
+import agpm;
+import agpy;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -26,15 +26,15 @@ public class DoodleMsgView
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
-  private agfz jdField_a_of_type_Agfz;
-  private agga jdField_a_of_type_Agga;
+  private agpa jdField_a_of_type_Agpa;
+  private agpb jdField_a_of_type_Agpb;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private WeakReference<aggl> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<agpm> jdField_a_of_type_MqqUtilWeakReference;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   
@@ -45,12 +45,12 @@ public class DoodleMsgView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Agfz != null) {
+    if (this.jdField_a_of_type_Agpa != null) {
       return;
     }
-    this.jdField_a_of_type_Agfz = new agfz();
-    this.jdField_a_of_type_Agga = new aggk(this);
-    this.jdField_a_of_type_Agfz.a(this.jdField_a_of_type_Agga, 1, paramInt1, paramInt2);
+    this.jdField_a_of_type_Agpa = new agpa();
+    this.jdField_a_of_type_Agpb = new agpl(this);
+    this.jdField_a_of_type_Agpa.a(this.jdField_a_of_type_Agpb, 1, paramInt1, paramInt2);
   }
   
   private boolean a()
@@ -73,11 +73,11 @@ public class DoodleMsgView
     {
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
-        aggx.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        agpy.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
       this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = aggx.a().c(paramInt1, paramInt2);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = agpy.a().c(paramInt1, paramInt2);
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
         break label207;
       }
@@ -90,7 +90,7 @@ public class DoodleMsgView
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
         break label160;
       }
-      aggx.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      agpy.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       this.jdField_a_of_type_AndroidGraphicsCanvas = null;
       bool = false;
@@ -102,7 +102,7 @@ public class DoodleMsgView
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
         break label202;
       }
-      aggx.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      agpy.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       this.jdField_a_of_type_AndroidGraphicsCanvas = null;
       bool = false;
@@ -113,10 +113,10 @@ public class DoodleMsgView
   
   private void b(long paramLong)
   {
-    if (this.jdField_a_of_type_Agfz == null) {
+    if (this.jdField_a_of_type_Agpa == null) {
       return;
     }
-    long l1 = this.jdField_a_of_type_Agfz.a();
+    long l1 = this.jdField_a_of_type_Agpa.a();
     label34:
     Object localObject;
     TimerTask localTimerTask;
@@ -124,7 +124,7 @@ public class DoodleMsgView
     {
       l1 = (int)((float)l1 * 1.0F / 1.2F);
       l1 /= 25L;
-      long l2 = this.jdField_a_of_type_Agfz.a();
+      long l2 = this.jdField_a_of_type_Agpa.a();
       this.jdField_a_of_type_JavaUtilTimerTask = new DoodleMsgView.2(this, l2, l2 / (l1 + 1L));
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
       this.jdField_a_of_type_Long = 0L;
@@ -140,11 +140,11 @@ public class DoodleMsgView
       if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
         break;
       }
-      localObject = (aggl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      localObject = (agpm)this.jdField_a_of_type_MqqUtilWeakReference.get();
       if (localObject == null) {
         break;
       }
-      ((aggl)localObject).f();
+      ((agpm)localObject).f();
       return;
       if (l1 <= 20000L)
       {
@@ -196,24 +196,24 @@ public class DoodleMsgView
   
   public int a()
   {
-    if (this.jdField_a_of_type_Agfz != null) {
-      return this.jdField_a_of_type_Agfz.b();
+    if (this.jdField_a_of_type_Agpa != null) {
+      return this.jdField_a_of_type_Agpa.b();
     }
     return 4;
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Agfz != null)
+    if (this.jdField_a_of_type_Agpa != null)
     {
       d();
-      this.jdField_a_of_type_Agfz.a();
-      this.jdField_a_of_type_Agfz = null;
+      this.jdField_a_of_type_Agpa.a();
+      this.jdField_a_of_type_Agpa = null;
     }
-    this.jdField_a_of_type_Agga = null;
+    this.jdField_a_of_type_Agpb = null;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      aggx.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      agpy.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
     QLog.d("DoodleMsgView", 2, "DoodleMsgView unInit");
@@ -222,13 +222,13 @@ public class DoodleMsgView
   public void a(long paramLong)
   {
     QLog.d("DoodleMsgView", 2, "play:");
-    if ((this.jdField_a_of_type_Agfz == null) || (this.jdField_a_of_type_Agfz.c() == 0))
+    if ((this.jdField_a_of_type_Agpa == null) || (this.jdField_a_of_type_Agpa.c() == 0))
     {
       if (this.jdField_a_of_type_MqqUtilWeakReference != null)
       {
-        aggl localaggl = (aggl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        if (localaggl != null) {
-          localaggl.g();
+        agpm localagpm = (agpm)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        if (localagpm != null) {
+          localagpm.g();
         }
       }
       return;
@@ -239,10 +239,10 @@ public class DoodleMsgView
     b(paramLong);
   }
   
-  public void a(aggl paramaggl, int paramInt1, int paramInt2)
+  public void a(agpm paramagpm, int paramInt1, int paramInt2)
   {
     QLog.d("DoodleMsgView", 2, "DoodleMsgView init begin");
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaggl);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramagpm);
     this.jdField_a_of_type_AndroidGraphicsCanvas = null;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
@@ -257,15 +257,15 @@ public class DoodleMsgView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Agfz != null) {
-      this.jdField_a_of_type_Agfz.a(paramBoolean);
+    if (this.jdField_a_of_type_Agpa != null) {
+      this.jdField_a_of_type_Agpa.a(paramBoolean);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Agfz != null) {
-      this.jdField_a_of_type_Agfz.b();
+    if (this.jdField_a_of_type_Agpa != null) {
+      this.jdField_a_of_type_Agpa.b();
     }
   }
   
@@ -282,9 +282,9 @@ public class DoodleMsgView
     }
     f();
     this.jdField_a_of_type_Long = -9223372036854775808L;
-    if ((this.jdField_a_of_type_Agfz != null) && (isShown()))
+    if ((this.jdField_a_of_type_Agpa != null) && (isShown()))
     {
-      this.jdField_a_of_type_Agfz.a(2147483647L, false);
+      this.jdField_a_of_type_Agpa.a(2147483647L, false);
       if (QLog.isColorLevel()) {
         QLog.d("DoodleMsgView", 2, "preparesegments");
       }
@@ -295,7 +295,7 @@ public class DoodleMsgView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_Agfz != null) && (this.jdField_a_of_type_Agfz.b() != 0))
+    if ((this.jdField_a_of_type_Agpa != null) && (this.jdField_a_of_type_Agpa.b() != 0))
     {
       QLog.d("DoodleMsgView", 2, "onDraw not ready");
       return;
@@ -313,13 +313,13 @@ public class DoodleMsgView
   public void setContent(String paramString, boolean paramBoolean)
   {
     QLog.d("DoodleMsgView", 2, "setContent:" + paramString + " prepare:" + paramBoolean);
-    if (this.jdField_a_of_type_Agfz == null) {}
+    if (this.jdField_a_of_type_Agpa == null) {}
     do
     {
       do
       {
         return;
-        if (this.jdField_a_of_type_Agfz.a(paramString, paramBoolean, getContext()))
+        if (this.jdField_a_of_type_Agpa.a(paramString, paramBoolean, getContext()))
         {
           QLog.d("DoodleMsgView", 2, "drawer setdata return true:");
           f();
@@ -327,7 +327,7 @@ public class DoodleMsgView
         }
         QLog.d("DoodleMsgView", 2, "drawer setdata same data:" + a());
       } while (this.jdField_a_of_type_MqqUtilWeakReference == null);
-      paramString = (aggl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      paramString = (agpm)this.jdField_a_of_type_MqqUtilWeakReference.get();
     } while (paramString == null);
     paramString.a(a());
   }

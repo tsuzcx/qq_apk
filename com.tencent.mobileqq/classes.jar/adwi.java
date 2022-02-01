@@ -1,49 +1,59 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SingleLineTextView;
 
 public class adwi
-  implements bkhw
+  extends anyu
 {
-  public adwi(ChatSettingActivity paramChatSettingActivity, String paramString, bkho parambkho) {}
+  public adwi(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  void a(String paramString, View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.e();
+    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
       return;
-      if (bgnt.d(BaseApplication.getContext()))
-      {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
-        if (paramView != null)
-        {
-          paramView.removeMessages(16711681);
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
-        if (bgjw.b(this.jdField_a_of_type_JavaLangString)) {
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
-      }
-      else
-      {
-        ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131691307, 1);
-        continue;
-        if (bgjw.b(this.jdField_a_of_type_JavaLangString)) {
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-        }
-      }
     }
+    this.a.runOnUiThread(new AssociatedAccountManageActivity.8.1(this, paramString, paramView));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null) {
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    a(paramString, localView);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
+    }
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null)
+      {
+        ((SingleLineTextView)localView.findViewById(2131371647)).setText(bhlg.h(this.a.app, paramString));
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    ((SingleLineTextView)localView.findViewById(2131371647)).setText(bhlg.h(this.a.app, paramString));
+    a(paramString, localView);
   }
 }
 

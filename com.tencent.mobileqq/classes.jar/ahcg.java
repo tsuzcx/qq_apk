@@ -1,13 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class ahcg
-  extends afuv
+class ahcg
+  implements bliz
 {
-  public ImageView a;
-  public TextView b;
+  ahcg(ahcf paramahcf, MessageForDeviceFile paramMessageForDeviceFile, blir paramblir) {}
   
-  public ahcg(ahcf paramahcf) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      this.jdField_a_of_type_Ahcf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

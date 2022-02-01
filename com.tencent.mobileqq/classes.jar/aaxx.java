@@ -1,12 +1,6 @@
-import com.tencent.oskplayer.util.Singleton;
-
-public class aaxx
-  extends Singleton<aaxw>
+public abstract interface aaxx
 {
-  protected aaxw a()
-  {
-    return new aaxw();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

@@ -1,118 +1,151 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class awnv
-  implements awnm
+class awnv
+  extends awmf
 {
-  public static String a;
+  awnv(awnq paramawnq) {}
   
-  static
+  protected void a()
   {
-    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
+    if ((this.a.jdField_b_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.e();
+    }
   }
   
-  public awnv(QQAppInterface paramQQAppInterface) {}
-  
-  public static String a(String paramString, MessageRecord paramMessageRecord)
+  protected void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
-    paramMessageRecord = new JSONObject();
-    try
+    if (!paramBoolean1) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      paramMessageRecord.put("selfuin", paramString);
-      paramMessageRecord.put("uuid", str);
-      paramMessageRecord.put("msgType", 4);
-      paramMessageRecord.put("msgSubType", 10);
-      return paramMessageRecord.toString();
+      if (QLog.isColorLevel()) {
+        QLog.i("LyricsController", 2, "onLyricModuleSwitchChange, newUserClosed:" + paramBoolean1 + " type:" + paramInt + " uin:" + paramString + " mFloatParams:" + this.a.jdField_a_of_type_Awno);
+      }
+      if ((this.a.jdField_a_of_type_Awno.a(paramInt, paramString)) && (this.a.jdField_a_of_type_Awno.jdField_b_of_type_Boolean != paramBoolean1))
+      {
+        this.a.jdField_a_of_type_Awno.jdField_b_of_type_Boolean = paramBoolean1;
+        awnq.a(this.a);
+        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!paramBoolean1) && (paramBoolean2))
+        {
+          awnq.a(this.a, this.a.jdField_b_of_type_JavaLangString);
+          if (this.a.jdField_a_of_type_JavaLangBoolean != null) {
+            awnq.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.c, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue());
+          }
+          awnq.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.i);
+        }
+      }
+      if (paramBoolean2) {
+        this.a.b(paramInt, paramString, paramBoolean1);
+      }
+      return;
     }
-    catch (JSONException paramString)
+  }
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession)
+  {
+    if (paramListenTogetherSession == null) {
+      return;
+    }
+    if (paramListenTogetherSession.h == 2) {}
+    for (boolean bool = true;; bool = false)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.i("LyricsController", 2, "onUIModuleNeedRefresh sessionJoined:" + bool);
+      }
+      if (!bool) {
+        break;
+      }
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (paramListenTogetherSession != null)
       {
-        paramString.printStackTrace();
+        paramListenTogetherSession = paramListenTogetherSession.a();
+        localObject1 = localObject2;
+        if (paramListenTogetherSession != null) {
+          localObject1 = paramListenTogetherSession.jdField_e_of_type_JavaLangString;
+        }
+      }
+      this.a.jdField_a_of_type_Awno.a = ((String)localObject1);
+      awnq.a(this.a);
+      return;
+    }
+  }
+  
+  protected void a(ISong paramISong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LyricsController", 2, "onPlayMusicChange song.id:" + paramISong.a());
+    }
+    awnq.a(this.a, paramISong.a());
+    this.a.jdField_a_of_type_Awno.a = paramISong.d();
+    awnq.a(this.a);
+  }
+  
+  protected void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LyricsController", 2, "onPlayStateChange state:" + paramInt);
+    }
+    if (paramInt == 2) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(true);
+      }
+    }
+    for (;;)
+    {
+      awnq.b(this.a, paramString, paramInt);
+      beic.a().a();
+      return;
+      if (paramInt == 3)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
+        }
+      }
+      else if ((paramInt == 4) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
       }
     }
   }
   
-  public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  protected void a(String paramString, int paramInt1, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll((Collection)paramHashMap.get((String)localIterator.next()));
+    awnq.a(this.a, paramString, paramInt1, paramInt2);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    this.a.a(paramString1, paramString2, paramBoolean);
+  }
+  
+  protected void a(boolean paramBoolean, ListenTogetherSession paramListenTogetherSession)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LyricsController", 2, "onFloatNeedShowOrDismiss show:" + paramBoolean + " session:" + paramListenTogetherSession);
     }
-    return localArrayList;
-  }
-  
-  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = awqu.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
+    if (paramListenTogetherSession == null) {
+      return;
     }
-    return "";
-  }
-  
-  public awnz a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    awnz localawnz = new awnz();
-    localawnz.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
-    localawnz.jdField_a_of_type_Boolean = true;
-    return localawnz;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = awqu.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
+    int i = paramListenTogetherSession.jdField_e_of_type_Int;
+    String str = paramListenTogetherSession.jdField_e_of_type_JavaLangString;
+    if (paramBoolean)
+    {
+      Object localObject = null;
+      MusicInfo localMusicInfo = paramListenTogetherSession.a();
+      paramListenTogetherSession = localObject;
+      if (localMusicInfo != null) {
+        paramListenTogetherSession = localMusicInfo.jdField_e_of_type_JavaLangString;
       }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
+      this.a.jdField_a_of_type_Awno.a = paramListenTogetherSession;
+      this.a.a(i, str);
+      return;
     }
-    return "";
+    this.a.b(i, str);
   }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof ChatMessage)) {
-      return awwt.a((ChatMessage)paramMessageRecord);
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return paramMsgBackupResEntity.msgType == 4;
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 

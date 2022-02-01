@@ -1,19 +1,22 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+
 public class apyr
+  implements apyw
 {
-  public int a;
-  long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "0";
-  
-  public apyr()
+  public EIPCResult a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
+    paramBundle = apxv.a();
+    if (paramBundle == null)
+    {
+      QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("Uin", paramBundle.getCurrentAccountUin());
+    return EIPCResult.createResult(0, localBundle);
   }
 }
 

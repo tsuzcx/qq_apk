@@ -1,22 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class boui
-  implements Animator.AnimatorListener
+class boui
+  implements View.OnClickListener
 {
-  public boui(QIMProviderContainerView paramQIMProviderContainerView) {}
+  boui(bouf parambouf) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.c.setVisibility(8);
+    bozr.a().ah();
+    bouf.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

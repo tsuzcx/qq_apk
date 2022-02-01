@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agez
-  implements View.OnTouchListener
+final class agez
+  implements agfh
 {
-  public agez(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    return true;
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 42);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

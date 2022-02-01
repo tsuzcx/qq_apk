@@ -1,50 +1,52 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdkr
-  implements WtTicketPromise
 {
-  private arah jdField_a_of_type_Arah;
-  private WeakReference<bdkq> jdField_a_of_type_JavaLangRefWeakReference;
+  public char a;
+  public int a;
+  public List<bdkr> a;
+  public int b;
   
-  public bdkr(bdkq parambdkq, arah paramarah)
+  public bdkr(int paramInt, char paramChar)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambdkq);
-    this.jdField_a_of_type_Arah = paramarah;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Char = paramChar;
+    this.b = 1;
   }
   
-  public void Done(Ticket paramTicket)
+  public bdkr a(char paramChar)
   {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
+      bdkr localbdkr = (bdkr)localIterator.next();
+      if (localbdkr.jdField_a_of_type_Char == paramChar) {
+        return localbdkr;
+      }
     }
-    if (this.jdField_a_of_type_Arah != null) {
-      this.jdField_a_of_type_Arah.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
+    return null;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void a()
   {
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Arah != null) {
-      this.jdField_a_of_type_Arah.a(false);
-    }
+    this.b += 1;
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public void a(bdkr parambdkr)
   {
-    if (this.jdField_a_of_type_Arah != null) {
-      this.jdField_a_of_type_Arah.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
+    this.jdField_a_of_type_JavaUtilList.add(parambdkr);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id: ").append(this.jdField_a_of_type_Int).append(" ");
+    localStringBuilder.append("char: ").append(this.jdField_a_of_type_Char).append(" ");
+    localStringBuilder.append("cnt: ").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

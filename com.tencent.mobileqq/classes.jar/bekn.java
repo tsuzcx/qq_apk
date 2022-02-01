@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import androidx.annotation.Nullable;
 
-public final class bekn
-  implements QQPermissionCallback
+public class bekn
 {
-  public bekn(BaseActivity paramBaseActivity) {}
+  public String a;
+  public String b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bekn(String paramString1, String paramString2)
   {
-    if (!this.a.isFinishing()) {
-      bglp.b(this.a);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof bekn)) {
+        return false;
+      }
+      paramObject = (bekn)paramObject;
+    } while ((belw.a(this.a, paramObject.a)) && (belw.a(this.b, paramObject.b)));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "AText{text='" + this.a + '\'' + ", attribs='" + this.b + '\'' + '}';
+  }
 }
 
 

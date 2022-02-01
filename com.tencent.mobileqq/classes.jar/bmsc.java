@@ -1,84 +1,116 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
 
 public class bmsc
-  extends alej
-  implements Cloneable
 {
-  public bmsc(Context paramContext)
+  private ByteArrayInputStream jdField_a_of_type_JavaIoByteArrayInputStream;
+  private ObjectInputStream jdField_a_of_type_JavaIoObjectInputStream;
+  private boolean jdField_a_of_type_Boolean;
+  
+  private bmsc() {}
+  
+  public bmsc(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131696710);
+    this.jdField_a_of_type_JavaIoByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
+    this.jdField_a_of_type_JavaIoObjectInputStream = new ObjectInputStream(this.jdField_a_of_type_JavaIoByteArrayInputStream);
   }
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    if ((paramObject instanceof bmsc))
+    return a(0);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {}
+    try
     {
-      paramObject = (bmsc)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
+      i = this.jdField_a_of_type_JavaIoObjectInputStream.readInt();
+      return i;
     }
-    paramObject = new bmsc(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return paramInt;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    Object localObject = paramObject;
+    if (!this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      localObject = this.jdField_a_of_type_JavaIoObjectInputStream.readObject();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_Boolean = true;
+    }
     return paramObject;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public String a()
   {
-    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
+    return a("");
+  }
+  
+  public String a(String paramString)
+  {
+    String str = paramString;
+    if (!this.jdField_a_of_type_Boolean) {}
     try
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.b = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((!TextUtils.isEmpty(this.c)) && (this.jdField_a_of_type_Beps == null))
-      {
-        this.jdField_a_of_type_Beps = new beps();
-        this.jdField_a_of_type_Beps.a(this.c);
-      }
-      return;
+      str = this.jdField_a_of_type_JavaIoObjectInputStream.readUTF();
+      return str;
     }
-    catch (JSONException paramArrayOfByte)
+    catch (Exception localException)
     {
-      paramArrayOfByte.printStackTrace();
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return paramString;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaIoObjectInputStream.close();
+      try
+      {
+        label7:
+        this.jdField_a_of_type_JavaIoByteArrayInputStream.close();
+        return;
+      }
+      catch (Exception localException1) {}
+    }
+    catch (Exception localException2)
+    {
+      break label7;
     }
   }
   
-  public byte[] a()
+  public boolean a()
   {
-    return b();
+    return a(false);
   }
   
-  public byte[] b()
+  public boolean a(boolean paramBoolean)
   {
-    JSONObject localJSONObject = new JSONObject();
+    boolean bool = paramBoolean;
+    if (!this.jdField_a_of_type_Boolean) {}
     try
     {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.b);
-      if (this.jdField_a_of_type_Beps != null) {
-        this.c = this.jdField_a_of_type_Beps.a();
-      }
-      localJSONObject.put("messageNavInfo", this.c);
+      bool = this.jdField_a_of_type_JavaIoObjectInputStream.readBoolean();
+      return bool;
     }
-    catch (JSONException localJSONException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      this.jdField_a_of_type_Boolean = true;
     }
-    return localJSONObject.toString().getBytes();
+    return paramBoolean;
   }
 }
 

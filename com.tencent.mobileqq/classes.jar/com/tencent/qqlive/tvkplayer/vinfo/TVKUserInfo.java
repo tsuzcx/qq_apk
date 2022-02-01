@@ -7,18 +7,26 @@ import java.util.Map;
 public class TVKUserInfo
   implements Serializable
 {
+  public static final int LOGIN_TYPE_OTHERS = 1;
+  public static final int LOGIN_TYPE_QQ = 2;
+  public static final int LOGIN_TYPE_WX = 3;
+  public static final int VIP_TYPE_NONE = 1;
+  public static final int VIP_TYPE_SUPPLEMENT_CARD = 3;
+  public static final int VIP_TYPE_TENCENT_VIDEO = 2;
   private static final long serialVersionUID = 4925138540725095302L;
   private String mAccessToken;
   private Map<String, String> mCDNHttpHeader;
   private boolean mIsVip;
   private String mLoginCookie;
-  private TVKUserInfo.LoginType mLoginType;
+  @TVKUserInfo.LoginType
+  private int mLoginType;
   private String mOAuthConsumerKey;
   private String mOpenId;
   private String mPf;
   private String mUin;
   private String mVUserId;
-  private TVKUserInfo.VipType mVipType;
+  @TVKUserInfo.VipType
+  private int mVipType;
   private String mWXOpenID;
   
   public TVKUserInfo()
@@ -26,9 +34,9 @@ public class TVKUserInfo
     this.mUin = "";
     this.mLoginCookie = "";
     this.mIsVip = false;
-    this.mVipType = TVKUserInfo.VipType.NONE;
+    this.mVipType = 1;
     this.mWXOpenID = "";
-    this.mLoginType = TVKUserInfo.LoginType.OTHERS;
+    this.mLoginType = 1;
   }
   
   public TVKUserInfo(String paramString1, String paramString2)
@@ -36,9 +44,9 @@ public class TVKUserInfo
     this.mUin = paramString1;
     this.mLoginCookie = paramString2;
     this.mIsVip = false;
-    this.mVipType = TVKUserInfo.VipType.NONE;
+    this.mVipType = 1;
     this.mWXOpenID = "";
-    this.mLoginType = TVKUserInfo.LoginType.OTHERS;
+    this.mLoginType = 1;
   }
   
   public String getAccessToken()
@@ -56,7 +64,7 @@ public class TVKUserInfo
     return this.mLoginCookie;
   }
   
-  public TVKUserInfo.LoginType getLoginType()
+  public int getLoginType()
   {
     return this.mLoginType;
   }
@@ -89,7 +97,7 @@ public class TVKUserInfo
     return this.mVUserId;
   }
   
-  public TVKUserInfo.VipType getVipType()
+  public int getVipType()
   {
     return this.mVipType;
   }
@@ -117,9 +125,9 @@ public class TVKUserInfo
     this.mLoginCookie = paramString;
   }
   
-  public void setLoginType(TVKUserInfo.LoginType paramLoginType)
+  public void setLoginType(@TVKUserInfo.LoginType int paramInt)
   {
-    this.mLoginType = paramLoginType;
+    this.mLoginType = paramInt;
   }
   
   public void setOpenApi(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -144,18 +152,13 @@ public class TVKUserInfo
   {
     this.mIsVip = paramBoolean;
     if (paramBoolean) {
-      this.mVipType = TVKUserInfo.VipType.TENCENT_VIDEO;
+      this.mVipType = 2;
     }
   }
   
-  public void setVipType(TVKUserInfo.VipType paramVipType)
+  public void setVipType(@TVKUserInfo.VipType int paramInt)
   {
-    this.mVipType = paramVipType;
-  }
-  
-  public void setWx_openID(String paramString)
-  {
-    this.mWXOpenID = paramString;
+    this.mVipType = paramInt;
   }
 }
 

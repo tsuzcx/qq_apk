@@ -1,9 +1,21 @@
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-public abstract interface tec
-  extends URLDrawableHandler
+public class tec
+  implements tcg
 {
-  public abstract void a(String paramString);
+  public tec(BridgeModule paramBridgeModule, String paramString) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
+  }
 }
 
 

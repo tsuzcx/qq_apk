@@ -57,12 +57,12 @@ public class PTSAppInstance$Builder
       PTSAppInstance.access$702((PTSAppInstance)localObject, this.rootView);
       PTSAppInstance.access$802((PTSAppInstance)localObject, this.rootNodeType);
       PTSAppInstance.access$902((PTSAppInstance)localObject, this.pageName);
-      PTSAppInstance.access$1002((PTSAppInstance)localObject, this.itemData);
-      PTSAppInstance.access$1102((PTSAppInstance)localObject, this.frameTreeJson);
-      PTSAppInstance.access$1202((PTSAppInstance)localObject, this.pageJs);
-      PTSAppInstance.access$1302((PTSAppInstance)localObject, this.containerWidth);
+      ((PTSAppInstance)localObject).itemData = this.itemData;
+      PTSAppInstance.access$1002((PTSAppInstance)localObject, this.frameTreeJson);
+      PTSAppInstance.access$1102((PTSAppInstance)localObject, this.pageJs);
+      PTSAppInstance.access$1202((PTSAppInstance)localObject, this.containerWidth);
       check();
-      PTSAppInstance.access$1400((PTSAppInstance)localObject, this.rootNodeType);
+      PTSAppInstance.access$1300((PTSAppInstance)localObject, this.rootNodeType);
       return localObject;
       localObject = new PTSAppInstance.PTSLiteAppInstance(null);
       PTSAppInstance.PTSLiteAppInstance.access$500((PTSAppInstance.PTSLiteAppInstance)localObject, this.liteItemViewManager);

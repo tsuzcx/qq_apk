@@ -1,27 +1,6 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-
-class naj
-  extends mwt
+public abstract interface naj<T>
 {
-  private final WeakReference<Handler> a;
-  
-  naj(Handler paramHandler)
-  {
-    this.a = new WeakReference(paramHandler);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameRoomPresenterImp", 2, "onNetTypeChange, [" + paramInt1 + "-->" + paramInt2 + "]");
-    }
-    Handler localHandler = (Handler)this.a.get();
-    if ((localHandler != null) && (paramInt2 != 1) && (paramInt1 == 1)) {
-      localHandler.sendEmptyMessage(8);
-    }
-  }
+  public abstract T a();
 }
 
 

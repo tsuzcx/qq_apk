@@ -1,23 +1,24 @@
-import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vjv
-  implements wba
+  implements wbw
 {
-  public vjv(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
+  public vjv(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(vtt.a("ext2", String.valueOf(paramInt)));
+    if (QCircleCommentBottomBar.a(this.a)) {
+      vtr.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList, QCircleCommentBottomBar.a(this.a));
+    }
+    for (;;)
     {
-      String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get();
-      zwp.a().a(new QCircleDoublePraiseAnimationEvent(str, QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage)));
-      QLog.d("QCircleContentImage", 1, "dispatchEvent id:" + str + " pageType:" + QCircleContentImage.c(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
-      vrr.a().a(new vrt().a("content").b("like").a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage.a()).a(QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage)).c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get()));
+      vud.a().a(new vuf().a("pushbutton").b("push").a(this.a.a()).a(QCircleCommentBottomBar.a(this.a)));
+      return;
+      vtn.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList, QCircleCommentBottomBar.b(this.a));
     }
   }
 }

@@ -11,7 +11,7 @@ class BridgeModule$21
   
   public void run()
   {
-    QQToast.a(BaseActivity.sTopActivity, 0, BaseActivity.sTopActivity.getResources().getString(2131717147), 0).a();
+    QQToast.a(BaseActivity.sTopActivity, 0, BaseActivity.sTopActivity.getResources().getString(2131717264), 0).a();
   }
 }
 

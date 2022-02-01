@@ -1,18 +1,15 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajmt
-  extends bkfi
+  implements Comparator<PhoneContact>
 {
-  public ajmt(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public ajmt(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

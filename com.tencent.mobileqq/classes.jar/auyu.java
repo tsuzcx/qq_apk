@@ -1,33 +1,13 @@
-import QC.SetFontBubbleRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class auyu
-  extends anun
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<BaseChatPie> a;
+  public auyu(ForwardFileOption paramForwardFileOption) {}
   
-  public auyu(BaseChatPie paramBaseChatPie)
-  {
-    this.a = new WeakReference(paramBaseChatPie);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      auyq.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
-    }
-  }
-  
-  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      auyq.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.kingkong.UpdateManager;
+import org.json.JSONObject;
 
 public class adkh
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public adkh(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    paramMessage = paramMessage.getData();
+    try
+    {
+      String str = paramMessage.getString("PATCH_JSON_STRING");
+      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
+      paramMessage = adkg.a(new JSONObject(str));
+      if (paramMessage != null) {
+        UpdateManager.a(paramMessage, bool);
+      }
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      adjv.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+    }
   }
 }
 

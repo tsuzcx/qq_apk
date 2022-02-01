@@ -9,14 +9,14 @@ class TVKVodInfoGetter$1
 {
   TVKVodInfoGetter$1(TVKVodInfoGetter paramTVKVodInfoGetter) {}
   
-  public void OnSuccess(int paramInt, TVKVideoInfo paramTVKVideoInfo)
-  {
-    TVKVodInfoGetter.access$000(this.this$0).OnSuccess(paramInt, paramTVKVideoInfo);
-  }
-  
   public void onFailure(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
     TVKVodInfoGetter.access$000(this.this$0).onFailure(paramInt1, paramInt2, paramString1, paramInt3, paramString2);
+  }
+  
+  public void onSuccess(int paramInt, TVKVideoInfo paramTVKVideoInfo)
+  {
+    TVKVodInfoGetter.access$000(this.this$0).onSuccess(paramInt, paramTVKVideoInfo);
   }
 }
 

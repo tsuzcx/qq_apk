@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nta
-  implements DialogInterface.OnDismissListener
+class nta
+  implements View.OnClickListener
 {
-  public nta(AccountDetailActivity paramAccountDetailActivity) {}
+  nta(nsz paramnsz) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.p = false;
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof oag)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
+      }
+      localObject = (oag)localObject;
+      if (this.a.a != null) {
+        this.a.a.a((oag)localObject);
+      }
+      this.a.a((oag)localObject);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

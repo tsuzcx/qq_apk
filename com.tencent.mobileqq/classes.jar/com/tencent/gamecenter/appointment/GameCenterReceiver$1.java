@@ -1,16 +1,10 @@
 package com.tencent.gamecenter.appointment;
 
-import aceg;
 import android.text.TextUtils;
-import bizo;
-import bmxh;
-import bmxi;
+import bnyp;
+import bnyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.Iterator;
-import java.util.List;
 
 class GameCenterReceiver$1
   implements Runnable
@@ -19,54 +13,26 @@ class GameCenterReceiver$1
   
   public void run()
   {
-    Object localObject1 = bizo.a(this.a);
-    Iterator localIterator;
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      try
+    try
+    {
+      if (TextUtils.equals(this.a, "android.intent.action.PACKAGE_REMOVED"))
       {
-        bmxh.a();
-        if (TextUtils.equals(this.b, "android.intent.action.PACKAGE_REMOVED"))
-        {
-          synchronized (this.this$0.a)
-          {
-            localObject1 = new WadlResult(new WadlParams((String)localObject1, this.a));
-            ((WadlResult)localObject1).b = 11;
-            localIterator = this.this$0.a.iterator();
-            if (!localIterator.hasNext()) {
-              break label147;
-            }
-            ((aceg)localIterator.next()).b((WadlResult)localObject1);
-          }
-          return;
+        if (BaseApplicationImpl.sProcessId == 1) {
+          bnyp.a().a("doUninstallAppCompleted", this.b);
         }
       }
-      catch (Exception localException)
+      else if ((TextUtils.equals(this.a, "android.intent.action.PACKAGE_ADDED")) && (BaseApplicationImpl.sProcessId == 1))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("GameCenterReceiver", 2, "receiveSystemInstallAction exception:" + localException.getMessage());
-        }
+        bnyp.a().a("doInstallAppCompleted", this.b);
+        return;
       }
     }
-    label147:
-    do
+    catch (Exception localException)
     {
-      do
-      {
-        do {}while (BaseApplicationImpl.sProcessId != 1);
-        bmxh.a().a("doUninstallAppCompleted", this.a);
-        return;
-      } while (!TextUtils.equals(this.b, "android.intent.action.PACKAGE_ADDED"));
-      synchronized (this.this$0.a)
-      {
-        WadlResult localWadlResult = new WadlResult(new WadlParams(str, this.a));
-        localWadlResult.b = 9;
-        localIterator = this.this$0.a.iterator();
-        if (localIterator.hasNext()) {
-          ((aceg)localIterator.next()).a(localWadlResult);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("GameCenterReceiver", 2, "receiveSystemInstallAction exception:" + localException.getMessage());
       }
-    } while (BaseApplicationImpl.sProcessId != 1);
-    bmxh.a().a("doInstallAppCompleted", this.a);
+    }
   }
 }
 

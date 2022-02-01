@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afyw;
+import agiq;
 import android.graphics.Bitmap;
-import bglc;
+import bhld;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
 import mqq.os.MqqHandler;
@@ -10,12 +10,12 @@ import mqq.os.MqqHandler;
 public class IntimateInfoView$18
   implements Runnable
 {
-  public IntimateInfoView$18(afyw paramafyw, IntimateInfo.PrefetchMutualMarkInfo paramPrefetchMutualMarkInfo) {}
+  public IntimateInfoView$18(agiq paramagiq, IntimateInfo.PrefetchMutualMarkInfo paramPrefetchMutualMarkInfo) {}
   
   public void run()
   {
-    Object localObject3 = afyw.a(this.this$0, this.a, false);
-    Object localObject2 = bglc.a((String)localObject3);
+    Object localObject3 = agiq.a(this.this$0, this.a, false) + this.a.iconStaticUrl;
+    Object localObject2 = bhld.a((String)localObject3);
     Object localObject1;
     if (localObject2 != null)
     {
@@ -24,11 +24,11 @@ public class IntimateInfoView$18
     }
     else
     {
-      localObject1 = afyw.a(this.this$0, this.a);
-      bglc.a((String)localObject3, (Bitmap)localObject1);
+      localObject1 = agiq.a(this.this$0, this.a);
+      bhld.a((String)localObject3, (Bitmap)localObject1);
     }
-    String str = afyw.a(this.this$0, this.a, true);
-    localObject3 = bglc.a(str);
+    String str = agiq.a(this.this$0, this.a, true);
+    localObject3 = bhld.a(str);
     if (localObject3 != null)
     {
       localObject2 = localObject3;
@@ -36,8 +36,8 @@ public class IntimateInfoView$18
     }
     else
     {
-      localObject2 = afyw.b(this.this$0, this.a);
-      bglc.a(str, (Bitmap)localObject2);
+      localObject2 = agiq.b(this.this$0, this.a);
+      bhld.a(str, (Bitmap)localObject2);
     }
     ThreadManager.getUIHandler().post(new IntimateInfoView.18.1(this, (Bitmap)localObject1, (Bitmap)localObject2));
   }

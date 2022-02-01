@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class ysf
-  implements Parcelable.Creator<EditTakeVideoSource>
+public class ysf
+  extends QQUIEventReceiver<yrh, wtr>
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
+  public ysf(@NonNull yrh paramyrh)
   {
-    return new EditTakeVideoSource(paramParcel);
+    super(paramyrh);
   }
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void a(@NonNull yrh paramyrh, @NonNull wtr paramwtr)
   {
-    return new EditTakeVideoSource[paramInt];
+    paramyrh.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wtr.class;
   }
 }
 

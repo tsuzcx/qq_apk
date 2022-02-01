@@ -1,23 +1,39 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class nlz
-  implements HostnameVerifier
+class nlz
+  extends Handler
 {
-  nlz(String paramString) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  nlz(nly paramnly, Looper paramLooper)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a, paramSSLSession);
-    QLog.d("Q.share.sdk", 1, new Object[] { "uploadImageWithHttps|verify hostname=", paramString, ", host=", this.a, ", verify=", Boolean.valueOf(bool) });
-    return bool;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nlz
  * JD-Core Version:    0.7.0.1
  */

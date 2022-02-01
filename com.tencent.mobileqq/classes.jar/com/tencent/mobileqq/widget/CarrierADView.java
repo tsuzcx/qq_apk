@@ -13,8 +13,8 @@ import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import arlb;
-import bgli;
+import asar;
+import bhlj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dating.CarrierHelper;
 import com.tencent.mobileqq.struct.AdData;
@@ -27,7 +27,7 @@ public class CarrierADView
   implements Handler.Callback
 {
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private arlb jdField_a_of_type_Arlb;
+  private asar jdField_a_of_type_Asar;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
   public CarrierADView(Context paramContext)
@@ -115,13 +115,13 @@ public class CarrierADView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i;
-    if (this.jdField_a_of_type_Arlb != null)
+    if (this.jdField_a_of_type_Asar != null)
     {
       i = paramMotionEvent.getAction();
       if (i != 0) {
         break label56;
       }
-      this.jdField_a_of_type_Arlb.b(false);
+      this.jdField_a_of_type_Asar.c(false);
       j();
       if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
         this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
@@ -146,7 +146,7 @@ public class CarrierADView
         return false;
       }
     } while ((i != 1) && (i != 3));
-    this.jdField_a_of_type_Arlb.b(true);
+    this.jdField_a_of_type_Asar.c(true);
     i();
     getParent().requestDisallowInterceptTouchEvent(false);
     return false;
@@ -155,7 +155,7 @@ public class CarrierADView
   public void setCarrierData(List<AdData> paramList, int paramInt, CarrierHelper paramCarrierHelper)
   {
     if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-      this.jdField_a_of_type_MqqOsMqqHandler = new bgli(Looper.getMainLooper(), this);
+      this.jdField_a_of_type_MqqOsMqqHandler = new bhlj(Looper.getMainLooper(), this);
     }
     h();
     if ((paramList == null) || (paramList.size() == 0))
@@ -181,7 +181,7 @@ public class CarrierADView
       if (paramInt < paramList.size()) {
         try
         {
-          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131561257, null);
+          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131561295, null);
           paramCarrierHelper.a(localView, (AdData)paramList.get(paramInt));
           b(localView, paramInt);
           paramInt += 1;
@@ -200,9 +200,9 @@ public class CarrierADView
     i();
   }
   
-  public void setFlingSwitch(arlb paramarlb)
+  public void setFlingSwitch(asar paramasar)
   {
-    this.jdField_a_of_type_Arlb = paramarlb;
+    this.jdField_a_of_type_Asar = paramasar;
   }
   
   public void setVisibility(int paramInt)

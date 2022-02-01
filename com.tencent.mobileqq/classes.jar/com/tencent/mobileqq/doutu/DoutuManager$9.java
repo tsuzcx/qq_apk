@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu;
 
-import armt;
+import ascj;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.List;
 public class DoutuManager$9
   implements Runnable
 {
-  public DoutuManager$9(armt paramarmt, List paramList) {}
+  public DoutuManager$9(ascj paramascj, List paramList) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class DoutuManager$9
     {
       synchronized (this.this$0)
       {
-        if (armt.a(this.this$0) != null)
+        if (ascj.a(this.this$0) != null)
         {
-          armt.a(this.this$0).drop(DoutuData.class);
+          ascj.a(this.this$0).drop(DoutuData.class);
           Iterator localIterator = this.a.iterator();
           if (localIterator.hasNext())
           {
             DoutuData localDoutuData = (DoutuData)localIterator.next();
-            armt.a(this.this$0).persistOrReplace(localDoutuData);
+            ascj.a(this.this$0).persistOrReplace(localDoutuData);
           }
         }
       }

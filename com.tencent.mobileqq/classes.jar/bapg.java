@@ -1,26 +1,53 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.app.Application;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
+import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import com.tencent.mobileqq.videoplatform.util.RegisterTVideoUtil;
+import com.tencent.mobileqq.videoplatform.util.ReportUtil;
+import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 
 public class bapg
-  extends Animation
 {
-  public bapg(CircleBarView paramCircleBarView) {}
+  private static volatile boolean a;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  static {}
+  
+  public static void a()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
+    try
     {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      if (!a)
+      {
+        LogUtil.setLogImp(new bapm());
+        ThreadUtil.setThreadImp(new bapp());
+        LoadSoUtil.setLoadSoImp(new bapk());
+        ReportUtil.setReportImp(new bapo());
+        RegisterTVideoUtil.setRegisterTVideoImp(new bapn());
+        a = true;
       }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+      return;
     }
-    this.a.postInvalidate();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(Application paramApplication, SDKInitListener paramSDKInitListener)
+  {
+    VideoPlaySDKManager.getInstance().initSDKAsync(paramApplication, paramSDKInitListener);
+  }
+  
+  public static boolean a()
+  {
+    return VideoPlaySDKManager.getInstance().isSDKReady();
+  }
+  
+  public static boolean b()
+  {
+    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
   }
 }
 

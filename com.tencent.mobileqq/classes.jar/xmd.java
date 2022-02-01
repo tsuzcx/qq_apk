@@ -1,10 +1,44 @@
-public abstract interface xmd
+import java.util.List;
+
+class xmd
+  implements xmu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  xmd(xmc paramxmc) {}
   
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  public void a()
+  {
+    xmc.a(this.a, this.a.a.a(xmc.a(this.a), 5));
+    List localList = xmc.a(this.a).a;
+    if ((xmc.a(this.a) == null) && (localList.size() > 0)) {
+      xmc.a(this.a, ((xmt)localList.get(0)).a);
+    }
+    label193:
+    for (;;)
+    {
+      xmc.a(this.a).a(xmc.a(this.a), "");
+      yuk.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { xmc.a(this.a) });
+      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label193;
+        }
+        if (((xmt)localList.get(i)).a.equals(xmc.a(this.a)))
+        {
+          i -= 1;
+          if (i < 0) {
+            break;
+          }
+          xmc.a(this.a, ((xmt)localList.get(i)).a);
+          break;
+        }
+        i += 1;
+      }
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void a(xms paramxms, String paramString, boolean paramBoolean) {}
 }
 
 

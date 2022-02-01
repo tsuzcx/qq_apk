@@ -3,12 +3,12 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blrl;
+import bmsn;
 
 public class LbsDataV2$CellInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CellInfo> CREATOR = new blrl();
+  public static final Parcelable.Creator<CellInfo> CREATOR = new bmsn();
   public int cellId = -1;
   public int lac = -1;
   public int mcc = -1;

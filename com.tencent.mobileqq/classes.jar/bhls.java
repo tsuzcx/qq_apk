@@ -1,38 +1,27 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.net.Uri;
 
-public class bhls
+final class bhls
+  implements DialogInterface.OnClickListener
 {
-  public static bhmv a(bhql parambhql)
+  bhls(Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 0;
-    int i = j;
-    if (parambhql.a != null)
+    if (paramInt == 1)
     {
-      i = j;
-      if (parambhql.a.getIntent() != null) {
-        i = parambhql.a.getIntent().getIntExtra("titleBarStyle", 0);
-      }
+      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
-    blpu.d("SwiftWebTitleBuilder", "title bar style is" + i);
-    if (i == 1) {
-      return new blbq(parambhql);
-    }
-    if (i == 2) {
-      return new bhnf(parambhql);
-    }
-    if (i == 3) {
-      return new blqf(parambhql);
-    }
-    if (i == 4) {
-      return new vlv(parambhql);
-    }
-    return new bhmv(parambhql);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhls
  * JD-Core Version:    0.7.0.1
  */

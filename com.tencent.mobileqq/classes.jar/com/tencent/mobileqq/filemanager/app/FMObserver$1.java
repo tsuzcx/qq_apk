@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import asyw;
+import atpa;
 
 public class FMObserver$1
   implements Runnable
 {
-  public FMObserver$1(asyw paramasyw, Object paramObject) {}
+  public FMObserver$1(atpa paramatpa, Object paramObject) {}
   
   public void run()
   {
-    asyw.a(this.this$0, this.a);
+    atpa.a(this.this$0, this.a);
   }
 }
 

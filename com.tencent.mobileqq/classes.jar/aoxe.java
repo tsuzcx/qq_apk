@@ -1,58 +1,109 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aoxe
-  extends aoyb
+public class aoxe
+  extends aoxg
 {
-  aoxe(aoxb paramaoxb) {}
-  
-  public void a(int paramInt)
+  public aoxe(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
-    }
-    if (aoxb.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 6;
-    localMessage.arg1 = paramInt;
-    aoxb.a(this.a).sendMessage(localMessage);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("title");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = bmfq.a(1);
     }
-    if (aoxb.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 7;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aoxb.a(this.a).sendMessage(localMessage);
+    ShoppingFragment.a(this.jdField_a_of_type_AndroidContentContext, str1);
   }
   
-  public void b(int paramInt1, int paramInt2)
+  private void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
-    }
-    if (aoxb.a(this.a) == null)
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("rtmp");
+    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("source");
+    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("retain");
+    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("closejump");
+    for (;;)
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      try
+      {
+        str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("from");
+        if (str6 != null) {
+          continue;
+        }
+        i = 99;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        String str6;
+        localNumberFormatException.printStackTrace();
+        QLog.e("IliveJumpAction", 1, "print exception: " + localNumberFormatException.getMessage());
+        int i = 99;
+        continue;
+        bool = false;
+        continue;
+        continue;
+      }
+      QLog.d("IliveJumpAction", 1, "scheme parsed from:" + i);
+      if (!TextUtils.isEmpty(str1)) {
+        continue;
+      }
+      str1 = "scheme";
+      try
+      {
+        if (TextUtils.isEmpty(str5)) {
+          continue;
+        }
+        int j = Integer.parseInt(str5);
+        if (j != 1) {
+          continue;
+        }
+        bool = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        boolean bool = false;
+        continue;
+        bool = false;
+        continue;
+      }
+      bmfx.a(new bmfm(this.jdField_a_of_type_AndroidContentContext, str1, str2, str3, bool, null, str4, i));
       return;
+      i = Integer.parseInt(str6);
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 8;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aoxb.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    try
+    {
+      if ("watch".equals(this.c))
+      {
+        e();
+        return true;
+      }
+      if ("mqqapi://vaslive/myshopping".equals(this.c))
+      {
+        d();
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("IliveJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IliveJumpAction");
+      bool = false;
+    }
+    return bool;
   }
 }
 

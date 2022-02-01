@@ -1,38 +1,20 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class bmtk
-  implements ModuleDownloadListener
+public class bmtk
 {
-  bmtk(bmti parambmti, bmtn parambmtn) {}
+  private static bmtk a;
+  public String a;
+  public String b;
   
-  public void onDownloadCanceled(String paramString)
+  public static bmtk a()
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bmti.b(this.jdField_a_of_type_Bmti, false);
-    this.jdField_a_of_type_Bmtn.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
+    if (jdField_a_of_type_Bmtk == null) {
+      jdField_a_of_type_Bmtk = new bmtk();
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bmti.c(), " onDownloadSucceed = ", bmti.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bmti.d());
-    bmti.b(this.jdField_a_of_type_Bmti);
-    this.jdField_a_of_type_Bmtn.a(bmti.b(this.jdField_a_of_type_Bmti));
+    jdField_a_of_type_Bmtk.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    jdField_a_of_type_Bmtk.b = null;
+    return jdField_a_of_type_Bmtk;
   }
 }
 

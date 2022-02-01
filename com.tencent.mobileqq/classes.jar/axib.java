@@ -1,37 +1,22 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
 public class axib
-  implements View.OnKeyListener
+  implements bjey
 {
-  public axib(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public axib(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
-      if (ChooseInterestTagActivity.a(this.a).getText() == null)
-      {
-        paramView = "";
-        if (TextUtils.isEmpty(paramView))
-        {
-          ChooseInterestTagActivity.a(this.a).fullScroll(66);
-          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
-        }
-      }
-    }
-    for (;;)
+    if (paramInt == 1)
     {
-      return false;
-      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
-        bkft.b(ChooseInterestTagActivity.a(this.a));
+      if (MsgBackupPCAuthFragment.a(this.a)) {
+        this.a.k();
       }
+      this.a.onBackEvent();
+    }
+    while (paramInt != 2) {
+      return;
     }
   }
 }

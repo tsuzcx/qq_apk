@@ -1,99 +1,73 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-class asbb
-  implements aryn
+public abstract class asbb
+  extends nkq
 {
-  asbb(asba paramasba) {}
-  
-  public boolean a(View paramView, arxg paramarxg)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramarxg == null) || (paramView == null)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramarxg.i))
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject = null;
+    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
+    boolean bool1;
+    if (paramInt == 0)
     {
-      Object localObject1 = asba.a(this.a, paramarxg);
-      int i = asba.a(this.a, paramarxg);
-      if ((((String)localObject1).equals("needUpload")) || (((String)localObject1).equals("needDel"))) {
-        return true;
-      }
-      Object localObject2;
-      if (((String)localObject1).equals("failed"))
+      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
+      bool1 = bool4;
+    }
+    for (;;)
+    {
+      try
       {
-        paramView = ((arro)this.a.a.getManager(149)).a().iterator();
-        while (paramView.hasNext())
+        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+        bool1 = bool4;
+        if (localRspBatchGetAnchorStatus.uint32_result.has())
         {
-          localObject1 = (CustomEmotionData)paramView.next();
-          if (((CustomEmotionData)localObject1).emoId == i)
+          paramArrayOfByte = localObject;
+          bool2 = bool3;
+          bool1 = bool4;
+          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
           {
-            QLog.d("FavoriteEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(((CustomEmotionData)localObject1).emoId) });
-            localObject2 = (anlh)this.a.a.a(72);
-            if ((((CustomEmotionData)localObject1).emoOriginalPath != null) && (!arrn.a(((CustomEmotionData)localObject1).emoOriginalPath)))
-            {
-              ((anlh)localObject2).notifyUI(2, true, Integer.valueOf(1));
-            }
-            else
-            {
-              ((CustomEmotionData)localObject1).RomaingType = "needUpload";
-              asba.a(this.a, paramarxg, "needUpload");
-              ((anlh)localObject2).notifyUI(2, true, null);
-              com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
-              ThreadManager.excute(new FavEmoSingleSend((CustomEmotionData)localObject1, true), 64, null, false);
-            }
+            bool1 = true;
+            bool2 = true;
+            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
           }
         }
-        return true;
       }
-      localObject1 = (URLImageView)paramView.findViewById(2131365902);
-      paramView = (URLImageView)paramView.findViewById(2131365903);
-      if ((((URLImageView)localObject1).getDrawable() instanceof URLDrawable))
+      catch (Exception localException)
       {
-        localObject2 = (URLDrawable)((URLImageView)localObject1).getDrawable();
-        if ((((URLDrawable)localObject2).getStatus() == 3) || (((URLDrawable)localObject2).getStatus() == 2))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading failed, restart download " + paramarxg.toString());
-          }
-          ((URLImageView)localObject1).setVisibility(8);
-          paramView.setVisibility(0);
-          ((URLDrawable)localObject2).restartDownload();
-          if (!(paramView.getDrawable() instanceof Animatable))
-          {
-            paramarxg = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839402);
-            paramView.setImageDrawable((Drawable)paramarxg);
-            paramarxg.start();
-          }
-          for (;;)
-          {
-            return true;
-            ((Animatable)paramView.getDrawable()).start();
-          }
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        if (((URLDrawable)localObject2).getStatus() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading " + paramarxg.toString());
-          }
-          return true;
-        }
+        QLog.w("Q.msg_box.protocol", 2, localException.toString());
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        continue;
+      }
+      a(bool2, paramArrayOfByte, paramBundle);
+      return;
+      paramArrayOfByte = localObject;
+      boolean bool2 = bool3;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
       }
     }
-    return false;
   }
+  
+  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
 }
 
 

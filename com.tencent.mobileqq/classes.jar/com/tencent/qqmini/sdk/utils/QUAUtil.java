@@ -18,14 +18,16 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.VersionUtil;
 import com.tencent.qqmini.sdk.manager.LoginManager;
+import java.net.URLEncoder;
 
 @MiniKeep
 public class QUAUtil
 {
   private static final String TAG = "QUAUtil";
   private static volatile String mWebViewUA = "";
+  private static volatile String requestUA;
   private static String[] sLoginTypeList = { "anonymous", "wechat", "qq", "qqwtlogin", "other" };
-  private static volatile String ua;
+  private static volatile String systemUA;
   
   public static String getApplicationName(Context paramContext)
   {
@@ -60,13 +62,20 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.6.0";
+    return "1.7.0";
   }
   
   public static String getQUA()
   {
-    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    return "V1_AND_MINISDK_1.6.0_0_RELEASE_B";
+    return "V1_AND_MINISDK_1.7.0_0_RELEASE_B";
+  }
+  
+  public static String getRequestUA()
+  {
+    if (requestUA == null) {
+      requestUA = getSystemUA() + " QQ/" + getPlatformVersionString() + " " + getPlatformQUA() + " QQ/MiniApp";
+    }
+    return requestUA;
   }
   
   public static String getSimpleDeviceInfo(Context paramContext)
@@ -93,58 +102,37 @@ public class QUAUtil
   
   public static String getSystemUA()
   {
-    int i = 0;
-    if (ua != null) {
-      return ua;
+    if (systemUA != null) {
+      return systemUA;
     }
     for (;;)
     {
-      StringBuilder localStringBuilder;
       try
       {
         boolean bool = VersionUtil.isKITKAT();
-        char c;
-        String str2;
-        if (bool)
-        {
-          try
-          {
-            String str1 = WebSettings.getDefaultUserAgent(AppLoaderFactory.g().getContext());
-            localStringBuilder = new StringBuilder();
-            int j = str1.length();
-            if (i >= j) {
-              break label138;
-            }
-            c = str1.charAt(i);
-            if ((c > '\037') && (c < '')) {
-              continue;
-            }
-            localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
-          }
-          catch (Exception localException)
-          {
-            str2 = System.getProperty("http.agent");
-            continue;
-          }
-        }
-        else
-        {
-          str2 = System.getProperty("http.agent");
+        if (!bool) {
           continue;
         }
-        localStringBuilder.append(c);
       }
       catch (Throwable localThrowable)
       {
-        ua = "AndroidQQ";
+        String str1;
+        String str2;
+        systemUA = "AndroidQQ";
+        continue;
       }
-      for (;;)
+      try
       {
-        return ua;
-        label138:
-        ua = localStringBuilder.toString();
+        str1 = WebSettings.getDefaultUserAgent(AppLoaderFactory.g().getContext());
+        systemUA = URLEncoder.encode(str1, "UTF-8");
+        return systemUA;
       }
-      i += 1;
+      catch (Exception localException)
+      {
+        str2 = System.getProperty("http.agent");
+        continue;
+      }
+      str2 = System.getProperty("http.agent");
     }
   }
   
@@ -164,37 +152,43 @@ public class QUAUtil
   
   public static boolean isDemoApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("demo");
+    return "demo".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isMicroApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ma");
+    return "ma".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isQQApp()
   {
-    return (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq")) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qi")) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ssq"));
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    return ("qq".equals(localMiniAppProxy.getAppName())) || ("qi".equals(localMiniAppProxy.getAppName())) || ("ssq".equals(localMiniAppProxy.getAppName())) || ("tim".equals(localMiniAppProxy.getAppName()));
   }
   
   public static boolean isQQBrowseApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qb");
+    return "qb".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isQQMainApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq");
+    return "qq".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isQQSpeedApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ssq");
+    return "ssq".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isRdmBuild()
   {
     return getPlatformQUA().toLowerCase().contains("rdm");
+  }
+  
+  public static boolean isTimApp()
+  {
+    return "tim".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
 }
 

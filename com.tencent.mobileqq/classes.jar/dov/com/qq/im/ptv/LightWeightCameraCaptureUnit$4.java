@@ -1,15 +1,15 @@
 package dov.com.qq.im.ptv;
 
-import bows;
+import bpyn;
 
 public class LightWeightCameraCaptureUnit$4
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$4(bows parambows) {}
+  public LightWeightCameraCaptureUnit$4(bpyn parambpyn) {}
   
   public void run()
   {
-    bows.a(this.this$0).setShadowColor(65535);
+    bpyn.a(this.this$0).setShadowColor(65535);
   }
 }
 

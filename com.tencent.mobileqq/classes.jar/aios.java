@@ -1,10 +1,16 @@
-import java.io.File;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-abstract interface aios
+class aios
+  implements oft
 {
-  public abstract File a(String paramString);
+  aios(ainh paramainh, CharSequence paramCharSequence, int paramInt) {}
   
-  public abstract String c();
+  public void a(List<ChatMessage> paramList)
+  {
+    this.jdField_a_of_type_Ainh.g(false);
+    ainh.a(this.jdField_a_of_type_Ainh, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
+  }
 }
 
 

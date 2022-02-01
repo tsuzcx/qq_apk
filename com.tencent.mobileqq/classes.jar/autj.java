@@ -1,6 +1,17 @@
 class autj
+  implements aumz
 {
-  public static auth a = new auth(null);
+  autj(auti paramauti) {}
+  
+  public void a()
+  {
+    autg.a(this.a.a);
+    if (autg.k(this.a.a) != null) {
+      autg.l(this.a.a).d();
+    }
+  }
+  
+  public void b() {}
 }
 
 

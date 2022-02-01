@@ -1,40 +1,44 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
+import com.tencent.qphone.base.util.QLog;
 
 public class bppu
-  extends bpps<bppt>
+  implements GifDecoder
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370258);
+  private int jdField_a_of_type_Int;
+  private bqqu jdField_a_of_type_Bqqu;
+  private String jdField_a_of_type_JavaLangString;
   
-  bppu(bppt parambppt, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public bppu(int paramInt, String paramString)
   {
-    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public Bitmap getNextGifFrame(long paramLong)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561778, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(bppt parambppt, int paramInt)
-  {
-    super.a(parambppt, paramInt);
-    if (parambppt != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(parambppt.a());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AnimationDecodeWrapper", 2, "timestamp:" + paramLong);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    paramLong = paramLong / 1000L / 1000L;
+    if (QLog.isColorLevel()) {
+      QLog.d("AnimationDecodeWrapper", 2, "timestampMs:" + paramLong);
+    }
+    if (this.jdField_a_of_type_Bqqu != null) {
+      return this.jdField_a_of_type_Bqqu.a(paramLong);
+    }
+    return null;
+  }
+  
+  public void init()
+  {
+    this.jdField_a_of_type_Bqqu = bqpb.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void release()
+  {
+    this.jdField_a_of_type_Bqqu = null;
   }
 }
 

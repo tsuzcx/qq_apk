@@ -1,37 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
+import java.util.Comparator;
 
 class mbw
-  extends BroadcastReceiver
+  implements Comparator<lob>
 {
-  mbw(mbv parammbv) {}
+  mbw(mbu parammbu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(lob paramlob1, lob paramlob2)
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
-    {
-      if (!mbv.a(this.a))
-      {
-        mbv.a(this.a, true);
-        if (mbv.b(this.a)) {
-          mbv.a(this.a);
-        }
-      }
-      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
-      lvh.a().a("update", i);
+    if (paramlob1.a) {}
+    while (paramlob2.a) {
+      return -1;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mbv.b(this.a)));
-      mbv.b(this.a, true);
-    } while (!mbv.a(this.a));
-    mbv.a(this.a);
+    return 0;
   }
 }
 

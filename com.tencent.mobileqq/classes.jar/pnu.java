@@ -1,75 +1,74 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class pnu
-  extends pnq
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  public static pnu a;
+  private long jdField_a_of_type_Long;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public pnv a;
+  public pnw a;
+  public boolean a;
   
-  public pnu(@NotNull pnr parampnr, Activity paramActivity)
+  private pnu()
   {
-    super(parampnr, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Pnv = new pnv();
+    this.jdField_a_of_type_Pnw = new pnw();
+    if (a(BaseApplicationImpl.getApplication().getRuntime()))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      a(BaseApplicationImpl.getApplication().getRuntime(), false);
+    }
   }
   
-  private boolean c()
+  public static pnu a()
   {
-    boolean bool2 = false;
-    boolean bool3 = true;
-    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    boolean bool1 = bool2;
-    if (localIntent != null)
+    if (jdField_a_of_type_Pnu == null) {}
+    try
     {
-      bool1 = bool2;
-      if (localIntent.hasExtra("arg_channel_rowkey"))
-      {
-        bool1 = bool2;
-        if (localIntent.hasExtra("arg_channel_article_url"))
-        {
-          String str1 = localIntent.getStringExtra("arg_channel_rowkey");
-          String str2 = localIntent.getStringExtra("arg_channel_article_url");
-          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-            break label199;
-          }
-          Object localObject = new Bundle();
-          ((Bundle)localObject).putString("floating_window_rowkey", str1);
-          ((Bundle)localObject).putString("float_layer_article_url", str2);
-          bmqh.a(this.jdField_a_of_type_AndroidAppActivity, 5, 1, (Bundle)localObject, 0);
-          if (this.jdField_a_of_type_AndroidAppActivity != null)
-          {
-            localObject = pha.a(this.jdField_a_of_type_AndroidAppActivity);
-            if (localObject != null) {
-              ((ReadinjoyTabFrame)localObject).a(32);
-            }
-          }
-          QLog.i("RIJDailyPopupStep", 1, "[handleDailyJumpToRecommendChannel], open floating window, rowKey = " + str1 + ", articleURL = " + str2);
-        }
+      if (jdField_a_of_type_Pnu == null) {
+        jdField_a_of_type_Pnu = new pnu();
       }
+      return jdField_a_of_type_Pnu;
     }
-    label199:
-    for (bool1 = bool3;; bool1 = false)
+    finally {}
+  }
+  
+  private void a(long paramLong)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
     {
-      localIntent.removeExtra("arg_channel_rowkey");
-      localIntent.removeExtra("arg_channel_article_url");
-      return bool1;
+      return;
+      localObject = bnrf.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
+    bnrf.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    paramAppRuntime = bnrf.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return;
     }
+    paramAppRuntime = paramAppRuntime.edit();
+    paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
+    bnrf.a(paramAppRuntime, true);
   }
   
-  protected void g()
+  public static boolean a(AppRuntime paramAppRuntime)
   {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = c();
-    a(this.jdField_a_of_type_Boolean);
+    paramAppRuntime = bnrf.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return false;
+    }
+    return paramAppRuntime.getBoolean("simple_force_report_once", false);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import anni;
-import biau;
+import anzj;
+import bjbs;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TeamWorkForceShare$ImageRequestTask$2
@@ -12,7 +12,7 @@ class TeamWorkForceShare$ImageRequestTask$2
   public void run()
   {
     TeamWorkForceShare.a(this.a.this$0).dismiss();
-    QQToast.a(TeamWorkForceShare.a(this.a.this$0), anni.a(2131713499), 0).a();
+    QQToast.a(TeamWorkForceShare.a(this.a.this$0), anzj.a(2131713608), 0).a();
   }
 }
 

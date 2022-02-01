@@ -1,63 +1,26 @@
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class lul
-  extends luj
+class lul
+  implements SoundPool.OnLoadCompleteListener
 {
-  public lud a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  lul(luk paramluk, lum paramlum) {}
   
-  public lul(lud paramlud)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Lud = paramlud;
-    this.jdField_b_of_type_Long = 750L;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    long l = this.jdField_a_of_type_Long;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
+    paramSoundPool = this.jdField_a_of_type_Luk;
+    paramSoundPool.c += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Luk.c + ",musicCount = " + this.jdField_a_of_type_Luk.b);
     }
-    a(i);
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    this.jdField_c_of_type_ArrayOfLuv = new luv[5];
-    int i = 0;
-    while (i < this.jdField_c_of_type_ArrayOfLuv.length)
-    {
-      this.jdField_c_of_type_ArrayOfLuv[i] = new luv(paramAVRedPacketManager.a("qav_redpacket_gold_" + i * 2 + ".png"));
-      i += 1;
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Luk.a.add(Integer.valueOf(paramInt1));
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Lud = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 399 / 750);
-    this.jdField_c_of_type_Int = (paramInt1 * 279 / 750);
-    this.d = (paramInt1 * 155 / 750);
-    this.e = (paramInt1 * 252 / 750);
-  }
-  
-  public void c()
-  {
-    Rect localRect = this.jdField_a_of_type_Lud.a();
-    int i = localRect.left - this.d;
-    int j = localRect.top - this.e;
-    a(i, j, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + j);
+    if (this.jdField_a_of_type_Luk.c == this.jdField_a_of_type_Luk.b) {
+      this.jdField_a_of_type_Lum.a();
+    }
   }
 }
 

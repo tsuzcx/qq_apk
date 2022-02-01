@@ -1,23 +1,13 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import UserGrowth.stBlockRecommPersonReq;
+import UserGrowth.stBlockRecommPersonRsp;
 
-final class uok
-  extends ClickableSpan
+public class uok
+  extends ukl<stBlockRecommPersonRsp>
 {
-  uok(uoh paramuoh, String paramString) {}
-  
-  public void onClick(@NonNull View paramView)
+  public uok(String paramString)
   {
-    if (this.jdField_a_of_type_Uoh != null) {
-      this.jdField_a_of_type_Uoh.b(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
+    super("BlockRecommPerson");
+    this.a = new stBlockRecommPersonReq(paramString);
   }
 }
 

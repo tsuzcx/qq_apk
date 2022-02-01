@@ -1,20 +1,12 @@
 public class mch
 {
-  public long a;
+  public int a = 2131166001;
   public String a;
-  public boolean a;
-  public long b;
-  
-  public mch()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean a()
-  {
-    long l = System.currentTimeMillis();
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Long + this.b > l);
-  }
+  public int b = 2131165964;
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 

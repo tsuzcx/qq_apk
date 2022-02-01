@@ -1,26 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class rjq
-  implements DialogInterface.OnDismissListener
+class rjq
+  implements URLDrawable.URLDrawableListener
 {
-  public rjq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  rjq(rjj paramrjj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (ReadInJoyDeliverUGCActivity.c(this.a))
-    {
-      ReadInJoyDeliverUGCActivity.c(this.a, false);
-      ReadInJoyDeliverUGCActivity.e(this.a);
-      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
-        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131716989));
-      }
-      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
-      }
-    }
+    rjj.b(this.a);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = bhmq.b(paramURLDrawable.getCurrDrawable());
+    rjj.a(this.a, paramURLDrawable, rjj.a(this.a).e);
   }
 }
 

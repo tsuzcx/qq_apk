@@ -1,22 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public class aske
-  implements View.OnClickListener
+class aske
+  extends biht
 {
-  public aske(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void onClick(View paramView)
+  aske(askd paramaskd, String paramString1, String paramString2)
   {
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2F", "0X8009E2F", 0, 0, "", "", "", "");
-    if (this.a.jdField_a_of_type_Asja != null)
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(bihu parambihu)
+  {
+    Bundle localBundle;
+    EmoticonPackage localEmoticonPackage;
+    try
     {
-      asmj.a().b(3);
-      this.a.jdField_a_of_type_Asja.a();
+      localBundle = parambihu.a();
+      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      if (localEmoticonPackage == null) {
+        return;
+      }
+      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
+        QLog.d(askd.a(), 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + parambihu.a());
+      }
+      if (parambihu.a() != 3) {
+        break label177;
+      }
+      boolean bool = localBundle.getBoolean("isSmallEmotion");
+      String str = asks.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambihu, bool);
+      if (str != null)
+      {
+        QLog.e(askd.a(), 1, "jsonDownloadListener : parse json error : = " + str);
+        this.a.a(localEmoticonPackage, 11008, 0L, parambihu.d);
+        return;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception parambihu)
+    {
+      QLog.e(askd.a(), 1, "json download fail", parambihu);
+      return;
+    }
+    askd.jdField_a_of_type_Askc.a(localEmoticonPackage, 0, localBundle);
+    return;
+    label177:
+    QLog.e(askd.a(), 1, "jsonDownloadListener : ondone error , reportCode = " + parambihu.a);
+    askd.jdField_a_of_type_Askc.a(localEmoticonPackage, -1, localBundle);
+    biah.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", parambihu.a + "", "", "", "");
   }
 }
 

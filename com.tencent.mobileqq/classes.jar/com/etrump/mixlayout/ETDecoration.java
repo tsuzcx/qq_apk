@@ -8,7 +8,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import bdoa;
+import begw;
 import fn;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -78,10 +78,10 @@ public class ETDecoration
       paramArrayOfObject.setTextSize(paramFloat4);
       paramArrayOfObject.setColor(paramInt2);
       paramArrayOfObject.setAlpha((int)(255.0F * paramFloat5));
-      if (!(paramMatrix instanceof bdoa)) {
+      if (!(paramMatrix instanceof begw)) {
         break label114;
       }
-      paramArrayOfObject = (bdoa)paramMatrix;
+      paramArrayOfObject = (begw)paramMatrix;
       paramInt1 = (int)paramFloat3 + paramArrayOfObject.a().getBounds().height();
       paramArrayOfObject.draw(paramCanvas, null, 0, 0, paramFloat2, 0, paramInt1, paramInt1, null);
     }

@@ -2,13 +2,13 @@ package com.tencent.av.smallscreen;
 
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import lyj;
-import lyu;
+import lzf;
+import lzq;
 
 public class SmallScreenActivityPlugin$2
   implements Runnable
 {
-  public SmallScreenActivityPlugin$2(lyj paramlyj, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  public SmallScreenActivityPlugin$2(lzf paramlzf, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class SmallScreenActivityPlugin$2
     if ((this.this$0.b) && (this.jdField_a_of_type_Boolean) && (!this.b)) {}
     for (boolean bool = true;; bool = false)
     {
-      lyu.a(l, 2, localBaseApplication, bool, this.this$0.a.getCurrentAccountUin(), this.c);
+      lzq.a(l, 2, localBaseApplication, bool, this.this$0.a.getCurrentAccountUin(), this.c);
       return;
     }
   }

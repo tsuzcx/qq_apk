@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class yqt
-  extends wla
+class yqt
+  implements View.OnClickListener
 {
-  public yqt(qqstory_service.RspMonitorValue paramRspMonitorValue)
-  {
-    super(paramRspMonitorValue.result);
-  }
+  yqt(yqj paramyqj, ytq paramytq) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+    yup.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Ytq.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

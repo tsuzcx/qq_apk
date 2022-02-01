@@ -1,17 +1,19 @@
-class aayl
-  implements aaym
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aayl
+  implements View.OnClickListener
 {
-  aayl(aayj paramaayj) {}
+  public aayl(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
   
-  public void a(aavc paramaavc)
+  public void onClick(View paramView)
   {
-    int i = paramaavc.a();
-    if ((aayj.a(this.a)) && (i == 100))
-    {
-      aayj.a(this.a, true);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
     }
-    aayj.a(this.a, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

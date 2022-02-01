@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import adlh;
-import anmw;
+import adug;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
 public class AddRequestActivity$8$1
   implements Runnable
 {
-  public AddRequestActivity$8$1(adlh paramadlh) {}
+  public AddRequestActivity$8$1(adug paramadug) {}
   
   public void run()
   {
-    Card localCard = ((anmw)this.a.a.app.getManager(51)).b(this.a.a.a);
+    Card localCard = ((anyw)this.a.a.app.getManager(51)).b(this.a.a.a);
     if (localCard != null) {
       this.a.a.runOnUiThread(new AddRequestActivity.8.1.1(this, localCard));
     }

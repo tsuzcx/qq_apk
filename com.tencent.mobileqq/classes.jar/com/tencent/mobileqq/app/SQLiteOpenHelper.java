@@ -13,9 +13,9 @@ public class SQLiteOpenHelper
   private static final String REPORT_WAL_READ_EXCEPTION_KEY = "ReadWALException";
   private static final String REPORT_WAL_WRITE_EXCEPTION_KEY = "WriteWALException";
   public static final String TAG = "SQLiteOpenHelper";
-  public static boolean WAL_ENABLE;
+  public static boolean WAL_ENABLE = false;
   public static String WAL_FLAG_FILE_PATH = AppConstants.SDCARD_PATH + "WalFlag";
-  private static boolean sTryWalException;
+  private static boolean sTryWalException = false;
   private SQLiteDatabase dbR;
   private SQLiteDatabase dbW;
   private android.database.sqlite.SQLiteOpenHelper helper;
@@ -39,20 +39,20 @@ public class SQLiteOpenHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 88	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   3: getfield 92	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   6: ifnull +94 -> 100
     //   9: aload_0
-    //   10: getfield 88	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   13: invokevirtual 92	java/lang/Object:hashCode	()I
-    //   16: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   10: getfield 92	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   13: invokevirtual 96	java/lang/Object:hashCode	()I
+    //   16: invokestatic 102	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   19: astore_1
     //   20: aload_0
-    //   21: getfield 100	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   21: getfield 104	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   24: ifnull +82 -> 106
     //   27: aload_0
-    //   28: getfield 100	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   31: invokevirtual 92	java/lang/Object:hashCode	()I
-    //   34: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   28: getfield 104	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   31: invokevirtual 96	java/lang/Object:hashCode	()I
+    //   34: invokestatic 102	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   37: astore_2
     //   38: ldc 17
     //   40: iconst_1
@@ -60,7 +60,7 @@ public class SQLiteOpenHelper
     //   43: anewarray 4	java/lang/Object
     //   46: dup
     //   47: iconst_0
-    //   48: ldc 102
+    //   48: ldc 106
     //   50: aastore
     //   51: dup
     //   52: iconst_1
@@ -68,7 +68,7 @@ public class SQLiteOpenHelper
     //   54: aastore
     //   55: dup
     //   56: iconst_2
-    //   57: ldc 104
+    //   57: ldc 108
     //   59: aastore
     //   60: dup
     //   61: iconst_3
@@ -76,32 +76,32 @@ public class SQLiteOpenHelper
     //   63: aastore
     //   64: dup
     //   65: iconst_4
-    //   66: ldc 106
+    //   66: ldc 110
     //   68: aastore
     //   69: dup
     //   70: iconst_5
     //   71: aload_0
-    //   72: getfield 83	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
+    //   72: getfield 87	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
     //   75: aastore
     //   76: dup
     //   77: bipush 6
-    //   79: ldc 64
+    //   79: ldc 68
     //   81: aastore
     //   82: dup
     //   83: bipush 7
     //   85: aload_0
     //   86: aastore
-    //   87: invokestatic 70	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   87: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   90: aload_0
-    //   91: getfield 83	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
-    //   94: invokevirtual 108	android/database/sqlite/SQLiteOpenHelper:close	()V
+    //   91: getfield 87	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
+    //   94: invokevirtual 112	android/database/sqlite/SQLiteOpenHelper:close	()V
     //   97: aload_0
     //   98: monitorexit
     //   99: return
-    //   100: ldc 110
+    //   100: ldc 114
     //   102: astore_1
     //   103: goto -83 -> 20
-    //   106: ldc 110
+    //   106: ldc 114
     //   108: astore_2
     //   109: goto -71 -> 38
     //   112: astore_1
@@ -311,20 +311,20 @@ public class SQLiteOpenHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 88	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   3: getfield 92	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   6: ifnull +92 -> 98
     //   9: aload_0
-    //   10: getfield 88	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   13: invokevirtual 92	java/lang/Object:hashCode	()I
-    //   16: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   10: getfield 92	com/tencent/mobileqq/app/SQLiteOpenHelper:dbR	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   13: invokevirtual 96	java/lang/Object:hashCode	()I
+    //   16: invokestatic 102	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   19: astore_1
     //   20: aload_0
-    //   21: getfield 100	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   21: getfield 104	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   24: ifnull +80 -> 104
     //   27: aload_0
-    //   28: getfield 100	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   31: invokevirtual 92	java/lang/Object:hashCode	()I
-    //   34: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   28: getfield 104	com/tencent/mobileqq/app/SQLiteOpenHelper:dbW	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   31: invokevirtual 96	java/lang/Object:hashCode	()I
+    //   34: invokestatic 102	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   37: astore_2
     //   38: ldc 17
     //   40: iconst_1
@@ -340,7 +340,7 @@ public class SQLiteOpenHelper
     //   54: aastore
     //   55: dup
     //   56: iconst_2
-    //   57: ldc 104
+    //   57: ldc 108
     //   59: aastore
     //   60: dup
     //   61: iconst_3
@@ -348,32 +348,32 @@ public class SQLiteOpenHelper
     //   63: aastore
     //   64: dup
     //   65: iconst_4
-    //   66: ldc 106
+    //   66: ldc 110
     //   68: aastore
     //   69: dup
     //   70: iconst_5
     //   71: aload_0
-    //   72: getfield 83	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
+    //   72: getfield 87	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
     //   75: aastore
     //   76: dup
     //   77: bipush 6
-    //   79: ldc 64
+    //   79: ldc 68
     //   81: aastore
     //   82: dup
     //   83: bipush 7
     //   85: aload_0
     //   86: aastore
-    //   87: invokestatic 70	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   87: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   90: aload_0
     //   91: aconst_null
-    //   92: putfield 83	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
+    //   92: putfield 87	com/tencent/mobileqq/app/SQLiteOpenHelper:helper	Landroid/database/sqlite/SQLiteOpenHelper;
     //   95: aload_0
     //   96: monitorexit
     //   97: return
-    //   98: ldc 110
+    //   98: ldc 114
     //   100: astore_1
     //   101: goto -81 -> 20
-    //   104: ldc 110
+    //   104: ldc 114
     //   106: astore_2
     //   107: goto -69 -> 38
     //   110: astore_1

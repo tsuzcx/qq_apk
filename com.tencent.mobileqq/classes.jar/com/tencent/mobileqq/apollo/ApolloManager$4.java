@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
-import ancb;
+import amsx;
 import android.text.TextUtils;
-import bgmg;
+import annv;
+import bhmi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class ApolloManager$4
   implements Runnable
 {
-  public ApolloManager$4(amhd paramamhd) {}
+  public ApolloManager$4(amsx paramamsx) {}
   
   public void run()
   {
@@ -45,12 +45,12 @@ public class ApolloManager$4
         }
       } while (localException != null);
     }
-    localObject = new File(ancb.a);
+    localObject = new File(annv.a);
     ((File)localObject).mkdirs();
     localObject = new File((File)localObject, "apollo_res_version_info.json");
     if (((File)localObject).exists())
     {
-      localObject = bgmg.b((File)localObject);
+      localObject = bhmi.b((File)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         this.this$0.jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)localObject);
       }

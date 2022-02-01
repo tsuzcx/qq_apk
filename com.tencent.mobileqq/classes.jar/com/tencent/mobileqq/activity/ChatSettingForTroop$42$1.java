@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.text.SpannableString;
 import android.text.TextUtils;
-import bdnf;
-import bgwv;
+import begb;
+import bhwz;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.widget.MultiImageTextView;
@@ -24,14 +24,14 @@ class ChatSettingForTroop$42$1
         if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick)) {
           break label96;
         }
-        localFormSimpleItem.setRightText(this.a.this$0.getString(2131696852));
+        localFormSimpleItem.setRightText(this.a.this$0.getString(2131696901));
       }
     }
     return;
     label96:
-    SpannableString localSpannableString = new bdnf(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick, 16).a();
+    SpannableString localSpannableString = new begb(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick, 16).a();
     localFormSimpleItem.setRightText(localSpannableString);
-    bgwv.a(this.a.this$0.app, localFormSimpleItem.a(), localSpannableString);
+    bhwz.a(this.a.this$0.app, localFormSimpleItem.a(), localSpannableString);
   }
 }
 

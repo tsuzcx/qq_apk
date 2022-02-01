@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mek
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public mek(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
+  public mek(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickCancel", true, null, -1);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickCancel");
-    bgom.a(false);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

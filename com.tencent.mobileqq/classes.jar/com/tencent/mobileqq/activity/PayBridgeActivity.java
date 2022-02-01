@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aesw;
+import afca;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,7 +11,7 @@ import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.Window;
-import arpi;
+import asew;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -25,7 +25,7 @@ public class PayBridgeActivity
   extends BaseActivity
 {
   protected long a;
-  private aesw jdField_a_of_type_Aesw;
+  private afca jdField_a_of_type_Afca;
   private PayLogic jdField_a_of_type_CooperationQwalletPluginPayPayLogic;
   protected boolean a;
   public boolean b;
@@ -56,9 +56,9 @@ public class PayBridgeActivity
   {
     try
     {
-      this.jdField_a_of_type_Aesw = new aesw(this);
+      this.jdField_a_of_type_Afca = new afca(this);
       IntentFilter localIntentFilter = new IntentFilter("action_launch_completed");
-      registerReceiver(this.jdField_a_of_type_Aesw, localIntentFilter);
+      registerReceiver(this.jdField_a_of_type_Afca, localIntentFilter);
       return;
     }
     catch (Throwable localThrowable)
@@ -104,7 +104,7 @@ public class PayBridgeActivity
       return false;
     }
     Intent localIntent = new Intent(paramActivity, PayBridgeActivity.class);
-    localIntent.putExtras(new arpi(paramString1, paramString2, paramString3, paramString4, "uin", "skey", paramString5, paramString6, paramString7, paramString8, paramString9).a());
+    localIntent.putExtras(new asew(paramString1, paramString2, paramString3, paramString4, "uin", "skey", paramString5, paramString6, paramString7, paramString8, paramString9).a());
     localIntent.putExtra("pay_requestcode", 1);
     localIntent.addFlags(67108864);
     localIntent.addFlags(536870912);
@@ -116,8 +116,8 @@ public class PayBridgeActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Aesw != null) {
-        unregisterReceiver(this.jdField_a_of_type_Aesw);
+      if (this.jdField_a_of_type_Afca != null) {
+        unregisterReceiver(this.jdField_a_of_type_Afca);
       }
       return;
     }
@@ -187,7 +187,7 @@ public class PayBridgeActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167224);
+    getWindow().setBackgroundDrawableResource(2131167247);
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayBridgeActivity", 2, "doOnCreate@" + hashCode());
     }

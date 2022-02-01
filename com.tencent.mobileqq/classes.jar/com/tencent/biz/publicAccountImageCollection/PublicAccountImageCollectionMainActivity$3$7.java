@@ -1,12 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.TextView;
-import uwf;
+import uxq;
 
 public class PublicAccountImageCollectionMainActivity$3$7
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$7(uwf paramuwf) {}
+  public PublicAccountImageCollectionMainActivity$3$7(uxq paramuxq) {}
   
   public void run()
   {

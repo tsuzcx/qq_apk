@@ -1,18 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-
-public class bqdo
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bqdo
+  extends bqgj
 {
-  public bqdo(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

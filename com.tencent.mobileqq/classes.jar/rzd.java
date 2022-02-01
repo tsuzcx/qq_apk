@@ -1,19 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-final class rzd
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface rzd
 {
-  rzd(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
+  public abstract void b(VideoInfo paramVideoInfo);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void d(VideoInfo paramVideoInfo);
 }
 
 

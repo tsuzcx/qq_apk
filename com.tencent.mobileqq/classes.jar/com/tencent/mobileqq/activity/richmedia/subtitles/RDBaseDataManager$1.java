@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import alno;
+import alzg;
 
 public class RDBaseDataManager$1
   implements Runnable
 {
-  public RDBaseDataManager$1(alno paramalno) {}
+  public RDBaseDataManager$1(alzg paramalzg) {}
   
   public void run()
   {
-    alno.a(this.this$0);
+    alzg.a(this.this$0);
   }
 }
 

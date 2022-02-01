@@ -1,97 +1,30 @@
-import NS_MOBILE_COMM_CONF.MobileCommConf;
-import NS_MOBILE_COMM_CONF.NewMobileGlobalConf;
-import NS_MOBILE_COMM_CONF.NewMobileUserConf;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 
-public class bmwq
+class bmwq
+  extends BroadcastReceiver
 {
-  private static bmwq jdField_a_of_type_Bmwq;
-  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static bmwq a()
+  private bmwq(bmwo parambmwo) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Bmwq == null) {}
-    try
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (jdField_a_of_type_Bmwq == null) {
-        jdField_a_of_type_Bmwq = new bmwq();
+      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label40;
       }
-      return jdField_a_of_type_Bmwq;
+      bmwo.a(this.jdField_a_of_type_Bmwo, true);
     }
-    finally {}
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (paramLong > 0L)
-    {
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_report", 0).edit();
-      localEditor.putLong("lastReportTime", paramLong);
-      localEditor.apply();
-    }
-  }
-  
-  public void a(MobileCommConf paramMobileCommConf)
-  {
-    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null) || (paramMobileCommConf.vecAppList == null) || (paramMobileCommConf.maxScanNum <= 0)) {}
-    long l;
-    ArrayList localArrayList;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          l = paramMobileCommConf.new_mobile_global_conf.version;
-        } while (paramMobileCommConf.new_mobile_user_conf.version < l);
-        if (QLog.isColorLevel()) {
-          QLog.d("YYBInstallPackageManager", 1, "invokeReport");
-        }
-        l = System.currentTimeMillis() / 1000L;
-      } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramMobileCommConf.vecAppList.iterator();
-      do
-      {
-        String str;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          str = (String)localIterator.next();
-        } while (bkgu.a(BaseApplicationImpl.getApplication(), str));
-        localArrayList.add(str);
-      } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
-    } while (localArrayList.size() <= 0);
-    this.jdField_a_of_type_Long = l;
-    a(this.jdField_a_of_type_Long);
-    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), bmws.class);
-    try
-    {
-      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
-      paramMobileCommConf.putExtra("selfuin", l);
-      paramMobileCommConf.putStringArrayListExtra("uninstall_app_list", localArrayList);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
+    label40:
+    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
-        l = 0L;
-      }
-    }
+    bmwo.b(this.jdField_a_of_type_Bmwo, true);
   }
 }
 

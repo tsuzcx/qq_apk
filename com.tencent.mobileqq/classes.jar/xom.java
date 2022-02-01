@@ -1,42 +1,48 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-class xom
-  implements xpp
+public class xom
+  extends wjm<xoj, wqm>
 {
-  xom(xol paramxol) {}
-  
-  public boolean a(xpl paramxpl, int paramInt, Object paramObject)
+  public xom(xoj paramxoj)
   {
-    if (this.a.isCanceled()) {
-      return false;
-    }
-    yqp.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramxpl)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramxpl, paramInt, paramObject);
-      return false;
-      yqp.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      yqp.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      yqp.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    }
+    super(paramxoj);
   }
+  
+  public void a(@NonNull xoj paramxoj, @NonNull wqm paramwqm)
+  {
+    if ((paramwqm.jdField_a_of_type_Int == 2) || (!paramwqm.jdField_a_of_type_JavaLangString.equals(xoj.a(paramxoj))) || (xoj.a(paramxoj) == null) || (xoj.a(paramxoj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
+      yuk.b(this.TAG, "ignore this feed info change event. %s.", paramwqm.toString());
+    }
+    xos localxos;
+    do
+    {
+      return;
+      yuk.a(this.TAG, "receive feed info change event. %s.", paramwqm.toString());
+      localxos = paramxoj.a();
+      switch (paramwqm.b)
+      {
+      default: 
+        return;
+      }
+      if (paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      {
+        xoj.a(paramxoj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+        xoj.a(paramxoj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+        xoj.a(paramxoj).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
+      }
+      xoj.a(paramxoj).a(paramwqm.c);
+    } while (localxos == null);
+    localxos.a(xoj.a(paramxoj), paramwqm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqm.class;
+  }
+  
+  public void b(@NonNull xoj paramxoj, @NonNull wqm paramwqm) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import afur;
+import agej;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -21,14 +21,14 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import awdu;
-import awdw;
-import awdy;
-import aysz;
-import aytc;
-import bhyj;
-import bhyk;
-import bojl;
+import awwm;
+import awwo;
+import awwq;
+import azlk;
+import azln;
+import bizh;
+import bizi;
+import bplg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -40,16 +40,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class OnlineStatusLyricView
   extends TextView
-  implements Handler.Callback, bhyk
+  implements Handler.Callback, bizi
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Paint.Align jdField_a_of_type_AndroidGraphicsPaint$Align = Paint.Align.CENTER;
   protected Handler a;
-  protected awdu a;
-  private awdy jdField_a_of_type_Awdy;
-  private aytc jdField_a_of_type_Aytc;
-  private bhyj jdField_a_of_type_Bhyj;
+  protected awwm a;
+  private awwq jdField_a_of_type_Awwq;
+  private azln jdField_a_of_type_Azln;
+  private bizh jdField_a_of_type_Bizh;
   public Friends a;
   public String a;
   private volatile boolean jdField_a_of_type_Boolean;
@@ -85,24 +85,24 @@ public class OnlineStatusLyricView
     return (int)((getMeasuredHeight() - getPaddingTop() - getPaddingBottom() - i) * 0.5F - localFontMetrics.ascent);
   }
   
-  private int a(awdy paramawdy)
+  private int a(awwq paramawwq)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.LEFT) {
       return 0;
     }
     if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.RIGHT) {
-      return paramawdy.jdField_a_of_type_Int * 2;
+      return paramawwq.jdField_a_of_type_Int * 2;
     }
-    return paramawdy.jdField_a_of_type_Int;
+    return paramawwq.jdField_a_of_type_Int;
   }
   
-  private awdw a(int paramInt)
+  private awwo a(int paramInt)
   {
     if (paramInt > 0) {}
     for (paramInt = (int)(this.jdField_a_of_type_Long - paramInt);; paramInt = (int)(this.jdField_a_of_type_Long - (this.jdField_a_of_type_ComTencentMobileqqDataFriends.songEndTime - NetConnInfoCenter.getServerTimeMillis())))
     {
-      int i = this.jdField_a_of_type_Awdu.a(paramInt);
-      Object localObject = this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList;
+      int i = this.jdField_a_of_type_Awwm.a(paramInt);
+      Object localObject = this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList;
       int j = ((ArrayList)localObject).size();
       paramInt = i;
       if (i < 0) {
@@ -112,9 +112,9 @@ public class OnlineStatusLyricView
       if (paramInt >= j) {
         i = j - 1;
       }
-      awdw localawdw = (awdw)((ArrayList)localObject).get(i);
-      localObject = localawdw;
-      if (localawdw.a().isEmpty())
+      awwo localawwo = (awwo)((ArrayList)localObject).get(i);
+      localObject = localawwo;
+      if (localawwo.a().isEmpty())
       {
         if (this.jdField_a_of_type_Int != 0) {
           b();
@@ -126,17 +126,17 @@ public class OnlineStatusLyricView
     }
   }
   
-  private void a(Canvas paramCanvas, awdy paramawdy)
+  private void a(Canvas paramCanvas, awwq paramawwq)
   {
     if (TextUtils.isEmpty(getText().toString())) {
       return;
     }
-    this.jdField_a_of_type_Awdy = paramawdy;
+    this.jdField_a_of_type_Awwq = paramawwq;
     paramCanvas.save();
     TextPaint localTextPaint = getPaint();
     paramCanvas.clipRect(getPaddingLeft(), getPaddingTop(), getMeasuredWidth() - getPaddingRight(), getMeasuredHeight() - getPaddingBottom());
     int i = getPaddingLeft();
-    int j = a(paramawdy);
+    int j = a(paramawwq);
     Drawable[] arrayOfDrawable = getCompoundDrawables();
     if (arrayOfDrawable[0] != null)
     {
@@ -154,7 +154,7 @@ public class OnlineStatusLyricView
     paramCanvas.restore();
     paramCanvas.save();
     paramCanvas.clipRect(getCompoundPaddingLeft(), getPaddingTop(), getMeasuredWidth() - getPaddingRight(), getMeasuredHeight() - getPaddingBottom());
-    i = a(paramawdy);
+    i = a(paramawwq);
     j = getCompoundPaddingLeft();
     int k = this.jdField_c_of_type_Int;
     if (this.jdField_b_of_type_Int == 0) {
@@ -164,20 +164,20 @@ public class OnlineStatusLyricView
     int n = getPaddingTop();
     localTextPaint.setStyle(Paint.Style.FILL);
     localTextPaint.setColor(getCurrentTextColor());
-    paramCanvas.drawText(paramawdy.jdField_a_of_type_JavaLangString, i + j - k, m + n, localTextPaint);
+    paramCanvas.drawText(paramawwq.jdField_a_of_type_JavaLangString, i + j - k, m + n, localTextPaint);
     paramCanvas.restore();
   }
   
-  private boolean a(awdw paramawdw)
+  private boolean a(awwo paramawwo)
   {
     boolean bool = false;
     long l1 = (int)(this.jdField_a_of_type_Long - (this.jdField_a_of_type_ComTencentMobileqqDataFriends.songEndTime - NetConnInfoCenter.getServerTimeMillis()));
-    long l2 = paramawdw.jdField_a_of_type_Long;
-    long l3 = paramawdw.b;
+    long l2 = paramawwo.jdField_a_of_type_Long;
+    long l3 = paramawwo.b;
     if (l1 > l2 + l3) {
       return false;
     }
-    int j = ((awdy)paramawdw.a().get(0)).jdField_b_of_type_Int;
+    int j = ((awwq)paramawwo.a().get(0)).jdField_b_of_type_Int;
     int k = getMeasuredWidth() - getPaddingRight() - getPaddingLeft();
     int m;
     int i;
@@ -229,19 +229,19 @@ public class OnlineStatusLyricView
     Object localObject;
     if (b())
     {
-      if ((this.jdField_a_of_type_Awdy == null) || (!getText().toString().equals(this.jdField_a_of_type_Awdy.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Awdy = a(getText().toString());
+      if ((this.jdField_a_of_type_Awwq == null) || (!getText().toString().equals(this.jdField_a_of_type_Awwq.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_Awwq = a(getText().toString());
       }
-      localObject = this.jdField_a_of_type_Awdy;
+      localObject = this.jdField_a_of_type_Awwq;
       this.jdField_c_of_type_Int = 0;
     }
     for (;;)
     {
       if (localObject != null) {
-        a(paramCanvas, (awdy)localObject);
+        a(paramCanvas, (awwq)localObject);
       }
       label142:
-      awdw localawdw;
+      awwo localawwo;
       do
       {
         do
@@ -250,19 +250,19 @@ public class OnlineStatusLyricView
           if (!this.jdField_b_of_type_Boolean) {
             break label142;
           }
-          if (this.jdField_a_of_type_Awdy != null) {
+          if (this.jdField_a_of_type_Awwq != null) {
             break;
           }
           localObject = a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.songPauseRemainTime);
-        } while ((localObject == null) || (((awdw)localObject).a().isEmpty()));
-        localObject = (awdy)((awdw)localObject).a().get(0);
+        } while ((localObject == null) || (((awwo)localObject).a().isEmpty()));
+        localObject = (awwq)((awwo)localObject).a().get(0);
         break;
-        localObject = this.jdField_a_of_type_Awdy;
+        localObject = this.jdField_a_of_type_Awwq;
         break;
-        localawdw = a(-1);
-      } while ((localawdw == null) || (localawdw.a().isEmpty()));
-      localObject = (awdy)localawdw.a().get(0);
-      this.jdField_c_of_type_Boolean = a(localawdw);
+        localawwo = a(-1);
+      } while ((localawwo == null) || (localawwo.a().isEmpty()));
+      localObject = (awwq)localawwo.a().get(0);
+      this.jdField_c_of_type_Boolean = a(localawwo);
     }
   }
   
@@ -280,19 +280,19 @@ public class OnlineStatusLyricView
     }
   }
   
-  public awdy a(String paramString)
+  public awwq a(String paramString)
   {
     int j = (int)(getPaint().measureText(paramString) + 0.5D);
     Drawable[] arrayOfDrawable = getCompoundDrawables();
     if (arrayOfDrawable[0] != null) {}
     for (int i = arrayOfDrawable[0].getBounds().width() + getCompoundDrawablePadding();; i = 0) {
-      return new awdy(paramString, Math.max(getMeasuredWidth() / 2 - j / 2 - i, 0), 0, j + i, 0, null);
+      return new awwq(paramString, Math.max(getMeasuredWidth() / 2 - j / 2 - i, 0), 0, j + i, 0, null);
     }
   }
   
   public void a()
   {
-    this.d = afur.a(200.0F, getResources());
+    this.d = agej.a(200.0F, getResources());
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
@@ -303,19 +303,19 @@ public class OnlineStatusLyricView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Awdu != null;
+    return this.jdField_a_of_type_Awwm != null;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        awdw localawdw = (awdw)localIterator.next();
-        localawdw.jdField_a_of_type_JavaUtilArrayList.clear();
-        localawdw.jdField_a_of_type_JavaUtilArrayList.add(a(localawdw.jdField_a_of_type_JavaLangString));
+        awwo localawwo = (awwo)localIterator.next();
+        localawwo.jdField_a_of_type_JavaUtilArrayList.clear();
+        localawwo.jdField_a_of_type_JavaUtilArrayList.add(a(localawwo.jdField_a_of_type_JavaLangString));
       }
     }
   }
@@ -328,7 +328,7 @@ public class OnlineStatusLyricView
   public boolean b()
   {
     boolean bool2 = false;
-    String str = ((QQAppInterface)bojl.a()).a().a();
+    String str = ((QQAppInterface)bplg.a()).a().a();
     if ((str != null) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends != null) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin)))
     {
       this.jdField_a_of_type_ComTencentMobileqqDataFriends = null;
@@ -337,14 +337,14 @@ public class OnlineStatusLyricView
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqDataFriends == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataFriends.songName)))
     {
-      this.jdField_a_of_type_Awdu = null;
+      this.jdField_a_of_type_Awwm = null;
       f();
       QLog.d("OnlineStatusLyricView", 1, "mFriend is null");
       return true;
     }
     if (!this.jdField_a_of_type_ComTencentMobileqqDataFriends.songId.equals(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Awdu = null;
+      this.jdField_a_of_type_Awwm = null;
       this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.songId;
       QLog.d("OnlineStatusLyricView", 1, "mFriend songId has changed");
       label138:
@@ -356,27 +356,27 @@ public class OnlineStatusLyricView
     for (boolean bool1 = true;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;
-      if ((this.jdField_a_of_type_Awdu == null) || (this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+      if ((this.jdField_a_of_type_Awwm == null) || (this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
       {
-        this.jdField_a_of_type_Awdu = ((awdu)aysz.a().a.get(this.jdField_a_of_type_ComTencentMobileqqDataFriends.songId));
-        if ((this.jdField_a_of_type_Awdu != null) && (this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList != null))
+        this.jdField_a_of_type_Awwm = ((awwm)azlk.a().a.get(this.jdField_a_of_type_ComTencentMobileqqDataFriends.songId));
+        if ((this.jdField_a_of_type_Awwm != null) && (this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList != null))
         {
-          this.jdField_a_of_type_Awdu.a();
+          this.jdField_a_of_type_Awwm.a();
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
           this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataFriends.songDuration;
-          if ((this.jdField_a_of_type_Long <= 0L) && (this.jdField_a_of_type_Awdu != null) && (this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-            this.jdField_a_of_type_Long = (((awdw)this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Long + 30000L);
+          if ((this.jdField_a_of_type_Long <= 0L) && (this.jdField_a_of_type_Awwm != null) && (this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+            this.jdField_a_of_type_Long = (((awwo)this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Long + 30000L);
           }
-          if (this.jdField_a_of_type_Aytc != null) {
-            this.jdField_a_of_type_Aytc.a();
+          if (this.jdField_a_of_type_Azln != null) {
+            this.jdField_a_of_type_Azln.a();
           }
           QLog.d("OnlineStatusLyricView", 1, "mLyric reset");
         }
       }
-      if ((this.jdField_a_of_type_Awdu != null) && (this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList != null))
+      if ((this.jdField_a_of_type_Awwm != null) && (this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList != null))
       {
         bool1 = bool2;
-        if (!this.jdField_a_of_type_Awdu.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {}
+        if (!this.jdField_a_of_type_Awwm.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {}
       }
       else
       {
@@ -386,7 +386,7 @@ public class OnlineStatusLyricView
       if (System.currentTimeMillis() <= this.jdField_a_of_type_ComTencentMobileqqDataFriends.songEndTime) {
         break label138;
       }
-      this.jdField_a_of_type_Awdu = null;
+      this.jdField_a_of_type_Awwm = null;
       f();
       if (!QLog.isColorLevel()) {
         break;
@@ -399,7 +399,7 @@ public class OnlineStatusLyricView
   public void c()
   {
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Awdy = null;
+    this.jdField_a_of_type_Awwq = null;
     this.jdField_c_of_type_Int = 0;
   }
   
@@ -411,9 +411,9 @@ public class OnlineStatusLyricView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhyj != null)
+    if (this.jdField_a_of_type_Bizh != null)
     {
-      this.jdField_a_of_type_Bhyj.a(paramCanvas);
+      this.jdField_a_of_type_Bizh.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -447,9 +447,9 @@ public class OnlineStatusLyricView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhyj != null)
+    if (this.jdField_a_of_type_Bizh != null)
     {
-      this.jdField_a_of_type_Bhyj.b(paramCanvas);
+      this.jdField_a_of_type_Bizh.b(paramCanvas);
       return;
     }
     c(paramCanvas);
@@ -461,7 +461,7 @@ public class OnlineStatusLyricView
     if (getMeasuredWidth() != this.jdField_a_of_type_Int)
     {
       this.jdField_a_of_type_Int = getMeasuredWidth();
-      if (this.jdField_a_of_type_Awdu != null) {
+      if (this.jdField_a_of_type_Awwm != null) {
         b();
       }
       c();
@@ -519,20 +519,20 @@ public class OnlineStatusLyricView
     QLog.d("OnlineStatusLyricView", 1, new Object[] { "setFriendSession, friendIsNull:", Boolean.valueOf(bool) });
   }
   
-  public void setLyricStateListener(aytc paramaytc)
+  public void setLyricStateListener(azln paramazln)
   {
-    this.jdField_a_of_type_Aytc = paramaytc;
+    this.jdField_a_of_type_Azln = paramazln;
   }
   
-  public void setMosaicEffect(bhyj parambhyj)
+  public void setMosaicEffect(bizh parambizh)
   {
-    bhyj localbhyj = this.jdField_a_of_type_Bhyj;
-    if (localbhyj != null) {
-      localbhyj.a(null);
+    bizh localbizh = this.jdField_a_of_type_Bizh;
+    if (localbizh != null) {
+      localbizh.a(null);
     }
-    this.jdField_a_of_type_Bhyj = parambhyj;
-    if (parambhyj != null) {
-      parambhyj.a(this);
+    this.jdField_a_of_type_Bizh = parambizh;
+    if (parambizh != null) {
+      parambizh.a(this);
     }
     invalidate();
   }
@@ -548,7 +548,7 @@ public class OnlineStatusLyricView
         QLog.d("OnlineStatusLyricView", 1, new Object[] { "setText, mSongStatusName:", this.jdField_b_of_type_JavaLangString });
         this.jdField_b_of_type_JavaLangString = null;
         this.jdField_a_of_type_ComTencentMobileqqDataFriends = null;
-        this.jdField_a_of_type_Awdu = null;
+        this.jdField_a_of_type_Awwm = null;
       }
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);

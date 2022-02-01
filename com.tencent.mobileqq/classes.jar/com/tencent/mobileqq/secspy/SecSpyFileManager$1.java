@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.secspy;
 
-import bbxa;
-import bgcs;
+import bcpr;
+import bhct;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SecSpyFileManager$1
   implements Runnable
 {
-  public SecSpyFileManager$1(bbxa parambbxa) {}
+  public SecSpyFileManager$1(bcpr parambcpr) {}
   
   public void run()
   {
-    bgcs.a(this.this$0.a.getApplication());
+    bhct.a(this.this$0.a.getApplication());
   }
 }
 

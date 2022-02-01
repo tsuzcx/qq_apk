@@ -1,27 +1,34 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class beyy
-  extends JobSegment<String, bezc>
+class beyy
+  implements bezb
 {
-  private beza jdField_a_of_type_Beza;
-  private String jdField_a_of_type_JavaLangString;
+  beyy(beyx parambeyx) {}
   
-  public beyy(beza parambeza)
+  public Bitmap getBitmap(URL paramURL)
   {
-    this.jdField_a_of_type_Beza = parambeza;
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    yqp.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    wlb.a().a(new bezb(this.jdField_a_of_type_Beza, this.jdField_a_of_type_JavaLangString), new beyz(this));
+    String str = paramURL.getPath();
+    try
+    {
+      Bitmap localBitmap = beyx.a(this.a, str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = beyx.b(this.a, str);
+      }
+      return paramURL;
+    }
+    catch (Throwable paramURL)
+    {
+      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beyy
  * JD-Core Version:    0.7.0.1
  */

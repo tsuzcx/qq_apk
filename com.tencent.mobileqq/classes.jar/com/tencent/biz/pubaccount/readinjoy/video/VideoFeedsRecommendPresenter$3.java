@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.List;
-import sar;
-import sbo;
+import rrm;
+import rsk;
 
 public class VideoFeedsRecommendPresenter$3
   implements Runnable
 {
-  public VideoFeedsRecommendPresenter$3(sbo paramsbo, Intent paramIntent, VideoInfo paramVideoInfo, List paramList, sar paramsar, long paramLong, int paramInt, boolean paramBoolean) {}
+  public VideoFeedsRecommendPresenter$3(rsk paramrsk, Intent paramIntent, VideoInfo paramVideoInfo, List paramList, rrm paramrrm, long paramLong, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    sbo.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Sar.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    rsk.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Rrm.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

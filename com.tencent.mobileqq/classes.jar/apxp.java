@@ -1,65 +1,19 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class apxp
+class apxp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public Rect a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Rect b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  apxp(apxm paramapxm, String paramString1, String paramString2, DownloadInfo paramDownloadInfo, boolean paramBoolean, int paramInt) {}
   
-  public apxp()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_d_of_type_Int = paramInt;
-      paramString = BaseApplicationImpl.getContext();
-      if (paramJSONObject.has("rect"))
-      {
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("rect");
-        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-        this.jdField_a_of_type_AndroidGraphicsRect.left = afur.a(localJSONArray.getInt(0) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.top = afur.a(localJSONArray.getInt(1) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.right = afur.a(localJSONArray.getInt(2) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.bottom = afur.a(localJSONArray.getInt(3) / 2, paramString.getResources());
-      }
-      this.jdField_a_of_type_Long = paramJSONObject.optInt("time", 0);
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("cycle_count", 1);
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("count", 0);
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("img_prefix", "");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("alpha", 0);
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("align", "");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("zip_name", "");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("img_reverse", true);
-      paramJSONObject = paramJSONObject.optJSONArray("padding");
-    } while ((paramJSONObject == null) || (paramJSONObject.length() <= 0));
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsRect.left = afur.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.top = afur.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.right = afur.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = afur.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+    QLog.d("ArkApp.downloadyyb.module", 1, new Object[] { "ark.dctrl [doDownloadAction] dialog callback appid=", this.jdField_a_of_type_JavaLangString, ",name=", this.b, ",which:", Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      apxm.a(this.jdField_a_of_type_Apxm, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    }
   }
 }
 

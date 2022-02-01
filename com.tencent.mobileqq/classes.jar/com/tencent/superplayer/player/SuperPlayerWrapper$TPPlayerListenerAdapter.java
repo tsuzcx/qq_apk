@@ -6,30 +6,25 @@ import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.superplayer.utils.Utils;
-import com.tencent.superplayer.vinfo.VInfoGetter.VInfoGetterListener;
 import com.tencent.thumbplayer.api.ITPPlayer;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioFrameOutputListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnCompletionListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnErrorListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnInfoListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnPreparedListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSeekCompleteListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoFrameOutListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
-import com.tencent.thumbplayer.api.TPCaptureCallBack;
+import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 
 class SuperPlayerWrapper$TPPlayerListenerAdapter
-  implements VInfoGetter.VInfoGetterListener, ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoSizeChangedListener, TPCaptureCallBack
+  implements ListenerCombine.ITPPlayerCombine
 {
   private SuperPlayerWrapper.WrapperIdCaptureListener mCaptureListener;
+  private SuperPlayerListenerCallBack mWrapperCallback;
   
-  private SuperPlayerWrapper$TPPlayerListenerAdapter(SuperPlayerWrapper paramSuperPlayerWrapper) {}
+  SuperPlayerWrapper$TPPlayerListenerAdapter(SuperPlayerWrapper paramSuperPlayerWrapper, SuperPlayerListenerCallBack paramSuperPlayerListenerCallBack)
+  {
+    this.mWrapperCallback = paramSuperPlayerListenerCallBack;
+  }
   
   public void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    SuperPlayerWrapper.access$700(this.this$0).onAudioFrameOutput(paramTPAudioFrameBuffer);
+    this.mWrapperCallback.onAudioFrameOutput(paramTPAudioFrameBuffer);
   }
   
   public void onCaptureVideoFailed(int paramInt)
@@ -48,51 +43,51 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
-    LogUtil.i(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onCompletion");
+    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onCompletion");
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(7);
-    SuperPlayerWrapper.access$700(this.this$0).onCompletion(this.this$0);
+    this.mWrapperCallback.onCompletion(this.this$0);
   }
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    LogUtil.e(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onError, errorType:" + paramInt1 + ", errorCode:" + paramInt2 + ", arg1:" + paramLong1 + ", arg2:" + paramLong2);
+    LogUtil.e(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onError, errorType:" + paramInt1 + ", errorCode:" + paramInt2 + ", arg1:" + paramLong1 + ", arg2:" + paramLong2);
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
-    SuperPlayerWrapper.access$700(this.this$0).onError(this.this$0, 1, paramInt1, paramInt2, paramLong1 + ":" + paramLong2);
+    this.mWrapperCallback.onError(this.this$0, 1, paramInt1, paramInt2, paramLong1 + ":" + paramLong2);
   }
   
   public void onGetVInfoFailed(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, int paramInt1, int paramInt2, String paramString)
   {
-    LogUtil.e(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onGetVInfoFailed:" + paramInt2 + "+" + paramString);
-    if (SuperPlayerWrapper.access$700(this.this$0) != null) {
-      SuperPlayerWrapper.access$700(this.this$0).onError(this.this$0, 2, paramInt1, paramInt2, paramString);
+    LogUtil.e(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onGetVInfoFailed:" + paramInt2 + "+" + paramString);
+    if (this.mWrapperCallback != null) {
+      this.mWrapperCallback.onError(this.this$0, 2, paramInt1, paramInt2, paramString);
     }
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
   }
   
   public void onGetVInfoSuccess(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    LogUtil.i(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onGetVInfoSuccess:" + paramSuperPlayerVideoInfo);
+    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onGetVInfoSuccess:" + paramSuperPlayerVideoInfo);
     SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerWrapper.access$300(this.this$0);
-    if (localSuperPlayerVideoInfo == null) {}
+    if ((localSuperPlayerVideoInfo == null) || (paramSuperPlayerVideoInfo == null)) {}
     for (;;)
     {
       return;
       if ((TextUtils.equals(paramSuperPlayerVideoInfo.getVid(), localSuperPlayerVideoInfo.getVid())) && (TextUtils.equals(paramSuperPlayerVideoInfo.getRequestDefinition(), localSuperPlayerVideoInfo.getRequestDefinition())))
       {
-        if (TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) {
-          break label163;
+        if ((TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) && (paramSuperPlayerVideoInfo.getTVideoSectionList() == null)) {
+          break label172;
         }
         SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(2);
         SuperPlayerWrapper.access$600(this.this$0, paramSuperPlayerVideoInfo, SuperPlayerWrapper.access$500(this.this$0));
       }
-      while (SuperPlayerWrapper.access$700(this.this$0) != null)
+      while ((this.mWrapperCallback != null) && (paramSuperPlayerVideoInfo.getTVideoNetInfo() != null))
       {
-        SuperPlayerWrapper.access$700(this.this$0).onDefinitionInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinitionStr(), paramSuperPlayerVideoInfo.getTVideoNetInfo().getDefinitionStrList());
-        SuperPlayerWrapper.access$700(this.this$0).onTVideoNetInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo());
+        this.mWrapperCallback.onDefinitionInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinitionStr(), paramSuperPlayerVideoInfo.getTVideoNetInfo().getDefinitionStrList());
+        this.mWrapperCallback.onTVideoNetInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo());
         return;
-        label163:
-        if (SuperPlayerWrapper.access$700(this.this$0) != null) {
-          SuperPlayerWrapper.access$700(this.this$0).onError(this.this$0, 2, 5000, 32000001, null);
+        label172:
+        if (this.mWrapperCallback != null) {
+          this.mWrapperCallback.onError(this.this$0, 2, 5000, 32000001, null);
         }
         SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
       }
@@ -101,39 +96,44 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    if (SuperPlayerWrapper.access$800(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
+    if (SuperPlayerWrapper.access$700(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
       return;
     }
     paramInt = Utils.convertPlayerMsg(paramInt);
-    LogUtil.i(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onInfo, what:" + paramInt + ", arg1:" + paramLong1 + ", arg2:" + paramLong2 + ", extraObject:" + paramObject);
-    SuperPlayerWrapper.access$700(this.this$0).onInfo(this.this$0, paramInt, paramLong1, paramLong2, paramObject);
+    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onInfo, what:" + paramInt + ", arg1:" + paramLong1 + ", arg2:" + paramLong2 + ", extraObject:" + paramObject);
+    this.mWrapperCallback.onInfo(this.this$0, paramInt, paramLong1, paramLong2, paramObject);
   }
   
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
-    LogUtil.i(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onPrepared");
+    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onPrepared");
     SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(4);
-    SuperPlayerWrapper.access$700(this.this$0).onVideoPrepared(this.this$0);
+    this.mWrapperCallback.onVideoPrepared(this.this$0);
   }
   
   public void onSeekComplete(ITPPlayer paramITPPlayer)
   {
-    LogUtil.i(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onSeekComplete");
-    SuperPlayerWrapper.access$700(this.this$0).onSeekComplete(this.this$0);
+    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onSeekComplete");
+    this.mWrapperCallback.onSeekComplete(this.this$0);
+  }
+  
+  public void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
+  {
+    this.mWrapperCallback.onSubtitleData(this.this$0, paramTPSubtitleData);
   }
   
   public void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    SuperPlayerWrapper.access$700(this.this$0).onVideoFrameOutput(paramTPVideoFrameBuffer);
+    this.mWrapperCallback.onVideoFrameOutput(paramTPVideoFrameBuffer);
   }
   
   public void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)
   {
-    LogUtil.i(SuperPlayerWrapper.access$200(this.this$0), "inner listener called : onVideoSizeChanged, width:" + paramLong1 + ", height:" + paramLong2);
-    SuperPlayerWrapper.access$700(this.this$0).onVideoSizeChanged(this.this$0, (int)paramLong1, (int)paramLong2);
+    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onVideoSizeChanged, width:" + paramLong1 + ", height:" + paramLong2);
+    this.mWrapperCallback.onVideoSizeChanged(this.this$0, (int)paramLong1, (int)paramLong2);
   }
   
-  public void setCaptureListener(SuperPlayerWrapper.WrapperIdCaptureListener paramWrapperIdCaptureListener)
+  void setCaptureListener(SuperPlayerWrapper.WrapperIdCaptureListener paramWrapperIdCaptureListener)
   {
     this.mCaptureListener = paramWrapperIdCaptureListener;
   }

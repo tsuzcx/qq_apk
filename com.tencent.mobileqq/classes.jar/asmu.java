@@ -1,15 +1,45 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
-class asmu
-  implements AudioManager.OnAudioFocusChangeListener
+public class asmu
+  extends aspq
 {
-  asmu(asmt paramasmt) {}
+  public EmojiStickerManager.StickerInfo a;
+  public boolean a;
+  public int c = -1;
+  public int d;
+  public int e;
+  public int f = 0;
+  public int g;
+  public String i;
+  public String j;
   
-  public void onAudioFocusChange(int paramInt)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if ((asmt.a(this.a) != null) && (paramInt == -1) && (asmt.a(this.a) != null)) {
-      asmt.a(this.a).c(false);
-    }
+    return behh.a(paramContext.getResources(), this.e);
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
+  {
+    return behh.a(paramContext.getResources(), this.e);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    return a(paramContext, paramFloat);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "EmoticonInfo[type: " + this.c + "  action: " + this.i + "]";
   }
 }
 

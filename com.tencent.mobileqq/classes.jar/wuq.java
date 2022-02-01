@@ -1,28 +1,98 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wuq
-  implements View.OnLayoutChangeListener
+public class wuq
 {
-  wuq(wui paramwui, wpf paramwpf) {}
+  public int a;
+  private final String a;
+  public final String[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public final int h;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  private wuq(JSONObject paramJSONObject)
   {
-    yqp.b(wui.b(), "onLayoutChange");
-    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Wui.d) || (this.jdField_a_of_type_Wui.e)) && (!this.jdField_a_of_type_Wui.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
+    int j;
+    try
     {
-      yqp.b(wui.b(), "first show node, showStoryNode");
-      if (this.jdField_a_of_type_Wui.d)
-      {
-        this.jdField_a_of_type_Wui.d = false;
-        this.jdField_a_of_type_Wpf.b("first_show_node", Boolean.valueOf(false));
-      }
-      this.jdField_a_of_type_Wui.e = false;
-      if (this.jdField_a_of_type_Wui.a()) {
-        this.jdField_a_of_type_Wui.jdField_a_of_type_Wtu.a("exp_story", 4);
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
+      this.h = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.b = localJSONArray.getInt(0);
+      this.c = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.d = localJSONArray.getInt(0);
+      this.e = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.f = localJSONArray.getInt(0);
+      this.g = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONArray("c");
+      j = paramJSONObject.length();
+      if (j < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
       }
     }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    while (i < j)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
+      i += 1;
+    }
+  }
+  
+  public static wuq a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static wuq a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new wuq(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

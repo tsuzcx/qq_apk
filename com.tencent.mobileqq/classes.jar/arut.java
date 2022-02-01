@@ -1,52 +1,6 @@
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
-class arut
-  extends aruw
+public abstract interface arut
 {
-  arut(arup paramarup, anlb paramanlb, arvr paramarvr, Object paramObject)
-  {
-    super(paramarup, paramanlb);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ??? = (anlb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_Arvr.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Arvr.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
-    {
-      ((anlb)???).b(this);
-      this.jdField_a_of_type_Arvr.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Arvr.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_Arvr.b = paramEmoticonResp.timeoutReason;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = this.jdField_a_of_type_Arup.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
-      }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
-    }
-  }
+  public abstract void a(aruc paramaruc);
 }
 
 

@@ -1,6 +1,18 @@
-public abstract interface bagm
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+
+class bagm
+  extends anuw
 {
-  public abstract void a();
+  bagm(bagl parambagl) {}
+  
+  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
+  {
+    if ((bagl.a(this.a)) && (!bagl.b(this.a)) && (!bagl.c(this.a)))
+    {
+      bagl.a(this.a, true);
+      bagl.a(this.a);
+    }
+  }
 }
 
 

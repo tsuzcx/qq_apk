@@ -1,28 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
 
-class oae
-  extends BroadcastReceiver
+public class oae
+  extends ContentObserver
 {
-  oae(nzz paramnzz, String paramString, boolean paramBoolean) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public oae(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
   {
-    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
-    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
-    paramIntent = paramIntent.getStringExtra("name");
-    this.jdField_a_of_type_Nzz.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    try
-    {
-      paramContext.unregisterReceiver(this.jdField_a_of_type_Nzz.c);
-      label58:
-      this.jdField_a_of_type_Nzz.c = null;
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label58;
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
+      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
     }
   }
 }

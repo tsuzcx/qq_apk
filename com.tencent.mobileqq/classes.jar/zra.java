@@ -1,16 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
 
 public class zra
-  implements ValueAnimator.AnimatorUpdateListener
+  implements zqq
 {
-  public zra(RotateCircleImageView paramRotateCircleImageView) {}
+  public long a;
+  public zqq a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public zra(zqq paramzqq)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_Zqq = paramzqq;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    if (this.jdField_a_of_type_Zqq != null) {
+      this.jdField_a_of_type_Zqq.onFailure(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video hflip video Error:" + paramString);
+    }
+  }
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+    yup.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
+    }
   }
 }
 

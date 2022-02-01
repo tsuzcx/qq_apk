@@ -1,38 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class bbtq
-  extends anmu
+  implements DialogInterface.OnClickListener
 {
-  public bbtq(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
+  public bbtq(SignatureEditFragment paramSignatureEditFragment) {}
   
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong, int paramInt3, List<bbmx> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
-    }
-    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt1 != 88) || (paramBoolean2));
-        if (!paramBoolean1) {
-          break;
-        }
-      } while (!(paramObject instanceof ArrayList));
-      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
-      return;
-    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
-    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
+    paramDialogInterface.dismiss();
   }
 }
 

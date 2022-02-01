@@ -1,34 +1,37 @@
-import android.os.Bundle;
-import com.tencent.open.agent.OpenSelectPermissionFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class binp
-  implements biyx
+class binp
+  implements View.OnLayoutChangeListener
 {
-  public binp(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
+  binp(binl parambinl, View paramView) {}
   
-  public void a(biyc parambiyc)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket success info.uin=" + bipr.a(parambiyc.a));
-    if (OpenSelectPermissionFragment.b(this.a))
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect);
+    paramInt2 = this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.left;
+    paramInt4 = this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.top;
+    if ((this.jdField_a_of_type_Binl.jdField_c_of_type_Int != paramInt2) || (this.jdField_a_of_type_Binl.d != paramInt4))
     {
-      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket success Activity Finishing");
-      return;
+      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Binl.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Binl.jdField_c_of_type_Int = paramInt2;
+      this.jdField_a_of_type_Binl.d = paramInt4;
     }
-    OpenSelectPermissionFragment.a(this.a).a().a(OpenSelectPermissionFragment.a(this.a), parambiyc);
-    OpenSelectPermissionFragment.a(this.a);
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    QLog.e("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket onFail");
-    if (OpenSelectPermissionFragment.b(this.a))
+    paramInt1 = paramInt3 - paramInt1;
+    if (paramInt1 != paramInt7 - paramInt5)
     {
-      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "refreshTicket onFail Activity Finishing");
-      return;
+      paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      if ((paramView.leftMargin > paramInt1 / 2) && (this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView != null) && (8 == this.jdField_a_of_type_Binl.jdField_c_of_type_AndroidViewView.getVisibility()))
+      {
+        paramView.leftMargin = (paramInt1 - this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getWidth());
+        this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.setLayoutParams(paramView);
+      }
     }
-    OpenSelectPermissionFragment.a(this.a, anni.a(2131699946), false);
+    this.jdField_a_of_type_Binl.jdField_a_of_type_Int = paramInt1;
   }
 }
 

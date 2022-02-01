@@ -1,13 +1,25 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import common.config.service.QzoneConfig;
 
 public class bmag
-  implements bmar
 {
-  public bmag(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  private static volatile bmag jdField_a_of_type_Bmag;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void a()
+  public static bmag a()
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
+    if (jdField_a_of_type_Bmag == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bmag == null) {
+        jdField_a_of_type_Bmag = new bmag();
+      }
+      return jdField_a_of_type_Bmag;
+    }
+  }
+  
+  public int a()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "POICacheDistance", 1000);
   }
 }
 

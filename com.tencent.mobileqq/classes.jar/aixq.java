@@ -1,14 +1,30 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.1;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class aixq
-  extends amcl
+public class aixq
+  implements INetInfoHandler
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  aixq(aixp paramaixp) {}
+  
+  public void onNetMobile2None()
+  {
+    aixp.a(this.a).post(new VoiceTextSttProcessController.1.1(this));
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    aixp.a(this.a).post(new VoiceTextSttProcessController.1.2(this));
+  }
 }
 
 

@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class agnd
-  implements View.OnClickListener
+  implements agnf
 {
-  agnd(agnc paramagnc) {}
+  agnd(agnc paramagnc, agne paramagne) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    switch (paramView.getId())
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      agnc.a(this.jdField_a_of_type_Agnc, this.jdField_a_of_type_Agne.a());
+      this.jdField_a_of_type_Agne.a();
       return;
-      agnc.a(this.a, paramView);
     }
+    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Agne.a());
+    agnc.a(this.jdField_a_of_type_Agnc, 0);
   }
 }
 

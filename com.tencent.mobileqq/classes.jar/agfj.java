@@ -1,187 +1,107 @@
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.annotation.TargetApi;
+import android.app.Application;
+import android.bluetooth.BluetoothAdapter;
+import android.content.IntentFilter;
+import android.media.AudioManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.util.WeakReference;
 
 public class agfj
 {
-  private int jdField_a_of_type_Int;
-  protected ViewGroup a;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private VoiceTextEditPanel jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel;
-  private final String jdField_a_of_type_JavaLangString = "VoiceTextEditStateHelper";
-  private ViewGroup b;
+  agfl jdField_a_of_type_Agfl;
+  Application jdField_a_of_type_AndroidAppApplication;
+  WeakReference<AudioPlayerBase> jdField_a_of_type_MqqUtilWeakReference;
   
-  private void d()
+  public agfj(Application paramApplication)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("showEditStatusMask topMaskPanel is nll = ");
-      if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-        break label83;
-      }
-    }
-    label83:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("VoiceTextEditStateHelper", 2, bool);
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getContext()) + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getBottom());
-      return;
-    }
+    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
   }
   
-  private void e()
+  private AudioPlayerBase a()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().setOnTouchListener(new agfk(this));
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+      return null;
+    }
+    return (AudioPlayerBase)this.jdField_a_of_type_MqqUtilWeakReference.get();
   }
   
-  public int a()
+  @TargetApi(14)
+  public int a(String paramString, int paramInt)
   {
-    Rect localRect1 = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getWindowVisibleDisplayFrame(localRect1);
-    Rect localRect2 = new Rect();
-    this.b.getGlobalVisibleRect(localRect2);
-    Rect localRect3 = new Rect();
-    this.jdField_a_of_type_AndroidViewViewGroup.getGlobalVisibleRect(localRect3);
-    int j = localRect3.bottom;
-    int i;
-    if (((!Build.MODEL.startsWith("Coolpad")) || (Build.VERSION.SDK_INT != 19)) && ((!Build.MODEL.startsWith("Coolpad A8")) || (Build.VERSION.SDK_INT != 22)) && ((!Build.MODEL.startsWith("Coolpad B770")) || (Build.VERSION.SDK_INT != 22)))
+    int i = 0;
+    if (AudioPlayerBase.b != -1) {
+      i = 1;
+    }
+    BluetoothAdapter localBluetoothAdapter;
+    AudioPlayerBase localAudioPlayerBase;
+    do
     {
-      i = j;
-      if (Build.MODEL.startsWith("ivvi"))
-      {
-        i = j;
-        if (Build.VERSION.SDK_INT != 22) {}
-      }
-    }
-    else
+      return i;
+      localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+      localAudioPlayerBase = a();
+    } while (localAudioPlayerBase == null);
+    if (localBluetoothAdapter == null)
     {
-      i = j - localRect1.top;
+      AudioPlayerBase.b = 0;
+      return 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditStateHelper", 2, "initMask height=" + i + " rect.width()=" + localRect1.width() + " inputRect=" + localRect2 + " panelIcons=" + localRect3);
+    if ((!localBluetoothAdapter.isEnabled()) || (localBluetoothAdapter.getProfileConnectionState(1) != 2) || (localBluetoothAdapter.getProfileConnectionState(2) == 2))
+    {
+      AudioPlayerBase.b = 0;
+      return 1;
     }
-    return i;
+    paramString = new agfk(this, localAudioPlayerBase, paramString, paramInt, localBluetoothAdapter);
+    localBluetoothAdapter.getProfileProxy(BaseApplication.getContext(), paramString, 1);
+    return 2;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("dismissTopMaskPanel topMaskPanel is nll = ");
-      if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-        break label93;
+    if (this.jdField_a_of_type_Agfl != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioPlayer_SCOHelper", 2, "unregister sco receiver:  " + SystemClock.uptimeMillis());
       }
     }
-    label93:
-    for (boolean bool = true;; bool = false)
+    try
     {
-      QLog.d("VoiceTextEditStateHelper", 2, bool);
-      if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceTextEditStateHelper", 2, "dismissTopMaskPanel");
-        }
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-        this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-      }
+      this.jdField_a_of_type_AndroidAppApplication.unregisterReceiver(this.jdField_a_of_type_Agfl);
+      label51:
+      this.jdField_a_of_type_Agfl = null;
       return;
     }
+    catch (Exception localException)
+    {
+      break label51;
+    }
   }
   
-  public void a(int paramInt)
+  public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramAudioPlayerBase == null) && (QLog.isColorLevel())) {
+      QLog.d("AudioPlayer_SCOHelper", 2, "setAudioPlayer audioPlayer is null");
+    }
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAudioPlayerBase);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int b(String paramString, int paramInt)
   {
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("initMask topMaskPanel is nll = ");
-      if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
-      {
-        bool = true;
-        QLog.d("VoiceTextEditStateHelper", 2, bool + " isExit =" + this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.a);
-      }
-    }
-    else
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.a) {
-        break label75;
-      }
-    }
-    label75:
+    if (this.jdField_a_of_type_AndroidAppApplication == null) {}
     do
     {
-      return;
-      bool = false;
-      break;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a();
-      e();
-      if ((this.jdField_a_of_type_AndroidWidgetPopupWindow == null) || (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
-        break label126;
-      }
-    } while (paramInt2 == this.jdField_a_of_type_AndroidWidgetPopupWindow.getHeight());
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
-    return;
-    label126:
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
-    e();
-  }
-  
-  public void a(ViewGroup paramViewGroup1, VoiceTextEditPanel paramVoiceTextEditPanel, ViewGroup paramViewGroup2, BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel = paramVoiceTextEditPanel;
-    this.b = paramViewGroup2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      d();
+      return 0;
+      paramString = new agfl(this, paramString, paramInt, null);
+      this.jdField_a_of_type_Agfl = paramString;
+      this.jdField_a_of_type_AndroidAppApplication.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
+      paramString = a();
+    } while ((paramString == null) || (paramString.a() == null));
+    paramString.a().startBluetoothSco();
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioPlayer_SCOHelper", 2, "tryStartBluetoothSCO return: Check_SCO_Result_Check_Access_Need_Return");
     }
-    while (this.jdField_a_of_type_Int != 0) {
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditPanel.getContext()) + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getBottom());
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h(false);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 0;
+    return 2;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.robotchat;
 
-import aifq;
+import aipj;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bbdv;
-import bfpx;
-import bftx;
-import bfwg;
-import bfwi;
-import bfwj;
-import bgsg;
+import bbwo;
+import bgpy;
+import bgty;
+import bgwh;
+import bgwj;
+import bgwk;
+import bhsi;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
@@ -36,39 +36,39 @@ public class RobotChatPanelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private String a(String paramString1, String paramString2, bfwi parambfwi, bftx parambftx)
+  private String a(String paramString1, String paramString2, bgwj parambgwj, bgty parambgty)
   {
     String str = "";
     int i;
-    if (parambfwi.jdField_b_of_type_Boolean)
+    if (parambgwj.jdField_b_of_type_Boolean)
     {
-      parambfwi.jdField_b_of_type_Boolean = false;
-      parambftx.a();
-      i = parambfwi.jdField_b_of_type_Bfwj.c.indexOf("content=");
+      parambgwj.jdField_b_of_type_Boolean = false;
+      parambgty.a();
+      i = parambgwj.jdField_b_of_type_Bgwk.c.indexOf("content=");
       paramString2 = str;
       if (i > 0) {
-        paramString2 = parambfwi.jdField_b_of_type_Bfwj.c.substring(i + 8);
+        paramString2 = parambgwj.jdField_b_of_type_Bgwk.c.substring(i + 8);
       }
-      str = parambfwi.jdField_b_of_type_Bfwj.jdField_a_of_type_JavaLangString;
-      parambftx = paramString2;
+      str = parambgwj.jdField_b_of_type_Bgwk.jdField_a_of_type_JavaLangString;
+      parambgty = paramString2;
       paramString2 = str;
     }
     for (;;)
     {
-      b("1", paramString1, parambftx, parambfwi);
+      b("1", paramString1, parambgty, parambgwj);
       return paramString2;
-      str = parambfwi.a.jdField_a_of_type_JavaLangString;
-      parambfwi.jdField_b_of_type_Boolean = true;
-      parambftx.a(paramString1, paramString2);
-      i = parambfwi.a.c.indexOf("content=");
+      str = parambgwj.a.jdField_a_of_type_JavaLangString;
+      parambgwj.jdField_b_of_type_Boolean = true;
+      parambgty.a(paramString1, paramString2);
+      i = parambgwj.a.c.indexOf("content=");
       if (i > 0)
       {
-        parambftx = parambfwi.a.c.substring(i + 8);
+        parambgty = parambgwj.a.c.substring(i + 8);
         paramString2 = str;
       }
       else
       {
-        parambftx = "";
+        parambgty = "";
         paramString2 = str;
       }
     }
@@ -76,7 +76,7 @@ public class RobotChatPanelLayout
   
   private void b(String paramString)
   {
-    if (this.jdField_a_of_type_Bftx == null) {}
+    if (this.jdField_a_of_type_Bgty == null) {}
     label99:
     do
     {
@@ -85,7 +85,7 @@ public class RobotChatPanelLayout
         do
         {
           return;
-          paramString = this.jdField_a_of_type_Bftx.a("1", paramString);
+          paramString = this.jdField_a_of_type_Bgty.a("1", paramString);
           if (paramString == null) {
             break label99;
           }
@@ -112,21 +112,21 @@ public class RobotChatPanelLayout
     QLog.d("RobotChatPanelLayout", 2, "data is null");
   }
   
-  public String a(bfwi parambfwi)
+  public String a(bgwj parambgwj)
   {
-    if (this.jdField_a_of_type_Bftx == null)
+    if (this.jdField_a_of_type_Bgty == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
-      parambfwi = null;
+      parambgwj = null;
     }
     String str;
     do
     {
-      return parambfwi;
-      str = a(this.jdField_a_of_type_JavaLangString, this.b, parambfwi, this.jdField_a_of_type_Bftx);
-      parambfwi = str;
+      return parambgwj;
+      str = a(this.jdField_a_of_type_JavaLangString, this.b, parambgwj, this.jdField_a_of_type_Bgty);
+      parambgwj = str;
     } while (!QLog.isColorLevel());
     QLog.d("RobotChatPanelLayout", 2, "talking: " + str);
     return str;
@@ -137,9 +137,9 @@ public class RobotChatPanelLayout
     super.a();
   }
   
-  public void a(bfwi parambfwi)
+  public void a(bgwj parambgwj)
   {
-    if (this.jdField_a_of_type_Bftx == null) {
+    if (this.jdField_a_of_type_Bgty == null) {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
@@ -147,22 +147,22 @@ public class RobotChatPanelLayout
     do
     {
       return;
-      a(getContext(), parambfwi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      a(getContext(), parambgwj.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
     } while (!QLog.isColorLevel());
-    QLog.d("RobotChatPanelLayout", 2, "send to robot: " + parambfwi.a.jdField_a_of_type_JavaLangString);
+    QLog.d("RobotChatPanelLayout", 2, "send to robot: " + parambgwj.a.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(bfwi parambfwi, String paramString)
+  public void a(bgwj parambgwj, String paramString)
   {
-    bfpx.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
+    bgpy.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
   }
   
-  public void a(String paramString1, String paramString2, aifq paramaifq, bfwg parambfwg)
+  public void a(String paramString1, String paramString2, aipj paramaipj, bgwh parambgwh)
   {
-    super.a(paramString1, paramString2, paramaifq, parambfwg);
+    super.a(paramString1, paramString2, paramaipj, parambgwh);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    if (this.jdField_a_of_type_Bftx == null) {
+    if (this.jdField_a_of_type_Bgty == null) {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
@@ -179,8 +179,8 @@ public class RobotChatPanelLayout
         if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramString1))) {
           a(false);
         }
-        int i = bgsg.ao(getContext(), "1_" + paramString1);
-        this.jdField_a_of_type_Bftx.a(l, i, new bbdv(this, l, i, paramString1, parambfwg));
+        int i = bhsi.ao(getContext(), "1_" + paramString1);
+        this.jdField_a_of_type_Bgty.a(l, i, new bbwo(this, l, i, paramString1, parambgwh));
         return;
       }
       catch (Exception paramString2)
@@ -193,25 +193,25 @@ public class RobotChatPanelLayout
     }
   }
   
-  public void b(bfwi parambfwi)
+  public void b(bgwj parambgwj)
   {
-    if (this.jdField_a_of_type_Bftx == null)
+    if (this.jdField_a_of_type_Bgty == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
       return;
     }
-    int i = parambfwi.a.c.indexOf("content=");
+    int i = parambgwj.a.c.indexOf("content=");
     if (i > 0) {}
-    for (String str = parambfwi.a.c.substring(i + 8);; str = null)
+    for (String str = parambgwj.a.c.substring(i + 8);; str = null)
     {
-      a(getContext(), parambfwi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-      a("1", this.jdField_a_of_type_JavaLangString, str, parambfwi);
+      a(getContext(), parambgwj.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      a("1", this.jdField_a_of_type_JavaLangString, str, parambgwj);
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("RobotChatPanelLayout", 2, "send to server: " + parambfwi.a.jdField_a_of_type_JavaLangString);
+      QLog.d("RobotChatPanelLayout", 2, "send to server: " + parambgwj.a.jdField_a_of_type_JavaLangString);
       return;
     }
   }

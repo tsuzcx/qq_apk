@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.support.v4.util.MQLruCache;
-import anhk;
+import antf;
 import java.io.File;
 
 class PreloadManager$1
@@ -16,7 +16,7 @@ class PreloadManager$1
       PreloadManager.a(this.this$0).releaseLargeCache();
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = new File(anhk.cK);
+    Object localObject1 = new File(antf.cK);
     int k;
     int i;
     Object localObject2;
@@ -34,7 +34,7 @@ class PreloadManager$1
         i += 1;
       }
     }
-    localObject1 = new File(anhk.cL);
+    localObject1 = new File(antf.cL);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();

@@ -1,12 +1,15 @@
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "", "onPrivacySelectActionSheetClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface azrf
+public abstract class azrf
+  implements azrd
 {
-  public abstract void a(@NotNull View paramView, @Nullable azrd paramazrd);
+  public final void a(int paramInt, azql paramazql) {}
+  
+  public final void a_(int paramInt, boolean paramBoolean) {}
+  
+  public final void b(int paramInt, azql paramazql) {}
+  
+  public final void c(int paramInt, azql paramazql) {}
+  
+  public final void d(int paramInt, azql paramazql) {}
 }
 
 

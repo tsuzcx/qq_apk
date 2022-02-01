@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.config.business;
 
-import aqnx;
+import ardc;
 
 public class AvGameConfProcessor$1
   implements Runnable
 {
-  public AvGameConfProcessor$1(aqnx paramaqnx) {}
+  public AvGameConfProcessor$1(ardc paramardc) {}
   
   public void run()
   {
-    aqnx.a(this.this$0, -1);
+    ardc.a(this.this$0, -1);
   }
 }
 

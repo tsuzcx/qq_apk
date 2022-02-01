@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class rji
-  implements DialogInterface.OnClickListener
+public class rji
+  extends rdl
 {
-  rji(rjl paramrjl) {}
+  public rji(SelectVideoFragment paramSelectVideoFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @Nullable
+  public rdm a(int paramInt, @NotNull RecyclerView paramRecyclerView)
   {
-    this.a.a(false);
+    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bhgr.a(SelectVideoFragment.a(this.a), 8.0F));
   }
 }
 

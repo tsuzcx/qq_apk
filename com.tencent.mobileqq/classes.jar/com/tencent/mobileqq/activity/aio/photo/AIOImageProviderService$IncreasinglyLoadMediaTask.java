@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import acwf;
-import acwh;
-import aofo;
-import atvo;
+import adai;
+import adak;
+import aost;
+import aunj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -52,7 +52,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         this.this$0.b();
         this.this$0.jdField_d_of_type_Boolean = false;
         continue;
-        localList = atvo.a(AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_a_of_type_Long));
+        localList = aunj.a(AIOImageProviderService.a(this.this$0).a().a(this.this$0.jdField_a_of_type_Long));
         continue;
         localArrayList1.addAll(0, localList);
         localArrayList2.addAll(0, this.this$0.a(localList));
@@ -83,7 +83,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       if (QLog.isColorLevel()) {
         QLog.d("AIOImageProviderService", 2, "[IncreasinglyLoadTask] start");
       }
-      if ((this.this$0.jdField_a_of_type_Ahuo == null) && (this.this$0.jdField_a_of_type_Ahtx == null))
+      if ((this.this$0.jdField_a_of_type_Aiec == null) && (this.this$0.jdField_a_of_type_Aidl == null))
       {
         this.this$0.jdField_d_of_type_Boolean = false;
         this.this$0.b();
@@ -153,7 +153,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       }
       this.this$0.jdField_d_of_type_Boolean = false;
       break;
-      if (!acwh.a(this.this$0.jdField_a_of_type_Int)) {
+      if (!adak.a(this.this$0.jdField_a_of_type_Int)) {
         break label677;
       }
       localObject2 = this.this$0;

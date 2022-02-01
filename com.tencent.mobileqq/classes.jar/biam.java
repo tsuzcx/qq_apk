@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.PublicMenuBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
 
 public class biam
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public biam(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
+  public biam(VasResDrawable paramVasResDrawable) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
-      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    if (paramURLDrawable != null) {
+      VasResDrawable.a(this.a, paramURLDrawable);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.invalidateSelf();
   }
 }
 

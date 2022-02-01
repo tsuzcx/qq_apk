@@ -1,19 +1,11 @@
-import android.widget.Button;
+import java.util.List;
 
 class aacu
-  extends anry
+  implements aacw<E>
 {
-  aacu(aacp paramaacp, aadb paramaadb) {}
+  aacu(aacr paramaacr) {}
   
-  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aadb.b.setVisibility(0);
-      this.jdField_a_of_type_Aadb.a.setVisibility(8);
-    }
-  }
+  public void a(List<E> paramList) {}
 }
 
 

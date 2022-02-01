@@ -223,11 +223,15 @@ public class FlexConvertUtils
   
   public static int dip2px(float paramFloat)
   {
+    float f;
     try
     {
       f = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      paramFloat = f * paramFloat + 0.5F;
-      if ((paramFloat > 0.0F) && (paramFloat < 1.0F)) {
+      f = f * paramFloat + 0.5F;
+      if (paramFloat == 0.0F) {
+        f = 0.0F;
+      }
+      if ((f > 0.0F) && (f < 1.0F)) {
         return 1;
       }
     }
@@ -236,10 +240,10 @@ public class FlexConvertUtils
       for (;;)
       {
         ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
-        float f = 2.0F;
+        f = 2.0F;
       }
     }
-    return (int)paramFloat;
+    return (int)f;
   }
   
   public static int dip2px(int paramInt)

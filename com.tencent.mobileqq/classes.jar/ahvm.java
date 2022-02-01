@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import android.os.Message;
 
 class ahvm
-  implements View.OnClickListener
+  extends Handler
 {
-  ahvm(ahvl paramahvl, int paramInt) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  ahvm(ahvl paramahvl) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    ((PhotoListPanel)this.jdField_a_of_type_Ahvl.a.get()).a(paramView, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMessage.what == ahvl.b()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != ahvl.c()) {}
+    }
   }
 }
 

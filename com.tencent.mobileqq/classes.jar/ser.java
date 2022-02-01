@@ -1,8 +1,26 @@
-public abstract interface ser
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+
+class ser
+  implements sga
 {
-  public abstract void a(ruh paramruh1, ruh paramruh2, int paramInt, boolean paramBoolean);
+  ser(sel paramsel) {}
   
-  public abstract void j();
+  public void onClick(View paramView)
+  {
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
+    if (localBaseArticleInfo == null) {
+      return;
+    }
+    sel localsel = this.a;
+    if (paramView.getId() == 2131369862) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localsel.b(bool, localBaseArticleInfo);
+      pms.a(paramView);
+      return;
+    }
+  }
 }
 
 

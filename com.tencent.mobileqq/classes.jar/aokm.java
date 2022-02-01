@@ -1,19 +1,7 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class aokm
-  extends aojt
+  implements anui
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
-  {
-    paramaojw = Uri.parse(paramString).getLastPathSegment();
-    paramQQAppInterface = new aokl(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "com.qqfav";
-    paramQQAppInterface.c = paramaojw;
-    return paramQQAppInterface;
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

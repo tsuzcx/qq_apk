@@ -1,66 +1,78 @@
-import android.opengl.GLES20;
-import cooperation.qzone.util.QZLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import mqq.manager.Manager;
+import org.json.JSONObject;
+import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
 
 public class bmby
+  implements Manager
 {
-  public static int a()
+  private azrg jdField_a_of_type_Azrg = new bmbz(this);
+  private beyb jdField_a_of_type_Beyb;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public RemoteCommand.OnInvokeFinishLinstener a;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bmby(QQAppInterface paramQQAppInterface)
   {
-    return a(a("attribute vec4 aPosition;\nuniform mat4 uProjectMatrix;\nattribute vec2 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main(){\n\tgl_Position = uProjectMatrix * aPosition;\n    vTextureCoord = aTextureCoord;\n}"), b("precision mediump float;\nuniform sampler2D uTexture;\nvarying vec2 vTextureCoord;\nvoid main(){\n\tgl_FragColor = texture2D(uTexture, vTextureCoord);\n}"));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Beyb = paramQQAppInterface.a();
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
   }
   
-  private static int a(int paramInt1, int paramInt2)
+  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    int i = GLES20.glCreateProgram();
-    if (i == 0)
+    if (paramBundle == null) {}
+    for (;;)
     {
-      QZLog.e("ShaderUtil", "glCreateProgram: fail");
-      return 0;
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
+      paramOnInvokeFinishLinstener = new beyg();
+      paramOnInvokeFinishLinstener.jdField_b_of_type_Int = 24;
+      paramOnInvokeFinishLinstener.jdField_c_of_type_Int = 20;
+      paramOnInvokeFinishLinstener.jdField_a_of_type_JavaLangString = "actQqComicPicUpload";
+      paramOnInvokeFinishLinstener.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramOnInvokeFinishLinstener.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramOnInvokeFinishLinstener.jdField_a_of_type_Boolean = true;
+      paramOnInvokeFinishLinstener.i = paramBundle.getString("localPath");
+      paramOnInvokeFinishLinstener.jdField_a_of_type_Azrg = this.jdField_a_of_type_Azrg;
+      Object localObject = paramBundle.getString("comicId");
+      String str1 = paramBundle.getString("picMd5");
+      String str2 = paramBundle.getString("actionData");
+      paramBundle = new JSONObject();
+      try
+      {
+        paramBundle.put("comicId", localObject);
+        paramBundle.put("picMd5", str1);
+        paramBundle.put("actionData", str2);
+        localObject = new cmd0x388.ExtensionCommPicTryUp();
+        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
+        paramOnInvokeFinishLinstener.jdField_a_of_type_ArrayOfByte = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
+        if (this.jdField_a_of_type_Beyb == null) {
+          continue;
+        }
+        this.jdField_a_of_type_Beyb.a(paramOnInvokeFinishLinstener);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
-    GLES20.glAttachShader(i, paramInt1);
-    GLES20.glAttachShader(i, paramInt2);
-    GLES20.glLinkProgram(i);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGetProgramiv(i, 35714, arrayOfInt, 0);
-    QZLog.e("ShaderUtil", "glGetShaderiv: " + GLES20.glGetShaderInfoLog(i));
-    if (arrayOfInt[0] == 0)
-    {
-      GLES20.glDeleteProgram(i);
-      QZLog.e("ShaderUtil", "glGetProgramiv: fail 0 ");
-      return 0;
-    }
-    return i;
   }
   
-  private static int a(int paramInt, String paramString)
+  public void onDestroy()
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt == 0)
-    {
-      QZLog.e("ShaderUtil", "glCreateShader: fail 0 ");
-      return 0;
-    }
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
-    QZLog.e("ShaderUtil", "glGetShaderiv: " + GLES20.glGetShaderInfoLog(paramInt));
-    if (paramString[0] == 0)
-    {
-      GLES20.glDeleteShader(paramInt);
-      QZLog.e("ShaderUtil", "glGetShaderiv: fail 0 ");
-      return 0;
-    }
-    return paramInt;
-  }
-  
-  private static int a(String paramString)
-  {
-    return a(35633, paramString);
-  }
-  
-  private static int b(String paramString)
-  {
-    return a(35632, paramString);
+    this.jdField_a_of_type_Beyb = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.limitchat;
 
-import asli;
-import bcst;
+import atbf;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -13,7 +13,7 @@ public final class LimitChatUtil$1
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A801", "0X800A801", 0, 0, "", "", asli.a(localQQAppInterface, this.a), "");
+    bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A801", "0X800A801", 0, 0, "", "", atbf.a(localQQAppInterface, this.a), "");
   }
 }
 

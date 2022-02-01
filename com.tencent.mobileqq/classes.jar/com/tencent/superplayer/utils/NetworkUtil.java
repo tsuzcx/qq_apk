@@ -9,7 +9,7 @@ import com.tencent.thumbplayer.utils.TPLogUtil;
 
 public class NetworkUtil
 {
-  private static final String TAG = "MediaPlayerMgr.NetworkUtil";
+  private static final String TAG = "NetworkUtil";
   
   public static int getMobileSubType(int paramInt)
   {
@@ -68,7 +68,7 @@ public class NetworkUtil
     }
     catch (Exception localException)
     {
-      TPLogUtil.e("MediaPlayerMgr.NetworkUtil", localException);
+      TPLogUtil.e("NetworkUtil", localException);
       i = 0;
     }
     int i = 1;
@@ -77,6 +77,11 @@ public class NetworkUtil
     label109:
     i = 0;
     return i;
+  }
+  
+  public static boolean isWifiConnected()
+  {
+    return getNetWorkType() == 1;
   }
 }
 

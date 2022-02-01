@@ -1,14 +1,8 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aggy
+public abstract interface aggy
 {
-  int jdField_a_of_type_Int;
-  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  
-  aggy(aggx paramaggx) {}
+  public abstract void a(MessageRecord paramMessageRecord);
 }
 
 

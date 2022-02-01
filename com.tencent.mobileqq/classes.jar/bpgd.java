@@ -1,20 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
 
 public class bpgd
+  implements bezu
 {
-  public final Bitmap a;
-  public final boolean a;
-  public final Rect[] a;
-  public final String[] a;
+  public bpgd(AEEditorCommonEditFragment.8 param8) {}
   
-  public bpgd(String[] paramArrayOfString, Bitmap paramBitmap, Rect[] paramArrayOfRect, boolean paramBoolean)
+  public void a(bezt parambezt) {}
+  
+  public void onResp(bevm parambevm)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, parambevm), 64, null, true);
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

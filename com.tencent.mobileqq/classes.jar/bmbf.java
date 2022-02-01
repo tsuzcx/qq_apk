@@ -1,9 +1,8 @@
-import java.lang.reflect.Method;
+import org.json.JSONObject;
 
-public class bmbf
+public abstract interface bmbf
 {
-  public Object a;
-  public Method a;
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

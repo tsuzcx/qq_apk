@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class ajew
-  implements DialogInterface.OnClickListener
+  implements ajhh
 {
-  public ajew(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ajew(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.a.k();
-    this.a.q();
-    if (TroopNotifyAndRecommendView.b(this.a) != null) {
-      TroopNotifyAndRecommendView.b(this.a).setVisibility(8);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
+      this.a.a(paramString, false);
     }
-    bcst.b(this.a.a, "dc00899", "Grp_contacts_news", "", "notice", "clear_clk", 0, 0, "", "", "", "");
   }
 }
 

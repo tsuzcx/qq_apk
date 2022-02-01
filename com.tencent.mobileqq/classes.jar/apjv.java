@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
 public class apjv
-  implements DialogInterface.OnClickListener
+  implements apkh
 {
-  public apjv(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bgpa parambgpa) {}
+  public void a() {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_Bgpa.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
-  }
+  public void a(int paramInt) {}
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
+  
+  public void a(ArConfigInfo paramArConfigInfo) {}
+  
+  public void a(ArEffectConfig paramArEffectConfig) {}
+  
+  public void b() {}
 }
 
 

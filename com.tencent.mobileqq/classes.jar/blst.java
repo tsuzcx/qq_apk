@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import android.graphics.Canvas;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-public final class blst
-  implements DialogInterface.OnDismissListener
+public class blst
+  implements blsr
 {
-  public blst(FragmentActivity paramFragmentActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    this.a.finish();
+    paramView.setTranslationX(paramFloat1);
+    paramView.setTranslationY(paramFloat2);
   }
+  
+  public void a(View paramView)
+  {
+    paramView.setTranslationX(0.0F);
+    paramView.setTranslationY(0.0F);
+  }
+  
+  public void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean) {}
+  
+  public void b(View paramView) {}
 }
 
 

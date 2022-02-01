@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.ViewGroup;
-import arni;
+import ascy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.vas.VasApngUtil;
@@ -21,12 +21,12 @@ public class LiteActivity$14$1
     Bundle localBundle;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDrawable(2130839091);
+      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDrawable(2130839099);
       localBundle = new Bundle();
       localBundle.putBoolean("key_use_rect", true);
       localBundle.putBoolean("key_double_bitmap", true);
     }
-    for (Object localObject = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.this$0.jdField_a_of_type_JavaLangString, "-chatBg-", (Drawable)localObject, new int[] { 0 }, "-chatBg-", localBundle);; localObject = new arni(this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap))
+    for (Object localObject = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.this$0.jdField_a_of_type_JavaLangString, "-chatBg-", (Drawable)localObject, new int[] { 0 }, "-chatBg-", localBundle);; localObject = new ascy(this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap))
     {
       this.this$0.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable((Drawable)localObject);
       this.this$0.jdField_a_of_type_AndroidViewViewGroup.setTag(2131361807, this.this$0.jdField_a_of_type_JavaLangString);

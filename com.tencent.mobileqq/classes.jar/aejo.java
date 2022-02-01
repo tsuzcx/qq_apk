@@ -1,21 +1,25 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aejo
-  extends anmu
 {
-  public aejo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
+  private final String c;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public aejo(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
-      return;
-    }
-    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public void a()
+  {
+    aejp localaejp = new aejp(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, anzj.a(2131701499), anzj.a(2131701503), localaejp, localaejp);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
   }
 }
 

@@ -2,8 +2,10 @@ package me.ele.uetool.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.MotionEvent;
@@ -25,6 +27,7 @@ public class AttrsDialog
   private static AttrsDialog.Refresh refresh;
   private AttrsDialog.Adapter adapter = new AttrsDialog.Adapter();
   private RecyclerView.LayoutManager layoutManager = new AttrsDialog.FoucsLinearLayoutManager(this, getContext(), 1, false);
+  private DialogInterface.OnDismissListener mListener = null;
   private AttrsDialog.AttrDialogTouchCallback touchCallback;
   private RecyclerView vList;
   
@@ -105,6 +108,12 @@ public class AttrsDialog
   public void setAttrDialogCallback(AttrsDialog.AttrDialogCallback paramAttrDialogCallback)
   {
     this.adapter.setAttrDialogCallback(paramAttrDialogCallback);
+  }
+  
+  public void setOnDismissListener(@Nullable DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    this.mListener = paramOnDismissListener;
+    super.setOnDismissListener(new AttrsDialog.WrappedDismissDialogListener(paramOnDismissListener));
   }
   
   public void setTouchCallback(AttrsDialog.AttrDialogTouchCallback paramAttrDialogTouchCallback)

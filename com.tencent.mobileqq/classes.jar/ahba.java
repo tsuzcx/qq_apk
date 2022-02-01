@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ahba
-  implements ahbm
+class ahba
+  implements DialogInterface.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahba(ahax paramahax) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramChatMessage.msgtype != -1036) {
-      return 17;
-    }
-    return 18;
+    azir.a("0X800B0B0");
   }
 }
 

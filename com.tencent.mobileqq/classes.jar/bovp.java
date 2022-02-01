@@ -1,46 +1,33 @@
-import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
-public class bovp
-  implements zmv
+class bovp
+  implements bovs
 {
-  public bovp(CropVideoActivity paramCropVideoActivity) {}
+  bovp(bovo parambovo, bovl parambovl, String[] paramArrayOfString, Semaphore paramSemaphore) {}
   
-  public void onFailure(String paramString)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    QLog.d(bovo.a(), 4, "create pngs for material index = " + this.jdField_a_of_type_Bovl.a + " end, pngDir = " + paramString);
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = paramString;
+    String[] arrayOfString = new File(paramString).list();
+    String str = paramString + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      boef.a(paramString + File.separator + arrayOfString[0], 320, 320, str);
     }
-    this.a.a.sendEmptyMessage(4);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    bovo.a(this.jdField_a_of_type_Bovo).c.add(str);
+    bovo.a(this.jdField_a_of_type_Bovo).a.add(paramString);
+    if ((this.jdField_a_of_type_Bovl.c != null) && (!this.jdField_a_of_type_Bovl.c.equals(""))) {
+      bovo.a(this.jdField_a_of_type_Bovo).b.add(this.jdField_a_of_type_Bovl.c);
     }
-    this.a.a.sendEmptyMessage(3);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
-    }
-  }
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    for (;;)
+    {
+      bovo.a(this.jdField_a_of_type_Bovo).d.add(Integer.valueOf(this.jdField_a_of_type_Bovl.a));
+      this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
+      return;
+      bovo.a(this.jdField_a_of_type_Bovo).b.add(this.jdField_a_of_type_Bovl.b);
     }
   }
 }

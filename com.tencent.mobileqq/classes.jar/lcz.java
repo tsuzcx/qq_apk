@@ -1,100 +1,29 @@
-import android.app.Application;
-import android.app.Notification;
-import android.content.Intent;
-import android.os.RemoteException;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVServiceForQQ;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-
 public class lcz
 {
-  private static String jdField_a_of_type_JavaLangString = "AVServiceProxy";
-  protected VideoAppInterface a;
-  protected lda a;
-  protected lvy a;
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public lcz(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public void a()
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), AVServiceForQQ.class);
-    try
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().startService(localIntent);
-      this.jdField_a_of_type_Lda = new lda(this);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_Lda, 1);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        lbc.e(jdField_a_of_type_JavaLangString, "bindService " + localThrowable.getMessage());
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, Notification paramNotification)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("setAVServiceForegroud start=%s mAvService=%s", new Object[] { Boolean.valueOf(paramBoolean), this.jdField_a_of_type_Lvy }));
-    if (this.jdField_a_of_type_Lvy != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Lvy.a(paramBoolean, paramNotification);
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        return;
-      }
-      catch (RemoteException paramNotification)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
-        continue;
-      }
-      catch (Throwable paramNotification)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
-        continue;
-      }
-      try
-      {
-        MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication();
-        Intent localIntent = new Intent(localMobileQQ, AVServiceForQQ.class);
-        localIntent.putExtra("setForeground", true);
-        localIntent.putExtra("foreground", paramBoolean);
-        localIntent.putExtra("notification", paramNotification);
-        localMobileQQ.startService(localIntent);
-      }
-      catch (Throwable paramNotification)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
-      }
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Int == 3;
   }
   
-  public void b()
+  public String toString()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), AVServiceForQQ.class);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().stopService(localIntent);
-    if (this.jdField_a_of_type_Lvy != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_Lda);
-      return;
-    }
-    catch (Exception localException)
-    {
-      lbc.e(jdField_a_of_type_JavaLangString, "disconnect msg = " + localException.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool + '}';
     }
   }
 }

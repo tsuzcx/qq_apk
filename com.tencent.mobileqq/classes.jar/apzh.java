@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public class apzh
-  implements View.OnClickListener
+public abstract class apzh
+  implements apyu
 {
-  public apzh(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
+  public Bundle a()
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.a.a(i);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new Bundle();
+  }
+  
+  public String a()
+  {
+    return "QQ.GetUin";
   }
 }
 

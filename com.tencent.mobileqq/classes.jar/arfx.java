@@ -1,90 +1,69 @@
-import android.graphics.Canvas;
-import android.util.SparseArray;
-import android.view.View.MeasureSpec;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class arfx
-  extends arfn<arev>
+public class arfx
 {
-  private SparseArray<List<arfy>> a = new SparseArray();
+  private boolean a;
   
-  public int a(Object paramObject)
+  public static arfx a(araj[] paramArrayOfaraj)
   {
-    return 0;
-  }
-  
-  public abstract arfy a(int paramInt);
-  
-  public argl a(arev paramarev)
-  {
-    int i = a(paramarev.a());
-    List localList = (List)this.a.get(i);
-    Object localObject = localList;
-    if (localList == null)
+    arfx localarfx = new arfx();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      localObject = new ArrayList();
-      this.a.put(i, localObject);
-    }
-    if (((List)localObject).isEmpty()) {
-      ((List)localObject).add(a(i));
-    }
-    localObject = (arfy)((List)localObject).remove(0);
-    a(i, (arfy)localObject, paramarev);
-    ((arfy)localObject).a(View.MeasureSpec.makeMeasureSpec(paramarev.f(), -2147483648), View.MeasureSpec.makeMeasureSpec(paramarev.g(), -2147483648));
-    ((arfy)localObject).a(0, 0, ((arfy)localObject).a(), ((arfy)localObject).b());
-    paramarev.a((arfy)localObject);
-    paramarev.b(((arfy)localObject).a());
-    paramarev.a(((arfy)localObject).b());
-    return new argl(((arfy)localObject).a(), ((arfy)localObject).b());
-  }
-  
-  public abstract void a(int paramInt, arfy paramarfy, arev paramarev);
-  
-  public void a(Canvas paramCanvas, arev paramarev, arew paramarew, float paramFloat1, float paramFloat2)
-  {
-    paramarew = paramarev.a();
-    if (paramarew == null) {
-      return;
-    }
-    if (!paramarev.i())
-    {
-      paramarew.a(View.MeasureSpec.makeMeasureSpec(paramarew.a(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramarew.b(), 1073741824));
-      paramarew.a(0, 0, paramarew.a(), paramarew.b());
-      paramarev.f(true);
-    }
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat1, paramFloat2);
-    paramarew.a(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(arev paramarev)
-  {
-    arfy localarfy = paramarev.a();
-    if (localarfy != null)
-    {
-      int i = a(paramarev.a());
-      List localList = (List)this.a.get(i);
-      Object localObject = localList;
-      if (localList == null)
+      try
       {
-        localObject = new ArrayList();
-        this.a.put(i, localObject);
+        int j = paramArrayOfaraj.length;
+        int i = 0;
+        if (i < j)
+        {
+          String str = paramArrayOfaraj[i].a;
+          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_fake_msg"))
+          {
+            if (localJSONObject.optInt("enable_fake_msg", 0) == 1)
+            {
+              bool = true;
+              localarfx.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
+        }
+        else
+        {
+          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "parse, content:" + localStringBuilder.toString());
+          return localarfx;
+        }
       }
-      ((List)localObject).add(localarfy);
-      paramarev.a(null);
+      catch (JSONException paramArrayOfaraj)
+      {
+        QLog.e("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "JSONException", paramArrayOfaraj);
+        return null;
+      }
+      boolean bool = false;
     }
   }
   
-  public boolean a(aren paramaren)
+  public boolean a()
   {
-    return paramaren instanceof arev;
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("isEnableFakeMsg:").append(this.a);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfx
  * JD-Core Version:    0.7.0.1
  */

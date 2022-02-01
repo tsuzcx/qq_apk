@@ -1,27 +1,19 @@
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avkq
-  implements ActionCallback
+public class avkq
+  implements View.OnClickListener
 {
-  avkq(avko paramavko) {}
+  public avkq(QQGamePubAccountFragment paramQQGamePubAccountFragment, FrameLayout paramFrameLayout) {}
   
-  public void onResult(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      i = Integer.parseInt(paramString);
-      if (avko.a(this.a) != null) {
-        avko.a(this.a).a(i, "");
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment));
+    QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

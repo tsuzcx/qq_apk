@@ -1,106 +1,58 @@
-import android.view.View;
-import com.tencent.tavcut.util.FloatUtils;
-import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout;
-import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
+import android.text.TextUtils;
 
 public class boag
-  extends boas
+  implements Cloneable
 {
-  private boag(AESlidingUpPanelLayout paramAESlidingUpPanelLayout) {}
+  public final int a;
+  public final long a;
+  public boai a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public String f;
+  public final String g;
   
-  public int a(View paramView)
+  private boag(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
   {
-    return AESlidingUpPanelLayout.a(this.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.g = paramString6;
   }
   
-  public int a(View paramView, int paramInt1, int paramInt2)
+  public static boag a(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
   {
-    paramInt2 = AESlidingUpPanelLayout.a(this.a, 0.0F);
-    int i = AESlidingUpPanelLayout.a(this.a, 1.0F);
-    if (AESlidingUpPanelLayout.b(this.a)) {
-      return Math.min(Math.max(paramInt1, i), paramInt2);
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString5)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (paramLong < 0L)) {
+      throw new IllegalArgumentException("The params fileName, pDirKey, fileId, sha and fileSize should be valid.");
     }
-    return Math.min(Math.max(paramInt1, paramInt2), i);
+    return new boag(paramInt1, paramString1, paramString2, paramString3.toLowerCase(), paramLong, paramInt2, paramString4, paramString5, paramString6);
   }
   
-  public void a(int paramInt)
+  public boag a()
   {
-    if ((AESlidingUpPanelLayout.a(this.a) != null) && (AESlidingUpPanelLayout.a(this.a).a() == 0))
+    try
     {
-      AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.a(this.a).getTop()));
-      AESlidingUpPanelLayout.a(this.a);
-      if (FloatUtils.isEquals(AESlidingUpPanelLayout.b(this.a), 1.0F))
-      {
-        this.a.b();
-        AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.PanelState.EXPANDED);
-      }
+      boag localboag = (boag)super.clone();
+      return localboag;
     }
-    else
-    {
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString3)) && (TextUtils.isEmpty(paramString4))) {
       return;
     }
-    if (FloatUtils.isEquals(AESlidingUpPanelLayout.b(this.a), 0.0F))
-    {
-      AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.PanelState.COLLAPSED);
-      return;
-    }
-    if (AESlidingUpPanelLayout.b(this.a) < 0.0F)
-    {
-      AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.PanelState.HIDDEN);
-      AESlidingUpPanelLayout.a(this.a).setVisibility(4);
-      return;
-    }
-    this.a.b();
-    AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.PanelState.ANCHORED);
-  }
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2)
-  {
-    paramFloat1 = paramFloat2;
-    if (AESlidingUpPanelLayout.b(this.a)) {
-      paramFloat1 = -paramFloat2;
-    }
-    int i;
-    if ((paramFloat1 > 0.0F) && (AESlidingUpPanelLayout.b(this.a) <= AESlidingUpPanelLayout.a(this.a))) {
-      i = AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.a(this.a));
-    }
-    for (;;)
-    {
-      if (AESlidingUpPanelLayout.a(this.a) != null) {
-        AESlidingUpPanelLayout.a(this.a).a(paramView.getLeft(), i);
-      }
-      this.a.invalidate();
-      return;
-      if ((paramFloat1 > 0.0F) && (AESlidingUpPanelLayout.b(this.a) > AESlidingUpPanelLayout.a(this.a))) {
-        i = AESlidingUpPanelLayout.a(this.a, 1.0F);
-      } else if ((paramFloat1 < 0.0F) && (AESlidingUpPanelLayout.b(this.a) >= AESlidingUpPanelLayout.a(this.a))) {
-        i = AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.a(this.a));
-      } else if ((paramFloat1 < 0.0F) && (AESlidingUpPanelLayout.b(this.a) < AESlidingUpPanelLayout.a(this.a))) {
-        i = AESlidingUpPanelLayout.a(this.a, 0.0F);
-      } else if (AESlidingUpPanelLayout.b(this.a) >= (AESlidingUpPanelLayout.a(this.a) + 1.0F) / 2.0F) {
-        i = AESlidingUpPanelLayout.a(this.a, 1.0F);
-      } else if (AESlidingUpPanelLayout.b(this.a) >= AESlidingUpPanelLayout.a(this.a) / 2.0F) {
-        i = AESlidingUpPanelLayout.a(this.a, AESlidingUpPanelLayout.a(this.a));
-      } else {
-        i = AESlidingUpPanelLayout.a(this.a, 0.0F);
-      }
-    }
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    this.a.c();
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AESlidingUpPanelLayout.a(this.a, paramInt2);
-    this.a.invalidate();
-  }
-  
-  public boolean a(View paramView, int paramInt)
-  {
-    return (!AESlidingUpPanelLayout.a(this.a)) && (paramView != null) && (paramView.equals(AESlidingUpPanelLayout.a(this.a)));
+    this.jdField_a_of_type_Boai = new boai(this, paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, null);
   }
 }
 

@@ -1,38 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.os.Handler;
+import android.os.Message;
 
-class aofr
-  implements acvn
+public class aofr
+  implements anui
 {
-  aofr(aofp paramaofp, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
+  private Handler a;
   
-  public ToServiceMsg a()
+  public aofr(Handler paramHandler)
   {
-    ToServiceMsg localToServiceMsg = aofp.b(this.jdField_a_of_type_Aofp).createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putByte("sendType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", 1025);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
-    bbzm localbbzm = new bbzm();
-    localbbzm.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    localbbzm.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localToServiceMsg.putWupBuffer(bbzf.a(aofp.b(this.jdField_a_of_type_Aofp), 9, this.jdField_a_of_type_JavaLangString, localbbzm, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
-    return localToServiceMsg;
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofr
  * JD-Core Version:    0.7.0.1
  */

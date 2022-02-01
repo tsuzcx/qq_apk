@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgtn;
+import bhtq;
 
 public class DragLinearLayout
   extends RelativeLayout
@@ -52,8 +52,8 @@ public class DragLinearLayout
   
   private void initScreenConfig()
   {
-    this.screenWidth = bgtn.a();
-    this.screenHeight = bgtn.b();
+    this.screenWidth = bhtq.a();
+    this.screenHeight = bhtq.b();
   }
   
   public int getStatusBarHeight()

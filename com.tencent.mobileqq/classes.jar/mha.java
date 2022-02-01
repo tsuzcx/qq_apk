@@ -1,22 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class mha
-  implements Animator.AnimatorListener
+public class mha
+  extends bhpc
 {
-  mha(mgv parammgv) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public mha(Context paramContext, int paramInt)
   {
-    mgv.a(this.a).setAlpha(0.0F);
-    mgv.a(this.a).setVisibility(0);
+    super(paramContext, paramInt);
+  }
+  
+  public static bhpc a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    paramContext = new mha(paramContext, 2131755824);
+    paramContext.setContentView(2131559008);
+    paramContext.setTitle(paramString1);
+    paramContext.setMessage(paramString2);
+    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
+    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
+    if (!paramBoolean) {
+      dismiss();
+    }
   }
 }
 

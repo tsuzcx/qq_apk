@@ -1,14 +1,8 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
-
-class acsx
-  extends AdHttp.Params
+public abstract interface acsx
 {
-  public int a = -2147483648;
+  public abstract void a();
   
-  public boolean isSuccess()
-  {
-    return (super.isSuccess()) && (this.responseData != null);
-  }
+  public abstract void b();
 }
 
 

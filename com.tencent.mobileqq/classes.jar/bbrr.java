@@ -1,27 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public abstract interface bbrr
+class bbrr
+  implements DialogInterface.OnClickListener
 {
-  public abstract bbrt a();
+  bbrr(bbrp parambbrp, int paramInt, Object paramObject) {}
   
-  public abstract String a();
-  
-  public abstract void a(bbrs parambbrs);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOVideoData));
+    paramDialogInterface = (AIOVideoData)this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_Bbrp.a.a(paramDialogInterface);
+    this.jdField_a_of_type_Bbrp.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
+    this.jdField_a_of_type_Bbrp.updateUI();
+  }
 }
 
 

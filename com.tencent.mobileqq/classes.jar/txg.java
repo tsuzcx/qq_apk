@@ -1,12 +1,20 @@
-public abstract interface txg
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ImageActionItem;", "Lcom/tencent/biz/pubaccount/util/ActionItem;", "name", "", "action", "", "webHandle", "", "url", "(Ljava/lang/String;IZLjava/lang/String;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class txg
+  extends two
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  @JvmField
+  @NotNull
+  public String b;
   
-  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c(int paramInt1, int paramInt2);
+  public txg(@NotNull String paramString1, int paramInt, boolean paramBoolean, @NotNull String paramString2)
+  {
+    super(paramString1, paramInt, paramBoolean);
+    this.b = paramString2;
+  }
 }
 
 

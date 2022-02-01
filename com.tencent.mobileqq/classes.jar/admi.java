@@ -1,16 +1,52 @@
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.AssistantSettingActivity.31.1;
-import com.tencent.widget.HeightAdaptableListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.meta.SceneMeta;
+import com.tencent.qapmsdk.resource.ResourceListener;
+import com.tencent.qapmsdk.resource.ResourceMonitor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class admi
-  implements ajlc
+  extends adle
+  implements adky, ResourceListener
 {
-  public admi(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void a()
+  public void a(String paramString)
   {
-    this.a.a.post(new AssistantSettingActivity.31.1(this));
-    AssistantSettingActivity.c(this.a);
+    if (e()) {
+      QAPM.beginScene(paramString, QAPM.ModeResource);
+    }
+  }
+  
+  protected void b()
+  {
+    ResourceMonitor.setPublicMode(true);
+    ResourceMonitor.setResourceListener(this);
+  }
+  
+  public void b(String paramString)
+  {
+    if (e()) {
+      QAPM.endScene(paramString, QAPM.ModeResource);
+    }
+  }
+  
+  public String c()
+  {
+    return "resource";
+  }
+  
+  public void onMetaGet(SceneMeta paramSceneMeta)
+  {
+    double d = 100.0D * paramSceneMeta.cpu;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramSceneMeta.stage + " " + d + " " + paramSceneMeta.memory + " " + paramSceneMeta.duration);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cpuUsage", String.valueOf(d));
+    localHashMap.put("memory", String.valueOf(paramSceneMeta.memory));
+    localHashMap.put("scene", String.valueOf(paramSceneMeta.stage));
+    localHashMap.put("duration", String.valueOf(paramSceneMeta.duration));
+    bdmc.a(BaseApplicationImpl.getContext()).a("", "actScenePerf", true, 0L, 0L, localHashMap, "");
   }
 }
 

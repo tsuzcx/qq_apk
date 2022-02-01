@@ -1,13 +1,52 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
-public final class wwz
-  extends weu
+class wwz
+  extends SimpleJob<Void>
 {
-  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
-  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
+  wwz(wwx paramwwx, String paramString, List paramList)
+  {
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = new ArrayList();
+    paramVarArgs = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramVarArgs.hasNext())
+    {
+      Object localObject = (StoryVideoItem)paramVarArgs.next();
+      wkq localwkq = wkq.a(((StoryVideoItem)localObject).mVid, 2);
+      if (!TextUtils.isEmpty(localwkq.c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabStoryVideoPreloader", 2, "download thumb url=" + localwkq.c);
+        }
+        this.jdField_a_of_type_Wwx.b.add(localwkq.c);
+        paramJobContext.add(localwkq);
+      }
+      localObject = wkq.a(((StoryVideoItem)localObject).mVid, 1);
+      if (!TextUtils.isEmpty(((wkq)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabStoryVideoPreloader", 2, "download mask url=" + ((wkq)localObject).c);
+        }
+        this.jdField_a_of_type_Wwx.b.add(((wkq)localObject).c);
+        paramJobContext.add(localObject);
+      }
+      this.jdField_a_of_type_Wwx.a.a(paramJobContext, false);
+    }
+    return null;
+  }
 }
 
 

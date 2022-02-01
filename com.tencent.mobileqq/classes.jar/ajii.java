@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.widget.AbsListView;
 
 public class ajii
-  implements View.OnClickListener
+  implements blih
 {
-  public ajii(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  public ajii(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator) != null)) {
-      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
+    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    {
+      if ((paramInt != 0) && (paramInt != 1)) {
+        NewFriendVerifyBlockedListFragment.a(this.a).a();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    else {
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a).b();
+    NewFriendVerifyBlockedListFragment.a(this.a).c();
   }
 }
 

@@ -1,30 +1,12 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.richframework.part.list.base.PublicListInnerFragment;
+import java.io.File;
+import java.util.Comparator;
 
-public class zzg
-  extends RecyclerView.OnScrollListener
+final class zzg
+  implements Comparator<File>
 {
-  public zzg(PublicListInnerFragment paramPublicListInnerFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a != null) && (this.a.a.getDropFrameMonitorTag() != null))
-    {
-      if (paramInt == 0) {
-        adcd.a().a(this.a.a.getDropFrameMonitorTag(), false);
-      }
-    }
-    else {
-      return;
-    }
-    adcd.a().a(this.a.a.getDropFrameMonitorTag());
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 

@@ -1,15 +1,22 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import android.view.View;
 
-public abstract interface yxw
+class yxw
+  implements bliz
 {
-  public abstract void a();
+  yxw(yxt paramyxt, blir paramblir) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(Canvas paramCanvas);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      this.jdField_a_of_type_Yxt.c();
+    }
+  }
 }
 
 

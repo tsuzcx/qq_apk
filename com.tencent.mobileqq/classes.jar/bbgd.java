@@ -1,39 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
 
-class bbgd
-  implements View.OnClickListener
+final class bbgd
+  implements bhtj<Float>
 {
-  bbgd(bbfs parambbfs) {}
+  bbgd(View paramView) {}
   
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    bbfs localbbfs = this.a;
-    boolean bool;
-    if (!bbfs.a(this.a))
-    {
-      bool = true;
-      bbfs.a(localbbfs, bool);
-      if (!bbfs.a(this.a)) {
-        break label110;
-      }
-      bbfs.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
     }
-    for (;;)
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
     {
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putBoolean(this.a.a.getCurrentAccountUin() + "QQ_SEARCH_HIDE_HOTLIST", bbfs.a(this.a)).commit();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool = false;
-      break;
-      label110:
-      bbfs.b(this.a);
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
     }
   }
 }

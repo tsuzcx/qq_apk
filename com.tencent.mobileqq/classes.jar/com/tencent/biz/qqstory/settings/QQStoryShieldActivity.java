@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.settings;
 
 import Override;
-import afur;
+import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,10 +16,10 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anmw;
-import anni;
-import bgnt;
-import biax;
+import anyw;
+import anzj;
+import bhnv;
+import bjbv;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
@@ -30,13 +30,13 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
-import wes;
-import wff;
-import wfg;
-import wfi;
-import xwm;
-import ykw;
-import yqu;
+import win;
+import wja;
+import wjb;
+import wjd;
+import yah;
+import yor;
+import yup;
 
 public class QQStoryShieldActivity
   extends IphoneTitleBarActivity
@@ -44,20 +44,20 @@ public class QQStoryShieldActivity
 {
   int jdField_a_of_type_Int = 3;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public biax a;
+  public bjbv a;
   public Switch a;
   String jdField_a_of_type_JavaLangString;
-  wff jdField_a_of_type_Wff;
-  wfg jdField_a_of_type_Wfg;
-  wfi jdField_a_of_type_Wfi = new xwm(this);
+  wja jdField_a_of_type_Wja;
+  wjb jdField_a_of_type_Wjb;
+  wjd jdField_a_of_type_Wjd = new yah(this);
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
   public Switch b;
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2131561602, null);
-    ((TextView)localView.findViewById(2131378776)).setText(paramString);
-    ((TextView)localView.findViewById(2131368563)).setText("");
+    View localView = View.inflate(this, 2131561643, null);
+    ((TextView)localView.findViewById(2131378936)).setText(paramString);
+    ((TextView)localView.findViewById(2131368636)).setText("");
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -73,7 +73,7 @@ public class QQStoryShieldActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Wff.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Wja.a(this.jdField_a_of_type_JavaLangString);
     super.startTitleProgress();
   }
   
@@ -87,26 +87,26 @@ public class QQStoryShieldActivity
       super.finish();
       return false;
     }
-    this.jdField_a_of_type_Wfg = ((wfg)this.app.getManager(181));
-    this.jdField_a_of_type_Wff = ((wff)this.app.a(98));
-    this.app.addObserver(this.jdField_a_of_type_Wfi);
+    this.jdField_a_of_type_Wjb = ((wjb)this.app.getManager(181));
+    this.jdField_a_of_type_Wja = ((wja)this.app.a(98));
+    this.app.addObserver(this.jdField_a_of_type_Wjd);
     paramBundle = new LinearLayout(this);
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838759);
+    paramBundle.setBackgroundResource(2130838779);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, afur.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, agej.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = paramBundle;
-    paramBundle = a(0, anni.a(2131709801));
-    paramBundle.setBackgroundResource(2130839439);
+    paramBundle = a(0, anzj.a(2131709910));
+    paramBundle.setBackgroundResource(2130839447);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2)) {
       paramBundle.setVisibility(8);
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramBundle;
-    paramBundle.setText(anni.a(2131709819) + wes.b);
-    paramBundle.setContentDescription(anni.a(2131709788) + wes.b);
+    paramBundle.setText(anzj.a(2131709928) + win.b);
+    paramBundle.setContentDescription(anzj.a(2131709897) + win.b);
     paramBundle.setBgType(2);
     paramBundle.setTag(Integer.valueOf(1));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -117,12 +117,12 @@ public class QQStoryShieldActivity
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     paramBundle = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
     if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 2)) {
-      paramBundle.topMargin = afur.a(20.0F, getResources());
+      paramBundle.topMargin = agej.a(20.0F, getResources());
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramBundle;
-    paramBundle.setText(anni.a(2131709805) + wes.b);
-    paramBundle.setContentDescription(anni.a(2131709776) + wes.b);
+    paramBundle.setText(anzj.a(2131709914) + win.b);
+    paramBundle.setContentDescription(anzj.a(2131709885) + win.b);
     paramBundle.setBgType(3);
     paramBundle.setTag(Integer.valueOf(2));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -131,7 +131,7 @@ public class QQStoryShieldActivity
     this.jdField_a_of_type_ComTencentWidgetSwitch.setTag(Integer.valueOf(2));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
-    paramBundle = this.jdField_a_of_type_Wfg.a(this.jdField_a_of_type_JavaLangString);
+    paramBundle = this.jdField_a_of_type_Wjb.a(this.jdField_a_of_type_JavaLangString);
     boolean bool;
     if (paramBundle != null)
     {
@@ -157,18 +157,18 @@ public class QQStoryShieldActivity
       if (this.jdField_a_of_type_Int != 3) {
         break label722;
       }
-      super.setTitle(wes.jdField_a_of_type_JavaLangString + anni.a(2131709777));
+      super.setTitle(win.jdField_a_of_type_JavaLangString + anzj.a(2131709886));
       label624:
-      this.jdField_a_of_type_Biax = new biax(this, 2131561460);
-      if (bgnt.g(this)) {
+      this.jdField_a_of_type_Bjbv = new bjbv(this, 2131561501);
+      if (bhnv.g(this)) {
         break label801;
       }
-      QQToast.a(this, 1, anni.a(2131709773), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, anzj.a(2131709882), 0).b(getTitleBarHeight());
       super.startTitleProgress();
     }
     for (;;)
     {
-      yqu.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "2", "", "", "" });
+      yup.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "2", "", "", "" });
       return true;
       bool = false;
       break;
@@ -180,36 +180,36 @@ public class QQStoryShieldActivity
       {
         if (QQStoryContext.a().a(this.jdField_a_of_type_JavaLangString))
         {
-          super.setTitle(wes.jdField_a_of_type_JavaLangString + anni.a(2131709818));
+          super.setTitle(win.jdField_a_of_type_JavaLangString + anzj.a(2131709927));
           break label624;
         }
-        super.setTitle(anni.a(2131709797));
+        super.setTitle(anzj.a(2131709906));
         break label624;
       }
-      super.setTitle(anni.a(2131709814));
+      super.setTitle(anzj.a(2131709923));
       break label624;
       label801:
-      this.jdField_a_of_type_Wff.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Wja.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Wfi);
+    this.app.removeObserver(this.jdField_a_of_type_Wjd);
     super.doOnDestroy();
   }
   
   public void finish()
   {
-    ykw.a(this.app);
+    yor.a(this.app);
     super.finish();
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    if (!bgnt.g(this)) {
-      QQToast.a(this, 1, anni.a(2131709816), 0).b(getTitleBarHeight());
+    if (!bhnv.g(this)) {
+      QQToast.a(this, 1, anzj.a(2131709925), 0).b(getTitleBarHeight());
     }
     for (int i = 0;; i = 1)
     {
@@ -226,7 +226,7 @@ public class QQStoryShieldActivity
             if (this.jdField_a_of_type_Int != 3) {
               break label296;
             }
-            yqu.a("person_data_set", (String)localObject, 0, 0, new String[] { "", "", "", "" });
+            yup.a("person_data_set", (String)localObject, 0, 0, new String[] { "", "", "", "" });
           }
         }
         break;
@@ -237,8 +237,8 @@ public class QQStoryShieldActivity
         return;
         if (i != 0)
         {
-          this.jdField_a_of_type_Wff.a((ArrayList)localObject, true, paramBoolean);
-          this.jdField_a_of_type_Biax.b(0, 2131717286, 0);
+          this.jdField_a_of_type_Wja.a((ArrayList)localObject, true, paramBoolean);
+          this.jdField_a_of_type_Bjbv.b(0, 2131717414, 0);
           break;
         }
         localObject = this.jdField_a_of_type_ComTencentWidgetSwitch;
@@ -250,8 +250,8 @@ public class QQStoryShieldActivity
         }
         if (i != 0)
         {
-          this.jdField_a_of_type_Wff.a((ArrayList)localObject, false, paramBoolean);
-          this.jdField_a_of_type_Biax.b(0, 2131717286, 0);
+          this.jdField_a_of_type_Wja.a((ArrayList)localObject, false, paramBoolean);
+          this.jdField_a_of_type_Bjbv.b(0, 2131717414, 0);
           break;
         }
         localObject = this.b;
@@ -271,7 +271,7 @@ public class QQStoryShieldActivity
         localObject = "close_notsee";
         break label99;
         label296:
-        yqu.a("list_settings", (String)localObject, 0, 0, new String[] { "", "", "", "" });
+        yup.a("list_settings", (String)localObject, 0, 0, new String[] { "", "", "", "" });
       }
     }
   }
@@ -284,12 +284,12 @@ public class QQStoryShieldActivity
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if (((anmw)this.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString)) {}
+    if (((anyw)this.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString)) {}
     for (int i = 1;; i = 19)
     {
       ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, i);
       ProfileActivity.b(getActivity(), localAllInOne);
-      yqu.a("list_settings", "clk_person_data", 0, 0, new String[] { "", "", "", "" });
+      yup.a("list_settings", "clk_person_data", 0, 0, new String[] { "", "", "", "" });
       break;
     }
   }

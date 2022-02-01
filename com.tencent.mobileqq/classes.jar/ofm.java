@@ -1,20 +1,54 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ofm
-  implements View.OnClickListener
+public class ofm
+  implements View.OnTouchListener
 {
-  ofm(ofk paramofk, String paramString) {}
+  public ofm(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((ofk.a(this.jdField_a_of_type_Ofk) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      pha.a(ofk.a(this.jdField_a_of_type_Ofk).getContext(), this.jdField_a_of_type_JavaLangString);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      return false;
+      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+      }
+      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+      }
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
+      paramView.d = (i + paramView.d);
+      return false;
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
+        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView.callJs(paramView);
+          return false;
+        }
+      }
+      catch (JSONException paramView)
+      {
+        paramView.printStackTrace();
+      }
+    }
+    return false;
   }
 }
 

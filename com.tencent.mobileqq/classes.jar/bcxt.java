@@ -1,22 +1,45 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.2;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.quic.QuicResDownload;
+import java.util.Properties;
+import mqq.app.MobileQQ;
 
-class bcxt
-  implements akmc
+public class bcxt
+  implements bcxw
 {
-  bcxt(bcxs parambcxs, StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext) {}
+  public bcxt(ShortVideoResourceManager.2 param2) {}
   
-  public void a(Bundle paramBundle)
+  public void B_()
   {
-    int i = paramBundle.getInt("retCode");
-    String str = paramBundle.getString("retMsg");
-    int j = paramBundle.getInt("payTime");
-    paramBundle = paramBundle.getString("orderId");
-    this.jdField_a_of_type_Bcxs.a.b(i);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bcxs.a.ar, i);
-    VACDReportUtil.a("ret_code=" + i + "|ret_str=" + str + "|pay_time=" + j + "|order_id=" + paramBundle, "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
+    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
+      QuicResDownload.a = true;
+    }
+    try
+    {
+      Properties localProperties = new Properties();
+      localProperties.put("version", "8.4.5.4745");
+      localProperties.put("appid", String.valueOf(AppSetting.a()));
+      localProperties.put("release", String.valueOf(true));
+      localProperties.put("name", paramString);
+      bdla.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import bivr;
+import bjwq;
 
 class UniformDownloadActivity$9
   implements Runnable
@@ -9,7 +9,7 @@ class UniformDownloadActivity$9
   
   public void run()
   {
-    bivr.a().b(UniformDownloadActivity.a(this.this$0));
+    bjwq.a().b(UniformDownloadActivity.a(this.this$0));
   }
 }
 

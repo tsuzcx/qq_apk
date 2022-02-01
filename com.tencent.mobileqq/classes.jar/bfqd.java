@@ -1,45 +1,18 @@
-public class bfqd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+
+public final class bfqd
+  implements Parcelable.Creator<TroopBarPOI>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  private String c;
-  public int d;
-  
-  public String a()
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
-      return "classteacher";
-    }
-    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
-      return "teacher";
-    }
-    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
-      return "owner";
-    }
-    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
-      return "admin";
-    }
-    return "other";
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
   }
   
-  public void a(String paramString)
+  public TroopBarPOI[] a(int paramInt)
   {
-    this.jdField_c_of_type_JavaLangString = bfqc.a(paramString, "").trim().replaceAll("\\s+", " ");
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
+    return null;
   }
 }
 

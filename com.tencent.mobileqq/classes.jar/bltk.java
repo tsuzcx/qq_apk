@@ -1,47 +1,30 @@
-public class bltk
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+
+class bltk
+  implements View.OnLayoutChangeListener
 {
-  public static final bltk a;
-  public static final bltk b;
-  public static final bltk c;
-  public static final bltk d = new bltk(false, anni.a(2131711244), false, true);
-  public static final bltk e = new bltk(false, anni.a(2131711252), false, true);
-  public static final bltk f = new bltk(false, anni.a(2131711256), true, true);
-  public static final bltk g = new bltk(false, anni.a(2131711268), true, true);
-  public static final bltk h = new bltk(false, anni.a(2131711229), false, true);
-  public static final bltk i = new bltk(false, anni.a(2131711318), true, true);
-  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
   
-  static
-  {
-    jdField_a_of_type_Bltk = new bltk(true, anni.a(2131711285), false, false);
-    jdField_b_of_type_Bltk = new bltk(false, "CPU指令集不支持", false, true);
-    jdField_c_of_type_Bltk = new bltk(false, anni.a(2131711269), false, true);
-  }
+  private bltk(blth paramblth) {}
   
-  bltk(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    blth.a(this.jdField_a_of_type_Blth).removeOnLayoutChangeListener(this);
+    if (blth.a(this.jdField_a_of_type_Blth).getItemCount() > blth.c(this.jdField_a_of_type_Blth) + blth.d(this.jdField_a_of_type_Blth))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onLayoutChange: ");
+      }
+      paramView = this.jdField_a_of_type_Blth.a(blth.a(this.jdField_a_of_type_Blth));
+      if ((!this.jdField_a_of_type_Blth.a(paramView)) || (this.jdField_a_of_type_Boolean)) {
+        blth.a(this.jdField_a_of_type_Blth, paramView, this.jdField_a_of_type_Boolean);
+      }
+      this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 

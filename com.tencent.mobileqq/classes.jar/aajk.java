@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aajk
-  implements DialogInterface.OnDismissListener
+class aajk
+  implements View.OnClickListener
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
+  aajk(aaje paramaaje, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  
+  public void onClick(View paramView)
   {
-    aajj.a(false);
+    aaiu.a(this.jdField_a_of_type_Aaje.a, aaiu.a(this.jdField_a_of_type_Aaje.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    aaiu.a(this.jdField_a_of_type_Aaje.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

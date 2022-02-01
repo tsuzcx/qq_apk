@@ -1,132 +1,39 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class bpjm
+class bpjm
+  implements View.OnClickListener
 {
-  private static final Matrix a = new Matrix();
+  bpjm(bpjl parambpjl, int paramInt, bpjn parambpjn) {}
   
-  public static bpki a(RectF paramRectF1, RectF paramRectF2)
+  public void onClick(View paramView)
   {
-    bpki localbpki = new bpki(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF1.equals(paramRectF2)) {
-      return localbpki;
-    }
-    localbpki.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-    RectF localRectF = new RectF();
-    a.setScale(localbpki.c, localbpki.c, paramRectF2.centerX(), paramRectF2.centerY());
-    a.mapRect(localRectF, paramRectF2);
-    localbpki.a += paramRectF1.centerX() - localRectF.centerX();
-    float f = localbpki.b;
-    localbpki.b = (paramRectF1.centerY() - localRectF.centerY() + f);
-    return localbpki;
-  }
-  
-  public static bpki a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
-  {
-    bpki localbpki = new bpki(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
+    if (this.jdField_a_of_type_Int == bpjl.a(this.jdField_a_of_type_Bpjl))
     {
-      return localbpki;
-      if ((paramRectF2.width() < paramRectF1.width()) && (paramRectF2.height() < paramRectF1.height())) {
-        localbpki.c = Math.min(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbpki.c, localbpki.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.width() < paramRectF1.width()) {
-        localbpki.a += paramRectF1.centerX() - localRectF.centerX();
-      }
-      while (localRectF.height() < paramRectF1.height())
-      {
-        paramFloat1 = localbpki.b;
-        localbpki.b = (paramRectF1.centerY() - localRectF.centerY() + paramFloat1);
-        return localbpki;
-        if (localRectF.left > paramRectF1.left) {
-          localbpki.a += paramRectF1.left - localRectF.left;
-        } else if (localRectF.right < paramRectF1.right) {
-          localbpki.a += paramRectF1.right - localRectF.right;
-        }
-      }
-      if (localRectF.top > paramRectF1.top)
-      {
-        paramFloat1 = localbpki.b;
-        localbpki.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbpki;
-      }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbpki.b;
-    localbpki.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbpki;
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2)
-  {
-    paramRectF2.offset(paramRectF1.centerX() - paramRectF2.centerX(), paramRectF1.centerY() - paramRectF2.centerY());
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat)
-  {
-    a(paramRectF1, paramRectF2, paramFloat, paramFloat, paramFloat, paramFloat);
-  }
-  
-  public static void a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    if ((paramRectF1.isEmpty()) || (paramRectF2.isEmpty())) {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    float f2 = paramFloat1;
-    float f1 = paramFloat3;
-    if (paramRectF1.width() < paramFloat1 + paramFloat3)
+    bpjl.a(this.jdField_a_of_type_Bpjl, this.jdField_a_of_type_Int);
+    bpjl.a(this.jdField_a_of_type_Bpjl).a(bpjl.a(this.jdField_a_of_type_Bpjl), ((Integer)bpjl.a(this.jdField_a_of_type_Bpjl).get(this.jdField_a_of_type_Int)).intValue(), this.jdField_a_of_type_Int, bpjl.b(this.jdField_a_of_type_Bpjl));
+    bpjl.a(this.jdField_a_of_type_Bpjl, this.jdField_a_of_type_Bpjn, this.jdField_a_of_type_Int);
+    if ("adapter_extract".equals(bpjl.a(this.jdField_a_of_type_Bpjl)))
     {
-      f1 = 0.0F;
-      f2 = 0.0F;
+      bozv.a().a().f = "ai_color";
+      bozv.a().a().jdField_g_of_type_Int = -1;
     }
-    paramFloat3 = paramFloat2;
-    paramFloat1 = paramFloat4;
-    if (paramRectF1.height() < paramFloat2 + paramFloat4)
+    for (;;)
     {
-      paramFloat1 = 0.0F;
-      paramFloat3 = 0.0F;
-    }
-    paramFloat2 = paramRectF1.width();
-    paramFloat4 = paramRectF1.height();
-    paramFloat2 = Math.min((paramFloat2 - f2 - f1) / paramRectF2.width(), (paramFloat4 - paramFloat3 - paramFloat1) / paramRectF2.height());
-    paramRectF2.set(0.0F, 0.0F, paramRectF2.width() * paramFloat2, paramFloat2 * paramRectF2.height());
-    paramRectF2.offset(paramRectF1.centerX() + (f2 - f1) / 2.0F - paramRectF2.centerX(), paramRectF1.centerY() + (paramFloat3 - paramFloat1) / 2.0F - paramRectF2.centerY());
-  }
-  
-  public static bpki b(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
-  {
-    bpki localbpki = new bpki(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF2.contains(paramRectF1)) {}
-    RectF localRectF;
-    do
-    {
-      return localbpki;
-      if ((paramRectF2.width() < paramRectF1.width()) || (paramRectF2.height() < paramRectF1.height())) {
-        localbpki.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-      }
-      localRectF = new RectF();
-      a.setScale(localbpki.c, localbpki.c, paramFloat1, paramFloat2);
-      a.mapRect(localRectF, paramRectF2);
-      if (localRectF.left > paramRectF1.left) {
-        localbpki.a += paramRectF1.left - localRectF.left;
-      }
-      while (localRectF.top > paramRectF1.top)
+      bozv.a().a().jdField_g_of_type_JavaLangString = bpjl.b(this.jdField_a_of_type_Bpjl);
+      bozr.a().t();
+      break;
+      if ("adapter_fix".equals(bpjl.a(this.jdField_a_of_type_Bpjl)))
       {
-        paramFloat1 = localbpki.b;
-        localbpki.b = (paramRectF1.top - localRectF.top + paramFloat1);
-        return localbpki;
-        if (localRectF.right < paramRectF1.right) {
-          localbpki.a += paramRectF1.right - localRectF.right;
-        }
+        bozv.a().a().f = "common_color";
+        bozv.a().a().jdField_g_of_type_Int = (this.jdField_a_of_type_Int + 1);
       }
-    } while (localRectF.bottom >= paramRectF1.bottom);
-    paramFloat1 = localbpki.b;
-    localbpki.b = (paramRectF1.bottom - localRectF.bottom + paramFloat1);
-    return localbpki;
+    }
   }
 }
 

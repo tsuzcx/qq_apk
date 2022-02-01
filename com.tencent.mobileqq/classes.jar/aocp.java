@@ -1,6 +1,56 @@
-public abstract interface aocp
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+
+public class aocp
+  extends anud
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private apqo jdField_a_of_type_Apqo;
+  
+  public aocp(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+  }
+  
+  public void a(Context paramContext)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Apqo == null)
+      {
+        this.jdField_a_of_type_Apqo = apqo.a();
+        this.jdField_a_of_type_Apqo.a(paramContext, hashCode(), "MiniCodePeakHandler");
+      }
+      return;
+    }
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Apqo != null)
+      {
+        this.jdField_a_of_type_Apqo.a(hashCode(), "MiniCodePeakHandler");
+        this.jdField_a_of_type_Apqo = null;
+      }
+      return;
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

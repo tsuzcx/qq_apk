@@ -1,35 +1,28 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-class awxt
-  implements bceu
+final class awxt
+  extends Handler
 {
-  awxt(awxi paramawxi, awxd paramawxd, String paramString) {}
+  java.lang.ref.WeakReference<awxj> a;
   
-  public void a(int paramInt)
+  public awxt(awxj paramawxj)
   {
-    if ((this.jdField_a_of_type_Awxd.a != null) && (this.jdField_a_of_type_Awxd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Awxd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_Awxd, paramInt, 0, "");
+    super(Looper.getMainLooper());
+    this.a = new mqq.util.WeakReference(paramawxj);
   }
   
-  public void b(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Awxd.a != null) && (this.jdField_a_of_type_Awxd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Awxd.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if (this.jdField_a_of_type_Awxd.a != null)
+    if (this.a == null) {}
+    awxj localawxj;
+    do
     {
-      String str = this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_Awxd.a.jdField_a_of_type_Bcef);
-      awxe localawxe = this.jdField_a_of_type_Awxi.a(str);
-      if ((localawxe != null) && (!localawxe.a))
-      {
-        localawxe.c = paramInt;
-        this.jdField_a_of_type_Awxi.a(str, localawxe);
-        awxi.a(this.jdField_a_of_type_Awxi, localawxe, localawxe.c);
-      }
-    }
+      return;
+      localawxj = (awxj)this.a.get();
+    } while (localawxj == null);
+    localawxj.a(paramMessage);
   }
 }
 

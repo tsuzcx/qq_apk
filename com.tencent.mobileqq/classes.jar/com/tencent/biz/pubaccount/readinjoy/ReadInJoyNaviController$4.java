@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import oha;
+import oii;
 
 public class ReadInJoyNaviController$4
   implements Runnable
 {
-  public ReadInJoyNaviController$4(oha paramoha) {}
+  public ReadInJoyNaviController$4(oii paramoii) {}
   
   public void run()
   {
-    oha.a(this.this$0, true);
+    oii.a(this.this$0, true);
   }
 }
 

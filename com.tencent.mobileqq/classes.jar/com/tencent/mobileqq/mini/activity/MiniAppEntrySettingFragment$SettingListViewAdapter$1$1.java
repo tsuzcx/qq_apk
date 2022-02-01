@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.activity;
 
 import NS_MINI_INTERFACE.INTERFACE.StSetUserSwitchRsp;
 import android.os.Bundle;
-import biti;
+import bjuh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.entry.MiniAppDesktop;
 import com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity;
@@ -46,15 +46,15 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter$1$1
       catch (Exception paramJSONObject)
       {
         QLog.e("MiniAppEntrySettingFragment", 1, "setUserSwitch onCmdListener failed e:", paramJSONObject);
-        biti.a().a("setUserSwitch fail checklog");
+        bjuh.a().a("setUserSwitch fail checklog");
         return;
       }
       QLog.e("MiniAppEntrySettingFragment", 1, new Object[] { "setUserSwitch receive retCode = ", Integer.valueOf(i) });
-      biti.a().a("setUserSwitch retCode:" + i);
+      bjuh.a().a("setUserSwitch retCode:" + i);
       return;
     }
     QLog.e("MiniAppEntrySettingFragment", 1, new Object[] { "setUserSwitch receive isSuc = ", Boolean.valueOf(paramBoolean) });
-    biti.a().a("setUserSwitch receive isSuc false");
+    bjuh.a().a("setUserSwitch receive isSuc false");
   }
 }
 

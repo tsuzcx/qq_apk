@@ -1,21 +1,19 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.view.View;
 
 public abstract interface xli
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract Context a();
   
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  public abstract View a();
   
-  public abstract void c();
+  public abstract void finish();
   
-  public abstract void d();
+  public abstract Activity getActivity();
   
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public abstract void startActivity(Intent paramIntent);
 }
 
 

@@ -1,7 +1,40 @@
-public abstract class aszy
-  extends aszx
+import android.graphics.Rect;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+
+public class aszy
+  extends RecyclerView.ItemDecoration
 {
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  private int a;
+  private int b;
+  private int c;
+  private int d;
+  
+  public aszy(Fragment paramFragment)
+  {
+    this.a = agej.a(11.0F, paramFragment.getResources());
+    this.b = agej.a(11.0F, paramFragment.getResources());
+    this.c = agej.a(8.0F, paramFragment.getResources());
+    this.d = agej.a(8.0F, paramFragment.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  {
+    int i = paramRecyclerView.getAdapter().getItemCount();
+    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
+    {
+      paramRect.set(0, this.a, 0, 0);
+      return;
+    }
+    if (paramInt == i - 1)
+    {
+      paramRect.set(this.c, this.a, this.d, this.b);
+      return;
+    }
+    paramRect.set(this.c, this.a, this.d, 0);
+  }
 }
 
 

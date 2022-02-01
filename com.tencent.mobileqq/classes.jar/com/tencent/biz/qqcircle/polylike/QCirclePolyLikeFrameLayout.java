@@ -1,5 +1,8 @@
 package com.tencent.biz.qqcircle.polylike;
 
+import aaak;
+import aaam;
+import aabg;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -10,8 +13,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bclx;
-import bdzx;
+import bdep;
+import beyq;
 import com.tencent.biz.qqcircle.events.QCirclePolyPraiseUpdateEvent;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
@@ -24,6 +27,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -34,19 +38,17 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import qqcircle.QQCircleFeedBase.StLikeBusiData;
 import qqcircle.QQCircleFeedBase.StPolyLike;
-import uxh;
-import vpo;
-import vpp;
-import vpu;
-import zwp;
-import zwr;
-import zxl;
+import uys;
+import vrx;
+import vry;
+import vsd;
 
 public class QCirclePolyLikeFrameLayout
   extends FrameLayout
-  implements View.OnClickListener, zwr, zxl<QCircleReportBean>
+  implements aaam, aabg<QCircleReportBean>, View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 2130843992;
+  private int jdField_a_of_type_Int = 2130844012;
+  private aabg<QCircleReportBean> jdField_a_of_type_Aabg;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private QCirclePolyLikeAniView jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
@@ -58,11 +60,10 @@ public class QCirclePolyLikeFrameLayout
   private List<QQCircleFeedBase.StPolyLike> jdField_a_of_type_JavaUtilList;
   private QQCircleFeedBase.StLikeBusiData jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData;
   private QQCircleFeedBase.StPolyLike jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
-  private vpo jdField_a_of_type_Vpo;
-  private vpu jdField_a_of_type_Vpu;
-  private zxl<QCircleReportBean> jdField_a_of_type_Zxl;
+  private vrx jdField_a_of_type_Vrx;
+  private vsd jdField_a_of_type_Vsd;
   private boolean jdField_a_of_type_Boolean;
-  private int b = 2130843993;
+  private int b = 2130844013;
   
   public QCirclePolyLikeFrameLayout(Context paramContext)
   {
@@ -106,15 +107,19 @@ public class QCirclePolyLikeFrameLayout
       if ((paramStPolyLike.articleType.get() == 1) || (this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData.rewardstatus.get() == 1)) {
         localStLikeBusiData.rewardstatus.set(1);
       }
+      if (!this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData.likeIDs.get().contains(paramStPolyLike.polyLikeID.get())) {
+        this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData.likeIDs.get().add(paramStPolyLike.polyLikeID.get());
+      }
+      localStLikeBusiData.likeIDs.addAll(new ArrayList(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StLikeBusiData.likeIDs.get()));
       this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.busiData.set(ByteStringMicro.copyFrom(localStLikeBusiData.toByteArray()));
       this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike = paramStPolyLike;
       if ((this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyLikeID.get())))
       {
         paramStPolyLike = URLDrawable.URLDrawableOptions.obtain();
-        paramStPolyLike.mLoadingDrawable = bdzx.a;
+        paramStPolyLike.mLoadingDrawable = beyq.a;
         paramStPolyLike.mRequestWidth = this.jdField_a_of_type_ComTencentImageURLImageView.getWidth();
         paramStPolyLike.mRequestHeight = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight();
-        uxh.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyIconUrl.get(), this.jdField_a_of_type_ComTencentImageURLImageView, paramStPolyLike, false);
+        uys.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyIconUrl.get(), this.jdField_a_of_type_ComTencentImageURLImageView, paramStPolyLike, false);
         this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(this.b);
@@ -135,14 +140,14 @@ public class QCirclePolyLikeFrameLayout
   
   private void b()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560749, this, true);
+    View localView = LayoutInflater.from(getContext()).inflate(2131560772, this, true);
     if (localView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373864));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131373882));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373889));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373997));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131374015));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131374023));
       setOnClickListener(this);
-      this.jdField_a_of_type_Vpu = new vpu((Activity)getContext());
+      this.jdField_a_of_type_Vsd = new vsd((Activity)getContext());
     }
   }
   
@@ -156,27 +161,27 @@ public class QCirclePolyLikeFrameLayout
     if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
       return QCircleReportBean.getReportBean("QCirclePolyLikeFrameLayout", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean).clone().setModuleIdStr(a());
     }
-    if (this.jdField_a_of_type_Zxl != null) {
-      return QCircleReportBean.getReportBean("QCirclePolyLikeFrameLayout", (QCircleReportBean)this.jdField_a_of_type_Zxl.getReportBean()).clone().setModuleIdStr(a());
+    if (this.jdField_a_of_type_Aabg != null) {
+      return QCircleReportBean.getReportBean("QCirclePolyLikeFrameLayout", (QCircleReportBean)this.jdField_a_of_type_Aabg.getReportBean()).clone().setModuleIdStr(a());
     }
     return new QCircleReportBean();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = vpp.a().a();
+    this.jdField_a_of_type_JavaUtilList = vry.a().a();
     if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
     do
     {
       do
       {
         return;
-      } while (this.jdField_a_of_type_Vpu.isShowing());
-      this.jdField_a_of_type_Vpu.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
-      this.jdField_a_of_type_Vpu.a(a());
-      this.jdField_a_of_type_Vpu.a();
-    } while (this.jdField_a_of_type_Vpo == null);
-    this.jdField_a_of_type_Vpo.a();
+      } while (this.jdField_a_of_type_Vsd.isShowing());
+      this.jdField_a_of_type_Vsd.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
+      this.jdField_a_of_type_Vsd.a(a());
+      this.jdField_a_of_type_Vsd.a();
+    } while (this.jdField_a_of_type_Vrx == null);
+    this.jdField_a_of_type_Vrx.a();
   }
   
   public View b()
@@ -194,28 +199,19 @@ public class QCirclePolyLikeFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polyLikeID.get())))
-    {
-      this.jdField_a_of_type_Vpu.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo);
-      this.jdField_a_of_type_Vpu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      a();
-    }
+    a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -257,12 +253,12 @@ public class QCirclePolyLikeFrameLayout
     int j;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = bclx.a(46.0F);
-      j = bclx.a(24.0F);
+      i = bdep.a(46.0F);
+      j = bdep.a(24.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = j;
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = j;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843957);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843974);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams().width = i;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams().height = i;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams());
@@ -274,8 +270,8 @@ public class QCirclePolyLikeFrameLayout
     {
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(this.jdField_a_of_type_Int);
       return;
-      i = bclx.a(46.0F);
-      j = bclx.a(24.0F);
+      i = bdep.a(46.0F);
+      j = bdep.a(24.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = j;
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = j;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams());
@@ -293,11 +289,11 @@ public class QCirclePolyLikeFrameLayout
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnClickHookListener(vpo paramvpo)
+  public void setOnClickHookListener(vrx paramvrx)
   {
-    this.jdField_a_of_type_Vpo = paramvpo;
-    if (this.jdField_a_of_type_Vpu != null) {
-      this.jdField_a_of_type_Vpu.a(paramvpo);
+    this.jdField_a_of_type_Vrx = paramvrx;
+    if (this.jdField_a_of_type_Vsd != null) {
+      this.jdField_a_of_type_Vsd.a(paramvrx);
     }
   }
   
@@ -309,16 +305,16 @@ public class QCirclePolyLikeFrameLayout
   public void setReportBean(QCircleReportBean paramQCircleReportBean)
   {
     this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean("QCirclePolyLikeFrameLayout", paramQCircleReportBean);
-    if (this.jdField_a_of_type_Vpu != null) {
-      this.jdField_a_of_type_Vpu.a(this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    if (this.jdField_a_of_type_Vsd != null) {
+      this.jdField_a_of_type_Vsd.a(this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
     }
   }
   
-  public void setReportBeanAgent(zxl<QCircleReportBean> paramzxl)
+  public void setReportBeanAgent(aabg<QCircleReportBean> paramaabg)
   {
-    this.jdField_a_of_type_Zxl = paramzxl;
-    if (this.jdField_a_of_type_Vpu != null) {
-      this.jdField_a_of_type_Vpu.a(paramzxl);
+    this.jdField_a_of_type_Aabg = paramaabg;
+    if (this.jdField_a_of_type_Vsd != null) {
+      this.jdField_a_of_type_Vsd.a(paramaabg);
     }
   }
   

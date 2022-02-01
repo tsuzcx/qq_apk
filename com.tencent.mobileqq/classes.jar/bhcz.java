@@ -1,81 +1,38 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class bhcz
-  implements InvocationHandler
 {
-  private Class a;
-  public Object a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public bhcz(Class paramClass)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    try
-    {
-      this.jdField_a_of_type_JavaLangObject = paramClass.newInstance();
-      return;
-    }
-    catch (IllegalAccessException paramClass)
-    {
-      paramClass.printStackTrace();
-      return;
-    }
-    catch (InstantiationException paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-  }
+  public bhcz(bhct parambhct) {}
   
-  Object a(String paramString, Bundle paramBundle)
+  public JSONObject a()
   {
-    paramString = bhcy.a(this.jdField_a_of_type_JavaLangClass.getName() + '$' + paramString, paramBundle);
-    if ((paramString != null) && (paramString.data != null))
-    {
-      paramBundle = paramString.data.getString("resultType");
-      return bhcy.a(paramString.data, paramBundle, "result");
-    }
-    return null;
-  }
-  
-  void a(String paramString, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
-  {
-    bhcy.a(this.jdField_a_of_type_JavaLangClass.getName() + '$' + paramString, paramBundle, paramEIPCResultCallback);
-  }
-  
-  void a(Method paramMethod, Object[] paramArrayOfObject, Bundle paramBundle)
-  {
-    paramMethod = paramMethod.getParameterTypes();
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramMethod.length)
-    {
-      String str1 = "__arg+" + i + "__";
-      String str2 = paramMethod[i].getName();
-      localArrayList.add(str2);
-      bhcy.a(paramBundle, str2, str1, paramArrayOfObject[i]);
-      i += 1;
-    }
-    paramBundle.putStringArrayList("__parameterTypes__", localArrayList);
-  }
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-  {
-    paramObject = new Bundle();
-    a(paramMethod, paramArrayOfObject, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteProxy", 2, "getReturnType:" + paramMethod.getReturnType());
-    }
-    if ((paramMethod.getReturnType().getName().equals("void")) && ((paramArrayOfObject[(paramArrayOfObject.length - 1)] instanceof EIPCResultCallback)))
-    {
-      a(paramMethod.getName(), paramObject, (EIPCResultCallback)paramArrayOfObject[(paramArrayOfObject.length - 1)]);
-      return null;
-    }
-    return a(paramMethod.getName(), paramObject);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
+    localJSONObject.put("app_version", this.c);
+    localJSONObject.put("net_type", this.d);
+    localJSONObject.put("carrier_type", this.e);
+    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
+    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
+    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
+    localJSONObject.put("cpu_type", this.f);
+    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
+    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
+    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
+    return localJSONObject;
   }
 }
 

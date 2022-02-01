@@ -1,52 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 public class biaf
-  implements View.OnClickListener
 {
-  final WeakReference<QQAppInterface> a;
-  final WeakReference<azfe> b;
+  private static final Comparator<biad> jdField_a_of_type_JavaUtilComparator = new biag();
+  private List<biad> jdField_a_of_type_JavaUtilList;
   
-  public biaf(QQAppInterface paramQQAppInterface, azfe paramazfe)
+  public List<biad> a()
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramazfe);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void onClick(View paramView)
+  public void a(int[] paramArrayOfInt, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    azfe localazfe = (azfe)this.b.get();
-    if ((localQQAppInterface == null) || (localazfe == null) || (localazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null))
+    Object localObject = new biae();
+    int i = 0;
+    while (i < paramArrayOfInt.length)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    if (((bfgp)localQQAppInterface.getManager(346)).b(localazfe.jdField_a_of_type_JavaLangString)) {}
-    for (Object localObject = bfti.a().a(localazfe.jdField_a_of_type_JavaLangString, localazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; localObject = bfti.a().a(localazfe.jdField_a_of_type_JavaLangString, localazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, azgc.a(localQQAppInterface, localazfe.jdField_a_of_type_JavaLangString, localazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localazfe.jdField_a_of_type_ComTencentMobileqqDataCard), "3", "aio"))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)localObject);
-      paramView.getContext().startActivity(localIntent);
-      if (beui.a().a(localazfe.jdField_a_of_type_JavaLangString, localazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
-      {
-        localObject = paramView.findViewById(2131376278);
-        if (localObject != null) {
-          ((View)localObject).setVisibility(8);
-        }
-        beui.a().a(localazfe.jdField_a_of_type_JavaLangString, localazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
+      ((biae)localObject).a(paramArrayOfInt[i]);
+      while (((biae)localObject).jdField_a_of_type_JavaUtilList.size() > paramInt) {
+        ((biae)localObject).a();
       }
-      beui.a("grp_data", "clk_medal");
-      new bcsy(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localazfe.jdField_a_of_type_JavaLangString }).a();
-      break;
+      i += 1;
     }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramArrayOfInt = ((biae)localObject).jdField_a_of_type_JavaUtilList.iterator();
+    while (paramArrayOfInt.hasNext())
+    {
+      localObject = (biad)paramArrayOfInt.next();
+      ((biad)localObject).jdField_a_of_type_Long = ((int)((float)((biad)localObject).jdField_a_of_type_Long / ((biad)localObject).jdField_a_of_type_Int));
+      ((biad)localObject).b = ((int)((float)((biad)localObject).b / ((biad)localObject).jdField_a_of_type_Int));
+      ((biad)localObject).c = ((int)((float)((biad)localObject).c / ((biad)localObject).jdField_a_of_type_Int));
+      this.jdField_a_of_type_JavaUtilList.add(localObject);
+    }
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
   }
 }
 

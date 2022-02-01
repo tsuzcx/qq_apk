@@ -17,8 +17,8 @@ class HealthBusinessPlugin$9
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ImageView)((FrameLayout)this.this$0.e.get(localObject)).findViewById(2131374317);
-      ((ImageView)localObject).setImageResource(2130849161);
+      localObject = (ImageView)((FrameLayout)this.this$0.e.get(localObject)).findViewById(2131374453);
+      ((ImageView)localObject).setImageResource(2130849180);
       ((ImageView)localObject).setVisibility(0);
     }
   }

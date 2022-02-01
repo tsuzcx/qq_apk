@@ -1,75 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable.DownloadListener;
+import kotlin.Metadata;
 
-public class sbb
-  extends anmu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$saveBitmapAndUpload$1", "Lcom/tencent/image/URLDrawable$DownloadListener;", "onFileDownloadFailed", "", "p0", "", "onFileDownloadStarted", "onFileDownloadSucceed", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sbb
+  implements URLDrawable.DownloadListener
 {
-  private sbb(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  sbb(String paramString, rjx paramrjx, Bitmap paramBitmap) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onFileDownloadFailed(int paramInt)
   {
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {
-      break label10;
+    rjx localrjx = this.jdField_a_of_type_Rjx;
+    if (localrjx != null) {
+      localrjx.a(2, "");
     }
-    label10:
-    label227:
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
-      {
-        Object localObject1 = VideoFeedsRecommendFragment.a(this.a);
-        if (localObject1 != null) {}
-        for (localObject1 = bglf.b((QQAppInterface)localObject1, paramString, false);; localObject1 = null)
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label227;
-          }
-          Iterator localIterator = VideoFeedsRecommendFragment.a(this.a).iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject2 = (VideoInfo)localIterator.next();
-            int i = j;
-            if (paramString.equals(((VideoInfo)localObject2).j))
-            {
-              i = j;
-              if (!((String)localObject1).equals(((VideoInfo)localObject2).k))
-              {
-                ((VideoInfo)localObject2).k = ((String)localObject1);
-                i = 1;
-              }
-            }
-            j = i;
-            if (((VideoInfo)localObject2).d != null)
-            {
-              localObject2 = ((VideoInfo)localObject2).d.iterator();
-              for (;;)
-              {
-                j = i;
-                if (!((Iterator)localObject2).hasNext()) {
-                  break;
-                }
-                VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject2).next();
-                if ((paramString.equals(localVideoInfo.j)) && (!((String)localObject1).equals(localVideoInfo.k)))
-                {
-                  localVideoInfo.k = ((String)localObject1);
-                  i = 1;
-                }
-              }
-            }
-          }
-          if (j == 0) {
-            break;
-          }
-          VideoFeedsRecommendFragment.a(this.a).b(paramString);
-          return;
-        }
-      }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    saw.a(this.jdField_a_of_type_Saw, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rjx);
+    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
   }
 }

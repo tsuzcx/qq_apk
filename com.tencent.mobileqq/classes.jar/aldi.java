@@ -1,136 +1,45 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
-public final class aldi
+public class aldi
+  extends biht
 {
-  private static int a(RecentBaseData paramRecentBaseData, RecentUser paramRecentUser)
+  public aldi(PreloadManager paramPreloadManager, aldl paramaldl) {}
+  
+  public void onDoneFile(bihu parambihu)
   {
-    int j = 0;
-    int i = 0;
-    if (paramRecentUser == null)
+    int i = -5;
+    super.onDoneFile(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadRes|done" + parambihu.jdField_a_of_type_JavaLangString + "|" + parambihu.jdField_a_of_type_Int);
+    }
+    Object localObject = parambihu.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (parambihu.jdField_a_of_type_Int == 0)
     {
-      j = i;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("RecentReportHelper", 4, "getReportID: null RecentUser for " + paramRecentBaseData);
-        j = i;
+      i = 0;
+      if (localObject != null) {
+        break label146;
       }
-      return j;
     }
-    switch (paramRecentUser.getType())
+    label146:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
     {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      j = i;
-      if (!QLog.isDevelopLevel()) {
+      this.jdField_a_of_type_Aldl.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (parambihu.jdField_a_of_type_Int == -5) {
         break;
       }
-      QLog.d("RecentReportHelper", 4, "getReportID:" + i + ", for uin:" + paramRecentUser.uin + " and type:" + paramRecentUser.getType());
-      return i;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-      continue;
-      i = 8;
-      continue;
-      i = 10;
-      continue;
-      i = 11;
-      continue;
-      i = 12;
-      continue;
-      i = 13;
-      continue;
-      i = 14;
-      continue;
-      i = 17;
-      continue;
-      i = 18;
-      continue;
-      i = 19;
-      continue;
-      i = 20;
-      continue;
-      i = 21;
-      continue;
-      i = 22;
-      continue;
-      i = 23;
-      continue;
-      i = 24;
-      continue;
-      i = 25;
-      continue;
-      i = 26;
-      continue;
-      if ("2909288299".equals(paramRecentUser.uin))
-      {
-        i = 27;
-      }
-      else
-      {
-        i = j;
-        if ("2010741172".equals(paramRecentUser.uin))
-        {
-          i = 28;
-          continue;
-          i = 29;
-          continue;
-          i = 31;
-          continue;
-          i = 32;
-        }
-      }
+      i = -6;
+      break;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, RecentUser paramRecentUser)
-  {
-    int i = a(paramRecentBaseData, paramRecentUser);
-    if (i > 0) {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8006824", "0X8006824", 0, 0, "" + i, "", "", "");
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, RecentUser paramRecentUser, boolean paramBoolean)
-  {
-    int j = a(paramRecentBaseData, paramRecentUser);
-    if (j > 0) {
-      if (!paramBoolean) {
-        break label63;
-      }
-    }
-    label63:
-    for (int i = 1;; i = 0)
-    {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8006821", "0X8006821", i, 0, "" + j, "", "", "");
-      return;
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, RecentUser paramRecentUser)
-  {
-    if (paramRecentBaseData.getUnreadNum() <= 0) {}
-    int i;
-    do
-    {
-      return;
-      i = a(paramRecentBaseData, paramRecentUser);
-    } while (i <= 0);
-    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8006823", "0X8006823", 0, 0, "" + i, "", "", "");
   }
 }
 

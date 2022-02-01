@@ -1,18 +1,23 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Bundle;
+import java.util.UUID;
 
 class bfxb
-  extends bfxc
+  extends aavm
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  bfxb(bfxa parambfxa) {}
   
-  bfxb(bfxa parambfxa)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    super(parambfxa.a);
+    if (paramBundle.getLong("troopUin") != bfxa.a(this.a)) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    if (!paramBoolean) {
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + bfxa.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
+    }
+    bfxa.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

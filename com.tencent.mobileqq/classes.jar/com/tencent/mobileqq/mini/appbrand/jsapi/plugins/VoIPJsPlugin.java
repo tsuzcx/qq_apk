@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import anni;
-import bjct;
+import anzj;
+import bkds;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -27,6 +27,7 @@ public class VoIPJsPlugin
   private static final String API_UPDATE_VOIP_CHAT_MUTE_CONFIG = "updateVoIPChatMuteConfig";
   private static final Set<String> S_EVENT_MAP = new VoIPJsPlugin.1();
   public static final String TAG = "[mini] VoIPJsPlugin";
+  private JsRuntime cacheJsRuntime;
   
   private byte[] getSig(String paramString, VoIPManager.RoomConfig paramRoomConfig)
   {
@@ -57,6 +58,9 @@ public class VoIPJsPlugin
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
     QLog.d("[mini] VoIPJsPlugin", 2, "handleNativeRequest event=" + paramString1 + ",jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramJsRuntime);
+    if (this.cacheJsRuntime == null) {
+      this.cacheJsRuntime = paramJsRuntime;
+    }
     Object localObject1;
     Object localObject2;
     if ("updateVoIPChatMuteConfig".equals(paramString1))
@@ -70,7 +74,7 @@ public class VoIPJsPlugin
     for (;;)
     {
       return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
-      paramJsRuntime.evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackFail(paramString1, (JSONObject)localObject2, anni.a(2131715531)).toString());
+      paramJsRuntime.evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackFail(paramString1, (JSONObject)localObject2, anzj.a(2131715640)).toString());
       QLog.e("[mini] VoIPJsPlugin", 1, "参数错误 " + paramString2);
       continue;
       if ("joinVoIPChat".equals(paramString1))
@@ -134,7 +138,7 @@ public class VoIPJsPlugin
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
   {
-    bjct.a().a(BaseApplicationImpl.getContext(), true);
+    bkds.a().a(BaseApplicationImpl.getContext(), true);
     super.onCreate(paramBaseJsPluginEngine);
   }
   
@@ -147,8 +151,14 @@ public class VoIPJsPlugin
     try
     {
       localJSONObject.put("errCode", 2);
-      localJSONObject.put("errMsg", anni.a(2131715530));
-      this.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onVoIPChatInterrupted", localJSONObject.toString(), 0);
+      localJSONObject.put("errMsg", anzj.a(2131715639));
+      JsRuntime localJsRuntime = this.jsPluginEngine.getServiceRuntime();
+      if (this.isGameRuntime) {
+        localJsRuntime = this.cacheJsRuntime;
+      }
+      if (localJsRuntime != null) {
+        localJsRuntime.evaluateSubcribeJS("onVoIPChatInterrupted", localJSONObject.toString(), 0);
+      }
       VoIPManager.getInstance().exitRoom();
       VoIPManager.getInstance().setEventListener(null);
       return;

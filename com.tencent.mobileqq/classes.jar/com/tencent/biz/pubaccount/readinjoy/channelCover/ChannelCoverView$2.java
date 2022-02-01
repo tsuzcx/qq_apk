@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import oat;
-import och;
+import ocd;
+import odr;
+import oof;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ovs;
 
 public class ChannelCoverView$2
   implements Runnable
 {
-  public ChannelCoverView$2(ovs paramovs, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverView$2(oof paramoof, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class ChannelCoverView$2
           if (this.a.mIsTopic)
           {
             str3 = "0X80088BB";
-            oat.a(null, "", str1, str3, 0, 0, "1", "", "", och.a(this.a.mChannelCoverId, localJSONObject), false);
+            ocd.a(null, "", str1, str3, 0, 0, "1", "", "", odr.a(this.a.mChannelCoverId, localJSONObject), false);
             return;
           }
           String str3 = "0X8007BE6";

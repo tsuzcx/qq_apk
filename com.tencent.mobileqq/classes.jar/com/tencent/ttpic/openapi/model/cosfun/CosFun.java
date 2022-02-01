@@ -5,6 +5,7 @@ import java.util.List;
 public class CosFun
 {
   private List<CosFun.CosFunGroupItem> cosFunGroupItem;
+  private boolean enableGAN;
   private int startInterval;
   private String tipsAnim;
   private int tipsAnimFrameDuration;
@@ -35,9 +36,19 @@ public class CosFun
     return this.tipsAnimFrames;
   }
   
+  public boolean isEnableGAN()
+  {
+    return this.enableGAN;
+  }
+  
   public void setCosFunGroupItem(List<CosFun.CosFunGroupItem> paramList)
   {
     this.cosFunGroupItem = paramList;
+  }
+  
+  public void setEnableGAN(boolean paramBoolean)
+  {
+    this.enableGAN = paramBoolean;
   }
   
   public void setStartInterval(int paramInt)

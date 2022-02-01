@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.Advertisement.fragment;
 
 import android.support.v4.view.ViewPager;
-import nuq;
+import nwk;
 
 public class VideoCoverFragment$3$2
   implements Runnable
 {
-  public VideoCoverFragment$3$2(nuq paramnuq) {}
+  public VideoCoverFragment$3$2(nwk paramnwk) {}
   
   public void run()
   {

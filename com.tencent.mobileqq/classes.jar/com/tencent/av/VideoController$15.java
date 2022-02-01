@@ -1,12 +1,12 @@
 package com.tencent.av;
 
 import com.tencent.av.app.VideoAppInterface;
-import ley;
+import lff;
 
 class VideoController$15
   implements Runnable
 {
-  VideoController$15(VideoController paramVideoController, ley paramley) {}
+  VideoController$15(VideoController paramVideoController, lff paramlff) {}
   
   public void run()
   {

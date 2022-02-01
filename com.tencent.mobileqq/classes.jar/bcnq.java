@@ -1,24 +1,52 @@
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bcnq
-  implements bcom
+public class bcnq
+  implements bcny
 {
-  bcnq(bcnp parambcnp) {}
+  protected View a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bcnz jdField_a_of_type_Bcnz;
+  private List<bcnz> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
+  public bcnq() {}
+  
+  public bcnq(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.jdField_a_of_type_Int = paramInt;
-    long l = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq;
-    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
-    if (bcoe.a()) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      VACDReportUtil.a(l, null, "load.item.getconfig.end", paramInt + "&v=" + bcnl.a() + "&f=" + this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
-      bcnp.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, paramSoInfo);
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371384));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368825)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368831)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368837)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368843)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368844)));
+    this.jdField_a_of_type_Bcnz = new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368845));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bcnz> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

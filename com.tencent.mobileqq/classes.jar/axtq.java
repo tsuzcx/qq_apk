@@ -1,22 +1,8 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-
-class axtq
-  implements Handler.Callback
+public class axtq
 {
-  axtq(axtp paramaxtp) {}
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      axtp.a(this.a);
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

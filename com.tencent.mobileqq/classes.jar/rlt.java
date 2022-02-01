@@ -1,48 +1,29 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import android.graphics.Bitmap;
 
-public class rlt
+public abstract class rlt
+  implements rwg
 {
-  private static final String a = anni.a(2131718924);
-  private static final String b = anni.a(2131718927);
-  private static final String c = anni.a(2131718925);
-  private static final String d = anni.a(2131718923);
-  private static final String e = anni.a(2131718926);
+  public void a(rwf paramrwf) {}
   
-  public static int a()
+  public void a(rwf paramrwf, String paramString) {}
+  
+  public void a(rwf paramrwf, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public boolean a(rwf paramrwf, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    return a().getIntegerFromString("ugc_add_account_tips_show_time", 2);
+    return false;
   }
   
-  private static AladdinConfig a()
+  public boolean a(rwf paramrwf, int paramInt, Object paramObject)
   {
-    return Aladdin.getConfig(303);
+    return false;
   }
   
-  public static String a()
-  {
-    return a().getString("ugc_add_account_description", a);
-  }
+  public void b(rwf paramrwf) {}
   
-  public static String b()
-  {
-    return a().getString("ugc_add_account_use_original_account_button_description", b);
-  }
+  public void c(rwf paramrwf) {}
   
-  public static String c()
-  {
-    return a().getString("ugc_add_account_edit_account_button_description", c);
-  }
-  
-  public static String d()
-  {
-    return a().getString("ugc_add_account_complete_toast_wording", d);
-  }
-  
-  public static String e()
-  {
-    return a().getString("ugc_add_account_tips_wording", e);
-  }
+  public void d(rwf paramrwf) {}
 }
 
 

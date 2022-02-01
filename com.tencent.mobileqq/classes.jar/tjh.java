@@ -1,23 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.20.1;
+import com.tencent.nativevue.NativeVueEngine.DomResult;
 
 public class tjh
-  implements tja
+  implements NativeVueEngine.DomResult
 {
-  private final ViewPagerCompat a;
+  public tjh(ViolaBaseView paramViolaBaseView) {}
   
-  public tjh(ViewPagerCompat paramViewPagerCompat)
+  public void onResult(String paramString)
   {
-    this.a = paramViewPagerCompat;
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ViolaBaseView.b(this.a, paramString);
+      return;
+    }
+    this.a.post(new ViolaBaseView.20.1(this, paramString));
   }
-  
-  public void a(tjf paramtjf)
-  {
-    this.a.setCurrentItem(paramtjf.a());
-  }
-  
-  public void b(tjf paramtjf) {}
-  
-  public void c(tjf paramtjf) {}
 }
 
 

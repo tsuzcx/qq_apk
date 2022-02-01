@@ -8,7 +8,7 @@ import com.tencent.util.Pair;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import uwz;
+import uyk;
 
 public class QCircleChatBoxHelper
 {
@@ -42,7 +42,7 @@ public class QCircleChatBoxHelper
       String str = (String)paramList.next();
       localStringBuilder.append("&").append(str);
     }
-    paramList = uwz.a();
+    paramList = uyk.a();
     if (paramList != null)
     {
       paramList.edit().putString("qcircle_unread_message_info", localStringBuilder.toString()).apply();
@@ -109,7 +109,7 @@ public class QCircleChatBoxHelper
     //   64: invokespecial 28	java/util/LinkedList:<init>	()V
     //   67: invokespecial 118	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   70: putfield 120	com/tencent/biz/qqcircle/list/bizblocks/QCircleChatBoxHelper:mUnReadInfo	Lcom/tencent/util/Pair;
-    //   73: invokestatic 72	uwz:a	()Landroid/content/SharedPreferences;
+    //   73: invokestatic 72	uyk:a	()Landroid/content/SharedPreferences;
     //   76: astore_2
     //   77: aload_2
     //   78: ifnull +142 -> 220

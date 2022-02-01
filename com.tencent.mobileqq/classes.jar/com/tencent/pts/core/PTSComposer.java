@@ -22,6 +22,7 @@ public class PTSComposer
   private String jsonData;
   private String pageName;
   private PTSAppInstance ptsAppInstance;
+  private PTSComposer.IPTSUpdateDataListener updateDataListener;
   
   public static PTSComposer buildComposer(String paramString1, String paramString2, String paramString3, float paramFloat, IPTSLiteEventListener paramIPTSLiteEventListener)
   {
@@ -33,12 +34,20 @@ public class PTSComposer
     ((PTSComposer)localObject).frameTreeString = paramString2;
     ((PTSComposer)localObject).jsonData = paramString3;
     ((PTSComposer)localObject).containerWidth = paramFloat;
+    paramIPTSLiteEventListener.setPtsComposer((PTSComposer)localObject);
     return localObject;
   }
   
   public static PTSComposer buildComposer(String paramString1, String paramString2, String paramString3, IPTSLiteEventListener paramIPTSLiteEventListener)
   {
     return buildComposer(paramString1, paramString2, paramString3, PTSDeviceUtil.getScreenWidthDp(), paramIPTSLiteEventListener);
+  }
+  
+  public static PTSComposer buildComposer(String paramString1, String paramString2, String paramString3, IPTSLiteEventListener paramIPTSLiteEventListener, PTSComposer.IPTSUpdateDataListener paramIPTSUpdateDataListener)
+  {
+    paramString1 = buildComposer(paramString1, paramString2, paramString3, PTSDeviceUtil.getScreenWidthDp(), paramIPTSLiteEventListener);
+    paramString1.updateDataListener = paramIPTSUpdateDataListener;
+    return paramString1;
   }
   
   /* Error */
@@ -54,125 +63,129 @@ public class PTSComposer
     //   7: iload_1
     //   8: ifne +12 -> 20
     //   11: ldc 8
-    //   13: ldc 101
-    //   15: invokestatic 107	com/tencent/pts/utils/PTSLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   13: ldc 112
+    //   15: invokestatic 118	com/tencent/pts/utils/PTSLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   18: iconst_0
     //   19: ireturn
-    //   20: new 38	com/tencent/pts/core/itemview/PTSItemData$Builder
+    //   20: new 40	com/tencent/pts/core/itemview/PTSItemData$Builder
     //   23: dup
-    //   24: invokespecial 39	com/tencent/pts/core/itemview/PTSItemData$Builder:<init>	()V
+    //   24: invokespecial 41	com/tencent/pts/core/itemview/PTSItemData$Builder:<init>	()V
     //   27: aload_0
-    //   28: getfield 78	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
-    //   31: invokevirtual 43	com/tencent/pts/core/itemview/PTSItemData$Builder:withPageName	(Ljava/lang/String;)Lcom/tencent/pts/core/itemview/PTSItemData$Builder;
+    //   28: getfield 80	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
+    //   31: invokevirtual 45	com/tencent/pts/core/itemview/PTSItemData$Builder:withPageName	(Ljava/lang/String;)Lcom/tencent/pts/core/itemview/PTSItemData$Builder;
     //   34: aload_0
-    //   35: getfield 80	com/tencent/pts/core/PTSComposer:frameTreeString	Ljava/lang/String;
-    //   38: invokevirtual 46	com/tencent/pts/core/itemview/PTSItemData$Builder:withFrameTreeJson	(Ljava/lang/String;)Lcom/tencent/pts/core/itemview/PTSItemData$Builder;
+    //   35: getfield 82	com/tencent/pts/core/PTSComposer:frameTreeString	Ljava/lang/String;
+    //   38: invokevirtual 48	com/tencent/pts/core/itemview/PTSItemData$Builder:withFrameTreeJson	(Ljava/lang/String;)Lcom/tencent/pts/core/itemview/PTSItemData$Builder;
     //   41: aload_0
-    //   42: getfield 82	com/tencent/pts/core/PTSComposer:jsonData	Ljava/lang/String;
-    //   45: invokevirtual 49	com/tencent/pts/core/itemview/PTSItemData$Builder:withJsonData	(Ljava/lang/String;)Lcom/tencent/pts/core/itemview/PTSItemData$Builder;
-    //   48: invokevirtual 53	com/tencent/pts/core/itemview/PTSItemData$Builder:build	()Lcom/tencent/pts/core/itemview/PTSItemData;
+    //   42: getfield 84	com/tencent/pts/core/PTSComposer:jsonData	Ljava/lang/String;
+    //   45: invokevirtual 51	com/tencent/pts/core/itemview/PTSItemData$Builder:withJsonData	(Ljava/lang/String;)Lcom/tencent/pts/core/itemview/PTSItemData$Builder;
+    //   48: invokevirtual 55	com/tencent/pts/core/itemview/PTSItemData$Builder:build	()Lcom/tencent/pts/core/itemview/PTSItemData;
     //   51: astore 5
     //   53: aload_0
-    //   54: new 55	com/tencent/pts/core/PTSAppInstance$Builder
+    //   54: new 57	com/tencent/pts/core/PTSAppInstance$Builder
     //   57: dup
-    //   58: invokespecial 56	com/tencent/pts/core/PTSAppInstance$Builder:<init>	()V
+    //   58: invokespecial 58	com/tencent/pts/core/PTSAppInstance$Builder:<init>	()V
     //   61: iconst_1
-    //   62: invokevirtual 60	com/tencent/pts/core/PTSAppInstance$Builder:withRootNodeType	(I)Lcom/tencent/pts/core/PTSAppInstance$Builder;
+    //   62: invokevirtual 62	com/tencent/pts/core/PTSAppInstance$Builder:withRootNodeType	(I)Lcom/tencent/pts/core/PTSAppInstance$Builder;
     //   65: aload 5
-    //   67: invokevirtual 64	com/tencent/pts/core/PTSAppInstance$Builder:withItemData	(Lcom/tencent/pts/core/itemview/PTSItemData;)Lcom/tencent/pts/core/PTSAppInstance$Builder;
+    //   67: invokevirtual 66	com/tencent/pts/core/PTSAppInstance$Builder:withItemData	(Lcom/tencent/pts/core/itemview/PTSItemData;)Lcom/tencent/pts/core/PTSAppInstance$Builder;
     //   70: aload_0
-    //   71: getfield 84	com/tencent/pts/core/PTSComposer:containerWidth	F
-    //   74: invokevirtual 68	com/tencent/pts/core/PTSAppInstance$Builder:withContainerWidth	(F)Lcom/tencent/pts/core/PTSAppInstance$Builder;
+    //   71: getfield 86	com/tencent/pts/core/PTSComposer:containerWidth	F
+    //   74: invokevirtual 70	com/tencent/pts/core/PTSAppInstance$Builder:withContainerWidth	(F)Lcom/tencent/pts/core/PTSAppInstance$Builder;
     //   77: aconst_null
-    //   78: invokevirtual 72	com/tencent/pts/core/PTSAppInstance$Builder:withLiteEventListener	(Lcom/tencent/pts/core/lite/IPTSLiteEventListener;)Lcom/tencent/pts/core/PTSAppInstance$Builder;
-    //   81: invokevirtual 75	com/tencent/pts/core/PTSAppInstance$Builder:build	()Lcom/tencent/pts/core/PTSAppInstance;
-    //   84: putfield 30	com/tencent/pts/core/PTSComposer:ptsAppInstance	Lcom/tencent/pts/core/PTSAppInstance;
+    //   78: invokevirtual 74	com/tencent/pts/core/PTSAppInstance$Builder:withLiteEventListener	(Lcom/tencent/pts/core/lite/IPTSLiteEventListener;)Lcom/tencent/pts/core/PTSAppInstance$Builder;
+    //   81: invokevirtual 77	com/tencent/pts/core/PTSAppInstance$Builder:build	()Lcom/tencent/pts/core/PTSAppInstance;
+    //   84: putfield 32	com/tencent/pts/core/PTSComposer:ptsAppInstance	Lcom/tencent/pts/core/PTSAppInstance;
     //   87: aload_0
-    //   88: iconst_0
-    //   89: putfield 25	com/tencent/pts/core/PTSComposer:hasDestroyed	Z
-    //   92: iload_2
-    //   93: istore_1
-    //   94: ldc 8
-    //   96: new 109	java/lang/StringBuilder
-    //   99: dup
-    //   100: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   103: ldc 112
-    //   105: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: iload_1
-    //   109: invokevirtual 119	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   112: ldc 121
-    //   114: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: aload_0
-    //   118: getfield 78	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
-    //   121: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 107	com/tencent/pts/utils/PTSLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   130: iload_1
-    //   131: ireturn
-    //   132: astore 5
-    //   134: iconst_0
-    //   135: istore_1
-    //   136: ldc 8
-    //   138: new 109	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   145: ldc 127
-    //   147: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: aload_0
-    //   151: getfield 78	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
-    //   154: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: ldc 129
-    //   159: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: aload 5
-    //   164: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 135	com/tencent/pts/utils/PTSLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   173: goto -79 -> 94
-    //   176: astore 5
-    //   178: iconst_0
-    //   179: istore_1
-    //   180: ldc 8
-    //   182: new 109	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   189: ldc 127
-    //   191: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: aload_0
-    //   195: getfield 78	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
-    //   198: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: ldc 129
-    //   203: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: aload 5
-    //   208: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 135	com/tencent/pts/utils/PTSLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   217: goto -123 -> 94
-    //   220: astore 5
-    //   222: iload 4
-    //   224: istore_1
-    //   225: goto -45 -> 180
+    //   88: getfield 32	com/tencent/pts/core/PTSComposer:ptsAppInstance	Lcom/tencent/pts/core/PTSAppInstance;
+    //   91: aload_0
+    //   92: invokevirtual 92	com/tencent/pts/core/PTSAppInstance:setPtsComposer	(Lcom/tencent/pts/core/PTSComposer;)V
+    //   95: aload_0
+    //   96: iconst_0
+    //   97: putfield 27	com/tencent/pts/core/PTSComposer:hasDestroyed	Z
+    //   100: iload_2
+    //   101: istore_1
+    //   102: ldc 8
+    //   104: new 120	java/lang/StringBuilder
+    //   107: dup
+    //   108: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   111: ldc 123
+    //   113: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: iload_1
+    //   117: invokevirtual 130	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   120: ldc 132
+    //   122: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: aload_0
+    //   126: getfield 80	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
+    //   129: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 118	com/tencent/pts/utils/PTSLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   138: iload_1
+    //   139: ireturn
+    //   140: astore 5
+    //   142: iconst_0
+    //   143: istore_1
+    //   144: ldc 8
+    //   146: new 120	java/lang/StringBuilder
+    //   149: dup
+    //   150: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   153: ldc 138
+    //   155: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: aload_0
+    //   159: getfield 80	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
+    //   162: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: ldc 140
+    //   167: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: aload 5
+    //   172: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   175: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokestatic 146	com/tencent/pts/utils/PTSLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   181: goto -79 -> 102
+    //   184: astore 5
+    //   186: iconst_0
+    //   187: istore_1
+    //   188: ldc 8
+    //   190: new 120	java/lang/StringBuilder
+    //   193: dup
+    //   194: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   197: ldc 138
+    //   199: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: aload_0
+    //   203: getfield 80	com/tencent/pts/core/PTSComposer:pageName	Ljava/lang/String;
+    //   206: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: ldc 140
+    //   211: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: aload 5
+    //   216: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   219: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   222: invokestatic 146	com/tencent/pts/utils/PTSLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   225: goto -123 -> 102
     //   228: astore 5
-    //   230: iload_3
-    //   231: istore_1
-    //   232: goto -96 -> 136
+    //   230: iload 4
+    //   232: istore_1
+    //   233: goto -45 -> 188
+    //   236: astore 5
+    //   238: iload_3
+    //   239: istore_1
+    //   240: goto -96 -> 144
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	235	0	this	PTSComposer
-    //   0	235	1	paramBoolean	boolean
-    //   6	87	2	bool1	boolean
-    //   1	230	3	bool2	boolean
-    //   3	220	4	bool3	boolean
+    //   0	243	0	this	PTSComposer
+    //   0	243	1	paramBoolean	boolean
+    //   6	95	2	bool1	boolean
+    //   1	238	3	bool2	boolean
+    //   3	228	4	bool3	boolean
     //   51	15	5	localPTSItemData	PTSItemData
-    //   132	31	5	localIllegalArgumentException1	java.lang.IllegalArgumentException
-    //   176	31	5	localException1	java.lang.Exception
-    //   220	1	5	localException2	java.lang.Exception
-    //   228	1	5	localIllegalArgumentException2	java.lang.IllegalArgumentException
+    //   140	31	5	localIllegalArgumentException1	java.lang.IllegalArgumentException
+    //   184	31	5	localException1	java.lang.Exception
+    //   228	1	5	localException2	java.lang.Exception
+    //   236	1	5	localIllegalArgumentException2	java.lang.IllegalArgumentException
     // Exception table:
     //   from	to	target	type
-    //   20	87	132	java/lang/IllegalArgumentException
-    //   20	87	176	java/lang/Exception
-    //   87	92	220	java/lang/Exception
-    //   87	92	228	java/lang/IllegalArgumentException
+    //   20	95	140	java/lang/IllegalArgumentException
+    //   20	95	184	java/lang/Exception
+    //   95	100	228	java/lang/Exception
+    //   95	100	236	java/lang/IllegalArgumentException
   }
   
   private void registerActivityLifecycleCallbacks(Context paramContext)
@@ -209,6 +222,11 @@ public class PTSComposer
   public String getPageName()
   {
     return this.pageName;
+  }
+  
+  public PTSAppInstance getPtsAppInstance()
+  {
+    return this.ptsAppInstance;
   }
   
   public PTSItemView layoutToView(PTSItemView paramPTSItemView)
@@ -297,6 +315,24 @@ public class PTSComposer
   public void triggerExposureEvent()
   {
     this.ptsAppInstance.triggerExposureEvent();
+  }
+  
+  public String updateData(String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    if (this.hasDestroyed)
+    {
+      PTSLog.i("PTSComposer", "[setData] failed, PTSComposer has been destroyed.");
+      return this.jsonData;
+    }
+    this.jsonData = this.ptsAppInstance.updateData(str);
+    if (this.updateDataListener != null) {
+      this.updateDataListener.onDataUpdated(this.jsonData);
+    }
+    return this.jsonData;
   }
 }
 

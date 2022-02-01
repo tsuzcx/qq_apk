@@ -1,16 +1,42 @@
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class xwh
-  extends wfi
+public class xwh
+  extends QQUIEventReceiver<AbsVideoInfoWidget, xbq>
 {
-  xwh(xwg paramxwg) {}
-  
-  public void c(boolean paramBoolean)
+  public xwh(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
   {
-    wfg localwfg = (wfg)this.a.a.app.getManager(181);
-    this.a.a(2, localwfg.a());
-    this.a.a(3, localwfg.b());
+    super(paramAbsVideoInfoWidget);
+  }
+  
+  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull xbq paramxbq)
+  {
+    if ((paramxbq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramxbq.jdField_a_of_type_JavaUtilList == null)) {}
+    String str;
+    StoryVideoItem localStoryVideoItem;
+    do
+    {
+      do
+      {
+        return;
+        while (paramAbsVideoInfoWidget.a == null) {}
+        str = paramAbsVideoInfoWidget.a.a;
+        paramxbq = paramxbq.jdField_a_of_type_JavaUtilList.iterator();
+      } while (!paramxbq.hasNext());
+      localStoryVideoItem = (StoryVideoItem)paramxbq.next();
+    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
+    paramAbsVideoInfoWidget.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xbq.class;
   }
 }
 

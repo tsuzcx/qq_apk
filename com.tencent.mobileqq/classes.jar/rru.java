@@ -1,21 +1,49 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$handleVideoAddToTopicResult$1$1"}, k=3, mv={1, 1, 16})
-public final class rru
-  implements View.OnClickListener
+public class rru
+  implements rpd
 {
-  public rru(FragmentActivity paramFragmentActivity, int paramInt) {}
+  private rru(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public final void onClick(View paramView)
+  public void a()
   {
-    String str = rjh.a() + this.jdField_a_of_type_Int;
-    tlg.a((Context)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "", str, null, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (VideoFeedsRecommendFragment.a(this.a) != null) {
+      VideoFeedsRecommendFragment.a(this.a).a.e(paramBoolean);
+    }
+    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
+    if (paramBoolean)
+    {
+      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
+      if (!VideoFeedsRecommendFragment.b(this.a))
+      {
+        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
+        if (paramBoolean) {
+          break label152;
+        }
+      }
+    }
+    label152:
+    for (boolean bool = true;; bool = false)
+    {
+      localVideoFeedsRecyclerView.setScrollable(bool);
+      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
+      {
+        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.a(this.a, false);
+      }
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+      }
+      return;
+      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
+      break;
+    }
   }
 }
 

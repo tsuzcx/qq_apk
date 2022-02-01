@@ -1,27 +1,15 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-
-class azaw
-  implements ValueAnimator.AnimatorUpdateListener
+public class azaw
 {
-  azaw(azav paramazav, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-azav.a(this.jdField_a_of_type_Azav) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Azav.f);
-    this.b.setAlpha(1.0F - f);
-  }
+  public azaw(azau paramazau) {}
 }
 
 

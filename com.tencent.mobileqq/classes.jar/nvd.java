@@ -1,36 +1,71 @@
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
-class nvd
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class nvd
+  extends apee
 {
-  private nvd(nuy paramnuy) {}
+  public nvd(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public int a()
   {
-    for (;;)
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      synchronized (nuy.a(this.a))
-      {
-        nuy.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(nuy.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(nuy.a(paramString1)));
-        }
-        bcst.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nuy.a(this.a).mVideoVid, String.valueOf(nuy.a(this.a).mSource));
-        paramString2 = (QQAppInterface)nuy.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          nuv.b(paramString2, paramString1);
-          nuy.a(this.a, nuy.a(this.a));
-          return;
-        }
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
-      paramString2 = "";
+      paramObject = new JSONObject();
+      if (this.a.e == null) {}
+    }
+    try
+    {
+      paramObject.put("uin", this.a.e);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      awgm.a("unFollow", paramObject, localArrayList, null);
+      this.a.h();
+      ocd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e);
+      ((bgre)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      return;
+    }
+    catch (JSONException paramObject)
+    {
+      for (;;)
+      {
+        paramObject.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    this.a.d(2131694659);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.c -= 1;
+    if (this.a.c == 0) {
+      this.a.M();
     }
   }
 }

@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qcs
-  implements View.OnClickListener
+public class qcs
+  implements ViewBase.IBuilder
 {
-  qcs(qco paramqco, snh paramsnh, pxk parampxk) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    spb localspb = this.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(paramView, this.jdField_a_of_type_Pxk.a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new qcr(paramVafContext);
   }
 }
 

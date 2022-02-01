@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
-import blru;
+import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -14,7 +14,7 @@ import qqcircle.QQCircleBase.StAppInfo;
 import qqcircle.QQCircleBase.StNetworkInfo;
 import qqcircle.QQCircleReport.StHeartbeatSignalReq;
 import qqcircle.QQCircleReport.StHeartbeatSignalRsp;
-import vri;
+import vtt;
 
 public class QCircleHeartbeatSignalReportRequest
   extends QCircleBaseRequest
@@ -27,16 +27,16 @@ public class QCircleHeartbeatSignalReportRequest
     this.mReq.interval_time_ms.set(paramLong);
     this.mReq.sig_optype.set(paramInt);
     Object localObject = new QQCircleBase.StAppInfo();
-    ((QQCircleBase.StAppInfo)localObject).app_version.set("8.4.1.4680");
-    ((QQCircleBase.StAppInfo)localObject).qua.set(blru.a());
+    ((QQCircleBase.StAppInfo)localObject).app_version.set("8.4.5.4745");
+    ((QQCircleBase.StAppInfo)localObject).qua.set(bmsw.a());
     ((QQCircleBase.StAppInfo)localObject).platform.set("android");
     this.mReq.app_info.set((MessageMicro)localObject);
     localObject = new QQCircleBase.StNetworkInfo();
-    ((QQCircleBase.StNetworkInfo)localObject).network_type.set(vri.b());
+    ((QQCircleBase.StNetworkInfo)localObject).network_type.set(vtt.b());
     this.mReq.network_info.set((MessageMicro)localObject);
     localObject = new ArrayList();
     if (paramArrayOfByte != null) {
-      ((ArrayList)localObject).add(vri.a("SessionID", paramArrayOfByte));
+      ((ArrayList)localObject).add(vtt.a("SessionID", paramArrayOfByte));
     }
     this.mReq.byteExtinfo.set((List)localObject);
   }

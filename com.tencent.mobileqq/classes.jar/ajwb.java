@@ -1,17 +1,63 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class ajwb
-  extends ayet
+public final class ajwb
 {
-  ajwb(ajvr paramajvr) {}
-  
-  protected void a(Object paramObject)
+  private static boolean m(int paramInt)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
-    }
+    return paramInt == -3;
+  }
+  
+  private static boolean n(int paramInt)
+  {
+    return paramInt == -2;
+  }
+  
+  private static boolean o(int paramInt)
+  {
+    return paramInt == -1;
+  }
+  
+  private static boolean p(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean q(int paramInt)
+  {
+    return paramInt == 0;
+  }
+  
+  private static boolean r(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean s(int paramInt)
+  {
+    return paramInt == 2;
+  }
+  
+  private static boolean t(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  private static boolean u(int paramInt)
+  {
+    return paramInt == 4;
+  }
+  
+  private static boolean v(int paramInt)
+  {
+    return paramInt == 5;
+  }
+  
+  private static boolean w(int paramInt)
+  {
+    return paramInt > 2;
+  }
+  
+  private static boolean x(int paramInt)
+  {
+    return paramInt >= 1;
   }
 }
 

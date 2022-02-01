@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajcv;
-import aogd;
+import aoti;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -14,9 +13,6 @@ class TroopNotifyAndRecommendView$10
   {
     if (this.this$0.a != null) {
       this.this$0.a.a().a().c();
-    }
-    if ((TroopNotifyAndRecommendView.a(this.this$0) > 0) && (TroopNotifyAndRecommendView.a(this.this$0) != null) && (TroopNotifyAndRecommendView.a(this.this$0).a() > 0)) {
-      TroopNotifyAndRecommendView.f(this.this$0);
     }
   }
 }

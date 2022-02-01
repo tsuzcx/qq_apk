@@ -1,22 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class qsm
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "redPacketTaskData", "Lcom/tencent/biz/pubaccount/readinjoy/redpacket/RedPacketTaskData;", "onGetRedPacketData"}, k=3, mv={1, 1, 16})
+final class qsm
+  implements qrf
 {
-  qsm(qsh paramqsh, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
+  qsm(qsk paramqsk, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void a(@Nullable RedPacketTaskData paramRedPacketTaskData)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    if (paramRedPacketTaskData != null) {
+      this.jdField_a_of_type_Qsk.b(this.jdField_a_of_type_JavaLangString);
     }
-    return false;
   }
 }
 

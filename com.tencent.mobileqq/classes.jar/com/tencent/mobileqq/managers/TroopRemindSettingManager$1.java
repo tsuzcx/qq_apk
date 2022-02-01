@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import awhx;
+import axap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopRemindSettingData;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class TroopRemindSettingManager$1
   implements Runnable
 {
-  public TroopRemindSettingManager$1(awhx paramawhx, QQAppInterface paramQQAppInterface, String paramString) {}
+  public TroopRemindSettingManager$1(axap paramaxap, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {

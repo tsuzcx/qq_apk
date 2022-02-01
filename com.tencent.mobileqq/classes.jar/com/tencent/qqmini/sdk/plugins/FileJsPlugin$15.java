@@ -17,18 +17,18 @@ class FileJsPlugin$15
   {
     boolean bool = false;
     long l2 = System.currentTimeMillis();
-    if ((((MiniAppFileManager)FileJsPlugin.access$6300(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$zipFilePath) == 9999) && (!((MiniAppFileManager)FileJsPlugin.access$6400(this.this$0).getManager(MiniAppFileManager.class)).isPackageRelativePath(this.val$zipFilePath)))
+    if ((((MiniAppFileManager)FileJsPlugin.access$6100(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$zipFilePath) == 9999) && (!((MiniAppFileManager)FileJsPlugin.access$6200(this.this$0).getManager(MiniAppFileManager.class)).isPackageRelativePath(this.val$zipFilePath)))
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$zipFilePath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$zipFilePath);
     }
-    if (((MiniAppFileManager)FileJsPlugin.access$6500(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$targetPath) != 2)
+    if (((MiniAppFileManager)FileJsPlugin.access$6300(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$targetPath) != 2)
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$targetPath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$targetPath);
     }
-    Object localObject = ((MiniAppFileManager)FileJsPlugin.access$6600(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$zipFilePath);
-    String str1 = ((MiniAppFileManager)FileJsPlugin.access$6700(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$targetPath);
+    Object localObject = ((MiniAppFileManager)FileJsPlugin.access$6400(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$zipFilePath);
+    String str1 = ((MiniAppFileManager)FileJsPlugin.access$6500(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$targetPath);
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (!new File((String)localObject).exists()))
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, (String)localObject);

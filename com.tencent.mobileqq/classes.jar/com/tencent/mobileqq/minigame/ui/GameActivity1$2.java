@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aqga;
+import aqvd;
 
 class GameActivity1$2
-  implements aqga
+  implements aqvd
 {
   GameActivity1$2(GameActivity1 paramGameActivity1) {}
   

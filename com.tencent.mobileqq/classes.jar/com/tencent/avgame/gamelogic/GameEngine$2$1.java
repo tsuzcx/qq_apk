@@ -1,19 +1,19 @@
 package com.tencent.avgame.gamelogic;
 
-import bgnt;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
-import mxl;
-import mxm;
+import myk;
+import myl;
 
 public class GameEngine$2$1
   implements Runnable
 {
-  public GameEngine$2$1(mxm parammxm) {}
+  public GameEngine$2$1(myl parammyl) {}
   
   public void run()
   {
-    if (bgnt.a()) {}
-    for (int i = 2131690264;; i = 2131690307)
+    if (bhnv.a()) {}
+    for (int i = 2131690270;; i = 2131690312)
     {
       String str = BaseApplicationImpl.getApplication().getString(i);
       this.a.a.a(10, str, this.a.a.a());

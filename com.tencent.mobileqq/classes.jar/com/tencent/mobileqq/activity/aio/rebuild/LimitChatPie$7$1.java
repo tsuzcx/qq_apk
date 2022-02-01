@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aicl;
-import aict;
-import ashh;
-import asml;
+import aimd;
+import aiml;
+import aswv;
+import atck;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class LimitChatPie$7$1
   implements Runnable
 {
-  public LimitChatPie$7$1(aict paramaict, int paramInt, ashh paramashh) {}
+  public LimitChatPie$7$1(aiml paramaiml, int paramInt, aswv paramaswv) {}
   
   public void run()
   {
-    asml.a(this.jdField_a_of_type_Aict.a.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ashh);
+    atck.a(this.jdField_a_of_type_Aiml.a.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aswv);
     ThreadManager.getUIHandler().post(new LimitChatPie.7.1.1(this));
   }
 }

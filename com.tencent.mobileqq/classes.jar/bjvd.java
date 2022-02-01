@@ -1,22 +1,60 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.mobileqq.minigame.ui.GameActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import java.util.ArrayList;
 
-class bjvd
-  implements AdExposureChecker.ExposureCallback
+public class bjvd
 {
-  bjvd(bjva parambjva) {}
+  protected static bjvd a;
+  protected ArrayList<bjvc> a;
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public static bjvd a()
   {
-    QLog.i("AdProxyImpl", 1, "bannerad onExposure");
-    if ((this.a.a != null) && (this.a.a.report_info != null) && (this.a.a.report_info.exposure_url != null)) {
-      GameActivity.reportAdByHttp(this.a.a.report_info.exposure_url.get());
+    try
+    {
+      if (jdField_a_of_type_Bjvd == null)
+      {
+        jdField_a_of_type_Bjvd = new bjvd();
+        jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      bjvd localbjvd = jdField_a_of_type_Bjvd;
+      return localbjvd;
+    }
+    finally {}
+  }
+  
+  public ArrayList<bjvc> a()
+  {
+    return jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(bjvc parambjvc)
+  {
+    int j = jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if ((bjvc)jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList.get(i) == parambjvc) {
+        return;
+      }
+      i += 1;
+    }
+    jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList.add(parambjvc);
+  }
+  
+  public void b(bjvc parambjvc)
+  {
+    int j = jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        if ((bjvc)jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList.get(i) == parambjvc) {
+          jdField_a_of_type_Bjvd.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
     }
   }
 }

@@ -32,7 +32,7 @@ class PreCacheManager$4
     {
       paramString = new File(paramString);
       QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache succful. url" + this.val$queryUrl + " length=" + paramString.length());
-      if (paramString.length() <= PreCacheManager.access$200(this.this$0))
+      if (paramString.length() <= PreCacheManager.access$200())
       {
         this.val$cacheInfo.timeStamp = System.currentTimeMillis();
         this.val$cacheInfo.filePath = this.val$tmpFilePath;

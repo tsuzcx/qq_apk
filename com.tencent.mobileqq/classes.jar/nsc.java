@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.Pair;
+import java.net.URL;
 
-class nsc
-  implements View.OnClickListener
+public class nsc
 {
-  nsc(nre paramnre, String paramString, nyl paramnyl) {}
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public void onClick(View paramView)
+  public static nsc a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    nre.c(this.jdField_a_of_type_Nre, this.jdField_a_of_type_JavaLangString);
-    PublicAccountHandler.a(this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
-    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    nsc localnsc = new nsc();
+    localnsc.jdField_a_of_type_JavaNetURL = paramURL;
+    localnsc.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localnsc;
   }
 }
 

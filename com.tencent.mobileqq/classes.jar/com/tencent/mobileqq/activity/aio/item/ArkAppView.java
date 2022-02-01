@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afur;
-import agpq;
-import agpu;
-import agqz;
-import agra;
-import agrb;
-import agrl;
+import agej;
+import agyw;
+import agza;
+import ahaf;
+import ahag;
+import ahah;
+import ajaa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apok;
+import aqca;
 import com.tencent.ark.ArkTextureView;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModel;
@@ -28,20 +28,20 @@ import java.util.Locale;
 
 public class ArkAppView
   extends ArkTextureView
-  implements agpu
+  implements agza
 {
-  private agra jdField_a_of_type_Agra;
-  private agrb jdField_a_of_type_Agrb;
-  agrl jdField_a_of_type_Agrl = null;
+  private ahag jdField_a_of_type_Ahag;
+  private ahah jdField_a_of_type_Ahah;
+  ajaa jdField_a_of_type_Ajaa = null;
   public ArkAppLoadLayout a;
   
   public ArkAppView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     ArkAppCenter.b(true);
-    apok.a();
-    this.jdField_a_of_type_Agrl = new agrl(this);
-    setInputCallback(this.jdField_a_of_type_Agrl);
+    aqca.a();
+    this.jdField_a_of_type_Ajaa = new ajaa(this);
+    setInputCallback(this.jdField_a_of_type_Ajaa);
   }
   
   private void a()
@@ -51,9 +51,9 @@ public class ArkAppView
     int i;
     int k;
     if (localObject != null) {
-      if ((localObject instanceof agpq))
+      if ((localObject instanceof agyw))
       {
-        ArkViewModelBase.Size localSize = ((agpq)localObject).a();
+        ArkViewModelBase.Size localSize = ((agyw)localObject).a();
         if ((localSize != null) && (localSize.height > 0))
         {
           j = localSize.height;
@@ -78,7 +78,7 @@ public class ArkAppView
     {
       k = j;
       if (j <= 0) {
-        k = afur.a(352.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getResources());
+        k = agej.a(352.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getResources());
       }
       j = i;
       if (i <= 0) {
@@ -132,38 +132,38 @@ public class ArkAppView
     paramView = (RelativeLayout)paramView.getParent();
     if (paramView != null)
     {
-      paramView = paramView.findViewById(2131362913);
+      paramView = paramView.findViewById(2131362931);
       if (paramView != null) {
         paramView.setVisibility(paramInt);
       }
     }
   }
   
-  public void a(agpq paramagpq, ArkAppLoadLayout paramArkAppLoadLayout)
+  public void a(agyw paramagyw, ArkAppLoadLayout paramArkAppLoadLayout)
   {
-    if (paramagpq == null) {
+    if (paramagyw == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = paramArkAppLoadLayout;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setArkView(this.mViewImpl);
     }
-    super.initArkView(paramagpq);
+    super.initArkView(paramagyw);
   }
   
   public Rect getInputRect()
   {
     Rect localRect = super.getInputRect();
-    if (this.jdField_a_of_type_Agrl != null) {
-      localRect.bottom = (this.jdField_a_of_type_Agrl.a() + localRect.bottom);
+    if (this.jdField_a_of_type_Ajaa != null) {
+      localRect.bottom = (this.jdField_a_of_type_Ajaa.a() + localRect.bottom);
     }
     return localRect;
   }
   
   public void onFirstPaint()
   {
-    if (this.jdField_a_of_type_Agra != null) {
-      this.jdField_a_of_type_Agra.b();
+    if (this.jdField_a_of_type_Ahag != null) {
+      this.jdField_a_of_type_Ahag.b();
     }
   }
   
@@ -189,12 +189,12 @@ public class ArkAppView
         if (!paramBoolean) {
           break;
         }
-        ((View)localObject1).setOnClickListener(new agqz(this, (ArkViewModel)localObject2));
+        ((View)localObject1).setOnClickListener(new ahaf(this, (ArkViewModel)localObject2));
         a();
         setVisibility(8);
         ((View)localObject1).setVisibility(0);
-        View localView = ((View)localObject1).findViewById(2131370198);
-        localObject2 = ((View)localObject1).findViewById(2131376303);
+        View localView = ((View)localObject1).findViewById(2131370299);
+        localObject2 = ((View)localObject1).findViewById(2131376435);
         a((View)localObject1, 0);
         requestLayout();
         if (localView != null) {
@@ -202,18 +202,18 @@ public class ArkAppView
         }
       } while (localObject2 == null);
       ((View)localObject2).setVisibility(0);
-      localObject1 = (TextView)((View)localObject2).findViewById(2131376317);
+      localObject1 = (TextView)((View)localObject2).findViewById(2131376449);
       if (localObject1 != null)
       {
         if (paramString != null) {
           break label221;
         }
-        ((TextView)localObject1).setText(getResources().getString(2131690127));
+        ((TextView)localObject1).setText(getResources().getString(2131690135));
       }
-      paramString = ((View)localObject2).findViewById(2131376310);
+      paramString = ((View)localObject2).findViewById(2131376442);
     } while (paramString == null);
     if (paramBoolean) {}
-    for (paramInt = 2130838662;; paramInt = 2130838661)
+    for (paramInt = 2130838675;; paramInt = 2130838674)
     {
       paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
       return;
@@ -228,7 +228,7 @@ public class ArkAppView
   public void onLoadSuccess()
   {
     super.onLoadSuccess();
-    if ((this.jdField_a_of_type_Agra != null) && (this.mViewImpl.mRectView.isEmpty())) {}
+    if ((this.jdField_a_of_type_Ahag != null) && (this.mViewImpl.mRectView.isEmpty())) {}
     do
     {
       return;
@@ -238,8 +238,8 @@ public class ArkAppView
         localArkAppLoadLayout.setVisibility(8);
         a(localArkAppLoadLayout, 8);
       }
-    } while (this.jdField_a_of_type_Agra == null);
-    this.jdField_a_of_type_Agra.a();
+    } while (this.jdField_a_of_type_Ahag == null);
+    this.jdField_a_of_type_Ahag.a();
   }
   
   public void onLoading()
@@ -253,8 +253,8 @@ public class ArkAppView
       ArkAppLoadLayout localArkAppLoadLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
       a();
       localArkAppLoadLayout.setVisibility(0);
-      View localView1 = localArkAppLoadLayout.findViewById(2131370198);
-      localView2 = localArkAppLoadLayout.findViewById(2131376303);
+      View localView1 = localArkAppLoadLayout.findViewById(2131370299);
+      localView2 = localArkAppLoadLayout.findViewById(2131376435);
       a(localArkAppLoadLayout, 0);
       requestLayout();
       if (localView1 != null) {
@@ -264,28 +264,28 @@ public class ArkAppView
     localView2.setVisibility(4);
   }
   
-  public void setCallback(agra paramagra)
+  public void setCallback(ahag paramahag)
   {
-    this.jdField_a_of_type_Agra = paramagra;
+    this.jdField_a_of_type_Ahag = paramahag;
   }
   
   public void setInputHolderAnchor(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Agrl != null) {
-      this.jdField_a_of_type_Agrl.a(paramViewGroup);
+    if (this.jdField_a_of_type_Ajaa != null) {
+      this.jdField_a_of_type_Ajaa.a(paramViewGroup);
     }
   }
   
-  public void setOnVisibleChangeListener(agrb paramagrb)
+  public void setOnVisibleChangeListener(ahah paramahah)
   {
-    this.jdField_a_of_type_Agrb = paramagrb;
+    this.jdField_a_of_type_Ahah = paramahah;
   }
   
   public void setVisibility(int paramInt)
   {
-    if (this.jdField_a_of_type_Agrb != null)
+    if (this.jdField_a_of_type_Ahah != null)
     {
-      if (!this.jdField_a_of_type_Agrb.a(paramInt)) {
+      if (!this.jdField_a_of_type_Ahah.a(paramInt)) {
         break label34;
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setVisibility(4);

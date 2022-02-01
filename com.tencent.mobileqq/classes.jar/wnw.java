@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.Context;
+import android.content.Intent;
 
-class wnw
-  implements View.OnLongClickListener
+public class wnw
 {
-  wnw(wnu paramwnu, wnt paramwnt) {}
-  
-  public boolean onLongClick(View paramView)
+  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
   {
-    int i = this.jdField_a_of_type_Wnt.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Wnu.a.b(this.jdField_a_of_type_Wnt.itemView, i);
-    }
-    return true;
+    return wop.a(paramContext, paramBoolean1, paramIntent, paramBoolean2, paramBoolean3, paramBoolean4, paramString1, paramString2);
   }
 }
 

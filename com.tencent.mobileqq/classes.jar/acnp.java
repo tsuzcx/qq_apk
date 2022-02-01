@@ -1,26 +1,99 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
-class acnp
-  implements ValueAnimator.AnimatorUpdateListener
+final class acnp
+  extends QIPCModule
 {
-  acnp(acno paramacno, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2) {}
+  private static volatile acnp a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private acnp(String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    int i = this.jdField_a_of_type_Int;
-    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
-    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin <= acno.a(this.jdField_a_of_type_Acno)) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= acno.b(this.jdField_a_of_type_Acno))) && (acno.a(this.jdField_a_of_type_Acno).a))
+    super(paramString);
+  }
+  
+  public static acnp a()
+  {
+    if (a == null) {}
+    try
     {
-      acno.a(this.jdField_a_of_type_Acno);
+      if (a == null) {
+        a = new acnp("gdt_ipc_module_server_to_client");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult != null) {}
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      acvc.b("GdtIPCAdapter", String.format("ServerToClientIPCModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
+      super.callbackResult(paramInt, paramEIPCResult);
       return;
     }
-    acno.a(this.jdField_a_of_type_Acno).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Acno.a((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin - acno.a(this.jdField_a_of_type_Acno)) * 1.0F / (acno.b(this.jdField_a_of_type_Acno) - acno.a(this.jdField_a_of_type_Acno)));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
+    String str;
+    if (localParams != null)
+    {
+      paramBundle = localParams.getAction();
+      if (localParams == null) {
+        break label70;
+      }
+      str = localParams.getToProcessName();
+      label33:
+      acvc.b("GdtIPCAdapter", String.format("ServerToClientIPCModule.onCall action:%s to:%s", new Object[] { paramBundle, str }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label76;
+      }
+    }
+    label70:
+    label76:
+    do
+    {
+      do
+      {
+        return null;
+        paramBundle = null;
+        break;
+        str = null;
+        break label33;
+      } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
+      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
+    } while (paramString == null);
+    paramString = paramString.handle(localParams);
+    paramBundle = new EIPCResult();
+    int i;
+    if ((paramString != null) && (paramString.success))
+    {
+      i = 0;
+      paramBundle.code = i;
+      if (paramString == null) {
+        break label194;
+      }
+    }
+    label194:
+    for (paramString = paramString.bundle;; paramString = null)
+    {
+      paramBundle.data = paramString;
+      callbackResult(paramInt, paramBundle);
+      return null;
+      i = -102;
+      break;
+    }
   }
 }
 

@@ -1,13 +1,33 @@
-class bcol
-  implements bcop
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+
+public class bcol
+  extends bcog
 {
-  bcol(bcoj parambcoj, bcom parambcom, String paramString) {}
-  
-  public void a(int paramInt)
+  public bcol(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Bcom != null) {
-      this.jdField_a_of_type_Bcom.a(paramInt, bcoj.a(this.jdField_a_of_type_Bcoj, this.jdField_a_of_type_JavaLangString));
+    super(paramViewGroup, paramInt);
+  }
+  
+  public void a()
+  {
+    super.a();
+    TextView localTextView = c();
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      if (localTextView != null) {
+        ((TextView)localTextView).setTextColor(localTextView.getContext().getResources().getColor(2131166925));
+      }
     }
+    while (localTextView == null) {
+      return;
+    }
+    ((TextView)localTextView).setTextColor(Color.parseColor("#737373"));
   }
 }
 

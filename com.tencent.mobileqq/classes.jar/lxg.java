@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.LBSInfo;
 
 public final class lxg
-  implements Parcelable.Creator<RecvGVideoLevelInfo>
+  implements Parcelable.Creator<LBSInfo>
 {
-  public RecvGVideoLevelInfo a(Parcel paramParcel)
+  public LBSInfo a(Parcel paramParcel)
   {
-    return new RecvGVideoLevelInfo(paramParcel);
+    return new LBSInfo(paramParcel);
   }
   
-  public RecvGVideoLevelInfo[] a(int paramInt)
+  public LBSInfo[] a(int paramInt)
   {
-    return new RecvGVideoLevelInfo[paramInt];
+    return new LBSInfo[paramInt];
   }
 }
 

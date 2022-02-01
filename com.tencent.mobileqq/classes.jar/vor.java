@@ -1,14 +1,14 @@
-public class vor
+import com.tencent.qphone.base.util.QLog;
+
+class vor
+  extends vrh
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
+  vor(voq paramvoq) {}
   
-  private vor(String paramString, long paramLong, int paramInt)
+  public void a(int paramInt, vrd paramvrd)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleDefaultMessagePresenter", 4, "state callback:" + paramInt);
   }
 }
 

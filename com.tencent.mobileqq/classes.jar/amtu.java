@@ -1,16 +1,8 @@
+import com.tencent.mobileqq.data.ApolloActionPush;
+
 public abstract interface amtu
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void e();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
 }
 
 

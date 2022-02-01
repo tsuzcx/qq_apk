@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bkpg;
-import bkph;
+import blqj;
+import blqk;
 
 public class ThemeImageView
   extends ImageView
-  implements bkph
+  implements blqk
 {
-  public bkpg a;
+  public blqj a;
   
   public ThemeImageView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class ThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bkpg();
+        this.a = new blqj();
       }
       this.a.a(true);
     }

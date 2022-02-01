@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aijp;
+import aiti;
 import android.util.Base64;
-import bkgg;
+import blhk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -12,15 +12,15 @@ import java.util.ArrayList;
 public class StickerRecManager$3
   implements Runnable
 {
-  public StickerRecManager$3(aijp paramaijp, String paramString1, boolean paramBoolean1, SessionInfo paramSessionInfo, String paramString2, boolean paramBoolean2, int paramInt, String paramString3) {}
+  public StickerRecManager$3(aiti paramaiti, String paramString1, boolean paramBoolean1, SessionInfo paramSessionInfo, String paramString2, boolean paramBoolean2, int paramInt, String paramString3) {}
   
   public void run()
   {
-    if (aijp.a(this.this$0) != null) {
+    if (aiti.a(this.this$0) != null) {
       try
       {
         this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        Object localObject1 = (StickerRecommendEntity)aijp.a(this.this$0).find(StickerRecommendEntity.class, "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
+        Object localObject1 = (StickerRecommendEntity)aiti.a(this.this$0).find(StickerRecommendEntity.class, "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
         if (localObject1 == null) {
           if (QLog.isColorLevel()) {
             QLog.d("StickerRecManager", 2, "entity is null");
@@ -30,11 +30,11 @@ public class StickerRecManager$3
         while ((localObject1 != null) && (System.currentTimeMillis() - ((StickerRecommendEntity)localObject1).cachedTime < 86400000L))
         {
           localObject1 = Base64.decode(((StickerRecommendEntity)localObject1).recList, 0);
-          localObject2 = (StickerRecommendSortEntity)aijp.a(this.this$0).find(StickerRecommendSortEntity.class, "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
+          localObject2 = (StickerRecommendSortEntity)aiti.a(this.this$0).find(StickerRecommendSortEntity.class, "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
           if (localObject2 != null) {
             ((StickerRecommendSortEntity)localObject2).convertToList();
           }
-          aijp.a(this.this$0, (byte[])localObject1, this.jdField_b_of_type_JavaLangString, "cache", this.jdField_b_of_type_Boolean, (StickerRecommendSortEntity)localObject2, 0);
+          aiti.a(this.this$0, (byte[])localObject1, this.jdField_b_of_type_JavaLangString, "cache", this.jdField_b_of_type_Boolean, (StickerRecommendSortEntity)localObject2, 0);
           return;
           if (QLog.isColorLevel()) {
             QLog.d("StickerRecManager", 2, "cache Time : " + (System.currentTimeMillis() - ((StickerRecommendEntity)localObject1).cachedTime));
@@ -50,18 +50,18 @@ public class StickerRecManager$3
       {
         if (QLog.isColorLevel())
         {
-          QLog.d("StickerRecManager", 2, bkgg.a(localException));
+          QLog.d("StickerRecManager", 2, blhk.a(localException));
           return;
-          aijp.a(this.this$0).delete(StickerRecommendEntity.class.getSimpleName(), "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
-          j = aijp.a(this.this$0, this.jdField_a_of_type_Int);
+          aiti.a(this.this$0).delete(StickerRecommendEntity.class.getSimpleName(), "usrMessage=? AND recommendType!=1", new String[] { this.jdField_b_of_type_JavaLangString });
+          j = aiti.a(this.this$0, this.jdField_a_of_type_Int);
           localArrayList = new ArrayList();
           localArrayList.add(this.jdField_b_of_type_JavaLangString);
           localObject2 = this.this$0;
-          str = aijp.a(this.this$0).c();
+          str = aiti.a(this.this$0).c();
           if (this.jdField_b_of_type_Boolean) {}
           for (i = 4;; i = 3)
           {
-            ((aijp)localObject2).a(str, i, j, this.c, localArrayList);
+            ((aiti)localObject2).a(str, i, j, this.c, localArrayList);
             return;
           }
         }

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-
-public class auno
-  extends anun
+final class auno
+  implements bjhv
 {
-  public auno(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  auno(aumz paramaumz) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(int paramInt)
   {
-    QQSettingChatOperationFragment.a(this.a);
+    if (paramInt == 2) {
+      this.a.a();
+    }
   }
 }
 

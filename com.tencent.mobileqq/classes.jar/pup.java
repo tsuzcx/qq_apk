@@ -1,19 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class pup
-  extends Handler
+public class pup
+  implements pye
 {
-  private pup(puf parampuf) {}
-  
-  public void handleMessage(Message paramMessage)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
     }
-    pun.a((pun)paramMessage.obj, paramMessage.arg1);
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    {
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      }
+    }
+    return new ptl().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).B(paramBaseArticleInfo).p(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).z(paramBaseArticleInfo).A(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).D(paramBaseArticleInfo).G(paramBaseArticleInfo).H(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    qdk.e(paramContainer, paramppu);
+    qat localqat = (qat)paramContainer.findViewBaseByName("id_article_comment");
+    if (localqat != null) {
+      localqat.a(paramppu);
+    }
+    qdk.a(paramContainer, paramppu.a());
+    puo.a(paramContainer, paramppu);
+    qdk.b(paramContainer, paramppu);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

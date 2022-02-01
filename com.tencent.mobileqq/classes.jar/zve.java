@@ -1,85 +1,16 @@
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-public class zve
+class zve
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private zwd jdField_a_of_type_Zwd;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  zve(zvd paramzvd, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  private zve(zvg paramzvg)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!TextUtils.isEmpty(zvg.a(paramzvg))) {
-      this.jdField_a_of_type_JavaLangString = zvg.a(paramzvg);
-    }
-    this.jdField_a_of_type_Boolean = zvg.a(paramzvg);
-    long l;
-    int i;
-    if (zvg.a(paramzvg) > 0L)
-    {
-      l = zvg.a(paramzvg);
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = zvg.a(paramzvg);
-      if (zvg.b(paramzvg) <= 0) {
-        break label107;
-      }
-      i = zvg.b(paramzvg);
-      label69:
-      this.jdField_b_of_type_Int = i;
-      this.jdField_b_of_type_Boolean = zvg.b(paramzvg);
-      if (zvg.a(paramzvg) == null) {
-        break label113;
-      }
-    }
-    label107:
-    label113:
-    for (paramzvg = zvg.a(paramzvg);; paramzvg = new zwb())
-    {
-      this.jdField_a_of_type_Zwd = paramzvg;
-      return;
-      l = 1000L;
-      break;
-      i = 50;
-      break label69;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public zwd a()
-  {
-    return this.jdField_a_of_type_Zwd;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    paramValueAnimator = (zvg)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 

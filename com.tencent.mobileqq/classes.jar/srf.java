@@ -1,14 +1,15 @@
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
 class srf
-  extends pue
+  implements srh
 {
-  srf(sre paramsre, String paramString)
-  {
-    super(paramString);
-  }
+  srf(sqr paramsqr) {}
   
-  public void a(ptx paramptx)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    paramptx.g();
+    srt.b(paramContext, paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 

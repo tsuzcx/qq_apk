@@ -1,42 +1,26 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class asjg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class asjg
+  implements amzt
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  asjg(asiw paramasiw, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
-  public asjg(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onGlobalLayout()
+  public void a()
   {
-    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
-      int k = j - i;
-      if (k <= j / 4) {
-        break label90;
-      }
-      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
-      this.jdField_a_of_type_Boolean = true;
-      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label90:
-      if (this.jdField_a_of_type_Boolean) {
-        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
-      }
-    }
+    this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
   }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putInt("result", paramInt);
+    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+  }
+  
+  public void b() {}
 }
 
 

@@ -1,33 +1,35 @@
-import android.graphics.Bitmap;
-import android.view.PixelCopy.OnPixelCopyFinishedListener;
-import android.view.View;
+import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "copyResult", "", "onPixelCopyFinished", "com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureViewApiO$1$1"}, k=3, mv={1, 1, 16})
 final class sjw
-  implements PixelCopy.OnPixelCopyFinishedListener
+  implements ubp
 {
-  sjw(Bitmap paramBitmap, sjs paramsjs, View paramView, float paramFloat, sjt paramsjt) {}
-  
-  public final void onPixelCopyFinished(int paramInt)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    Object localObject;
-    if (paramInt == 0)
+    if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_Sjs;
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      Intrinsics.checkExpressionValueIsNotNull(localBitmap, "bitmap");
-      sjs.a((sjs)localObject, localBitmap, this.jdField_a_of_type_Sjt);
+      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
+      if (sjv.a(sjv.a()) != null) {
+        break label129;
+      }
+      paramUri = "null";
+      paramString = paramString.append(paramUri).append(", channelType=");
+      if (sjv.b(sjv.a()) != null) {
+        break label139;
+      }
     }
-    do
+    label129:
+    label139:
+    for (paramUri = "null";; paramUri = sjv.b(sjv.a()))
     {
+      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
+      if (sjv.a(sjv.a()) != null) {
+        ocd.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(sjv.b(sjv.a())), String.valueOf(sjv.a(sjv.a())), null, false);
+      }
       return;
-      QLog.e("ScreenCaptureHelper", 1, "captureViewApiO failed, copyResult:" + paramInt);
-      localObject = this.jdField_a_of_type_Sjt;
-    } while (localObject == null);
-    ((sjt)localObject).a();
+      paramUri = sjv.a(sjv.a());
+      break;
+    }
   }
 }
 

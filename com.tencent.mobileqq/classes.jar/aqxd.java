@@ -1,12 +1,15 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class aqxd
 {
-  public int a;
-  public String a = "";
-  public String b = "";
+  public ImageView a;
+  public TextView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxd
  * JD-Core Version:    0.7.0.1
  */

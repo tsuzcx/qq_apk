@@ -1,6 +1,18 @@
-public abstract interface ajcb
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
+
+public class ajcb
+  implements bliz
 {
-  public abstract void a(boolean paramBoolean, ajcc paramajcc);
+  public ajcb(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Blir.isShowing()) {
+      this.jdField_a_of_type_Blir.dismiss();
+    }
+  }
 }
 
 

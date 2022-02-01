@@ -6,7 +6,7 @@ public class tlv_t100
   extends tlv_t
 {
   int _db_buf_ver = 1;
-  int _sso_ver = 11;
+  int _sso_ver = 12;
   int _t100_body_len = 22;
   
   public tlv_t100()

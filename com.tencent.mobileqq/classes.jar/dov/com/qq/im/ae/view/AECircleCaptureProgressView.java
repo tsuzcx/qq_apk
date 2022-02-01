@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.view;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,18 +9,18 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bnzg;
+import bpas;
 import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
 
 public class AECircleCaptureProgressView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = afur.a(95.0F, getResources());
+  private int jdField_a_of_type_Int = agej.a(98.0F, getResources());
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private AnimationQIMCircleProgress jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress;
   @NonNull
   private final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 1.0F };
-  private int jdField_b_of_type_Int = afur.a(86.25F, getResources());
+  private int jdField_b_of_type_Int = agej.a(98.0F, getResources());
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   @NonNull
   private float[] jdField_b_of_type_ArrayOfFloat = { 0.0F, 1.0F };
@@ -49,9 +49,9 @@ public class AECircleCaptureProgressView
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     LayoutInflater.from(paramContext).inflate(2131558485, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369134));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369187));
-    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)findViewById(2131362850));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369224));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369278));
+    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)findViewById(2131362868));
   }
   
   public int a()
@@ -71,7 +71,7 @@ public class AECircleCaptureProgressView
     localLayoutParams.width = ((int)(this.jdField_b_of_type_Int * paramFloat));
     localLayoutParams.height = ((int)(this.jdField_b_of_type_Int * paramFloat));
     this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setAlpha(a(bnzg.a(paramFloat), this.jdField_b_of_type_ArrayOfFloat));
+    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setAlpha(a(bpas.a(paramFloat), this.jdField_b_of_type_ArrayOfFloat));
   }
   
   public void a(int paramInt)
@@ -88,18 +88,18 @@ public class AECircleCaptureProgressView
     }
   }
   
-  public void a(boolean paramBoolean, @NonNull bnzg parambnzg)
+  public void a(boolean paramBoolean, @NonNull bpas parambpas)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambnzg.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambpas.jdField_a_of_type_Int);
     }
     if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(parambnzg.jdField_b_of_type_Int);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(parambpas.d);
     }
-    this.jdField_b_of_type_ArrayOfFloat = parambnzg.jdField_a_of_type_ArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfFloat = parambpas.jdField_a_of_type_ArrayOfFloat;
     if (this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress != null)
     {
-      this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(paramBoolean, parambnzg);
+      this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(paramBoolean, parambpas);
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setAlpha(this.jdField_b_of_type_ArrayOfFloat[0]);
     }
   }
@@ -109,15 +109,12 @@ public class AECircleCaptureProgressView
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.width = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    localLayoutParams.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    localLayoutParams = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
     localLayoutParams.width = ((int)(this.jdField_a_of_type_Int * paramFloat));
     localLayoutParams.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
     this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    paramFloat = a(bnzg.b(paramFloat), this.jdField_a_of_type_ArrayOfFloat);
+    paramFloat = a(bpas.b(paramFloat), this.jdField_a_of_type_ArrayOfFloat);
     this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(paramFloat);
     this.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F - paramFloat);
   }

@@ -3,16 +3,18 @@ package com.tencent.mobileqq.minigame.jsapi;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime.ShareScreenshotCallback;
-import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
+import com.tencent.mobileqq.triton.engine.ScreenShotCallback;
+import org.jetbrains.annotations.NotNull;
 
 class GameBrandRuntime$2
   implements ScreenShotCallback
 {
   GameBrandRuntime$2(GameBrandRuntime paramGameBrandRuntime, BaseAppBrandRuntime.ShareScreenshotCallback paramShareScreenshotCallback) {}
   
-  public void onScreenShotCallback(Bitmap paramBitmap)
+  public void onGetScreenShot(@NotNull Object paramObject)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    if ((paramObject instanceof Bitmap)) {}
+    for (paramObject = (Bitmap)paramObject; (paramObject == null) || (paramObject.isRecycled()); paramObject = null)
     {
       if (this.val$screenshotCallback != null) {
         this.val$screenshotCallback.onGetShareScreenshot(null);
@@ -20,7 +22,7 @@ class GameBrandRuntime$2
       this.this$0.isGettingScreenShot = false;
       return;
     }
-    ThreadManagerV2.executeOnFileThread(new GameBrandRuntime.2.1(this, paramBitmap));
+    ThreadManagerV2.executeOnFileThread(new GameBrandRuntime.2.1(this, paramObject));
   }
 }
 

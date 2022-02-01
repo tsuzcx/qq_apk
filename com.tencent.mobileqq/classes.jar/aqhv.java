@@ -1,31 +1,26 @@
-import SummaryCard.CondFitUser;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
 
 public class aqhv
-  implements anjn
 {
-  public aqhv(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public ArrayList<aqhw> a;
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public static aqhv a(oidb_0x74b.RspBody paramRspBody)
   {
-    this.a.a();
-    if (paramInt != 1) {
-      return;
+    Object localObject;
+    if (paramRspBody == null) {
+      localObject = null;
     }
-    if (!paramBoolean1)
+    aqhv localaqhv;
+    do
     {
-      QQToast.a(this.a, 2131690894, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      QQToast.a(this.a, 2131690897, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Anjh.b(), this.a.jdField_a_of_type_Anjh.c(), this.a.e, this.a.d, paramList, paramBoolean2);
+      return localObject;
+      localaqhv = new aqhv();
+      localObject = localaqhv;
+    } while (!paramRspBody.rpt_msg_uin_head_list.has());
+    localaqhv.a = aqhw.a(paramRspBody.rpt_msg_uin_head_list.get());
+    return localaqhv;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.upgrade;
 
-import bgdl;
+import bhdm;
 
 public class NewUpgradeDialog$5
   implements Runnable
 {
-  public NewUpgradeDialog$5(bgdl parambgdl) {}
+  public NewUpgradeDialog$5(bhdm parambhdm) {}
   
   public void run()
   {
-    bgdl.d(this.this$0);
+    bhdm.d(this.this$0);
   }
 }
 

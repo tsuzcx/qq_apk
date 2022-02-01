@@ -40,7 +40,7 @@ class MainService$MyErrorHandler$3
         localIntent.putExtra("reason", this.val$reason);
         localIntent.putExtra("isSameDevice", this.val$isSameDevice);
         localIntent.addFlags(268435456);
-        if ((!this.val$app.isClearTaskBySystem) && ((!this.val$isSameDevice) || (this.val$action == null) || (!this.val$action.equalsIgnoreCase("mqq.intent.action.ACCOUNT_KICKED")) || (!this.val$app.isBackground_Stop))) {
+        if ((!this.val$app.isClearTaskBySystem) && ((!this.val$isSameDevice) || (this.val$action == null) || (!this.val$action.equalsIgnoreCase("mqq.intent.action.ACCOUNT_KICKED")) || (!this.val$app.isBackgroundStop))) {
           break label457;
         }
         if (QLog.isColorLevel()) {

@@ -1,24 +1,20 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class aatv
-  implements nkl
+class aatv
+  extends aaty
 {
-  public aatv(PluginJumpManager paramPluginJumpManager) {}
-  
-  public void loaded(String paramString, int paramInt)
+  aatv(aato paramaato, aatl paramaatl, String paramString)
   {
-    if (paramInt == 0) {
-      nko.a("urlplugin.cfg", this.a.mContext, "1007", new aatw(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
-      return;
-    }
-    this.a.loadConfigFromFile();
+    super(paramaato.a);
   }
   
-  public void progress(int paramInt) {}
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    }
+    this.jdField_a_of_type_Aatl.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+  }
 }
 
 

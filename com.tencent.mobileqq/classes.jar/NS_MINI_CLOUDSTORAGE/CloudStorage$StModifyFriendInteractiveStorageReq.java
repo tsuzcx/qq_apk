@@ -11,12 +11,14 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class CloudStorage$StModifyFriendInteractiveStorageReq
   extends MessageMicro<StModifyFriendInteractiveStorageReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64 }, new String[] { "ext", "appid", "toUser", "shareId", "opNum", "operation", "KVDataList", "version" }, new Object[] { null, "", "", "", Integer.valueOf(0), "", null, Integer.valueOf(0) }, StModifyFriendInteractiveStorageReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 82 }, new String[] { "ext", "appid", "toUser", "shareId", "opNum", "operation", "KVDataList", "version", "quiet", "desc" }, new Object[] { null, "", "", "", Integer.valueOf(0), "", null, Integer.valueOf(0), Integer.valueOf(0), null }, StModifyFriendInteractiveStorageReq.class);
   public final PBRepeatMessageField<CloudStorage.StKVData> KVDataList = PBField.initRepeatMessage(CloudStorage.StKVData.class);
   public final PBStringField appid = PBField.initString("");
+  public CloudStorage.StInteractiveTemplate desc = new CloudStorage.StInteractiveTemplate();
   public COMM.StCommonExt ext = new COMM.StCommonExt();
   public final PBInt32Field opNum = PBField.initInt32(0);
   public final PBStringField operation = PBField.initString("");
+  public final PBInt32Field quiet = PBField.initInt32(0);
   public final PBStringField shareId = PBField.initString("");
   public final PBStringField toUser = PBField.initString("");
   public final PBInt32Field version = PBField.initInt32(0);

@@ -1,34 +1,46 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class allr
-  implements Animation.AnimationListener
+class allr
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private alls jdField_a_of_type_Alls;
+  allr(aljw paramaljw, ajnf paramajnf) {}
   
-  public allr(VideoFilterViewPager paramVideoFilterViewPager, alls paramalls, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Alls = paramalls;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((this.jdField_a_of_type_Alls != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    bdll.b(aljw.a(this.jdField_a_of_type_Aljw).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (localBaseActivity != null)
     {
-      this.jdField_a_of_type_Alls.a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Ajnf.a)) {
+        break label151;
       }
+      localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_Ajnf.a);
+      localIntent.putExtra("hideRightButton", true);
+      localBaseActivity.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aljw.a(7, 0);
+      bdll.a(aljw.a(this.jdField_a_of_type_Aljw).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label151:
+      localIntent = new Intent(localBaseActivity, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      localBaseActivity.startActivity(localIntent);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,23 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class tnq
-  implements rqa
+class tnq
+  implements ViewFactory.FoundClickableViewListener
 {
-  public tnq(BridgeModule paramBridgeModule, long paramLong, String paramString) {}
+  tnq(tnp paramtnp, BaseData paramBaseData, Context paramContext) {}
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (!paramList.isEmpty()) {
-      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Long, paramList, this.jdField_a_of_type_JavaLangString, 0, "");
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i(BridgeModule.TAG, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
+    paramViewBase.setOnClickListener(new tnr(this));
   }
 }
 

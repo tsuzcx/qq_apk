@@ -2,13 +2,13 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Handler;
 import android.os.Looper;
-import atei;
+import atwc;
 import java.util.TimerTask;
 
 public class MMApkFileSafeChecker$CheckTask$3
   extends TimerTask
 {
-  public MMApkFileSafeChecker$CheckTask$3(atei paramatei) {}
+  public MMApkFileSafeChecker$CheckTask$3(atwc paramatwc) {}
   
   public void run()
   {

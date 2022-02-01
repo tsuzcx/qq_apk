@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import basi;
-import basm;
-import basn;
+import bblb;
+import bblf;
+import bblg;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
-import yqp;
+import yuk;
 
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private basm jdField_a_of_type_Basm;
-  private basn jdField_a_of_type_Basn = new basi(this);
+  private bblf jdField_a_of_type_Bblf;
+  private bblg jdField_a_of_type_Bblg = new bblb(this);
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;
   private int c = 2;
@@ -31,17 +31,17 @@ public class FlowDecodeScreenSurfaceBase
   
   public void a()
   {
-    yqp.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
-    this.jdField_a_of_type_Basm.b();
-    this.jdField_a_of_type_Basm.c();
+    yuk.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
+    this.jdField_a_of_type_Bblf.b();
+    this.jdField_a_of_type_Bblf.c();
   }
   
   public void c()
   {
-    yqp.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
-    this.jdField_a_of_type_Basm = new basm(new WeakReference(this.jdField_a_of_type_Basn));
-    this.jdField_a_of_type_Basm.a();
-    this.jdField_a_of_type_Basm.a(this.jdField_a_of_type_Int, this.b);
+    yuk.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
+    this.jdField_a_of_type_Bblf = new bblf(new WeakReference(this.jdField_a_of_type_Bblg));
+    this.jdField_a_of_type_Bblf.a();
+    this.jdField_a_of_type_Bblf.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

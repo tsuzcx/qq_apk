@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import anni;
-import asti;
-import asxb;
-import atwl;
-import atwr;
-import atxz;
+import anzj;
+import atjm;
+import atnf;
+import auog;
+import auom;
+import aupu;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -20,31 +20,31 @@ import java.util.Set;
 public class QfileLocalFileOtherTabView
   extends QfileBaseLocalFileTabView
 {
-  public QfileLocalFileOtherTabView(Context paramContext, List<atxz> paramList, boolean paramBoolean)
+  public QfileLocalFileOtherTabView(Context paramContext, List<aupu> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     setEditbarButton(false, false, true, true, true);
   }
   
-  protected asti a()
+  protected atjm a()
   {
-    return new asxb(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new atnf(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   String a(String paramString)
   {
-    paramString = atwl.a(paramString);
+    paramString = auog.a(paramString);
     if ((paramString == null) || (paramString.length() == 0)) {
-      return anni.a(2131708459);
+      return anzj.a(2131708568);
     }
     paramString = paramString.toLowerCase();
     if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
-      return anni.a(2131708436);
+      return anzj.a(2131708545);
     }
     if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
-      return anni.a(2131708453);
+      return anzj.a(2131708562);
     }
-    return anni.a(2131708441);
+    return anzj.a(2131708550);
   }
   
   protected void a()

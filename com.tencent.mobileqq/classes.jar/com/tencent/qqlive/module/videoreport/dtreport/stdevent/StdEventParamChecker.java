@@ -23,8 +23,13 @@ public class StdEventParamChecker
     Class localClass = (Class)CODE_BUILDER_MAP.get(paramStdEventCode);
     if (localClass == null)
     {
-      handleError("校验错误, 事件 [" + paramStdEventCode.codeName + "] 不支持!");
-      return false;
+      paramIEventParamsBuilder = new StringBuilder().append("校验错误, 事件 [");
+      if (paramStdEventCode == null) {}
+      for (paramStdEventCode = null;; paramStdEventCode = paramStdEventCode.codeName)
+      {
+        handleError(paramStdEventCode + "] 不支持!");
+        return false;
+      }
     }
     if (!localClass.isInstance(paramIEventParamsBuilder))
     {

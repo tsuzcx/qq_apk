@@ -1,21 +1,86 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifIndex8;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class assv
-  implements atve
+public class assv
+  extends NativeGifIndex8
 {
-  assv(assu paramassu) {}
+  private boolean a = true;
+  private boolean b;
+  private boolean c;
+  
+  public assv(File paramFile, int paramInt, boolean paramBoolean)
+  {
+    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
+  }
   
   public void a()
   {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    this.a = true;
   }
   
   public void b()
   {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    this.a = false;
+    this.b = true;
+  }
+  
+  public void doApplyNextFrame()
+  {
+    super.doApplyNextFrame();
+    if (this.c)
+    {
+      this.c = false;
+      this.b = false;
+    }
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    initHandlerAndRunnable();
+    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      }
+    }
+    do
+    {
+      return;
+      if (!this.b) {
+        break;
+      }
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      }
+      if (!sPaused)
+      {
+        executeNewTask();
+        return;
+      }
+    } while (this.mIsInPendingAction);
+    sPendingActions.add(new WeakReference(this));
+    this.mIsInPendingAction = true;
+    return;
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+  }
+  
+  public void getNextFrame()
+  {
+    try
+    {
+      if (this.b)
+      {
+        this.c = true;
+        super.reset();
+      }
+      super.getNextFrame();
+      return;
+    }
+    finally {}
   }
 }
 

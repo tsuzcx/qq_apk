@@ -1,20 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
-import java.util.List;
+import android.view.View;
 
-public class rss
-  implements rjg
+class rss
+  implements seg
 {
-  rss(rsn paramrsn) {}
+  rss(rsr paramrsr) {}
   
-  public List a(int paramInt1, int paramInt2)
+  public void a(View paramView)
   {
-    return riv.a(paramInt1, paramInt2);
-  }
-  
-  public void a(List paramList, boolean paramBoolean)
-  {
-    rsn.a(this.a).a(paramList, paramBoolean);
-    bjda.c(new SelectVideoPresenter.5.1(this));
+    paramView.setTag(new roo(paramView, 6));
   }
 }
 

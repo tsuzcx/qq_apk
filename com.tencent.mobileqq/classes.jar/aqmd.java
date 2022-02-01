@@ -1,82 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class aqmd
-  extends aqkz<aqme>
+class aqmd
+  extends AnimatorListenerAdapter
 {
-  @NonNull
-  public aqme a(int paramInt)
-  {
-    return new aqme();
-  }
+  aqmd(aqmb paramaqmb) {}
   
-  @Nullable
-  public aqme a(aqlg[] paramArrayOfaqlg)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aqme localaqme = aqme.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaqlg[0].a);
-      }
-      return localaqme;
-    }
-    return null;
-  }
-  
-  public void a(aqme paramaqme)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramaqme.a());
-    }
-    ShortVideoUtils.a(paramaqme.a());
-  }
-  
-  public Class<aqme> clazz()
-  {
-    return aqme.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int onSend(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
-    }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 574;
+    super.onAnimationEnd(paramAnimator);
+    aqmb.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmd
  * JD-Core Version:    0.7.0.1
  */

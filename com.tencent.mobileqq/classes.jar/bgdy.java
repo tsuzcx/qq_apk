@@ -1,9 +1,6 @@
-public class bgdy
+public abstract interface bgdy
 {
-  public int a = -1;
-  public long a;
-  public String a;
-  public String b;
+  public abstract void a(boolean paramBoolean);
 }
 
 

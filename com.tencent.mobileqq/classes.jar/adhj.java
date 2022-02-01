@@ -1,23 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhj
-  implements View.OnClickListener
+  extends adic
 {
-  public adhj(AboutActivity paramAboutActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-    localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivity(localIntent.putExtra("url", AboutActivity.a(this.a)));
-    bcst.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return -1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+      if (a(paramStringBuilder)) {
+        avlm.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), parambcre);
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (34 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

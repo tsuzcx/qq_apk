@@ -1,23 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afog
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afog(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public afog(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
-    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    localIntent.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(localIntent, 111);
-    EventCollector.getInstance().onViewClicked(paramView);
+    SoundAndVibrateActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

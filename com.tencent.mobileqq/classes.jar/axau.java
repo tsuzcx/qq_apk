@@ -1,25 +1,34 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
 
-final class axau
-  implements Comparator<String>
+public class axau
+  extends anyu
 {
-  public int a(String paramString1, String paramString2)
+  public axau(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
+      this.a.a();
     }
-    while (paramString1 != null)
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
       }
-      return 1;
+      int i = 0;
+      if (this.a.a(paramString)) {
+        i = 1;
+      }
+      if (i != 0) {
+        this.a.a();
+      }
     }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
   }
 }
 

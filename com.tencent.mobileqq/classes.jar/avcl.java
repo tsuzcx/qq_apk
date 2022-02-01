@@ -1,15 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class avcl
-  implements View.OnHoverListener
+final class avcl
+  implements DialogInterface.OnClickListener
 {
-  avcl(avck paramavck) {}
+  avcl(long paramLong, int paramInt, Activity paramActivity) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
+    }
+    avcj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

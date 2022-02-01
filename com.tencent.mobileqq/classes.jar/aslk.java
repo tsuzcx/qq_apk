@@ -1,70 +1,36 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class aslk
+class aslk
+  implements axfu<EmoticonPackage>
 {
-  private int a;
-  private int b;
+  aslk(aslh paramaslh, asre paramasre) {}
   
-  public static aslk a(aqlg paramaqlg)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    aslk localaslk = new aslk();
-    if (paramaqlg != null)
+    boolean bool;
+    if (paramEmoticonPackage != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramaqlg.jdField_a_of_type_Int + " content->" + paramaqlg.jdField_a_of_type_JavaLangString);
-      }
-      try
+      this.jdField_a_of_type_Asre.j = paramEmoticonPackage.type;
+      asre localasre = this.jdField_a_of_type_Asre;
+      if (paramEmoticonPackage.isAPNG == 2)
       {
-        paramaqlg = paramaqlg.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramaqlg))
-        {
-          paramaqlg = new JSONObject(paramaqlg);
-          localaslk.a(paramaqlg.optInt("business_switch", 0));
-          localaslk.b(paramaqlg.optInt("showInRecentView", 0));
-          return localaslk;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
-          return localaslk;
-        }
-      }
-      catch (JSONException paramaqlg)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramaqlg.toString());
-        }
+        bool = true;
+        localasre.c = bool;
       }
     }
-    return localaslk;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    for (;;)
+    {
+      aslh.a(this.jdField_a_of_type_Aslh).a(this.jdField_a_of_type_Asre);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_Asre.j);
+      }
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_Asre.j = 3;
+    }
   }
 }
 

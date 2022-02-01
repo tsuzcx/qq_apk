@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aldk;
+import alpb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pyn;
-import tzo;
+import pqx;
+import tzq;
 
 public class SubscriptionInfoModule$6
   implements Runnable
 {
-  public SubscriptionInfoModule$6(pyn parampyn, String paramString) {}
+  public SubscriptionInfoModule$6(pqx parampqx, String paramString) {}
   
   public void run()
   {
-    int i = tzo.b((QQAppInterface)this.this$0.a, this.a);
-    aldk.b((QQAppInterface)this.this$0.a, this.a, i);
+    int i = tzq.b((QQAppInterface)this.this$0.a, this.a);
+    alpb.b((QQAppInterface)this.this$0.a, this.a, i);
     ((QQAppInterface)this.this$0.a).a().c(this.a, 1008);
   }
 }

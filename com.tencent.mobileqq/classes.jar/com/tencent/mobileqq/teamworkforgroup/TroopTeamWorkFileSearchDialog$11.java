@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.view.View;
-import bdmq;
+import befl;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopTeamWorkFileSearchDialog$11
   implements Runnable
 {
-  public TroopTeamWorkFileSearchDialog$11(bdmq parambdmq, View paramView, boolean paramBoolean) {}
+  public TroopTeamWorkFileSearchDialog$11(befl parambefl, View paramView, boolean paramBoolean) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class TroopTeamWorkFileSearchDialog$11
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("mBlurBackground == null :");
-      if (bdmq.a(this.this$0) != null) {
+      if (befl.a(this.this$0) != null) {
         break label64;
       }
     }

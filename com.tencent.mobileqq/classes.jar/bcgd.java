@@ -1,9 +1,12 @@
 public class bcgd
+  implements bcfp
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public static final String a = bcgd.class.getSimpleName();
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 3);
+  }
 }
 
 

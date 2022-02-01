@@ -1,19 +1,33 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.util.Locale;
 
 class aicf
-  implements bkhe
+  implements aibm
 {
-  aicf(aibv paramaibv) {}
+  aicf(aibr paramaibr) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Amcz != null) && (this.a.jdField_a_of_type_Amcz.a() != 0) && (this.a.jdField_a_of_type_Amcz.a()))
+    if ((this.a.jdField_a_of_type_Aicx.a() != null) && ((this.a.jdField_a_of_type_Aicx.a().a instanceof AIOImageData)))
     {
-      this.a.jdField_a_of_type_Amcz.b();
-      aibv.a(this.a, this.a.jdField_a_of_type_Amcz.a(), 10);
+      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Aicx.a().a;
+      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
+      {
+        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
+          break label127;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, aibr.N(this.a).getString(2131694456), new Object[] { auog.a(localAIOImageData.jdField_h_of_type_Long) }));
+      }
+    }
+    for (;;)
+    {
+      this.a.c(true);
+      return;
+      label127:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131694453);
     }
   }
 }

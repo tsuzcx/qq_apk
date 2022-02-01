@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.os.Handler;
-import avhg;
-import avig;
+import avzj;
+import awaj;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.Map;
 
 public class IVPluginLoader$1
   implements Runnable
 {
-  public IVPluginLoader$1(avig paramavig, String paramString1, String paramString2, String paramString3, String paramString4, Map paramMap) {}
+  public IVPluginLoader$1(awaj paramawaj, String paramString1, String paramString2, String paramString3, String paramString4, Map paramMap) {}
   
   public void run()
   {
-    avhg.a().a(this.jdField_a_of_type_JavaLangString, avig.a(this.this$0));
+    avzj.a().a(this.jdField_a_of_type_JavaLangString, awaj.a(this.this$0));
     ThreadManagerV2.getUIHandlerV2().post(new IVPluginLoader.1.1(this));
   }
 }

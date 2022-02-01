@@ -1,203 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
+import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class blan
+  implements Callback
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private static final Map<String, String> jdField_a_of_type_JavaUtilMap;
-  public static volatile boolean a;
-  private static Map<String, blao> b;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList.add("index");
-    jdField_a_of_type_JavaUtilArrayList.add("fav");
-    jdField_a_of_type_JavaUtilArrayList.add("category");
-    jdField_a_of_type_JavaUtilArrayList.add("more");
-    jdField_a_of_type_JavaUtilArrayList.add("group");
-    jdField_a_of_type_JavaUtilMap = new HashMap(5);
-    jdField_a_of_type_JavaUtilMap.put("NavConfig", "index");
-    jdField_a_of_type_JavaUtilMap.put("FavNavConfig", "fav");
-    jdField_a_of_type_JavaUtilMap.put("CateNavConfig", "category");
-    jdField_a_of_type_JavaUtilMap.put("MoreNavConfig", "more");
-    jdField_a_of_type_JavaUtilMap.put("GroupNavConfig", "group");
-    jdField_a_of_type_Boolean = a();
-  }
+  public blan(UploaderProxyImpl.1 param1) {}
   
-  public static File a()
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    return new File(BaseApplicationImpl.getApplication().getFilesDir(), "comic_config/");
-  }
-  
-  public static String a(String paramString)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return new File(c(), paramString).getAbsolutePath();
-    }
-    return null;
-  }
-  
-  public static List<blao> a()
-  {
-    Object localObject = a();
-    if ((localObject != null) && (!((Map)localObject).isEmpty()))
-    {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((Map)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        blao localblao = (blao)((Iterator)localObject).next();
-        if (localblao.jdField_a_of_type_Int >= 0) {
-          localArrayList.add(localblao);
-        }
-      }
-      Collections.sort(localArrayList);
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public static Map<String, blao> a()
-  {
-    if (b == null) {
-      a();
-    }
-    return b;
-  }
-  
-  public static JSONObject a()
-  {
-    String str = bgmg.a(new File(a(), "vipComic_nav_config.json"));
-    if (!TextUtils.isEmpty(str)) {
-      return new JSONObject(str);
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONObject localJSONObject1 = a();
-        if (localJSONObject1 != null)
-        {
-          if (b != null) {
-            b.clear();
-          }
-          b = new HashMap();
-          Iterator localIterator = localJSONObject1.keys();
-          if (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            Object localObject = localJSONObject1.optJSONArray(str);
-            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
-              continue;
-            }
-            i = ((JSONArray)localObject).length() - 1;
-            if (i < 0) {
-              continue;
-            }
-            JSONObject localJSONObject2 = ((JSONArray)localObject).optJSONObject(i);
-            if ((localJSONObject2 == null) || (!bhre.a(localJSONObject2, str))) {
-              break label247;
-            }
-            localObject = new blao();
-            ((blao)localObject).jdField_a_of_type_JavaLangString = localJSONObject2.optString("tabKey");
-            if ((TextUtils.isEmpty(((blao)localObject).jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaUtilMap.containsKey(str))) {
-              ((blao)localObject).jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_JavaUtilMap.get(str));
-            }
-            ((blao)localObject).jdField_a_of_type_Int = localJSONObject2.optInt("sequence");
-            ((blao)localObject).b = localJSONObject2.optString("tabName");
-            ((blao)localObject).c = localJSONObject2.optString("tabUrl");
-            ((blao)localObject).d = localJSONObject2.optString("tabIcon");
-            b.put(str, localObject);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("VipComicNavConfigHelper", 1, localJSONException, new Object[0]);
-      }
-      label247:
-      i -= 1;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (a()) {
-      a();
+    QLog.e("UploaderProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString, paramIOException);
+    if ("Canceled".equals(paramIOException.getLocalizedMessage())) {
+      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(-5, "download error:cancel");
     }
     for (;;)
     {
-      if (!b()) {
-        ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(100L, "vipComic_nav_tabIcon.zip", "helper");
-      }
+      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
       return;
-      ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(100L, "vipComic_nav_config.json", "helper");
+      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(bkxi.a(paramIOException, -1), "request error:network");
     }
   }
   
-  public static boolean a()
+  public void onResponse(Call paramCall, Response paramResponse)
   {
-    return b().exists();
-  }
-  
-  public static File b()
-  {
-    return new File(a(), "vipComic_nav_config.json");
-  }
-  
-  public static boolean b()
-  {
-    jdField_a_of_type_Boolean = c();
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static File c()
-  {
-    return new File(a(), "tab_icons/");
-  }
-  
-  private static boolean c()
-  {
-    Object localObject1 = a();
-    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
-    {
-      Object localObject2 = c().list();
-      if ((localObject2 != null) && (localObject2.length > 0))
-      {
-        localObject2 = Arrays.asList((Object[])localObject2);
-        localObject1 = ((Map)localObject1).values().iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          if (!((List)localObject2).contains(((blao)((Iterator)localObject1).next()).d)) {
-            return false;
-          }
-        }
-        return true;
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    return false;
+    int i = paramResponse.code();
+    paramCall = paramResponse.headers().toMultimap();
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadHeadersReceived(i, paramCall);
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadSucceed(i, paramResponse.body().bytes(), paramCall);
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
   }
 }
 

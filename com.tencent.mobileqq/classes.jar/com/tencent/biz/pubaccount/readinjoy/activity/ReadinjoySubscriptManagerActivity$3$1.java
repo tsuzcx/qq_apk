@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import oku;
+import omb;
 
 public class ReadinjoySubscriptManagerActivity$3$1
   implements Runnable
 {
-  public ReadinjoySubscriptManagerActivity$3$1(oku paramoku) {}
+  public ReadinjoySubscriptManagerActivity$3$1(omb paramomb) {}
   
   public void run()
   {

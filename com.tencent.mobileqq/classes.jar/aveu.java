@@ -1,38 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.Bitmap;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-final class aveu
-  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
+public class aveu
+  extends aybk
 {
-  aveu(int paramInt, AtomicBoolean paramAtomicBoolean, String paramString1, String paramString2, String paramString3, long paramLong, avew paramavew) {}
+  public aveu(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    Object localObject = new WeJson();
-    LiveStyleRequester.YTLiveStyleReq localYTLiveStyleReq = new LiveStyleRequester.YTLiveStyleReq(-2.0F, String.valueOf(101810106));
-    localYTLiveStyleReq.app_id = String.valueOf(101810106);
-    localObject = ((WeJson)localObject).toJson(localYTLiveStyleReq);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    aves.a(101810106, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, (String)localObject, this.jdField_a_of_type_Avew);
-    QLog.d("FaceLoginHelper", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2 });
-  }
+  protected void a(int paramInt, String paramString) {}
   
-  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
+  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
   {
-    paramYTLiveStyleReq.app_id = String.valueOf(this.jdField_a_of_type_Int);
-    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, true))
-    {
-      QLog.d("FaceLoginHelper", 1, "sendPacket isLoading now");
-      return;
+    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
+      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
     }
-    aves.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, paramYTLiveStyleReq, this.jdField_a_of_type_Avew);
-    QLog.d("FaceLoginHelper", 1, "getLightInfo success");
   }
+  
+  protected void b()
+  {
+    if (this.a.jdField_a_of_type_Axva != null) {
+      this.a.jdField_a_of_type_Axva.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+    }
+    this.a.l();
+    this.a.m();
+  }
+  
+  protected void b(int paramInt, String paramString) {}
 }
 
 

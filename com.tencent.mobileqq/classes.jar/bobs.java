@@ -1,6 +1,11 @@
-public abstract interface bobs
+public final class bobs
 {
-  public abstract void a(String paramString);
+  public int a;
+  public long a;
+  public String a;
+  public Throwable a = null;
+  public long b;
+  public long c;
 }
 
 

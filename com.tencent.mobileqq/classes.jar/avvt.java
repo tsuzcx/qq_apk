@@ -1,32 +1,59 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avvt
-  extends BroadcastReceiver
+  extends RecyclerView.Adapter
 {
-  private avvt(QQMusicPlayService paramQQMusicPlayService) {}
+  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new avvu(this);
+  avtf jdField_a_of_type_Avtf;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public avvt(@NonNull RecyclerView.Adapter paramAdapter, avtf paramavtf)
   {
-    if (paramIntent != null)
-    {
-      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
-      {
-        if (QQMusicPlayService.a(this.a) == null) {
-          break label150;
-        }
-        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
-      }
+    this.jdField_a_of_type_Avtf = paramavtf;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_Avtf == null) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
     }
-    return;
-    label150:
-    this.a.stopSelf();
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Avtf != null) && (paramInt == getItemCount() - 1)) {
+      return 2147483647;
+    }
+    return super.getItemViewType(paramInt);
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Avtf != null) && (paramInt == getItemCount() - 1)) {
+      this.jdField_a_of_type_Avtf.a(paramViewHolder, paramInt);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Avtf != null) && (2147483647 == paramInt)) {
+      return this.jdField_a_of_type_Avtf.a(paramViewGroup, paramInt);
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

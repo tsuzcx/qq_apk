@@ -1,16 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.Point;
 
-class bomm
-  implements View.OnTouchListener
+abstract interface bomm
 {
-  bomm(boml paramboml) {}
+  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, aazw paramaazw);
+  
+  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
+  
+  public abstract void a(boju paramboju, int paramInt, Point paramPoint);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(bolx parambolx);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract int b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c(int paramInt1, int paramInt2);
 }
 
 

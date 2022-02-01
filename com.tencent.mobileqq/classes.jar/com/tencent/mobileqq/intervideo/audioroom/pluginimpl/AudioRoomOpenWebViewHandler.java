@@ -20,29 +20,19 @@ public final class AudioRoomOpenWebViewHandler
 {
   public static final AudioRoomOpenWebViewHandler INSTANCE = new AudioRoomOpenWebViewHandler();
   
-  @JvmStatic
-  public static final void openWebView(@NotNull Bundle paramBundle)
+  private final void a(String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
-    String str = paramBundle.getString("url");
-    if (str != null) {
-      if (((CharSequence)str).length() <= 0) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 1)
-      {
-        INSTANCE.setCookieIfNeed(str, paramBundle);
-        INSTANCE.startBrowserActivity(str);
-      }
-      return;
-    }
+    Object localObject = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    localObject = new Intent(((BaseApplicationImpl)localObject).getBaseContext(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramString);
+    ((Intent)localObject).addFlags(268435456);
+    paramString = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
+    paramString.getBaseContext().startActivity((Intent)localObject);
   }
   
-  private final void setCookieIfNeed(String paramString, Bundle paramBundle)
+  private final void a(String paramString, Bundle paramBundle)
   {
     String str = paramBundle.getString("cookie");
     if (str != null)
@@ -79,16 +69,26 @@ public final class AudioRoomOpenWebViewHandler
     }
   }
   
-  private final void startBrowserActivity(String paramString)
+  @JvmStatic
+  public static final void openWebView(@NotNull Bundle paramBundle)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = new Intent(((BaseApplicationImpl)localObject).getBaseContext(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramString);
-    ((Intent)localObject).addFlags(268435456);
-    paramString = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
-    paramString.getBaseContext().startActivity((Intent)localObject);
+    Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
+    String str = paramBundle.getString("url");
+    if (str != null) {
+      if (((CharSequence)str).length() <= 0) {
+        break label52;
+      }
+    }
+    label52:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 1)
+      {
+        INSTANCE.a(str, paramBundle);
+        INSTANCE.a(str);
+      }
+      return;
+    }
   }
 }
 

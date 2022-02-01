@@ -1,8 +1,6 @@
 public abstract interface aziq
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract void a(azib paramazib);
 }
 
 

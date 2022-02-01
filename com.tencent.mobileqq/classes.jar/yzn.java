@@ -1,15 +1,17 @@
-import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class yzn
-  implements yzm
+  implements xvr
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  public yzn(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
+  {
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
+  }
 }
 
 

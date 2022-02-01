@@ -1,13 +1,10 @@
-class axst
-  implements axdi
+public class axst
 {
-  axst(axsd paramaxsd) {}
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

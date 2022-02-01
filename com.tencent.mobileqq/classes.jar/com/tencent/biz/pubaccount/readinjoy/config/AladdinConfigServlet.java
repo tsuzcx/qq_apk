@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import bctj;
-import bgln;
-import bgva;
-import bmqa;
+import bdmc;
+import bhlo;
+import bhvd;
+import bnrf;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.CPU;
@@ -42,10 +42,10 @@ import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
 import mqq.app.NewIntent;
 import mqq.app.Packet;
-import pha;
-import phx;
-import pia;
-import qnf;
+import ozs;
+import pap;
+import pas;
+import qfq;
 
 public class AladdinConfigServlet
   extends MSFServlet
@@ -55,22 +55,22 @@ public class AladdinConfigServlet
     oidb_cmd0xbf8.DeviceInfo localDeviceInfo = new oidb_cmd0xbf8.DeviceInfo();
     localDeviceInfo.os.set(new oidb_cmd0xbf8.OS());
     localDeviceInfo.os.type.set(2);
-    localDeviceInfo.os.version.set(bgln.e());
-    localDeviceInfo.os.sdk.set(String.valueOf(bgln.a()));
+    localDeviceInfo.os.version.set(bhlo.e());
+    localDeviceInfo.os.sdk.set(String.valueOf(bhlo.a()));
     localDeviceInfo.os.kernel.set(System.getProperty("os.version"));
     localDeviceInfo.cpu.set(new oidb_cmd0xbf8.CPU());
-    localDeviceInfo.cpu.model.set(bgln.g());
-    localDeviceInfo.cpu.cores.set(bgln.b());
-    localDeviceInfo.cpu.frequency.set((int)bgln.a());
+    localDeviceInfo.cpu.model.set(bhlo.g());
+    localDeviceInfo.cpu.cores.set(bhlo.b());
+    localDeviceInfo.cpu.frequency.set((int)bhlo.a());
     localDeviceInfo.memory.set(new oidb_cmd0xbf8.Memory());
-    localDeviceInfo.memory.total.set(bgln.d());
+    localDeviceInfo.memory.total.set(bhlo.d());
     localDeviceInfo.storage.set(new oidb_cmd0xbf8.Storage());
-    localDeviceInfo.storage.builtin.set(bgln.a()[0]);
-    localDeviceInfo.storage.external.set(bgln.b()[0]);
+    localDeviceInfo.storage.builtin.set(bhlo.a()[0]);
+    localDeviceInfo.storage.external.set(bhlo.b()[0]);
     localDeviceInfo.screen.set(new oidb_cmd0xbf8.Screen());
-    localDeviceInfo.screen.dpi.set(bgln.d());
-    localDeviceInfo.screen.width.set((int)bgln.i());
-    localDeviceInfo.screen.height.set((int)bgln.j());
+    localDeviceInfo.screen.dpi.set(bhlo.d());
+    localDeviceInfo.screen.width.set((int)bhlo.i());
+    localDeviceInfo.screen.height.set((int)bhlo.j());
     localDeviceInfo.camera.set(new oidb_cmd0xbf8.Camera());
     return localDeviceInfo;
   }
@@ -100,7 +100,7 @@ public class AladdinConfigServlet
   {
     oidb_cmd0xbf8.ReqBody localReqBody = new oidb_cmd0xbf8.ReqBody();
     oidb_cmd0xbf8.ReqBodyType1 localReqBodyType1 = new oidb_cmd0xbf8.ReqBodyType1();
-    localReqBodyType1.app_version.set("8.4.1");
+    localReqBodyType1.app_version.set("8.4.5");
     localReqBodyType1.device_info.set(a());
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -109,7 +109,7 @@ public class AladdinConfigServlet
       int k = paramArrayOfInt[i];
       oidb_cmd0xbf8.ConfigSeq localConfigSeq = new oidb_cmd0xbf8.ConfigSeq();
       localConfigSeq.id.set(k);
-      localConfigSeq.version.set(phx.a(k));
+      localConfigSeq.version.set(pap.a(k));
       localReqBodyType1.rpt_config_list.add(localConfigSeq);
       i += 1;
     }
@@ -190,8 +190,8 @@ public class AladdinConfigServlet
     }
     long l = paramIntent.getLongExtra("key_packet_receive_timestamp", 0L) - paramIntent.getLongExtra("key_packet_send_timestamp", 0L);
     localHashMap.put("param_CostTime", String.valueOf(l));
-    paramList = bctj.a(pha.a().getApplication());
-    paramIntent = pha.a();
+    paramList = bdmc.a(ozs.a().getApplication());
+    paramIntent = ozs.a();
     if (paramInt == 0) {}
     for (;;)
     {
@@ -210,10 +210,10 @@ public class AladdinConfigServlet
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    boolean bool = ((Boolean)bmqa.a("should_request_aladdin_config", Boolean.valueOf(true))).booleanValue();
+    boolean bool = ((Boolean)bnrf.a("should_request_aladdin_config", Boolean.valueOf(true))).booleanValue();
     QLog.i("AladdinConfigServlet", 1, "[maybeGetAllConfigs] shouldRequest=" + bool);
     if (bool) {
-      pia.b();
+      pas.b();
     }
   }
   
@@ -234,7 +234,7 @@ public class AladdinConfigServlet
     boolean bool1 = true;
     boolean bool2 = true;
     QLog.d("AladdinConfigServlet", 2, "[handleSingleConfigRsp] id = " + paramInt1 + ", version = " + paramInt2 + ", content = " + paramString + ", wipeFlag = " + paramInt3);
-    if (paramInt2 > phx.a(paramInt1)) {}
+    if (paramInt2 > pap.a(paramInt1)) {}
     try
     {
       AladdinConfigHandler localAladdinConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
@@ -243,7 +243,7 @@ public class AladdinConfigServlet
       }
       for (bool1 = bool2;; bool1 = localAladdinConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString))
       {
-        phx.a(paramInt1, paramInt2);
+        pap.a(paramInt1, paramInt2);
         return bool1;
       }
       return false;
@@ -258,7 +258,7 @@ public class AladdinConfigServlet
   {
     int i = paramArrayOfByte.length - 4;
     byte[] arrayOfByte = new byte[i];
-    bgva.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
+    bhvd.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
     return arrayOfByte;
   }
   
@@ -266,8 +266,8 @@ public class AladdinConfigServlet
   {
     long l = paramArrayOfByte.length;
     byte[] arrayOfByte = new byte[(int)l + 4];
-    bgva.a(arrayOfByte, 0, 4L + l);
-    bgva.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
+    bhvd.a(arrayOfByte, 0, 4L + l);
+    bhvd.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
     return arrayOfByte;
   }
   
@@ -284,7 +284,7 @@ public class AladdinConfigServlet
       int j;
       try
       {
-        int i = qnf.a(paramFromServiceMsg, a(paramFromServiceMsg.getWupBuffer()), localRspBody);
+        int i = qfq.a(paramFromServiceMsg, a(paramFromServiceMsg.getWupBuffer()), localRspBody);
         QLog.i("AladdinConfigServlet", 1, "[onReceive] result=" + i);
         if (i != 0) {
           break label246;
@@ -328,7 +328,7 @@ public class AladdinConfigServlet
     {
       if (localObject1 != null)
       {
-        localObject1 = qnf.a("OidbSvc.0xbf8", 3064, 0, ((oidb_cmd0xbf8.ReqBody)localObject1).toByteArray());
+        localObject1 = qfq.a("OidbSvc.0xbf8", 3064, 0, ((oidb_cmd0xbf8.ReqBody)localObject1).toByteArray());
         paramPacket.setSSOCommand(((ToServiceMsg)localObject1).getServiceCmd());
         paramPacket.putSendData(b(((ToServiceMsg)localObject1).getWupBuffer()));
         paramPacket.setAttributes(((ToServiceMsg)localObject1).getAttributes());

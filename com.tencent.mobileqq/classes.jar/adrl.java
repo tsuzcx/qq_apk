@@ -1,9 +1,15 @@
-import com.tencent.common.config.AppSetting;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public abstract interface adrl
+public class adrl
+  extends azie
 {
-  public static final boolean R = AppSetting.c;
-  public static final String f = anni.a(2131700365);
+  public adrl(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    AccountManageActivity.b(this.a);
+  }
 }
 
 

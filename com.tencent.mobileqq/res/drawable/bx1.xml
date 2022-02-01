@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<selector android:exitFadeDuration="@android:integer/config_mediumAnimTime"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="oval">
-            <solid android:color="@color/ep" />
-            <size android:height="48.0dip" android:width="48.0dip" />
-        </shape>
-    </item>
-    <item android:drawable="@color/ajr" />
+    <item android:state_pressed="true" android:drawable="@drawable/ecc" />
+    <item android:state_pressed="false" android:drawable="@drawable/ecb" />
 </selector>

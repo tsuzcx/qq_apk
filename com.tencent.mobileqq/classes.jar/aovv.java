@@ -1,84 +1,138 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.widget.AlphaClickableButton;
+import com.tencent.widget.AlphaClickableTextView;
 
 public class aovv
+  implements LayoutInflater.Factory2
 {
-  public static int a(String paramString1, String paramString2, String paramString3, String paramString4)
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 16843087, 16843088, 16844078, 2131034593, 2131034922, 2131035068, 2131035066 };
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  
+  public aovv(Activity paramActivity)
   {
-    for (;;)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    TextView localTextView = null;
+    if (paramString.equals("TextView")) {
+      localTextView = new TextView(paramContext, paramAttributeSet);
+    }
+    do
     {
-      try
+      return localTextView;
+      if (paramString.equals("Button")) {
+        return new Button(paramContext, paramAttributeSet);
+      }
+      if (paramString.endsWith("DragTextView")) {
+        return new DragTextView(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchItem")) {
+        return new FormSwitchItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormSimpleItem")) {
+        return new FormSimpleItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchSimpleItem")) {
+        return new FormSwitchSimpleItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.mobileqq.widget.FormMultiLineSwitchItem")) {
+        return new FormMultiLineSwitchItem(paramContext, paramAttributeSet);
+      }
+      if (paramString.equals("com.tencent.widget.AlphaClickableTextView")) {
+        return new AlphaClickableTextView(paramContext, paramAttributeSet);
+      }
+    } while (!paramString.equals("com.tencent.widget.AlphaClickableButton"));
+    return new AlphaClickableButton(paramContext, paramAttributeSet);
+  }
+  
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    paramView = a(paramString, paramContext, paramAttributeSet);
+    if (paramView != null)
+    {
+      paramString = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
+      int i = 0;
+      if (i < jdField_a_of_type_ArrayOfInt.length)
       {
-        paramString1 = a(paramString1, paramString2, paramString3) + File.separator + paramString4 + ".so";
-        QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo. soFilename = " + paramString1);
-        boolean bool = new File(paramString1).exists();
-        if (bool)
+        int j = paramString.getResourceId(i, 0);
+        if (j == 0) {}
+        for (;;)
         {
-          try
+          i += 1;
+          break;
+          paramAttributeSet = paramContext.getString(j);
+          switch (jdField_a_of_type_ArrayOfInt[i])
           {
-            if ((paramString1.endsWith("libARCloud.so")) || (paramString1.endsWith("libARCloud_64.so")) || (paramString1.endsWith("libARFeature.so"))) {
-              SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "c++_shared");
+          default: 
+            break;
+          case 16843087: 
+            if ((paramView instanceof TextView)) {
+              ((TextView)paramView).setText(paramAttributeSet);
+            } else if ((paramView instanceof Button)) {
+              ((Button)paramView).setText(paramAttributeSet);
+            } else if ((paramView instanceof FormSwitchItem)) {
+              ((FormSwitchItem)paramView).setText(paramAttributeSet);
             }
-            System.load(paramString1);
-            i = 0;
-            QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo successfully. result = " + 0 + ", soFilename = " + paramString1);
+            break;
+          case 16843088: 
+            if ((paramView instanceof TextView)) {
+              ((TextView)paramView).setHint(paramAttributeSet);
+            } else if ((paramView instanceof Button)) {
+              ((Button)paramView).setHint(paramAttributeSet);
+            }
+            break;
+          case 16844078: 
+            if ((paramView instanceof TextView)) {
+              ((TextView)paramView).setContentDescription(paramAttributeSet);
+            } else if ((paramView instanceof Button)) {
+              ((Button)paramView).setContentDescription(paramAttributeSet);
+            }
+            break;
+          case 2131034593: 
+            if ((paramView instanceof FormSimpleItem)) {
+              ((FormSimpleItem)paramView).setLeftText(paramAttributeSet);
+            }
+            break;
+          case 2131034922: 
+            if ((paramView instanceof FormSimpleItem)) {
+              ((FormSimpleItem)paramView).setRightText(paramAttributeSet);
+            }
+            break;
+          case 2131035068: 
+            if ((paramView instanceof FormSwitchItem)) {
+              ((FormSwitchItem)paramView).setText(paramAttributeSet);
+            }
+            break;
+          case 2131035066: 
+            if ((paramView instanceof FormMultiLineSwitchItem)) {
+              ((FormMultiLineSwitchItem)paramView).setSecendLineText(paramAttributeSet);
+            }
+            break;
           }
-          catch (UnsatisfiedLinkError paramString2)
-          {
-            i = -4;
-            QLog.e("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo failed. result = " + -4 + ", soFilename = " + paramString1 + ", errMsg = " + paramString2.getMessage() + ", StackTrace = " + paramString2.getStackTrace().toString());
-            continue;
-          }
-          return i;
         }
       }
-      finally {}
-      int i = -2;
-      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "loadArNativeSo failed. result = " + -2 + ", soFilename = " + paramString1);
+      paramString.recycle();
     }
+    return paramView;
   }
   
-  public static String a()
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (BaseApplicationImpl.sApplication.getFilesDir() == null)
-    {
-      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "getARNativeSoRootDir. ARNativeSoRootDir is null.");
-      return "";
-    }
-    return BaseApplicationImpl.getContext().getFilesDir() + "/pddata/prd";
-  }
-  
-  public static String a(String paramString)
-  {
-    return a() + File.separator + paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    return a(paramString1) + File.separator + paramString2 + File.separator + paramString3;
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    paramString1 = paramString1 + paramString2 + paramString3;
-    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    paramString2.putString(paramString1, paramString4);
-    paramString2.commit();
-    QLog.i("AREngine_ArNativeSoLoaderBase", 2, "saveMd5. key = " + paramString1 + ", md5 = " + paramString4);
-  }
-  
-  public static String b(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = paramString1 + paramString2 + paramString3;
-    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString(paramString1, "");
-    QLog.i("AREngine_ArNativeSoLoaderBase", 2, "readMd5. key = " + paramString1 + ", md5 = " + paramString2);
-    return paramString2;
+    return null;
   }
 }
 

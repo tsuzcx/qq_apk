@@ -1,53 +1,56 @@
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class oyv
-  extends bdzm
+  extends RecyclerView.Adapter
 {
-  public oyv(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private sxn jdField_a_of_type_Sxn;
+  private List<String> b = new ArrayList();
   
-  public void handleMessage(Message paramMessage)
+  public oyv(Context paramContext, List<String> paramList1, List<String> paramList2, sxn paramsxn)
   {
-    bduk localbduk = (bduk)paramMessage.obj;
-    if ((localbduk == null) || (localbduk.b != 24) || (localbduk.c != 10)) {
-      return;
+    this.b = paramList1;
+    this.jdField_a_of_type_JavaUtilList = paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Sxn = paramsxn;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.b != null) {
+      return this.b.size();
     }
-    switch (paramMessage.what)
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder instanceof oyx))
     {
-    default: 
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send finished!");
+      oyx localoyx = (oyx)paramViewHolder;
+      if ((paramInt >= 0) && (paramInt < this.b.size()))
+      {
+        String str1 = (String)this.b.get(paramInt);
+        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localoyx.a.setText(str1);
+        localoyx.a.setOnClickListener(new oyw(this, str2, str1));
       }
-      break;
     }
-    try
-    {
-      ReadInJoyCommentComponentFragment.a(this.a).c = true;
-      ReadInJoyCommentComponentFragment.a(this.a).f = localbduk.i;
-      ReadInJoyCommentComponentFragment.a(this.a).g = localbduk.f;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
-      }
-      label172:
-      this.a.f();
-      ReadInJoyCommentComponentFragment.a(this.a).setResult(-1, ReadInJoyCommentComponentFragment.a(this.a));
-      ReadInJoyCommentComponentFragment.a(this.a).finish();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
-      }
-      this.a.f();
-      this.a.a(1, this.a.getString(2131716990));
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      break label172;
-    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new oyx(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560143, null));
   }
 }
 

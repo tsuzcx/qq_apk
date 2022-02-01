@@ -1,25 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import android.os.SystemClock;
 
 public class lsg
-  implements DialogInterface.OnClickListener
 {
-  public lsg(RandomController paramRandomController) {}
+  private static volatile long a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static long a()
   {
-    if (RandomController.a(this.a) == 2) {
-      bcst.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.c();
-      return;
-      if (RandomController.a(this.a) == 1) {
-        bcst.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
-      }
-    }
+    return a;
+  }
+  
+  public static void a()
+  {
+    a = SystemClock.uptimeMillis();
   }
 }
 

@@ -99,27 +99,27 @@ public class RefreshEyeView
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter = new PaintFlagsDrawFilter(0, 3);
     setWillNotDraw(false);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(getResources().getDrawable(2130849462));
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(getResources().getDrawable(2130849470));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = a(getResources().getDrawable(2130849443));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[1] = a(getResources().getDrawable(2130849444));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[2] = a(getResources().getDrawable(2130849445));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[3] = a(getResources().getDrawable(2130849446));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[4] = a(getResources().getDrawable(2130849447));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[5] = a(getResources().getDrawable(2130849448));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[6] = a(getResources().getDrawable(2130849449));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[7] = a(getResources().getDrawable(2130849450));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[8] = a(getResources().getDrawable(2130849451));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[9] = a(getResources().getDrawable(2130849452));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[10] = a(getResources().getDrawable(2130849453));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[11] = a(getResources().getDrawable(2130849454));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[12] = a(getResources().getDrawable(2130849455));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[13] = a(getResources().getDrawable(2130849456));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[14] = a(getResources().getDrawable(2130849457));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[15] = a(getResources().getDrawable(2130849458));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[16] = a(getResources().getDrawable(2130849459));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[17] = a(getResources().getDrawable(2130849460));
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[18] = a(getResources().getDrawable(2130849461));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = a(getResources().getDrawable(2130849451));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[1] = a(getResources().getDrawable(2130849452));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[2] = a(getResources().getDrawable(2130849453));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[3] = a(getResources().getDrawable(2130849454));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[4] = a(getResources().getDrawable(2130849455));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[5] = a(getResources().getDrawable(2130849456));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[6] = a(getResources().getDrawable(2130849457));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[7] = a(getResources().getDrawable(2130849458));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[8] = a(getResources().getDrawable(2130849459));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[9] = a(getResources().getDrawable(2130849460));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[10] = a(getResources().getDrawable(2130849461));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[11] = a(getResources().getDrawable(2130849462));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[12] = a(getResources().getDrawable(2130849463));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[13] = a(getResources().getDrawable(2130849464));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[14] = a(getResources().getDrawable(2130849465));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[15] = a(getResources().getDrawable(2130849466));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[16] = a(getResources().getDrawable(2130849467));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[17] = a(getResources().getDrawable(2130849468));
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[18] = a(getResources().getDrawable(2130849469));
   }
   
   protected void onDraw(Canvas paramCanvas)

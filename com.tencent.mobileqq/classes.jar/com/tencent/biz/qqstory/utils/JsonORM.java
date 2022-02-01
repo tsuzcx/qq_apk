@@ -9,12 +9,12 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zkv;
-import zkw;
+import zoq;
+import zor;
 
 public class JsonORM
 {
-  private static final Map<Class, zkw[]> a = new IdentityHashMap();
+  private static final Map<Class, zor[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -48,7 +48,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (zkw[])a.get(paramClass);
+    Object localObject2 = (zor[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -123,7 +123,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (zkw[])a.get(localClass);
+    Object localObject2 = (zor[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -264,20 +264,20 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<zkw> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<zor> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      zkv localzkv = (zkv)localField.getAnnotation(zkv.class);
-      if (localzkv == null) {}
+      zoq localzoq = (zoq)localField.getAnnotation(zoq.class);
+      if (localzoq == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new zkw(localzkv.a(), a(localField.getType()), localField));
+        paramArrayList.add(new zor(localzoq.a(), a(localField.getType()), localField));
       }
     }
   }
@@ -310,7 +310,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static zkw[] a(Class<?> paramClass)
+  private static zor[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -318,7 +318,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new zkw[localArrayList.size()];
+    paramClass = new zor[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

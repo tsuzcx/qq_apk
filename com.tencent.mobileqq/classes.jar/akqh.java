@@ -1,26 +1,42 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.HashMap;
 
 public class akqh
-  implements aklz
+  implements TVK_SDKMgr.InstallListener
 {
-  public akqh(ThemeHbFragment paramThemeHbFragment) {}
+  public akqh(MediaPlayHelper.2 param2) {}
   
-  public void a()
-  {
-    ThemeHbFragment.a(this.a, null);
-  }
+  public void onInstallProgress(float paramFloat) {}
   
-  public void a(Object paramObject)
+  public void onInstalledFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+      QLog.d(akqg.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    bdmc.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(akqg.a(this.a.this$0), 2, "onInstalledSuccessed");
     }
+    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.sendEmptyMessage(6);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    bdmc.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

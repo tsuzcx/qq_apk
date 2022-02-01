@@ -1,186 +1,154 @@
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.adapter.BaseHttpAdapter.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.viola.adapter.HttpRequset;
-import com.tencent.viola.adapter.HttpResponse;
-import com.tencent.viola.adapter.IHttpAdapter;
-import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
-import com.tencent.viola.core.ViolaSDKManager;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import mqq.manager.TicketManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class tly
-  implements IHttpAdapter
 {
-  public static String a;
-  private static final tlz jdField_a_of_type_Tlz = new tma(null);
-  public static final String b = "QQ/8.4.1 Android/0.17 Android/" + Build.VERSION.RELEASE;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  public int a;
+  public String a;
+  public List<tlu> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public List<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  public int p;
+  public int q = 1;
+  public int r;
+  public int s;
   
-  static
+  public tly(String paramString)
   {
-    jdField_a_of_type_JavaLangString = "BaseHttpAdapter";
-  }
-  
-  private String a(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
-  {
-    if (paramInputStream == null) {
-      return null;
+    this.jdField_a_of_type_JavaLangString = "1";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "1";
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementExtInfo", 2, "adExt = " + paramString);
+      }
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-    char[] arrayOfChar = new char[2048];
     for (;;)
     {
-      int i = paramInputStream.read(arrayOfChar);
-      if (i == -1) {
-        break;
-      }
-      localStringBuilder.append(arrayOfChar, 0, i);
-      if (paramOnHttpListener == null) {}
-    }
-    paramInputStream.close();
-    return localStringBuilder.toString();
-  }
-  
-  private HttpURLConnection a(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener)
-  {
-    HttpURLConnection localHttpURLConnection = a(new URL(paramHttpRequset.url));
-    localHttpURLConnection.setConnectTimeout(paramHttpRequset.timeoutMs);
-    localHttpURLConnection.setReadTimeout(paramHttpRequset.timeoutMs);
-    localHttpURLConnection.setUseCaches(false);
-    localHttpURLConnection.setDoInput(true);
-    Object localObject1;
-    Object localObject2;
-    if (paramHttpRequset.paramMap != null)
-    {
-      localObject1 = paramHttpRequset.paramMap.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
+      int i1;
+      try
       {
-        localObject2 = (String)((Iterator)localObject1).next();
-        localHttpURLConnection.addRequestProperty((String)localObject2, (String)paramHttpRequset.paramMap.get(localObject2));
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = paramString.optInt("AdSlideSpeed");
+        this.jdField_b_of_type_Int = paramString.optInt("AdRepeatedFlag");
+        this.jdField_c_of_type_Int = paramString.optInt("AdDistance");
+        this.jdField_d_of_type_Int = paramString.optInt("RepeatedReqFlag");
+        this.jdField_e_of_type_Int = paramString.optInt("KdPos");
+        this.jdField_f_of_type_Int = paramString.optInt("refreshLastPos", 0);
+        this.g = paramString.optInt("refreshLastPosY", 10);
+        this.h = paramString.optInt("refreshLastPosZ", 10);
+        this.jdField_a_of_type_JavaLangString = paramString.optString("button_flag", "1");
+        this.i = paramString.optInt("showAdType");
+        this.jdField_b_of_type_JavaLangString = paramString.optString("pk_ad_vs_pic");
+        this.j = paramString.optInt("AdSource");
+        this.k = paramString.optInt("slide_effect1");
+        this.l = paramString.optInt("slide_effect2");
+        this.n = paramString.optInt("delivery_effect");
+        this.jdField_c_of_type_JavaLangString = paramString.optString("img_coord");
+        this.o = paramString.optInt("slideShowSlipAllowMs");
+        this.p = paramString.optInt("slideImgDisplayMs");
+        this.q = paramString.optInt("animated_type");
+        this.jdField_d_of_type_JavaLangString = paramString.optString("resZipUrl");
+        this.jdField_e_of_type_JavaLangString = paramString.optString("res_zip_md5");
+        this.r = paramString.optInt("res_zip_version");
+        this.s = paramString.optInt("is_video_new");
+        Object localObject = paramString.optJSONArray("container_ad_item");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          i1 = 0;
+          if (i1 < ((JSONArray)localObject).length())
+          {
+            tlu localtlu = new tlu(((JSONArray)localObject).getJSONObject(i1));
+            this.jdField_a_of_type_JavaUtilList.add(localtlu);
+            if (!QLog.isColorLevel()) {
+              break label608;
+            }
+            QLog.d("AdvertisementExtInfo", 2, "adPKImageData = " + localtlu.toString());
+            break label608;
+          }
+        }
+        paramString = paramString.optJSONArray("img_urls");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          this.jdField_b_of_type_JavaUtilList = new ArrayList();
+          i1 = i2;
+          if (i1 < paramString.length())
+          {
+            localObject = paramString.getString(i1);
+            this.jdField_b_of_type_JavaUtilList.add(localObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("AdvertisementExtInfo", 2, "imgUrlList = " + this.jdField_b_of_type_JavaUtilList.toString());
+            }
+            i1 += 1;
+            continue;
+          }
+        }
+        return;
       }
-    }
-    if ((paramHttpRequset.paramMap == null) || (!paramHttpRequset.paramMap.containsKey("Cookie")))
-    {
-      localObject2 = (QQAppInterface)pha.a();
-      if (localObject2 != null)
+      catch (Exception paramString)
       {
-        TicketManager localTicketManager = (TicketManager)((QQAppInterface)localObject2).getManager(2);
-        localObject1 = ((QQAppInterface)localObject2).getAccount();
-        localObject2 = localTicketManager.getSkey(((QQAppInterface)localObject2).getCurrentAccountUin());
-        localHttpURLConnection.addRequestProperty("Cookie", "uin=o" + (String)localObject1 + "; skey=" + (String)localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.e("AdvertisementExtInfo", 2, "advertisementExtInfo Exception = " + paramString.getMessage());
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementExtInfo", 2, "advertisementExtInfo = " + toString());
+        }
       }
-    }
-    if ((paramHttpRequset.paramMap == null) || (!paramHttpRequset.paramMap.containsKey("User-Agent"))) {
-      localHttpURLConnection.addRequestProperty("User-Agent", b);
-    }
-    if (("POST".equals(paramHttpRequset.method)) || ("PUT".equals(paramHttpRequset.method)) || ("PATCH".equals(paramHttpRequset.method)))
-    {
-      localHttpURLConnection.setRequestMethod(paramHttpRequset.method);
-      if (paramHttpRequset.body != null)
-      {
-        if (paramOnHttpListener != null) {}
-        localHttpURLConnection.setDoOutput(true);
-        localObject1 = new DataOutputStream(localHttpURLConnection.getOutputStream());
-        ((DataOutputStream)localObject1).write(paramHttpRequset.body.getBytes());
-        ((DataOutputStream)localObject1).close();
-        if (paramOnHttpListener == null) {}
-      }
-      return localHttpURLConnection;
-    }
-    if (!TextUtils.isEmpty(paramHttpRequset.method))
-    {
-      localHttpURLConnection.setRequestMethod(paramHttpRequset.method);
-      return localHttpURLConnection;
-    }
-    localHttpURLConnection.setRequestMethod("GET");
-    return localHttpURLConnection;
-  }
-  
-  private void a(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener, boolean paramBoolean)
-  {
-    if (paramOnHttpListener != null) {
-      paramOnHttpListener.onHttpStart();
-    }
-    a(new BaseHttpAdapter.1(this, paramHttpRequset, paramOnHttpListener), paramBoolean);
-  }
-  
-  private void a(HttpResponse paramHttpResponse, IHttpAdapter.OnHttpListener paramOnHttpListener, String paramString)
-  {
-    paramHttpResponse.statusCode = "-1";
-    paramHttpResponse.errorCode = "-1";
-    paramHttpResponse.errorMsg = paramString;
-    if (paramOnHttpListener != null) {
-      paramOnHttpListener.onHttpFinish(paramHttpResponse);
-    }
-  }
-  
-  private void a(Runnable paramRunnable, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      ViolaSDKManager.getInstance().postOnThreadPool(paramRunnable);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("AdvertisementExtInfo", 2, "adExt = null");
       return;
+      label608:
+      i1 += 1;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(6);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
   }
   
-  private byte[] a(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
+  public boolean a()
   {
-    if (paramInputStream == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    byte[] arrayOfByte = new byte[2048];
-    int i = 0;
-    for (;;)
-    {
-      int j = paramInputStream.read(arrayOfByte, 0, arrayOfByte.length);
-      if (j == -1) {
-        break;
-      }
-      localByteArrayOutputStream.write(arrayOfByte, 0, j);
-      j = i + j;
-      i = j;
-      if (paramOnHttpListener != null) {
-        i = j;
-      }
-    }
-    localByteArrayOutputStream.flush();
-    return localByteArrayOutputStream.toByteArray();
+    return this.jdField_b_of_type_Int == 1;
   }
   
-  protected HttpURLConnection a(URL paramURL)
+  public String toString()
   {
-    return (HttpURLConnection)paramURL.openConnection();
-  }
-  
-  @NonNull
-  public tlz a()
-  {
-    return jdField_a_of_type_Tlz;
-  }
-  
-  public void sendRequest(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener, boolean paramBoolean)
-  {
-    a(paramHttpRequset, paramOnHttpListener, paramBoolean);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("adSlideSpeed=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append("adRepeatedFlag=").append(this.jdField_b_of_type_Int).append("|");
+    localStringBuffer.append("adDistance=").append(this.jdField_c_of_type_Int).append("|");
+    localStringBuffer.append("repeatedReqFlag=").append(this.jdField_d_of_type_Int).append("|");
+    localStringBuffer.append("kdPos=").append(this.jdField_e_of_type_Int).append("|");
+    localStringBuffer.append("refreshLastPos=").append(this.jdField_f_of_type_Int).append("|");
+    localStringBuffer.append("showAdType=").append(this.i).append("|");
+    localStringBuffer.append("buttonFlag=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append("slidEffect1=").append(this.k).append("|");
+    localStringBuffer.append("slidEffect2=").append(this.l).append("|");
+    localStringBuffer.append("deliveryEffect=").append(this.n).append("|");
+    localStringBuffer.append("imgCoord=").append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuffer.append("slideShowSlipAllowMs=").append(this.o).append("|");
+    localStringBuffer.append("slideImgDisplayMs=").append(this.p).append("|");
+    return localStringBuffer.toString();
   }
 }
 

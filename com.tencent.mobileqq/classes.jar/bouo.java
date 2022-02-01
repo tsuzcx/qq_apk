@@ -1,17 +1,15 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import android.view.View.OnTouchListener;
 
-public class bouo
-  implements View.OnClickListener
+class bouo
+  implements View.OnTouchListener
 {
-  public bouo(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
+  bouo(boun paramboun) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return true;
   }
 }
 

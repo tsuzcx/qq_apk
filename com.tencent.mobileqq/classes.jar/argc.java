@@ -1,48 +1,87 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class argc<T>
+public class argc
+  implements arae<String>
 {
-  private LruCache<String, T> a = new argd(this, (int)Runtime.getRuntime().maxMemory() / 32);
+  public ArrayList<argd> a = new ArrayList();
   
-  private static int a(Bitmap paramBitmap)
+  public void a(String paramString)
   {
-    if (paramBitmap == null) {
-      return 0;
-    }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
-  }
-  
-  private int b(T paramT)
-  {
-    if ((paramT instanceof Bitmap)) {
-      return a((Bitmap)paramT);
-    }
-    if ((paramT instanceof BitmapDrawable)) {
-      return a(((BitmapDrawable)paramT).getBitmap());
-    }
-    return 0;
-  }
-  
-  protected int a(T paramT)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    try
+    this.a.clear();
+    if (TextUtils.isEmpty(paramString))
     {
-      this.a.trimToSize(paramInt);
+      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
       return;
     }
-    finally {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("random_list");
+        if (paramString != null)
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            argd localargd = new argd();
+            localargd.a = localJSONObject.optString("nick", "");
+            localargd.b = localJSONObject.optString("headid", "");
+            localargd.c = localJSONObject.optString("url", "");
+            if ((!TextUtils.isEmpty(localargd.a)) && (!TextUtils.isEmpty(localargd.b)) && (!TextUtils.isEmpty(localargd.c))) {
+              break label230;
+            }
+            if (!QLog.isColorLevel()) {
+              break label235;
+            }
+            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
+            break label235;
+            if (j == 0) {
+              break label240;
+            }
+            this.a.add(localargd);
+            break label240;
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
+        return;
+      }
+      label230:
+      int j = 1;
+      continue;
+      label235:
+      j = 0;
+      continue;
+      label240:
+      i += 1;
+    }
+  }
+  
+  public String toString()
+  {
+    if (this.a.size() > 0) {
+      return this.a.toString();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argc
  * JD-Core Version:    0.7.0.1
  */

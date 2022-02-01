@@ -33,8 +33,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bgjq;
-import bgsp;
+import bhjr;
+import bhsr;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
@@ -193,13 +193,13 @@ public class CanvasView
       {
         localObject1 = ((JSONArray)localObject7).optString(0);
         localObject6 = localObject1;
-        if (!bgsp.a((String)localObject1))
+        if (!bhsr.a((String)localObject1))
         {
           if (((String)localObject1).startsWith("wxfile")) {
             localObject6 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject1);
           }
         }
-        else if (!bgsp.a((String)localObject6))
+        else if (!bhsr.a((String)localObject6))
         {
           f7 = (float)((JSONArray)localObject7).optDouble(1, 0.0D);
           f8 = (float)((JSONArray)localObject7).optDouble(2, 0.0D);
@@ -469,7 +469,7 @@ public class CanvasView
         } while ((!"pattern".equals(localObject6)) || (((JSONArray)localObject7).length() != 3));
         localObject6 = ((JSONArray)localObject7).optString(1);
         localObject3 = localObject6;
-        if (!bgsp.a((String)localObject6))
+        if (!bhsr.a((String)localObject6))
         {
           if (!((String)localObject6).startsWith("wxfile")) {
             break label1829;
@@ -482,7 +482,7 @@ public class CanvasView
         }
         this.mRepeatX = true;
         this.mRepeatY = true;
-        if (bgsp.a((String)localObject3)) {
+        if (bhsr.a((String)localObject3)) {
           break label1879;
         }
         localObject3 = ImageUtil.getLocalBitmap((String)localObject3);
@@ -1348,7 +1348,7 @@ public class CanvasView
     //   39: aload_3
     //   40: ldc 139
     //   42: aconst_null
-    //   43: invokestatic 1061	com/tencent/mobileqq/minigame/utils/NativeBuffer:unpackNativeBuffer	(Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/mobileqq/triton/sdk/bridge/ITNativeBufferPool;)Lcom/tencent/mobileqq/minigame/utils/NativeBuffer;
+    //   43: invokestatic 1061	com/tencent/mobileqq/minigame/utils/NativeBuffer:unpackNativeBuffer	(Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/mobileqq/mini/webview/JsRuntime;)Lcom/tencent/mobileqq/minigame/utils/NativeBuffer;
     //   46: astore_3
     //   47: aload_3
     //   48: ifnull +366 -> 414
@@ -1698,7 +1698,7 @@ public class CanvasView
     if ((Build.MANUFACTURER.equalsIgnoreCase("vivo")) || (Build.MODEL.toLowerCase().contains("vivo"))) {}
     try
     {
-      Object localObject = bgjq.a("ro.vivo.os.version");
+      Object localObject = bhjr.a("ro.vivo.os.version");
       if ((localObject != null) && ("3.1".equals(((String)localObject).trim())))
       {
         localObject = Class.forName("android.util.VivoSmartMultiWindowConfig").getDeclaredField("ENABLE_SPLIT");

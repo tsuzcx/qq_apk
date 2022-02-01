@@ -1,6 +1,12 @@
-class bami
+public abstract interface bami
 {
-  private static final bamd a = new bamd(null);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(bamh parambamh, int paramInt1, int paramInt2);
+  
+  public abstract void f();
 }
 
 

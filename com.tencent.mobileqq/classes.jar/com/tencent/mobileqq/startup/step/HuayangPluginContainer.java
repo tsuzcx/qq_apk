@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Debug;
 import android.widget.Toast;
-import avgw;
-import avju;
-import bcph;
+import avyz;
+import awcc;
+import bdhz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.shadow.core.common.LoggerFactory;
@@ -26,12 +26,12 @@ public class HuayangPluginContainer
       Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
       Debug.waitForDebugger();
     }
-    LoggerFactory.setILoggerFactory(avgw.a());
+    LoggerFactory.setILoggerFactory(avyz.a());
     BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
     DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
-    avju.d();
-    bcph localbcph = new bcph(BaseApplicationImpl.getApplication());
-    URLDrawable.init(BaseApplicationImpl.getApplication(), localbcph);
+    awcc.d();
+    bdhz localbdhz = new bdhz(BaseApplicationImpl.getApplication());
+    URLDrawable.init(BaseApplicationImpl.getApplication(), localbdhz);
     new InitUrlDrawable().step();
     new InitMemoryCache().step();
     return true;

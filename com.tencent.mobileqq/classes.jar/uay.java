@@ -1,108 +1,38 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-class uay
-  extends uaj
+public class uay
+  implements pak
 {
-  uay(uat paramuat) {}
+  public uay(ReadInjoyWebShareHelper.4 param4) {}
   
-  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a(BaseResp paramBaseResp)
   {
-    twm localtwm = uat.a(this.a).a(uat.a(this.a), uat.b(this.a), paramInt);
-    if (localtwm == null) {
-      return false;
+    boolean bool = true;
+    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
+      return;
     }
-    if (localtwm.jdField_a_of_type_Boolean)
+    switch (paramBaseResp.errCode)
     {
-      this.a.b(localtwm.jdField_a_of_type_JavaLangString);
-      return true;
-    }
-    switch (paramInt)
-    {
+    case -1: 
     default: 
-      this.a.b(localtwm.jdField_a_of_type_JavaLangString);
+      zyx.a(1, 2131718139);
+      bool = false;
     }
-    for (;;)
+    while (this.a.a)
     {
-      return super.a(paramInt, paramActionSheetItem);
-      this.a.b(localtwm.jdField_a_of_type_JavaLangString);
+      uav.a(this.a.this$0, "we_chat", bool);
+      return;
+      zyx.a(2, 2131718157);
       continue;
-      uat.a(this.a, paramActionSheetItem);
-      continue;
-      uat.a(this.a).a(uat.a(this.a).c);
-      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-      continue;
-      uat.a(this.a).b(uat.a(this.a).c);
-      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-      continue;
-      uat.a(this.a).c();
-      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-      continue;
-      uat.a(this.a).a(this.a);
-      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-      continue;
-      uat.a(this.a);
-      uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-      continue;
-      if (!TextUtils.isEmpty(uat.a(this.a).c))
-      {
-        bdho.a(1, 3);
-        bdho.a(uat.a(this.a).c, uat.a(this.a).jdField_a_of_type_JavaLangString);
-        uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-        continue;
-        if (!TextUtils.isEmpty(uat.a(this.a).c))
-        {
-          this.a.a.d(uat.a(this.a).c, new uaz(this, localtwm));
-          continue;
-          uat.a(this.a).c(uat.a(this.a).c);
-          uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-          continue;
-          uat.b(this.a);
-          uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-          continue;
-          this.a.b("not_care");
-          continue;
-          Intent localIntent;
-          if (!TextUtils.isEmpty(uat.a(this.a).e))
-          {
-            localIntent = AddFriendLogicActivity.a(this.a.a(), 1, uat.a(this.a).e + "", null, 3096, 1, uat.a(this.a).f, null, null, null, null);
-            this.a.a().startActivity(localIntent);
-          }
-          uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-          continue;
-          if (!TextUtils.isEmpty(uat.a(this.a).e))
-          {
-            localIntent = afur.a(new Intent(this.a.a(), SplashActivity.class), null);
-            localIntent.putExtra("uin", uat.a(this.a).e);
-            localIntent.putExtra("uintype", 0);
-            this.a.a().startActivity(localIntent);
-            uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-            continue;
-            if (!TextUtils.isEmpty(uat.a(this.a).e))
-            {
-              localIntent = new Intent(this.a.a(), AccountDetailActivity.class);
-              localIntent.putExtra("uin", uat.a(this.a).e);
-              localIntent.putExtra("from_js", true);
-              this.a.a().startActivity(localIntent);
-              uat.a(this.a, localtwm.jdField_a_of_type_JavaLangString, true);
-              continue;
-              this.a.b("unfollow");
-            }
-          }
-        }
-      }
+      bool = false;
     }
+    uav.a(this.a.this$0, "we_chat_circle", bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uay
  * JD-Core Version:    0.7.0.1
  */

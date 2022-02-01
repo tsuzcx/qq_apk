@@ -1,29 +1,22 @@
+import android.content.Context;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.QvipArkView;
 
-final class bide
-  implements Animation.AnimationListener
+public class bide
+  implements View.OnLayoutChangeListener
 {
-  bide(View paramView1, View paramView2) {}
+  public bide(QQVipArkHeaderView paramQQVipArkHeaderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramAnimation = new bibr(this.a);
-    paramAnimation.setDuration(bidd.a());
-    paramAnimation.setFillAfter(true);
-    this.a.startAnimation(paramAnimation);
-    this.a.setVisibility(0);
-    this.b.clearAnimation();
-    this.b.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.clearAnimation();
-    this.a.setVisibility(4);
+    if (QQVipArkHeaderView.a(this.a).getHeight() > 0)
+    {
+      float f = (this.a.getHeight() * 1.0F - agej.a(54.0F, this.a.getContext().getResources())) / QQVipArkHeaderView.a(this.a).getHeight();
+      QQVipArkHeaderView.a(this.a).setScaleY(f);
+      QQVipArkHeaderView.a(this.a).setScaleX(f);
+    }
   }
 }
 

@@ -1,7 +1,13 @@
-import kotlin.Metadata;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/KanDianJumpScheme$Companion;", "", "()V", "KAN_DIAN_SUB_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayci {}
+public abstract interface ayci
+{
+  public abstract void a(int paramInt, ayck paramayck);
+  
+  public abstract void a(Comments.Comment paramComment, aycj paramaycj);
+  
+  public abstract void a(Comments.Comment paramComment, aycl paramaycl);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -1,6 +1,27 @@
-public abstract interface bpzj
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+public class bpzj
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public bpzj(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  140ms translate end");
+    }
+    this.a.a.d = 4;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.a = SystemClock.uptimeMillis();
+    this.a.a.b = 140L;
+  }
 }
 
 

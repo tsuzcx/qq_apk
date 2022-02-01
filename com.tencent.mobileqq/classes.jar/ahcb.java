@@ -1,19 +1,60 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import java.util.ArrayList;
 
-class ahcb
-  implements bhud
+public final class ahcb
+  extends Drawable.ConstantState
 {
-  ahcb(ahbx paramahbx) {}
+  public int a;
+  public final Paint a;
+  public ArrayList<ahce> a;
+  public boolean a;
+  public int b;
+  public ArrayList<Bitmap> b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
   
-  public void a(View paramView)
+  public ahcb()
   {
-    if (avsr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-      return;
-    }
-    afur.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 160;
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public Drawable newDrawable()
+  {
+    return new CustomFrameAnimationDrawable(this, null, null);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new CustomFrameAnimationDrawable(this, paramResources, null);
   }
 }
 

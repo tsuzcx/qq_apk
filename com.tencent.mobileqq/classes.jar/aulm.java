@@ -1,189 +1,102 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class aulm
-  extends aoqm
+  extends auls
 {
-  public aulm(AppletsSettingFragment paramAppletsSettingFragment) {}
+  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile = (MessageForFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = aunj.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   
-  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<aoqv> paramList)
+  public aulm(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsSettingFragment", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    if (paramBoolean)
+    super(paramQQAppInterface, paramChatMessage);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject1 = (aoqv)paramList.next();
-          Object localObject2;
-          if ((((aoqv)localObject1).jdField_a_of_type_JavaUtilList != null) && (((aoqv)localObject1).jdField_a_of_type_JavaUtilList.size() > 0) && (((aoqv)localObject1).jdField_a_of_type_JavaUtilList.get(0) != null) && (((AppletItem)((aoqv)localObject1).jdField_a_of_type_JavaUtilList.get(0)).a() == 1L))
-          {
-            AppletsSettingFragment.a(this.a, (AppletItem)((aoqv)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-            if (!TextUtils.isEmpty(AppletsSettingFragment.a(this.a).a()))
-            {
-              AppletsSettingFragment.a(this.a).setText(AppletsSettingFragment.a(this.a).a());
-              this.a.a.e(AppletsSettingFragment.a(this.a).a());
-            }
-            localObject2 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() == 1)
-            {
-              paramBoolean = true;
-              label247:
-              ((Switch)localObject2).setChecked(paramBoolean);
-              localObject2 = this.a.a;
-              if (AppletsSettingFragment.a(this.a).b() != 1) {
-                break label333;
-              }
-            }
-            label333:
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((akxz)localObject2).a(paramBoolean);
-              if (TextUtils.isEmpty(((aoqv)localObject1).jdField_a_of_type_JavaLangString)) {
-                break;
-              }
-              AppletsSettingFragment.b(this.a).setText(((aoqv)localObject1).jdField_a_of_type_JavaLangString);
-              this.a.a.a(((aoqv)localObject1).jdField_a_of_type_JavaLangString);
-              break;
-              paramBoolean = false;
-              break label247;
-            }
-          }
-          if (!TextUtils.isEmpty(((aoqv)localObject1).jdField_a_of_type_JavaLangString))
-          {
-            AppletsSettingFragment.c(this.a).setText(((aoqv)localObject1).jdField_a_of_type_JavaLangString);
-            this.a.a.b(((aoqv)localObject1).jdField_a_of_type_JavaLangString);
-          }
-          if ((((aoqv)localObject1).jdField_a_of_type_JavaUtilList != null) && (((aoqv)localObject1).jdField_a_of_type_JavaUtilList.size() > 0))
-          {
-            AppletsSettingFragment.a(this.a).clear();
-            localObject1 = ((aoqv)localObject1).jdField_a_of_type_JavaUtilList.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (AppletItem)((Iterator)localObject1).next();
-              AppletsSettingFragment.a(this.a).put(AppletsSettingFragment.a(this.a, (AppletItem)localObject2), localObject2);
-              if ((((AppletItem)localObject2).a() != 1L) && (((AppletItem)localObject2).b() != 1)) {
-                localHashSet.add(String.valueOf(((AppletItem)localObject2).a()));
-              }
-            }
-            AppletsSettingFragment.a(this.a, new ArrayList(AppletsSettingFragment.a(this.a).values()));
-          }
-        }
-      }
-      this.a.a.a(localHashSet);
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "init: not find the target entity.");
       return;
     }
-    this.a.a(2131690066);
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "init: uniseq[" + paramChatMessage.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
   }
   
-  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
+  public long a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsSettingFragment", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
     }
-    if (paramList != null)
+    return 0L;
+  }
+  
+  public aulp a()
+  {
+    aull localaull = new aull(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localaull.a(new auln(this));
+    return localaull;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "download: file entity is null.");
+      return false;
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
+    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
+    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] cloudType[" + i + "] status[" + j + "]");
+    if ((!bhmi.b(str)) && (i != 0))
+    {
+      if (j == 3)
       {
-        Object localObject1 = (AppletItem)paramList.next();
-        this.a.a(false);
-        if (!paramBoolean) {
-          this.a.a(2131690067);
-        }
-        Object localObject2;
-        int i;
-        if (((AppletItem)localObject1).a() == 1L)
-        {
-          localObject2 = AppletsSettingFragment.a(this.a);
-          if (paramBoolean)
-          {
-            i = ((AppletItem)localObject1).b();
-            label112:
-            ((AppletItem)localObject2).a(i);
-            localObject1 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() != 1) {
-              break label216;
-            }
-            bool = true;
-            label144:
-            ((Switch)localObject1).setChecked(bool);
-            if (this.a.a == null) {
-              continue;
-            }
-            localObject1 = this.a.a;
-            if (AppletsSettingFragment.a(this.a).b() != 1) {
-              break label222;
-            }
-          }
-          label216:
-          label222:
-          for (boolean bool = true;; bool = false)
-          {
-            ((akxz)localObject1).a(bool);
-            break;
-            if (((AppletItem)localObject1).b() == 1)
-            {
-              i = 0;
-              break label112;
-            }
-            i = 1;
-            break label112;
-            bool = false;
-            break label144;
-          }
-        }
-        else
-        {
-          localObject2 = AppletsSettingFragment.a(this.a, (AppletItem)localObject1);
-          localObject2 = (AppletItem)AppletsSettingFragment.a(this.a).get(localObject2);
-          if (localObject2 != null)
-          {
-            if (!paramBoolean) {
-              break label347;
-            }
-            i = ((AppletItem)localObject1).b();
-          }
-          for (;;)
-          {
-            ((AppletItem)localObject2).a(i);
-            AppletsSettingFragment.a(this.a);
-            AppletsSettingFragment.a(this.a, new ArrayList(AppletsSettingFragment.a(this.a).values()));
-            if (this.a.a == null) {
-              break;
-            }
-            if (((AppletItem)localObject2).b() != 0) {
-              break label366;
-            }
-            this.a.a.c(String.valueOf(((AppletItem)localObject2).a()));
-            break;
-            label347:
-            if (((AppletItem)localObject1).b() == 1) {
-              i = 0;
-            } else {
-              i = 1;
-            }
-          }
-          label366:
-          this.a.a.d(String.valueOf(((AppletItem)localObject2).a()));
-        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+        return true;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return true;
+    }
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: error, file status is not right.");
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "stopDownload: file entity is null.");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    return true;
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getStatus() == 2) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
 }
 

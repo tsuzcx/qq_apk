@@ -1,33 +1,34 @@
-public class becf
-  extends becg
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+class becf
+  implements WtTicketPromise
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  becf(bece parambece, Runnable paramRunnable) {}
   
-  public becf()
+  public void Done(Ticket paramTicket)
   {
-    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
+    }
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public String toString()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" voiceLength:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" autoToText:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    }
   }
 }
 

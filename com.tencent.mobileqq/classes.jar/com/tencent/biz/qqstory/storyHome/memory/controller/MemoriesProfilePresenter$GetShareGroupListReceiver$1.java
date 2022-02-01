@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import wpm;
-import wpy;
-import yff;
-import yfi;
+import wth;
+import wtt;
+import yja;
+import yjd;
 
 public class MemoriesProfilePresenter$GetShareGroupListReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetShareGroupListReceiver$1(yfi paramyfi, yff paramyff) {}
+  public MemoriesProfilePresenter$GetShareGroupListReceiver$1(yjd paramyjd, yja paramyja) {}
   
   public void run()
   {
-    ((wpy)wpm.a(2)).a(this.a.a);
+    ((wtt)wth.a(2)).a(this.a.a);
   }
 }
 

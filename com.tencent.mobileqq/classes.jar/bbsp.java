@@ -1,15 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bbsp
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
+  public bbsp(EditActivity paramEditActivity) {}
   
-  public bbsp(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

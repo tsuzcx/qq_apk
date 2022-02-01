@@ -1,28 +1,40 @@
-import kotlin.Metadata;
-import kotlin.Unit;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter$Companion;", "", "()V", "INSTANCT", "Lcom/tencent/mobileqq/dt/QQDtReporter;", "instance", "instance$annotations", "getInstance", "()Lcom/tencent/mobileqq/dt/QQDtReporter;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arnm
+public class arnm
 {
-  @Nullable
-  public final arnl a()
+  public boolean a = true;
+  
+  public static arnm a(String paramString)
   {
-    if (arnl.a() == null) {}
-    try
+    arnm localarnm = new arnm();
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      if (arnl.a() == null) {
-        arnl.a(new arnl(null));
+      for (;;)
+      {
+        return localarnm;
+        try
+        {
+          localarnm.a = new JSONObject(paramString).optBoolean("isEnable", true);
+          if (QLog.isColorLevel())
+          {
+            QLog.d("QVipPrettyAccountConfig", 2, "pretty_account config :" + localarnm.a);
+            return localarnm;
+          }
+        }
+        catch (JSONException paramString) {}
       }
-      Unit localUnit = Unit.INSTANCE;
-      return arnl.a();
-    }
-    finally {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QVipPrettyAccountConfig", 2, "pretty_account config init error:" + paramString);
+    return localarnm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnm
  * JD-Core Version:    0.7.0.1
  */

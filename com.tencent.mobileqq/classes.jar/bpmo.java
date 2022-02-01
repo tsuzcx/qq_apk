@@ -1,9 +1,29 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import dov.com.qq.im.capture.control.CaptureAsyncStep.BindTroopMemberClient;
 
 public class bpmo
-  extends bpme
+  implements aasd
 {
-  public bpmo(GLTextureView paramGLTextureView, boolean paramBoolean) {}
+  public bpmo(CaptureAsyncStep.BindTroopMemberClient paramBindTroopMemberClient) {}
+  
+  public void callback(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("nickName");
+    if (paramBundle == null) {
+      paramBundle = "";
+    }
+    for (;;)
+    {
+      AppInterface localAppInterface = bplq.a();
+      if ((localAppInterface instanceof PeakAppInterface)) {
+        ((PeakAppInterface)localAppInterface).a(paramBundle);
+      }
+      this.a.a.b();
+      return;
+    }
+  }
 }
 
 

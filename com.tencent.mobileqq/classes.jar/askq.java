@@ -1,26 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class askq
-  implements View.OnTouchListener
+public abstract class askq
 {
-  public askq(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  public void a(EmoticonPackage paramEmoticonPackage) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

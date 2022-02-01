@@ -1,46 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aahx
-  extends aaib
+  implements View.OnClickListener
 {
-  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
+  public aahx(CommentBottomBar paramCommentBottomBar) {}
   
-  public aahx(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(View paramView)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    this.a.d();
+    if (CommentBottomBar.a(this.a) != null) {
+      CommentBottomBar.a(this.a).onClick(paramView);
     }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-    this.a.mBitmap.set(1L);
-  }
-  
-  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
-  {
-    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
-    try
-    {
-      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

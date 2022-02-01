@@ -1,12 +1,23 @@
-import android.animation.TimeInterpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
 public class bppi
-  implements TimeInterpolator
+  implements View.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  public bppi(HummingActivity paramHummingActivity) {}
+  
+  public void onClick(View paramView)
   {
-    double d = Math.pow(2.0D, -10.0F * paramFloat);
-    return (float)(Math.sin((paramFloat - 0.7F / 4.0F) * 6.283185307179586D / 0.7F) * d + 1.0D);
+    if (bppc.b()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      HummingActivity.a(this.a, 2);
+      HummingActivity.b(this.a);
+    }
   }
 }
 

@@ -1,12 +1,18 @@
+import com.tencent.qphone.base.util.QLog;
+
 class bqhd
-  implements bqia
+  implements bjbj
 {
-  bqhd(bqhc parambqhc) {}
+  bqhd(bqha parambqha) {}
   
-  public boolean a(double paramDouble)
+  public void a(bjbh parambjbh)
   {
-    return bqhc.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
+    }
   }
+  
+  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
 }
 
 

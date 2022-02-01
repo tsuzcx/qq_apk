@@ -16,7 +16,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.qqmini.miniapp.R.drawable;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.TouchInfo;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -27,7 +31,7 @@ public class SwipeBackLayout
   extends FrameLayout
 {
   private static final int DEFAULT_SCRIM_COLOR = -1728053248;
-  private static Deque<SwipeBackLayout.TouchInfo> touchInfoList = new LinkedList();
+  private static Deque<TouchInfo> touchInfoList = new LinkedList();
   private int lastX;
   private int lastY;
   private boolean mAllowedSliding = false;
@@ -88,7 +92,7 @@ public class SwipeBackLayout
     this.mShadowDrawable.draw(paramCanvas);
   }
   
-  public static List<SwipeBackLayout.TouchInfo> getTouchInfoList()
+  public static List<TouchInfo> getTouchInfoList()
   {
     return new ArrayList(touchInfoList);
   }
@@ -130,10 +134,18 @@ public class SwipeBackLayout
       if (i == 1)
       {
         long l = SystemClock.uptimeMillis();
-        SwipeBackLayout.TouchInfo localTouchInfo = new SwipeBackLayout.TouchInfo(this.mDownX, this.mDownY, j, k, l - this.mDownTime);
+        TouchInfo localTouchInfo = new TouchInfo(this.mDownX, this.mDownY, j, k, l - this.mDownTime);
         touchInfoList.offer(localTouchInfo);
         while (touchInfoList.size() > 10) {
           touchInfoList.poll();
+        }
+        try
+        {
+          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateTouchInfoList(new ArrayList(touchInfoList));
+        }
+        catch (Throwable localThrowable)
+        {
+          QMLog.e("SwipeBackLayout", "dispatchTouchEvent-updateTouchInfoList-failed", localThrowable);
         }
       }
     }

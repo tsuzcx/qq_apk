@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-public final class aeun
-  implements DialogInterface.OnClickListener
+public class aeun
+  extends aeuk
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aeun(JumpActivity paramJumpActivity)
+  {
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.a(paramInt1, paramInt2, paramIntent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeun
  * JD-Core Version:    0.7.0.1
  */

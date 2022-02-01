@@ -1,23 +1,14 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.view.View;
 
-class bjcv
-  implements ServiceConnection
+public abstract interface bjcv
 {
-  bjcv(bjct parambjct) {}
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    bjcq.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
-    bjct.a(this.a, lwf.a(paramIBinder));
-  }
+  public abstract void a(View paramView, int paramInt);
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bjcq.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
-    bjct.a(this.a, null);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
 }
 
 

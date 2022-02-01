@@ -3,41 +3,41 @@ package com.tencent.biz.pubaccount.weishi_new.cache;
 import UserGrowth.stSimpleGetFeedListRsp;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
-import uen;
-import ups;
+import uep;
+import uqt;
 
 public class WeiShiCacheManager$6
   implements Runnable
 {
-  public WeiShiCacheManager$6(uen paramuen, ArrayList paramArrayList, int paramInt) {}
+  public WeiShiCacheManager$6(uep paramuep, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= uen.b(this.this$0))
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= uep.b(this.this$0))
     {
       int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > uen.b(this.this$0)) {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > uep.b(this.this$0)) {
         i = this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int;
       }
       for (;;)
       {
-        int j = i - uen.b(this.this$0);
+        int j = i - uep.b(this.this$0);
         while (j < i)
         {
           localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(j));
           j += 1;
         }
         if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > 0) {
-          i = uen.b(this.this$0);
+          i = uep.b(this.this$0);
         }
       }
     }
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
     stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = new stSimpleGetFeedListRsp();
     localstSimpleGetFeedListRsp.feeds = localArrayList;
-    if (uen.a(this.this$0, localstSimpleGetFeedListRsp, uen.b(this.this$0), localArrayList.size())) {
-      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", ups.c());
+    if (uep.a(this.this$0, localstSimpleGetFeedListRsp, uep.b(this.this$0), localArrayList.size())) {
+      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", uqt.c());
     }
   }
 }

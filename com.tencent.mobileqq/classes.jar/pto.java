@@ -1,16 +1,21 @@
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
+
 public class pto
-  implements ptl
 {
-  private static pto a = new pto();
-  
-  public static pto a()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    return a;
-  }
-  
-  public void a(String paramString, ptm paramptm)
-  {
-    slm.a().a(paramString, new ptp(this, paramptm));
+    JSONObject localJSONObject2 = new JSONObject();
+    JSONObject localJSONObject1 = localJSONObject2;
+    if (paramBaseArticleInfo != null)
+    {
+      localJSONObject1 = localJSONObject2;
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.smallGameData)) {
+        localJSONObject1 = new JSONObject(paramBaseArticleInfo.smallGameData);
+      }
+    }
+    return localJSONObject1;
   }
 }
 

@@ -1,77 +1,35 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bhfh
-  implements SensorEventListener
+final class bhfh
+  implements DownloadParams.DecodeHandler
 {
-  bhfh(bhfe parambhfe) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.a.e = ("Current step data:" + String.valueOf(paramSensorEvent.values[0]));
-    QLog.d("HealthStepCounterPlugin", 1, "onSensorChanged:" + this.a.e);
-    if ((bhfe.jdField_b_of_type_Int == 1) && (bhfe.jdField_b_of_type_Boolean))
-    {
-      this.a.c = ((int)paramSensorEvent.values[0]);
-      bhfe.jdField_b_of_type_Boolean = false;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    if (bhfe.jdField_b_of_type_Int == 3)
+    Object localObject;
+    do
     {
-      bhfe.jdField_b_of_type_Int = 0;
-      this.a.d = ((int)paramSensorEvent.values[0]);
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = bhlo.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
     }
-    for (;;)
-    {
-      JSONObject localJSONObject;
-      try
-      {
-        paramSensorEvent = new JSONObject();
-        paramSensorEvent.put("retCode", 0);
-        paramSensorEvent.put("step", this.a.d - this.a.c);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("source", "none");
-        paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, localJSONObject);
-        if (bhfe.a)
-        {
-          this.a.mRuntime.a().loadUrl("javascript:" + paramSensorEvent);
-          QLog.d("HealthStepCounterPlugin", 1, "Steps detect:" + (this.a.d - this.a.c));
-          bhfe.a = false;
-        }
-        bhfe.jdField_b_of_type_Boolean = true;
-        return;
-      }
-      catch (Exception paramSensorEvent)
-      {
-        paramSensorEvent = new JSONObject();
-      }
-      try
-      {
-        paramSensorEvent.put("retCode", -1);
-        paramSensorEvent.put("step", 0);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("source", "none");
-        this.a.dispatchJsEvent("StepsDetect", paramSensorEvent, localJSONObject);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
-      }
-      catch (JSONException paramSensorEvent)
-      {
-        for (;;)
-        {
-          paramSensorEvent.printStackTrace();
-        }
-      }
-    }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    return bhmq.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

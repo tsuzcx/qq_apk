@@ -1,21 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initAdTimeAreaClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxb
-  implements owp
+class oxb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
+  String jdField_a_of_type_JavaLangString = owz.a(this.jdField_a_of_type_Owz).a.commentId;
+  
+  oxb(owz paramowz, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
-    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxc(parampay, parampan, paramContainer));
+    if ((owz.a(this.jdField_a_of_type_Owz) == null) || (owz.a(this.jdField_a_of_type_Owz).a == null) || (this.jdField_a_of_type_JavaLangString == null))
+    {
+      owz.a(this.jdField_a_of_type_Owz, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+    if (!this.jdField_a_of_type_JavaLangString.equals(owz.a(this.jdField_a_of_type_Owz).a.commentId))
+    {
+      owz.a(this.jdField_a_of_type_Owz, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    owz.a(this.jdField_a_of_type_Owz).setAlpha(i);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(owz.a(this.jdField_a_of_type_Owz));
   }
 }
 

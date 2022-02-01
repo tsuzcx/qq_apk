@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
 class bdto
-  implements ITransCallbackForReport
+  implements bduf
 {
-  bdto(bdtl parambdtl) {}
+  bdto(bdtn parambdtn, CountdownTextView paramCountdownTextView) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void a()
   {
-    bdtl localbdtl = this.a;
-    String str2 = this.a.c;
-    if (this.a.f == null) {}
-    for (String str1 = this.a.l;; str1 = this.a.f)
-    {
-      localbdtl.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, str2, str1, null);
-      return;
-    }
+    this.jdField_a_of_type_Bdtn.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Bdtn.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdtn.a(this.jdField_a_of_type_Bdtn, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdtn.a(this.jdField_a_of_type_Bdtn, paramLong));
+    this.jdField_a_of_type_Bdtn.jdField_d_of_type_Long = paramLong;
   }
 }
 

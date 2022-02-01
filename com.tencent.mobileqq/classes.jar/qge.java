@@ -1,126 +1,183 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class qge
-  implements qft
 {
-  protected View a(int paramInt, Context paramContext)
+  public static void a(ArticleInfo paramArticleInfo)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 22: 
-    case 80: 
-      return new ComponentContentUgcImage(paramContext);
-    case 36: 
-      return new ComponentContentGridImage(paramContext);
-    case 23: 
-    case 120: 
-      return new ComponentContentUgcVideo(paramContext);
+    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramArticleInfo.proteusItemsData))) {
+      QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], articleInfo is null or proteusItemsData is null.");
     }
-    return new ComponentContentUGCVoice(paramContext);
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramBaseArticleInfo.mSocialFeedInfo != null)
-    {
-      l1 = l2;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
-        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
-      }
+    while (!qhv.a().a()) {
+      return;
     }
-    return new qba().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).B(paramBaseArticleInfo).p(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).z(paramBaseArticleInfo).A(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").D(paramBaseArticleInfo).G(paramBaseArticleInfo).K(paramBaseArticleInfo).k(paramBaseArticleInfo).H(paramBaseArticleInfo).s(paramBaseArticleInfo).t(paramBaseArticleInfo).N(paramBaseArticleInfo).O(paramBaseArticleInfo).a();
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    qjp localqjp = (qjp)localViewBase.findViewBaseByName("id_middle_body_content");
-    if (localqjp != null)
+    if (qhv.a().b()) {
+      c(paramArticleInfo);
+    }
+    JSONObject localJSONObject;
+    String str;
+    try
     {
-      NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localqjp.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
+      str = localJSONObject.optString("pts_page_name");
+      if (TextUtils.isEmpty(str))
       {
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localqjp.a(localLayoutParams);
-        paramContainer = a(paramInt1, paramContainer.getContext());
-        if (paramContainer != null) {
-          localNativeMiddleBodyView.a(paramContainer, localLayoutParams);
-        }
+        QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], pageName is empty, pageName = " + str + ", innerUniqueID = " + paramArticleInfo.innerUniqueID + ", json = " + localJSONObject.toString());
+        return;
       }
-      a(paramInt1, parampxk, localNativeMiddleBodyView);
     }
-    qky.e(localViewBase, parampxk);
-    paramContainer = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
-    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
-      ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
-    }
-    paramContainer = (qih)localViewBase.findViewBaseByName("id_article_comment");
-    if (paramContainer != null) {
-      paramContainer.a(parampxk);
-    }
-    qky.a(localViewBase, parampxk.a());
-    qcd.a(localViewBase, parampxk);
-    qky.a(localViewBase, parampxk);
-    qky.b(localViewBase, parampxk);
-  }
-  
-  protected void a(int paramInt, pxk parampxk, NativeMiddleBodyView paramNativeMiddleBodyView)
-  {
-    if ((paramNativeMiddleBodyView.a() == null) || (parampxk.a() == null)) {
-      return;
-    }
-    snh localsnh = parampxk.a();
-    switch (paramInt)
+    catch (JSONException paramArticleInfo)
     {
-    default: 
-      throw new IllegalArgumentException("" + paramInt);
-    case 22: 
-    case 80: 
-      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(parampxk);
-      return;
-    case 36: 
-      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
-      ((ComponentContentGridImage)paramNativeMiddleBodyView).setMIReadInJoyModel(parampxk);
-      paramNativeMiddleBodyView.a(ComponentContentGridImage.a(parampxk.a()));
-      ((ComponentContentGridImage)paramNativeMiddleBodyView).setOnNoItemClickListener(new qgf(this, parampxk, localsnh));
-      return;
-    case 23: 
-    case 120: 
-      paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
-      paramNativeMiddleBodyView.a(parampxk);
-      ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new qgg(this, paramInt, localsnh, parampxk));
+      QLog.e("PTSLiteDataParser", 1, "[preHandlePtsLiteData] error, e = " + paramArticleInfo);
       return;
     }
-    ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(parampxk);
+    paramArticleInfo.ptsLitePageName = str;
+    b(paramArticleInfo, localJSONObject);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2)
   {
-    return false;
+    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    QLog.i("PTSLiteDataParser", 1, "[updateJsonDataPtsRijArticle], key = " + paramString1 + ", value = " + paramString2 + ", title = " + paramArticleInfo.mTitle);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
+      if (localJSONObject.optJSONObject("$RIJArticle") != null) {
+        localJSONObject.optJSONObject("$RIJArticle").put(paramString1, paramString2);
+      }
+      b(paramArticleInfo, localJSONObject);
+      return;
+    }
+    catch (JSONException paramArticleInfo)
+    {
+      QLog.e("PTSLiteDataParser", 1, "[updateJsonDataPtsRijArticle] error, e = " + paramArticleInfo);
+    }
+  }
+  
+  private static void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
+  {
+    if ((paramArticleInfo == null) || (paramJSONObject == null)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("rowKey", paramArticleInfo.innerUniqueID);
+        Object localObject = ozs.a();
+        if (localObject != null)
+        {
+          localObject = (pfg)((QQAppInterface)localObject).getManager(163);
+          if (localObject != null)
+          {
+            if (!((pfg)localObject).a().a(paramArticleInfo.mArticleID)) {
+              break label112;
+            }
+            paramArticleInfo = "1";
+            localJSONObject.put("isRead", paramArticleInfo);
+          }
+        }
+        paramJSONObject.put("$RIJArticle", localJSONObject);
+        return;
+      }
+      catch (JSONException paramArticleInfo)
+      {
+        QLog.e("PTSLiteDataParser", 1, "[addRIJArticleJson] error, e = " + paramArticleInfo);
+        return;
+      }
+      label112:
+      paramArticleInfo = "0";
+    }
+  }
+  
+  public static void b(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null) {
+      return;
+    }
+    Object localObject = ozs.a();
+    if (localObject != null)
+    {
+      localObject = (pfg)((QQAppInterface)localObject).getManager(163);
+      if (localObject != null) {
+        ((pfg)localObject).a().a(paramArticleInfo.mArticleID, System.currentTimeMillis());
+      }
+    }
+    a(paramArticleInfo, "isRead", "1");
+  }
+  
+  private static void b(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
+  {
+    if (paramArticleInfo == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramArticleInfo.innerUniqueID))
+    {
+      paramArticleInfo.innerUniqueID = ("pts_page_" + System.currentTimeMillis());
+      QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], innerUniqueId is null.");
+    }
+    String str1 = paramArticleInfo.ptsLitePageName;
+    String str2 = paramArticleInfo.innerUniqueID;
+    String str3 = qib.a().a("default_feeds", str1);
+    a(paramArticleInfo, paramJSONObject);
+    QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], json = " + paramJSONObject.toString());
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(paramJSONObject.toString())) && (!TextUtils.isEmpty(str3)))
+    {
+      paramArticleInfo.ptsItemData = new PTSItemData.Builder().withPageName(str1).withItemID(str2).withJsonData(paramJSONObject.toString()).withFrameTreeJson(str3).build();
+      paramArticleInfo.ptsItemDataBytes = qhx.a(paramArticleInfo.ptsItemData);
+      if (paramArticleInfo.ptsComposer != null) {
+        paramArticleInfo.ptsComposer.setData(paramJSONObject.toString());
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PTSLiteDataParser", 2, "[updatePtsItemData], pageName = " + str1 + ", itemId = " + str2 + ", json = " + paramJSONObject.toString());
+      }
+      if (TextUtils.isEmpty(str3)) {
+        QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], frameTreeJson is empty.");
+      }
+      paramJSONObject = ozs.a();
+      if (paramJSONObject == null) {
+        break;
+      }
+      paramJSONObject = (pfg)paramJSONObject.getManager(163);
+      if (paramJSONObject == null) {
+        break;
+      }
+      paramJSONObject.a().b(paramArticleInfo);
+      return;
+      QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData] failed, something is null.");
+    }
+  }
+  
+  private static void c(ArticleInfo paramArticleInfo)
+  {
+    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramArticleInfo.proteusItemsData))) {
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
+      if (TextUtils.equals(localJSONObject.optString("style_ID"), "ReadInjoy_daily_triple_img_cell")) {
+        localJSONObject.put("pts_page_name", "daily_triple_img_card");
+      }
+      paramArticleInfo.proteusItemsData = localJSONObject.toString();
+      return;
+    }
+    catch (JSONException paramArticleInfo)
+    {
+      QLog.e("PTSLiteDataParser", 1, "[convertDailyTripleData] error, e = " + paramArticleInfo);
+    }
   }
 }
 

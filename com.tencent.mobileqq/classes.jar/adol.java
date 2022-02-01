@@ -1,59 +1,36 @@
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adol
-  extends ayeu
+public final class adol
 {
-  private WeakReference<ayeu> a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public adol(ayeu paramayeu)
+  public JSONObject a()
   {
-    this.a = new WeakReference(paramayeu);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
+      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(adoi.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+    }
+    return localJSONObject;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public String toString()
   {
-    ayeu localayeu = (ayeu)this.a.get();
-    if (localayeu != null)
-    {
-      localayeu.a(paramString1, paramInt, paramString2);
-      return;
-    }
-    super.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    ayeu localayeu = (ayeu)this.a.get();
-    if (localayeu != null)
-    {
-      localayeu.a(paramString1, paramString2);
-      return;
-    }
-    super.a(paramString1, paramString2);
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    ayeu localayeu = (ayeu)this.a.get();
-    if (localayeu != null)
-    {
-      localayeu.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
-  }
-  
-  public void a(oidb_0x87c.RspBody paramRspBody)
-  {
-    ayeu localayeu = (ayeu)this.a.get();
-    if (localayeu != null)
-    {
-      localayeu.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
+    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
   }
 }
 

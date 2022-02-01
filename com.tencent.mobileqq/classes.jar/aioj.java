@@ -1,50 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 
-public class aioj
+class aioj
+  implements obz
 {
-  public int a;
-  public aiok a;
-  @Nullable
-  public aioq a;
-  @Nullable
-  public Drawable a;
-  public String a;
-  public boolean a;
-  @Nullable
-  public Drawable b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  public String g;
+  aioj(ainh paramainh) {}
   
-  public void a(aioj paramaioj)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramaioj.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramaioj.jdField_b_of_type_JavaLangString;
-    this.c = paramaioj.c;
-    this.jdField_e_of_type_JavaLangString = paramaioj.jdField_e_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramaioj.jdField_a_of_type_Int;
-    this.jdField_d_of_type_JavaLangString = paramaioj.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramaioj.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_b_of_type_Boolean = paramaioj.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Aiok = paramaioj.jdField_a_of_type_Aiok;
-    this.jdField_a_of_type_Aioq = paramaioj.jdField_a_of_type_Aioq;
-    this.jdField_a_of_type_Boolean = paramaioj.jdField_a_of_type_Boolean;
-    this.jdField_d_of_type_Boolean = paramaioj.jdField_d_of_type_Boolean;
-    this.jdField_e_of_type_Boolean = paramaioj.jdField_e_of_type_Boolean;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramaioj.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String toString()
-  {
-    return "ZhituPicData{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", originPath='" + this.c + '\'' + ", drawTextParam=" + this.jdField_a_of_type_Aioq + ", inCache=" + this.jdField_a_of_type_Boolean + ", reqKey='" + this.jdField_d_of_type_JavaLangString + '\'' + ", idxInRes=" + this.jdField_a_of_type_Int + ", pic_md5='" + this.jdField_e_of_type_JavaLangString + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", originDrawable=" + this.jdField_b_of_type_AndroidGraphicsDrawableDrawable + ", isGif=" + this.jdField_b_of_type_Boolean + ", reportData=" + this.jdField_a_of_type_Aiok + '}';
+    this.a.bp();
+    if (!paramBoolean)
+    {
+      this.a.A(2131694659);
+      return;
+    }
+    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.find(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (localAccountDetail != null) {
+      localEntityManager.remove(localAccountDetail);
+    }
+    localEntityManager.close();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    this.a.I();
   }
 }
 

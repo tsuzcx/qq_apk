@@ -1,19 +1,36 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.qphone.base.util.QLog;
 
-class yzi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yzi
+  extends bblr
 {
-  private yzi(yzc paramyzc) {}
+  public yzi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
+    super.a();
+    this.a.a.n();
+    this.a.l();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
+    }
+    super.a(paramLong);
+    try
     {
-      this.a.dismiss();
+      this.a.a(1000L * paramLong);
       return;
     }
-    this.a.jdField_a_of_type_Yzg.a(this.a.a());
+    catch (InterruptedException localInterruptedException) {}
   }
 }
 

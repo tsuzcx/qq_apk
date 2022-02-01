@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import ley;
+import lff;
 
 class DoubleVideoMeetingCtrlUI$7
   implements Runnable
@@ -10,12 +10,13 @@ class DoubleVideoMeetingCtrlUI$7
   
   public void run()
   {
-    if (this.this$0.a.a().aG)
-    {
-      this.this$0.a.a(this.a, 4, false, false);
-      this.this$0.c = true;
-      this.this$0.a.k();
+    if (this.this$0.a == null) {}
+    while (!this.this$0.a.a().aG) {
+      return;
     }
+    this.this$0.a.a(this.a, 4, false, false);
+    this.this$0.c = true;
+    this.this$0.a.k();
   }
 }
 

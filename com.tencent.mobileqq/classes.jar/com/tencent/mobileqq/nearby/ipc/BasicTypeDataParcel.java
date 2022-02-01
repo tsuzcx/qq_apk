@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axil;
+import aybe;
 
 public class BasicTypeDataParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new axil();
+  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new aybe();
   public int a;
   public Object[] a;
   

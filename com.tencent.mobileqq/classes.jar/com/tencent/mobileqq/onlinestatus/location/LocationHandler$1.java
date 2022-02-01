@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus.location;
 
-import aysl;
+import azle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class LocationHandler$1
   implements Runnable
 {
-  public LocationHandler$1(aysl paramaysl, boolean paramBoolean) {}
+  public LocationHandler$1(azle paramazle, boolean paramBoolean) {}
   
   public void run()
   {

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aopf;
+import apcv;
 
 public final class SosoInterface$SosoWifi
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoWifi> CREATOR = new aopf();
+  public static final Parcelable.Creator<SosoWifi> CREATOR = new apcv();
   public int a;
   public long a;
   public String a;

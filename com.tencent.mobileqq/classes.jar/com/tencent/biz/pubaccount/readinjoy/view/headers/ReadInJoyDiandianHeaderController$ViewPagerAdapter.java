@@ -7,11 +7,11 @@ import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import tjw;
+import taq;
 
 public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
   extends PagerAdapter
-  implements tjw
+  implements taq
 {
   private List<MeasureGridView> jdField_a_of_type_JavaUtilList = new ArrayList();
   

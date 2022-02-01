@@ -1,24 +1,20 @@
-final class rnm
-  extends rnk<rnp, rno, rnn>
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+
+class rnm
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public void a(rnp paramrnp, rno paramrno, int paramInt, rnn paramrnn)
+  rnm(rnl paramrnl) {}
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramrnp.a(paramrno);
-      return;
-    case 1: 
-      paramrnp.a(paramrno, paramrnn.a, paramrnn.b);
-      return;
-    case 2: 
-      paramrnp.b(paramrno, paramrnn.a, paramrnn.b);
-      return;
-    case 3: 
-      paramrnp.a(paramrno, paramrnn.a, paramrnn.c, paramrnn.b);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(rnl.a(), 2, "播放器状态回调 onCompletion");
     }
-    paramrnp.c(paramrno, paramrnn.a, paramrnn.b);
+    if (rnl.a(this.a) != null) {
+      rnl.a(this.a).a(1, null, rnl.a(this.a), System.currentTimeMillis() - rnl.a(this.a));
+    }
   }
 }
 

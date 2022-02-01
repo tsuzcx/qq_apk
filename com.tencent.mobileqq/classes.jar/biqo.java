@@ -1,55 +1,28 @@
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class biqo
-  implements bivy
+class biqo
+  implements Animation.AnimationListener
 {
-  public biqo(DownloadInterface paramDownloadInterface, String paramString) {}
+  biqo(biql parambiql) {}
   
-  public void a(int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bisy.e("DownloadInterface", "innerQueryDownloadInfoByViaInfo ERROR");
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bisy.c("DownloadInterface", "innerQueryDownloadInfoByVia onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadActionByVia',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bisy.c("DownloadInterface", "innerQueryDownloadInfoByVia querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

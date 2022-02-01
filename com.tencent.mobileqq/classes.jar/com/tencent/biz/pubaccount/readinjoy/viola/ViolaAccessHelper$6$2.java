@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import tsq;
+import tjn;
 
 class ViolaAccessHelper$6$2
   implements Runnable

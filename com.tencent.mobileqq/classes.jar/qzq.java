@@ -1,38 +1,54 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qzq
-  extends qzn
 {
-  public qzq(ViewGroup paramViewGroup, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, @Nullable aanz paramaanz)
+  public static <T> int a(Iterable<T> paramIterable, qzs<T> paramqzs)
   {
-    super(paramViewGroup);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = new ColorDrawable(0);
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200313/4892c273234b4f39833f389671c1b1fa.png", (URLDrawable.URLDrawableOptions)localObject);
-    this.a.setImageDrawable((Drawable)localObject);
-    localObject = (TextView)a(2131381087);
-    ((TextView)localObject).setOnClickListener(new qzr(this, paramBoolean, paramaanz, paramString, paramInt1, paramInt2, paramViewGroup));
-    paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-    paramString = new ColorDrawable(0);
-    paramViewGroup.mFailedDrawable = paramString;
-    paramViewGroup.mLoadingDrawable = paramString;
-    ((TextView)localObject).setBackgroundDrawable(URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/readinjoy/btn_bg_2x.png", paramViewGroup));
+    if (paramIterable != null)
+    {
+      int i = 0;
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        if (paramqzs.a(paramIterable.next())) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
   }
   
-  View a(ViewGroup paramViewGroup)
+  public static <T, E> List<E> a(Iterable<T> paramIterable, qzr<T, E> paramqzr)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562757, paramViewGroup, false);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramqzr != null))
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext()) {
+        localArrayList.add(paramqzr.a(paramIterable.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static <T> List<T> a(Iterable<T> paramIterable, qzs<T> paramqzs)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramqzs != null))
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        Object localObject = paramIterable.next();
+        if (paramqzs.a(localObject)) {
+          localArrayList.add(localObject);
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 

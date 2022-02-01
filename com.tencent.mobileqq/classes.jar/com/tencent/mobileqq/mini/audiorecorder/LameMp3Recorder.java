@@ -6,7 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -193,7 +193,7 @@ public class LameMp3Recorder
     }
     if (getTime() < 1)
     {
-      this.mMainHandler.sendMessage(generateRecordErrMsg(anni.a(2131704787)));
+      this.mMainHandler.sendMessage(generateRecordErrMsg(anzj.a(2131704894)));
       recordStop();
     }
     this.mPauseTime = System.currentTimeMillis();

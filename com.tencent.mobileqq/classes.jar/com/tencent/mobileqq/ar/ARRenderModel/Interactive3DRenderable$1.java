@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aorl;
-import aoua;
-import aour;
+import apfb;
+import aphq;
+import apih;
 
 public class Interactive3DRenderable$1
   implements Runnable
 {
-  public Interactive3DRenderable$1(aour paramaour) {}
+  public Interactive3DRenderable$1(apih paramapih) {}
   
   public void run()
   {
-    if (aour.a(this.this$0) != 9) {}
+    if (apih.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (aour.a(this.this$0) != null) {
-        aour.a(this.this$0).b(0, 2);
+      if (apih.a(this.this$0) != null) {
+        apih.a(this.this$0).b(0, 2);
       }
-    } while (aour.a(this.this$0) == null);
-    aour.a(this.this$0).a(true);
+    } while (apih.a(this.this$0) == null);
+    apih.a(this.this$0).a(true);
   }
 }
 

@@ -1,20 +1,73 @@
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aass
-  implements URLDrawable.DownloadListener
+  extends beyf
 {
-  public aass(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
+  public aass(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    bete localbete;
+    Bundle localBundle;
+    if ((TroopMemberApiService.j(this.a) instanceof QQAppInterface))
+    {
+      localbete = (bete)paramMessage.obj;
+      localBundle = new Bundle();
+      localBundle.putInt("seq", this.a.c);
+    }
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+          if (localbete.jdField_b_of_type_Int != 64) {
+            break;
+          }
+          this.a.jdField_a_of_type_Int = bevi.jdField_a_of_type_Int;
+        } while (this.a.jdField_a_of_type_Int == this.a.jdField_b_of_type_Int);
+        this.a.jdField_b_of_type_Int = this.a.jdField_a_of_type_Int;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + this.a.jdField_a_of_type_Int);
+        }
+        paramMessage = (axxj)((QQAppInterface)TroopMemberApiService.k(this.a)).a(60);
+        if (paramMessage != null) {
+          paramMessage.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, true);
+        }
+        localBundle.putInt("head_id", this.a.jdField_a_of_type_Int);
+        localBundle.putString("video_id", this.a.jdField_b_of_type_JavaLangString);
+        localBundle.putBoolean("isSuccess", true);
+        this.a.a(75, localBundle);
+        return;
+        if (localbete.jdField_b_of_type_Int == 39)
+        {
+          this.a.jdField_b_of_type_JavaLangString = ((bevi)localbete.a).jdField_b_of_type_JavaLangString;
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + this.a.jdField_b_of_type_JavaLangString);
+          }
+          axxd.a((QQAppInterface)TroopMemberApiService.l(this.a), this.a.jdField_a_of_type_JavaLangString);
+          return;
+        }
+        localBundle.putBoolean("isSuccess", false);
+        this.a.a(75, localBundle);
+      } while (!QLog.isColorLevel());
+      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed. STATUS_SEND_ERROR");
+    }
+    localBundle.putBoolean("isSuccess", false);
+    this.a.a(75, localBundle);
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

@@ -1,20 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class bpdg
-  extends QQUIEventReceiver<bpcv, bpjj>
+public abstract interface bpdg
 {
-  public bpdg(@NonNull bpcv parambpcv)
-  {
-    super(parambpcv);
-  }
+  public abstract void a();
   
-  public void a(@NonNull bpcv parambpcv, @NonNull bpjj parambpjj) {}
-  
-  public Class acceptEventClass()
-  {
-    return bpjj.class;
-  }
+  public abstract void b();
 }
 
 

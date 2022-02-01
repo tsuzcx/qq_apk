@@ -1,42 +1,27 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.tavcut.bean.TextEditorData;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class boie
-  implements TextWatcher
+public class boie
+  extends GestureDetector.SimpleOnGestureListener
 {
-  boie(boib paramboib) {}
+  private boie(AECropperImageView paramAECropperImageView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramEditable == null) {
-      return;
-    }
-    String str = paramEditable.toString();
-    if (paramEditable.length() > 20)
+    if (!AECropperImageView.a(this.a)) {}
+    do
     {
-      QQToast.a(this.a.getContext(), boib.a(this.a), 0).a();
-      str = paramEditable.subSequence(0, 20).toString();
-      boib.a(this.a).setText(str);
-      boib.a(this.a).setSelection(str.length());
-    }
-    if (TextUtils.isEmpty(str.trim())) {
-      boib.a(this.a).setContent("");
-    }
-    for (;;)
-    {
-      boib.b(this.a);
-      return;
-      boib.a(this.a).setContent(str);
-    }
+      return false;
+      if (AECropperImageView.b(this.a))
+      {
+        bpam.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+        return false;
+      }
+    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
+    this.a.a(paramFloat1, paramFloat2);
+    return false;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,41 +1,27 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class opw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class opw
+  implements ViewBase.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  WeakReference<ReadInJoyArticleBottomVideoView> jdField_a_of_type_JavaLangRefWeakReference;
+  opw(otp paramotp, otd paramotd) {}
   
-  opw(AdvertisementInfo paramAdvertisementInfo, int paramInt, ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public final void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoyArticleBottomVideoView);
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof opw))
+    if (this.jdField_a_of_type_Otp.a != null)
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Int == ((opw)paramObject).jdField_a_of_type_Int) {
-        bool1 = true;
+      paramViewBase = this.jdField_a_of_type_Otd.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      ozs.a(paramViewBase.getContext(), this.jdField_a_of_type_Otp.a.activityJumpUrl);
+      if (this.jdField_a_of_type_Otd.a() != null) {
+        this.jdField_a_of_type_Otd.a().e(this.jdField_a_of_type_Otp);
       }
     }
-    return bool1;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.hashCode() + this.jdField_a_of_type_Int;
-    }
-    return super.hashCode() + this.jdField_a_of_type_Int;
   }
 }
 

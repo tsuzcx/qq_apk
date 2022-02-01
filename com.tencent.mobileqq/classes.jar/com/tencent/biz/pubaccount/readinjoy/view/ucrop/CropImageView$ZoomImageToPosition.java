@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
 import java.lang.ref.WeakReference;
-import tgl;
+import sxf;
 
 class CropImageView$ZoomImageToPosition
   implements Runnable
@@ -38,7 +38,7 @@ class CropImageView$ZoomImageToPosition
     float f1;
     if (this.jdField_a_of_type_Boolean)
     {
-      f1 = tgl.a(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
+      f1 = sxf.a(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
       if (f2 >= (float)this.jdField_a_of_type_Long) {
         break label143;
       }
@@ -51,7 +51,7 @@ class CropImageView$ZoomImageToPosition
     {
       localCropImageView.post(this);
       return;
-      f1 = tgl.b(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
+      f1 = sxf.b(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
       break;
       label121:
       localCropImageView.a(f1 + this.jdField_a_of_type_Float, this.c, this.d);

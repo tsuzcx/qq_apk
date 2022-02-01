@@ -1,44 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-class sii
-  extends Handler
+public class sii
+  implements blrf
 {
-  private WeakReference<sif> a;
+  public sii(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public sii(sif paramsif)
+  public void a()
   {
-    this.a = new WeakReference(paramsif);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.get() == null);
-      sif.a((sif)this.a.get());
-      sif.a((sif)this.a.get()).sendEmptyMessageDelayed(0, sif.a((sif)this.a.get()));
-      return;
-    } while (this.a.get() == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(sif.a((sif)this.a.get()), 2, "prePlay timeout, try rePlay");
-    }
-    if ((((sif)this.a.get()).f()) && (((sif)this.a.get()).a.a() == sif.a((sif)this.a.get())))
-    {
-      sif.b((sif)this.a.get());
-      return;
-    }
-    sif.a((sif)this.a.get(), false);
-    ((sif)this.a.get()).a(((sif)this.a.get()).a);
-    sif.a((sif)this.a.get(), sif.a((sif)this.a.get()));
+    this.a.a(new sij(this, "onListViewDrawFinished"));
   }
 }
 

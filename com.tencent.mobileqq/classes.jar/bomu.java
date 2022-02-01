@@ -1,49 +1,34 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bomu
-  implements BusinessObserver
+class bomu
+  implements Observer<bowc>
 {
-  public void a() {}
+  bomu(bomp parambomp) {}
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(@Nullable bowc parambowc)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      b();
-      return;
-    case 2: 
-      c();
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      d();
-      return;
-    case 5: 
-      e();
-      return;
-    case 6: 
-      f();
+    if (parambowc == null) {
       return;
     }
-    g();
+    parambowc = parambowc.b;
+    bomp.a(this.a, parambowc);
+    if (parambowc == AECaptureMode.GIF)
+    {
+      bomp.a(this.a);
+      bomp.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      bomp.a(this.a, parambowc);
+      bomp.b(this.a, parambowc);
+      return;
+      if (bomp.a(this.a)) {
+        bomp.a(this.a).setVisibility(8);
+      }
+    }
   }
 }
 

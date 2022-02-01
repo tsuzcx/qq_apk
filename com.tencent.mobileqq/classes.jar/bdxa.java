@@ -1,76 +1,95 @@
-public class bdxa
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
+
+class bdxa
+  extends aoib
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  bdxa(bdwz parambdwz) {}
   
-  public void a(String paramString)
+  protected void a(boolean paramBoolean, bdxd parambdxd)
   {
-    if ((paramString != null) && (paramString.length() > 12))
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      paramString = paramString.split("\\|");
-      if ((paramString != null) && (paramString.length < 13)) {}
-    }
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString[12]);
-      if (paramString.length >= 14) {
-        this.jdField_a_of_type_JavaLangString = paramString[13];
-      }
-      if (paramString.length < 15) {}
-    }
-    catch (Exception localException3)
-    {
-      try
+      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
+      if (parambdxd == null)
       {
-        this.jdField_a_of_type_Int = Integer.parseInt(paramString[14]);
-        if (paramString.length < 16) {}
+        ??? = "data is null";
+        QLog.d("SUB_ACCOUNT", 2, (String)???);
       }
-      catch (Exception localException3)
+    }
+    else
+    {
+      if (!bdwz.a(this.a).l) {
+        break label73;
+      }
+    }
+    for (;;)
+    {
+      return;
+      ??? = parambdxd.c;
+      break;
+      label73:
+      if ((!bdwz.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
+        ThreadManager.getSubThreadHandler().postDelayed(bdwz.a(this.a), 100L);
+      }
+      if (parambdxd != null)
       {
-        try
-        {
-          this.jdField_b_of_type_JavaLangString = paramString[15];
-          if (paramString.length < 17) {}
+        if (parambdxd.a()) {
+          bdwt.a(bdwz.a(this.a), parambdxd.a(), 2);
         }
-        catch (Exception localException3)
+        if (parambdxd.b())
         {
-          try
+          ??? = parambdxd.b();
+          if (??? != null)
           {
-            for (;;)
+            ??? = ((ArrayList)???).iterator();
+            while (((Iterator)???).hasNext())
             {
-              this.c = paramString[16];
-              if (paramString.length >= 18) {}
-              try
-              {
-                this.jdField_b_of_type_Int = Integer.parseInt(paramString[17]);
-                return;
-              }
-              catch (Exception paramString)
-              {
-                this.jdField_b_of_type_Int = -1;
-              }
-              localException1 = localException1;
-              this.jdField_a_of_type_Long = -1L;
-              continue;
-              localException2 = localException2;
-              this.jdField_a_of_type_Int = -1;
-            }
-            localException3 = localException3;
-            this.jdField_b_of_type_JavaLangString = null;
-          }
-          catch (Exception localException4)
-          {
-            for (;;)
-            {
-              this.c = null;
+              localObject2 = (String)((Iterator)???).next();
+              bdwt.c(bdwz.a(this.a), (String)localObject2);
             }
           }
         }
+        parambdxd.a();
       }
+      synchronized (bdwz.c())
+      {
+        bdwz.c(this.a, false);
+        bdwz.d(this.a, true);
+        if ((parambdxd == null) || (!parambdxd.b)) {
+          continue;
+        }
+        bdwt.a(bdwz.a(this.a), parambdxd.c, false);
+        ??? = (arjg)aran.a().a(607);
+        if ((??? == null) || (((arjg)???).a)) {
+          continue;
+        }
+        bdxb.a(bdwz.a(this.a), parambdxd.c);
+        return;
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, bdxd arg2)
+  {
+    synchronized ()
+    {
+      bdwz.a(this.a, false);
+      return;
+    }
+  }
+  
+  protected void c(boolean paramBoolean, bdxd arg2)
+  {
+    synchronized ()
+    {
+      bdwz.b(this.a, false);
+      return;
     }
   }
 }

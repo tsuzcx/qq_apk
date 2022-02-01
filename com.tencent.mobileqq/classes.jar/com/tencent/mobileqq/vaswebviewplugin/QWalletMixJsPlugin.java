@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aftu;
-import aftv;
+import agcp;
+import agcq;
+import agdi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +12,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import arpd;
-import arph;
-import arui;
-import bgsp;
-import bhod;
+import aser;
+import asev;
+import asjw;
+import bhsr;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
@@ -29,11 +30,26 @@ import org.json.JSONObject;
 
 public class QWalletMixJsPlugin
   extends VasWebviewJsPlugin
+  implements agcq
 {
+  public static final String ERROR_MSG_PARAM_ERROR = "params error";
+  public static final String ERROR_MSG_UNKNOWN_ERROR = "client_unknown_error";
+  public static final int ERROR_RETURN_CODE_PARAM_ERROR = 4;
+  public static final int ERROR_RETURN_CODE_UNKNOWN_ERROR = -100;
   private static final String METHOD_ACTION_DELETE_NOTIFY = "delete";
+  public static final String METHOD_ACTION_NOTIFY_NEW_SUBSCRIBE = "newSubscribe";
+  public static final String METHOD_ACTION_NOTIFY_QUERY = "query";
   private static final String METHOD_ACTION_NPTITY_SUBSCRIBE = "subscribe";
+  private static final String METHOD_ACTION_REMOVE_NOTIFY = "remove";
   private static final String METHOD_NAME_QQ_NOTIFY = "qqNotify";
   public static final String OBJECT_NAME_QWALLET_MIX = "qw_mix";
+  public static final String PARAMS_BUSINESS_ID = "busiid";
+  public static final String PARAMS_CALLBACK_ID = "callback_id";
+  public static final String PARAMS_DOMAIN = "domain";
+  public static final String PARAMS_ERROR_MSG = "retmsg";
+  public static final String PARAMS_HAS_SUBSCRIBE = "has_subscribe";
+  public static final String PARAMS_MSG_ID = "msgid";
+  public static final String PARAMS_RETURN_CODE = "retcode";
   private static final String TAG = QWalletMixJsPlugin.class.getSimpleName();
   public static SparseArray<String> mFirstUrls = new SparseArray();
   public static ArrayList<Integer> mSequence = new ArrayList();
@@ -42,7 +58,6 @@ public class QWalletMixJsPlugin
   private Context mContext;
   private FakeUrl mFakeUrl;
   private Handler mMainHandler = new Handler(Looper.getMainLooper());
-  private aftv mReminderDataManager;
   
   public QWalletMixJsPlugin()
   {
@@ -53,12 +68,13 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bgsp.a(str)) || (bgsp.a(str)))
+    if ((bhsr.a(str)) || (bhsr.a(str)))
     {
       handJsError("4", "params error");
       return;
     }
-    aftu.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
+    Handler localHandler = new Handler(Looper.getMainLooper());
+    agdi.a(this.app, str, new QWalletMixJsPlugin.1(this, localHandler, paramJSONObject, str));
   }
   
   private void doCallback(String paramString)
@@ -111,17 +127,57 @@ public class QWalletMixJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
+      localJSONObject = new JSONObject(paramString);
       paramString = localJSONObject.optString("action");
       localJSONObject = localJSONObject.optJSONObject("params");
-      if ("subscribe".equals(paramString)) {
+      if ("subscribe".equals(paramString))
+      {
         subscribeNotify(localJSONObject);
-      } else if ("delete".equals(paramString)) {
+        return true;
+      }
+      if ("delete".equals(paramString))
+      {
         deleteNotify(localJSONObject);
+        return true;
       }
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      JSONObject localJSONObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.e(TAG, 1, "handleQQNotifyJsAPi", paramString);
+        return true;
+        if ("newSubscribe".equals(paramString))
+        {
+          newSubscribeRecurrentNotifyFragment(localJSONObject);
+          return true;
+        }
+        if ("query".equals(paramString))
+        {
+          queryBusinessHasSet(localJSONObject);
+          return true;
+        }
+        if ("remove".equals(paramString)) {
+          deleteNotify(localJSONObject);
+        }
+      }
+    }
     return true;
+  }
+  
+  private void newSubscribeRecurrentNotifyFragment(JSONObject paramJSONObject)
+  {
+    String str1 = paramJSONObject.optString("msgid");
+    paramJSONObject = paramJSONObject.optString("busiid");
+    if (bhsr.a(str1)) {
+      handJsError("4", "params error");
+    }
+    while (this.mRuntime == null) {
+      return;
+    }
+    String str2 = Uri.parse(this.mRuntime.a().getUrl()).getHost();
+    agcp.a(this.mRuntime.a(), str1, str2, paramJSONObject, 48128);
   }
   
   private void notifydelMsgUI(String paramString1, String paramString2)
@@ -129,8 +185,8 @@ public class QWalletMixJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("busiid", paramString1);
     localBundle.putString("msgid", paramString2);
-    paramString1 = arph.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    arui.a().a(paramString1);
+    paramString1 = asev.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    asjw.a().a(paramString1);
   }
   
   private void parseCallback(String paramString)
@@ -149,11 +205,24 @@ public class QWalletMixJsPlugin
     }
   }
   
+  private void queryBusinessHasSet(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("msgid");
+    paramJSONObject = paramJSONObject.optString("busiid");
+    if (bhsr.a(str)) {
+      handJsError("4", "params error");
+    }
+    while (this.mRuntime == null) {
+      return;
+    }
+    agcp.a(str, Uri.parse(this.mRuntime.a().getUrl()).getHost(), paramJSONObject, this);
+  }
+  
   private void subscribeNotify(JSONObject paramJSONObject)
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bgsp.a(str1)) || (bgsp.a(str1))) {
+    if ((bhsr.a(str1)) || (bhsr.a(str1))) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
@@ -220,8 +289,6 @@ public class QWalletMixJsPlugin
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "is QQAppInterface: " + (this.app instanceof QQAppInterface));
         }
-        this.mReminderDataManager = new aftv(this.app);
-        aftu.a(this.app);
         this.mContext = localActivity.getApplicationContext();
       }
     }
@@ -238,7 +305,6 @@ public class QWalletMixJsPlugin
     if (this.mMainHandler != null) {
       this.mMainHandler.removeCallbacksAndMessages(null);
     }
-    aftu.a();
     super.onDestroy();
   }
   
@@ -263,6 +329,11 @@ public class QWalletMixJsPlugin
         }
       }
     }
+  }
+  
+  public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
+  {
+    doCallback(agcp.a(paramBundle1));
   }
 }
 

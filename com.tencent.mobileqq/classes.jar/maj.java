@@ -1,52 +1,82 @@
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class maj
-  extends mah
 {
-  protected Drawable a;
-  protected String b;
-  protected int k = 0;
-  
-  public maj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  public static int a(DownloadInfo paramDownloadInfo)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    int i = 1;
+    if (paramDownloadInfo == null) {}
+    do
+    {
+      return 11;
+      if (!TextUtils.isEmpty(paramDownloadInfo.MD5_so_wxvoiceembedqqegg)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QavSo", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
+    return 11;
+    if (paramDownloadInfo.enable) {
+      if ((b(paramDownloadInfo)) && (a(paramDownloadInfo))) {}
+    }
+    for (i = 11;; i = 2) {
+      return i;
+    }
   }
   
-  public maj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
+  public static String a()
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
-    this.b = paramString2;
-    this.k = paramInt5;
+    return b();
   }
   
-  public int a()
+  public static String a(String paramString)
   {
-    return 1;
+    return "795";
   }
   
-  public Drawable a()
+  public static boolean a(DownloadInfo paramDownloadInfo)
   {
-    return this.a;
+    String str1 = paramDownloadInfo.MD5_zip_model;
+    paramDownloadInfo = a() + paramDownloadInfo.filename_model_wxvoiceembed;
+    String str2 = DownloadInfo.getSP().getString("model_zip_md5", null);
+    if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1)))
+    {
+      QLog.i("QavSo", 1, String.format("isModelReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
+      return false;
+    }
+    if (!bhmi.a(paramDownloadInfo))
+    {
+      QLog.i("QavSo", 1, String.format("isModelReady, file no exist, fileName[%s]", new Object[] { paramDownloadInfo }));
+      return false;
+    }
+    return true;
   }
   
-  public void a(Drawable paramDrawable)
+  public static String b()
   {
-    this.a = paramDrawable;
+    return AVSoUtils.b() + "qavso" + a("") + File.separator;
   }
   
-  public String b()
+  public static boolean b(DownloadInfo paramDownloadInfo)
   {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public int k()
-  {
-    return this.k;
+    String str1 = paramDownloadInfo.MD5_zip_so;
+    paramDownloadInfo = b() + paramDownloadInfo.filename_so_wxvoiceembedqqegg;
+    String str2 = DownloadInfo.getSP().getString("so_zip_md5", null);
+    if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1)))
+    {
+      QLog.i("QavSo", 1, String.format("isSoReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
+      return false;
+    }
+    if (!bhmi.a(paramDownloadInfo))
+    {
+      QLog.i("QavSo", 1, String.format("isSoReady, file no exist, fileNameSoWxVoiceEmbedQQEgg[%s]", new Object[] { paramDownloadInfo }));
+      return false;
+    }
+    return true;
   }
 }
 

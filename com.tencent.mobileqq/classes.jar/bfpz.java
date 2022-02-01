@@ -1,32 +1,28 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
 class bfpz
-  extends Handler
+  extends GestureDetector.SimpleOnGestureListener
 {
-  bfpz(bfpy parambfpy, Looper paramLooper)
+  bfpz(bfpy parambfpy) {}
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super(paramLooper);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
+    }
+    if (paramFloat2 < -10.0F) {}
+    for (;;)
+    {
+      return false;
+      if (paramFloat2 <= 10.0F) {}
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
-      return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    return false;
   }
 }
 

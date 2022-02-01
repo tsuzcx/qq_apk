@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aixt;
+import ajjc;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aobu;
-import aobv;
-import bgme;
+import aoof;
+import aoog;
+import bhmg;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
@@ -19,8 +19,8 @@ public class OverlappingImgLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  private aobu jdField_a_of_type_Aobu;
-  aobv jdField_a_of_type_Aobv = new aixt(this);
+  private aoof jdField_a_of_type_Aoof;
+  aoog jdField_a_of_type_Aoog = new ajjc(this);
   private List<ThemeImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int b;
@@ -44,7 +44,7 @@ public class OverlappingImgLayout
   private Bitmap a(String paramString)
   {
     Object localObject;
-    if (this.jdField_a_of_type_Aobu == null)
+    if (this.jdField_a_of_type_Aoof == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("OverlappingImgLayout", 2, "mFaceDecoder null");
@@ -55,11 +55,11 @@ public class OverlappingImgLayout
     do
     {
       return localObject;
-      localBitmap = this.jdField_a_of_type_Aobu.a(1, paramString, 0, (byte)4);
+      localBitmap = this.jdField_a_of_type_Aoof.a(1, paramString, 0, (byte)4);
       localObject = localBitmap;
     } while (localBitmap != null);
-    if (!this.jdField_a_of_type_Aobu.a()) {
-      this.jdField_a_of_type_Aobu.a(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.jdField_a_of_type_Aoof.a()) {
+      this.jdField_a_of_type_Aoof.a(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
@@ -82,7 +82,7 @@ public class OverlappingImgLayout
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       localThemeImageView = (ThemeImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = (int)bgme.a(getContext(), 1.0F);
+      int k = (int)bhmg.a(getContext(), 1.0F);
       localThemeImageView.setPadding(k, k, k, k);
       if (a()) {
         break label134;
@@ -104,24 +104,24 @@ public class OverlappingImgLayout
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, aobu paramaobu)
+  public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, aoof paramaoof)
   {
-    this.jdField_a_of_type_Int = ((int)bgme.a(getContext(), paramInt1));
-    this.b = ((int)bgme.a(getContext(), paramInt2));
+    this.jdField_a_of_type_Int = ((int)bhmg.a(getContext(), paramInt1));
+    this.b = ((int)bhmg.a(getContext(), paramInt2));
     this.c = paramInt3;
     setOrientation(0);
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Aobu = paramaobu;
-    if (paramaobu != null) {
-      paramaobu.a(this.jdField_a_of_type_Aobv);
+    this.jdField_a_of_type_Aoof = paramaoof;
+    if (paramaoof != null) {
+      paramaoof.a(this.jdField_a_of_type_Aoog);
     }
     setImgs();
     a();
   }
   
-  public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, aobu paramaobu)
+  public void a(int paramInt1, int paramInt2, String[] paramArrayOfString, aoof paramaoof)
   {
-    a(paramInt1, paramInt2, (int)bgme.a(getContext(), 4.0F), paramArrayOfString, paramaobu);
+    a(paramInt1, paramInt2, (int)bhmg.a(getContext(), 4.0F), paramArrayOfString, paramaoof);
   }
   
   public void setImgs()

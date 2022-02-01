@@ -1,37 +1,22 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
 
 class bisf
-  implements ITMAssistantExchangeURLListenner
+  implements bhtj<Integer>
 {
-  bisf(bise parambise) {}
+  bisf(bisd parambisd, int paramInt) {}
   
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public void a(bhtd<Integer> parambhtd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    bisy.b("DownloadResolver", "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    if (!this.jdField_a_of_type_Bisd.jdField_a_of_type_Boolean) {}
+    do
     {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bise.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bise.a(this.a))
-    {
-      bise.a(this.a).notify();
       return;
-    }
+      this.jdField_a_of_type_Bisd.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Bisd.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Bisd.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bisd.jdField_a_of_type_Boolean = false;
   }
 }
 

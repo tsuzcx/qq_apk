@@ -1,16 +1,44 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
 public class aknf
-  extends bidv
+  implements blih
 {
-  public aknf(RedPacketKSongFragment paramRedPacketKSongFragment, bidw parambidw) {}
+  public aknf(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
-    this.jdField_a_of_type_Bidw.a();
+    if (paramInt == 0) {
+      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(false);
+    }
+    for (;;)
+    {
+      this.b.u = paramInt;
+      if (paramInt != 0) {
+        break label127;
+      }
+      if (!this.b.jdField_a_of_type_Ammy.a) {
+        break;
+      }
+      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
+      return;
+      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(true);
+    }
+    URLDrawable.resume();
+    this.b.jdField_a_of_type_Ammy.notifyDataSetChanged();
+    return;
+    label127:
+    URLDrawable.pause();
+    this.b.jdField_a_of_type_Ammy.a = true;
   }
 }
 

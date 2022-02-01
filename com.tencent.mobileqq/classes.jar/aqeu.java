@@ -1,28 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class aqeu
-  implements CompoundButton.OnCheckedChangeListener
+final class aqeu
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public aqeu(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public HandlerThread createHanderThread(String paramString)
   {
-    aqcb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    if (!paramBoolean) {
-      new aqcc().c(null);
-    }
-    ((aqct)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      bcst.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 

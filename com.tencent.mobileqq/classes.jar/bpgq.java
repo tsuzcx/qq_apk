@@ -1,28 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import java.util.ArrayList;
+import android.util.SparseArray;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import dov.com.qq.im.ae.view.AECompoundButton;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bpgq
-  implements aaxg
+  implements bpih
 {
-  public bpgq(LocalVideoSelectActivity paramLocalVideoSelectActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, FrameVideoHelper paramFrameVideoHelper) {}
+  public bpgq(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public void a()
   {
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.isFinishing())
+    if (AEEditorImageEditFragment.a(this.a) != null)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.b();
-      Bundle localBundle = new Bundle();
-      if (paramArrayList != null)
-      {
-        localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-        localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-      }
-      bpwu.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity, LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.jdField_a_of_type_Int, this.b, this.c, this.d, 0, "", "", false, LocalVideoSelectActivity.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.e, localBundle);
-      this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
+      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), null);
+      AEEditorImageEditFragment.a(this.a).removeFrame(AEEditorImageEditFragment.a(this.a));
     }
+    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837729);
+    bozr.a().c(null);
+  }
+  
+  public void a(String paramString)
+  {
+    if (AEEditorImageEditFragment.a(this.a) != null)
+    {
+      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), paramString);
+      AEEditorImageEditFragment.a(this.a).addFrame(AEEditorImageEditFragment.a(this.a), bphr.d, paramString);
+    }
+    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837730);
+    bozr.a().c(paramString);
   }
 }
 

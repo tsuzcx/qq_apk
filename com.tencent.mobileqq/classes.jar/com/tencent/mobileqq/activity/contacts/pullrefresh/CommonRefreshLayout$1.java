@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.pullrefresh;
 
-import ajkq;
+import ajvz;
 
 class CommonRefreshLayout$1
   implements Runnable

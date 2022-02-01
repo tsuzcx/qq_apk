@@ -1,6 +1,13 @@
-public abstract interface bhxy
+public class bhxy
 {
-  public abstract void a(String paramString);
+  public float a;
+  public int a;
+  public String a;
+  public String[] a;
+  public float b;
+  public int b;
+  public float c;
+  public float d;
 }
 
 

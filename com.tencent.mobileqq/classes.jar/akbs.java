@@ -1,16 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.9.1;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class akbs
-  extends anxr
 {
-  public akbs(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  public TextView c;
   
-  public void a()
-  {
-    this.a.runOnUiThread(new AvatarPendantActivity.9.1(this));
-  }
+  public akbs(akbo paramakbo) {}
 }
 
 

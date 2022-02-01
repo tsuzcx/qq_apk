@@ -1,42 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
 class aulh
-  extends auli
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
+  aulh(aulf paramaulf, List paramList, aule paramaule) {}
   
-  public aulh(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = aulb.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368507));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380124));
-    paramView.setTag(this);
-  }
-  
-  public void a(String paramString1, String paramString2, aobu paramaobu)
-  {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bdnt((CharSequence)localObject, 2));
-    localObject = paramaobu.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
+    if (paramInt == 1)
     {
-      localObject = bgmo.a();
-      paramString2 = (String)localObject;
-      if (!paramaobu.a())
-      {
-        paramaobu.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
+      aulf.a(this.jdField_a_of_type_Aulf, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Aule != null) {
+        this.jdField_a_of_type_Aule.a(1, 0);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    while (this.jdField_a_of_type_Aule == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aule.a(1, 1);
   }
 }
 

@@ -1,206 +1,146 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderPagerAdapter;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureCommonLoadingView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class balu
-  extends BaseAdapter
+public final class balu
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public String a;
-  List<FilterCategoryItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, balv> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  public balu(Context paramContext, boolean paramBoolean)
+  private static void a(balv parambalv, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = "FilterProviderGridAdapter";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(List<FilterCategoryItem> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
+    if ((parambalv != null) && (parambalv.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-      notifyDataSetChanged();
-      if ((paramList != null) && (QLog.isColorLevel())) {
-        QLog.d("CapturePtvTemplateManager", 2, "FilterProviderGridAdapter setData size = " + paramList.size());
-      }
-      return;
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      File localFile;
+      if (parambalv.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
       {
-        FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)localIterator.next();
-        if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_JavaUtilList.add(localFilterCategoryItem);
-        }
-      }
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (paramInt > this.jdField_a_of_type_JavaUtilList.size()) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_Int <= 0) && (paramViewGroup != null))
-    {
-      this.jdField_a_of_type_Int = paramViewGroup.getMeasuredWidth();
-      this.jdField_b_of_type_Int = ((int)((this.jdField_a_of_type_Int - FilterProviderPagerAdapter.jdField_b_of_type_Int * 3 - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4 + 0.5F));
-    }
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561084, paramViewGroup, false);
-    }
-    TextView localTextView = (TextView)localView.findViewById(2131366609);
-    ImageView localImageView3 = (ImageView)localView.findViewById(2131368533);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131368138);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131365092);
-    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131362223);
-    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131366612);
-    FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView = bamn.a().a();
-    boolean bool = false;
-    if (paramView != null) {
-      bool = TextUtils.equals(paramView.jdField_a_of_type_JavaLangString, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    }
-    if (!bool) {
-      if (((paramView == null) || (paramView.a())) && (localFilterCategoryItem.a())) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      localView.setTag(localFilterCategoryItem);
-      AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)localView.getLayoutParams();
-      paramView = localLayoutParams;
-      if (localLayoutParams == null)
-      {
-        paramView = new AbsListView.LayoutParams(-1, -1);
-        localView.setLayoutParams(paramView);
-      }
-      paramView.height = this.jdField_b_of_type_Int;
-      if (localFilterCategoryItem.a())
-      {
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845931));
-        if (bool)
+        if (parambalv.jdField_a_of_type_JavaIoFile == null)
         {
-          localImageView3.setVisibility(0);
-          label300:
-          localImageView2.setVisibility(8);
-          localTextView.setText(anni.a(2131703390));
-          localImageView1.setContentDescription(anni.a(2131703393));
-          localTextView.setContentDescription(anni.a(2131703394));
-        }
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return localView;
-        bool = false;
-        break;
-        localImageView3.setVisibility(8);
-        break label300;
-        if (bool)
-        {
-          localImageView3.setVisibility(0);
-          localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166938));
-          label402:
-          paramView = URLDrawable.URLDrawableOptions.obtain();
-          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845927);
-          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845927);
-          localCaptureCommonLoadingView.setMax(10000);
-          localCaptureCommonLoadingView.setVisibility(8);
-          paramView = URLDrawable.getDrawable(localFilterCategoryItem.d, URLDrawable.URLDrawableOptions.obtain());
-          paramView.startDownload();
-          localImageView1.setImageDrawable(paramView);
-          localTextView.setText(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          localImageView1.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          localTextView.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
-          if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-            break label678;
+          localFile = new File(parambalv.jdField_a_of_type_JavaLangString + "~tmp");
+          if (!localFile.exists()) {
+            localFile.createNewFile();
           }
-          localImageView2.setVisibility(8);
-          if (!bgsp.a(localFilterCategoryItem.j)) {
-            break label610;
-          }
-          localURLImageView.setVisibility(8);
+          parambalv.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+          parambalv.jdField_a_of_type_JavaIoFile = localFile;
         }
-        for (;;)
+        parambalv.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(parambalv.jdField_a_of_type_JavaIoFileOutputStream);
+      }
+      if (paramBoolean)
+      {
+        if (parambalv.jdField_a_of_type_JavaIoFileOutputStream != null)
         {
-          bcst.b(null, "dc00898", "", "", "0X800859E", "0X800859E", 2, 0, "", "", localFilterCategoryItem.jdField_a_of_type_JavaLangString, "");
-          break;
-          localImageView3.setVisibility(8);
-          localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166938));
-          break label402;
-          try
+          parambalv.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          parambalv.jdField_a_of_type_JavaIoFileOutputStream.close();
+          parambalv.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        if (parambalv.jdField_a_of_type_JavaIoFile != null)
+        {
+          localFile = new File(parambalv.jdField_a_of_type_JavaLangString);
+          if (localFile.exists()) {
+            localFile.delete();
+          }
+          if (!parambalv.jdField_a_of_type_JavaIoFile.renameTo(localFile))
           {
-            label610:
-            localURLImageView.setVisibility(0);
-            localURLImageView.setImageDrawable(URLDrawable.getDrawable(localFilterCategoryItem.j));
-            paramView = localURLImageView.getLayoutParams();
-            paramView.height = 42;
-            paramView.width = 42;
-            localURLImageView.setLayoutParams(paramView);
+            bhmi.a(parambalv.jdField_a_of_type_JavaIoFile, localFile);
+            parambalv.jdField_a_of_type_JavaIoFile.delete();
           }
-          catch (Exception paramView)
-          {
-            QLog.e("PtvTemplateItemView", 1, "PtvTemplateItemView bindData mBadgeImg.setImageDrawable(URLDrawable.getDrawable(info.badgeurl)) catch an Exception.", paramView);
-            localURLImageView.setVisibility(8);
-          }
-        }
-        label678:
-        bool = bamn.a().a(3, localFilterCategoryItem.jdField_b_of_type_Int, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
-        if (bool)
-        {
-          localImageView2.setVisibility(0);
-          if (bool) {
-            localImageView2.setImageResource(2130845933);
-          }
-        }
-        else
-        {
-          localImageView2.setVisibility(8);
+          parambalv.jdField_a_of_type_JavaIoFile = null;
         }
       }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    a(paramString, true);
+  }
+  
+  private static void a(String paramString, boolean paramBoolean)
+  {
+    balv localbalv = (balv)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbalv == null) || (localbalv.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      localbalv.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localbalv.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localbalv.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localbalv.jdField_a_of_type_JavaIoFileOutputStream = null;
+        if ((paramBoolean) && (localbalv.jdField_a_of_type_JavaIoFile != null))
+        {
+          localbalv.jdField_a_of_type_JavaIoFile.delete();
+          localbalv.jdField_a_of_type_JavaIoFile = null;
+        }
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((balv)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
+    {
+      balv localbalv = new balv();
+      localbalv.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localbalv);
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (balv)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    balv localbalv = (balv)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localbalv != null) && (localbalv.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localbalv, true);
+      label29:
+      localbalv.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      a(paramString, true);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
     }
   }
 }

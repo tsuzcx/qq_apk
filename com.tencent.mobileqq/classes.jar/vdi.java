@@ -1,38 +1,88 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import feedcloud.FeedCloudMeta.StFeed;
-import qqcircle.QQCircleFeedBase.StFeedBusiReqData;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.subscribe.event.LbsDescPublishEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StPoiInfoV2;
+import java.util.ArrayList;
 
-class vdi
-  implements DialogInterface.OnClickListener
+public class vdi
+  extends vbk
+  implements aaam
 {
-  vdi(vde paramvde) {}
+  private TextView a;
+  private TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private String a(FeedCloudMeta.StPoiInfoV2 paramStPoiInfoV2)
   {
-    Object localObject;
-    if (paramInt == 1)
-    {
-      localObject = new QQCircleFeedBase.StFeedBusiReqData();
-      paramDialogInterface = null;
+    Object localObject2 = paramStPoiInfoV2.defaultName.get();
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = paramStPoiInfoV2.name.get();
     }
-    try
-    {
-      ((QQCircleFeedBase.StFeedBusiReqData)localObject).mergeFrom(vde.a(this.a).a.busiData.get().toByteArray());
-      localObject = ((QQCircleFeedBase.StFeedBusiReqData)localObject).pushList;
-      paramDialogInterface = (DialogInterface)localObject;
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = paramStPoiInfoV2.address.get();
     }
-    catch (Exception localException)
+    return localObject2;
+  }
+  
+  private void a(View paramView, FeedCloudMeta.StPoiInfoV2 paramStPoiInfoV2)
+  {
+    paramView = ((ViewStub)paramView.findViewById(2131381254)).inflate();
+    this.a = ((TextView)paramView.findViewById(2131379919));
+    this.b = ((TextView)paramView.findViewById(2131379918));
+    this.a.setText(a(paramStPoiInfoV2));
+  }
+  
+  public String a()
+  {
+    return "QCircleLbsHeaderPart";
+  }
+  
+  protected void a(View paramView)
+  {
+    super.a(paramView);
+    FeedCloudMeta.StPoiInfoV2 localStPoiInfoV2 = ((QCircleInitBean)a().getIntent().getSerializableExtra("key_bundle_common_init_bean")).getPoiInfo();
+    if (localStPoiInfoV2.has())
     {
-      label46:
-      break label46;
+      a(paramView, localStPoiInfoV2);
+      aaak.a().a(this);
     }
-    paramDialogInterface = new QCircleDoRecommendRequest(vde.a(this.a).a, 0, paramDialogInterface, 1);
-    VSNetworkHelper.a().a(paramDialogInterface, new vdj(this, paramDialogInterface));
+  }
+  
+  protected String b()
+  {
+    return "fuellist";
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(LbsDescPublishEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    super.onActivityDestroyed(paramActivity);
+    aaak.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof LbsDescPublishEvent))
+    {
+      paramSimpleBaseEvent = (LbsDescPublishEvent)paramSimpleBaseEvent;
+      if (!TextUtils.isEmpty(paramSimpleBaseEvent.mDesc)) {
+        this.b.setText(paramSimpleBaseEvent.mDesc);
+      }
+    }
   }
 }
 

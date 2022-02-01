@@ -8,8 +8,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anni;
-import ypz;
+import anzj;
+import ytu;
 
 public class NewMessageYellowBar
   extends FrameLayout
@@ -54,7 +54,7 @@ public class NewMessageYellowBar
         return;
       }
       setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131706291));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131706398));
       this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
     } while (this.jdField_a_of_type_AndroidViewAnimationAnimationSet.hasEnded());
     this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
@@ -62,15 +62,15 @@ public class NewMessageYellowBar
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131561891, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381373));
+    LayoutInflater.from(getContext()).inflate(2131561932, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381562));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(3000L);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ypz(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ytu(this));
     setVisibility(8);
   }
 }

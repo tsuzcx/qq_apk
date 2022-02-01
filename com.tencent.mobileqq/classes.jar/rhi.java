@@ -1,17 +1,16 @@
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+
 public class rhi
+  implements blln
 {
-  private rhj jdField_a_of_type_Rhj = new rhj(0L);
-  private rhk jdField_a_of_type_Rhk = new rhk("");
-  private rhl jdField_a_of_type_Rhl = new rhl("");
+  public rhi(FriendListFragment paramFriendListFragment) {}
   
-  public void a(rhj paramrhj)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Rhj = paramrhj;
-  }
-  
-  public void a(rhk paramrhk)
-  {
-    this.jdField_a_of_type_Rhk = paramrhk;
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
+    }
   }
 }
 

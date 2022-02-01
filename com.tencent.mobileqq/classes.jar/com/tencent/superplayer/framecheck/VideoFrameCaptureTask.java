@@ -5,7 +5,7 @@ import com.tencent.superplayer.utils.LogUtil;
 
 public class VideoFrameCaptureTask
 {
-  public static final String TAG = "MediaPlayerMgr.VideoFrameCaptureTask";
+  public static final String TAG = "SuperPlayer-.VideoFrameCaptureTask";
   public static final int TARGET_BITMAP_LENGTH = 32;
   public static final int TASK_INTERVAL = 1000;
   public boolean isEndTask = false;
@@ -34,7 +34,7 @@ public class VideoFrameCaptureTask
     }
     catch (Throwable localThrowable)
     {
-      LogUtil.e("MediaPlayerMgr.VideoFrameCaptureTask", "doTask error," + localThrowable.getLocalizedMessage());
+      LogUtil.e("SuperPlayer-.VideoFrameCaptureTask", "doTask error," + localThrowable.getLocalizedMessage());
     }
     return null;
   }

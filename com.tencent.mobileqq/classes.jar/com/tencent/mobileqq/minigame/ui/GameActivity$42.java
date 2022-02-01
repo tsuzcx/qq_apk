@@ -1,26 +1,32 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import bbuu;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-class GameActivity$42
-  implements bbuu
+final class GameActivity$42
+  implements Runnable
 {
-  GameActivity$42(GameActivity paramGameActivity) {}
+  GameActivity$42(String paramString) {}
   
-  public void onSoftKeyboardClosed()
+  public void run()
   {
-    if ((GameActivity.access$5500(this.this$0) != null) && (GameActivity.access$5500(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$5500(this.this$0).setVisibility(8);
+    try
+    {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      localHttpURLConnection.setRequestMethod("GET");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setReadTimeout(10000);
+      localHttpURLConnection.setUseCaches(false);
+      localHttpURLConnection.setInstanceFollowRedirects(true);
+      localHttpURLConnection.connect();
+      int i = localHttpURLConnection.getResponseCode();
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd/BlockAd rspCode" + i);
+      return;
     }
-    DisplayUtil.setActivityFullScreen(this.this$0);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    if ((GameActivity.access$5500(this.this$0) != null) && (GameActivity.access$5500(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$5500(this.this$0).setPaddingBottom(paramInt);
+    catch (Throwable localThrowable)
+    {
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd/BlockAd error, url = " + this.val$reportUrl, localThrowable);
     }
   }
 }

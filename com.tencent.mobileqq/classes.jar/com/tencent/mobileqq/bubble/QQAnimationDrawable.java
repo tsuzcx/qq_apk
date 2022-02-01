@@ -16,10 +16,10 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import apyi;
-import apyj;
-import apyk;
-import bgmo;
+import aqmi;
+import aqmj;
+import aqmk;
+import bhmq;
 import com.tencent.biz.qqstory.takevideo.EditGifImage;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -47,9 +47,9 @@ public class QQAnimationDrawable
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  final apyi jdField_a_of_type_Apyi = new apyi(this, this);
-  private apyj jdField_a_of_type_Apyj;
-  private volatile apyk jdField_a_of_type_Apyk = new apyk(null);
+  final aqmi jdField_a_of_type_Aqmi = new aqmi(this, this);
+  private aqmj jdField_a_of_type_Aqmj;
+  private volatile aqmk jdField_a_of_type_Aqmk = new aqmk(null);
   private QQAnimationDrawable.WorkerRunnable jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
@@ -89,14 +89,14 @@ public class QQAnimationDrawable
     this(null);
   }
   
-  public QQAnimationDrawable(apyj paramapyj)
+  public QQAnimationDrawable(aqmj paramaqmj)
   {
     this.jdField_a_of_type_Int = -1;
     if (this.jdField_b_of_type_Int == 0) {}
     for (;;)
     {
       this.jdField_b_of_type_Int = j;
-      this.jdField_a_of_type_Apyj = paramapyj;
+      this.jdField_a_of_type_Aqmj = paramaqmj;
       if (Build.VERSION.SDK_INT >= 11) {
         this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
       }
@@ -172,7 +172,7 @@ public class QQAnimationDrawable
       if (Build.VERSION.SDK_INT >= 11) {
         a((BitmapFactory.Options)localObject);
       }
-      localObject = bgmo.a(str, (BitmapFactory.Options)localObject);
+      localObject = bhmq.a(str, (BitmapFactory.Options)localObject);
       paramBitmap = (Bitmap)localObject;
       if (localObject != null) {
         paramBitmap = (Bitmap)localObject;
@@ -328,19 +328,19 @@ public class QQAnimationDrawable
       for (long l = 0L;; l = SystemClock.uptimeMillis() + this.jdField_b_of_type_Long)
       {
         this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable = new QQAnimationDrawable.WorkerRunnable(this, j, l);
-        this.jdField_a_of_type_Apyk.execute(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable);
+        this.jdField_a_of_type_Aqmk.execute(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable);
         if (paramBoolean2)
         {
           QLog.d("QQAnimationDrawable", 1, "playEnd mCountOfFrame" + this.jdField_c_of_type_Int);
           stop();
           StringBuilder localStringBuilder = new StringBuilder().append(hashCode()).append("playEnd listener");
           paramBoolean1 = bool;
-          if (this.jdField_a_of_type_Apyj != null) {
+          if (this.jdField_a_of_type_Aqmj != null) {
             paramBoolean1 = true;
           }
           QLog.d("QQAnimationDrawable", 1, String.valueOf(paramBoolean1));
-          if (this.jdField_a_of_type_Apyj != null) {
-            this.jdField_a_of_type_Apyj.a();
+          if (this.jdField_a_of_type_Aqmj != null) {
+            this.jdField_a_of_type_Aqmj.a();
           }
         }
         return;
@@ -827,9 +827,9 @@ public class QQAnimationDrawable
     e();
   }
   
-  public void a(apyj paramapyj)
+  public void a(aqmj paramaqmj)
   {
-    this.jdField_a_of_type_Apyj = paramapyj;
+    this.jdField_a_of_type_Aqmj = paramaqmj;
   }
   
   public void a(boolean paramBoolean)
@@ -868,8 +868,8 @@ public class QQAnimationDrawable
   
   public void b()
   {
-    if (this.jdField_a_of_type_Apyk != null) {
-      this.jdField_a_of_type_Apyk.b();
+    if (this.jdField_a_of_type_Aqmk != null) {
+      this.jdField_a_of_type_Aqmk.b();
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentFutureTask != null) {
       this.jdField_a_of_type_JavaUtilConcurrentFutureTask.cancel(true);
@@ -1103,8 +1103,8 @@ public class QQAnimationDrawable
       this.jdField_c_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
     }
     QLog.d("QQAnimationDrawable", 4, "mRepeatCount:" + this.jdField_d_of_type_Int);
-    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Apyj != null)) {
-      this.jdField_a_of_type_Apyj.b();
+    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Aqmj != null)) {
+      this.jdField_a_of_type_Aqmj.b();
     }
     this.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
     invalidateSelf();

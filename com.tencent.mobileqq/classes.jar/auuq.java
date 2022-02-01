@@ -1,18 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import android.os.Bundle;
 
 public abstract interface auuq
 {
-  public abstract String a();
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public abstract void a();
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  public abstract void a(Bundle paramBundle);
   
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  public abstract void a(String paramString, Bundle paramBundle);
   
-  public abstract void b();
+  public abstract void b(Bundle paramBundle);
+  
+  public abstract void c(Bundle paramBundle);
 }
 
 

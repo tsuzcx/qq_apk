@@ -1,27 +1,17 @@
-public class awtx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class awtx
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  awtx(awtw paramawtw, String paramString) {}
   
-  public awtx(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    awtw.a(this.jdField_a_of_type_Awtw).a(this.jdField_a_of_type_JavaLangString);
+    bdll.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

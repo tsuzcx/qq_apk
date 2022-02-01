@@ -1,34 +1,162 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import android.os.IBinder;
+import android.telephony.TelephonyManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.lang.reflect.Method;
 
 public class bhvh
-  implements TextWatcher
 {
-  public bhvh(ConfigClearableEditText paramConfigClearableEditText) {}
+  public static int a;
+  private static bhvh jdField_a_of_type_Bhvh;
+  public static String a;
+  public static String b;
+  public static String c = "1";
+  private Object jdField_a_of_type_JavaLangObject;
+  private TelephonyManager[] jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager;
+  private y[] jdField_a_of_type_ArrayOfY;
+  private Object b;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_JavaLangString = "0";
+  }
+  
+  private bhvh()
+  {
+    try
     {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
+      a();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public static bhvh a()
+  {
+    if (jdField_a_of_type_Bhvh == null) {}
+    try
+    {
+      jdField_a_of_type_Bhvh = new bhvh();
+      return jdField_a_of_type_Bhvh;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ArrayOfY = new y[2];
+    switch (jdField_a_of_type_Int)
+    {
+    case 0: 
+    case 1: 
+    case 4: 
+    default: 
+    case 2: 
+    case 3: 
+      for (;;)
+      {
+        return;
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject = bhvn.a("android.telephony.MSimTelephonyManager", "getDefault", null, null);
+          this.jdField_b_of_type_JavaLangObject = bhvn.a("android.telephony.MSimSmsManager", "getDefault", null, null);
+          return;
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+          return;
+        }
+        try
+        {
+          this.jdField_a_of_type_ArrayOfY[0] = z.a(bhvo.a("isms"));
+          this.jdField_a_of_type_ArrayOfY[1] = z.a(bhvo.a("isms2"));
+          if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null)
+          {
+            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager = new TelephonyManager[2];
+            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[0] = ((TelephonyManager)bhvn.a("android.telephony.TelephonyManager", "getDefault"));
+            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[1] = ((TelephonyManager)bhvn.a("android.telephony.TelephonyManager", "getSecondary"));
+            return;
+          }
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+          return;
+        }
+        catch (Error localError)
+        {
+          localError.printStackTrace();
+          return;
+        }
       }
     }
-    else {
-      return;
-    }
-    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    try
     {
-      this.a.setClearButtonVisible(true);
+      this.jdField_a_of_type_JavaLangObject = BaseApplicationImpl.getContext().getSystemService("phone");
+      y localy = z.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isms" }));
+      this.jdField_a_of_type_ArrayOfY[0] = localy;
       return;
     }
-    this.a.setClearButtonVisible(false);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 1;
+    switch (jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return 0;
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        continue;
+      }
+      try
+      {
+        paramInt = ((Integer)bhvn.a(this.jdField_a_of_type_JavaLangObject, "getSimState", new Object[] { Integer.valueOf(paramInt) })).intValue();
+        return paramInt;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+      }
+      continue;
+      if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null) {
+        continue;
+      }
+      return this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[paramInt].getSimState();
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        continue;
+      }
+      try
+      {
+        Object localObject = this.jdField_a_of_type_JavaLangObject;
+        if (paramInt == 0) {}
+        for (paramInt = i;; paramInt = 5)
+        {
+          paramInt = ((Integer)bhvn.a(localObject, "getIccState", new Object[] { Integer.valueOf(paramInt) })).intValue();
+          return paramInt;
+        }
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt) == 5;
   }
 }
 

@@ -1,10 +1,21 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public final class addw
-  extends RecyclablePool.Recyclable
+public class addw
+  implements adci
 {
-  public int a;
-  public long a;
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  {
+    anvl.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
+  }
 }
 
 

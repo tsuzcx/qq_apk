@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import afur;
-import aiso;
-import aitb;
-import aitg;
-import aith;
-import aitl;
-import aitm;
-import aitn;
-import aito;
-import aitp;
-import aitq;
-import aitr;
-import aits;
-import aitt;
-import aiwa;
-import aiwf;
-import ajcl;
-import ajcp;
+import agej;
+import ajdx;
+import ajek;
+import ajep;
+import ajeq;
+import ajeu;
+import ajev;
+import ajew;
+import ajex;
+import ajey;
+import ajez;
+import ajfa;
+import ajfb;
+import ajfc;
+import ajhj;
+import ajho;
+import ajnu;
+import ajny;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,20 +30,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
-import anpk;
-import aobu;
-import aopa;
-import bbuk;
-import bbup;
-import bcst;
-import bepv;
-import bfup;
-import bgjw;
-import bgmo;
-import bgnt;
+import anzj;
+import aobl;
+import aoof;
+import apcq;
+import bcnd;
+import bcni;
+import bdll;
+import bfpc;
+import bguq;
+import bhjx;
+import bhmq;
+import bhnv;
+import bhyu;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
@@ -72,9 +74,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import oat;
-import txm;
-import tyg;
+import ocd;
+import txo;
+import tyi;
 
 public class SearchContactsFragment
   extends SearchBaseFragment
@@ -82,18 +84,18 @@ public class SearchContactsFragment
   private static int jdField_b_of_type_Int = -1;
   private double jdField_a_of_type_Double;
   public int a;
-  public aitq a;
-  private aits jdField_a_of_type_Aits;
-  aiwf jdField_a_of_type_Aiwf = new aitm(this);
-  private ajcl jdField_a_of_type_Ajcl;
-  protected aopa a;
+  public ajez a;
+  private ajfb jdField_a_of_type_Ajfb;
+  ajho jdField_a_of_type_Ajho = new ajev(this);
+  private ajnu jdField_a_of_type_Ajnu;
+  protected apcq a;
   private ViewFactory.GuideView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView;
   private GroupSearchRecommendView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView;
-  ArrayList<aitr> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<ajfa> jdField_a_of_type_JavaUtilArrayList;
   public boolean a;
   private double jdField_b_of_type_Double;
   private String jdField_b_of_type_JavaLangString;
-  private ArrayList<aitt> jdField_b_of_type_JavaUtilArrayList;
+  private ArrayList<ajfc> jdField_b_of_type_JavaUtilArrayList;
   private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
   private String c;
   private String d;
@@ -106,8 +108,8 @@ public class SearchContactsFragment
     this.jdField_d_of_type_Boolean = true;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Aopa = new aitl(this, 0, true, false, 60000L, false, false, "SearchContacts");
-    SosoInterface.a(this.jdField_a_of_type_Aopa);
+    this.jdField_a_of_type_Apcq = new ajeu(this, 0, true, false, 60000L, false, false, "SearchContacts");
+    SosoInterface.a(this.jdField_a_of_type_Apcq);
   }
   
   private int a(int paramInt)
@@ -123,7 +125,7 @@ public class SearchContactsFragment
     return 3;
   }
   
-  private aitt a(int paramInt)
+  private ajfc a(int paramInt)
   {
     if (this.jdField_b_of_type_JavaUtilArrayList == null) {
       return null;
@@ -131,9 +133,9 @@ public class SearchContactsFragment
     Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      aitt localaitt = (aitt)localIterator.next();
-      if (localaitt.jdField_a_of_type_Int == paramInt) {
-        return localaitt;
+      ajfc localajfc = (ajfc)localIterator.next();
+      if (localajfc.jdField_a_of_type_Int == paramInt) {
+        return localajfc;
       }
     }
     return null;
@@ -159,14 +161,14 @@ public class SearchContactsFragment
     return "0X8004BF0";
   }
   
-  private void a(aitg paramaitg)
+  private void a(ajep paramajep)
   {
     Object localObject = getActivity();
     Intent localIntent;
     if (localObject != null)
     {
       localIntent = new Intent((Context)localObject, PublicAccountBrowser.class);
-      localIntent.putExtra("url", paramaitg.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("url", paramajep.jdField_a_of_type_JavaLangString);
       if (jdField_b_of_type_Int != 13) {
         break label181;
       }
@@ -175,7 +177,7 @@ public class SearchContactsFragment
       if (jdField_b_of_type_Int != 12) {
         break label262;
       }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "" + paramaitg.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaLangString, "" + paramaitg.jdField_a_of_type_Long);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "" + paramajep.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaLangString, "" + paramajep.jdField_a_of_type_Long);
       label134:
       localObject = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(80000003));
       if (localObject == null) {
@@ -186,15 +188,15 @@ public class SearchContactsFragment
     label335:
     for (int i = ((Integer)localObject).intValue();; i = 0)
     {
-      bbup.a(80000003, i, paramaitg.jdField_a_of_type_Int, true, null, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
+      bcni.a(80000003, i, paramajep.jdField_a_of_type_Int, true, null, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
       return;
       if (jdField_b_of_type_Int == 1)
       {
         localIntent.putExtra("articalChannelId", 10);
-        if ((paramaitg == null) || (paramaitg.jdField_b_of_type_JavaLangString == null)) {
+        if ((paramajep == null) || (paramajep.jdField_b_of_type_JavaLangString == null)) {
           break;
         }
-        oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.jdField_a_of_type_JavaLangString, paramaitg.jdField_b_of_type_JavaLangString, paramaitg.jdField_c_of_type_JavaLangString, "1");
+        ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.jdField_a_of_type_JavaLangString, paramajep.jdField_b_of_type_JavaLangString, paramajep.jdField_c_of_type_JavaLangString, "1");
         break;
       }
       if (jdField_b_of_type_Int != 2) {
@@ -202,56 +204,56 @@ public class SearchContactsFragment
       }
       localIntent.putExtra("articalChannelId", 11);
       break;
-      oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "" + paramaitg.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaLangString, "" + paramaitg.jdField_a_of_type_Long, false);
+      ocd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "" + paramajep.jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaLangString, "" + paramajep.jdField_a_of_type_Long, false);
       break label134;
     }
   }
   
-  private void a(aith paramaith)
+  private void a(ajeq paramajeq)
   {
-    a(paramaith.jdField_b_of_type_Int, paramaith.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record, 2);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF2", "0X8004BF2", a(paramaith.jdField_b_of_type_Int), 0, "", "", "", "");
-    Object localObject2 = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramaith.jdField_b_of_type_Int));
+    a(paramajeq.jdField_b_of_type_Int, paramajeq.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record, 2);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF2", "0X8004BF2", a(paramajeq.jdField_b_of_type_Int), 0, "", "", "", "");
+    Object localObject2 = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramajeq.jdField_b_of_type_Int));
     AccountSearchPb.record localrecord = null;
     Object localObject1 = localrecord;
-    if (paramaith != null)
+    if (paramajeq != null)
     {
       localObject1 = localrecord;
-      if (paramaith.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null)
+      if (paramajeq.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null)
       {
         localObject1 = localrecord;
-        if (paramaith.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin != null) {
-          localObject1 = String.valueOf(paramaith.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
+        if (paramajeq.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin != null) {
+          localObject1 = String.valueOf(paramajeq.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
         }
       }
     }
-    int j = paramaith.jdField_b_of_type_Int;
+    int j = paramajeq.jdField_b_of_type_Int;
     int i;
     label244:
     String str;
     if (localObject2 != null)
     {
       i = ((Integer)localObject2).intValue();
-      bbup.a(j, i, paramaith.jdField_c_of_type_Int, true, (String)localObject1, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
-      if (paramaith.jdField_b_of_type_Int == 80000002)
+      bcni.a(j, i, paramajeq.jdField_c_of_type_Int, true, (String)localObject1, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
+      if (paramajeq.jdField_b_of_type_Int == 80000002)
       {
-        localrecord = paramaith.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+        localrecord = paramajeq.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
         localObject1 = getActivity();
         if ((localrecord != null) && (localObject1 != null) && ((localObject1 instanceof SearchBaseActivity)))
         {
           i = ((SearchBaseActivity)localObject1).a();
-          localObject2 = txm.a();
+          localObject2 = txo.a();
           if (localrecord.uin == null) {
             break label373;
           }
           localObject1 = localrecord.uin.get() + "";
-          ((txm)localObject2).a(2, (String)localObject1, paramaith.jdField_c_of_type_Int, jdField_b_of_type_Int);
+          ((txo)localObject2).a(2, (String)localObject1, paramajeq.jdField_c_of_type_Int, jdField_b_of_type_Int);
           if (jdField_b_of_type_Int != 12) {
             break label386;
           }
           localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          localObject2 = paramaith.jdField_c_of_type_Int + "";
-          str = aitb.a(i);
+          localObject2 = paramajeq.jdField_c_of_type_Int + "";
+          str = ajek.a(i);
           if (localrecord.uin == null) {
             break label380;
           }
@@ -260,9 +262,9 @@ public class SearchContactsFragment
     }
     label373:
     label380:
-    for (paramaith = localrecord.uin.get() + "";; paramaith = "")
+    for (paramajeq = localrecord.uin.get() + "";; paramajeq = "")
     {
-      bcst.b((QQAppInterface)localObject1, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, (String)localObject2, str, paramaith, this.jdField_a_of_type_JavaLangString);
+      bdll.b((QQAppInterface)localObject1, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, (String)localObject2, str, paramajeq, this.jdField_a_of_type_JavaLangString);
       return;
       i = 0;
       break;
@@ -274,29 +276,29 @@ public class SearchContactsFragment
     if (localrecord.uin != null) {}
     for (localObject1 = localrecord.uin.get() + "";; localObject1 = "")
     {
-      oat.a((QQAppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005D20", "0X8005D20", 0, 0, paramaith.jdField_c_of_type_Int + "", aitb.a(i), this.jdField_a_of_type_JavaLangString, "", false);
+      ocd.a((QQAppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005D20", "0X8005D20", 0, 0, paramajeq.jdField_c_of_type_Int + "", ajek.a(i), this.jdField_a_of_type_JavaLangString, "", false);
       return;
     }
   }
   
-  private void a(bepv parambepv)
+  private void a(bfpc parambfpc)
   {
     int i = 30008;
-    if (parambepv.jdField_a_of_type_Boolean) {
+    if (parambfpc.jdField_a_of_type_Boolean) {
       i = 30004;
     }
-    Object localObject = TroopInfoActivity.a(parambepv.jdField_a_of_type_JavaLangString, parambepv.jdField_b_of_type_JavaLangString, i);
+    Object localObject = TroopInfoActivity.a(parambfpc.jdField_a_of_type_JavaLangString, parambfpc.jdField_b_of_type_JavaLangString, i);
     ((Bundle)localObject).putInt("exposureSource", 3);
     ((Bundle)localObject).putInt("t_s_f", 1000);
-    bfup.a(a(), (Bundle)localObject, 2);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF2", "0X8004BF2", a(80000001), 0, "", "", "", "");
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "Clk_grpdate", 0, 0, parambepv.jdField_a_of_type_JavaLangString, "", "", "");
+    bguq.a(a(), (Bundle)localObject, 2);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF2", "0X8004BF2", a(80000001), 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "Clk_grpdate", 0, 0, parambfpc.jdField_a_of_type_JavaLangString, "", "", "");
     localObject = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(80000001));
     if (localObject != null) {}
     for (i = ((Integer)localObject).intValue();; i = 0)
     {
-      bbup.a(80000001, i, parambepv.jdField_a_of_type_Int, true, parambepv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
-      bbup.a("add_page", "all_result", "clk_grp", 0, this.g, new String[] { parambepv.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangString, "" });
+      bcni.a(80000001, i, parambfpc.jdField_a_of_type_Int, true, parambfpc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
+      bcni.a("add_page", "all_result", "clk_grp", 0, this.g, new String[] { parambfpc.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangString, "" });
       return;
     }
   }
@@ -308,8 +310,8 @@ public class SearchContactsFragment
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aitr localaitr = (aitr)localIterator.next();
-        if ((localaitr != null) && (localaitr.jdField_b_of_type_Int == 80000002)) {
+        ajfa localajfa = (ajfa)localIterator.next();
+        if ((localajfa != null) && (localajfa.jdField_b_of_type_Int == 80000002)) {
           return true;
         }
       }
@@ -317,7 +319,7 @@ public class SearchContactsFragment
     return false;
   }
   
-  private boolean b(ArrayList<aitt> paramArrayList)
+  private boolean b(ArrayList<ajfc> paramArrayList)
   {
     int i = 2;
     boolean bool2 = false;
@@ -328,8 +330,8 @@ public class SearchContactsFragment
       bool1 = bool2;
       if (paramArrayList.size() == 1)
       {
-        localObject = (aitt)paramArrayList.get(0);
-        if (!((aitt)localObject).jdField_b_of_type_Boolean) {
+        localObject = (ajfc)paramArrayList.get(0);
+        if (!((ajfc)localObject).jdField_b_of_type_Boolean) {
           break label214;
         }
         paramArrayList = "https://sqimg.qq.com/qq_product_operations/tiqq/suicide/?keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
@@ -364,12 +366,12 @@ public class SearchContactsFragment
               do
               {
                 return bool1;
-                localObject = ((aitt)localObject).jdField_b_of_type_JavaUtilList;
+                localObject = ((ajfc)localObject).jdField_b_of_type_JavaUtilList;
                 if ((localObject == null) || (((List)localObject).size() != 1)) {
                   break;
                 }
                 localObject = (AccountSearchPb.record)((List)localObject).get(0);
-                j = ((aitt)paramArrayList.get(0)).jdField_a_of_type_Int;
+                j = ((ajfc)paramArrayList.get(0)).jdField_a_of_type_Int;
                 bool1 = bool2;
               } while (j == 80000003);
               l = ((AccountSearchPb.record)localObject).code.get();
@@ -406,7 +408,7 @@ public class SearchContactsFragment
     }
     for (;;)
     {
-      a(((aitt)paramArrayList.get(0)).jdField_a_of_type_Int, false, i);
+      a(((ajfc)paramArrayList.get(0)).jdField_a_of_type_Int, false, i);
       return true;
       if (this.jdField_d_of_type_Int != 0) {
         i = 0;
@@ -414,37 +416,39 @@ public class SearchContactsFragment
     }
   }
   
-  public String a(aith paramaith, aitr paramaitr)
+  public String a(ajeq paramajeq, ajfa paramajfa)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = paramaitr.jdField_b_of_type_Int;
-    paramaith.jdField_a_of_type_JavaLangString = (paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() + "");
+    int i = paramajfa.jdField_b_of_type_Int;
+    paramajeq.jdField_a_of_type_JavaLangString = (paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() + "");
     boolean bool;
     SpannableStringBuilder localSpannableStringBuilder;
     label132:
     Object localObject;
-    if (paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L)
+    if (paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L)
     {
       bool = true;
-      paramaith.jdField_a_of_type_Boolean = bool;
-      paramaith.jdField_b_of_type_JavaLangString = paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
-      paramaith.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      paramajeq.jdField_a_of_type_Boolean = bool;
+      paramajeq.jdField_b_of_type_JavaLangString = paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
+      paramajeq.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
       localSpannableStringBuilder = new SpannableStringBuilder();
       switch (i)
       {
       default: 
-        paramaith.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-        if ((i == 80000000) && (!TextUtils.isEmpty(paramaith.jdField_a_of_type_JavaLangString)) && (bgjw.b(paramaith.jdField_a_of_type_JavaLangString)))
+        localObject = bhyu.a(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uint32_richflag1_59.get(), paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uint32_richflag4_409.get(), false, localSpannableStringBuilder);
+        paramajeq.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        if ((i == 80000000) && (!TextUtils.isEmpty(paramajeq.jdField_a_of_type_JavaLangString)) && (bhjx.b(paramajeq.jdField_a_of_type_JavaLangString)))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130841741);
+          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130841751);
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-          int j = afur.a(15.0F, BaseApplication.getContext().getResources());
+          int j = agej.a(15.0F, BaseApplication.getContext().getResources());
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-          ((Drawable)localObject).setBounds(0, 0, j, afur.a(15.0F, BaseApplication.getContext().getResources()));
-          paramaith.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
-          label249:
-          localStringBuilder.append(paramaith.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
-          localStringBuilder.append(paramaith.jdField_b_of_type_AndroidWidgetTextView.getText().toString());
+          ((Drawable)localObject).setBounds(0, 0, j, agej.a(15.0F, BaseApplication.getContext().getResources()));
+          paramajeq.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
+          label277:
+          bhyu.a(paramajeq.jdField_b_of_type_AndroidWidgetTextView, paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uint32_richflag1_59.get(), paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uint32_richflag4_409.get());
+          localStringBuilder.append(paramajeq.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+          localStringBuilder.append(paramajeq.jdField_b_of_type_AndroidWidgetTextView.getText().toString());
           switch (i)
           {
           default: 
@@ -456,58 +460,58 @@ public class SearchContactsFragment
     }
     for (;;)
     {
-      localObject = this.jdField_a_of_type_Aobu.a(i, paramaith.jdField_a_of_type_JavaLangString);
-      paramaitr = (aitr)localObject;
+      localObject = this.jdField_a_of_type_Aoof.a(i, paramajeq.jdField_a_of_type_JavaLangString);
+      paramajfa = (ajfa)localObject;
       if (localObject == null)
       {
-        localObject = bgmo.a();
-        paramaitr = (aitr)localObject;
-        if (!this.jdField_a_of_type_Aobu.a())
+        localObject = bhmq.a();
+        paramajfa = (ajfa)localObject;
+        if (!this.jdField_a_of_type_Aoof.a())
         {
-          this.jdField_a_of_type_Aobu.a(paramaith.jdField_a_of_type_JavaLangString, i, true, (byte)1);
-          paramaitr = (aitr)localObject;
+          this.jdField_a_of_type_Aoof.a(paramajeq.jdField_a_of_type_JavaLangString, i, true, (byte)1);
+          paramajfa = (ajfa)localObject;
         }
       }
-      paramaith.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramaitr);
+      paramajeq.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramajfa);
       return localStringBuilder.toString();
       bool = false;
       break;
-      paramaith.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000000, paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get()));
+      paramajeq.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000000, paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get()));
       localSpannableStringBuilder.append("(");
-      if (paramaith.jdField_a_of_type_Boolean) {}
-      for (localObject = paramaith.jdField_a_of_type_JavaLangString;; localObject = paramaith.jdField_b_of_type_JavaLangString)
+      if (paramajeq.jdField_a_of_type_Boolean) {}
+      for (localObject = paramajeq.jdField_a_of_type_JavaLangString;; localObject = paramajeq.jdField_b_of_type_JavaLangString)
       {
         localSpannableStringBuilder.append(a(80000000, (String)localObject));
         localSpannableStringBuilder.append(")");
         break;
       }
-      paramaith.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000002, String.valueOf(paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get())));
+      paramajeq.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000002, String.valueOf(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get())));
       break label132;
-      paramaith.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000001, String.valueOf(paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get())));
+      paramajeq.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000001, String.valueOf(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get())));
       localSpannableStringBuilder.append("(");
-      localSpannableStringBuilder.append(a(80000001, String.valueOf(paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get())));
+      localSpannableStringBuilder.append(a(80000001, String.valueOf(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get())));
       localSpannableStringBuilder.append(")");
       break label132;
-      paramaith.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      break label249;
-      localStringBuilder.append(a(paramaith, paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
+      paramajeq.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      break label277;
+      localStringBuilder.append(a(paramajeq, paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
       i = 1;
       continue;
       i = 4;
-      paramaith.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramaith.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      paramaith.jdField_c_of_type_AndroidWidgetTextView.setText(paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.number.get() + anni.a(2131712386));
-      paramaith.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getResources().getColor(2131167060));
-      paramaith.d.setText(paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.brief.get());
-      paramaith.jdField_a_of_type_JavaLangString = String.valueOf(paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
-      localStringBuilder.append(paramaith.jdField_c_of_type_AndroidWidgetTextView.getText()).append(paramaith.d.getText());
+      paramajeq.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramajeq.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      paramajeq.jdField_c_of_type_AndroidWidgetTextView.setText(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.number.get() + anzj.a(2131712495));
+      paramajeq.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getResources().getColor(2131167070));
+      paramajeq.d.setText(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.brief.get());
+      paramajeq.jdField_a_of_type_JavaLangString = String.valueOf(paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
+      localStringBuilder.append(paramajeq.jdField_c_of_type_AndroidWidgetTextView.getText()).append(paramajeq.d.getText());
       continue;
-      localStringBuilder.append(b(paramaith, paramaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
+      localStringBuilder.append(b(paramajeq, paramajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
       i = 1;
     }
   }
   
-  ArrayList<aitt> a(ArrayList<aitt> paramArrayList)
+  ArrayList<ajfc> a(ArrayList<ajfc> paramArrayList)
   {
     int[] arrayOfInt = ViewFactory.a(c());
     ArrayList localArrayList = new ArrayList(paramArrayList.size());
@@ -519,9 +523,9 @@ public class SearchContactsFragment
       Iterator localIterator = paramArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aitt localaitt = (aitt)localIterator.next();
-        if (localaitt.jdField_a_of_type_Int == k) {
-          localArrayList.add(localaitt);
+        ajfc localajfc = (ajfc)localIterator.next();
+        if (localajfc.jdField_a_of_type_Int == k) {
+          localArrayList.add(localajfc);
         }
       }
       i += 1;
@@ -539,20 +543,20 @@ public class SearchContactsFragment
       do
       {
         return;
-        if (this.jdField_a_of_type_Aits == null)
+        if (this.jdField_a_of_type_Ajfb == null)
         {
-          this.jdField_a_of_type_Aits = new aits(this, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 4, true);
-          this.jdField_a_of_type_Aits.a(this.jdField_a_of_type_JavaUtilArrayList);
-          this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aits);
-          this.a = this.jdField_a_of_type_Aits;
+          this.jdField_a_of_type_Ajfb = new ajfb(this, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 4, true);
+          this.jdField_a_of_type_Ajfb.a(this.jdField_a_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajfb);
+          this.a = this.jdField_a_of_type_Ajfb;
         }
         if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) != this.jdField_a_of_type_ComTencentWidgetXListView)
         {
           this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentWidgetXListView);
         }
-        this.jdField_a_of_type_Aits.a(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_Aits.notifyDataSetChanged();
+        this.jdField_a_of_type_Ajfb.a(this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_Ajfb.notifyDataSetChanged();
         if (this.jdField_c_of_type_Boolean)
         {
           this.jdField_c_of_type_Boolean = false;
@@ -562,8 +566,8 @@ public class SearchContactsFragment
       localObject1 = getActivity();
       if ((localObject1 != null) && ((localObject1 instanceof SearchContactsActivity)))
       {
-        localObject1 = aitb.a(((SearchContactsActivity)localObject1).a());
-        oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1F", "0X8005D1F", 0, 0, "", (String)localObject1, this.jdField_a_of_type_JavaLangString, "", false);
+        localObject1 = ajek.a(((SearchContactsActivity)localObject1).a());
+        ocd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1F", "0X8005D1F", 0, 0, "", (String)localObject1, this.jdField_a_of_type_JavaLangString, "", false);
       }
     } while (this.jdField_a_of_type_JavaUtilArrayList == null);
     Object localObject1 = new StringBuilder();
@@ -571,15 +575,15 @@ public class SearchContactsFragment
     int i = 0;
     while (((Iterator)localObject2).hasNext())
     {
-      aitr localaitr = (aitr)((Iterator)localObject2).next();
-      if ((localaitr != null) && (localaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null) && (localaitr.jdField_b_of_type_Int == 80000002))
+      ajfa localajfa = (ajfa)((Iterator)localObject2).next();
+      if ((localajfa != null) && (localajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null) && (localajfa.jdField_b_of_type_Int == 80000002))
       {
-        ((StringBuilder)localObject1).append(String.valueOf(localaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get())).append("#");
+        ((StringBuilder)localObject1).append(String.valueOf(localajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get())).append("#");
         i += 1;
       }
     }
-    localObject2 = txm.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    txm.a().a((String)localObject2, this.jdField_a_of_type_JavaLangString, 2, false, i, ((StringBuilder)localObject1).toString());
+    localObject2 = txo.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    txo.a().a((String)localObject2, this.jdField_a_of_type_JavaLangString, 2, false, i, ((StringBuilder)localObject1).toString());
   }
   
   public void a(int paramInt1, boolean paramBoolean, int paramInt2)
@@ -595,7 +599,7 @@ public class SearchContactsFragment
     }
     for (;;)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF1", "0X8004BF1", paramInt1, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF1", "0X8004BF1", paramInt1, 0, "", "", "", "");
       return;
       Object localObject2 = a();
       paramInt2 = i;
@@ -626,12 +630,12 @@ public class SearchContactsFragment
       ((Intent)localObject2).putExtra("hide_operation_bar", true);
       ((Intent)localObject2).putExtra("isShowAd", false);
       a().startActivity((Intent)localObject2);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "Clk_more", 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "Clk_more", 0, 0, "", "", "", "");
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       if (this.jdField_a_of_type_JavaLangString.matches("^\\d{5,11}$")) {}
       for (localObject1 = "2";; localObject1 = "1")
       {
-        bcst.b((QQAppInterface)localObject2, "dc00899", "Grp_find", "", "inte_add", "inte_find_grp", 0, 0, (String)localObject1, this.jdField_a_of_type_JavaLangString, "", "");
+        bdll.b((QQAppInterface)localObject2, "dc00899", "Grp_find", "", "inte_add", "inte_find_grp", 0, 0, (String)localObject1, this.jdField_a_of_type_JavaLangString, "", "");
         paramInt1 = 2;
         break;
       }
@@ -652,14 +656,14 @@ public class SearchContactsFragment
         break;
       }
       paramInt1 = ((SearchBaseActivity)localObject2).a();
-      oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D21", "0X8005D21", 0, 0, "0", aitb.a(paramInt1), this.jdField_a_of_type_JavaLangString, "", false);
+      ocd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D21", "0X8005D21", 0, 0, "0", ajek.a(paramInt1), this.jdField_a_of_type_JavaLangString, "", false);
       paramInt1 = 3;
       continue;
       ((Intent)localObject1).putExtra("from_key", 5);
       ((Intent)localObject1).putExtra("fromType", jdField_b_of_type_Int);
       ((Intent)localObject1).setClass(a(), ClassificationSearchActivity.class);
       ClassificationSearchActivity.a(a(), (Intent)localObject1, a(paramInt1));
-      oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, "0", "", this.jdField_a_of_type_JavaLangString, "", false);
+      ocd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, "0", "", this.jdField_a_of_type_JavaLangString, "", false);
       paramInt1 = 1;
     }
   }
@@ -671,7 +675,7 @@ public class SearchContactsFragment
       Intent localIntent = new Intent(a(), PublicAccountBrowser.class);
       localIntent.putExtra("url", paramString1);
       a().startActivity(localIntent);
-      oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.jdField_a_of_type_JavaLangString, paramString2, paramString3, "2");
+      ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.jdField_a_of_type_JavaLangString, paramString2, paramString3, "2");
     }
   }
   
@@ -681,11 +685,11 @@ public class SearchContactsFragment
     if (QLog.isColorLevel()) {
       QLog.d("SearchContactsFragment", 2, "doSearch");
     }
-    if (bgnt.d(BaseApplicationImpl.getContext()))
+    if (bhnv.d(BaseApplicationImpl.getContext()))
     {
       i();
       this.jdField_a_of_type_JavaLangString = paramString;
-      if (this.jdField_a_of_type_Aiso == null)
+      if (this.jdField_a_of_type_Ajdx == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("SearchContactsFragment", 2, "doSearch:should not be here | searchFacade = null");
@@ -693,13 +697,13 @@ public class SearchContactsFragment
         j();
         return;
       }
-      this.jdField_a_of_type_Aiso.c();
+      this.jdField_a_of_type_Ajdx.c();
       if (this.jdField_d_of_type_Int == 1)
       {
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_Int = 80000001;
         if (this.jdField_d_of_type_Boolean) {
-          aiwa.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString);
+          ajhj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString);
         }
       }
       else
@@ -707,7 +711,7 @@ public class SearchContactsFragment
         if (jdField_b_of_type_Int != 12) {
           break label225;
         }
-        localaiso = this.jdField_a_of_type_Aiso;
+        localajdx = this.jdField_a_of_type_Ajdx;
         if (!this.jdField_a_of_type_Boolean) {
           break label218;
         }
@@ -715,39 +719,39 @@ public class SearchContactsFragment
       label218:
       for (int i = this.jdField_a_of_type_Int;; i = 80000006)
       {
-        localaiso.a(paramString, i, this.jdField_b_of_type_Double, this.jdField_a_of_type_Double, 1);
+        localajdx.a(paramString, i, this.jdField_b_of_type_Double, this.jdField_a_of_type_Double, 1);
         this.jdField_c_of_type_Boolean = true;
         if (!this.jdField_a_of_type_Boolean) {
           break label270;
         }
         paramString = a(this.jdField_a_of_type_Int);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", paramString, paramString, this.jdField_d_of_type_Int + 1, 0, "", "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", paramString, paramString, this.jdField_d_of_type_Int + 1, 0, "", "", "", "");
         return;
         this.jdField_d_of_type_Boolean = true;
         break;
       }
       label225:
-      aiso localaiso = this.jdField_a_of_type_Aiso;
+      ajdx localajdx = this.jdField_a_of_type_Ajdx;
       if (this.jdField_a_of_type_Boolean) {}
       for (i = this.jdField_a_of_type_Int;; i = 80000005)
       {
-        localaiso.a(paramString, i, this.jdField_b_of_type_Double, this.jdField_a_of_type_Double, 0);
+        localajdx.a(paramString, i, this.jdField_b_of_type_Double, this.jdField_a_of_type_Double, 0);
         break;
       }
       label270:
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BED", "0X8004BED", this.jdField_d_of_type_Int + 1, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BED", "0X8004BED", this.jdField_d_of_type_Int + 1, 0, "", "", "", "");
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2131693948, 0).b(b());
+    QQToast.a(BaseApplicationImpl.getContext(), 2131693965, 0).b(b());
   }
   
-  protected boolean a(ArrayList<aitt> paramArrayList)
+  protected boolean a(ArrayList<ajfc> paramArrayList)
   {
     boolean bool = false;
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-      this.g = bbuk.a(paramArrayList, this.e);
+      this.g = bcnd.a(paramArrayList, this.e);
       if (!b(this.jdField_b_of_type_JavaUtilArrayList))
       {
         this.jdField_a_of_type_JavaUtilArrayList = b(a(paramArrayList));
@@ -770,7 +774,7 @@ public class SearchContactsFragment
     }
     for (;;)
     {
-      a(((aitt)paramArrayList.get(0)).jdField_a_of_type_Int, false, i);
+      a(((ajfc)paramArrayList.get(0)).jdField_a_of_type_Int, false, i);
       return false;
       if (this.jdField_d_of_type_Int == 0) {
         i = 1;
@@ -780,33 +784,33 @@ public class SearchContactsFragment
     }
   }
   
-  ArrayList<aitr> b(ArrayList<aitt> paramArrayList)
+  ArrayList<ajfa> b(ArrayList<ajfc> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList(12);
     int n = paramArrayList.size();
     int j = 0;
-    aitt localaitt;
+    ajfc localajfc;
     for (;;)
     {
       if (j < n)
       {
-        localaitt = (aitt)paramArrayList.get(j);
-        if ((localaitt == null) || ((localaitt.jdField_b_of_type_JavaUtilList.size() <= 0) && (localaitt.jdField_c_of_type_JavaUtilList.size() <= 0)))
+        localajfc = (ajfc)paramArrayList.get(j);
+        if ((localajfc == null) || ((localajfc.jdField_b_of_type_JavaUtilList.size() <= 0) && (localajfc.jdField_c_of_type_JavaUtilList.size() <= 0)))
         {
           j += 1;
         }
         else
         {
-          localObject = new aitr();
-          ((aitr)localObject).jdField_a_of_type_Int = 0;
-          ((aitr)localObject).jdField_b_of_type_Int = localaitt.jdField_a_of_type_Int;
-          ((aitr)localObject).jdField_a_of_type_Boolean = localaitt.jdField_c_of_type_Boolean;
-          if (ViewFactory.a(localaitt.jdField_a_of_type_Int) == 2131689656)
+          localObject = new ajfa();
+          ((ajfa)localObject).jdField_a_of_type_Int = 0;
+          ((ajfa)localObject).jdField_b_of_type_Int = localajfc.jdField_a_of_type_Int;
+          ((ajfa)localObject).jdField_a_of_type_Boolean = localajfc.jdField_c_of_type_Boolean;
+          if (ViewFactory.a(localajfc.jdField_a_of_type_Int) == 2131689658)
           {
-            ((aitr)localObject).jdField_a_of_type_JavaLangString = tyg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+            ((ajfa)localObject).jdField_a_of_type_JavaLangString = tyi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
             label137:
             localArrayList.add(localObject);
-            if (TextUtils.isEmpty(localaitt.jdField_a_of_type_JavaLangString)) {
+            if (TextUtils.isEmpty(localajfc.jdField_a_of_type_JavaLangString)) {
               break label833;
             }
           }
@@ -815,37 +819,37 @@ public class SearchContactsFragment
     }
     label822:
     label833:
-    for (Object localObject = localaitt.jdField_a_of_type_JavaLangString;; localObject = null)
+    for (Object localObject = localajfc.jdField_a_of_type_JavaLangString;; localObject = null)
     {
-      aitr localaitr;
+      ajfa localajfa;
       int i;
-      if ((localaitt.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) && (localaitt.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.has()))
+      if ((localajfc.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) && (localajfc.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.has()))
       {
-        localaitr = new aitr();
-        localaitr.jdField_a_of_type_Int = 2;
-        localaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord = localaitt.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
-        localaitr.jdField_b_of_type_Int = localaitt.jdField_a_of_type_Int;
-        localaitr.jdField_c_of_type_Int = localaitt.jdField_c_of_type_Int;
-        localaitr.jdField_b_of_type_JavaLangString = ((String)localObject);
-        localArrayList.add(localaitr);
+        localajfa = new ajfa();
+        localajfa.jdField_a_of_type_Int = 2;
+        localajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord = localajfc.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
+        localajfa.jdField_b_of_type_Int = localajfc.jdField_a_of_type_Int;
+        localajfa.jdField_c_of_type_Int = localajfc.jdField_c_of_type_Int;
+        localajfa.jdField_b_of_type_JavaLangString = ((String)localObject);
+        localArrayList.add(localajfa);
         i = 2;
-        oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F75", "0X8006F75", 0, 0, this.jdField_a_of_type_JavaLangString, localaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.get(), String.valueOf(localaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_type.get()), "");
+        ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F75", "0X8006F75", 0, 0, this.jdField_a_of_type_JavaLangString, localajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.get(), String.valueOf(localajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_type.get()), "");
       }
       for (;;)
       {
         int m;
         int k;
-        if (localaitt.jdField_a_of_type_Int == 80000004)
+        if (localajfc.jdField_a_of_type_Int == 80000004)
         {
-          m = localaitt.jdField_c_of_type_JavaUtilList.size();
+          m = localajfc.jdField_c_of_type_JavaUtilList.size();
           k = 0;
           label322:
           if (k < i)
           {
-            localObject = new aitr();
-            ((aitr)localObject).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem = ((AccountSearchPb.ResultItem)localaitt.jdField_c_of_type_JavaUtilList.get(k));
-            ((aitr)localObject).jdField_a_of_type_Int = 2;
-            ((aitr)localObject).jdField_b_of_type_Int = localaitt.jdField_a_of_type_Int;
+            localObject = new ajfa();
+            ((ajfa)localObject).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem = ((AccountSearchPb.ResultItem)localajfc.jdField_c_of_type_JavaUtilList.get(k));
+            ((ajfa)localObject).jdField_a_of_type_Int = 2;
+            ((ajfa)localObject).jdField_b_of_type_Int = localajfc.jdField_a_of_type_Int;
             localArrayList.add(localObject);
             if (k < m - 1) {}
           }
@@ -858,52 +862,52 @@ public class SearchContactsFragment
         {
           if (i > 3)
           {
-            localObject = new aitr();
-            ((aitr)localObject).jdField_a_of_type_Int = 1;
-            ((aitr)localObject).jdField_b_of_type_Int = localaitt.jdField_a_of_type_Int;
-            ((aitr)localObject).jdField_c_of_type_Int = localaitt.jdField_c_of_type_Int;
-            if (localaitt.jdField_a_of_type_Int == 80000004) {
-              ((aitr)localObject).jdField_c_of_type_JavaLangString = localaitt.jdField_a_of_type_JavaLangString;
+            localObject = new ajfa();
+            ((ajfa)localObject).jdField_a_of_type_Int = 1;
+            ((ajfa)localObject).jdField_b_of_type_Int = localajfc.jdField_a_of_type_Int;
+            ((ajfa)localObject).jdField_c_of_type_Int = localajfc.jdField_c_of_type_Int;
+            if (localajfc.jdField_a_of_type_Int == 80000004) {
+              ((ajfa)localObject).jdField_c_of_type_JavaLangString = localajfc.jdField_a_of_type_JavaLangString;
             }
             localArrayList.add(localObject);
           }
           if (QLog.isColorLevel()) {
-            QLog.d("SearchContactsFragment", 2, "search reuslt : type = " + localaitt.jdField_a_of_type_Int + "count = " + localaitt.jdField_b_of_type_JavaUtilList.size());
+            QLog.d("SearchContactsFragment", 2, "search reuslt : type = " + localajfc.jdField_a_of_type_Int + "count = " + localajfc.jdField_b_of_type_JavaUtilList.size());
           }
           localObject = "";
-          switch (localaitt.jdField_a_of_type_Int)
+          switch (localajfc.jdField_a_of_type_Int)
           {
           }
           for (;;)
           {
-            bcst.b(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, String.valueOf(Math.min(i, 3)), "", "", "");
+            bdll.b(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, String.valueOf(Math.min(i, 3)), "", "", "");
             break;
-            ((aitr)localObject).jdField_a_of_type_JavaLangString = a().getString(ViewFactory.a(localaitt.jdField_a_of_type_Int));
+            ((ajfa)localObject).jdField_a_of_type_JavaLangString = a().getString(ViewFactory.a(localajfc.jdField_a_of_type_Int));
             break label137;
             k += 1;
             break label322;
-            k = localaitt.jdField_b_of_type_JavaUtilList.size();
+            k = localajfc.jdField_b_of_type_JavaUtilList.size();
             m = 0;
             for (;;)
             {
               if (m >= i) {
                 break label822;
               }
-              localaitr = new aitr();
-              localaitr.jdField_a_of_type_Int = 2;
-              localaitr.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = ((AccountSearchPb.record)localaitt.jdField_b_of_type_JavaUtilList.get(m));
-              localaitr.jdField_b_of_type_Int = localaitt.jdField_a_of_type_Int;
-              localaitr.jdField_c_of_type_Int = localaitt.jdField_c_of_type_Int;
-              localaitr.jdField_b_of_type_JavaLangString = ((String)localObject);
-              localaitr.jdField_a_of_type_Boolean = localaitt.jdField_c_of_type_Boolean;
-              localArrayList.add(localaitr);
+              localajfa = new ajfa();
+              localajfa.jdField_a_of_type_Int = 2;
+              localajfa.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = ((AccountSearchPb.record)localajfc.jdField_b_of_type_JavaUtilList.get(m));
+              localajfa.jdField_b_of_type_Int = localajfc.jdField_a_of_type_Int;
+              localajfa.jdField_c_of_type_Int = localajfc.jdField_c_of_type_Int;
+              localajfa.jdField_b_of_type_JavaLangString = ((String)localObject);
+              localajfa.jdField_a_of_type_Boolean = localajfc.jdField_c_of_type_Boolean;
+              localArrayList.add(localajfa);
               if (m >= k - 1)
               {
                 i = k;
                 break;
               }
-              if (localaitt.jdField_a_of_type_Int == 80000001) {
-                bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "exp", 0, 0, "", "", "", "");
+              if (localajfc.jdField_a_of_type_Int == 80000001) {
+                bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "exp", 0, 0, "", "", "", "");
               }
               m += 1;
             }
@@ -928,7 +932,7 @@ public class SearchContactsFragment
     if (QLog.isColorLevel()) {
       QLog.i("SearchContactsFragment", 2, "show group search recommend view");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView = new GroupSearchRecommendView(a(), this.jdField_a_of_type_Aiwf, new aitn(this), new aito(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView = new GroupSearchRecommendView(a(), this.jdField_a_of_type_Ajho, new ajew(this), new ajex(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView.a();
     a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView);
   }
@@ -954,37 +958,37 @@ public class SearchContactsFragment
   
   protected void g()
   {
-    Object localObject = (anpk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
-    if ((80000001 == this.jdField_a_of_type_Int) && (((anpk)localObject).jdField_d_of_type_Boolean)) {
-      if (this.jdField_a_of_type_Ajcl == null)
+    Object localObject = (aobl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
+    if ((80000001 == this.jdField_a_of_type_Int) && (((aobl)localObject).jdField_d_of_type_Boolean)) {
+      if (this.jdField_a_of_type_Ajnu == null)
       {
-        this.jdField_a_of_type_Ajcl = new ajcp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null);
-        localObject = this.jdField_a_of_type_Ajcl.a();
+        this.jdField_a_of_type_Ajnu = new ajny(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null);
+        localObject = this.jdField_a_of_type_Ajnu.a();
         TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
         localTextView.setGravity(17);
-        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, afur.a(105.0F, getResources())));
-        localTextView.setTextColor(getResources().getColor(2131167064));
+        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, agej.a(105.0F, getResources())));
+        localTextView.setTextColor(getResources().getColor(2131167074));
         localTextView.setTextSize(1, 17.0F);
-        localTextView.setText(anni.a(2131712393));
-        localTextView.setBackgroundResource(2130838759);
+        localTextView.setText(anzj.a(2131712502));
+        localTextView.setBackgroundResource(2130838779);
         ((ListView)localObject).addHeaderView(localTextView);
         localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        localTextView.setTextColor(getResources().getColor(2131167064));
+        localTextView.setTextColor(getResources().getColor(2131167074));
         localTextView.setTextSize(1, 14.0F);
         localTextView.setGravity(16);
-        localTextView.setPadding(afur.a(15.0F, getResources()), 0, 0, 0);
-        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, afur.a(40.0F, getResources())));
-        localTextView.setText(anni.a(2131712384));
-        localTextView.setBackgroundResource(2130838759);
+        localTextView.setPadding(agej.a(15.0F, getResources()), 0, 0, 0);
+        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, agej.a(40.0F, getResources())));
+        localTextView.setText(anzj.a(2131712493));
+        localTextView.setBackgroundResource(2130838779);
         ((ListView)localObject).addHeaderView(localTextView);
-        a(this.jdField_a_of_type_Ajcl.a());
+        a(this.jdField_a_of_type_Ajnu.a());
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_Boolean = false;
       return;
-      this.jdField_a_of_type_Ajcl.e();
+      this.jdField_a_of_type_Ajnu.e();
       break;
       super.g();
     }
@@ -1000,13 +1004,13 @@ public class SearchContactsFragment
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView = ((ViewFactory.GuideView)ViewFactory.a().a(80000005, a(), true, this.jdField_a_of_type_Aobu, null));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView = ((ViewFactory.GuideView)ViewFactory.a().a(80000005, a(), true, this.jdField_a_of_type_Aoof, null));
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView != null) {}
     }
     while (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) == this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView)
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView.setListener(new aitp(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView.setListener(new ajey(this));
       a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView);
       return;
     }
@@ -1017,21 +1021,21 @@ public class SearchContactsFragment
   {
     Object localObject = paramView.getTag();
     if (localObject != null) {
-      if ((localObject instanceof aith)) {
-        a((aith)localObject);
+      if ((localObject instanceof ajeq)) {
+        a((ajeq)localObject);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((localObject instanceof bepv))
+      if ((localObject instanceof bfpc))
       {
-        a((bepv)localObject);
+        a((bfpc)localObject);
       }
-      else if ((localObject instanceof aitg))
+      else if ((localObject instanceof ajep))
       {
-        a((aitg)localObject);
+        a((ajep)localObject);
         continue;
         if ((paramView instanceof QzoneSearchResultView)) {
           ((QzoneSearchResultView)paramView).a(getActivity());
@@ -1043,20 +1047,26 @@ public class SearchContactsFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aits != null) {
-      this.jdField_a_of_type_Aits.c();
+    if (this.jdField_a_of_type_Ajfb != null) {
+      this.jdField_a_of_type_Ajfb.c();
     }
-    if (this.jdField_a_of_type_Aopa != null) {
-      SosoInterface.b(this.jdField_a_of_type_Aopa);
+    if (this.jdField_a_of_type_Apcq != null) {
+      SosoInterface.b(this.jdField_a_of_type_Apcq);
     }
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Ajcl != null) {
-      this.jdField_a_of_type_Ajcl.c();
+    if (this.jdField_a_of_type_Ajnu != null) {
+      this.jdField_a_of_type_Ajnu.c();
     }
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    ApngImage.pauseByTag(37);
   }
   
   public void onResume()
@@ -1065,6 +1075,7 @@ public class SearchContactsFragment
     if ((this.jdField_d_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView.b();
     }
+    ApngImage.playByTag(37);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)

@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
+import com.tencent.qphone.base.util.QLog;
 
-public class atxz
+class atxz
+  extends atxd
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c = true;
-  
-  public atxz(QfileTabBarView paramQfileTabBarView, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public atxz(atwy paramatwy)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
+    super(paramatwy);
   }
   
-  public String a()
+  protected String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
   }
   
-  public boolean a()
+  protected void a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 7);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Atxd = new atxx(this.jdField_a_of_type_Atwy);
   }
 }
 

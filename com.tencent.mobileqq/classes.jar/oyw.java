@@ -1,15 +1,16 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class oyw
-  extends Editable.Factory
+class oyw
+  implements View.OnClickListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  oyw(oyv paramoyv, String paramString1, String paramString2) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramCharSequence instanceof oui)) {
-      return (Editable)paramCharSequence;
-    }
-    return new oui(paramCharSequence, 3, 20);
+    oyv.a(this.jdField_a_of_type_Oyv).a(this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

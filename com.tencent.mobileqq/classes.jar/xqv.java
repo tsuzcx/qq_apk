@@ -1,82 +1,71 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import java.io.File;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-class xqv
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+public class xqv
+  implements xsx
 {
-  xqv(xqp paramxqp) {}
+  public xqv(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void OnDownloadCallback(String paramString)
+  public void a(int paramInt)
   {
-    yqp.a(this.a.jdField_a_of_type_JavaLangString, "on tvk download callback. %s", paramString);
-    do
+    yuk.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
+    int i = this.a.b;
+    this.a.b = paramInt;
+    Object localObject = this.a.a();
+    if (localObject != null)
     {
-      do
-      {
-        Object localObject2;
-        try
-        {
-          xqb localxqb = (xqb)JsonORM.a(new JSONObject(paramString), xqb.class);
-          if (localxqb == null)
-          {
-            yqp.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback fail. %s", new Object[] { paramString });
-            return;
-          }
-        }
-        catch (JsonORM.JsonParseException localJsonParseException)
-        {
-          for (;;)
-          {
-            localJsonParseException.printStackTrace();
-            Object localObject1 = null;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          do
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-              localObject2 = null;
-            }
-            switch (localObject2.d)
-            {
-            default: 
-              yqp.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 未知. %s", new Object[] { paramString });
-              return;
-            case 1: 
-              yqp.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 文件大小. %s", new Object[] { paramString });
-              return;
-            case 2: 
-              yqp.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 progress. offset = %d / %d, speedKBS = %d, clipNo = %d", new Object[] { Integer.valueOf(localObject2.c), Long.valueOf(localObject2.jdField_a_of_type_Long), Integer.valueOf(localObject2.b), Integer.valueOf(localObject2.jdField_a_of_type_Int) });
-              xqp.a(this.a).jdField_a_of_type_Long = localObject2.jdField_a_of_type_Long;
-              xqp.a(this.a).jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localObject2.b));
-            }
-          } while ((TextUtils.isEmpty(this.a.c)) || (this.a.jdField_a_of_type_Xpn == null));
-          this.a.jdField_a_of_type_Xpn.a(this.a.d, new File(this.a.c), localObject2.c, null);
-          return;
-          yqp.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 DONE.");
-          return;
-        }
-        yqp.e(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载出错. errorCode=%d, errorDetailCode=%d, errorMsg=%s", new Object[] { Integer.valueOf(localObject2.e), Integer.valueOf(localObject2.f), localObject2.jdField_a_of_type_JavaLangString });
-        this.a.jdField_a_of_type_Xpn.a(this.a.b, this.a.d, localObject2.e);
-        return;
-        yqp.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 存储文件完整下载完成.");
-        if (TextUtils.isEmpty(this.a.c)) {
-          break;
-        }
-      } while (this.a.jdField_a_of_type_Xpn == null);
-      this.a.jdField_a_of_type_Xpn.a(this.a.b, this.a.d, new File(this.a.c));
-      return;
-    } while (this.a.jdField_a_of_type_Xpn == null);
-    this.a.jdField_a_of_type_Xpn.a(this.a.b, this.a.d, null);
+      localObject = (xri)((xrg)localObject).a(xri.class);
+      if ((localObject != null) && (((xri)localObject).b.getVisibility() != 0)) {
+        this.a.a(true, true);
+      }
+    }
+    localObject = (xpv)this.a.b(xpv.class);
+    if (localObject != null) {
+      ((xpv)localObject).a().a(paramInt);
+    }
+    c(paramInt);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
+    }
+    xpv localxpv = (xpv)this.a.b(xpv.class);
+    if (localxpv != null) {
+      localxpv.a().a(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
+    {
+      ((xpv)this.a.b(xpv.class)).d();
+      yuk.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+    }
+    xpv localxpv = (xpv)this.a.b(xpv.class);
+    if (localxpv != null) {
+      localxpv.a().b(paramInt);
+    }
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    yuk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
+    xrg localxrg = this.a.a();
+    if ((localxrg != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString)) && (!localxrg.c()))
+    {
+      yuk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localxrg);
+      this.a.a(localxrg);
+    }
   }
 }
 

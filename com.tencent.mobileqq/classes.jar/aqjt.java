@@ -1,25 +1,33 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aqjt
-  implements apsw
+  extends aqjo
 {
-  public aqjt(ConfessPlugin paramConfessPlugin) {}
+  public aqjt(RockDownloaderManager.2 param2) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
-      {
-        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
-        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = aqju.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
       }
     }
   }

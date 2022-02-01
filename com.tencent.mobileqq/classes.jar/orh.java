@@ -1,29 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.graphics.Rect;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
-class orh
-  extends AnimatorListenerAdapter
+public class orh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  orh(org paramorg) {}
+  public orh(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onGlobalLayout()
   {
-    if ((org.a(this.a) != null) && (org.a(this.a).f != null))
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
+    int j = localRect.bottom;
+    int i = j;
+    if (!this.a.e) {
+      i = j - this.a.g;
+    }
+    if (i != this.a.f)
     {
-      org.a(this.a).f.setVisibility(0);
-      paramAnimator = new AnimatorSet();
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(org.a(this.a).f, "alpha", new float[] { 0.0F, 1.0F });
-      localObjectAnimator1.setDuration(200L);
-      localObjectAnimator1.setInterpolator(new DecelerateInterpolator());
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(org.a(this.a).f, "translationY", new float[] { afur.a(15.0F, org.a(this.a).f.getResources()), 0.0F });
-      localObjectAnimator2.setDuration(200L);
-      localObjectAnimator2.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-      paramAnimator.start();
+      this.a.f = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
     }
   }
 }

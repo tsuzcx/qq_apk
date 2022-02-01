@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
+import aadv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -24,12 +25,11 @@ import feedcloud.FeedCloudMeta.StImage;
 import feedcloud.FeedCloudMeta.StVideo;
 import java.util.ArrayList;
 import java.util.List;
-import uxh;
-import vou;
-import vrg;
-import vri;
-import vts;
-import zzr;
+import uys;
+import vrd;
+import vtr;
+import vtt;
+import vwr;
 
 public class QCircleContentVideo
   extends QCircleBaseVideoView
@@ -101,7 +101,7 @@ public class QCircleContentVideo
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         str1 = paramInt2 + ":" + paramInt1;
       }
-      localArrayList = vrg.a(localStFeed);
+      localArrayList = vtr.a(localStFeed);
       if (!QCircleContentImmersiveEvent.isImmersive()) {
         break label112;
       }
@@ -109,8 +109,8 @@ public class QCircleContentVideo
     label112:
     for (String str2 = "2";; str2 = "1")
     {
-      localArrayList.add(vri.a("ext4", str2));
-      vrg.a(2, 7, this.b, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, str1, localStFeed, localArrayList, d());
+      localArrayList.add(vtt.a("ext4", str2));
+      vtr.a(2, 7, this.b, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, str1, localStFeed, localArrayList, d());
       return;
     }
   }
@@ -121,7 +121,7 @@ public class QCircleContentVideo
     ArrayList localArrayList;
     if (localStFeed != null)
     {
-      localArrayList = vrg.a(localStFeed);
+      localArrayList = vtr.a(localStFeed);
       if (!QCircleContentImmersiveEvent.isImmersive()) {
         break label73;
       }
@@ -129,8 +129,8 @@ public class QCircleContentVideo
     label73:
     for (String str = "2";; str = "1")
     {
-      localArrayList.add(vri.a("ext4", str));
-      vrg.a(2, 5, this.b, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, "", localStFeed, localArrayList, d());
+      localArrayList.add(vtt.a("ext4", str));
+      vtr.a(2, 5, this.b, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, "", localStFeed, localArrayList, d());
       return;
     }
   }
@@ -146,11 +146,14 @@ public class QCircleContentVideo
   public void a(Object paramObject, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramObject = (FeedCloudMeta.StFeed)paramObject;
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = uxh.b(a());
-    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850664);
-    paramObject = new vou().a(paramObject.cover.picUrl.get()).a(a()).c(localURLDrawableOptions.mRequestWidth).b(localURLDrawableOptions.mRequestHeight).a(true).a(localURLDrawableOptions.mLoadingDrawable);
-    QCircleFeedPicLoader.a().a(paramObject, null);
+    if (a() != null)
+    {
+      paramObject = (FeedCloudMeta.StFeed)paramObject;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = uys.b(a());
+      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850680);
+      paramObject = new vrd().a(paramObject.cover.picUrl.get()).a(a()).c(localURLDrawableOptions.mRequestWidth).b(localURLDrawableOptions.mRequestHeight).a(true).a(localURLDrawableOptions.mLoadingDrawable);
+      QCircleFeedPicLoader.a().a(paramObject, null);
+    }
   }
   
   public boolean a()
@@ -173,7 +176,7 @@ public class QCircleContentVideo
     ArrayList localArrayList;
     if (localStFeed != null)
     {
-      localArrayList = vrg.a(localStFeed);
+      localArrayList = vtr.a(localStFeed);
       if (!QCircleContentImmersiveEvent.isImmersive()) {
         break label71;
       }
@@ -181,8 +184,8 @@ public class QCircleContentVideo
     label71:
     for (String str = "2";; str = "1")
     {
-      localArrayList.add(vri.a("ext4", str));
-      vrg.a(2, 6, 2, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, "", localStFeed, localArrayList, d());
+      localArrayList.add(vtt.a("ext4", str));
+      vtr.a(2, 6, 2, this.jdField_a_of_type_Int, paramLong1, paramLong2, true, "", localStFeed, localArrayList, d());
       return;
     }
   }
@@ -211,7 +214,7 @@ public class QCircleContentVideo
     ArrayList localArrayList;
     if (localStFeed != null)
     {
-      localArrayList = vrg.a(localStFeed);
+      localArrayList = vtr.a(localStFeed);
       if (!QCircleContentImmersiveEvent.isImmersive()) {
         break label64;
       }
@@ -219,8 +222,8 @@ public class QCircleContentVideo
     label64:
     for (String str = "2";; str = "1")
     {
-      localArrayList.add(vri.a("ext4", str));
-      vrg.a(2, 4, this.b, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, localArrayList, d());
+      localArrayList.add(vtt.a("ext4", str));
+      vtr.a(2, 4, this.b, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, localArrayList, d());
       return;
     }
   }
@@ -241,8 +244,8 @@ public class QCircleContentVideo
     super.onProgressChanged(paramSeekBar, paramInt, paramBoolean);
     if ((this.c) && (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) && (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e != null))
     {
-      zzr.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e, false);
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e.setText(vts.a(paramInt) + " | ");
+      aadv.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e, false);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.e.setText(vwr.a(paramInt) + " | ");
     }
   }
   
@@ -290,8 +293,8 @@ public class QCircleContentVideo
   
   public void setVideoPath(FeedCloudMeta.StVideo paramStVideo, int paramInt)
   {
-    if (a() != null) {
-      a().setOnSeekBarChangeListener(this);
+    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) {
+      setLoadingView(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.jdField_a_of_type_AndroidViewView);
     }
     this.d = false;
     super.setVideoPath(paramStVideo, paramInt);

@@ -1,40 +1,57 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.viola.ui.component.image.ImageAction;
-import java.util.Set;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class tmj
-  implements URLDrawable.URLDrawableListener
+public class tmj
 {
-  private ImageAction jdField_a_of_type_ComTencentViolaUiComponentImageImageAction;
-  private boolean jdField_a_of_type_Boolean;
+  private static int jdField_a_of_type_Int;
+  private static final String jdField_a_of_type_JavaLangString = tmj.class.getSimpleName();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  public tmj(tmh paramtmh, boolean paramBoolean, ImageAction paramImageAction)
+  public tmj(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction = paramImageAction;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = ozs.a();
+    jdField_a_of_type_Int = 0;
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  private int c()
   {
-    if (this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction == null) {
+    int i = 0;
+    boolean bool = bnrf.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (!bool) {
+      bnrf.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
+    }
+    if (bool) {
+      i = ((Integer)bnrf.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
+    }
+    return i;
+  }
+  
+  public int a()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      int i = c();
+      jdField_a_of_type_Int += 1;
+      bnrf.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
       return;
     }
-    this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction.onCancel();
-    tmh.a(this.jdField_a_of_type_Tmh).remove(paramURLDrawable);
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int b()
   {
-    tmh.a(this.jdField_a_of_type_Tmh, this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    tmh.a(this.jdField_a_of_type_Tmh, this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction, paramURLDrawable, this.jdField_a_of_type_Boolean);
-    tmh.a(this.jdField_a_of_type_Tmh).remove(paramURLDrawable);
+    return c();
   }
 }
 

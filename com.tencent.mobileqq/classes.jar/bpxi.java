@@ -1,214 +1,69 @@
+import android.os.Build.VERSION;
+import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import dov.com.qq.im.capture.music.QQMusicDownloader;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bpxi
-  extends bpen
+  extends Handler
 {
-  private final afwa jdField_a_of_type_Afwa = new bpxk(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private bomw jdField_a_of_type_Bomw = new bpxj(this);
-  private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public bpxi(CropVideoActivity paramCropVideoActivity) {}
   
-  public bpxi(bpwv parambpwv, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo)
-  {
-    super(parambpwv);
-    this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = paramQzoneVerticalVideoTopicInfo;
-  }
-  
-  private void a(MusicItemInfo paramMusicItemInfo)
-  {
-    paramMusicItemInfo = QQMusicDownloader.a(paramMusicItemInfo.mUrl, paramMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Bomw);
-    if (paramMusicItemInfo != null) {
-      QQMusicDownloader.a(paramMusicItemInfo, this.jdField_a_of_type_Bomw);
-    }
-  }
-  
-  private boolean a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramMusicItemInfo == null) {}
-    while (((paramMusicItemInfo.mType == 5) || (paramMusicItemInfo.mType == 1)) && (!bgmg.b(paramMusicItemInfo.getLocalPath()))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void b(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.b) {}
-    do
-    {
-      return;
-      k();
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null) || (paramMusicItemInfo == null) || (!a(paramMusicItemInfo)));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(paramMusicItemInfo.getLocalPath());
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131562294, null);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379942)).setText(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.e());
-    Object localObject = (URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369217);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.g())) {
-      ((URLImageView)localObject).setBackgroundURL(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.g());
-    }
-    for (;;)
-    {
-      localObject = (RelativeLayout)a(2131365843);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(12);
-      localLayoutParams.bottomMargin = afur.a(110.0F, a());
-      localLayoutParams.leftMargin = afur.a(10.0F, a());
-      ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      return;
-      ((URLImageView)localObject).setVisibility(8);
-    }
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = new MusicItemInfo();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mSongMid = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.b();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mUrl = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.c();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mType = 1;
-      bpez localbpez = (bpez)this.jdField_a_of_type_Bpep.a(bpez.class);
-      if (localbpez != null) {
-        localbpez.a(true);
-      }
-      if (a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo)) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(a(), this.jdField_a_of_type_Afwa);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
-    }
-  }
-  
-  private void l()
-  {
-    if (this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Bpep.a(Message.obtain(null, 3, 1, 0));
-    n();
-    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-  }
-  
-  private void n()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = null;
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-    d();
-    j();
-  }
-  
-  public void a(int paramInt, @NonNull bpsf parambpsf)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath())))
-    {
-      parambpsf.a.backgroundMusicPath = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath();
-      parambpsf.a.isMuteRecordVoice = true;
-      parambpsf.a.backgroundMusicOffset = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-      parambpsf.a.backgroundMusicDuration = ((int)ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath()));
-      if (parambpsf.a.backgroundMusicDuration <= 0) {
-        parambpsf.a.backgroundMusicPath = null;
-      }
-    }
-  }
-  
-  protected boolean a(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      n();
-      b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    }
-  }
-  
-  public void aY_()
-  {
-    this.b = true;
-    super.aY_();
-    n();
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    case 1: 
     default: 
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      break;
-    }
-    do
-    {
+    case 1: 
+    case 2: 
       do
       {
         return;
-      } while (this.jdField_a_of_type_AndroidViewView == null);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        postDelayed(this.a.a, 1000L);
+        CropVideoActivity.a(this.a).setProgress(paramMessage.arg1);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("CropVideoActivity", 2, "crop video begin");
+        }
+        if ((CropVideoActivity.a(this.a) >= CropVideoActivity.b(this.a)) && (CropVideoActivity.b(this.a) >= 0L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("CropVideoActivity", 2, "startCropVideo illegal time!");
+          }
+          QQToast.a(this.a.getApplicationContext(), anzj.a(2131701533), 1).a();
+          return;
+        }
+      } while (CropVideoActivity.a(this.a, CropVideoActivity.a(this.a)) != 0);
+      if (Build.VERSION.SDK_INT >= 18) {
+        bpxl.a(CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.e(this.a), CropVideoActivity.f(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), new bpxj(this));
+      }
+      for (;;)
+      {
+        this.a.a();
+        return;
+        CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
+      }
+    case 3: 
+      if (QLog.isColorLevel()) {
+        QLog.d("CropVideoActivity", 2, "crop video success");
+      }
+      this.a.finish();
       return;
-    } while (this.jdField_a_of_type_AndroidViewView == null);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void f()
-  {
-    this.b = false;
-    super.f();
-    if (this.jdField_a_of_type_Boolean) {
-      l();
+    case 4: 
+      if (QLog.isColorLevel()) {
+        QLog.d("CropVideoActivity", 2, "crop video fail");
+      }
+      QQToast.a(this.a.getApplicationContext(), 1, anzj.a(2131701531), 1).a();
+      this.a.finish();
+      return;
     }
-  }
-  
-  public void g()
-  {
-    super.g();
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "crop video with ffmpeg");
+    }
+    CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
+    this.a.a();
   }
 }
 

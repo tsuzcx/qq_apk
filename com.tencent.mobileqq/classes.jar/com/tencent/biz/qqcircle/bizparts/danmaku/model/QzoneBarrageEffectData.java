@@ -8,8 +8,8 @@ import NS_MOBILE_MATERIAL.material_cate_get_rsp;
 import android.content.ContentValues;
 import android.os.Parcel;
 import android.text.TextUtils;
-import biux;
-import biuy;
+import bjvw;
+import bjvx;
 import com.tencent.component.annotation.NeedParcel;
 import com.tencent.component.app.common.ParcelableWrapper;
 import com.tencent.component.app.common.SmartParcelable;
@@ -17,14 +17,14 @@ import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-import vfk;
+import vho;
 
 public class QzoneBarrageEffectData
-  extends biux
+  extends bjvw
   implements SmartParcelable
 {
   public static final String BARRAGE_EFFECT_DATA = "barrage_effect_data";
-  public static final biuy<QzoneBarrageEffectData> DB_CREATOR = new vfk();
+  public static final bjvx<QzoneBarrageEffectData> DB_CREATOR = new vho();
   private static final String TAG = "SuperPersonalFontData";
   public static final String TYPE_BARRAGE_EFFECT_DATA = "BLOB";
   public static final String TYPE_UIN = "INTEGER UNIQUE";

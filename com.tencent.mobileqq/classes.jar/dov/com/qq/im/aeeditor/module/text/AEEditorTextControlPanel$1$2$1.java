@@ -1,13 +1,13 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnzb;
-import bohv;
-import boik;
+import bpam;
+import bpjq;
+import bpkf;
 
 public class AEEditorTextControlPanel$1$2$1
   implements Runnable
 {
-  public AEEditorTextControlPanel$1$2$1(bohv parambohv) {}
+  public AEEditorTextControlPanel$1$2$1(bpjq parambpjq) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AEEditorTextControlPanel$1$2$1
     {
       try
       {
-        bnzb.d("AEEditorTextControlPanel", "[createImageAndUpdate]notifyAll");
+        bpam.d("AEEditorTextControlPanel", "[createImageAndUpdate]notifyAll");
         AEEditorTextControlPanel.a(this.a.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel$1.this$0).notifyItemChanged(this.a.jdField_a_of_type_Int);
         return;
       }
@@ -23,7 +23,7 @@ public class AEEditorTextControlPanel$1$2$1
       {
         for (;;)
         {
-          bnzb.d("AEEditorTextControlPanel", "[createImageAndUpdate]IllegalMonitorStateException");
+          bpam.d("AEEditorTextControlPanel", "[createImageAndUpdate]IllegalMonitorStateException");
         }
       }
     }

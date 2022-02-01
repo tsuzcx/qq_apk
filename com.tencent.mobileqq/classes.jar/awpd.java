@@ -1,55 +1,42 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import java.util.Calendar;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class awpd
-  implements aqiw
+  extends awow
 {
-  private awpd(MsgBackupDateFragment paramMsgBackupDateFragment) {}
-  
-  public int a()
+  public awpd(BaseChatPie paramBaseChatPie)
   {
-    return 3;
+    super(paramBaseChatPie);
   }
   
-  public int a(int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    if (MsgBackupDateFragment.b(this.a) == 1)
-    {
-      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
-      localCalendar.set(5, 1);
-    }
-    for (;;)
-    {
-      return localCalendar.getActualMaximum(5);
-      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
-      localCalendar.set(5, 1);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aijm)) {
+      ((aijm)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bz();
     }
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public boolean a()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return MsgBackupDateFragment.d(this.a) + paramInt2 + anni.a(2131705707);
-    case 1: 
-      return paramInt2 + 1 + anni.a(2131705690);
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Awpc.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    if (this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString = "";
     }
-    return paramInt2 + 1 + anni.a(2131705706);
+    this.jdField_a_of_type_Awpb = new awpb();
+    this.jdField_a_of_type_Awpb.jdField_a_of_type_JavaLangString = "c2c_AIO";
+    this.jdField_a_of_type_Awpb.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Awpb.b = "";
   }
 }
 

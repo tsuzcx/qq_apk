@@ -1,75 +1,18 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class also
-  extends afnj
+  implements Animator.AnimatorListener
 {
-  public CheckBox a;
-  public PhoneContact a;
-  public boolean a;
-  public View b;
-  public TextView c;
-  public TextView d;
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public static int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ("0".equals(paramString)) {
-      return 11;
-    }
-    return 1;
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public static View a(ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, int paramInt)
-  {
-    paramViewGroup = paramLayoutInflater.inflate(paramInt, paramViewGroup, false);
-    paramLayoutInflater = new also();
-    paramViewGroup.setTag(paramLayoutInflater);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376678));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379723));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131364466));
-    paramLayoutInflater.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368138));
-    paramLayoutInflater.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379714));
-    paramLayoutInflater.d = ((TextView)paramViewGroup.findViewById(2131379795));
-    paramLayoutInflater.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371539));
-    paramLayoutInflater.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131365544);
-    return paramViewGroup;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public static void a(ambr paramambr, also paramalso, PhoneContact paramPhoneContact)
-  {
-    paramalso.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    paramalso.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramalso.jdField_c_of_type_Int = a(paramPhoneContact.uin);
-    if (TextUtils.isEmpty(paramPhoneContact.uin))
-    {
-      paramalso.jdField_a_of_type_JavaLangString = ("pstn" + paramPhoneContact.mobileNo);
-      paramalso.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130842050);
-      paramalso.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramalso.jdField_c_of_type_AndroidWidgetTextView.setText(bglf.a(paramPhoneContact.name));
-      paramalso.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (!"0".equals(paramPhoneContact.uin))
-    {
-      paramalso.jdField_a_of_type_JavaLangString = paramPhoneContact.uin;
-      paramalso.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramambr.a(paramalso.jdField_a_of_type_JavaLangString, 1, (byte)0));
-      paramalso.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramalso.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    paramalso.jdField_a_of_type_JavaLangString = (paramPhoneContact.nationCode + paramPhoneContact.mobileCode);
-    paramalso.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramambr.a(paramalso.jdField_a_of_type_JavaLangString, 11, (byte)0));
-    paramalso.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramalso.jdField_a_of_type_Boolean = false;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

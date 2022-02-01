@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import auop;
+import avgp;
 import com.tencent.mobileqq.fragment.BaseFragment;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements auop
+  implements avgp
 {
   public String a()
   {

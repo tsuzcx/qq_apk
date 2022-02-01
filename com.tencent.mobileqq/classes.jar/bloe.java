@@ -1,17 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-class bloe
-  extends BroadcastReceiver
+public class bloe
+  implements View.OnClickListener
 {
-  private bloe(blnz paramblnz) {}
+  public bloe(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("cooperation.qqreader.start_reader_act_completed".equals(paramIntent.getAction())) {
-      blnz.b(this.a);
+    if (this.b.jdField_a_of_type_Blog != null) {
+      this.b.jdField_a_of_type_Blog.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bpvm;
-import bpvo;
+import bqxh;
+import bqxj;
 
 public class EditVideoTagPresenter$2$1
   implements Runnable
 {
-  public EditVideoTagPresenter$2$1(bpvo parambpvo) {}
+  public EditVideoTagPresenter$2$1(bqxj parambqxj) {}
   
   public void run()
   {
-    bpvm.a(bpvm.a(this.a.a), bpvm.a(this.a.a));
+    bqxh.a(bqxh.a(this.a.a), bqxh.a(this.a.a));
   }
 }
 

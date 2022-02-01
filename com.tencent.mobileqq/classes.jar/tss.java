@@ -1,12 +1,8 @@
+import android.view.View;
+
 public abstract interface tss
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(View paramView, int paramInt);
 }
 
 

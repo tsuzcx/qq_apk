@@ -1,55 +1,77 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.Arrays;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.TuplesKt;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-public class aars
-  extends nkj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/tribe/TribeWebViewPlugin;", "Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;", "()V", "processMap", "", "", "Lcom/tencent/biz/tribe/webplugins/ShowShareMenuProcessor;", "handleJsRequest", "", "listener", "Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;", "url", "pkgName", "method", "args", "", "(Lcom/tencent/mobileqq/webview/swift/JsBridgeListener;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Z", "BaseTribePluginProcessor", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aars
+  extends WebViewPlugin
 {
-  public boolean a;
+  public static final aaru a;
+  private final Map<String, aarv> a;
   
-  public aars(Context paramContext, String paramString)
+  static
   {
-    super(paramContext, paramString);
+    jdField_a_of_type_Aaru = new aaru(null);
   }
   
-  public String a()
+  public aars()
   {
-    return "key_for_troop_config_for_all_cfg";
+    this.jdField_a_of_type_JavaUtilMap = MapsKt.mapOf(TuplesKt.to("showShareMenu", new aarv(this)));
   }
   
-  public void a(String paramString)
+  public boolean handleJsRequest(@Nullable JsBridgeListener paramJsBridgeListener, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @NotNull String... paramVarArgs)
   {
-    boolean bool = true;
-    this.a = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    for (;;)
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "args");
+    Object localObject = (CharSequence)paramString3;
+    int i;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
-      try
-      {
-        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
-          break label56;
-        }
-        this.a = bool;
-        return;
+      i = 1;
+      if (i != 0) {
+        break label129;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      localObject = (aarv)this.jdField_a_of_type_JavaUtilMap.get(paramString3);
+      if (localObject == null) {
+        break label129;
       }
-      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
-      return;
-      label56:
-      bool = false;
+      if (paramVarArgs.length != 0) {
+        break label106;
+      }
+      i = 1;
+      label67:
+      if (i != 0) {
+        break label112;
+      }
+      i = 1;
+      label75:
+      if (i == 0) {
+        break label118;
+      }
     }
-  }
-  
-  public String b()
-  {
-    return "key_for_troop_config_for_all_cfg_version";
+    label106:
+    label112:
+    label118:
+    for (paramJsBridgeListener = new JSONObject(paramVarArgs[0]);; paramJsBridgeListener = new JSONObject())
+    {
+      ((aarv)localObject).a(paramJsBridgeListener);
+      return true;
+      i = 0;
+      break;
+      i = 0;
+      break label67;
+      i = 0;
+      break label75;
+    }
+    label129:
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, (String[])Arrays.copyOf(paramVarArgs, paramVarArgs.length));
   }
 }
 

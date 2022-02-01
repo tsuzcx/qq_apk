@@ -1,52 +1,123 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher$Builder;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "setAdapter", "(Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;)V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "getArticleInfoMap", "()Ljava/util/HashMap;", "setArticleInfoMap", "(Ljava/util/HashMap;)V", "positionMap", "", "getPositionMap", "setPositionMap", "build", "Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "withArticleInfoMap", "withPositionMap", "withRIJAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qoa
+public class qoa
+  extends BaseAdapter
 {
-  @NotNull
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  @Nullable
-  private snh jdField_a_of_type_Snh;
-  @NotNull
-  private HashMap<String, ArticleInfo> b = new HashMap();
+  String jdField_a_of_type_JavaLangString;
+  List<URL> jdField_a_of_type_JavaUtilList;
+  String jdField_b_of_type_JavaLangString;
+  List<smv> jdField_b_of_type_JavaUtilList;
   
-  @NotNull
-  public final qnz a()
+  public qoa(ComponentContentGridImage paramComponentContentGridImage, qob paramqob)
   {
-    qnz localqnz = new qnz(null);
-    qnz.a(localqnz, this.jdField_a_of_type_Snh);
-    qnz.a(localqnz, this.jdField_a_of_type_JavaUtilHashMap);
-    qnz.b(localqnz, this.b);
-    return localqnz;
+    a(paramqob);
   }
   
-  @NotNull
-  public final qoa a(@NotNull HashMap<String, Integer> paramHashMap)
+  private int a()
   {
-    Intrinsics.checkParameterIsNotNull(paramHashMap, "positionMap");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    return this;
+    int i = agej.a(82.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    int j = getCount();
+    if ((j == 2) || (j == 4)) {
+      i = agej.a(116.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    }
+    return i;
   }
   
-  @NotNull
-  public final qoa a(@NotNull snh paramsnh)
+  private <T> List<T> a(List<T> paramList, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramsnh, "adapter");
-    this.jdField_a_of_type_Snh = paramsnh;
-    return this;
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return paramList;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramList.size(), paramInt);
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      localArrayList.add(paramList.get(paramInt));
+      paramInt += 1;
+    }
+    return localArrayList;
   }
   
-  @NotNull
-  public final qoa b(@NotNull HashMap<String, ArticleInfo> paramHashMap)
+  private void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramHashMap, "articleInfoMap");
-    this.b = paramHashMap;
-    return this;
+    this.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilList, 3);
+    this.jdField_b_of_type_JavaUtilList = a(this.jdField_b_of_type_JavaUtilList, 3);
+  }
+  
+  private int b()
+  {
+    int i = agej.a(116.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    int j = getCount();
+    if ((j == 2) || (j == 4)) {
+      i = agej.a(175.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    }
+    return i;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<URL> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(qob paramqob)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramqob.a();
+    this.jdField_a_of_type_JavaUtilList = paramqob.b();
+    this.jdField_a_of_type_JavaLangString = paramqob.a();
+    this.jdField_b_of_type_JavaLangString = paramqob.b();
+    a();
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_b_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Context localContext = paramViewGroup.getContext();
+    if (paramView == null) {
+      paramView = new SquareCornerTextImageView(localContext);
+    }
+    for (;;)
+    {
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, a()));
+      ((SquareCornerTextImageView)paramView).a((smv)this.jdField_b_of_type_JavaUtilList.get(paramInt), ((URL)this.jdField_a_of_type_JavaUtilList.get(paramInt)).toString(), b(), a());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.a(paramView);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

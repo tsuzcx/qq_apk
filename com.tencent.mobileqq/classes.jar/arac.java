@@ -2,60 +2,55 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-public class arac
-  extends aqkz<arab>
+public abstract class arac<T>
 {
-  public static arab a()
-  {
-    return (arab)aqlk.a().a(342);
-  }
+  public static final int DEFAULT = 1;
+  public static final int FAIL_CODE_ERROR = -2;
+  public static final int FAIL_CODE_REQ_TIMEOUT = -1;
+  public static final int MIGRATE = 0;
+  private static final String TAG = "IQConfigProcessor";
   
-  @NonNull
-  public arab a(int paramInt)
-  {
-    return new arab();
-  }
+  public abstract Class<T> clazz();
   
-  @Nullable
-  public arab a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arab.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(arab paramarab) {}
-  
-  public Class<arab> clazz()
-  {
-    return arab.class;
-  }
-  
-  public boolean isNeedCompressed()
+  public boolean isAccountRelated()
   {
     return true;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public abstract boolean isNeedCompressed();
+  
+  public abstract boolean isNeedStoreLargeFile();
+  
+  public boolean isNeedUpgradeReset()
   {
     return false;
   }
   
-  public int migrateOldVersion()
+  @NonNull
+  public abstract T migrateOldOrDefaultContent(int paramInt);
+  
+  public abstract int migrateOldVersion();
+  
+  @Nullable
+  public abstract T onParsed(araj[] paramArrayOfaraj);
+  
+  public abstract void onReqFailed(int paramInt);
+  
+  public void onReqNoReceive()
   {
-    return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + type());
+    }
   }
   
-  public void onReqFailed(int paramInt)
+  public int onSend(int paramInt)
   {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
+    return paramInt;
   }
   
-  public int type()
-  {
-    return 342;
-  }
+  public abstract void onUpdate(T paramT);
+  
+  public abstract int type();
 }
 
 

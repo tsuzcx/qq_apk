@@ -1,6 +1,7 @@
 package com.tencent.biz.qqcircle.utils;
 
-import aaaf;
+import aabj;
+import aaek;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -19,42 +20,45 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import androidx.annotation.NonNull;
-import bclx;
-import bqcd;
+import bdep;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import vtn;
-import vto;
-import vtp;
-import vtq;
-import vtr;
-import zxo;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import vwm;
+import vwn;
+import vwo;
+import vwp;
+import vwq;
 
 public class QCircleSlidBottomView
   extends FrameLayout
   implements NestedScrollingParent
 {
-  private final int jdField_a_of_type_Int = bclx.a(50.0F);
+  private final int jdField_a_of_type_Int = bdep.a(50.0F);
   private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
   private final NestedScrollingParentHelper jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper;
   private ScrollerCompat jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat = ScrollerCompat.create(getContext(), this.jdField_c_of_type_AndroidViewAnimationInterpolator);
   private View jdField_a_of_type_AndroidViewView;
   protected Interpolator a;
-  private vtq jdField_a_of_type_Vtq;
+  private vwp jdField_a_of_type_Vwp;
   private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = bclx.a(5.0F);
+  private final int jdField_b_of_type_Int = bdep.a(5.0F);
   private ObjectAnimator jdField_b_of_type_AndroidAnimationObjectAnimator;
   protected Interpolator b;
   private boolean jdField_b_of_type_Boolean;
   private final int jdField_c_of_type_Int;
   private ObjectAnimator jdField_c_of_type_AndroidAnimationObjectAnimator;
-  private Interpolator jdField_c_of_type_AndroidViewAnimationInterpolator = new vtn(this);
+  private Interpolator jdField_c_of_type_AndroidViewAnimationInterpolator = new vwm(this);
   private boolean jdField_c_of_type_Boolean;
   private final int jdField_d_of_type_Int;
   private ObjectAnimator jdField_d_of_type_AndroidAnimationObjectAnimator;
-  private final int e;
+  private boolean jdField_d_of_type_Boolean;
+  private final int jdField_e_of_type_Int;
+  private ObjectAnimator jdField_e_of_type_AndroidAnimationObjectAnimator;
   private final int f;
   private int g;
   private int h;
@@ -62,11 +66,12 @@ public class QCircleSlidBottomView
   private int j;
   private int k;
   private int l;
-  private int m = -2;
-  private int n;
+  private int m;
+  private int n = -2;
   private int o;
   private int p;
   private int q;
+  private int r;
   
   public QCircleSlidBottomView(@NonNull Context paramContext)
   {
@@ -81,33 +86,62 @@ public class QCircleSlidBottomView
   public QCircleSlidBottomView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new vtr(this, 1.0D);
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new vwq(this, 1.0D);
     this.jdField_b_of_type_AndroidViewAnimationInterpolator = new AccelerateInterpolator();
-    this.n = bclx.c(paramContext);
+    this.o = bdep.c(paramContext);
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
     this.jdField_c_of_type_Int = localViewConfiguration.getScaledTouchSlop();
     this.jdField_d_of_type_Int = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.e = localViewConfiguration.getScaledMaximumFlingVelocity();
+    this.jdField_e_of_type_Int = localViewConfiguration.getScaledMaximumFlingVelocity();
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QCircleSlidBottomView);
-    this.k = ((int)(paramAttributeSet.getFloat(3, 0.5F) * this.n));
-    this.j = ((int)paramAttributeSet.getDimension(4, this.jdField_a_of_type_Int));
-    this.l = ((int)paramAttributeSet.getDimension(1, bclx.a(30.0F)));
+    this.k = ((int)(paramAttributeSet.getFloat(4, 0.5F) * this.o));
+    this.j = ((int)paramAttributeSet.getDimension(5, this.jdField_a_of_type_Int));
+    this.l = ((this.o - Math.max(this.i, this.p)) / 6);
+    this.m = ((int)paramAttributeSet.getDimension(1, bdep.a(30.0F)));
     this.f = ((int)paramAttributeSet.getDimension(0, 0.0F));
+    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(3, false);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.i = (ImmersiveUtils.getStatusBarHeight(paramContext) - 1);
     }
-    if (bclx.a(paramContext)) {
-      this.g = bclx.d(paramContext);
+    if (LiuHaiUtils.enableNotch((Activity)paramContext))
+    {
+      LiuHaiUtils.d((Activity)paramContext);
+      this.p = LiuHaiUtils.a();
     }
-    if (bqcd.c((Activity)paramContext)) {
-      this.o = bqcd.g;
+    paramAttributeSet.recycle();
+    int i1 = this.o;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramInt = this.l;
+      this.r = (i1 - paramInt - Math.max(this.i, this.p));
+      if (!this.jdField_a_of_type_Boolean) {
+        break label396;
+      }
     }
-    this.q = (this.n - this.j - Math.max(this.i, this.o));
-    this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
-    this.h = (this.k - this.j);
-    if (aaaf.a()) {
-      setBackgroundColor(Color.parseColor("#00000000"));
+    label396:
+    for (paramInt = this.o / 2 - this.l;; paramInt = this.k - this.j)
+    {
+      this.h = paramInt;
+      QLog.d("QCircleSlidBottomView", 3, "isFix = " + this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
+      if (aaek.a()) {
+        setBackgroundColor(Color.parseColor("#00000000"));
+      }
+      return;
+      paramInt = this.j;
+      break;
     }
+  }
+  
+  private void a(int paramInt)
+  {
+    if (paramInt > 0) {
+      c(paramInt);
+    }
+    while (paramInt >= 0) {
+      return;
+    }
+    b(paramInt);
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -123,39 +157,52 @@ public class QCircleSlidBottomView
       {
         return;
         f();
-        paramInt1 = Math.max(-this.e, Math.min(paramInt1, this.e));
-        paramInt2 = Math.max(-this.e, Math.min(i1, this.e));
+        paramInt1 = Math.max(-this.jdField_e_of_type_Int, Math.min(paramInt1, this.jdField_e_of_type_Int));
+        paramInt2 = Math.max(-this.jdField_e_of_type_Int, Math.min(i1, this.jdField_e_of_type_Int));
       } while (Math.abs(paramInt2) <= Math.abs(paramInt1));
       this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.abortAnimation();
       this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.fling(0, getScrollY(), paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
     } while (!this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.computeScrollOffset());
     paramInt1 = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrY();
     paramInt2 = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getFinalY();
-    i1 = paramInt2 - paramInt1;
-    if (i1 > 0) {
-      if ((a()) && (i1 > this.n / 2)) {
-        c();
-      }
-    }
-    for (;;)
-    {
-      QLog.d("QCircleSlidBottomView", 3, "fling start y:" + paramInt1 + "   end y:" + paramInt2);
-      return;
-      if (i1 < 0) {
-        if (a())
-        {
-          if (Math.abs(i1) > this.n / 2) {
-            d();
-          }
-        }
-        else if (Math.abs(i1) > this.n * 2.0F / 3.0F) {
-          d();
-        }
-      }
-    }
+    a(paramInt2 - paramInt1);
+    QLog.d("QCircleSlidBottomView", 3, "fling start y:" + paramInt1 + "   end y:" + paramInt2);
   }
   
   private boolean a(int paramInt, RecyclerView paramRecyclerView)
+  {
+    if (b())
+    {
+      if (paramInt >= 0) {
+        return this.jdField_c_of_type_Boolean;
+      }
+      return !paramRecyclerView.canScrollVertically(-1);
+    }
+    return b(paramInt, paramRecyclerView);
+  }
+  
+  private boolean a(RecyclerView paramRecyclerView)
+  {
+    if ((paramRecyclerView != null) && ((paramRecyclerView.getAdapter() instanceof aabj))) {
+      return ((aabj)paramRecyclerView.getAdapter()).a() > 0;
+    }
+    return false;
+  }
+  
+  private void b(int paramInt)
+  {
+    if (a()) {
+      if (Math.abs(paramInt) > this.o / 2) {
+        d();
+      }
+    }
+    while (Math.abs(paramInt) <= this.o * 2.0F / 3.0F) {
+      return;
+    }
+    d();
+  }
+  
+  private boolean b(int paramInt, RecyclerView paramRecyclerView)
   {
     if (a()) {
       if (!a(paramRecyclerView)) {}
@@ -168,28 +215,56 @@ public class QCircleSlidBottomView
       } while (paramInt <= 0);
       return false;
       if (paramInt >= 0) {
-        return this.jdField_b_of_type_Boolean;
+        return this.jdField_c_of_type_Boolean;
       }
     } while (!paramRecyclerView.canScrollVertically(-1));
     return false;
   }
   
-  private boolean a(RecyclerView paramRecyclerView)
+  private void c(int paramInt)
   {
-    if ((paramRecyclerView != null) && ((paramRecyclerView.getAdapter() instanceof zxo))) {
-      return ((zxo)paramRecyclerView.getAdapter()).a() > 0;
+    if ((a()) && (paramInt > this.o / 2)) {
+      c();
     }
-    return false;
+  }
+  
+  private void d(int paramInt)
+  {
+    if (a())
+    {
+      f(paramInt);
+      return;
+    }
+    e(paramInt);
   }
   
   private void e()
   {
     this.jdField_d_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { getScrollY(), 0 }).setDuration(200L);
     this.jdField_d_of_type_AndroidAnimationObjectAnimator.start();
-    this.m = 0;
-    if (this.jdField_a_of_type_Vtq != null) {
-      this.jdField_a_of_type_Vtq.a(this.m);
+    this.n = 0;
+    if (this.jdField_a_of_type_Vwp != null) {
+      this.jdField_a_of_type_Vwp.a(this.n);
     }
+  }
+  
+  private void e(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      if (Math.abs(paramInt) > this.r / 2.0F) {
+        d();
+      }
+    }
+    else {
+      return;
+    }
+    if (Math.abs(paramInt) > this.r / 6.0F)
+    {
+      e();
+      return;
+    }
+    c();
   }
   
   private void f()
@@ -206,103 +281,149 @@ public class QCircleSlidBottomView
     if (this.jdField_c_of_type_AndroidAnimationObjectAnimator != null) {
       this.jdField_c_of_type_AndroidAnimationObjectAnimator.cancel();
     }
+    if (this.jdField_e_of_type_AndroidAnimationObjectAnimator != null) {
+      this.jdField_e_of_type_AndroidAnimationObjectAnimator.cancel();
+    }
   }
   
-  public void a()
+  private void f(int paramInt)
   {
-    if (!this.jdField_c_of_type_Boolean)
+    if (paramInt > 0)
     {
-      this.j += Math.max(this.i, this.o);
-      this.h = (this.k - this.j);
-      this.jdField_c_of_type_Boolean = true;
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.m == 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setVisibility(0);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { -this.q / 2, 0 }).setDuration(1500L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new vto(this));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    this.m = 0;
-  }
-  
-  public boolean a()
-  {
-    return this.m == 0;
-  }
-  
-  protected void b()
-  {
-    int i1 = getScrollY();
-    i1 = this.p - i1;
-    QLog.d("QCircleSlidBottomView", 3, "onend:" + this.p);
-    if (a()) {
-      if (i1 > 0) {
-        if (Math.abs(i1) > this.q / 6.0F) {
-          d();
-        }
-      }
-    }
-    while (i1 <= 0)
-    {
-      return;
-      e();
-      return;
-      if (Math.abs(i1) > this.q / 8.0F)
+      if (Math.abs(paramInt) > this.r / 6.0F)
       {
-        c();
+        d();
         return;
       }
       e();
       return;
     }
-    if (Math.abs(i1) > this.q / 2.0F)
+    if (Math.abs(paramInt) > this.r / 8.0F)
     {
-      d();
+      c();
       return;
     }
-    if (Math.abs(i1) > this.q / 6.0F)
+    e();
+  }
+  
+  private void g(int paramInt)
+  {
+    if (paramInt > 0)
     {
-      e();
+      if (Math.abs(paramInt) > this.r / 6.0F)
+      {
+        d();
+        return;
+      }
+      c();
       return;
     }
     c();
   }
   
+  public void a()
+  {
+    if (!this.jdField_d_of_type_Boolean)
+    {
+      this.j += Math.max(this.i, this.p);
+      this.l += Math.max(this.i, this.p);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label77;
+      }
+    }
+    label77:
+    for (int i1 = this.o / 2 - this.l;; i1 = this.k - this.j)
+    {
+      this.h = i1;
+      this.jdField_d_of_type_Boolean = true;
+      return;
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    if ((bdep.a(paramView.getContext())) && (DisplayUtil.hasNavBar(paramView.getContext())) && (DisplayUtil.isNavigationBarShow((Activity)paramView.getContext())) && (CommonSuspensionGestureLayout.a((Activity)paramView.getContext()))) {}
+    for (this.g = bdep.d(paramView.getContext()); (this.n == 0) && (!this.jdField_a_of_type_Boolean); this.g = 0) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.n = 2;
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { -this.r / 2, this.o / 2 - this.l }).setDuration(1500L);
+      QLog.d("QCircleSlidBottomView", 3, "STATE_FIX");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      setVisibility(0);
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new vwn(this));
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      return;
+      this.n = 0;
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { -this.r / 2, 0 }).setDuration(1500L);
+      QLog.d("QCircleSlidBottomView", 3, "STATE_HALF");
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.n == 0;
+  }
+  
+  protected void b()
+  {
+    int i1 = getScrollY();
+    i1 = this.q - i1;
+    QLog.d("QCircleSlidBottomView", 3, "onend:" + this.q);
+    if (b())
+    {
+      g(i1);
+      return;
+    }
+    d(i1);
+  }
+  
   public boolean b()
   {
-    return this.m != -1;
+    return this.n == 2;
   }
   
   public void c()
   {
+    int i1 = 2;
     this.jdField_b_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { getScrollY(), this.h }).setDuration(1500L);
     this.jdField_b_of_type_AndroidAnimationObjectAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
     this.jdField_b_of_type_AndroidAnimationObjectAnimator.start();
-    this.m = 1;
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = (this.q + this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    if (this.jdField_a_of_type_Vtq != null) {
-      this.jdField_a_of_type_Vtq.a(this.m);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      this.n = i1;
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.height = (this.r + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      if (this.jdField_a_of_type_Vwp != null) {
+        this.jdField_a_of_type_Vwp.a(this.n);
+      }
+      return;
+      i1 = 1;
     }
+  }
+  
+  public boolean c()
+  {
+    return this.n != -1;
   }
   
   public void d()
   {
     int i1 = getScrollY();
     QLog.d("QCircleSlidBottomView", 3, "currentY:" + i1);
-    this.jdField_c_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { i1, -this.q / 2 }).setDuration(200L);
+    this.jdField_c_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this, "ScrollY", new int[] { i1, -this.r / 2 }).setDuration(200L);
     this.jdField_c_of_type_AndroidAnimationObjectAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
-    this.jdField_c_of_type_AndroidAnimationObjectAnimator.addListener(new vtp(this));
+    this.jdField_c_of_type_AndroidAnimationObjectAnimator.addListener(new vwo(this));
     this.jdField_c_of_type_AndroidAnimationObjectAnimator.start();
-    this.m = -1;
+    this.n = -1;
   }
   
   public int getNestedScrollAxes()
@@ -353,7 +474,7 @@ public class QCircleSlidBottomView
   {
     if (((paramView instanceof RecyclerView)) && (a(paramInt2, (RecyclerView)paramView)))
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.jdField_c_of_type_Boolean = true;
       if ((getScrollY() + paramInt2 > this.h) && (paramInt2 > 0)) {
         paramArrayOfInt[1] = paramInt2;
       }
@@ -386,8 +507,8 @@ public class QCircleSlidBottomView
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
     this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onNestedScrollAccepted(paramView1, paramView2, paramInt);
-    this.p = getScrollY();
-    QLog.d("QCircleSlidBottomView", 3, "onstart:" + this.p);
+    this.q = getScrollY();
+    QLog.d("QCircleSlidBottomView", 3, "onstart:" + this.q);
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
@@ -398,15 +519,15 @@ public class QCircleSlidBottomView
   public void onStopNestedScroll(View paramView)
   {
     this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onStopNestedScroll(paramView);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_b_of_type_Boolean) {
       b();
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
   }
   
-  public void setStatusListener(vtq paramvtq)
+  public void setStatusListener(vwp paramvwp)
   {
-    this.jdField_a_of_type_Vtq = paramvtq;
+    this.jdField_a_of_type_Vwp = paramvwp;
   }
 }
 

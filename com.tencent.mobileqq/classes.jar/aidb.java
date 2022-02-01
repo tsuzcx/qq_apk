@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aidb
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aidb(aicv paramaicv) {}
+  aidb(aicy paramaicy) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aicv.a(this.a, paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    aicy.a(this.a, null);
   }
 }
 

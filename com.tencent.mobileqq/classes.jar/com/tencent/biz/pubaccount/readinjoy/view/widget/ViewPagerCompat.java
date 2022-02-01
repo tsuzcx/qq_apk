@@ -9,16 +9,16 @@ import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import tjl;
-import tjm;
+import taf;
+import tag;
 
 public class ViewPagerCompat
   extends ViewPager
 {
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private tjm jdField_a_of_type_Tjm;
+  private tag jdField_a_of_type_Tag;
   private boolean jdField_a_of_type_Boolean = true;
-  private List<tjl> b;
+  private List<taf> b;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -34,16 +34,16 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_Tjm = new tjm(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_Tjm);
+    this.jdField_a_of_type_Tag = new tag(this, null);
+    super.setOnPageChangeListener(this.jdField_a_of_type_Tag);
   }
   
-  public void a(tjl paramtjl)
+  public void a(taf paramtaf)
   {
     if (this.b == null) {
       this.b = new ArrayList();
     }
-    this.b.add(paramtjl);
+    this.b.add(paramtaf);
   }
   
   public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -54,10 +54,10 @@ public class ViewPagerCompat
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void b(tjl paramtjl)
+  public void b(taf paramtaf)
   {
     if (this.b != null) {
-      this.b.remove(paramtjl);
+      this.b.remove(paramtaf);
     }
   }
   
@@ -117,7 +117,7 @@ public class ViewPagerCompat
       int i = 0;
       while (i < j)
       {
-        ((tjl)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
+        ((taf)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
         i += 1;
       }
     }

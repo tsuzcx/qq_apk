@@ -1,213 +1,51 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.common.ProteusPreloadManager.preloadContainer.1;
-import com.tencent.biz.pubaccount.readinjoy.config.beans.ProteusPreloadRule;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import kotlin.ExperimentalStdlibApi;
-import kotlin.Metadata;
-import kotlin.collections.CollectionsKt;
-import kotlin.jvm.JvmOverloads;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/common/ProteusPreloadManager;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ctxMap", "", "Lcom/tencent/biz/pubaccount/readinjoy/proteus/wrap/ReadInjoyContext;", "preloadConfig", "Lcom/tencent/aladdin/config/AladdinConfig;", "preloadContainerMap", "", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "clear", "", "getContainer", "service", "styleName", "getProteusPreloadConfig", "", "Lcom/tencent/biz/pubaccount/readinjoy/config/beans/ProteusPreloadRule;", "initServiceValCtx", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;", "innerPreload", "key", "bean", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;", "count", "", "ctx", "preloadCards", "rules", "preloadContainer", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pfp
+public class pfp
+  implements Handler.Callback
 {
-  private static final AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
-  @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "ProteusPreloadManager";
-  private static final Map<String, List<Container>> jdField_a_of_type_JavaUtilMap;
-  public static final pfp a;
-  private static final Map<String, qmv> b = (Map)new LinkedHashMap();
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final pfq jdField_a_of_type_Pfq;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  static
+  public pfp(pfq parampfq)
   {
-    jdField_a_of_type_Pfp = new pfp();
-    jdField_a_of_type_JavaLangString = "ProteusPreloadManager";
-    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(334);
-    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…FIG_PROTEUS_CARD_PRELOAD)");
-    jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = localAladdinConfig;
+    this.jdField_a_of_type_Pfq = parampfq;
+    this.jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this);
   }
   
-  private final VafContext a(String paramString)
+  public void a(Bundle paramBundle)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.context;
-    if (localBaseApplication != null)
-    {
-      localObject = localBaseApplication.getResources();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources");
-      if (((Resources)localObject).getConfiguration().orientation != 2) {}
-    }
-    else
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "orientation is landscape ! ctx can't init");
-      return null;
-    }
-    Object localObject = new qmv();
-    b.put(paramString, localObject);
-    ((qmv)localObject).setContext((Context)localBaseApplication);
-    pfr.a((VafContext)localObject, paramString);
-    return (VafContext)localObject;
-  }
-  
-  private final void a(String paramString, TemplateBean paramTemplateBean, int paramInt, VafContext paramVafContext)
-  {
-    int k = 0;
-    int j = 0;
-    int i;
-    if (j < paramInt)
-    {
-      try
-      {
-        Object localObject = paramVafContext.getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "ctx.context");
-        localObject = ((Context)localObject).getResources();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "ctx.context.resources");
-        if ((((Resources)localObject).getConfiguration().orientation == 2) || (zlx.b(paramVafContext.getContext()) > zlx.c(paramVafContext.getContext())))
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 1, "orientation is landscape ! give up preload container[" + paramString + ']');
-          i = k;
-        }
-        else
-        {
-          localObject = paramVafContext.getViewFactory().inflate(paramVafContext, paramTemplateBean);
-          i = k;
-          if (localObject != null)
-          {
-            i = k + 1;
-            if (jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-            {
-              List localList = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
-              if (localList == null) {
-                break label284;
-              }
-              localList.add(localObject);
-            }
-            else
-            {
-              jdField_a_of_type_JavaUtilMap.put(paramString, CollectionsKt.mutableListOf(new Container[] { localObject }));
-            }
-          }
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "preload happen error : " + paramString);
-        return;
-      }
-    }
-    else
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "innerPreload " + paramString + " success , cnt : " + k);
-      return;
-    }
-    label284:
-    for (;;)
-    {
-      j += 1;
-      k = i;
-      break;
-    }
-  }
-  
-  @ExperimentalStdlibApi
-  @Nullable
-  public final Container a(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    boolean bool = false;
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return null;
-    }
-    paramString1 = paramString1 + '#' + paramString2;
-    Object localObject = (List)jdField_a_of_type_JavaUtilMap.get(paramString1);
-    if (localObject != null) {}
-    for (int i = ((List)localObject).size();; i = 0)
-    {
-      localObject = jdField_a_of_type_JavaLangString;
-      paramString2 = new StringBuilder().append("getContainer : ").append(paramString2).append(" ret : ");
-      if (i > 0) {
-        bool = true;
-      }
-      QLog.d((String)localObject, 1, bool);
-      if (i <= 0) {
-        break label149;
-      }
-      paramString1 = (List)jdField_a_of_type_JavaUtilMap.get(paramString1);
-      if (paramString1 == null) {
-        break;
-      }
-      return (Container)CollectionsKt.removeFirst(paramString1);
-    }
-    return null;
-    label149:
-    return null;
-  }
-  
-  @NotNull
-  public final List<ProteusPreloadRule> a()
-  {
-    List localList = jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getList("preload_list");
-    Intrinsics.checkExpressionValueIsNotNull(localList, "preloadConfig.getList<Pr…loadRule>(\"preload_list\")");
-    return localList;
-  }
-  
-  public final void a()
-  {
-    b.clear();
-    jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  @JvmOverloads
-  public final void a(@NotNull String paramString1, @NotNull String paramString2, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "service");
-    Intrinsics.checkParameterIsNotNull(paramString2, "styleName");
-    if (!twz.a.b()) {}
-    TemplateBean localTemplateBean;
+    this.b = false;
     do
     {
-      do
-      {
-        return;
-        localObject = teh.a(paramString1, true);
-      } while (localObject == null);
-      localTemplateBean = ((teh)localObject).getTemplate(paramString2);
-    } while (localTemplateBean == null);
-    Object localObject = (qmv)b.get(paramString1);
-    if (localObject != null) {}
-    for (localObject = (VafContext)localObject; localObject == null; localObject = a(paramString1))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "ctx is null, can't preload");
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Pfq.a(paramBundle))
+        {
+        }
+      }
       return;
-    }
-    ThreadManager.executeOnSubThread((Runnable)new ProteusPreloadManager.preloadContainer.1(paramString1, paramString2, localTemplateBean, paramInt, (VafContext)localObject));
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public final void a(@NotNull List<ProteusPreloadRule> paramList)
+  public boolean handleMessage(Message paramMessage)
   {
-    Intrinsics.checkParameterIsNotNull(paramList, "rules");
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    switch (paramMessage.what)
     {
-      ProteusPreloadRule localProteusPreloadRule = (ProteusPreloadRule)paramList.next();
-      a(localProteusPreloadRule.getBizID(), localProteusPreloadRule.getStyleName(), localProteusPreloadRule.getPreloadCount());
+    default: 
+      return false;
     }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

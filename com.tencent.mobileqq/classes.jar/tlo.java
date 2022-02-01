@@ -1,6 +1,22 @@
-public abstract interface tlo
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+
+public class tlo
 {
-  public abstract void a();
+  public static tln a(Context paramContext, AdData paramAdData)
+  {
+    if ((paramContext == null) || (paramAdData == null)) {
+      return null;
+    }
+    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).g())) {
+      return new tlf(paramContext, 2);
+    }
+    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).f())) {
+      return new tlj(paramContext, 1);
+    }
+    return null;
+  }
 }
 
 

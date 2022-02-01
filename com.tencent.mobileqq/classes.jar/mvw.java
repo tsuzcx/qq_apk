@@ -1,45 +1,54 @@
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class mvw
-  extends bbxe
 {
-  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
-  private ndr jdField_a_of_type_Ndr;
+  public static String a;
+  public static String b = jdField_a_of_type_JavaLangString + "test/";
+  public static String c = "min_sdk";
+  public static String d = "disable_sdk";
+  public static String e = "flag";
+  public static String f = b + c;
+  public static String g = b + d;
+  public static String h = b + e;
+  @Deprecated
+  lkk a;
   
-  public mvw(AVGameAppInterface paramAVGameAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    jdField_a_of_type_Int = Math.abs(new Random().nextInt());
+    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
   }
   
-  public AppInterface a()
+  public mvw()
   {
-    return this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+    this.jdField_a_of_type_Lkk = null;
   }
   
-  protected void a()
+  public int a(lkk paramlkk)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
+    }
     try
     {
-      super.a();
-      this.jdField_a_of_type_Ndr = new ndr();
-      super.a(this.jdField_a_of_type_Ndr);
-      super.d();
-      return;
+      int[] arrayOfInt = paramlkk.a(h);
+      if (arrayOfInt != null)
+      {
+        if ((arrayOfInt[0] & 0x1) != 1) {
+          return 0;
+        }
+        arrayOfInt = paramlkk.a(f);
+        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        {
+          boolean bool = mrm.a(paramlkk.a(g), Build.VERSION.SDK_INT);
+          if (!bool) {
+            return 1;
+          }
+        }
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, mvx.class);
+    catch (Exception paramlkk) {}
+    return 0;
   }
 }
 

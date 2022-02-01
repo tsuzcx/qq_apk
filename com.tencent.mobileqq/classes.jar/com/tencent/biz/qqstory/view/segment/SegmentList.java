@@ -9,8 +9,8 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ListAdapter;
-import bkhe;
-import bkhg;
+import blih;
+import blij;
 import com.tencent.biz.qqstory.base.QQStoryIllegalException;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
 import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
@@ -19,38 +19,38 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import nmd;
-import ykv;
-import yqp;
-import zkb;
-import zor;
-import zos;
-import zot;
-import zou;
-import zov;
-import zox;
-import zoz;
-import zpa;
-import zpn;
-import zpp;
-import zpt;
+import nny;
+import yoq;
+import yuk;
+import znw;
+import zsm;
+import zsn;
+import zso;
+import zsp;
+import zsq;
+import zss;
+import zsu;
+import zsv;
+import zti;
+import ztk;
+import zto;
 
 public abstract class SegmentList
   extends QQStoryPullToRefreshListView
-  implements bkhg, zoz
+  implements blij, zsu
 {
   public static int c;
   public static int d = 1;
   public static int e = 2;
   private int jdField_a_of_type_Int = -1;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bkhe jdField_a_of_type_Bkhe;
-  private bkhg jdField_a_of_type_Bkhg;
+  private blih jdField_a_of_type_Blih;
+  private blij jdField_a_of_type_Blij;
   private String jdField_a_of_type_JavaLangString;
-  public zox a;
+  public zss a;
   private boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString = "default";
-  private zpn jdField_b_of_type_Zpn;
+  private zti jdField_b_of_type_Zti;
   protected boolean b;
   private boolean c;
   
@@ -83,31 +83,31 @@ public abstract class SegmentList
       if (this.jdField_a_of_type_Boolean) {
         return false;
       }
-      setAdapter(this.jdField_a_of_type_Zox);
+      setAdapter(this.jdField_a_of_type_Zss);
       f();
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Zox = new zox(this, this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new zor(this));
+    this.jdField_a_of_type_Zss = new zss(this, this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new zsm(this));
     super.setRecyclerListener(this);
     super.setDragEnable(true);
-    super.setSwipListListener(new zos(this));
-    super.setRightIconMenuListener(new zot(this));
+    super.setSwipListListener(new zsn(this));
+    super.setRightIconMenuListener(new zso(this));
   }
   
-  public <T extends zpa> T a(String paramString)
+  public <T extends zsv> T a(String paramString)
   {
-    return this.jdField_a_of_type_Zox.a(paramString);
+    return this.jdField_a_of_type_Zss.a(paramString);
   }
   
-  public zpn a(@NonNull String paramString)
+  public zti a(@NonNull String paramString)
   {
-    zkb.a(paramString);
+    znw.a(paramString);
     if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_Zpn;
+      return this.jdField_b_of_type_Zti;
     }
     return null;
   }
@@ -116,7 +116,7 @@ public abstract class SegmentList
   
   public void a(int paramInt)
   {
-    ykv.c("SwipListView", new Object[] { "allRequestCompletedAndSuccess ", Integer.valueOf(paramInt) });
+    yoq.c("SwipListView", new Object[] { "allRequestCompletedAndSuccess ", Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 2: 
@@ -141,7 +141,7 @@ public abstract class SegmentList
   
   public void a(int paramInt1, int paramInt2)
   {
-    ykv.c("SwipListView", new Object[] { "allRequestCompletedButOccurError ", Integer.valueOf(paramInt1) });
+    yoq.c("SwipListView", new Object[] { "allRequestCompletedButOccurError ", Integer.valueOf(paramInt1) });
     switch (paramInt1)
     {
     case 2: 
@@ -166,17 +166,17 @@ public abstract class SegmentList
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Zox.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Zss.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void a(@NonNull String paramString)
   {
-    this.jdField_a_of_type_Zox.a(paramString);
+    this.jdField_a_of_type_Zss.a(paramString);
   }
   
-  public void a(@NonNull zpa paramzpa)
+  public void a(@NonNull zsv paramzsv)
   {
-    this.jdField_a_of_type_Zox.a(paramzpa);
+    this.jdField_a_of_type_Zss.a(paramzsv);
   }
   
   public void a(boolean paramBoolean)
@@ -189,20 +189,20 @@ public abstract class SegmentList
   public boolean a(int paramInt, View paramView, ListView paramListView)
   {
     this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (!nmd.a(getContext().getApplicationContext()))
+    if (!nny.a(getContext().getApplicationContext()))
     {
       a(1, d);
       return true;
     }
-    this.jdField_a_of_type_Zpt.a();
+    this.jdField_a_of_type_Zto.a();
     return true;
   }
   
   public void b(View paramView)
   {
-    this.jdField_a_of_type_Zox.a(paramView);
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.b(paramView);
+    this.jdField_a_of_type_Zss.a(paramView);
+    if (this.jdField_a_of_type_Blij != null) {
+      this.jdField_a_of_type_Blij.b(paramView);
     }
   }
   
@@ -222,27 +222,27 @@ public abstract class SegmentList
   
   public void h()
   {
-    this.jdField_a_of_type_Zox.a(true);
+    this.jdField_a_of_type_Zss.a(true);
   }
   
   public void j()
   {
-    setPullToRefreshListener(new zou(this));
+    setPullToRefreshListener(new zsp(this));
     a();
-    this.jdField_a_of_type_Zox.a();
-    Bosses.get().postJob(new zov(this, "SwipListView"));
+    this.jdField_a_of_type_Zss.a();
+    Bosses.get().postJob(new zsq(this, "SwipListView"));
   }
   
   public void k()
   {
-    this.jdField_a_of_type_Zox.c();
+    this.jdField_a_of_type_Zss.c();
   }
   
   public void l()
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Zox.d();
+    this.jdField_a_of_type_Zss.d();
   }
   
   public void layoutChildren()
@@ -250,81 +250,81 @@ public abstract class SegmentList
     try
     {
       super.layoutChildren();
-      this.jdField_a_of_type_Zox.e();
+      this.jdField_a_of_type_Zss.e();
       if (this.jdField_c_of_type_Boolean) {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Zox.a();
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Zss.a();
       }
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      yqp.e("SwipListView", localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zox.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zox.a());
+      yuk.e("SwipListView", localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zss.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zss.a());
       if (!this.jdField_c_of_type_Boolean) {
         throw localIllegalStateException;
       }
-      if (this.mItemCount == this.jdField_a_of_type_Zox.getCount()) {
+      if (this.mItemCount == this.jdField_a_of_type_Zss.getCount()) {
         throw localIllegalStateException;
       }
-      throw new QQStoryIllegalException(localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zox.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zox.a());
+      throw new QQStoryIllegalException(localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zss.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zss.a());
     }
   }
   
   public void n()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_b_of_type_Zpn = new zpn(localLoadMoreLayout, getContext().getApplicationContext());
-    this.jdField_b_of_type_Zpn.a(true, false);
+    this.jdField_b_of_type_Zti = new zti(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_b_of_type_Zti.a(true, false);
     super.addFooterView(localLoadMoreLayout);
     super.setOnScrollListener(this);
   }
   
   public void o()
   {
-    this.jdField_a_of_type_Zox.b();
+    this.jdField_a_of_type_Zss.b();
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bkhe != null) {
-      this.jdField_a_of_type_Bkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Blih != null) {
+      this.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if (paramInt1 == this.jdField_a_of_type_Int) {}
     do
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_b_of_type_Zpn.a());
-    this.jdField_b_of_type_Zpn.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_b_of_type_Zti.a());
+    this.jdField_b_of_type_Zti.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkhe != null) {
-      this.jdField_a_of_type_Bkhe.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Blih != null) {
+      this.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
   public void p()
   {
-    this.jdField_a_of_type_Zox.notifyDataSetChanged();
+    this.jdField_a_of_type_Zss.notifyDataSetChanged();
   }
   
   public void q()
   {
     if (this.jdField_c_of_type_Boolean) {
-      super.setAdapter(this.jdField_a_of_type_Zox);
+      super.setAdapter(this.jdField_a_of_type_Zss);
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    this.jdField_a_of_type_Zox.a(paramInt);
+    this.jdField_a_of_type_Zss.a(paramInt);
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof zox))
+    if ((paramListAdapter instanceof zss))
     {
       super.setAdapter(paramListAdapter);
       this.jdField_c_of_type_Boolean = true;
@@ -335,27 +335,27 @@ public abstract class SegmentList
   
   public void setLoadMoreComplete(@NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    zkb.a(paramString);
+    znw.a(paramString);
     if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_b_of_type_Zpn.a(paramBoolean1, paramBoolean2);
+      this.jdField_b_of_type_Zti.a(paramBoolean1, paramBoolean2);
     }
   }
   
-  public void setOnLoadMoreListener(@NonNull String paramString, zpp paramzpp)
+  public void setOnLoadMoreListener(@NonNull String paramString, ztk paramztk)
   {
-    this.jdField_b_of_type_Zpn.a(paramzpp);
+    this.jdField_b_of_type_Zti.a(paramztk);
     this.jdField_a_of_type_JavaLangString = paramString;
-    zkb.a(paramString);
+    znw.a(paramString);
   }
   
-  public void setOnScrollListener(bkhe parambkhe)
+  public void setOnScrollListener(blih paramblih)
   {
-    this.jdField_a_of_type_Bkhe = parambkhe;
+    this.jdField_a_of_type_Blih = paramblih;
   }
   
-  public void setRecyclerListener(bkhg parambkhg)
+  public void setRecyclerListener(blij paramblij)
   {
-    this.jdField_a_of_type_Bkhg = parambkhg;
+    this.jdField_a_of_type_Blij = paramblij;
   }
 }
 

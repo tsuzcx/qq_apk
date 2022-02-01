@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apcy;
-import apdk;
+import apqo;
+import apra;
 
 public class MiniCodeController$2
   implements Runnable
 {
-  public MiniCodeController$2(apcy paramapcy) {}
+  public MiniCodeController$2(apqo paramapqo) {}
   
   public void run()
   {
-    long l1 = apdk.a("report_tag_detect_supporttype", 0L);
+    long l1 = apra.a("report_tag_detect_supporttype", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 86400000L)
     {
-      apdk.b(apcy.a(this.this$0), -1);
-      apdk.a("report_tag_detect_supporttype", l2);
+      apra.b(apqo.a(this.this$0), -1);
+      apra.a("report_tag_detect_supporttype", l2);
     }
   }
 }

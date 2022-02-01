@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import arif;
+import arxu;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -13,7 +13,7 @@ public class PrecoverResource
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverResource> CREATOR = new arif();
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new arxu();
   @notColumn
   public int arg1;
   @notColumn

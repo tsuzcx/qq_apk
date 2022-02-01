@@ -1,88 +1,55 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 
-class aifx
-  extends anqd
+public class aifx
+  extends aifp
 {
-  aifx(aift paramaift) {}
+  akwu a;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public aifx(QQAppInterface paramQQAppInterface, aigj paramaigj, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, aghj paramaghj)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    super(paramQQAppInterface, paramaigj, paramQQWalletBaseMsgElem, paramInt, paramaghj);
+    this.jdField_a_of_type_Akwu = ((akwu)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Akwu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletBaseMsgElem.effectsId)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
+      this.j = 2130847244;
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2);
-    }
-    if (paramInt1 == 1005) {
-      aift.a(this.a, paramInt2);
-    }
-    for (;;)
-    {
-      this.a.f(196608);
-      return;
-      if (paramInt1 == 1004) {
-        aift.b(this.a, paramInt2);
-      } else if (paramInt1 == 1000) {
-        aift.a(this.a, paramString1, paramInt2, paramString2);
-      } else if (paramInt1 == 1020) {
-        aift.c(this.a, paramInt2);
-      } else if (paramInt1 == 1006) {
-        aift.d(this.a, paramInt2);
-      } else if (paramInt1 == 1022) {
-        aift.e(this.a, paramInt2);
-      } else if (paramInt1 == 1023) {
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "errorCode" + paramInt2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      } else if (paramInt1 == 1025) {
-        aift.a(this.a, paramInt2, paramString2);
-      }
-    }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public boolean b()
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
+    this.jdField_a_of_type_Aigj.b.setVisibility(0);
+    this.jdField_a_of_type_Aigj.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Aigj.b.setText(aifu.f);
+    return false;
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void i()
   {
-    this.a.a(paramBoolean, paramString, paramLong);
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    akwt localakwt2 = this.jdField_a_of_type_Akwu.a(localQQWalletRedPacketMsg.redPacketId);
+    akwt localakwt1 = localakwt2;
+    if (localakwt2 == null)
+    {
+      localakwt1 = new akwt(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, false, false, false, 0);
+      this.jdField_a_of_type_Akwu.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Akwu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 0);
+    }
+    if (!a(localakwt1))
+    {
+      this.jdField_a_of_type_Aigj.d.setVisibility(8);
       return;
     }
-    this.a.t = true;
-    this.a.a(262144, null, paramLong);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.f(65536);
+    this.jdField_a_of_type_Aigj.d.setVisibility(0);
   }
 }
 

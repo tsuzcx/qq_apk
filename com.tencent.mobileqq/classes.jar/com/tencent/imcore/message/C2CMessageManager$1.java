@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import acvr;
+import aczu;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class C2CMessageManager$1
   implements Runnable
 {
-  public C2CMessageManager$1(acvr paramacvr, MessageRecord paramMessageRecord) {}
+  public C2CMessageManager$1(aczu paramaczu, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

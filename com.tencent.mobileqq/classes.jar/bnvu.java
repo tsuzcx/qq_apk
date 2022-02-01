@@ -1,52 +1,26 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import dov.com.qq.im.ae.mode.AECaptureMode;
-import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import cooperation.qzone.util.QZLog;
 
 class bnvu
-  implements Observer<bnuq>
+  implements URLDrawable.URLDrawableListener
 {
-  bnvu(bnvr parambnvr) {}
+  bnvu(bnvs parambnvs) {}
   
-  public void a(@Nullable bnuq parambnuq)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (parambnuq == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          parambnuq = parambnuq.b;
-          if (parambnuq != AECaptureMode.NORMAL) {
-            break;
-          }
-          if ((bnvh.a == null) || (bnvh.a != bnpc.a())) {
-            bnyl.a().g("none");
-          }
-        } while (!this.a.a());
-        bnvr.a(this.a).setVisibility(8);
-        return;
-        if (parambnuq != AECaptureMode.GIF) {
-          break;
-        }
-      } while (!this.a.a());
-      bnvr.a(this.a).setVisibility(8);
-      return;
-    } while (parambnuq != AECaptureMode.PLAY);
-    bnvr.c(this.a);
-    if (bnvr.a(this.a) != null)
-    {
-      parambnuq = bnvr.a(this.a).a();
-      if ((!TextUtils.isEmpty(parambnuq)) && (!"-1".equals(parambnuq))) {
-        bnyl.a().g(parambnuq);
-      }
+    QZLog.i("FileBannerTianshuManger", "onLoadSuccessed picUrlDrawable ");
+    this.a.a(this.a.jdField_a_of_type_JavaLangString, paramURLDrawable);
+    this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 101);
+    if (this.a.b == 1) {
+      this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 137);
     }
-    bnvr.a(this.a).setVisibility(0);
-    bnvr.d(this.a);
   }
 }
 

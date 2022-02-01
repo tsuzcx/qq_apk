@@ -1,14 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeqb
-  extends axir
+  extends BroadcastReceiver
 {
-  public aeqb(NearbyActivity paramNearbyActivity) {}
+  public aeqb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  protected void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.sendEmptyMessageDelayed(2, 0L);
+    if ((this.a.jdField_a_of_type_Azxr.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Blhq != null)) {
+      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(4);
+    }
   }
 }
 

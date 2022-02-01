@@ -1,17 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.ark.open.delegate.ArkDelegateManager;
+import com.tencent.ark.open.delegate.IArkDelegateNet;
+import java.lang.ref.WeakReference;
 
-class ahat
-  extends ahbl
+public class ahat
+  extends ahav
 {
-  ahat(agwz paramagwz)
+  public ahat(String paramString)
   {
-    super(paramagwz, null);
+    super(null, paramString);
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    return new agre(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    WeakReference localWeakReference = new WeakReference(this);
+    IArkDelegateNet localIArkDelegateNet = ArkDelegateManager.getInstance().getNetDelegate();
+    if (localIArkDelegateNet == null) {
+      return false;
+    }
+    localIArkDelegateNet.sendAppMsg(paramString1, paramString2, this.a, paramInt2, new ahau(this, localWeakReference));
+    return true;
   }
 }
 

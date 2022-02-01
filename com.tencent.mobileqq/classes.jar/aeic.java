@@ -1,50 +1,110 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aeic
-  extends anmu
+  extends aojs
 {
-  public aeic(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aeic(Conversation paramConversation) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  protected void a()
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
+    }
+    this.a.a(0L);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
-        return;
+        axan.a().c(this.a.a);
+        this.a.a(8, paramString, 1);
+        this.a.a(8, antf.C, 5000);
+        this.a.a(8, antf.aK, 5001);
       }
-      paramString1 = (anmw)this.a.app.getManager(51);
-      if (paramString1 == null) {}
-      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
-        return;
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    axan.a().b(paramString, this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_ontroopmanagersuccess");
+    }
+    this.a.a(8, paramString, 1);
+    this.a.a(8, antf.C, 5000);
+    this.a.a(8, antf.aK, 5001);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, 1);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    axan.a().c(this.a.a);
+  }
+  
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.a.a(8, antf.C, 5000);
+      this.a.a(8, antf.aK, 5001);
+      if (paramTroopInfo != null) {
+        this.a.a(8, paramTroopInfo.troopuin, 1);
       }
     }
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+    if (paramBoolean)
     {
-      localObject = (anmw)this.a.app.getManager(51);
-      if (localObject != null) {
-        break label90;
+      this.a.a(8, paramString, 1);
+      this.a.a(8, antf.C, 5000);
+      this.a.a(8, antf.aK, 5001);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = (TroopMemberCardInfo)paramArrayList.get(0);
+      if (paramArrayList != null)
+      {
+        this.a.a(8, paramArrayList.troopuin, 1);
+        this.a.a(8, paramArrayList.memberuin, -2147483648);
+        this.a.a(8, antf.C, 5000);
+        this.a.a(8, antf.aK, 5001);
       }
     }
-    label90:
-    for (Object localObject = null;; localObject = ((anmw)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.equals(this.a.a.getCurrentAccountUin()))) {
+      this.a.a(8, paramString1, 1);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "Conversation.onGetTroopMemberCard isSuccess=" + paramBoolean + " data=" + paramObject);
+    }
+    if ((paramBoolean) && (paramObject != null))
     {
-      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
-      }
-      return;
+      long l = ((Long)((Object[])(Object[])paramObject)[0]).longValue();
+      this.a.a(8, String.valueOf(l), 1);
     }
   }
 }

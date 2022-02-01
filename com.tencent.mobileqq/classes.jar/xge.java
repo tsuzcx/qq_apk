@@ -1,38 +1,34 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
 class xge
-  extends PagerAdapter
+  implements azrg
 {
-  private List<View> jdField_a_of_type_JavaUtilList;
+  xge(xgd paramxgd) {}
   
-  public xge(List<View> paramList)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    return null;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
+  public void a(azrh paramazrh) {}
   
-  public int getCount()
+  public void b(azrh paramazrh)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    if ((paramazrh.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramazrh.jdField_b_of_type_JavaLangString)))
+    {
+      this.a.a("UploadImageJob_out_image_url", paramazrh.jdField_b_of_type_JavaLangString);
+      xgd.a(this.a, true);
+      return;
+    }
+    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramazrh, new Object[0]);
+    }
+    xgd.b(this.a, false);
   }
 }
 

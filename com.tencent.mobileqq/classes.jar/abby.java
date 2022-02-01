@@ -1,21 +1,66 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class abby
-  implements Animation.AnimationListener
+  extends Handler
 {
-  abby(abbt paramabbt, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  private WeakReference<abbw> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public abby(abbw paramabbw, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    super(paramLooper);
+    this.a = new WeakReference(paramabbw);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject2 = null;
+    if (this.a.get() != null) {}
+    for (abbw localabbw = (abbw)this.a.get();; localabbw = null)
+    {
+      Object localObject1 = localObject2;
+      if (paramMessage.obj != null)
+      {
+        localObject1 = localObject2;
+        if ((paramMessage.obj instanceof abbx)) {
+          localObject1 = (abbx)paramMessage.obj;
+        }
+      }
+      switch (paramMessage.what)
+      {
+      }
+      for (;;)
+      {
+        super.handleMessage(paramMessage);
+        return;
+        if ((localabbw != null) && (localObject1 != null))
+        {
+          ((abbw)this.a.get()).d();
+          continue;
+          if ((localabbw != null) && (localObject1 != null))
+          {
+            ((abbw)this.a.get()).e();
+            continue;
+            if ((localabbw != null) && (localObject1 != null))
+            {
+              ((abbw)this.a.get()).c(((abbx)localObject1).a);
+              continue;
+              if ((localabbw != null) && (localObject1 != null))
+              {
+                ((abbw)this.a.get()).f();
+                continue;
+                if ((localabbw != null) && (localObject1 != null)) {
+                  ((abbw)this.a.get()).b(((abbx)localObject1).a);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 

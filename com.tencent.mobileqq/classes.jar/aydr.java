@@ -1,13 +1,15 @@
-public class aydr
+import android.os.Bundle;
+
+class aydr
+  extends nkp
 {
-  public static int a()
-  {
-    return 0;
-  }
+  aydr(aydm paramaydm, aydt paramaydt) {}
   
-  public static String a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return bgln.c();
+    if (this.jdField_a_of_type_Aydt != null) {
+      this.jdField_a_of_type_Aydt.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

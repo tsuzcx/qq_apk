@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.os.Bundle;
+import com.tencent.mobileqq.gamecenter.protocol.ReportTypeRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public final class avlt
-  implements Parcelable.Creator<NewTogetherRoomMessageData>
+class avlt
+  implements BusinessObserver
 {
-  public NewTogetherRoomMessageData a(Parcel paramParcel)
-  {
-    return new NewTogetherRoomMessageData(paramParcel);
-  }
+  avlt(avls paramavls) {}
   
-  public NewTogetherRoomMessageData[] a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new NewTogetherRoomMessageData[paramInt];
+    paramBundle = (ReportTypeRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("GameShare.NetHelper", 2, "ReportTypeRsp reportObserver:" + paramBoolean + "|" + paramBundle);
+    }
   }
 }
 

@@ -13,11 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdgp;
-import bdgq;
-import bdgv;
-import bdgw;
-import bdgy;
+import bdzk;
+import bdzl;
+import bdzq;
+import bdzr;
+import bdzt;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,8 +34,8 @@ public class TableQueryViewer
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bdgq jdField_a_of_type_Bdgq;
-  private bdgy jdField_a_of_type_Bdgy;
+  private bdzl jdField_a_of_type_Bdzl;
+  private bdzt jdField_a_of_type_Bdzt;
   private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
   private List jdField_a_of_type_JavaUtilList = new LinkedList();
   private boolean jdField_a_of_type_Boolean = true;
@@ -48,29 +48,29 @@ public class TableQueryViewer
   public TableQueryViewer(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2131562945, this);
+    LayoutInflater.from(paramContext).inflate(2131562979, this);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131374700));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131378219));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367965));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364515));
-    this.d = ((Button)findViewById(2131365556));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131374837));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131378376));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368035));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364559));
+    this.d = ((Button)findViewById(2131365598));
     Button localButton = this.d;
-    if (bdgq.jdField_b_of_type_Boolean)
+    if (bdzl.jdField_b_of_type_Boolean)
     {
-      localObject = paramContext.getString(2131690498);
+      localObject = paramContext.getString(2131690493);
       localButton.setText((CharSequence)localObject);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131376108));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131376248));
       localButton = this.jdField_c_of_type_AndroidWidgetButton;
-      if (!bdgq.jdField_c_of_type_Boolean) {
+      if (!bdzl.jdField_c_of_type_Boolean) {
         break label272;
       }
     }
     label272:
-    for (Object localObject = paramContext.getString(2131690500);; localObject = paramContext.getString(2131690501))
+    for (Object localObject = paramContext.getString(2131690495);; localObject = paramContext.getString(2131690496))
     {
       localButton.setText((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378221));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378378));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(getResources().getColor(2131165337));
       int i = 0;
       while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
@@ -83,35 +83,35 @@ public class TableQueryViewer
         }
         i += 1;
       }
-      localObject = paramContext.getString(2131690502);
+      localObject = paramContext.getString(2131690497);
       break;
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376404);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365727));
-    this.jdField_a_of_type_Bdgq = bdgq.a();
-    this.jdField_a_of_type_Bdgy = new bdgy(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bdgy);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376536);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365770));
+    this.jdField_a_of_type_Bdzl = bdzl.a();
+    this.jdField_a_of_type_Bdzt = new bdzt(this);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bdzt);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.d.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer = this;
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemLongClickListener(new bdgv(this, paramContext));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new bdgw(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemLongClickListener(new bdzq(this, paramContext));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new bdzr(this));
   }
   
-  public int a(bdgp parambdgp)
+  public int a(bdzk parambdzk)
   {
     int i = 0;
     int k;
     for (int j = 0; i < this.jdField_a_of_type_JavaUtilList.size(); j = k)
     {
-      bdgp localbdgp = (bdgp)this.jdField_a_of_type_JavaUtilList.get(i);
+      bdzk localbdzk = (bdzk)this.jdField_a_of_type_JavaUtilList.get(i);
       k = j;
-      if (parambdgp.b.contains(localbdgp.a))
+      if (parambdzk.b.contains(localbdzk.a))
       {
-        this.jdField_a_of_type_JavaUtilList.set(i, parambdgp);
-        this.jdField_a_of_type_Bdgy.notifyDataSetChanged();
+        this.jdField_a_of_type_JavaUtilList.set(i, parambdzk);
+        this.jdField_a_of_type_Bdzt.notifyDataSetChanged();
         k = j + 1;
       }
       i += 1;
@@ -122,13 +122,13 @@ public class TableQueryViewer
   public void a()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Bdgy.notifyDataSetChanged();
+    this.jdField_a_of_type_Bdzt.notifyDataSetChanged();
   }
   
-  public void a(bdgp parambdgp)
+  public void a(bdzk parambdzk)
   {
-    this.jdField_a_of_type_JavaUtilList.add(0, parambdgp);
-    this.jdField_a_of_type_Bdgy.notifyDataSetChanged();
+    this.jdField_a_of_type_JavaUtilList.add(0, parambdzk);
+    this.jdField_a_of_type_Bdzt.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
@@ -143,38 +143,38 @@ public class TableQueryViewer
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690508));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690503));
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setEnabled(false);
         this.jdField_b_of_type_Boolean = false;
       }
       else
       {
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690499));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690494));
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setEnabled(true);
         this.jdField_b_of_type_Boolean = true;
         continue;
         a();
         continue;
-        if (bdgq.jdField_c_of_type_Boolean)
+        if (bdzl.jdField_c_of_type_Boolean)
         {
-          this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690501));
-          bdgq.jdField_c_of_type_Boolean = false;
+          this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690496));
+          bdzl.jdField_c_of_type_Boolean = false;
         }
         else
         {
-          this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690500));
-          bdgq.jdField_c_of_type_Boolean = true;
+          this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690495));
+          bdzl.jdField_c_of_type_Boolean = true;
           continue;
-          if (bdgq.jdField_b_of_type_Boolean)
+          if (bdzl.jdField_b_of_type_Boolean)
           {
-            this.d.setText(getContext().getString(2131690502));
-            bdgq.jdField_b_of_type_Boolean = false;
+            this.d.setText(getContext().getString(2131690497));
+            bdzl.jdField_b_of_type_Boolean = false;
           }
           else
           {
-            this.d.setText(getContext().getString(2131690498));
-            bdgq.jdField_b_of_type_Boolean = true;
+            this.d.setText(getContext().getString(2131690493));
+            bdzl.jdField_b_of_type_Boolean = true;
           }
         }
       }

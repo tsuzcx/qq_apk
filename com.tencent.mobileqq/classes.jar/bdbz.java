@@ -1,21 +1,44 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "", "onIReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onISwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "onModeChangeComplete", "targetType", "oldType", "message", "onModeChangeStart", "onModeSwitching", "onSelectModeRecover", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface bdbz
+public class bdbz
+  extends PreviewContext
+  implements SurfaceHolder.Callback, bdbn
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString);
+  public bdbz(bdbg parambdbg, int paramInt1, int paramInt2)
+  {
+    super(parambdbg, paramInt1, paramInt2);
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt);
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString);
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mCamera.a(paramInt1, paramInt2, paramInt3);
+    this.mCamera.a(null, paramSurfaceHolder, this, true);
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mCamera.a();
+  }
   
-  public abstract void c(int paramInt1, int paramInt2);
-  
-  public abstract void d(int paramInt1, int paramInt2);
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
+    }
+  }
 }
 
 

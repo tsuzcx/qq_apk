@@ -1,504 +1,206 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.5;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import java.util.HashMap;
 
-public abstract class rxp
-  implements rur
+public class rxp
+  implements rwj
 {
-  private rxq a;
+  private static final String jdField_a_of_type_JavaLangString = rxp.class.getSimpleName();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private rwh jdField_a_of_type_Rwh;
+  private rxs jdField_a_of_type_Rxs;
   
-  public rxp(rwy paramrwy, rxq paramrxq)
+  public rxp()
   {
-    this.a = paramrxq;
+    c();
   }
   
-  private boolean a(ImageView paramImageView, URL paramURL)
+  private void a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
   {
-    boolean bool = true;
-    Object localObject = rwy.a(this.b).getIntent();
-    int j = ((Intent)localObject).getIntExtra("item_width", 0);
-    int i = ((Intent)localObject).getIntExtra("item_height", 0);
-    j = ((Intent)localObject).getIntExtra("item_image_width", j);
-    i = ((Intent)localObject).getIntExtra("item_image_height", i);
-    if ((j == 0) || (i == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "tryLoadExtraCoverCache: width or height = 0");
-      }
-      bool = false;
+    if (paramInt1 == 2) {
+      scq.a().a(paramString1, new rxq(this, paramString1, paramInt2, paramLong));
     }
     do
     {
       do
       {
-        return bool;
-        localObject = new tdw();
-        ((tdw)localObject).jdField_a_of_type_JavaNetURL = pha.a(paramURL.toString());
-        ((tdw)localObject).jdField_a_of_type_Int = j;
-        ((tdw)localObject).jdField_b_of_type_Int = i;
-        localObject = tdv.a().a((tdw)localObject);
-        if ((localObject == null) || (((tds)localObject).a() == null)) {
-          break;
+        return;
+        if (!a(paramString2, paramString1, paramInt2))
+        {
+          a(paramString2, paramString1, paramLong, paramInt2);
+          return;
         }
-        paramImageView.setImageDrawable(new tee(((tds)localObject).a()));
-      } while (!QLog.isDevelopLevel());
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "tryLoadExtraCoverCache: ImageManager hitCache");
-      return true;
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = j;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-      paramURL = URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject);
-      if ((paramURL == null) || (paramURL.getStatus() != 1)) {
-        break;
+      } while (this.jdField_a_of_type_Rxs == null);
+      paramString2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    } while (TextUtils.isEmpty(paramString2));
+    this.jdField_a_of_type_Rxs.a(paramString1, 1, paramString2);
+  }
+  
+  private void a(String paramString1, String paramString2, long paramLong, int paramInt)
+  {
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() start preload ERROR cacheMgr == null!");
       }
-      paramImageView.setImageDrawable(paramURL);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "tryLoadExtraCoverCache: urlDrawable hitCache");
-    return true;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "tryLoadExtraCoverCache: missCache");
+      return;
+    }
+    Object localObject = paramString2;
+    if (paramString1 != null) {
+      if (paramString2 != null)
+      {
+        localObject = paramString2;
+        if (!paramString1.equals(paramString2)) {}
+      }
+      else
+      {
+        localObject = nzq.a(paramString1);
+      }
+    }
+    paramString2 = new TVK_UserInfo("", "");
+    localObject = new TVK_PlayerVideoInfo(2, (String)localObject, "");
+    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", String.valueOf(paramInt));
+    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_servers_type", rwe.jdField_a_of_type_JavaLangString);
+    if (paramLong > 0L) {
+      ((TVK_PlayerVideoInfo)localObject).setConfigMap("duration", String.valueOf(paramLong));
+    }
+    ((TVK_PlayerVideoInfo)localObject).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String str = rwe.a();
+    if (TextUtils.isEmpty(paramString1))
+    {
+      localTVK_ICacheMgr.preLoadVideoById(this.jdField_a_of_type_AndroidContentContext, paramString2, (TVK_PlayerVideoInfo)localObject, str);
+      return;
+    }
+    localTVK_ICacheMgr.preLoadVideoByUrl(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, (TVK_PlayerVideoInfo)localObject);
+  }
+  
+  private boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr == null) {
+      return false;
+    }
+    String str1 = paramString2;
+    if (paramString1 != null) {
+      if (paramString2 != null)
+      {
+        str1 = paramString2;
+        if (!paramString1.equals(paramString2)) {}
+      }
+      else
+      {
+        str1 = nzq.a(paramString1);
+      }
+    }
+    paramString2 = new TVK_UserInfo("", "");
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, str1, "");
+    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(paramInt));
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", rwe.jdField_a_of_type_JavaLangString);
+    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String[] arrayOfString = new String[6];
+    arrayOfString[0] = "msd";
+    arrayOfString[1] = "hd";
+    arrayOfString[2] = "fhd";
+    arrayOfString[3] = "mp4";
+    arrayOfString[4] = "shd";
+    arrayOfString[5] = "sd";
+    paramInt = 0;
+    int k = arrayOfString.length;
+    int i = 0;
+    while (i < k)
+    {
+      String str2 = arrayOfString[i];
+      try
+      {
+        int j = localTVK_ICacheMgr.isVideoCached(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, localTVK_PlayerVideoInfo, str2);
+        paramInt = j;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, str1 + " checkIsVideoCached() cacheMgr.isVideoCached Exception = " + localException.getMessage());
+          }
+        }
+        i += 1;
+      }
+      if ((paramInt == 2) || (paramInt == 1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, str1 + " checkIsVideoCached(), definition = " + str2 + ", cacheStatus = " + paramInt + ", return TRUE");
+        }
+        return true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, str1 + " checkIsVideoCached() return FALSE");
     }
     return false;
   }
   
-  private boolean a(rxq paramrxq)
+  private void c()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (rwy.a(this.b) != null)
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_Rwh = new rwh();
+    this.jdField_a_of_type_Rwh.a(this);
+    if (!this.jdField_a_of_type_Rwh.a())
     {
-      bool1 = bool2;
-      if (bgnt.b(rwy.a(this.b)))
-      {
-        bool1 = bool2;
-        if (paramrxq != null)
-        {
-          bool1 = bool2;
-          if (paramrxq.jdField_a_of_type_Sar != null)
-          {
-            bool1 = bool2;
-            if (paramrxq.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
-            {
-              bool1 = bool2;
-              if (paramrxq.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Long >= 0L)
-              {
-                bool1 = bool2;
-                if ((paramrxq instanceof rxy))
-                {
-                  bool1 = bool2;
-                  if (!rwy.a(this.b, (rxy)paramrxq)) {
-                    bool1 = true;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private void b(VideoInfo paramVideoInfo, boolean paramBoolean)
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.a.itemView.getLayoutParams();
-    int i = paramVideoInfo.a(rwy.a(this.b));
-    int j = ryx.b(rwy.a(this.b))[0];
-    if (paramBoolean)
-    {
-      localLayoutParams.height = -1;
-      localLayoutParams.width = -1;
-      this.a.itemView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Rwh.a();
       return;
     }
-    if (paramVideoInfo.a(rwy.a(this.b))) {}
-    for (localLayoutParams.height = i;; localLayoutParams.height = i)
-    {
-      localLayoutParams.width = -1;
-      break;
-    }
+    d();
   }
   
-  private void c(VideoInfo paramVideoInfo, boolean paramBoolean)
+  private void d()
   {
-    int i = paramVideoInfo.b(rwy.a(this.b));
-    ViewGroup.LayoutParams localLayoutParams = this.a.jdField_b_of_type_ComTencentImageURLImageView.getLayoutParams();
-    if (paramBoolean)
-    {
-      localLayoutParams.height = -1;
-      localLayoutParams.width = -1;
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
     }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-      return;
-      localLayoutParams.width = -1;
-      if (paramVideoInfo.a(rwy.a(this.b), this.a.jdField_d_of_type_Int) != 2) {
-        break;
-      }
-      localLayoutParams.height = -1;
-    }
-    if (i > 0) {}
-    for (;;)
-    {
-      localLayoutParams.height = i;
-      break;
-      i = -1;
-    }
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new rxr(this));
   }
   
   public void a()
   {
-    b(this.a.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, rwy.a(this.b));
-    c(this.a.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, rwy.a(this.b));
+    ThreadManager.post(new VideoWebPreDownload.2(this), 5, null, true);
   }
   
-  public void a(float paramFloat)
+  public void a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, String paramString3)
   {
-    this.a.jdField_a_of_type_Sek.a(false);
-    if (this.a.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(100.0F * paramFloat));
-      this.a.s.setVisibility(8);
-      this.a.u.setVisibility(8);
-      this.a.j.setVisibility(0);
-      if (paramFloat == 0.0F) {
-        this.a.j.setEnabled(false);
-      }
-    }
-    for (;;)
-    {
-      rwy.a(this.b).removeMessages(0);
-      rwy.a(this.b).sendEmptyMessageDelayed(0, 1500L);
-      return;
-      this.a.j.setEnabled(true);
-      continue;
-      this.a.jdField_b_of_type_AndroidWidgetSeekBar.setEnabled(false);
-      this.a.jdField_b_of_type_AndroidWidgetSeekBar.setProgress((int)(100.0F * paramFloat));
-    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString3);
+    ThreadManager.post(new VideoWebPreDownload.1(this, paramString1, paramInt1, paramLong, paramInt2, paramString2), 5, null, true);
   }
   
-  public void a(int paramInt)
+  public void a(rxs paramrxs)
   {
-    if (paramInt == 1) {
-      i(true);
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    i(false);
+    this.jdField_a_of_type_Rxs = paramrxs;
   }
   
-  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    this.a.h.setTag(this.a);
-    this.a.h.setOnClickListener(this.b);
-    int i = ryx.b(rwy.a(this.b))[0];
-    int j = paramVideoInfo.b(rwy.a(this.b));
-    b(paramVideoInfo, rwy.a(this.b));
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.b);
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setTag(this.a);
-    if ((paramVideoInfo.jdField_b_of_type_Int > 0) && (paramVideoInfo.jdField_c_of_type_Int > 0) && (paramVideoInfo.jdField_c_of_type_Int < 10000) && (paramVideoInfo.jdField_b_of_type_Int < 10000) && (this.a.jdField_a_of_type_Sar != null) && (this.a.jdField_a_of_type_Sar.jdField_a_of_type_Sfb != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "refreshContentUI: setFixedSize width=" + paramVideoInfo.jdField_b_of_type_Int + ", height=" + paramVideoInfo.jdField_c_of_type_Int);
-      }
-      this.a.jdField_a_of_type_Sar.jdField_a_of_type_Sfb.b(paramVideoInfo.a(rwy.a(this.b), this.a.jdField_d_of_type_Int));
-      if (this.a.jdField_a_of_type_Sar.jdField_a_of_type_Sfb.a() != null) {
-        this.a.jdField_a_of_type_Sar.jdField_a_of_type_Sfb.a().a(paramVideoInfo.jdField_b_of_type_Int, paramVideoInfo.jdField_c_of_type_Int);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setTag(this.a);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setOnCustomClickListener(this.b);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setContext(rwy.a(this.b));
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setVideoPlayManager(rwy.a(this.b));
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setChannelID(409409L);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setVideoBrightnessController(rwy.a(this.b));
-    this.a.i.setBackgroundDrawable(null);
-    this.a.i.setTag(this.a);
-    this.a.i.setOnClickListener(this.b);
-    URL localURL = paramVideoInfo.a();
-    URLImageView localURLImageView = this.a.jdField_b_of_type_ComTencentImageURLImageView;
-    c(paramVideoInfo, rwy.a(this.b));
-    if (localURL != null)
-    {
-      if ((this.a.jdField_c_of_type_Int != 0) || (this.a.jdField_b_of_type_Int != 0) || (!a(localURLImageView, localURL)))
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = i;
-        localURLDrawableOptions.mRequestHeight = j;
-        localURLDrawableOptions.mPlayGifImage = true;
-        localURLDrawableOptions.mLoadingDrawable = rwy.a(this.b);
-        localURLDrawableOptions.mFailedDrawable = rwy.a(this.b);
-        localURLImageView.setImageDrawable(URLDrawable.getDrawable(localURL, localURLDrawableOptions));
-      }
-      localURLImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-      ryx.a(this.a.s, 0L);
-      ryx.a(this.a.u, paramVideoInfo.a() * 1000);
-      if ((rwy.d(this.b)) || (this.a.jdField_c_of_type_Int != 0)) {
-        break label798;
-      }
-      this.a.jdField_c_of_type_AndroidViewViewGroup.setVisibility(0);
-      label604:
-      this.a.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.a.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(0);
-      this.a.f.setTag(this.a);
-      this.a.f.setOnClickListener(this.b);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(1.0F);
-      this.a.w.setVisibility(8);
-      this.a.i.setVisibility(0);
-      this.a.v.setVisibility(8);
-      this.a.x.setVisibility(8);
-      this.a.q.setVisibility(8);
-      if (this.a.l != null)
-      {
-        this.a.l.setOnClickListener(this.b);
-        this.a.l.setTag(this.a);
-        if (!siy.a.a()) {
-          break label813;
-        }
-        this.a.l.setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      i(false);
-      return;
-      localURLImageView.setImageDrawable(null);
-      break;
-      label798:
-      this.a.jdField_c_of_type_AndroidViewViewGroup.setVisibility(8);
-      break label604;
-      label813:
-      this.a.l.setVisibility(8);
-    }
-  }
-  
-  protected void a(rxq paramrxq, boolean paramBoolean)
-  {
-    Object localObject = paramrxq.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
-    if (paramBoolean) {}
-    for (localObject = anni.a(2131714892);; localObject = ryx.c(((VideoInfo)localObject).jdField_b_of_type_Long))
-    {
-      paramrxq.i.setVisibility(8);
-      Drawable localDrawable = rwy.a(this.b).getResources().getDrawable(2130843112);
-      paramrxq.v.setText((CharSequence)localObject);
-      paramrxq.v.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
-      paramrxq.v.setCompoundDrawablePadding(afur.a(6.0F, rwy.a(this.b).getResources()));
-      paramrxq.v.setVisibility(0);
-      paramrxq.v.setOnClickListener(this.b);
-      paramrxq.v.setTag(paramrxq);
-      if ((!paramBoolean) && (!TextUtils.isEmpty(bhhb.a("kandian"))))
-      {
-        paramrxq.x.setVisibility(0);
-        ryx.a(rwy.a(this.b), paramrxq.x);
-      }
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (a(this.a)) {
-      a(this.a, rwy.j(this.b));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(0.0F);
-      if ((this.a.jdField_c_of_type_Int != 0) || (this.a.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int != 0)) {
-        break;
-      }
-      i(true);
-      return;
-      this.a.jdField_c_of_type_AndroidViewViewGroup.setVisibility(8);
-    }
-    i(false);
+    d();
   }
   
   public void b()
   {
-    if (rwy.a(this.b).jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      j(bool);
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.l != null) {
-      this.a.l.setImageResource(paramInt);
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool = false;
-    if (this.a.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8) {
-      this.a.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8) {
-        bool = true;
-      }
-      i(bool);
-      return;
-      if (!rwy.a(this.b)) {
-        this.a.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(0);
-      }
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if ((this.a.jdField_c_of_type_Int == 0) && (this.a.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 0)) {
-      i(true);
-    }
-    for (;;)
-    {
-      if (paramBoolean)
-      {
-        if (a(this.a)) {
-          a(this.a, rwy.j(this.b));
-        }
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(0.0F);
-      }
-      return;
-      i(false);
-      if (this.a.jdField_c_of_type_AndroidViewViewGroup.getVisibility() == 0) {
-        ryx.a(this.a.jdField_c_of_type_AndroidViewViewGroup, 8);
-      }
-    }
-  }
-  
-  public void e(boolean paramBoolean) {}
-  
-  public void f(boolean paramBoolean)
-  {
-    b(this.a.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, paramBoolean);
-    c(this.a.jdField_a_of_type_Sar.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, paramBoolean);
-    if (paramBoolean)
-    {
-      this.a.e.setVisibility(0);
-      this.a.k.setBackgroundDrawable(rwy.a(this.b, 2130841754));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setVisibility(8);
-    }
-    for (;;)
-    {
-      if ((rwy.a(this.b) != null) && (rwy.a(this.b).isShowing())) {
-        rwy.a(this.b).dismiss();
-      }
-      if (rwy.a(this.b) != null) {
-        rwy.a(this.b).a();
-      }
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.setIsInFullScreen(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout.a();
-      i(false);
-      if (bqcd.b())
-      {
-        if (!paramBoolean) {
-          break;
-        }
-        this.a.jdField_d_of_type_AndroidViewViewGroup.setPadding(bqcd.b(rwy.a(this.b)), 0, bqcd.b(rwy.a(this.b)), 0);
-      }
-      return;
-      this.a.e.setVisibility(8);
-      this.a.k.setBackgroundDrawable(rwy.a(this.b, 2130841755));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setVisibility(0);
-    }
-    this.a.jdField_d_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
-  }
-  
-  public void g(boolean paramBoolean)
-  {
-    i(paramBoolean);
-  }
-  
-  public void h(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.a.i != null)
-      {
-        this.a.i.setVisibility(0);
-        this.a.v.setVisibility(8);
-        if ((!rwy.j(this.b)) && (!TextUtils.isEmpty(bhhb.a("kandian")))) {
-          this.a.x.setVisibility(8);
-        }
-      }
-    }
-    while (!a(this.a)) {
-      return;
-    }
-    a(this.a, rwy.j(this.b));
-  }
-  
-  protected void i(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (this.a.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8) {
-        ryx.a(this.a.jdField_d_of_type_AndroidViewViewGroup, 0);
-      }
-      if (this.a.jdField_c_of_type_AndroidViewViewGroup.getVisibility() == 8) {
-        ryx.a(this.a.jdField_c_of_type_AndroidViewViewGroup, 0);
-      }
-    }
-    for (;;)
-    {
-      j(paramBoolean);
-      return;
-      if (this.a.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 0) {
-        ryx.a(this.a.jdField_d_of_type_AndroidViewViewGroup, 8);
-      }
-      if ((rwy.a(this.b).d()) && (this.a.jdField_c_of_type_AndroidViewViewGroup.getVisibility() == 0)) {
-        ryx.a(this.a.jdField_c_of_type_AndroidViewViewGroup, 8);
-      }
-      if (rwy.a(this.b)) {
-        this.a.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(8);
-      } else {
-        this.a.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(0);
-      }
-    }
-  }
-  
-  protected void j(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(true);
-      this.a.s.setVisibility(0);
-      this.a.u.setVisibility(0);
-      this.a.j.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Sek.a(true);
-      this.a.jdField_a_of_type_Sek.a();
-      return;
-      this.a.jdField_b_of_type_AndroidWidgetSeekBar.setEnabled(true);
-    }
+    this.jdField_a_of_type_Rxs = null;
+    ThreadManager.post(new VideoWebPreDownload.5(this), 5, null, true);
   }
 }
 

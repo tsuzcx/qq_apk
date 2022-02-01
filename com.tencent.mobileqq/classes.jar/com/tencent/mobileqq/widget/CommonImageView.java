@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bhyj;
-import bhyk;
+import bizh;
+import bizi;
 
 public class CommonImageView
   extends ImageView
-  implements bhyk
+  implements bizi
 {
-  private bhyj a;
+  private bizh a;
   
   public CommonImageView(Context paramContext)
   {
@@ -59,15 +59,15 @@ public class CommonImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(bhyj parambhyj)
+  public void setMosaicEffect(bizh parambizh)
   {
-    bhyj localbhyj = this.a;
-    if (localbhyj != null) {
-      localbhyj.a(null);
+    bizh localbizh = this.a;
+    if (localbizh != null) {
+      localbizh.a(null);
     }
-    this.a = parambhyj;
-    if (parambhyj != null) {
-      parambhyj.a(this);
+    this.a = parambizh;
+    if (parambizh != null) {
+      parambizh.a(this);
     }
     invalidate();
   }

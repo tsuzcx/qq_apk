@@ -1,43 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class asuo
-  extends atwn
 {
-  public asuo(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public MessageRecord a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void a()
+  public asuo(MessageRecord paramMessageRecord)
   {
-    this.a.a.a().a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + atvo.a());
-    }
-  }
-  
-  public void d()
-  {
-    this.a.a.a().i();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().j();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().C();
+    this.a = paramMessageRecord;
+    this.b = (paramMessageRecord instanceof MessageForPic);
   }
 }
 

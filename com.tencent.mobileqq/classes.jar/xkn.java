@@ -1,66 +1,59 @@
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.widget.XEditTextEx;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
+import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class xkn
-  implements xlg
 {
-  private xkn(xkf paramxkf) {}
+  protected long a;
+  public Handler a;
+  public WeakReference<xtg> a;
+  public Timer a;
+  private TimerTask a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public void a()
+  private void a()
   {
-    if (!xkf.b(this.a)) {
-      this.a.a();
-    }
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
   }
   
-  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  private void b()
   {
-    if (xkf.a(this.a) != null) {
-      xkf.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
-    }
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
   }
   
-  public void a(@NonNull ycb paramycb, ErrorMessage paramErrorMessage)
+  public void a(long paramLong1, long paramLong2, xtg paramxtg)
   {
-    if (paramErrorMessage.isSuccess())
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
     {
-      xkf.a(this.a, paramycb);
-      xkf.a(this.a).setVisibility(0);
-      xkf.a(this.a, new ycq(this.a.getContext(), xkf.b(this.a), paramycb, false, 4444, new xkk(this.a, null)));
-      if (xkf.a(this.a).a != null) {
-        xkf.a(this.a).a.setText(xkf.a(this.a).a);
-      }
-      if (xkf.a(this.a))
-      {
-        xkf.a(this.a, false);
-        xkf.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
-      }
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxtg);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
       return;
     }
-    xkf.a(this.a).setVisibility(8);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 1) && (xkf.a(this.a) != null) && (xkf.a(this.a).a()))
-    {
-      xkf.a(this.a).c();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
-  {
-    if (xkf.a(this.a) != null) {
-      xkf.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
-    }
+    b();
   }
 }
 

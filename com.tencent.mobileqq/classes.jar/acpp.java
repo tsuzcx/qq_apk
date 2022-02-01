@@ -1,191 +1,29 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawable;
+import java.net.URL;
 
-public class acpp
-  extends VasWebviewJsPlugin
+class acpp
+  implements acxo
 {
-  private GdtAppReceiver a;
+  acpp(acpo paramacpo) {}
   
-  public acpp()
+  public void a(URLDrawable paramURLDrawable)
   {
-    this.mPluginNameSpace = "qq_gdt_ad";
-    if (a() != null) {}
-    for (Object localObject = a();; localObject = BaseApplicationImpl.getApplication())
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
     {
-      acsb.a().a((Context)localObject, new acsc());
+      acvc.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
       return;
     }
   }
   
-  private void a()
+  public void b(URLDrawable paramURLDrawable)
   {
-    if ((this.a != null) || (this.mRuntime == null)) {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      acvc.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
       return;
     }
-    acqy.b("GdtAdWebPlugin", "registerReceiverForApp");
-    this.a = new GdtAppReceiver();
-    this.a.register(a());
-  }
-  
-  private void b()
-  {
-    if ((this.a == null) || (this.mRuntime == null)) {
-      return;
-    }
-    acqy.b("GdtAdWebPlugin", "unregisterReceiverForApp");
-    this.a.unregister(a());
-    this.a = null;
-  }
-  
-  public Activity a()
-  {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
-    {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
-      }
-      return localActivity2;
-    }
-  }
-  
-  public GdtAppReceiver a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    Activity localActivity = a();
-    if (localActivity == null) {}
-    while (!(localActivity instanceof QQBrowserActivity)) {
-      return null;
-    }
-    return ((QQBrowserActivity)QQBrowserActivity.class.cast(localActivity)).getCurrentUrl();
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramJsBridgeListener = null;
-    try
-    {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
-      if ("loadAdDemo".equals(paramString3))
-      {
-        paramJsBridgeListener = acpo.a().a(5);
-        if (paramJsBridgeListener != null) {
-          paramJsBridgeListener.a(this, paramString1, paramVarArgs);
-        }
-        return true;
-      }
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        acqy.d("GdtAdWebPlugin", "GdtAdWebPlugin handleJsCallRequest error ", paramString1);
-        paramString1 = null;
-        continue;
-        if ("getLocation".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(4);
-        }
-        else if ("getDeviceId".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(7);
-        }
-        else if ("getMacAddress".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(8);
-        }
-        else if ("getCarrier".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(9);
-        }
-        else if ("getNetType".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(10);
-        }
-        else if ("getOSVersion".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(11);
-        }
-        else if ("handleClick".equals(paramString3))
-        {
-          a();
-          paramJsBridgeListener = acpo.a().a(12);
-        }
-        else if ("showBanner".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(13);
-        }
-        else if ("showInterstitial".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(19);
-        }
-        else if ("showInterstitialForJS".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(20);
-        }
-        else if ("getDeviceInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(14);
-        }
-        else if ("c2sReport".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(15);
-        }
-        else if ("openMotiveVideoAd".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(16);
-        }
-        else if ("getUserInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(17);
-        }
-        else if ("preLoadAfterAdLoaded".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(18);
-        }
-        else if ("getCanvasJson".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(21);
-        }
-        else if ("getAdInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(22);
-        }
-        else if ("handleRewardVideoClick".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(23);
-        }
-        else if ("launchAppWithDeeplink".equals(paramString3))
-        {
-          paramJsBridgeListener = acpo.a().a(24);
-        }
-      }
-    }
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    acqy.b("GdtAdWebPlugin", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Byte.valueOf(paramByte), Integer.valueOf(paramInt) }));
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    b();
   }
 }
 

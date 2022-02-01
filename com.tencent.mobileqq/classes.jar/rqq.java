@@ -1,33 +1,54 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rqq
-  implements TextWatcher
+  extends LinearLayoutManager
 {
-  public rqq(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  private VideoFeedsRecyclerView a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public rqq(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
   {
-    if (paramEditable.length() > 0)
-    {
-      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
-        this.a.getChildFragmentManager().beginTransaction().add(2131367067, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
-      }
-      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
-    }
-    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
-      return;
-    }
-    this.a.getChildFragmentManager().popBackStackImmediate();
+    super(paramContext, paramInt, paramBoolean);
+    this.a = paramVideoFeedsRecyclerView;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private boolean a(View paramView)
+  {
+    if (paramView == null) {}
+    int i;
+    int j;
+    do
+    {
+      return false;
+      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+      j = this.a.b();
+    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
+    return true;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  {
+    return super.getExtraLayoutSpace(paramState) + 200;
+  }
+  
+  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(paramView)) {
+      super.removeAndRecycleView(paramView, paramRecycler);
+    }
+  }
+  
+  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(getChildAt(paramInt))) {
+      super.removeAndRecycleViewAt(paramInt, paramRecycler);
+    }
+  }
 }
 
 

@@ -1,20 +1,43 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
+import java.util.List;
 
-public class xme
-  implements xpe
+class xme
+  implements xmu
 {
-  public final ViewPager.PageTransformer a;
+  xme(xmc paramxmc) {}
   
-  public xme(ViewPager.PageTransformer paramPageTransformer)
+  public void a()
   {
-    this.a = paramPageTransformer;
+    xmc.a(this.a, this.a.a.a(xmc.a(this.a), 5));
+    List localList = xmc.a(this.a).a;
+    if ((xmc.a(this.a) == null) && (localList.size() > 0)) {
+      xmc.a(this.a, ((xmt)localList.get(0)).a);
+    }
+    label199:
+    for (;;)
+    {
+      yuk.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { xmc.a(this.a) });
+      xmc.a(this.a).a(xmc.a(this.a), "");
+      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label199;
+        }
+        if (((xmt)localList.get(i)).a.equals(xmc.a(this.a)))
+        {
+          if (localList.size() <= i + 1) {
+            break;
+          }
+          xmc.a(this.a, ((xmt)localList.get(i + 1)).a);
+          break;
+        }
+        i += 1;
+      }
+    }
   }
   
-  public void a(View paramView, float paramFloat)
-  {
-    this.a.transformPage(paramView, paramFloat);
-  }
+  public void a(xms paramxms, String paramString, boolean paramBoolean) {}
 }
 
 

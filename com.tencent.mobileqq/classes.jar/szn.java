@@ -1,18 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 
-class szn
-  implements ViewBase.OnClickListener
+public abstract interface szn
 {
-  szn(szm paramszm) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    szj.a(true);
-    tcc.a(this.a.a.a, "0X800974B");
-    pha.a(szl.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
-  }
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
 }
 
 

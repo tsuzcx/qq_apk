@@ -1,13 +1,29 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aidc
-  implements bkhw
+  implements DialogInterface.OnClickListener
 {
-  aidc(aicv paramaicv, bkho parambkho) {}
+  aidc(aicy paramaicy, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aicv.a(this.jdField_a_of_type_Aicv, paramView, paramInt, this.jdField_a_of_type_Bkho);
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Aicy.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      aicy.b(this.jdField_a_of_type_Aicy, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Aicy.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
+    }
   }
 }
 

@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aidp;
+import ainh;
 import android.text.TextUtils;
-import bcst;
-import bcvs;
-import bcxp;
-import bcxs;
+import bdll;
+import bdol;
+import bdqi;
+import bdql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import java.util.ArrayList;
 import java.util.List;
-import oat;
+import ocd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StructMsgItemButton$3$2
   implements Runnable
 {
-  public StructMsgItemButton$3$2(bcxs parambcxs, bcxp parambcxp, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public StructMsgItemButton$3$2(bdql parambdql, bdqi parambdqi, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcxp.Y)) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bdqi.aa)) {}
     try
     {
-      i = Integer.parseInt(this.jdField_a_of_type_Bcxs.jdField_a_of_type_Bcxp.Y);
-      if (aidp.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      i = Integer.parseInt(this.jdField_a_of_type_Bdql.jdField_a_of_type_Bdqi.aa);
+      if (ainh.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         j = 1;
-        oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_Bcxp.c, Integer.toString(j), false);
+        ocd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_Bdqi.c, Integer.toString(j), false);
         j = 0;
         if (this.jdField_a_of_type_Boolean) {
           j = 1;
         }
-        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(bcvs.a(this.jdField_a_of_type_Bcxp.b));
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
+        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(bdol.a(this.jdField_a_of_type_Bdqi.b));
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
         if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message == null) {}
         String str;
         do

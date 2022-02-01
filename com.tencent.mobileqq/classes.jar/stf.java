@@ -1,32 +1,42 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class stf
-  implements Handler.Callback
+public abstract class stf
 {
-  private WeakReference<ReadInJoyXListView> a;
+  protected abstract void a();
   
-  public stf(ReadInJoyXListView paramReadInJoyXListView)
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    this.a = new WeakReference(paramReadInJoyXListView);
+    try
+    {
+      paramJSONObject.put("folder_status", ozs.d);
+      paramJSONObject.put("kandian_mode", ozs.e());
+      paramJSONObject = paramJSONObject.toString();
+      ocd.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public abstract void b();
+  
+  public void c()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      ((ReadInJoyXListView)this.a.get()).i();
-      return true;
-    }
-    return true;
+    a();
   }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

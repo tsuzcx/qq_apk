@@ -1,25 +1,9 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.diy.ResData;
 
-public class bejb
-  implements Animation.AnimationListener
+public abstract interface bejb
 {
-  public bejb(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.b == null) {
-      return;
-    }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
-  }
+  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
 }
 
 

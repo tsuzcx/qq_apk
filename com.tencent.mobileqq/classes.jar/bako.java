@@ -1,8 +1,25 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public abstract interface bako
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$3$1"}, k=3, mv={1, 1, 16})
+final class bako
+  implements View.OnClickListener
 {
-  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
+  bako(bakg parambakg, bakf parambakf, bakk parambakk, int paramInt) {}
+  
+  public final void onClick(View paramView)
+  {
+    bakg localbakg = this.jdField_a_of_type_Bakg;
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
+    Object localObject = bakf.a(this.jdField_a_of_type_Bakf).get(this.jdField_a_of_type_Int);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
+    localbakg.b(paramView, (bakz)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

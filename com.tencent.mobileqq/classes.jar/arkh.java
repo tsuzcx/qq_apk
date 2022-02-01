@@ -1,37 +1,58 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-
 public class arkh
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
-  TextView g;
-  TextView h;
-  TextView i;
-  TextView j;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  arkh(DataReportViewer paramDataReportViewer, View paramView)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378224));
-    this.b = ((TextView)paramView.findViewById(2131370462));
-    this.c = ((TextView)paramView.findViewById(2131377992));
-    this.d = ((TextView)paramView.findViewById(2131361958));
-    this.e = ((TextView)paramView.findViewById(2131371960));
-    this.f = ((TextView)paramView.findViewById(2131376457));
-    this.g = ((TextView)paramView.findViewById(2131375917));
-    this.h = ((TextView)paramView.findViewById(2131375918));
-    this.i = ((TextView)paramView.findViewById(2131375919));
-    this.j = ((TextView)paramView.findViewById(2131375920));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkh
  * JD-Core Version:    0.7.0.1
  */

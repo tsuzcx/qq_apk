@@ -17,8 +17,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bifp;
-import bifq;
+import bjgo;
+import bjgp;
 import com.tencent.qphone.base.util.QLog;
 
 public class QUSDragFloatingScreenView
@@ -30,7 +30,7 @@ public class QUSDragFloatingScreenView
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-  private bifp jdField_a_of_type_Bifp;
+  private bjgo jdField_a_of_type_Bjgo;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = a(60);
@@ -55,7 +55,7 @@ public class QUSDragFloatingScreenView
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     paramContext.topMargin = a(60);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839427);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839435);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     paramInt = a(36);
@@ -66,17 +66,17 @@ public class QUSDragFloatingScreenView
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     paramContext = new FrameLayout.LayoutParams(paramInt, paramInt);
     paramContext.gravity = 17;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849660);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849670);
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramContext);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setOnClickListener(new bifq(this));
+    setOnClickListener(new bjgp(this));
   }
   
   private int a()
   {
     int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Bifp == null) {}
-    for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_Bifp.a()) {
+    if (this.jdField_a_of_type_Bjgo == null) {}
+    for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_Bjgo.a()) {
       return Math.max(j, Math.min(i, this.c - this.jdField_b_of_type_Int));
     }
   }
@@ -196,10 +196,10 @@ public class QUSDragFloatingScreenView
       QLog.d("QUSDragFloatingScreenView", 2, "showTotal");
     }
     this.e = 2;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849661);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849671);
     a(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Bifp != null) {
-      this.jdField_a_of_type_Bifp.a();
+    if (this.jdField_a_of_type_Bjgo != null) {
+      this.jdField_a_of_type_Bjgo.a();
     }
   }
   
@@ -211,10 +211,10 @@ public class QUSDragFloatingScreenView
     if (this.c - a() > this.jdField_b_of_type_Int)
     {
       this.e = 1;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849660);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849670);
       a(this.c - a());
-      if (this.jdField_a_of_type_Bifp != null) {
-        this.jdField_a_of_type_Bifp.b();
+      if (this.jdField_a_of_type_Bjgo != null) {
+        this.jdField_a_of_type_Bjgo.b();
       }
     }
   }
@@ -225,10 +225,10 @@ public class QUSDragFloatingScreenView
       QLog.d("QUSDragFloatingScreenView", 2, "showMinHeight");
     }
     this.e = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849660);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849670);
     a(this.c - this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bifp != null) {
-      this.jdField_a_of_type_Bifp.c();
+    if (this.jdField_a_of_type_Bjgo != null) {
+      this.jdField_a_of_type_Bjgo.c();
     }
   }
   
@@ -277,8 +277,8 @@ public class QUSDragFloatingScreenView
     if (this.c <= 0)
     {
       this.c = getMeasuredHeight();
-      if ((this.jdField_a_of_type_Bifp != null) && (this.jdField_a_of_type_Bifp.b() > 0)) {
-        this.jdField_b_of_type_Int = Math.max(this.jdField_b_of_type_Int, this.c - this.jdField_a_of_type_Bifp.b());
+      if ((this.jdField_a_of_type_Bjgo != null) && (this.jdField_a_of_type_Bjgo.b() > 0)) {
+        this.jdField_b_of_type_Int = Math.max(this.jdField_b_of_type_Int, this.c - this.jdField_a_of_type_Bjgo.b());
       }
       paramInt2 = this.c;
       if (this.d == 0) {}
@@ -297,13 +297,13 @@ public class QUSDragFloatingScreenView
     }
   }
   
-  public void setQUSDragFloatController(bifp parambifp)
+  public void setQUSDragFloatController(bjgo parambjgo)
   {
     int j = 0;
-    this.jdField_a_of_type_Bifp = parambifp;
-    if (parambifp != null)
+    this.jdField_a_of_type_Bjgo = parambjgo;
+    if (parambjgo != null)
     {
-      View localView = parambifp.a();
+      View localView = parambjgo.a();
       if (localView != null)
       {
         if (localView.getParent() != null) {
@@ -311,13 +311,13 @@ public class QUSDragFloatingScreenView
         }
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       }
-      this.d = parambifp.d();
+      this.d = parambjgo.d();
       if (this.d != 0) {
         break label107;
       }
     }
     label107:
-    for (int i = Math.max(this.jdField_a_of_type_Int, parambifp.c());; i = 0)
+    for (int i = Math.max(this.jdField_a_of_type_Int, parambjgo.c());; i = 0)
     {
       this.jdField_a_of_type_Int = i;
       i = j;

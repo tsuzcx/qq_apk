@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 class aimy
-  extends anqd
+  extends anyu
 {
   aimy(aimx paramaimx) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  protected void onAddFriend(String paramString)
   {
-    super.a(paramBoolean1, paramList, paramBoolean2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("UpComingMsgLogic.AIOUpComingMsgHelper", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
-    }
-    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty())) {
-      aimx.a(this.a, (MessageRecord)paramList.get(0));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
+    {
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      aimx.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
     }
   }
 }

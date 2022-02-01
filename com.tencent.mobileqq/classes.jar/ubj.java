@@ -1,24 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class ubj
+final class ubj
+  implements Comparator<ArticleInfo>
 {
-  public final int a;
-  public long a;
-  public BaseArticleInfo a;
-  
-  public ubj(int paramInt)
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubj
  * JD-Core Version:    0.7.0.1
  */

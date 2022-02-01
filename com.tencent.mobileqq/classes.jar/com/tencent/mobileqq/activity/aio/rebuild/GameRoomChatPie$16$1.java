@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiay;
+import aikq;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import bhtu;
+import biup;
 import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,10 +21,10 @@ class GameRoomChatPie$16$1
     if ((!this.a.this$0.M) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
     {
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-      aiay.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
+      aikq.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setBackgroundDrawable(null);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_Bhtu.a((ViewGroup)this.a.this$0.n);
+      this.a.this$0.jdField_a_of_type_Biup.a((ViewGroup)this.a.this$0.n);
       this.a.this$0.e(false, false);
     }
   }

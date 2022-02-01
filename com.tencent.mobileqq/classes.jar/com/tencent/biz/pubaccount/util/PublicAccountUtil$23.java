@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
-import bcst;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
-import tue;
+import tug;
 
 public final class PublicAccountUtil$23
   implements Runnable
@@ -12,17 +12,17 @@ public final class PublicAccountUtil$23
   public void run()
   {
     String str = "0X80067EA";
-    tue localtue = tue.a();
-    int i = localtue.b();
-    int j = localtue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    tug localtug = tug.a();
+    int i = localtug.b();
+    int j = localtug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (j == 1) {
       str = "0X80067E8";
     }
     for (;;)
     {
-      long l = localtue.a();
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
+      long l = localtug.a();
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
       return;
       if (j == 2) {
         str = "0X80067E9";

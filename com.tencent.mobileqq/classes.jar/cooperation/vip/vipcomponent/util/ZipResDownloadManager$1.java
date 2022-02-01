@@ -1,24 +1,24 @@
 package cooperation.vip.vipcomponent.util;
 
-import bmvw;
-import bmvy;
+import bnxe;
+import bnxg;
 
 public class ZipResDownloadManager$1
   implements Runnable
 {
-  public ZipResDownloadManager$1(bmvw parambmvw, String paramString) {}
+  public ZipResDownloadManager$1(bnxe parambnxe, String paramString) {}
   
   public void run()
   {
     String str = this.a;
     if (this.this$0.a(str)) {}
-    bmvy localbmvy;
+    bnxg localbnxg;
     do
     {
       return;
-      localbmvy = bmvw.a(this.this$0, str, -1, null, null);
-    } while (!bmvw.a(this.this$0, str, localbmvy));
-    bmvw.a(this.this$0, localbmvy);
+      localbnxg = bnxe.a(this.this$0, str, -1, null, null);
+    } while (!bnxe.a(this.this$0, str, localbnxg));
+    bnxe.a(this.this$0, localbnxg);
   }
 }
 

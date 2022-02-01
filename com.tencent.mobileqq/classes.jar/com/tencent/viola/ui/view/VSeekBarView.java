@@ -9,6 +9,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.view.MotionEvent;
+import android.view.ViewParent;
 import android.widget.SeekBar;
 import com.tencent.viola.ui.component.VSeekBar;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
@@ -62,6 +63,25 @@ public class VSeekBarView
   public void bindComponent(VSeekBar paramVSeekBar)
   {
     this.mWeakReference = new WeakReference(paramVSeekBar);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return super.dispatchTouchEvent(paramMotionEvent);
+      if (getParent() != null)
+      {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        continue;
+        if (getParent() != null) {
+          getParent().requestDisallowInterceptTouchEvent(false);
+        }
+      }
+    }
   }
   
   public VSeekBar getComponent()

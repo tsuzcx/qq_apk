@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.upgrade;
 
-import avnl;
-import bcst;
-import bgds;
-import bgdt;
-import bgec;
+import awfw;
+import bdll;
+import bhdt;
+import bhdu;
+import bhed;
 import com.tencent.qphone.base.util.QLog;
 
 public class UpgradeTipsDialog$JsCover
-  extends avnl
+  extends awfw
 {
   protected UpgradeTipsDialog$JsCover(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
@@ -18,7 +18,7 @@ public class UpgradeTipsDialog$JsCover
       QLog.d("UpgradeController", 2, "loadTipsComplete");
     }
     UpgradeTipsDialog.a(this.a, true);
-    bcst.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, bgds.b(), String.valueOf(1), bgdt.a(), "");
+    bdll.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, bhdt.b(), String.valueOf(1), bhdu.a(), "");
     if (UpgradeTipsDialog.a(this.a) != null)
     {
       UpgradeTipsDialog.a(this.a).a(this.a);

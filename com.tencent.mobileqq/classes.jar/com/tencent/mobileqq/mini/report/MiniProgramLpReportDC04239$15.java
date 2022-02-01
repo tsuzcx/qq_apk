@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.mini.report;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
+import java.util.ArrayList;
+import java.util.List;
 
 final class MiniProgramLpReportDC04239$15
   implements Runnable
 {
+  MiniProgramLpReportDC04239$15(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  
   public void run()
   {
-    if (MiniProgramLpReportDC04239.access$400() != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", MiniProgramLpReportDC04239.access$400());
-      localBundle.putLong("add_duration_ms", MiniProgramLpReportDC04239.access$500());
-      QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "record_duration", localBundle);
-      MiniProgramLpReportDC04239.access$600();
-    }
+    Object localObject = new ArrayList();
+    ((List)localObject).addAll(MiniProgramReportHelper.newUserInfoEntries());
+    ((List)localObject).addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, this.val$groupid));
+    ((List)localObject).addAll(MiniProgramReportHelper.newGenericEntries());
+    localObject = MiniProgramReportHelper.newSingleReportData(2, (List)localObject, null);
+    MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
+    MiniProgramReporter.getInstance().flush();
   }
 }
 

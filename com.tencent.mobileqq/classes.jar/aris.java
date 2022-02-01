@@ -1,37 +1,74 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aris
-  implements RadioGroup.OnCheckedChangeListener
+  extends arac<arit>
 {
-  public aris(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public static arit a()
   {
-    if (paramInt == 2131365741) {
-      DBFixConfigActivity.a = 1;
+    return (arit)aran.a().a(564);
+  }
+  
+  @NonNull
+  public arit a(int paramInt)
+  {
+    return new arit();
+  }
+  
+  @Nullable
+  public arit a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
+      return null;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      if (paramInt == 2131365261) {
-        DBFixConfigActivity.a = 2;
-      }
+    paramArrayOfaraj = paramArrayOfaraj[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfaraj);
     }
+    return arit.a(paramArrayOfaraj);
+  }
+  
+  public void a(arit paramarit)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
+    }
+    if (paramarit != null) {
+      bbsi.a = (int)(paramarit.a * 60.0D * 60.0D);
+    }
+  }
+  
+  public Class<arit> clazz()
+  {
+    return arit.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 564;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aris
  * JD-Core Version:    0.7.0.1
  */

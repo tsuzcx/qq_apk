@@ -1,103 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import java.util.ArrayList;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import java.util.Iterator;
+import java.util.List;
 
 public class bpwb
-  extends BaseAdapter
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<bpwg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public bpwb(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public bpwb(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList<bpwg> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bpwg localbpwg = (bpwg)getItem(paramInt);
-    bpwc localbpwc;
-    if (paramView == null)
+    this.a.c.setVisibility(0);
+    QIMProviderContainerView.a(this.a, true);
+    QIMProviderContainerView.a(this.a);
+    if (QIMProviderContainerView.a(this.a) != null)
     {
-      localbpwc = new bpwc(this);
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b)
-      {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559105, paramViewGroup, false);
-        localbpwc.b = ((ImageView)paramView.findViewById(2131368892));
-        localbpwc.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368785));
-        localbpwc.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368784));
-        paramView.setTag(localbpwc);
-        label97:
-        if (Build.VERSION.SDK_INT < 21) {
-          localbpwc.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-        }
-        localbpwc.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbpwg.a);
-        if (paramInt != this.jdField_a_of_type_Int) {
-          break label240;
-        }
-        if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
-          break label217;
-        }
-        localbpwc.b.setVisibility(0);
+      paramAnimator = QIMProviderContainerView.a(this.a).iterator();
+      while (paramAnimator.hasNext()) {
+        ((bbiv)paramAnimator.next()).a(null, 0);
       }
     }
-    for (;;)
-    {
-      if (localbpwg.b != null) {
-        paramView.setContentDescription(localbpwg.b);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559104, paramViewGroup, false);
-      break;
-      localbpwc = (bpwc)paramView.getTag();
-      break label97;
-      label217:
-      localbpwc.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130845076));
-      continue;
-      label240:
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
-        localbpwc.b.setVisibility(4);
-      } else {
-        localbpwc.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderContainerView", 2, "panelOpened : " + QIMProviderContainerView.a(this.a));
     }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setVisibility(0);
   }
 }
 

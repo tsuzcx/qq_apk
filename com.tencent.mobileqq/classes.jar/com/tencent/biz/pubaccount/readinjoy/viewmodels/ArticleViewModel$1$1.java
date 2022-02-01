@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viewmodels;
 
-import tkt;
+import tbm;
 
 class ArticleViewModel$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class ArticleViewModel$1$1
   
   public void run()
   {
-    tkt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel$1.this$0, this.jdField_a_of_type_JavaLangCharSequence);
+    tbm.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel$1.this$0, this.jdField_a_of_type_JavaLangCharSequence);
   }
 }
 

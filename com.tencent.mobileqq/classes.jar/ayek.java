@@ -1,193 +1,148 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import androidx.core.app.ActivityCompat;
+import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.Set;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Headers.Builder;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request.Builder;
-import okhttp3.RequestBody;
-import org.json.JSONArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ayek
 {
-  public static ayek a;
-  private int jdField_a_of_type_Int = 0;
-  private BaseApplication jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication = BaseApplicationImpl.getContext();
-  private String jdField_a_of_type_JavaLangString = bgln.c();
-  private Callback jdField_a_of_type_Okhttp3Callback = new ayel(this);
-  private String b = String.valueOf(bgln.a(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication));
-  private String c = a();
-  private String d;
-  private String e;
-  private String f = Build.MODEL;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  boolean a;
+  protected int b;
+  boolean b;
+  protected int c;
+  protected int d;
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
+  protected String i = "";
+  protected String j = "";
+  protected String k = "";
+  protected String l = "";
+  protected String m = "";
+  protected String n = "";
+  protected String o = "";
+  protected String p = "";
   
   static
   {
-    jdField_a_of_type_Ayek = new ayek();
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
   }
   
-  private ayek()
+  public ayek()
   {
-    if (this.f == null) {
-      this.f = "unknown";
-    }
-    this.e = Build.VERSION.RELEASE;
-    if (this.e == null) {
-      this.e = "unknown";
-    }
-    this.d = Build.MANUFACTURER;
-    if (this.d == null) {
-      this.d = "unknown";
-    }
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  private static int a(Context paramContext)
+  public ayek a()
   {
-    int i = bgnt.b(paramContext);
-    if (i == 1) {
-      return 2;
-    }
-    if (i == 2) {
-      return 3;
-    }
-    if (i == 3) {
-      return 4;
-    }
-    return 1;
+    this.jdField_a_of_type_Boolean = true;
+    return this;
   }
   
-  private String a()
+  public ayek a(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
-        Object localObject2 = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
-        localObject1 = (TelephonyManager)((BaseApplication)localObject1).getSystemService("phone");
-        if (ActivityCompat.checkSelfPermission(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication, "android.permission.READ_PHONE_STATE") == 0)
-        {
-          localObject1 = ((TelephonyManager)localObject1).getDeviceId();
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = "unknown";
-          }
-          return localObject2;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.w("ReportCenter", 4, " get client info error " + localException.getMessage());
-        return "unknown";
-      }
-      String str = "unknown";
-    }
+    this.e = paramString;
+    return this;
   }
   
-  private String a(Bundle paramBundle)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    JSONArray localJSONArray1 = new JSONArray();
-    JSONArray localJSONArray2 = new JSONArray();
-    String str1 = "personal_live_base";
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str2 = (String)localIterator.next();
-      if ("tid".equals(str2))
-      {
-        str1 = paramBundle.getString(str2);
-      }
-      else
-      {
-        if (!"bid".equals(str2))
-        {
-          localJSONArray1.put(str2);
-          if (!bgsp.a(paramBundle.getString(str2))) {
-            break label111;
-          }
-        }
-        label111:
-        for (str2 = "";; str2 = paramBundle.getString(str2))
-        {
-          localJSONArray2.put(str2);
-          break;
-        }
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
     }
-    paramBundle = new JSONArray();
-    paramBundle.put(localJSONArray2);
-    try
-    {
-      paramBundle = "&table=" + str1 + "&fields=" + URLEncoder.encode(localJSONArray1.toString(), "UTF-8") + "&datas=" + URLEncoder.encode(paramBundle.toString(), "UTF-8");
-      return paramBundle;
+    if (this.jdField_b_of_type_Boolean) {
+      this.m = ("" + axws.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
     }
-    catch (UnsupportedEncodingException paramBundle)
+    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
+    if (l1 % 1000L > 500L) {}
+    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
     {
-      paramBundle.printStackTrace();
-    }
-    return "";
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
-    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
-    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
-    aydn.a().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appid", String.valueOf(16130));
-    localBundle.putString("installsrc", String.valueOf(16130));
-    localBundle.putString("platform", "Android");
-    localBundle.putString("opername", "now_jiehe");
-    localBundle.putString("uin_type", "0");
-    localBundle.putString("uin", String.valueOf(aydy.a()));
-    localBundle.putString("rom", this.d);
-    localBundle.putString("deviceID", this.c);
-    localBundle.putString("osversion", this.e);
-    localBundle.putString("timestr", String.valueOf(System.currentTimeMillis() / 1000L));
-    localBundle.putString("networktype", String.valueOf(a(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication)));
-    Object localObject = "";
-    try
-    {
-      String str = bgln.a();
-      localObject = str;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.i("ReportCenter", 4, "no phone permission");
-      }
-    }
-    localBundle.putString("imei", (String)localObject);
-    return localBundle;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null)
-    {
-      QLog.d("ReportCenter", 4, "send(): no data to report");
+      this.e = (l1 + "");
+      this.f = jdField_c_of_type_JavaLangString;
+      this.g = jdField_b_of_type_JavaLangString;
+      this.h = jdField_a_of_type_JavaLangString;
+      this.i = (nnr.a() + "");
+      bdll.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
       return;
     }
-    b(paramBundle);
+  }
+  
+  public ayek b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    return this;
+  }
+  
+  public ayek b(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
+    }
+    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
+    }
+    this.i = (nnr.a() + "");
+    bdll.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+  }
+  
+  public ayek c(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public ayek d(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public ayek e(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public ayek f(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public ayek g(String paramString)
+  {
+    this.p = paramString;
+    return this;
+  }
+  
+  public ayek h(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public ayek i(String paramString)
+  {
+    this.k = paramString;
+    return this;
   }
 }
 

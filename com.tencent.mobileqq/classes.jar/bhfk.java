@@ -1,61 +1,49 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vashealth.TracePathData;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bhfk
-  implements SensorEventListener
+final class bhfk
+  implements DownloadParams.DecodeHandler
 {
-  public bhfk(PathTraceManager paramPathTraceManager) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
-    if (PathTraceManager.a(this.a) == 1)
+    Object localObject;
+    if (paramBitmap == null)
     {
-      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
-      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
-        break label331;
-      }
-      i = PathTraceManager.a(this.a).totalSteps;
-      if (!this.a.e) {
-        break label246;
-      }
-      paramSensorEvent = PathTraceManager.a(this.a);
-      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
-      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
-      PathTraceManager.a(this.a, null);
-      if (PathTraceManager.a(this.a).type == 1)
+      localObject = null;
+      return localObject;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
+    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
+    {
+      int j;
+      int k;
+      boolean bool;
+      if (i != 0)
       {
-        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
-          break label281;
+        paramDownloadParams = new Matrix();
+        paramDownloadParams.postRotate(i);
+        j = paramBitmap.getWidth();
+        k = paramBitmap.getHeight();
+        if (i % 90 != 0) {
+          bool = true;
         }
-        this.a.a(PathTraceManager.a(this.a), false, true);
+      }
+      label84:
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
+      {
+        localObject = paramDownloadParams;
+        if (paramDownloadParams == paramBitmap) {
+          break;
+        }
+        paramBitmap.recycle();
+        return paramDownloadParams;
+        bool = false;
+        break label84;
       }
     }
-    label246:
-    while (PathTraceManager.c(this.a) != 0)
-    {
-      int i;
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramSensorEvent = PathTraceManager.a(this.a);
-          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
-        }
-      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
-      this.a.a(PathTraceManager.a(this.a), false, false);
-      return;
-    }
-    label281:
-    label331:
-    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
   }
 }
 

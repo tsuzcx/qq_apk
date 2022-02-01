@@ -1,32 +1,61 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.image.NativeApngDecoder;
+import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bppv
-  extends bppr
+  implements GifDecoder
 {
-  public String c;
+  private NativeApngDecoder jdField_a_of_type_ComTencentImageNativeApngDecoder;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bppv(int paramInt1, String paramString, int paramInt2)
+  public bppv(String paramString)
   {
-    super(paramInt1, paramString, paramInt2);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  @NonNull
-  public bpps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public Bitmap getNextGifFrame(long paramLong)
   {
-    return new bppx(this, paramContext, paramViewGroup, null);
+    if (this.jdField_a_of_type_ComTencentImageNativeApngDecoder != null) {
+      return this.jdField_a_of_type_ComTencentImageNativeApngDecoder.getNextFrameBitmap(paramLong);
+    }
+    return null;
   }
   
-  @NonNull
-  public Class<? extends bpps> a()
+  public void init()
   {
-    return bppx.class;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    File localFile;
+    do
+    {
+      do
+      {
+        return;
+        if (bhzi.a().b()) {
+          break;
+        }
+        bhzi.a().a();
+      } while (!QLog.isColorLevel());
+      QLog.d("ApngDecodeWrapper", 2, "so not loaded");
+      return;
+      localFile = new File(this.jdField_a_of_type_JavaLangString);
+    } while ((!localFile.exists()) || (!localFile.isFile()));
+    try
+    {
+      this.jdField_a_of_type_ComTencentImageNativeApngDecoder = new NativeApngDecoder(localFile);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
-  public boolean a()
+  public void release()
   {
-    return true;
+    this.jdField_a_of_type_ComTencentImageNativeApngDecoder = null;
   }
 }
 

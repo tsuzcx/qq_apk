@@ -1,35 +1,45 @@
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class aqmy
-  extends aqmv
+  implements BusinessObserver
 {
-  public aqmp a(String paramString)
-  {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
-    try
-    {
-      aqnj localaqnj = (aqnj)aqlu.a(paramString, aqnj.class);
-      return new aqms(paramString, localaqnj);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
-  }
+  public void a(boolean paramBoolean) {}
   
-  public int type()
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return 250;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
+      return;
+    }
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmy
  * JD-Core Version:    0.7.0.1
  */

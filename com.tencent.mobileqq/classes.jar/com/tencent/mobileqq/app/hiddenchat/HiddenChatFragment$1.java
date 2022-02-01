@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.hiddenchat;
 
-import alan;
+import almc;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
-import aoej;
-import aong;
-import awhv;
+import aoqy;
+import apaw;
+import axan;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ class HiddenChatFragment$1
     int j = 0;
     Object localObject1 = HiddenChatFragment.a(this.this$0).a().a().a();
     HiddenChatFragment.a(this.this$0).a((List)localObject1);
-    Object localObject2 = HiddenChatFragment.a((List)localObject1, awhv.a().c(HiddenChatFragment.a(this.this$0)));
+    Object localObject2 = HiddenChatFragment.a((List)localObject1, axan.a().c(HiddenChatFragment.a(this.this$0)));
     localObject1 = new ArrayList(((List)localObject2).size());
     QQAppInterface localQQAppInterface = HiddenChatFragment.a(this.this$0);
     FragmentActivity localFragmentActivity = this.this$0.getActivity();
@@ -34,7 +34,7 @@ class HiddenChatFragment$1
     }
     for (;;)
     {
-      alan.a((List)localObject2, localQQAppInterface, localFragmentActivity, (List)localObject1, i);
+      almc.a((List)localObject2, localQQAppInterface, localFragmentActivity, (List)localObject1, i);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder().append("data|size");

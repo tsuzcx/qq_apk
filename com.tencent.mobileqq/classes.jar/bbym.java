@@ -1,54 +1,31 @@
-import EncounterSvc.UserData;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import com.tencent.widget.ThemeImageView;
+import java.util.ArrayList;
 
-public class bbym
-  extends aber
+class bbym
+  implements bbzk
 {
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { "EncounterSvc", "NeighborSvc", "VisitorSvc" };
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public UserData[] a;
+  bbym(bbyl parambbyl) {}
   
-  public bbym(AppInterface paramAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ArrayOfEncounterSvcUserData = new UserData[2];
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (bbyl.a(this.a).a().size() > 0)
+    {
+      bbyl.a(this.a).a(bbyl.a(this.a).a(), true);
+      bbyl.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    bbyl.a(this.a).findViewById(2131371341).setVisibility(8);
   }
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void a(boolean paramBoolean)
   {
-    if ("EncounterSvc.ReqGetEncounter".equals(paramFromServiceMsg.getServiceCmd())) {
-      return anqr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramFromServiceMsg, paramToServiceMsg, this);
+    if (paramBoolean)
+    {
+      bbyl.a(this.a).setVisibility(0);
+      return;
     }
-    if ("NeighborSvc.ReqGetPoint".equals(paramFromServiceMsg.getServiceCmd())) {
-      return anqr.a(this, paramFromServiceMsg, paramToServiceMsg);
-    }
-    if ("VisitorSvc.ReqFavorite".equals(paramFromServiceMsg.getServiceCmd())) {
-      anqr.a(paramFromServiceMsg, paramToServiceMsg);
-    }
-    return super.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("EncounterSvc.ReqGetEncounter".equals(str)) {
-      return anqr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, paramUniPacket, this);
-    }
-    if ("NeighborSvc.ReqGetPoint".equals(str)) {
-      return anqr.a(this, paramToServiceMsg, paramUniPacket);
-    }
-    if ("VisitorSvc.ReqFavorite".equals(paramToServiceMsg.getServiceCmd())) {
-      return anqr.a(paramToServiceMsg, paramUniPacket);
-    }
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    bbyl.a(this.a).setVisibility(8);
   }
 }
 

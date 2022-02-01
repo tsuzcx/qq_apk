@@ -1,25 +1,21 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class opy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class opy
+  implements ViewBase.OnClickListener
 {
-  public SparseArray<opx> a = new SparseArray();
+  opy(otd paramotd, Container paramContainer, otp paramotp) {}
   
-  public opy()
+  public final void onClick(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
-    }
-  }
-  
-  public opx a(int paramInt)
-  {
-    return (opx)this.a.get(paramInt);
-  }
-  
-  public void a(int paramInt, opx paramopx)
-  {
-    this.a.put(paramInt, paramopx);
+    paramViewBase = this.jdField_a_of_type_Otd.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+    tpk.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otp, 4);
   }
 }
 

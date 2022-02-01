@@ -1,34 +1,36 @@
-import MQQ.VipUserInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class anyk
-  implements anil
+public final class anyk
+  implements azgh
 {
-  protected void a(boolean paramBoolean, int paramInt) {}
+  private WeakReference<FrameHelperActivity> a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public anyk(FrameHelperActivity paramFrameHelperActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipInfoObserver", 2, "onUpdate-isSuccess:" + paramBoolean);
-    }
-    if (paramInt == 1)
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public void a()
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity == null) {}
+    FragmentActivity localFragmentActivity;
+    QQAppInterface localQQAppInterface;
+    do
     {
-      int i = -1;
-      paramInt = i;
-      if (paramBoolean)
+      do
       {
-        paramObject = (VipUserInfo)paramObject;
-        paramInt = i;
-        if (paramObject != null)
-        {
-          paramInt = i;
-          if (paramObject.bUpdate == 1) {
-            paramInt = paramObject.iGrowthValue;
-          }
-        }
-      }
-      a(paramBoolean, paramInt);
-    }
+        return;
+        localFragmentActivity = localFrameHelperActivity.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
+      localQQAppInterface = localFragmentActivity.app;
+    } while ((!azoz.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
+    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
+    bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
   }
 }
 

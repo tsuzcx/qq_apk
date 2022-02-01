@@ -3,9 +3,9 @@ package com.youtu.arsdk;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
-import aovt;
-import bnpt;
-import bnpy;
+import apjj;
+import borf;
+import bork;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,7 +30,7 @@ public class ARShell
   
   public static String getCommonSoFilename()
   {
-    return bnpy.a(bnpt.b) + "libYTCommon.so";
+    return bork.a(borf.b) + "libYTCommon.so";
   }
   
   public static native int getMarkerCount();
@@ -58,7 +58,7 @@ public class ARShell
         if (bool3) {
           return bool1;
         }
-        if (!aovt.a())
+        if (!apjj.a())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ARShell", 2, "native so is not exist!");
@@ -72,7 +72,7 @@ public class ARShell
           loadARFeatureSoSuccess = true;
           try
           {
-            int i = aovt.a("libARFeature");
+            int i = apjj.a("libARFeature");
             if (i != 0) {
               break label219;
             }
@@ -135,7 +135,7 @@ public class ARShell
     //   48: monitorexit
     //   49: iload_1
     //   50: ireturn
-    //   51: invokestatic 122	aoyw:a	()Laoyy;
+    //   51: invokestatic 122	apmm:a	()Lapmo;
     //   54: astore_3
     //   55: aload_3
     //   56: ifnonnull +14 -> 70
@@ -145,7 +145,7 @@ public class ARShell
     //   66: istore_1
     //   67: goto -21 -> 46
     //   70: aload_3
-    //   71: invokestatic 125	aoyw:a	(Laoyy;)Z
+    //   71: invokestatic 125	apmm:a	(Lapmo;)Z
     //   74: ifeq +162 -> 236
     //   77: aload_3
     //   78: invokeinterface 130 1 0
@@ -172,7 +172,7 @@ public class ARShell
     //   140: astore 5
     //   142: aload_3
     //   143: aload 5
-    //   145: invokestatic 153	aoyw:a	(Laoyy;Ljava/lang/String;)I
+    //   145: invokestatic 153	apmm:a	(Lapmo;Ljava/lang/String;)I
     //   148: istore_0
     //   149: iload_0
     //   150: ifeq -30 -> 120
@@ -228,7 +228,7 @@ public class ARShell
     //   148	27	0	i	int
     //   1	243	1	bool1	boolean
     //   41	2	2	bool2	boolean
-    //   54	89	3	localaoyy	aoyy
+    //   54	89	3	localapmo	apmo
     //   205	17	3	localThrowable	Throwable
     //   247	5	3	localObject1	Object
     //   83	48	4	localObject2	Object
@@ -268,7 +268,7 @@ public class ARShell
     //   7: invokestatic 163	com/youtu/arsdk/ARShell:getCommonSoFilename	()Ljava/lang/String;
     //   10: astore_3
     //   11: ldc 165
-    //   13: invokestatic 170	aowe:a	(Ljava/lang/String;)Z
+    //   13: invokestatic 170	apju:a	(Ljava/lang/String;)Z
     //   16: ifeq +24 -> 40
     //   19: aload_3
     //   20: invokestatic 176	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -311,7 +311,7 @@ public class ARShell
     //   100: aload_3
     //   101: invokestatic 193	java/lang/System:load	(Ljava/lang/String;)V
     //   104: ldc 165
-    //   106: invokestatic 194	aowe:a	(Ljava/lang/String;)I
+    //   106: invokestatic 194	apju:a	(Ljava/lang/String;)I
     //   109: istore_0
     //   110: iload_0
     //   111: ifne +5 -> 116

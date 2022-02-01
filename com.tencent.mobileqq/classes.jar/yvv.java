@@ -1,75 +1,18 @@
-import android.view.MotionEvent;
-import java.math.BigDecimal;
+import com.tencent.qphone.base.util.QLog;
 
-public class yvv
+class yvv
+  implements bjbj
 {
-  public float a;
-  private float b;
-  private float c;
+  yvv(yvs paramyvs) {}
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void a(bjbh parambjbh)
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((i == 1) && (paramBoolean)) {
-      switch (j)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
     }
-    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
-    {
-      do
-      {
-        return false;
-        this.c = this.a;
-        return false;
-        if (paramMotionEvent.getY() >= this.a)
-        {
-          this.c = this.a;
-          return false;
-        }
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      } while (i == 0);
-      bcig.a().b(i);
-      this.c = paramMotionEvent.getY();
-      return false;
-    }
-    yqp.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
-    }
-    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 2: 
-        f1 = ywa.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (i != 0)
-        {
-          yqp.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
-          bcig.a().b(i);
-          this.b = f1;
-        }
-        return true;
-        f4 = paramMotionEvent.getX(1);
-        f2 = paramMotionEvent.getY(1);
-        f3 = paramMotionEvent.getX(2);
-      }
-    }
-    this.b = ywa.a(f4, f2, f3, f1);
-    return false;
   }
+  
+  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
 }
 
 

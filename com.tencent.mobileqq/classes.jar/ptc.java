@@ -1,28 +1,35 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ptc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ptc
+  implements View.OnClickListener
 {
-  public ptc(VideoView paramVideoView) {}
+  ptc(psx parampsx, ArticleInfo paramArticleInfo) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if ((VideoView.access$400(this.a) == VideoView.PLAYMODE_AUTO) && (!this.a.needInterceptGlobalLayoutChanged))
+    int i = 0;
+    oix.a(psx.a(this.jdField_a_of_type_Psx), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
+    try
     {
-      if ((this.a.isShown()) && (VideoView.access$500(this.a).get() != 3))
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feeds_channel_entrance", i);
+      ocd.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        VideoView.access$500(this.a).set(3);
-        QLog.d("gifvideo.VideoView", 1, "show to play");
-        this.a.startPlay();
-      }
-      if ((!this.a.isShown()) && (VideoView.access$500(this.a).get() != 5))
-      {
-        VideoView.access$500(this.a).set(5);
-        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
-        this.a.stop();
+        localJSONException.printStackTrace();
       }
     }
   }

@@ -1,26 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class asjj
-  implements View.OnClickListener
+class asjj
+  implements URLDrawable.URLDrawableListener
 {
-  public asjj(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  asjj(asiw paramasiw, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.a.getActivity() != null)
-    {
-      String str = "";
-      if (this.a.getActivity().app != null) {
-        str = ((asfu)this.a.getActivity().app.getManager(264)).f();
-      }
-      asme.a(this.a.getActivity(), str);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

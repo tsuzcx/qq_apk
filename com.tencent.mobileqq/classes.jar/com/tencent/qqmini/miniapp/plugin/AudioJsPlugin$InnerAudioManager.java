@@ -33,7 +33,7 @@ class AudioJsPlugin$InnerAudioManager
   {
     paramString = JSONUtil.append(null, "state", paramString);
     JSONUtil.append(paramString, "audioId", Integer.valueOf(this.audioId));
-    AudioJsPlugin.access$3600(this.this$0, "onAudioStateChange", paramString.toString());
+    AudioJsPlugin.access$3500(this.this$0, "onAudioStateChange", paramString.toString());
   }
   
   private void evaluateErrorCallback(int paramInt1, int paramInt2)
@@ -53,7 +53,7 @@ class AudioJsPlugin$InnerAudioManager
         localJSONObject.put("state", "Error");
         localJSONObject.put("audioId", this.audioId);
         localJSONObject.put("errCode", paramInt2);
-        AudioJsPlugin.access$3700(this.this$0, "onAudioStateChange", localJSONObject.toString());
+        AudioJsPlugin.access$3600(this.this$0, "onAudioStateChange", localJSONObject.toString());
         return;
       }
       catch (Exception localException)
@@ -109,7 +109,7 @@ class AudioJsPlugin$InnerAudioManager
     if ((this.mPlayer != null) && ((this.mPlayer.isPaused()) || (this.mPlayer.isPrepared())))
     {
       MiniAppAudioPlayer localMiniAppAudioPlayer = this.mPlayer;
-      if (!AudioJsPlugin.access$3500()) {}
+      if (!AudioJsPlugin.access$3400()) {}
       for (;;)
       {
         localMiniAppAudioPlayer.setAudioFocus(bool);

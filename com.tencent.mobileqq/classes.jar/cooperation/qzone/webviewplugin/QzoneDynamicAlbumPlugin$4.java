@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bmfd;
-import bmfg;
-import bmmf;
+import bngf;
+import bngi;
+import bnni;
 
 public class QzoneDynamicAlbumPlugin$4
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$4(bmmf parambmmf) {}
+  public QzoneDynamicAlbumPlugin$4(bnni parambnni) {}
   
   public void run()
   {
-    bmfd.a().a().k();
+    bngf.a().a().k();
   }
 }
 

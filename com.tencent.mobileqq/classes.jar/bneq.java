@@ -1,11 +1,11 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bneq
-  extends ViewModel
+class bneq
 {
-  public final MutableLiveData<bnnb> a = new MutableLiveData();
-  public final MutableLiveData<bnip> b = new MutableLiveData();
+  private int jdField_a_of_type_Int;
+  private bner jdField_a_of_type_Bner;
+  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
+  private String jdField_a_of_type_JavaLangString;
 }
 
 

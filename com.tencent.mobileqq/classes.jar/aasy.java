@@ -1,32 +1,15 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class aasy
-  extends bfss
+class aasy
+  extends biht
 {
-  public aasy(TroopGiftPanel paramTroopGiftPanel) {}
+  aasy(aast paramaast, Bundle paramBundle) {}
   
-  public void a(int paramInt)
+  public void onDone(bihu parambihu)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, anni.a(2131714099), 0).b(this.a.getResources().getDimensionPixelSize(2131298998));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, anni.a(2131714066), 0).b(this.a.getResources().getDimensionPixelSize(2131298998));
-    TroopGiftPanel.a(true);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Aast.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

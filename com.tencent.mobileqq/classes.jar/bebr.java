@@ -1,109 +1,74 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class bebr
-  extends bebf
+  extends QIPCModule
 {
-  private byte[] a(List<becg> paramList)
+  private static bebr a;
+  
+  private bebr()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return new byte[0];
-    }
-    paramList = (beca)paramList.get(0);
-    mobileqq_mp.LongMsgUrlRequest localLongMsgUrlRequest = new mobileqq_mp.LongMsgUrlRequest();
+    super("TeamWorkModule");
+  }
+  
+  public static bebr a()
+  {
+    if (a == null) {}
     try
     {
-      l = Long.parseLong(paramList.d);
-      localLongMsgUrlRequest.puin.set(l);
-      localLongMsgUrlRequest.str_fileid.set(paramList.jdField_a_of_type_JavaLangString);
-      return localLongMsgUrlRequest.toByteArray();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l = 0L;
+      if (a == null) {
+        a = new bebr();
       }
+      return a;
     }
+    finally {}
   }
   
-  public void a(bdxf parambdxf, bdxe parambdxe)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    bebv localbebv = (bebv)parambdxe.jdField_a_of_type_JavaLangObject;
-    beck localbeck = localbebv.jdField_a_of_type_Beck;
-    parambdxe = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    anqe localanqe = parambdxf.jdField_a_of_type_Anqe;
-    if (parambdxe.getResultCode() == 1000) {}
-    try
-    {
-      if (localbeck.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        parambdxf = (mobileqq_mp.LongMsgUrlResponse)new mobileqq_mp.LongMsgUrlResponse().mergeFrom((byte[])localObject);
-        parambdxe = (becs)localbeck.jdField_a_of_type_JavaUtilList.get(0);
-        parambdxe.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$RetInfo = ((mobileqq_mp.RetInfo)parambdxf.ret_info.get());
-        parambdxe.jdField_a_of_type_JavaLangString = parambdxf.str_url.get();
-        parambdxe.b = parambdxf.str_file_md5.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (!QQAppInterface.class.isInstance(localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("TeamWorkModule", 2, "[onCall] get app failed.");
       }
-      for (;;)
+    }
+    do
+    {
+      String str1;
+      String str2;
+      do
       {
-        label126:
-        bedb.a(localbebv, localbeck);
-        return;
-        int i = parambdxe.getResultCode();
-        if ((i == 1002) || (i == 1013))
-        {
-          localObject = MessageHandler.a(parambdxe);
-          parambdxe = parambdxe.getBusinessFailMsg();
-          parambdxf = parambdxe;
-          if (parambdxe == null) {
-            parambdxf = "";
-          }
-          a(-1, 9311, (String)localObject, parambdxf, localanqe, localbeck.jdField_a_of_type_JavaUtilList);
+        return null;
+        if (!"send_to_chat_msg".equals(paramString)) {
+          break;
         }
-        else
-        {
-          localObject = MessageHandler.a(parambdxe);
-          parambdxe = parambdxe.getBusinessFailMsg();
-          parambdxf = parambdxe;
-          if (parambdxe == null) {
-            parambdxf = "";
-          }
-          a(-1, 9044, (String)localObject, parambdxf, localanqe, localbeck.jdField_a_of_type_JavaUtilList);
-        }
-      }
-    }
-    catch (Exception parambdxf)
+        paramString = bdow.a(paramBundle);
+        paramInt = paramBundle.getInt("uin_type");
+        str1 = paramBundle.getString("to_uin");
+        str2 = paramBundle.getString("docs_gray_tips_info_json");
+        paramBundle = paramBundle.getString("detail_url");
+      } while ((localObject == null) || (paramString == null));
+      paramString.mExtraData = "aioPlusPanelTencentDoc";
+      bhse.a((QQAppInterface)localObject, str1, paramInt, paramString, null, str2, paramBundle);
+      return null;
+    } while (!"action_download_export_file".equals(paramString));
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    paramString = paramBundle.getString("docUrl");
+    localObject = (beaq)((QQAppInterface)localObject).a(142);
+    if (bool)
     {
-      break label126;
+      ((beaq)localObject).notifyUI(2, true, new Object[] { paramBundle.getString("url"), paramBundle.getString("fileName"), paramString, paramBundle.getString("cookie") });
+      return null;
     }
-  }
-  
-  public void a(bebv parambebv)
-  {
-    if ((parambebv != null) && (parambebv.jdField_a_of_type_JavaUtilList != null) && (parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      bdxe localbdxe = new bdxe();
-      localbdxe.jdField_a_of_type_JavaLangString = "PubAccountSvc.pull_long_msg_url";
-      localbdxe.jdField_a_of_type_ArrayOfByte = a(parambebv.jdField_a_of_type_JavaUtilList);
-      localbdxe.jdField_a_of_type_JavaLangObject = parambebv;
-      localbdxe.jdField_a_of_type_Bdxd = this;
-      a(parambebv, localbdxe);
-    }
-  }
-  
-  void b(bebv parambebv)
-  {
-    parambebv = parambebv.jdField_a_of_type_Beck;
-    parambebv.jdField_a_of_type_JavaUtilList.clear();
-    becs localbecs = new becs();
-    parambebv.jdField_a_of_type_JavaUtilList.add(localbecs);
+    ((beaq)localObject).notifyUI(1, true, new Object[] { anzj.a(2131713578), paramString });
+    return null;
   }
 }
 

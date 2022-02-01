@@ -1,75 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopFileData;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bfrg
+public abstract class bfrg
 {
-  public static Map<Long, bfrg> a;
-  public long a;
-  public Map<String, TroopFileData> b = new HashMap();
-  
-  static
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public bfrg(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public static bfrg a(long paramLong)
-  {
+    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
     try
     {
-      bfrg localbfrg2 = (bfrg)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      bfrg localbfrg1 = localbfrg2;
-      if (localbfrg2 == null)
-      {
-        localbfrg1 = new bfrg(paramLong);
-        jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localbfrg1);
+      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
+      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
+      localTroopFeedItem.tag = paramJSONObject.getString("tag");
+      if (paramJSONObject.has("pub_uin")) {
+        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
       }
-      return localbfrg1;
+      return localTroopFeedItem;
     }
-    finally {}
-  }
-  
-  public TroopFileData a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    TroopFileData localTroopFileData1 = null;
-    try
+    catch (JSONException paramJSONObject)
     {
-      if (this.b != null) {
-        localTroopFileData1 = (TroopFileData)this.b.get(paramString);
-      }
-      TroopFileData localTroopFileData2 = localTroopFileData1;
-      if (localTroopFileData1 == null)
-      {
-        paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-        localTroopFileData2 = (TroopFileData)paramQQAppInterface.find(TroopFileData.class, paramString);
-        paramQQAppInterface.close();
-      }
-      return localTroopFileData2;
+      paramJSONObject.printStackTrace();
     }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, TroopFileData paramTroopFileData)
-  {
-    try
-    {
-      if (this.b != null) {
-        this.b.put(paramTroopFileData.fileUrl, paramTroopFileData);
-      }
-      paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-      paramQQAppInterface.persist(paramTroopFileData);
-      paramQQAppInterface.close();
-      return;
-    }
-    finally {}
+    return localTroopFeedItem;
   }
 }
 

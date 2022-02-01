@@ -1,17 +1,12 @@
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class avhd
+class avhd
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public long a;
-  public Intent a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  avhd(avhc paramavhc) {}
   
-  public avhd(avha paramavha)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

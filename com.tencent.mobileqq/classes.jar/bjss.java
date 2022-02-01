@@ -1,27 +1,19 @@
-import android.text.Editable;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjss
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public bjss(Login paramLogin) {}
+  public bjss(CommonTitleBar paramCommonTitleBar) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
-      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      }
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).b();
     }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
-      return false;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

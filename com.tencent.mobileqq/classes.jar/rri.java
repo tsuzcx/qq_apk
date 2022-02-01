@@ -1,48 +1,17 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Interpolator;
 
 public class rri
-  implements bbtj<bbmy>
+  implements Interpolator
 {
-  private List<rrj> a = new ArrayList();
-  
-  public List<bbmy> a(bbtx parambbtx)
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      rrj localrrj = (rrj)localIterator.next();
-      if (localrrj.a(parambbtx.a)) {
-        localArrayList.add(localrrj);
-      }
-    }
-    return localArrayList;
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
   }
   
-  public void a()
+  public float getInterpolation(float paramFloat)
   {
-    Iterator localIterator = pmh.a().c().iterator();
-    while (localIterator.hasNext())
-    {
-      rfi localrfi = (rfi)localIterator.next();
-      this.a.add(new rrj(localrfi));
-    }
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
-  
-  public void a(bbtx parambbtx, bbtk<bbmy> parambbtk)
-  {
-    parambbtk.a(a(parambbtx), 1);
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

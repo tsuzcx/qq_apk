@@ -1,18 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemView;
 
-public class srk
-  extends anmu
+class srk
+  extends spi
 {
-  public srk(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  private srk(sri paramsri, PTSItemView paramPTSItemView, BaseData paramBaseData)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.p();
+    super(paramPTSItemView, paramBaseData);
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    paramBaseData1 = sri.a(this.jdField_a_of_type_Sri, paramBaseData2);
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView instanceof PTSItemView))) {
+      ((ProteusItemData)paramBaseData2).a.layoutToView((PTSItemView)this.jdField_a_of_type_AndroidViewView, sri.a(this.jdField_a_of_type_Sri), true);
     }
+    this.jdField_a_of_type_Boolean = true;
+    sri.a(this.jdField_a_of_type_Sri, paramBaseData1);
   }
 }
 

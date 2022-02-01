@@ -1,8 +1,16 @@
-public abstract interface atnd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+
+public class atnd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public atnd(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

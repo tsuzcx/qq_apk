@@ -1,55 +1,29 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.BeautyToolbar;
-import com.tencent.av.ui.EffectSettingUi;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mbn
-  implements SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener
 {
-  public mbn(BeautyToolbar paramBeautyToolbar) {}
+  public mbn(AVActivity paramAVActivity, String paramString, long paramLong) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.a.mBeautyValue != paramInt)
-    {
-      this.a.updateTip(paramInt);
-      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
-        break label125;
-      }
-      this.a.mSeek.setThumb(this.a.mThumb_0);
+    mbb.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1044);
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(2, false);
+    lha.e(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a().d) + "");
+    if (AudioHelper.f()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "qav_double_screen_notify, click[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
     }
-    for (;;)
-    {
-      if (paramBoolean) {
-        this.a.mSeek.setContentDescription(paramInt + "%");
-      }
-      this.a.mBeautyValue = paramInt;
-      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
-      EffectSettingUi.a(this.a.mApp, -1003L);
-      return;
-      label125:
-      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
-        this.a.mSeek.setThumb(this.a.mThumb_30);
-      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
-        this.a.mSeek.setThumb(this.a.mThumb_60);
-      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
-        this.a.mSeek.setThumb(this.a.mThumb_100);
-      }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      new mcy(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, false, 4).a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    EffectSettingUi.a(this.a.mApp, -1004L);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
-    EffectSettingUi.a(this.a.mApp, -1005L);
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

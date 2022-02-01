@@ -1,93 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class bfmi
-  extends BroadcastReceiver
+final class bfmi
+  implements DialogInterface.OnClickListener
 {
-  public bfmi(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  bfmi(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 0;
-    paramContext = paramIntent.getAction();
-    int i = j;
-    if (this.a.a != null)
+    paramDialogInterface = (aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((bhnv.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null))
     {
-      i = j;
-      if (this.a.a.isHomeworkTroop()) {
-        i = 1;
-      }
-    }
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      if ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event")))
-      {
-        paramIntent = new Intent("com.tencent.mobileqq.action.closewebview");
-        paramIntent.putExtra("event", "closeWebView");
-        BaseApplicationImpl.getContext().sendBroadcast(paramIntent, "com.tencent.msg.permission.pushnotify");
-        if (i != 0) {
-          break label102;
-        }
-      }
-    }
-    label351:
-    for (;;)
-    {
+      paramDialogInterface.k(this.jdField_a_of_type_JavaLangString);
       return;
-      label102:
-      if (!TextUtils.isEmpty(paramContext)) {
-        try
-        {
-          paramContext = new JSONObject(paramContext);
-          paramIntent = paramContext.optString("groupCode");
-          if (TextUtils.equals(this.a.a.troopUin, paramIntent))
-          {
-            String str1 = paramContext.optString("content");
-            String str2 = paramContext.optString("source");
-            i = paramContext.optInt("rankId", 333);
-            String str3 = paramContext.optString("nickName");
-            paramContext.optString("uin");
-            paramContext.optString("course");
-            paramContext.optString("name");
-            if ("join".equals(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("wyx", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver source=join. cGroupOption=", Short.valueOf(this.a.a.cGroupOption), ", joinType=", Integer.valueOf(VisitorTroopCardFragment.a(this.a)) });
-              }
-              if (VisitorTroopCardFragment.a(this.a) != 1) {
-                break label351;
-              }
-              this.a.e();
-            }
-            while (QLog.isColorLevel())
-            {
-              QLog.d("zivonchen", 2, "mHomeworkTroopIdentityChangedReceiver troopUin = " + paramIntent + ", content = " + str1 + ", source = " + str2 + ", rankId = " + i + ", nickName = " + str3);
-              return;
-              if (VisitorTroopCardFragment.a(this.a) == 2) {
-                VisitorTroopCardFragment.a(this.a, str1);
-              }
-            }
-            if ("start_recomend_page".equals(paramContext))
-            {
-              this.a.getActivity().finish();
-              return;
-            }
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
     }
+    if (paramDialogInterface != null)
+    {
+      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131694008), 0).a();
+      return;
+    }
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131691899), 0).a();
   }
 }
 

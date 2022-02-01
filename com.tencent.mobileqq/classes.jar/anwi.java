@@ -1,87 +1,129 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class anwi
+public class anwi
+  extends DefaultHandler
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private oidb_0x88d.GroupInfo jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  public String a;
+  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+  public HashMap<String, anwj> a;
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^([0-9]{1,5}|\\{([\\s\\S]*)\\})$");
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "0";
   
-  public anwi(anwd paramanwd, String paramString, long paramLong, int paramInt, byte... paramVarArgs)
+  public anwi(HashMap<String, anwj> paramHashMap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramVarArgs;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public int a()
+  private boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public anwi a()
-  {
-    Object localObject = new oidb_0x88d.RspBody();
-    ((oidb_0x88d.RspBody)localObject).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-    if ((this.jdField_a_of_type_Int != 0) && (((oidb_0x88d.RspBody)localObject).str_errorinfo.has())) {
-      this.jdField_a_of_type_JavaLangString = String.valueOf(((oidb_0x88d.RspBody)localObject).str_errorinfo.get().toByteArray());
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return false;
     }
-    this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = null;
-    localObject = ((oidb_0x88d.RspBody)localObject).stzrspgroupinfo.get();
-    int i;
-    int j;
-    label72:
-    oidb_0x88d.RspGroupInfo localRspGroupInfo;
-    if (localObject == null)
+    return this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaLangStringBuffer.append(paramArrayOfChar, paramInt1, paramInt2);
+    }
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      i = 0;
-      j = 0;
-      if ((this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo != null) || (j >= i)) {
-        return this;
+      if (!a(this.jdField_a_of_type_JavaLangStringBuffer.toString()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("DeviceProfileManager", 2, "DPCXmlHandler format is error: " + paramString2 + "-" + this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        }
+        return;
       }
-      localRspGroupInfo = (oidb_0x88d.RspGroupInfo)((List)localObject).get(j);
-      if ((localRspGroupInfo != null) && (localRspGroupInfo.uint64_group_code.get() == this.jdField_a_of_type_Long)) {
-        break label134;
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
+        break label229;
+      }
+      paramString1 = (anwj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update oldInfo: " + paramString2 + "-" + paramString1.toString());
+      }
+      if (paramString1.jdField_a_of_type_Int < this.jdField_a_of_type_Int)
+      {
+        paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+        paramString1.c = this.b;
+        paramString1.d = this.jdField_a_of_type_JavaLangString;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP update newInfo: " + paramString2 + "-" + paramString1.toString());
       }
     }
     for (;;)
     {
-      j += 1;
-      break label72;
-      i = ((List)localObject).size();
-      break;
-      label134:
-      this.jdField_a_of_type_Int = localRspGroupInfo.uint32_result.get();
-      if ((this.jdField_a_of_type_Int == 0) && (localRspGroupInfo.stgroupinfo.has())) {
-        this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = ((oidb_0x88d.GroupInfo)localRspGroupInfo.stgroupinfo.get());
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      label229:
+      paramString1 = new anwj();
+      paramString1.jdField_a_of_type_JavaLangString = paramString2;
+      paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+      paramString1.c = this.b;
+      paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      paramString1.d = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceProfileManager", 2, "DPCXmlHandler parse to TEMPMAP add: " + paramString2 + "-" + paramString1.toString());
       }
     }
-    return this;
   }
   
-  public String a()
+  public void startDocument()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    super.startDocument();
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
   }
   
-  public oidb_0x88d.GroupInfo a()
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    return this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
+    int i = 0;
+    if (paramString2.equals("features"))
+    {
+      if (i < paramAttributes.getLength())
+      {
+        if (paramAttributes.getLocalName(i).equals("weight")) {
+          this.jdField_a_of_type_Int = Integer.parseInt(paramAttributes.getValue(i));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (paramAttributes.getLocalName(i).equals("taskId")) {
+            this.b = paramAttributes.getValue(i);
+          } else if (paramAttributes.getLocalName(i).equals("testType")) {
+            this.jdField_a_of_type_JavaLangString = paramAttributes.getValue(i);
+          }
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.jdField_a_of_type_JavaLangStringBuffer.length());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anwi
  * JD-Core Version:    0.7.0.1
  */

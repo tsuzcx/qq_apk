@@ -1,6 +1,6 @@
 public abstract interface asno
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract void a();
 }
 
 

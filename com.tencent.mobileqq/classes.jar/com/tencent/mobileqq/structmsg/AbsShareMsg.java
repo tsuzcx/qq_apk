@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import afur;
-import agjf;
+import agej;
+import agsg;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,32 +15,32 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import ayyt;
-import bahs;
-import bbxc;
-import bbzh;
-import bbzj;
-import bctj;
-import bcvo;
-import bcvr;
-import bcvs;
-import bcvt;
-import bcvx;
-import bcwc;
-import bcxj;
-import bcxm;
-import bcxv;
-import bcxy;
-import bcxz;
-import bcyl;
-import bczc;
-import bczv;
-import bdaq;
-import bday;
-import bdup;
-import bdzi;
-import bdzx;
-import bgki;
+import azrg;
+import bbai;
+import bcpt;
+import bcry;
+import bcsa;
+import bdmc;
+import bdoh;
+import bdok;
+import bdol;
+import bdom;
+import bdoq;
+import bdov;
+import bdqc;
+import bdqf;
+import bdqo;
+import bdqr;
+import bdqs;
+import bdre;
+import bdrv;
+import bdso;
+import bdtj;
+import bdtr;
+import betj;
+import beyb;
+import beyq;
+import bhkj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -66,7 +66,7 @@ import org.json.JSONObject;
 
 public abstract class AbsShareMsg
   extends AbsStructMsg
-  implements Iterable<bcvs>
+  implements Iterable<bdol>
 {
   public static final int PACKAGE_NAME_INDEX = 0;
   public static final int URL_DATA_INDEX = 1;
@@ -88,11 +88,11 @@ public abstract class AbsShareMsg
   public long mSourceAppid = -1L;
   public String mSourceIcon;
   public String mSourceName;
-  protected View.OnClickListener mSourceOnClickListener = new bcvo(this);
+  protected View.OnClickListener mSourceOnClickListener = new bdoh(this);
   public String mSourceUrl;
   public String mSource_A_ActionData;
   public String mSource_I_ActionData;
-  public List<bcvs> mStructMsgItemLists = new ArrayList();
+  public List<bdol> mStructMsgItemLists = new ArrayList();
   public AbsShareMsg.ShareData shareData = new AbsShareMsg.ShareData();
   
   AbsShareMsg()
@@ -111,10 +111,10 @@ public abstract class AbsShareMsg
       this.mContentTitle = paramBundle.getString("title");
       this.mContentSummary = paramBundle.getString("desc");
       if (this.mContentTitle != null) {
-        this.mContentTitle = bbzj.a(this.mContentTitle, false);
+        this.mContentTitle = bcsa.a(this.mContentTitle, false);
       }
       if (this.mContentSummary != null) {
-        this.mContentSummary = bbzj.a(this.mContentSummary, false);
+        this.mContentSummary = bcsa.a(this.mContentSummary, false);
       }
       this.mMsgAction = paramBundle.getString("struct_share_key_content_action");
       this.mMsgActionData = paramBundle.getString("struct_share_key_content_action_DATA");
@@ -144,7 +144,7 @@ public abstract class AbsShareMsg
         if (TextUtils.isEmpty(this.mSourceName)) {
           break label1019;
         }
-        this.mMsgBrief = String.format(an, new Object[] { this.mSourceName });
+        this.mMsgBrief = String.format(ap, new Object[] { this.mSourceName });
       }
       label437:
       this.mResid = paramBundle.getString("mm_resid");
@@ -162,7 +162,7 @@ public abstract class AbsShareMsg
       }
     }
     label1029:
-    for (this.mContentTitle = am;; this.mContentTitle = String.format(al, new Object[] { this.mSourceName }))
+    for (this.mContentTitle = ao;; this.mContentTitle = String.format(an, new Object[] { this.mSourceName }))
     {
       this.mNeedRound = paramBundle.getString("icon_need_round");
       this.mFlag = paramBundle.getInt("flag");
@@ -182,17 +182,17 @@ public abstract class AbsShareMsg
     }
   }
   
-  AbsShareMsg(bcxj parambcxj)
+  AbsShareMsg(bdqc parambdqc)
   {
-    super(parambcxj);
+    super(parambdqc);
     this.mVersion = 28;
-    int m = parambcxj.a();
+    int m = parambdqc.a();
     int i = 0;
     if (i < m)
     {
-      bcxj localbcxj = parambcxj.a(i);
+      bdqc localbdqc = parambdqc.a(i);
       int k;
-      if (localbcxj == null) {
+      if (localbdqc == null) {
         k = j;
       }
       for (;;)
@@ -200,9 +200,9 @@ public abstract class AbsShareMsg
         i += 1;
         j = k;
         break;
-        if (localbcxj.b.equals("source"))
+        if (localbdqc.b.equals("source"))
         {
-          parseSourceNode(localbcxj);
+          parseSourceNode(localbdqc);
           k = j;
           if (j != 0)
           {
@@ -210,9 +210,9 @@ public abstract class AbsShareMsg
             k = j;
           }
         }
-        else if (localbcxj.b.equals("sourceAd"))
+        else if (localbdqc.b.equals("sourceAd"))
         {
-          parseAdSourceNode(localbcxj);
+          parseAdSourceNode(localbdqc);
           k = j;
           if (j != 0)
           {
@@ -220,9 +220,9 @@ public abstract class AbsShareMsg
             k = j;
           }
         }
-        else if ((this.mMsgServiceID == 128) && (localbcxj.b.equals("data")))
+        else if ((this.mMsgServiceID == 128) && (localbdqc.b.equals("data")))
         {
-          parseDataNode(localbcxj);
+          parseDataNode(localbdqc);
           k = j;
         }
         else
@@ -231,7 +231,7 @@ public abstract class AbsShareMsg
           if (j == 0)
           {
             k = j;
-            if (!parseContentNode(localbcxj))
+            if (!parseContentNode(localbdqc))
             {
               this.mStructMsgItemLists.clear();
               k = 1;
@@ -250,24 +250,24 @@ public abstract class AbsShareMsg
     if ((this.mStructMsgItemLists == null) || (this.mStructMsgItemLists.isEmpty())) {
       return false;
     }
-    Object localObject = (bcvs)this.mStructMsgItemLists.get(0);
-    if (!(localObject instanceof bczv)) {
+    Object localObject = (bdol)this.mStructMsgItemLists.get(0);
+    if (!(localObject instanceof bdso)) {
       return false;
     }
-    localObject = (bczv)localObject;
-    if ((((bczv)localObject).a == null) || (((bczv)localObject).a.isEmpty())) {
+    localObject = (bdso)localObject;
+    if ((((bdso)localObject).a == null) || (((bdso)localObject).a.isEmpty())) {
       return false;
     }
-    localObject = (bcvs)((bczv)localObject).a.get(0);
-    if (!(localObject instanceof bcxy)) {
+    localObject = (bdol)((bdso)localObject).a.get(0);
+    if (!(localObject instanceof bdqr)) {
       return false;
     }
-    return ((bcxy)localObject).a();
+    return ((bdqr)localObject).a();
   }
   
   public static final void doReport(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg)
   {
-    bctj.a(BaseApplication.getContext()).a(paramQQAppInterface, paramAbsShareMsg.uin, "Structured_msg", "Clk_smsg", 0, 1, null, String.valueOf(paramAbsShareMsg.mSourceAppid), String.valueOf(paramAbsShareMsg.mMsgServiceID), paramAbsShareMsg.mMsgAction, null);
+    bdmc.a(BaseApplication.getContext()).a(paramQQAppInterface, paramAbsShareMsg.uin, "Structured_msg", "Clk_smsg", 0, 1, null, String.valueOf(paramAbsShareMsg.mSourceAppid), String.valueOf(paramAbsShareMsg.mMsgServiceID), paramAbsShareMsg.mMsgAction, null);
     if (QLog.isColorLevel()) {
       QLog.d("StructMsg", 2, "doReport msg:" + paramAbsShareMsg);
     }
@@ -300,35 +300,35 @@ public abstract class AbsShareMsg
     return arrayOfString;
   }
   
-  public static void resendSdkFakeMessage(MessageForArkApp paramMessageForArkApp, JSONObject paramJSONObject, ayyt paramayyt)
+  public static void resendSdkFakeMessage(MessageForArkApp paramMessageForArkApp, JSONObject paramJSONObject, azrg paramazrg)
   {
-    paramMessageForArkApp = bdup.a(paramMessageForArkApp, paramJSONObject, paramayyt);
+    paramMessageForArkApp = betj.a(paramMessageForArkApp, paramJSONObject, paramazrg);
     ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a(paramMessageForArkApp);
   }
   
   public static void resendSdkShareMessage(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, AbsShareMsg paramAbsShareMsg)
   {
-    paramMessageRecord = bbzh.a(paramMessageRecord);
-    agjf.a().a(paramMessageRecord.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+    paramMessageRecord = bcry.a(paramMessageRecord);
+    agsg.a().a(paramMessageRecord.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
     paramQQAppInterface.a().a(paramMessageRecord, MessageHandler.e);
-    paramMessageRecord = bdup.a(paramMessageRecord, paramAbsShareMsg);
+    paramMessageRecord = betj.a(paramMessageRecord, paramAbsShareMsg);
     paramQQAppInterface.a().a(paramMessageRecord);
   }
   
-  public static MessageForArkApp sendSdkFakeMessage(Bundle paramBundle, QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2, ayyt paramayyt)
+  public static MessageForArkApp sendSdkFakeMessage(Bundle paramBundle, QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2, azrg paramazrg)
   {
-    paramBundle = bgki.a(paramBundle, paramQQAppInterface, paramString1, paramInt, paramString2);
-    agjf.a().a(paramBundle.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+    paramBundle = bhkj.a(paramBundle, paramQQAppInterface, paramString1, paramInt, paramString2);
+    agsg.a().a(paramBundle.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
     paramQQAppInterface.a().a(paramBundle, MessageHandler.e);
-    paramAbsShareMsg = bdup.a(paramBundle, paramAbsShareMsg, paramayyt);
+    paramAbsShareMsg = betj.a(paramBundle, paramAbsShareMsg, paramazrg);
     QLog.d("StructMsg", 1, new Object[] { "sendSdkFakeMessage uinType=", Integer.valueOf(paramInt), ", groupUin=", paramString2, ", done=", Boolean.valueOf(paramQQAppInterface.a().a(paramAbsShareMsg)) });
     return paramBundle;
   }
   
   public static void sendSdkShareMessage(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2)
   {
-    int i = bbxc.a;
-    bbxc.a = i + 1;
+    int i = bcpt.a;
+    bcpt.a = i + 1;
     long l = i;
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (TextUtils.isEmpty(paramString2)) {
@@ -336,19 +336,19 @@ public abstract class AbsShareMsg
     }
     for (;;)
     {
-      paramString1 = bbzh.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
-      agjf.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+      paramString1 = bcry.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
+      agsg.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
       paramQQAppInterface.a().a(paramString1, MessageHandler.f);
-      paramAbsShareMsg = bdup.a(paramString1, paramAbsShareMsg);
+      paramAbsShareMsg = betj.a(paramString1, paramAbsShareMsg);
       paramQQAppInterface.a().a(paramAbsShareMsg);
       return;
     }
   }
   
-  public static void sendSdkShareMessageByServer(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2, ayyt paramayyt)
+  public static void sendSdkShareMessageByServer(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2, azrg paramazrg)
   {
-    int i = bbxc.a;
-    bbxc.a = i + 1;
+    int i = bcpt.a;
+    bcpt.a = i + 1;
     long l = i;
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (TextUtils.isEmpty(paramString2)) {
@@ -356,20 +356,20 @@ public abstract class AbsShareMsg
     }
     for (;;)
     {
-      paramString1 = bbzh.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
-      agjf.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
-      paramAbsShareMsg = bdup.a(paramString1, paramAbsShareMsg, paramayyt);
+      paramString1 = bcry.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
+      agsg.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+      paramAbsShareMsg = betj.a(paramString1, paramAbsShareMsg, paramazrg);
       QLog.d("StructMsg", 1, new Object[] { "sendSdkShareMessageByServer done=", Boolean.valueOf(paramQQAppInterface.a().a(paramAbsShareMsg)) });
       return;
     }
   }
   
-  public void addItem(bcvs parambcvs)
+  public void addItem(bdol parambdol)
   {
-    this.mStructMsgItemLists.add(parambcvs);
+    this.mStructMsgItemLists.add(parambdol);
   }
   
-  public void addItems(List<bcvs> paramList)
+  public void addItems(List<bdol> paramList)
   {
     this.mStructMsgItemLists.addAll(paramList);
   }
@@ -379,7 +379,7 @@ public abstract class AbsShareMsg
     this.mStructMsgItemLists.clear();
   }
   
-  public bcvs findXmlNode(String paramString)
+  public bdol findXmlNode(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -401,17 +401,17 @@ public abstract class AbsShareMsg
         {
           i += 1;
           break;
-          if (!(localObject instanceof bcvt)) {
+          if (!(localObject instanceof bdom)) {
             break label98;
           }
-          localObject = ((bcvt)localObject).a.iterator();
+          localObject = ((bdom)localObject).a.iterator();
         } while (!((Iterator)localObject).hasNext());
-        bcvs localbcvs = (bcvs)((Iterator)localObject).next();
-        if (!paramString.equals(localbcvs.a)) {
+        bdol localbdol = (bdol)((Iterator)localObject).next();
+        if (!paramString.equals(localbdol.a)) {
           break label32;
         }
-        return localbcvs;
-      } while (!paramString.equals(((bcvs)localObject).a));
+        return localbdol;
+      } while (!paramString.equals(((bdol)localObject).a));
       return localObject;
     }
     return null;
@@ -438,9 +438,9 @@ public abstract class AbsShareMsg
     return null;
   }
   
-  public bcvs getItemByIndex(int paramInt)
+  public bdol getItemByIndex(int paramInt)
   {
-    return (bcvs)this.mStructMsgItemLists.get(paramInt);
+    return (bdol)this.mStructMsgItemLists.get(paramInt);
   }
   
   public int getItemCount()
@@ -471,17 +471,17 @@ public abstract class AbsShareMsg
         if (!localIterator.hasNext()) {
           break label310;
         }
-        Object localObject2 = (bcvs)localIterator.next();
-        View localView = ((bcvs)localObject2).a(paramContext, paramView, (Bundle)localObject1);
-        if ((localView != null) && ((!(localObject2 instanceof bczv)) || (((bczv)localObject2).o != 1)))
+        Object localObject2 = (bdol)localIterator.next();
+        View localView = ((bdol)localObject2).a(paramContext, paramView, (Bundle)localObject1);
+        if ((localView != null) && ((!(localObject2 instanceof bdso)) || (((bdso)localObject2).o != 1)))
         {
-          if ((localObject2 instanceof bcyl))
+          if ((localObject2 instanceof bdre))
           {
-            localTextView = (TextView)localView.findViewById(2131379957);
+            localTextView = (TextView)localView.findViewById(2131380141);
             if (localTextView != null)
             {
-              localObject2 = (bcyl)localObject2;
-              if ((((bcyl)localObject2).o != 1) && (((bcyl)localObject2).o != 3)) {
+              localObject2 = (bdre)localObject2;
+              if ((((bdre)localObject2).o != 1) && (((bdre)localObject2).o != 3)) {
                 break;
               }
               localTextView.setTextColor(-8355712);
@@ -547,19 +547,19 @@ public abstract class AbsShareMsg
     {
       TextView localTextView = (TextView)paramView;
       localTextView.setText(this.mSourceName);
-      localTextView.setBackgroundResource(2130842569);
+      localTextView.setBackgroundResource(2130842582);
       Drawable localDrawable1;
       if (!TextUtils.isEmpty(this.mSourceIcon))
       {
         Object localObject = this.mSourceIcon;
-        Drawable localDrawable2 = localResources.getDrawable(2130850449);
-        localDrawable2.setBounds(0, 0, afur.a(12.0F, localResources), afur.a(12.0F, localResources));
-        localDrawable1 = localResources.getDrawable(2130850450);
-        localDrawable1.setBounds(0, 0, afur.a(12.0F, localResources), afur.a(12.0F, localResources));
+        Drawable localDrawable2 = localResources.getDrawable(2130850462);
+        localDrawable2.setBounds(0, 0, agej.a(12.0F, localResources), agej.a(12.0F, localResources));
+        localDrawable1 = localResources.getDrawable(2130850463);
+        localDrawable1.setBounds(0, 0, agej.a(12.0F, localResources), agej.a(12.0F, localResources));
         try
         {
           localObject = URLDrawable.getDrawable((String)localObject, localDrawable2, localDrawable1);
-          if (bdzx.a(paramContext)) {
+          if (beyq.a(paramContext)) {
             break label278;
           }
           bool = true;
@@ -578,7 +578,7 @@ public abstract class AbsShareMsg
       }
       for (;;)
       {
-        localTextView.setPadding(afur.a(5.0F, localResources), 0, afur.a(5.0F, localResources), 0);
+        localTextView.setPadding(agej.a(5.0F, localResources), 0, agej.a(5.0F, localResources), 0);
         paramView.setTag(this);
         paramView.setOnClickListener(this.mSourceOnClickListener);
         if (!a()) {
@@ -598,7 +598,7 @@ public abstract class AbsShareMsg
     }
   }
   
-  public List<bcvs> getStructMsgItemLists()
+  public List<bdol> getStructMsgItemLists()
   {
     return this.mStructMsgItemLists;
   }
@@ -606,7 +606,7 @@ public abstract class AbsShareMsg
   public String getTalkBackStr()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    bcvs localbcvs;
+    bdol localbdol;
     label118:
     do
     {
@@ -619,18 +619,18 @@ public abstract class AbsShareMsg
             Iterator localIterator = this.mStructMsgItemLists.iterator();
             if (localIterator.hasNext())
             {
-              localObject = (bcvs)localIterator.next();
-              if (!(localObject instanceof bcxz)) {
+              localObject = (bdol)localIterator.next();
+              if (!(localObject instanceof bdqs)) {
                 break label118;
               }
-              localObject = ((bcxz)localObject).a.iterator();
+              localObject = ((bdqs)localObject).a.iterator();
               if (((Iterator)localObject).hasNext())
               {
-                localbcvs = (bcvs)((Iterator)localObject).next();
-                if (!(localbcvs instanceof StructMsgItemTitle)) {
+                localbdol = (bdol)((Iterator)localObject).next();
+                if (!(localbdol instanceof StructMsgItemTitle)) {
                   continue;
                 }
-                localStringBuffer.append(((StructMsgItemTitle)localbcvs).ag);
+                localStringBuffer.append(((StructMsgItemTitle)localbdol).ai);
                 continue;
               }
               continue;
@@ -639,32 +639,32 @@ public abstract class AbsShareMsg
           return localStringBuffer.toString();
         }
         catch (Exception localException) {}
-        if (!(localObject instanceof bcyl)) {
+        if (!(localObject instanceof bdre)) {
           break;
         }
-        localObject = (bcyl)localObject;
+        localObject = (bdre)localObject;
         localStringBuffer.append("链接");
-        localObject = ((bcyl)localObject).a.iterator();
+        localObject = ((bdre)localObject).a.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          localbcvs = (bcvs)((Iterator)localObject).next();
-          if ((localbcvs instanceof StructMsgItemTitle)) {
-            localStringBuffer.append(((StructMsgItemTitle)localbcvs).ag);
-          } else if ((localbcvs instanceof bdaq)) {
-            localStringBuffer.append(((bdaq)localbcvs).ag);
+          localbdol = (bdol)((Iterator)localObject).next();
+          if ((localbdol instanceof StructMsgItemTitle)) {
+            localStringBuffer.append(((StructMsgItemTitle)localbdol).ai);
+          } else if ((localbdol instanceof bdtj)) {
+            localStringBuffer.append(((bdtj)localbdol).ai);
           }
         }
       }
-    } while (!(localObject instanceof bczc));
-    Object localObject = (bczc)localObject;
+    } while (!(localObject instanceof bdrv));
+    Object localObject = (bdrv)localObject;
     int i = 0;
-    localObject = ((bczc)localObject).a.iterator();
+    localObject = ((bdrv)localObject).a.iterator();
     label248:
     if (((Iterator)localObject).hasNext())
     {
-      localbcvs = (bcvs)((Iterator)localObject).next();
-      if (("type".equals(localbcvs.a)) && ((localbcvs instanceof bday))) {
-        i = ((bday)localbcvs).o;
+      localbdol = (bdol)((Iterator)localObject).next();
+      if (("type".equals(localbdol.a)) && ((localbdol instanceof bdtr))) {
+        i = ((bdtr)localbdol).o;
       }
     }
     for (;;)
@@ -683,7 +683,7 @@ public abstract class AbsShareMsg
         localStringBuffer.append("语音");
       }
       label363:
-      if ("1".equals(bahs.a(this.message)))
+      if ("1".equals(bbai.a(this.message)))
       {
         localStringBuffer.append(",已读");
         break;
@@ -702,21 +702,21 @@ public abstract class AbsShareMsg
     return ForwardUtils.a(this.forwardType, this.mMsgServiceID);
   }
   
-  public Iterator<bcvs> iterator()
+  public Iterator<bdol> iterator()
   {
     return this.mStructMsgItemLists.iterator();
   }
   
-  protected void parseAdSourceNode(bcxj parambcxj)
+  protected void parseAdSourceNode(bdqc parambdqc)
   {
-    if (parambcxj == null) {}
+    if (parambdqc == null) {}
     do
     {
       JSONObject localJSONObject1;
       for (;;)
       {
         return;
-        this.mAdSourceName = parambcxj.a("name");
+        this.mAdSourceName = parambdqc.a("name");
         if (!this.mAdSourceName.equals("")) {
           this.mHasAdSource = true;
         }
@@ -726,24 +726,24 @@ public abstract class AbsShareMsg
           {
             localJSONObject1 = new JSONObject();
             JSONArray localJSONArray = new JSONArray();
-            parambcxj = parambcxj.a;
-            if ((parambcxj != null) && (!parambcxj.isEmpty()))
+            parambdqc = parambdqc.a;
+            if ((parambdqc != null) && (!parambdqc.isEmpty()))
             {
-              parambcxj = parambcxj.iterator();
-              while (parambcxj.hasNext())
+              parambdqc = parambdqc.iterator();
+              while (parambdqc.hasNext())
               {
-                Object localObject = ((bcxj)parambcxj.next()).a;
+                Object localObject = ((bdqc)parambdqc.next()).a;
                 if ((localObject != null) && (!((List)localObject).isEmpty()))
                 {
                   localObject = ((List)localObject).iterator();
                   while (((Iterator)localObject).hasNext())
                   {
-                    bcxj localbcxj = (bcxj)((Iterator)localObject).next();
+                    bdqc localbdqc = (bdqc)((Iterator)localObject).next();
                     JSONObject localJSONObject2 = new JSONObject();
-                    localJSONObject2.put("icon_url", localbcxj.a("icon_url"));
-                    localJSONObject2.put("action_type", localbcxj.a("action_type"));
-                    localJSONObject2.put("title", localbcxj.a("title"));
-                    localJSONObject2.put("action_url", localbcxj.a("action_url"));
+                    localJSONObject2.put("icon_url", localbdqc.a("icon_url"));
+                    localJSONObject2.put("action_type", localbdqc.a("action_type"));
+                    localJSONObject2.put("title", localbdqc.a("title"));
+                    localJSONObject2.put("action_url", localbdqc.a("action_url"));
                     localJSONArray.put(localJSONObject2);
                   }
                 }
@@ -752,9 +752,9 @@ public abstract class AbsShareMsg
             localJSONObject1.put("menus", localJSONArray);
           }
         }
-        catch (Exception parambcxj)
+        catch (Exception parambdqc)
         {
-          parambcxj.printStackTrace();
+          parambdqc.printStackTrace();
           return;
         }
       }
@@ -763,48 +763,48 @@ public abstract class AbsShareMsg
     QLog.d("StructMsg", 2, "mAdSourceMenu: " + this.mAdSourceMenu);
   }
   
-  protected abstract boolean parseContentNode(bcxj parambcxj);
+  protected abstract boolean parseContentNode(bdqc parambdqc);
   
-  protected void parseDataNode(bcxj parambcxj)
+  protected void parseDataNode(bdqc parambdqc)
   {
     if (this.mDatas == null) {
       this.mDatas = new JSONObject();
     }
-    if (("data".equals(parambcxj.b)) && (this.mMsgServiceID == 128) && (TextUtils.equals("2", parambcxj.a("msgtype")))) {}
+    if (("data".equals(parambdqc.b)) && (this.mMsgServiceID == 128) && (TextUtils.equals("2", parambdqc.a("msgtype")))) {}
     try
     {
-      this.mDatas.put("groupcode", parambcxj.a("groupcode"));
-      this.mDatas.put("groupname", parambcxj.a("groupname"));
-      this.mDatas.put("msgseq", parambcxj.a("msgseq"));
-      this.mDatas.put("msgtype", parambcxj.a("msgtype"));
+      this.mDatas.put("groupcode", parambdqc.a("groupcode"));
+      this.mDatas.put("groupname", parambdqc.a("groupname"));
+      this.mDatas.put("msgseq", parambdqc.a("msgseq"));
+      this.mDatas.put("msgtype", parambdqc.a("msgtype"));
       if (QLog.isColorLevel()) {
         QLog.d("StructMsg", 2, "parseDataNode json:" + this.mDatas.toString());
       }
       return;
     }
-    catch (JSONException parambcxj)
+    catch (JSONException parambdqc)
     {
       for (;;)
       {
-        QLog.d("StructMsg", 1, "parseDataNode error:" + parambcxj.getMessage());
+        QLog.d("StructMsg", 1, "parseDataNode error:" + parambdqc.getMessage());
       }
     }
   }
   
   protected void parseDefaultContentNode()
   {
-    bcvt localbcvt = bcwc.a(2);
-    localbcvt.a("", this.mMsgBrief, ao);
-    addItem(localbcvt);
+    bdom localbdom = bdov.a(2);
+    localbdom.a("", this.mMsgBrief, aq);
+    addItem(localbdom);
   }
   
-  protected void parseSourceNode(bcxj parambcxj)
+  protected void parseSourceNode(bdqc parambdqc)
   {
-    if (parambcxj == null) {
+    if (parambdqc == null) {
       return;
     }
-    this.mSourceAppid = bcxm.a(parambcxj.a("appid"));
-    this.mSourceName = parambcxj.a("name");
+    this.mSourceAppid = bdqf.a(parambdqc.a("appid"));
+    this.mSourceName = parambdqc.a("name");
     if (TextUtils.isEmpty(this.mMsgBrief))
     {
       this.mEmptyMsgBriefModified = true;
@@ -813,14 +813,14 @@ public abstract class AbsShareMsg
       }
     }
     label175:
-    for (this.mMsgBrief = String.format(an, new Object[] { this.mSourceName });; this.mMsgBrief = DEFAULT_MSG_BRIEF)
+    for (this.mMsgBrief = String.format(ap, new Object[] { this.mSourceName });; this.mMsgBrief = DEFAULT_MSG_BRIEF)
     {
-      this.mSourceIcon = parambcxj.a("icon");
-      this.mSourceUrl = parambcxj.a("url");
-      this.mSourceAction = parambcxj.a("action");
-      this.mSourceActionData = parambcxj.a("actionData");
-      this.mSource_A_ActionData = parambcxj.a("a_actionData");
-      this.mSource_I_ActionData = parambcxj.a("i_actionData");
+      this.mSourceIcon = parambdqc.a("icon");
+      this.mSourceUrl = parambdqc.a("url");
+      this.mSourceAction = parambdqc.a("action");
+      this.mSourceActionData = parambdqc.a("actionData");
+      this.mSource_A_ActionData = parambdqc.a("a_actionData");
+      this.mSource_I_ActionData = parambdqc.a("i_actionData");
       if ((this.mHasSource) || ((TextUtils.isEmpty(this.mSourceName)) && (TextUtils.isEmpty(this.mSourceIcon)))) {
         break;
       }
@@ -833,9 +833,9 @@ public abstract class AbsShareMsg
   
   protected void setCompoundDrawable(TextView paramTextView, Drawable paramDrawable, Resources paramResources)
   {
-    paramDrawable = new BitmapDrawable(bcxv.a(paramDrawable));
-    paramTextView.setCompoundDrawablePadding(afur.a(3.0F, paramResources));
-    paramDrawable.setBounds(0, 0, afur.a(14.0F, paramResources), afur.a(14.0F, paramResources));
+    paramDrawable = new BitmapDrawable(bdqo.a(paramDrawable));
+    paramTextView.setCompoundDrawablePadding(agej.a(3.0F, paramResources));
+    paramDrawable.setBounds(0, 0, agej.a(14.0F, paramResources), agej.a(14.0F, paramResources));
     paramTextView.setCompoundDrawables(paramDrawable, null, null, null);
   }
   
@@ -854,117 +854,117 @@ public abstract class AbsShareMsg
     this.mSourceName = paramString;
   }
   
-  public void setStructMsgItemLists(List<bcvs> paramList)
+  public void setStructMsgItemLists(List<bdol> paramList)
   {
     this.mStructMsgItemLists = paramList;
   }
   
-  protected abstract void toContentXml(bcvr parambcvr);
+  protected abstract void toContentXml(bdok parambdok);
   
   protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
     int i = 1;
-    bcvr localbcvr = new bcvr(this, new bcvx());
+    bdok localbdok = new bdok(this, new bdoq());
     label797:
     label1064:
     try
     {
-      localbcvr.setOutput(paramByteArrayOutputStream, paramString);
-      localbcvr.startDocument(paramString, Boolean.valueOf(true));
-      localbcvr.startTag(null, "msg");
-      localbcvr.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localbcvr.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      localbdok.setOutput(paramByteArrayOutputStream, paramString);
+      localbdok.startDocument(paramString, Boolean.valueOf(true));
+      localbdok.startTag(null, "msg");
+      localbdok.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localbdok.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
       if (this.mMsgAction != null) {
         break label996;
       }
       paramByteArrayOutputStream = "";
-      localbcvr.attribute(null, "action", paramByteArrayOutputStream);
+      localbdok.attribute(null, "action", paramByteArrayOutputStream);
       if (!TextUtils.isEmpty(this.mMsgActionData)) {
-        localbcvr.attribute(null, "actionData", this.mMsgActionData);
+        localbdok.attribute(null, "actionData", this.mMsgActionData);
       }
       if (!TextUtils.isEmpty(this.mMsg_A_ActionData)) {
-        localbcvr.attribute(null, "a_actionData", this.mMsg_A_ActionData);
+        localbdok.attribute(null, "a_actionData", this.mMsg_A_ActionData);
       }
       if (!TextUtils.isEmpty(this.mMsg_I_ActionData)) {
-        localbcvr.attribute(null, "i_actionData", this.mMsg_I_ActionData);
+        localbdok.attribute(null, "i_actionData", this.mMsg_I_ActionData);
       }
       if (this.mMsgBrief != null) {
         break label1004;
       }
       paramByteArrayOutputStream = "";
       label185:
-      localbcvr.attribute(null, "brief", paramByteArrayOutputStream);
+      localbdok.attribute(null, "brief", paramByteArrayOutputStream);
       if (!TextUtils.isEmpty(this.mResid)) {
-        localbcvr.attribute(null, "m_resid", this.mResid);
+        localbdok.attribute(null, "m_resid", this.mResid);
       }
       if (!TextUtils.isEmpty(this.mFileName)) {
-        localbcvr.attribute(null, "m_fileName", this.mFileName);
+        localbdok.attribute(null, "m_fileName", this.mFileName);
       }
       if (this.mTSum > 0) {
-        localbcvr.attribute(null, "tSum", String.valueOf(this.mTSum));
+        localbdok.attribute(null, "tSum", String.valueOf(this.mTSum));
       }
       if (this.mFileSize > 0L) {
-        localbcvr.attribute(null, "m_fileSize", String.valueOf(this.mFileSize));
+        localbdok.attribute(null, "m_fileSize", String.valueOf(this.mFileSize));
       }
       if (!TextUtils.isEmpty(this.source_puin)) {
-        localbcvr.attribute(null, "sourcePublicUin", this.source_puin);
+        localbdok.attribute(null, "sourcePublicUin", this.source_puin);
       }
-      localbcvr.attribute(null, "sourceMsgId", String.valueOf(this.msgId));
+      localbdok.attribute(null, "sourceMsgId", String.valueOf(this.msgId));
       if (this.fwFlag == 1) {
-        localbcvr.attribute(null, "fwflag", String.valueOf(this.fwFlag));
+        localbdok.attribute(null, "fwflag", String.valueOf(this.fwFlag));
       }
       if (this.mMsgUrl != null) {
         break label1012;
       }
       paramByteArrayOutputStream = "";
       label371:
-      localbcvr.attribute(null, "url", paramByteArrayOutputStream);
+      localbdok.attribute(null, "url", paramByteArrayOutputStream);
       if (!TextUtils.isEmpty(this.rijAlbumActionData)) {
-        localbcvr.attribute(null, "rijAlbumActionData", this.rijAlbumActionData);
+        localbdok.attribute(null, "rijAlbumActionData", this.rijAlbumActionData);
       }
-      localbcvr.attribute(null, "flag", String.valueOf(this.mFlag));
+      localbdok.attribute(null, "flag", String.valueOf(this.mFlag));
       if (!TextUtils.isEmpty(this.mSType)) {
-        localbcvr.attribute(null, "sType", this.mSType);
+        localbdok.attribute(null, "sType", this.mSType);
       }
       if (this.sourceAccoutType == SOURCE_ACCOUNT_TYPE_PA) {
-        localbcvr.attribute(null, "accostType", String.valueOf(SOURCE_ACCOUNT_TYPE_PA));
+        localbdok.attribute(null, "accostType", String.valueOf(SOURCE_ACCOUNT_TYPE_PA));
       }
       paramByteArrayOutputStream = String.valueOf(this.adverSign);
       if (!TextUtils.isEmpty(paramByteArrayOutputStream)) {
-        localbcvr.attribute(null, "adverSign", paramByteArrayOutputStream);
+        localbdok.attribute(null, "adverSign", paramByteArrayOutputStream);
       }
       if (!TextUtils.isEmpty(this.adverKey)) {
-        localbcvr.attribute(null, "adverKey", this.adverKey);
+        localbdok.attribute(null, "adverKey", this.adverKey);
       }
       if (!TextUtils.isEmpty(this.mExtraData)) {
-        localbcvr.attribute(null, "extraData", this.mExtraData);
+        localbdok.attribute(null, "extraData", this.mExtraData);
       }
       if (!TextUtils.isEmpty(this.mCreateTime)) {
-        localbcvr.attribute(null, "createTime", this.mCreateTime);
+        localbdok.attribute(null, "createTime", this.mCreateTime);
       }
       if (!TextUtils.isEmpty(this.mTagName)) {
-        localbcvr.attribute(null, "tagName", this.mTagName);
+        localbdok.attribute(null, "tagName", this.mTagName);
       }
       if (!TextUtils.isEmpty(this.mSourceThirdName)) {
-        localbcvr.attribute(null, "sourceName", this.mSourceThirdName);
+        localbdok.attribute(null, "sourceName", this.mSourceThirdName);
       }
       if (!TextUtils.isEmpty(this.mQQStoryExtra)) {
-        localbcvr.attribute(null, "qqstoryExtra", this.mQQStoryExtra);
+        localbdok.attribute(null, "qqstoryExtra", this.mQQStoryExtra);
       }
       if (!TextUtils.isEmpty(this.mTribeShortVideoExtra)) {
-        localbcvr.attribute(null, "qqtribeVideoInfoExtra", this.mTribeShortVideoExtra);
+        localbdok.attribute(null, "qqtribeVideoInfoExtra", this.mTribeShortVideoExtra);
       }
       if (!TextUtils.isEmpty(this.mNeedRound)) {
-        localbcvr.attribute(null, "needRoundView", this.mNeedRound);
+        localbdok.attribute(null, "needRoundView", this.mNeedRound);
       }
       if (!TextUtils.isEmpty(this.mCommonData)) {
-        localbcvr.attribute(null, "msgCommonData", this.mCommonData);
+        localbdok.attribute(null, "msgCommonData", this.mCommonData);
       }
-      localbcvr.attribute(null, "multiMsgFlag", String.valueOf(this.multiMsgFlag));
+      localbdok.attribute(null, "multiMsgFlag", String.valueOf(this.multiMsgFlag));
       if (!TextUtils.isEmpty(this.mQzoneExtraMsg)) {
-        localbcvr.attribute(null, "qzFloatExtra", this.mQzoneExtraMsg);
+        localbdok.attribute(null, "qzFloatExtra", this.mQzoneExtraMsg);
       }
-      toContentXml(localbcvr);
+      toContentXml(localbdok);
       if (this.mMsgServiceID != 128) {
         break label1064;
       }
@@ -985,19 +985,19 @@ public abstract class AbsShareMsg
     }
     if (i == 0)
     {
-      localbcvr.startTag(null, "source");
+      localbdok.startTag(null, "source");
       if (this.mSourceName != null) {
         break label1020;
       }
       paramByteArrayOutputStream = "";
-      localbcvr.attribute(null, "name", paramByteArrayOutputStream);
+      localbdok.attribute(null, "name", paramByteArrayOutputStream);
       if (this.mSourceIcon != null) {
         break label1028;
       }
       paramByteArrayOutputStream = "";
-      localbcvr.attribute(null, "icon", paramByteArrayOutputStream);
+      localbdok.attribute(null, "icon", paramByteArrayOutputStream);
       if (!TextUtils.isEmpty(this.mSourceUrl)) {
-        localbcvr.attribute(null, "url", this.mSourceUrl);
+        localbdok.attribute(null, "url", this.mSourceUrl);
       }
       if (this.mSourceAction != null) {
         break label1036;
@@ -1007,21 +1007,21 @@ public abstract class AbsShareMsg
     label1036:
     for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mSourceAction)
     {
-      localbcvr.attribute(null, "action", paramByteArrayOutputStream);
+      localbdok.attribute(null, "action", paramByteArrayOutputStream);
       if (!TextUtils.isEmpty(this.mSourceActionData)) {
-        localbcvr.attribute(null, "actionData", this.mSourceActionData);
+        localbdok.attribute(null, "actionData", this.mSourceActionData);
       }
       if (!TextUtils.isEmpty(this.mSource_A_ActionData)) {
-        localbcvr.attribute(null, "a_actionData", this.mSource_A_ActionData);
+        localbdok.attribute(null, "a_actionData", this.mSource_A_ActionData);
       }
       if (!TextUtils.isEmpty(this.mSource_I_ActionData)) {
-        localbcvr.attribute(null, "i_actionData", this.mSource_I_ActionData);
+        localbdok.attribute(null, "i_actionData", this.mSource_I_ActionData);
       }
-      localbcvr.attribute(null, "appid", String.valueOf(this.mSourceAppid));
-      localbcvr.endTag(null, "source");
-      localbcvr.endTag(null, "msg");
-      localbcvr.endDocument();
-      localbcvr.flush();
+      localbdok.attribute(null, "appid", String.valueOf(this.mSourceAppid));
+      localbdok.endTag(null, "source");
+      localbdok.endTag(null, "msg");
+      localbdok.endDocument();
+      localbdok.flush();
       return;
       paramByteArrayOutputStream = this.mMsgAction;
       break;

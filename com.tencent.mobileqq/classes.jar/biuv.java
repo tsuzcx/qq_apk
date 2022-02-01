@@ -1,60 +1,58 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.widget.ADView;
 
 public class biuv
-  extends SQLiteOpenHelper
+  implements bjej
 {
-  protected static biuv a;
-  protected String a;
-  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
-  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
-  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  public biuv(ADView paramADView, LinearLayout paramLinearLayout) {}
   
-  protected biuv(Context paramContext)
+  public void a(int paramInt)
   {
-    super(paramContext, "open_report.db", null, 3);
-    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
-  }
-  
-  public static biuv a(Context paramContext)
-  {
-    try
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int i = 0;
+    View localView;
+    while (i < j)
     {
-      if (jdField_a_of_type_Biuv == null) {
-        jdField_a_of_type_Biuv = new biuv(paramContext);
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(false);
       }
-      paramContext = jdField_a_of_type_Biuv;
-      return paramContext;
+      i += 1;
     }
-    finally {}
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
-  {
-    bisy.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
-    bisy.b("opensdk", "sql2:" + this.b);
-    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
-    paramSQLiteDatabase.execSQL(this.b);
-    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
-    paramSQLiteDatabase.execSQL(this.c);
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
+      if (paramInt == -1) {
+        i = j - 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i > -1) && (i < j))
+      {
+        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView != null) {
+          localView.setEnabled(true);
+        }
+      }
+      return;
+      i = paramInt;
+      if (paramInt == j)
+      {
+        i = 0;
+        continue;
+        if (paramInt == -1)
+        {
+          i = 0;
+        }
+        else
+        {
+          i = paramInt;
+          if (paramInt == j) {
+            i = j - 1;
+          }
+        }
+      }
+    }
   }
 }
 

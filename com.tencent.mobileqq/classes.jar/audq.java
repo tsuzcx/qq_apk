@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
 
 public class audq
-  implements agra
 {
-  public audq(FlashChatPanel paramFlashChatPanel) {}
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bhml.b(paramString3) + paramString5;
+  }
   
-  public void a() {}
-  
-  public void b() {}
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, auds paramauds)
+  {
+    if (paramLong < 0L) {
+      return;
+    }
+    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
+    localReqBody.uint64_group_code.set(paramLong);
+    localReqBody.str_app_src.set("android");
+    localReqBody.str_version.set("8.4.5");
+    nkm.b(paramQQAppInterface, new audr(paramauds), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
+  }
 }
 
 

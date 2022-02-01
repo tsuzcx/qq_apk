@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-final class agxb
-  implements ahbm
+class agxb
+  implements bixo
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  agxb(agwy paramagwy) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    return 18;
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopRobotHelper", 2, "TroopRobotHelper.DrawerFrame.TouchEventConsumer");
+    }
+    return this.a.a(paramMotionEvent);
   }
 }
 

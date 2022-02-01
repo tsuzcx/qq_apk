@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aghz;
+import agra;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -11,11 +11,11 @@ class LineLayer$SaveTempFileJob$1
   
   public void run()
   {
-    aghz localaghz;
+    agra localagra;
     if (LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob) != null)
     {
-      localaghz = (aghz)LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob).get();
-      if (localaghz != null) {
+      localagra = (agra)LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob).get();
+      if (localagra != null) {
         if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           break label66;
         }
@@ -24,7 +24,7 @@ class LineLayer$SaveTempFileJob$1
     label66:
     for (boolean bool = true;; bool = false)
     {
-      localaghz.a(bool, LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob), LineLayer.SaveTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob), this.jdField_a_of_type_JavaLangString);
+      localagra.a(bool, LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob), LineLayer.SaveTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob), this.jdField_a_of_type_JavaLangString);
       return;
     }
   }

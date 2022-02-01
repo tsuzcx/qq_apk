@@ -1,13 +1,22 @@
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class pnb
+class pnb
+  implements Animation.AnimationListener
 {
-  public oidb_cmd0x80a.AttributeList a;
-  public oidb_cmd0x80a.AttributeList b;
-  public oidb_cmd0x80a.AttributeList c;
-  public oidb_cmd0x80a.AttributeList d;
+  pnb(pna parampna, ImageView paramImageView, boolean paramBoolean) {}
   
-  public pnb(pmy parampmy) {}
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(pna.a(this.jdField_a_of_type_Pna, this.jdField_a_of_type_Boolean));
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

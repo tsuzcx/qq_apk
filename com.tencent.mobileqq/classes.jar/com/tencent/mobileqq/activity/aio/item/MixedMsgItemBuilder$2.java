@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahda;
-import bdsh;
+import ahmm;
+import beqz;
 import com.tencent.image.URLDrawable;
 
 public class MixedMsgItemBuilder$2
   implements Runnable
 {
-  public MixedMsgItemBuilder$2(ahda paramahda, String paramString, URLDrawable paramURLDrawable) {}
+  public MixedMsgItemBuilder$2(ahmm paramahmm, String paramString, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    if (bdsh.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (beqz.b(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();

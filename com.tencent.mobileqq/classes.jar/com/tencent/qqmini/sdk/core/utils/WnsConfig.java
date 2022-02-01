@@ -9,6 +9,9 @@ public class WnsConfig
   public static final String DEFAULT_DOMAIN_WHITE_LIST = ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.gtimg.cn";
   public static final String DEFAULT_ENABLE_UPDATE_EMBEDDED_APP_LIST = "1108711239";
   public static final int DEFAULT_ENABLE_UPDATE_FOR_EMBEDDED_WIDGET = 1;
+  public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE = 0;
+  public static final int DEFAULT_MINI_APP_REPORT_WHITE_SCREEN_ENABLE_CLEAR_APKG_CACHE = 1;
+  public static final String DEFAULT_MINI_APP_V8RT_URL = "https://d3g.qq.com/sngapp/app/update/20200714173502_6904/libtv8rt.so";
   public static final int DEFAULT_MINI_APP_XPROF_API_REPORT = 0;
   public static final String DEFAULT_MINI_GAME_BASELIB = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200323171054_1567/lib_1.13.0.00014.zip\",\"key2\":\"\",\"key3\":\"1.4.8\",\"key4\": {\"file_length\": 5591276},\"key5\":2}";
   public static final String DEFAULT_OPENDATA_DOMAIN_WHITE_LIST = ".qlogo.com;.qlogo.cn;.qq.com";
@@ -46,6 +49,7 @@ public class WnsConfig
   public static final String MINI_APP_REPORT_FIRST_FRAME_FLUSH = "mini_app_report_first_frame_flush";
   public static final String MINI_APP_REPORT_MAX_TIME_COST = "mini_app_report_max_time_cost";
   public static final String MINI_APP_REPORT_TIME_THRESHOLD = "mini_app_report_time_threshold";
+  public static final String MINI_APP_REPORT_WHITE_SCREEN_ENABLE_CLEAR_APKG_CACHE = "mini_app_report_white_screen_enable_clear_apkg_cache";
   public static final String MINI_APP_REPORT_WHITE_SCREEN_TIME_CHECK = "mini_app_report_white_screen_check";
   public static final String MINI_APP_SCREEN_DETECT = "mini_app_screen_detect";
   public static final int MINI_APP_SCREEN_DETECT_DEFAULT = 1;
@@ -64,6 +68,7 @@ public class WnsConfig
   public static final int MINI_GAME_MULTI_INSTANCE_DEFAULT = 5;
   public static final String MINI_GAME_PROCESS_REUSE = "mini_game_process_reuse";
   public static final String MINI_GAME_PROCESS_REUSE_BLACKLIST = "mini_game_process_reuse_blacklist";
+  public static final int MINI_GAME_PROCESS_REUSE_DEFAULT = 1;
   public static final boolean MINI_HARD_CODER_ENABLED_DEFAULT = true;
   public static final int MINI_HARD_CODER_TIMEOUT_DEFAULT = 10000;
   public static final boolean MINI_LOW_LEVEL_DEVICE_FLUTTER_ENABLED_DEFAULT = false;
@@ -72,9 +77,11 @@ public class WnsConfig
   public static final String SECONDARY_KEY_MINIGAME_SHARE_RATE = "MiniGameShareRate";
   public static final String SECONDARY_KEY_MINIPROGRAM_VIDEO_CONTENTTYPE = "MiniProgramVideoContentType";
   public static final String SECONDARY_KEY_MINI_APP_AD_USE_TRANSCODING = "miniappadusetranscoding";
+  public static final String SECONDARY_KEY_MINI_APP_ENABLE_V8_SERVICE = "mini_app_enable_v8_service";
   public static final String SECONDARY_KEY_MINI_APP_SEARCH_APPID = "miniappsearchappid";
   public static final String SECONDARY_KEY_MINI_APP_SHOW_FULL_SCREEN = "miniappshowfullscreen";
   public static final String SECONDARY_KEY_MINI_APP_TOP_MAX_NUM = "miniappfullscreenminedatamaxnum";
+  public static final String SECONDARY_KEY_MINI_APP_V8RT_URL = "mini_app_v8_rt_url";
   public static final String SECONDARY_KEY_MINI_APP_XPROF_API_REPORT = "xprof_api_report";
   public static final String SECONDARY_KEY_MINI_GAME_SDK_ENABLE_DOWNLOADER = "minigamesdkenabledownloader";
   public static final String SECONDARY_KEY_MINI_LOADING_AD_UNSUPPORT_VIA_LIST = "launch_adv_unsupport_via_list";
@@ -276,7 +283,7 @@ public class WnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.WnsConfig
  * JD-Core Version:    0.7.0.1
  */

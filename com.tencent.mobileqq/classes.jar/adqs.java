@@ -1,50 +1,38 @@
-import java.util.Calendar;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class adqs
-  implements aqiw
+public class adqs
+  implements View.OnTouchListener
 {
-  final int jdField_a_of_type_Int;
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new adqt(this);
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  View jdField_a_of_type_AndroidViewView;
   
-  public adqs(adqp paramadqp, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public adqs(AccountManageActivity paramAccountManageActivity) {}
   
-  public int a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int;
-    case 1: 
-      return 12;
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, adqp.a(this.jdField_a_of_type_Adqp) + adqp.d(this.jdField_a_of_type_Adqp));
-    localCalendar.set(2, adqp.b(this.jdField_a_of_type_Adqp));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
+    if (i == 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return adqp.d(this.jdField_a_of_type_Adqp, paramInt2) + anni.a(2131698829);
-    case 1: 
-      return adqp.e(this.jdField_a_of_type_Adqp, paramInt2) + anni.a(2131698826);
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
+      }
     }
-    return adqp.f(this.jdField_a_of_type_Adqp, paramInt2) + anni.a(2131698827);
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
+    }
+    return false;
   }
 }
 

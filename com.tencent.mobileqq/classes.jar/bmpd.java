@@ -1,9 +1,17 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.util.LruCache;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
-public abstract interface bmpd
+class bmpd
+  implements ReaderJsCallback
 {
-  public abstract void a(LruCache<Integer, BitmapDrawable> paramLruCache);
+  bmpd(bmpb parambmpb) {}
+  
+  public void onCallback(String paramString1, String paramString2) {}
+  
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
+  {
+    paramReaderBaseWebViewPlugin.init(bmpb.a(this.a), null);
+  }
 }
 
 

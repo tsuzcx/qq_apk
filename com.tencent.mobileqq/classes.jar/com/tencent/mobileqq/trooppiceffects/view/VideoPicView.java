@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bftg;
-import bgbr;
+import bgth;
+import bhbs;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
 
 public class VideoPicView
   extends FrameLayout
-  implements bgbr
+  implements bhbs
 {
   protected ImageView a;
   protected SpriteVideoView a;
@@ -26,7 +26,7 @@ public class VideoPicView
   public VideoPicView(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = bftg.a(paramInt1);
+    this.jdField_a_of_type_JavaLangString = bgth.a(paramInt1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = new SpriteVideoView(getContext(), true);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);

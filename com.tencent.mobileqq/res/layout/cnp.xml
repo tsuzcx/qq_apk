@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/dwp" android:visibility="gone" android:layout_width="250.0dip" android:layout_height="185.0dip" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/mtw" android:visibility="gone" android:layout_width="250.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" />
-    </LinearLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/mto" android:visibility="gone" android:layout_width="250.0dip" android:layout_height="225.0dip" android:scaleType="centerCrop" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/mxb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <include layout="@layout/co6" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/n_k" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/lqn" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/n_p" android:layout="@layout/cno" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="10.0dip" />
+            <ViewStub android:id="@id/n_n" android:layout="@layout/cnm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout android:id="@id/n_m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <ViewStub android:id="@id/n_q" android:layout="@layout/cnq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <ViewStub android:id="@id/n_u" android:layout="@layout/cnt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <ViewStub android:id="@id/n_o" android:layout="@layout/cnn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout>
+            <ViewStub android:id="@id/ncr" android:layout="@layout/cns" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/mnu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/lqn">
+            <ViewStub android:id="@id/n_l" android:layout="@layout/cnk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <ViewStub android:id="@id/n_t" android:layout="@layout/cnr" android:inflatedId="@id/na8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="-10.0dip" android:layout_above="@id/mnu" android:layout_alignParentRight="true" />
+        <ImageView android:background="@drawable/gg9" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_below="@id/mnu" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/n_j" android:layout="@layout/cng" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

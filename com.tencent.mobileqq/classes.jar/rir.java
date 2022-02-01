@@ -1,24 +1,18 @@
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment.onCreate..inlined.let.lambda.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rir
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "errorMsg", "", "onResult", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$1$1"}, k=3, mv={1, 1, 16})
+public final class rir
+  implements rff
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
+  public rir(SelectTopicFragment.onCreate..inlined.let.lambda.1 param1, ColumnInfo paramColumnInfo) {}
   
-  public HashMap<String, String> a()
+  public final void a(int paramInt, @Nullable String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_vid", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_success", String.valueOf(this.jdField_a_of_type_Boolean).toLowerCase());
-    localHashMap.put("param_costTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_ret_code", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_err_info", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Boolean));
-    return localHashMap;
+    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.this$0, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$activity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$rowKey$inlined, paramString);
   }
 }
 

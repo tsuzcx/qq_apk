@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class qvy
-  implements View.OnClickListener
 {
-  public qvy(ComponentContentRecommend paramComponentContentRecommend) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(ComponentContentRecommend.a(this.a));
-    pmh.a().a(ComponentContentRecommend.a(this.a).mArticleID, ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a);
-    ComponentContentRecommend.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public long c = -1L;
 }
 
 

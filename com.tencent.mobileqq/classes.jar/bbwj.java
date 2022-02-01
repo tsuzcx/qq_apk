@@ -1,356 +1,93 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver;
-import android.widget.ImageView;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
-import java.net.MalformedURLException;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class bbwj
-  implements View.OnClickListener
+public class bbwj
+  extends LinkMovementMethod
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private final View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
-  private final TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[3];
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString = new String[3];
-  private int jdField_c_of_type_Int;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private String e;
-  private String f;
-  private String g;
+  private static bbwj jdField_a_of_type_Bbwj;
+  bbwh jdField_a_of_type_Bbwh;
+  boolean jdField_a_of_type_Boolean;
   
-  public bbwj(Context paramContext)
+  public static MovementMethod a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (jdField_a_of_type_Bbwj == null) {
+      jdField_a_of_type_Bbwj = new bbwj();
+    }
+    return jdField_a_of_type_Bbwj;
   }
   
-  private void a(String paramString, ImageView paramImageView)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    try
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0) || (i == 3))
     {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (bbwh[])paramSpannable.getSpans(j, j, bbwh.class);
       if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "setImageUrl " + paramString);
+        QLog.i("StateColorMovementMethod", 2, String.format("onTouch action[%d] links=[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localObject.length) }));
       }
-      paramImageView.setImageDrawable(URLDrawable.getDrawable(new URL(paramString), 0, 0, new ColorDrawable(-1315339), new ColorDrawable(-1315339), true));
-      return;
-    }
-    catch (MalformedURLException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "setImageUrl error " + paramString.toString());
-      }
-      paramImageView.setImageDrawable(new ColorDrawable(-1315339));
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
-    localIntent.putExtra("param_force_internal_browser", true);
-    localIntent.putExtra("url", paramString);
-    afsd.a(this.jdField_a_of_type_AndroidContentContext, localIntent, paramString);
-  }
-  
-  void a()
-  {
-    int i = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.e = null;
-    this.f = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.g = null;
-    while (i < 3)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = null;
-      this.jdField_b_of_type_ArrayOfJavaLangString[i] = null;
-      i += 1;
-    }
-  }
-  
-  void a(View paramView)
-  {
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368142));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363369));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371544));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365377));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370457));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramView.findViewById(2131364005));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramView.findViewById(2131364006));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramView.findViewById(2131364007));
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363370);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[0] = paramView.findViewById(2131363549);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramView.findViewById(2131363551);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramView.findViewById(2131363550);
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364008);
-      if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-        ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(bkpg.jdField_c_of_type_Int);
-      }
-      if ((this.jdField_b_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-        ((ThemeImageView)this.jdField_b_of_type_AndroidWidgetImageView).setMaskShape(bkpg.jdField_c_of_type_Int);
-      }
-      this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new bbwk(this));
-      paramView.setOnClickListener(new bbwl(this));
-    }
-  }
-  
-  void a(String paramString)
-  {
-    for (;;)
-    {
-      JSONObject localJSONObject1;
-      int i;
-      try
+      if (localObject.length != 0)
       {
-        localJSONObject1 = new JSONObject(paramString).optJSONObject("data");
-        if (localJSONObject1 != null)
+        this.jdField_a_of_type_Boolean = false;
+        paramSpannable = localObject[0];
+        if (i == 1)
         {
-          paramString = localJSONObject1.get("serverdata");
-          if (paramString != null) {
-            if ((paramString instanceof String))
-            {
-              paramString = new JSONObject((String)paramString);
-              this.jdField_b_of_type_Int = paramString.optInt("appid");
-              this.jdField_a_of_type_JavaLangString = paramString.optString("thumbnail");
-              this.jdField_b_of_type_JavaLangString = paramString.optString("title");
-              this.jdField_c_of_type_JavaLangString = paramString.optString("sub_title");
-              this.jdField_d_of_type_JavaLangString = paramString.optString("bg_pic_url");
-              this.e = paramString.optString("bg_main_btn_text");
-              this.f = paramString.optString("bg_main_btn_url");
-              paramString = paramString.optJSONArray("bottom_btn_list");
-              if (paramString != null)
-              {
-                int j = paramString.length();
-                i = 0;
-                if (i < j)
-                {
-                  JSONObject localJSONObject2 = paramString.optJSONObject(i);
-                  if ((localJSONObject2 == null) || (i >= 3)) {
-                    break label314;
-                  }
-                  this.jdField_a_of_type_ArrayOfJavaLangString[i] = localJSONObject2.optString("bottom_btn_text");
-                  this.jdField_b_of_type_ArrayOfJavaLangString[i] = localJSONObject2.optString("bottom_btn_url");
-                  break label314;
-                }
-              }
-            }
-            else
-            {
-              if ((paramString instanceof JSONObject))
-              {
-                paramString = (JSONObject)paramString;
-                continue;
-              }
-              paramString = new JSONObject();
-              continue;
-            }
+          if (this.jdField_a_of_type_Bbwh != null)
+          {
+            this.jdField_a_of_type_Bbwh.a(paramTextView, false);
+            this.jdField_a_of_type_Bbwh = null;
+          }
+          paramSpannable.onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            paramSpannable.a(paramTextView, true);
+            this.jdField_a_of_type_Bbwh = paramSpannable;
+          }
+          else if ((i == 3) && (this.jdField_a_of_type_Bbwh != null))
+          {
+            this.jdField_a_of_type_Bbwh.a(paramTextView, false);
+            this.jdField_a_of_type_Bbwh = null;
           }
         }
-        else
-        {
-          return;
-        }
       }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("RichTemplateOneSearchResultView", 2, "initData error " + paramString.toString());
-        }
-      }
-      do
-      {
-        paramString = localJSONObject1.getJSONObject("extradata");
-      } while (paramString == null);
-      this.jdField_c_of_type_Int = paramString.getInt("entry");
-      this.jdField_d_of_type_Int = paramString.getInt("match");
-      this.g = paramString.getString("keyword");
-      this.jdField_a_of_type_Int = paramString.optInt("nightmode", 0);
-      return;
-      label314:
-      i += 1;
-    }
-  }
-  
-  void b()
-  {
-    label36:
-    label58:
-    String str;
-    label92:
-    label117:
-    int i;
-    if (this.jdField_b_of_type_JavaLangString != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_c_of_type_JavaLangString == null) {
-        break label260;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label273;
-      }
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetImageView);
-      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        break label292;
-      }
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      if (this.e != null) {
-        break label284;
-      }
-      str = "";
-      localView.setContentDescription(str);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      a(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_AndroidWidgetImageView);
-      if (TextUtils.isEmpty(this.e)) {
+      if (i != 1) {
         break label312;
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.e);
-      label146:
-      i = 0;
-      label148:
-      if (i >= 3) {
-        break label363;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramTextView.performClick();
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-        break label324;
-      }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(0);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setOnClickListener(this);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
-      label210:
-      if (this.jdField_a_of_type_Int != 1) {
-        break label349;
-      }
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166924));
     }
     for (;;)
     {
-      i += 1;
-      break label148;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      break;
-      label260:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      break label36;
-      label273:
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      break label58;
-      label284:
-      str = this.e;
-      break label92;
-      label292:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      break label117;
+      if (this.jdField_a_of_type_Bbwh != null)
+      {
+        this.jdField_a_of_type_Bbwh.a(paramTextView, false);
+        this.jdField_a_of_type_Bbwh = null;
+      }
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
       label312:
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label146;
-      label324:
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(8);
-      break label210;
-      label349:
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundColor(-1315339);
-    }
-    label363:
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new bbwm(this));
-  }
-  
-  public void onClick(View paramView)
-  {
-    String str;
-    int i;
-    switch (paramView.getId())
-    {
-    default: 
-      str = null;
-      i = 0;
-      if (this.jdField_d_of_type_Int == 1)
-      {
-        bbrf.a(null, this.jdField_c_of_type_Int, 0, "0X8009D2D", this.jdField_b_of_type_Int, i, this.g);
-        label81:
-        if (str != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("RichTemplateOneSearchResultView", 2, "onClick " + str);
-          }
-          if (!str.startsWith("http")) {
-            break label210;
-          }
-          b(str);
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str = this.f;
-      i = 4;
-      break;
-      str = this.jdField_b_of_type_ArrayOfJavaLangString[0];
-      i = 1;
-      break;
-      str = this.jdField_b_of_type_ArrayOfJavaLangString[1];
-      i = 2;
-      break;
-      str = this.jdField_b_of_type_ArrayOfJavaLangString[2];
-      i = 3;
-      break;
-      bbrf.a(null, this.jdField_c_of_type_Int, 0, "0X8009D41", this.jdField_b_of_type_Int, i, this.g);
-      break label81;
-      label210:
-      bgmp localbgmp = bgng.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, str);
-      if (localbgmp != null)
-      {
-        localbgmp.a();
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("RichTemplateOneSearchResultView", 2, "wrong url " + str);
-        }
-        b(str);
+      if (i == 0) {
+        this.jdField_a_of_type_Boolean = true;
+      } else if (i == 3) {
+        this.jdField_a_of_type_Boolean = false;
       }
     }
   }

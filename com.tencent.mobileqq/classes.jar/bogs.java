@@ -1,18 +1,40 @@
-public abstract interface bogs
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+
+public class bogs
+  extends RecyclerView.ViewHolder
 {
-  public abstract void A();
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public bogr a;
+  public URLDrawable a;
+  public NumberCheckBox a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
   
-  public abstract void B();
-  
-  public abstract void C();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void z();
+  public bogs(bogn parambogn, View paramView)
+  {
+    super(paramView);
+    this.b = ((ImageView)paramView.findViewById(2131372580));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372541));
+    this.c = ((ImageView)paramView.findViewById(2131368936));
+    this.d = ((ImageView)paramView.findViewById(2131372585));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372582);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131372583));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372586));
+    this.e = ((ImageView)paramView.findViewById(2131372511));
+    if (this.e != null) {
+      this.e.setVisibility(8);
+    }
+  }
 }
 
 

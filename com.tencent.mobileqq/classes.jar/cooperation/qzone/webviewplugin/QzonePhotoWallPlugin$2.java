@@ -1,16 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bmmr;
+import bnnu;
 import java.util.ArrayList;
 
 public class QzonePhotoWallPlugin$2
   implements Runnable
 {
-  public QzonePhotoWallPlugin$2(bmmr parambmmr, ArrayList paramArrayList) {}
+  public QzonePhotoWallPlugin$2(bnnu parambnnu, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bmmr.a(this.this$0, this.a, false);
+    bnnu.a(this.this$0, this.a, false);
   }
 }
 

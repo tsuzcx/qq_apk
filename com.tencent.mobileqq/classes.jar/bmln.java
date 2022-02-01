@@ -1,153 +1,111 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import mqq.app.AppRuntime;
 
 public class bmln
-  extends bmmk
-  implements bmfh
+  extends bcfs
 {
-  private String a;
+  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(bcni.b());
+  public int a;
+  public long a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  private void a(WebViewPlugin paramWebViewPlugin, bhod parambhod, String... paramVarArgs)
+  public CharSequence a()
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+    if ((this.jdField_a_of_type_JavaLangCharSequence == null) && (this.jdField_b_of_type_JavaLangString != null))
     {
-      long l;
-      String str1;
-      try
-      {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        l = paramVarArgs.optLong("uin");
-        str1 = paramVarArgs.optString("payKey");
-        localObject = paramVarArgs.optString("nickName");
-        this.jdField_a_of_type_JavaLangString = paramVarArgs.optString("callback");
-        if (l == 0L)
-        {
-          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "uin error , uin " + l);
-          return;
-        }
-        if (TextUtils.isEmpty(str1))
-        {
-          QLog.e("QZoneRedPocketGiftJsPlugin", 1, "payKey error , paykey = " + str1);
-          return;
-        }
+      begp localbegp = new begp(this.jdField_b_of_type_JavaLangString, 3, 20);
+      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int)) {
+        localbegp.setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 33);
       }
-      catch (Exception paramWebViewPlugin)
-      {
-        a(this.jdField_a_of_type_JavaLangString, null, anni.a(2131711068), -1);
-        QLog.e("QZoneRedPocketGiftJsPlugin", 1, paramWebViewPlugin.getMessage());
-        return;
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QLog.e("QZoneRedPocketGiftJsPlugin", 1, "callback is empty.");
-        return;
-      }
-      paramVarArgs = (String[])localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramVarArgs = String.valueOf(l);
-      }
-      bmfd.a().a().a(l, str1);
-      Object localObject = blsi.a();
-      String str2 = ((TicketManager)parambhod.a().getManager(2)).getSkey(parambhod.a().getAccount());
-      int i = blsb.a(paramWebViewPlugin, parambhod, 8);
-      blsb.a(parambhod.a(), (blsi)localObject, str2, l, paramVarArgs, str1, i);
+      this.jdField_a_of_type_JavaLangCharSequence = localbegp;
+    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
+    bmkq.a(localBaseActivity, localBaseActivity.getAppRuntime().getAccount(), this.jdField_a_of_type_Long);
+    bcni.a(this.jdField_a_of_type_JavaLangString, 60, 0, paramView);
+    if ((localBaseActivity instanceof UniteSearchActivity)) {
+      bcni.a("all_result", "clk_collect", new String[] { "" + this.jdField_a_of_type_JavaLangString });
     }
   }
   
-  public void a()
+  public boolean a()
   {
-    super.a();
+    return false;
   }
   
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
+  public CharSequence b()
   {
-    switch (paramByte)
+    return null;
+  }
+  
+  public String b()
+  {
+    if (this.jdField_c_of_type_Long == 0L) {
+      return null;
+    }
+    return "" + this.jdField_c_of_type_Long;
+  }
+  
+  public int c()
+  {
+    switch (this.e)
     {
     default: 
-      return;
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 4;
     }
-    if ((paramInt == -1) && (paramIntent != null))
-    {
-      a(this.jdField_a_of_type_JavaLangString, null, anni.a(2131711066), 0);
-      return;
-    }
-    a(this.jdField_a_of_type_JavaLangString, null, anni.a(2131711069), -1);
+    return 101;
   }
   
-  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  public CharSequence c()
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    if (this.jdField_c_of_type_JavaLangString != null)
     {
-      if (TextUtils.isEmpty(paramString1))
-      {
-        paramInt = -1;
-        paramString3 = anni.a(2131711067);
-      }
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("code", paramInt);
-      localJSONObject.put("data", paramString2);
-      localJSONObject.put("message", paramString3);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString1, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramString2.printStackTrace();
+      if (this.jdField_a_of_type_Int == 1) {
+        localSpannableStringBuilder.append("来自: ").append(this.jdField_c_of_type_JavaLangString).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int + 4, this.jdField_c_of_type_Int + 4, 33);
       }
     }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    while (!"sendRedPocketGift".equals(paramString3)) {
-      return false;
+    else {
+      return localSpannableStringBuilder;
     }
-    bmfd.a().a(this);
-    a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-    return true;
+    return localSpannableStringBuilder.append("来自: ").append(bcni.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 30));
   }
   
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  public CharSequence d()
   {
-    return super.a(paramString, paramLong, paramMap);
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramBundle.getBundle("data") != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("QZoneRedPocketGiftJsPlugin", 2, "call js function,bundle is empty");
-      return;
-    } while (!"cmd.qzoneSendRedPocketGift".equals(paramString));
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      a(this.jdField_a_of_type_JavaLangString, null, anni.a(2131711065), -1);
-      return;
-    }
-    a(this.jdField_a_of_type_JavaLangString, null, anni.a(2131711070), 0);
+    return null;
   }
 }
 

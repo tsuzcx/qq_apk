@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
-import pmk;
-import tzl;
+import pfd;
+import tzn;
 
 public class PublicAccountH5AbilityPlugin$BiuObserver$1
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$BiuObserver$1(tzl paramtzl) {}
+  public PublicAccountH5AbilityPlugin$BiuObserver$1(tzn paramtzn) {}
   
   public void run()
   {
-    pmk.a().b(this.a);
+    pfd.a().b(this.a);
   }
 }
 

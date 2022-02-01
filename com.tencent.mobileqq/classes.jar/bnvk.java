@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
 
 public class bnvk
+  extends bnvi
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  public bnvk() {}
-  
-  public bnvk(@NonNull bnvk parambnvk)
+  public bnvk(String paramString, View paramView)
   {
-    this.a = parambnvk.a;
-    this.b = parambnvk.b;
-    this.c = parambnvk.c;
-    this.d = parambnvk.d;
+    super(paramString, paramView);
+  }
+  
+  protected void a(String paramString)
+  {
+    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
   }
 }
 

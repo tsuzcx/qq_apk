@@ -8,7 +8,6 @@ class NativeAvatarView$1
   public void run()
   {
     this.this$0.showIconV();
-    NativeAvatarView.access$000(this.this$0);
   }
 }
 

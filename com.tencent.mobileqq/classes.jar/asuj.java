@@ -1,15 +1,21 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
+import java.util.List;
 
-public class asuj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class asuj
 {
-  public asuj(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public abstract int a();
   
-  public void onGlobalLayout()
+  public abstract List<asug> a(boolean paramBoolean);
+  
+  public abstract void a();
+  
+  public void a(asuk paramasuk, asug paramasug, boolean paramBoolean)
   {
-    this.a.ax_();
+    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramasuk, paramasug), 64, null, true);
   }
+  
+  public abstract boolean a();
 }
 
 

@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aemk
-  implements View.OnFocusChangeListener
+class aemk
+  implements DialogInterface.OnClickListener
 {
-  public aemk(Leba paramLeba) {}
+  aemk(aemj paramaemj) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      bbrf.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
-      bcst.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
-    }
+    bhzu.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 

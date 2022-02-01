@@ -1,8 +1,20 @@
-public abstract interface vpo
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
+
+public class vpo
+  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  public abstract void a();
+  public vpo(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
   
-  public abstract void b();
+  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  {
+    if (QCirclePersonalBottomView.a(this.a) != null) {
+      this.a.removeView(QCirclePersonalBottomView.a(this.a));
+    }
+  }
 }
 
 

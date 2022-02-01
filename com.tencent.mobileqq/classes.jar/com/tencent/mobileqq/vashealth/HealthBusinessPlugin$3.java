@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
 import android.text.TextUtils;
-import biau;
+import bjbs;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -72,8 +72,8 @@ class HealthBusinessPlugin$3
       }
       finally
       {
-        if (this.this$0.jdField_a_of_type_Biau.isShowing()) {
-          this.this$0.jdField_a_of_type_Biau.dismiss();
+        if (this.this$0.jdField_a_of_type_Bjbs.isShowing()) {
+          this.this$0.jdField_a_of_type_Bjbs.dismiss();
         }
       }
     }

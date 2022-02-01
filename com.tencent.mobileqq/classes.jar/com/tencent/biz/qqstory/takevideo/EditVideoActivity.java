@@ -15,14 +15,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import anni;
-import bcgx;
-import bcst;
-import bctj;
-import bgmo;
-import bkel;
-import bndd;
-import bnpy;
+import anzj;
+import bczp;
+import bdll;
+import bdmc;
+import bhmq;
+import blfp;
+import boem;
+import bork;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
@@ -38,66 +38,66 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.ArrayList;
-import wes;
-import wpf;
-import wpm;
-import wps;
-import yqp;
-import yqu;
-import yqv;
-import yrt;
-import yty;
-import yvj;
-import zem;
-import zeq;
-import zix;
-import zkr;
+import win;
+import wta;
+import wth;
+import wtn;
+import yuk;
+import yup;
+import yuq;
+import yvo;
+import yxt;
+import yze;
+import zih;
+import zil;
+import zms;
+import zom;
 
 public class EditVideoActivity
   extends QQStoryBaseActivity
-  implements yvj
+  implements yze
 {
-  public yty a;
+  public yxt a;
   
   private void e()
   {
-    wpf localwpf = (wpf)wpm.a(10);
-    boolean bool1 = ((Boolean)localwpf.b("boolean_enable_revert_play_mode", Boolean.valueOf(true))).booleanValue();
-    boolean bool2 = ((Boolean)localwpf.b("boolean_enable_flow_decode", Boolean.valueOf(true))).booleanValue();
-    boolean bool3 = ((Boolean)localwpf.b("boolean_use_flow_decode_first", Boolean.valueOf(false))).booleanValue();
+    wta localwta = (wta)wth.a(10);
+    boolean bool1 = ((Boolean)localwta.b("boolean_enable_revert_play_mode", Boolean.valueOf(true))).booleanValue();
+    boolean bool2 = ((Boolean)localwta.b("boolean_enable_flow_decode", Boolean.valueOf(true))).booleanValue();
+    boolean bool3 = ((Boolean)localwta.b("boolean_use_flow_decode_first", Boolean.valueOf(false))).booleanValue();
     QLog.d("Q.qqstory.publish.edit.EditVideoActivity", 2, "check reverse play mode. enableIFrameRevert = " + bool1 + ", enableFlowRevert = " + bool2 + ", useFlowDecodeFirst = " + bool3);
     if (bool3)
     {
       if (bool2)
       {
-        basa.jdField_a_of_type_Boolean = true;
-        basa.jdField_b_of_type_Boolean = true;
+        bbkt.jdField_a_of_type_Boolean = true;
+        bbkt.jdField_b_of_type_Boolean = true;
         return;
       }
       if (bool1)
       {
-        basa.jdField_a_of_type_Boolean = true;
-        basa.jdField_b_of_type_Boolean = false;
+        bbkt.jdField_a_of_type_Boolean = true;
+        bbkt.jdField_b_of_type_Boolean = false;
         return;
       }
-      basa.jdField_a_of_type_Boolean = false;
-      basa.jdField_b_of_type_Boolean = false;
+      bbkt.jdField_a_of_type_Boolean = false;
+      bbkt.jdField_b_of_type_Boolean = false;
       return;
     }
     if (bool1)
     {
-      basa.jdField_a_of_type_Boolean = true;
-      basa.jdField_b_of_type_Boolean = false;
+      bbkt.jdField_a_of_type_Boolean = true;
+      bbkt.jdField_b_of_type_Boolean = false;
       return;
     }
     if (bool2)
     {
-      basa.jdField_a_of_type_Boolean = true;
-      basa.jdField_b_of_type_Boolean = true;
+      bbkt.jdField_a_of_type_Boolean = true;
+      bbkt.jdField_b_of_type_Boolean = true;
       return;
     }
-    basa.jdField_a_of_type_Boolean = false;
-    basa.jdField_b_of_type_Boolean = false;
+    bbkt.jdField_a_of_type_Boolean = false;
+    bbkt.jdField_b_of_type_Boolean = false;
   }
   
   private void f()
@@ -106,14 +106,14 @@ public class EditVideoActivity
     long l2 = Runtime.getRuntime().maxMemory() / 1024L;
     long l3 = l1 - Runtime.getRuntime().freeMemory() / 1024L;
     long l4 = l2 - l3;
-    yqp.a("Q.qqstory.publish.edit.EditVideoActivity", "trimMemoryIfNeeded, memory %d/%d, max %d, remain %d", Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l4));
+    yuk.a("Q.qqstory.publish.edit.EditVideoActivity", "trimMemoryIfNeeded, memory %d/%d, max %d, remain %d", Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l4));
     if (l4 < 51200L)
     {
-      yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "URLDrawable clearMemoryCache, memory %d/%d KB, max %d KB, remain %d KB, URLDrawable cache size %d KB", new Object[] { Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l4), Integer.valueOf(BaseApplicationImpl.sImageCache.size() / 1024) });
-      ((wps)wpm.a(26)).a(2);
+      yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "URLDrawable clearMemoryCache, memory %d/%d KB, max %d KB, remain %d KB, URLDrawable cache size %d KB", new Object[] { Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l4), Integer.valueOf(BaseApplicationImpl.sImageCache.size() / 1024) });
+      ((wtn)wth.a(26)).a(2);
       return;
     }
-    ((wps)wpm.a(26)).a(0);
+    ((wtn)wth.a(26)).a(0);
   }
   
   @NonNull
@@ -122,7 +122,7 @@ public class EditVideoActivity
     return this;
   }
   
-  public Intent a(zem paramzem)
+  public Intent a(zih paramzih)
   {
     if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource))
     {
@@ -132,15 +132,15 @@ public class EditVideoActivity
       ArrayList localArrayList = new ArrayList();
       EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
       Object localObject2;
-      if ((paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_Boolean) || (!paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_Boolean)) {
+      if ((paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Boolean) || (!paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Boolean)) {
         if (!TextUtils.isEmpty(localEditLocalGifSource.jdField_a_of_type_JavaLangString))
         {
           localObject1 = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-          localIntent.putExtra("need_combine_gif", paramzem.jdField_a_of_type_Zeq.c);
+          localIntent.putExtra("need_combine_gif", paramzih.jdField_a_of_type_Zil.c);
           localObject2 = localObject1;
           if (QLog.isColorLevel())
           {
-            QLog.d("Q.qqstory.publish.edit.EditVideoActivity", 1, "send sourcePath | generateContext.generatePicArgs.isDelayTimeChange:" + paramzem.jdField_a_of_type_Zeq.c);
+            QLog.d("Q.qqstory.publish.edit.EditVideoActivity", 1, "send sourcePath | generateContext.generatePicArgs.isDelayTimeChange:" + paramzih.jdField_a_of_type_Zil.c);
             localObject2 = localObject1;
           }
         }
@@ -152,14 +152,14 @@ public class EditVideoActivity
         }
         localIntent.putExtra("orign_path", localEditLocalGifSource.a());
         localIntent.putExtra("combine_image_path", (String)localObject2);
-        localIntent.putExtra("doodle_bitmap_path", paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath);
-        localIntent.putExtra("gif_delay_time", paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_Int);
+        localIntent.putExtra("doodle_bitmap_path", paramzih.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath);
+        localIntent.putExtra("gif_delay_time", paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Int);
         localIntent.putExtra("gif_has_antishake", this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.d);
         if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeGifSource)) {
           localIntent.putExtra("PhotoConst.IS_RECORD_GIF", true);
         }
         localArrayList.add(localObject2);
-        bgmo.a(this, (String)localObject2);
+        bhmq.a(this, (String)localObject2);
         localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
         localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)localArrayList.get(0));
         localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
@@ -173,7 +173,7 @@ public class EditVideoActivity
         }
         for (;;)
         {
-          if (!paramzem.jdField_a_of_type_Zeq.c) {
+          if (!paramzih.jdField_a_of_type_Zil.c) {
             localIntent.putExtra("use_orign", true);
           }
           localIntent.putExtra("need_combine_gif", true);
@@ -186,7 +186,7 @@ public class EditVideoActivity
             localObject1 = "";
           }
         }
-        localObject2 = paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_JavaLangString;
+        localObject2 = paramzih.jdField_a_of_type_Zil.jdField_b_of_type_JavaLangString;
         localIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
         localIntent.putExtra("need_combine_gif", true);
       }
@@ -197,15 +197,15 @@ public class EditVideoActivity
       for (;;)
       {
         localIntent.putExtra("combine_image_path", (String)localObject2);
-        localIntent.putExtra("doodle_bitmap_path", paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath);
-        localIntent.putExtra("gif_delay_time", paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_Int);
+        localIntent.putExtra("doodle_bitmap_path", paramzih.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath);
+        localIntent.putExtra("gif_delay_time", paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Int);
         localIntent.putExtra("gif_has_antishake", this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.d);
         break;
         localIntent.putExtra("orign_list_path", localEditLocalGifSource.jdField_a_of_type_JavaUtilArrayList);
       }
     }
     Object localObject1 = new Intent();
-    ((Intent)localObject1).putExtra(PublishParam.jdField_a_of_type_JavaLangString, paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
+    ((Intent)localObject1).putExtra(PublishParam.jdField_a_of_type_JavaLangString, paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
     return localObject1;
   }
   
@@ -218,7 +218,7 @@ public class EditVideoActivity
   protected void a()
   {
     if (this.a == null) {
-      this.a = new yty();
+      this.a = new yxt();
     }
   }
   
@@ -246,7 +246,7 @@ public class EditVideoActivity
   {
     if ((Build.MODEL.equals("HM NOTE 1TD")) && (Build.VERSION.SDK_INT < 18))
     {
-      yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "disable show loading dialog");
+      yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "disable show loading dialog");
       return;
     }
     super.a(paramCharSequence, paramBoolean, paramLong);
@@ -255,16 +255,16 @@ public class EditVideoActivity
   public void c()
   {
     super.c();
-    yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "onOutOfMemory");
+    yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "onOutOfMemory");
     f();
   }
   
   public void d()
   {
-    if (this.a.jdField_a_of_type_Yrm != null) {
+    if (this.a.jdField_a_of_type_Yvh != null) {
       return;
     }
-    ((TrimTextureVideoView)findViewById(2131366818)).b();
+    ((TrimTextureVideoView)findViewById(2131366869)).b();
   }
   
   @Override
@@ -310,7 +310,7 @@ public class EditVideoActivity
     }
     for (;;)
     {
-      yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
+      yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
       this.a.a(paramInt1, paramInt2, paramIntent);
       return;
       label218:
@@ -333,7 +333,7 @@ public class EditVideoActivity
   
   public void doOnBackPressed()
   {
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnBackPressed");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnBackPressed");
     if (!this.a.b()) {
       super.doOnBackPressed();
     }
@@ -342,31 +342,31 @@ public class EditVideoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     e();
-    bkel.jdField_a_of_type_Boolean = false;
-    bkel.a();
-    bndd.a();
-    yqp.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate start");
+    blfp.jdField_a_of_type_Boolean = false;
+    blfp.a();
+    boem.a();
+    yuk.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate start");
     a();
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    bcgx.a(QQStoryContext.a().a(), this);
-    yrt.a(QQStoryContext.a().a(), this);
+    bczp.a(QQStoryContext.a().a(), this);
+    yvo.a(QQStoryContext.a().a(), this);
     try
     {
-      bnpy.c();
+      bork.c();
       if (VideoEnvironment.a("AVCodec", getApplicationContext()) != 0)
       {
-        yqp.e("Q.qqstory.publish.edit.EditVideoActivity", "load AVCodec so failed");
+        yuk.e("Q.qqstory.publish.edit.EditVideoActivity", "load AVCodec so failed");
         finish();
         return true;
       }
     }
     catch (Exception paramBundle)
     {
-      yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "load AVCodec so failed", paramBundle);
+      yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "load AVCodec so failed", paramBundle);
       finish();
       return true;
     }
@@ -383,11 +383,11 @@ public class EditVideoActivity
     if ((localEditVideoParams != null) && ((localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource))) {
       ((EditLocalGifSource)localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int = getIntent().getIntExtra("extra_checked_similarity_ok_to_antishake", 0);
     }
-    yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnCreate instance=%d, video params=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), localEditVideoParams });
+    yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnCreate instance=%d, video params=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), localEditVideoParams });
     if (localEditVideoParams != null) {}
     for (Object localObject = localEditVideoParams.a(); !TextUtils.isEmpty((CharSequence)localObject); localObject = "can not find EditVideoParams")
     {
-      QQToast.a(this, anni.a(2131702602) + (String)localObject, 0).a();
+      QQToast.a(this, anzj.a(2131702709) + (String)localObject, 0).a();
       finish();
       return true;
     }
@@ -405,24 +405,24 @@ public class EditVideoActivity
         str1 = "video_edit";
       }
     }
-    yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnCreate instance=%d, department=%s, opType=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), localObject, str1 });
+    yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnCreate instance=%d, department=%s, opType=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), localObject, str1 });
     try
     {
       VideoSourceHelper.nativeSetPlayStepFrameCount(1);
       VideoSourceHelper.nativeSetPlayGapFrameCount(1);
       getWindow().addFlags(1024);
-      setContentViewC(2131561843);
+      setContentViewC(2131561884);
       a(paramBundle);
       if (localEditVideoParams.jdField_a_of_type_AndroidOsBundle != null)
       {
         localEditVideoParams.jdField_a_of_type_AndroidOsBundle.putInt("uintype", i);
-        zix.a("Q.qqstory.publish.edit.EditVideoActivity", localEditVideoParams.jdField_a_of_type_AndroidOsBundle);
+        zms.a("Q.qqstory.publish.edit.EditVideoActivity", localEditVideoParams.jdField_a_of_type_AndroidOsBundle);
         this.a.a(this, localEditVideoParams);
         this.a.i();
-        zkr.a(wes.e);
-        yqv.jdField_a_of_type_JavaLangString = (String)localObject;
-        yqv.jdField_b_of_type_JavaLangString = str1;
-        if ((!yqv.a()) || (VideoEnvironment.b() < 21)) {}
+        zom.a(win.e);
+        yuq.jdField_a_of_type_JavaLangString = (String)localObject;
+        yuq.jdField_b_of_type_JavaLangString = str1;
+        if ((!yuq.a()) || (VideoEnvironment.b() < 21)) {}
       }
     }
     catch (Throwable localThrowable)
@@ -432,31 +432,31 @@ public class EditVideoActivity
         for (;;)
         {
           VideoSourceHelper.nativeSetMaxPhotoFrameCount(3);
-          yqp.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity set min frame!");
-          yqv.a("0X80076B5");
+          yuk.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity set min frame!");
+          yuq.a("0X80076B5");
           if (localEditVideoParams.jdField_a_of_type_Int == 2)
           {
             if (i != 1) {
               break;
             }
             paramBundle = "3";
-            yqu.a("aio_shoot", "exp_edit", 0, 0, new String[] { "1", paramBundle });
+            yup.a("aio_shoot", "exp_edit", 0, 0, new String[] { "1", paramBundle });
           }
           LpReportInfo_pf00064.allReport(628, 1);
-          yqp.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate end");
+          yuk.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate end");
           if (localEditVideoParams.jdField_a_of_type_Int == 10) {
-            bcst.b(null, "dc00899", "Grp_tribe", "", "video_edit", "exp_edit", 0, 0, "", "", "", "");
+            bdll.b(null, "dc00899", "Grp_tribe", "", "video_edit", "exp_edit", 0, 0, "", "", "", "");
           }
           f();
           if ((localEditVideoParams.jdField_a_of_type_Int == 10) || (localEditVideoParams.jdField_a_of_type_Int == 12)) {
-            ((RelativeLayout)findViewById(2131365843)).setBackgroundColor(-16777216);
+            ((RelativeLayout)findViewById(2131365887)).setBackgroundColor(-16777216);
           }
-          bctj.e("exposure_old_editVideo");
+          bdmc.e("exposure_old_editVideo");
           return true;
           localThrowable = localThrowable;
           QLog.w("Q.qqstory.publish.edit.EditVideoActivity", 1, "VideoSourceHelper error:", localThrowable);
         }
-        yqp.e("Q.qqstory.publish.edit.EditVideoActivity", "video editVideoParams.mExtra is null!!");
+        yuk.e("Q.qqstory.publish.edit.EditVideoActivity", "video editVideoParams.mExtra is null!!");
       }
       catch (UnsatisfiedLinkError paramBundle)
       {
@@ -480,16 +480,16 @@ public class EditVideoActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnDestroy %d", new Object[] { Integer.valueOf(System.identityHashCode(this)) });
+    yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnDestroy %d", new Object[] { Integer.valueOf(System.identityHashCode(this)) });
     this.a.n();
-    yqv.jdField_a_of_type_JavaLangString = "";
-    yqv.jdField_b_of_type_JavaLangString = "";
+    yuq.jdField_a_of_type_JavaLangString = "";
+    yuq.jdField_b_of_type_JavaLangString = "";
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnPause");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnPause");
     this.a.l();
     ThreadManagerV2.excute(new EditVideoActivity.2(this), 16, null, false);
   }
@@ -497,14 +497,14 @@ public class EditVideoActivity
   public void doOnRestoreInstanceState(Bundle paramBundle)
   {
     super.doOnRestoreInstanceState(paramBundle);
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnRestoreInstanceState");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnRestoreInstanceState");
     this.a.a(paramBundle);
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnResume");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnResume");
     this.a.k();
     ThreadManagerV2.excute(new EditVideoActivity.1(this), 16, null, false);
     d();
@@ -513,21 +513,21 @@ public class EditVideoActivity
   public void doOnSaveInstanceState(Bundle paramBundle)
   {
     super.doOnSaveInstanceState(paramBundle);
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnSaveInstanceState");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnSaveInstanceState");
     this.a.b(paramBundle);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnStart");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnStart");
     this.a.j();
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    yqp.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnStop");
+    yuk.c("Q.qqstory.publish.edit.EditVideoActivity", "doOnStop");
     this.a.m();
   }
   
@@ -541,7 +541,7 @@ public class EditVideoActivity
   public void onTrimMemory(int paramInt)
   {
     super.onTrimMemory(paramInt);
-    yqp.d("Q.qqstory.publish.edit.EditVideoActivity", "onTrimMemory %d", new Object[] { Integer.valueOf(paramInt) });
+    yuk.d("Q.qqstory.publish.edit.EditVideoActivity", "onTrimMemory %d", new Object[] { Integer.valueOf(paramInt) });
     f();
   }
   

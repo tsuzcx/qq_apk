@@ -1,44 +1,98 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blsz
-  extends QzoneExternalRequest
+public abstract class blsz<M, VH extends blsy<M>>
+  extends RecyclerView.Adapter<blsy<M>>
 {
-  public JceStruct a;
+  protected Context a;
+  protected View a;
+  protected blsw a;
+  protected blsx a;
+  protected View b;
   
-  public blsz(long paramLong1, long paramLong2, int paramInt)
+  public blsz(Context paramContext)
   {
-    mobile_sub_get_cover_req localmobile_sub_get_cover_req = new mobile_sub_get_cover_req();
-    localmobile_sub_get_cover_req.uin = paramLong1;
-    localmobile_sub_get_cover_req.flag = paramInt;
-    this.a = localmobile_sub_get_cover_req;
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static JceStruct a(byte[] paramArrayOfByte)
+  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
+  
+  public void a(View paramView)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (paramView == null)
+    {
+      Log.w("HeaderAndFooterAdapter", "add the footer view is null");
+      return;
     }
-    return decode(paramArrayOfByte, "getCover");
+    this.b = paramView;
+    notifyDataSetChanged();
   }
   
-  public String getCmdString()
+  public void a(blsw paramblsw)
   {
-    return "QzoneNewService.getCover";
+    this.jdField_a_of_type_Blsw = paramblsw;
   }
   
-  public JceStruct getReq()
+  public abstract void a(VH paramVH, int paramInt);
+  
+  public final blsy b(ViewGroup paramViewGroup, int paramInt)
   {
-    return this.a;
+    if (paramInt == 1024) {
+      paramViewGroup = new blsy(this.jdField_a_of_type_AndroidViewView);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Blsw != null) {
+        paramViewGroup.itemView.setOnClickListener(new blta(this, paramViewGroup));
+      }
+      if (this.jdField_a_of_type_Blsx != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new bltb(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new blsy(this.b);
+      } else {
+        paramViewGroup = a(paramViewGroup, paramInt);
+      }
+    }
   }
   
-  public String uniKey()
+  public final void b(blsy paramblsy, int paramInt)
   {
-    return "getCover";
+    switch (paramblsy.getItemViewType())
+    {
+    default: 
+      a(paramblsy, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramblsy, paramInt, getItemId(paramInt));
   }
+  
+  public int c()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract long getItemId(int paramInt);
 }
 
 

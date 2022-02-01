@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts;
 
 import android.view.View;
-import vab;
+import vbr;
 
 public class QCircleCommentPanelPart$11
   implements Runnable
 {
-  public QCircleCommentPanelPart$11(vab paramvab, View paramView) {}
+  public QCircleCommentPanelPart$11(vbr paramvbr, View paramView) {}
   
   public void run()
   {
-    vab.a(this.this$0, this.a);
+    vbr.a(this.this$0, this.a);
   }
 }
 

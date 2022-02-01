@@ -1,14 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
-public class pqv
-  implements prw
+public abstract interface pqv
 {
-  public pqv(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
-  {
-    ReadInJoySelfFragment.f(this.a);
-  }
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
 }
 
 

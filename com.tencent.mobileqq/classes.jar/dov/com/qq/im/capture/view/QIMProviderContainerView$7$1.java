@@ -4,7 +4,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bosv;
+import bpuq;
 
 class QIMProviderContainerView$7$1
   implements Runnable

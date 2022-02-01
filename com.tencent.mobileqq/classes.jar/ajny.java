@@ -1,61 +1,30 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
-class ajny
-  implements adea
+public class ajny
+  extends ajnu
 {
-  ajny(ajnk paramajnk, String paramString) {}
-  
-  public void onComplete()
+  public ajny(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajnx paramajnx)
   {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onComplete");
+    super(paramQQAppInterface, paramContext, paramXListView, paramajnx);
   }
   
-  public void onFailure(int paramInt, String paramString)
+  protected ajno a()
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((ajnk.a(this.jdField_a_of_type_Ajnk).isFinishing()) || (this.jdField_a_of_type_Ajnk.b))
-    {
-      QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
-      return;
-    }
-    this.jdField_a_of_type_Ajnk.c();
-    if (ajnk.a(this.jdField_a_of_type_Ajnk) != null) {
-      ajnk.a(this.jdField_a_of_type_Ajnk).removeCallbacks(ajnk.a(this.jdField_a_of_type_Ajnk));
-    }
-    this.jdField_a_of_type_Ajnk.a(anni.a(2131712373), this.jdField_a_of_type_JavaLangString);
+    return new ajnt(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
   }
   
-  public void onPermission(int paramInt)
+  protected void d()
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    if ((ajnk.a(this.jdField_a_of_type_Ajnk).isFinishing()) || (this.jdField_a_of_type_Ajnk.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Ajnk.c();
-    if (ajnk.a(this.jdField_a_of_type_Ajnk) != null) {
-      ajnk.a(this.jdField_a_of_type_Ajnk).removeCallbacks(ajnk.a(this.jdField_a_of_type_Ajnk));
-    }
-    this.jdField_a_of_type_Ajnk.a(anni.a(2131712374), this.jdField_a_of_type_JavaLangString);
+    super.d();
+    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void e()
   {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
-    if ((ajnk.a(this.jdField_a_of_type_Ajnk).isFinishing()) || (this.jdField_a_of_type_Ajnk.b)) {
-      return;
-    }
-    if (ajnk.a(this.jdField_a_of_type_Ajnk) != null) {
-      ajnk.a(this.jdField_a_of_type_Ajnk).removeCallbacks(ajnk.a(this.jdField_a_of_type_Ajnk));
-    }
-    ajnk.b(this.jdField_a_of_type_Ajnk);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onTrigger");
+    super.e();
+    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
 }
 

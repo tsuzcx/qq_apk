@@ -1,23 +1,70 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adru
-  implements DialogInterface.OnClickListener
+public class adru
+  implements bliz
 {
-  public adru(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx, adsy paramadsy, BaseActivity paramBaseActivity, boolean paramBoolean) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adru(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 1)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
+    for (;;)
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_Adsy);
       return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Blir != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Blir.dismiss();
+      }
+      switch (paramInt)
+      {
+      default: 
+      case 0: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
+          }
+        }
+      case 1: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
+          }
+        }
+      }
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

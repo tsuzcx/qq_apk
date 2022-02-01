@@ -1,35 +1,24 @@
-import android.app.Activity;
-import java.lang.reflect.Method;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
-public abstract class bmtq
+public class bmtq
+  implements View.OnClickListener
 {
-  public static bmtq a;
+  public bmtq(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (bmtq)localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    this.a.a = true;
+    this.a.d();
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public static void b(Activity paramActivity, String paramString)
-  {
-    bmtq localbmtq = a;
-    if (localbmtq != null) {
-      localbmtq.a(paramActivity, paramString);
-    }
-  }
-  
-  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmtq
  * JD-Core Version:    0.7.0.1
  */

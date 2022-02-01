@@ -1,9 +1,22 @@
-class skw
-  extends skv
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+
+public class skw
+  extends Handler
 {
-  skw(ske paramske)
+  public skw(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
   {
-    super(paramske);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
+      this.a.b();
+    }
   }
 }
 

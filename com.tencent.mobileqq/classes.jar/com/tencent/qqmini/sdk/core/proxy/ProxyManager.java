@@ -6,7 +6,7 @@ import com.tencent.qqmini.sdk.core.proxy.engine.ProxyServiceEngine;
 @MiniKeep
 public class ProxyManager
 {
-  public static <T> T get(Class paramClass)
+  public static <T> T get(Class<T> paramClass)
   {
     return ProxyServiceEngine.g().getProxyService(paramClass);
   }

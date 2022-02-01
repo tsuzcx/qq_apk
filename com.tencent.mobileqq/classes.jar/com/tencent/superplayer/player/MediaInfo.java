@@ -8,7 +8,6 @@ import java.util.Properties;
 public class MediaInfo
 {
   private static final String FILENAME = "MediaInfo.java";
-  private String TAG;
   private long audioBitRate;
   private String audioCodec;
   private String audioProfile;
@@ -19,6 +18,7 @@ public class MediaInfo
   private String mediaInfoStr;
   private String originalAudioTrackName;
   private long sampleRate;
+  private String tag;
   private long videoBitRate;
   private String videoCodec;
   private int videoHeight;
@@ -26,14 +26,9 @@ public class MediaInfo
   private int videoRotation;
   private int videoWidth;
   
-  public MediaInfo()
-  {
-    this.TAG = "MediaPlayerMgr_MediaInfo.java";
-  }
-  
   public MediaInfo(String paramString)
   {
-    this.TAG = (paramString + "_" + "MediaInfo.java");
+    this.tag = (paramString + "_" + "MediaInfo.java");
   }
   
   public static MediaInfo obtainMediaInfoFromString(String paramString1, String paramString2)
@@ -59,7 +54,7 @@ public class MediaInfo
     }
     catch (Exception paramString2)
     {
-      LogUtil.e("MediaPlayerMgr", paramString2);
+      LogUtil.e("SuperPlayer-", paramString2);
     }
     return paramString1;
   }

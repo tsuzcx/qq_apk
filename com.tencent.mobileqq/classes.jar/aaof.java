@@ -1,36 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.1;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.superplayer.api.ISuperPlayer;
 
-class aaof
-  implements aapi
+public class aaof
+  implements aaph
 {
-  aaof(aaod paramaaod, String paramString) {}
+  public aaof(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("retCode", 0);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localJSONObject.put("errMsg", paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          localJSONObject.put("file", paramString1);
-        }
-        this.jdField_a_of_type_Aaod.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e(this.jdField_a_of_type_Aaod.TAG, 1, paramString2, paramString1);
-      }
-      localJSONObject.put("retCode", 1);
+    VideoPlayerView.d(this.a, paramBoolean);
+    if (VideoPlayerView.d(this.a)) {
+      this.a.a().post(new VideoPlayerView.15.1(this));
     }
+    do
+    {
+      do
+      {
+        return;
+        if (VideoPlayerView.b(this.a))
+        {
+          this.a.a().post(new VideoPlayerView.15.2(this));
+          return;
+        }
+      } while (!VideoPlayerView.e(this.a));
+      if (this.a.a() != null) {
+        this.a.a().setLoopback(true);
+      }
+      this.a.e();
+    } while (VideoPlayerView.a(this.a) == null);
+    VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
   }
 }
 

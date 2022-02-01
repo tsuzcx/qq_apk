@@ -1,29 +1,35 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneNavigateToQQTransparentFragment;
+
 public class bmtu
+  implements atcr
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  public bmtu(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, FragmentActivity paramFragmentActivity) {}
   
-  public bmtu(int paramInt1, long paramLong, int paramInt2, String paramString1, int paramInt3, String paramString2, int paramInt4)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.d = paramInt4;
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return " mBusinessType =" + this.jdField_a_of_type_Int + " mType = " + this.jdField_b_of_type_Int + " mOrederId = " + this.jdField_b_of_type_JavaLangString;
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null)
+    {
+      QLog.d("QZoneNavigateToQQTransparentFragment", 1, "sendMsgDirectly()-> showToast() activity is null just return");
+      return;
+    }
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, paramInt, paramString1, paramString2);
   }
 }
 

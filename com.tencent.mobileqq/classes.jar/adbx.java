@@ -1,12 +1,6 @@
 public abstract interface adbx
-  extends adbu
-{
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(String paramString, Object[] paramArrayOfObject);
-}
+  extends adbd<Integer, adbw>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

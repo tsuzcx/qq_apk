@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.8;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.EditText;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class ayol
-  implements View.OnClickListener
+class ayol
+  implements aqxy
 {
-  public ayol(AutoReplyEditActivity.8 param8) {}
+  ayol(aynp paramaynp, IphonePickerView paramIphonePickerView, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    AutoReplyEditActivity.a(this.a.this$0, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing()))
+    {
+      aynp.a(this.jdField_a_of_type_Aynp, this.jdField_a_of_type_Aynp.h, false);
+      this.jdField_a_of_type_Blir.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    this.jdField_a_of_type_Aynp.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
+    this.jdField_a_of_type_Aynp.h.setText(aynp.b(this.jdField_a_of_type_Aynp).a(0, paramInt1));
   }
 }
 

@@ -1,16 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-
-class qfc
-  implements pti
+public abstract interface qfc
 {
-  qfc(qfa paramqfa, ViewBase paramViewBase) {}
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
-    }
-  }
+  public abstract void a();
 }
 
 

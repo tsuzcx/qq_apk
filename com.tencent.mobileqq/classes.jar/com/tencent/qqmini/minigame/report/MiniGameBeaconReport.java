@@ -1,6 +1,6 @@
 package com.tencent.qqmini.minigame.report;
 
-import com.tencent.mobileqq.triton.sdk.statics.TraceStatistics;
+import com.tencent.mobileqq.triton.statistic.TraceStatistics;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
@@ -20,7 +20,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/report/MiniGameBeaconReport;", "", "()V", "BEACON_MAX_EVENT_NAME_LENGTH", "", "JANK_TRACE_TOP_RECORDS_COUNT", "getTaskName", "", "stack", "", "Lcom/tencent/qqmini/sdk/task/TaskExecutionStatics;", "report", "", "eventCode", "params", "", "reportJankTraceRecords", "statistics", "Lcom/tencent/mobileqq/triton/sdk/statics/TraceStatistics;", "appid", "isSdk", "", "isFirstFrame", "reportLaunchStatics", "statics", "ExclusiveVisitor", "ParamConfigVisitor", "ParamVisitor", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/report/MiniGameBeaconReport;", "", "()V", "BEACON_MAX_EVENT_NAME_LENGTH", "", "JANK_TRACE_TOP_RECORDS_COUNT", "getTaskName", "", "stack", "", "Lcom/tencent/qqmini/sdk/task/TaskExecutionStatics;", "report", "", "eventCode", "params", "", "reportJankTraceRecords", "statistics", "Lcom/tencent/mobileqq/triton/statistic/TraceStatistics;", "appid", "isSdk", "", "isFirstFrame", "reportLaunchStatics", "statics", "ExclusiveVisitor", "ParamConfigVisitor", "ParamVisitor", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
 public final class MiniGameBeaconReport
 {
   private static final int BEACON_MAX_EVENT_NAME_LENGTH = 59;

@@ -1,54 +1,48 @@
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.VersionUtils;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.10;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class amcy<T>
-  extends arrz<T>
-  implements View.OnClickListener
+public class amcy
+  extends apcq
 {
-  private DragSortListView a;
-  
-  public amcy(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
+  public amcy(CreateFaceToFaceDiscussionActivity.10 param10, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramContext, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramView == null) {}
-    for (View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561195, null);; localView = paramView)
+    if ((paramInt != 0) || (paramSosoLbsInfo == null))
     {
-      localView.setVisibility(0);
-      localView.findViewById(2131377341).setVisibility(8);
-      TextView localTextView = (TextView)localView.findViewById(2131367650);
-      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localTextView.setText(localGroups.group_name);
-      ViewCompat.setImportantForAccessibility(localView.findViewById(2131367654), 1);
-      localView.setContentDescription(localGroups.group_name + anni.a(2131704134));
-      if ((VersionUtils.isOreo()) && (AppSetting.c)) {
-        localView.setOnClickListener(this);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
+      paramSosoLbsInfo = this.a.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+      paramSosoLbsInfo.arg1 = 1;
+      paramSosoLbsInfo.arg2 = 2131698135;
+      paramSosoLbsInfo.sendToTarget();
+      return;
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (AppSetting.c) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
+    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.this$0, paramSosoLbsInfo);
+    aoct localaoct = (aoct)this.a.this$0.app.a(33);
+    switch (this.a.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      localaoct.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.this$0.b, this.a.this$0.h);
+      return;
+    case 1: 
+      localaoct.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.this$0.h);
+      return;
+    case 2: 
+      localaoct.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, true);
+      return;
+    case 3: 
+      localaoct.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, false);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localaoct.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo);
   }
 }
 

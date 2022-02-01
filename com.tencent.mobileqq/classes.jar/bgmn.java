@@ -1,41 +1,40 @@
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+
 public class bgmn
+  implements bliz
 {
-  public static int a = 40000;
-  public static int b = 30000;
-  public static int c = 20000;
-  public static int d = 20000;
-  public static int e = 15000;
-  public static int f = 10000;
-  public static int g;
+  public bgmn(VisitorTroopCardFragment paramVisitorTroopCardFragment, blir paramblir) {}
   
-  public static int a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return c;
+    if (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) {
+      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, new bjbv(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()));
     }
-    return b;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
+    if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()))
     {
-    case 2: 
-    default: 
-      return d + g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return f + g;
+      paramView = (aoip)this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      if (paramView != null)
+      {
+        if ((VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) & 0x1) == 0)
+        {
+          VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) | 0x1);
+          paramView.l(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+        }
+        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(0, 2131691903, 1000);
+      }
     }
-    return e + g;
+    for (;;)
+    {
+      bgnh.a(21, new Object());
+      this.jdField_a_of_type_Blir.cancel();
+      return;
+      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131691899, 1500);
+      continue;
+      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131694008, 1500);
+    }
   }
 }
 

@@ -1,42 +1,51 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
 
-public class awup
-  implements awtr
+class awup
+  implements bjft
 {
-  public awup(MultiCardFragment paramMultiCardFragment) {}
+  bhpc jdField_a_of_type_Bhpc;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(int paramInt)
+  awup(awuo paramawuo, BaseActivity paramBaseActivity, awpk paramawpk) {}
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_Awuo.a.isBackgroundPause) || (this.jdField_a_of_type_Awuo.a.isBackgroundStop)) {
+      awuo.a(this.jdField_a_of_type_Awuo, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Awpk);
+    }
+    for (;;)
+    {
+      bdll.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
+      return true;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Bhpc = awql.a(this.jdField_a_of_type_Awpk.a(), this.jdField_a_of_type_Awpk.a());
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Bhpc != null) {
+          this.jdField_a_of_type_Bhpc.setOnDismissListener(new awuq(this));
+        }
+      }
+    }
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+      QLog.d("LocationFloatWindowManager", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
     }
-    switch (paramInt)
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Awpk.a(), this.jdField_a_of_type_Awpk.a(), 4);
+    awub.d();
+    if (this.jdField_a_of_type_Bhpc != null) {}
+    try
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
-        return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
-      return;
+      this.jdField_a_of_type_Bhpc.dismiss();
+      return false;
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
+    catch (Exception localException) {}
+    return false;
   }
 }
 

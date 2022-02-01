@@ -2,27 +2,27 @@ package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import android.app.Activity;
 import android.os.Bundle;
-import xsw;
-import xtc;
-import xtd;
-import ziv;
+import xwr;
+import xwx;
+import xwy;
+import zmq;
 
 public class BottomVideoInfoWidget$8$1
   implements Runnable
 {
-  public BottomVideoInfoWidget$8$1(xtc paramxtc) {}
+  public BottomVideoInfoWidget$8$1(xwx paramxwx) {}
   
   public void run()
   {
-    Activity localActivity = this.a.jdField_a_of_type_Xsw.b();
-    if (ziv.a().a(localActivity, new Bundle(), 467)) {
-      xsw.a(this.a.jdField_a_of_type_Xsw, localActivity, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    Activity localActivity = this.a.jdField_a_of_type_Xwr.b();
+    if (zmq.a().a(localActivity, new Bundle(), 467)) {
+      xwr.a(this.a.jdField_a_of_type_Xwr, localActivity, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Xsw.l();
+      this.a.jdField_a_of_type_Xwr.l();
       return;
-      xsw.a(this.a.jdField_a_of_type_Xsw, new xtd(this, localActivity));
+      xwr.a(this.a.jdField_a_of_type_Xwr, new xwy(this, localActivity));
     }
   }
 }

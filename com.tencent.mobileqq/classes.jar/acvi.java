@@ -1,32 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-public class acvi
+public final class acvi
 {
-  public acvy a;
-  public anmw a;
-  public aong a;
-  public awne a;
-  public Map<String, RecentUser> a;
-  public Map<String, MessageRecord> b = new HashMap();
-  public Map<String, MessageRecord> c = new HashMap();
-  public Map<String, MessageRecord> d = new HashMap();
-  public Map<String, MessageRecord> e = new HashMap();
-  public Map<String, List<MessageRecord>> f = new HashMap();
-  public Map<String, List<MessageRecord>> g = new HashMap();
-  
-  public acvi(QQAppInterface paramQQAppInterface)
+  private static acvj a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Anmw = ((anmw)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_Awne = ((awne)paramQQAppInterface.getManager(37));
-    this.jdField_a_of_type_Aong = paramQQAppInterface.a().a();
-    this.jdField_a_of_type_Acvy = paramQQAppInterface.a();
+    acvr localacvr = null;
+    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
+      localacvr = new acvr();
+    }
+    return localacvr;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
+    acvj localacvj;
+    do
+    {
+      do
+      {
+        acvp.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
+        return;
+      } while ((paramInt2 < 0) || (paramInt2 >= 4));
+      localacvj = a(paramInt2);
+    } while (localacvj == null);
+    localacvj.a(paramInt1, paramInt2, paramAdInfo);
   }
 }
 

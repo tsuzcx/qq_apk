@@ -9,9 +9,10 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bmgk;
+import bnhm;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
+import com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -60,7 +61,7 @@ public class WXEntryActivity
     {
       try
       {
-        bmgk.a().a(this, getIntent());
+        bnhm.a().a(this, getIntent());
       }
       catch (Throwable paramBundle)
       {
@@ -72,26 +73,36 @@ public class WXEntryActivity
         {
           try
           {
-            for (;;)
-            {
-              WXMiniProgramHelper.a().a(this, getIntent());
-              finish();
-              return;
-              localException = localException;
-              QLog.e("WXEntryActivity", 1, "get intent exception:", localException);
-              continue;
-              paramBundle = paramBundle;
-              paramBundle.printStackTrace();
-              continue;
-              paramBundle = paramBundle;
-              QLog.e("WXEntryActivity", 2, "WxShareHelperFromReadInjoy.getInstance().handleWXEntryActivityIntent error = " + paramBundle);
-            }
+            WXMiniProgramHelper.a().a(this, getIntent());
           }
           catch (Throwable paramBundle)
           {
-            for (;;)
+            try
             {
-              QLog.e("WXEntryActivity", 2, "WXMiniProgramHelper.getInstance().handleWXEntryActivityIntent error = " + paramBundle);
+              for (;;)
+              {
+                WXShareHelperFromQQMiniApp.getInstance().handleWXEntryActivityIntent(this, getIntent());
+                finish();
+                return;
+                localException = localException;
+                QLog.e("WXEntryActivity", 1, "get intent exception:", localException);
+                continue;
+                paramBundle = paramBundle;
+                paramBundle.printStackTrace();
+                continue;
+                paramBundle = paramBundle;
+                QLog.e("WXEntryActivity", 2, "WxShareHelperFromReadInjoy.getInstance().handleWXEntryActivityIntent error = " + paramBundle);
+                continue;
+                paramBundle = paramBundle;
+                QLog.e("WXEntryActivity", 2, "WXMiniProgramHelper.getInstance().handleWXEntryActivityIntent error = " + paramBundle);
+              }
+            }
+            catch (Throwable paramBundle)
+            {
+              for (;;)
+              {
+                QLog.e("WXEntryActivity", 2, "WXShareHelperFromQQMiniApp.getInstance().handleWXEntryActivityIntent error = " + paramBundle);
+              }
             }
           }
         }

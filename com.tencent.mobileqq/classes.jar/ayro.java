@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class ayro
-  implements ayry
+final class ayro
+  implements aydl
 {
-  ayro(ayrn paramayrn, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
+  ayro(ayrv paramayrv, int paramInt) {}
   
-  public void a(PoiBean paramPoiBean)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ayrp.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Ayrn.b + "] diskPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Ayrv != null) {
+      this.jdField_a_of_type_Ayrv.a(false, null, true, this.jdField_a_of_type_Int);
     }
   }
 }

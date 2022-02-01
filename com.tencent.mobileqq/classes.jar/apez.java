@@ -1,14 +1,21 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class apez
-  extends apfa
+class apez
+  implements View.OnClickListener
 {
-  public String a = "10001";
+  apez(apex paramapex) {}
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a = paramBundle.getString("PromotionDescription");
+    this.a.dismiss();
+    Intent localIntent = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Apnc.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Apnc.b * 1.0D / 1000000.0D));
+    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class ogw
+  implements View.OnClickListener
 {
-  private static final ogv a = new ogv(null);
+  ogw(ogs paramogs) {}
+  
+  public void onClick(View paramView)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
+    ogs.a(this.a, 5);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

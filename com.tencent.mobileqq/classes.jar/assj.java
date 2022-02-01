@@ -1,114 +1,473 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class assj
-  implements View.OnClickListener
+  extends asmu
 {
-  public assj(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public static final int h;
+  public int a;
+  public int b;
+  public boolean b;
+  public String d;
   
-  public void onClick(View paramView)
+  static
   {
-    Object localObject2 = (atho)paramView.getTag();
-    Object localObject1 = ((atho)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-    int i;
-    if (paramView.getId() == 2131366555)
+    jdField_a_of_type_JavaLangString = anzj.a(2131713502);
+    jdField_b_of_type_JavaLangString = anzj.a(2131713505);
+    jdField_c_of_type_JavaLangString = anzj.a(2131713504);
+    int j = asmq.jdField_b_of_type_Int / 20;
+    if (asmq.jdField_b_of_type_Int % 20 == 0) {}
+    for (int i = 0;; i = 1)
     {
-      i = 1;
-      if (!((FileInfo)localObject1).c()) {
-        break label58;
-      }
-      LocalFileBrowserActivity.a(this.a, ((FileInfo)localObject1).c(), true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      h = i + j;
       return;
+    }
+  }
+  
+  public assj(int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.d = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public static final int a(int[] paramArrayOfInt)
+  {
+    return (paramArrayOfInt.length + 19) / 20;
+  }
+  
+  public static List<aspq> a(int paramInt, ArrayList<Integer> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramInt)
+    {
+      localArrayList.add(new assj(7, 3, -1, jdField_c_of_type_JavaLangString, false));
+      i += 1;
+    }
+    i = 0;
+    while (i < paramArrayList.size())
+    {
+      localArrayList.add(new assj(7, 2, ((Integer)paramArrayList.get(i)).intValue(), "", false));
+      i += 1;
+    }
+    int j = paramArrayList.size() % paramInt;
+    if (j > 0)
+    {
       i = 0;
-      break;
-      label58:
-      if ((this.a.f()) && (i == 0))
+      while (i < paramInt - j)
       {
-        if ((this.a.i()) && (!athc.a(athc.b)))
-        {
-          localObject1 = bglp.a(this.a, 2131697403);
-          ((bgpa)localObject1).setPositiveButton(2131694081, new bgmc());
-          ((bgpa)localObject1).show();
-        }
-        else
-        {
-          if (athc.a((FileInfo)localObject1)) {
-            athc.b((FileInfo)localObject1);
-          }
-          for (;;)
-          {
-            this.a.l();
-            if (!this.a.f()) {
-              break label230;
-            }
-            ((atho)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-            ((atho)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(athc.a((FileInfo)localObject1));
-            break;
-            if (this.a.h) {
-              athc.b();
-            }
-            if (((FileInfo)localObject1).a() == -1) {
-              ((FileInfo)localObject1).b(atvo.a(((FileInfo)localObject1).c()));
-            }
-            athc.a((FileInfo)localObject1);
-            if (this.a.h) {
-              LocalFileBrowserActivity.a(this.a);
-            }
-          }
-          label230:
-          ((atho)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        }
-      }
-      else if (!this.a.a())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(LocalFileBrowserActivity.g, 2, "click too fast , wait a minute.");
-        }
-      }
-      else
-      {
-        if (this.a.f()) {
-          bcst.b(this.a.app, "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        this.a.e();
-        Object localObject3 = atvo.a((FileInfo)localObject1);
-        ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-        localForwardFileInfo.b(((FileManagerEntity)localObject3).nSessionId);
-        localForwardFileInfo.d(3);
-        localForwardFileInfo.b(10000);
-        localForwardFileInfo.a(((FileInfo)localObject1).c());
-        localForwardFileInfo.d(((FileInfo)localObject1).d());
-        localForwardFileInfo.d(((FileInfo)localObject1).a());
-        localObject2 = new Intent(this.a.getApplicationContext(), FileBrowserActivity.class);
-        ((Intent)localObject2).putExtra("fileinfo", localForwardFileInfo);
-        if ((((FileManagerEntity)localObject3).nFileType == 0) || (((FileManagerEntity)localObject3).nFileType == 1))
-        {
-          athc.a(this.a.b);
-          ((Intent)localObject2).putExtra("clicked_file_hashcode", ((FileInfo)localObject1).hashCode());
-        }
-        localObject3 = new atvn();
-        ((atvn)localObject3).b = "file_viewer_in";
-        ((atvn)localObject3).jdField_a_of_type_Int = 80;
-        ((atvn)localObject3).c = atwl.a(((FileInfo)localObject1).d());
-        ((atvn)localObject3).jdField_a_of_type_Long = ((FileInfo)localObject1).a();
-        atvm.a(this.a.app.getCurrentAccountUin(), (atvn)localObject3);
-        this.a.startActivityForResult((Intent)localObject2, 102);
+        localArrayList.add(new assj(7, 2, -1, "", false));
+        i += 1;
       }
     }
+    return localArrayList;
+  }
+  
+  public static List<aspq> a(int paramInt, boolean paramBoolean, ArrayList<Integer> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramInt)
+    {
+      localArrayList.add(new assj(7, 3, -1, jdField_b_of_type_JavaLangString, false));
+      i += 1;
+    }
+    i = 0;
+    int k = paramArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      if ((paramBoolean) && (((Integer)paramArrayList.get(j)).intValue() > 255)) {
+        i += 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        if (((Integer)paramArrayList.get(j)).intValue() == -1) {
+          localArrayList.add(new assj(7, 1, 0, "", false));
+        } else {
+          localArrayList.add(new assj(7, 1, ((Integer)paramArrayList.get(j)).intValue(), "", false));
+        }
+      }
+    }
+    j = (paramArrayList.size() - i) % paramInt;
+    if (j > 0)
+    {
+      i = 0;
+      while (i < paramInt - j)
+      {
+        localArrayList.add(new assj(7, 1, -1, "", false));
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static List<aspq> a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    ArrayList localArrayList1 = asle.a();
+    ArrayList localArrayList2 = askx.a();
+    ArrayList localArrayList3 = new ArrayList(localArrayList1.size() + localArrayList2.size());
+    if (paramBoolean1)
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        localArrayList3.addAll(a((QQAppInterface)localAppRuntime, paramInt, paramBoolean3));
+      }
+    }
+    localArrayList3.addAll(a(paramInt, paramBoolean3, localArrayList1));
+    if (paramBoolean2) {
+      localArrayList3.addAll(a(paramInt, localArrayList2));
+    }
+    return localArrayList3;
+  }
+  
+  public static List<aspq> a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    return a(paramQQAppInterface, false, 7, paramInt);
+  }
+  
+  public static List<aspq> a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramQQAppInterface == null) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramInt)
+    {
+      localArrayList.add(new assj(7, 3, -1, jdField_a_of_type_JavaLangString, false));
+      i += 1;
+    }
+    paramQQAppInterface = ((asmn)paramQQAppInterface.getManager(172)).a();
+    int j;
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 1))
+    {
+      j = 0;
+      i = 0;
+      if ((j >= paramQQAppInterface.size()) || (i >= paramInt * 3))
+      {
+        if (i >= paramInt * 3) {
+          break label269;
+        }
+        j = i % paramInt;
+        if (j == 0) {
+          break label269;
+        }
+        i = 0;
+      }
+    }
+    while (i < paramInt - j)
+    {
+      localArrayList.add(new assj(7, 1, -1, "", false));
+      i += 1;
+      continue;
+      EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramQQAppInterface.get(j);
+      int k = 1;
+      if (localSmallYellowItem.type.get() == 2) {
+        k = 2;
+      }
+      if ((paramBoolean) && (k == 1) && (localSmallYellowItem.id.get() > 255)) {}
+      for (;;)
+      {
+        j += 1;
+        break;
+        localArrayList.add(new assj(7, k, localSmallYellowItem.id.get(), "", true));
+        i += 1;
+      }
+      QLog.e("SystemAndEmojiEmoticonInfo", 1, "CommonlyUsedSystemEmoji IS NULL");
+    }
+    label269:
+    return localArrayList;
+  }
+  
+  public static List<aspq> a(QQAppInterface paramQQAppInterface, int paramInt, int[] paramArrayOfInt)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("SystemAndEmojiEmoticonInfo", 1, "getEmoticonList app = null");
+      return null;
+    }
+    if (paramArrayOfInt != null)
+    {
+      paramQQAppInterface = paramArrayOfInt;
+      if (paramArrayOfInt.length != 0) {}
+    }
+    else
+    {
+      paramQQAppInterface = assp.a();
+    }
+    paramArrayOfInt = new ArrayList(paramQQAppInterface.length);
+    int i = 0;
+    while (i < paramQQAppInterface.length)
+    {
+      paramArrayOfInt.add(Integer.valueOf(paramQQAppInterface[i]));
+      i += 1;
+    }
+    paramQQAppInterface = new ArrayList(paramArrayOfInt.size());
+    int j = paramArrayOfInt.size();
+    i = 0;
+    if (i < j)
+    {
+      Integer localInteger = (Integer)paramArrayOfInt.get(i);
+      if (behh.a(localInteger.intValue())) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (localInteger.intValue() == -1) {
+          paramQQAppInterface.add(new assj(7, 1, 0, "", false));
+        } else {
+          paramQQAppInterface.add(new assj(7, 1, localInteger.intValue(), "", false));
+        }
+      }
+    }
+    j = paramQQAppInterface.size() % paramInt;
+    if (j > 0)
+    {
+      i = 0;
+      while (i < paramInt - j)
+      {
+        paramQQAppInterface.add(new assj(7, 1, -1, "", false));
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static List<aspq> a(QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("SystemAndEmojiEmoticonInfo", 1, "getEmoticonList app = null");
+      paramQQAppInterface = null;
+    }
+    ArrayList localArrayList2;
+    ArrayList localArrayList1;
+    do
+    {
+      return paramQQAppInterface;
+      ArrayList localArrayList3 = asle.a();
+      localArrayList2 = askx.a();
+      localArrayList1 = new ArrayList(localArrayList3.size() + localArrayList2.size());
+      if ((paramInt2 != 2) && (paramInt2 != 3)) {
+        localArrayList1.addAll(a(paramQQAppInterface, paramInt1, paramBoolean));
+      }
+      localArrayList1.addAll(a(paramInt1, paramBoolean, localArrayList3));
+      paramQQAppInterface = localArrayList1;
+    } while (paramInt2 == 2);
+    localArrayList1.addAll(a(paramInt1, localArrayList2));
+    return localArrayList1;
+  }
+  
+  public static List<asmu> a(int[] paramArrayOfInt)
+  {
+    ArrayList localArrayList = new ArrayList(paramArrayOfInt.length + asmq.jdField_b_of_type_Int);
+    int j = asmq.jdField_b_of_type_Int % 20;
+    int i = asmq.jdField_b_of_type_Int - 1;
+    while (i >= asmq.jdField_b_of_type_Int - j)
+    {
+      localArrayList.add(new assj(7, 2, i, "", false));
+      i -= 1;
+    }
+    i = 0;
+    while (i < 20 - j)
+    {
+      localArrayList.add(new assj(7, 2, -1, "", false));
+      i += 1;
+    }
+    i = asmq.jdField_b_of_type_Int - j - 1;
+    if (i >= 0)
+    {
+      if (asky.a().a(2).b(i)) {
+        if (QLog.isColorLevel()) {
+          QLog.d("SystemAndEmojiEmoticonInfo", 2, new Object[] { "getOldEmoticonList hided:", Integer.valueOf(i), " ,type:", Integer.valueOf(2) });
+        }
+      }
+      for (;;)
+      {
+        i -= 1;
+        break;
+        localArrayList.add(new assj(7, 2, i, "", false));
+      }
+    }
+    j = paramArrayOfInt.length;
+    i = 0;
+    if (i < j)
+    {
+      int k = paramArrayOfInt[i];
+      if (asky.a().a(1).b(k)) {
+        if (QLog.isColorLevel()) {
+          QLog.d("SystemAndEmojiEmoticonInfo", 2, new Object[] { "getOldEmoticonList hided:", Integer.valueOf(k), " ,type:", Integer.valueOf(1) });
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localArrayList.add(new assj(7, 1, k, "", false));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = a(paramQQAppInterface, 0);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+    {
+      int i = 0;
+      while ((i < 84) && (i < paramQQAppInterface.size()))
+      {
+        Object localObject = (aspq)paramQQAppInterface.get(i);
+        if ((localObject instanceof assj))
+        {
+          localObject = (assj)localObject;
+          if ((((assj)localObject).jdField_c_of_type_Int != 3) && (((assj)localObject).jdField_b_of_type_Int != -1))
+          {
+            localObject = (URLDrawable)((assj)localObject).a(false);
+            if ((localObject != null) && (((URLDrawable)localObject).getStatus() != 1)) {
+              ((URLDrawable)localObject).startDownload();
+            }
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public Drawable a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int != -1)) {
+      localObject1 = asle.a(paramInt);
+    }
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject1 = localObject2;
+      } while (2 != this.jdField_a_of_type_Int);
+      localObject1 = localObject2;
+    } while (this.jdField_b_of_type_Int == -1);
+    return askx.a(paramInt);
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat)
+  {
+    return a(this.jdField_b_of_type_Int, true);
+  }
+  
+  public Drawable a(boolean paramBoolean)
+  {
+    return a(this.jdField_b_of_type_Int, paramBoolean);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    if (this.jdField_b_of_type_Int == -1) {
+      return;
+    }
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    Editable localEditable = paramEditText.getEditableText();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (paramContext = behh.b(this.jdField_b_of_type_Int);; paramContext = behh.a(this.jdField_b_of_type_Int))
+    {
+      localEditable.replace(i, j, paramContext);
+      paramEditText.requestFocus();
+      a(paramQQAppInterface, paramSessionInfo);
+      if (this.jdField_b_of_type_Boolean) {
+        bdll.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717F", 0, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", "", "");
+      }
+      if ((paramQQAppInterface != null) && (behh.a(this.jdField_b_of_type_Int)) && (paramSessionInfo != null)) {
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "0X800812C", ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_b_of_type_Int), String.valueOf(amsx.a(paramQQAppInterface)) });
+      }
+      asky.a().a(this.jdField_a_of_type_Int).a(this.jdField_b_of_type_Int, 1);
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    EmosmPb.SmallYellowItem localSmallYellowItem = new EmosmPb.SmallYellowItem();
+    localSmallYellowItem.id.set(this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int i = 1;; i = 2)
+    {
+      localSmallYellowItem.type.set(i);
+      long l = System.currentTimeMillis();
+      localSmallYellowItem.ts.set(l);
+      String str2 = "";
+      String str1 = str2;
+      if (paramSessionInfo != null)
+      {
+        str1 = str2;
+        if (!TextUtils.isEmpty(paramSessionInfo.jdField_b_of_type_JavaLangString)) {
+          str1 = paramSessionInfo.jdField_b_of_type_JavaLangString;
+        }
+      }
+      QLog.d("SystemAndEmojiEmoticonInfo", 1, "send saveemoji type = " + i + ";id = " + this.jdField_b_of_type_Int + ";ts = " + l + ";troopUin = " + str1);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = (asmn)paramQQAppInterface.getManager(172);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.a(localSmallYellowItem);
+        }
+      }
+      return;
+    }
+  }
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != -1)) {
+      localObject1 = behh.a(this.jdField_b_of_type_Int, true);
+    }
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject1 = localObject2;
+      } while (this.jdField_a_of_type_Int != 2);
+      localObject1 = localObject2;
+    } while (this.jdField_b_of_type_Int == -1);
+    return super.b(paramContext, paramFloat);
   }
 }
 

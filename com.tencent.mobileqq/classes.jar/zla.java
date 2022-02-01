@@ -1,18 +1,8 @@
-public class zla
+public abstract interface zla
 {
-  public static long a(String paramString, long paramLong)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      yqp.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
-    }
-    return paramLong;
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void j();
 }
 
 

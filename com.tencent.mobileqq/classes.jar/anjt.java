@@ -1,72 +1,49 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import android.text.TextUtils;
 
-final class anjt
-  implements Comparator<Entity>
+public class anjt
+  implements Comparable<anjt>
 {
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public short b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e = -1;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 0;
+  public String g;
+  public int h;
+  
+  public int a(anjt paramanjt)
   {
-    int i = 0;
-    if ((paramEntity1 instanceof Groups))
+    if (paramanjt == null) {}
+    do
     {
-      paramEntity1 = (Groups)paramEntity1;
-      paramEntity2 = (Groups)paramEntity2;
-      return paramEntity1.seqid - paramEntity2.seqid;
-    }
-    Object localObject = "-";
-    String str = "-";
-    int j;
-    if ((paramEntity1 instanceof Friends))
-    {
-      paramEntity1 = (Friends)paramEntity1;
-      localObject = (Friends)paramEntity2;
-      j = paramEntity1.mComparePartInt;
-      paramEntity2 = paramEntity1.mCompareSpell;
-      i = ((Friends)localObject).mComparePartInt;
-      paramEntity1 = ((Friends)localObject).mCompareSpell;
-    }
-    for (;;)
-    {
-      return anjs.a(j, paramEntity2, i, paramEntity1);
-      if ((paramEntity1 instanceof TroopInfo))
-      {
-        paramEntity1 = (TroopInfo)paramEntity1;
-        localObject = (TroopInfo)paramEntity2;
-        j = paramEntity1.mComparePartInt;
-        i = ((TroopInfo)localObject).mComparePartInt;
-        paramEntity2 = paramEntity1.mCompareSpell;
-        paramEntity1 = ((TroopInfo)localObject).mCompareSpell;
+      return -1;
+      if (this.jdField_a_of_type_Boolean == paramanjt.jdField_a_of_type_Boolean) {
+        return -(int)(this.c - paramanjt.c);
       }
-      else if ((paramEntity1 instanceof DiscussionInfo))
-      {
-        paramEntity1 = (DiscussionInfo)paramEntity1;
-        localObject = (DiscussionInfo)paramEntity2;
-        j = paramEntity1.mComparePartInt;
-        i = ((DiscussionInfo)localObject).mComparePartInt;
-        paramEntity2 = paramEntity1.mCompareSpell;
-        paramEntity1 = ((DiscussionInfo)localObject).mCompareSpell;
-      }
-      else if ((paramEntity1 instanceof PublicAccountInfo))
-      {
-        paramEntity1 = (PublicAccountInfo)paramEntity1;
-        localObject = (PublicAccountInfo)paramEntity2;
-        j = paramEntity1.mComparePartInt;
-        i = ((PublicAccountInfo)localObject).mComparePartInt;
-        paramEntity2 = paramEntity1.mCompareSpell;
-        paramEntity1 = ((PublicAccountInfo)localObject).mCompareSpell;
-      }
-      else
-      {
-        j = 0;
-        paramEntity1 = str;
-        paramEntity2 = (Entity)localObject;
-      }
-    }
+    } while (this.jdField_a_of_type_Boolean);
+    return 0;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
   }
 }
 

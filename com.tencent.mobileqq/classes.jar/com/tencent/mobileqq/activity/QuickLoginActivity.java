@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aezv;
-import aezw;
+import afjc;
+import afjd;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -21,11 +21,11 @@ public class QuickLoginActivity
   ListView jdField_a_of_type_AndroidWidgetListView;
   SimpleAdapter jdField_a_of_type_AndroidWidgetSimpleAdapter;
   public ArrayList<HashMap<String, String>> a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aezw(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new afjd(this);
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131374718));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131374855));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     c();
     b();
@@ -42,9 +42,9 @@ public class QuickLoginActivity
       localHashMap2.put("text", (String)localHashMap1.get("qq") + " " + (String)localHashMap1.get("password"));
       localArrayList.add(localHashMap2);
     }
-    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558430, new String[] { "text" }, new int[] { 2131368856 });
+    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558430, new String[] { "text" }, new int[] { 2131368948 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new aezv(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new afjc(this));
   }
   
   /* Error */

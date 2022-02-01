@@ -1,68 +1,17 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.GZIPInputStream;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aydo
+class aydo
+  extends nkp
 {
-  private static void a(InputStream paramInputStream)
-  {
-    if (paramInputStream != null) {}
-    try
-    {
-      paramInputStream.close();
-      return;
-    }
-    catch (IOException paramInputStream) {}
-  }
+  aydo(aydm paramaydm, aydt paramaydt) {}
   
-  public static void a(InputStream paramInputStream, OutputStream paramOutputStream)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    try
-    {
-      paramInputStream = new GZIPInputStream(paramInputStream);
-      try
-      {
-        byte[] arrayOfByte = new byte[1024];
-        for (;;)
-        {
-          int i = paramInputStream.read(arrayOfByte, 0, 1024);
-          if (i == -1) {
-            break;
-          }
-          paramOutputStream.write(arrayOfByte, 0, i);
-        }
-        a(paramOutputStream);
-      }
-      finally
-      {
-        paramOutputStream = paramInputStream;
-        paramInputStream = localObject;
-      }
+    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
+    if (this.jdField_a_of_type_Aydt != null) {
+      this.jdField_a_of_type_Aydt.a(paramInt, paramArrayOfByte, paramBundle);
     }
-    finally
-    {
-      for (;;)
-      {
-        paramOutputStream = null;
-      }
-    }
-    throw paramInputStream;
-    a(paramInputStream);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    a(paramArrayOfByte, localByteArrayOutputStream);
-    byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-    localByteArrayOutputStream.flush();
-    localByteArrayOutputStream.close();
-    paramArrayOfByte.close();
-    return arrayOfByte;
   }
 }
 

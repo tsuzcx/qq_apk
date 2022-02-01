@@ -1,48 +1,30 @@
-import android.os.Bundle;
+import android.annotation.TargetApi;
+import android.view.DragEvent;
+import android.view.View;
+import android.view.View.OnDragListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aypl
-  implements anil
+@TargetApi(11)
+class aypl
+  implements View.OnDragListener
 {
-  public void a(boolean paramBoolean) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aypl(ayot paramayot, int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  {
+    switch (paramDragEvent.getAction())
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, (Bundle)paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, (Bundle)paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, (Bundle)paramObject);
-      return;
-    case 5: 
-      a(paramBoolean);
-      return;
-    case 6: 
-      b(paramBoolean);
-      return;
     }
-    b(paramBoolean, (Bundle)paramObject);
+    for (;;)
+    {
+      return true;
+      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
+    }
   }
 }
 

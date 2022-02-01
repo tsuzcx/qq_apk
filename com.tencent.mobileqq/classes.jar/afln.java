@@ -1,18 +1,38 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afln
+class afln
+  extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  public afln(TroopMemberListActivity paramTroopMemberListActivity) {}
+  aflk jdField_a_of_type_Aflk;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  
+  public afln(aflm paramaflm, View paramView, aflk paramaflk)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Aflk = paramaflk;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374839));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
   
   public void onClick(View paramView)
   {
-    TroopMemberListActivity.b(this.a);
-    new bcsy(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Aflk != null) {
+      this.jdField_a_of_type_Aflk.a(paramView, getPosition());
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+      }
+    }
   }
 }
 

@@ -1,7 +1,24 @@
-import kotlin.Metadata;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkNotify$Companion;", "", "()V", "TAG", "", "WEATHER_ARK_APP_NAME", "WEATHER_ARK_METHOD_TO_CLIENT", "WEATHER_ARK_METHOD_TO_WEB", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class amaa {}
+public class amaa
+  implements MediaPlayer.OnCompletionListener
+{
+  public amaa(FixedSizeVideoView paramFixedSizeVideoView) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

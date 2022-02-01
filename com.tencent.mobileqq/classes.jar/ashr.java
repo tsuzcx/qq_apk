@@ -1,12 +1,13 @@
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+
 public class ashr
+  implements ashw
 {
-  public int a;
-  public String a;
+  public ashr(DragSortListView paramDragSortListView) {}
   
-  public ashr()
+  public float a(float paramFloat, long paramLong)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
+    return this.a.e * paramFloat;
   }
 }
 

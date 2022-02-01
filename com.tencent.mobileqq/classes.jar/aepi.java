@@ -1,29 +1,21 @@
-import android.util.Pair;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aepi
-  implements bkhw
+  implements View.OnClickListener
 {
-  public aepi(MainFragment paramMainFragment, List paramList, bkho parambkho) {}
+  public aepi(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
+    if (!this.a.getActivity().isFinishing()) {
+      ForwardTroopListFragment.a(this.a).dismiss();
     }
-    try
-    {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (aepp)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

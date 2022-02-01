@@ -1,58 +1,56 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yjg
-  extends wfr<yjc, ybk>
+  extends QQUIEventReceiver<yja, xas>
 {
-  public yjg(yjc paramyjc)
+  public yjg(@NonNull yja paramyja)
   {
-    super(paramyjc);
+    super(paramyja);
   }
   
-  public void a(@NonNull yjc paramyjc, @NonNull ybk paramybk)
+  public void a(@NonNull yja paramyja, @NonNull xas paramxas)
   {
-    int i = 1;
-    if (paramybk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (TextUtils.equals(paramxas.jdField_a_of_type_JavaLangString, String.valueOf(paramyja.hashCode())))
     {
-      localObject = paramyjc.a(paramybk.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramybk.jdField_a_of_type_JavaLangString });
+      if ((paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
+      {
+        yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramxas);
+        paramyja.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+        paramyja.jdField_a_of_type_JavaLangString = paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+        if (yja.a(paramyja) != -1) {
+          paramyja.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = yja.a(paramyja);
+        }
+        if (yja.b(paramyja) != -1) {
+          paramyja.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = yja.b(paramyja);
+        }
+        ((FriendListHandler)xiz.a().a(1)).c(paramxas.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+        ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramyja), 5, null, false);
+      }
+      for (;;)
+      {
+        yja.a(paramyja).a(paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+        return;
+        QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131705420) + paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
+        yuk.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramxas });
       }
     }
-    else
-    {
-      return;
-    }
-    if (!(localObject instanceof yht))
-    {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramybk.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = (yht)localObject;
-    ((yht)localObject).a(paramybk.jdField_a_of_type_JavaUtilList, paramybk.c);
-    CommentLikeFeedItem localCommentLikeFeedItem = (CommentLikeFeedItem)((yht)localObject).a;
-    if (paramybk.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      localCommentLikeFeedItem.mCommentIsEnd = i;
-      ((CommentLikeFeedItem)((yht)localObject).a).mCommentLastCookie = paramybk.jdField_b_of_type_JavaLangString;
-      ((CommentLikeFeedItem)((yht)localObject).a).mCommentCount = paramybk.jdField_b_of_type_Int;
-      ((yij)wpm.a(11)).a(((yht)localObject).a);
-      yjc.a(paramyjc).b(paramybk.jdField_a_of_type_JavaLangString);
-      yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d. isEnd:%b, cookie:%s", paramybk.jdField_a_of_type_JavaLangString, Integer.valueOf(((yht)localObject).b().size()), Boolean.valueOf(paramybk.jdField_a_of_type_Boolean), paramybk.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
-    }
+    yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramxas);
   }
   
   public Class acceptEventClass()
   {
-    return ybk.class;
+    return xas.class;
   }
-  
-  public void b(@NonNull yjc paramyjc, @NonNull ybk paramybk) {}
 }
 
 

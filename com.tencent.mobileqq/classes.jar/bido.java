@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import QC.UniLoginCheckRsp;
+import java.lang.ref.WeakReference;
 
-public final class bido
-  implements Parcelable.Creator<Workspace.SavedState>
+class bido
+  implements anui
 {
-  public Workspace.SavedState a(Parcel paramParcel)
+  private WeakReference<bidn> a;
+  
+  public bido(bidn parambidn)
   {
-    return new Workspace.SavedState(paramParcel, null);
+    this.a = new WeakReference(parambidn);
   }
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new Workspace.SavedState[paramInt];
+    bidn localbidn = (bidn)this.a.get();
+    if (localbidn == null) {}
+    while (!(paramObject instanceof UniLoginCheckRsp)) {
+      return;
+    }
+    localbidn.a(((UniLoginCheckRsp)paramObject).stKeyWord);
   }
 }
 

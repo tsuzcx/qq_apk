@@ -1,38 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeso
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aeso(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aeso(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (NotifyPushSettingActivity.a())
+    switch (paramView.getId())
     {
-      NotifyPushSettingActivity.b(this.a).setChecked(false);
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      if (!paramBoolean) {
-        break label121;
-      }
     }
-    label121:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.b(this.a).setVisibility(0);
-        NotifyPushSettingActivity.b(this.a).setVisibility(8);
-        break;
-      }
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      break;
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
+      this.a.a();
+      continue;
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
+      this.a.a();
+      continue;
+      Intent localIntent = new Intent(this.a, GesturePWDManualGuideActivity.class);
+      this.a.startActivity(localIntent);
+      continue;
+      localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
+      this.a.startActivityForResult(localIntent, 11);
+      this.a.overridePendingTransition(2130771997, 2130771990);
     }
   }
 }

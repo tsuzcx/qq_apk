@@ -1,298 +1,467 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptBitmapFile;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader.1;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.dns.DomainData;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.transfile.dns.IpData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.dynamic.Reflect;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AccountNotMatchException;
+import mqq.os.MqqHandler;
+import org.apache.http.Header;
+import org.jetbrains.annotations.Nullable;
 
 public class tye
+  extends beuf
 {
-  private final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  private final String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "2909288299" };
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
-  private String i;
+  private BaseApplicationImpl a;
   
-  public tye(tyc paramtyc, BaseApplicationImpl paramBaseApplicationImpl, int paramInt)
+  public tye(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-    this.jdField_a_of_type_Int = pha.c();
-    this.jdField_a_of_type_JavaLangString = ("PubAccountHttpDownloader." + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = pnh.a.h();
   }
   
-  private void a(bdwt parambdwt)
+  private File a(byte[] paramArrayOfByte, long paramLong)
   {
-    if (parambdwt != null)
+    if (paramArrayOfByte != null) {
+      return new RIJImageOptBitmapFile(paramArrayOfByte, paramLong);
+    }
+    return null;
+  }
+  
+  private String a()
+  {
+    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str2 = String.valueOf(bhnv.a(localContext));
+    String str1 = str2;
+    if (!bhsr.a(str2))
     {
-      if (parambdwt.jdField_a_of_type_JavaUtilHashMap != null)
-      {
-        parambdwt = (String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("param_rspHeader");
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "resp: " + parambdwt);
-        return;
+      str1 = str2;
+      if (str2.equals(String.valueOf(1))) {
+        str1 = balx.a(localContext);
       }
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "esp headers: empty");
-      return;
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "resp is null");
+    return str1;
   }
   
-  private boolean a(String paramString)
+  public static URL a(String paramString, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int k;
-    int j;
-    if (paramString != null)
-    {
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      k = arrayOfString.length;
-      j = 0;
-    }
+    return a(paramString, paramInt, null);
+  }
+  
+  public static URL a(String paramString, int paramInt, Object paramObject)
+  {
+    return a(paramString, paramInt, paramObject, false);
+  }
+  
+  public static URL a(String paramString, int paramInt, Object paramObject, boolean paramBoolean)
+  {
+    String str;
     for (;;)
     {
-      bool1 = bool2;
-      if (j < k)
+      try
       {
-        if (paramString.equals(arrayOfString[j])) {
-          bool1 = true;
+        if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
+          return new URL(paramString);
         }
-      }
-      else {
-        return bool1;
-      }
-      j += 1;
-    }
-  }
-  
-  public URLDrawableHandler a(URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new tyf(this, paramURLDrawableHandler, this);
-  }
-  
-  public void a()
-  {
-    this.jdField_c_of_type_Int = 0;
-    this.d = null;
-  }
-  
-  public void a(int paramInt, DownloadParams paramDownloadParams)
-  {
-    Object localObject1;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey("puin"))
-    {
-      localObject1 = (String)this.jdField_a_of_type_JavaUtilMap.get("puin");
-      paramDownloadParams = (String)this.jdField_a_of_type_JavaUtilMap.get("msgid");
-    }
-    for (;;)
-    {
-      if (a((String)localObject1)) {}
-      Object localObject2;
-      do
-      {
-        return;
-        if ((paramDownloadParams.mExtraInfo == null) || (!(paramDownloadParams.mExtraInfo instanceof MessageRecord))) {
-          break label900;
+        paramObject = blhn.a(paramString);
+        if (!paramObject.containsKey("busiType")) {
+          continue;
         }
-        paramDownloadParams = (MessageRecord)paramDownloadParams.mExtraInfo;
-        localObject1 = paramDownloadParams.frienduin;
-        if (((paramDownloadParams instanceof MessageForStructing)) && (((MessageForStructing)paramDownloadParams).structingMsg != null))
+        paramString = paramString.replace("busiType=" + (String)paramObject.get("busiType"), "busiType=" + paramInt);
+        if (paramBoolean) {
+          continue;
+        }
+        paramString = new URL("pubaccountimage", null, paramString);
+        str = paramString;
+        try
         {
-          paramDownloadParams = "" + ((MessageForStructing)paramDownloadParams).structingMsg.msgId;
+          if (!QLog.isColorLevel()) {
+            break label219;
+          }
+          QLog.d("PubAccountHttpDownloader", 2, "<--generateURL urlString =" + paramString.toString());
+          return paramString;
+        }
+        catch (MalformedURLException paramObject) {}
+      }
+      catch (MalformedURLException paramObject)
+      {
+        paramString = null;
+        continue;
+      }
+      str = paramString;
+      if (!QLog.isColorLevel()) {
+        break label219;
+      }
+      QLog.e("PubAccountHttpDownloader", 2, "<--generateURL urlString", paramObject);
+      return paramString;
+      paramString = blhn.a(paramString, "busiType", paramInt + "");
+      continue;
+      paramString = new URL(paramString);
+    }
+    label219:
+    return str;
+  }
+  
+  private void a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler, int paramInt1, boolean paramBoolean, int paramInt2, InputStream paramInputStream, long paramLong)
+  {
+    ThreadManager.getFileThreadHandler().post(new PubAccountHttpDownloader.1(this, paramOutputStream, paramDownloadParams, paramURLDrawableHandler, paramInt1, paramBoolean, paramInt2, paramInputStream, paramLong));
+  }
+  
+  private void a(String paramString, long paramLong)
+  {
+    if (bhnv.b(BaseApplication.getContext()) == 1) {}
+    for (String[] arrayOfString = { "param_WIFIPublicPlatDownloadFlow", "param_WIFIFlow", "param_Flow" };; arrayOfString = new String[] { "param_XGPublicPlatDownloadFlow", "param_XGFlow", "param_Flow" }) {
+      try
+      {
+        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(paramString)).sendAppDataIncerment(paramString, arrayOfString, paramLong);
+        if (QLog.isColorLevel()) {
+          QLog.d("PubAccountHttpDownloader", 2, "param_PublicPlatDownloadFlow fileSize: " + paramLong);
+        }
+        return;
+      }
+      catch (AccountNotMatchException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(URL paramURL)
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = InnerDns.getInstance().reqSerAddrList(paramURL.getHost(), 1002);
+        if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0)) {
           break;
         }
-        if ((!(paramDownloadParams instanceof MessageForPubAccount)) || (((MessageForPubAccount)paramDownloadParams).mPAMessage == null)) {
-          break label895;
+        Object localObject2 = new ArrayList();
+        localObject1 = InetAddress.getAllByName(paramURL.getHost());
+        if ((localObject1 == null) || (localObject1.length <= 0)) {
+          break;
         }
-        paramDownloadParams = "" + ((MessageForPubAccount)paramDownloadParams).mPAMessage.mMsgId;
-        break;
-        localObject2 = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
-        if ((localObject2 == null) || (!(localObject2 instanceof QQAppInterface))) {
-          break label334;
-        }
-        localObject2 = (QQAppInterface)localObject2;
-        if (localObject1 == null) {
-          break label310;
-        }
-        switch (tzo.a((QQAppInterface)localObject2, (String)localObject1))
+        int k = localObject1.length;
+        int i = 0;
+        HashMap localHashMap1;
+        Object localObject3;
+        if (i < k)
         {
+          localHashMap1 = localObject1[i];
+          localObject3 = new IpData();
+          ((IpData)localObject3).mIp = localHashMap1.getHostAddress();
+          ((IpData)localObject3).mPort = 80;
+          if (beus.a(((IpData)localObject3).mIp))
+          {
+            j = 1;
+            ((IpData)localObject3).mType = j;
+            ((ArrayList)localObject2).add(localObject3);
+            i += 1;
+          }
         }
-      } while (this.jdField_b_of_type_Int == 0);
-      int j = 0;
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_acc_type", "" + j);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_puin", localObject1);
-      label310:
-      localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-      if (localObject1 != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_uin", localObject1);
+        else
+        {
+          localObject2 = new DomainData(paramURL.getHost(), (ArrayList)localObject2);
+          localHashMap1 = (HashMap)Reflect.on(InnerDns.getInstance()).get("mNetMap");
+          localObject3 = a();
+          if (localHashMap1 != null)
+          {
+            if (localHashMap1.containsKey(localObject3)) {
+              ((HashMap)localHashMap1.get(localObject3)).put(paramURL.getHost(), localObject2);
+            }
+          }
+          else
+          {
+            QLog.d("PubAccountHttpDownloader", 1, "hook success: " + Arrays.toString((Object[])localObject1));
+            return;
+          }
+          HashMap localHashMap2 = new HashMap();
+          localHashMap2.put(paramURL.getHost(), localObject2);
+          localHashMap1.put(localObject3, localHashMap2);
+          continue;
+        }
+        int j = 28;
       }
-      label334:
-      if (paramDownloadParams != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_msgid", paramDownloadParams);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("AttemptCount", "" + paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put("picFormat", this.e);
-      this.jdField_a_of_type_JavaUtilHashMap.put("netType", this.h);
-      this.jdField_a_of_type_JavaUtilHashMap.put("plateform", this.g);
-      this.jdField_a_of_type_JavaUtilHashMap.put("pixDensity", this.i);
-      paramDownloadParams = InnerDns.getInstance().reqDnsForIpList(this.jdField_c_of_type_JavaLangString, 1009);
-      if (paramDownloadParams != null)
+      catch (Exception paramURL)
       {
-        paramDownloadParams = TextUtils.join(",", paramDownloadParams);
-        label459:
-        this.jdField_a_of_type_JavaUtilHashMap.put("IPs", paramDownloadParams);
-        this.jdField_a_of_type_JavaUtilHashMap.put("ServerIP", "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("OriginURL", this.jdField_b_of_type_JavaLangString);
-        localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label852;
-        }
-        paramDownloadParams = String.valueOf(1);
-        label514:
-        ((HashMap)localObject1).put("Success", paramDownloadParams);
-        this.jdField_a_of_type_JavaUtilHashMap.put("TotalTime", Long.toString(this.jdField_b_of_type_Long));
-        this.jdField_a_of_type_JavaUtilHashMap.put("picType", this.f);
-        this.jdField_a_of_type_JavaUtilHashMap.put("ReceivedBytes", String.valueOf(this.jdField_c_of_type_Long));
-        this.jdField_a_of_type_JavaUtilHashMap.put("ErrorReason", this.d);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", this.jdField_c_of_type_Int + "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("Speed", Float.toString((float)this.jdField_c_of_type_Long / ((float)this.jdField_b_of_type_Long / 1000.0F)));
-        paramDownloadParams = "actSubscriptionUnkonw";
-        switch (this.jdField_b_of_type_Int)
-        {
-        }
+        QLog.d("PubAccountHttpDownloader", 1, paramURL.getMessage());
+        return;
       }
+    }
+  }
+  
+  private byte[] a(InputStream paramInputStream, long paramLong)
+  {
+    return ayei.a(paramInputStream, (int)paramLong);
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    String str = paramDownloadParams.urlStr;
+    if (str.startsWith("pubaccountimage")) {
+      str = paramDownloadParams.url.getFile();
+    }
+    for (;;)
+    {
+      Object localObject1 = blhn.a(str);
+      if (((Map)localObject1).get("busiType") != null) {}
+      int i;
+      tyg localtyg;
+      int j;
+      Object localObject4;
       for (;;)
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("reportTag:").append(paramDownloadParams).append(", success:").append(this.jdField_a_of_type_Boolean).append(", time:").append(this.jdField_b_of_type_Long).append(", size:").append(this.jdField_c_of_type_Long).append(", url:").append(this.jdField_b_of_type_JavaLangString).append(", exInfo:").append(this.jdField_a_of_type_JavaUtilHashMap.toString());
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, ((StringBuilder)localObject1).toString());
-        bctj.a(BaseApplication.getContext()).a(null, paramDownloadParams, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "", true);
-        return;
-        j = 1;
-        break;
-        j = 2;
-        break;
-        j = 3;
-        break;
-        j = 4;
-        break;
-        paramDownloadParams = "";
-        break label459;
-        label852:
-        paramDownloadParams = String.valueOf(0);
-        break label514;
-        paramDownloadParams = "actSubscriptionAIO";
-        continue;
-        paramDownloadParams = "actSubscriptionDetail";
-        continue;
-        paramDownloadParams = "actSubscriptionFolder";
-        continue;
-        paramDownloadParams = "actKandianImage";
-        continue;
-        paramDownloadParams = "actNativeWebImage";
+        try
+        {
+          i = Integer.parseInt((String)((Map)localObject1).get("busiType"));
+          paramDownloadParams.url = new URL(str);
+          paramDownloadParams.urlStr = str;
+          localtyg = new tyg(this, this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, i);
+          localtyg.a(paramDownloadParams, (Map)localObject1);
+          localObject1 = null;
+          if (paramDownloadParams.headers == null) {
+            break label812;
+          }
+          Header[] arrayOfHeader = paramDownloadParams.headers;
+          j = arrayOfHeader.length;
+          i = 0;
+          if (i >= j) {
+            break;
+          }
+          localObject4 = arrayOfHeader[i];
+          if ("my_uin".equals(((Header)localObject4).getName())) {
+            localObject1 = ((Header)localObject4).getValue();
+          }
+          i += 1;
+          continue;
+          i = -1;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str + "  busiType:" + (String)((Map)localObject1).get("busiType"), localNumberFormatException);
+        }
       }
-      label895:
-      paramDownloadParams = null;
-      continue;
-      label900:
-      paramDownloadParams = null;
-      localObject1 = null;
+      label799:
+      label802:
+      label809:
+      label812:
+      for (Object localObject5 = localObject1;; localObject5 = null)
+      {
+        tyf localtyf = new tyf(this, paramOutputStream);
+        Object localObject3 = null;
+        j = 0;
+        int k = 1;
+        i = k - 1;
+        localObject1 = localObject3;
+        if (k > 0)
+        {
+          j += 1;
+          localObject1 = localObject3;
+          localObject4 = localObject3;
+        }
+        for (;;)
+        {
+          try
+          {
+            localtyg.a();
+            localObject1 = localObject3;
+            localObject4 = localObject3;
+            if (this.jdField_a_of_type_Boolean)
+            {
+              localObject1 = localObject3;
+              localObject4 = localObject3;
+              if (pnh.a.i())
+              {
+                localObject1 = localObject3;
+                localObject4 = localObject3;
+                a(paramDownloadParams.url);
+              }
+            }
+            localObject1 = localObject3;
+            localObject4 = localObject3;
+            localObject3 = super.a(localtyf, paramDownloadParams, localtyg.a(paramURLDrawableHandler));
+            if (localObject3 != null)
+            {
+              localObject1 = localObject3;
+              localObject4 = localObject3;
+              boolean bool = localObject3 instanceof RIJImageOptBitmapFile;
+              if (!bool) {
+                break label809;
+              }
+            }
+            i = -1;
+            if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+              continue;
+            }
+            localtyg.a(j, paramDownloadParams);
+            localObject1 = localObject3;
+          }
+          catch (IOException localIOException)
+          {
+            localObject4 = localObject2;
+            if (!localIOException.getMessage().contains(" response error! response code: ")) {
+              continue;
+            }
+            if (i != 0) {
+              continue;
+            }
+            localObject4 = localObject2;
+            throw localIOException;
+          }
+          finally
+          {
+            if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+              continue;
+            }
+            localtyg.a(j, paramDownloadParams);
+            localObject2 = localObject4;
+            continue;
+            localObject4 = localObject2;
+            localtyg.a(-1, localIOException.getMessage());
+            continue;
+            localObject4 = localObject2;
+            try
+            {
+              ((FileOutputStream)paramOutputStream).getChannel().truncate(0L);
+              if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+                localtyg.a(j, paramDownloadParams);
+              }
+            }
+            catch (Exception localException)
+            {
+              localObject4 = localObject2;
+              QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str, localException);
+              continue;
+              if ((i == -1) || (i == 0))
+              {
+                if ((tyg.a(localtyg) != 0) && (paramDownloadParams.retryCount != suo.g)) {
+                  break label799;
+                }
+                localtyg.a(j, paramDownloadParams);
+                continue;
+              }
+              try
+              {
+                Thread.sleep(5L);
+              }
+              catch (InterruptedException localInterruptedException2)
+              {
+                localInterruptedException2.printStackTrace();
+              }
+            }
+            continue;
+            if ((i != -1) && (i != 0)) {
+              continue;
+            }
+            if ((tyg.a(localtyg) != 0) && (paramDownloadParams.retryCount != suo.g)) {
+              continue;
+            }
+            localtyg.a(j, paramDownloadParams);
+            throw paramOutputStream;
+            try
+            {
+              Thread.sleep(5L);
+            }
+            catch (InterruptedException paramDownloadParams)
+            {
+              paramDownloadParams.printStackTrace();
+            }
+            continue;
+            if (localObject5 == null) {
+              continue;
+            }
+            a(localObject5, localtyf.a);
+            return localObject2;
+          }
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+          {
+            throw new IOException("cancelled");
+            if ((i == -1) || (i == 0))
+            {
+              if ((tyg.a(localtyg) != 0) && (paramDownloadParams.retryCount != suo.g)) {
+                break label802;
+              }
+              localtyg.a(j, paramDownloadParams);
+              localObject1 = localObject3;
+              localObject3 = localObject1;
+              k = i;
+              break;
+            }
+            try
+            {
+              Thread.sleep(5L);
+              localObject1 = localObject3;
+            }
+            catch (InterruptedException localInterruptedException1)
+            {
+              localInterruptedException1.printStackTrace();
+              localObject2 = localObject3;
+            }
+            continue;
+          }
+          continue;
+          Object localObject2 = localInterruptedException2;
+        }
+      }
     }
   }
   
-  public void a(int paramInt, String paramString)
+  @Nullable
+  protected File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler, int paramInt1, boolean paramBoolean, int paramInt2, InputStream paramInputStream, long paramLong)
   {
-    if (this.jdField_c_of_type_Int == 0) {
-      this.jdField_c_of_type_Int = paramInt;
-    }
-    this.d = paramString;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-  }
-  
-  public void a(bdwt parambdwt, String paramString)
-  {
-    a(parambdwt);
-    if (parambdwt != null)
+    if (pnh.a.d())
     {
-      this.f = "none";
-      paramString = (String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("Content-Type");
-      if ((paramString != null) && (paramString.startsWith("image/"))) {
-        this.f = paramString.replace("image/", "");
+      byte[] arrayOfByte = a(paramInputStream, paramLong);
+      QLog.d("PubAccountHttpDownloader", 1, "read into memory done");
+      if (arrayOfByte != null)
+      {
+        a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler, paramInt1, paramBoolean, paramInt2, new ByteArrayInputStream(arrayOfByte), paramLong);
+        return a(arrayOfByte, paramLong);
       }
-      this.jdField_c_of_type_Long = parambdwt.jdField_a_of_type_Long;
-      return;
     }
-    this.d = paramString;
+    return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler, paramInt1, paramBoolean, paramInt2, paramInputStream, paramLong);
   }
   
-  public void a(DownloadParams paramDownloadParams, Map<String, String> paramMap)
+  public void a(bevm parambevm, URLDrawableHandler paramURLDrawableHandler)
   {
-    long l = bdwu.a().a();
-    this.h = "None";
-    if ((l > 0L) && (l < anhk.c.length)) {
-      this.h = anhk.c[((int)l)];
-    }
-    this.g = ("ANDROID.MOBILE-" + Build.MODEL + ".SDK-" + Build.VERSION.SDK);
-    DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDisplayMetrics();
-    this.i = (localDisplayMetrics.widthPixels + "*" + localDisplayMetrics.heightPixels);
-    this.jdField_b_of_type_JavaLangString = paramDownloadParams.urlStr;
-    this.jdField_c_of_type_JavaLangString = paramDownloadParams.url.getHost();
-    this.e = "none";
-    int j = this.jdField_b_of_type_JavaLangString.lastIndexOf("/");
-    if ((j != -1) && (j + 1 <= this.jdField_b_of_type_JavaLangString.length()) && (j + 1 < this.jdField_b_of_type_JavaLangString.length()))
+    if ((paramURLDrawableHandler instanceof tyh))
     {
-      this.e = this.jdField_b_of_type_JavaLangString.substring(j + 1);
-      j = this.e.indexOf("?");
-      if (j != -1) {
-        this.e = this.e.substring(0, j);
+      tyg localtyg = ((tyh)paramURLDrawableHandler).a();
+      if (localtyg != null)
+      {
+        localtyg.a(parambevm, parambevm.a);
+        ((tyh)paramURLDrawableHandler).a("image/" + tyg.a(localtyg));
       }
     }
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  protected boolean a(File paramFile)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_b_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    return paramFile instanceof RIJImageOptBitmapFile;
   }
 }
 

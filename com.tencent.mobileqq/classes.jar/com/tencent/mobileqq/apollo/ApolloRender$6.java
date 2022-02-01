@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import amkj;
+import amwd;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloRender$6
   implements Runnable
 {
-  ApolloRender$6(ApolloRender paramApolloRender, amkj paramamkj, int paramInt1, int paramInt2) {}
+  ApolloRender$6(ApolloRender paramApolloRender, amwd paramamwd, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amkj != null)
+    if (this.jdField_a_of_type_Amwd != null)
     {
       QLog.d("sava_ApolloRender", 2, "cb.onSurfaceReady");
-      this.jdField_a_of_type_Amkj.onSurfaceReady(this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_Amwd.onSurfaceReady(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

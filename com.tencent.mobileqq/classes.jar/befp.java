@@ -1,39 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class befp
-  implements ayyt
+  implements View.OnClickListener
 {
-  befp(befo parambefo) {}
+  befp(befl parambefl) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public void a(ayyu paramayyu) {}
-  
-  public void b(ayyu paramayyu)
-  {
-    if (paramayyu.jdField_b_of_type_Int == 0)
-    {
-      this.a.a.c = paramayyu.jdField_b_of_type_JavaLangString;
-      this.a.a.a = paramayyu.c;
-      befo.a(this.a);
-      befo.a(this.a, new ErrorMessage());
-      return;
-    }
-    if ((paramayyu.jdField_b_of_type_Int == bdza.a(940010)) && (befo.a(this.a).getAndIncrement() < 2))
-    {
-      befo.b(this.a);
-      yqp.d("tribe_publish_TribeVideoFileObject", "retry load file");
-      return;
-    }
-    befo.c(this.a);
-    paramayyu = new ErrorMessage(paramayyu.jdField_b_of_type_Int, paramayyu.a);
-    befo.a(this.a, paramayyu);
+    PadInfo localPadInfo = (PadInfo)((bedx)paramView.getTag()).a;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", nmj.a(localPadInfo.pad_url, "_bid=2517"));
+    localBundle.putInt("key_team_work_edit_type", localPadInfo.type);
+    localBundle.putString("key_team_work_title", localPadInfo.title);
+    localBundle.putString("key_team_work_rul", localPadInfo.pad_url);
+    localBundle.putInt("key_team_work_pad_list_type", localPadInfo.type_list);
+    localBundle.putString("tdsourcetag", "s_qq_grpfile");
+    TeamWorkDocEditBrowserActivity.a(this.a.a, localBundle, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

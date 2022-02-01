@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -40,9 +40,9 @@ public class MoveDistIndicateView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     paramContext = getResources();
-    this.jdField_a_of_type_Int = afur.a(29.0F, paramContext);
-    this.jdField_b_of_type_Int = afur.a(42.0F, paramContext);
-    this.e = afur.a(10.0F, paramContext);
+    this.jdField_a_of_type_Int = agej.a(29.0F, paramContext);
+    this.jdField_b_of_type_Int = agej.a(42.0F, paramContext);
+    this.e = agej.a(10.0F, paramContext);
     this.c = this.jdField_a_of_type_Int;
     if (QLog.isDevelopLevel()) {
       QLog.d("MoveDistIndicateView", 4, "init(), mRaidusMin:" + this.jdField_a_of_type_Int + ",mRaidusMax:" + this.jdField_b_of_type_Int);
@@ -78,7 +78,7 @@ public class MoveDistIndicateView
       super.onDraw(paramCanvas);
       return;
       if (this.d == 1) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167095));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167105));
       }
       for (;;)
       {
@@ -86,11 +86,11 @@ public class MoveDistIndicateView
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
         break;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167096));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167106));
       }
       if (this.c > this.jdField_a_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166985));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166989));
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawCircle(m, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);

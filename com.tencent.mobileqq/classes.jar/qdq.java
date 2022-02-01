@@ -1,33 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-class qdq
-  implements ViewBase.OnClickListener
+public class qdq
+  implements URLDrawable.DownloadListener
 {
-  qdq(qdp paramqdp, pxk parampxk, BaseArticleInfo paramBaseArticleInfo) {}
+  public qdq(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onFileDownloadFailed(int paramInt)
   {
-    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
-    TemplateBean localTemplateBean = this.jdField_a_of_type_Pxk.a().mProteusTemplateBean;
-    if (localTemplateBean != null)
-    {
-      paramViewBase = qdp.a(this.jdField_a_of_type_Qdp, localTemplateBean, paramViewBase);
-      if (oqj.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
-        oqj.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pxk.a().getContext(), this.jdField_a_of_type_Pxk.h());
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Pxk.a().a(true, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
+    aayd localaayd = new aayd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842704));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localaayd, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

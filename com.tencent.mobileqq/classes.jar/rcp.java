@@ -1,46 +1,64 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function3;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xe5c.cmd0xe5c.RspBody;
-import tencent.im.oidb.cmd0xe5c.cmd0xe5c.VideoRspBody;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$fetchVideoWatchWord$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rcp
-  extends niv
+public class rcp
 {
-  rcp(Function3 paramFunction3) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private qgi jdField_a_of_type_Qgi;
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
+  public rcp(Context paramContext, ViewGroup paramViewGroup)
   {
-    Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
-    QLog.i("RIJWriteWatchWordModel", 1, "fetchVideoWatchWord error code = " + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Qgi = new qgi(paramContext);
+    b();
+    a(paramViewGroup);
+  }
+  
+  private String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramBundle = new cmd0xe5c.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (cmd0xe5c.VideoRspBody)paramBundle.video_rsp_body.get();
-      paramBundle = this.a;
-      if (paramBundle != null)
+      localJSONObject.put("tips", RIJUGCAddAccountFragment.a() + " " + rcn.a());
+      localJSONObject.put("edit_profile_text", rcn.c());
+      localJSONObject.put("use_origin_account_text", rcn.b());
+      localJSONObject.put("accountUin", ozs.a());
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        String str1 = paramArrayOfByte.watch_word.get();
-        String str2 = paramArrayOfByte.url.get();
-        Intrinsics.checkExpressionValueIsNotNull(str2, "videoRspBody.url.get()");
-        paramArrayOfByte = (Unit)paramBundle.invoke(str1, str2, Boolean.valueOf(paramArrayOfByte.is_open.get()));
+        QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[getJsonData] error, e = " + localJSONException);
       }
     }
-    do
-    {
+  }
+  
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {
       return;
-      paramArrayOfByte = this.a;
-    } while (paramArrayOfByte == null);
-    paramArrayOfByte = (Unit)paramArrayOfByte.invoke(null, "", Boolean.valueOf(false));
+    }
+    Object localObject = qib.a().a("default_feeds", "ugc_account_popup");
+    String str = a();
+    localObject = new PTSItemData.Builder().withItemID("RIJUGCPopupPtsLiteBuilder").withPageName("ugc_account_popup").withFrameTreeJson((String)localObject).withJsonData(str).build();
+    paramViewGroup.addView(this.jdField_a_of_type_Qgi.a(null, (PTSItemData)localObject));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Qgi.a(new rcq(this));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Qgi.a();
   }
 }
 

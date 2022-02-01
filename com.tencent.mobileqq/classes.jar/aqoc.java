@@ -1,37 +1,23 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class aqoc
+public final class aqoc
+  implements Parcelable.Creator<BusinessCard>
 {
-  public ArraySet<String> a = new ArraySet();
-  
-  public static aqoc a(String paramString)
+  public BusinessCard a(Parcel paramParcel)
   {
-    localaqoc = new aqoc();
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("white_list");
-      int i = 0;
-      while (i < paramString.length())
-      {
-        localaqoc.a.add(paramString.optString(i, ""));
-        i += 1;
-      }
-      return localaqoc;
-    }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
-      }
-    }
+    return new BusinessCard(paramParcel);
+  }
+  
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqoc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aull
-  implements View.OnClickListener
+  extends aulp
 {
-  public aull(AppletsSettingFragment paramAppletsSettingFragment) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public aull(FileManagerEntity paramFileManagerEntity)
   {
-    if (AppletsSettingFragment.a(this.a))
+    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
+    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
+    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
+      return "";
     }
-    AppletsSettingFragment localAppletsSettingFragment = this.a;
-    if (!AppletsSettingFragment.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AppletsSettingFragment.a(localAppletsSettingFragment, bool);
-      AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
-      break;
-    }
+    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
   }
 }
 

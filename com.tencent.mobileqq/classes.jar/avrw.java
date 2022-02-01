@@ -1,11 +1,21 @@
-public class avrw
+import com.etrump.mixlayout.EMEmoticon;
+import com.tencent.commonsdk.cache.QQLruCache;
+
+public final class avrw
+  extends QQLruCache<String, EMEmoticon>
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b = 0;
-  public int c = 0;
-  public int d = 0;
+  public avrw(int paramInt1, int paramInt2)
+  {
+    super(paramInt1, paramInt2);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, EMEmoticon paramEMEmoticon1, EMEmoticon paramEMEmoticon2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramEMEmoticon1, paramEMEmoticon2);
+    if (paramEMEmoticon1 != null) {
+      paramEMEmoticon1.deleteDescriptor();
+    }
+  }
 }
 
 

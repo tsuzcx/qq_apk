@@ -1,15 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-class vli
-  implements View.OnTouchListener
+public class vli
+  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  vli(vlg paramvlg) {}
+  public vli(QCircleBaseAggregationFragment paramQCircleBaseAggregationFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
   {
-    return false;
+    if (paramvxq != null) {
+      QLog.d(QCircleBaseAggregationFragment.a, 4, "initViewData:getFeedListRequestRsp_" + this.a.a() + ",state:" + paramvxq.a());
+    }
+    this.a.a(paramvxq);
   }
 }
 

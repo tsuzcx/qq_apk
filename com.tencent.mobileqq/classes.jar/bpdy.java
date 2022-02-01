@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
 
-public class bpdy
-  implements DialogInterface.OnDismissListener
+class bpdy
+  implements bpex
 {
-  public bpdy(EditVideoGuide paramEditVideoGuide) {}
+  bpdy(bpdx parambpdx, AppInterface paramAppInterface, bpdz parambpdz, bpeu parambpeu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Bpep.a(5);
+    bpam.b(bpdx.a(), "proxy onProcessFailed: errCode=" + paramInt);
+    if (this.jdField_a_of_type_Bpdz != null) {
+      this.jdField_a_of_type_Bpdz.a(paramInt, this.jdField_a_of_type_Bpeu.a());
+    }
+  }
+  
+  public void a(ArrayList<SmartFilterReqItem> paramArrayList)
+  {
+    bpam.b(bpdx.a(), "proxy onDataReadyForRequest");
+    bpdx.a(this.jdField_a_of_type_Bpdx, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList);
   }
 }
 

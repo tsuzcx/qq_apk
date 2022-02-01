@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.fts.entity.FTSEntity;
+import java.util.Arrays;
 
-class avhm
-  implements avlv
+public class avhm
 {
-  avhm(avhl paramavhl) {}
+  public int a;
+  public Class<? extends FTSEntity> a;
+  public String a;
+  public boolean a;
+  public avho[] a;
+  public String b;
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public avhm(Class<? extends FTSEntity> paramClass, avho[] paramArrayOfavho, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    avhl.a(this.a, paramNewTogetherRoomMessageData, 1);
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ArrayOfAvho = paramArrayOfavho;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public String toString()
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    avhl.a(this.a, paramNewTogetherRoomMessageData, 3);
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    avhl.a(this.a, paramNewTogetherRoomMessageData, 2);
+    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAvho) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
   }
 }
 

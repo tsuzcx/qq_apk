@@ -1,44 +1,107 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bfoy
-  implements Comparator<bfpg>
+public class bfoy
 {
-  bfoy(bfos parambfos) {}
+  public int a;
+  public bfoz a;
+  public String a;
   
-  public int a(bfpg parambfpg1, bfpg parambfpg2)
+  public bfoy()
   {
-    int j = -1;
-    if (((parambfpg1 instanceof MessageForDeliverGiftTips)) && ((parambfpg2 instanceof MessageForDeliverGiftTips)))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Bfoz = new bfoz();
+    a();
+  }
+  
+  public bfoy(bfoy parambfoy)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Bfoz = new bfoz();
+    if (parambfoy != null)
     {
-      parambfpg1 = (MessageForDeliverGiftTips)parambfpg1;
-      parambfpg2 = (MessageForDeliverGiftTips)parambfpg2;
-      int i;
-      if ((parambfpg1.isToAll()) && (parambfpg2.isToAll())) {
-        i = (int)(parambfpg1.time - parambfpg2.time);
-      }
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (parambfpg1.isToAll());
-        if (parambfpg2.isToAll()) {
-          return 1;
-        }
-        if ((parambfpg1.receiverUin == this.a.a.getLongAccountUin()) && (parambfpg2.receiverUin == this.a.a.getLongAccountUin())) {
-          return (int)(parambfpg1.time - parambfpg2.time);
-        }
-        i = j;
-      } while (parambfpg1.receiverUin == this.a.a.getLongAccountUin());
-      if (parambfpg2.receiverUin == this.a.a.getLongAccountUin()) {
-        return 1;
-      }
-      return (int)(parambfpg1.time - parambfpg2.time);
+      this.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
+      return;
     }
-    return (int)(parambfpg1.getShmsgseq() - parambfpg2.getShmsgseq());
+    a();
+  }
+  
+  public static final boolean a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    if (paramInt1 == 11) {
+      i = 31;
+    }
+    paramInt1 = paramInt2;
+    if (paramInt2 == 11) {
+      paramInt1 = 31;
+    }
+    if ((i == 2) || (i == 16)) {
+      if (i + 1 < paramInt1) {}
+    }
+    while (i >= paramInt1)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Bfoz.a()) && (bgiv.a(this.jdField_a_of_type_Bfoz.jdField_a_of_type_Int))) {
+      return this.jdField_a_of_type_Bfoz.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      return b(paramQQAppInterface, true, paramString);
+    }
+    return a();
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Bfoz.a()) {
+      return this.jdField_a_of_type_Bfoz.jdField_a_of_type_Long;
+    }
+    return -1L;
+  }
+  
+  public bfoy a(bfoy parambfoy)
+  {
+    if (parambfoy != null) {
+      this.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
+    }
+    return this;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bfoz.a();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bfoz.a();
+  }
+  
+  public int b(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Bfoz.a()) {
+      return this.jdField_a_of_type_Bfoz.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if ((this.jdField_a_of_type_Bfoz.a()) && (bgiv.a(this.jdField_a_of_type_Bfoz.jdField_a_of_type_Int))) {
+      return this.jdField_a_of_type_Bfoz.jdField_a_of_type_Long;
+    }
+    return -1L;
   }
 }
 

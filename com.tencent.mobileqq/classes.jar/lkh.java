@@ -1,16 +1,33 @@
-class lkh
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import mqq.app.BaseActivity;
+
+public class lkh
 {
-  byte jdField_a_of_type_Byte = 1;
-  byte b = 0;
-  byte c = 1;
-  byte d = 1;
-  byte e = 1;
-  byte f = 0;
-  byte g = 0;
-  byte h = 0;
-  byte i = 0;
+  private Runnable a;
   
-  lkh(lkc paramlkc) {}
+  public void a(VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
+  {
+    if ((paramVideoAppInterface == null) || (paramVideoController == null)) {}
+    do
+    {
+      return;
+      paramVideoController = paramVideoController.a();
+    } while ((this.a == null) || (paramVideoController == null));
+    paramVideoController.a(this.a, paramVideoAppInterface);
+    this.a = null;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
+  {
+    if ((paramBaseActivity == null) || (paramVideoAppInterface == null) || (paramVideoController == null)) {}
+    do
+    {
+      return;
+      paramVideoController = paramVideoController.a();
+    } while (paramVideoController == null);
+    this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
+  }
 }
 
 

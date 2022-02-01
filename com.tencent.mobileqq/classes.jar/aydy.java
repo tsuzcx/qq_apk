@@ -1,130 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aydy
+final class aydy
+  implements DialogInterface.OnCancelListener
 {
-  public static aydy a;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
+  aydy(DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public static long a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {
-      return 0L;
-    }
-    return localAppInterface.getLongAccountUin();
-  }
-  
-  public static aydy a()
-  {
-    if (jdField_a_of_type_Aydy == null) {
-      jdField_a_of_type_Aydy = new aydy();
-    }
-    return jdField_a_of_type_Aydy;
-  }
-  
-  public static AppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {
-      return "";
-    }
-    return localAppInterface.getCurrentAccountUin();
-  }
-  
-  public static TicketManager a()
-  {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {}
-    while (TextUtils.isEmpty(localAppInterface.getCurrentAccountUin())) {
-      return null;
-    }
-    return (TicketManager)localAppInterface.getManager(2);
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Aydy = null;
-  }
-  
-  public static String b()
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = ((TicketManager)localObject).getSkey(a());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
-  }
-  
-  public static String c()
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = ((TicketManager)localObject).getA2(a());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
-  }
-  
-  void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  void b(long paramLong)
-  {
-    this.b = paramLong;
-  }
-  
-  public long c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    this.a.onDismiss(paramDialogInterface);
   }
 }
 

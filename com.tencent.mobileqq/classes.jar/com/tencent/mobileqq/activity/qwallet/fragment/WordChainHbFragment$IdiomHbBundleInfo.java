@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
 import android.content.SharedPreferences;
-import blqw;
+import bmry;
 
 public class WordChainHbFragment$IdiomHbBundleInfo
-  extends blqw
+  extends bmry
 {
   public int currSelectedSubChannel = WordChainHbFragment.a().getInt("sp_key_last_selete_label", 0);
   public String skinId;

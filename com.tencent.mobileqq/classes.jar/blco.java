@@ -1,17 +1,31 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-class blco
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public class blco
 {
-  blco(blck paramblck) {}
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public String a()
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_JavaLangString;
     }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
+    }
+    return bleb.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public String toString()
+  {
+    return "[ft:" + this.jdField_a_of_type_Int + ",st:" + this.jdField_b_of_type_Int + ",fs:" + this.jdField_c_of_type_Int + ",fn:" + this.jdField_a_of_type_JavaLangString + ",fm:" + this.jdField_b_of_type_JavaLangString + ",a1:" + this.jdField_c_of_type_JavaLangString + ",a2:" + this.d + ",a3:" + this.e + "]";
   }
 }
 

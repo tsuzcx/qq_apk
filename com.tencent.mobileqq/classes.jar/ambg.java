@@ -1,23 +1,33 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import java.nio.ByteBuffer;
 
 public class ambg
-  implements View.OnLayoutChangeListener
 {
-  ambg(ambe paramambe) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static ByteBuffer a(int paramInt1, int paramInt2)
   {
-    View localView = paramView.findViewById(2131365613);
-    TextView localTextView = (TextView)paramView.findViewById(2131365612);
-    paramInt1 = ((ImageView)paramView.findViewById(2131378112)).getRight() - localView.getWidth();
-    if (paramInt1 > 0) {
-      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
+    try
+    {
+      if (ambf.c)
+      {
+        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
+        ambf.b = true;
+        ByteBuffer localByteBuffer2 = localByteBuffer1;
+        if (localByteBuffer1 == null)
+        {
+          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
+          ambf.b = false;
+        }
+        return localByteBuffer2;
+      }
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        localObject = null;
+      }
     }
   }
 }

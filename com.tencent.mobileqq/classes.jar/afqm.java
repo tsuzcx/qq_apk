@@ -1,29 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class afqm
-  implements TextWatcher
+  implements aqmv
 {
-  public afqm(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public afqm(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(aqmw paramaqmw)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity.c(this.a, true);
-      return;
+    this.a.jdField_a_of_type_Aqmw = paramaqmw;
+    if (this.a.i != 0) {
+      paramaqmw.a(this.a.i);
     }
-    VerifyCodeActivity.d(this.a, false);
+    this.a.i = paramaqmw.a(1, this.a.e, 3, this.a.jdField_a_of_type_Aqmt);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afqm
  * JD-Core Version:    0.7.0.1
  */

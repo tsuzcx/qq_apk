@@ -1,27 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-public class aryr
-  extends arvc
+class aryr
+  implements DialogInterface.OnClickListener
 {
-  aryr(aryo paramaryo) {}
+  aryr(aryn paramaryn) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
+    boolean bool = false;
+    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > bhmi.a()))
     {
+      bool = true;
+      aryn.a(this.a);
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
+    }
+    for (;;)
+    {
+      paramDialogInterface = new HashMap();
+      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
+      bdmc.a(BaseApplication.getContext()).a(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, aryn.c, aryn.c, 0, 0, "", "", "", "");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelMallHelper", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
-      }
-    } while (this.a.a.g);
-    ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
+      aryn.b(this.a);
+    }
   }
 }
 

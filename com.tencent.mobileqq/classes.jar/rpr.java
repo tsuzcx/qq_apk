@@ -1,21 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
-class rpr
-  implements rok
+public class rpr
+  extends AnimatorListenerAdapter
 {
-  rpr(rpq paramrpq, UgcVideo paramUgcVideo) {}
+  private rpr(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void a(List<String> paramList)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.rowkey = ((String)paramList.get(0));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
-    }
-    rpq.a(this.jdField_a_of_type_Rpq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    super.onAnimationCancel(paramAnimator);
+    VideoFeedsGuideView.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    VideoFeedsGuideView.a(this.a, true);
   }
 }
 

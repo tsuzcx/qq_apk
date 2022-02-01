@@ -1,13 +1,12 @@
-class lwo
-  implements lxe
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
+
+public abstract interface lwo
+  extends IInterface
 {
-  lwo(lwn paramlwn, String paramString) {}
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public void a(lxd paramlxd)
-  {
-    paramlxd.a(this.jdField_a_of_type_JavaLangString);
-    paramlxd.a();
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 

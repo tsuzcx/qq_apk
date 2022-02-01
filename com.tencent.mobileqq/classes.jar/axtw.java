@@ -1,23 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.arch.lifecycle.Observer;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.Nullable;
 
-class axtw
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "T", "it", "onChanged", "(Ljava/lang/Object;)V"}, k=3, mv={1, 1, 16})
+final class axtw<T>
+  implements Observer<T>
 {
-  axtw(axtp paramaxtp) {}
+  axtw(Function1 paramFunction1) {}
   
-  public void onClick(View paramView)
+  public final void onChanged(@Nullable T paramT)
   {
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
-    localIntent.putExtra("reqType", 1);
-    this.a.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramT != null) {
+      this.a.invoke(paramT);
+    }
   }
 }
 

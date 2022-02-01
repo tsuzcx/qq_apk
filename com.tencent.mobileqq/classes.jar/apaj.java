@@ -1,10 +1,28 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class apaj
+  extends aoxg
 {
-  public int a = 3000;
-  
-  public String toString()
+  public apaj(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      ueg.a(this.a, "from_search_rzh_ws", 2, false);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("WeishiPublicAccountAction", 1, "doAction error: " + localException.getMessage());
+      a("WeishiPublicAccountAction");
+    }
+    return false;
   }
 }
 

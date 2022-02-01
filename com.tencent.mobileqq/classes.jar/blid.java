@@ -1,39 +1,29 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.widget.ListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.FastScroller;
 
-class blid
-  implements ServiceConnection
+public class blid
+  extends AdapterView<ListAdapter>.bljl
 {
-  blid(blic paramblic) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public blid(AbsListView paramAbsListView)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    blic.a(this.a, blhh.a(paramIBinder));
-    blic.a(this.a, false);
-    blic.a(this.a);
+    super(paramAbsListView);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onChanged()
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      blic.a(this.a).getApplication().unbindService(blic.a(this.a));
-      blic.a(this.a, null);
-      blic.a(this.a, false);
-      return;
+    super.onChanged();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
     }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
     }
   }
 }

@@ -1,76 +1,149 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.richmedia.RichmediaService;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class aibo
-  implements bhtl<oidb_0x8e4.RspBody>
+public class aibo
 {
-  aibo(aiay paramaiay) {}
+  private static aibo jdField_a_of_type_Aibo;
+  private final ArrayList<aibq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public static aibo a()
   {
-    if (paramRspBody == null) {
+    if (jdField_a_of_type_Aibo == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aibo == null) {
+        jdField_a_of_type_Aibo = new aibo();
+      }
+      return jdField_a_of_type_Aibo;
+    }
+    finally {}
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    if (paramActivity != null) {}
+    try
+    {
+      bhpc localbhpc = bhlq.a(paramActivity, 230).setMessage(anzj.a(2131698961)).setPositiveButton(paramActivity.getString(2131693485), new aibp(paramActivity));
+      if ((localbhpc != null) && (!paramActivity.isFinishing())) {
+        localbhpc.show();
+      }
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("AIOGalleryMsgRevokeMgr", 0, "showDialog exception: " + paramActivity.getMessage());
+    }
+  }
+  
+  public static void a(Activity paramActivity, RelativeLayout paramRelativeLayout)
+  {
+    if ((paramActivity != null) && (paramRelativeLayout != null))
+    {
+      ImageView localImageView = new ImageView(paramActivity);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localImageView.setImageResource(2130845251);
+      localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      paramRelativeLayout.addView(localImageView, localLayoutParams);
+      a(paramActivity);
+      bdll.b(null, "dc00898", "", "", "0X8009EB8", "0X8009EB8", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    if (((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForShortVideo)) || ((paramMessageRecord instanceof MessageForMarketFace)) || ((paramMessageRecord instanceof MessageForFile)) || ((paramMessageRecord instanceof MessageForTroopFile)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForStructing)))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "startAnotherRound failed! errorCode = " + paramInt);
+        QLog.i("AIOGalleryMsgRevokeMgr", 0, "sendMsgRevokeRequest:" + paramMessageRecord);
+      }
+      Object localObject2 = a();
+      if (localObject2 != null) {
+        synchronized (((aibo)localObject2).jdField_a_of_type_JavaUtilArrayList)
+        {
+          localObject2 = ((aibo)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
+          if (((Iterator)localObject2).hasNext()) {
+            ((aibq)((Iterator)localObject2).next()).a(paramMessageRecord.uniseq);
+          }
+        }
+      }
+      ??? = RichmediaService.a();
+      if (??? != null)
+      {
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putLong("msg_revoke_uniseq", paramMessageRecord.uniseq);
+        boolean bool = ((RichmediaService)???).a(300, -1, (Bundle)localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.i("AIOGalleryMsgRevokeMgr", 0, "sendMsgRevokeRequest result:" + bool);
+        }
       }
     }
-    do
+  }
+  
+  public void a(aibq paramaibq)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      QQToast.a(this.a.a(), 1, anni.a(2131703883), 1).a();
-      return;
-      while ((!paramRspBody.getBooleanExtra("finishAIO", false)) || (!(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ChatActivity)))
-      {
-        Common.WifiPOIInfo localWifiPOIInfo = paramRspBody.poi_info;
-        HotChatInfo localHotChatInfo = HotChatInfo.createHotChat(localWifiPOIInfo, false, 0);
-        localHotChatInfo.isGameRoom = true;
-        paramRspBody = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
-        Object localObject = paramRspBody.a();
-        if ((localObject != null) && (!((List)localObject).contains(localHotChatInfo))) {
-          ((List)localObject).add(localHotChatInfo);
-        }
-        paramRspBody.a(localHotChatInfo, 4);
-        localObject = this.a.a().getIntent();
-        paramRspBody = (oidb_0x8e4.RspBody)localObject;
-        if (localObject == null) {
-          paramRspBody = new Intent();
-        }
-        localObject = localWifiPOIInfo.bytes_uid.get().toStringUtf8();
-        paramRspBody.putExtra("uin", localHotChatInfo.troopUin + "");
-        paramRspBody.putExtra("uintype", 1);
-        paramRspBody.putExtra("troop_uin", localHotChatInfo.troopUin + "");
-        paramRspBody.putExtra("uinname", localHotChatInfo.name);
-        paramRspBody.putExtra("hotnamecode", (String)localObject);
-        paramRspBody.putExtra("isNeedShowLoading", false);
-        paramRspBody.putExtra("leftViewText", this.a.a().getString(2131690389));
-        axdz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(bbyp.a()));
-        paramInt = afur.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramRspBody);
-        if (paramInt != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "openAIO by start SplashAct");
-        }
-        localObject = this.a.jdField_a_of_type_Bhtu.a();
-        if (localObject != null) {
-          ((bhtt)localObject).a();
-        }
-        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramRspBody);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaibq)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramaibq);
       }
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
       return;
-    } while (paramInt != 2);
-    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "openAIO rediectToAIOWithMt 2");
+    }
+  }
+  
+  public void a(Bundle arg1)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("notifyMsgRevoke, mScene:");
+      if (??? == null) {
+        break label51;
+      }
+    }
+    label51:
+    for (Object localObject1 = ???.toString();; localObject1 = "")
+    {
+      QLog.i("AIOGalleryMsgRevokeMgr", 0, (String)localObject1);
+      if (??? != null) {
+        break;
+      }
+      return;
+    }
+    long l = ???.getLong("msg_revoke_uniseq", 0L);
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (((Iterator)localObject1).hasNext()) {
+        ((aibq)((Iterator)localObject1).next()).a(l);
+      }
+    }
+  }
+  
+  public void b(aibq paramaibq)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramaibq);
+      return;
+    }
   }
 }
 

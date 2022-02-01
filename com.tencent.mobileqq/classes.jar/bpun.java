@@ -1,21 +1,25 @@
-import android.util.Property;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
 
-class bpun
-  extends Property<bpuh, Float>
+final class bpun
+  implements bhtj<Float>
 {
-  bpun(bpuh parambpuh, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bpun(View paramView) {}
   
-  public Float a(bpuh parambpuh)
+  @TargetApi(11)
+  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    return Float.valueOf(bpuh.b(parambpuh));
-  }
-  
-  public void a(bpuh parambpuh, Float paramFloat)
-  {
-    bpuh.a(parambpuh, paramFloat);
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
   }
 }
 

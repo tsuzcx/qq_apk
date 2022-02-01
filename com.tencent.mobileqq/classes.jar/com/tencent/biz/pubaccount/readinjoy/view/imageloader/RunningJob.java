@@ -8,10 +8,10 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
-import bctj;
-import bdua;
-import bdzx;
-import bgmo;
+import bdmc;
+import besu;
+import beyq;
+import bhmq;
 import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptBitmapFile;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
@@ -33,17 +33,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import puu;
-import puw;
-import pux;
-import tdo;
-import tds;
-import tdu;
-import tdv;
-import tdw;
-import teb;
-import ted;
-import tyc;
+import pnh;
+import pnj;
+import pnk;
+import sug;
+import suk;
+import sum;
+import sun;
+import suo;
+import sut;
+import suv;
+import tye;
 
 public class RunningJob
   implements Runnable
@@ -52,25 +52,25 @@ public class RunningJob
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  bdua jdField_a_of_type_Bdua;
+  besu jdField_a_of_type_Besu;
   File jdField_a_of_type_JavaIoFile;
-  Set<WeakReference<tdu>> jdField_a_of_type_JavaUtilSet = new HashSet();
-  tdo jdField_a_of_type_Tdo;
-  tdv jdField_a_of_type_Tdv;
-  public tdw a;
-  tyc jdField_a_of_type_Tyc;
+  Set<WeakReference<sum>> jdField_a_of_type_JavaUtilSet = new HashSet();
+  sug jdField_a_of_type_Sug;
+  sun jdField_a_of_type_Sun;
+  public suo a;
+  tye jdField_a_of_type_Tye;
   
   static
   {
     jdField_a_of_type_JavaLangString = "zimage." + RunningJob.class.getSimpleName();
   }
   
-  public RunningJob(tdv paramtdv, tdw paramtdw)
+  public RunningJob(sun paramsun, suo paramsuo)
   {
-    this.jdField_a_of_type_Tdv = paramtdv;
-    this.jdField_a_of_type_Tdw = paramtdw;
-    this.jdField_a_of_type_Tdo = paramtdv.jdField_a_of_type_Tdo;
-    this.jdField_a_of_type_Bdua = new bdua(bdzx.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Sun = paramsun;
+    this.jdField_a_of_type_Suo = paramsuo;
+    this.jdField_a_of_type_Sug = paramsun.jdField_a_of_type_Sug;
+    this.jdField_a_of_type_Besu = new besu(beyq.jdField_a_of_type_JavaIoFile);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
@@ -128,8 +128,8 @@ public class RunningJob
   private Bitmap a(Bitmap paramBitmap)
   {
     Bitmap localBitmap = paramBitmap;
-    if (this.jdField_a_of_type_Tdw.jdField_c_of_type_Int == 1) {
-      localBitmap = bgmo.c(paramBitmap, this.jdField_a_of_type_Tdw.jdField_a_of_type_Int, this.jdField_a_of_type_Tdw.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Suo.jdField_c_of_type_Int == 1) {
+      localBitmap = bhmq.c(paramBitmap, this.jdField_a_of_type_Suo.jdField_a_of_type_Int, this.jdField_a_of_type_Suo.jdField_b_of_type_Int);
     }
     return localBitmap;
   }
@@ -141,8 +141,8 @@ public class RunningJob
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     try
     {
-      if (this.jdField_a_of_type_Tdo.jdField_a_of_type_JavaUtilList.size() > 0) {
-        arrayOfByte1 = (byte[])this.jdField_a_of_type_Tdo.jdField_a_of_type_JavaUtilList.remove(0);
+      if (this.jdField_a_of_type_Sug.jdField_a_of_type_JavaUtilList.size() > 0) {
+        arrayOfByte1 = (byte[])this.jdField_a_of_type_Sug.jdField_a_of_type_JavaUtilList.remove(0);
       }
       byte[] arrayOfByte2 = arrayOfByte1;
       if (arrayOfByte1 == null)
@@ -151,7 +151,7 @@ public class RunningJob
         arrayOfByte2 = arrayOfByte1;
         if (QLog.isColorLevel())
         {
-          ted.a(jdField_a_of_type_JavaLangString, "allocate temp storage");
+          suv.a(jdField_a_of_type_JavaLangString, "allocate temp storage");
           arrayOfByte2 = arrayOfByte1;
         }
       }
@@ -171,23 +171,23 @@ public class RunningJob
       }
       catch (OutOfMemoryError paramInputStream)
       {
-        this.jdField_a_of_type_Tdo.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
+        this.jdField_a_of_type_Sug.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
         throw paramInputStream;
       }
       catch (Exception paramInputStream)
       {
-        this.jdField_a_of_type_Tdo.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
+        this.jdField_a_of_type_Sug.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
         throw paramInputStream;
       }
       paramInputStream = finally;
     }
     label182:
     localOptions.inDither = true;
-    localOptions.inPreferredConfig = this.jdField_a_of_type_Tdw.jdField_a_of_type_AndroidGraphicsBitmap$Config;
+    localOptions.inPreferredConfig = this.jdField_a_of_type_Suo.jdField_a_of_type_AndroidGraphicsBitmap$Config;
     if (Build.VERSION.SDK_INT >= 11) {
       localOptions.inMutable = true;
     }
-    localOptions.inSampleSize = a(localOptions, this.jdField_a_of_type_Tdw.jdField_a_of_type_Int, this.jdField_a_of_type_Tdw.jdField_b_of_type_Int);
+    localOptions.inSampleSize = a(localOptions, this.jdField_a_of_type_Suo.jdField_a_of_type_Int, this.jdField_a_of_type_Suo.jdField_b_of_type_Int);
     return localOptions;
   }
   
@@ -202,18 +202,18 @@ public class RunningJob
   
   private void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Tdv.a(this.jdField_a_of_type_Tdw);
-    paramBitmap = new tds(a(paramBitmap), this.jdField_a_of_type_Tdo.jdField_a_of_type_Tea);
-    this.jdField_a_of_type_Tdo.a(this.jdField_a_of_type_Tdw, paramBitmap);
-    if (this.jdField_a_of_type_Tdw.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Sun.a(this.jdField_a_of_type_Suo);
+    paramBitmap = new suk(a(paramBitmap), this.jdField_a_of_type_Sug.jdField_a_of_type_Sus);
+    this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Suo, paramBitmap);
+    if (this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean)
     {
-      puw.a(6, this.jdField_a_of_type_Tdw);
-      puw.a(this.jdField_a_of_type_Tdw, false, "cancelled");
+      pnj.a(6, this.jdField_a_of_type_Suo);
+      pnj.a(this.jdField_a_of_type_Suo, false, "cancelled");
       paramBitmap.a();
       return;
     }
-    puw.a(5, this.jdField_a_of_type_Tdw);
-    if (puu.a.c())
+    pnj.a(5, this.jdField_a_of_type_Suo);
+    if (pnh.a.c())
     {
       this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(new RunningJob.2(this, paramBitmap));
       return;
@@ -229,22 +229,22 @@ public class RunningJob
   private void a(Throwable paramThrowable, int paramInt)
   {
     QLog.d(jdField_a_of_type_JavaLangString, 1, "onFail:", paramThrowable);
-    if (this.jdField_a_of_type_Tdw.jdField_e_of_type_Int == -2) {
-      this.jdField_a_of_type_Tdw.jdField_e_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Suo.jdField_e_of_type_Int == -2) {
+      this.jdField_a_of_type_Suo.jdField_e_of_type_Int = paramInt;
     }
-    this.jdField_a_of_type_Tdv.a(this.jdField_a_of_type_Tdw);
-    if (this.jdField_a_of_type_Tdw.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Sun.a(this.jdField_a_of_type_Suo);
+    if (this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean)
     {
-      puw.a(6, this.jdField_a_of_type_Tdw);
-      puw.a(this.jdField_a_of_type_Tdw, false, "cancelled");
+      pnj.a(6, this.jdField_a_of_type_Suo);
+      pnj.a(this.jdField_a_of_type_Suo, false, "cancelled");
     }
     for (;;)
     {
       return;
       Object localObject2;
-      if (this.jdField_a_of_type_Tdw.jdField_f_of_type_Int == tdw.g)
+      if (this.jdField_a_of_type_Suo.jdField_f_of_type_Int == suo.g)
       {
-        localObject2 = this.jdField_a_of_type_Tdw;
+        localObject2 = this.jdField_a_of_type_Suo;
         if (paramThrowable == null) {
           break label120;
         }
@@ -252,7 +252,7 @@ public class RunningJob
       label120:
       for (Object localObject1 = paramThrowable.getMessage();; localObject1 = "")
       {
-        puw.a((tdw)localObject2, false, (String)localObject1);
+        pnj.a((suo)localObject2, false, (String)localObject1);
         if (!b()) {
           break;
         }
@@ -270,13 +270,13 @@ public class RunningJob
     }
   }
   
-  private void a(tds paramtds)
+  private void a(suk paramsuk)
   {
-    if (this.jdField_a_of_type_Tdw.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean)
     {
-      puw.a(6, this.jdField_a_of_type_Tdw);
-      puw.a(this.jdField_a_of_type_Tdw, false, "cancelled");
-      paramtds.a();
+      pnj.a(6, this.jdField_a_of_type_Suo);
+      pnj.a(this.jdField_a_of_type_Suo, false, "cancelled");
+      paramsuk.a();
       return;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
@@ -284,10 +284,10 @@ public class RunningJob
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() != null) {
-        ((tdu)localWeakReference.get()).a(this.jdField_a_of_type_Tdw, paramtds.a());
+        ((sum)localWeakReference.get()).a(this.jdField_a_of_type_Suo, paramsuk.a());
       }
     }
-    paramtds.a();
+    paramsuk.a();
   }
   
   private static void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2)
@@ -306,7 +306,7 @@ public class RunningJob
     for (String str = "1";; str = "0")
     {
       localHashMap.put("success", str);
-      bctj.a(BaseApplication.getContext()).a(null, "actKandianImageShow", paramBoolean2, paramLong, paramInt, localHashMap, "", true);
+      bdmc.a(BaseApplication.getContext()).a(null, "actKandianImageShow", paramBoolean2, paramLong, paramInt, localHashMap, "", true);
       return;
       str = "2";
       break;
@@ -315,16 +315,16 @@ public class RunningJob
   
   private void b(Throwable paramThrowable)
   {
-    tdw localtdw = this.jdField_a_of_type_Tdw;
-    localtdw.jdField_f_of_type_Int += 1;
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "try count: " + this.jdField_a_of_type_Tdw.jdField_f_of_type_Int + " " + this.jdField_a_of_type_Tdw);
-    if (((paramThrowable != null) && (paramThrowable.getMessage() != null) && (paramThrowable.getMessage().equals("sharpP decode fail"))) || (this.jdField_a_of_type_Tdw.jdField_e_of_type_Int == 400)) {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "before convert: " + this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL);
+    suo localsuo = this.jdField_a_of_type_Suo;
+    localsuo.jdField_f_of_type_Int += 1;
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "try count: " + this.jdField_a_of_type_Suo.jdField_f_of_type_Int + " " + this.jdField_a_of_type_Suo);
+    if (((paramThrowable != null) && (paramThrowable.getMessage() != null) && (paramThrowable.getMessage().equals("sharpP decode fail"))) || (this.jdField_a_of_type_Suo.jdField_e_of_type_Int == 400)) {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "before convert: " + this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL);
     }
     try
     {
-      this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL = new URL(pux.a.b(this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_Tdw.jdField_c_of_type_JavaLangString));
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "after convert: " + this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL);
+      this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL = new URL(pnk.a.b(this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_Suo.jdField_c_of_type_JavaLangString));
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "after convert: " + this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL);
       ThreadManager.getUIHandler().post(new RunningJob.5(this));
       return;
     }
@@ -339,12 +339,12 @@ public class RunningJob
   
   private boolean b()
   {
-    return this.jdField_a_of_type_Tdw.jdField_f_of_type_Int < tdw.g;
+    return this.jdField_a_of_type_Suo.jdField_f_of_type_Int < suo.g;
   }
   
   public Bitmap a(InputStream paramInputStream1, InputStream paramInputStream2, long paramLong)
   {
-    if (ted.a()) {
+    if (suv.a()) {
       return b(paramInputStream1, paramInputStream2, paramLong);
     }
     return c(paramInputStream1, paramInputStream2, paramLong);
@@ -355,7 +355,7 @@ public class RunningJob
     if ((paramBoolean) && (this.jdField_a_of_type_JavaIoFile != null)) {
       try
       {
-        paramInputStream1 = pux.a.a(this.jdField_a_of_type_JavaIoFile.getPath());
+        paramInputStream1 = pnk.a.a(this.jdField_a_of_type_JavaIoFile.getPath());
         paramInputStream2 = paramInputStream1;
         if (paramInputStream1 != null) {
           return paramInputStream2;
@@ -377,26 +377,26 @@ public class RunningJob
   public void a()
   {
     if (QLog.isColorLevel()) {
-      ted.a(jdField_a_of_type_JavaLangString, "[cancel request]" + this.jdField_a_of_type_Tdw);
+      suv.a(jdField_a_of_type_JavaLangString, "[cancel request]" + this.jdField_a_of_type_Suo);
     }
-    this.jdField_a_of_type_Tdw.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Tyc != null) {
-      this.jdField_a_of_type_Tyc.a();
+    this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Tye != null) {
+      this.jdField_a_of_type_Tye.a();
     }
   }
   
-  public void a(tdu paramtdu)
+  public void a(sum paramsum)
   {
-    if (paramtdu != null) {}
+    if (paramsum != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramtdu));
+      this.jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramsum));
       return;
     }
     finally
     {
-      paramtdu = finally;
-      throw paramtdu;
+      paramsum = finally;
+      throw paramsum;
     }
   }
   
@@ -404,11 +404,11 @@ public class RunningJob
   {
     try
     {
-      if (puu.a.g())
+      if (pnh.a.g())
       {
-        pux localpux = pux.a;
-        if (this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL != null) {}
-        for (String str = this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL.toString(); (localpux.a(str)) && (SharpPUtil.isSharpPFile(this.jdField_a_of_type_JavaIoFile)); str = "") {
+        pnk localpnk = pnk.a;
+        if (this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL != null) {}
+        for (String str = this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL.toString(); (localpnk.a(str)) && (SharpPUtil.isSharpPFile(this.jdField_a_of_type_JavaIoFile)); str = "") {
           return true;
         }
       }
@@ -439,7 +439,7 @@ public class RunningJob
     //   22: ldc_w 491
     //   25: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_0
-    //   29: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdw	Ltdw;
+    //   29: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Suo	Lsuo;
     //   32: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   35: ldc_w 493
     //   38: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -447,11 +447,11 @@ public class RunningJob
     //   42: getfield 218	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   45: invokevirtual 388	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   48: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 167	ted:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: invokestatic 167	suv:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
+    //   55: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
     //   58: aload_2
-    //   59: invokevirtual 496	tdo:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   59: invokevirtual 496	sug:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   62: astore 6
     //   64: aload 6
     //   66: ifnull +121 -> 187
@@ -466,7 +466,7 @@ public class RunningJob
     //   83: invokespecial 179	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   86: astore_1
     //   87: aload_2
-    //   88: invokestatic 503	ted:a	(Landroid/graphics/BitmapFactory$Options;)Z
+    //   88: invokestatic 503	suv:a	(Landroid/graphics/BitmapFactory$Options;)Z
     //   91: ifeq +58 -> 149
     //   94: aload_1
     //   95: iconst_0
@@ -478,8 +478,8 @@ public class RunningJob
     //   105: invokevirtual 515	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   108: astore_1
     //   109: aload_0
-    //   110: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   113: getfield 142	tdo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   110: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   113: getfield 142	sug:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   116: aload_2
     //   117: getfield 170	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   120: invokeinterface 196 2 0
@@ -506,8 +506,8 @@ public class RunningJob
     //   161: athrow
     //   162: astore_1
     //   163: aload_0
-    //   164: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   167: getfield 142	tdo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   164: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   167: getfield 142	sug:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   170: aload_2
     //   171: getfield 170	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   174: invokeinterface 196 2 0
@@ -580,10 +580,10 @@ public class RunningJob
     //   53: aload 11
     //   55: astore 7
     //   57: aload_0
-    //   58: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   61: getfield 534	tdo:jdField_a_of_type_Tdq	Ltdq;
+    //   58: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   61: getfield 534	sug:jdField_a_of_type_Sui	Lsui;
     //   64: iload 5
-    //   66: invokevirtual 539	tdq:a	(I)[B
+    //   66: invokevirtual 539	sui:a	(I)[B
     //   69: astore 9
     //   71: aload 6
     //   73: astore_2
@@ -608,7 +608,7 @@ public class RunningJob
     //   106: aload 9
     //   108: astore 8
     //   110: aload 13
-    //   112: invokestatic 503	ted:a	(Landroid/graphics/BitmapFactory$Options;)Z
+    //   112: invokestatic 503	suv:a	(Landroid/graphics/BitmapFactory$Options;)Z
     //   115: ifeq +126 -> 241
     //   118: aload 6
     //   120: astore_2
@@ -652,13 +652,13 @@ public class RunningJob
     //   193: aload 9
     //   195: ifnull +15 -> 210
     //   198: aload_0
-    //   199: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   202: getfield 534	tdo:jdField_a_of_type_Tdq	Ltdq;
+    //   199: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   202: getfield 534	sug:jdField_a_of_type_Sui	Lsui;
     //   205: aload 9
-    //   207: invokevirtual 554	tdq:a	([B)V
+    //   207: invokevirtual 554	sui:a	([B)V
     //   210: aload_0
-    //   211: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   214: getfield 142	tdo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   211: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   214: getfield 142	sug:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   217: aload 13
     //   219: getfield 170	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   222: invokeinterface 196 2 0
@@ -704,13 +704,13 @@ public class RunningJob
     //   296: aload 6
     //   298: ifnull +15 -> 313
     //   301: aload_0
-    //   302: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   305: getfield 534	tdo:jdField_a_of_type_Tdq	Ltdq;
+    //   302: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   305: getfield 534	sug:jdField_a_of_type_Sui	Lsui;
     //   308: aload 6
-    //   310: invokevirtual 554	tdq:a	([B)V
+    //   310: invokevirtual 554	sui:a	([B)V
     //   313: aload_0
-    //   314: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tdo	Ltdo;
-    //   317: getfield 142	tdo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   314: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Sug	Lsug;
+    //   317: getfield 142	sug:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   320: aload 13
     //   322: getfield 170	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   325: invokeinterface 196 2 0
@@ -805,30 +805,30 @@ public class RunningJob
   @TargetApi(12)
   public void run()
   {
-    puw.a(4, this.jdField_a_of_type_Tdw);
-    tdv.a().b(this.jdField_a_of_type_Tdw);
+    pnj.a(4, this.jdField_a_of_type_Suo);
+    sun.a().b(this.jdField_a_of_type_Suo);
     if (QLog.isColorLevel()) {
-      ted.a(jdField_a_of_type_JavaLangString, "[start request](" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_Tdw + " createTs:" + this.jdField_a_of_type_Long);
+      suv.a(jdField_a_of_type_JavaLangString, "[start request](" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_Suo + " createTs:" + this.jdField_a_of_type_Long);
     }
     Object localObject2;
     boolean bool2;
     try
     {
-      if (this.jdField_a_of_type_Tdw.jdField_a_of_type_Boolean)
+      if (this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean)
       {
-        puw.a(6, this.jdField_a_of_type_Tdw);
-        tdv.a().c(this.jdField_a_of_type_Tdw);
+        pnj.a(6, this.jdField_a_of_type_Suo);
+        sun.a().c(this.jdField_a_of_type_Suo);
         return;
       }
-      tyc localtyc = new tyc(BaseApplicationImpl.getApplication());
+      tye localtye = new tye(BaseApplicationImpl.getApplication());
       localObject2 = new DownloadParams();
-      ((DownloadParams)localObject2).url = this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL;
-      ((DownloadParams)localObject2).urlStr = this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL.toString();
-      ((DownloadParams)localObject2).retryCount = this.jdField_a_of_type_Tdw.jdField_f_of_type_Int;
-      this.jdField_a_of_type_Tyc = localtyc;
-      bool2 = localtyc.hasDiskFile((DownloadParams)localObject2);
+      ((DownloadParams)localObject2).url = this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL;
+      ((DownloadParams)localObject2).urlStr = this.jdField_a_of_type_Suo.jdField_a_of_type_JavaNetURL.toString();
+      ((DownloadParams)localObject2).retryCount = this.jdField_a_of_type_Suo.jdField_f_of_type_Int;
+      this.jdField_a_of_type_Tye = localtye;
+      bool2 = localtye.hasDiskFile((DownloadParams)localObject2);
       l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_JavaIoFile = localtyc.loadImageFile((DownloadParams)localObject2, new teb(this, new StringBuilder()));
+      this.jdField_a_of_type_JavaIoFile = localtye.loadImageFile((DownloadParams)localObject2, new sut(this, new StringBuilder()));
       if (this.jdField_a_of_type_JavaIoFile == null) {
         throw new IOException("downloader fail");
       }
@@ -847,8 +847,8 @@ public class RunningJob
         if ((!(localThrowable instanceof RuntimeException)) || (!localThrowable.getMessage().contains("cancel"))) {
           continue;
         }
-        puw.a(6, this.jdField_a_of_type_Tdw);
-        puw.a(this.jdField_a_of_type_Tdw, false, localThrowable.getMessage());
+        pnj.a(6, this.jdField_a_of_type_Suo);
+        pnj.a(this.jdField_a_of_type_Suo, false, localThrowable.getMessage());
       }
       catch (Exception localException2)
       {
@@ -864,7 +864,7 @@ public class RunningJob
         if (!QLog.isColorLevel()) {
           continue;
         }
-        ted.a(jdField_a_of_type_JavaLangString, localException2.getMessage() + " " + this.jdField_a_of_type_Tdw + " retryCount:" + this.jdField_a_of_type_Int);
+        suv.a(jdField_a_of_type_JavaLangString, localException2.getMessage() + " " + this.jdField_a_of_type_Suo + " retryCount:" + this.jdField_a_of_type_Int);
         if (this.jdField_a_of_type_Int != 0) {
           continue;
         }
@@ -882,7 +882,7 @@ public class RunningJob
         if (!QLog.isColorLevel()) {
           continue;
         }
-        ted.a(jdField_a_of_type_JavaLangString, "[job fail]" + this.jdField_a_of_type_Tdw + " " + localException2 + " retryCount:" + this.jdField_a_of_type_Int);
+        suv.a(jdField_a_of_type_JavaLangString, "[job fail]" + this.jdField_a_of_type_Suo + " " + localException2 + " retryCount:" + this.jdField_a_of_type_Int);
         a(localException2);
         continue;
         l1 = 0L;
@@ -897,33 +897,33 @@ public class RunningJob
         int i = 0;
         continue;
       }
-      tdv.a().c(this.jdField_a_of_type_Tdw);
+      sun.a().c(this.jdField_a_of_type_Suo);
       return;
       l2 = System.currentTimeMillis();
       l3 = l2 - l1;
-      if (this.jdField_a_of_type_Tdw != null) {
-        this.jdField_a_of_type_Tdw.jdField_e_of_type_Long = l3;
+      if (this.jdField_a_of_type_Suo != null) {
+        this.jdField_a_of_type_Suo.jdField_e_of_type_Long = l3;
       }
       if (QLog.isColorLevel())
       {
         localObject1 = jdField_a_of_type_JavaLangString;
-        localObject2 = new StringBuilder().append("[download success](").append(l3).append(")").append(this.jdField_a_of_type_Tdw).append(" fileSize:");
+        localObject2 = new StringBuilder().append("[download success](").append(l3).append(")").append(this.jdField_a_of_type_Suo).append(" fileSize:");
         if (this.jdField_a_of_type_JavaIoFile == null) {
           continue;
         }
         l1 = this.jdField_a_of_type_JavaIoFile.length();
-        ted.a((String)localObject1, l1);
+        suv.a((String)localObject1, l1);
       }
-      if (this.jdField_a_of_type_Tdw.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean) {
         throw new RuntimeException("cancel");
       }
-      if ((this.jdField_a_of_type_Tdw.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+      if ((this.jdField_a_of_type_Suo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilSet.isEmpty()))
       {
-        this.jdField_a_of_type_Tdv.a(this.jdField_a_of_type_Tdw);
+        this.jdField_a_of_type_Sun.a(this.jdField_a_of_type_Suo);
         if (QLog.isColorLevel()) {
-          ted.a(jdField_a_of_type_JavaLangString, "[preload request]" + this.jdField_a_of_type_Tdw + " no callback, give up decode");
+          suv.a(jdField_a_of_type_JavaLangString, "[preload request]" + this.jdField_a_of_type_Suo + " no callback, give up decode");
         }
-        tdv.a().c(this.jdField_a_of_type_Tdw);
+        sun.a().c(this.jdField_a_of_type_Suo);
         return;
       }
       bool1 = false;
@@ -937,11 +937,11 @@ public class RunningJob
           localObject1 = a((InputStream)localObject1, (InputStream)localObject2, l1, bool1);
           l1 = System.currentTimeMillis();
           l2 = l1 - l2;
-          if (this.jdField_a_of_type_Tdw == null) {
+          if (this.jdField_a_of_type_Suo == null) {
             continue;
           }
-          this.jdField_a_of_type_Tdw.jdField_f_of_type_Long = l2;
-          QLog.d(jdField_a_of_type_JavaLangString, 1, "[decode success](" + l2 + ") total(" + (l1 - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_Tdw + "; size =" + ((Bitmap)localObject1).getByteCount());
+          this.jdField_a_of_type_Suo.jdField_f_of_type_Long = l2;
+          QLog.d(jdField_a_of_type_JavaLangString, 1, "[decode success](" + l2 + ") total(" + (l1 - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_Suo + "; size =" + ((Bitmap)localObject1).getByteCount());
           continue;
           if ((!bool1) || (localObject1 == null)) {
             continue;
@@ -970,8 +970,8 @@ public class RunningJob
       if ((!(localException1 instanceof IOException)) || (!localException1.getMessage().contains("cancel"))) {
         continue;
       }
-      puw.a(6, this.jdField_a_of_type_Tdw);
-      puw.a(this.jdField_a_of_type_Tdw, false, localException1.getMessage());
+      pnj.a(6, this.jdField_a_of_type_Suo);
+      pnj.a(this.jdField_a_of_type_Suo, false, localException1.getMessage());
     }
   }
 }

@@ -1,35 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.os.Bundle;
+import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
 import com.tencent.qphone.base.util.QLog;
 
 public class auxs
-  extends BroadcastReceiver
+  implements apwf
 {
-  private auxs(JefsClass paramJefsClass) {}
+  public auxs(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    if (!BaseApplicationImpl.processName.equals(paramIntent.getStringExtra("key_process_id"))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "is not current process");
-      }
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.a.a.putBoolean("forward_ark_from_h5_success", true);
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "start");
-      }
-      if ("com.tencent.mobileqq.telescreen.action_run".equals(paramIntent.getAction()))
-      {
-        JefsClass.a(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
-        return;
-      }
-    } while (!"com.tencent.mobileqq.telescreen.action_remove".equals(paramIntent.getAction()));
-    JefsClass.b(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
   }
 }
 

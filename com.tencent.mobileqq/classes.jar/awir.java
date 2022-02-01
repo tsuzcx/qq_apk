@@ -1,36 +1,22 @@
 import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class awir
-  extends PopupWindow
+  implements Animation.AnimationListener
 {
-  private PopupWindow.OnDismissListener a;
+  public awir(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
   
-  public awir(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView, paramInt1, paramInt2, paramBoolean);
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
   }
   
-  public void a()
-  {
-    super.dismiss();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
-  {
-    this.a = paramOnDismissListener;
-  }
-  
-  public void dismiss()
-  {
-    if (this.a != null)
-    {
-      this.a.onDismiss();
-      return;
-    }
-    super.dismiss();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

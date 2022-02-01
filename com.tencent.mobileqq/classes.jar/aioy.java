@@ -1,20 +1,42 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aioy
-  implements MediaPlayer.OnCompletionListener
+class aioy
+  implements BusinessObserver
 {
-  public aioy(BlessActivity paramBlessActivity) {}
+  aioy(ainh paramainh) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
+      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
-    BlessActivity.a(this.a, true);
-    bcst.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.ao = true;
+          this.a.bE();
+          this.a.bp();
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
+    this.a.A(2131694659);
+    this.a.bp();
   }
 }
 

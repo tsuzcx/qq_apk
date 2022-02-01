@@ -1,56 +1,20 @@
-import java.util.Map;
-
-public class nft
+public abstract interface nft
 {
-  public static final String[] a = { "qqvgame.RoomManager-RoomInfoGet", "qqvgame.GameManager-SelectGame", "qqvgame.GameList-GetGameList", "qqvgame.RoomManager-RoomLeave", "qqvgame.RoomManager-RoomUserStatusChange", "qqvgame.UserHeartBeat-UserHeartBeat", "qqvgame.Share-GetShareLink", "qqvgame.GameList-GetQuestionClass" };
-  public static final String[] b = { "qqvgame.GameManager-StartGame", "qqvgame.QuestionManager-GetQuestion", "qqvgame.GameRanking-GetRankingList" };
-  public static final String[] c = { "OnlinePush.ReqPush" };
-  public static final String[] d = { "OidbSvc.0x5eb_20002" };
+  public abstract void a();
   
-  public static void a(Map<String, int[]> paramMap)
-  {
-    if (paramMap == null) {}
-    for (;;)
-    {
-      return;
-      String[] arrayOfString = b;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 3 });
-        i += 1;
-      }
-      arrayOfString = a;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 1 });
-        i += 1;
-      }
-      arrayOfString = c;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 4 });
-        i += 1;
-      }
-      arrayOfString = d;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 2 });
-        i += 1;
-      }
-    }
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(long paramLong, boolean paramBoolean);
+  
+  public abstract void c(long paramLong, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nft
  * JD-Core Version:    0.7.0.1
  */

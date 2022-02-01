@@ -1,69 +1,57 @@
-import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class atgy
-  extends BaseAdapter
+  extends amoe
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bhyl jdField_a_of_type_Bhyl;
-  private Object jdField_a_of_type_JavaLangObject;
+  private List<atha> a;
   
-  public atgy(Context paramContext, View.OnClickListener paramOnClickListener)
+  public atgy(BaseActivity paramBaseActivity, XListView paramXListView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    super(paramBaseActivity, paramBaseActivity.app, paramXListView, 1, true);
+    paramXListView.setAdapter(this);
   }
   
-  public void a(bhyl parambhyl)
+  public athb a(int paramInt)
   {
-    this.jdField_a_of_type_Bhyl = parambhyl;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
-  {
-    boolean bool = false;
-    if (paramShaderAnimLayout != null)
-    {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
-      {
-        bool = true;
-        paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_Bhyl != null) {
-          this.jdField_a_of_type_Bhyl.setMotionView(paramView, paramInt);
-        }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramButton.setTag(Integer.valueOf(paramInt));
-      }
+    if ((this.a != null) && (this.a.size() > paramInt)) {
+      return (athb)this.a.get(paramInt);
     }
-    else {
-      return bool;
+    return null;
+  }
+  
+  public void a(athb paramathb)
+  {
+    if (getCount() == 0) {
+      this.a = new ArrayList();
     }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
-    return false;
+    this.a.add(0, paramathb);
+    notifyDataSetChanged();
+  }
+  
+  public void a(List<atha> paramList)
+  {
+    this.a = new ArrayList(paramList);
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
+    if (this.a != null) {
+      return this.a.size();
+    }
     return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
   }
   
   public long getItemId(int paramInt)
@@ -73,8 +61,51 @@ public class atgy
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
+    long l3 = System.currentTimeMillis();
+    View localView;
+    atgz localatgz;
+    athb localathb;
+    long l1;
+    String str;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559168, null);
+      localatgz = new atgz();
+      localatgz.c = ((ImageView)localView.findViewById(2131367233));
+      localatgz.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367256));
+      localView.setTag(localatgz);
+      long l2 = System.currentTimeMillis();
+      localathb = a(paramInt);
+      l1 = l2;
+      if (localathb != null)
+      {
+        localatgz.jdField_a_of_type_JavaLangString = localathb.e;
+        localatgz.c.setImageBitmap(a(1, localathb.e));
+        l1 = System.currentTimeMillis() - l2;
+        str = localathb.jdField_a_of_type_JavaLangString;
+        if (str != null) {
+          break label236;
+        }
+        paramView = localathb.e;
+      }
+    }
+    for (;;)
+    {
+      localatgz.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, paramInt + ": totalTime = " + (System.currentTimeMillis() - l3) + ", faceBitmap = " + l1);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localatgz = (atgz)paramView.getTag();
+      localView = paramView;
+      break;
+      label236:
+      paramView = str;
+      if (TextUtils.isEmpty(str.trim())) {
+        paramView = localathb.e;
+      }
+    }
   }
 }
 

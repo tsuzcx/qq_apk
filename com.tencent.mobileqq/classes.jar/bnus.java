@@ -1,24 +1,38 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
 class bnus
-  implements ViewPager.OnPageChangeListener
+  implements ModuleDownloadListener
 {
-  bnus(bnur parambnur) {}
+  bnus(bnuq parambnuq, bnuv parambnuv) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onDownloadCanceled(String paramString)
   {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onDownloadFailed(String paramString)
   {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bnuq.b(this.jdField_a_of_type_Bnuq, false);
+    this.jdField_a_of_type_Bnuv.a(false);
   }
   
-  public void onPageSelected(int paramInt)
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bnuq.c(), " onDownloadSucceed = ", bnuq.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bnuq.d());
+    bnuq.b(this.jdField_a_of_type_Bnuq);
+    this.jdField_a_of_type_Bnuv.a(bnuq.b(this.jdField_a_of_type_Bnuq));
   }
 }
 

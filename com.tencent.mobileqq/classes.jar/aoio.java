@@ -1,43 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aoio
-  extends aojs
+  extends RecyclablePool.Recyclable
 {
-  public aoio(QQAppInterface paramQQAppInterface, Context paramContext)
+  public int a;
+  public long a;
+  ConcurrentHashMap<String, Long> a;
+  long b;
+  
+  public aoio()
   {
-    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
   }
   
-  public boolean a()
+  public void recycle()
   {
-    try
-    {
-      boolean bool = h_();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AssistantSettingAction", 1, "doAction error: " + localException.getMessage());
-      a("AssistantSettingAction");
-    }
-    return false;
-  }
-  
-  public boolean h_()
-  {
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.a, AssistantSettingActivity.class);
-    this.a.startActivity(localIntent);
-    return true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    super.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoio
  * JD-Core Version:    0.7.0.1
  */

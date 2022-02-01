@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import azxi;
+import bapy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -13,9 +13,9 @@ public class GetQZonePhotoGuideCheck
   public int a()
   {
     jdField_a_of_type_Boolean = true;
-    azxi localazxi = (azxi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
-    if (localazxi != null) {
-      localazxi.c();
+    bapy localbapy = (bapy)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
+    if (localbapy != null) {
+      localbapy.c();
     }
     return 7;
   }

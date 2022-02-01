@@ -1,24 +1,6 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
-
-public class aqit
-  implements bkpp
+public abstract interface aqit
 {
-  private int jdField_a_of_type_Int;
-  
-  public aqit(IphonePickerView paramIphonePickerView, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

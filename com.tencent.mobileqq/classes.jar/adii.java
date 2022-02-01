@@ -1,64 +1,27 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adii
-  implements View.OnClickListener
+  extends adic
 {
-  public adii(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    QLog.flushLog();
-    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364451)).isChecked();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131717264), "qqsetting_receivemsg_whenexit_key", bool);
-    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().b();
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
-    ((SharedPreferences.Editor)localObject).putInt("unread", i + j);
-    ((SharedPreferences.Editor)localObject).commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
-    com.tencent.mobileqq.activity.MainFragment.c = true;
-    if (QQPlayerService.a())
-    {
-      localObject = new Intent();
-      ((Intent)localObject).setAction("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast((Intent)localObject);
-    }
-    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
-    localObject = new Intent("QQ_ACTION_MENU_QUIT");
-    ((Intent)localObject).setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
-    ((Intent)localObject).addFlags(67108864);
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity((Intent)localObject);
-      label275:
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label275;
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().d(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (15 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

@@ -1,42 +1,53 @@
-import android.util.SparseArray;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashSet;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import java.util.List;
 
-class bkhu
-  implements View.OnClickListener
+public class bkhu
+  extends Handler
 {
-  bkhu(bkho parambkho) {}
+  public bkhu(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = paramView.getId();
-    Object localObject;
-    if ((bkho.a(this.a)) && ((bkho.a(this.a) == null) || (!bkho.a(this.a).contains(Integer.valueOf(i)))) && (bkho.b(this.a) != -1) && (i != bkho.b(this.a)))
+    switch (paramMessage.what)
     {
-      localObject = (View)bkho.a(this.a).get(bkho.b(this.a));
-      ((View)localObject).findViewById(2131361971).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131361970);
-      bkho.a(this.a, (TextView)localObject, false);
-      localObject = (View)bkho.a(this.a).get(i);
-      ((View)localObject).findViewById(2131361971).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131361970);
-      bkho.a(this.a, (TextView)localObject, true);
-      bkho.a(this.a, i);
     }
-    if (bkho.a(this.a) != null) {
-      bkho.a(this.a).OnClick(paramView, i);
-    }
-    if (bkho.a(this.a) != null)
+    for (;;)
     {
-      localObject = (TextView)paramView.findViewById(2131361970);
-      if ((localObject != null) && ((localObject instanceof TextView))) {
-        bkho.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      super.handleMessage(paramMessage);
+      return;
+      try
+      {
+        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
+      }
+      catch (Exception localException) {}
+      continue;
+      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
+      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
+      if (localObject != null)
+      {
+        this.a.b.addView((View)localObject);
+        continue;
+        localObject = paramMessage.getData().getParcelableArrayList("data");
+        localObject = this.a.a((List)localObject);
+        if (localObject != null)
+        {
+          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+          localLayoutParams.leftMargin = this.a.d;
+          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
+          this.a.b.addView((View)localObject, localLayoutParams);
+        }
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

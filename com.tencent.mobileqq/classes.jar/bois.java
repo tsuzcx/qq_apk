@@ -1,20 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
-
-public class bois
-  implements Animation.AnimationListener
+public abstract interface bois
 {
-  public bois(VideoEditToolBar paramVideoEditToolBar) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b();
 }
 
 

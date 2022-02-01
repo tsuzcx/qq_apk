@@ -1,40 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import java.util.HashMap;
+import java.util.Map;
 
-class bnkl
-  implements Observer<Boolean>
+public final class bnkl
 {
-  bnkl(bnkd parambnkd) {}
+  public int a;
+  public Map<String, String> a;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public bnkl()
   {
-    if (paramBoolean == null) {}
-    do
-    {
-      return;
-      if (bnkd.a(this.a).a())
-      {
-        bnkd.a(this.a).setVisibility(8);
-        return;
-      }
-      if (bnkd.a(this.a).b())
-      {
-        if (!bnkd.a(this.a))
-        {
-          AEBottomListScrollView localAEBottomListScrollView = bnkd.a(this.a);
-          if (paramBoolean.booleanValue()) {}
-          for (int i = 0;; i = 4)
-          {
-            localAEBottomListScrollView.setVisibility(i);
-            return;
-          }
-        }
-        bnkd.a(this.a).setVisibility(8);
-        return;
-      }
-    } while (!bnkd.a(this.a).c());
-    bnkd.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public String toString()
+  {
+    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.graphics.Bitmap;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
 
 public class boxh
-  implements View.OnTouchListener
+  implements boyz
 {
-  public boxh(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public boxh(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    AETakeFacePhotoPreviewFragment.a(boqi.a(this.a.getActivity(), paramBitmap));
   }
 }
 

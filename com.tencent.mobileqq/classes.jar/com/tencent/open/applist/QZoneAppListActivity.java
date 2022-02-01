@@ -10,12 +10,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import anni;
-import birq;
-import bisy;
-import bkgm;
-import blfh;
-import blfq;
+import anzj;
+import bjsp;
+import bjtx;
+import blhq;
+import bmgk;
+import bmgt;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -33,8 +33,8 @@ public class QZoneAppListActivity
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkgm jdField_a_of_type_Bkgm;
-  private blfh jdField_a_of_type_Blfh;
+  private blhq jdField_a_of_type_Blhq;
+  private bmgk jdField_a_of_type_Bmgk;
   
   private String a()
   {
@@ -64,7 +64,7 @@ public class QZoneAppListActivity
   
   private void a()
   {
-    PluginInfo localPluginInfo = this.jdField_a_of_type_Blfh.a("qappcenter_plugin.apk");
+    PluginInfo localPluginInfo = this.jdField_a_of_type_Bmgk.a("qappcenter_plugin.apk");
     int j = 0;
     int i;
     if (localPluginInfo != null)
@@ -76,47 +76,47 @@ public class QZoneAppListActivity
     }
     while (i == 0)
     {
-      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(1, 400L);
       return;
       label43:
       i = j;
       if (localPluginInfo.mState != 1)
       {
-        this.jdField_a_of_type_Blfh.installPlugin("qappcenter_plugin.apk", new birq(this));
+        this.jdField_a_of_type_Bmgk.installPlugin("qappcenter_plugin.apk", new bjsp(this));
         i = j;
       }
     }
-    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(5, 0L);
+    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(5, 0L);
   }
   
   private void b()
   {
-    blfq localblfq = new blfq(1);
-    localblfq.b = "qappcenter_plugin.apk";
-    localblfq.d = anni.a(2131710374);
-    localblfq.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
-    localblfq.e = a();
+    bmgt localbmgt = new bmgt(1);
+    localbmgt.b = "qappcenter_plugin.apk";
+    localbmgt.d = anzj.a(2131710483);
+    localbmgt.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
+    localbmgt.e = a();
     Intent localIntent1 = getIntent();
     if (localIntent1 != null) {
       if (localIntent1.getIntExtra("process_id", -1) == 2) {
-        localblfq.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityQzone.class;
+        localbmgt.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityQzone.class;
       }
     }
     for (;;)
     {
-      bisy.b("GHOST", "[launchPlugin] class:" + localblfq.jdField_a_of_type_JavaLangClass);
+      bjtx.b("GHOST", "[launchPlugin] class:" + localbmgt.jdField_a_of_type_JavaLangClass);
       Intent localIntent2 = new Intent();
       localIntent2.putExtra("userQqResources", 2);
       if ((localIntent1 != null) && (localIntent1.getExtras() != null)) {
         localIntent2.putExtras(localIntent1.getExtras());
       }
-      localblfq.jdField_a_of_type_AndroidContentIntent = localIntent2;
-      blfh.a(this, localblfq);
+      localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent2;
+      bmgk.a(this, localbmgt);
       finish();
       return;
-      localblfq.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
+      localbmgt.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
       continue;
-      localblfq.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
+      localbmgt.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
     }
   }
   
@@ -129,8 +129,8 @@ public class QZoneAppListActivity
   {
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_Blfh.isReady()) {
-        this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(1, 400L);
+      if (!this.jdField_a_of_type_Bmgk.isReady()) {
+        this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(1, 400L);
       }
       return;
     }
@@ -143,23 +143,23 @@ public class QZoneAppListActivity
     default: 
       return;
     case -2: 
-      this.jdField_a_of_type_Bkgm.sendEmptyMessage(4);
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(4);
       return;
     case 0: 
-      this.jdField_a_of_type_Blfh.a("qappcenter_plugin.apk");
+      this.jdField_a_of_type_Bmgk.a("qappcenter_plugin.apk");
       return;
     case 1: 
     case 2: 
       int i = (int)(paramPluginBaseInfo.mDownloadProgress * 90.0F);
-      this.jdField_a_of_type_Bkgm.obtainMessage(2, i, 0).sendToTarget();
-      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Blhq.obtainMessage(2, i, 0).sendToTarget();
+      this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(1, 400L);
       return;
     case 3: 
-      this.jdField_a_of_type_Bkgm.sendEmptyMessage(3);
-      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(3);
+      this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(1, 400L);
       return;
     case 5: 
-      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(1, 400L);
       return;
     }
     a(100);
@@ -177,21 +177,21 @@ public class QZoneAppListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167224);
-    setContentView(2131559654);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372926));
+    getWindow().setBackgroundDrawableResource(2131167247);
+    setContentView(2131559660);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373039));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371615);
-    setTitle(2131694684);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371723);
+    setTitle(2131694726);
     updateAppRuntime();
-    this.jdField_a_of_type_Blfh = ((blfh)this.app.getManager(27));
-    this.jdField_a_of_type_Bkgm = new bkgm(this);
+    this.jdField_a_of_type_Bmgk = ((bmgk)this.app.getManager(27));
+    this.jdField_a_of_type_Blhq = new blhq(this);
     if (DownloadSDKConfigManager.canGotoNewAppListPage()) {}
     for (int i = 6;; i = 1)
     {
       DownloadSDKConfigManager.refreshNewAppCenterConfig();
       this.jdField_a_of_type_Int = getIntent().getIntExtra("goto_type", i);
-      bisy.b("GHOST", "[doOnCreate] mGotoType:" + this.jdField_a_of_type_Int);
+      bjtx.b("GHOST", "[doOnCreate] mGotoType:" + this.jdField_a_of_type_Int);
       a();
       return true;
     }
@@ -208,7 +208,7 @@ public class QZoneAppListActivity
       return true;
       if (!isFinishing())
       {
-        a("qappcenter_plugin.apk", this.jdField_a_of_type_Blfh.a("qappcenter_plugin.apk"));
+        a("qappcenter_plugin.apk", this.jdField_a_of_type_Bmgk.a("qappcenter_plugin.apk"));
         continue;
         a(paramMessage.arg1);
         continue;

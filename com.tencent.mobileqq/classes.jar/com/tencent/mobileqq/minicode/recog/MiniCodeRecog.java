@@ -7,8 +7,8 @@ import android.graphics.Rect;
 import android.opengl.GLES20;
 import android.opengl.GLES31;
 import android.opengl.Matrix;
-import apcu;
-import basr;
+import apqk;
+import bblk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.minicode.GlUtil;
 import com.tencent.mobileqq.minicode.RecogProxy;
@@ -116,7 +116,7 @@ public class MiniCodeRecog
     }
   }
   
-  public List<apcu> detect(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
+  public List<apqk> detect(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
   {
     if (!this.inited) {
       return null;
@@ -181,11 +181,11 @@ public class MiniCodeRecog
               QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_point=[%f,%f,%f,%f,%f,%d]", new Object[] { Float.valueOf(localObject2[0]), Float.valueOf(localObject2[1]), Float.valueOf(localObject2[2]), Float.valueOf(localObject2[3]), Float.valueOf(localObject2[4]), Integer.valueOf(m) }));
             }
             Rect localRect = getRect2Src(paramInt2, paramInt3, (float[])localObject2);
-            apcu localapcu = new apcu();
-            localapcu.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
-            localapcu.jdField_a_of_type_Int = m;
-            localapcu.jdField_a_of_type_Float = localObject2[4];
-            localArrayList.add(localapcu);
+            apqk localapqk = new apqk();
+            localapqk.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
+            localapqk.jdField_a_of_type_Int = m;
+            localapqk.jdField_a_of_type_Float = localObject2[4];
+            localArrayList.add(localapqk);
           }
         }
       }
@@ -237,7 +237,7 @@ public class MiniCodeRecog
     }
     if (this.texture31In >= 0)
     {
-      basr.b(this.texture31In);
+      bblk.b(this.texture31In);
       this.texture31In = -1;
     }
     if (this.miniFbo != null) {

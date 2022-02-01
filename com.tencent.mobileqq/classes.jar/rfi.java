@@ -1,36 +1,21 @@
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
+
 public class rfi
+  implements QQPermissionCallback
 {
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public rfi(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
   
-  public rfi(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    QLog.i("RIJUGC.PublishTopicFragment", 1, "request camera permissions, deny");
   }
   
-  public Long a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.jdField_a_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
+    QLog.i("RIJUGC.PublishTopicFragment", 1, "request camera permissions, grant");
+    AbsPublishColumnFragment.a(this.a);
   }
 }
 

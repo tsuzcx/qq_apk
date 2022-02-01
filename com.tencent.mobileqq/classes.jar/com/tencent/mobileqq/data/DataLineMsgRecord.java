@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anhk;
-import atcv;
-import atvo;
-import bgjw;
-import bgmg;
+import antf;
+import atup;
+import aunj;
+import bhjx;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -50,6 +50,9 @@ public class DataLineMsgRecord
   public static final int MSG_TYPE_DATALINE_TEXT = -1000;
   public static final int MSG_TYPE_DATALINE_VIDEO = -2009;
   public static final int PC_DEV_TYPE = 0;
+  public static final int SESSION_STATE_DONE = 1;
+  public static final int SESSION_STATE_INIT = 0;
+  public static final int SESSION_STATE_REVING = 2;
   @notColumn
   public boolean bIsApkFile;
   @notColumn
@@ -92,6 +95,8 @@ public class DataLineMsgRecord
   @notColumn
   public long nServerPort;
   @notColumn
+  public int nSessionState;
+  @notColumn
   public long nWeiyunSessionId = 0L;
   @notColumn
   public int nWeiyunSrcType;
@@ -130,7 +135,7 @@ public class DataLineMsgRecord
   
   public DataLineMsgRecord(int paramInt)
   {
-    this.selfuin = String.valueOf(anhk.z);
+    this.selfuin = String.valueOf(antf.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -141,6 +146,7 @@ public class DataLineMsgRecord
     this.bIsSended = false;
     this.bNoInsertFm = false;
     this.nWeiyunSrcType = 0;
+    this.nSessionState = 0;
   }
   
   public static int getDevTypeBySeId(long paramLong)
@@ -480,9 +486,9 @@ public class DataLineMsgRecord
         try
         {
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.fileMsgStatus = bgjw.a((byte[])localObject2);
+          paramDataLineMsgRecord.fileMsgStatus = bhjx.a((byte[])localObject2);
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.nWeiyunSessionId = bgjw.a((byte[])localObject2);
+          paramDataLineMsgRecord.nWeiyunSessionId = bhjx.a((byte[])localObject2);
           paramArrayOfByte = new byte[paramArrayOfByte.length - 16];
           ((ByteArrayInputStream)localObject1).read(paramArrayOfByte);
           paramDataLineMsgRecord.msg = new String(paramArrayOfByte, "UTF-8");
@@ -500,7 +506,7 @@ public class DataLineMsgRecord
         localObject2 = new byte[paramArrayOfByte.length - 8];
         System.arraycopy(paramArrayOfByte, 0, localObject1, 0, 8);
         System.arraycopy(paramArrayOfByte, 8, localObject2, 0, localObject2.length);
-        paramDataLineMsgRecord.fileMsgStatus = bgjw.a((byte[])localObject1);
+        paramDataLineMsgRecord.fileMsgStatus = bhjx.a((byte[])localObject1);
         paramDataLineMsgRecord.msg = new String((byte[])localObject2, "UTF-8");
         return;
       }
@@ -588,7 +594,7 @@ public class DataLineMsgRecord
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (bgmg.b(this.path))
+    if (bhmi.b(this.path))
     {
       bool1 = bool2;
       if (this.strMoloKey == null) {
@@ -655,7 +661,7 @@ public class DataLineMsgRecord
     if (localFileManagerEntity == null)
     {
       localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = atvo.a().longValue();
+      localFileManagerEntity.nSessionId = aunj.a().longValue();
       this.entityID = localFileManagerEntity.nSessionId;
       switch (this.nOpType)
       {

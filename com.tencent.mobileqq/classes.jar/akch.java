@@ -1,89 +1,24 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
 
 public class akch
-  extends aywi
+  extends akbz
 {
-  public akch(BindNumberActivity paramBindNumberActivity) {}
+  public static final int[] a = { 2131690662 };
+  public static final int[] b = { 2131364408 };
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public akch(FragmentActivity paramFragmentActivity)
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      String str = bglf.b();
-      if (!TextUtils.isEmpty(str)) {
-        bcst.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
-        this.a.c();
-      }
-    }
-    for (;;)
-    {
-      bglf.a();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
-      {
-        this.a.b();
-      }
-      else
-      {
-        if (i == 107)
-        {
-          this.a.a(paramBundle);
-          return;
-        }
-        if (i == 106)
-        {
-          this.a.a(null, 2);
-        }
-        else if (i == 227)
-        {
-          this.a.d();
-        }
-        else if (i == 226)
-        {
-          this.a.e();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
-          }
-          this.a.a(a(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.a(2131717326);
-        }
-      }
-    }
+    super(paramFragmentActivity);
   }
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  protected int[] a()
   {
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      this.a.a(2131717326);
-    }
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

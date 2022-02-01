@@ -1,33 +1,25 @@
-import android.content.Context;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReqRunnable;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class bevy
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public int a;
+  public long a;
+  public aock a;
+  public bevx a;
+  public FromServiceMsg a;
+  public boolean a;
+  public ProtoReqManager.ProtoReqRunnable[] a;
   
-  public bevy(Context paramContext, String paramString1, String paramString2)
+  public bevy()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramString2.length();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localStringBuilder.append(", hanzi = " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.b != null) {
-      localStringBuilder.append(", pinyin = " + this.b);
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Aock = new aock();
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bevy
  * JD-Core Version:    0.7.0.1
  */

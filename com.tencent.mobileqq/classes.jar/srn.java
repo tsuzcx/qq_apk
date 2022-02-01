@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcelable;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
 
 public class srn
-  extends pmn
 {
-  public srn(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
-  public void b(String paramString)
-  {
-    boolean bool = bdch.a();
-    if (bool) {
-      ReadInJoyListViewGroup.b(this.a, true, 3, false);
-    }
-    QLog.d("ReadInJoyListViewGroup", 1, "onRefreshArticles! isLearnModelNow=" + bool);
-  }
+  public Parcelable a;
+  public ArticleInfo a;
+  public ItemShowDispatcher a;
+  public String a;
+  public spb a;
+  public boolean a;
 }
 
 

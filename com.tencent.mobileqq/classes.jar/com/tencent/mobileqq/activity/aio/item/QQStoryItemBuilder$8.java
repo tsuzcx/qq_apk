@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfy;
+import ahpk;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.qphone.base.util.QLog;
-import wpj;
-import wpm;
+import wte;
+import wth;
 
 class QQStoryItemBuilder$8
   implements Runnable
 {
-  QQStoryItemBuilder$8(QQStoryItemBuilder paramQQStoryItemBuilder, String paramString1, ahfy paramahfy, long paramLong, String paramString2, boolean paramBoolean) {}
+  QQStoryItemBuilder$8(QQStoryItemBuilder paramQQStoryItemBuilder, String paramString1, ahpk paramahpk, long paramLong, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).a(this.jdField_a_of_type_JavaLangString);
+    StoryVideoItem localStoryVideoItem = ((wte)wth.a(5)).a(this.jdField_a_of_type_JavaLangString);
     if ((localStoryVideoItem == null) || (TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder setVideoView 1: storyVideoItem = " + localStoryVideoItem);
       }
       ((Activity)this.this$0.b).runOnUiThread(new QQStoryItemBuilder.8.1(this));
-      this.this$0.a(this.jdField_a_of_type_Ahfy, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+      this.this$0.a(this.jdField_a_of_type_Ahpk, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder setVideoView 2: storyVideoItem = " + localStoryVideoItem);
     }
-    this.this$0.a(this.jdField_a_of_type_Ahfy, this.jdField_a_of_type_Long, localStoryVideoItem, this.jdField_a_of_type_Boolean);
+    this.this$0.a(this.jdField_a_of_type_Ahpk, this.jdField_a_of_type_Long, localStoryVideoItem, this.jdField_a_of_type_Boolean);
   }
 }
 

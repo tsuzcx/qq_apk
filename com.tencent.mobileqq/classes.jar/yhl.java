@@ -1,45 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.List;
 
-public class yhl
-  implements View.OnClickListener, View.OnLongClickListener
+class yhl
+  extends wjm<yhc, ygk>
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
-  
-  public yhl(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
+  yhl(yhc paramyhc)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370198);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370226));
-    this.b = paramView.findViewById(2131371305);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371293));
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
+    super(paramyhc);
   }
   
-  public void a(int paramInt)
+  public void a(@NonNull yhc paramyhc, @NonNull ygk paramygk)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if ((!paramygk.jdField_a_of_type_JavaLangString.equals(yhc.a(paramyhc))) || (paramygk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (yhc.a(paramyhc) == null))
+    {
+      yuk.b(this.TAG, "ignore this comment list event. %s.", paramygk.toString());
+      return;
+    }
+    if (!yhc.a(paramyhc).c())
+    {
+      yuk.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramygk.toString() });
+      return;
+    }
+    yuk.a(this.TAG, "receive comment list event. %s.", paramygk.toString());
+    yhc.a(paramyhc).a(paramygk.jdField_a_of_type_JavaUtilList, paramygk.c);
+    yhc.a(paramyhc).a().updateVideoInfo(paramygk.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+    if (yhc.a(paramyhc).a().size() < 1)
+    {
+      yhc.a(paramyhc).b();
+      return;
+    }
+    paramyhc.a();
   }
   
-  public void onClick(View paramView)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return ygk.class;
   }
   
-  public boolean onLongClick(View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-  }
+  public void b(@NonNull yhc paramyhc, @NonNull ygk paramygk) {}
 }
 
 

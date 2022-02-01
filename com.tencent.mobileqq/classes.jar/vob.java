@@ -1,10 +1,20 @@
-import feedcloud.FeedCloudMeta.StVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
+import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface vob
+public class vob
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, String paramString);
+  public vob(QCircleAggregationFragment paramQCircleAggregationFragment) {}
   
-  public abstract void a(FeedCloudMeta.StVideo paramStVideo, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    vtq.a("", 22, 13);
+    aaak.a().a(new QCircleSelectTabEvent(6));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

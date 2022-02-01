@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public abstract interface aoso
+class aoso
+  implements Comparator<MessageRecord>
 {
-  public abstract void a(PromotionConfigInfo paramPromotionConfigInfo);
+  aoso(aosn paramaosn) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+  }
 }
 
 

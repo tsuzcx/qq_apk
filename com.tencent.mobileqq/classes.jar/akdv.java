@@ -1,23 +1,20 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akdv
   implements View.OnClickListener
 {
-  public akdv(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public akdv(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    aufz localaufz = this.a.a.a();
-    if (localaufz != null) {
-      localaufz.a(false);
-    }
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

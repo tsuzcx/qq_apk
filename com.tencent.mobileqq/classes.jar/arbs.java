@@ -1,84 +1,89 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-final class arbs
+public class arbs
+  extends arac<arbt>
 {
-  private int jdField_a_of_type_Int = -1;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static arbs a(aqlg[] paramArrayOfaqlg)
+  @NonNull
+  public arbt a(int paramInt)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0))
-    {
-      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
-    }
-    arbs localarbs = new arbs();
-    int k = paramArrayOfaqlg.length;
-    int i = 0;
-    while (i < k)
-    {
-      Object localObject1 = paramArrayOfaqlg[i];
-      try
-      {
-        localObject1 = new JSONObject(((aqlg)localObject1).a);
-        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
-        {
-          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
-          {
-            j = 1;
-            localarbs.jdField_a_of_type_Int = j;
-          }
-        }
-        else
-        {
-          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
-            break label189;
-          }
-          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
-          if (localObject1 == null) {
-            break label189;
-          }
-          j = 0;
-          while (j < ((JSONArray)localObject1).length())
-          {
-            String str = ((JSONArray)localObject1).optString(j);
-            if (!TextUtils.isEmpty(str)) {
-              localarbs.jdField_a_of_type_JavaUtilList.add(str);
-            }
-            j += 1;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
-          continue;
-          int j = 0;
-        }
-        label189:
-        i += 1;
-      }
-    }
-    return localarbs;
+    return new arbt();
   }
   
-  public boolean a()
+  @Nullable
+  public arbt a(araj[] paramArrayOfaraj)
   {
-    return this.jdField_a_of_type_Int == 1;
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    {
+      arbt localarbt = arbt.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      }
+      return localarbt;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
+    }
+    aljo.a(true);
+    return null;
   }
   
-  public boolean a(String paramString)
+  public void a(arbt paramarbt)
   {
-    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
+    if (paramarbt == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramarbt.toString());
+    }
+    aljo.a(true);
+  }
+  
+  public Class<arbt> clazz()
+  {
+    return arbt.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
+    }
+    aljo.a(true);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+    aljo.a(true);
+  }
+  
+  public int type()
+  {
+    return 597;
   }
 }
 

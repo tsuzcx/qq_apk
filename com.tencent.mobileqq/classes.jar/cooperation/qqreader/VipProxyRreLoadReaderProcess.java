@@ -3,16 +3,16 @@ package cooperation.qqreader;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bgnt;
-import blpe;
-import blpu;
+import bhnv;
+import bmqg;
+import bmqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import cooperation.qqreader.host.ReaderHost;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import nko;
+import nmj;
 
 public class VipProxyRreLoadReaderProcess
   extends PluginProxyBroadcastReceiver
@@ -21,7 +21,7 @@ public class VipProxyRreLoadReaderProcess
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    blpu.c("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess onReceive");
+    bmqw.c("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess onReceive");
     super.onReceive(paramContext, paramIntent);
     paramContext = paramIntent.getStringExtra("params_uin_for_reader");
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
@@ -31,16 +31,16 @@ public class VipProxyRreLoadReaderProcess
     for (;;)
     {
       if (!paramIntent.getBooleanExtra("is_preload_reader_plugin", false)) {
-        blpe.a(BaseApplicationImpl.getApplication(), false);
+        bmqg.a(BaseApplicationImpl.getApplication(), false);
       }
       if (!a)
       {
         a = true;
-        blnx.a = 2;
-        blpu.d("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess isPreloadProcess=true");
-        if (bgnt.h(MobileQQ.sMobileQQ))
+        bmoz.a = 2;
+        bmqw.d("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess isPreloadProcess=true");
+        if (bhnv.h(MobileQQ.sMobileQQ))
         {
-          nko.a();
+          nmj.a();
           ThreadManager.post(new VipProxyRreLoadReaderProcess.1(this), 5, null, true);
         }
       }

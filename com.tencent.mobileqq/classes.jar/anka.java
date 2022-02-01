@@ -1,24 +1,6 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-
-class anka
-  extends BroadcastReceiver
+public abstract interface anka
 {
-  anka(anjx paramanjx, QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
-        this.jdField_a_of_type_Anjx.a();
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

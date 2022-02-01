@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aduw
-  implements atve
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aduw(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  public aduw(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    atvo.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    axkr.a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
-  
-  public void b() {}
 }
 
 

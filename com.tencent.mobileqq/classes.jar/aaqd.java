@@ -1,31 +1,50 @@
-import android.graphics.Rect;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class aaqd
-  implements bhuq
+public class aaqd
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  aaqd(aaqa paramaaqa) {}
+  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public aaqd(List<CertifiedAccountMeta.StQQGroup> paramList)
   {
-    if ((this.a.jdField_a_of_type_Besk != null) && (this.a.d))
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
     {
-      Rect localRect = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
-      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
-      {
-        this.a.d = false;
-        bfqu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_Besk.a, 0, null, null);
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_Besj.a), "8020205751015455", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
-        }
+      aaqe localaaqe = (aaqe)paramViewHolder;
+      if (localaaqe != null) {
+        localaaqe.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558782, paramViewGroup, false);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    }
+    return new aaqe(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
   }
 }
 

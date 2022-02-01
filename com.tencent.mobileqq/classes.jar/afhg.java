@@ -1,18 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afhg
-  implements bgck
+class afhg
+  implements bliz
 {
-  public afhg(TextPreviewActivity paramTextPreviewActivity) {}
+  afhg(afhf paramafhf) {}
   
-  public void a() {}
-  
-  public void b()
+  public void OnClick(View paramView, int paramInt)
   {
-    Message localMessage = this.a.a.obtainMessage(20);
-    this.a.a.sendMessage(localMessage);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_Blir.dismiss();
+      return;
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
+      abhr.a("share_success");
+      this.a.a.u();
+      continue;
+      if (bmko.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+      {
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131299011);
+        QQToast.a(this.a.a, 2, this.a.a.getString(2131691991), 1).b(paramInt);
+        abhr.a("favorite_success");
+      }
+      bmky.a(null, 65, 7);
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+    }
   }
 }
 

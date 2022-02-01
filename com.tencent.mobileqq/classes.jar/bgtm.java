@@ -1,13 +1,21 @@
-public abstract class bgtm
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class bgtm
 {
-  public int a;
+  private static Handler a;
   
-  public bgtm(int paramInt)
+  public static void a(Runnable paramRunnable)
   {
-    this.a = paramInt;
+    if (a == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
+      localHandlerThread.start();
+      a = new Handler(localHandlerThread.getLooper());
+    }
+    a.post(paramRunnable);
   }
-  
-  public abstract void a();
 }
 
 

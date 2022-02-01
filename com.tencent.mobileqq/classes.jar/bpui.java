@@ -1,27 +1,8 @@
-import android.util.Property;
-
-class bpui
-  extends Property<bpuh, Float>
+public class bpui
 {
-  bpui(bpuh parambpuh, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(bpuh parambpuh)
-  {
-    if (parambpuh != null) {
-      return Float.valueOf(bpuh.a(parambpuh));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bpuh parambpuh, Float paramFloat)
-  {
-    if (parambpuh != null) {
-      bpuh.a(parambpuh, paramFloat.floatValue());
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
 }
 
 

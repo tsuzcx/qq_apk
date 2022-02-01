@@ -1,110 +1,23 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.YTFace.model.FaceStatus;
 
 public class apom
 {
-  private static final apom jdField_a_of_type_Apom = new apom(1);
-  private static boolean jdField_a_of_type_Boolean;
-  private static final apom jdField_b_of_type_Apom = new apom(2);
-  private static apom jdField_c_of_type_Apom = jdField_b_of_type_Apom;
-  private final int jdField_a_of_type_Int;
-  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private final String jdField_a_of_type_JavaLangString;
-  private final SharedPreferences jdField_b_of_type_AndroidContentSharedPreferences;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String jdField_c_of_type_JavaLangString;
+  public float a;
+  public int a;
+  public FaceStatus a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  private apom(int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = a(paramInt);
-    this.jdField_c_of_type_JavaLangString = b(paramInt);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a(paramInt);
-    this.jdField_b_of_type_AndroidContentSharedPreferences = b(paramInt);
-    if (paramInt == 1)
-    {
-      this.jdField_b_of_type_JavaLangString = "test.ark.qq.com";
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = "cgi.ark.qq.com";
-  }
-  
-  private static SharedPreferences a(int paramInt)
-  {
-    if (paramInt == 2) {
-      return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfig", 0);
-    }
-    return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfigDebug", 0);
-  }
-  
-  public static apom a()
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = true;
-      ArkAppCenter.c("ArkApp", "ArkTemp.getCurrent sso env isTestEnv=" + false);
-    }
-    jdField_c_of_type_Apom = jdField_b_of_type_Apom;
-    return jdField_c_of_type_Apom;
-  }
-  
-  private static String a(int paramInt)
-  {
-    String str = e();
-    if (paramInt == 1) {
-      return str + "/ArkAppTest";
-    }
-    return str + "/ArkApp";
-  }
-  
-  private static SharedPreferences b(int paramInt)
-  {
-    if (paramInt == 2) {
-      return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfig", 0);
-    }
-    return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfigDebug", 0);
-  }
-  
-  private static String b(int paramInt)
-  {
-    String str = e();
-    if (paramInt == 1) {
-      return str + "/pddata/prd/arkapp/test";
-    }
-    return str + "/pddata/prd/arkapp";
-  }
-  
-  private static String e()
-  {
-    return BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString + "/Dict";
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString + "/Debug";
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_JavaLangString + "/Crash";
+    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

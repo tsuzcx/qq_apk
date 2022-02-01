@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-public final class ytv
-  implements Parcelable.Creator<EditVideoParams>
+public class ytv
+  implements blmf
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public ytv(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public EditVideoParams[] a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return new EditVideoParams[paramInt];
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    }
+    yuk.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 

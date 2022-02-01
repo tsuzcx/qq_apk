@@ -1,20 +1,22 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
 public class azdz
-  extends RecyclerView.ItemDecoration
+  implements Handler.Callback
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  public azdz(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  private azdz(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.f();
+    }
   }
 }
 

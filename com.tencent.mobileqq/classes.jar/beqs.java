@@ -1,29 +1,58 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.WriteTogetherDecodeFactory;
+import mqq.app.AppRuntime;
+import okio.ByteString;
 
-class beqs
-  extends GestureDetector.SimpleOnGestureListener
+public class beqs
 {
-  beqs(beqr parambeqr) {}
+  private static final String jdField_a_of_type_JavaLangString = "WriteTogether." + beqs.class.getSimpleName();
+  private WriteTogetherDecodeFactory jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgWriteTogetherDecodeFactory = new WriteTogetherDecodeFactory();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  private void b(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
+    String[] arrayOfString = paramString.split("\n");
+    int i = 0;
+    if (i < arrayOfString.length)
     {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
+      WriteTogetherDecodeFactory localWriteTogetherDecodeFactory = this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgWriteTogetherDecodeFactory;
+      String str = arrayOfString[i];
+      if (i + 1 < arrayOfString.length)
+      {
+        paramString = arrayOfString[(i + 1)];
+        label40:
+        paramString = localWriteTogetherDecodeFactory.decode(str, paramString);
+        if (paramString != null) {
+          break label65;
+        }
+      }
+      for (;;)
+      {
+        i += 2;
+        break;
+        paramString = null;
+        break label40;
+        label65:
+        a(paramString);
+      }
     }
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  void a(BaseWriteTogetherMsg paramBaseWriteTogetherMsg)
   {
-    return false;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((bemr)((QQAppInterface)localAppRuntime).getManager(377)).a(paramBaseWriteTogetherMsg);
+    }
   }
+  
+  public void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public void a(ByteString paramByteString) {}
 }
 
 

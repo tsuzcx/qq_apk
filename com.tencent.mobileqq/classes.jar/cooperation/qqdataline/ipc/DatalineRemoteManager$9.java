@@ -1,17 +1,17 @@
 package cooperation.qqdataline.ipc;
 
 import android.os.Bundle;
-import blja;
+import bmkd;
 import java.util.ArrayList;
 
 public class DatalineRemoteManager$9
   implements Runnable
 {
-  public DatalineRemoteManager$9(blja paramblja, Bundle paramBundle) {}
+  public DatalineRemoteManager$9(bmkd parambmkd, Bundle paramBundle) {}
   
   public void run()
   {
-    blja.a(this.this$0, this.a);
+    bmkd.a(this.this$0, this.a);
     this.this$0.a.add(this.a);
   }
 }

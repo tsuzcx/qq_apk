@@ -3,8 +3,8 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anni;
-import arhd;
+import anzj;
+import arws;
 
 public class IPSiteModel$Gxzb
   implements Parcelable
@@ -12,8 +12,8 @@ public class IPSiteModel$Gxzb
   public static final String BACKGROUND;
   public static final String BUBBLE;
   public static final String CARD;
-  public static final Parcelable.Creator<Gxzb> CREATOR = new arhd();
-  public static final String EMOJI = anni.a(2131704641);
+  public static final Parcelable.Creator<Gxzb> CREATOR = new arws();
+  public static final String EMOJI = anzj.a(2131704748);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -28,14 +28,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = anni.a(2131704638);
-    THEME = anni.a(2131704634);
-    PENDANT = anni.a(2131704637);
-    FONT = anni.a(2131704639);
-    BACKGROUND = anni.a(2131704640);
-    FUNCALL = anni.a(2131704633);
-    CARD = anni.a(2131704635);
-    REDPACKT = anni.a(2131704636);
+    BUBBLE = anzj.a(2131704745);
+    THEME = anzj.a(2131704741);
+    PENDANT = anzj.a(2131704744);
+    FONT = anzj.a(2131704746);
+    BACKGROUND = anzj.a(2131704747);
+    FUNCALL = anzj.a(2131704740);
+    CARD = anzj.a(2131704742);
+    REDPACKT = anzj.a(2131704743);
   }
   
   public IPSiteModel$Gxzb() {}

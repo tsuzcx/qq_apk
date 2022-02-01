@@ -1,28 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 public class baje
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
-  public baje(AIOIceBreakShow paramAIOIceBreakShow) {}
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (AIOIceBreakShow.a(this.a) == null) {
-      return;
-    }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
-    int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
-    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
-    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
-    ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
-    paramValueAnimator.requestLayout();
-    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

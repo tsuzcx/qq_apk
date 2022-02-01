@@ -11,10 +11,10 @@ public class CountDownTimer
   extends Handler
 {
   private static final int MSG = 1;
-  private boolean isRunning;
+  private boolean isRunning = false;
   private long mCountdownInterval = 1000L;
   public CopyOnWriteArrayList<CountDownTimer.CountDownTimerListener> mListeners = new CopyOnWriteArrayList();
-  private boolean mPause;
+  private boolean mPause = false;
   private long mStopTimeInFuture;
   
   public CountDownTimer() {}

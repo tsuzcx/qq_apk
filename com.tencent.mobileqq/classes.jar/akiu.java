@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akiu
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements View.OnClickListener
 {
-  akiu(akit paramakit) {}
+  akiu(akir paramakir) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (bpwu.a(this.a.mActivity, paramLocalMediaInfo))
-    {
-      akit.a(this.a, paramLocalMediaInfo);
-      aaxb.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-      return;
-    }
-    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

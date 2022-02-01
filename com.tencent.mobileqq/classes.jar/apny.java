@@ -1,39 +1,36 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
 public class apny
-  implements INetInfoHandler
 {
-  public apny(ArkAppCenter paramArkAppCenter) {}
+  public int a;
+  public long a;
+  public apnp a;
+  public apnq a;
+  public apnr a;
+  public apns a;
+  public apnx a;
+  public apnz a;
+  public apoa a;
+  public ayxq a;
+  public String a;
+  public int b;
+  public long b;
+  public apnq b;
+  public String b;
+  public int c = -1;
+  public long c;
   
-  public void onNetMobile2None()
+  public apny()
   {
-    ArkAppCenter.a(this.a, 1, 0);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public String toString()
   {
-    ArkAppCenter.a(this.a, 1, 2);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 2, 1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    ArkAppCenter.a(this.a, 2, 0);
+    return "ARCloudReqInfo{sessionId = " + this.jdField_a_of_type_JavaLangString + ", fileInfo = " + this.jdField_a_of_type_Apnx + ", longitude = " + this.jdField_a_of_type_Int + ", latitude = " + this.jdField_b_of_type_Int + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.c + ", markerInfo = " + this.jdField_a_of_type_Apnz + ", objectClassifyInfo = " + this.jdField_a_of_type_Apnq + ", preOcrInfo = " + this.jdField_a_of_type_Apnr + ", sceneRecogInfo = " + this.jdField_a_of_type_Apns + ", ocrInfo = " + this.jdField_a_of_type_Ayxq + ", appid = " + this.jdField_b_of_type_JavaLangString + ", uin = " + this.jdField_b_of_type_Long + '}';
   }
 }
 

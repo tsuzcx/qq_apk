@@ -1,21 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import java.util.Hashtable;
 
-public class aadx
-  implements View.OnClickListener
+final class aadx
+  implements aaad
 {
-  public aadx(CommentBottomBar paramCommentBottomBar) {}
+  aadx(String paramString, Paint paramPaint) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (CommentBottomBar.a(this.a) != null)
-    {
-      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
-      CommentBottomBar.a(this.a);
+    int i;
+    if (paramBoolean) {
+      i = 0;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      if (i < 3) {}
+      try
+      {
+        Typeface localTypeface = Typeface.createFromFile(paramString);
+        aadv.a().put(this.jdField_a_of_type_JavaLangString, localTypeface);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(localTypeface);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+import com.tencent.image.URLDrawable;
 
 public class wto
-  extends wla
+  implements wsq
 {
-  public wto(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
+  public void a(int paramInt)
   {
-    super(paramRspQQStoryGuide.result);
-  }
-  
-  public String toString()
-  {
-    return "QQStoryGuideResponse{}";
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    URLDrawable.clearMemoryCache();
   }
 }
 

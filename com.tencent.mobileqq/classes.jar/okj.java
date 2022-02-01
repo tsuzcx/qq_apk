@@ -1,24 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.1;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class okj
-  implements DialogInterface.OnCancelListener
+  implements blrf
 {
-  public okj(ReadInJoyUploadAvatarFragment.1 param1) {}
+  public okj(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a()
   {
-    paramDialogInterface = this.a.a.getIntent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", anni.a(2131711861));
-    paramDialogInterface.putExtra("Bundle", localBundle);
-    this.a.a.setResult(-1, paramDialogInterface);
-    this.a.a.finish();
+    if ((!this.a.a) && (this.a.b))
+    {
+      this.a.a = true;
+      uae.a("subscribe_tab_cost", null);
+    }
   }
 }
 

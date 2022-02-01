@@ -1,16 +1,18 @@
-class wum
-  extends anhl
+public class wum
 {
-  wum(wui paramwui) {}
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  protected void a(int paramInt)
+  public wum(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (paramInt == 1)
-    {
-      yqp.b(wui.b() + ".VASH", "Friend Cache Inited!");
-      wui.h = true;
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
   }
 }
 

@@ -1,46 +1,26 @@
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
 
-public class acrr
-  extends QzoneExternalRequest
+class acrr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  acrr(acrq paramacrq, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2) {}
   
-  public acrr(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-    long l = Long.parseLong(paramString1);
-    super.setHostUin(l);
-    super.setLoginUserId(l);
-    this.needCompress = false;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
-  {
-    JceStruct localJceStruct = null;
-    if (paramArrayOfByte != null) {
-      localJceStruct = decode(paramArrayOfByte, paramString);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    int i = this.jdField_a_of_type_Int;
+    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
+    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin <= acrq.a(this.jdField_a_of_type_Acrq)) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= acrq.b(this.jdField_a_of_type_Acrq))) && (acrq.a(this.jdField_a_of_type_Acrq).a))
+    {
+      acrq.a(this.jdField_a_of_type_Acrq);
+      return;
     }
-    return localJceStruct;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return this.b;
+    acrq.a(this.jdField_a_of_type_Acrq).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Acrq.a((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin - acrq.a(this.jdField_a_of_type_Acrq)) * 1.0F / (acrq.b(this.jdField_a_of_type_Acrq) - acrq.a(this.jdField_a_of_type_Acrq)));
   }
 }
 

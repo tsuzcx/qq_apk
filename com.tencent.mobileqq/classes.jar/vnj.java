@@ -1,19 +1,40 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
 public class vnj
-  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
+  extends RecyclerView.ViewHolder
 {
-  public vnj(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
+  private int jdField_a_of_type_Int;
+  private final QCircleContentOperationView jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
+  public RecyclerViewCompat a;
+  public vlr a;
   
-  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public vnj(vnh paramvnh, View paramView)
   {
-    if (QCirclePersonalBottomView.a(this.a) != null) {
-      this.a.removeView(QCirclePersonalBottomView.a(this.a));
-    }
+    super(paramView);
+    paramvnh = (FrameLayout)paramView;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat = ((RecyclerViewCompat)paramvnh.getChildAt(0));
+    this.jdField_a_of_type_Vlr = ((vlr)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getAdapter());
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView = ((QCircleContentOperationView)paramvnh.getChildAt(1));
+    this.jdField_a_of_type_Vlr.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView);
+  }
+  
+  public RecyclerViewCompat a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
+  }
+  
+  public vlr a()
+  {
+    return this.jdField_a_of_type_Vlr;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

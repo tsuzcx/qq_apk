@@ -1,125 +1,113 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.URLThemeImageView;
+import java.lang.ref.WeakReference;
 
 public class agoh
+  extends Handler
 {
-  private agoj jdField_a_of_type_Agoj;
-  private View jdField_a_of_type_AndroidViewView;
-  private IntimateInfo.MemoryDayInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo;
-  
-  public agoh(agof paramagof, Context paramContext)
+  public agoh(ListenChangeVoicePanel paramListenChangeVoicePanel, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559274, null);
+    super(paramLooper);
   }
   
-  public View a()
+  public void handleMessage(Message arg1)
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(agoj paramagoj)
-  {
-    this.jdField_a_of_type_Agoj = paramagoj;
-  }
-  
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
-  {
-    if (paramMemoryDayInfo != null)
+    switch (???.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = paramMemoryDayInfo;
-      if (this.jdField_a_of_type_AndroidViewView != null) {}
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setTag(paramMemoryDayInfo);
-    URLThemeImageView localURLThemeImageView = (URLThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368138);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381262);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369895);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370601);
-    Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363213);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = 686;
-    localURLDrawableOptions.mRequestHeight = 124;
-    localURLDrawableOptions.mRetryCount = 3;
-    localURLDrawableOptions.mPlayGifImage = true;
-    Object localObject1 = this.jdField_a_of_type_Agof.jdField_a_of_type_JavaLangString;
-    if (localURLThemeImageView != null)
-    {
-      if (localURLThemeImageView.a != null) {
-        localURLThemeImageView.a.a(bkpg.c);
-      }
-      if (paramMemoryDayInfo.iconUrl != null) {
-        localURLThemeImageView.setBackgroundURL(paramMemoryDayInfo.iconUrl);
-      }
-    }
-    if ((localRelativeLayout != null) && (ThemeUtil.isNowThemeIsNight(null, false, null))) {
-      localObject1 = this.jdField_a_of_type_Agof.b;
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null)) {
-        ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
-      }
-      for (;;)
+    case 102: 
+    default: 
+    case 101: 
+    case 103: 
+    case 104: 
+    case 105: 
+    case 106: 
+      do
       {
-        if ((localTextView2 != null) && (paramMemoryDayInfo.wording != null))
+        do
         {
-          localTextView2.setText(paramMemoryDayInfo.wording);
-          localObject2 = "";
-          localObject1 = localObject2;
-          if (localTextView1 != null)
+          do
           {
-            localObject1 = localObject2;
-            if (paramMemoryDayInfo.linkWording != null) {
-              localObject1 = paramMemoryDayInfo.linkWording;
-            }
-          }
-          int i = afur.a(95.0F, this.jdField_a_of_type_Agof.jdField_a_of_type_AndroidContentContext.getResources());
-          i = agof.a(this.jdField_a_of_type_Agof, (String)localObject1, 14.0F, i + 80);
-          if (i > 200) {
-            localTextView2.setMaxWidth(i);
-          }
-        }
-        else
-        {
-          if ((localTextView1 == null) || (paramMemoryDayInfo.linkWording == null)) {
-            break;
-          }
-          localTextView1.setText(paramMemoryDayInfo.linkWording);
-          if (TextUtils.isEmpty(paramMemoryDayInfo.linkColor)) {}
-        }
-        try
-        {
-          localTextView1.setTextColor(Color.parseColor(paramMemoryDayInfo.linkColor));
-          localTextView1.setOnClickListener(new agoi(this));
+            do
+            {
+              do
+              {
+                return;
+                ListenChangeVoicePanel.a(this.a, -1);
+                this.a.jdField_a_of_type_Agoe.b = 0;
+                this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView = null;
+                synchronized (this.a.b)
+                {
+                  this.a.jdField_a_of_type_Agoe.a = this.a.b;
+                  this.a.jdField_a_of_type_Agoe.notifyDataSetChanged();
+                  return;
+                }
+              } while ((???.obj == null) || (!(???.obj instanceof Bundle)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null));
+              ??? = (Bundle)???.obj;
+            } while (??? == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(???.getInt("progress"), ???.getInt("playTime"), ???.getInt("level"));
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
           return;
-          QLog.e("intimate_relationship", 2, " url is empty");
-          continue;
-          localTextView2.setMaxWidth(200);
-        }
-        catch (IllegalArgumentException paramMemoryDayInfo)
-        {
-          for (;;)
-          {
-            QLog.e("intimate_relationship", 2, " color parse err");
+          if (ListenChangeVoicePanel.a(this.a).get() != null) {
+            QQToast.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), "播放变音error", 0);
           }
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+        return;
+      } while ((ListenChangeVoicePanel.a(this.a).get() == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      bile.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), ListenChangeVoicePanel.a(this.a), PressToChangeVoicePanel.a, this.a);
+      int k = (int)ListenChangeVoicePanel.a(this.a);
+      String str;
+      QQRecorder.RecorderParam localRecorderParam;
+      if (!bamr.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).a((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ListenChangeVoicePanel.a(this.a)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PttPreSendManager", 2, "presend not hit, do origin logic");
+        }
+        ??? = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        str = ListenChangeVoicePanel.a(this.a);
+        localRecorderParam = ListenChangeVoicePanel.a(this.a);
+        if (ListenChangeVoicePanel.a(this.a) <= 0) {
+          break label677;
         }
       }
+      label677:
+      for (int i = 1;; i = 0)
+      {
+        ???.a(str, 4, 0, localRecorderParam, i, false, 0);
+        ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).b(ListenChangeVoicePanel.a(this.a), null);
+        if (ListenChangeVoicePanel.jdField_a_of_type_Bamd != null)
+        {
+          ListenChangeVoicePanel.jdField_a_of_type_Bamd.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), ListenChangeVoicePanel.a(this.a));
+          if (ListenChangeVoicePanel.a(this.a) > 0) {
+            bdll.b((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), "CliOper", "", "", "changevoice", "0X8006F7C", 0, 0, "" + ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a.a, "" + ListenChangeVoicePanel.a(this.a), "", "");
+          }
+        }
+        this.a.g();
+        int j = ListenChangeVoicePanel.b(this.a);
+        i = j;
+        if (this.a.jdField_a_of_type_Boolean) {
+          i = j + 10;
+        }
+        j = ListenChangeVoicePanel.a(this.a);
+        int m = ListenChangeVoicePanel.c(this.a);
+        this.a.a(j, m, k, i);
+        return;
+      }
     }
+    this.a.a(???.arg1, ???.arg2, ???.obj, true);
   }
 }
 

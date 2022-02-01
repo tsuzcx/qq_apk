@@ -1,63 +1,61 @@
-public final class ajks
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ajks
+  extends ajjr
+  implements View.OnClickListener
 {
-  private static boolean m(int paramInt)
+  public ajks(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
   {
-    return paramInt == -3;
+    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
   }
   
-  private static boolean n(int paramInt)
+  public View a(int paramInt, View paramView)
   {
-    return paramInt == -2;
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ajkt)))
+    {
+      localObject = new ajkt();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561373, null);
+      ((ajkt)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378936));
+      ((ajkt)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366094);
+      ((ajkt)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.setTag(localObject);
+      ((ajkt)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((ajmi)this.jdField_a_of_type_Ajmf).a.title);
+      localObject = ((ajkt)localObject).jdField_a_of_type_AndroidViewView;
+      if (!((ajmi)this.jdField_a_of_type_Ajmf).a.showEntrance) {
+        break label133;
+      }
+    }
+    label133:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      return paramView;
+      localObject = (ajkt)paramView.getTag();
+      break;
+    }
   }
   
-  private static boolean o(int paramInt)
+  public void onClick(View paramView)
   {
-    return paramInt == -1;
-  }
-  
-  private static boolean p(int paramInt)
-  {
-    return paramInt < 0;
-  }
-  
-  private static boolean q(int paramInt)
-  {
-    return paramInt == 0;
-  }
-  
-  private static boolean r(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private static boolean s(int paramInt)
-  {
-    return paramInt == 2;
-  }
-  
-  private static boolean t(int paramInt)
-  {
-    return paramInt == 3;
-  }
-  
-  private static boolean u(int paramInt)
-  {
-    return paramInt == 4;
-  }
-  
-  private static boolean v(int paramInt)
-  {
-    return paramInt == 5;
-  }
-  
-  private static boolean w(int paramInt)
-  {
-    return paramInt > 2;
-  }
-  
-  private static boolean x(int paramInt)
-  {
-    return paramInt >= 1;
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ajic.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      bdll.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,37 +1,23 @@
-import android.widget.FrameLayout;
-import com.tencent.superplayer.api.ISuperPlayer;
-import java.util.Timer;
+import java.lang.ref.WeakReference;
 
-public class aanp
+class aanp
+  extends aoeg
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aann jdField_a_of_type_Aann;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private double jdField_c_of_type_Double;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private double jdField_d_of_type_Double;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private double jdField_e_of_type_Double;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private double jdField_f_of_type_Double;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h;
+  WeakReference<aanq> a;
+  
+  public aanp(aanq paramaanq)
+  {
+    this.a = new WeakReference(paramaanq);
+  }
+  
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    aanq localaanq = (aanq)this.a.get();
+    if (localaanq != null) {
+      localaanq.a(paramBoolean, paramString, false);
+    }
+  }
 }
 
 

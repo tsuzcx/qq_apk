@@ -1,16 +1,6 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
-class szh
-  implements ViewFactory.FoundClickableViewListener
+public abstract interface szh
 {
-  szh(szg paramszg, Context paramContext) {}
-  
-  public void onFound(ViewBase paramViewBase)
-  {
-    paramViewBase.setOnClickListener(new szi(this));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

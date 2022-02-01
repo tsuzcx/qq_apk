@@ -1,19 +1,88 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class amme
-  implements AdapterView.OnItemClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor;", "Lcom/tencent/mobileqq/config/IQConfigProcessor;", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor$Config;", "()V", "clazz", "Ljava/lang/Class;", "isAccountRelated", "", "isNeedCompressed", "isNeedStoreLargeFile", "migrateOldOrDefaultContent", "type", "", "migrateOldVersion", "onParsed", "confFiles", "", "Lcom/tencent/mobileqq/config/QConfItem;", "([Lcom/tencent/mobileqq/config/QConfItem;)Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor$Config;", "onReqFailed", "", "failCode", "onUpdate", "newConf", "Companion", "Config", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amme
+  extends arac<ammg>
 {
-  public amme(CmGameDebugView paramCmGameDebugView) {}
+  public static final ammf a = new ammf(null);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  @NotNull
+  public ammg a(int paramInt)
   {
-    CmGameDebugView.a(this.a, paramInt);
-    this.a.a(paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    return new ammg();
+  }
+  
+  @Nullable
+  public ammg a(@Nullable araj[] paramArrayOfaraj)
+  {
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherConfigProcessor", 2, "onParsed");
+    }
+    ammg localammg = new ammg();
+    if (paramArrayOfaraj != null)
+    {
+      if (paramArrayOfaraj.length != 0) {
+        break label68;
+      }
+      i = 1;
+      if (i != 0) {
+        break label73;
+      }
+    }
+    label68:
+    label73:
+    for (int i = j;; i = 0)
+    {
+      if (i != 0)
+      {
+        paramArrayOfaraj = paramArrayOfaraj[0].a;
+        Intrinsics.checkExpressionValueIsNotNull(paramArrayOfaraj, "confFiles[0].content");
+        localammg.a(paramArrayOfaraj);
+      }
+      return localammg;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void a(@Nullable ammg paramammg) {}
+  
+  @NotNull
+  public Class<ammg> clazz()
+  {
+    return ammg.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 624;
   }
 }
 

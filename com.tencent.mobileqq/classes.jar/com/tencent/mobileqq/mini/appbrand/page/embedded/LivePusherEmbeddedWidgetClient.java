@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.Surface;
-import bgsp;
+import bhsr;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -133,6 +133,11 @@ public class LivePusherEmbeddedWidgetClient
       this.livePusherJSAdapter.enterForeground();
     }
     return true;
+  }
+  
+  public AppBrandRuntime getAppBrandRuntime()
+  {
+    return (AppBrandRuntime)this.curAppBrandRuntime;
   }
   
   public void handleInsertXWebLivePusher(JSONObject paramJSONObject, JsRuntime paramJsRuntime, BaseAppBrandRuntime paramBaseAppBrandRuntime)
@@ -288,7 +293,7 @@ public class LivePusherEmbeddedWidgetClient
       paramJSONObject = new JSONObject();
       try
       {
-        if (!bgsp.a(this.tempAudioFilePath))
+        if (!bhsr.a(this.tempAudioFilePath))
         {
           paramJSONObject.put("tempFilePath", this.tempAudioFilePath);
           this.tempAudioFilePath = null;

@@ -1,49 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.lbssearch.httpresponse.AdInfo;
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.util.WeakReference;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
 
-class ayqz
-  implements ayry
+public class ayqz
+  implements ayrl
 {
-  ayqz(ayqy paramayqy, LatLng paramLatLng, int paramInt) {}
+  public ayqz(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public void a(PoiBean paramPoiBean)
+  public void a(boolean paramBoolean1, List<aysk> paramList, boolean paramBoolean2, int paramInt)
   {
-    ayra localayra = (ayra)ayqy.a(this.jdField_a_of_type_Ayqy).get();
-    if (localayra == null)
+    NearbyMomentFragment.a(this.a, false);
+    if (paramBoolean1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. mCallback is null ");
+      NearbyMomentFragment.b(this.a, paramBoolean2);
+      if (paramBoolean2) {
+        NearbyMomentFragment.a(this.a).setText(anzj.a(2131706106));
       }
-      return;
-    }
-    if ((paramPoiBean == null) || (paramPoiBean.adInfo == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
+      NearbyMomentFragment.a(this.a, paramInt);
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramList = NearbyMomentFragment.a(this.a, paramList);
+        NearbyMomentFragment.a(this.a).addAll(paramList);
+        NearbyMomentFragment.a(this.a).b(paramList);
+        NearbyMomentFragment.a(this.a, paramList);
       }
-      localayra.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", ayqy.a(this.jdField_a_of_type_Ayqy), ayqy.a(this.jdField_a_of_type_Ayqy));
-      return;
-    }
-    String str1;
-    if (TextUtils.isEmpty(paramPoiBean.adInfo.city))
-    {
-      str1 = "";
-      if (!TextUtils.isEmpty(paramPoiBean.adInfo.district)) {
-        break label213;
-      }
-    }
-    label213:
-    for (String str2 = "";; str2 = paramPoiBean.adInfo.district)
-    {
-      str1 = str1 + str2;
-      localayra.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, ayqy.a(this.jdField_a_of_type_Ayqy), ayqy.a(this.jdField_a_of_type_Ayqy));
-      return;
-      str1 = paramPoiBean.adInfo.city;
-      break;
     }
   }
 }

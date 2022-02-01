@@ -1,18 +1,12 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public abstract interface bnfv
 {
-  public abstract View a();
+  public abstract void a(int paramInt, String paramString1, String paramString2, ArrayList<Integer> paramArrayList);
   
-  public abstract void a(int paramInt, bnfk parambnfk, bnfj parambnfj);
-  
-  public abstract View b();
-  
-  public abstract void b(int paramInt, bnfk parambnfk, bnfj parambnfj);
-  
-  public abstract View c();
-  
-  public abstract void c(int paramInt, bnfk parambnfk, bnfj parambnfj);
+  public abstract void a(Bundle paramBundle, String paramString, QQAppInterface paramQQAppInterface);
 }
 
 

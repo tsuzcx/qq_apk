@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
-import aasa;
+import aawd;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.TextView;
-import bggq;
-import zgd;
-import zgg;
+import bhgr;
+import zjy;
+import zkb;
 
 public class SlideShowAdapter$3
   implements Runnable
 {
-  public SlideShowAdapter$3(zgd paramzgd, zgg paramzgg) {}
+  public SlideShowAdapter$3(zjy paramzjy, zkb paramzkb) {}
   
   public void run()
   {
@@ -22,14 +22,14 @@ public class SlideShowAdapter$3
     if ((i == 0) || (j == 0)) {
       return;
     }
-    if (zgd.a(this.this$0) == null)
+    if (zjy.a(this.this$0) == null)
     {
-      int k = bggq.a(zgd.a(this.this$0), 1.0F);
-      new Paint().setTextSize(bggq.a(zgd.a(this.this$0), 11.0F));
-      int m = bggq.a(zgd.a(this.this$0), 2.0F);
-      zgd.a(this.this$0, aasa.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      int k = bhgr.a(zjy.a(this.this$0), 1.0F);
+      new Paint().setTextSize(bhgr.a(zjy.a(this.this$0), 11.0F));
+      int m = bhgr.a(zjy.a(this.this$0), 2.0F);
+      zjy.a(this.this$0, aawd.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
     }
-    this.a.a.setBackgroundDrawable(new BitmapDrawable(zgd.a(this.this$0).getResources(), zgd.a(this.this$0)));
+    this.a.a.setBackgroundDrawable(new BitmapDrawable(zjy.a(this.this$0).getResources(), zjy.a(this.this$0)));
   }
 }
 

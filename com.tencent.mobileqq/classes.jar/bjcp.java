@@ -1,114 +1,42 @@
-import com.tencent.qav.QavDef.MultiUserInfo;
-import java.util.List;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class bjcp
-  extends bjcy
+class bjcp
+  extends Animation
 {
-  public static final int MSG_ON_ENTER_ROOM = 1;
-  public static final int MSG_ON_ERROR = 2;
-  public static final int MSG_ON_GO_OFF_STAGE_RET = 12;
-  public static final int MSG_ON_GO_ON_STAGE_RET = 11;
-  public static final int MSG_ON_SELF_VOLUME_UPDATE = 8;
-  public static final int MSG_ON_START_REMOTE_VIDEO_RESULT = 15;
-  public static final int MSG_ON_SYSTEM_CALL_CHANGED = 16;
-  public static final int MSG_ON_USER_AUDIO_AVAILABLE = 5;
-  public static final int MSG_ON_USER_ENTER = 3;
-  public static final int MSG_ON_USER_EXIT = 4;
-  public static final int MSG_ON_USER_SPEAKING = 6;
-  public static final int MSG_ON_USER_UPDATE = 7;
-  public static final int MSG_ON_USER_VIDEO_FRAME_COME = 13;
-  public static final int MSG_ON_USER_VIDEO_IN = 9;
-  public static final int MSG_ON_USER_VIDEO_OUT = 10;
-  public static final int MSG_ON_USER_VIDEO_SRC_CHANGE = 14;
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void onEnterRoom() {}
-  
-  public void onError(int paramInt) {}
-  
-  public void onGoOffStageRet(boolean paramBoolean, long paramLong, int paramInt) {}
-  
-  public void onGoOnStageRet(boolean paramBoolean, long paramLong, int paramInt) {}
-  
-  public void onMemberVideoInOrOut(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2) {}
-  
-  public void onSelfVolumeUpdate(int paramInt) {}
-  
-  public void onStartRemoteVideoRequestResult(int paramInt) {}
-  
-  public void onSystemCallStateChanged(boolean paramBoolean) {}
-  
-  public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
-  
-  public void onUserEnter(QavDef.MultiUserInfo paramMultiUserInfo) {}
-  
-  public void onUserExit(QavDef.MultiUserInfo paramMultiUserInfo) {}
-  
-  public void onUserFirstVideoFrameIn(long paramLong, int paramInt) {}
-  
-  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
-  
-  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt) {}
-  
-  public void onUserUpdate(List<QavDef.MultiUserInfo> paramList) {}
-  
-  public void onUserVideoSrcChange(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
-  
-  public void update(int paramInt, Object... paramVarArgs)
+  public bjcp(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      onEnterRoom();
-      return;
-    case 2: 
-      onError(((Integer)paramVarArgs[0]).intValue());
-      return;
-    case 3: 
-      onUserEnter((QavDef.MultiUserInfo)paramVarArgs[0]);
-      return;
-    case 4: 
-      onUserExit((QavDef.MultiUserInfo)paramVarArgs[0]);
-      return;
-    case 5: 
-      onUserAudioAvailable((QavDef.MultiUserInfo)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
-      return;
-    case 6: 
-      QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramVarArgs[0];
-      boolean bool = ((Boolean)paramVarArgs[1]).booleanValue();
-      onUserSpeaking(localMultiUserInfo, bool, ((Integer)paramVarArgs[2]).intValue());
-      onUserSpeaking(localMultiUserInfo, bool);
-      return;
-    case 7: 
-      onUserUpdate((List)paramVarArgs[0]);
-      return;
-    case 8: 
-      onSelfVolumeUpdate(((Integer)paramVarArgs[0]).intValue());
-      return;
-    case 9: 
-      onMemberVideoInOrOut(true, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
-      return;
-    case 10: 
-      onMemberVideoInOrOut(false, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
-      return;
-    case 11: 
-      onGoOnStageRet(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
-      return;
-    case 12: 
-      onGoOffStageRet(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
-      return;
-    case 13: 
-      onUserFirstVideoFrameIn(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue());
-      return;
-    case 14: 
-      onUserVideoSrcChange(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue(), ((Long)paramVarArgs[2]).longValue(), ((Integer)paramVarArgs[3]).intValue());
-      return;
-    case 15: 
-      onStartRemoteVideoRequestResult(((Integer)paramVarArgs[0]).intValue());
-      return;
-    }
-    onSystemCallStateChanged(((Boolean)paramVarArgs[0]).booleanValue());
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F - 90.0F * paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

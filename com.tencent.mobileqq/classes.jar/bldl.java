@@ -1,6 +1,14 @@
-public abstract interface bldl
+class bldl
 {
-  public abstract void a(bldk parambldk);
+  public int a;
+  public bldw a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 

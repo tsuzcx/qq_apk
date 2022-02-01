@@ -1,24 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public class wxh
-  extends weu
+public abstract interface wxh
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  public abstract void a(@Nullable wvn paramwvn, Error paramError);
   
-  public wxh(wxg paramwxg, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
-  }
+  public abstract void a(@Nullable wvn paramwvn, @NonNull List<StoryVideoItem> paramList);
 }
 
 

@@ -27,15 +27,15 @@ public class ReadInJoyTipsView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
-    inflate(paramContext, 2131560274, this);
+    inflate(paramContext, 2131560286, this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376080));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376083));
-    this.b = ((ImageView)findViewById(2131376082));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376081));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376220));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376223));
+    this.b = ((ImageView)findViewById(2131376222));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376221));
   }
   
   protected void onFinishInflate()

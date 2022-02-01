@@ -1,37 +1,106 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
 
-class artq
-  implements amxm
+public abstract class artq
 {
-  artq(arti paramarti, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  protected int a;
+  protected artr a;
+  protected arul a;
+  protected final arvd a;
+  protected arvq a;
+  protected arvv a;
+  private ArrayList<arvg> a;
+  protected final List<aruc> a;
+  protected final TreeSet<aruc> a;
   
-  public void a(boolean paramBoolean, int paramInt)
+  protected artq(arul paramarul, artr paramartr, Comparator<aruc> paramComparator, arvv paramarvv, arvq paramarvq)
   {
-    Bundle localBundle = new Bundle();
-    if (paramBoolean)
-    {
-      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
-      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
-      localBundle.putInt("apollo_result", 0);
-      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
-      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
-      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
-      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
-      localBundle.putBoolean("apollo_is_super_yellow", amhd.c());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    localBundle.putInt("apollo_result", 1);
-    localBundle.putInt("apollo_audioId", paramInt);
-    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Arul = paramarul;
+    this.jdField_a_of_type_Artr = paramartr;
+    this.jdField_a_of_type_Arvv = paramarvv;
+    this.jdField_a_of_type_Arvq = paramarvq;
+    this.jdField_a_of_type_Arvd = new arvd(paramartr);
+    this.jdField_a_of_type_JavaUtilTreeSet = new TreeSet(paramComparator);
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    a();
   }
+  
+  public static artq a(arul paramarul, artr paramartr, Comparator<aruc> paramComparator, arvv paramarvv, arvq paramarvq)
+  {
+    return new arub(paramarul, paramartr, paramComparator, paramarvv, paramarvq);
+  }
+  
+  private void a(Canvas paramCanvas, arul paramarul, long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramCanvas != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((arvg)localIterator.next()).a(paramCanvas, paramarul, paramLong);
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public abstract aruc a(arvz paramarvz);
+  
+  public List<aruc> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a() {}
+  
+  public final void a(Canvas paramCanvas, long paramLong)
+  {
+    b(paramCanvas, paramLong);
+    a(paramCanvas, this.jdField_a_of_type_Arul, paramLong);
+  }
+  
+  protected void a(Canvas paramCanvas, aruc paramaruc)
+  {
+    arvc localarvc = this.jdField_a_of_type_Arul.a(paramaruc);
+    this.jdField_a_of_type_Arvd.a(paramCanvas, paramaruc, this.jdField_a_of_type_Arul, localarvc);
+    paramaruc.f();
+  }
+  
+  public void a(aruc paramaruc)
+  {
+    this.jdField_a_of_type_JavaUtilTreeSet.add(paramaruc);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(Canvas paramCanvas, long paramLong);
+  
+  public void b(aruc paramaruc)
+  {
+    paramaruc.c(true);
+    paramaruc.d(true);
+    float f = paramaruc.f();
+    artz.a(this.jdField_a_of_type_Arul, paramaruc);
+    paramaruc.c((paramaruc.f() + paramaruc.f()) / (f + paramaruc.f()));
+  }
+  
+  public abstract void c();
+  
+  public abstract void c(aruc paramaruc);
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public abstract void d(aruc paramaruc);
 }
 
 

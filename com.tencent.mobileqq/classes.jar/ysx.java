@@ -1,12 +1,11 @@
-public class ysx
+class ysx
+  implements zpx<ypg>
 {
-  public final String a;
-  public final yuq a;
+  ysx(ysw paramysw) {}
   
-  public ysx(yuq paramyuq, String paramString)
+  public ypg a()
   {
-    this.jdField_a_of_type_Yuq = paramyuq;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new ypg();
   }
 }
 

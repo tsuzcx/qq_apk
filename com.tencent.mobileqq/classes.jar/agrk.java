@@ -1,19 +1,6 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-
-public class agrk
-  extends afwr
+public abstract interface agrk
 {
-  public TextView a;
-  public AutoStartProgressBar a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public String b;
-  public View c;
-  public View d;
+  public abstract void a(int paramInt);
 }
 
 

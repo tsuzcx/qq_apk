@@ -1,8 +1,9 @@
-public class bcfo
+public abstract interface bcfo
+  extends bcfp
 {
-  public long a;
-  public long b;
-  public long c;
+  public abstract String b();
+  
+  public abstract int c();
 }
 
 

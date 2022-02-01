@@ -1,17 +1,30 @@
 public class bdzk
 {
-  public int a;
   public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public bdzk()
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Int = -99999;
-    this.jdField_a_of_type_JavaLangString = "unkown error";
+    return this.b.equals(((bdzk)paramObject).b);
+  }
+  
+  public int hashCode()
+  {
+    return super.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdzk
  * JD-Core Version:    0.7.0.1
  */

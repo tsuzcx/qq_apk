@@ -1,6 +1,6 @@
 package com.tencent.device.utils;
 
-import accn;
+import acgr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new accn();
+  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new acgr();
   public int a;
   public long a;
   public String a;

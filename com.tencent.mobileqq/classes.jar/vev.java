@@ -1,21 +1,21 @@
-import android.graphics.Point;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
 
-public final class vev
+class vev
+  implements Observer<vxq<QQCirclePrivateMsgShow.StGetPMSettingRsp>>
 {
-  public final int a;
-  public final long a;
-  public final Point a;
+  vev(veu paramveu) {}
   
-  public vev(long paramLong, Point paramPoint, int paramInt)
+  public void a(@Nullable vxq<QQCirclePrivateMsgShow.StGetPMSettingRsp> paramvxq)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", distanceOfError=" + this.jdField_a_of_type_Int + '}';
+    if ((paramvxq != null) && (paramvxq.a() == 3)) {
+      veu.a(this.a, (QQCirclePrivateMsgShow.StGetPMSettingRsp)paramvxq.a());
+    }
+    while ((paramvxq == null) || (paramvxq.a() != 4)) {
+      return;
+    }
+    veu.a(this.a, paramvxq.a(), paramvxq.a());
   }
 }
 

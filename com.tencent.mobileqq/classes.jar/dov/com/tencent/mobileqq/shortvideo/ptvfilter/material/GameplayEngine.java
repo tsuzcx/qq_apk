@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.content.res.AssetManager;
-import bqii;
+import brju;
 
 public class GameplayEngine
 {
   private long jdField_a_of_type_Long = 0L;
-  private bqii jdField_a_of_type_Bqii = new bqii(new Game3DNativeEvent());
+  private brju jdField_a_of_type_Brju = new brju(new Game3DNativeEvent());
   
   private native int createEngineContext(AssetManager paramAssetManager);
   

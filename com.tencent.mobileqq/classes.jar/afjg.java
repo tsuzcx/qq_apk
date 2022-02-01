@@ -1,108 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class afjg
-  extends anif
+  implements bliz
 {
-  public afjg(TroopGagActivity paramTroopGagActivity) {}
+  public afjg(RecentLoginDevActivity paramRecentLoginDevActivity, String paramString, ArrayList paramArrayList, int paramInt) {}
   
-  protected void a(bfsn parambfsn)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((parambfsn == null) || (!parambfsn.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGagActivity", 2, "onTroopGagStatusChange, statuCode=" + parambfsn.jdField_a_of_type_Int);
-    }
-    anxb localanxb;
-    afji localafji;
-    if (parambfsn.jdField_a_of_type_Int == 3)
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      if (parambfsn.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        parambfsn = parambfsn.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (parambfsn.hasNext())
-        {
-          localanxb = (anxb)parambfsn.next();
-          localafji = new afji();
-          localafji.jdField_a_of_type_JavaLangString = localanxb.jdField_a_of_type_JavaLangString;
-          localafji.jdField_a_of_type_Long = localanxb.jdField_a_of_type_Long;
-          this.a.jdField_a_of_type_JavaUtilList.add(localafji);
-        }
-      }
-      this.a.jdField_a_of_type_Afjj.notifyDataSetChanged();
     }
-    while (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if ((RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity) != null) && (RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.isFinishing()))
+      {
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).dismiss();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).cancel();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, null);
+      }
       return;
-      if (parambfsn.jdField_a_of_type_Int == 1)
+      if (!bhnv.d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity))
       {
-        parambfsn = parambfsn.jdField_a_of_type_Bfsr;
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-        if (parambfsn.jdField_a_of_type_Long != 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-          break;
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-        }
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getString(2131691989), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getTitleBarHeight());
       }
-      if (parambfsn.jdField_a_of_type_Int == 5)
+      else
       {
-        if (!parambfsn.jdField_a_of_type_Bfso.jdField_a_of_type_Boolean)
-        {
-          ThreadManager.post(new TroopGagActivity.2.1(this, new Handler(Looper.getMainLooper())), 8, null, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "OnClick begin to delHistoryDev");
         }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.clear();
-          if (parambfsn.jdField_a_of_type_JavaUtilArrayList != null)
-          {
-            parambfsn = parambfsn.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (parambfsn.hasNext())
-            {
-              localanxb = (anxb)parambfsn.next();
-              localafji = new afji();
-              localafji.jdField_a_of_type_JavaLangString = localanxb.jdField_a_of_type_JavaLangString;
-              localafji.jdField_a_of_type_Long = localanxb.jdField_a_of_type_Long;
-              this.a.jdField_a_of_type_JavaUtilList.add(localafji);
-            }
-          }
-          this.a.jdField_a_of_type_Afjj.notifyDataSetChanged();
-        }
-      }
-      else if (parambfsn.jdField_a_of_type_Int == 4)
-      {
-        parambfsn = parambfsn.jdField_a_of_type_Bfsp;
-        if (!parambfsn.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-          if (parambfsn.jdField_a_of_type_Long != 0L) {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-            break;
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-          }
+        if (asvf.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
+          RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity);
+        } else if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "showDelDevActionSheet.OnClick delHistoryDev failed");
         }
       }
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

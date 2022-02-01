@@ -1,31 +1,50 @@
 package dov.com.qq.im.ae.camera.ui;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import bgmo;
-import bgtn;
-import bnbn;
-import bniq;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import bojy;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import java.util.ArrayList;
 
 public class VideoStoryPiecesPart$14
   implements Runnable
 {
-  public VideoStoryPiecesPart$14(bniq parambniq) {}
+  public VideoStoryPiecesPart$14(bojy parambojy) {}
   
   public void run()
   {
-    try
+    Object localObject3 = (RelativeLayout)bojy.e(this.this$0).findViewById(2131376769);
+    if (localObject3 != null)
     {
-      bniq.a(this.this$0, bnbn.a(bniq.f(this.this$0), true));
-      if ((bniq.a(this.this$0) != null) && (!bniq.a(this.this$0).isRecycled())) {
-        bniq.a(this.this$0, bgmo.b(bniq.a(this.this$0), bgtn.a(3.0F), bniq.a(this.this$0).getWidth(), bniq.a(this.this$0).getHeight()));
+      Object localObject1 = bojy.a(this.this$0).getLayoutParams();
+      if ((localObject1 instanceof RelativeLayout.LayoutParams))
+      {
+        Object localObject2 = new ArrayList();
+        ((RelativeLayout)localObject3).findViewsWithText((ArrayList)localObject2, bojy.n(this.this$0).getText(AECaptureMode.GIF.textId), 1);
+        if (((ArrayList)localObject2).size() == 1)
+        {
+          localObject3 = new Rect();
+          ((View)((ArrayList)localObject2).get(0)).getGlobalVisibleRect((Rect)localObject3);
+          int i = bojy.a(this.this$0).getMeasuredWidth();
+          localObject2 = (RelativeLayout.LayoutParams)localObject1;
+          int j = ((Rect)localObject3).left;
+          ((RelativeLayout.LayoutParams)localObject2).leftMargin = ((((Rect)localObject3).right + j) / 2 - i / 2);
+          bojy.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          bojy.a(this.this$0).setVisibility(0);
+          localObject1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -15.0F);
+          ((TranslateAnimation)localObject1).setDuration(300L);
+          ((TranslateAnimation)localObject1).setRepeatCount(-1);
+          ((TranslateAnimation)localObject1).setRepeatMode(2);
+          bojy.a(this.this$0).startAnimation((Animation)localObject1);
+        }
       }
-      bniq.g(this.this$0).runOnUiThread(new VideoStoryPiecesPart.14.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }

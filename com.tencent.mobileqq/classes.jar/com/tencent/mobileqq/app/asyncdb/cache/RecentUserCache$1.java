@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import anyx;
+import aolh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class RecentUserCache$1
   implements Runnable
 {
-  public RecentUserCache$1(anyx paramanyx, long paramLong) {}
+  public RecentUserCache$1(aolh paramaolh, long paramLong) {}
   
   public void run()
   {

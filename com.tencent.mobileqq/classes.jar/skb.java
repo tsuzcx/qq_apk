@@ -1,57 +1,16 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class skb
+  implements bdyg
 {
-  private JSONObject a;
+  public skb(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public skb(String paramString)
+  public void a(bdxj parambdxj)
   {
-    try
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        this.a = new JSONObject();
-        return;
-      }
-      this.a = new JSONObject(paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public skb(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.a = new JSONObject();
-    och.a(paramString1, paramString2, paramString3, paramString4, this.a);
-  }
-  
-  public skb(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this(paramString1);
-    och.a(paramString2, paramString3, paramString4, paramString5, this.a);
-  }
-  
-  public String a()
-  {
-    return this.a.toString();
-  }
-  
-  protected void a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.a.put(paramString, paramObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    ReadInJoySkinSlideDownView.a(this.a, parambdxj);
+    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, parambdxj));
   }
 }
 

@@ -1,20 +1,12 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class bpwn
-  implements Handler.Callback
+public abstract interface bpwn
 {
-  bpwn(bpwm parambpwm) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
-    }
-    bpwm.a(this.a, false, null, paramMessage.what);
-    return false;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

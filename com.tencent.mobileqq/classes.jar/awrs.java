@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.app.Dialog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import mqq.app.QQPermissionCallback;
 
 public class awrs
-  implements awti
+  implements QQPermissionCallback
 {
-  public awrs(MultiAIOFragment paramMultiAIOFragment) {}
+  public awrs(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    paramArrayOfString = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (paramArrayOfString != null) {
+      paramArrayOfString.setOnDismissListener(new awrt(this));
+    }
+    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
+    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
+    paramArrayOfInt = awpq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
   }
 }
 

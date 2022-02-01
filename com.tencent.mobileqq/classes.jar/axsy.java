@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.util.HashMap;
 
 class axsy
-  implements DialogInterface.OnDismissListener
+  implements beup
 {
-  axsy(axsd paramaxsd) {}
+  axsy(axsw paramaxsw) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    this.a.r = false;
+    if ((parambevl != null) && (parambevm != null) && ((parambevl instanceof beum)))
+    {
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+      if (parambevm.contains("range="))
+      {
+        parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long);
+      }
+    }
   }
 }
 

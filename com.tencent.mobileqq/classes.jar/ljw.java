@@ -1,32 +1,19 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import mqq.app.BaseActivity;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public class ljw
+class ljw
+  implements Camera.AutoFocusCallback
 {
-  private Runnable a;
+  ljw(ljv paramljv) {}
   
-  public void a(VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if ((paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
-    {
-      return;
-      paramVideoController = paramVideoController.a();
-    } while ((this.a == null) || (paramVideoController == null));
-    paramVideoController.a(this.a, paramVideoAppInterface);
-    this.a = null;
-  }
-  
-  public void a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
-  {
-    if ((paramBaseActivity == null) || (paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
-    {
-      return;
-      paramVideoController = paramVideoController.a();
-    } while (paramVideoController == null);
-    this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
+    }
+    GraphicRenderMgr.getInstance().setIsFocusing(false);
   }
 }
 

@@ -1,92 +1,174 @@
-import android.util.Log;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class lqm
+public class lqm
 {
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
-  private List<lql> jdField_a_of_type_JavaUtilList = new LinkedList();
-  lqo jdField_a_of_type_Lqo;
-  private lqr jdField_a_of_type_Lqr;
+  private String jdField_a_of_type_JavaLangString;
+  private Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public lhv a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public lqm()
+  public int a(lpj paramlpj, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
-  }
-  
-  public lqm a(lql paramlql)
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlql);
-    this.jdField_a_of_type_JavaUtilList.add(paramlql);
-    paramlql.a(this.jdField_a_of_type_Lqr);
-    return this;
-  }
-  
-  protected abstract void a();
-  
-  public void a(lqo paramlqo)
-  {
-    this.jdField_a_of_type_Lqo = paramlqo;
-  }
-  
-  protected abstract void b();
-  
-  protected void b(List<lqp> paramList, long paramLong)
-  {
-    int k = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (;;)
+    int i = 1;
+    if (4 == paramlpj.a())
     {
-      return;
-      int i = 0;
-      int j;
-      for (;;)
-      {
-        j = k;
-        if (i >= paramList.size()) {
-          break;
+      a(false);
+      return 0;
+    }
+    if ((paramInt > 0) || (!paramBoolean2))
+    {
+      c();
+      if (paramBoolean1) {
+        if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+        {
+          b(paramString1, paramString2);
+          paramInt = 2;
         }
-        ((lqp)paramList.get(i)).a(this.jdField_a_of_type_JavaUtilList.size());
-        i += 1;
-      }
-      while (j < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ((lql)this.jdField_a_of_type_JavaUtilList.get(j)).a(paramList, paramLong);
-        j += 1;
       }
     }
+    for (;;)
+    {
+      return paramInt;
+      a(true);
+      paramInt = 0;
+      continue;
+      a(false);
+      paramInt = 0;
+      continue;
+      a(false);
+      b();
+      paramInt = i;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilMap.clear();
+  }
+  
+  public void a(long paramLong)
+  {
+    a(false);
+    c();
+    a("clearState_" + paramLong, null);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+    {
+      if (!GestureFilterManager.sGestureType.equals("fivea")) {
+        break label79;
+      }
+      localObject = VideoController.a().a().getResources().getDrawable(2130842109);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      lbj.e("TipsInfo", "ProcessGestureSDK pandentInfo.gestureType drawable insert, drawable" + String.valueOf(localObject));
+      return;
+      label79:
+      if (GestureFilterManager.sGestureType.equals("palmup")) {
+        localObject = VideoController.a().a().getResources().getDrawable(2130842110);
+      } else if (GestureFilterManager.sGestureType.equals("qheart")) {
+        localObject = VideoController.a().a().getResources().getDrawable(2130842111);
+      } else {
+        localObject = new BitmapDrawable(auog.a(bdaf.a() + paramString + ".png"));
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TipsInfo", 1, "setGestureType[" + paramString1 + "], GestureTips[" + this.jdField_a_of_type_JavaLangString + "->" + paramString2 + "]");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TipsInfo", 1, "hideGestureTips, bGettureShown[" + paramBoolean + "], mCurGestureType[" + this.jdField_a_of_type_JavaLangString + "]");
+    }
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    do
+    {
+      return;
+      a("hideGestureTips", null);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    } while (this.jdField_a_of_type_Lhv == null);
+    this.jdField_a_of_type_Lhv.b(0);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (!a()) {}
+    while (this.b) {
+      return;
+    }
+    lbj.c("TipsInfo", "processTips showfaceTips");
+    if (this.jdField_a_of_type_Lhv != null) {
+      this.jdField_a_of_type_Lhv.a(100);
+    }
+    this.b = true;
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (!a()) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString2));
+      lbj.c("TipsInfo", "showGestureTips showGestureTips mHasGestureTipsShow[" + this.jdField_a_of_type_Boolean + "]");
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_Lhv != null) {
+          this.jdField_a_of_type_Lhv.a(paramString1);
+        }
+        a("showGestureTips1", paramString2);
+        return;
+      }
+    } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString2));
+    Drawable localDrawable = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+    if (this.jdField_a_of_type_Lhv != null) {
+      this.jdField_a_of_type_Lhv.a(localDrawable, paramString1);
+    }
+    a("showGestureTips2", paramString2);
   }
   
   public void c()
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "isolated: ");
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void d()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lqr = new lqr();
-    this.jdField_a_of_type_Lqr.a = this;
-    a();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lql)this.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_Lqr);
-      i += 1;
+    if (!this.b) {
+      return;
     }
-  }
-  
-  public void e()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "destroy");
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lql)this.jdField_a_of_type_JavaUtilList.get(i)).c();
-      i += 1;
+    lbj.c("TipsInfo", "processTips hideFaceTips");
+    if (this.jdField_a_of_type_Lhv != null) {
+      this.jdField_a_of_type_Lhv.b(0);
     }
-    b();
+    this.b = false;
   }
 }
 

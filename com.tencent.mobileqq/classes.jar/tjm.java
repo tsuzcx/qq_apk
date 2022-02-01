@@ -1,42 +1,36 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tjm
-  implements ViewPager.OnPageChangeListener
+  implements View.OnLayoutChangeListener
 {
-  private tjm(ViewPagerCompat paramViewPagerCompat) {}
+  public tjm(ViolaBaseView paramViolaBaseView) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
+    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1"))) {
+      paramView = new JSONObject();
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (ViewPagerCompat.a(this.a) != null)
+    try
     {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      paramView.put("navigationBarHeight", bhtq.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
+      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
   }

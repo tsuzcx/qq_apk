@@ -54,7 +54,7 @@ public class YellowTipsLayout
     //   13: new 51	java/lang/StringBuilder
     //   16: dup
     //   17: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   20: getstatic 57	akxc:c	Ljava/lang/String;
+    //   20: getstatic 57	alir:c	Ljava/lang/String;
     //   23: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_1
     //   27: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -200,12 +200,12 @@ public class YellowTipsLayout
   
   private void init(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560541, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560556, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.mWariningView = ((ImageView)findViewById(2131368233));
-    this.mText = ((TextView)findViewById(2131368232));
-    this.mArrowView = ((ImageView)findViewById(2131368230));
+    this.mWariningView = ((ImageView)findViewById(2131368307));
+    this.mText = ((TextView)findViewById(2131368306));
+    this.mArrowView = ((ImageView)findViewById(2131368304));
   }
   
   public void onClick(View paramView)

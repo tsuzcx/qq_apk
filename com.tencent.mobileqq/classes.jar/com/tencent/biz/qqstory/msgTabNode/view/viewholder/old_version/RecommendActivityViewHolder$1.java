@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version;
 
-import wrs;
-import wsl;
+import wvn;
+import wwg;
 
 public final class RecommendActivityViewHolder$1
   implements Runnable
 {
-  public RecommendActivityViewHolder$1(wrs paramwrs) {}
+  public RecommendActivityViewHolder$1(wvn paramwvn) {}
   
   public void run()
   {
-    wsl.d(this.a);
+    wwg.d(this.a);
   }
 }
 

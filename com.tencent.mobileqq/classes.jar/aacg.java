@@ -1,25 +1,18 @@
-import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.MutableLiveData;
 
 public class aacg
-  implements zvm
+  extends aabb
 {
-  aacg(aacd paramaacd) {}
+  private final MutableLiveData<Object> a = new MutableLiveData();
   
-  public void a(boolean paramBoolean, Drawable paramDrawable)
+  public MutableLiveData<Object> a()
   {
-    if ((paramBoolean) && ((paramDrawable instanceof AnimationDrawable)))
-    {
-      paramDrawable = (AnimationDrawable)paramDrawable;
-      if (aacd.a(this.a) != null) {
-        aacd.f(this.a).runOnUiThread(new DetailBaseBlock.3.1(this, paramDrawable));
-      }
-      return;
-    }
-    QLog.d(aacd.a, 2, "showFollowTipView error, create animationDrawable error");
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return "DemoBaseViewModel";
   }
 }
 

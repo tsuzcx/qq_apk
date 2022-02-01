@@ -1,6 +1,6 @@
 package com.tencent.biz.troopgift;
 
-import aatu;
+import aaxx;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -15,7 +15,7 @@ public abstract class absMultiViewPager
   extends ViewPager
   implements AdapterView.OnItemClickListener
 {
-  protected aatu a;
+  protected aaxx a;
   protected ViewPager.OnPageChangeListener a;
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
@@ -54,8 +54,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aatu != null) {
-      this.jdField_a_of_type_Aatu.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Aaxx != null) {
+      this.jdField_a_of_type_Aaxx.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -108,9 +108,9 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(aatu paramaatu)
+  public void setOnPagerSizeChangeListener(aaxx paramaaxx)
   {
-    this.jdField_a_of_type_Aatu = paramaatu;
+    this.jdField_a_of_type_Aaxx = paramaaxx;
   }
 }
 

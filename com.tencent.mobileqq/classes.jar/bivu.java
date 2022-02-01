@@ -1,33 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
+import java.lang.reflect.Field;
 
 public class bivu
-  implements DialogInterface.OnClickListener
+  extends LinkMovementMethod
 {
-  public bivu(DownloadManager.17 param17) {}
+  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
+  private static Field jdField_a_of_type_JavaLangReflectField;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static MovementMethod a()
   {
+    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
+      jdField_a_of_type_AndroidTextMethodMovementMethod = new bivu();
+    }
+    return jdField_a_of_type_AndroidTextMethodMovementMethod;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getActionMasked() == 1) {}
     try
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bivp.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
+      if (jdField_a_of_type_JavaLangReflectField == null) {
+        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+      }
+      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
+      if (bool) {
+        return true;
+      }
     }
-    catch (Exception paramDialogInterface)
+    catch (NoSuchFieldException localNoSuchFieldException)
     {
-      break label6;
+      localNoSuchFieldException.printStackTrace();
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
     }
   }
 }

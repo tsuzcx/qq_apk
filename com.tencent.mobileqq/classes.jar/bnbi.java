@@ -1,32 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit.13;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bnbi
-  implements DialogInterface.OnClickListener
+  implements bnbt
 {
-  public bnbi(QIMCameraCaptureUnit.13 param13) {}
+  public bnbi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    Activity localActivity = this.a.this$0.jdField_a_of_type_Boyn.a();
-    if (paramInt == 1)
-    {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCameraPermissionFinish(true);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      localActivity.finish();
-    }
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
   }
 }
 

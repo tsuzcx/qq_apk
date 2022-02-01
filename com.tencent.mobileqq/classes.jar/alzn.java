@@ -1,18 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class alzn
-  implements View.OnClickListener
+class alzn
+  implements Comparator<bbfq>
 {
-  public alzn(SessionClearFragment paramSessionClearFragment) {}
+  alzn(alzm paramalzm) {}
   
-  public void onClick(View paramView)
+  public int a(bbfq parambbfq1, bbfq parambbfq2)
   {
-    SessionClearFragment.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((parambbfq1 != null) && (parambbfq2 != null)) {
+      return parambbfq1.b - parambbfq2.b;
+    }
+    return -1;
   }
 }
 

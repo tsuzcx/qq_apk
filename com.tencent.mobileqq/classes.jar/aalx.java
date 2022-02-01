@@ -1,86 +1,100 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.CallSuper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class aalx
-  extends SubscribeBannerView.BannerAdapter
+public abstract class aalx
+  extends MSFServlet
 {
-  public aalx(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
+  private static String a;
+  protected int a;
   
-  private String a(Object paramObject)
+  static
   {
-    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
-      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
-    }
-    return "";
+    jdField_a_of_type_JavaLangString = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
   }
   
-  public View a(View paramView, Object paramObject)
+  public static String a()
   {
-    String str = a(paramObject);
-    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
+    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
+    Random localRandom = new Random();
+    localRandom.setSeed(System.currentTimeMillis());
+    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    return localStringBuilder.toString();
+  }
+  
+  protected abstract void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte);
+  
+  @CallSuper
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Bundle localBundle = new Bundle();
+    try
     {
-      paramObject = (CertifiedAccountMeta.StImage)paramObject;
-      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
+      localBundle.putLong("key_index", paramIntent.getLongExtra("key_index", -1L));
+      if (paramFromServiceMsg != null)
       {
-        float f = paramObject.height.get() / paramObject.width.get();
-        paramObject = paramView.getLayoutParams();
-        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
-        int i = j;
-        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
-          i = RelativeMultiPicHeadItemView.b(this.a);
-        }
-        paramObject.width = i;
-        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
-      }
-    }
-    if (str != null) {
-      try
-      {
-        paramObject = aaid.a(str);
-        if (!TextUtils.isEmpty(paramObject))
+        if (paramFromServiceMsg.isSuccess())
         {
-          paramObject = new File(paramObject);
-          if (paramObject.exists())
-          {
-            ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
-            return paramView;
-          }
+          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+          localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putLong("key_index", localStQWebRsp.Seq.get());
+          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
+          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          a(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
+          return;
         }
-        zzx.a(str, (URLImageView)paramView);
-        return paramView;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
-        return paramView;
-      }
-      catch (Error paramObject)
-      {
-        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!error:" + paramObject.getMessage());
+        localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+        localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+        notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+        return;
       }
     }
-    return paramView;
+    catch (Throwable paramFromServiceMsg)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramFromServiceMsg + "onReceive error");
+      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
+    }
+    notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
   }
   
-  protected URLImageView a(ViewGroup paramViewGroup)
+  @CallSuper
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    paramViewGroup = new URLImageView(paramViewGroup.getContext());
-    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
-    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
+    Object localObject = null;
+    if (paramPacket != null) {}
+    for (paramPacket = paramPacket.toMsg();; paramPacket = null)
     {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
-      return paramViewGroup;
+      if (paramPacket != null)
+      {
+        String str = paramPacket.getServiceCmd();
+        paramPacket = localObject;
+        if (paramIntent != null) {
+          paramPacket = paramIntent.getStringExtra("traceid");
+        }
+        QLog.i("certified-account-cmd", 1, "send request cmd=" + str + " traceId=" + paramPacket);
+      }
+      return;
     }
   }
 }

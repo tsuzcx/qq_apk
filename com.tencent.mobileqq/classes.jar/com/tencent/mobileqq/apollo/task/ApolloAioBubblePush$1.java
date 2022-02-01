@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.task;
 
-import amhd;
-import amzs;
+import amsx;
+import anlm;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,31 +9,31 @@ import com.tencent.qphone.base.util.QLog;
 public class ApolloAioBubblePush$1
   implements Runnable
 {
-  public ApolloAioBubblePush$1(amzs paramamzs, QQAppInterface paramQQAppInterface) {}
+  public ApolloAioBubblePush$1(anlm paramanlm, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    amhd localamhd = (amhd)this.a.getManager(153);
-    Object localObject2 = localamhd.a(4);
+    amsx localamsx = (amsx)this.a.getManager(153);
+    Object localObject2 = localamsx.a(4);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = localamhd.a(3);
+      localObject1 = localamsx.a(3);
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = localamhd.a(9);
+      localObject2 = localamsx.a(9);
     }
     Object localObject3 = localObject2;
     if (localObject2 == null) {
-      localObject3 = localamhd.a(2);
+      localObject3 = localamsx.a(2);
     }
     localObject1 = localObject3;
     if (localObject3 == null)
     {
-      localObject2 = localamhd.a(10);
+      localObject2 = localamsx.a(10);
       localObject1 = localObject2;
       if (localObject2 != null)
       {
@@ -44,19 +44,19 @@ public class ApolloAioBubblePush$1
     localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject2 = localamhd.a(7);
-      localamhd.o = false;
+      localObject2 = localamsx.a(7);
+      localamsx.o = false;
     }
     if ((localObject2 != null) && (((DrawerPushItem)localObject2).reddotGameId > 0)) {
-      localamhd.f(((DrawerPushItem)localObject2).reddotGameId);
+      localamsx.f(((DrawerPushItem)localObject2).reddotGameId);
     }
     if ((localObject2 == null) || (((DrawerPushItem)localObject2).show_sum < ((DrawerPushItem)localObject2).show_counts)) {
-      amzs.a(this.this$0, (DrawerPushItem)localObject2);
+      anlm.a(this.this$0, (DrawerPushItem)localObject2);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloAioBubblePush", 2, new Object[] { "[onEnterAIO] pushItem:", amzs.a(this.this$0) });
+      QLog.d("ApolloAioBubblePush", 2, new Object[] { "[onEnterAIO] pushItem:", anlm.a(this.this$0) });
     }
-    amzs.a(this.this$0, false);
+    anlm.a(this.this$0, false);
   }
 }
 

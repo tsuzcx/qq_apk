@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.music.QQPlayerService;
+import java.math.BigDecimal;
 
 public class awyf
-  implements aqfx
 {
-  public awyf(QQPlayerService paramQQPlayerService) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onServiceSyncSucc(boolean paramBoolean)
+  public String a(int paramInt, float paramFloat)
   {
-    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
-      QQPlayerService.a(this.a).e();
+    String str = null;
+    if (this.c != null)
+    {
+      str = this.c.replaceFirst("%param%", "" + paramInt);
+      paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
+      str = str.replaceFirst("%param%", "" + paramFloat);
     }
+    return str;
   }
 }
 

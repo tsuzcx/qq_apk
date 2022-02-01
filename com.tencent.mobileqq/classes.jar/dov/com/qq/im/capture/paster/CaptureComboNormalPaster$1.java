@@ -1,20 +1,20 @@
 package dov.com.qq.im.capture.paster;
 
-import boof;
-import bosj;
-import bqja;
+import bpqa;
+import bpue;
+import brkm;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class CaptureComboNormalPaster$1
   implements Runnable
 {
-  public CaptureComboNormalPaster$1(boof paramboof, int paramInt) {}
+  public CaptureComboNormalPaster$1(bpqa parambpqa, int paramInt) {}
   
   public void run()
   {
-    DoodleLayout localDoodleLayout = bosj.a().a(this.a);
+    DoodleLayout localDoodleLayout = bpue.a().a(this.a);
     if (localDoodleLayout != null) {
-      boof.a(this.this$0.a, boof.a(this.this$0), bqja.a, bqja.b, boof.a(this.this$0), boof.b(this.this$0), boof.c(this.this$0), boof.a(this.this$0), localDoodleLayout.a());
+      bpqa.a(this.this$0.a, bpqa.a(this.this$0), brkm.a, brkm.b, bpqa.a(this.this$0), bpqa.b(this.this$0), bpqa.c(this.this$0), bpqa.a(this.this$0), localDoodleLayout.a());
     }
   }
 }

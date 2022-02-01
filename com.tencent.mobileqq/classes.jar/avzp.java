@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.qphone.base.util.QLog;
 
-public class avzp
+class avzp
+  implements aweg
 {
-  private int jdField_a_of_type_Int;
-  private avzr jdField_a_of_type_Avzr;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  avzp(avzo paramavzo) {}
+  
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avzo.a(this.a, paramNewTogetherRoomMessageData, 1);
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avzo.a(this.a, paramNewTogetherRoomMessageData, 3);
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avzo.a(this.a, paramNewTogetherRoomMessageData, 2);
+  }
 }
 
 

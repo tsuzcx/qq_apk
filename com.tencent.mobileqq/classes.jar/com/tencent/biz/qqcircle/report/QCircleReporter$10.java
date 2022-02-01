@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.report;
 
 import java.util.List;
-import vrl;
+import vtw;
 
 public class QCircleReporter$10
   implements Runnable
 {
-  public QCircleReporter$10(vrl paramvrl, List paramList) {}
+  public QCircleReporter$10(vtw paramvtw, List paramList) {}
   
   public void run()
   {

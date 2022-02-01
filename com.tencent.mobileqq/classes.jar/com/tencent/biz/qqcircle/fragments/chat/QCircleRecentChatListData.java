@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.fragments.chat;
 
-import acvy;
-import acwh;
+import adab;
+import adak;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bdnt;
-import bglf;
+import begp;
+import bhlg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -40,6 +40,9 @@ public class QCircleRecentChatListData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
+    if (paramContext == null) {
+      return;
+    }
     Object localObject1 = paramQQAppInterface.a();
     Object localObject2 = paramQQAppInterface.a();
     if (localObject1 != null) {}
@@ -52,25 +55,25 @@ public class QCircleRecentChatListData
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if (localObject2 != null)
         {
-          this.mUnreadNum = ((acvy)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (acwh.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((adab)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (adak.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
-          label84:
+          label89:
           localObject2 = super.getMsgSummaryTemp();
           super.buildMessageBody((IMCoreMessageStub)localObject1, getRecentUserType(), paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-          this.mTitleName = bglf.b(paramQQAppInterface, getRecentUserUin(), true);
+          this.mTitleName = bhlg.b(paramQQAppInterface, getRecentUserUin(), true);
           this.mAuthenIconId = 0;
           super.dealStatus(paramQQAppInterface);
           a(paramQQAppInterface, (MsgSummary)localObject2);
           super.extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-          if (AppSetting.c)
-          {
-            paramQQAppInterface = new StringBuilder(24);
-            paramQQAppInterface.append(this.mTitleName);
-            if (this.mUnreadNum != 0) {
-              break label258;
-            }
+          if (!AppSetting.c) {
+            break;
+          }
+          paramQQAppInterface = new StringBuilder(24);
+          paramQQAppInterface.append(this.mTitleName);
+          if (this.mUnreadNum != 0) {
+            break label263;
           }
         }
       }
@@ -86,14 +89,14 @@ public class QCircleRecentChatListData
         break;
         this.mUnreadNum = 0;
         this.mDisplayTime = 0L;
-        break label84;
-        label258:
+        break label89;
+        label263:
         if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698062));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698163));
         } else if (this.mUnreadNum == 2) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698063));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698164));
         } else if (this.mUnreadNum > 0) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698061, new Object[] { Integer.valueOf(this.mUnreadNum) }));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698162, new Object[] { Integer.valueOf(this.mUnreadNum) }));
         }
       }
     }
@@ -120,7 +123,7 @@ public class QCircleRecentChatListData
     } while (this.mDisplayTime > l);
     this.mDisplayTime = l;
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new bdnt(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new begp(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public void a(QQCirclePrivateMsgShow.UserPMGiftInfo paramUserPMGiftInfo)

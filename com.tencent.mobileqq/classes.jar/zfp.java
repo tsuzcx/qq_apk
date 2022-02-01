@@ -1,22 +1,10 @@
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
-
-public class zfp
-  implements Comparator<RecentUser>
+public abstract interface zfp
 {
-  public zfp(ShareToActivity paramShareToActivity) {}
+  public abstract void a();
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
-  {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
-    }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

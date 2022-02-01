@@ -1,10 +1,16 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
-public class akde
+class akde
+  implements aule
 {
-  public TextView a;
-  public bgod a;
-  public TextView b;
+  akde(akdd paramakdd) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      bdll.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
+    }
+  }
 }
 
 

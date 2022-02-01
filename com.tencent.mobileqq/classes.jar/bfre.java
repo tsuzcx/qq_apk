@@ -1,105 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfre
+  extends bfrg
 {
-  public static final String a;
-  
-  static
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    jdField_a_of_type_JavaLangString = bfre.class.getName();
-  }
-  
-  public static bfrf a(MessageRecord paramMessageRecord)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessageRecord != null)
-    {
-      localObject1 = localObject2;
-      if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_msg_has")))
-      {
-        localObject1 = new bfrf();
-        ((bfrf)localObject1).jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_flag"));
-        ((bfrf)localObject1).jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_url");
-        ((bfrf)localObject1).jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_click_url");
-        ((bfrf)localObject1).jdField_c_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_nickname");
-        ((bfrf)localObject1).jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_name");
-      }
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
+    localTroopFeedItem.type = 18;
     try
     {
-      ((bfrf)localObject1).jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_nick_color"));
-      ((bfrf)localObject1).jdField_c_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_color"));
-      ((bfrf)localObject1).jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_bg_color"));
-      if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend")))) {
-        bmvi.a().a(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
-      }
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
+      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + anzj.a(2131714091) + paramJSONObject.getString("photo_num") + anzj.a(2131714093));
+      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      int i = 0;
       for (;;)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to int. " + localException.getMessage());
+        if (i < paramJSONObject.length())
+        {
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          if (localJSONObject.getInt("type") == 3) {
+            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
+          }
+        }
+        else
+        {
+          return localTroopFeedItem;
+        }
+        i += 1;
       }
+      return null;
     }
-  }
-  
-  public static void a(AppInterface paramAppInterface, Context paramContext, bfrf parambfrf)
-  {
-    try
+    catch (JSONException paramJSONObject)
     {
-      if (TextUtils.isEmpty(parambfrf.jdField_b_of_type_JavaLangString)) {
-        return;
-      }
-      if (parambfrf.jdField_b_of_type_JavaLangString.startsWith("http"))
-      {
-        paramAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-        paramAppInterface.putExtra("url", parambfrf.jdField_b_of_type_JavaLangString);
-        tzo.a(paramAppInterface, parambfrf.jdField_b_of_type_JavaLangString);
-        paramContext.startActivity(paramAppInterface);
-        return;
-      }
-      if (!parambfrf.jdField_b_of_type_JavaLangString.startsWith("mqqapi")) {
-        return;
-      }
-      if ((paramAppInterface instanceof QQAppInterface))
-      {
-        bgng.a((QQAppInterface)paramAppInterface, paramContext, parambfrf.jdField_b_of_type_JavaLangString).a();
-        return;
-      }
+      paramJSONObject.printStackTrace();
     }
-    catch (Exception paramAppInterface)
-    {
-      paramAppInterface.printStackTrace();
-      return;
-    }
-    paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(parambfrf.jdField_b_of_type_JavaLangString)));
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, bfrf parambfrf)
-  {
-    if ((parambfrf == null) || (paramMessageRecord == null)) {
-      return;
-    }
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_has", "1");
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_flag", String.valueOf(parambfrf.jdField_a_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_url", parambfrf.jdField_a_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_click_url", parambfrf.jdField_b_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", parambfrf.jdField_c_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nick_color", String.valueOf(parambfrf.jdField_b_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_name", parambfrf.jdField_d_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_color", String.valueOf(parambfrf.jdField_c_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_bg_color", String.valueOf(parambfrf.jdField_d_of_type_Int));
   }
 }
 

@@ -1,57 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class bbkv
-  extends anne
+public class bbkv
+  implements GLSurfaceView.EGLContextFactory
 {
-  bbkv(bbkr parambbkr) {}
+  private static int jdField_a_of_type_Int = 12440;
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
+  public EGLContext a()
   {
-    super.a(paramBoolean, paramArrayList, paramArrayList1);
-    paramArrayList1 = (String)paramArrayList1.get(0);
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
-    {
-      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
-      while (paramArrayList.hasNext())
-      {
-        Object localObject = (String)paramArrayList.next();
-        if (((String)localObject).charAt(0) < '')
-        {
-          localObject = bguq.b((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
-          {
-            int j = localObject.length;
-            int i = 0;
-            while (i < j)
-            {
-              localStringBuilder.append(localObject[i]).append(" ");
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject).append(" ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
-      }
+    yuk.d("FlowEdit_EditorEGLContextFactory", "getEGLContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
+    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  }
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  {
+    int i = jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    yuk.d("FlowEdit_EditorEGLContextFactory", "createContext %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
+    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+      yuk.e("FlowEdit_EditorEGLContextFactory", "EditorEGLContextDisplay, display: " + paramEGLDisplay + " context: " + paramEGLContext);
     }
-    bbkr.a(this.a).put(paramArrayList1, localStringBuilder);
-    paramArrayList = bbkr.b(this.a).get(paramArrayList1);
-    if (paramArrayList != null) {
-      try
-      {
-        paramArrayList.notify();
-        return;
-      }
-      finally {}
-    }
+    yuk.d("FlowEdit_EditorEGLContextFactory", "destroyContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
   }
 }
 

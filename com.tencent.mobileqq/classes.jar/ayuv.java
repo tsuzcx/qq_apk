@@ -1,64 +1,58 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
-import com.tencent.mobileqq.persistence.OGAbstractDao;
+import android.app.PendingIntent;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
 
-public class ayuv
-  extends OGAbstractDao
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/AudioRoomScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "modifyAudioRoomScheme", "", "scheme", "needCustomJump", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayuv
+  extends ayup
 {
-  public ayuv()
+  public static final ayuw a = new ayuw(null);
+  
+  private final String a(String paramString)
   {
-    this.columnLen = 2;
+    QLog.d("AudioRoomScheme", 2, "before modify scheme: " + paramString);
+    String str = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
+    paramString = str;
+    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"src_type", false, 2, null)) {
+      paramString = str + "&src_type=app";
+    }
+    str = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null)) {
+      str = paramString + "&version=1";
+    }
+    paramString = str;
+    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"fromid", false, 2, null)) {
+      paramString = str + "&fromid=10026";
+    }
+    str = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null)) {
+      str = paramString + "&roomtype=10001";
+    }
+    QLog.d("AudioRoomScheme", 2, "after modify: " + str);
+    return str;
   }
   
-  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  @NotNull
+  protected PendingIntent a(@NotNull ayut paramayut)
   {
-    paramEntity = (CommonlyUsedTroop)paramEntity;
-    if (paramNoColumnErrorHandler == null)
-    {
-      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramEntity.addedTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("addedTimestamp"));
-      return paramEntity;
+    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
+    if (StringsKt.startsWith$default(paramayut.d, "mqqapi://now/audioroom", false, 2, null)) {
+      paramayut.d = a(paramayut.d);
     }
-    int i = paramCursor.getColumnIndex("troopUin");
-    if (i == -1) {
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("addedTimestamp");
-      if (i != -1) {
-        break;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("addedTimestamp", Long.TYPE));
-      return paramEntity;
-      paramEntity.troopUin = paramCursor.getString(i);
-    }
-    paramEntity.addedTimestamp = paramCursor.getLong(i);
-    return paramEntity;
+    return d(paramayut);
   }
   
-  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  protected boolean a()
   {
-    paramEntity = (CommonlyUsedTroop)paramEntity;
-    paramContentValues.put("troopUin", paramEntity.troopUin);
-    paramContentValues.put("addedTimestamp", Long.valueOf(paramEntity.addedTimestamp));
-  }
-  
-  public String getCreateTableSql(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,addedTimestamp INTEGER)");
-    return localStringBuilder.toString();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayuv
  * JD-Core Version:    0.7.0.1
  */

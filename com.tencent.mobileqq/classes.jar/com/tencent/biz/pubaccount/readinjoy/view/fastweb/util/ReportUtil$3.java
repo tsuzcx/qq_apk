@@ -1,42 +1,64 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import android.content.Context;
+import android.os.Parcel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pha;
-import tcc;
+import ozs;
+import ssy;
 
 public final class ReportUtil$3
   implements Runnable
 {
-  public ReportUtil$3(Context paramContext, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, long paramLong) {}
+  public ReportUtil$3(byte[] paramArrayOfByte, long paramLong) {}
   
   public void run()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      localObject = "2";
+    ArticleInfo localArticleInfo;
+    long l1;
+    long l2;
+    BaseActivity localBaseActivity;
+    try
+    {
+      Object localObject = Parcel.obtain();
+      ((Parcel)localObject).unmarshall(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+      ((Parcel)localObject).setDataPosition(0);
+      localObject = new ArticleInfo((Parcel)localObject);
+      if (localObject == null) {
+        return;
+      }
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        localArticleInfo = null;
+      }
+      l1 = NetConnInfoCenter.getServerTime();
+      l2 = this.jdField_a_of_type_Long;
+      localBaseActivity = BaseActivity.sTopActivity;
+      localJSONObject = new JSONObject();
+      if (localBaseActivity == null) {
+        break label148;
+      }
+    }
+    JSONObject localJSONObject = ozs.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
+    label148:
     for (;;)
     {
-      localObject = pha.a(localContext, localArticleInfo, i, (String)localObject);
       try
       {
-        ((JSONObject)localObject).put("sojourn_time", this.jdField_a_of_type_Long);
-        tcc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A854", ((JSONObject)localObject).toString());
+        localJSONObject.put("rowkey", localArticleInfo.innerUniqueID);
+        localJSONObject.put("duration", l1 - l2);
+        ssy.a(localArticleInfo, "0X800A732", localJSONObject.toString());
         return;
-        localObject = "1";
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
       }
     }
   }

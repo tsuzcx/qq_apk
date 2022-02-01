@@ -3,16 +3,16 @@ package com.tencent.biz.pubaccount.util;
 import android.app.Activity;
 import android.content.res.Resources;
 import com.tencent.mobileqq.widget.QQToast;
-import tym;
+import tyo;
 
 public class PublicAccountH5AbilityPlugin$15
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$15(tym paramtym) {}
+  public PublicAccountH5AbilityPlugin$15(tyo paramtyo) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a, 0, this.this$0.a.getResources().getString(2131717147), 0).a();
+    QQToast.a(this.this$0.a, 0, this.this$0.a.getResources().getString(2131717264), 0).a();
   }
 }
 

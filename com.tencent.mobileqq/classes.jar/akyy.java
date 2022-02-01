@@ -1,29 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class akyy
-  implements View.OnClickListener
+public class akyy
+  implements OnCompositionLoadedListener
 {
-  akyy(akyh paramakyh) {}
+  public akyy(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.a.a(-1, null);
-    if (bgdt.a().a() == 4)
-    {
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "1");
-      bgdt.a().a(akyh.a(this.a));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "1");
-      UpgradeDetailActivity.a(akyh.a(this.a), bgdt.a().a(), true, true, true);
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
   }
 }
 

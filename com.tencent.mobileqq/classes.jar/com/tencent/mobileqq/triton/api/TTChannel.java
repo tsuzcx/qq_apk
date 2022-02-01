@@ -1,77 +1,95 @@
 package com.tencent.mobileqq.triton.api;
 
-import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.model.DebugConfig;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class TTChannel
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/api/TTChannel;", "", "mDebugConfig", "Lcom/tencent/mobileqq/triton/model/DebugConfig;", "(Lcom/tencent/mobileqq/triton/model/DebugConfig;)V", "onRenderErrorCallback", "Lkotlin/Function0;", "", "getOnRenderErrorCallback", "()Lkotlin/jvm/functions/Function0;", "setOnRenderErrorCallback", "(Lkotlin/jvm/functions/Function0;)V", "onScriptErrorCallback", "Lkotlin/Function1;", "", "getOnScriptErrorCallback", "()Lkotlin/jvm/functions/Function1;", "setOnScriptErrorCallback", "(Lkotlin/jvm/functions/Function1;)V", "g_frameNoChangeLimit", "", "g_noPresentDurationLimit", "g_noPresentTouchLimit", "g_onErrorDialog", "g_presentDetectInterval", "handleJavaScriptException", "bytes", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
+@TritonKeep
+public final class TTChannel
 {
-  private final TTEngine a;
+  public static final TTChannel.Companion Companion = new TTChannel.Companion(null);
+  @NotNull
+  public static final String NAME = "TTChannel";
+  private final DebugConfig mDebugConfig;
+  @Nullable
+  private Function0<Unit> onRenderErrorCallback;
+  @Nullable
+  private Function1<? super byte[], Unit> onScriptErrorCallback;
   
-  public TTChannel(TTEngine paramTTEngine)
+  public TTChannel(@NotNull DebugConfig paramDebugConfig)
   {
-    this.a = paramTTEngine;
+    this.mDebugConfig = paramDebugConfig;
   }
   
-  @TTNativeCall
-  public int g_blackScreenDetectInterval()
+  @TritonKeep
+  public final int g_frameNoChangeLimit()
   {
-    return this.a.l().blackScreenDetectInterval();
+    return this.mDebugConfig.getFrameNoChangeToCheckLimit();
   }
   
-  @TTNativeCall
-  public boolean g_errorDialogEnable()
+  @TritonKeep
+  public final int g_noPresentDurationLimit()
   {
-    return this.a.l().gameErrorDialogEnable();
+    return (int)this.mDebugConfig.getNoPresentDurationToCheckLimitMillis();
   }
   
-  @TTNativeCall
-  public int g_frameNoChangeLimit()
+  @TritonKeep
+  public final int g_noPresentTouchLimit()
   {
-    return this.a.l().frameNoChangeLimit();
+    return this.mDebugConfig.getNoPresentTouchLimit();
   }
   
-  @TTNativeCall
-  public int g_jsErrorDetectInterval()
+  @TritonKeep
+  public final void g_onErrorDialog()
   {
-    return this.a.l().jsErrorDetectInterval();
-  }
-  
-  @TTNativeCall
-  public int g_noPresentDurationLimit()
-  {
-    return this.a.l().noPresentDurationLimit();
-  }
-  
-  @TTNativeCall
-  public int g_noPresentTouchLimit()
-  {
-    return this.a.l().noPresentTouchLimit();
-  }
-  
-  @TTNativeCall
-  public void g_onErrorDialog()
-  {
-    this.a.l().showGameErrorDialog(this.a.b(), new TTChannel.a(this));
-  }
-  
-  @TTNativeCall
-  public int g_presentDetectInterval()
-  {
-    return this.a.l().presentDetectInterval();
-  }
-  
-  @TTNativeCall
-  public void handleJavaScriptException(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null) {
-      this.a.l().reportDC04266(23, new String(paramArrayOfByte));
+    Object localObject = this.onRenderErrorCallback;
+    if (localObject != null) {
+      localObject = (Unit)((Function0)localObject).invoke();
     }
   }
   
-  public native void nativeCancelErrorDialog(long paramLong);
+  @TritonKeep
+  public final int g_presentDetectInterval()
+  {
+    return (int)this.mDebugConfig.getPresentDetectIntervalMillis();
+  }
   
-  public native void nativeConfirmErrorDialog();
+  @Nullable
+  public final Function0<Unit> getOnRenderErrorCallback()
+  {
+    return this.onRenderErrorCallback;
+  }
+  
+  @Nullable
+  public final Function1<byte[], Unit> getOnScriptErrorCallback()
+  {
+    return this.onScriptErrorCallback;
+  }
+  
+  @TritonKeep
+  public final void handleJavaScriptException(@Nullable byte[] paramArrayOfByte)
+  {
+    Function1 localFunction1 = this.onScriptErrorCallback;
+    if (localFunction1 != null) {
+      paramArrayOfByte = (Unit)localFunction1.invoke(paramArrayOfByte);
+    }
+  }
+  
+  public final void setOnRenderErrorCallback(@Nullable Function0<Unit> paramFunction0)
+  {
+    this.onRenderErrorCallback = paramFunction0;
+  }
+  
+  public final void setOnScriptErrorCallback(@Nullable Function1<? super byte[], Unit> paramFunction1)
+  {
+    this.onScriptErrorCallback = paramFunction1;
+  }
 }
 
 

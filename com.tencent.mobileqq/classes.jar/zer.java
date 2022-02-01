@@ -1,54 +1,63 @@
-import android.app.Activity;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
+import com.tencent.view.RendererUtils;
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class zer
-  extends zez<zem, zem>
+  extends zei
 {
-  private int a;
-  public WeakReference<Activity> a;
+  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  public String a;
+  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  volatile boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  volatile boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  volatile boolean jdField_c_of_type_Boolean;
+  boolean d;
+  boolean e = false;
   
-  public zer(@NonNull Activity paramActivity, int paramInt)
+  public zer(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
   }
   
-  protected void a(JobContext paramJobContext, zem paramzem)
+  public Frame a(int paramInt1, int paramInt2)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    this.jdField_c_of_type_Int = RendererUtils.createTexture();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+    GLES20.glBindTexture(3553, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_Int, paramInt1, paramInt2, 1.0D);
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(16640);
+    GLES20.glFlush();
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
     {
-      yqp.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
-      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
-      return;
+      this.e = true;
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+      RendererUtils.clearTexture(this.jdField_c_of_type_Int);
     }
-    Object localObject = paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (!paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_Boolean)
-    {
-      paramJobContext = (JobContext)localObject;
-      if (paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_Boolean) {
-        paramJobContext = paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_JavaLangString;
-      }
-    }
-    localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramzem.jdField_a_of_type_Zes = new zes(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-      paramzem.jdField_a_of_type_JavaLangString = paramJobContext;
-      super.notifyResult(paramzem);
-      return;
-    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
   }
 }
 

@@ -1,23 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class bnng
-  extends Handler
+public class bnng
+  extends bnnn
 {
-  private bnng(bnne parambnne) {}
-  
-  public void handleMessage(Message paramMessage)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1004: 
-    case 1009: 
-      bnne.a(this.a);
-      return;
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!"jumpQQCleanPage".equalsIgnoreCase(paramString3)) {
+      return false;
     }
-    this.a.a();
+    if (this.a.mRuntime.a() != null)
+    {
+      QQSettingCleanActivity.a(this.a.mRuntime.a());
+      return true;
+    }
+    QLog.e("jumpCleanPage", 2, "call activity with null runtime");
+    return false;
   }
 }
 

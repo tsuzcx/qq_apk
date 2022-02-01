@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
 import android.graphics.Bitmap;
-import bgsn;
+import bhsp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ShowExternalTroopListActivity$2
@@ -15,7 +15,7 @@ class ShowExternalTroopListActivity$2
     if (localBitmap != null) {}
     try
     {
-      bgsn.a(localBitmap, 10);
+      bhsp.a(localBitmap, 10);
       this.this$0.runOnUiThread(new ShowExternalTroopListActivity.2.1(this, localBitmap));
       return;
     }

@@ -1,10 +1,10 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
-import anil;
+import anui;
 import com.tencent.qphone.base.util.QLog;
 
 public class QCircleObserver
-  implements anil
+  implements anui
 {
   private static final String TAG = "QCircleObserver";
   

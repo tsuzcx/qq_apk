@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
-import aufz;
+import auxu;
 
 public class ForwardGetMemberListOption
-  extends aufz
+  extends auxu
 {
   public ForwardGetMemberListOption(Intent paramIntent)
   {

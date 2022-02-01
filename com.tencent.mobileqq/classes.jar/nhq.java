@@ -1,36 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 public class nhq
-  implements View.OnClickListener
 {
-  public nhq(PoiMapActivity paramPoiMapActivity) {}
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  public static String a;
+  public static String b = "param_Type";
   
-  public void onClick(View paramView)
+  static
   {
-    if ((paramView instanceof PoiMapActivity.TabView))
-    {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
-      }
-      if (!PoiMapActivity.a(this.a)) {
-        break label127;
-      }
-      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_JavaLangString = "actAVGameOpenCamera";
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if ((jdField_a_of_type_Long <= 0L) || (jdField_a_of_type_Int <= 0)) {
       return;
-      label127:
-      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
     }
+    long l = System.currentTimeMillis() - jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(b, String.valueOf(jdField_a_of_type_Int));
+    bdmc.a(BaseApplicationImpl.getApplication()).a("", jdField_a_of_type_JavaLangString, paramBoolean, l, 1L, localHashMap, "", true);
+    if (QLog.isColorLevel()) {
+      QLog.i("actAVGameOpenCamera", 1, "reportOpenCameraEnd duration:" + l + " success:" + paramBoolean + " type:" + jdField_a_of_type_Int);
+    }
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_Long = 0L;
   }
 }
 

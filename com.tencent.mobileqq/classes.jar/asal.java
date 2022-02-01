@@ -1,212 +1,232 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.image.RegionDrawableData;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import appoint.define.appoint_define.StrangerInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asal
-  extends BaseAdapter
-  implements akfl
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<EmotionPreviewInfo> jdField_a_of_type_JavaUtilList;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
+  public int f;
   
-  public asal(Context paramContext)
+  public asal()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847826);
-    this.jdField_a_of_type_Int = afur.a(207.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  private URL a(File paramFile)
+  public static asal a(appoint_define.StrangerInfo paramStrangerInfo)
   {
-    if (paramFile == null) {
-      return null;
+    Object localObject;
+    if ((paramStrangerInfo == null) || (paramStrangerInfo.uint64_tinyid.get() == 0L)) {
+      localObject = null;
     }
-    try
-    {
-      paramFile = paramFile.toURI().toURL();
-      return paramFile;
-    }
-    catch (MalformedURLException paramFile) {}
-    return null;
-  }
-  
-  public EmotionPreviewInfo a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (EmotionPreviewInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<EmotionPreviewInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView != null) {
-      localObject1 = paramView;
-    }
-    Object localObject2;
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      localObject2 = a(paramInt);
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((EmotionPreviewInfo)localObject2).a))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("EmotionPreviewAdapter", 2, "getView Path is empty. position " + paramInt + ", size " + getCount());
-      }
-      ((URLImageView)localObject1).setImageDrawable(bdzx.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    Object localObject3 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localObject3 != null) {
-      ((URLImageView)localObject1).setImageDrawable((Drawable)localObject3);
-    }
-    for (;;)
-    {
-      ((URLImageView)localObject1).setContentDescription("照片" + paramInt);
-      break;
-      Object localObject4 = new File(((EmotionPreviewInfo)localObject2).a);
-      localObject2 = null;
-      if (((File)localObject4).exists())
-      {
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = bdzx.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
-        localObject4 = a((File)localObject4);
-        if (localObject4 != null)
-        {
-          localObject3 = URLDrawable.getDrawable((URL)localObject4, (URLDrawable.URLDrawableOptions)localObject3);
-          localObject2 = localObject3;
-          if (localObject3 != null)
-          {
-            localObject2 = localObject3;
-            switch (((URLDrawable)localObject3).getStatus())
-            {
-            default: 
-              ((URLDrawable)localObject3).setTag(Integer.valueOf(1));
-              ((URLDrawable)localObject3).startDownload();
-              localObject2 = localObject3;
-            }
-          }
-        }
-        if (localObject2 != null)
-        {
-          ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-        }
-        else
-        {
-          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        }
-      }
-      else
-      {
-        ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-    }
-  }
-  
-  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null) {
-      if (paramView.getStatus() == 3) {
-        paramView.restartDownload();
-      }
-    }
+    asal localasal;
     do
     {
-      do
-      {
-        do
-        {
-          return null;
-          paramView = a(paramInt);
-          if ((paramView != null) && (!TextUtils.isEmpty(paramView.a))) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("EmotionPreviewAdapter", 2, "onCreateView Path is empty. position " + paramInt + ", size " + getCount());
-        return null;
-        paramViewGroup = new File(paramView.a);
-      } while (!paramViewGroup.exists());
-      paramView = URLDrawable.URLDrawableOptions.obtain();
-      paramView.mRequestWidth = this.jdField_a_of_type_Int;
-      paramView.mRequestHeight = this.jdField_a_of_type_Int;
-      paramView.mLoadingDrawable = bdzx.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      paramView.mPlayGifImage = true;
-      paramViewGroup = a(paramViewGroup);
-    } while (paramViewGroup == null);
-    paramView = URLDrawable.getDrawable(paramViewGroup, paramView);
-    paramView.setTag(Integer.valueOf(1));
-    paramView.startDownload();
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
-    return null;
+      return localObject;
+      localasal = new asal();
+      if (paramStrangerInfo.uint64_tinyid.has()) {
+        localasal.jdField_a_of_type_Long = paramStrangerInfo.uint64_tinyid.get();
+      }
+      if (paramStrangerInfo.uint32_age.has()) {
+        localasal.jdField_a_of_type_Int = paramStrangerInfo.uint32_age.get();
+      }
+      if (paramStrangerInfo.uint32_gender.has()) {
+        localasal.jdField_b_of_type_Int = paramStrangerInfo.uint32_gender.get();
+      }
+      if (paramStrangerInfo.bytes_nickname.has()) {
+        localasal.jdField_a_of_type_JavaLangString = paramStrangerInfo.bytes_nickname.get().toStringUtf8();
+      }
+      if (paramStrangerInfo.uint32_dating.has()) {
+        localasal.jdField_c_of_type_Int = paramStrangerInfo.uint32_dating.get();
+      }
+      if (paramStrangerInfo.uint32_list_idx.has()) {
+        localasal.f = paramStrangerInfo.uint32_list_idx.get();
+      }
+      if (paramStrangerInfo.str_constellation.has()) {
+        localasal.jdField_b_of_type_JavaLangString = paramStrangerInfo.str_constellation.get();
+      }
+      if (paramStrangerInfo.uint32_profession.has()) {
+        localasal.d = paramStrangerInfo.uint32_profession.get();
+      }
+      if (paramStrangerInfo.uint32_marriage.has()) {
+        localasal.e = paramStrangerInfo.uint32_marriage.get();
+      }
+      localObject = localasal;
+    } while (!paramStrangerInfo.str_vipinfo.has());
+    localasal.jdField_c_of_type_JavaLangString = paramStrangerInfo.str_vipinfo.get();
+    return localasal;
   }
   
-  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static asal a(JSONObject paramJSONObject)
   {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null)
+    if (paramJSONObject == null) {
+      return null;
+    }
+    localasal = new asal();
+    for (;;)
     {
-      if (paramView.getStatus() == 0) {
-        paramView.cancelDownload(true);
+      try
+      {
+        localasal.jdField_a_of_type_Long = paramJSONObject.getLong("open_id");
+        localasal.jdField_a_of_type_JavaLangString = paramJSONObject.getString("nickname");
+        localasal.jdField_a_of_type_Int = paramJSONObject.getInt("age");
+        localasal.jdField_b_of_type_Int = paramJSONObject.getInt("gender");
+        localasal.jdField_c_of_type_Int = paramJSONObject.getInt("state");
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        paramJSONObject = null;
+        continue;
+      }
+      try
+      {
+        localasal.jdField_b_of_type_JavaLangString = paramJSONObject.getString("constellation");
+        localasal.d = paramJSONObject.getInt("profession");
+        localasal.e = paramJSONObject.getInt("emotion");
+        localasal.f = paramJSONObject.getInt("listIdx");
+        localasal.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vip");
+        paramJSONObject = localasal;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        paramJSONObject = localasal;
+      }
+    }
+    return paramJSONObject;
+  }
+  
+  public static String a(List<asal> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return "";
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
+    {
+      JSONObject localJSONObject = a((asal)paramList.next());
+      if (localJSONObject == null) {
+        break label83;
+      }
+      localJSONArray.put(localJSONObject);
+      i += 1;
+    }
+    label83:
+    for (;;)
+    {
+      if (i >= 20) {
+        return localJSONArray.toString();
+      }
+      break;
     }
   }
   
-  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData) {}
+  public static JSONObject a(asal paramasal)
+  {
+    if (paramasal == null) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("open_id", paramasal.jdField_a_of_type_Long);
+      localJSONObject.put("nickname", paramasal.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("age", paramasal.jdField_a_of_type_Int);
+      localJSONObject.put("gender", paramasal.jdField_b_of_type_Int);
+      localJSONObject.put("state", paramasal.jdField_c_of_type_Int);
+      localJSONObject.put("constellation", paramasal.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("profession", paramasal.d);
+      localJSONObject.put("emotion", paramasal.e);
+      localJSONObject.put("listIdx", paramasal.f);
+      localJSONObject.put("vip", paramasal.jdField_c_of_type_JavaLangString);
+      return localJSONObject;
+    }
+    catch (JSONException paramasal)
+    {
+      paramasal.printStackTrace();
+    }
+    return localJSONObject;
+  }
   
-  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  public static void a(List<asal> paramList, String paramString)
+  {
+    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONArray(paramString);
+        int j = paramString.length();
+        int i = 0;
+        while (i < j)
+        {
+          asal localasal = a(paramString.getJSONObject(i));
+          if (localasal != null) {
+            paramList.add(localasal);
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (JSONException paramList)
+      {
+        paramList.printStackTrace();
+      }
+    }
+  }
   
-  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean) {}
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
+    {
+      return false;
+      if (paramObject == this) {
+        return true;
+      }
+    } while (paramObject.getClass() != getClass());
+    if (((asal)paramObject).jdField_a_of_type_Long == this.jdField_a_of_type_Long) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
   
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_c_of_type_Int).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.d).append(",").append(this.e).append(",").append(this.f).append(",").append(this.jdField_c_of_type_JavaLangString).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

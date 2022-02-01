@@ -1,8 +1,20 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class aktv
+class aktv
+  implements aumz
 {
-  public static final IRedPacket a = new aktw();
+  aktv(aktu paramaktu) {}
+  
+  public void a()
+  {
+    this.a.a.d();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
+  }
 }
 
 

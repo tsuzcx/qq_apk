@@ -1,34 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class astf
-  extends asyw
 {
-  public astf(VerifyPwdView paramVerifyPwdView) {}
+  private aogm jdField_a_of_type_Aogm = new astg(this);
+  private asth jdField_a_of_type_Asth;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  protected void a(int paramInt, String paramString)
+  public astf(QQAppInterface paramQQAppInterface, asth paramasth)
   {
-    atvf.a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Asth = paramasth;
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Aogm);
   }
   
-  protected void a(boolean paramBoolean)
+  public void a()
   {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
-    }
-    VerifyPwdView.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aogm);
   }
   
-  protected void b(int paramInt, String paramString)
+  public void a(ChatMessage paramChatMessage, int paramInt)
   {
-    atvf.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void e()
-  {
-    VerifyPwdView.a(this.a);
+    ((aogn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(180)).a(paramChatMessage, paramInt);
   }
 }
 

@@ -1,36 +1,35 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ajui
+class ajui
+  implements bliz
 {
-  public static String a(MessageRecord paramMessageRecord)
+  ajui(ajuh paramajuh, boolean paramBoolean, Friends paramFriends, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramMessageRecord instanceof MessageForText))
+    if (!bhnv.g(this.jdField_a_of_type_Ajuh.a)) {
+      QQToast.a(this.jdField_a_of_type_Ajuh.a, 1, 2131691989, 0).a();
+    }
+    for (;;)
     {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
+      this.jdField_a_of_type_Blir.e();
+      return;
+      paramView = (FriendListHandler)ajuh.a(this.jdField_a_of_type_Ajuh).a(1);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+        bdll.b(ajuh.a(this.jdField_a_of_type_Ajuh), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
       }
-      return paramMessageRecord.msg;
-    }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
-    }
-    if ((paramMessageRecord instanceof MessageForReplyText))
-    {
-      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
+      else
+      {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+        bdll.b(ajuh.a(this.jdField_a_of_type_Ajuh), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
       }
-      return paramMessageRecord.msg;
     }
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
-    }
-    return "";
   }
 }
 

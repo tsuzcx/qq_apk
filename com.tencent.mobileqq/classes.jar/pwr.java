@@ -1,15 +1,22 @@
-public class pwr
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+class pwr
+  implements ViewBase.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  pwr(pwn parampwn, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public String toString()
+  public void onClick(ViewBase paramViewBase)
   {
-    return "ColumnInfoForSelfPage{myVideoCount=" + this.jdField_a_of_type_Int + ", myColumnCount=" + this.jdField_b_of_type_Int + ", mySubscribeCount=" + this.jdField_c_of_type_Int + ", myVideoJumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", myColumnJumpUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mySubscribeJumpUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
+    if (paramViewBase != null)
+    {
+      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      pwn.a(this.jdField_a_of_type_Pwn, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
+    }
   }
 }
 

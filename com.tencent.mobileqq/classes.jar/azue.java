@@ -1,10 +1,32 @@
-public abstract interface azue
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public final class azue
+  implements beup
 {
-  public abstract azuf a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public void a(bevl parambevl, bevm parambevm)
+  {
+    if ((parambevl == null) || (parambevm == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+      if (parambevm.contains("range="))
+      {
+        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambevm);
+  }
 }
 
 

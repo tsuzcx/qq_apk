@@ -1,35 +1,95 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForQCircleFeed;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.TicketManager;
 
 class ahex
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  ahex(ahew paramahew, MessageForQCircleFeed paramMessageForQCircleFeed) {}
+  ahex(ahed paramahed, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    Object localObject1 = new FeedCloudMeta.StFeed();
-    ((FeedCloudMeta.StFeed)localObject1).id.set(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.feedId);
-    ((FeedCloudMeta.StFeed)localObject1).createTime.set(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.time);
-    Object localObject2 = new FeedCloudMeta.StUser();
-    ((FeedCloudMeta.StUser)localObject2).id.set(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.fromUin));
-    ((FeedCloudMeta.StFeed)localObject1).poster.set((MessageMicro)localObject2);
-    localObject2 = new uxk();
-    ((uxk)localObject2).a((FeedCloudMeta.StFeed)localObject1);
-    localObject1 = ((uxk)localObject2).a();
-    ((QCircleInitBean)localObject1).isSingleFeed = true;
-    uxo.a((QCircleInitBean)localObject1);
-    bcst.b(null, "dc00898", "", this.jdField_a_of_type_Ahew.a.a, "0X800B27A", "0X800B27A", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    int j = 1;
+    int i;
+    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi")) {
+      if ((this.jdField_a_of_type_JavaLangString.contains("c2c")) && (this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0))
+      {
+        paramView = blir.a(this.jdField_a_of_type_Ahed.jdField_a_of_type_AndroidContentContext);
+        paramView.b(2131718782);
+        paramView.c(2131690580);
+        paramView.a(new ahey(this));
+        paramView.a(new ahez(this, paramView));
+        paramView.show();
+        bdll.b(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      paramView = this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      label144:
+      Object localObject;
+      if (this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0)
+      {
+        bdll.b(paramView, "CliOper", "", "", "0X800416C", "0X800416C", 0, 0, String.valueOf(j), String.valueOf(2), String.valueOf(i), this.b);
+        return;
+        if ((!this.jdField_a_of_type_JavaLangString.contains("discussion")) || (this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 3000)) {
+          break label519;
+        }
+        paramView = blir.a(this.jdField_a_of_type_Ahed.jdField_a_of_type_AndroidContentContext);
+        paramView.b(2131718792);
+        paramView.c(2131690580);
+        paramView.a(new ahfa(this));
+        paramView.a(new ahfb(this, paramView));
+        paramView.show();
+        bdll.b(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+        i = 1;
+        continue;
+        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
+          break label519;
+        }
+        paramView = this.jdField_a_of_type_JavaLangString;
+        if (TextUtils.isEmpty(paramView)) {
+          break label516;
+        }
+        if (paramView.contains("?"))
+        {
+          localObject = (TicketManager)this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+          paramView = paramView + "&sid=" + ((TicketManager)localObject).getSkey(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        }
+      }
+      label516:
+      for (;;)
+      {
+        localObject = new Intent(this.jdField_a_of_type_Ahed.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        ((Intent)localObject).putExtra("hide_left_button", true);
+        ((Intent)localObject).putExtra("show_right_close_button", true);
+        ((Intent)localObject).putExtra("finish_animation_up_down", true);
+        this.jdField_a_of_type_Ahed.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        i = 2;
+        break;
+        localObject = (TicketManager)this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+        paramView = paramView + "?sid=" + ((TicketManager)localObject).getSkey(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        continue;
+        j = 2;
+        break label144;
+      }
+      label519:
+      i = 1;
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

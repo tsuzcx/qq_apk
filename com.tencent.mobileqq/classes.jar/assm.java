@@ -1,28 +1,30 @@
-import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
 
 public class assm
   implements TextWatcher
 {
-  public assm(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public assm(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
-      atvf.a(BaseApplicationImpl.getContext().getString(2131693807));
+    ImageButton localImageButton;
+    if (SystemAndEmojiUniversalPanel.a(this.a) != null)
+    {
+      localImageButton = SystemAndEmojiUniversalPanel.a(this.a);
+      if (TextUtils.isEmpty(paramEditable)) {
+        break label33;
+      }
     }
-    while (TextUtils.isEmpty(paramEditable)) {
+    label33:
+    for (boolean bool = true;; bool = false)
+    {
+      localImageButton.setEnabled(bool);
       return;
     }
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

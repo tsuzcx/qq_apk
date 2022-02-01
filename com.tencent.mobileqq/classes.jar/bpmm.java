@@ -1,8 +1,21 @@
-import javax.microedition.khronos.opengles.GL;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface bpmm
+public class bpmm
+  implements ThreadFactory
 {
-  public abstract GL a(GL paramGL);
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  
+  private bpmm(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
+  
+  public Thread newThread(@NonNull Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    paramRunnable.setPriority(4);
+    return paramRunnable;
+  }
 }
 
 

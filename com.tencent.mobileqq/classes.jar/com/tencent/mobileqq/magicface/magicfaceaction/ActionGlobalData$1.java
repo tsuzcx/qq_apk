@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import awfj;
-import awfk;
+import awyb;
+import awyc;
 import java.util.TimerTask;
 
 public class ActionGlobalData$1
   extends TimerTask
 {
-  public ActionGlobalData$1(awfj paramawfj) {}
+  public ActionGlobalData$1(awyb paramawyb) {}
   
   public void run()
   {
-    awfj localawfj = this.this$0;
-    localawfj.h += 1;
-    localawfj = this.this$0;
-    localawfj.jdField_a_of_type_Float -= 0.1F;
-    if (this.this$0.jdField_a_of_type_Awfk != null) {
-      this.this$0.jdField_a_of_type_Awfk.b();
+    awyb localawyb = this.this$0;
+    localawyb.h += 1;
+    localawyb = this.this$0;
+    localawyb.jdField_a_of_type_Float -= 0.1F;
+    if (this.this$0.jdField_a_of_type_Awyc != null) {
+      this.this$0.jdField_a_of_type_Awyc.b();
     }
     if (this.this$0.h * 100 == this.this$0.c * 1000)
     {
       this.this$0.jdField_a_of_type_Float = 0.0F;
-      if (this.this$0.jdField_a_of_type_Awfk != null) {
-        this.this$0.jdField_a_of_type_Awfk.a();
+      if (this.this$0.jdField_a_of_type_Awyc != null) {
+        this.this$0.jdField_a_of_type_Awyc.a();
       }
       cancel();
     }

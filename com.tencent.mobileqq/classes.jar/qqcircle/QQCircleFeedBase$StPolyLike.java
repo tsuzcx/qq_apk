@@ -18,6 +18,7 @@ public final class QQCircleFeedBase$StPolyLike
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBoolField clicked = PBField.initBool(false);
   public final PBUInt32Field count = PBField.initUInt32(0);
+  public final PBStringField dynamicPicURL = PBField.initString("");
   public final PBStringField fullScreenURL = PBField.initString("");
   public final PBStringField fullScreenURLAND = PBField.initString("");
   public final PBStringField polyIconUrl = PBField.initString("");
@@ -33,7 +34,7 @@ public final class QQCircleFeedBase$StPolyLike
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 80, 90, 98, 106, 114, 122 }, new String[] { "polyLikeID", "polyName", "polySource", "polyIconUrl", "count", "polyUnderPicUrl", "polyPreviewSource", "articleType", "price", "clicked", "busiData", "fullScreenURL", "fullScreenURLAND", "polyTxtColor", "polyUnderColor" }, new Object[] { "", "", "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), localByteStringMicro, "", "", "", "" }, StPolyLike.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 72, 80, 90, 98, 106, 114, 122, 130 }, new String[] { "polyLikeID", "polyName", "polySource", "polyIconUrl", "count", "polyUnderPicUrl", "polyPreviewSource", "articleType", "price", "clicked", "busiData", "fullScreenURL", "fullScreenURLAND", "polyTxtColor", "polyUnderColor", "dynamicPicURL" }, new Object[] { "", "", "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), localByteStringMicro, "", "", "", "", "" }, StPolyLike.class);
   }
 }
 

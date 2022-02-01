@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alit;
+import alul;
 
 public class FlowSendTask$2
   implements Runnable
 {
-  public FlowSendTask$2(alit paramalit) {}
+  public FlowSendTask$2(alul paramalul) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.a, 2131694295);
+    this.this$0.a(this.this$0.a, 2131694337);
   }
 }
 

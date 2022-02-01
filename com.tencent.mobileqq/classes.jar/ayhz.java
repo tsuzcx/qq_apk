@@ -1,31 +1,11 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-
-public class ayhz
-  extends FlingGestureHandler
+class ayhz
+  implements bljb
 {
-  boolean a = true;
+  ayhz(ayhj paramayhj) {}
   
-  public ayhz(Activity paramActivity)
+  public void onDismiss()
   {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
-    }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
+    this.a.b = false;
   }
 }
 

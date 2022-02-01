@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 class augk
-  extends ayyr
+  implements auez
 {
-  augk(aufz paramaufz, augl paramaugl, MessageForPic paramMessageForPic, String paramString) {}
+  augk(augj paramaugj, String paramString) {}
   
-  public void a(int paramInt, ayxy paramayxy)
+  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    if (this.jdField_a_of_type_Augl != null) {
-      this.jdField_a_of_type_Augl.b();
+    paramString = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramString.addAll(paramList);
+      if (this.jdField_a_of_type_Augj.jdField_a_of_type_Auef != null) {
+        this.jdField_a_of_type_Augj.jdField_a_of_type_Auef.c();
+      }
     }
-    bdsh.d(bdzx.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-      aufz.a(this.jdField_a_of_type_Aufz, ahth.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Augj.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
   }
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import uwz;
-import vbk;
+import uyk;
+import vda;
 
 public class QCircleFolderSplashPart$1
   implements Runnable
 {
-  public QCircleFolderSplashPart$1(vbk paramvbk) {}
+  public QCircleFolderSplashPart$1(vda paramvda) {}
   
   public void run()
   {
-    uwz.a().c();
+    uyk.a().c();
   }
 }
 

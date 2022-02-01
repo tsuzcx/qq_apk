@@ -1,44 +1,15 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class aojg
-  extends aojs
+public final class aojg
+  implements DialogInterface.OnClickListener
 {
-  public aojg(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aojg(TroopManager paramTroopManager, String paramString) {}
   
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      boolean bool = a(b("gc"));
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("HomeWorkTroopPublishAction", 1, "doAction error: " + localException.getMessage());
-      a("HomeWorkTroopPublishAction");
-    }
-    return false;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if ((this.a instanceof Activity))
-    {
-      PublishHomeWorkFragment.a((Activity)this.a, null, paramString);
-      ((Activity)this.a).overridePendingTransition(2130772302, 2130771990);
-    }
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
 }
 

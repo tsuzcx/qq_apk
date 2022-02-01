@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
+import java.util.List;
 
 public class rjo
-  implements bdzl
+  implements qzz
 {
-  public rjo(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  rjo(rjj paramrjj) {}
   
-  public void a(ArrayList<MessageRecord> paramArrayList) {}
+  public List a(int paramInt1, int paramInt2)
+  {
+    return qzo.a(paramInt1, paramInt2);
+  }
+  
+  public void a(List paramList, boolean paramBoolean)
+  {
+    rjj.a(this.a).a(paramList, paramBoolean);
+    bkdz.c(new SelectVideoPresenter.5.1(this));
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Handler;
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.JSONUtil;
@@ -134,7 +134,7 @@ class AudioJsPlugin$InnerAudioManager
       i = this.audioContext.optInt("startTime");
       bool = this.audioContext.optBoolean("loop");
       d = this.audioContext.optDouble("volume");
-      if (!bgsp.a(str)) {}
+      if (!bhsr.a(str)) {}
     }
     else
     {

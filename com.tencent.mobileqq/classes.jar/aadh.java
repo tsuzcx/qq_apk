@@ -1,21 +1,78 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.biz.richframework.preload.Worker;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class aadh
-  extends RecyclerView.ViewHolder
+public class aadh
 {
-  public aadh(aadf paramaadf, View paramView)
+  private static aadh jdField_a_of_type_Aadh;
+  private final ConcurrentHashMap<String, aadk> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
+  
+  public static aadh a()
   {
-    super(paramView);
+    if (jdField_a_of_type_Aadh == null) {
+      jdField_a_of_type_Aadh = new aadh();
+    }
+    return jdField_a_of_type_Aadh;
   }
   
-  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  private <T> String a(String paramString, Worker<T> paramWorker)
   {
-    if ((this.itemView instanceof SubScribeDraftItemView)) {
-      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
+    if (a(paramString))
+    {
+      aadg.b("preLoader ID is used, please note that remove!");
+      a(paramString);
     }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
+    paramWorker.a();
+    return paramString;
+  }
+  
+  public <T> String a(String paramString, aadf<T> paramaadf)
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    return a(paramString, new Worker(paramString, paramaadf, (aadm)null, i));
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {}
+    try
+    {
+      aadk localaadk = (aadk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (localaadk != null) {
+        localaadk.b();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        aadg.a(localException);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  public <T> void a(String paramString, aadm<T> paramaadm)
+  {
+    try
+    {
+      paramString = (aadk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramaadm);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      aadg.a(paramString);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
   }
 }
 

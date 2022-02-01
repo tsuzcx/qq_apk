@@ -1,44 +1,17 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-final class shc
-  extends shb
+public class shc
+  implements ViewFactory.FoundClickableViewListener
 {
-  private final int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  public shc(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
   
-  public shc(int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public long a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
-    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
+    paramViewBase.setOnClickListener(new shd(this));
   }
 }
 

@@ -1,17 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+
 public class ajjp
+  implements DialogInterface.OnDismissListener
 {
-  public long a;
-  public boolean a;
+  public ajjp(NewFriendActivity paramNewFriendActivity) {}
   
-  public ajjp()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 300000L;
-  }
-  
-  public String toString()
-  {
-    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
+    this.a.a = null;
   }
 }
 

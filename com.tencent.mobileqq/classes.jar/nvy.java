@@ -1,18 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nvy
-  implements DialogInterface.OnClickListener
+public class nvy
+  implements View.OnClickListener
 {
-  nvy(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
+  public nvy(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.c(this.a);
+      PublicAccountAdvertisementActivity.b(this.a);
+      nwo.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
+      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+      this.a.finish();
+      continue;
+      if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
+      {
+        PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
+        PublicAccountAdvertisementActivity.b(this.a, 1);
+        continue;
+        this.a.b();
+        continue;
+        bdll.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+        PublicAccountAdvertisementActivity.d(this.a);
+        continue;
+        PublicAccountAdvertisementActivity.a(this.a, 2);
+        continue;
+        PublicAccountAdvertisementActivity.a(this.a, 1);
+      }
+    }
   }
 }
 

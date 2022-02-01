@@ -1,30 +1,51 @@
+import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgRsp;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class atzw
-  implements bmyw<WeiyunPB.DiskFileDocDownloadAbsMsgRsp>
+public class atzw
+  extends bcbj<bcfr, bcnz>
 {
-  atzw(atzu paramatzu) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
+  public atzw(ListView paramListView, aoof paramaoof, List<bcfr> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onFailed,errCode[" + paramInt + "],errMsg[" + paramString + "]");
+    super(paramaoof, paramList);
+    if (paramString == null) {
+      return;
     }
-    atzu.a(this.a).a().a(false, 278, new Object[] { Integer.valueOf(paramInt), paramString, "", "", "", "", Integer.valueOf(0) });
+    if (paramString.size() == 1)
+    {
+      paramListView = (atzt)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        paramaoof = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new atzt();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramaoof.add(paramQQAppInterface);
+        }
+        a(paramaoof);
+        return;
+      }
+    }
+    a(paramString);
   }
   
-  public void a(WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
+  protected bcil<bcfr, bcnz> a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onSucceed");
-    }
-    String str = bnau.a(paramDiskFileDocDownloadAbsMsgRsp.downloadkey.get());
-    atzu.a(this.a).a().a(true, 278, new Object[] { Integer.valueOf(0), "", str, paramDiskFileDocDownloadAbsMsgRsp.cookie.get(), paramDiskFileDocDownloadAbsMsgRsp.downloadip.get(), paramDiskFileDocDownloadAbsMsgRsp.downloaddns.get(), Integer.valueOf(paramDiskFileDocDownloadAbsMsgRsp.downloadport.get()) });
+    return new atzy(FileSearchFragment.a(this.a));
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atzz(paramViewGroup);
   }
 }
 

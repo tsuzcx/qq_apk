@@ -1,21 +1,50 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.widget.ActionSheet.7;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
 
-public class bkht
-  implements Animation.AnimationListener
+public final class bkht
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
 {
-  public bkht(ActionSheet.7 param7) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
   {
-    this.a.this$0.e();
-    bkho.a(this.a.this$0, true);
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
+    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label109;
+      }
+      bool1 = true;
+      label80:
+      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label114;
+      }
+    }
+    label109:
+    label114:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
+      return localQidianSimpleProfileItem;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label80;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
+  }
 }
 
 

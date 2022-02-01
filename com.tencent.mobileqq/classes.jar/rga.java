@@ -1,66 +1,50 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Bundle;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.RspBody;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetRsp;
 
-public class rga
+class rga
+  extends nkq
 {
-  public int a;
-  public long a;
-  public String a;
-  public articlesummary.PackInfo a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public int f;
-  public long f;
+  rga(rfz paramrfz, rft paramrft, int paramInt) {}
   
-  public rga()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 6;
-  }
-  
-  public static rga a(articlesummary.PackInfo paramPackInfo)
-  {
-    try
-    {
-      rga localrga = new rga();
-      localrga.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackInfo = paramPackInfo;
-      localrga.jdField_a_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_title.get();
-      localrga.jdField_b_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).bytes_recommend_reason.get().toStringUtf8();
-      localrga.jdField_b_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_puin.get();
-      localrga.jdField_c_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_icon_url.get();
-      localrga.jdField_a_of_type_Int = paramPackInfo.pack_type.get();
-      localrga.jdField_c_of_type_Long = paramPackInfo.uint64_pack_id.get();
-      localrga.jdField_d_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_jump_url.get();
-      localrga.jdField_b_of_type_Int = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_icon_shape.get();
-      localrga.jdField_e_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
-      localrga.jdField_d_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_strategy_id.get();
-      localrga.f = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_topic_id.get();
-      localrga.jdField_a_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_posttime.get();
-      localrga.jdField_e_of_type_Int = paramPackInfo.uint32_follow_status.get();
-      return localrga;
+    if (paramArrayOfByte != null) {
+      try
+      {
+        paramBundle = new oidb_0xe33.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.topic_info_set_rsp.has())
+        {
+          paramArrayOfByte = paramBundle.topic_info_set_rsp;
+          this.jdField_a_of_type_Rft.a(paramInt, paramArrayOfByte.err_msg.get(), paramArrayOfByte.ret_code.get(), paramArrayOfByte.topic_id.get());
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel())
+        {
+          if (this.jdField_a_of_type_Int != 1) {
+            break label123;
+          }
+          QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel createColumn failed." + paramArrayOfByte.toString());
+        }
+      }
     }
-    catch (Exception paramPackInfo) {}
-    return null;
-  }
-  
-  public String toString()
-  {
-    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.jdField_e_of_type_Long + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "\n followStatus : " + this.jdField_e_of_type_Int + "】";
+    for (;;)
+    {
+      this.jdField_a_of_type_Rft.a(paramInt, "", -1, 0);
+      return;
+      label123:
+      if (this.jdField_a_of_type_Int == 2) {
+        QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel editColumn failed." + paramArrayOfByte.toString());
+      }
+    }
   }
 }
 

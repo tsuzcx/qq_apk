@@ -1,24 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aejn
-  implements DialogInterface.OnDismissListener
+  extends aogi
 {
-  public aejn(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  private WeakReference<Conversation> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aejn(Conversation paramConversation)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
-    {
-      GesturePWDUnlockActivity.a(this.a, true);
-      return;
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
     }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    bctj.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
+    {
+      localConversation.f(false);
+      Conversation.l(localConversation);
+      localConversation.p();
+    }
   }
 }
 

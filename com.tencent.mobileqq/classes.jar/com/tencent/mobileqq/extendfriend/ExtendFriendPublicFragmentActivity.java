@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bcst;
+import bdll;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -34,7 +34,7 @@ public class ExtendFriendPublicFragmentActivity
     }
     for (;;)
     {
-      bcst.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
+      bdll.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
       return;
       str = "";
     }

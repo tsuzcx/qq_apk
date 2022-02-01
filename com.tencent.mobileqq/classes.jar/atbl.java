@@ -1,10 +1,6 @@
-abstract class atbl
+public abstract interface atbl
 {
-  atbl(atan paramatan) {}
-  
-  abstract void a(String paramString, int paramInt);
-  
-  abstract void a(String paramString, int paramInt, atbj paramatbj);
+  public abstract void a(int paramInt, aswv paramaswv, String paramString1, String paramString2);
 }
 
 

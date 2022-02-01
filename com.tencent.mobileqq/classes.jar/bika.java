@@ -1,19 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.4.1;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bika
-  implements DialogInterface.OnClickListener
+  implements bijl
 {
-  public bika(BindGroupActivity.4.1 param1) {}
+  public bika(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    if (paramInt == 1)
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
     {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
+      localStringBuilder = new StringBuilder().append("lockLH uin=").append(paramString1).append(",suc=").append(paramBoolean).append(",lhsig=");
+      if (paramArrayOfByte == null) {
+        break label89;
+      }
+    }
+    label89:
+    for (String str = SecUtil.toHexString(paramArrayOfByte);; str = "null")
+    {
+      QLog.i("LiangHaoBuyFragment", 4, str);
+      ThreadManagerV2.getUIHandlerV2().post(new LiangHaoBuyFragment.3.1(this, paramBoolean, paramIntent, paramString1, paramArrayOfByte, paramString2));
+      return;
     }
   }
 }

@@ -1,26 +1,16 @@
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xyj
-  extends yfq
+class xyj
+  implements bljb
 {
-  protected final int a;
-  protected final String a;
+  xyj(xyd paramxyd, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xyj(String paramString1, int paramInt, String paramString2)
+  public void onDismiss()
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected wvq a(String paramString, List<String> paramList)
-  {
-    return new wxw(paramString, paramList);
-  }
-  
-  protected wvr a()
-  {
-    return new xyk(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 

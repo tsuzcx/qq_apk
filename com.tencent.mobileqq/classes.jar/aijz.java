@@ -1,29 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-public class aijz
+class aijz
+  implements bbcq
 {
-  public JSONObject a = new JSONObject();
+  aijz(aijm paramaijm) {}
   
-  public static aijz a(String paramString)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        aijz localaijz = new aijz();
-        localaijz.a = paramString;
-        return localaijz;
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdEmoConfigBean", 2, paramString.getMessage());
-        }
+    aijm.a(this.a, paramBoolean);
+    this.a.m();
+    paramString = (PlusPanel)aijm.b(this.a).b(8);
+    if (paramString != null) {
+      paramString.setOneWayFriend(aijm.a(this.a));
+    }
+    if (aijm.a(this.a))
+    {
+      aean.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      paramString = (agwg)this.a.a(52);
+      if (paramString != null) {
+        paramString.h();
       }
     }
-    return null;
   }
 }
 

@@ -1,20 +1,80 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.CompressInfo;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.Window;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
-public abstract interface ayxh
+public class ayxh
 {
-  public abstract ayxr a(Intent paramIntent);
+  public static int a(Activity paramActivity)
+  {
+    return ImmersiveUtils.getStatusBarHeight(paramActivity);
+  }
   
-  public abstract ayxr a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
+  public static void a(Activity paramActivity, int paramInt)
+  {
+    paramActivity = new SystemBarCompact(paramActivity, true, -1);
+    paramActivity.init();
+    paramActivity.setStatusBarColor(paramInt);
+  }
   
-  public abstract ayyg a(Intent paramIntent);
+  public static void a(Activity paramActivity, boolean paramBoolean)
+  {
+    if (ThemeUtil.isCustomTheme(false))
+    {
+      a(paramActivity, 0);
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramActivity, -16777216);
+      a(paramActivity, false);
+      return;
+    }
+    if (a(paramActivity, true))
+    {
+      a(paramActivity, -1);
+      return;
+    }
+    a(paramActivity, -2368549);
+  }
   
-  public abstract CompressInfo a(Intent paramIntent);
+  public static boolean a()
+  {
+    return ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+  }
   
-  public abstract ArrayList<ayxr> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
+  public static boolean a(Activity paramActivity, boolean paramBoolean)
+  {
+    int i = 9216;
+    if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.d()) && (!bhjr.b())) {
+      if (paramBoolean) {
+        paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
+      }
+    }
+    do
+    {
+      return paramBoolean;
+      i = 1280;
+      break;
+      if (!ImmersiveUtils.a()) {
+        break label101;
+      }
+      ImmersiveUtils.a(paramActivity.getWindow(), paramBoolean);
+    } while ((Build.VERSION.SDK_INT < 23) || (!bhjr.b()));
+    if (paramBoolean) {}
+    for (;;)
+    {
+      paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
+      return paramBoolean;
+      i = 1280;
+    }
+    label101:
+    return false;
+  }
 }
 
 

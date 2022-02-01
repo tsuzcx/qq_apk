@@ -1,96 +1,25 @@
-import dov.com.qq.im.ae.SessionWrap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import java.io.File;
 
 public class boyg
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  private SessionWrap a;
-  public String a;
-  public boolean a;
-  public int b;
-  private String b;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int jdField_d_of_type_Int = 11;
-  private boolean jdField_d_of_type_Boolean = true;
-  private int jdField_e_of_type_Int = 1;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
+  public boyg(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  private boyg(boyi paramboyi)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_DovComQqImAeSessionWrap = boyi.a(paramboyi);
-    this.jdField_b_of_type_JavaLangString = boyi.a(paramboyi);
-    this.jdField_c_of_type_Int = boyi.a(paramboyi);
-    this.jdField_d_of_type_Int = boyi.b(paramboyi);
-    this.jdField_e_of_type_Int = boyi.c(paramboyi);
-    this.jdField_d_of_type_Boolean = boyi.a(paramboyi);
-    this.jdField_a_of_type_JavaLangString = boyi.b(paramboyi);
-    this.jdField_f_of_type_Int = boyi.d(paramboyi);
-    this.jdField_e_of_type_Boolean = boyi.b(paramboyi);
-    this.jdField_a_of_type_Boolean = paramboyi.jdField_a_of_type_Boolean;
-    this.jdField_f_of_type_Boolean = paramboyi.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = paramboyi.jdField_c_of_type_Boolean;
-    this.jdField_c_of_type_Boolean = paramboyi.jdField_d_of_type_Boolean;
-    this.jdField_b_of_type_Int = paramboyi.jdField_a_of_type_Int;
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public SessionWrap a()
-  {
-    return this.jdField_a_of_type_DovComQqImAeSessionWrap;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_b_of_type_Boolean;
+    AEVideoShelfPreviewFragment.a(this.a).cancelSave();
+    paramDialogInterface = new File(AEVideoShelfPreviewFragment.a(this.a).getOutputVideoPath());
+    if (paramDialogInterface.exists())
+    {
+      TTPTLogger.i(AEVideoShelfPreviewFragment.b(), "delete temp silent video");
+      paramDialogInterface.delete();
+    }
+    AEVideoShelfPreviewFragment.a(this.a, true);
   }
 }
 

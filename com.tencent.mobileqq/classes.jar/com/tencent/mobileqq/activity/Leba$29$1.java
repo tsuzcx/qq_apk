@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aemq;
-import ajvd;
+import aevt;
+import akgm;
 import java.util.List;
 
 public class Leba$29$1
   implements Runnable
 {
-  public Leba$29$1(aemq paramaemq, List paramList) {}
+  public Leba$29$1(aevt paramaevt, List paramList) {}
   
   public void run()
   {
-    if (Leba.a(this.jdField_a_of_type_Aemq.a) != null)
+    if (Leba.a(this.jdField_a_of_type_Aevt.a) != null)
     {
-      Leba.a(this.jdField_a_of_type_Aemq.a).clear();
-      Leba.a(this.jdField_a_of_type_Aemq.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (Leba.a(this.jdField_a_of_type_Aemq.a) != null) {
-        Leba.a(this.jdField_a_of_type_Aemq.a).b();
+      Leba.a(this.jdField_a_of_type_Aevt.a).clear();
+      Leba.a(this.jdField_a_of_type_Aevt.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (Leba.a(this.jdField_a_of_type_Aevt.a) != null) {
+        Leba.a(this.jdField_a_of_type_Aevt.a).b();
       }
-      Leba.c(this.jdField_a_of_type_Aemq.a);
+      Leba.c(this.jdField_a_of_type_Aevt.a);
     }
   }
 }

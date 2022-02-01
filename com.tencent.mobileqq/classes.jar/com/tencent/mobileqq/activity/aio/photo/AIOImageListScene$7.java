@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahtk;
-import ahua;
+import aicy;
+import aido;
 import com.tencent.common.galleryactivity.AbstractImageAdapter;
 
 public class AIOImageListScene$7
   implements Runnable
 {
-  public AIOImageListScene$7(ahtk paramahtk) {}
+  public AIOImageListScene$7(aicy paramaicy) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!((ahua)this.this$0.a).a(false))) {
+    if ((this.this$0.a != null) && (!((aido)this.this$0.a).a(false))) {
       this.this$0.a.notifyDataSetChanged();
     }
   }

@@ -1,36 +1,32 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import mqq.app.QQPermissionCallback;
 
-public class bffm
-  extends bffi<bffn, bfep>
+class bffm
+  implements QQPermissionCallback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
+  bffm(bffl parambffl) {}
   
-  public bffm(XMediaEditor paramXMediaEditor, Context paramContext)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    bhlq.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public bffn a(ViewGroup paramViewGroup)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new bffn(this.jdField_a_of_type_AndroidViewView);
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
+    if (this.a.a.q != null)
+    {
+      paramArrayOfString.putExtra("from", "publish");
+      paramArrayOfString.putExtra("bid", this.a.a.q);
+      paramArrayOfString.putExtra("fromflag", this.a.a.b);
+      bgqv.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
+    }
+    afez.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
   }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(View paramView, bffn parambffn) {}
-  
-  public void a(bffn parambffn, bfep parambfep, int paramInt) {}
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdth;
+import besa;
 
 public class C2CPicUploadProcessor$5
   implements Runnable
 {
-  public C2CPicUploadProcessor$5(bdth parambdth) {}
+  public C2CPicUploadProcessor$5(besa parambesa) {}
   
   public void run()
   {

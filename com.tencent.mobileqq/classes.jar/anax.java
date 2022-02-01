@@ -1,60 +1,49 @@
-public class anax
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
+
+class anax
+  implements bhzp
 {
-  private int jdField_a_of_type_Int;
-  private anbj jdField_a_of_type_Anbj;
-  private anbk jdField_a_of_type_Anbk;
-  private anbm jdField_a_of_type_Anbm;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  anax(anav paramanav, List paramList, String paramString1, String paramString2, int paramInt) {}
   
-  private anax(int paramInt1, String paramString, int paramInt2, anbm paramanbm, anbk paramanbk, anbj paramanbj)
+  public boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Anbm = paramanbm;
-    this.jdField_a_of_type_Anbk = paramanbk;
-    this.jdField_a_of_type_Anbj = paramanbj;
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onGetBaseInfo uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = amsx.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = amsx.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
+    }
+    return false;
   }
   
-  public int a()
+  public boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public anbj a()
-  {
-    return this.jdField_a_of_type_Anbj;
-  }
-  
-  public anbk a()
-  {
-    return this.jdField_a_of_type_Anbk;
-  }
-  
-  public anbm a()
-  {
-    return this.jdField_a_of_type_Anbm;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_Anbj.a(paramInt);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Anbj.a(paramInt);
-  }
-  
-  public int b()
-  {
-    return this.b;
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onDressUpdated uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = amsx.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = amsx.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
+    }
+    return false;
   }
 }
 

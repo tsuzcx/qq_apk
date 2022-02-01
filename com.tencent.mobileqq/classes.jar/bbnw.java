@@ -1,47 +1,38 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class bbnw
-  extends bbnh
+class bbnw
+  implements bbob
 {
-  public static final String a = bbnw.class.getSimpleName();
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  bbnw(bbnv parambbnv) {}
   
-  public bbnw(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void a(long paramLong)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public bbnw(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    Iterator localIterator = bbnv.a(this.a).iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
+      bbnq localbbnq = (bbnq)localIterator.next();
+      if ((paramLong != localbbnq.jdField_a_of_type_Long) || (!bbnv.a(this.a).a(localbbnq.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
+        break label114;
+      }
+      this.a.a(paramLong);
+      bool = true;
+    }
+    label114:
+    for (;;)
+    {
+      break;
+      QLog.d(bbnv.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
       return;
     }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(a, 0, paramString.toString());
-    }
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    QLog.d(bbnv.a, 1, new Object[] { "notifyError uniseq:", Long.valueOf(paramLong), ", errCode:", Integer.valueOf(paramInt) });
+    this.a.a(paramLong);
   }
 }
 

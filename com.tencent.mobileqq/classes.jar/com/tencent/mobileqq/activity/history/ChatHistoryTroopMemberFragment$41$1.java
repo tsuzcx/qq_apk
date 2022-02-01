@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajtj;
+import akes;
 
 public class ChatHistoryTroopMemberFragment$41$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$1(ajtj paramajtj, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3) {}
+  public ChatHistoryTroopMemberFragment$41$1(akes paramakes, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3) {}
   
   public void run()
   {
-    ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_Ajtj.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
+    ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_Akes.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
   }
 }
 

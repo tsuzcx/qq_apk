@@ -1,28 +1,36 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.widget.DynamicGridView;
 
-public class blkv
-  implements ServiceConnection
+class blkv
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  blkv(blku paramblku) {}
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  blkv(blku paramblku, View paramView, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_Blkq = blkr.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Blkq != null)
-    {
-      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public boolean onPreDraw()
   {
-    this.a.jdField_a_of_type_Blkq = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Blku.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.jdField_a_of_type_Blku.a, DynamicGridView.a(this.jdField_a_of_type_Blku.a) + blku.a(this.jdField_a_of_type_Blku));
+    DynamicGridView.b(this.jdField_a_of_type_Blku.a, DynamicGridView.b(this.jdField_a_of_type_Blku.a) + blku.b(this.jdField_a_of_type_Blku));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    DynamicGridView.a(this.jdField_a_of_type_Blku.a, this.jdField_a_of_type_Blku.a.a(DynamicGridView.a(this.jdField_a_of_type_Blku.a)));
+    if (DynamicGridView.a(this.jdField_a_of_type_Blku.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Blku.a).setVisibility(4);
+    }
+    DynamicGridView.a(this.jdField_a_of_type_Blku.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 

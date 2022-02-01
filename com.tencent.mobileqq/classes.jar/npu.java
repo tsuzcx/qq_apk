@@ -1,59 +1,88 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class npu
-  implements View.OnClickListener
+  implements anui
 {
-  npu(npm paramnpm, int paramInt, String paramString, nqh paramnqh) {}
+  npu(npt paramnpt) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_Int == 1)
+    switch (paramInt)
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Npm.jdField_a_of_type_Nql != null)) {
-        this.jdField_a_of_type_Npm.jdField_a_of_type_Nql.a(this.jdField_a_of_type_JavaLangString);
-      }
-      bcst.b(this.jdField_a_of_type_Npm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Npm.jdField_a_of_type_JavaLangString, "0X8006981", "0X8006981", 0, 0, String.valueOf(this.jdField_a_of_type_Nqh.a.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Nqh.a.d), String.valueOf(this.jdField_a_of_type_Nqh.a.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Nqh.a.jdField_b_of_type_Int));
-      localJSONObject = new JSONObject();
-      if (this.jdField_a_of_type_Npm.jdField_a_of_type_Boolean) {}
     }
     for (;;)
     {
-      try
-      {
-        localJSONObject.put("cha_1", this.jdField_a_of_type_Nqh.a.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("cha_2", npm.a(this.jdField_a_of_type_Npm));
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_Npm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        String str2 = this.jdField_a_of_type_Npm.jdField_a_of_type_JavaLangString;
-        int i = this.jdField_a_of_type_Nqh.a.jdField_a_of_type_Int;
-        long l = this.jdField_a_of_type_Nqh.a.jdField_a_of_type_Long;
-        if (this.jdField_a_of_type_Npm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType != 1) {
-          continue;
-        }
-        str1 = "02";
-        bcst.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str2, "0X80077FA", "0X80077FA", 0, 0, String.valueOf(i), String.valueOf(l), str1, localJSONObject.toString());
-      }
-      catch (JSONException localJSONException)
-      {
-        String str1;
-        localJSONException.printStackTrace();
+      return;
+      paramObject = (Bundle)paramObject;
+      if (paramObject == null) {
         continue;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Npm.jdField_a_of_type_Nql == null)) {
-        break;
+      paramInt = paramObject.getInt("reqCode");
+      if (paramInt == 10000)
+      {
+        str1 = paramObject.getString("name");
+        String str2 = paramObject.getString("callback");
+        String str3 = paramObject.getString("msg");
+        long l = paramObject.getLong("uiResId");
+        this.a.a = str2;
+        npt.a(this.a, 1, l, str1, str3);
+        return;
       }
-      this.jdField_a_of_type_Npm.jdField_a_of_type_Nql.a(this.jdField_a_of_type_Nqh);
-      break;
-      str1 = "01";
+      if (paramInt != 10002) {
+        continue;
+      }
+      paramBoolean = paramObject.getBoolean("isOpen");
+      String str1 = paramObject.getString("callback");
+      boolean bool = paramObject.getBoolean("has");
+      paramObject = new JSONObject();
+      if (bool) {
+        if (paramBoolean) {
+          paramInt = 1;
+        }
+      }
+      try
+      {
+        label153:
+        paramObject.put("isOpen", paramInt);
+        while (!TextUtils.isEmpty(str1))
+        {
+          this.a.callJs(str1, new String[] { paramObject.toString() });
+          return;
+          paramInt = 0;
+          break label153;
+          paramObject.put("isOpen", 1);
+        }
+      }
+      catch (JSONException localJSONException2)
+      {
+        for (;;)
+        {
+          localJSONException2.printStackTrace();
+        }
+      }
+      paramObject = new JSONObject();
+      if (paramBoolean) {}
+      try
+      {
+        paramObject.put("userOption", 1);
+        while (!TextUtils.isEmpty(this.a.a))
+        {
+          this.a.callJs(this.a.a, new String[] { paramObject.toString() });
+          this.a.a = null;
+          return;
+          paramObject.put("userOption", 0);
+        }
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
+        {
+          localJSONException1.printStackTrace();
+        }
+      }
     }
   }
 }

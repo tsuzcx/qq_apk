@@ -1,29 +1,9 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-
-public class adkt
-  implements anil
+public abstract interface adkt
+  extends adks
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
+  public abstract void a(String paramString);
   
-  public adkt(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
-    {
-      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
-      return;
-    }
-    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
-  }
+  public abstract void b(String paramString);
 }
 
 

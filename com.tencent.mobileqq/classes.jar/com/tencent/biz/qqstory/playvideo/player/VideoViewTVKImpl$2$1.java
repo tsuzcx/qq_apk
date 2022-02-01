@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import xpm;
-import xqr;
+import xth;
+import xum;
 
 public class VideoViewTVKImpl$2$1
   implements Runnable
 {
-  public VideoViewTVKImpl$2$1(xqr paramxqr, xpm paramxpm) {}
+  public VideoViewTVKImpl$2$1(xum paramxum, xth paramxth) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Xpm.a(this.jdField_a_of_type_Xqr.a);
+    this.jdField_a_of_type_Xth.a(this.jdField_a_of_type_Xum.a);
   }
 }
 

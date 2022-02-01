@@ -1,83 +1,201 @@
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import com.tencent.filter.BaseFilter;
-import com.tencent.view.RendererUtils;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import common.config.service.QzoneConfig;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bnqj
 {
-  private bnql jdField_a_of_type_Bnql;
-  private bnrd jdField_a_of_type_Bnrd = new bnrd();
-  private bnre jdField_a_of_type_Bnre = new bnre();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public static final String a;
+  public static final Pattern a;
+  private static boolean a;
+  public static final String b;
+  public static final Pattern b;
+  private static Pattern c;
+  private static Pattern d = Pattern.compile("@\\{uin:.*?,\\s*nick:.*?\\}");
+  private static Pattern e = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]");
   
-  private Bitmap a()
+  static
   {
-    this.jdField_a_of_type_Bnrd.a(this.jdField_a_of_type_JavaUtilList);
-    return RendererUtils.saveTexture(this.jdField_a_of_type_Bnrd.a());
+    jdField_a_of_type_JavaLangString = anzj.a(2131710631);
+    jdField_b_of_type_JavaLangString = anzj.a(2131710628);
+    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2);
+    jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("\\[/美女\\]|\\[/钱\\]");
   }
   
-  public int a()
+  public static int a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    paramString = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
+    while (paramString.find()) {
+      i += 1;
+    }
+    return i;
   }
   
-  public void a()
+  public static Drawable a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_Bnre.apply();
-    this.jdField_a_of_type_Bnrd.apply();
-  }
-  
-  public void a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
-  {
-    paramList = this.jdField_a_of_type_Bnre.a(paramInt1, paramList, paramInt2, paramInt3);
-    paramList = this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(paramList.getTextureId(), 64, 64);
-    this.jdField_a_of_type_JavaUtilList.add(paramList);
-  }
-  
-  public void a(bnql parambnql)
-  {
-    this.jdField_a_of_type_Bnql = parambnql;
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      AppInterface localAppInterface = QQStoryContext.a();
-      bnox localbnox = (bnox)localAppInterface.getBusinessHandler(3);
-      localAppInterface.addObserver(new bnqk(this, localAppInterface));
-      localbnox.a(a());
+      return null;
+      if (asle.a(paramString) != -1) {
+        return asle.a(asle.a(paramString));
+      }
+    } while (askx.a(paramString) == -1);
+    return askx.a(askx.a(paramString));
+  }
+  
+  public static String a(String paramString)
+  {
+    Matcher localMatcher = e.matcher(paramString);
+    while (localMatcher.find())
+    {
+      String str1 = localMatcher.group();
+      String str2 = g(str1);
+      if (!TextUtils.isEmpty(str2)) {
+        paramString = paramString.replace(str1, "[" + str2.substring(1) + "]");
+      }
+    }
+    return paramString;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString1);
+    while (localMatcher.find()) {
+      paramString1 = paramString1.replace(localMatcher.group(), paramString2);
+    }
+    return paramString1;
+  }
+  
+  public static void a() {}
+  
+  public static String b(String paramString)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      b();
+    }
+    if ((c == null) || (paramString == null)) {
+      return paramString;
+    }
+    int i = 0;
+    StringBuilder localStringBuilder = new StringBuilder(paramString.length());
+    Matcher localMatcher = d.matcher(paramString);
+    while (localMatcher.find())
+    {
+      if (localMatcher.start() >= i)
+      {
+        localStringBuilder.append(h(paramString.substring(i, localMatcher.start())));
+        localStringBuilder.append(paramString.substring(localMatcher.start(), localMatcher.end()));
+      }
+      i = localMatcher.end();
+    }
+    localStringBuilder.append(h(paramString.substring(i, paramString.length())));
+    return localStringBuilder.toString();
+  }
+  
+  private static void b()
+  {
+    int i = 1;
+    try
+    {
+      ArrayList localArrayList = asle.a();
+      if ((localArrayList != null) && (localArrayList.size() > 0))
+      {
+        StringBuffer localStringBuffer = new StringBuffer("(" + asle.a(((Integer)localArrayList.get(0)).intValue()) + ")");
+        while (i < localArrayList.size())
+        {
+          localStringBuffer.append("|(" + asle.a(((Integer)localArrayList.get(i)).intValue()) + ")");
+          i += 1;
+        }
+        c = Pattern.compile(localStringBuffer.toString().replace("吃瓜", "chigua"));
+      }
+      jdField_a_of_type_Boolean = true;
       return;
     }
-    this.jdField_a_of_type_Bnql.a(new bnrb());
+    finally {}
   }
   
-  public void c()
+  public static String c(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).unlock();
+    Matcher localMatcher = e.matcher(paramString);
+    while (localMatcher.find())
+    {
+      String str1 = localMatcher.group();
+      String str2 = d(str1);
+      if (str2 != null) {
+        paramString = paramString.replace(str1, str2);
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    return paramString;
   }
   
-  public void d()
+  public static String d(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).clear();
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      if (asle.a(paramString) != -1) {
+        return asle.b(asle.a(paramString));
+      }
+    } while (askx.a(paramString) == -1);
+    return askx.a(askx.a(paramString)) + "";
+  }
+  
+  public static String e(String paramString)
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "EmotionURL", "https://qzonestyle.gtimg.cn/qzone/em/$id@2x.gif#kp=1").replace("$id", paramString);
+  }
+  
+  public static String f(String paramString)
+  {
+    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
+    while (localMatcher.find())
+    {
+      String str1 = localMatcher.group();
+      String str2 = g(str1);
+      if (!TextUtils.isEmpty(str2)) {
+        paramString = paramString.replace(str1, str2);
+      }
     }
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSLSelf();
-    this.jdField_a_of_type_Bnre.clearGLSLSelf();
-    this.jdField_a_of_type_Bnrd.clearGLSLSelf();
+    return paramString;
+  }
+  
+  public static String g(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      if (asle.a(paramString) != -1) {
+        return asle.a(asle.a(paramString));
+      }
+    } while (askx.a(paramString) == -1);
+    return askx.a(askx.a(paramString));
+  }
+  
+  private static String h(String paramString)
+  {
+    Matcher localMatcher = c.matcher(paramString);
+    while (localMatcher.find())
+    {
+      String str1 = localMatcher.group();
+      if (str1 != null)
+      {
+        String str2 = asle.a(str1);
+        if (str2 != null)
+        {
+          str1 = paramString.replace(str1, str2);
+          if (str1 != null) {
+            paramString = str1;
+          }
+        }
+      }
+    }
+    return paramString;
   }
 }
 

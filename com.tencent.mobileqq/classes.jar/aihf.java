@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 class aihf
-  implements View.OnClickListener
+  extends ProxyObserver
 {
-  aihf(aihe paramaihe) {}
+  aihf(aihd paramaihd) {}
   
-  public void onClick(View paramView)
+  public void onProxyUpdataTroopMember()
   {
-    aihe.a(this.a, paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b(false, false);
   }
 }
 

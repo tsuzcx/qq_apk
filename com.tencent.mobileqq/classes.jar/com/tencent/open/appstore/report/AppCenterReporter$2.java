@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import biry;
-import bisp;
-import bisy;
+import bjsx;
+import bjto;
+import bjtx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.DownloadFinishLog;
@@ -23,18 +23,18 @@ public final class AppCenterReporter$2
     do
     {
       return;
-      localObject = biry.a().a(this.a.jdField_b_of_type_JavaLangString);
+      localObject = bjsx.a().a(this.a.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
-        bisy.b("AppCenterReporter", ">reportDownloadSucc " + ((DownloadInfo)localObject).w + "|" + this.a.w);
+        bjtx.b("AppCenterReporter", ">reportDownloadSucc " + ((DownloadInfo)localObject).w + "|" + this.a.w);
         this.a.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.a.w);
-      bisy.b("AppCenterReporter", ">reportDownloadSucc " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
+      bjtx.b("AppCenterReporter", ">reportDownloadSucc " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
     } while (!bool);
-    bisy.b("AppCenterReporter", "[reportDownloadSucc]");
-    bisp.a(3005, bisp.a(this.a) + "|" + bisp.b(this.a) + "|" + new File(this.a.l).length());
+    bjtx.b("AppCenterReporter", "[reportDownloadSucc]");
+    bjto.a(3005, bjto.a(this.a) + "|" + bjto.b(this.a) + "|" + new File(this.a.l).length());
     Object localObject = new DownloadFinishLog();
     ((DownloadFinishLog)localObject).packageName = this.a.e;
     ((DownloadFinishLog)localObject).versionCode = this.a.jdField_b_of_type_Int;

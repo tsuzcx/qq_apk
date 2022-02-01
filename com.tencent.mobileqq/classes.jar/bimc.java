@@ -1,31 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class bimc
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public bimc(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
+  public bimc(WebProcessManager paramWebProcessManager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
-      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
-        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebProcessManager", 2, "action=" + paramContext);
+        }
+        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
+          break;
+        }
+        this.a.f();
+      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
+      this.a.i();
       return;
-      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
-    }
+    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
+    this.a.i();
   }
 }
 

@@ -1,6 +1,8 @@
+import android.support.v7.widget.RecyclerView;
+
 public abstract interface aabv
 {
-  public abstract void a();
+  public abstract boolean a(RecyclerView paramRecyclerView);
 }
 
 

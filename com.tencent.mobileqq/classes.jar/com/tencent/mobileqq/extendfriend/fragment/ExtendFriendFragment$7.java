@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.os.Handler;
-import blvu;
+import bmww;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 class ExtendFriendFragment$7
@@ -11,8 +11,8 @@ class ExtendFriendFragment$7
   
   public void run()
   {
-    if (blvu.c()) {
-      ExtendFriendFragment.a(blvu.b(this.this$0.getActivity(), ExtendFriendFragment.a(this.this$0)));
+    if (bmww.c()) {
+      ExtendFriendFragment.a(bmww.b(this.this$0.getActivity(), ExtendFriendFragment.a(this.this$0)));
     }
     QzoneHandlerThreadFactory.getMainHandler().post(new ExtendFriendFragment.7.1(this));
   }

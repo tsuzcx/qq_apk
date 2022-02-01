@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aixe;
-import aixj;
+import ajin;
+import ajis;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bkom;
+import blpp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
@@ -19,8 +19,8 @@ public class ConnectionsExplorationClidFragment
   extends ReportV4Fragment
 {
   private int jdField_a_of_type_Int;
-  private aixj jdField_a_of_type_Aixj;
-  bkom jdField_a_of_type_Bkom = new aixe(this);
+  private ajis jdField_a_of_type_Ajis;
+  blpp jdField_a_of_type_Blpp = new ajin(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   private boolean jdField_a_of_type_Boolean;
@@ -30,17 +30,17 @@ public class ConnectionsExplorationClidFragment
   private void a(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131376204));
-    View localView = paramView.findViewById(2131365985);
-    paramView = paramView.findViewById(2131370221);
-    this.jdField_a_of_type_Aixj = new aixj(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView, paramView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131376344));
+    View localView = paramView.findViewById(2131366031);
+    paramView = paramView.findViewById(2131370322);
+    this.jdField_a_of_type_Ajis = new ajis(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView, paramView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Aixj.a();
+      this.jdField_a_of_type_Ajis.a();
       this.jdField_b_of_type_Boolean = false;
     }
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Bkom);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Blpp);
   }
   
   public void a()
@@ -48,9 +48,9 @@ public class ConnectionsExplorationClidFragment
     if (QLog.isColorLevel()) {
       QLog.d("ConnectionsExplorationClidFragment", 2, "ConnectionsExplorationClidFragment onPageSelected " + this.jdField_b_of_type_Int);
     }
-    if (this.jdField_a_of_type_Aixj != null)
+    if (this.jdField_a_of_type_Ajis != null)
     {
-      this.jdField_a_of_type_Aixj.a();
+      this.jdField_a_of_type_Ajis.a();
       return;
     }
     this.jdField_b_of_type_Boolean = true;
@@ -71,8 +71,8 @@ public class ConnectionsExplorationClidFragment
     if (QLog.isColorLevel()) {
       QLog.d("ConnectionsExplorationClidFragment", 2, "ConnectionsExplorationClidFragment doOnDestroy " + this.jdField_b_of_type_Int);
     }
-    if (this.jdField_a_of_type_Aixj != null) {
-      this.jdField_a_of_type_Aixj.c();
+    if (this.jdField_a_of_type_Ajis != null) {
+      this.jdField_a_of_type_Ajis.c();
     }
   }
   
@@ -83,7 +83,7 @@ public class ConnectionsExplorationClidFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561325, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561363, paramViewGroup, false);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -101,8 +101,8 @@ public class ConnectionsExplorationClidFragment
       QLog.d("ConnectionsExplorationClidFragment", 2, " onResume");
     }
     super.onResume();
-    if (this.jdField_a_of_type_Aixj != null) {
-      this.jdField_a_of_type_Aixj.b();
+    if (this.jdField_a_of_type_Ajis != null) {
+      this.jdField_a_of_type_Ajis.b();
     }
   }
 }

@@ -1,42 +1,17 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
-class agog
-  implements agoj
+public class agog
+  implements QQPermissionCallback
 {
-  agog(agof paramagof) {}
+  public agog(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int j;
-    int i;
-    if (agof.a(this.a) != null)
-    {
-      j = agof.a(this.a).getChildCount();
-      if (j > 0) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        paramView = agof.a(this.a).getChildAt(i).getTag();
-        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
-          agof.a(this.a).removeViewAt(i);
-        }
-      }
-      else
-      {
-        if (agof.a(this.a).getChildCount() <= 0) {
-          agof.a(this.a).setVisibility(8);
-        }
-        return;
-      }
-      i += 1;
-    }
+    bhlq.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

@@ -1,19 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class adsp
-  implements DialogInterface.OnClickListener
+public class adsp
+  implements View.OnTouchListener
 {
-  public adsp(adsx paramadsx) {}
+  public adsp(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a();
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
     }
-    mqw.e(true, false);
-    paramDialogInterface.dismiss();
-    mqw.b();
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

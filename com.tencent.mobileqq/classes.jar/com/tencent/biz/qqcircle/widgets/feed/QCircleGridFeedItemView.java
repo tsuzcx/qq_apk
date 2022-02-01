@@ -8,8 +8,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.qqcircle.QCircleInitBean;
 import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.launchbean.QCircleLayerBean;
 import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
@@ -28,20 +29,19 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StImage;
 import feedcloud.FeedCloudMeta.StTagInfo;
 import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
-import uxk;
-import uxo;
-import uxx;
-import uzb;
-import vou;
-import vrc;
-import vrf;
-import vsn;
-import wan;
-import zvp;
+import uyx;
+import uzg;
+import var;
+import vrd;
+import vtn;
+import vtq;
+import vvh;
+import wed;
+import zzk;
 
 public class QCircleGridFeedItemView
   extends QCircleBaseWidgetView
-  implements View.OnClickListener, zvp
+  implements View.OnClickListener, zzk
 {
   public static final int a;
   public static final int b = (int)(ImmersiveUtils.a() * 0.3D) * 2;
@@ -95,7 +95,7 @@ public class QCircleGridFeedItemView
   
   public int a()
   {
-    return 2131560706;
+    return 2131560723;
   }
   
   public String a()
@@ -107,9 +107,9 @@ public class QCircleGridFeedItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369125));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369116));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379644));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369215));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369206));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379819));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -130,17 +130,17 @@ public class QCircleGridFeedItemView
       this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = paramObject.cover.picUrl.get();
       paramObject = URLDrawable.URLDrawableOptions.obtain();
-      paramObject.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843922);
-      paramObject.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844002);
+      paramObject.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843943);
+      paramObject.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844021);
       paramObject = "";
-      if ((getTag(2131373857) instanceof String)) {
-        paramObject = (String)getTag(2131373857);
+      if ((getTag(2131373990) instanceof String)) {
+        paramObject = (String)getTag(2131373990);
       }
-      setTag(2131373857, localObject);
+      setTag(2131373990, localObject);
       if (!paramObject.equals(localObject))
       {
-        paramObject = new vou().a((String)localObject).a(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView).b(false).a(true).c(b).b(b);
-        QCircleFeedPicLoader.a().a(paramObject, new wan(this, paramInt));
+        paramObject = new vrd().a((String)localObject).a(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView).b(false).a(true).c(b).b(b);
+        QCircleFeedPicLoader.a().a(paramObject, new wed(this, paramInt));
       }
       d();
     }
@@ -172,42 +172,43 @@ public class QCircleGridFeedItemView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      Object localObject2 = uxx.a(getContext());
-      if (uxx.a(getContext())) {}
+      Object localObject2 = uzg.a(getContext());
+      if (uzg.a(getContext())) {}
       for (Object localObject1 = "1";; localObject1 = "2")
       {
-        vrf.a((String)localObject2, 11, 19, 5, (String)localObject1, "", "", "", "");
-        if ((a() == null) || (!(a() instanceof uzb)) || (!(this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))) {
+        vtq.a((String)localObject2, 11, 19, 5, (String)localObject1, "", "", "", "");
+        if ((a() == null) || (!(a() instanceof var)) || (!(this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))) {
           break;
         }
         localObject1 = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
         if (!QCircleFakeAdapter.a(localObject1)) {
           break label155;
         }
-        QQToast.a(getContext(), 0, 2131697243, 0).a();
+        QQToast.a(getContext(), 0, 2131697318, 0).a();
         break;
       }
       label155:
-      Object localObject3 = (uzb)a();
+      Object localObject3 = (var)a();
       localObject2 = new QQCircleFeedBase.StFeedListBusiReqData();
-      ((QQCircleFeedBase.StFeedListBusiReqData)localObject2).tabAttachInfo.set(((uzb)localObject3).a());
-      localObject3 = ((uzb)localObject3).a();
+      ((QQCircleFeedBase.StFeedListBusiReqData)localObject2).tabAttachInfo.set(((var)localObject3).a());
+      localObject3 = ((var)localObject3).a();
       if (localObject3 != null)
       {
         ((QQCircleFeedBase.StFeedListBusiReqData)localObject2).tagId.set(((QCircleInitBean)localObject3).getTagInfo().tagId.get());
         ((QQCircleFeedBase.StFeedListBusiReqData)localObject2).tagName.set(((QCircleInitBean)localObject3).getTagInfo().tagName.get());
       }
-      localObject3 = new uxk();
-      ((uxk)localObject3).a((FeedCloudMeta.StFeed)localObject1);
-      ((uxk)localObject3).a(a().pageType);
-      ((uxk)localObject3).a((QQCircleFeedBase.StFeedListBusiReqData)localObject2);
-      ((uxk)localObject3).b(0);
-      ((uxk)localObject3).a(a().clone().setElementIdStr("content"));
-      uxo.a(getContext(), ((uxk)localObject3).a(), vsn.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView, this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getHeight()));
+      localObject3 = new QCircleLayerBean();
+      ((QCircleLayerBean)localObject3).setFeed((FeedCloudMeta.StFeed)localObject1);
+      ((QCircleLayerBean)localObject3).setSourceType(a().pageType);
+      ((QCircleLayerBean)localObject3).setFeedListBusiReqData((QQCircleFeedBase.StFeedListBusiReqData)localObject2);
+      ((QCircleLayerBean)localObject3).setDataPosInList(0);
+      ((QCircleLayerBean)localObject3).setFromReportBean(a().clone().setElementIdStr("content"));
+      vvh.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView, this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getHeight(), (QCircleLayerBean)localObject3);
+      uyx.a(getContext(), (QCircleLayerBean)localObject3);
       localObject2 = new ReportExtraTypeInfo();
       ((ReportExtraTypeInfo)localObject2).mFeed = ((FeedCloudMeta.StFeed)localObject1);
       ((ReportExtraTypeInfo)localObject2).mPlayScene = 1;
-      vrc.a(7, 2, (ExtraTypeInfo)localObject2, d());
+      vtn.a(7, 2, (ExtraTypeInfo)localObject2, d());
     }
   }
 }

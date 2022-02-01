@@ -1,50 +1,45 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ahrh
-  implements ahrc<PlusPanel>
+  extends aggl
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private PlusPanel jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public VideoProgressView a;
+  public CropBubbleVideoView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  ahrh(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
+  public ahrh(ahqw paramahqw) {}
   
-  public int a()
+  public void a()
   {
-    return 8;
-  }
-  
-  public PlusPanel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel;
-  }
-  
-  public PlusPanel a(Context paramContext)
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel = ((PlusPanel)View.inflate(paramContext, 2131558626, null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-    paramContext = (agju)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(62);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.setAIOLongCaptureCtrlListener(paramContext.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenPanel", 2, "OpenIconPanel:" + (System.currentTimeMillis() - l));
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    {
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bhjz.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          ahqw.a(this.jdField_a_of_type_Ahqw, localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      ahqw.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public boolean a()
-  {
-    return false;
   }
 }
 

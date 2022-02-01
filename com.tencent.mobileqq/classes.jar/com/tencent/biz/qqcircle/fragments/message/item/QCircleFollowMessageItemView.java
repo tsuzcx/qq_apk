@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import feedcloud.FeedCloudMeta.StNotice;
-import vmo;
+import vou;
 
 public class QCircleFollowMessageItemView
   extends QCircleBaseWidgetView<FeedCloudMeta.StNotice>
 {
-  private vmo a;
+  private vou a;
   
   public QCircleFollowMessageItemView(Context paramContext)
   {
@@ -24,7 +24,7 @@ public class QCircleFollowMessageItemView
   
   public int a()
   {
-    return 2131560729;
+    return 2131560750;
   }
   
   public String a()
@@ -34,7 +34,7 @@ public class QCircleFollowMessageItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.a = new vmo(c());
+    this.a = new vou(c());
     this.a.a(paramContext, paramView);
   }
   

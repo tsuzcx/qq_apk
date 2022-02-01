@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atcv;
+import atup;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FileManagerDataCenter$3
   implements Runnable
 {
-  public FileManagerDataCenter$3(atcv paramatcv) {}
+  public FileManagerDataCenter$3(atup paramatup) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (atcv.a(this.this$0) != null)) {
-      this.this$0.a.getApp().unregisterReceiver(atcv.a(this.this$0));
+    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (atup.a(this.this$0) != null)) {
+      this.this$0.a.getApp().unregisterReceiver(atup.a(this.this$0));
     }
-    atcv.a(this.this$0, null);
+    atup.a(this.this$0, null);
   }
 }
 

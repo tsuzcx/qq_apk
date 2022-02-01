@@ -1,20 +1,20 @@
 package com.tencent.avgame.videorecord;
 
-import bjcq;
-import ngx;
+import bkdp;
+import nis;
 
 public class GuessVideoGameRecordCtrl$3
   implements Runnable
 {
-  public GuessVideoGameRecordCtrl$3(ngx paramngx) {}
+  public GuessVideoGameRecordCtrl$3(nis paramnis) {}
   
   public void run()
   {
-    bjcq.a(this.this$0.a, "onEncodeError man call check");
-    if (ngx.a(this.this$0))
+    bkdp.a(this.this$0.a, "onEncodeError man call check");
+    if (nis.a(this.this$0))
     {
-      bjcq.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
-      this.this$0.a(ngx.b(this.this$0));
+      bkdp.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
+      this.this$0.a(nis.b(this.this$0));
     }
   }
 }

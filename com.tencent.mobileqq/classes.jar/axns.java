@@ -1,36 +1,47 @@
+import android.os.SystemClock;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface axns
+public class axns
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public axns(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(axnt paramaxnt);
-  
-  public abstract void a(axnu paramaxnu);
-  
-  public abstract void a(axnv paramaxnv);
-  
-  public abstract void a(axnw paramaxnw);
-  
-  public abstract void a(axnx paramaxnx);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
+    }
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof axnv)) {}
+    for (localObject = (axnv)localObject;; localObject = null)
+    {
+      if (localObject == null) {}
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        int j = ((axnv)localObject).jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        bdll.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        ((axnv)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+        if (MultiCardPageIndicator.a(this.a) != null) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+      }
+    }
+  }
 }
 
 

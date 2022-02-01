@@ -1,30 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public abstract interface aoua
+class aoua
+  implements PermissionMonitor.Listener
 {
-  public abstract Context a();
+  static
+  {
+    if (!aotx.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
   
-  public abstract aouf a();
+  aoua(aotx paramaotx) {}
   
-  public abstract apev a();
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void a(aoty paramaoty, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aoua paramaoua);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
+    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
+      throw new AssertionError();
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Double.class)) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aotx.a(this.jdField_a_of_type_Aotx), ((Double)paramArrayOfObject[1]).doubleValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+  }
 }
 
 

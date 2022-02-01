@@ -1,18 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import java.util.ArrayList;
 
-public class bbar
-  implements DialogInterface.OnClickListener
+public final class bbar
+  implements Parcelable.Creator<RedAppInfo>
 {
-  public bbar(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RedAppInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.clear();
-    SignTextEditFragment.a(this.a);
+    RedAppInfo localRedAppInfo = new RedAppInfo();
+    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
+    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
+    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
+    localRedAppInfo.a = new ArrayList();
+    paramParcel.readList(localRedAppInfo.a, null);
+    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
+    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
+    return localRedAppInfo;
+  }
+  
+  public RedAppInfo[] a(int paramInt)
+  {
+    return new RedAppInfo[paramInt];
   }
 }
 

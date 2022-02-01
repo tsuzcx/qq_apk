@@ -10,12 +10,15 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.RichTextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.TruncateAttr;
 
 public class NativeTextImp
   extends TextView
   implements IView
 {
+  private boolean hyperLinkClick = false;
   protected int mBackgroundColor = 0;
   protected Paint mBackgroundPaint;
   protected int mBorderBottomLeftRadius = 0;
@@ -27,6 +30,7 @@ public class NativeTextImp
   protected int mBorderWidth = 0;
   protected Boolean mEnableMarquee;
   protected int mFlags = 1;
+  private TruncateAttr truncateAttr;
   
   public NativeTextImp(Context paramContext)
   {
@@ -55,6 +59,11 @@ public class NativeTextImp
       return this.mEnableMarquee.booleanValue();
     }
     return super.isFocused();
+  }
+  
+  public boolean isHyperLinkClick()
+  {
+    return this.hyperLinkClick;
   }
   
   public void measureComponent(int paramInt1, int paramInt2)
@@ -107,6 +116,14 @@ public class NativeTextImp
       return;
     }
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.truncateAttr != null) {
+      RichTextUtils.addEllipsis2Text(this, this.truncateAttr);
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -167,12 +184,22 @@ public class NativeTextImp
     }
   }
   
+  public void setHyperLinkClick(boolean paramBoolean)
+  {
+    this.hyperLinkClick = paramBoolean;
+  }
+  
   public void setPaintFlags(int paramInt)
   {
     if (this.mFlags == paramInt) {
       return;
     }
     super.setPaintFlags(paramInt);
+  }
+  
+  public void setTruncateAttr(TruncateAttr paramTruncateAttr)
+  {
+    this.truncateAttr = paramTruncateAttr;
   }
 }
 

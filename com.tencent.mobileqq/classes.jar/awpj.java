@@ -1,24 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-public class awpj
-  implements biea
+public abstract interface awpj
 {
-  public awpj(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  public abstract void a();
   
-  public void onItemSelect(View paramView, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      if (MsgBackupPCAuthFragment.a(this.a)) {
-        this.a.k();
-      }
-      this.a.onBackEvent();
-    }
-    while (paramInt != 2) {
-      return;
-    }
-  }
+  public abstract void a(LocationRoom.Venue paramVenue);
+  
+  public abstract void a(String paramString);
 }
 
 

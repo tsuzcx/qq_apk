@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
 
 class avzu
-  extends anmu
+  implements awag
 {
-  avzu(avzs paramavzs) {}
+  avzu(avzt paramavzt, String paramString) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf(paramObject);
-    if ((paramBoolean) && (paramObject.equals(avzs.a(this.a).a())))
+    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
     {
-      avzs.a(avzs.a(this.a), 0, String.valueOf(paramObject));
-      if (avzs.a(this.a) != null) {
-        avzs.a(this.a).finish();
-      }
+      avzt.a(this.jdField_a_of_type_Avzt).c(2131695007);
+      avzt.a(this.jdField_a_of_type_Avzt).show();
     }
   }
 }

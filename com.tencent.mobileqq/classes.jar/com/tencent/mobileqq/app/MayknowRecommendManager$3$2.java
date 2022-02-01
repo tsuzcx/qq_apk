@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import anpk;
-import anpn;
+import aobl;
+import aobo;
 import com.tencent.qphone.base.util.QLog;
 
 public class MayknowRecommendManager$3$2
   implements Runnable
 {
-  public MayknowRecommendManager$3$2(anpn paramanpn, boolean paramBoolean, String paramString) {}
+  public MayknowRecommendManager$3$2(aobo paramaobo, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MayknowRecommendManager", 2, "isSuccess :" + this.jdField_a_of_type_Boolean + " onAddReqStatesChanged: " + this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Anpn.a.a(this.jdField_a_of_type_JavaLangString, true);
-    ((FriendListHandler)anpk.a(this.jdField_a_of_type_Anpn.a).a(1)).notifyUI(108, true, null);
+    this.jdField_a_of_type_Aobo.a.a(this.jdField_a_of_type_JavaLangString, true);
+    ((FriendListHandler)aobl.a(this.jdField_a_of_type_Aobo.a).a(1)).notifyUI(108, true, null);
   }
 }
 

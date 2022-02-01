@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pmh;
-import qxg;
-import rga;
+import pfa;
+import qpu;
+import qwt;
 
 public class ComponentHeaderPolymeric$4$1
   implements Runnable
 {
-  public ComponentHeaderPolymeric$4$1(qxg paramqxg, int paramInt) {}
+  public ComponentHeaderPolymeric$4$1(qpu paramqpu, int paramInt) {}
   
   public void run()
   {
-    pmh.a().d((int)this.jdField_a_of_type_Qxg.a.mPolymericInfo.f, this.jdField_a_of_type_Int - 1);
+    pfa.a().d((int)this.jdField_a_of_type_Qpu.a.mPolymericInfo.f, this.jdField_a_of_type_Int - 1);
   }
 }
 

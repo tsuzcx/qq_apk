@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class algc
-  implements View.OnClickListener
+public abstract interface algc
 {
-  public algc(LoginView paramLoginView) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    bcst.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
-    LoginView.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

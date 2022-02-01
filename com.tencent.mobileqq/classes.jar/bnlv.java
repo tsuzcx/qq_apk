@@ -1,23 +1,118 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class bnlv
-  implements CompoundButton.OnCheckedChangeListener
+public class bnlv
 {
-  bnlv(bnls parambnls) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static void a(String paramString1, String paramString2)
   {
-    RecyclerView localRecyclerView = bnls.b(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if (TextUtils.isEmpty(paramString2)) {}
+    do
     {
-      localRecyclerView.setVisibility(i);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, new HashMap(), null);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, paramLong, 0L, new HashMap(), null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " duration:" + paramLong);
     }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    String str;
+    do
+    {
+      return;
+      HashMap localHashMap = new HashMap();
+      str = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        str = "unfinedsource";
+      }
+      localHashMap.put("refer", str);
+      bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", paramString3);
+    localHashMap.put("reserve", paramString4);
+    bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " resultCode:" + paramString3 + " reserve:" + paramString4);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(paramString3, paramString4);
+    localHashMap.put("reserve", paramString5);
+    bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " key:" + paramString3 + " value:" + paramString4 + ", reserve:" + paramString5);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, HashMap<String, String> paramHashMap)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.putAll(paramHashMap);
+    bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    String str;
+    do
+    {
+      return;
+      HashMap localHashMap = new HashMap();
+      str = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        str = "unfinedsource";
+      }
+      localHashMap.put("event_result", str);
+      bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    String str;
+    do
+    {
+      return;
+      HashMap localHashMap = new HashMap();
+      str = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        str = "unfinedsource";
+      }
+      paramString3 = paramString4;
+      if (TextUtils.isEmpty(paramString4)) {
+        paramString3 = "0";
+      }
+      localHashMap.put("refer", str);
+      localHashMap.put("type", paramString3);
+      bdmc.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str + "type =" + paramString3);
   }
 }
 

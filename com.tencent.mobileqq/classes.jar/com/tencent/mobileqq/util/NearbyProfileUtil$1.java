@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import bght;
-import bgsp;
+import bhhu;
+import bhsr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -25,7 +25,7 @@ public final class NearbyProfileUtil$1
       if (localObject1 == null)
       {
         localObject2 = localObject1;
-        if (!bgsp.a(this.jdField_a_of_type_JavaLangString)) {
+        if (!bhsr.a(this.jdField_a_of_type_JavaLangString)) {
           localObject2 = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { this.jdField_a_of_type_JavaLangString });
         }
       }
@@ -38,7 +38,7 @@ public final class NearbyProfileUtil$1
     }
     for (;;)
     {
-      bght.a(this.jdField_a_of_type_Axeq, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte[])localObject1, l, false, 0L, false, 0L, 0);
+      bhhu.a(this.jdField_a_of_type_Axxj, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte[])localObject1, l, false, 0L, false, 0L, 0);
       return;
       localObject1 = null;
       l = 0L;

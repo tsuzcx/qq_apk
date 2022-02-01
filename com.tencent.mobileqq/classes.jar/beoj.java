@@ -1,38 +1,32 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class beoj
-  implements TextWatcher
+class beoj
+  extends beox
 {
-  public beoj(NewTroopContactView paramNewTroopContactView) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  beoj(beoh parambeoh, EditorState paramEditorState, List paramList)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
-      }
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(8);
-    }
+    super(parambeoh, paramEditorState, paramList);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a()
+  {
+    super.a();
+    beoh.a(this.a).a(1);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    beoh.a(this.a).c();
+    beoh.a(this.a).a(false, false);
+    if (beoh.a(this.a) == null)
+    {
+      beoh.a(this.a, new bend());
+      beoh.a(this.a).a(this.a);
+    }
+    beoh.a(this.a).a(1, 60000);
+  }
 }
 
 

@@ -1,25 +1,25 @@
 package cooperation.qzone;
 
-import blue;
+import bmvg;
 import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
 
 class QzoneIPCModule$RetryRequestFeed
   implements Runnable
 {
   int jdField_a_of_type_Int = 0;
-  blue jdField_a_of_type_Blue;
+  bmvg jdField_a_of_type_Bmvg;
   QCircleFakeFeed jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed;
   
-  public QzoneIPCModule$RetryRequestFeed(QzoneIPCModule paramQzoneIPCModule, QCircleFakeFeed paramQCircleFakeFeed, int paramInt, blue paramblue)
+  public QzoneIPCModule$RetryRequestFeed(QzoneIPCModule paramQzoneIPCModule, QCircleFakeFeed paramQCircleFakeFeed, int paramInt, bmvg parambmvg)
   {
     this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed = paramQCircleFakeFeed;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Blue = paramblue;
+    this.jdField_a_of_type_Bmvg = parambmvg;
   }
   
   public void run()
   {
-    QzoneIPCModule.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_Blue);
+    QzoneIPCModule.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bmvg);
   }
 }
 

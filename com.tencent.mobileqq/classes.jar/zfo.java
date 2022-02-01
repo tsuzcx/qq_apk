@@ -1,75 +1,97 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
-public class zfo
+class zfo
+  extends LinearLayout
 {
-  public int a;
-  protected Context a;
-  public Handler a;
-  public LruCache<String, zoc> a;
-  public int b;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
+  private int d;
   
-  protected Bitmap a(Bitmap paramBitmap)
+  public zfo(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
-    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    int i = paramBitmap.getWidth();
-    float f1 = f2;
-    if (i > 0)
-    {
-      f1 = f2;
-      if (i < this.jdField_a_of_type_Int * f2) {
-        f1 = i / this.jdField_a_of_type_Int;
-      }
-    }
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
-    this.b = ((int)(f1 * this.b));
-    i = this.jdField_a_of_type_Int;
-    yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
-    return bgmo.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    paramInt1 /= this.b;
+    this.c = ((int)(paramInt1 * paramFloat));
+    this.d = (paramInt1 - this.c * 2);
+    a();
   }
   
-  public Bitmap a(String paramString)
+  private void a()
   {
-    if (TextUtils.isEmpty(paramString))
+    int i = 0;
+    setOrientation(0);
+    setGravity(17);
+    int j = this.jdField_a_of_type_Int / this.b;
+    while (i < this.b)
     {
-      yqp.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
-      return null;
+      ImageView localImageView = new ImageView(getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      if (i == 0) {
+        localLayoutParams.leftMargin = zft.b(getContext(), 7.0F);
+      }
+      if (i == this.b - 1) {
+        localLayoutParams.rightMargin = zft.b(getContext(), 7.0F);
+      }
+      localImageView.setLayoutParams(localLayoutParams);
+      localImageView.setPadding(this.c, this.c, this.c, this.c);
+      addView(localImageView);
+      i += 1;
     }
-    yqp.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
-    try
+  }
+  
+  private void a(int paramInt)
+  {
+    int i = 0;
+    int j;
+    for (;;)
     {
-      paramString = BitmapFactory.decodeFile(paramString);
-      if (paramString == null)
-      {
-        yqp.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
-        return null;
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
       }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
     }
-    catch (OutOfMemoryError paramString)
+    while ((j < this.b) && (j < getChildCount()))
     {
-      for (;;)
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(zfd paramzfd, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 * this.b;
+    if (paramInt1 == paramInt2 - 1) {}
+    for (paramInt1 = paramzfd.b();; paramInt1 = this.b + i)
+    {
+      a(paramInt1 - i);
+      paramInt2 = i;
+      while (paramInt2 < paramInt1)
       {
-        yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
-        paramString = null;
+        ImageView localImageView = (ImageView)getChildAt(paramInt2 - i);
+        localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        String str = paramzfd.a(paramInt2);
+        localImageView.setTag(2131378440, str);
+        localImageView.setTag(2131378427, Integer.valueOf(paramInt2));
+        localImageView.setContentDescription(anzj.a(2131706476) + paramInt2);
+        zbx.a().a(getContext(), localImageView, str, this.d, this.d, null);
+        paramInt2 += 1;
       }
-      Bitmap localBitmap = a(paramString);
-      if (localBitmap == null)
-      {
-        yqp.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
-        return null;
-      }
-      if ((paramString != null) && (!paramString.isRecycled())) {
-        paramString.recycle();
-      }
-      yqp.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
-      return localBitmap;
     }
   }
 }

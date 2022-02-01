@@ -47,7 +47,7 @@ public class WSStatisticsReporter$Builder
   {
     this.eventName = paramString;
     if (TextUtils.equals(paramString, "gzh_click")) {
-      umz.a = true;
+      uoa.a = true;
     }
     return new WSStatisticsReporter(this, null);
   }

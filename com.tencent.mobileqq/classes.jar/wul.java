@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class wul
-  extends ayet
+public abstract interface wul
 {
-  wul(wui paramwui) {}
+  public abstract String getName();
   
-  protected void a(Object paramObject)
-  {
-    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
-    yqp.b(wui.b(), "freshRedPoint, showStoryNode");
-  }
+  public abstract int getRelationType();
+  
+  public abstract String getUnionId();
+  
+  public abstract boolean isFriend();
+  
+  public abstract boolean isMe();
+  
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 

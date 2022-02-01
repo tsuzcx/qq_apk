@@ -1,262 +1,233 @@
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+@TargetApi(16)
 public class bbln
-  extends bbmu
 {
-  protected int a;
-  protected long a;
-  protected TroopInfo a;
-  public String a;
-  protected long b;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  private static final char[] a = "0123456789ABCDEF".toCharArray();
   
-  public bbln(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static int a(String paramString)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_b_of_type_Long = bbgl.V;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-      this.jdField_b_of_type_Long = bbgl.G;
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    paramString = localMediaMetadataRetriever.extractMetadata(18);
+    int i = 0;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        i = Integer.valueOf(paramString).intValue();
+      }
+      return i;
+    }
+    catch (NumberFormatException paramString)
+    {
+      yuk.e("MediaUtil", paramString.toString());
+      return 0;
+    }
+    finally
+    {
+      localMediaMetadataRetriever.release();
     }
   }
   
-  private void a()
+  public static long a(String paramString)
   {
-    switch (this.jdField_a_of_type_Int)
+    long l = -1L;
+    if (Build.VERSION.SDK_INT >= 10) {}
+    try
     {
-    default: 
-      this.e = "";
-      this.f = null;
-      return;
-    case 0: 
-      if (!TextUtils.isEmpty(this.c))
-      {
-        this.e = this.c;
-        this.f = this.jdField_b_of_type_JavaLangString;
-        return;
-      }
-      if (!TextUtils.isEmpty(this.d))
-      {
-        this.e = this.d;
-        this.f = this.jdField_b_of_type_JavaLangString;
-        return;
-      }
-      this.e = this.jdField_b_of_type_JavaLangString;
-      this.f = null;
-      return;
-    case 2: 
-      this.e = this.c;
-      if (!TextUtils.isEmpty(this.d))
-      {
-        this.f = this.d;
-        return;
-      }
-      this.f = this.jdField_b_of_type_JavaLangString;
-      return;
+      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = localMediaMetadataRetriever.extractMetadata(9);
+      localMediaMetadataRetriever.release();
+      l = Long.valueOf(paramString).longValue();
+      return l;
     }
-    if (!TextUtils.isEmpty(this.c))
-    {
-      this.e = this.c;
-      this.f = this.d;
-      return;
-    }
-    this.e = this.d;
-    this.f = this.jdField_b_of_type_JavaLangString;
+    catch (Exception paramString) {}
+    return -1L;
   }
   
-  protected long a(String paramString)
+  @Nullable
+  public static List<Long> a(String paramString)
   {
-    this.g = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop())
-    {
-      bool = false;
-      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-        break label188;
-      }
-      l = bbgl.i;
-      label38:
-      l = bbup.a(paramString, this.c, l, false, false, bool);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 2;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-        break label195;
-      }
-    }
-    label188:
-    label195:
-    for (long l = bbgl.h;; l = bbgl.l)
-    {
-      l = bbup.a(paramString, this.d, l, false, false, bool);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 1;
-      }
-      l = bbup.a(paramString, this.jdField_b_of_type_JavaLangString, bbgl.o, false, true, true);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 0;
-      }
-      if (this.jdField_a_of_type_Long != -9223372036854775808L)
-      {
-        this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
-        a();
-      }
-      return this.jdField_a_of_type_Long;
-      bool = true;
-      break;
-      l = bbgl.q;
-      break label38;
-    }
-  }
-  
-  public Object a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String a()
-  {
-    return this.g;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    String str2;
-    Object localObject;
-    if (bbup.a(this.jdField_b_of_type_Int))
-    {
-      aldk.a = true;
-      str2 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).d(this.jdField_a_of_type_JavaLangString);
-      localObject = ((anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_b_of_type_JavaLangString);
-      if (bbhd.a(this.jdField_b_of_type_JavaLangString)) {
-        break label390;
-      }
-      if ((localObject == null) || (!((Friends)localObject).isFriend())) {
-        break label276;
-      }
-      aldk.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, 0, bglf.a((Friends)localObject), false);
-      bbup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bglf.a((Friends)localObject), this.jdField_b_of_type_JavaLangString, "", 0);
-    }
+    MediaExtractor localMediaExtractor = new MediaExtractor();
     for (;;)
     {
-      anuq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g);
-      bbup.a(this.g, 20, 1, paramView);
-      bbup.a(this.g, 20, paramView, false);
-      bbup.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        bbup.a("search", "contact", "contacts", 0, 0, new String[] { bbup.a(this.jdField_b_of_type_Int) });
-      }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        bbup.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
+      try
       {
-        if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
+        localMediaExtractor.setDataSource(paramString);
+        paramString = new ArrayList();
+        i = 0;
+        if (i >= localMediaExtractor.getTrackCount()) {
+          break label313;
+        }
+        MediaFormat localMediaFormat = localMediaExtractor.getTrackFormat(i);
+        if (localMediaFormat.getString("mime").startsWith("video/"))
+        {
+          localMediaExtractor.selectTrack(i);
+          l1 = localMediaFormat.getLong("durationUs");
+          if (l1 != -1L) {
+            break label129;
+          }
+          localMediaExtractor.release();
+          return null;
+        }
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        localMediaExtractor.release();
+        return null;
+      }
+      i += 1;
+      continue;
+      label129:
+      long l2;
+      do
+      {
+        Object localObject;
+        paramString.add(Long.valueOf(localObject));
+        localMediaExtractor.seekTo(1000000L + localObject, 1);
+        if (localMediaExtractor.getSampleTime() == -1L) {
           break;
         }
-        bbrf.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
-      }
-      return;
-      label276:
-      aldk.a(paramView.getContext(), this.jdField_b_of_type_JavaLangString, str2, 1000, a().toString(), false);
-      String str1 = a().toString();
-      localObject = str1;
-      if (TextUtils.isEmpty(str1))
+        l2 = localMediaExtractor.getSampleTime();
+      } while ((paramString.size() <= 1) || (((Long)paramString.get(paramString.size() - 1)).longValue() != l2));
+      paramString.add(Long.valueOf(l1));
+      localMediaExtractor.release();
+      int i = paramString.size();
+      if (i > 2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(h, 2, "saveSearchHistory title is null");
-        }
-        str1 = c();
-        localObject = str1;
-        if (TextUtils.isEmpty(str1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(h, 2, "saveSearchHistory titlestr is null");
-          }
-          localObject = d();
+        l1 = ((Long)paramString.get(i - 2)).longValue();
+        l2 = ((Long)paramString.get(i - 3)).longValue();
+        long l3 = ((Long)paramString.get(i - 1)).longValue() - ((Long)paramString.get(i - 2)).longValue();
+        if ((l3 < 400000L) && (l1 - l2 + l3 < 2000000L)) {
+          paramString.remove(i - 2);
         }
       }
-      bbup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, this.jdField_b_of_type_JavaLangString, str2, 1000);
-      continue;
-      label390:
-      bfpx.a(paramView.getContext(), null, this.jdField_b_of_type_JavaLangString);
-      bbup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_b_of_type_JavaLangString, str2, 1000);
+      return paramString;
+      label313:
+      long l1 = -1L;
     }
-    bbrf.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
   }
   
-  public boolean a()
+  /* Error */
+  public static int[] a(String paramString)
   {
-    return false;
+    // Byte code:
+    //   0: new 27	android/media/MediaMetadataRetriever
+    //   3: dup
+    //   4: invokespecial 30	android/media/MediaMetadataRetriever:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: aload_0
+    //   10: invokevirtual 34	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   13: aload_3
+    //   14: bipush 18
+    //   16: invokevirtual 38	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   19: astore_0
+    //   20: aload_3
+    //   21: bipush 19
+    //   23: invokevirtual 38	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   26: astore 4
+    //   28: aload_0
+    //   29: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   32: ifne +81 -> 113
+    //   35: aload_0
+    //   36: invokestatic 50	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   39: invokevirtual 54	java/lang/Integer:intValue	()I
+    //   42: istore_1
+    //   43: aload 4
+    //   45: invokestatic 44	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   48: ifne +60 -> 108
+    //   51: aload 4
+    //   53: invokestatic 50	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   56: invokevirtual 54	java/lang/Integer:intValue	()I
+    //   59: istore_2
+    //   60: aload_3
+    //   61: invokevirtual 57	android/media/MediaMetadataRetriever:release	()V
+    //   64: iconst_2
+    //   65: newarray int
+    //   67: dup
+    //   68: iconst_0
+    //   69: iload_1
+    //   70: iastore
+    //   71: dup
+    //   72: iconst_1
+    //   73: iload_2
+    //   74: iastore
+    //   75: areturn
+    //   76: astore_0
+    //   77: iconst_0
+    //   78: istore_1
+    //   79: ldc 59
+    //   81: aload_0
+    //   82: invokevirtual 63	java/lang/NumberFormatException:toString	()Ljava/lang/String;
+    //   85: invokestatic 69	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   88: aload_3
+    //   89: invokevirtual 57	android/media/MediaMetadataRetriever:release	()V
+    //   92: iconst_0
+    //   93: istore_2
+    //   94: goto -30 -> 64
+    //   97: astore_0
+    //   98: aload_3
+    //   99: invokevirtual 57	android/media/MediaMetadataRetriever:release	()V
+    //   102: aload_0
+    //   103: athrow
+    //   104: astore_0
+    //   105: goto -26 -> 79
+    //   108: iconst_0
+    //   109: istore_2
+    //   110: goto -50 -> 60
+    //   113: iconst_0
+    //   114: istore_1
+    //   115: goto -72 -> 43
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	paramString	String
+    //   42	73	1	i	int
+    //   59	51	2	j	int
+    //   7	92	3	localMediaMetadataRetriever	MediaMetadataRetriever
+    //   26	26	4	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   28	43	76	java/lang/NumberFormatException
+    //   28	43	97	finally
+    //   43	60	97	finally
+    //   79	88	97	finally
+    //   43	60	104	java/lang/NumberFormatException
   }
   
-  public String b()
+  public static int b(String paramString)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    String str = bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
-    if (str != null) {
-      return anni.a(2131701323) + str;
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    paramString = localMediaMetadataRetriever.extractMetadata(19);
+    int i = 0;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        i = Integer.valueOf(paramString).intValue();
+      }
+      return i;
     }
-    return anni.a(2131701315);
-  }
-  
-  public String c()
-  {
-    return this.e;
-  }
-  
-  public int d()
-  {
-    return 1000;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.f;
-  }
-  
-  public int e()
-  {
-    return 1;
+    catch (NumberFormatException paramString)
+    {
+      yuk.e("MediaUtil", paramString.toString());
+      return 0;
+    }
+    finally
+    {
+      localMediaMetadataRetriever.release();
+    }
   }
 }
 

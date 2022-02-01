@@ -38,12 +38,12 @@
             "value": "125"
           },
           "attributes": {
-		  	"setTitle:": "-1",
+              "setTitle:": "-1",
             "setFrameString:": "-1",
-			"setTitleColors:forStates:":[["#262626"],["0"]],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
             "setImages:forStates:": [
               [
-                "comment"
+                "social_bottom_style_a_comment"
               ],
               [
                 "0"
@@ -71,8 +71,8 @@
                 "setSelectedString:": "-1",
                 "setImages:colors:direction:forStates:": [
                     [
-                        "like_normal",
-                        "like_active"
+                        "social_bottom_style_a_like",
+                        "social_bottom_style_a_like_active"
                     ],
                     [
                         "#262626",
@@ -104,21 +104,20 @@
             "value": "125"
           },
           "attributes": {
-            "setFrameString:": "-1",
-            "setTitle:": "-1",
+            "setTitle:": "$biu_count",
             "setImages:forStates:": [
               [
-                "biu_icon"
+                "biu_comment_icon"
               ],
               [
                 "0"
               ]
             ],
-			"setTitleColors:forStates:":[["#262626"],["0"]],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
             "setInnerMargin:": "8",
             "setFontSizeString:": "14",
-            "setAlphaString:":"-1",
-            "setEnableString:":"-1"
+            "setAlphaString:":"1",
+            "setEnableString:":"1"
           }
         }
       ]

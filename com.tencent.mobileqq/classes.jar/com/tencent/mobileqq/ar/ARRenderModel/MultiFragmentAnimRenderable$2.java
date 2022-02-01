@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aoty;
-import aouu;
+import apho;
+import apik;
 
 public class MultiFragmentAnimRenderable$2
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$2(aouu paramaouu, aoty paramaoty) {}
+  public MultiFragmentAnimRenderable$2(apik paramapik, apho paramapho) {}
   
   public void run()
   {

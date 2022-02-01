@@ -1,26 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class aejb
-  implements CompoundButton.OnCheckedChangeListener
+  extends AccountObserver
 {
-  public aejb(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aejb(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (this.a.a != null)
     {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131717839), "qqsetting_notify_icon_key", paramBoolean);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
+      }
+      this.a.a.a("AccountObserver.onOnlineStatusChanged");
     }
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
+    }
+    this.a.a.a("AccountObserver.onOnlineStatusPush");
   }
 }
 

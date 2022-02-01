@@ -1,7 +1,7 @@
 package cooperation.qzone.pfc.opencv;
 
 import android.graphics.Bitmap;
-import bmic;
+import bnje;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
 
@@ -24,7 +24,7 @@ public class QzoneVision
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +118 -> 126
-    //   11: getstatic 25	bmic:a	Ljava/io/File;
+    //   11: getstatic 25	bnje:a	Ljava/io/File;
     //   14: invokevirtual 31	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   17: astore_1
     //   18: ldc 33
@@ -115,16 +115,16 @@ public class QzoneVision
     if (c()) {
       return true;
     }
-    bmic.a().b();
+    bnje.a().b();
     return false;
   }
   
   public static boolean c()
   {
-    Object localObject = bmic.a.getAbsolutePath();
+    Object localObject = bnje.a.getAbsolutePath();
     localObject = new File((String)localObject + "/photoQulatitySo.zip");
-    boolean bool = LocalMultiProcConfig.getBool(bmic.e, true);
-    if (!bmic.a().a(bmic.e, bool)) {
+    boolean bool = LocalMultiProcConfig.getBool(bnje.e, true);
+    if (!bnje.a().a(bnje.e, bool)) {
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
@@ -132,8 +132,8 @@ public class QzoneVision
     do
     {
       return false;
-      bool = LocalMultiProcConfig.getBool(bmic.d, true);
-      if (bmic.a().a(bmic.d, bool)) {
+      bool = LocalMultiProcConfig.getBool(bnje.d, true);
+      if (bnje.a().a(bnje.d, bool)) {
         break;
       }
     } while (!((File)localObject).exists());

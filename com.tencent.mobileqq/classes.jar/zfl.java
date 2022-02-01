@@ -1,36 +1,88 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import java.lang.ref.WeakReference;
 
 class zfl
-  implements ServiceConnection
+  implements URLDrawableDownListener
 {
-  private zfj a;
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<ProgressBar> b;
   
-  public zfl(zfj paramzfj)
+  public zfl(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
   {
-    this.a = paramzfj;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    this.b = new WeakReference(paramProgressBar);
   }
   
-  public void a()
+  private boolean a(ImageView paramImageView)
   {
-    this.a = null;
+    paramImageView = (String)paramImageView.getTag(2131378440);
+    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    zfj localzfj = this.a;
-    if (localzfj != null) {
-      localzfj.a(paramComponentName, paramIBinder);
+    yuk.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131378405, Boolean.valueOf(false));
+      return;
     }
+    yuk.b("LocationFaceAdapter", "onLoadCanceled error.");
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    zfj localzfj = this.a;
-    if (localzfj != null) {
-      localzfj.a(paramComponentName);
+    yuk.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131378405, Boolean.valueOf(false));
+      return;
     }
+    yuk.b("LocationFaceAdapter", "onLoadFialed error.");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    yuk.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131378405, Boolean.valueOf(false));
+      return;
+    }
+    yuk.b("LocationFaceAdapter", "onLoadProgressed error.");
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    yuk.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131378405, Boolean.valueOf(true));
+      return;
+    }
+    yuk.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

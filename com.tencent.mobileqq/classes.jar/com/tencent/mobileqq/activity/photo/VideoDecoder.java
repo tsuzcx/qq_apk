@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
-import beai;
+import bezb;
 import java.net.URL;
 
 public class VideoDecoder
-  implements beai
+  implements bezb
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;

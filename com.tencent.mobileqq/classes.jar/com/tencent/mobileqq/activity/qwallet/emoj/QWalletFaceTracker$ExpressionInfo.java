@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import lsz;
+import ltv;
 
 public class QWalletFaceTracker$ExpressionInfo
 {
   public double coolValue;
-  public lsz expressionItem;
+  public ltv expressionItem;
   public int perfectValue;
 }
 

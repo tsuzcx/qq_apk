@@ -1,18 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aecl
-  implements bkij
+  implements DialogInterface.OnClickListener
 {
-  public aecl(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public aecl(ChatHistory paramChatHistory) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

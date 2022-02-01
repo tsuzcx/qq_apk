@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.utils;
 
-import bgor;
-import bgot;
+import bhot;
+import bhov;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialog$2$1
   implements Runnable
 {
-  public QQCustomArkDialog$2$1(bgot parambgot, WeakReference paramWeakReference, int paramInt) {}
+  public QQCustomArkDialog$2$1(bhov parambhov, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    bgor localbgor = (bgor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbgor == null) {
+    bhot localbhot = (bhot)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbhot == null) {
       return;
     }
-    bgor.a(localbgor, this.jdField_a_of_type_Int);
+    bhot.a(localbhot, this.jdField_a_of_type_Int);
   }
 }
 

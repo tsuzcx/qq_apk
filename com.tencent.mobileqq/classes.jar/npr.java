@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
 
-class npr
-  implements View.OnClickListener
+public abstract interface npr
 {
-  npr(npm paramnpm) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.d(this.a.b());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(oidb_0x79a.RspBody paramRspBody);
 }
 
 

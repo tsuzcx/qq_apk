@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class bdtb
-  implements WeakNetCallback
+class bdtb
+  implements DialogInterface.OnClickListener
 {
-  private bctj a = bctj.a(BaseApplication.getContext());
+  bdtb(bdsy parambdsy) {}
   
-  public void onResultOverflow(HashMap<String, String> paramHashMap)
-  {
-    this.a.a(bgrj.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

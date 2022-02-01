@@ -1,78 +1,52 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController.DrawerInfoCallback.1;
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController.DrawerInfoCallback.2;
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amjr
-  implements amur, View.OnClickListener
 {
-  private amjr(FriendCardApolloViewController paramFriendCardApolloViewController) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void a()
+  static amjr a(JSONObject paramJSONObject)
   {
-    Object localObject3 = null;
-    QQAppInterface localQQAppInterface = this.a.a();
-    FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)FriendCardApolloViewController.a(this.a).get();
-    Object localObject1 = (View)FriendCardApolloViewController.b(this.a).get();
-    if ((localQQAppInterface == null) || (localFriendProfileCardActivity == null) || (localObject1 == null)) {
-      return;
+    if (paramJSONObject == null) {
+      return new amjr();
     }
-    if ((!TextUtils.isEmpty(FriendCardApolloViewController.a(this.a))) && ((this.a.a == null) || (this.a.a.getVisibility() != 0))) {
-      ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.1(this, localFriendProfileCardActivity, (View)localObject1));
-    }
-    Object localObject2 = localFriendProfileCardActivity.a;
-    if ((localObject2 != null) && (((azfe)localObject2).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null)) {}
-    for (localObject1 = ((azfe)localObject2).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;; localObject1 = null)
+    amjr localamjr = new amjr();
+    try
     {
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null) && (((azfe)localObject2).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {}
-      for (localObject2 = ((azfe)localObject2).jdField_a_of_type_ComTencentMobileqqDataCard.uin;; localObject2 = localObject1)
-      {
-        amhd localamhd = (amhd)localQQAppInterface.getManager(153);
-        localObject1 = localObject3;
-        if (!FriendCardApolloViewController.a(this.a)) {
-          localObject1 = localamhd.a(localQQAppInterface, (String)localObject2, new int[] { 4 });
-        }
-        int i = 5;
-        if (localObject1 == null)
-        {
-          localObject1 = new ApolloActionData();
-          ((ApolloActionData)localObject1).actionId = -1;
-          ((ApolloActionData)localObject1).actionType = 0;
-        }
-        for (;;)
-        {
-          amuo.a(FriendCardApolloViewController.a(this.a), i, (ApolloActionData)localObject1);
-          new ammu((String)localObject2).a(FriendCardApolloViewController.a(this.a), localFriendProfileCardActivity, localQQAppInterface, anni.a(2131703652));
-          return;
-          i = 12;
-        }
-      }
+      localamjr.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localamjr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
+      localamjr.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localamjr.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
+      localamjr.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
+      localamjr.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
+      localamjr.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
+      localamjr.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
+      localamjr.g = paramJSONObject.getString("classifyName");
+      localamjr.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
+      localamjr.f = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localamjr.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
+      localamjr.h = paramJSONObject.getString("trialstartday");
+      localamjr.i = paramJSONObject.getString("trialendday");
+      return localamjr;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.2(this, paramInt1, paramInt2, paramString));
-  }
-  
-  public void b() {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(1, 0, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localamjr;
   }
 }
 

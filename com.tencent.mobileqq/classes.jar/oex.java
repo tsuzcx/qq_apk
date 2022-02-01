@@ -1,52 +1,77 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class oex
+class oex
   implements View.OnClickListener
 {
-  public oex(CustomTabView paramCustomTabView, oel paramoel, ImageView paramImageView1, TextView paramTextView, ImageView paramImageView2) {}
+  oex(oev paramoev, Context paramContext, TextView paramTextView, MessageRecord paramMessageRecord) {}
   
   public void onClick(View paramView)
   {
+    Object localObject;
+    int k;
+    int m;
+    try
+    {
+      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362696);
+      if (localViewGroup == null)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject = null;
+      }
+      int[] arrayOfInt = new int[2];
+      ((ViewGroup)localObject).getLocationOnScreen(arrayOfInt);
+      int i = arrayOfInt[1];
+      int j = ((ViewGroup)localObject).getHeight();
+      localObject = new int[2];
+      this.jdField_a_of_type_AndroidWidgetTextView.getLocationOnScreen((int[])localObject);
+      oev.a(this.jdField_a_of_type_Oev, localObject[0]);
+      oev.b(this.jdField_a_of_type_Oev, localObject[1]);
+      k = oev.a(this.jdField_a_of_type_Oev).getContentView().getMeasuredHeight();
+      if (QLog.isColorLevel()) {
+        QLog.i("Ecshop_EcshopAdHelper", 2, "popheight: " + k);
+      }
+      m = this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
+      if (oev.a(this.jdField_a_of_type_Oev) - i + m + k <= j) {
+        break label322;
+      }
+    }
+    oev.a(this.jdField_a_of_type_Oev).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847106));
+    oev.a(this.jdField_a_of_type_Oev).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, oev.b(this.jdField_a_of_type_Oev), oev.a(this.jdField_a_of_type_Oev) - k);
     for (;;)
     {
-      try
-      {
-        oev.a(null, "gouwu.tab.click", this.jdField_a_of_type_Oel.a + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-        oev.b(null, "gouwu_tab_click", this.jdField_a_of_type_Oel.a + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-        if (this.jdField_a_of_type_AndroidWidgetImageView.getTag() != null) {
-          continue;
-        }
-        i = 0;
-        Integer localInteger = Integer.valueOf(i);
-        if (localInteger.intValue() != 0)
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          oet.a(this.jdField_a_of_type_Oel.a, localInteger.intValue());
-        }
-        i = this.jdField_a_of_type_Oel.a;
-        int j = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a;
-        if (i != j) {
-          continue;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        int i;
-        QLog.e("EcshopCustomTabView", 1, QLog.getStackTraceString(localThrowable));
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = ((Integer)this.jdField_a_of_type_AndroidWidgetImageView.getTag()).intValue();
-      continue;
-      CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_Oel, this.jdField_a_of_type_AndroidWidgetTextView, this.b);
+      ((oer)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localObject = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      ((WindowManager.LayoutParams)localObject).alpha = 0.5F;
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes((WindowManager.LayoutParams)localObject);
+      oev.a(this.jdField_a_of_type_Oev).setOnDismissListener(new oey(this));
+      break;
+      label322:
+      oev.a(this.jdField_a_of_type_Oev).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847105));
+      oev.a(this.jdField_a_of_type_Oev).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, oev.b(this.jdField_a_of_type_Oev), m + oev.a(this.jdField_a_of_type_Oev));
     }
   }
 }

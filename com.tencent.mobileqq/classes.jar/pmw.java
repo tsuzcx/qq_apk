@@ -1,8 +1,12 @@
-import android.os.Bundle;
+import android.view.View;
 
 public abstract interface pmw
 {
-  public abstract int a(Bundle paramBundle);
+  public abstract int a();
+  
+  public abstract rwc a();
+  
+  public abstract boolean a(View paramView);
 }
 
 

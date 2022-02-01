@@ -1,122 +1,241 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
 import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.graphics.Color;
+import android.graphics.PointF;
 import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class bqka
-  extends bqkb
+  extends bqrk
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  public boolean a;
-  int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  int d = 0;
-  public int e;
+  public float a;
+  public int a;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  public DynamicTextItem a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
   
-  public bqka(TCProgressBar paramTCProgressBar)
+  public bqka(bqjx parambqjx)
   {
-    super(paramTCProgressBar);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
+    this(parambqjx, new bqjz(0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F));
+    this.jdField_b_of_type_AndroidGraphicsPointF.set(parambqjx.jdField_a_of_type_AndroidGraphicsPointF);
+    this.jdField_j_of_type_Int = zps.a(BaseApplicationImpl.getContext(), 15.0F);
   }
   
-  public int a()
+  public bqka(bqjx parambqjx, @NonNull bqjz parambqjz)
   {
-    return this.f + this.d;
+    super(parambqjz.jdField_a_of_type_AndroidGraphicsPointF, parambqjz.jdField_a_of_type_Float, parambqjz.jdField_b_of_type_Float, parambqjz.jdField_c_of_type_Float, parambqjz.jdField_d_of_type_Float, parambqjz.e, parambqjz.jdField_f_of_type_Float, true);
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new bptf();
+    this.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
+    this.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
+    this.jdField_a_of_type_Float = bqjx.jdField_a_of_type_Int;
+    this.jdField_j_of_type_Int = zps.a(BaseApplicationImpl.getContext(), 15.0F);
+  }
+  
+  public bqka(bqjx parambqjx, @NonNull bqka parambqka)
+  {
+    super(parambqka, 1.0F);
+    if (parambqka.jdField_a_of_type_AndroidGraphicsRect == null) {}
+    for (this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);; this.jdField_a_of_type_AndroidGraphicsRect = new Rect(parambqka.jdField_a_of_type_AndroidGraphicsRect))
+    {
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = parambqka.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+      this.jdField_a_of_type_Float = parambqka.jdField_a_of_type_Float;
+      this.jdField_b_of_type_Float = parambqka.jdField_b_of_type_Float;
+      this.jdField_c_of_type_Float = parambqka.jdField_c_of_type_Float;
+      this.jdField_d_of_type_Float = parambqka.jdField_d_of_type_Float;
+      this.e = parambqka.e;
+      this.jdField_f_of_type_Float = parambqka.jdField_f_of_type_Float;
+      this.jdField_g_of_type_Float = parambqka.jdField_g_of_type_Float;
+      this.jdField_h_of_type_Float = parambqka.jdField_h_of_type_Float;
+      this.i = parambqka.i;
+      this.jdField_j_of_type_Int = zps.a(BaseApplicationImpl.getContext(), 15.0F);
+      a(parambqka);
+      return;
+    }
+  }
+  
+  private void b(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    int j;
+    label35:
+    int m;
+    label47:
+    int k;
+    if (this.jdField_k_of_type_Int == 0)
+    {
+      j = 2130844642;
+      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked())
+      {
+        if (this.jdField_k_of_type_Int != 0) {
+          break label114;
+        }
+        j = 2130844648;
+      }
+      if (this.jdField_k_of_type_Int != 1) {
+        break label120;
+      }
+      m = 2130844638;
+      if (this.jdField_k_of_type_Int != 2) {
+        break label127;
+      }
+      k = 2130844645;
+      label58:
+      if (this.n) {
+        j = -1;
+      }
+      if (!bqjx.b(this.jdField_a_of_type_Bqjx).a.e()) {
+        break label133;
+      }
+      k = -1;
+      j = -1;
+    }
+    label133:
+    for (;;)
+    {
+      bqrh.a(paramCanvas, this.jdField_a_of_type_Bqjx.jdField_a_of_type_Bqrj, this, j, m, k);
+      paramCanvas.restore();
+      return;
+      j = 2130844641;
+      break;
+      label114:
+      j = 2130844646;
+      break label35;
+      label120:
+      m = 2130844637;
+      break label47;
+      label127:
+      k = 2130844644;
+      break label58;
+    }
+  }
+  
+  private void f()
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.setDuration(bqjx.e);
+    localValueAnimator.addUpdateListener(new bqkb(this));
+    localValueAnimator.start();
+  }
+  
+  private void g()
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.setDuration(bqjx.e);
+    localValueAnimator.addUpdateListener(new bqkc(this));
+    localValueAnimator.start();
+  }
+  
+  protected void a()
+  {
+    this.jdField_d_of_type_Float = this.s;
+    this.e = this.t;
+    this.jdField_b_of_type_Float = this.q;
+    this.jdField_c_of_type_Float = this.r;
+    this.jdField_f_of_type_Float = (this.jdField_a_of_type_Bqjx.n - this.jdField_b_of_type_AndroidGraphicsPointF.x - this.jdField_d_of_type_Float);
+    this.jdField_g_of_type_Float = (this.jdField_a_of_type_Bqjx.o - this.jdField_b_of_type_AndroidGraphicsPointF.y - this.e);
+    this.jdField_h_of_type_Float = (1.0F - this.jdField_b_of_type_Float);
+    if (this.jdField_c_of_type_Float < 180.0F)
+    {
+      this.i = (0.0F - this.jdField_c_of_type_Float);
+      return;
+    }
+    this.i = (360.0F - this.jdField_c_of_type_Float);
   }
   
   public void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    for (;;)
+    if ((!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isInSegment(bqjx.a(this.jdField_a_of_type_Bqjx).a())) && (!this.jdField_k_of_type_Boolean)) {}
+    do
     {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
-      super.a(paramCanvas);
       return;
-      a(paramCanvas, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
-  }
-  
-  void a(Canvas paramCanvas, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      if (this.jdField_f_of_type_Boolean) {
+        paramCanvas.drawColor(Color.parseColor("#66000000"));
       }
-      paramCanvas.drawRect(this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_c_of_type_Int < 0) {}
-    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
-    }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    switch (i)
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      if ((this.jdField_d_of_type_Boolean) && (this.jdField_k_of_type_Boolean))
       {
-        return true;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = false;
-      } while (!a());
-      this.f += this.jdField_c_of_type_Int;
-      return true;
+        if ((this.jdField_g_of_type_Boolean) && (this.jdField_h_of_type_Boolean))
+        {
+          float f1 = this.l;
+          float f2 = this.jdField_j_of_type_Float;
+          float f3 = this.m;
+          float f4 = this.jdField_k_of_type_Float;
+          float f5 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
+          float f6 = this.s;
+          float f7 = this.jdField_b_of_type_AndroidGraphicsPointF.y;
+          paramCanvas.drawLine(f2 + f1, f4 + f3, f6 + f5, this.t + f7, this.jdField_a_of_type_Bqjx.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.save();
+          paramCanvas.concat(this.jdField_a_of_type_Bqjx.jdField_a_of_type_Bqrj.b(this));
+          int j = (int)(this.u * this.q * this.w) + this.jdField_j_of_type_Int * 2;
+          int k = (int)(this.v * this.q * this.w) + this.jdField_j_of_type_Int * 2;
+          paramCanvas.drawRect(new RectF(-j / 2, -k / 2, j / 2, k / 2), bqjx.a(this.jdField_a_of_type_Bqjx));
+          paramCanvas.restore();
+        }
+        if (this.jdField_g_of_type_Boolean) {
+          paramCanvas.drawColor(Color.parseColor("#66000000"));
+        }
+      }
+      paramCanvas.save();
+      paramCanvas.concat(this.jdField_a_of_type_Bqjx.jdField_a_of_type_Bqrj.a(this));
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(paramCanvas);
+      paramCanvas.restore();
+    } while (!this.jdField_k_of_type_Boolean);
+    b(paramCanvas);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_c_of_type_AndroidAnimationValueAnimator == null)
+    {
+      this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(200L);
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bqkd(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bqke(this));
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    return true;
+    if (!this.jdField_j_of_type_Boolean) {
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_c_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_j_of_type_Boolean)) {
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.cancel();
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+      localStringBuilder.append("centerP x : ").append(this.jdField_b_of_type_AndroidGraphicsPointF.x).append(" y: ").append(this.jdField_b_of_type_AndroidGraphicsPointF.y);
+    }
+    localStringBuilder.append("textLeft: ").append(this.jdField_a_of_type_Float);
+    localStringBuilder.append("mSaveScaleValue: ").append(this.jdField_b_of_type_Float);
+    localStringBuilder.append("mSaveRotateValue: ").append(this.jdField_c_of_type_Float);
+    localStringBuilder.append("mSaveTranslateXValue: ").append(this.jdField_d_of_type_Float);
+    localStringBuilder.append("mDistanceX: ").append(this.jdField_f_of_type_Float);
+    localStringBuilder.append("mDistanceY: ").append(this.jdField_g_of_type_Float);
+    localStringBuilder.append("mDScale: ").append(this.jdField_h_of_type_Float);
+    localStringBuilder.append("mDRotate: ").append(this.i);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import com.tencent.mobileqq.widget.QQToast;
-import vyb;
+import wbv;
 
 public class QCircleRecommendImageView$4$2
   implements Runnable
 {
-  public QCircleRecommendImageView$4$2(vyb paramvyb) {}
+  public QCircleRecommendImageView$4$2(wbv paramwbv) {}
   
   public void run()
   {

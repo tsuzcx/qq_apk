@@ -1,5 +1,8 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
+import aabd;
+import aabe;
+import aabj;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,15 +16,13 @@ import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import uxx;
-import uyy;
-import vnv;
-import vuf;
-import zvq;
-import zvw;
-import zxi;
-import zxj;
-import zxo;
+import uzg;
+import val;
+import vqc;
+import vqd;
+import vxe;
+import zzl;
+import zzr;
 
 public class QCirclePersonalWorksFragment
   extends QCirclePersonalBaseBottomFragment
@@ -37,7 +38,7 @@ public class QCirclePersonalWorksFragment
   
   protected QCircleFakeAdapter a()
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter = new uyy(new Bundle(), a(2));
+    this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter = new val(new Bundle(), a(2));
     this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(a());
     return this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter;
   }
@@ -47,75 +48,81 @@ public class QCirclePersonalWorksFragment
     return "profile_page";
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     c();
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Zxi = new zxi(2131365145, b(), 2, 1);
-    localArrayList.add(this.jdField_a_of_type_Zxi);
+    this.jdField_a_of_type_Aabd = new aabd(2131365189, b(), 2, 1);
+    localArrayList.add(this.jdField_a_of_type_Aabd);
     return localArrayList;
   }
   
   protected void a()
   {
-    this.b = getString(2131697214);
+    this.b = getString(2131697282);
     Object localObject = new QCirclePersonalBottomStatusView(getActivity());
-    ((QCirclePersonalBottomStatusView)localObject).setOwnerPicAndText("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/2-text/2-halfscreen/text_halfscreen_03.png", getString(2131697216));
+    ((QCirclePersonalBottomStatusView)localObject).setOwnerPicAndText("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/2-text/2-halfscreen/text_halfscreen_03.png", getString(2131697285));
     ((QCirclePersonalBottomStatusView)localObject).setReportBean(a());
-    this.jdField_a_of_type_Zxi.a().setStatusView((StatusView)localObject);
-    if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter instanceof uyy))
+    this.jdField_a_of_type_Aabd.a().setStatusView((StatusView)localObject);
+    if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter instanceof val))
     {
       localObject = new ExtraTypeInfo();
       ((ExtraTypeInfo)localObject).pageType = 11;
-      ((uyy)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter).a((ExtraTypeInfo)localObject);
+      ((val)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter).a((ExtraTypeInfo)localObject);
     }
     if (a() != null)
     {
-      this.jdField_a_of_type_Vuf = ((vuf)a(a(), null, vuf.class));
-      this.jdField_a_of_type_Vuf.b().observe(a(), new vnv(this));
+      this.jdField_a_of_type_Vxe = ((vxe)a(a(), null, vxe.class));
+      this.jdField_a_of_type_Vxe.b().observe(a(), new vqc(this));
+      this.jdField_a_of_type_Vxe.d().observe(a(), new vqd(this));
     }
-    this.jdField_a_of_type_Zxi.a().a().setNestedScrollingEnabled(true);
-    this.jdField_a_of_type_Zxi.a().a().a(5);
-    this.jdField_a_of_type_Zxi.a().a().setItemAnimator(null);
+    this.jdField_a_of_type_Aabd.a().a().setNestedScrollingEnabled(true);
+    this.jdField_a_of_type_Aabd.a().a().a(5);
+    this.jdField_a_of_type_Aabd.a().a().setItemAnimator(null);
   }
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Vuf != null) {
-      this.jdField_a_of_type_Vuf.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Vxe != null) {
+      this.jdField_a_of_type_Vxe.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
   public void b(int paramInt)
   {
     boolean bool = false;
-    if ((this.jdField_a_of_type_Zxi != null) && (this.jdField_a_of_type_Zxi.a() != null) && ((this.jdField_a_of_type_Zxi.a().a() instanceof GridLayoutManager)))
+    if ((this.jdField_a_of_type_Aabd != null) && (this.jdField_a_of_type_Aabd.a() != null) && ((this.jdField_a_of_type_Aabd.a().a() instanceof GridLayoutManager)))
     {
-      ((GridLayoutManager)this.jdField_a_of_type_Zxi.a().a()).setSpanCount(a(paramInt));
-      Object localObject = new zvq();
-      zvw localzvw = new zvw();
-      localzvw.a = 2;
-      localzvw.b = (ImmersiveUtils.a() - 180);
-      localzvw.c = (ImmersiveUtils.b() + 360);
-      ((zvq)localObject).a(localzvw);
-      ((zvq)localObject).setAddDuration(200L);
-      this.jdField_a_of_type_Zxi.a().a().setItemAnimator((RecyclerView.ItemAnimator)localObject);
-      if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter instanceof uyy))
+      ((GridLayoutManager)this.jdField_a_of_type_Aabd.a().a()).setSpanCount(a(paramInt));
+      Object localObject = new zzl();
+      zzr localzzr = new zzr();
+      localzzr.a = 2;
+      localzzr.b = (ImmersiveUtils.a() - 180);
+      localzzr.c = (ImmersiveUtils.b() + 360);
+      ((zzl)localObject).a(localzzr);
+      ((zzl)localObject).setAddDuration(200L);
+      this.jdField_a_of_type_Aabd.a().a().setItemAnimator((RecyclerView.ItemAnimator)localObject);
+      if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter instanceof val))
       {
-        localObject = (uyy)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter;
-        ((uyy)localObject).c(a(paramInt));
-        ((uyy)localObject).notifyItemRangeChanged(0, this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getItemCount());
+        localObject = (val)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter;
+        ((val)localObject).c(a(paramInt));
+        ((val)localObject).notifyItemRangeChanged(0, this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getItemCount());
         if (paramInt == 2) {
           bool = true;
         }
-        ((uyy)localObject).b(bool);
+        ((val)localObject).b(bool);
       }
     }
   }
   
+  public String c()
+  {
+    return "QCirclePersonalWorksFragment";
+  }
+  
   public boolean d()
   {
-    return uxx.a(this.jdField_a_of_type_JavaLangString);
+    return uzg.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

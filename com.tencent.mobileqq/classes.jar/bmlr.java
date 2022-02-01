@@ -1,14 +1,8 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.os.Bundle;
 
-class bmlr
-  implements bihh
+public abstract interface bmlr
 {
-  bmlr(bmlo parambmlo) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    bmlo.a(this.a, paramBaseResp);
-  }
+  public abstract boolean a(int paramInt, Bundle paramBundle);
 }
 
 

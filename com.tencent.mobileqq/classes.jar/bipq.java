@@ -1,8 +1,16 @@
-public class bipq
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
+
+public abstract interface bipq
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public abstract Activity a();
+  
+  public abstract bipn a();
+  
+  public abstract WebViewFragment a();
+  
+  public abstract WebView a();
 }
 
 

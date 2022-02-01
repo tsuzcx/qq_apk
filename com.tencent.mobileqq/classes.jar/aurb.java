@@ -1,84 +1,99 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.webdownload.DownloadURLCheck.RspDownloadUrlCheckRecmd;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class aurb
-  extends RecyclerView.ViewHolder
+class aurb
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  public ImageView a;
-  public TextView a;
-  private auqu jdField_a_of_type_Auqu;
-  private FeedsItemData jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData;
-  public CornerImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  aurb(aura paramaura, String paramString, long paramLong, boolean paramBoolean) {}
   
-  public aurb(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378776));
-    this.b = ((TextView)paramView.findViewById(2131363032));
-    this.c = ((TextView)paramView.findViewById(2131371889));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131368378));
-    this.d = ((TextView)paramView.findViewById(2131367323));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365590));
-  }
-  
-  public void a(auqu paramauqu, FeedsItemData paramFeedsItemData, int paramInt)
-  {
-    this.jdField_a_of_type_Auqu = paramauqu;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData = paramFeedsItemData;
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.miniType == 1)
+    Object localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, success: " + paramBoolean + ", canceled: " + aura.a(this.jdField_a_of_type_Aura));
+    }
+    Activity localActivity = (Activity)aura.a(this.jdField_a_of_type_Aura).get();
+    if ((aura.a(this.jdField_a_of_type_Aura)) || (localActivity == null) || (localActivity.isFinishing())) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
+    localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
+    DownloadURLCheck.RspDownloadUrlCheckRecmd localRspDownloadUrlCheckRecmd;
+    if (paramBoolean)
     {
-      this.itemView.setBackgroundDrawable(auud.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle != null) {
+        localRspDownloadUrlCheckRecmd = new DownloadURLCheck.RspDownloadUrlCheckRecmd();
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.title);
-      this.b.setText(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.authorName);
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageURL(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.coverImgUrl);
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(afur.a(4.0F, this.itemView.getResources()));
-        this.d.setText(this.jdField_a_of_type_Auqu.a().gameName);
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Auqu.a().gameName)) && (this.jdField_a_of_type_Auqu.a().gameName.length() > 8))
+        localRspDownloadUrlCheckRecmd.mergeFrom(paramBundle);
+        if (localRspDownloadUrlCheckRecmd.err_code.has())
         {
-          this.c.setVisibility(4);
-          this.itemView.setOnClickListener(new aurc(this));
-          return;
-          if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.miniType == 2)
-          {
-            this.itemView.setBackgroundDrawable(auud.a(this.itemView.getContext(), 0.0F, 0.0F, 8.0F, 8.0F));
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          if (localRspDownloadUrlCheckRecmd.err_code.get() != 0) {
             continue;
           }
-          this.itemView.setBackgroundDrawable(auud.a(this.itemView.getContext(), 8.0F, 8.0F, 0.0F, 0.0F));
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramInt = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, code: " + localRspDownloadUrlCheckRecmd.err_code.get());
+          }
+          if (paramInt != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("UniformDownloadMgr<FileAssistant>", 2, "start download from yyb");
+            }
+            if ((!localRspDownloadUrlCheckRecmd.is_white_url.has()) || (!localRspDownloadUrlCheckRecmd.is_white_url.get())) {
+              continue;
+            }
+            paramBoolean = true;
+            localIntent.putExtra("param_in_white_list", paramBoolean);
+            if (!localRspDownloadUrlCheckRecmd.pkg_name.has()) {
+              continue;
+            }
+            paramBundle = localRspDownloadUrlCheckRecmd.pkg_name.get();
+            localIntent.putExtra("param_pkg_name", paramBundle);
+            paramBundle = localObject;
+            if (localRspDownloadUrlCheckRecmd.extra_info.has()) {
+              paramBundle = localRspDownloadUrlCheckRecmd.extra_info.get();
+            }
+            localIntent.putExtra("param_ext_info", paramBundle);
+          }
         }
       }
-      catch (Exception paramauqu)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        for (;;)
-        {
-          QLog.e("QQGamePubFeedsAdapter", 1, paramauqu, new Object[0]);
-        }
+        QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramBundle, new Object[0]);
+        continue;
+        this.jdField_a_of_type_Aura.a.sendEmptyMessage(2);
       }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum > 10000) {}
-    for (paramauqu = Math.round(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum / 10000.0F * 10.0F) / 10.0F + anni.a(2131709092);; paramauqu = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum + anni.a(2131709080))
-    {
-      this.c.setText(paramauqu);
-      break;
+      afez.a(localActivity, localIntent, PublicFragmentActivity.class, ApkFileDownloadFragment.class);
+      if (!this.jdField_a_of_type_Boolean) {
+        continue;
+      }
+      localActivity.finish();
+      return;
+      paramInt = 0;
+      continue;
+      paramBoolean = false;
+      continue;
+      paramBundle = null;
     }
   }
 }

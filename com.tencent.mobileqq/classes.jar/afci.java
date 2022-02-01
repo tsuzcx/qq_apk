@@ -1,47 +1,44 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class afci
-  extends RecyclerView.Adapter<afcj>
+  implements URLDrawable.URLDrawableListener
 {
-  afcg jdField_a_of_type_Afcg;
+  public afci(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public afci(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public afcj a(ViewGroup paramViewGroup, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return new afcj(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559764, paramViewGroup, false), this.jdField_a_of_type_Afcg);
-  }
-  
-  public void a(afcg paramafcg)
-  {
-    this.jdField_a_of_type_Afcg = paramafcg;
-  }
-  
-  public void a(afcj paramafcj, int paramInt)
-  {
-    paramafcj.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt)) {
-      paramafcj.a.setSelected(true);
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramafcj, paramInt, getItemId(paramInt));
-      return;
-      paramafcj.a.setSelected(false);
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
     }
   }
   
-  public int getItemCount()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, zps.a(this.a.app.getApp(), 47.0F), zps.a(this.a.app.getApp(), 14.0F));
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
   }
 }
 

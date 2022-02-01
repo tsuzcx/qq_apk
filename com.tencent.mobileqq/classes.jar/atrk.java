@@ -1,54 +1,108 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
-
-class atrk
-  implements atlt
+public class atrk
 {
-  atrk(atri paramatri) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private atrl jdField_a_of_type_Atrl;
+  private Object jdField_a_of_type_JavaLangObject;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private byte[] c;
   
-  public View a()
+  atrk(atrd paramatrd)
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atoo.a());
+    a(false, 0L, null, null, 0);
   }
   
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
+  atrk(atrd paramatrd, long paramLong, atrl paramatrl)
   {
-    atri.a(this.a, paramBoolean);
+    a(false, paramLong, null, paramatrl, 0);
   }
   
-  public boolean a()
+  atrk(atrd paramatrd, atrl paramatrl)
   {
-    if (this.a.jdField_a_of_type_Atmk != null) {
-      return this.a.jdField_a_of_type_Atmk.b();
-    }
-    return false;
+    a(false, 0L, null, paramatrl, 0);
   }
   
-  public void b(boolean paramBoolean)
+  atrk(atrd paramatrd, String paramString)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Atml != null)) {
-      this.a.jdField_a_of_type_Atml.a();
-    }
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_Atoo.e() == 10) {
-        atmr.a(this.a.jdField_a_of_type_Atoo.c());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atoo.d(), this);
-      atri.a(this.a, true);
-      atri.a(this.a);
-      this.a.d = false;
-    }
+    a(false, 0L, paramString, null, 0);
+  }
+  
+  atrk(atrd paramatrd, boolean paramBoolean, long paramLong)
+  {
+    a(paramBoolean, paramLong, null, null, 0);
+  }
+  
+  atrk(atrd paramatrd, boolean paramBoolean, long paramLong, atrl paramatrl, int paramInt)
+  {
+    a(paramBoolean, paramLong, null, paramatrl, paramInt);
+  }
+  
+  atrk(atrd paramatrd, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, atrl paramatrl)
+  {
+    a(false, 0L, null, paramatrl, 0);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.c = paramArrayOfByte3;
+  }
+  
+  private void a(boolean paramBoolean, long paramLong, String paramString, atrl paramatrl, int paramInt)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Atrl = paramatrl;
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  atrl a()
+  {
+    return this.jdField_a_of_type_Atrl;
+  }
+  
+  Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atrk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,19 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
 
 class sdh
-  extends skd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sdh(sce paramsce) {}
+  sdh(sdg paramsdg, View paramView) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    sce.a(this.a, paramInt, paramVideoInfo, paramString, c(), a());
-  }
-  
-  public int b()
-  {
-    return 4;
-  }
-  
-  public int c()
-  {
-    return 4;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setX(f);
+    CaptureOperateTouchLayout.a(this.jdField_a_of_type_Sdg.a).setX(f + this.jdField_a_of_type_AndroidViewView.getWidth() * 0.32F);
   }
 }
 

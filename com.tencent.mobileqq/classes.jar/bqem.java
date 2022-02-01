@@ -1,76 +1,63 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.util.List;
 
-public class bqem
+class bqem
+  implements bpwx
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  public boolean a;
-  int b;
-  int c;
-  protected int d = -1;
-  protected int e = -1;
-  
-  public bqem(int paramInt, PublishVideoEntry paramPublishVideoEntry)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
-  
-  private int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 7: 
-      return 5;
-    case 8: 
-      return 6;
-    case 9: 
-      return 7;
-    }
-    return 4;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
-    }
-    return 5;
-  }
+  bqem(bqel parambqel) {}
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+    VideoCoverPickerProviderView localVideoCoverPickerProviderView = (VideoCoverPickerProviderView)this.a.a.jdField_a_of_type_Bqcu.a.a(113);
+    boolean bool;
+    Object localObject;
+    if (localVideoCoverPickerProviderView != null)
+    {
+      bool = this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_is_need_gaussion_blur", false);
+      if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakeVideoSource))
+      {
+        localObject = (EditTakeVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
+        localVideoCoverPickerProviderView.setVideo(((EditTakeVideoSource)localObject).jdField_a_of_type_JavaLangString, 0L, ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, ((EditTakeVideoSource)localObject).a(), ((EditTakeVideoSource)localObject).b(), ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalVideoSource))
+    {
+      localObject = (EditLocalVideoSource)this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a;
+      localVideoCoverPickerProviderView.setVideo(((EditLocalVideoSource)localObject).jdField_a_of_type_JavaLangString, ((EditLocalVideoSource)localObject).jdField_a_of_type_Int, ((EditLocalVideoSource)localObject).b, ((EditLocalVideoSource)localObject).a(), ((EditLocalVideoSource)localObject).b(), ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
+      return;
+    }
+    throw new IllegalArgumentException("SegmentEdit init error");
   }
   
-  public void a(int paramInt)
+  public void a(long paramLong)
   {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
+    bqel.a(this.a, true);
+    bqcg localbqcg = (bqcg)this.a.a(bqcg.class);
+    if (localbqcg != null) {
+      localbqcg.a(paramLong, true, false);
+    }
   }
   
-  public void b(int paramInt)
+  public void a(long paramLong, boolean paramBoolean)
   {
-    this.d = paramInt;
+    this.a.a(paramLong, paramBoolean);
   }
   
-  public void c(int paramInt)
+  public void a(List<Long> paramList)
   {
-    this.e = paramInt;
+    bqcg localbqcg = (bqcg)this.a.a(bqcg.class);
+    if (localbqcg != null) {
+      localbqcg.a(paramList);
+    }
   }
 }
 

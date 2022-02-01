@@ -1,25 +1,10 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-class sdi
-  extends skd
+public abstract interface sdi
 {
-  sdi(sce paramsce) {}
+  public abstract void a();
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    sce.a(this.a, paramInt, paramVideoInfo, paramString, c(), a());
-  }
+  public abstract void a(int paramInt);
   
-  public int b()
-  {
-    return 2;
-  }
-  
-  public int c()
-  {
-    return 3;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

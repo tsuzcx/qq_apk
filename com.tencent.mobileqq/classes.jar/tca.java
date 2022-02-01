@@ -1,29 +1,53 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 final class tca
-  implements bklw
+  implements tcg
 {
-  tca(Context paramContext, AdData paramAdData) {}
-  
   public void a()
   {
+    Object localObject = tbz.a("https://viola/viola_config.json?v_bid=3192");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
+      {
+        localObject = new JSONObject((String)localObject);
+        JSONArray localJSONArray = (JSONArray)((JSONObject)localObject).get("preload_bids");
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          tbz.a((String)localJSONArray.get(i), null);
+          i += 1;
+        }
+        tbz.jdField_a_of_type_JavaLangString = ozs.a();
+        tbz.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (((JSONObject)localObject).has("use_main")) {
+          tbz.jdField_a_of_type_Boolean = ((Boolean)((JSONObject)localObject).get("use_main")).booleanValue();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is success!");
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ViolaAccessHelper", 2, "pre load all offline from offline is exception:" + localException.getMessage());
+        }
+        tbz.b();
+        return;
+      }
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
+      QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is empty!");
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 3);
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    }
+    tbz.b();
   }
+  
+  public void a(int paramInt) {}
+  
+  public void b() {}
 }
 
 

@@ -1,48 +1,55 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class qls
+public class qls
+  extends qjh
 {
-  private final Drawable a;
-  private final Drawable b;
-  
-  qls(Context paramContext)
+  public qls(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837561);
-    this.b = paramContext.getDrawable(2130837565);
+    super(paramContext, paramaoof, paramsel);
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public qjh a()
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    this.jdField_a_of_type_Boolean = true;
+    return g();
   }
   
-  private Drawable b(Drawable paramDrawable)
+  public qjh d()
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Qjg;
+    Pair localPair;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pqk)))
+    {
+      localPair = ozc.a(((pqk)this.jdField_a_of_type_JavaLangObject).g(), ((pqk)this.jdField_a_of_type_JavaLangObject).e());
+      if (!ozs.s(((pqk)this.jdField_a_of_type_JavaLangObject).a())) {
+        break label105;
+      }
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
+    }
+    for (;;)
+    {
+      a(localComponentContentVerticalSmallVideo);
+      return this;
+      label105:
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
+    }
   }
   
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public qjh e()
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
+    return null;
   }
   
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  public qjh g()
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    this.jdField_a_of_type_Qjg = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

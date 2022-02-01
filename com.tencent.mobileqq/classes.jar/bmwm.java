@@ -1,244 +1,384 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Process;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import cooperation.vip.manager.AlbumCanvasFragment;
-import cooperation.vip.manager.ExtendKuolieGdtAdvCanvasFragment;
-import cooperation.vip.widget.VipGeneralGdtShowView.2;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.UploadSoDownloader.1;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
+import oicq.wlogin_sdk.tools.MD5;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bmwm
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bmwn(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmwp jdField_a_of_type_Bmwp;
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  private AlumBasicData jdField_a_of_type_CooperationVipJsoninflateModelAlumBasicData;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private int jdField_d_of_type_Int;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private int jdField_e_of_type_Int;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private int f;
+  private static int jdField_a_of_type_Int = 5;
+  private static File jdField_a_of_type_JavaIoFile = BaseApplicationImpl.getContext().getDir("qzoneupload", 0);
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  public bmwm(Context paramContext, int paramInt1, int paramInt2, int paramInt3, GdtAppReceiver paramGdtAppReceiver)
+  private int a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(paramInt1, null);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    if (paramGdtAppReceiver == null)
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
+    if (localSharedPreferences != null)
     {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(this.jdField_a_of_type_AndroidContentContext);
+      String str = localSharedPreferences.getString("upload_so_ver", "");
+      int i = localSharedPreferences.getInt(str, 0);
+      QLog.d("[upload2]UploadEnv", 1, "getRetryCnt ver " + str + " cnt:" + i);
+      return i;
     }
-    for (;;)
-    {
-      this.jdField_d_of_type_Int = paramInt3;
+    QLog.d("[upload2]UploadEnv", 1, "getRetryCnt 0");
+    return 0;
+  }
+  
+  private void a(String paramString)
+  {
+    String str = "";
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
+    if (localSharedPreferences != null) {
+      str = localSharedPreferences.getString("upload_so_ver", "");
+    }
+    QLog.d("[upload2]UploadEnv", 1, "last ver " + str + " curUrl:" + paramString);
+    if (TextUtils.isEmpty(str)) {}
+    while ((str.equals(paramString)) || (localSharedPreferences == null)) {
       return;
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = paramGdtAppReceiver;
+    }
+    localSharedPreferences.edit().remove(str);
+    localSharedPreferences.edit().remove("upload_so_ver");
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    QLog.d("[upload2]UploadEnv", 1, "saveSoDownloadState " + paramBoolean);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("upload_so_download_success", paramBoolean).commit();
     }
   }
   
-  public View a()
+  private boolean a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public Class<? extends GdtCanvasBaseFragment> a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return AlbumCanvasFragment.class;
+    boolean bool = false;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("upload_so_download_success", false);
     }
-    return ExtendKuolieGdtAdvCanvasFragment.class;
+    QLog.d("[upload2]UploadEnv", 1, "getSoDownloadState " + bool);
+    return bool;
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  private void b(String paramString)
   {
-    Object localObject;
-    if (!TextUtils.isEmpty(paramString))
+    QLog.d("[upload2]UploadEnv", 1, "recordRetryCnt " + paramString);
+    a(paramString);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
+    if (localSharedPreferences != null)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label95;
+      if (TextUtils.isEmpty(localSharedPreferences.getString("upload_so_ver", ""))) {
+        localSharedPreferences.edit().putString("upload_so_ver", paramString).commit();
       }
-    }
-    label95:
-    for (long l = ((QQAppInterface)localObject).getLongAccountUin();; l = 0L)
-    {
-      localObject = new bmtv();
-      ((bmtv)localObject).a(this.jdField_c_of_type_Int).a(l).b(paramInt1).a(paramString).c(paramInt2).d(1);
-      paramString = ((bmtv)localObject).a();
-      bmup.a().a(paramString);
-      return;
-      QZLog.i("VipGeneralGdtShowView", " @getGdtInfo sendBusinessReport");
-      return;
+      int i = localSharedPreferences.getInt(paramString, 0);
+      localSharedPreferences.edit().putInt(paramString, i + 1).commit();
     }
   }
   
-  public void a(View paramView, bmwp parambmwp)
+  private boolean b(String paramString)
   {
-    if (paramView == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bmwp = parambmwp;
-    QZLog.i("VipGeneralGdtShowView", " @getGdtInfo initAdvView");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367411));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367419));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367420));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367422));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367418));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367423));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367424));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367421));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-  }
-  
-  public void a(AlumBasicData paramAlumBasicData, int paramInt)
-  {
-    int i = 0;
-    for (;;)
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramString == null) {}
+    Object localObject1;
+    int i;
+    Object localObject2;
+    String str2;
+    do
     {
-      Object localObject1;
-      try
+      String str1;
+      File localFile;
+      for (;;)
       {
-        this.jdField_a_of_type_CooperationVipJsoninflateModelAlumBasicData = paramAlumBasicData;
-        this.jdField_b_of_type_Int = (paramInt + 1);
-        if ((paramAlumBasicData == null) || (TextUtils.isEmpty(paramAlumBasicData.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null))
-        {
-          if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          }
-          QZLog.i("VipGeneralGdtShowView", " @getGdtInfo setDataChanged is null");
-          return;
-        }
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramAlumBasicData.jdField_b_of_type_JavaLangString, null);
-        localObject1 = this.jdField_a_of_type_AndroidWidgetTextView.getResources().getDrawable(2130840264);
-        Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-        ((URLDrawable.URLDrawableOptions)localObject2).mUseMemoryCache = false;
-        localObject1 = URLDrawable.getDrawable(paramAlumBasicData.j, (URLDrawable.URLDrawableOptions)localObject2);
-        if ((this.jdField_c_of_type_Int == 3) && (!bcnj.b()))
-        {
-          ((URLDrawable)localObject1).setTag(bgey.a(bgtn.a(40.0F), bgtn.a(40.0F)));
-          ((URLDrawable)localObject1).setDecodeHandler(bgey.p);
-          if (localURLDrawable != null)
+        return bool2;
+        localObject1 = new File(paramString + File.separator + "md5.json");
+        if (((File)localObject1).exists()) {
+          try
           {
-            this.jdField_e_of_type_Int = paramAlumBasicData.jdField_a_of_type_Int;
-            this.f = paramAlumBasicData.jdField_b_of_type_Int;
-            int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - bgtn.b(56.0F);
-            paramInt = i;
-            if (this.jdField_e_of_type_Int != 0)
+            localObject1 = new JSONObject(bhmi.a((File)localObject1)).getJSONArray("so_lib");
+            i = 0;
+            bool2 = bool1;
+            if (i < ((JSONArray)localObject1).length())
             {
-              paramInt = i;
-              if (this.f != 0) {
-                paramInt = (int)(this.f / (this.jdField_e_of_type_Int * 1.0D) * j);
+              localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
+              str1 = ((JSONObject)localObject2).getString("name");
+              localObject2 = ((JSONObject)localObject2).getString("md5");
+              localFile = new File(paramString + File.separator + str1);
+              if (!localFile.exists())
+              {
+                QLog.d("[upload2]UploadEnv", 1, "so not exists " + str1);
+                return bool1;
               }
             }
-            if (paramInt != 0)
-            {
-              localObject2 = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject2).height = paramInt;
-              this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-              QZLog.i("VipGeneralGdtShowView", " @getGdtInfo height  =" + paramInt + "contrlwith =" + j + "imagewith =" + this.jdField_e_of_type_Int + "imageheight =" + this.f);
-            }
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-            if (paramAlumBasicData.jdField_d_of_type_Int == 0)
-            {
-              paramAlumBasicData.jdField_d_of_type_Int = 1;
-              a(paramAlumBasicData.e);
-              a(1, paramAlumBasicData.jdField_a_of_type_JavaLangString, 0);
-            }
           }
-          if (localObject1 != null) {
-            this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+          catch (Exception paramString)
+          {
+            QLog.d("[upload2]UploadEnv", 1, "checkSoMd5 error : " + paramString.getMessage());
+            return false;
           }
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.h);
-          this.jdField_e_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.i);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.c);
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.jdField_d_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          if (!QZLog.isColorLevel()) {
-            break;
-          }
-          QZLog.i("VipGeneralGdtShowView", "setDataChanged titile =" + paramAlumBasicData.c + " desc =" + paramAlumBasicData.jdField_d_of_type_JavaLangString + " url =" + paramAlumBasicData.jdField_b_of_type_JavaLangString);
-          return;
         }
       }
-      catch (Exception paramAlumBasicData)
-      {
-        QZLog.e("VipGeneralGdtShowView", paramAlumBasicData.toString());
-        return;
-      }
-      ((URLDrawable)localObject1).setTag(bgey.b(bgtn.a(40.0F), bgtn.a(40.0F), bgtn.a(3.5F)));
-      ((URLDrawable)localObject1).setDecodeHandler(bgey.j);
+      str2 = MD5.getFileMD5(localFile);
+      QLog.d("[upload2]UploadEnv", 1, new Object[] { "src md5 : ", str2, " dst md5 : ", localObject2, " file size :", Long.valueOf(localFile.length()), " file : ", str1 });
+      bool2 = bool1;
+    } while (!str2.equals(localObject2));
+    int j = ((JSONArray)localObject1).length();
+    if (i == j - 1) {
+      bool1 = true;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").postDelayed(new VipGeneralGdtShowView.2(this, paramString), 0L);
-  }
-  
-  public void a(WeakReference<Activity> paramWeakReference, int paramInt, Class<? extends GdtCanvasBaseFragment> paramClass)
-  {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.jdField_c_of_type_Int = paramInt;
-    if (paramWeakReference != null)
+    for (;;)
     {
-      localParams.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_CooperationVipJsoninflateModelAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
-      localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-      localParams.jdField_a_of_type_Boolean = true;
-      localParams.jdField_b_of_type_Boolean = true;
-      localParams.jdField_b_of_type_JavaLangClass = paramClass;
-      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      if (this.jdField_c_of_type_Int == 3) {
-        localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_jc_kuolie");
-      }
-      GdtHandler.a(localParams);
-      QZLog.i("VipGeneralGdtShowView", " @getGdtInfo clickAdvInfoToQiQiaoBan");
+      i += 1;
+      break;
     }
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (!bmtd.a())
+        {
+          jdField_a_of_type_Boolean = false;
+          QLog.d("[upload2]UploadEnv", 1, "not in qzone process do not download");
+          return;
+        }
+        boolean bool1 = QzoneModuleManager.getInstance().checkIfNeedUpdate("upload.so");
+        boolean bool2 = a();
+        QLog.d("[upload2]UploadEnv", 1, "downloadUploadSo needUpdate:" + bool1 + " saveState:" + bool2 + " isSoDownloading:" + b + " process:" + Process.myPid());
+        if ((!bool1) && (bool2))
+        {
+          QLog.d("[upload2]UploadEnv", 1, "start check so md5");
+          jdField_a_of_type_Boolean = false;
+          ThreadManager.post(new UploadSoDownloader.1(this), 5, null, true);
+          continue;
+        }
+        if (b) {
+          continue;
+        }
+      }
+      finally {}
+      QLog.d("[upload2]UploadEnv", 1, "upload so need update");
+      b = true;
+      jdField_a_of_type_Boolean = false;
+      a(false);
+      bnbx localbnbx = bnbw.a().a("upload.so");
+      Object localObject2 = QzoneModuleManager.getInstance().getModuleFilePath("upload.so");
+      if (localbnbx == null)
+      {
+        b = false;
+        jdField_a_of_type_Boolean = false;
+        continue;
+      }
+      int i = a();
+      if ((i > jdField_a_of_type_Int / 2) && (i < jdField_a_of_type_Int)) {
+        localObject2 = new File((String)localObject2);
+      }
+      try
+      {
+        ((File)localObject2).delete();
+        label244:
+        if (i > jdField_a_of_type_Int)
+        {
+          QLog.d("[upload2]UploadEnv", 1, "upload so has retry:" + a());
+          b = false;
+          continue;
+        }
+        b(localbnbx.a.d);
+        QzoneModuleManager.getInstance().downloadModule("upload.so", new bmwn(this));
+      }
+      catch (Exception localException)
+      {
+        break label244;
+      }
+    }
+  }
+  
+  /* Error */
+  public boolean a(String paramString)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: invokestatic 324	bmac:a	()Lbmac;
+    //   7: ldc_w 326
+    //   10: ldc_w 328
+    //   13: iconst_0
+    //   14: invokevirtual 331	bmac:a	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   17: istore_2
+    //   18: ldc 60
+    //   20: iconst_1
+    //   21: new 62	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   28: ldc_w 333
+    //   31: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: iload_2
+    //   35: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: ldc_w 335
+    //   41: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: getstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   47: invokevirtual 123	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: iload_2
+    //   57: iconst_1
+    //   58: if_icmpeq +7 -> 65
+    //   61: iconst_0
+    //   62: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   65: aload_0
+    //   66: invokespecial 255	bmwm:a	()Z
+    //   69: istore 4
+    //   71: ldc 60
+    //   73: iconst_1
+    //   74: new 62	java/lang/StringBuilder
+    //   77: dup
+    //   78: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   81: ldc_w 337
+    //   84: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: iload 4
+    //   89: invokevirtual 123	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   98: iload 4
+    //   100: ifne +7 -> 107
+    //   103: iconst_0
+    //   104: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   107: getstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   110: ifeq +149 -> 259
+    //   113: new 162	java/io/File
+    //   116: dup
+    //   117: new 62	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   124: getstatic 29	bmwm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   127: invokevirtual 340	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   130: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: getstatic 166	java/io/File:separator	Ljava/lang/String;
+    //   136: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: ldc_w 342
+    //   142: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: aload_1
+    //   146: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: ldc_w 344
+    //   152: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
+    //   161: astore 5
+    //   163: aload 5
+    //   165: invokevirtual 173	java/io/File:exists	()Z
+    //   168: istore 4
+    //   170: iload 4
+    //   172: ifeq +94 -> 266
+    //   175: aload 5
+    //   177: invokevirtual 340	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   180: invokestatic 349	java/lang/System:load	(Ljava/lang/String;)V
+    //   183: ldc 60
+    //   185: iconst_1
+    //   186: new 62	java/lang/StringBuilder
+    //   189: dup
+    //   190: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   193: ldc_w 351
+    //   196: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: aload_1
+    //   200: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   209: aload_0
+    //   210: monitorexit
+    //   211: iload_3
+    //   212: ireturn
+    //   213: astore_1
+    //   214: ldc 60
+    //   216: iconst_1
+    //   217: new 62	java/lang/StringBuilder
+    //   220: dup
+    //   221: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   224: ldc_w 353
+    //   227: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: aload_1
+    //   231: invokevirtual 354	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   234: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   240: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   243: iconst_0
+    //   244: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   247: aload_0
+    //   248: iconst_0
+    //   249: invokespecial 91	bmwm:a	(Z)V
+    //   252: getstatic 29	bmwm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   255: invokevirtual 299	java/io/File:delete	()Z
+    //   258: pop
+    //   259: getstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   262: istore_3
+    //   263: goto -54 -> 209
+    //   266: iconst_0
+    //   267: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
+    //   270: ldc 60
+    //   272: iconst_1
+    //   273: new 62	java/lang/StringBuilder
+    //   276: dup
+    //   277: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   280: ldc_w 356
+    //   283: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   286: aload_1
+    //   287: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   296: aload_0
+    //   297: iconst_0
+    //   298: invokespecial 91	bmwm:a	(Z)V
+    //   301: getstatic 29	bmwm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   304: invokevirtual 299	java/io/File:delete	()Z
+    //   307: pop
+    //   308: goto -49 -> 259
+    //   311: astore_1
+    //   312: goto -53 -> 259
+    //   315: astore_1
+    //   316: aload_0
+    //   317: monitorexit
+    //   318: aload_1
+    //   319: athrow
+    //   320: astore_1
+    //   321: goto -62 -> 259
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	324	0	this	bmwm
+    //   0	324	1	paramString	String
+    //   17	42	2	i	int
+    //   1	262	3	bool1	boolean
+    //   69	102	4	bool2	boolean
+    //   161	15	5	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   175	209	213	java/lang/Throwable
+    //   301	308	311	java/lang/Exception
+    //   4	56	315	finally
+    //   61	65	315	finally
+    //   65	98	315	finally
+    //   103	107	315	finally
+    //   107	170	315	finally
+    //   175	209	315	finally
+    //   214	252	315	finally
+    //   252	259	315	finally
+    //   259	263	315	finally
+    //   266	301	315	finally
+    //   301	308	315	finally
+    //   252	259	320	java/lang/Exception
   }
 }
 

@@ -1,28 +1,55 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class xny
-  extends xoe<StoryVideoItem>
+  extends xmx
 {
-  public xny(VideoViewVideoHolder paramVideoViewVideoHolder)
+  private VidListPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo;
+  private xms jdField_a_of_type_Xms;
+  
+  public xny(VidListPlayInfo paramVidListPlayInfo)
   {
-    super(paramVideoViewVideoHolder, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo = paramVidListPlayInfo;
+    this.jdField_a_of_type_Xms = new xms("vidList");
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public List<xmz> a(List<xms> paramList)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    return null;
   }
   
-  public void onError(@NonNull Error paramError)
+  public xmv a()
   {
-    super.onError(paramError);
-    yqp.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    return new xmv(this.jdField_a_of_type_Xms, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVideoFeedId);
   }
+  
+  public void a() {}
+  
+  public void a(int paramInt, xmy paramxmy)
+  {
+    ArrayList localArrayList = new ArrayList();
+    xmt localxmt = new xmt(this.jdField_a_of_type_Xms);
+    localArrayList.add(localxmt);
+    localxmt.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList;
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.size();
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.size())
+    {
+      if (paramInt < i) {}
+      for (String str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(paramInt);; str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(i - 1))
+      {
+        localxmt.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.get(paramInt), str);
+        paramInt += 1;
+        break;
+      }
+    }
+    paramxmy.b(new ErrorMessage(), localArrayList, true);
+  }
+  
+  public void b() {}
 }
 
 

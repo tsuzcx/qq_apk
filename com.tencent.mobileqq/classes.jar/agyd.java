@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class agyd
-  implements ahbm
+class agyd
+  extends agen
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (auzk.a(paramQQAppInterface).a()) {
-      return 78;
-    }
-    return 0;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView b;
+  TextView c;
+  TextView d;
+  
+  agyd(agyb paramagyb) {}
 }
 
 

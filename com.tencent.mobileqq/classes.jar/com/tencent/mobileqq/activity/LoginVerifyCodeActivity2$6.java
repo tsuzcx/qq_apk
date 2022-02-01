@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.widget.Button;
 import android.widget.EditText;
-import bgjw;
+import bhjx;
 
 class LoginVerifyCodeActivity2$6
   implements Runnable
@@ -11,7 +11,7 @@ class LoginVerifyCodeActivity2$6
   
   public void run()
   {
-    String str = bgjw.b(this.a, this.b);
+    String str = bhjx.b(this.a, this.b);
     if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity2.a(this.this$0) != null))
     {
       LoginVerifyCodeActivity2.a(this.this$0).setText(str);

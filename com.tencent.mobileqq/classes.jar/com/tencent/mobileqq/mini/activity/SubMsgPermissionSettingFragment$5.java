@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.activity;
 
 import android.widget.ListView;
 import android.widget.TextView;
-import anni;
+import anzj;
 
 class SubMsgPermissionSettingFragment$5
   implements Runnable
@@ -12,7 +12,7 @@ class SubMsgPermissionSettingFragment$5
   public void run()
   {
     this.this$0.onceSubMsgTips.setVisibility(0);
-    this.this$0.onceSubMsgTips.setText(anni.a(2131693684));
+    this.this$0.onceSubMsgTips.setText(anzj.a(2131693701));
     SubMsgPermissionSettingFragment.access$500(this.this$0).setVisibility(0);
     SubMsgPermissionSettingFragment.access$500(this.this$0).setAdapter(SubMsgPermissionSettingFragment.access$200(this.this$0));
   }

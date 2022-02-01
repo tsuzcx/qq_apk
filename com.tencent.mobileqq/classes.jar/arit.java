@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class arit
-  implements View.OnClickListener
 {
-  public arit(DBFixConfigActivity paramDBFixConfigActivity) {}
+  @awfx(a="c2c_time_interval")
+  public double a = 72.0D;
   
-  public void onClick(View paramView)
+  public static arit a(String paramString)
   {
-    ThreadManager.post(this.a.a, 8, null, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (arit)awfy.a(paramString, arit.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arit
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class awrt
-  implements awsv
+class awrt
+  implements DialogInterface.OnDismissListener
 {
-  public awrt(MultiAIOFragment paramMultiAIOFragment) {}
+  awrt(awrs paramawrs) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    MultiAIOFragment.a(this.a).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    MultiAIOFragment.a(this.a).setScrollState(2);
-    MultiAIOFragment.a(this.a).fling(-paramInt);
-  }
-  
-  public boolean a()
-  {
-    return MultiAIOFragment.a(this.a).a();
+    this.a.a.finish();
   }
 }
 

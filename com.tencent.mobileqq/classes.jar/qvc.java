@@ -1,78 +1,84 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 
-public class qvc
-  extends ClickableSpan
-  implements sth
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterArticleOnePic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qvc
+  extends qva
 {
-  private int jdField_a_of_type_Int = -1;
-  protected long a;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private qva jdField_a_of_type_Qva;
-  boolean jdField_a_of_type_Boolean;
-  
-  public qvc(long paramLong, int paramInt, qva paramqva)
+  protected void a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Qva = paramqva;
-  }
-  
-  private void a(long paramLong, Context paramContext)
-  {
-    if ((this.jdField_a_of_type_Qva.a == null) || (this.jdField_a_of_type_Qva.a.a() == null) || (this.jdField_a_of_type_Qva.a.a().mSocialFeedInfo == null) || (this.jdField_a_of_type_Qva.a.a().mSocialFeedInfo.jdField_a_of_type_Rhs == null)) {
-      return;
+    Object localObject2 = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      ((SocializeFeedsInfo)localObject1).a = 1;
     }
-    Object localObject = pgc.g + bgku.encodeToString(String.valueOf(paramLong).getBytes(), 2);
-    pha.a(paramContext, (String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonBasicComponent", 2, "personal url =" + (String)localObject);
-    }
-    localObject = this.jdField_a_of_type_Qva.a.a();
-    pha.a = (ArticleInfo)localObject;
-    String str = pha.a("3", (ArticleInfo)localObject, paramLong);
-    if (ube.a(this.jdField_a_of_type_Qva.a.e())) {}
-    for (paramContext = "0X800935C";; paramContext = "0X8007BA3")
+    Object localObject3 = a();
+    localObject1 = a();
+    if (localObject1 != null)
     {
-      oat.a(null, String.valueOf(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(this.jdField_a_of_type_Qva.a.a().mFeedId), "0", "" + ((ArticleInfo)localObject).mStrategyId, str, false);
-      snh.a((ArticleInfo)localObject, this.jdField_a_of_type_Qva.a.e());
-      return;
+      localObject1 = ((qxz)localObject1).a;
+      if (localObject1 == null) {}
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView != null) {
-      a(this.jdField_a_of_type_Long, paramView.getContext());
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    for (localObject1 = ((qxp)localObject1).b;; localObject1 = null)
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      ((BaseArticleInfo)localObject3).mTitle = ((String)localObject1);
+      localObject1 = a();
+      if (localObject1 != null) {
+        ((qyg)localObject1).a = true;
+      }
+      try
+      {
+        localObject3 = a();
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((qxz)localObject3).a;
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject3 = ((qxp)localObject3).a;
+            localObject1 = localObject2;
+            if (localObject3 != null)
+            {
+              localObject3 = (articlesummary.PGCPicInfo)((ArrayList)localObject3).get(0);
+              localObject1 = localObject2;
+              if (localObject3 != null)
+              {
+                localObject3 = ((articlesummary.PGCPicInfo)localObject3).bytes_pic_url;
+                localObject1 = localObject2;
+                if (localObject3 != null)
+                {
+                  localObject3 = ((PBBytesField)localObject3).get();
+                  localObject1 = localObject2;
+                  if (localObject3 != null) {
+                    localObject1 = ((ByteStringMicro)localObject3).toStringUtf8();
+                  }
+                }
+              }
+            }
+          }
+        }
+        if (localObject1 != null) {
+          a().mSinglePicture = new URL((String)localObject1);
+        }
+        return;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        return;
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        localIndexOutOfBoundsException.printStackTrace();
+      }
     }
   }
 }

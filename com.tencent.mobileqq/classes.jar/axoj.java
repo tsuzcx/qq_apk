@@ -1,12 +1,17 @@
-class axoj
-  implements xry
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class axoj
 {
-  axoj(axof paramaxof, axnx paramaxnx) {}
+  public Button a;
+  public ImageView a;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void a_(xrt paramxrt)
-  {
-    this.jdField_a_of_type_Axnx.a(this.jdField_a_of_type_Axof);
-  }
+  axoj(axoi paramaxoi) {}
 }
 
 

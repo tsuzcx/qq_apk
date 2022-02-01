@@ -1,40 +1,40 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aldk;
+import alpb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmqa;
+import bnrf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pyn;
-import twg;
+import pqx;
 import twi;
-import tzo;
+import twk;
+import tzq;
 
 public class SubscriptionInfoModule$10
   implements Runnable
 {
   public void run()
   {
-    Object localObject = twi.a().b((QQAppInterface)this.this$0.a).iterator();
+    Object localObject = twk.a().b((QQAppInterface)this.this$0.a).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      twg localtwg = (twg)((Iterator)localObject).next();
-      if (localtwg.a != null)
+      twi localtwi = (twi)((Iterator)localObject).next();
+      if (localtwi.a != null)
       {
-        localtwg.b = 0;
-        int i = tzo.b((QQAppInterface)this.this$0.a, localtwg.a);
-        aldk.b((QQAppInterface)this.this$0.a, localtwg.a, i);
-        ((QQAppInterface)this.this$0.a).a().c(localtwg.a, 1008);
+        localtwi.b = 0;
+        int i = tzq.b((QQAppInterface)this.this$0.a, localtwi.a);
+        alpb.b((QQAppInterface)this.this$0.a, localtwi.a, i);
+        ((QQAppInterface)this.this$0.a).a().c(localtwi.a, 1008);
       }
     }
-    localObject = bmqa.a(this.this$0.a, true, true).edit();
+    localObject = bnrf.a(this.this$0.a, true, true).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("subscribe_unread_clear_status", false);
     ((SharedPreferences.Editor)localObject).commit();
-    pyn.a(this.this$0, false);
+    pqx.a(this.this$0, false);
     if (QLog.isColorLevel()) {
       QLog.d("SubscriptionInfoModule", 2, "clearSubscriptionUnreadForUpgrade end");
     }

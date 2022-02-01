@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aicl;
+import aimd;
 import android.support.v4.app.FragmentActivity;
 
 class LimitChatPie$6$1
@@ -10,8 +10,8 @@ class LimitChatPie$6$1
   
   public void run()
   {
-    if ((!this.a.this$0.a.isFinishing()) && (aicl.b(this.a.this$0))) {
-      aicl.b(this.a.this$0);
+    if ((!this.a.this$0.a.isFinishing()) && (aimd.b(this.a.this$0))) {
+      aimd.b(this.a.this$0);
     }
   }
 }

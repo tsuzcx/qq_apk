@@ -1,13 +1,25 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class ahon
-  implements ahor
+  extends ahoq
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public FrameLayout a;
+  public RelativeLayout a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public View c;
+  public int e;
+  public int f;
+  
+  public ahon(ahom paramahom)
   {
-    paramagup.f(paramafzq, paramagwc, paramString);
+    super(paramahom);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

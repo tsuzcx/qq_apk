@@ -1,80 +1,77 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfgm
-  extends bfgl
+  implements View.OnClickListener
 {
-  private TextView a;
-  private View b;
+  public bfgm(TroopAdminList paramTroopAdminList) {}
   
-  protected bfgm(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379851));
-    this.b = ((ImageView)paramView.findViewById(2131369081));
-  }
-  
-  public void a(View paramView, HWReciteItem paramHWReciteItem, bfgj parambfgj)
-  {
-    boolean bool2 = false;
-    switch (paramView.getId())
+    Object localObject1 = (bfgo)paramView.getTag();
+    if (localObject1 != null)
     {
-    default: 
-      return;
-    case 2131379851: 
-      paramHWReciteItem = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-      if ((paramHWReciteItem != null) && (paramHWReciteItem.isActive())) {
-        paramHWReciteItem.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      localObject1 = ((bfgo)localObject1).a;
+      if (!this.a.app.getCurrentAccountUin().equals(localObject1)) {
+        break label60;
       }
-      paramHWReciteItem = (bfeo)parambfgj.a;
-      boolean bool1 = bool2;
-      if (paramHWReciteItem.a != null)
+      localObject1 = new ProfileActivity.AllInOne((String)localObject1, 0);
+    }
+    for (;;)
+    {
+      ProfileActivity.b(this.a, (ProfileActivity.AllInOne)localObject1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label60:
+      int i = this.a.getIntent().getIntExtra("t_s_f", -1);
+      Object localObject2 = ((anyw)this.a.app.getManager(51)).e((String)localObject1);
+      TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(52)).b(this.a.c);
+      if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
       {
-        bool1 = bool2;
-        if (!paramHWReciteItem.a.isEmpty()) {
-          bool1 = true;
+        if (localTroopInfo != null)
+        {
+          localObject1 = new ProfileActivity.AllInOne((String)localObject1, 20);
+          ((ProfileActivity.AllInOne)localObject1).d = this.a.d;
+          ((ProfileActivity.AllInOne)localObject1).c = this.a.c;
+        }
+        for (;;)
+        {
+          ((ProfileActivity.AllInOne)localObject1).h = ((Friends)localObject2).name;
+          ((ProfileActivity.AllInOne)localObject1).i = ((Friends)localObject2).remark;
+          break;
+          localObject1 = new ProfileActivity.AllInOne((String)localObject1, 1);
         }
       }
-      paramView = bkho.d(paramView.getContext());
-      paramView.a(new bfgn(this, paramView, bool1, paramHWReciteItem));
-      if (bool1) {
-        paramView.c(anni.a(2131712020));
+      if (i == 1002)
+      {
+        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 97);
       }
-      paramView.c(anni.a(2131712019));
-      paramView.d(anni.a(2131712017));
-      paramView.show();
-      return;
-    }
-    paramHWReciteItem.a().a(parambfgj);
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, bfgj parambfgj, bfeo parambfeo, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(parambfeo.c))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(anni.a(2131712018)).append(parambfeo.b);
-      if ((parambfeo.a != null) && (!parambfeo.a.isEmpty())) {
-        localStringBuilder.append(bfds.a(parambfeo.a));
+      else if (localTroopInfo != null)
+      {
+        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 21);
+        ((ProfileActivity.AllInOne)localObject1).d = this.a.d;
+        ((ProfileActivity.AllInOne)localObject1).c = this.a.c;
+        ((ProfileActivity.AllInOne)localObject1).l = 12;
       }
-      parambfeo.c = localStringBuilder.toString();
+      else
+      {
+        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 23);
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("troop_code", this.a.d);
+        ((Bundle)localObject2).putString("troop_uin", this.a.c);
+        ((ProfileActivity.AllInOne)localObject1).b.putBundle("flc_extra_param", (Bundle)localObject2);
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambfeo.c);
-    if (paramInt != 1)
-    {
-      paramHWReciteItem.b(this.jdField_a_of_type_AndroidWidgetTextView, parambfgj);
-      paramHWReciteItem.b(this.b, parambfgj);
-      this.b.setVisibility(0);
-      return;
-    }
-    this.b.setVisibility(8);
   }
 }
 

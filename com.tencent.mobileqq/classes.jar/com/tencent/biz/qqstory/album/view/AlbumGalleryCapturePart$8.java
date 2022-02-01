@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.album.view;
 
-import wef;
+import wia;
 
 public class AlbumGalleryCapturePart$8
   implements Runnable
 {
-  public AlbumGalleryCapturePart$8(wef paramwef) {}
+  public AlbumGalleryCapturePart$8(wia paramwia) {}
   
   public void run()
   {

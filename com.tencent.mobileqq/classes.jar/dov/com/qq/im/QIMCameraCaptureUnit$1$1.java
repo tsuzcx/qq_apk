@@ -1,9 +1,9 @@
 package dov.com.qq.im;
 
-import afur;
+import agej;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bnbf;
+import bocn;
 
 class QIMCameraCaptureUnit$1$1
   implements Runnable
@@ -15,7 +15,7 @@ class QIMCameraCaptureUnit$1$1
     if ((this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.this$0.jdField_a_of_type_AndroidWidgetImageView != null))
     {
       BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.this$0.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
-      int i = afur.a(36.0F, this.a.this$0.jdField_a_of_type_AndroidWidgetImageView.getResources());
+      int i = agej.a(36.0F, this.a.this$0.jdField_a_of_type_AndroidWidgetImageView.getResources());
       localBitmapDrawable.setBounds(0, 0, i, i);
       this.a.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localBitmapDrawable);
       this.a.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);

@@ -1,6 +1,17 @@
-public abstract interface mmx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class mmx
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, int paramInt, String paramString);
+  mmx(mmw parammmw) {}
+  
+  public void onClick(View paramView)
+  {
+    mmw.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

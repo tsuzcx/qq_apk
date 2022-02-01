@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bolk;
-import bolz;
-import booz;
+import bpnf;
+import bpnu;
+import bpqu;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.part.QIMTemplateItem;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class TemplateData
   implements Parcelable
 {
-  public static final Parcelable.Creator<TemplateData> CREATOR = new bolz();
+  public static final Parcelable.Creator<TemplateData> CREATOR = new bpnu();
   public int a;
   public String a;
   public List<QIMTemplateItem> a;
@@ -27,7 +27,7 @@ public class TemplateData
   public List<String> b;
   public boolean b;
   public String c;
-  public List<booz> c;
+  public List<bpqu> c;
   
   public TemplateData(Parcel paramParcel)
   {
@@ -72,7 +72,7 @@ public class TemplateData
         localQIMTemplateItem.h = localJSONObject.optString("video_url");
         localQIMTemplateItem.i = localJSONObject.optString("video_md5");
         localQIMTemplateItem.jdField_a_of_type_Boolean = localJSONObject.optBoolean("segments_twinkle");
-        localQIMTemplateItem.j = (bolk.jdField_b_of_type_JavaLangString + localQIMTemplateItem.jdField_b_of_type_JavaLangString + ".mp4");
+        localQIMTemplateItem.j = (bpnf.jdField_b_of_type_JavaLangString + localQIMTemplateItem.jdField_b_of_type_JavaLangString + ".mp4");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
         if (localJSONArray != null)
         {
@@ -171,7 +171,7 @@ public class TemplateData
         str1 = ((JSONArray)localObject1).get(0).toString();
         localObject1 = ((JSONArray)localObject1).get(1).toString();
         if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-          localArrayList.add(new booz(str2, str1, (String)localObject1));
+          localArrayList.add(new bpqu(str2, str1, (String)localObject1));
         }
       }
       catch (Exception localException1)

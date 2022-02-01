@@ -1,23 +1,48 @@
-import android.text.Spanned;
+import java.io.File;
 
-class boqx
-  extends bpkc
+public class boqx
+  extends boqu
 {
-  boqx(boqv paramboqv, int paramInt)
+  public String p;
+  public String q;
+  
+  public String a()
   {
-    super(paramInt);
+    File localFile = new File(this.q);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.q + File.separator + this.f;
   }
   
-  public int a(CharSequence paramCharSequence)
+  public String b()
   {
-    return 0;
+    File localFile = new File(this.q);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.q + File.separator;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public String c()
   {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bfsj.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    File localFile = new File(this.p);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.p + File.separator + this.f;
+  }
+  
+  public boolean d()
+  {
+    Object localObject = new File(a());
+    if (!((File)localObject).exists()) {}
+    do
+    {
+      return false;
+      localObject = ((File)localObject).list();
+    } while ((localObject == null) || (localObject.length <= 0));
+    return true;
   }
 }
 

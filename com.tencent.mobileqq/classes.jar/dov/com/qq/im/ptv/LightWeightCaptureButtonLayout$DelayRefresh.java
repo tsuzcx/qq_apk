@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import bqja;
+import brkm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
 
@@ -33,7 +33,7 @@ class LightWeightCaptureButtonLayout$DelayRefresh
     for (f1 = LightWeightCaptureButtonLayout.a(this.this$0).nextFloat();; f1 = f2 / 100.0F)
     {
       f2 = 2.0F + 28.0F * f1;
-      this.this$0.a.setShadowStrokeWidth(bqja.a(f2));
+      this.this$0.a.setShadowStrokeWidth(brkm.a(f2));
       if (QLog.isColorLevel()) {
         QLog.d("CameraCaptureLayout", 2, "onAudioFrames mIndex=" + this.jdField_a_of_type_Int + " volume=" + this.jdField_a_of_type_Float + " volumeSafe=" + f1 + " dipSize:" + f2);
       }

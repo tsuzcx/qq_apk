@@ -31,6 +31,8 @@ public class SecurityUtile
   {
     codeEmosmKey = new byte[] { 0, 1, 0, 1 };
     codeEmosmKeyLen = 4;
+    codeKeyLen = 0;
+    mLastTimestampReportSoFail = 0L;
     try
     {
       long l = SystemClock.elapsedRealtime();

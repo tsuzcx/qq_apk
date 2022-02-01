@@ -1,88 +1,153 @@
-import android.util.Pair;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class aqkh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"TAG", "", "downloadBrowser", "", "context", "Landroid/content/Context;", "downloadUrl", "targetUrl", "getCurrentUinIfExists", "loadValidBrowserList", "", "Lcom/tencent/mobileqq/browser/BrowserItem;", "browserOpenBean", "Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "openUrlWithBrowser", "activity", "Landroid/app/Activity;", "url", "packageName", "systemLocalBrowsers", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class aqkh
 {
-  public float a;
-  public int a;
-  public String a;
-  public ArrayList<Pair<String, Float>> a;
-  Set<Integer> a;
-  public boolean a;
-  public int b;
-  public int c = 36;
-  
-  public aqkh(String paramString)
+  @NotNull
+  public static final String a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = aqjz.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Float = aqjz.a(paramString);
-    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.c = a(this.b);
-    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-    if (this.jdField_a_of_type_Boolean)
+    Object localObject = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
-      if (this.b % 2 != 0) {
-        break label172;
+      localObject = ((AppRuntime)localObject).getAccount();
+      if (localObject != null) {
+        return localObject;
       }
+      return "";
     }
-    for (;;)
+    return "";
+  }
+  
+  private static final List<String> a(Context paramContext)
+  {
+    localList = (List)new ArrayList();
+    try
     {
-      if (i != 0)
+      paramContext = paramContext.getPackageManager().queryIntentActivities(new Intent("android.intent.action.VIEW", Uri.parse("https://www.qq.com")), 65536);
+      Intrinsics.checkExpressionValueIsNotNull(paramContext, "queryIntentActivities");
+      Iterator localIterator = ((Iterable)paramContext).iterator();
+      if (localIterator.hasNext())
       {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
+        ResolveInfo localResolveInfo = (ResolveInfo)localIterator.next();
+        if (localResolveInfo != null) {}
+        for (paramContext = localResolveInfo.activityInfo;; paramContext = null)
+        {
+          if (paramContext != null)
+          {
+            paramContext = localResolveInfo.activityInfo.processName;
+            if (!TextUtils.isEmpty((CharSequence)paramContext))
+            {
+              Intrinsics.checkExpressionValueIsNotNull(paramContext, "pkgName");
+              localList.add(paramContext);
+            }
+            QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "systemLocalBrowsers: called. ", "pkgName: " + paramContext });
+          }
+          break;
+        }
       }
-      return;
-      label172:
-      i = 0;
+      return localList;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("[BrowserOpt] BrowserUtil", 1, "systemLocalBrowsers failed", (Throwable)paramContext);
     }
   }
   
-  private int a(int paramInt)
+  @NotNull
+  public static final List<aqkg> a(@NotNull Context paramContext, @Nullable ardi paramardi)
   {
-    if (paramInt <= 2) {
-      paramInt = aqjz.a.nextInt(8) - 4 + 74;
-    }
-    for (;;)
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    List localList = (List)new ArrayList();
+    Set localSet = (Set)new LinkedHashSet();
+    if (paramardi != null)
     {
-      return paramInt / 4 * 4;
-      if (paramInt <= 4) {
-        paramInt = aqjz.a.nextInt(8) - 4 + 70;
-      } else if (paramInt <= 6) {
-        paramInt = aqjz.a.nextInt(8) - 4 + 66;
-      } else if (paramInt <= 8) {
-        paramInt = aqjz.a.nextInt(8) - 4 + 62;
-      } else {
-        paramInt = aqjz.a.nextInt(8) - 4 + 60;
+      Object localObject1 = ((Iterable)paramardi.a()).iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (aqkg)((Iterator)localObject1).next();
+        localList.add(localObject2);
+        localSet.add(((aqkg)localObject2).e());
+      }
+      paramContext = ((Iterable)a(paramContext)).iterator();
+      for (;;)
+      {
+        if (paramContext.hasNext())
+        {
+          localObject1 = (String)paramContext.next();
+          try
+          {
+            bool1 = blhx.a((Context)BaseApplication.context, (String)localObject1);
+            boolean bool2 = localSet.contains(localObject1);
+            boolean bool3 = paramardi.b().contains(localObject1);
+            if ((bool1) && (!bool3) && (!bool2))
+            {
+              localObject2 = blhx.a((Context)BaseApplication.context, (String)localObject1);
+              if (localObject2 != null) {
+                localList.add(new aqkg((String)localObject2, "", "", "", (String)localObject1, true));
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("[BrowserOpt] BrowserUtil", 2, new Object[] { "loadValidBrowserList: called. ", "topBrowsers: " + paramardi.a() + "  " + "packageInstalled: " + bool1 + "  inBlackList: " + bool3 + " inTopBrowserList: " + bool2 });
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("[BrowserOpt] BrowserUtil", 1, new Object[] { "convertToTopBrowserList: called. ", "topBrowsers: " + paramardi.a(), localException });
+              boolean bool1 = false;
+            }
+          }
+        }
       }
     }
+    return localList;
   }
   
-  public void a()
+  public static final void a(@NotNull Activity paramActivity, @NotNull String paramString1, @NotNull String paramString2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b % 3 != 0) {
-        break label56;
-      }
-    }
-    label56:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
-      }
-      return;
-    }
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramString1, "url");
+    Intrinsics.checkParameterIsNotNull(paramString2, "packageName");
+    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+    paramString1.setPackage(paramString2);
+    paramString1.addFlags(268435456);
+    paramActivity.startActivity(paramString1);
+  }
+  
+  public static final void a(@NotNull Context paramContext, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramString1, "downloadUrl");
+    Intrinsics.checkParameterIsNotNull(paramString2, "targetUrl");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_open_with_qq_browser_", paramString2);
+    localBundle.putInt("_download_qqbrowser_business_", 1);
+    aunj.a(paramContext, paramString1, localBundle);
   }
 }
 

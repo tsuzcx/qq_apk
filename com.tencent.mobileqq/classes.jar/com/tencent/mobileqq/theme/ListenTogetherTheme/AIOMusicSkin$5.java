@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
 import android.os.Handler;
-import bdpd;
-import bhca;
+import behz;
+import bicm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class AIOMusicSkin$5
   implements Runnable
 {
-  public AIOMusicSkin$5(bdpd parambdpd) {}
+  public AIOMusicSkin$5(behz parambehz) {}
   
   public void run()
   {
@@ -19,14 +19,14 @@ public class AIOMusicSkin$5
     boolean bool2;
     if (this.this$0.c())
     {
-      bool2 = bdpd.a(bdpd.b(this.this$0));
+      bool2 = behz.a(behz.b(this.this$0));
       bool1 = bool2;
       if (!bool2)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("AIOMusicSkin", 2, "download themeId:" + bdpd.b(this.this$0));
+          QLog.i("AIOMusicSkin", 2, "download themeId:" + behz.b(this.this$0));
         }
-        bhca.a.download(null, bdpd.b(this.this$0), bdpd.a(this.this$0), false);
+        bicm.a.download(null, behz.b(this.this$0), behz.a(this.this$0), false);
       }
     }
     for (boolean bool1 = bool2;; bool1 = false)

@@ -1,10 +1,25 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
 
-public abstract interface aohj
+public final class aohj
+  implements Parcelable.Creator<ShieldOperationItem>
 {
-  public abstract void a();
+  public ShieldOperationItem a(Parcel paramParcel)
+  {
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    localShieldOperationItem.d = paramParcel.readInt();
+    return localShieldOperationItem;
+  }
   
-  public abstract void a(List<aohd> paramList);
+  public ShieldOperationItem[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

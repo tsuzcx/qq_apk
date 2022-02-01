@@ -22,8 +22,8 @@ public final class MobileQQActivityLifeCycle
   private static final int MSG_FORE = 1;
   public static final String TAG = "MobileQQLife";
   private Context mContext;
-  public int mCountActivity;
-  public int mCountResume;
+  public int mCountActivity = 0;
+  public int mCountResume = 0;
   private Handler mHandler;
   private String mProcessName;
   

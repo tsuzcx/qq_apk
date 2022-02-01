@@ -1,92 +1,66 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.TagUserItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommend;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class ynp
-  implements bkhw
+public class ynp
+  extends ynv<HotRecommendFeedItem>
 {
-  ynp(ynm paramynm, bkho parambkho, int paramInt, yjy paramyjy) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ynp(@NonNull HotRecommendFeedItem paramHotRecommendFeedItem)
   {
-    this.jdField_a_of_type_Bkho.e();
-    switch (paramInt)
+    super(paramHotRecommendFeedItem);
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    Object localObject1 = (qqstory_struct.MultiRecommend)paramStoryFeed.multi_recommend_feed.get();
+    ((HotRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.MultiRecommend)localObject1);
+    ((HotRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    paramStoryFeed = (wtt)wth.a(2);
+    ArrayList localArrayList = new ArrayList();
+    localObject1 = ((qqstory_struct.MultiRecommend)localObject1).recommend_feed.get().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
+      Object localObject2 = (qqstory_struct.MultiRecommendItem)((Iterator)localObject1).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("HotRecommendHomeFeed", (qqstory_struct.MultiRecommendItem)localObject2);
+      localArrayList.add(localStoryVideoItem);
+      QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+      localQQUserUIItem.convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
+      localObject2 = paramStoryFeed.a(localQQUserUIItem);
+      localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
+      localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject2).getDisplayName();
     }
-    Object localObject2;
-    do
+    c(localArrayList, true);
+    return !localArrayList.isEmpty();
+  }
+  
+  public void b()
+  {
+    super.b();
+    wtt localwtt = (wtt)wth.a(2);
+    if (!this.c.isEmpty())
     {
-      do
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
       {
-        return;
-        ynm.b(this.jdField_a_of_type_Ynm, this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Yjy.a().type != 3) {
-          break;
-        }
-      } while (!(this.jdField_a_of_type_Yjy.a().getOwner() instanceof QQUserUIItem));
-      paramView = ((QQUserUIItem)this.jdField_a_of_type_Yjy.a().getOwner()).qq;
-      localObject1 = new StringBuilder();
-      localObject2 = this.jdField_a_of_type_Ynm.a(this.jdField_a_of_type_Int);
-      if (localObject2 != null)
-      {
-        localObject2 = (VideoListLayout)((ynb)localObject2).a(2131374477);
-        if (localObject2 != null)
-        {
-          localObject2 = ((VideoListLayout)localObject2).a();
-          if (localObject2 != null)
-          {
-            paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
-            while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
-            {
-              List localList = this.jdField_a_of_type_Yjy.d();
-              if ((paramInt >= 0) && (paramInt < localList.size()))
-              {
-                ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
-                if (paramInt < ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition()) {
-                  ((StringBuilder)localObject1).append(",");
-                }
-              }
-              paramInt += 1;
-            }
-          }
-        }
-      }
-      yqu.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
-      return;
-    } while ((this.jdField_a_of_type_Yjy.a().type != 6) || (!(this.jdField_a_of_type_Yjy.a().getOwner() instanceof TagUserItem)));
-    long l = ((TagUserItem)this.jdField_a_of_type_Yjy.a().getOwner()).tagId;
-    paramView = new StringBuilder();
-    Object localObject1 = this.jdField_a_of_type_Ynm.a(this.jdField_a_of_type_Int);
-    if (localObject1 != null)
-    {
-      localObject1 = (VideoListLayout)((ynb)localObject1).a(2131374477);
-      if (localObject1 != null)
-      {
-        localObject1 = ((VideoListLayout)localObject1).a();
-        if (localObject1 != null)
-        {
-          paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
-          while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
-          {
-            localObject2 = this.jdField_a_of_type_Yjy.d();
-            if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
-            {
-              paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);
-              if (paramInt < ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition()) {
-                paramView.append(",");
-              }
-            }
-            paramInt += 1;
-          }
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
+        if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
+          localwtt.b(localStoryVideoItem.mOwnerUid);
         }
       }
     }
-    yqu.c("video_nenegative", "close_newsrecommend", 0, 0, new String[] { "", String.valueOf(l), "", paramView.toString() });
   }
 }
 

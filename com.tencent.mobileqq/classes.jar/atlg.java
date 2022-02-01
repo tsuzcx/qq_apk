@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
-class atlg
-  implements atve
+public class atlg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  atlg(atlf paramatlf) {}
+  public atlg(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    bcst.b(null, "dc00898", "", "", "0X800AEE3", "0X800AEE3", 0, 0, "", "", "", "");
-    LinkByWeiyunFragment.a(this.a.jdField_a_of_type_AndroidAppActivity, null, this.a.jdField_a_of_type_JavaLangString, false);
+    this.a.p();
   }
-  
-  public void b() {}
 }
 
 

@@ -1,43 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bphf
-  extends JobSegment<Bitmap, Bitmap>
+  implements View.OnTouchListener
 {
-  public int a;
+  public bphf(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, GestureDetector paramGestureDetector) {}
   
-  public bphf()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = 10;
-  }
-  
-  public bphf(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+      AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).toggleAEKit(true);
     }
-    bgsn.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    yqp.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    return false;
   }
 }
 

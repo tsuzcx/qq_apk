@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import qqcircle.QQCircleFeedBase.StImageBusiData;
-import qqcircle.QQCircleFeedBase.StSimulateData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
 
 public class wac
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public wac(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter, QQCircleFeedBase.StImageBusiData paramStImageBusiData) {}
+  public wac(QCircleFollowTagView paramQCircleFollowTagView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgmp localbgmp = bgng.a(QQStoryContext.a(), paramView.getContext(), this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.simulate_schema.get());
-    if (localbgmp != null) {
-      localbgmp.a();
+    this.a.a(false);
+    if (QCircleFollowTagView.a(this.a) != null) {
+      QCircleFollowTagView.a(this.a).a();
     }
-    vrc.a(86, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.b());
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

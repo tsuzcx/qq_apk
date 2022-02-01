@@ -1,156 +1,96 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.38.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ange
-  implements angp
 {
-  public ange(ApolloPanel paramApolloPanel) {}
+  private anga jdField_a_of_type_Anga;
+  private angj jdField_a_of_type_Angj;
+  private CopyOnWriteArrayList<anfs> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   
-  public angy a(int paramInt)
+  public ange(anga paramanga, angj paramangj)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Angj = paramangj;
+    this.jdField_a_of_type_Anga = paramanga;
+  }
+  
+  public anfs a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      return new aneh(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    if (amhd.c("gamePanelSwitch") != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "loadPanel gameSwitch is 0 return null");
+      anfs localanfs = (anfs)localIterator.next();
+      if (localanfs.b() == paramInt) {
+        return localanfs;
       }
+    }
+    return null;
+  }
+  
+  public anfs a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Anga == null) {
       return null;
     }
-    return new anet(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    long l1 = System.currentTimeMillis();
+    Object localObject = a(paramInt1);
+    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    if (localObject != null)
+    {
+      if (bool)
+      {
+        QLog.w("cmshow_scripted_SpriteCreator", 1, "createScript init load but has last script");
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      }
+    }
+    else {
+      switch (paramInt1)
+      {
+      }
+    }
+    for (localObject = new anfy(paramInt1, paramInt2, this.jdField_a_of_type_Anga); (localObject != null) && (((anfs)localObject).a()); localObject = new anfr(paramInt1, this.jdField_a_of_type_Anga))
+    {
+      ((anfs)localObject).d();
+      ((anfs)localObject).a(this.jdField_a_of_type_Angj);
+      ((anfs)localObject).c();
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject);
+      long l2 = System.currentTimeMillis();
+      QLog.i("cmshow_scripted_SpriteCreator", 1, "create script, bid:" + paramInt1 + ",cost:" + (l2 - l1) + ",threadId:" + Thread.currentThread().getId() + ",init:" + bool);
+      return localObject;
+      return localObject;
+    }
   }
   
   public void a()
   {
-    ApolloPanel.a(this.a).post(new ApolloPanel.38.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
-    if (paramInt < 0) {
-      localEditor.remove("sp_key_apollo_current_page_index_3d");
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Anga == null) {}
+    anfs localanfs;
+    do
     {
-      localEditor.apply();
       return;
-      localEditor.putString("sp_key_apollo_current_page_index_3d", String.valueOf(paramInt));
-    }
-  }
-  
-  public void a(List<angy> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean)
-  {
-    int i = 0;
-    int m = 0;
-    while (i < paramList.size())
-    {
-      m += ((angy)paramList.get(i)).a();
-      i += 1;
-    }
-    i = -1;
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-    if (((SharedPreferences)localObject).contains("sp_key_apollo_current_page_index_3d"))
-    {
-      localObject = ((SharedPreferences)localObject).getString("sp_key_apollo_current_page_index_3d", null);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    for (;;)
-    {
-      try
+      if (this.jdField_a_of_type_Anga.a() == null)
       {
-        j = Integer.parseInt((String)localObject);
-        if (j >= m) {
-          continue;
-        }
-      }
-      catch (Exception localException1)
-      {
-        int k;
-        int n;
-        j = -1;
-        i = 0;
-        QLog.e("ApolloPanel", 1, "parse previousSavedPagerIndexStr error", localException1);
-        continue;
-        k += 1;
-        continue;
-        j = 0;
-        continue;
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] from previous saved for 3d, pagerIndex=", Integer.valueOf(j) });
-        }
-        i = j;
-        j = 1;
-        k = j;
-        j = i;
-        i = k;
-        if (i != 0) {
-          continue;
-        }
-        n = paramList1.size();
-        k = 0;
-        if (k >= n) {
-          continue;
-        }
-        localObject = (ApolloActionPackage)paramList1.get(k);
-        if ((localObject == null) || (((ApolloActionPackage)localObject).packageId != 300)) {
-          continue;
-        }
-      }
-      catch (Exception localException2)
-      {
-        i = 1;
-        continue;
-        k = i;
-        i = j;
-        j = k;
-        continue;
-        k = 0;
-        continue;
-      }
-      if (k < paramList.size())
-      {
-        i = ApolloPanel.a(this.a, paramList, k);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] default single action, pagerIndex=", Integer.valueOf(i) });
-        }
-        j = 1;
-        if (j == 0) {
-          i = 1;
-        }
-        if (i < m)
-        {
-          ApolloPanel.jdField_a_of_type_Int = i;
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
-          }
-        }
+        QLog.w("cmshow_scripted_SpriteCreator", 1, "[loadBasicScript], fail. surfaceView is null.");
         return;
       }
-      i = 0;
-      int j = -1;
-    }
+      localanfs = a(0, -1);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    } while ((localanfs == null) || (!(localanfs instanceof anfr)) || ((anfr)localanfs != null));
   }
   
-  public boolean a(int paramInt)
+  public void b()
   {
-    return (paramInt >= 100) && (paramInt != 400);
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((anfs)localIterator.next()).g();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 

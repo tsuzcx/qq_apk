@@ -1,53 +1,35 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 public class afcl
-  extends BaseAdapter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private afcl(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public afcl(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public int getCount()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return SearchFriendListActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
-      return null;
-    }
-    return SearchFriendListActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    boolean bool = true;
+    if (!bhnv.g(this.a))
     {
-      paramView = this.a.getLayoutInflater().inflate(2131562826, paramViewGroup, false);
-      afcm localafcm = new afcm();
-      localafcm.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367857));
-      localafcm.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371719));
-      localafcm.b = ((TextView)paramView.findViewById(2131365287));
-      paramView.setTag(localafcm);
-      paramView.setOnClickListener(this.a);
+      QQToast.a(BaseApplication.getContext(), 1, 2131694009, 0).b(this.a.getTitleBarHeight());
+      FormSwitchItem localFormSwitchItem = this.a.j;
+      if (!paramBoolean) {
+        localFormSwitchItem.setChecked(bool);
+      }
     }
     for (;;)
     {
-      this.a.a(paramView, paramInt);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool = false;
+      break;
+      ((anum)this.a.app.a(2)).g(paramBoolean);
     }
   }
 }

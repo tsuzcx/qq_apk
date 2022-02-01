@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class qsi
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule;", "", "()V", "TAG", "", "rowkey", "currentContentTaskRowkey", "getCurrentContentTaskRowkey", "()Ljava/lang/String;", "setCurrentContentTaskRowkey", "(Ljava/lang/String;)V", "taskTimeInMs", "", "currentContentTaskTimeInMs", "getCurrentContentTaskTimeInMs", "()I", "setCurrentContentTaskTimeInMs", "(I)V", "type", "currentContentType", "getCurrentContentType", "setCurrentContentType", "curTaskTime", "globalCurrentTaskTimeInMs", "getGlobalCurrentTaskTimeInMs", "setGlobalCurrentTaskTimeInMs", "globalTotalTaskTimeInMs", "getGlobalTotalTaskTimeInMs", "isHighestRedPacketAuthorityOn", "", "()Z", "isNowInKanDianTab", "lastTaskContentRowkey", "getLastTaskContentRowkey", "lastTaskTimeForContentInMs", "getLastTaskTimeForContentInMs", "maxTaskTimePerContentInMs", "getMaxTaskTimePerContentInMs", "rijAidlInterfaceForRedPacket", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket;", "getRijAidlInterfaceForRedPacket", "()Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket;", "taskTimePerRoundInMs", "getTaskTimePerRoundInMs", "totalRound", "getTotalRound", "canDoTaskThisTime", "getInstance", "getTaskTimeFromCache", "rowKey", "hasRead", "hasRedPacketPermission", "reportTaskProgress", "", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/redpacket/RIJRedPacketManager$IReportTaskProgressCallback;", "requestShouldDoTaskTiming", "Lcom/tencent/biz/pubaccount/readinjoy/redpacket/RIJRedPacketManager$IShouldDoTaskTimingCallback;", "saveTaskTimeToCache", "setCanDoTaskThisTime", "canDoTask", "nextRequestCanDoTaskTs", "", "setLastTaskTimeForContent", "setMaxTaskTimePerContent", "maxTaskTimeInMs", "setRead", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qsi
 {
-  qsi(qsh paramqsh) {}
-  
-  public void onClick(View paramView)
-  {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public static final qsi a = new qsi();
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bhsg;
+import bitb;
 
 class WebSoService$4
   implements Runnable
@@ -11,7 +11,7 @@ class WebSoService$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = bhsg.d(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = bitb.d(this.jdField_a_of_type_JavaLangString);
     if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString)) {
       return;
     }

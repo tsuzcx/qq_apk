@@ -1,17 +1,24 @@
-final class atvs
-  implements bhhd
+public abstract interface atvs
 {
-  atvs(atve paramatve) {}
+  public abstract int a();
   
-  public void callback(int paramInt)
-  {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.a.a();
-      return;
-    }
-    this.a.b();
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(atvi paramatvi);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

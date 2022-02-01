@@ -1,118 +1,46 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class anxq
-  extends anii
 {
-  private ArrayList<anxr> a = new ArrayList();
-  
-  public anxq(QQAppInterface paramQQAppInterface)
+  public static String a(byte[] paramArrayOfByte)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((anxr)localIterator.next()).a();
-    }
-  }
-  
-  public void a(anxr paramanxr)
-  {
-    if (paramanxr == null) {}
-    while (this.a.contains(paramanxr)) {
-      return;
-    }
-    this.a.add(paramanxr);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.app == null) {
-      paramString = new UniPayRequest(this.mApp.getCurrentAccountUin(), "android" + paramString);
-    }
-    for (ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "VipSTCheckServer.UinPay");; localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VipSTCheckServer.UinPay"))
+    if (paramArrayOfByte == null)
     {
-      localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
-      super.send(localToServiceMsg);
-      return;
-      paramString = new UniPayRequest(this.app.getCurrentAccountUin(), "android" + paramString);
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "Data is null");
+      return "";
     }
-  }
-  
-  public void b(anxr paramanxr)
-  {
-    if ((paramanxr != null) && (this.a.contains(paramanxr))) {
-      this.a.remove(paramanxr);
-    }
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
-    do
+    oidb_0xd55.RspBody localRspBody = new oidb_0xd55.RspBody();
+    try
     {
-      do
-      {
-        return;
-        str1 = paramToServiceMsg.getServiceCmd();
-      } while (TextUtils.isEmpty(str1));
-      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
-        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      localRspBody.mergeFrom(paramArrayOfByte);
+      if (localRspBody.wording.has()) {
+        return localRspBody.wording.get();
       }
-    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
-    paramFromServiceMsg = (UniPayResponse)paramObject;
-    paramToServiceMsg = paramFromServiceMsg.getSUin();
-    int i = paramFromServiceMsg.getIShowOpen();
-    int j = paramFromServiceMsg.getIUniPayType();
-    new HashMap();
-    Object localObject = paramFromServiceMsg.getMapResponse();
-    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
-    paramObject = (String)((Map)localObject).get("net_mobile_club");
-    String str1 = (String)((Map)localObject).get("open_month");
-    String str2 = (String)((Map)localObject).get("platform");
-    String str3 = (String)((Map)localObject).get("ret");
-    String str4 = (String)((Map)localObject).get("show_open");
-    String str5 = (String)((Map)localObject).get("uin");
-    localObject = (String)((Map)localObject).get("uin_pay_type");
-    if (QLog.isColorLevel()) {
-      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+      return "";
     }
-    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
-    localEditor.putString("sUin", paramToServiceMsg);
-    localEditor.putInt("isShowOpen", i);
-    localEditor.putInt("iUinpPayType", j);
-    localEditor.putString("cur_st", paramFromServiceMsg);
-    localEditor.putString("net_mobile_club", paramObject);
-    localEditor.putString("open_month", str1);
-    localEditor.putString("platform", str2);
-    localEditor.putString("ret", str3);
-    localEditor.putString("show_open", str4);
-    localEditor.putString("uin", str5);
-    localEditor.putString("uin_pay_type", (String)localObject);
-    localEditor.commit();
-    a();
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "oidb_0xd55_RspBody merge fail:" + paramArrayOfByte.getMessage());
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, null, paramString3, null, 1069);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, paramContext.getMessage());
+    }
   }
 }
 

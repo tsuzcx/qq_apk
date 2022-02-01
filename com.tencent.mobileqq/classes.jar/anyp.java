@@ -1,10 +1,20 @@
-import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
 
-public abstract interface anyp
+public class anyp
+  implements anyr
 {
-  public abstract void a(int paramInt);
+  public anyp(FriendListHandler paramFriendListHandler) {}
   
-  public abstract void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck);
+  public String a(int paramInt1, int paramInt2, FriendListHandler.QQHeadDetails paramQQHeadDetails)
+  {
+    return "stranger_" + paramInt2 + "_" + paramQQHeadDetails.a;
+  }
+  
+  public String b(int paramInt1, int paramInt2, FriendListHandler.QQHeadDetails paramQQHeadDetails)
+  {
+    return "stranger_" + paramInt2 + "_" + paramQQHeadDetails.a;
+  }
 }
 
 

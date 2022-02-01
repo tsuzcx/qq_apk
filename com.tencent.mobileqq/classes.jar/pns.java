@@ -1,131 +1,140 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.util.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.2;
+import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.3;
+import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.oidb_0xb7e.DiandianTopConfig;
+import tencent.im.oidb.oidb_0xb7e.ReqBody;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
 public class pns
-  extends pnq
-  implements oqs
 {
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
-  private osa jdField_a_of_type_Osa;
-  private boolean jdField_a_of_type_Boolean;
+  public static final Object a;
+  public static final String a;
+  private static pns a;
   
-  public pns(@NotNull pnr parampnr, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  static
   {
-    super(parampnr, "RIJADSuperMaskPopupStep");
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
+    jdField_a_of_type_JavaLangString = pns.class.getName();
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  private void i()
+  public static pns a()
   {
-    if ((oqr.a().a() == 1) && (oqr.e()))
+    if (jdField_a_of_type_Pns == null) {}
+    try
     {
-      if (this.jdField_a_of_type_Osa == null) {
-        this.jdField_a_of_type_Osa = new osa();
+      if (jdField_a_of_type_Pns == null) {
+        jdField_a_of_type_Pns = new pns();
       }
-      Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      this.jdField_a_of_type_Osa.a(localActivity, oqr.a().a());
-      a(true);
-      return;
+      return jdField_a_of_type_Pns;
     }
-    a(false);
+    finally {}
+  }
+  
+  public static void a(long paramLong)
+  {
+    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
+    localEditor.putLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), paramLong);
+    localEditor.commit();
+  }
+  
+  private void a(oidb_0xb7e.RspBody paramRspBody)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "fabricateModel");
+    }
+    if (paramRspBody == null) {
+      pfd.a().a(false, null);
+    }
+    do
+    {
+      return;
+      if (!paramRspBody.rpt_top_item.has()) {
+        break;
+      }
+      paramRspBody = paramRspBody.rpt_top_item.get();
+    } while ((paramRspBody == null) || (paramRspBody.size() <= 0));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramRspBody.size())
+    {
+      oidb_0xb7e.DiandianTopConfig localDiandianTopConfig = (oidb_0xb7e.DiandianTopConfig)paramRspBody.get(i);
+      DiandianTopConfig localDiandianTopConfig1 = new DiandianTopConfig();
+      if (localDiandianTopConfig.bytes_jump_url.has()) {
+        localDiandianTopConfig1.jumpUrl = localDiandianTopConfig.bytes_jump_url.get().toStringUtf8();
+      }
+      if (localDiandianTopConfig.bytes_title.has()) {
+        localDiandianTopConfig1.title = localDiandianTopConfig.bytes_title.get().toStringUtf8();
+      }
+      if (localDiandianTopConfig.bytes_sub_title.has()) {
+        localDiandianTopConfig1.subTitle = localDiandianTopConfig.bytes_sub_title.get().toStringUtf8();
+      }
+      if (localDiandianTopConfig.bytes_sub_title_color.has()) {
+        localDiandianTopConfig1.subTitleColor = localDiandianTopConfig.bytes_sub_title_color.get().toStringUtf8();
+      }
+      if (localDiandianTopConfig.bytes_pic_url.has()) {
+        localDiandianTopConfig1.picUrl = localDiandianTopConfig.bytes_pic_url.get().toStringUtf8();
+      }
+      if (localDiandianTopConfig.uint32_type.has()) {
+        localDiandianTopConfig1.type = localDiandianTopConfig.uint32_type.get();
+      }
+      if (localDiandianTopConfig.uint32_topic_id.has()) {}
+      for (localDiandianTopConfig1.topicId = localDiandianTopConfig.uint32_topic_id.get();; localDiandianTopConfig1.topicId = 0)
+      {
+        localArrayList.add(localDiandianTopConfig1);
+        i += 1;
+        break;
+      }
+    }
+    pfd.a().a(true, localArrayList);
+    return;
+    pfd.a().a(true, null);
+  }
+  
+  private void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "saveDiandianTopConfig");
+    }
+    ThreadManager.post(new DiandianTopConfigManager.3(this, paramArrayOfByte, paramLong), 5, null, true);
+  }
+  
+  public static boolean a()
+  {
+    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    long l = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), 0L);
+    return System.currentTimeMillis() - l >= 43200000L;
   }
   
   public void a()
   {
-    super.a();
-    oqr.a().a(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    pnr localpnr = a();
-    if (localpnr != null) {}
-    for (boolean bool = localpnr.a();; bool = false)
-    {
-      oqh.a("ReadInJoySuperMaskAd", "refreshNum is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " autoRefresh is " + pmy.a().a.jdField_a_of_type_Boolean + " showStatus is " + oqr.a().a() + " automatorFinished is " + bool);
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(1) == 0) && (pmy.a().a.jdField_a_of_type_Boolean) && (!bool))
-      {
-        if ((oqr.a().c()) && (oqr.a().a() == 1)) {
-          i();
-        }
-      }
-      else {
-        return;
-      }
-      a(false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "loadDiandianTopConfig");
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (oqr.a().c()) {
-      if (paramBoolean) {
-        break label33;
-      }
-    }
-    label33:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Boolean) {
-        a(false);
-      }
-      return;
-    }
+    ThreadManager.post(new DiandianTopConfigManager.2(this), 5, null, true);
   }
   
   public void a(boolean paramBoolean)
   {
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public void b()
-  {
-    super.b();
-    if ((this.jdField_a_of_type_Osa != null) && (this.jdField_a_of_type_Osa.a())) {
-      this.jdField_a_of_type_Osa.a();
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "requestDiandianTopConfig");
     }
-    oqr.a().d();
+    oidb_0xb7e.ReqBody localReqBody = new oidb_0xb7e.ReqBody();
+    nkm.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new pnt(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
   }
-  
-  public boolean b()
-  {
-    return super.b();
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public void d()
-  {
-    super.d();
-  }
-  
-  public void e()
-  {
-    super.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-  }
-  
-  protected void g() {}
-  
-  protected void h() {}
 }
 
 

@@ -1,18 +1,52 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ae.SessionWrap;
+import com.tencent.component.network.module.base.inter.Log;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bnes
-  implements Parcelable.Creator<SessionWrap>
+public class bnes
+  implements Log
 {
-  public SessionWrap a(Parcel paramParcel)
+  public void d(String paramString1, String paramString2)
   {
-    return new SessionWrap(paramParcel);
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public SessionWrap[] a(int paramInt)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return new SessionWrap[0];
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 

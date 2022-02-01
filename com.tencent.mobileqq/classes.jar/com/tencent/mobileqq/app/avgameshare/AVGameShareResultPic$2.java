@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.avgameshare;
 
 import android.graphics.Bitmap;
-import aobb;
-import bcst;
-import biau;
+import aonm;
+import bdll;
+import bjbs;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -11,30 +11,31 @@ import java.util.Map;
 public class AVGameShareResultPic$2
   implements Runnable
 {
-  public AVGameShareResultPic$2(aobb paramaobb, Map paramMap, int paramInt) {}
+  public AVGameShareResultPic$2(aonm paramaonm, Map paramMap, int paramInt) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.isShowing())) {
-      this.this$0.a.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bjbs != null) && (this.this$0.jdField_a_of_type_Bjbs.isShowing())) {
+      this.this$0.jdField_a_of_type_Bjbs.dismiss();
     }
+    this.this$0.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     Object localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str = aobb.a(this.this$0);
+    String str = aonm.a(this.this$0);
     int i;
     if (this.jdField_a_of_type_Int == 9)
     {
       i = 0;
-      localWXShareHelper.a(str, (Bitmap)localObject, i, false);
+      localWXShareHelper.a(str, (Bitmap)localObject, i, false, this.this$0.jdField_a_of_type_JavaLangString);
       QLog.d("AVGameShareResultPic", 1, "shareToWeChat success");
       if (this.jdField_a_of_type_Int != 9) {
-        break label130;
+        break label150;
       }
     }
-    label130:
+    label150:
     for (localObject = "3";; localObject = "4")
     {
-      bcst.b(null, "dc00898", "", "", "0X800B064", "0X800B064", 0, 0, (String)localObject, "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X800B064", "0X800B064", 0, 0, (String)localObject, "", "", "");
       return;
       i = 1;
       break;

@@ -1,20 +1,16 @@
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
-
-public final class whj
+public class whj
 {
-  protected int a = 0;
+  public int a;
+  public String a;
+  private int b;
   
-  public PreloadQueue a()
+  public String toString()
   {
-    PreloadQueue localPreloadQueue = new PreloadQueue();
-    PreloadQueue.access$002(localPreloadQueue, this.a);
-    return localPreloadQueue;
-  }
-  
-  public whj a(int paramInt)
-  {
-    this.a = paramInt;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mStr: ").append(this.jdField_a_of_type_JavaLangString).append(" ");
+    localStringBuilder.append("mLevel: ").append(this.jdField_a_of_type_Int).append(" ");
+    localStringBuilder.append("mPicCount: ").append(this.b).append(" ");
+    return localStringBuilder.toString();
   }
 }
 

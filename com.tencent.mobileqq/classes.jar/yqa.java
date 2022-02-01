@@ -1,18 +1,33 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-
 public class yqa
-  implements bklc
+  extends ypy
 {
-  public yqa(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public Object a;
+  public String a;
   
-  public void a(int paramInt, boolean paramBoolean)
+  public yqa(Object paramObject)
   {
-    if (StoryHomeHorizontalListView.a(this.a) != null) {
-      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
-    }
-    yqp.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
-    this.a.a();
+    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

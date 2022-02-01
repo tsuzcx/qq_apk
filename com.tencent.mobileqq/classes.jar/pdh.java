@@ -1,31 +1,106 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdh
-  extends niv
+public abstract class pdh<K, D>
+  extends RecyclerView.Adapter<blsy>
 {
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  protected int a;
+  protected Context a;
+  protected VafContext a;
+  protected RecyclerViewWithHeaderFooter a;
+  protected List<D> a;
+  protected Map<Integer, String> a;
+  protected ConcurrentHashMap<K, D> a;
+  
+  public pdh(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      this.a.a(paramArrayOfByte);
-      return;
-    }
-    this.a.a(paramInt, "Empty error message.");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
+    oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a());
+    this.jdField_a_of_type_AndroidContentContext = paramActivity;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  public VafContext a()
   {
-    paramBundle = this.a;
-    if (paramString != null) {}
-    for (;;)
-    {
-      paramBundle.a(paramInt, paramString);
-      return true;
-      paramString = "Empty error message.";
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  }
+  
+  protected D a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
+  }
+  
+  protected String a()
+  {
+    return "dynamic_feeds_" + this.jdField_a_of_type_Int;
+  }
+  
+  public ConcurrentHashMap<K, D> a()
+  {
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
+      localConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    }
+    return localConcurrentHashMap;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+  }
+  
+  public void a(K paramK, D paramD)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramK, paramD);
+    }
+  }
+  
+  public void a(List<D> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void b(List<D> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyItemRangeInserted(i, paramList.size());
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
 }
 

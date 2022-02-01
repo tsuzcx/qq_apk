@@ -1,30 +1,21 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class npd
-  implements bkhw
+  extends Handler
 {
-  public npd(EqqAccountDetailActivity paramEqqAccountDetailActivity, bkho parambkho, String paramString) {}
+  public npd(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bkho.dismiss();
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
-      nmp.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
+    }
+    while (paramMessage.what != 291) {
       return;
     }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.open.agent.datamodel;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bioz;
+import bjpy;
 
 public class Friend
   implements Parcelable
 {
-  public static final Parcelable.Creator<Friend> CREATOR = new bioz();
+  public static final Parcelable.Creator<Friend> CREATOR = new bjpy();
   public int a;
   public String a;
   public int b;

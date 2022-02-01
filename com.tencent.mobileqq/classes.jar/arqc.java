@@ -1,37 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arqc
-  extends anli
+public class arqc
 {
-  arqc(arpz paramarpz) {}
+  private Map<String, List<arqd>> a = new HashMap();
   
-  public void a(boolean paramBoolean)
+  public static arqc a(araj[] paramArrayOfaraj)
   {
-    arpz.a(this.a).clear();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.e();
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+      return null;
+    }
+    localarqc = new arqc();
+    try
+    {
+      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].a);
+      Iterator localIterator = paramArrayOfaraj.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONArray localJSONArray = paramArrayOfaraj.getJSONArray(str);
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(arqd.a(localJSONArray.getJSONObject(i)));
+          i += 1;
+        }
+        localarqc.a.put(str, localArrayList);
+      }
+      return localarqc;
+    }
+    catch (JSONException paramArrayOfaraj)
+    {
+      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfaraj);
     }
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public Map<String, List<arqd>> a()
   {
-    if ((paramObject != null) && ((paramObject instanceof Integer)) && (arpz.a(this.a) != null)) {
-      arpz.a(this.a).obtainMessage(208, paramObject).sendToTarget();
-    }
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.e();
-    }
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqc
  * JD-Core Version:    0.7.0.1
  */

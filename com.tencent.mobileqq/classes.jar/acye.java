@@ -1,27 +1,42 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
+import com.tencent.smtt.sdk.WebView;
 
 public class acye
-  extends aczg
+  extends acyg
 {
-  public int a()
+  public acye(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    return 1000;
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    new bbzc().d(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
-    return true;
+    super.onPageFinished(paramWebView, paramString);
+    acvc.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    return (paramElem.common_elem.has()) && (20 == paramElem.common_elem.uint32_service_type.get());
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    acvc.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acvc.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
+    GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 

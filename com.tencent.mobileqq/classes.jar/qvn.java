@@ -1,47 +1,33 @@
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.qphone.base.util.QLog;
 
 public class qvn
+  implements PTSComposer.IPTSUpdateDataListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<svs> jdField_b_of_type_JavaUtilList = new ArrayList();
+  public qvn(BaseArticleInfo paramBaseArticleInfo) {}
   
-  private qvn(qvo paramqvo)
+  public void onDataUpdated(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = qvo.a(paramqvo);
-    this.jdField_a_of_type_JavaLangString = qvo.a(paramqvo);
-    this.jdField_b_of_type_JavaLangString = qvo.b(paramqvo);
-    this.jdField_b_of_type_JavaUtilList = qvo.b(paramqvo);
-    this.jdField_a_of_type_Int = qvo.a(paramqvo);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<svs> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public List<URL> b()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    QLog.i("Q.readinjoy.BaseArticleInfo", 1, "[onDataUpdated] jsonData = " + paramString);
+    PTSItemData localPTSItemData = this.a.ptsItemData;
+    if (localPTSItemData != null)
+    {
+      this.a.ptsItemData = new PTSItemData.Builder().withPageName(localPTSItemData.getPageName()).withItemID(localPTSItemData.getItemID()).withJsonData(paramString).withFrameTreeJson(localPTSItemData.getFrameTreeJson()).build();
+      this.a.ptsItemDataBytes = qhx.a(this.a.ptsItemData);
+      paramString = ozs.a();
+      if (paramString != null)
+      {
+        paramString = (pfg)paramString.getManager(163);
+        if ((paramString != null) && ((this.a instanceof ArticleInfo))) {
+          paramString.a().b((ArticleInfo)this.a);
+        }
+      }
+    }
   }
 }
 

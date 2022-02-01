@@ -1,12 +1,8 @@
-class blot
-  implements blno
+public abstract interface blot
 {
-  blot(blos paramblos) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a()
-  {
-    blos.a(this.a);
-  }
+  public abstract void b();
 }
 
 

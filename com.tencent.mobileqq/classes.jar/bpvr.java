@@ -1,59 +1,40 @@
-import android.graphics.Color;
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 
-class bpvr
+final class bpvr
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  final View jdField_a_of_type_AndroidViewView;
   
-  public bpvr(View paramView)
+  bpvr(View paramView, View.OnClickListener paramOnClickListener)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378256));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378279));
-    this.b = ((TextView)paramView.findViewById(2131378247));
-    this.c = ((TextView)paramView.findViewById(2131378246));
-    this.d = ((TextView)paramView.findViewById(2131378284));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  private void a(TextView paramTextView, String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramTextView.setVisibility(8);
-      return;
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
     }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
   }
   
-  public void a(zhp paramzhp1, zhp paramzhp2)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramzhp1.jdField_a_of_type_Zhq.jdField_a_of_type_JavaLangString);
-    a(this.b, paramzhp1.jdField_a_of_type_Zhq.b);
-    if (paramzhp1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(this.d, paramzhp1.jdField_a_of_type_JavaLangString);
-      if (!paramzhp1.equals(paramzhp2)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846831);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#12B7F5"));
-      return;
-      a(this.c, paramzhp1.jdField_a_of_type_Int + anni.a(2131709831));
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846835);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
+    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
   }
 }
 

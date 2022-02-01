@@ -1,36 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class aaog
-  implements aapi
+public class aaog
+  implements aarb
 {
-  aaog(aaod paramaaod, String paramString) {}
+  public aaog(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("retCode", 0);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localJSONObject.put("errMsg", paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          localJSONObject.put("file", paramString1);
-        }
-        this.jdField_a_of_type_Aaod.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e(this.jdField_a_of_type_Aaod.TAG, 1, paramString2, paramString1);
-      }
-      localJSONObject.put("retCode", 1);
-    }
+    abbe.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
   }
 }
 

@@ -1,7 +1,10 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaae;
+import aaaf;
+import aaai;
+import aabg;
 import android.content.Context;
-import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -9,31 +12,34 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import anni;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.File;
-import uwz;
-import uxb;
-import vyr;
-import zwe;
-import zwj;
-import zxl;
+import uyk;
+import wcd;
+import zzz;
 
 public class QCircleStatusView
   extends StatusView
-  implements zxl<QCircleReportBean>
+  implements aabg<QCircleReportBean>
 {
+  private static aaaf jdField_a_of_type_Aaaf = new aaaf();
   protected ImageView a;
   protected LinearLayout a;
-  private QCircleReportBean a;
+  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
   protected ImageView b;
   protected LinearLayout b;
   protected ImageView c;
   protected ImageView d;
+  
+  static
+  {
+    jdField_a_of_type_Aaaf.a(new aaai("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_fullscreen_disconnect.png", uyk.a()));
+    jdField_a_of_type_Aaaf.a();
+  }
   
   public QCircleStatusView(Context paramContext)
   {
@@ -55,24 +61,16 @@ public class QCircleStatusView
     }
   }
   
-  private void f()
+  private void e()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(null);
-    }
-    for (;;)
-    {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
-      localMarginLayoutParams.topMargin = (-ImmersiveUtils.a(30.0F));
-      setLayoutParams(localMarginLayoutParams);
-      return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackground(null);
-    }
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
+    localMarginLayoutParams.topMargin = (-ImmersiveUtils.a(30.0F));
+    setLayoutParams(localMarginLayoutParams);
   }
   
   public int a()
   {
-    return 2131560692;
+    return 2131560709;
   }
   
   public QCircleReportBean a()
@@ -87,7 +85,7 @@ public class QCircleStatusView
   
   protected String a(String paramString)
   {
-    return zwj.a(uwz.a()).a(paramString);
+    return aaae.a(uyk.a()).a(paramString);
   }
   
   public void a()
@@ -97,18 +95,18 @@ public class QCircleStatusView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376706));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369206));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369217));
-    this.c = ((ImageView)paramView.findViewById(2131369219));
-    this.d = ((ImageView)paramView.findViewById(2131369220));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370096));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376841));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369297));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369308));
+    this.c = ((ImageView)paramView.findViewById(2131369310));
+    this.d = ((ImageView)paramView.findViewById(2131369311));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370193));
   }
   
   protected void a(ImageView paramImageView, String paramString)
   {
     String str = a(paramString);
-    if (zwj.a(uwz.a()).b(paramString)) {
+    if (aaae.a(uyk.a()).b(paramString)) {
       return;
     }
     if (new File(str).exists())
@@ -116,16 +114,12 @@ public class QCircleStatusView
       b(paramImageView, str);
       return;
     }
-    zwj.a(uwz.a()).a(paramString, new vyr(this, paramImageView));
+    aaae.a(uyk.a()).a(paramString, new wcd(this, paramImageView));
   }
   
   public void a(Object paramObject) {}
   
-  public void a(String paramString)
-  {
-    setHintImageFilePath(uxb.i + "qcircle_feed_empty.png");
-    c(paramString);
-  }
+  public void a(String paramString) {}
   
   protected int b()
   {
@@ -179,11 +173,10 @@ public class QCircleStatusView
     }
   }
   
-  public void c()
+  public void c(String paramString)
   {
-    setHintImageFilePath(uxb.i + "qcircle_feed_empty.png");
-    c(anni.a(2131697142));
-    f();
+    b(paramString);
+    e();
   }
   
   public void setReportBean(QCircleReportBean paramQCircleReportBean)

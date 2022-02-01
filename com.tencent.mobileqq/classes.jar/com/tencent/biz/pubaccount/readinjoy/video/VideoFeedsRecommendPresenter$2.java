@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sbo;
+import rsk;
 
 public class VideoFeedsRecommendPresenter$2
   implements Runnable
 {
-  public VideoFeedsRecommendPresenter$2(sbo paramsbo) {}
+  public VideoFeedsRecommendPresenter$2(rsk paramrsk) {}
   
   public void run()
   {
-    sbo.a(this.this$0);
+    rsk.a(this.this$0);
   }
 }
 

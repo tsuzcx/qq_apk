@@ -35,6 +35,7 @@ import com.tencent.qqmini.sdk.auth.parser.RemotePermissionParser;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.manager.LoginManager;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
@@ -108,8 +109,8 @@ public class PermissionSettingFragment
       for (;;)
       {
         this.mPermissionListView.setAdapter(this.adapter);
-        if (!this.authState.isOnceSubMaintain()) {
-          break label257;
+        if ((!this.authState.isOnceSubMaintain()) && (!this.authState.isSystemSubscribeMaintain())) {
+          break label267;
         }
         this.subMsgPermissionItem.setVisibility(0);
         this.subMsgPermissionItem.setOnClickListener(new PermissionSettingFragment.2(this));
@@ -119,7 +120,7 @@ public class PermissionSettingFragment
         this.mPermissionNoneTextView.setText(paramString + "未使用你任何信息");
         this.mPermissionNoneTextView.setVisibility(0);
       }
-      label257:
+      label267:
       this.subMsgPermissionItem.setVisibility(8);
       return;
       localAuthStateItem = null;

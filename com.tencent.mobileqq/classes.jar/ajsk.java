@@ -1,34 +1,46 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajsk
-  implements View.OnClickListener
+public abstract class ajsk
+  implements ajtl
 {
-  public ajsk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  protected Activity a;
   
-  public void onClick(View paramView)
+  public ajsk(Activity paramActivity)
   {
-    zkb.a(this.a.a);
-    zkb.a(this.a.a.a);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      localArrayList.add(((ajtt)this.a.a.a.get(i)).a);
-      i += 1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramActivity;
   }
+  
+  public Activity a()
+  {
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
+  
+  public void c(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      FrameHelperActivity.c(paramBoolean);
+      return;
+    }
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

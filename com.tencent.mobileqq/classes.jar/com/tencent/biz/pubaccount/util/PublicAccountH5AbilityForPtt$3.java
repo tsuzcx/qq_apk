@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.util;
 
-import tyj;
+import tyl;
 
 public class PublicAccountH5AbilityForPtt$3
   implements Runnable
 {
-  public PublicAccountH5AbilityForPtt$3(tyj paramtyj) {}
+  public PublicAccountH5AbilityForPtt$3(tyl paramtyl) {}
   
   public void run()
   {
-    tyj.a(this.this$0);
+    tyl.a(this.this$0);
   }
 }
 

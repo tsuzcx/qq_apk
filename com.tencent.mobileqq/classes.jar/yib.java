@@ -1,137 +1,61 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
 
 public class yib
+  extends zsv
 {
-  public final int a;
-  public long a;
-  public final String a;
-  public final boolean a;
-  public int b;
-  public final String b;
-  public boolean b;
-  public final String c;
+  public static final String KEY = "DetailEmptySegment";
   
-  public yib(qqstory_struct.FeedSeqInfo paramFeedSeqInfo)
+  public yib(Context paramContext)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramFeedSeqInfo.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedSeqInfo.seq.get();
-    this.jdField_b_of_type_JavaLangString = paramFeedSeqInfo.union_id.get().toStringUtf8();
-    this.c = String.valueOf(paramFeedSeqInfo.date.get());
-    if (paramFeedSeqInfo.is_playable.has()) {
-      if (paramFeedSeqInfo.is_playable.get() != 1) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      try
-      {
-        for (;;)
-        {
-          if (!TextUtils.isEmpty(this.c)) {
-            this.jdField_a_of_type_Long = yij.a().parse(this.c).getTime();
-          }
-          zkb.a(this.jdField_a_of_type_JavaLangString);
-          return;
-          bool = false;
-          break;
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      catch (Exception paramFeedSeqInfo)
-      {
-        for (;;)
-        {
-          yqp.c("Q.qqstory.home", "parse date " + this.c, paramFeedSeqInfo);
-        }
-      }
-    }
+    super(paramContext);
   }
   
-  public yib(@NonNull String paramString1, int paramInt, String paramString2, String paramString3)
+  public void T_()
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Boolean = true;
-    try
+    if (((StoryDetailListView)a()).a())
     {
-      if (!TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_Long = yij.a().parse(this.c).getTime();
-      }
-      zkb.a(paramString1);
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
-    catch (ParseException paramString2)
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {}
+    for (paramInt = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();; paramInt = 0)
     {
-      for (;;)
-      {
-        yqp.c("Q.qqstory.home", "parse date", paramString2);
-      }
+      int i = zps.e(this.jdField_a_of_type_AndroidContentContext);
+      int j = zps.a(this.jdField_a_of_type_AndroidContentContext);
+      int k = zps.d(this.jdField_a_of_type_AndroidContentContext);
+      paramyqw.a().getLayoutParams().width = j;
+      paramyqw.a().getLayoutParams().height = (k - paramInt - i);
+      yuk.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
+      return paramyqw.a();
     }
   }
   
-  public static int a(List<yib> paramList, String paramString)
+  public String a()
   {
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      if (((yib)paramList.next()).jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
+    return "DetailEmptySegment";
   }
   
-  public qqstory_struct.FeedSeqInfo a()
+  public yqw a(int paramInt, ViewGroup paramViewGroup)
   {
-    qqstory_struct.FeedSeqInfo localFeedSeqInfo = new qqstory_struct.FeedSeqInfo();
-    localFeedSeqInfo.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localFeedSeqInfo.seq.set(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    try
-    {
-      Integer localInteger1 = Integer.valueOf(yij.a().format(new Date(NetConnInfoCenter.getServerTimeMillis())));
-      localFeedSeqInfo.date.set(localInteger1.intValue());
-      return localFeedSeqInfo;
-    }
-    catch (Exception localException1)
-    {
-      yqp.b("FeedIdListSeqInfo", "exception ", localException1);
-      try
-      {
-        Integer localInteger2 = Integer.valueOf(yij.a().format(new Date()));
-        localFeedSeqInfo.date.set(localInteger2.intValue());
-        return localFeedSeqInfo;
-      }
-      catch (Exception localException2)
-      {
-        yqp.b("FeedIdListSeqInfo", "exception ", localException2);
-      }
-    }
-    return localFeedSeqInfo;
-  }
-  
-  public String toString()
-  {
-    return "FeedIdListSeqInfo{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSeq=" + this.jdField_a_of_type_Int + ", mUnionId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + '}';
+    return new yqw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561700, paramViewGroup, false));
   }
 }
 

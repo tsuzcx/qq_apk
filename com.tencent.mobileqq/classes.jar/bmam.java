@@ -1,21 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
 public class bmam
-  implements DialogInterface.OnClickListener
+  implements OnPluginInstallListener
 {
-  public bmam(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bmar parambmar) {}
+  public bmam(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public IBinder asBinder()
   {
-    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    if (this.jdField_a_of_type_Bmar != null) {
-      this.jdField_a_of_type_Bmar.a();
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
     }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
+    QQToast.a(this.a.getApplicationContext(), 2131694387, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
+    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
+    if (bool)
+    {
+      BuscardPluginInstallActivity.a(this.a);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131694387, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

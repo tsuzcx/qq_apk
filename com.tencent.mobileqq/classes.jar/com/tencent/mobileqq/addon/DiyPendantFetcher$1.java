@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.addon;
 
-import amgd;
+import amrx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -8,7 +8,7 @@ import mqq.app.AppRuntime;
 public class DiyPendantFetcher$1
   implements Runnable
 {
-  public DiyPendantFetcher$1(amgd paramamgd) {}
+  public DiyPendantFetcher$1(amrx paramamrx) {}
   
   public void run()
   {

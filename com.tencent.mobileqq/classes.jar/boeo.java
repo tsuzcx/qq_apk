@@ -1,17 +1,12 @@
-import com.tencent.tavcut.bean.TextEditorData;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
+import com.tencent.ttpic.video.AEEncoder;
 
-public class boeo
-  implements boij
+final class boeo
+  implements AECoderFactory.AEEncoderFactory
 {
-  public boeo(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void a() {}
-  
-  public void a(TextEditorData paramTextEditorData)
+  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.a(true);
-    this.a.a = paramTextEditorData;
+    return new bbkj(paramString, paramInt1, paramInt2);
   }
 }
 

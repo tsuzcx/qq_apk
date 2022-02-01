@@ -1,42 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class aojf
-  extends aojt
+public final class aojf
+  implements DialogInterface.OnClickListener
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public aojf(TroopManager paramTroopManager, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramQQAppInterface = new aoje(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "groupvideo";
-    if (paramString.contains("openroom")) {
-      paramQQAppInterface.c = "openroom";
-    }
-    for (;;)
-    {
-      paramContext = paramString.split("\\?");
-      if (paramContext.length == 2) {
-        break;
-      }
-      return paramQQAppInterface;
-      if (paramString.contains("preload")) {
-        paramQQAppInterface.c = "preload";
-      }
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
-    }
-    return paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
 }
 

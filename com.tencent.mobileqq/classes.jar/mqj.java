@@ -1,18 +1,29 @@
+import android.content.res.Resources;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.virtual.QavVirtualMenuView;
+import com.tencent.qphone.base.util.QLog;
 
-public class mqj
+class mqj
   implements View.OnTouchListener
 {
-  public mqj(QavVirtualMenuView paramQavVirtualMenuView) {}
+  mqj(mqg parammqg) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EffectSettingUi.a(QavVirtualMenuView.a(this.a), -1051L);
-    return false;
+    try
+    {
+      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
+      this.a.a(false, 3);
+      return true;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      for (;;)
+      {
+        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+      }
+    }
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.recent;
 
-import akyh;
-import akzl;
+import aljw;
+import alla;
 import android.os.Message;
 
 public class BannerManager$34$1
   implements Runnable
 {
-  public BannerManager$34$1(akzl paramakzl) {}
+  public BannerManager$34$1(alla paramalla) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Akyh.a(33, 2);
-    this.a.jdField_a_of_type_Akyh.a(33, this.a.jdField_a_of_type_AndroidOsMessage);
+    this.a.jdField_a_of_type_Aljw.a(34, 2);
+    this.a.jdField_a_of_type_Aljw.a(34, this.a.jdField_a_of_type_AndroidOsMessage);
     this.a.jdField_a_of_type_AndroidOsMessage.recycle();
   }
 }

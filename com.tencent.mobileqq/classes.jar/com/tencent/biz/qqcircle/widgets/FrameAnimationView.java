@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaae;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import uwz;
-import vur;
-import zvh;
-import zwe;
-import zwj;
+import uyk;
+import vxs;
+import zzc;
+import zzz;
 
 public class FrameAnimationView
   extends URLImageView
@@ -63,7 +63,7 @@ public class FrameAnimationView
   
   public void setAnimationFile(String paramString, int paramInt, boolean paramBoolean)
   {
-    paramString = zvh.a(paramString);
+    paramString = zzc.a(paramString);
     if ((paramString != null) && (paramString.length > 0) && (getHandler() != null)) {
       getHandler().post(new FrameAnimationView.1(this, paramString, paramInt, paramBoolean));
     }
@@ -71,7 +71,7 @@ public class FrameAnimationView
   
   public void setDownloadZipFilePath(String paramString, int paramInt, boolean paramBoolean)
   {
-    zwj.a(uwz.a()).b(paramString, new vur(this, paramInt, paramBoolean));
+    aaae.a(uyk.a()).b(paramString, new vxs(this, paramInt, paramBoolean));
   }
 }
 

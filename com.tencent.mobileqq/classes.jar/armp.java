@@ -1,44 +1,92 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.doutu.DoutuData;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class armp
-  implements URLDrawableDownListener
+public class armp
+  extends armf<QQLevelIconConfig>
 {
-  armp(armo paramarmo) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public static QQLevelIconConfig c()
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof armq)))
-    {
-      paramView = (armq)paramView;
-      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      }
-      if (this.a.a == null) {
-        this.a.a = new HashMap();
-      }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
-        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
-      }
+    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)aran.a().a(542);
+    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
+    if (localQQLevelIconConfig2 == null) {
+      localQQLevelIconConfig1 = new QQLevelIconConfig();
     }
+    return localQQLevelIconConfig1;
+  }
+  
+  @NonNull
+  public QQLevelIconConfig a()
+  {
+    return new QQLevelIconConfig();
+  }
+  
+  @NonNull
+  public QQLevelIconConfig a(araj[] paramArrayOfaraj)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLevelIconProcessor", 1, paramArrayOfaraj[0].a);
+    }
+    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
+    paramArrayOfaraj = paramArrayOfaraj[0].a;
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramArrayOfaraj))
+        {
+          paramArrayOfaraj = new JSONObject(paramArrayOfaraj);
+          if (paramArrayOfaraj.optInt("newguideswitch", 1) != 1) {
+            continue;
+          }
+          bool1 = true;
+          localQQLevelIconConfig.mIsEnableGuide = bool1;
+          bool1 = bool2;
+          if (paramArrayOfaraj.optInt("rushfeeswitch", 1) == 1) {
+            bool1 = true;
+          }
+          localQQLevelIconConfig.mIsNotifyPayment = bool1;
+          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfaraj.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
+          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfaraj.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
+        }
+      }
+      catch (JSONException paramArrayOfaraj)
+      {
+        boolean bool1;
+        yuk.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaraj.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
+      }
+      return localQQLevelIconConfig;
+      bool1 = false;
+    }
+  }
+  
+  @NonNull
+  public QQLevelIconConfig b()
+  {
+    return new QQLevelIconConfig();
+  }
+  
+  public Class<QQLevelIconConfig> clazz()
+  {
+    return QQLevelIconConfig.class;
+  }
+  
+  public int type()
+  {
+    return 542;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armp
  * JD-Core Version:    0.7.0.1
  */

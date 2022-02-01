@@ -1,21 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class yub
-  implements bkhw
+  implements View.OnClickListener
 {
-  yub(yty paramyty, bkho parambkho) {}
+  yub(yty paramyty) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    if (yty.a(this.a) != null) {
+      yty.a(this.a).h();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Yty.c();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

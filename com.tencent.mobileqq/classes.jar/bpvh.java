@@ -1,26 +1,43 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bpvh
-  extends Property<PickerContainer, Float>
+  extends bpor
 {
-  public bpvh(PickerContainer paramPickerContainer, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bpvh(MusicProviderView paramMusicProviderView) {}
   
-  public Float a(PickerContainer paramPickerContainer)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
+    long l = SystemClock.uptimeMillis();
+    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
+    {
+      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(2);
+      this.a.jdField_a_of_type_Long = l;
     }
-    return Float.valueOf(1.0F);
   }
   
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
+    this.a.jdField_a_of_type_Blhq.sendEmptyMessage(2);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, new Object[] { "onFinish, succ:", Boolean.valueOf(paramBoolean), ", failcode:", Integer.valueOf(paramInt) });
+    }
+    this.a.jdField_a_of_type_Blhq.sendEmptyMessage(2);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
+      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(1);
+    }
+    if ((!paramBoolean) && (paramInt == -104)) {
+      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(5);
     }
   }
 }

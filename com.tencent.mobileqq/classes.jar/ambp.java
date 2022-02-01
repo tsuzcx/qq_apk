@@ -1,31 +1,16 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
-public abstract class ambp
-  extends BaseAdapter
-  implements AbsListView.OnScrollListener
+public class ambp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  protected Handler a;
-  public String a;
+  public ambp(RotationSeekBar paramRotationSeekBar) {}
   
-  private final void a(View paramView, Object paramObject, int paramInt, ambq paramambq)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = a(paramInt);
-    if (localObject == null) {
-      return;
-    }
-    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramambq);
-    ambq.a(paramambq, true);
-    ambq.a(paramambq, paramView);
-    this.a.post(paramView);
+    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
-  
-  protected abstract Object a(int paramInt);
-  
-  public abstract void a(View paramView, Object paramObject);
 }
 
 

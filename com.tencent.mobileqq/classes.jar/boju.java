@@ -1,12 +1,16 @@
-class boju
-  implements bopi
+public abstract class boju
 {
-  boju(bojo parambojo) {}
-  
-  public void aW_()
+  public static boju a(int paramInt)
   {
-    bojo.a(this.a).e();
+    if (paramInt > 0) {
+      return new bojv();
+    }
+    return new bojw();
   }
+  
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

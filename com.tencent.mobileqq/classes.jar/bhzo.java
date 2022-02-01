@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-
-class bhzo
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bhzo
 {
-  bhzo(bhzm parambhzm) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    bhzm.a(this.a).setAlpha(f);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

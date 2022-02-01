@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile.predownload;
 
-import beat;
+import bezs;
 
 public class AbsPreDownloadTask$1
   implements Runnable
 {
-  public AbsPreDownloadTask$1(beat parambeat) {}
+  public AbsPreDownloadTask$1(bezs parambezs) {}
   
   public void run()
   {

@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/bp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextureView android:id="@id/nio" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/muj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/dsa" android:scaleType="centerCrop" />
-    <ImageButton android:id="@id/mpe" android:background="@color/ajp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/gdy" android:layout_alignParentRight="true" />
-    <ImageView android:id="@id/mg8" android:visibility="gone" android:layout_width="221.0dip" android:layout_height="47.0dip" android:src="@drawable/eb6" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/mg9" android:visibility="gone" android:layout_width="221.0dip" android:layout_height="47.0dip" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/mu3" android:visibility="gone" android:layout_width="120.0dip" android:layout_height="36.0dip" android:layout_marginBottom="70.0dip" android:src="@drawable/gdz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:orientation="vertical" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

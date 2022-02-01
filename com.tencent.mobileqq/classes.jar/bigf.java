@@ -1,66 +1,40 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bigf
+class bigf
+  implements SensorEventListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bigf(bige parambige, long paramLong, int paramInt1, int paramInt2) {}
   
-  private void a()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if ((paramSensorEvent.values[0] > 1.0E+008F) || (NetConnInfoCenter.getServerTimeMillis() > this.jdField_a_of_type_Long))
     {
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+      QLog.e("SportManager", 1, "unregister listener:" + paramSensorEvent.values[0]);
+      if (bige.a != null) {
+        bige.a.unregisterListener(this);
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null)
+    if ((bigb.jdField_a_of_type_Long == 0L) || (bigb.jdField_a_of_type_Int == 0))
     {
-      paramView = paramView.getParent();
-      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        a((ViewGroup)paramView);
-      }
+      QLog.e("SportManager", 1, "lastReportStepTime:" + bigb.jdField_a_of_type_Long + ",cur_total:" + bigb.jdField_a_of_type_Int);
+      return;
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
+    long l = NetConnInfoCenter.getServerTimeMillis() - bigb.jdField_a_of_type_Long;
+    int i = (int)(paramSensorEvent.values[0] - bigb.jdField_a_of_type_Int);
+    if ((l > this.jdField_a_of_type_Int) && (i > this.b))
+    {
+      this.jdField_a_of_type_Bige.a("timer1 report");
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
-    }
-  }
-  
-  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    a(this.jdField_a_of_type_AndroidViewView);
-    a(paramView);
-    if (paramView != null) {
-      paramView.setLayoutParams(paramLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
+    QLog.e("SportManager", 1, "sensor event step:" + paramSensorEvent.values[0] + ",cur_total:" + bigb.jdField_a_of_type_Int + ",interval time:" + l);
   }
 }
 

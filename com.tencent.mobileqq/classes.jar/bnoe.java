@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.ttpic.openapi.model.WMElement;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bnoe
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bnoe(bnod parambnod, int paramInt, bnol parambnol) {}
+  bnoe(bnnx parambnnx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WMElement localWMElement = (WMElement)LogicDataManager.getInstance().getEditableWMElement().get(this.jdField_a_of_type_Int);
-    if (localWMElement != null)
-    {
-      if (!localWMElement.ischeckin) {
-        break label50;
-      }
-      bnod.a(this.jdField_a_of_type_Bnod, localWMElement, this.jdField_a_of_type_Bnol);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label50:
-      this.jdField_a_of_type_Bnol.a.setText("");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

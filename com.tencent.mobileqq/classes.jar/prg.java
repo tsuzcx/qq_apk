@@ -1,13 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
-public class prg
-  implements prw
+class prg
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  public prg(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  prg(prf paramprf) {}
   
-  public void a()
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    ReadInJoySelfFragment.l(this.a);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
+    }
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

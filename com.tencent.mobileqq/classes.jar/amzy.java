@@ -1,6 +1,17 @@
-public abstract interface amzy
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+
+public class amzy
+  extends anae
 {
-  public abstract void d();
+  public amzy(CmGameLoadingFragment paramCmGameLoadingFragment) {}
+  
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  {
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
+    }
+  }
 }
 
 

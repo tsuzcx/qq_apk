@@ -1,73 +1,39 @@
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class axie
-  extends BaseAdapter
+  implements bjey
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private axih jdField_a_of_type_Axih;
-  private List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
+  public axie(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
   
-  public axie(Context paramContext, int paramInt, List<InterestTagInfo> paramList, axih paramaxih)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Axih = paramaxih;
-  }
-  
-  public InterestTagInfo a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
-      return null;
-    }
-    return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<InterestTagInfo> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {
-      notifyDataSetChanged();
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    InterestTagItemView localInterestTagItemView;
-    if (paramView == null)
+    int i = axfy.a().a();
+    switch (paramInt)
     {
-      localInterestTagItemView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
-      localInterestTagItemView.a(this.jdField_a_of_type_Int);
-      localInterestTagItemView.setCallback(this.jdField_a_of_type_Axih);
     }
-    for (;;)
+    do
     {
-      localInterestTagItemView.a(a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localInterestTagItemView;
-      localInterestTagItemView = (InterestTagItemView)paramView;
-    }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
+      }
+      this.a.aG_();
+      return;
+      axgj.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + axgj.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
+      }
+      axgj.a().a().a(null);
+      axgj.a().a(this.a.a, this.a.d, i, this.a.getActivity());
+      if (this.a.b != 1) {
+        break;
+      }
+    } while (!this.a.e);
+    axjk.a("0X800A260");
+    return;
+    axjk.a("0X800A284");
   }
 }
 

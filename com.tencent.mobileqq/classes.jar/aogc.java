@@ -1,119 +1,76 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import tencent.im.oidb.cmd0x935.oidb_0x935.GPS;
 
-public class aogc
-  extends acvh
+class aogc
+  extends apcq
 {
-  public aogc(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, acwe paramacwe)
+  aogc(aoga paramaoga, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramQQAppInterface, paramQQMessageFacade, paramacwe);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public long a(MessageRecord paramMessageRecord)
-  {
-    return 0L;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, acvi paramacvi)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = bbyp.a();
-    }
-    if (paramMessageRecord.msgseq == 0L) {
-      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
-    }
-    a(paramMessageRecord, true, 1);
-  }
-  
-  public void a(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded uin=" + paramString + ",type=" + paramInt1 + ",needDelMark=" + paramBoolean2);
+      QLog.d("RecommendTroopManagerImp", 2, "onLocationFinish errCode: " + paramInt + ", info: " + paramSosoLbsInfo);
     }
-    if (paramString == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : uin=null");
-      }
-    }
-    for (;;)
-    {
+    if (!bhnv.d(BaseApplication.getContext())) {
       return;
-      if (!anhk.x.equals(paramString)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : clean all");
-      }
-      paramString = (bdeh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
-      if (paramString != null)
+    }
+    if (paramInt != 0)
+    {
+      this.a.a(2L, null, 22);
+      return;
+    }
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      double d3 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+      double d4 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+      double d1 = paramSosoLbsInfo.a.e;
+      int j = (int)paramSosoLbsInfo.a.jdField_a_of_type_Float;
+      String str1 = paramSosoLbsInfo.a.m;
+      String str2 = paramSosoLbsInfo.a.l;
+      int k = paramSosoLbsInfo.a.jdField_a_of_type_Int;
+      double d2 = paramSosoLbsInfo.a.jdField_a_of_type_Long;
+      float f = paramSosoLbsInfo.a.jdField_b_of_type_Float;
+      String str3 = paramSosoLbsInfo.a.f;
+      paramInt = 0;
+      try
       {
-        paramString = paramString.a().iterator();
-        while (paramString.hasNext())
+        int i = Integer.parseInt(str3);
+        paramInt = i;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          String str = (String)paramString.next();
-          if (!TextUtils.isEmpty(str)) {
-            c(str, paramInt1, paramBoolean1, paramBoolean1);
-          }
+          QLog.e("RecommendTroopManagerImp", 1, "parse cityCode error");
         }
       }
-    }
-    c(paramString, paramInt1, paramBoolean1, paramBoolean2);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    aqtu localaqtu = (aqtu)aqlk.a().a(607);
-    if ((localaqtu == null) || (localaqtu.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RecommendTroopManagerImp", 2, "onLocationFinish longitude=" + d3 + ", latitude=" + d4 + ", accuracy=" + j + ", verifyKey=" + str2 + ", source=" + str1 + ", fakeReason=" + k + ", speed=" + f + ", locationTime=" + d2);
+      }
+      d3 = Double.valueOf(paramSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D).intValue();
+      d4 = Double.valueOf(paramSosoLbsInfo.a.jdField_b_of_type_Double * 1000000.0D).intValue();
+      paramSosoLbsInfo = new oidb_0x935.GPS();
+      paramSosoLbsInfo.uint32_latitude.set((int)d3);
+      paramSosoLbsInfo.uint32_longitude.set((int)d4);
+      paramSosoLbsInfo.uint32_altitude.set((int)d1);
+      paramSosoLbsInfo.uint32_accuracy.set(j);
+      paramSosoLbsInfo.uint32_time.set((int)d2);
+      paramSosoLbsInfo.uint32_cityid.set(paramInt);
+      paramSosoLbsInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
+      paramSosoLbsInfo.uint32_client.set(2);
+      this.a.a(2L, paramSosoLbsInfo, 22);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt, 0);
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2, acwr paramacwr) {}
-  
-  public void c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt) > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded clean one uin = " + paramString);
-      }
-      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).a(paramString, paramInt);
-      localacvy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (localMessageRecord != null)
-      {
-        l = a(localMessageRecord);
-        localacvy.a(paramString, paramInt, l, paramBoolean1, paramBoolean2);
-        b(paramString, paramInt);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(paramString, paramInt));
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt) <= 0) {
-      for (;;)
-      {
-        MessageRecord localMessageRecord;
-        acvy localacvy;
-        return;
-        long l = 0L;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setTroopReaded clean one uin = " + paramString);
-    }
-    b(paramString, paramInt);
+    this.a.a(2L, null, 22);
   }
 }
 

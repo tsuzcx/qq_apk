@@ -1,6 +1,18 @@
-public abstract interface zpv
+public class zpv
 {
-  public abstract void a(zpu paramzpu);
+  bjbs a;
+  
+  zpv(bjbs parambjbs)
+  {
+    this.a = parambjbs;
+  }
+  
+  public void a()
+  {
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
+  }
 }
 
 

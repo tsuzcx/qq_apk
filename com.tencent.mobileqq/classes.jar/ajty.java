@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ajty
-  implements Comparator<ajtt>
+class ajty
+  implements Animation.AnimationListener
 {
-  public ajty(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ajty(ajtx paramajtx, abur paramabur, View paramView) {}
   
-  public int a(ajtt paramajtt1, ajtt paramajtt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return paramajtt1.f.compareToIgnoreCase(paramajtt2.f);
+    this.jdField_a_of_type_Abur.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839402);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

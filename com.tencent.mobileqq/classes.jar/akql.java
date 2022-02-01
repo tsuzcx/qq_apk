@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class akql
-  implements View.OnClickListener
+  extends Handler
 {
-  public akql(WordChainHbFragment.1 param1, TextView paramTextView, akqr paramakqr) {}
+  public akql(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Akqr);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131716082);
+    this.a.c();
   }
 }
 

@@ -1,18 +1,77 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.gamecenter.activities.GameCenterActivity;
+import com.tencent.mobileqq.gamecenter.view.NavBarQQGamePub;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class avmv
-  implements Parcelable.Creator<WatchTogetherSession>
+public class avmv
+  implements View.OnClickListener
 {
-  public WatchTogetherSession a(Parcel paramParcel)
-  {
-    return new WatchTogetherSession(paramParcel);
-  }
+  public avmv(NavBarQQGamePub paramNavBarQQGamePub) {}
   
-  public WatchTogetherSession[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WatchTogetherSession[paramInt];
+    int i = 1;
+    if ((NavBarQQGamePub.a(this.a) != null) && (NavBarQQGamePub.a(this.a).getVisibility() == 0)) {
+      NavBarQQGamePub.a(this.a).setVisibility(4);
+    }
+    HashMap localHashMap = new HashMap();
+    String str = "";
+    if (NavBarQQGamePub.a(this.a) == 1)
+    {
+      Object localObject = avmc.b();
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((((String)localObject).startsWith("http")) || (((String)localObject).startsWith("https"))))
+      {
+        localObject = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
+        ((Intent)localObject).putExtra("url", avmc.b());
+        ((Intent)localObject).addFlags(268435456);
+        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_zf_games");
+        this.a.getContext().startActivity((Intent)localObject);
+      }
+      i = 2;
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        localHashMap.put(Integer.valueOf(2), str);
+      }
+      localHashMap.put(Integer.valueOf(3), i + "");
+      localHashMap.put(Integer.valueOf(4), "20");
+      localHashMap.put(Integer.valueOf(24), "1");
+      acik.a(anbd.a(), "770", "207023", "", "77002", "1", "160", localHashMap);
+      avme.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (NavBarQQGamePub.a(this.a) == 2)
+      {
+        if ((!TextUtils.isEmpty(NavBarQQGamePub.a(this.a))) && ((NavBarQQGamePub.a(this.a).startsWith("http")) || (NavBarQQGamePub.a(this.a).startsWith("https")))) {
+          NavBarQQGamePub.a(this.a, NavBarQQGamePub.a(this.a));
+        }
+        str = NavBarQQGamePub.b(this.a);
+        this.a.a();
+        i = 3;
+      }
+      else if (NavBarQQGamePub.a(this.a) == 3)
+      {
+        if ((!TextUtils.isEmpty(NavBarQQGamePub.a(this.a))) && ((NavBarQQGamePub.a(this.a).startsWith("http")) || (NavBarQQGamePub.a(this.a).startsWith("https")))) {
+          NavBarQQGamePub.a(this.a, NavBarQQGamePub.a(this.a));
+        }
+        str = NavBarQQGamePub.b(this.a);
+        this.a.a();
+      }
+      else
+      {
+        i = 0;
+      }
+    }
   }
 }
 

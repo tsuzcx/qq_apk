@@ -1,136 +1,48 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class aavn
+public abstract class aavn
+  extends nkq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3000L;
-  private aavi jdField_a_of_type_Aavi;
-  private aavj jdField_a_of_type_Aavj;
-  private aavk jdField_a_of_type_Aavk;
-  private aavl jdField_a_of_type_Aavl;
-  private aavn jdField_a_of_type_Aavn;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private View jdField_a_of_type_AndroidViewView;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private List<aavd> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long;
-  private aavn jdField_b_of_type_Aavn;
-  
-  public static aavd a(View... paramVarArgs)
+  public aavn()
   {
-    return new aavn().b(paramVarArgs);
+    super(false);
   }
   
-  public aavn a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Aavn != null)
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_Aavn.a();
-      return this;
+      a(false, paramInt, null, paramBundle);
+      return;
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = a();
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnPreDrawListener(new aavq(this));
-      return this;
-    }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-    return this;
-  }
-  
-  public aavn a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public aavn a(aavk paramaavk)
-  {
-    this.jdField_a_of_type_Aavk = paramaavk;
-    return this;
-  }
-  
-  public aavn a(aavl paramaavl)
-  {
-    this.jdField_a_of_type_Aavl = paramaavl;
-    return this;
-  }
-  
-  public aavn a(Interpolator paramInterpolator)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    return this;
-  }
-  
-  protected AnimatorSet a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (aavd)((Iterator)localObject1).next();
-      List localList = ((aavd)localObject2).a();
-      if (((aavd)localObject2).a() != null)
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext()) {
-          ((Animator)localIterator.next()).setInterpolator(((aavd)localObject2).a());
-        }
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
-      localArrayList.addAll(localList);
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      localObject2 = (aavd)((Iterator)localObject1).next();
-      if (((aavd)localObject2).a()) {
-        this.jdField_a_of_type_AndroidViewView = ((aavd)localObject2).a();
-      }
+      a(false, -1, null, paramBundle);
+      return;
     }
-    localObject1 = localArrayList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Animator)((Iterator)localObject1).next();
-      if ((localObject2 instanceof ValueAnimator))
-      {
-        localObject2 = (ValueAnimator)localObject2;
-        ((ValueAnimator)localObject2).setRepeatCount(this.jdField_a_of_type_Int);
-        ((ValueAnimator)localObject2).setRepeatMode(this.jdField_b_of_type_Int);
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          ((ValueAnimator)localObject2).addListener(new aavo(this));
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-    }
-    localObject1 = new AnimatorSet();
-    ((AnimatorSet)localObject1).playTogether(localArrayList);
-    ((AnimatorSet)localObject1).setDuration(this.jdField_a_of_type_Long);
-    ((AnimatorSet)localObject1).setStartDelay(this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      ((AnimatorSet)localObject1).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    }
-    ((AnimatorSet)localObject1).addListener(new aavp(this));
-    return localObject1;
-  }
-  
-  public aavd b(View... paramVarArgs)
-  {
-    paramVarArgs = new aavd(this, paramVarArgs);
-    this.jdField_a_of_type_JavaUtilList.add(paramVarArgs);
-    return paramVarArgs;
+    a(false, -1, null, paramBundle);
   }
 }
 

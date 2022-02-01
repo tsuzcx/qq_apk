@@ -1,19 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public class pql
-  implements prw
+public abstract interface pql
 {
-  public pql(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public abstract void onLoadUserInfoFailed(String paramString1, String paramString2);
   
-  public void a()
-  {
-    pha.a(this.a.a.getContext(), pgc.n);
-    JSONObject localJSONObject = pha.a();
-    oat.a(null, "CliOper", "", "", "0X800845B", "0X800845B", 0, 0, ReadInJoySelfFragment.a(this.a, 13) + "", "", "", localJSONObject.toString(), false);
-    ReadInJoySelfFragment.a(this.a, 13);
-  }
+  public abstract void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
 }
 
 

@@ -1,64 +1,175 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aarg
-  extends niv
+public class aarg
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected static aarg a;
+  protected SessionInfo a;
+  protected HashMap<String, aarh> a;
+  
+  public aarg()
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static aarg a()
   {
-    if (paramInt != 0) {
-      a(false, paramInt, null);
+    if (jdField_a_of_type_Aarg == null) {
+      jdField_a_of_type_Aarg = new aarg();
     }
-    label103:
+    return jdField_a_of_type_Aarg;
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    bdll.a(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_app", paramString2, 0, 0, paramString1, paramString3, paramString4, paramString5);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, SessionInfo paramSessionInfo)
+  {
+    aarh localaarh = (aarh)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    if (localaarh == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    if (!aarf.b(paramContext, localaarh.b, paramString1, "android.intent.action.VIEW", "com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"))
+    {
+      if (!aarf.b(paramContext, localaarh.c, paramString1, "android.intent.action.VIEW", "com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"))
+      {
+        paramSessionInfo = new Intent(paramContext, QQBrowserActivity.class);
+        if ((localaarh != null) && (!TextUtils.isEmpty(localaarh.jdField_a_of_type_JavaLangString))) {
+          paramSessionInfo.putExtra("url", localaarh.jdField_a_of_type_JavaLangString);
+        }
+        for (;;)
+        {
+          paramContext.startActivity(paramSessionInfo);
+          a(paramString1, "app_click_ver", "2", "", "");
+          return;
+          paramSessionInfo.putExtra("url", paramString2);
+        }
+      }
+      a(paramString1, "app_click_ver", "0", "", "");
+      return;
+    }
+    a(paramString1, "app_click_ver", "1", "", "");
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (!"thridapp".equals(paramIntent.getStringExtra("share_from"))) {
+      bool1 = false;
+    }
+    Object localObject;
+    Long localLong;
     do
+    {
+      do
+      {
+        return bool1;
+        paramIntent.removeExtra("share_from");
+        localObject = a();
+        localLong = Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L));
+        bool1 = bool2;
+      } while (!((aarg)localObject).a(String.valueOf(localLong)));
+      paramIntent.putExtra("share_from_aio", true);
+      paramIntent.putExtra("forward_type", 11);
+      paramIntent.putExtra("req_type", 1);
+      if (!paramIntent.hasExtra("pkg_name")) {
+        paramIntent.putExtra("pkg_name", "");
+      }
+      paramIntent.putExtra("refuse_show_share_result_dialog", true);
+      localObject = ((aarg)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      bool1 = bool2;
+    } while (localObject == null);
+    paramIntent = avad.a(paramIntent, paramQQAppInterface, paramActivity);
+    paramActivity = new Bundle();
+    paramActivity.putString("uin", ((SessionInfo)localObject).jdField_a_of_type_JavaLangString);
+    paramActivity.putInt("uintype", ((SessionInfo)localObject).jdField_a_of_type_Int);
+    paramActivity.putString("troop_uin", ((SessionInfo)localObject).b);
+    paramActivity.putString("uinname", ((SessionInfo)localObject).d);
+    paramIntent.a(auxr.a.intValue(), paramActivity);
+    a(String.valueOf(localLong), "app_share_view", "", "", "");
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    Object localObject2 = niz.a().a("aio_pluginApp", "");
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = new JSONArray((String)localObject2);
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException2)
     {
       for (;;)
       {
-        return;
-        paramBundle = new oidb_0x6d8.RspBody();
         try
         {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
-          if (!paramArrayOfByte.int32_ret_code.has()) {
-            break label103;
-          }
-          if (paramArrayOfByte.int32_ret_code.get() == 0)
-          {
-            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-            if (paramArrayOfByte == null) {
-              continue;
-            }
-            a(true, 0, paramArrayOfByte);
-          }
+          localObject2 = localObject1.getJSONObject(i);
+          str = ((JSONObject)localObject2).optString("appid");
+          localaarh = new aarh(this);
+          localaarh.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("downloadLink");
+          localaarh.b = String.format("tencent%s.provider://", new Object[] { str });
+          localaarh.c = ((JSONObject)localObject2).optString("defaultScheme_a");
+          this.jdField_a_of_type_JavaUtilHashMap.put(str, localaarh);
+          i += 1;
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        catch (JSONException localJSONException1)
         {
-          a(false, -1, null);
-          return;
+          localJSONException1.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("show3rdApp", 2, "get JsonObject error!");
         }
+        localJSONException2 = localJSONException2;
+        localJSONException2.printStackTrace();
       }
-      a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    }
+    if ((localObject1 != null) && (localObject1.length() > 0))
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      j = localObject1.length();
+      i = 0;
+      if (i >= j) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      int j;
+      int i;
+      String str;
+      aarh localaarh;
       return;
-      if (!paramArrayOfByte.file_info.has()) {
-        break;
-      }
-      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-    } while (paramArrayOfByte == null);
-    a(true, 0, paramArrayOfByte);
-    return;
-    a(false, -1, null);
+    }
+    QLog.d("show3rdApp", 2, "config is null!");
   }
 }
 

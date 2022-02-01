@@ -1,19 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.persistence.Entity;
 
-public abstract interface afzm
+public class afzm
 {
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
+  public int a;
+  public Entity a;
+  public String a;
   
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
+  public afzm(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, Entity paramEntity)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+  }
   
-  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
-  
-  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayerBase paramAudioPlayerBase, int paramInt2);
-  
-  public abstract boolean b(ChatMessage paramChatMessage);
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

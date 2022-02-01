@@ -1,16 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class aehm
-  implements bkik
+public final class aehm
+  implements Comparator<PhoneContact>
 {
-  public aehm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    FriendProfileImageActivity.a(this.a);
-    return true;
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
+    {
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+      if (bool2) {
+        return -1;
+      }
+      return 1;
+    }
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

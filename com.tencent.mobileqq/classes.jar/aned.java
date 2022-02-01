@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-
 public class aned
 {
-  public void a() {}
-  
-  public void a(ApolloActionData paramApolloActionData) {}
-  
-  public void a(Boolean paramBoolean) {}
-  
-  public void b(ApolloActionData paramApolloActionData) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
 }
 
 

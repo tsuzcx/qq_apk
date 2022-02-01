@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.location.net;
 
-import avwp;
-import avwv;
+import awpk;
+import awpq;
 
 public class LocationHandler$7
   implements Runnable
 {
-  public LocationHandler$7(avwv paramavwv, avwp paramavwp, boolean paramBoolean) {}
+  public LocationHandler$7(awpq paramawpq, awpk paramawpk, boolean paramBoolean) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Avwp, this.jdField_a_of_type_Boolean);
+    this.this$0.a(this.jdField_a_of_type_Awpk, this.jdField_a_of_type_Boolean);
   }
 }
 

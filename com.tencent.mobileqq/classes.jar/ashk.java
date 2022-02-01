@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import android.text.TextUtils;
 
-public final class ashk
-  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
+public class ashk
 {
-  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  public ashk(String paramString)
   {
-    return new MiniAppRecommInfo.MiniApp(paramParcel);
+    this.a = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("_");
+      if (paramString.length >= 7)
+      {
+        this.g = paramString[0];
+        this.h = paramString[1];
+        this.b = paramString[2];
+        this.c = paramString[3];
+        this.d = paramString[4];
+        this.e = paramString[5];
+        this.f = paramString[6];
+      }
+    }
   }
   
-  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
+  public boolean a()
   {
-    return new MiniAppRecommInfo.MiniApp[paramInt];
+    return this.a.split("_").length >= 7;
   }
 }
 

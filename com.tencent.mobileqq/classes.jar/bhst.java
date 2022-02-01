@@ -1,13 +1,8 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
 public abstract interface bhst
-  extends bhni
 {
-  public abstract abcr getShare();
-  
-  public abstract boolean setShareUrl(String paramString);
-  
-  public abstract boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
+  public abstract void a(boolean paramBoolean, ArrayList<bhss> paramArrayList);
 }
 
 

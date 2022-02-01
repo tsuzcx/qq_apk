@@ -1,20 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class bpin
-  implements bpir
+public abstract interface bpin
 {
-  public static final String[] a = { "AtLayer0", "AtLayer1", "AtLayer2", "AtLayer3", "AtLayer4", "AtLayer5" };
+  public abstract void A();
   
-  public void a(List<bpio> paramList, DoodleView paramDoodleView)
-  {
-    int i = 0;
-    while (i < a.length)
-    {
-      paramList.add(new bphg(paramDoodleView, a[i]));
-      i += 1;
-    }
-  }
+  public abstract void B();
+  
+  public abstract void C();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void z();
 }
 
 

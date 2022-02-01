@@ -1,15 +1,23 @@
-public class ayid
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class ayid
+  implements View.OnTouchListener
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  ayid(ayhj paramayhj) {}
   
-  public ayid(ayib paramayib) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131371391).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131371391).setAlpha(1.0F);
+    }
+  }
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.av.ui;
 
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import mdf;
+import meb;
 
 class GAudioMembersCtrlActivity$RefreshFaceRunnable
   implements Runnable
@@ -11,8 +11,8 @@ class GAudioMembersCtrlActivity$RefreshFaceRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Mdf != null) {
-      this.this$0.jdField_a_of_type_Mdf.a();
+    if (this.this$0.jdField_a_of_type_Meb != null) {
+      this.this$0.jdField_a_of_type_Meb.a();
     }
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
   }

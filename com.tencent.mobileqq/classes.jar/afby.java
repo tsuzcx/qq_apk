@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class afby
   implements DialogInterface.OnClickListener
 {
-  public afby(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public afby(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.c);
+    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+    this.a.finish();
   }
 }
 

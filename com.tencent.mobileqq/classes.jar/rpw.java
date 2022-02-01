@@ -1,14 +1,33 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rpw
-  implements oud
+final class rpw
+  implements View.OnClickListener
 {
-  rpw(rps paramrps) {}
+  rpw(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
   
-  public void a(@NotNull String paramString1, @NotNull String paramString2)
+  public void onClick(View paramView)
   {
-    QLog.d(paramString1, 1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("big_brother_source_key", ozs.f(0));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    }
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

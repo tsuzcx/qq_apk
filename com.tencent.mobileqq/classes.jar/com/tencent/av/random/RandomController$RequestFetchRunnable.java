@@ -3,18 +3,18 @@ package com.tencent.av.random;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 import java.util.concurrent.atomic.AtomicInteger;
-import lsq;
+import ltm;
 
 public class RandomController$RequestFetchRunnable
   implements Runnable
 {
-  lsq a;
+  ltm a;
   
   private RandomController$RequestFetchRunnable(RandomController paramRandomController) {}
   
-  public void a(lsq paramlsq)
+  public void a(ltm paramltm)
   {
-    this.a = paramlsq;
+    this.a = paramltm;
   }
   
   public void run()

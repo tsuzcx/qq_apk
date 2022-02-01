@@ -1,14 +1,11 @@
-public abstract interface apta
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
+public class apta
+  implements azdr
 {
-  public abstract String a(aptd paramaptd);
+  public apta(ARScanEntryView paramARScanEntryView) {}
   
-  public abstract boolean a(aptd paramaptd);
-  
-  public abstract boolean a(aptd paramaptd, boolean paramBoolean);
-  
-  public abstract String b(aptd paramaptd);
-  
-  public abstract boolean b(aptd paramaptd);
+  public void a(boolean paramBoolean) {}
 }
 
 

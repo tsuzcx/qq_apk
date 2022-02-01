@@ -1,4 +1,13 @@
-class bibv {}
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableOptions;", "", "name", "", "translate", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bibv
+{
+  @NotNull
+  public abstract Bundle a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

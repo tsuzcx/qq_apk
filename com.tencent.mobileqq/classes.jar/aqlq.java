@@ -1,31 +1,61 @@
-import com.taobao.android.dexposed.XC_MethodHook;
-import com.tencent.mobileqq.config.QConfigureException;
-import com.tencent.qphone.base.util.QLog;
-import de.robv.android.xposed.XC_MethodHook.MethodHookParam;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class aqlq
-  extends XC_MethodHook
+public class aqlq
+  extends aqlp
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
+  public boolean b;
+  public Rect c;
+  public Rect d;
+  public int e;
+  public String e;
+  public String f = "";
+  
+  public aqlq()
   {
-    try
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
+  }
+  
+  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
     {
-      paramMethodHookParam = aqln.a();
-      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
-        aqln.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
+      super.a(paramInt, paramString, paramJSONObject);
+      paramString = BaseApplicationImpl.getContext();
+      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
+      this.b = paramJSONObject.optBoolean("passive_rotate", false);
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      this.f = paramJSONObject.optString("end_align", "");
+      if (paramJSONObject.has("start_rect"))
+      {
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
+        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_c_of_type_AndroidGraphicsRect.left = agej.a(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.top = agej.a(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.right = agej.a(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.bottom = agej.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
       }
-      return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+      if (paramJSONObject.has("end_rect"))
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
+        this.d = new Rect();
+        this.d.left = agej.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.d.top = agej.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.d.right = agej.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.d.bottom = agej.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlq
  * JD-Core Version:    0.7.0.1
  */

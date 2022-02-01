@@ -1,49 +1,22 @@
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class xnk
-  extends xnl
-  implements View.OnClickListener
+class xnk
+  implements woy<xcy, xcz>
 {
-  private long a;
+  xnk(xnj paramxnj, xmy paramxmy) {}
   
-  public xnk(@NonNull ViewGroup paramViewGroup)
+  public void a(@NonNull xcy paramxcy, @Nullable xcz paramxcz, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return paramViewGroup;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Xne == null) {}
-    for (;;)
+    if ((paramErrorMessage.isFail()) || (paramxcz == null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      yuk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Xmy.a(paramErrorMessage, null, false);
       return;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
-      {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        wrb localwrb = this.jdField_a_of_type_Xne.a().getVideoLinkInfo();
-        if ((localwrb != null) && (localwrb.a()) && (localwrb.a.a()))
-        {
-          xho.a(a(), localwrb.a.c, localwrb.a.b, 1010);
-          yqu.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Xne.a });
-        }
-        else
-        {
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        }
-      }
     }
+    this.jdField_a_of_type_Xnj.a.a(paramxcz.jdField_a_of_type_JavaUtilList, paramxcz.jdField_a_of_type_JavaLangString, paramxcz.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Xmy.a(paramErrorMessage, xmg.b(paramxcz.jdField_a_of_type_JavaUtilList), paramxcz.jdField_a_of_type_Boolean);
   }
 }
 

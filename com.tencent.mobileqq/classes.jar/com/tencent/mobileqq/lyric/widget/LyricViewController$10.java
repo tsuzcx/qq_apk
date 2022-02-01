@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import awen;
+import awxf;
 
 public class LyricViewController$10
   implements Runnable
 {
-  public LyricViewController$10(awen paramawen) {}
+  public LyricViewController$10(awxf paramawxf) {}
   
   public void run()
   {
-    awen.a(this.this$0).a(this.this$0.a.a());
+    awxf.a(this.this$0).a(this.this$0.a.a());
   }
 }
 

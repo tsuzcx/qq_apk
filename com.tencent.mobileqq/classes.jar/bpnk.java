@@ -1,13 +1,7 @@
-public class bpnk
+class bpnk
+  extends anuw
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  bpnk(bpni parambpni) {}
 }
 
 

@@ -1,36 +1,14 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aaho
-  implements View.OnClickListener
+class aaho
+  implements aagy
 {
-  public aaho(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  aaho(aahk paramaahk) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    boolean bool2 = true;
-    aabx localaabx;
-    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
-    {
-      localaabx = SubscribeVideoDetailFragment.a(this.a).a(1);
-      bool1 = bool2;
-      if (SubscribeVideoDetailFragment.a(this.a).j()) {
-        if (SubscribeVideoDetailFragment.a(this.a).l()) {
-          break label88;
-        }
-      }
-    }
-    label88:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localaabx.c = bool1;
-      this.a.a(localaabx);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    this.a.d(paramStFeed);
   }
 }
 

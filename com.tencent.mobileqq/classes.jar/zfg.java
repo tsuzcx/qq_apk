@@ -1,28 +1,53 @@
-public class zfg
+import android.content.Context;
+import android.widget.BaseAdapter;
+
+public abstract class zfg<PACKAGE extends zex>
+  extends BaseAdapter
 {
-  public static String a(String paramString)
+  public int a;
+  protected Context a;
+  protected PACKAGE a;
+  protected zez a;
+  
+  public zfg(Context paramContext)
   {
-    return "Q.qqstory.record.RMW." + paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(PACKAGE paramPACKAGE)
   {
-    yqp.a(a(paramString1), paramString2);
+    this.jdField_a_of_type_Zex = paramPACKAGE;
   }
   
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  public void a(zez paramzez)
   {
-    yqp.c(a(paramString1), String.format(paramString2, paramVarArgs));
+    this.jdField_a_of_type_Zez = paramzez;
   }
   
-  public static void b(String paramString1, String paramString2)
+  public int getCount()
   {
-    yqp.b(a(paramString1), paramString2);
+    if (this.jdField_a_of_type_Zex == null) {
+      return 0;
+    }
+    int i = this.jdField_a_of_type_Zex.b();
+    int j = this.jdField_a_of_type_Zex.a();
+    if (j < 1) {
+      throw new IllegalArgumentException("per item count < 1 :" + j);
+    }
+    if (i % j == 0) {
+      return i / j;
+    }
+    return i / j + 1;
   }
   
-  public static void c(String paramString1, String paramString2)
+  public Object getItem(int paramInt)
   {
-    yqp.c(a(paramString1), paramString2);
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 

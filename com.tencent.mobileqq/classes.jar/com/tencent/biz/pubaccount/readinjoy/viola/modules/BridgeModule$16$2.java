@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class BridgeModule$16$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131699993), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131700100), 0).a();
   }
 }
 

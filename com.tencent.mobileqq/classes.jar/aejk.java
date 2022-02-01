@@ -1,41 +1,28 @@
-import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aejk
-  implements CompoundButton.OnCheckedChangeListener
+  implements alpv
 {
-  public aejk(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  private final int jdField_a_of_type_Int = -2147483648;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private aejk(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List<RecentBaseData> paramList) {}
+  
+  public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    int j = 1;
-    Object localObject = this.a;
-    String str = this.a.app.getCurrentAccountUin();
-    if (paramBoolean)
+    if (paramDragFrameLayout.a() == -1)
     {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState((Context)localObject, str, i);
-      this.a.a(paramBoolean);
-      localObject = this.a.app;
-      if (!paramBoolean) {
-        break label105;
-      }
-    }
-    label105:
-    for (int i = j;; i = 0)
-    {
-      bcst.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
+      FrameHelperActivity.c(true);
       return;
-      i = 1;
-      break;
     }
+    FrameHelperActivity.c(false);
   }
 }
 

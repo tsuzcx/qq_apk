@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import yui;
+import yyd;
 
 class EditVideoPlayer$1$1
   implements Runnable

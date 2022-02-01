@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import anni;
-import aqpv;
+import anzj;
+import arfd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -15,9 +15,9 @@ class CapsuleButton$6$1
     if (this.this$1.val$miniAppInfo != null) {
       this.this$1.val$miniAppInfo.topType = 0;
     }
-    if (aqpv.c())
+    if (arfd.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131700156) + aqpv.a() + anni.a(2131700155), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131700263) + arfd.a() + anzj.a(2131700262), 0).a();
       return;
     }
     QQToast.a(BaseApplicationImpl.getApplication(), "最多仅支持置顶10个小程序", 0).a();

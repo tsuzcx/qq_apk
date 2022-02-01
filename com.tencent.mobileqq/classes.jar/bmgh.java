@@ -1,25 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.share.QZoneShareActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class bmgh
-  implements View.OnClickListener
+public final class bmgh
+  implements Comparator<File>
 {
-  public bmgh(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    bluy.a().a(QZoneShareActivity.a, paramView);
-    this.a.a(false);
-    Intent localIntent = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_min", 1);
-    this.a.startActivityForResult(localIntent, 1000);
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l = paramFile1.length() - paramFile2.length();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 

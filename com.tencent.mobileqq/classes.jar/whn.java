@@ -1,34 +1,8 @@
-import android.annotation.TargetApi;
-import java.util.List;
+import java.util.ArrayList;
 
-@TargetApi(14)
-public class whn
-  implements wgy
+public abstract interface whn
 {
-  public int a;
-  
-  public void a()
-  {
-    ((whg)wpm.a(6)).a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(List<wgv> paramList, boolean paramBoolean)
-  {
-    if (paramList == null) {
-      return;
-    }
-    ((whg)wpm.a(6)).a(paramList, this.a, paramBoolean);
-  }
-  
-  public void a(wgz paramwgz)
-  {
-    ((whg)wpm.a(6)).a(paramwgz);
-  }
+  public abstract void a(ArrayList<wgh> paramArrayList);
 }
 
 

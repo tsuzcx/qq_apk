@@ -1,183 +1,296 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.text.Editable;
+import android.text.Spannable;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbwn
-  extends bbww
 {
-  public View a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  private static long a;
   
-  public bbwn(ViewGroup paramViewGroup, int paramInt)
+  public static int a(Editable paramEditable, int paramInt)
   {
-    super(paramViewGroup, paramInt);
+    if ((paramEditable.length() < 0) || (paramInt < 2) || (paramInt > paramEditable.length())) {}
+    for (;;)
+    {
+      return -1;
+      paramInt -= 1;
+      while ((paramInt >= 0) && (a(paramEditable, paramInt) == null) && (paramEditable.charAt(paramInt) != ' '))
+      {
+        if (paramEditable.charAt(paramInt) == '#') {
+          return paramInt;
+        }
+        paramInt -= 1;
+      }
+    }
   }
   
-  public static int a(Context paramContext, View... paramVarArgs)
+  public static ColorStateList a(int paramInt1, int paramInt2)
   {
-    int j = paramContext.getResources().getDisplayMetrics().widthPixels;
-    int k = paramVarArgs.length;
+    return new ColorStateList(new int[][] { { 16842919 }, { 0 } }, new int[] { paramInt2, paramInt1 });
+  }
+  
+  public static bbwh a(Spannable paramSpannable, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= paramSpannable.length())) {
+      return null;
+    }
+    bbwh[] arrayOfbbwh = (bbwh[])paramSpannable.getSpans(paramInt, paramInt, bbwh.class);
     int i = 0;
-    while (i < k)
+    while (i < arrayOfbbwh.length)
     {
-      paramContext = paramVarArgs[i];
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
-      paramContext.measure(0, 0);
-      j = j - paramContext.getMeasuredWidth() - localLayoutParams.leftMargin - localLayoutParams.rightMargin;
+      int j = paramSpannable.getSpanStart(arrayOfbbwh[i]);
+      int k = paramSpannable.getSpanEnd(arrayOfbbwh[i]);
+      if ((paramInt >= j) && (paramInt < k)) {
+        return arrayOfbbwh[i];
+      }
       i += 1;
     }
-    return j;
+    return null;
   }
   
-  private void b(bboh parambboh)
+  public static String a(int paramInt, String paramString)
   {
-    if (a() != null) {
-      a().setText(parambboh.a());
-    }
-    if (b() != null) {
-      b().setText(parambboh.b());
-    }
-    if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(parambboh.f)))
+    StringBuilder localStringBuilder = new StringBuilder("https://ti.qq.com/signature/focustopic?_wv=3&&_wwv=129");
+    localStringBuilder.append('&');
+    localStringBuilder.append("topic_id=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("&");
+    localStringBuilder.append("topic_name=");
+    try
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(parambboh.f);
-      b().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { a(), this.jdField_c_of_type_AndroidWidgetTextView, this.f }) - afur.a(75.0F, b().getResources()));
+      localStringBuilder.append(URLEncoder.encode(paramString, "UTF-8"));
+      if (QLog.isColorLevel()) {
+        QLog.i("TopicUtil", 2, String.format("constructTopicDetailUrl[%d,%s]", new Object[] { Integer.valueOf(paramInt), paramString }));
+      }
+      return localStringBuilder.toString();
     }
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    Object localObject;
-    if (b() != null)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      if (parambboh.b != 0)
+      for (;;)
       {
-        b().setImageResource(parambboh.b);
-        b().setVisibility(0);
+        localUnsupportedEncodingException.printStackTrace();
       }
     }
-    else if (this.jdField_a_of_type_AndroidViewView != null)
+  }
+  
+  public static String a(Editable paramEditable)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    if (i < paramEditable.length())
     {
-      localObject = a().getTag(2131380930);
-      if (!(localObject instanceof Integer)) {
-        break label545;
+      if (a(paramEditable, i) != null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append(paramEditable.subSequence(i, i + 1));
       }
     }
-    label523:
-    label535:
-    label545:
-    for (int i = ((Integer)localObject).intValue();; i = -1)
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicUtil", 2, String.format("getPlainText [edit=%s len=%d %s]", new Object[] { paramEditable, Integer.valueOf(paramEditable.length()), localStringBuilder.toString() }));
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(List<Pair<Integer, String>> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
     {
-      if (i > 0)
+      localStringBuilder.append("index = ").append(i).append(",");
+      localStringBuilder.append("id = ").append(((Pair)paramList.get(i)).first).append(",");
+      localStringBuilder.append("topic = ").append((String)((Pair)paramList.get(i)).second).append(",");
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static List<Pair<Integer, String>> a(Editable paramEditable)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = null;
+    int i = 0;
+    if (i < paramEditable.length())
+    {
+      Object localObject2 = (bbwh[])paramEditable.getSpans(i, i, bbwh.class);
+      if ((localObject2 == null) || (localObject2.length <= 0)) {
+        break label122;
+      }
+      localObject2 = localObject2[0];
+      if (localObject2 == localObject1) {
+        break label122;
+      }
+      localObject1 = ((bbwh)localObject2).a();
+      if ((localObject1 instanceof Pair)) {
+        localArrayList.add((Pair)localObject1);
+      }
+      localObject1 = localObject2;
+    }
+    label122:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("TopicUtil", 2, String.format("getTopics %s", new Object[] { a(localArrayList) }));
+      }
+      return localArrayList;
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    if (System.currentTimeMillis() - a < 500L) {
+      return;
+    }
+    a = System.currentTimeMillis();
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Editable paramEditable, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 >= 0) || (paramInt2 < 0) || (paramInt3 <= 0) || (paramInt3 < -paramInt1) || (paramInt2 + paramInt3 > paramEditable.length())) {}
+    int j;
+    do
+    {
+      return;
+      paramInt1 = -paramInt1;
+      int i = 0;
+      j = paramInt2 + paramInt3 - paramInt1;
+      paramInt1 = i;
+      if (Character.isLowSurrogate(paramEditable.toString().charAt(j)))
       {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        label212:
-        if ((c() != null) && (!TextUtils.isEmpty(parambboh.c())))
+        paramInt1 = i;
+        if (j > 0)
         {
-          c().setText(parambboh.c());
-          c().setVisibility(0);
-        }
-        if (a() != null)
-        {
-          if (!parambboh.a()) {
-            break label523;
+          paramInt1 = i;
+          if (j - 1 < paramEditable.length() - 1) {
+            paramInt1 = 1;
           }
-          a().setVisibility(0);
         }
+      }
+      paramEditable.delete(j, paramInt2 + paramInt3);
+    } while (paramInt1 == 0);
+    paramEditable.delete(j - 1, j);
+  }
+  
+  public static void a(ETTextView paramETTextView, CharSequence paramCharSequence, int paramInt)
+  {
+    boolean bool;
+    if ((paramETTextView.mFont != null) && (paramETTextView.mFont.getId() != 0) && (9999 != paramETTextView.mFont.getId()))
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("TopicUtil", 2, String.format("topicSpanCompactETTextView isCustom=%b from=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
+      }
+      if (paramCharSequence != null) {
+        break label140;
+      }
+    }
+    label140:
+    for (paramETTextView = paramETTextView.getText();; paramETTextView = paramCharSequence)
+    {
+      if ((paramETTextView == null) || (!(paramETTextView instanceof Spannable))) {
+        return;
+      }
+      paramETTextView = (Spannable)paramETTextView;
+      paramETTextView = (bbwh[])paramETTextView.getSpans(0, paramETTextView.length(), bbwh.class);
+      paramInt = 0;
+      while (paramInt < paramETTextView.length)
+      {
+        paramETTextView[0].a(bool);
+        paramInt += 1;
+      }
+      bool = false;
+      break;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (paramString == null) {}
+    while (paramString.trim().length() < 3) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static List<Pair<Integer, Integer>> b(Editable paramEditable)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    Object localObject2 = null;
+    bbwh[] arrayOfbbwh;
+    int j;
+    Object localObject1;
+    if (i < paramEditable.length())
+    {
+      arrayOfbbwh = (bbwh[])paramEditable.getSpans(i, i, bbwh.class);
+      if ((arrayOfbbwh == null) || (arrayOfbbwh.length <= 0)) {
+        break label184;
+      }
+      if (arrayOfbbwh.length > 1)
+      {
+        int k = arrayOfbbwh.length;
+        j = 0;
+        localObject1 = null;
+        label66:
+        if (j < k)
+        {
+          bbwh localbbwh = arrayOfbbwh[j];
+          if (localbbwh == localObject2) {
+            break label194;
+          }
+          localObject1 = localbbwh;
+        }
+      }
+    }
+    label184:
+    label194:
+    for (;;)
+    {
+      j += 1;
+      break label66;
+      if (localObject1 == null) {
+        localObject1 = arrayOfbbwh[(arrayOfbbwh.length - 1)];
       }
       for (;;)
       {
-        if (TextUtils.isEmpty(parambboh.h)) {
-          break label535;
-        }
-        i = a().getResources().getDimensionPixelSize(2131298229);
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "rightIcon";
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-        parambboh = URLDrawable.getDrawable(parambboh.h, (URLDrawable.URLDrawableOptions)localObject);
-        if ((parambboh.getStatus() != 1) && (parambboh.getStatus() != 0)) {
-          parambboh.restartDownload();
-        }
-        a().setImageDrawable(parambboh);
-        a().setVisibility(0);
-        return;
-        if (!TextUtils.isEmpty(parambboh.c))
+        label110:
+        if (localObject1 != localObject2)
         {
-          i = a().getResources().getDimensionPixelSize(2131297389);
-          localObject = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-          ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "isAvatar";
-          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-          localObject = URLDrawable.getDrawable(parambboh.c, (URLDrawable.URLDrawableOptions)localObject);
-          ((URLDrawable)localObject).setDecodeHandler(bgey.a);
-          if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
-            ((URLDrawable)localObject).restartDownload();
+          localObject2 = ((bbwh)localObject1).a();
+          if ((localObject2 instanceof Pair)) {
+            localArrayList.add(new Pair(((Pair)localObject2).first, Integer.valueOf(i)));
           }
-          b().setImageDrawable((Drawable)localObject);
-          b().setVisibility(0);
+        }
+        for (;;)
+        {
+          i += 1;
+          localObject2 = localObject1;
           break;
+          localObject1 = arrayOfbbwh[0];
+          break label110;
+          return localArrayList;
+          localObject1 = localObject2;
         }
-        b().setVisibility(8);
-        break;
-        if (i != 0) {
-          break label212;
-        }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        break label212;
-        a().setVisibility(8);
       }
-      a().setVisibility(8);
-      return;
     }
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365606);
-    switch (this.jdField_c_of_type_Int)
-    {
-    default: 
-    case 2131559802: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378446));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378448));
-        a().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.f }));
-        a().setTextColor(bbup.b());
-      } while (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null));
-      return;
-    }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371323));
-  }
-  
-  public void a(bboh parambboh)
-  {
-    b();
-    switch (parambboh.a)
-    {
-    case -2: 
-    default: 
-      return;
-    }
-    b(parambboh);
   }
 }
 

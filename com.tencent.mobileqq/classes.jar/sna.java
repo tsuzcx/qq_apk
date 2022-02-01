@@ -1,9 +1,35 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
 
-public abstract interface sna
+public class sna
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  private static sna a;
+  
+  public static sna a()
+  {
+    try
+    {
+      if (a == null) {
+        a = new sna();
+      }
+      sna localsna = a;
+      return localsna;
+    }
+    finally {}
+  }
+  
+  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
 }
 
 

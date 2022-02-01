@@ -1,22 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class xjp
-  implements wld<wzd, wze>
+public class xjp
+  extends wip
 {
-  xjp(xjo paramxjo, xjd paramxjd) {}
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void a(@NonNull wzd paramwzd, @Nullable wze paramwze, @NonNull ErrorMessage paramErrorMessage)
+  public xjp(ErrorMessage paramErrorMessage, String paramString)
   {
-    if ((paramErrorMessage.isFail()) || (paramwze == null))
-    {
-      yqp.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Xjd.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Xjo.a.a(paramwze.jdField_a_of_type_JavaUtilList, paramwze.jdField_a_of_type_JavaLangString, paramwze.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Xjd.a(paramErrorMessage, xil.b(paramwze.jdField_a_of_type_JavaUtilList), paramwze.jdField_a_of_type_Boolean);
+    this.a = paramErrorMessage;
+    this.b = paramString;
   }
 }
 

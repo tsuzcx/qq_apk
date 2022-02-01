@@ -1,8 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public abstract interface tit
+class tit
+  implements View.OnLayoutChangeListener
 {
-  public abstract void a(SelectPositionModule.PositionData paramPositionData);
+  tit(tis paramtis) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    paramView.removeOnLayoutChangeListener(this);
+    paramView.setTranslationX(tis.a(this.a)[0]);
+    paramView.setTranslationY(tis.a(this.a)[1]);
+  }
 }
 
 

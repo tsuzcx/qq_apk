@@ -1,96 +1,41 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
 import android.support.annotation.NonNull;
-import java.io.File;
+import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
 
-public abstract class who
+public class who
+  implements Comparable<who>
 {
-  protected who a;
-  protected String[] a;
+  public int a;
+  Bitmap a;
+  public wgh a;
   
-  public who(@NonNull String[] paramArrayOfString)
+  public int a(@NonNull who paramwho)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    return (int)(this.jdField_a_of_type_Wgh.b - paramwho.jdField_a_of_type_Wgh.b);
   }
   
-  public static double a(File paramFile)
+  public Bitmap a(Context paramContext)
   {
-    double d1 = 0.0D;
-    double d2;
-    if (paramFile.isDirectory())
-    {
-      paramFile = paramFile.listFiles();
-      d2 = d1;
-      if (paramFile != null)
-      {
-        int j = paramFile.length;
-        int i = 0;
-        for (;;)
-        {
-          d2 = d1;
-          if (i >= j) {
-            break;
-          }
-          d2 = a(paramFile[i]);
-          i += 1;
-          d1 = d2 + d1;
-        }
-      }
+    BitmapFactory.Options localOptions;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      localOptions = new BitmapFactory.Options();
     }
-    else
-    {
-      d2 = paramFile.length() / 1024.0D / 1024.0D;
-    }
-    return d2;
-  }
-  
-  public who a(who paramwho)
-  {
-    this.jdField_a_of_type_Who = paramwho;
-    return this.jdField_a_of_type_Who;
-  }
-  
-  public void a(File paramFile)
-  {
     try
     {
-      zkr.d(paramFile.getPath());
-      return;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Wgh.a(paramContext, 1, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = whp.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    catch (Exception paramFile)
+    catch (Exception paramContext)
     {
-      yqp.d("Q.qqstory.cleaner:AbsCleanStep", "delete failed : " + paramFile);
+      for (;;)
+      {
+        yuk.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
+      }
     }
   }
-  
-  public void a(whp paramwhp)
-  {
-    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramwhp);
-    if (this.jdField_a_of_type_Who != null) {}
-    long l;
-    do
-    {
-      try
-      {
-        Thread.sleep(100L);
-        this.jdField_a_of_type_Who.a(paramwhp);
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          yqp.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
-        }
-      }
-      l = zkr.a() / 1024L;
-      yqp.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramwhp.jdField_a_of_type_Long), Long.valueOf(l) });
-      if (paramwhp.jdField_a_of_type_Int != 0) {
-        yqu.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramwhp.jdField_a_of_type_Int), String.valueOf(paramwhp.jdField_a_of_type_Double), String.valueOf(l) });
-      }
-    } while (paramwhp.jdField_b_of_type_Int == 0);
-    yqu.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramwhp.jdField_b_of_type_Int), String.valueOf(paramwhp.jdField_b_of_type_Double), String.valueOf(l) });
-  }
-  
-  protected abstract void a(String[] paramArrayOfString, whp paramwhp);
 }
 
 

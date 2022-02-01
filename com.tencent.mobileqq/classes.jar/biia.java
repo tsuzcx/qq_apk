@@ -1,6 +1,10 @@
-public abstract interface biia
+import android.os.Bundle;
+
+public abstract class biia
 {
-  public abstract void a(Object paramObject1, Object paramObject2);
+  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
+  
+  public void a(Bundle paramBundle) {}
 }
 
 

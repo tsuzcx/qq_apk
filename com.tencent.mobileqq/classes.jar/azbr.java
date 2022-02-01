@@ -1,31 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public final class azbr
-  implements bdvv
+public class azbr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(bdws parambdws, bdwt parambdwt)
+  public azbr(ScanOcrView paramScanOcrView, azbt paramazbt) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambdws instanceof bdvs));
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-      if (parambdwt.contains("range="))
-      {
-        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambdwt);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.jdField_a_of_type_Azbt.a * f);
+    int i = (int)(f * this.jdField_a_of_type_Azbt.jdField_b_of_type_Int);
+    int m = j - this.jdField_a_of_type_Azbt.a;
+    int k = i - this.jdField_a_of_type_Azbt.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
+    }
+    j = i;
+    if (i < 0) {
+      j = 0;
+    }
+    i = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.jdField_a_of_type_Azbt.e = j;
+    this.jdField_a_of_type_Azbt.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

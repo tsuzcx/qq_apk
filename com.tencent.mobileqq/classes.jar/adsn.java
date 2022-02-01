@@ -1,23 +1,39 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
-public final class adsn
-  implements QQPermissionCallback
+public class adsn
+  extends noa
 {
-  public adsn(DialogInterface.OnClickListener paramOnClickListener) {}
+  public adsn(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 0);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 1);
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
+        {
+          AddFriendLogicActivity.a(this.a, true);
+          this.a.a();
+          return;
+        }
+        AddFriendLogicActivity.a(this.a);
+        return;
+      }
+      AddFriendLogicActivity.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
   }
 }
 

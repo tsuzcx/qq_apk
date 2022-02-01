@@ -1,45 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
-import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-public class bnwe
-  implements IVideoShelfPlayerListener
+class bnwe
+  extends QzoneExternalRequest
 {
-  private WeakReference<AETemplateInfoFragment> a;
+  bnwe(bnwd parambnwd, Intent paramIntent) {}
   
-  public bnwe(AETemplateInfoFragment paramAETemplateInfoFragment)
+  public String getCmdString()
   {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
+    return "SweetQzoneService.GetCommCfg";
   }
   
-  public void onChangVideoSize(int paramInt1, int paramInt2) {}
-  
-  public void onCompletion()
+  public JceStruct getReq()
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a();
+    sweet_comm_cfg_get_req localsweet_comm_cfg_get_req = new sweet_comm_cfg_get_req();
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).add(Integer.valueOf(1));
+    localsweet_comm_cfg_get_req.vec_cfg = ((ArrayList)localObject);
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      localObject = new sweet_req_comm();
+      ((sweet_req_comm)localObject).opuin = l;
+      ((sweet_req_comm)localObject).uin = l;
+      ((sweet_req_comm)localObject).loveuin = 0L;
+      ((sweet_req_comm)localObject).qua = bmsw.a();
+      ((sweet_req_comm)localObject).pf = 1;
+      ((sweet_req_comm)localObject).src = 3;
+      localsweet_comm_cfg_get_req.req_comm = ((sweet_req_comm)localObject);
     }
+    return localsweet_comm_cfg_get_req;
   }
   
-  public boolean onError(int paramInt, String paramString, Object paramObject)
+  public String uniKey()
   {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
-  
-  public void onUpdateRate(long paramLong)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
-    }
+    return "GetCommCfg";
   }
 }
 

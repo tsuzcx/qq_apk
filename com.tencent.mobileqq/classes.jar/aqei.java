@@ -1,12 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqei
-  extends aqee
+class aqei
+  implements DialogInterface.OnDismissListener
 {
-  public void a(aqdu paramaqdu, int paramInt, boolean paramBoolean)
+  aqei(aqeg paramaqeg) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.a(paramaqdu, paramInt, paramBoolean);
-    paramaqdu.b.setBackgroundResource(2130839245);
+    aqeg.a(this.a, false);
+    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
   }
 }
 

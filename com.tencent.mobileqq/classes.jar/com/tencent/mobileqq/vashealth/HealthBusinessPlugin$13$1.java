@@ -3,23 +3,23 @@ package com.tencent.mobileqq.vashealth;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bhet;
+import bife;
 
 public class HealthBusinessPlugin$13$1
   implements Runnable
 {
-  public HealthBusinessPlugin$13$1(bhet parambhet, SeekBar paramSeekBar, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3, TextView paramTextView3) {}
+  public HealthBusinessPlugin$13$1(bife parambife, SeekBar paramSeekBar, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3, TextView paramTextView3) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Bhet.a.c)
+    if (!this.jdField_a_of_type_Bife.a.c)
     {
       this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_Bhet.a.f = false;
+      this.jdField_a_of_type_Bife.a.f = false;
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     }

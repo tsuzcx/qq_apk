@@ -1,28 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.widget.SimpleTextView;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 
 public class ajmc
-  extends bkov
+  extends ajmf
 {
-  public ajmc(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public MayKnowRecommend a;
+  
+  public ajmc(MayKnowRecommend paramMayKnowRecommend)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend = paramMayKnowRecommend;
+    this.jdField_a_of_type_Long = paramMayKnowRecommend.timestamp;
   }
   
-  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
+  public String a()
   {
-    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
-    if ((parambkou instanceof SimpleTextView)) {
-      parambkou.setTag(paramObject);
+    return this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.uin;
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramQQAppInterface = (aobl)paramQQAppInterface.getManager(159);
+      if (paramQQAppInterface == null) {
+        break label67;
+      }
     }
-    return parambkou;
+    label67:
+    for (boolean bool = paramQQAppInterface.a();; bool = false)
+    {
+      paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.getDisplayName(bool);
+      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131689654), new Object[] { paramQQAppInterface });
+      return this.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  public boolean a()
   {
-    this.a.a(paramInt, paramArrayOfbkou, paramObject);
+    return true;
   }
 }
 

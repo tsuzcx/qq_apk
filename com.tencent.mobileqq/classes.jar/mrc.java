@@ -1,46 +1,50 @@
-import android.text.TextPaint;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mrc
 {
-  public static float a(String paramString, TextPaint paramTextPaint)
+  public long a;
+  public VideoAppInterface a;
+  public WeakReference<mpv> b;
+  public final String i = "AVRedBag_" + getClass().getSimpleName() + "_" + this.jdField_a_of_type_Long;
+  
+  mrc(mpv parammpv)
   {
-    return paramTextPaint.measureText(paramString);
+    this.jdField_a_of_type_Long = AudioHelper.b();
+    this.b = new WeakReference(parammpv);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = parammpv.a();
   }
   
-  public static float a(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  public AVActivity a()
   {
-    float f1;
-    if (paramString == null)
-    {
-      f1 = paramFloat;
-      return f1;
+    mpv localmpv = (mpv)this.b.get();
+    if (localmpv != null) {
+      return localmpv.a();
     }
-    paramString = paramString.toCharArray();
-    int i = 0;
-    for (;;)
-    {
-      f1 = paramFloat;
-      if (i >= paramString.length) {
-        break;
-      }
-      float f2 = paramTextPaint.measureText(paramString, i, 1);
-      f1 = paramFloat;
-      if (f2 >= paramFloat) {
-        break;
-      }
-      paramFloat -= f2;
-      paramStringBuilder.append(paramString[i]);
-      i += 1;
-    }
+    return null;
   }
   
-  public static float b(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  public mpv a()
   {
-    float f = paramTextPaint.measureText("...");
-    if (f > a(paramStringBuilder, paramString, paramTextPaint, paramFloat - f)) {
-      paramStringBuilder.append("...");
+    mpv localmpv = (mpv)this.b.get();
+    if (localmpv == null) {
+      QLog.d(this.i, 1, "getRedBagMgr[" + getClass().getName() + "] is null");
     }
-    return f;
+    return localmpv;
+  }
+  
+  protected void finalize()
+  {
+    QLog.d(this.i, 1, "finalize, " + toString());
+    super.finalize();
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

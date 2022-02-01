@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bcja;
+import bdbs;
 
 public class CameraProxy$WaitDoneBundle$1
   implements Runnable
 {
-  public CameraProxy$WaitDoneBundle$1(bcja parambcja) {}
+  public CameraProxy$WaitDoneBundle$1(bdbs parambdbs) {}
   
   public void run()
   {

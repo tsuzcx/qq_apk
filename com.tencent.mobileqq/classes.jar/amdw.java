@@ -1,13 +1,17 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class amdw
-  implements Comparator<ajax>
+public class amdw
+  implements View.OnClickListener
 {
-  amdw(amdv paramamdv) {}
+  public amdw(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public int a(ajax paramajax1, ajax paramajax2)
+  public void onClick(View paramView)
   {
-    return (int)(paramajax2.a - paramajax1.a);
+    PhoneContactTabView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

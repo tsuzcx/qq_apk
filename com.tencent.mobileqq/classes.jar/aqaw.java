@@ -1,6 +1,13 @@
-public abstract interface aqaw
+public class aqaw
 {
-  public abstract void a(aqav paramaqav);
+  public volatile int a;
+  public volatile boolean a;
+  
+  private aqaw()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

@@ -1,31 +1,13 @@
+import android.widget.TextView;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+
 public class bcci
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public bcci(bccg parambccg)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(",mTab=" + this.c);
-    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public bcci(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
 }
 
 

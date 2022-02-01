@@ -1,49 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.util.HashMap;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 
-public class bpnq<K, V>
+public abstract interface bpnq
 {
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private HashMap<K, bpnq<K, V>.bpnr> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public abstract void a();
   
-  @Nullable
-  public V a(K paramK)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
-    {
-      paramK = (bpnr)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-      if (paramK.get() != null) {
-        return paramK.get();
-      }
-    }
-    return null;
-  }
+  public abstract void a(bqks parambqks, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
   
-  public void a()
-  {
-    for (;;)
-    {
-      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localReference == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((bpnr)localReference).a());
-    }
-  }
+  public abstract void a(bqpa parambqpa, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public void a(@NonNull K paramK, @NonNull V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      throw new IllegalArgumentException("key-value cannot be null");
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bpnr)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bpnr(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
-  }
+  public abstract void a(bqpe parambqpe, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(bqpe parambqpe, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b(bqks parambqks, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
 }
 
 

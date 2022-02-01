@@ -1,16 +1,22 @@
-public abstract class axys
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
+public class axys
+  implements DialogInterface.OnClickListener
 {
-  public void a(String paramString) {}
+  public axys(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
   
-  public void a(String paramString, long paramLong) {}
-  
-  public void b(String paramString) {}
-  
-  public void b(String paramString, long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  public void c(String paramString, long paramLong) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramDialogInterface.b = str;
+    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Axxr.d();
+  }
 }
 
 

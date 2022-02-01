@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.Doraemon;
 
-import adea;
-import aded;
+import admy;
+import adnb;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class DoraemonAPIManager$2
   implements Runnable
 {
-  public DoraemonAPIManager$2(aded paramaded, List paramList) {}
+  public DoraemonAPIManager$2(adnb paramadnb, List paramList) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class DoraemonAPIManager$2
     while (localIterator.hasNext())
     {
       Object[] arrayOfObject = (Object[])localIterator.next();
-      aded.a(this.this$0, (String)arrayOfObject[0], (JSONObject)arrayOfObject[1], (adea)arrayOfObject[2]);
+      adnb.a(this.this$0, (String)arrayOfObject[0], (JSONObject)arrayOfObject[1], (admy)arrayOfObject[2]);
     }
   }
 }

@@ -1,202 +1,94 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
 import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
 import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xea0.oidb_cmd0xea0.DynamicBannerItem;
-import tencent.im.oidb.cmd0xea0.oidb_cmd0xea0.ReqBody;
-import tencent.im.oidb.cmd0xea0.oidb_cmd0xea0.RspBody;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.RspBody;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.SubCommentCreateReq;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.SubCommentCreateRsp;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule;", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule;", "app", "Lcom/tencent/common/app/AppInterface;", "entityManager", "Lcom/tencent/mobileqq/persistence/EntityManager;", "executor", "Ljava/util/concurrent/ExecutorService;", "msfService", "Lcom/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFService;", "mainThreadHandler", "Landroid/os/Handler;", "(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/persistence/EntityManager;Ljava/util/concurrent/ExecutorService;Lcom/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFService;Landroid/os/Handler;)V", "bannerInfoMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule$ChannelBannerInfo;", "requestTimeMap", "", "getChannelBannerInfoList", "channelId", "getPageName", "", "dynamicJson", "handleReceiveChannelBannerInfo", "", "req", "Lcom/tencent/qphone/base/remote/ToServiceMsg;", "res", "Lcom/tencent/qphone/base/remote/FromServiceMsg;", "data", "", "onReceive", "requestChannelBannerInfo", "serviceType", "unInitialize", "ChannelBannerInfo", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/CreateSubCommentHandler;", "", "data", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;)V", "getData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "onFailedCallback", "Lkotlin/Function2;", "", "", "", "getOnFailedCallback", "()Lkotlin/jvm/functions/Function2;", "setOnFailedCallback", "(Lkotlin/jvm/functions/Function2;)V", "onSuccessCallback", "Lkotlin/Function1;", "getOnSuccessCallback", "()Lkotlin/jvm/functions/Function1;", "setOnSuccessCallback", "(Lkotlin/jvm/functions/Function1;)V", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "onCommentOperationFailed", "errorCode", "errorMsg", "onSubCommentCreateSuccess", "subCommentId", "parseSubCommentCreateData", "", "send0xd1eRequest", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class owc
-  extends pxz
 {
-  public static final owe a;
-  private final ConcurrentHashMap<Integer, List<owd>> a;
-  private final ConcurrentHashMap<Integer, Long> b = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_Owe = new owe(null);
-  }
-  
-  public owc(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable qnd paramqnd, @Nullable Handler paramHandler)
-  {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqnd, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  private final String a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).optString("pts_page_name");
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "jsonObject.optString(PTS_LITE_PAGE_NAME)");
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("RIJChannelBannerModule", 1, "[getPageName] failed, e = " + paramString);
-    }
-    return "";
-  }
-  
-  private final void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramToServiceMsg = new oidb_cmd0xea0.RspBody();
-    int i = qnf.a(paramFromServiceMsg, paramObject, (MessageMicro)paramToServiceMsg);
-    QLog.i("RIJChannelBannerModule", 1, "[handleReceiveChannelBannerInfo], result = " + i);
-    if (i == 0)
-    {
-      paramFromServiceMsg = paramToServiceMsg.dynamic_banner_list;
-      if ((paramFromServiceMsg.has()) && (paramFromServiceMsg.size() > 0))
-      {
-        paramToServiceMsg = paramToServiceMsg.channel_id;
-        int j;
-        label102:
-        owd localowd;
-        if (paramToServiceMsg != null)
-        {
-          i = (int)paramToServiceMsg.get();
-          paramObject = new ArrayList();
-          int k = paramFromServiceMsg.size();
-          j = 0;
-          if (j >= k) {
-            break label327;
-          }
-          paramToServiceMsg = paramFromServiceMsg.get(j);
-          Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "dynamicBannerList[i]");
-          oidb_cmd0xea0.DynamicBannerItem localDynamicBannerItem = (oidb_cmd0xea0.DynamicBannerItem)paramToServiceMsg;
-          localowd = new owd(this);
-          localowd.a(i);
-          paramToServiceMsg = localDynamicBannerItem.unique_id;
-          if (paramToServiceMsg == null) {
-            break label309;
-          }
-          paramToServiceMsg = paramToServiceMsg.get();
-          if (paramToServiceMsg == null) {
-            break label309;
-          }
-          paramToServiceMsg = paramToServiceMsg.toString();
-          if (paramToServiceMsg == null) {
-            break label309;
-          }
-          label173:
-          localowd.a(paramToServiceMsg);
-          paramToServiceMsg = localDynamicBannerItem.dynamic_json;
-          if (paramToServiceMsg == null) {
-            break label315;
-          }
-          paramToServiceMsg = paramToServiceMsg.get();
-          if (paramToServiceMsg == null) {
-            break label315;
-          }
-          paramToServiceMsg = paramToServiceMsg.toString();
-          if (paramToServiceMsg == null) {
-            break label315;
-          }
-          label207:
-          localowd.c(paramToServiceMsg);
-          paramToServiceMsg = localDynamicBannerItem.card_report_json;
-          if (paramToServiceMsg == null) {
-            break label321;
-          }
-          paramToServiceMsg = paramToServiceMsg.get();
-          if (paramToServiceMsg == null) {
-            break label321;
-          }
-          paramToServiceMsg = paramToServiceMsg.toString();
-          if (paramToServiceMsg == null) {
-            break label321;
-          }
-        }
-        for (;;)
-        {
-          localowd.d(paramToServiceMsg);
-          localowd.b(a(localowd.c()));
-          paramObject.add(localowd);
-          QLog.i("RIJChannelBannerModule", 1, "[handleReceiveChannelBannerInfo], channelBannerInfo: " + localowd);
-          j += 1;
-          break label102;
-          i = 0;
-          break;
-          label309:
-          paramToServiceMsg = "";
-          break label173;
-          label315:
-          paramToServiceMsg = "";
-          break label207;
-          label321:
-          paramToServiceMsg = "";
-        }
-        label327:
-        ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Integer.valueOf(i), paramObject);
-        pmk.a().d(i, (List)paramObject);
-      }
-    }
-  }
-  
+  @NotNull
+  private final SubCommentCreateData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanSubCommentCreateData;
   @Nullable
-  public final List<owd> a(int paramInt)
+  private Function1<? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  @Nullable
+  private Function2<? super Integer, ? super String, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction2;
+  
+  public owc(@NotNull SubCommentCreateData paramSubCommentCreateData)
   {
-    return (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanSubCommentCreateData = paramSubCommentCreateData;
   }
   
-  public void a()
+  private final oidb_0xd1e.ReqBody a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
+    oidb_0xd1e.SubCommentCreateReq localSubCommentCreateReq = new oidb_0xd1e.SubCommentCreateReq();
+    SubCommentCreateData localSubCommentCreateData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanSubCommentCreateData;
+    localSubCommentCreateReq.rowkey.set(localSubCommentCreateData.b());
+    localSubCommentCreateReq.article_id.set(localSubCommentCreateData.c());
+    localSubCommentCreateReq.author_id.set(localSubCommentCreateData.a());
+    localSubCommentCreateReq.business_info.set(localSubCommentCreateData.d());
+    localSubCommentCreateReq.content_src.set(localSubCommentCreateData.d());
+    localSubCommentCreateReq.src.set(localSubCommentCreateData.c());
+    localSubCommentCreateReq.scene.set(localSubCommentCreateData.b());
+    localSubCommentCreateReq.content.set(localSubCommentCreateData.e());
+    localSubCommentCreateReq.first_comment_id.set(localSubCommentCreateData.a());
+    localSubCommentCreateReq.replied_sub_author_id.set(localSubCommentCreateData.b());
+    localSubCommentCreateReq.replied_sub_comment_id.set(localSubCommentCreateData.f());
+    localReqBody.sub_comment_create_req.set((MessageMicro)localSubCommentCreateReq);
+    return localReqBody;
   }
   
-  public final void a(int paramInt1, int paramInt2)
+  private final void a(int paramInt)
   {
-    owi localowi = owi.a;
-    Object localObject = (Long)this.b.get(Integer.valueOf(paramInt1));
-    if (localObject != null) {}
-    while (!localowi.a(((Long)localObject).longValue()))
-    {
-      QLog.i("RIJChannelBannerModule", 1, "[requestChannelBannerInfo] do not request, limit request frequency.");
-      return;
-      localObject = Long.valueOf(0L);
+    Object localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    if (localObject != null) {
+      localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(paramInt));
     }
-    localObject = new oidb_cmd0xea0.ReqBody();
-    ((oidb_cmd0xea0.ReqBody)localObject).req_client_type.set(1);
-    ((oidb_cmd0xea0.ReqBody)localObject).version.set("8.4.1");
-    ((oidb_cmd0xea0.ReqBody)localObject).channel_id.set(paramInt1);
-    localObject = qnf.a("OidbSvc.0xea0", 3744, paramInt2, ((oidb_cmd0xea0.ReqBody)localObject).toByteArray());
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyOidbHelper.make…e, reqBody.toByteArray())");
-    a((ToServiceMsg)localObject);
-    long l = System.currentTimeMillis();
-    ((Map)this.b).put(Integer.valueOf(paramInt1), Long.valueOf(l));
-    QLog.i("RIJChannelBannerModule", 1, "[requestChannelBannerInfo], channelId = " + paramInt1 + ", serviceType = " + paramInt2 + ", timeStamp = " + l);
   }
   
-  public void a(@Nullable ToServiceMsg paramToServiceMsg, @Nullable FromServiceMsg paramFromServiceMsg, @Nullable Object paramObject)
+  private final void a(byte[] paramArrayOfByte)
   {
-    if (paramFromServiceMsg != null) {}
-    for (String str = paramFromServiceMsg.getServiceCmd();; str = null)
-    {
-      if (TextUtils.equals((CharSequence)str, (CharSequence)"OidbSvc.0xea0")) {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      }
-      return;
+    oidb_0xd1e.RspBody localRspBody = new oidb_0xd1e.RspBody();
+    localRspBody.mergeFrom(paramArrayOfByte);
+    a(localRspBody.sub_comment_create_rsp.sub_comment_id.get());
+  }
+  
+  public final void a()
+  {
+    oidb_0xd1e.ReqBody localReqBody = a();
+    nkm.a(ozs.a(), (nkq)new owd(this), localReqBody.toByteArray(), "OidbSvc.0xd1e", 3358, 1);
+  }
+  
+  public final void a(int paramInt, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
+    Function2 localFunction2 = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
+    if (localFunction2 != null) {
+      paramString = (Unit)localFunction2.invoke(Integer.valueOf(paramInt), paramString);
     }
+  }
+  
+  public final void a(@Nullable Function1<? super Integer, Unit> paramFunction1)
+  {
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+  }
+  
+  public final void a(@Nullable Function2<? super Integer, ? super String, Unit> paramFunction2)
+  {
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
   }
 }
 

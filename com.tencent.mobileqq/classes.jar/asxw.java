@@ -1,52 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class asxw
-  extends atwn
+  implements View.OnClickListener
 {
-  public asxw(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  public asxw(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-    Object localObject = athc.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    if (!atck.a(ExtendFriendCampusFragment.a(this.a)))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (atha.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          bcst.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
-        }
-      }
+      Intent localIntent = new Intent("com.tencent.mobileqq.action.publishmood");
+      bmtk localbmtk = bmtk.a();
+      localbmtk.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localIntent.putExtra("qzone_plugin_activity_name", "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+      localIntent.putExtra("uin", localbmtk.a);
+      localIntent.putExtra("key_from_kuolie", true);
+      bmtd.b(ExtendFriendCampusFragment.a(this.a), localbmtk, localIntent, 0);
     }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

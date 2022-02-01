@@ -1,17 +1,55 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bnir
-  implements Observer<bnnb>
+public class bnir
 {
-  bnir(bniq parambniq) {}
+  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
   
-  public void a(@Nullable bnnb parambnnb)
+  public int a()
   {
-    bniq.a(this.a, parambnnb);
-    if (bniq.a(this.a) != null) {
-      bniq.a(this.a).a(bniq.a(this.a).a(), bniq.a(this.a));
+    return this.a.size();
+  }
+  
+  public Statistic a()
+  {
+    return (Statistic)this.a.poll();
+  }
+  
+  public List<Statistic> a()
+  {
+    return a(a());
+  }
+  
+  public List<Statistic> a(int paramInt)
+  {
+    Object localObject;
+    if (paramInt < 1)
+    {
+      localObject = null;
+      return localObject;
     }
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramInt, a());
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
+      }
+      localObject = a();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public void a(Statistic paramStatistic)
+  {
+    this.a.add(paramStatistic);
   }
 }
 

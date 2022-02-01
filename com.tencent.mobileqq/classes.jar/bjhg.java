@@ -1,94 +1,110 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qidian.proto.mobileqq_qidian.PubAccItem;
+import java.io.UnsupportedEncodingException;
 
 public class bjhg
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  
-  public bjhg()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public bjhg(mobileqq_qidian.PubAccItem paramPubAccItem)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    a(paramPubAccItem);
-  }
-  
-  public mobileqq_qidian.PubAccItem a()
-  {
-    mobileqq_qidian.PubAccItem localPubAccItem = new mobileqq_qidian.PubAccItem();
-    localPubAccItem.str_uin.set(this.jdField_a_of_type_JavaLangString);
-    localPubAccItem.str_name.set(this.jdField_b_of_type_JavaLangString);
-    localPubAccItem.uint32_type.set(this.jdField_a_of_type_Int);
-    localPubAccItem.uint32_verity.set(this.jdField_b_of_type_Int);
-    localPubAccItem.str_face_url.set(this.c);
-    localPubAccItem.str_qr_url.set(this.d);
-    return localPubAccItem;
-  }
-  
-  public void a(mobileqq_qidian.PubAccItem paramPubAccItem)
-  {
-    if (paramPubAccItem.str_uin.has()) {
-      this.jdField_a_of_type_JavaLangString = paramPubAccItem.str_uin.get();
-    }
-    if (paramPubAccItem.str_name.has()) {
-      this.jdField_b_of_type_JavaLangString = paramPubAccItem.str_name.get();
-    }
-    if (paramPubAccItem.uint32_type.has()) {
-      this.jdField_a_of_type_Int = paramPubAccItem.uint32_type.get();
-    }
-    if (paramPubAccItem.uint32_verity.has()) {
-      this.jdField_b_of_type_Int = paramPubAccItem.uint32_verity.get();
-    }
-    if (paramPubAccItem.str_face_url.has()) {
-      this.c = paramPubAccItem.str_face_url.get();
-    }
-    if (paramPubAccItem.str_qr_url.has()) {
-      this.d = paramPubAccItem.str_qr_url.get();
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
+    if (!bjhg.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      return false;
-      if (paramObject == this) {
-        return true;
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public static String a(byte[] paramArrayOfByte, int paramInt)
+  {
+    try
+    {
+      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
+      return paramArrayOfByte;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      throw new AssertionError(paramArrayOfByte);
+    }
+  }
+  
+  public static byte[] a(String paramString, int paramInt)
+  {
+    return a(paramString.getBytes(), paramInt);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    bjhi localbjhi = new bjhi(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localbjhi.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+      throw new IllegalArgumentException("bad base-64");
+    }
+    if (localbjhi.jdField_a_of_type_Int == localbjhi.jdField_a_of_type_ArrayOfByte.length) {
+      return localbjhi.jdField_a_of_type_ArrayOfByte;
+    }
+    paramArrayOfByte = new byte[localbjhi.jdField_a_of_type_Int];
+    System.arraycopy(localbjhi.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbjhi.jdField_a_of_type_Int);
+    return paramArrayOfByte;
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
+  {
+    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    bjhj localbjhj = new bjhj(paramInt3, null);
+    int i = paramInt2 / 3 * 4;
+    int j;
+    if (localbjhj.jdField_a_of_type_Boolean)
+    {
+      paramInt3 = i;
+      if (paramInt2 % 3 > 0) {
+        paramInt3 = i + 4;
       }
-    } while (paramObject.getClass() != getClass());
-    paramObject = (bjhg)paramObject;
-    if ((paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) && (paramObject.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (paramObject.c.equals(this.c)) && (paramObject.d.equals(this.d))) {}
-    for (;;)
+      i = paramInt3;
+      if (localbjhj.b)
+      {
+        i = paramInt3;
+        if (paramInt2 > 0)
+        {
+          j = (paramInt2 - 1) / 57;
+          if (!localbjhj.c) {
+            break label186;
+          }
+        }
+      }
+    }
+    label186:
+    for (i = 2;; i = 1)
     {
-      return bool;
-      bool = false;
+      i = paramInt3 + i * (j + 1);
+      localbjhj.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localbjhj.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localbjhj.jdField_a_of_type_Int == i)) {
+        break label192;
+      }
+      throw new AssertionError();
+      paramInt3 = i;
+      switch (paramInt2 % 3)
+      {
+      case 0: 
+      default: 
+        paramInt3 = i;
+        break;
+      case 1: 
+        paramInt3 = i + 2;
+        break;
+      case 2: 
+        paramInt3 = i + 3;
+        break;
+      }
     }
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_JavaLangString.hashCode();
-    int k = this.jdField_b_of_type_JavaLangString.hashCode();
-    int m = this.jdField_a_of_type_Int;
-    int n = this.jdField_b_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 1) {
-      return ((i + ((((j + 403) * 31 + k) * 31 + m) * 31 + n) * 31) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
-    }
+    label192:
+    return localbjhj.jdField_a_of_type_ArrayOfByte;
   }
 }
 

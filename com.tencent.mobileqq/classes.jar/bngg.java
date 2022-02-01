@@ -1,17 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.remote.RecvMsg;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class bngg
-  implements View.OnClickListener
+  extends IActionListener.Stub
 {
-  bngg(bngd parambngd, bnfk parambnfk, int paramInt) {}
+  bngg(bngf parambngf) {}
   
-  public void onClick(View paramView)
+  public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    ((bnff)this.jdField_a_of_type_Bngd.a.get()).a(this.jdField_a_of_type_Bnfk.itemView, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramRecvMsg == null) {}
+    for (;;)
+    {
+      return;
+      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (bngf.a(this.a) != null))
+      {
+        Iterator localIterator = bngf.a(this.a).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (WeakReference)localIterator.next();
+          if (localObject != null)
+          {
+            localObject = (bngj)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((bngj)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

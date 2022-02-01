@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip;
 
-import bhgz;
+import biho;
 
 class AioVipKeywordHelper$1$1
   implements Runnable

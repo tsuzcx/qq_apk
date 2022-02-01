@@ -1,23 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend.VideoInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-
-class aonu
-  implements View.OnClickListener
+public abstract interface aonu
 {
-  aonu(aons paramaons, ArrayList paramArrayList, QIMNotifyAddFriend.VideoInfo paramVideoInfo) {}
+  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3);
   
-  public void onClick(View paramView)
-  {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend$VideoInfo.videoVid), 120);
-    localOpenPlayerBuilder.a();
-    xho.a(this.jdField_a_of_type_Aons.a, localOpenPlayerBuilder.a(), null);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

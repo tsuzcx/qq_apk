@@ -1,37 +1,26 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.Future;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
 public class blpi
-  implements PluginManagerUpdater
 {
-  private avgo jdField_a_of_type_Avgo;
-  private File jdField_a_of_type_JavaIoFile;
+  public int a;
+  public final Rect a;
+  public Drawable a;
+  public int[] a;
+  public int b;
+  public Drawable b;
+  public int[] b = new int[2];
+  public int c;
+  public Drawable c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public blpi(avgo paramavgo, File paramFile)
+  private blpi()
   {
-    this.jdField_a_of_type_Avgo = paramavgo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
-  
-  public File getLatest()
-  {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
-  
-  public Future isAvailable(File paramFile)
-  {
-    return this.jdField_a_of_type_Avgo.isAvailable(paramFile);
-  }
-  
-  public Future update()
-  {
-    return this.jdField_a_of_type_Avgo.update();
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_ArrayOfInt = new int[2];
   }
 }
 

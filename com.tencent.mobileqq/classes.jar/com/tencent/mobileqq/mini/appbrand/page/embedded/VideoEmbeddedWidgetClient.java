@@ -45,7 +45,7 @@ public class VideoEmbeddedWidgetClient
   extends StateMachine
   implements Handler.Callback, StateMachine.OnStateChangeListener, IExtendedEmbeddedWidgetClient
 {
-  private static final int DEFAULT_INTERVAL_TIME = 400;
+  private static final int DEFAULT_INTERVAL_TIME = 250;
   private static final int EVENT_INIT_SUCC = 1;
   private static final int EVENT_MEDIAPLAYER_PREPARED = 5;
   private static final int EVENT_VIDEOSURFACE_SUCC = 3;
@@ -211,6 +211,11 @@ public class VideoEmbeddedWidgetClient
     }
   }
   
+  public AppBrandRuntime getAppBrandRuntime()
+  {
+    return (AppBrandRuntime)this.curAppBrandRuntime;
+  }
+  
   public void handleInsertXWebVideo(JSONObject paramJSONObject, JsRuntime paramJsRuntime, BaseAppBrandRuntime paramBaseAppBrandRuntime)
   {
     this.callBackWebview = paramJsRuntime;
@@ -290,7 +295,7 @@ public class VideoEmbeddedWidgetClient
           if (this.isPaused) {
             break;
           }
-          sendTimingMsg(400L + l3 - System.currentTimeMillis());
+          sendTimingMsg(250L + l3 - System.currentTimeMillis());
           break;
           l1 = 0L;
         }
@@ -376,7 +381,7 @@ public class VideoEmbeddedWidgetClient
             this.isPaused = false;
             this.mMediaPlayer.start();
             updateMediaPlayer();
-            sendTimingMsg(400L);
+            sendTimingMsg(250L);
           }
         }
         catch (Throwable paramJSONObject)
@@ -681,7 +686,7 @@ public class VideoEmbeddedWidgetClient
         {
           this.isPaused = false;
           this.mMediaPlayer.start();
-          sendTimingMsg(400L);
+          sendTimingMsg(250L);
           return;
         }
         QLog.e("miniapp-embedded", 1, "isOnPageBackGrond when mediaPlayerStart - 3");
@@ -783,7 +788,7 @@ public class VideoEmbeddedWidgetClient
         {
           this.isPaused = false;
           this.mMediaPlayer.start();
-          sendTimingMsg(400L);
+          sendTimingMsg(250L);
           updateMediaPlayer();
           if (this.callBackWebview == null) {
             continue;
@@ -966,7 +971,7 @@ public class VideoEmbeddedWidgetClient
         {
           this.isPaused = false;
           this.mMediaPlayer.start();
-          sendTimingMsg(400L);
+          sendTimingMsg(250L);
           return;
         }
         QLog.e("miniapp-embedded", 1, "isOnPageBackGrond when mediaPlayerStart - 2");

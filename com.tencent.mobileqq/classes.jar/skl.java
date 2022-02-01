@@ -1,20 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-class skl
-  extends skd
+public abstract interface skl
 {
-  skl(ske paramske) {}
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    ske.a(this.a).c(paramString + "&sourcefrom=6");
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

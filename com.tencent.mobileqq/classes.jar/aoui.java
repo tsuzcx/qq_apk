@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.2.1;
+import android.graphics.Bitmap;
 
 public class aoui
-  extends aptj
 {
-  aoui(aouh paramaouh) {}
-  
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
-  {
-    aouh.a(this.a).a(new ARTransferPromotionRenderable.2.1(this, paramArrayOfFloat));
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

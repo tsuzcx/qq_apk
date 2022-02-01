@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import afcc;
+import aflg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class RiskInfoItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<RiskInfoItem> CREATOR = new afcc();
+  public static final Parcelable.Creator<RiskInfoItem> CREATOR = new aflg();
   public int a;
   public String a;
   public int b;

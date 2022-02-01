@@ -1,24 +1,70 @@
-import mqq.app.QQPermissionCallback;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class arpv
-  implements QQPermissionCallback
+public class arpv
+  extends arac<arpu>
 {
-  arpv(arpp paramarpp) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  @NonNull
+  public arpu a(int paramInt)
   {
-    bglp.b(this.a.a);
+    return new arpu();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  @Nullable
+  public arpu a(araj[] paramArrayOfaraj)
   {
-    arpp.b(this.a);
-    bcst.b(arpp.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arpu.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(arpu paramarpu)
+  {
+    if (paramarpu == null) {}
+    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return;
+    }
+    becb.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramarpu.a());
+    becb.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramarpu.b());
+  }
+  
+  public Class<arpu> clazz()
+  {
+    return arpu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 294;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpv
  * JD-Core Version:    0.7.0.1
  */

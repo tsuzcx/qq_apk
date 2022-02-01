@@ -1,63 +1,95 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class bdad
 {
-  public static View a(Context paramContext, View paramView, afzq paramafzq, Bundle paramBundle)
+  int jdField_a_of_type_Int = 0;
+  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
+  ArrayList<bczz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  bdad()
   {
-    paramafzq = paramContext.getResources();
-    int i;
-    label37:
-    Object localObject;
-    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
-    {
-      i = 1;
-      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
-        break label237;
-      }
-      ((RelativeLayout)paramView).removeAllViews();
-      paramView = (RelativeLayout)paramView;
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, afur.a(75.0F, paramafzq)));
-      paramBundle = new RelativeLayout(paramContext);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
-      localObject = new ImageView(paramContext);
-      paramContext = new TextView(paramContext);
-      if (i == 0) {
-        break label249;
-      }
-      ((ImageView)localObject).setImageResource(2130841658);
-      paramContext.setText(paramafzq.getString(2131695724));
-    }
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = bdaf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+  }
+  
+  void a(boolean paramBoolean, bczz parambczz)
+  {
+    localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramBoolean) {}
     for (;;)
     {
-      ((ImageView)localObject).setId(2131377938);
-      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(afur.a(23.5F, paramafzq), afur.a(22.5F, paramafzq)));
-      paramBundle.addView((View)localObject);
-      paramContext.setTextSize(2, 14.0F);
-      paramContext.setTextColor(Color.parseColor("#777777"));
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131377938);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = afur.a(7.5F, paramafzq);
-      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
-      return paramView;
-      i = 0;
-      break;
-      label237:
-      paramView = new RelativeLayout(paramContext);
-      break label37;
-      label249:
-      ((ImageView)localObject).setImageResource(2130841657);
-      paramContext.setText(paramafzq.getString(2131695723));
+      try
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambczz);
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambczz);
+    }
+  }
+  
+  boolean a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = bdaf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    return 11 != this.jdField_a_of_type_Int;
+  }
+  
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.gesturemgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new bdae(this), localIntentFilter) != null;
+  }
+  
+  boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  boolean c()
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
+      return false;
+    }
+    if ((this.jdField_a_of_type_Int == 1) && (bdaf.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  boolean d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = bdaf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    if (this.jdField_a_of_type_Int == 11)
+    {
+      this.jdField_a_of_type_Int = 12;
+      BusinessCommonConfig.notifyQQDownload(1, null, 0);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      }
+      return bool;
     }
   }
 }

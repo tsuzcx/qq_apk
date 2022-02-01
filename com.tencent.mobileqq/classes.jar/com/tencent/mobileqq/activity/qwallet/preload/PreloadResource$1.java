@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
+import aldm;
 import java.lang.ref.WeakReference;
 
 class PreloadResource$1
@@ -11,7 +12,7 @@ class PreloadResource$1
   {
     PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if ((PreloadManager.a(localPreloadManager)) && (localPreloadManager.a(this.this$0))) {
-      localPreloadManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, null);
+      localPreloadManager.a(new aldm(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, null));
     }
   }
 }

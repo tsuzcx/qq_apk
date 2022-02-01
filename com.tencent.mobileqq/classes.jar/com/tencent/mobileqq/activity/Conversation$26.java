@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcsq;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import obj;
 
 class Conversation$26
   implements Runnable
@@ -11,25 +9,7 @@ class Conversation$26
   
   public void run()
   {
-    int i = bcsq.a();
-    try
-    {
-      MqqHandler localMqqHandler = this.this$0.a;
-      if ((i >= 0) && (localMqqHandler != null))
-      {
-        localMqqHandler.removeMessages(1134061);
-        localMqqHandler.sendEmptyMessageDelayed(1134061, i * 1000L);
-      }
-      return;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent", 1, localNullPointerException, new Object[0]);
-        Object localObject = null;
-      }
-    }
+    obj.a().a(this.this$0.a);
   }
 }
 

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkw;
-import agkx;
-import aiks;
+import agtx;
+import agty;
+import aiul;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import bcst;
+import bdll;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AVGameHelper$1$2
   implements Runnable
 {
-  public AVGameHelper$1$2(agkx paramagkx, int paramInt) {}
+  public AVGameHelper$1$2(agty paramagty, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      agkw.a(this.jdField_a_of_type_Agkx.a).a();
-      bcst.b(null, "dc00898", "", "", "0X800B033", "0X800B033", 0, 0, "", "", agkw.a(this.jdField_a_of_type_Agkx.a).a, "");
+      agtx.a(this.jdField_a_of_type_Agty.a).a();
+      bdll.b(null, "dc00898", "", "", "0X800B033", "0X800B033", 0, 0, "", "", agtx.a(this.jdField_a_of_type_Agty.a).a, "");
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Agkx.a.a, 1, this.jdField_a_of_type_Agkx.a.a.getResources().getString(2131690366), 0).a();
+    QQToast.a(this.jdField_a_of_type_Agty.a.a, 1, this.jdField_a_of_type_Agty.a.a.getResources().getString(2131690363), 0).a();
   }
 }
 

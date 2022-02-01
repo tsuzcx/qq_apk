@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import asfs;
-import asgf;
-import askk;
-import awif;
-import bcst;
-import bgnt;
+import asvg;
+import asvt;
+import atag;
+import axax;
+import bdll;
+import bhnv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -29,18 +29,18 @@ public class MatchChatSettingFragment
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private asgf jdField_a_of_type_Asgf = new awif(this);
+  private asvt jdField_a_of_type_Asvt = new axax(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
   private void a()
   {
-    boolean bool = askk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).booleanValue();
+    boolean bool = atag.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).booleanValue();
     a(bool);
     if (QLog.isColorLevel()) {
       QLog.i("MatchChatSettingFragment", 2, "initDefaultValue chatSwitchOpen:" + bool);
     }
-    ((asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    ((asvg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
   }
   
   private void a(View paramView)
@@ -48,8 +48,8 @@ public class MatchChatSettingFragment
     if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131374301));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374300));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131374437));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374436));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -69,7 +69,7 @@ public class MatchChatSettingFragment
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Asgf);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Asvt);
         a(this.mContentView);
         a();
       }
@@ -78,7 +78,7 @@ public class MatchChatSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131562798;
+    return 2131562832;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -87,13 +87,13 @@ public class MatchChatSettingFragment
     int i = 1;
     if (paramCompoundButton == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      if (bgnt.d(getActivity()))
+      if (bhnv.d(getActivity()))
       {
-        ((asfs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramBoolean);
+        ((asvg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramBoolean);
         if (paramBoolean) {
           i = 0;
         }
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A690", "0X800A690", i, 0, "", "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A690", "0X800A690", i, 0, "", "", "", "");
       }
     }
     else
@@ -105,7 +105,7 @@ public class MatchChatSettingFragment
     for (;;)
     {
       a(bool);
-      QQToast.a(getActivity(), 2131693958, 0).a();
+      QQToast.a(getActivity(), 2131693975, 0).a();
       break;
       bool = false;
     }
@@ -127,14 +127,14 @@ public class MatchChatSettingFragment
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131698055));
+    setTitle(getActivity().getString(2131698156));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Asgf);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Asvt);
   }
 }
 

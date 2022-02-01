@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-class bgad
-  implements bdfn
+public class bgad
+  implements DialogInterface.OnClickListener
 {
-  bgad(bgac parambgac) {}
+  public bgad(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a == null) {}
-    do
+    switch (paramInt)
     {
+    default: 
       return;
-      if (this.a.jdField_a_of_type_Int > this.a.jdField_b_of_type_Int + this.a.c)
-      {
-        String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new bgae(this));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
+    }
+    PublishHomeWorkFragment.a(this.a);
   }
 }
 

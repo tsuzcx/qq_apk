@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vashealth;
 
-import bhfe;
+import bifp;
 
 public class HealthStepCounterPlugin$1
   implements Runnable
 {
-  public HealthStepCounterPlugin$1(bhfe parambhfe, String paramString) {}
+  public HealthStepCounterPlugin$1(bifp parambifp, String paramString) {}
   
   public void run()
   {
-    bhfe.a(this.this$0, this.a);
+    bifp.a(this.this$0, this.a);
   }
 }
 

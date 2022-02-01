@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.media.MediaPlayer;
-import bdgb;
+import bdyw;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoSprite$CompletionListener$1
   implements Runnable
 {
-  public VideoSprite$CompletionListener$1(bdgb parambdgb, VideoSprite paramVideoSprite) {}
+  public VideoSprite$CompletionListener$1(bdyw parambdyw, VideoSprite paramVideoSprite) {}
   
   public void run()
   {

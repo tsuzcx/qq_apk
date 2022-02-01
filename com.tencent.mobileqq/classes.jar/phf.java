@@ -1,20 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class phf
-  implements INetEventHandler
+public class phf
+  implements View.OnClickListener
 {
-  phf(Context paramContext) {}
+  public phf(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      pha.b(this.a);
-      return;
-    }
-    pha.j("");
-    pha.k("");
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,50 +1,16 @@
-import PUSHAPI.PushRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.graphics.Canvas;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-public class blsr
-  extends QzoneExternalRequest
+public abstract interface blsr
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
+  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
   
-  public blsr(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
-  {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong1);
-    super.setRefer(paramString1);
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.needCompress = false;
-  }
+  public abstract void a(View paramView);
   
-  public String getCmdString()
-  {
-    return "wns.pushrsp";
-  }
+  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
   
-  public byte[] getEncodedUniParameter()
-  {
-    PushRsp localPushRsp = new PushRsp();
-    localPushRsp.ptime = this.jdField_a_of_type_Long;
-    localPushRsp.is_bgd = 0;
-    localPushRsp.sUID = "<JIEHEBAN>";
-    localPushRsp.flag = this.b;
-    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
-    return bkze.a(localPushRsp);
-  }
-  
-  public JceStruct getReq()
-  {
-    return null;
-  }
-  
-  public String uniKey()
-  {
-    return "wns.pushrsp";
-  }
+  public abstract void b(View paramView);
 }
 
 

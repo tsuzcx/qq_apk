@@ -1,10 +1,10 @@
 package com.tencent.open.downloadnew.common;
 
 import android.text.TextUtils;
-import bisy;
-import bivp;
-import bivr;
-import biwe;
+import bjtx;
+import bjwo;
+import bjwq;
+import bjxd;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$1
@@ -14,14 +14,14 @@ class PackageInstallReceiver$1
   
   public void run()
   {
-    bisy.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bivp.q)))
+    bjtx.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bjwo.q)))
     {
-      bivr.a().a(true);
-      biwe.a().f();
+      bjwq.a().a(true);
+      bjxd.a().f();
     }
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bivr.a().a(9, localDownloadInfo);
+    bjwq.a().a(9, localDownloadInfo);
   }
 }
 

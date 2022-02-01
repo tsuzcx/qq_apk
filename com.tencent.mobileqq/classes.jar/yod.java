@@ -1,20 +1,10 @@
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.graphics.Bitmap;
 
-public class yod
-  implements Dispatcher.Event
+public abstract interface yod
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  public abstract Bitmap a(Bitmap paramBitmap);
   
-  public yod(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.d = paramFloat4;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.a = paramFloat1;
-  }
+  public abstract String a();
 }
 
 

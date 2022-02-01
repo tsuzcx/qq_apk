@@ -1,5 +1,8 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaak;
+import aaam;
+import aadv;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.annotation.Nullable;
@@ -15,14 +18,11 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import java.util.ArrayList;
-import uxx;
-import zwp;
-import zwr;
-import zzr;
+import uzg;
 
 public class QCirclePraiseTextView
   extends TextView
-  implements zwr
+  implements aaam
 {
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = new FeedCloudMeta.StFeed();
   private String jdField_a_of_type_JavaLangString;
@@ -47,8 +47,8 @@ public class QCirclePraiseTextView
     if (paramInt >= 1)
     {
       setVisibility(0);
-      String str = uxx.d(paramInt);
-      zzr.a(this, false);
+      String str = uzg.d(paramInt);
+      aadv.a(this, false);
       setText(str);
       return;
     }
@@ -73,42 +73,28 @@ public class QCirclePraiseTextView
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
-      zwp.a().a(this);
+      aaak.a().a(this);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    int j = 1;
-    int k;
     if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && ((paramSimpleBaseEvent instanceof QCirclePolyPraiseUpdateEvent)))
     {
       paramSimpleBaseEvent = (QCirclePolyPraiseUpdateEvent)paramSimpleBaseEvent;
-      if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get().equals(paramSimpleBaseEvent.mTargetFeedId)) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.get() != paramSimpleBaseEvent.mPraisedStatus))
+      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get().equals(paramSimpleBaseEvent.mTargetFeedId))
       {
-        k = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.count.get();
-        i = j;
-        if (paramSimpleBaseEvent.mPraisedStatus != 1) {
-          if (paramSimpleBaseEvent.mPraisedStatus != 21) {
-            break label139;
-          }
-        }
+        int i = paramSimpleBaseEvent.mPraisedNum;
+        this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.set(paramSimpleBaseEvent.mPraisedStatus);
+        this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.count.set(i);
+        a(i);
       }
-    }
-    label139:
-    for (int i = j;; i = -1)
-    {
-      i += k;
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.set(paramSimpleBaseEvent.mPraisedStatus);
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.count.set(i);
-      a(i);
-      return;
     }
   }
   

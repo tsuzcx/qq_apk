@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class awnz
+class awnz
+  implements DialogInterface.OnCancelListener
 {
-  public String a;
-  public boolean a;
+  awnz(awnq paramawnq) {}
   
-  public String a(awnm paramawnm, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return paramawnm.a(paramMessageRecord, paramMsgBackupResEntity);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a.b(false);
   }
 }
 

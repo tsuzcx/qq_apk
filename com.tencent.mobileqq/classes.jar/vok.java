@@ -1,24 +1,14 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
+import com.tencent.biz.qqcircle.fragments.message.item.QCircleMessageReplyItemView;
 
 public class vok
-  implements TypeEvaluator<PointF>
+  implements vya
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  private PointF b;
+  public vok(QCircleMessageReplyItemView paramQCircleMessageReplyItemView, String paramString) {}
   
-  public vok(vog paramvog, PointF paramPointF1, PointF paramPointF2)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF1;
-    this.b = paramPointF2;
-  }
-  
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
-  {
-    PointF localPointF = new PointF();
-    localPointF.x = (paramPointF1.x * (1.0F - paramFloat) * (1.0F - paramFloat) * (1.0F - paramFloat) + this.jdField_a_of_type_AndroidGraphicsPointF.x * 3.0F * paramFloat * (1.0F - paramFloat) * (1.0F - paramFloat) + this.b.x * 3.0F * paramFloat * paramFloat * (1.0F - paramFloat) + paramPointF2.x * paramFloat * paramFloat * paramFloat);
-    localPointF.y = (paramPointF1.y * (1.0F - paramFloat) * (1.0F - paramFloat) * (1.0F - paramFloat) + this.jdField_a_of_type_AndroidGraphicsPointF.y * 3.0F * paramFloat * (1.0F - paramFloat) * (1.0F - paramFloat) + this.b.y * 3.0F * paramFloat * paramFloat * (1.0F - paramFloat) + paramPointF2.y * paramFloat * paramFloat * paramFloat);
-    return localPointF;
+    vtn.a(this.jdField_a_of_type_JavaLangString, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView).a, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView), 44, QCircleMessageReplyItemView.c(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView));
+    QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView, this.jdField_a_of_type_JavaLangString);
   }
 }
 

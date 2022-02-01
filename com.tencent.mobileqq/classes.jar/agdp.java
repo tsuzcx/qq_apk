@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
-
-public class agdp
-  implements bdet
+public abstract interface agdp
 {
-  public agdp(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_Bdfq.a = 255;
-    this.a.jdField_a_of_type_Bdfq.a(this.a.jdField_a_of_type_Bdfr);
-  }
+  public abstract void a();
 }
 
 

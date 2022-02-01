@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import amco;
+import amoi;
 import java.util.ArrayList;
 
 class ForwardRecentListAdapter$1$1
@@ -10,7 +10,7 @@ class ForwardRecentListAdapter$1$1
   
   public void run()
   {
-    amco.a(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter$1.this$0, this.jdField_a_of_type_JavaUtilArrayList);
+    amoi.a(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter$1.this$0, this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter$1.this$0.notifyDataSetChanged();
   }
 }

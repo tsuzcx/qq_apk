@@ -1,15 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import vbk;
+import vda;
 
 public class QCircleFolderSplashPart$7
   implements Runnable
 {
-  public QCircleFolderSplashPart$7(vbk paramvbk) {}
+  public QCircleFolderSplashPart$7(vda paramvda) {}
   
   public void run()
   {
-    vbk.a(this.this$0);
+    vda.a(this.this$0);
+    this.this$0.b("show_publish_feed_guide_bubble", null);
   }
 }
 

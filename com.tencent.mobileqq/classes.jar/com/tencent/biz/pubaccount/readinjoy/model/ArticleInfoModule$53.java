@@ -1,21 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import pmk;
-import pwb;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
+import pon;
 
 public class ArticleInfoModule$53
   implements Runnable
 {
-  public ArticleInfoModule$53(pwb parampwb, List paramList1, List paramList2) {}
+  public ArticleInfoModule$53(pon parampon, ArticleExposureInfo paramArticleExposureInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "onTopicInfoListFetched: keywordList: " + this.a + " topicInfoList: " + this.b);
-    }
-    pmk.a().a(this.a, this.b);
+    this.this$0.a(this.a);
   }
 }
 

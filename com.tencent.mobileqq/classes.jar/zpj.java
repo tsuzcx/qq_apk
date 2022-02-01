@@ -1,31 +1,34 @@
-import java.util.List;
-
-public abstract class zpj<T>
+class zpj
+  implements zpb
 {
-  private int jdField_a_of_type_Int;
-  private List<T> jdField_a_of_type_JavaUtilList;
+  zpj(zpi paramzpi) {}
   
-  public zpj(int paramInt, List<T> paramList)
+  public void a(zpg paramzpg, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public abstract void a(int paramInt, T paramT, ynb paramynb);
-  
-  public void a(int paramInt, ynb paramynb)
-  {
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramynb);
+    int i = 0;
+    if (paramBoolean)
+    {
+      zpg[] arrayOfzpg = this.a.a();
+      j = arrayOfzpg.length;
+      i = 0;
+      while (i < j)
+      {
+        zpg localzpg = arrayOfzpg[i];
+        if (localzpg != paramzpg) {
+          localzpg.b(false);
+        }
+        i += 1;
+      }
+    }
+    paramzpg = this.a.a();
+    int j = paramzpg.length;
+    for (;;)
+    {
+      if ((i >= j) || (paramzpg[i].a())) {
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

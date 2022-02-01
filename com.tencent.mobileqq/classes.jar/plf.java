@@ -1,89 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class plf
+  implements TVK_SDKMgr.InstallListener
 {
-  private static volatile plf jdField_a_of_type_Plf;
-  private final List<plg> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public plf(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public static plf a()
+  public void onInstallProgress(float paramFloat)
   {
-    if (jdField_a_of_type_Plf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Plf == null) {
-        jdField_a_of_type_Plf = new plf();
-      }
-      return jdField_a_of_type_Plf;
-    }
-    finally {}
+    acvc.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
   }
   
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
+  public void onInstalledFailed(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((plg)localIterator.next()).a(paramInt, paramList);
-      }
-    }
+    acvc.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
   }
   
-  public void a(int paramInt1, boolean paramBoolean, List<pln> paramList, int paramInt2)
+  public void onInstalledSuccessed()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((plg)localIterator.next()).a(paramInt1, paramBoolean, paramList, paramInt2);
-      }
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((plg)localIterator.next()).a(paramInt, paramBoolean1, paramBoolean2, paramList);
-      }
-    }
-  }
-  
-  public void a(plg paramplg)
-  {
-    if (paramplg == null) {}
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramplg)) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramplg);
-      return;
-    }
-  }
-  
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((plg)localIterator.next()).b(paramInt, paramBoolean1, paramBoolean2, paramList);
-      }
-    }
-  }
-  
-  public void b(plg paramplg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramplg);
-      return;
+    acvc.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
+    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
+      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
     }
   }
 }

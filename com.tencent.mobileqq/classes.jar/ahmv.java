@@ -1,22 +1,15 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-public abstract class ahmv
-  extends afwr
+class ahmv
+  extends agen
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public TextView e;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  int d;
+  
+  ahmv(ahmt paramahmt) {}
 }
 
 

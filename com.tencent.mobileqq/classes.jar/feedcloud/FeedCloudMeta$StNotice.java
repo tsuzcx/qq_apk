@@ -22,12 +22,13 @@ public final class FeedCloudMeta$StNotice
   public final PBUInt32Field noticeType = PBField.initUInt32(0);
   public FeedCloudMeta.StOperation operation = new FeedCloudMeta.StOperation();
   public final PBStringField subMessage = PBField.initString("");
+  public final PBStringField summary = PBField.initString("");
   public final PBRepeatMessageField<FeedCloudMeta.StUser> vecUser = PBField.initRepeatMessage(FeedCloudMeta.StUser.class);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 74 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message", "vecUser", "subMessage" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, "", null, "" }, StNotice.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 74, 82 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message", "vecUser", "subMessage", "summary" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, "", null, "", "" }, StNotice.class);
   }
 }
 

@@ -2,9 +2,10 @@ package com.tencent.mobileqq.troopinfo;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bgjw;
+import bhjx;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -13,10 +14,11 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import nlw;
+import nnr;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupExInfoOnly;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupGeoInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x89a.oidb_0x89a.GroupSchoolInfo;
 
 public class TroopInfoData
   implements Serializable
@@ -47,6 +49,7 @@ public class TroopInfoData
   public long dwAuthGroupType;
   public long dwGroupClassExt = -1L;
   public long dwGroupFlagExt;
+  public int grade;
   public int groupFlagExt4;
   public int groupFreezeReason;
   public boolean hasSetNewTroopHead;
@@ -59,6 +62,7 @@ public class TroopInfoData
   public boolean isQidianPrivateTroop;
   public int isShowInNearbyTroops = -1;
   public boolean isUseClassAvatar;
+  public String location;
   public int mIsFreezed;
   public boolean mMemberInvitingFlag;
   public int mNewGroupActivityNum;
@@ -87,6 +91,7 @@ public class TroopInfoData
   public int pa;
   public long publicAccountUin;
   public String remark;
+  public String school;
   public long tribeId;
   public String tribeName;
   public int tribeStatus;
@@ -175,6 +180,12 @@ public class TroopInfoData
       this.publicAccountUin = paramGroupInfo.uint64_subscription_uin.get();
     }
     boolean bool1;
+    label311:
+    label339:
+    label367:
+    Object localObject1;
+    label395:
+    Object localObject2;
     if (paramGroupInfo.uint32_group_flagext3.has())
     {
       if ((paramGroupInfo.uint32_group_flagext3.get() & 0x4) != 0)
@@ -182,10 +193,9 @@ public class TroopInfoData
         bool1 = true;
         this.isOnlyTroopMemberInvite = bool1;
         if ((paramGroupInfo.uint32_group_flagext3.get() & 0x20) == 0) {
-          break label992;
+          break label1110;
         }
         bool1 = true;
-        label311:
         this.isQidianPrivateTroop = bool1;
       }
     }
@@ -194,28 +204,25 @@ public class TroopInfoData
       if (paramGroupInfo.uint32_is_conf_group.has())
       {
         if (paramGroupInfo.uint32_is_conf_group.get() != 1) {
-          break label997;
+          break label1115;
         }
         bool1 = true;
-        label339:
         this.isNewTroop = bool1;
       }
       if (paramGroupInfo.uint32_is_modify_conf_group_face.has())
       {
         if (paramGroupInfo.uint32_is_modify_conf_group_face.get() != 1) {
-          break label1002;
+          break label1120;
         }
         bool1 = true;
-        label367:
         this.hasSetNewTroopHead = bool1;
       }
       if (paramGroupInfo.uint32_is_modify_conf_group_name.has())
       {
         if (paramGroupInfo.uint32_is_modify_conf_group_name.get() != 1) {
-          break label1007;
+          break label1125;
         }
         bool1 = true;
-        label395:
         this.hasSetNewTroopName = bool1;
       }
       bool1 = bool2;
@@ -233,51 +240,85 @@ public class TroopInfoData
       if (paramGroupInfo.string_group_class_text.has()) {
         this.mTroopClassExtText = paramGroupInfo.string_group_class_text.get().toStringUtf8();
       }
-      Object localObject;
       if (paramGroupInfo.group_geo_info.has())
       {
-        localObject = (oidb_0x88d.GroupGeoInfo)paramGroupInfo.group_geo_info.get();
-        if (((oidb_0x88d.GroupGeoInfo)localObject).bytes_geocontent.has())
+        localObject1 = (oidb_0x88d.GroupGeoInfo)paramGroupInfo.group_geo_info.get();
+        if (((oidb_0x88d.GroupGeoInfo)localObject1).bytes_geocontent.has())
         {
-          String str = ((oidb_0x88d.GroupGeoInfo)localObject).bytes_geocontent.get().toStringUtf8();
-          if (!TextUtils.isEmpty(str)) {
-            this.troopLocation = str;
+          localObject2 = ((oidb_0x88d.GroupGeoInfo)localObject1).bytes_geocontent.get().toStringUtf8();
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            this.troopLocation = ((String)localObject2);
           }
         }
         int i;
-        if (((oidb_0x88d.GroupGeoInfo)localObject).int64_latitude.has())
+        if (((oidb_0x88d.GroupGeoInfo)localObject1).int64_latitude.has())
         {
-          i = (int)((oidb_0x88d.GroupGeoInfo)localObject).int64_latitude.get();
+          i = (int)((oidb_0x88d.GroupGeoInfo)localObject1).int64_latitude.get();
           if (i != 0) {
             this.troopLat = i;
           }
         }
-        if (((oidb_0x88d.GroupGeoInfo)localObject).int64_longitude.has())
+        if (((oidb_0x88d.GroupGeoInfo)localObject1).int64_longitude.has())
         {
-          i = (int)((oidb_0x88d.GroupGeoInfo)localObject).int64_longitude.get();
+          i = (int)((oidb_0x88d.GroupGeoInfo)localObject1).int64_longitude.get();
           if (i != 0) {
             this.troopLon = i;
           }
         }
-        if (((oidb_0x88d.GroupGeoInfo)localObject).uint32_cityid.has()) {
-          this.cityId = ((oidb_0x88d.GroupGeoInfo)localObject).uint32_cityid.get();
+        if (((oidb_0x88d.GroupGeoInfo)localObject1).uint32_cityid.has()) {
+          this.cityId = ((oidb_0x88d.GroupGeoInfo)localObject1).uint32_cityid.get();
         }
       }
       if (!paramGroupInfo.string_group_finger_memo.has()) {
-        break label1012;
+        break label1130;
       }
-      this.troopIntro = paramGroupInfo.string_group_finger_memo.get().toStringUtf8();
-      label672:
+    }
+    label1110:
+    label1115:
+    label1120:
+    label1125:
+    label1130:
+    for (this.troopIntro = paramGroupInfo.string_group_finger_memo.get().toStringUtf8();; this.troopIntro = "")
+    {
+      if (paramGroupInfo.bytes_group_school_info.has()) {
+        localObject1 = new oidb_0x89a.GroupSchoolInfo();
+      }
+      try
+      {
+        localObject2 = (oidb_0x89a.GroupSchoolInfo)((oidb_0x89a.GroupSchoolInfo)localObject1).mergeFrom(paramGroupInfo.bytes_group_school_info.get().toByteArray());
+        localObject1 = localObject2;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        for (;;)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
+          this.mRichFingerMemo = "";
+          continue;
+          this.mRichFingerMemo = nnr.c(this.mRichFingerMemo);
+          this.mRichFingerMemo = nnr.b(this.mRichFingerMemo);
+          continue;
+          QLog.e("TroopInfoData", 1, "string_long_group_name is empty");
+        }
+      }
+      if (((oidb_0x89a.GroupSchoolInfo)localObject1).bytes_location.has()) {
+        this.location = ((oidb_0x89a.GroupSchoolInfo)localObject1).bytes_location.get().toStringUtf8();
+      }
+      if (((oidb_0x89a.GroupSchoolInfo)localObject1).uint32_grade.has()) {
+        this.grade = ((oidb_0x89a.GroupSchoolInfo)localObject1).uint32_grade.get();
+      }
+      if (((oidb_0x89a.GroupSchoolInfo)localObject1).bytes_school.has()) {
+        this.school = ((oidb_0x89a.GroupSchoolInfo)localObject1).bytes_school.get().toStringUtf8();
+      }
       if (!paramGroupInfo.string_group_rich_finger_memo.has()) {
-        break label1021;
+        break label1149;
       }
       this.mRichFingerMemo = paramGroupInfo.string_group_rich_finger_memo.get().toStringUtf8();
-      label696:
       if (!TextUtils.isEmpty(this.mRichFingerMemo)) {
-        break label1030;
+        break label1158;
       }
       this.mRichFingerMemo = this.troopIntro;
-      label714:
       if (paramGroupInfo.uint32_group_create_time.has()) {
         this.mTroopCreateTime = paramGroupInfo.uint32_group_create_time.get();
       }
@@ -289,18 +330,15 @@ public class TroopInfoData
       }
       if (paramGroupInfo.string_long_group_name.has())
       {
-        localObject = paramGroupInfo.string_long_group_name.get().toStringUtf8();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label1055;
+        localObject1 = paramGroupInfo.string_long_group_name.get().toStringUtf8();
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label1183;
         }
-        this.troopName = ((String)localObject);
+        this.troopName = ((String)localObject1);
         if ((this.newTroopName == null) || (!this.isNewTroop) || (this.hasSetNewTroopName)) {
           this.newTroopName = this.troopName;
         }
       }
-    }
-    for (;;)
-    {
       if ((paramGroupInfo.string_group_name.has()) && (TextUtils.isEmpty(this.troopName)))
       {
         this.troopName = paramGroupInfo.string_group_name.get().toStringUtf8();
@@ -319,30 +357,14 @@ public class TroopInfoData
       return;
       bool1 = false;
       break;
-      label992:
       bool1 = false;
       break label311;
-      label997:
       bool1 = false;
       break label339;
-      label1002:
       bool1 = false;
       break label367;
-      label1007:
       bool1 = false;
       break label395;
-      label1012:
-      this.troopIntro = "";
-      break label672;
-      label1021:
-      this.mRichFingerMemo = "";
-      break label696;
-      label1030:
-      this.mRichFingerMemo = nlw.c(this.mRichFingerMemo);
-      this.mRichFingerMemo = nlw.b(this.mRichFingerMemo);
-      break label714;
-      label1055:
-      QLog.e("TroopInfoData", 1, "string_long_group_name is empty");
     }
   }
   
@@ -585,6 +607,9 @@ public class TroopInfoData
       this.isQidianPrivateTroop = paramTroopInfo.isQidianPrivateTroop();
       this.troopMemo = paramTroopInfo.troopmemo;
       this.troopIntro = paramTroopInfo.fingertroopmemo;
+      this.location = paramTroopInfo.location;
+      this.grade = paramTroopInfo.grade;
+      this.school = paramTroopInfo.school;
       this.mRichFingerMemo = paramTroopInfo.mRichFingerMemo;
       this.dwGroupClassExt = paramTroopInfo.dwGroupClassExt;
       if (paramTroopInfo.mGroupClassExtText != null) {
@@ -608,17 +633,17 @@ public class TroopInfoData
       this.allowMemberKick = paramTroopInfo.allowMemberKick;
       i = 0;
       if ((!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 128)) || (!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 512))) {
-        break label649;
+        break label673;
       }
-      this.troopAuthen = paramResources.getString(2131718785);
+      this.troopAuthen = paramResources.getString(2131718935);
       i = 6;
-      if (!bgjw.a(this.troopowneruin, paramTroopInfo.troopowneruin))
+      if (!bhjx.a(this.troopowneruin, paramTroopInfo.troopowneruin))
       {
         this.troopowneruin = paramTroopInfo.troopowneruin;
         this.troopOwnerNick = null;
         updateOwnerFlag(paramString);
       }
-      if (!bgjw.a(this.Administrator, paramTroopInfo.Administrator))
+      if (!bhjx.a(this.Administrator, paramTroopInfo.Administrator))
       {
         this.Administrator = paramTroopInfo.Administrator;
         updateAdminFlag(paramString);
@@ -633,24 +658,21 @@ public class TroopInfoData
       this.troopface = paramTroopInfo.troopface;
       this.cGroupRankSysFlag = paramTroopInfo.cGroupRankSysFlag;
       if ((paramTroopInfo.dwGroupFlagExt & 0x80) != 0L) {
-        break label801;
+        break label825;
       }
       j = 1;
-      label475:
+      label499:
       if (i != 3) {
-        break label807;
+        break label831;
       }
-      this.inviteModeDescription = paramResources.getString(2131695793);
+      this.inviteModeDescription = paramResources.getString(2131695836);
       this.inviteMode = 4;
-      label497:
+      label521:
       if (paramTroopInfo.cAlbumResult != 33) {
-        break label1011;
+        break label1035;
       }
     }
-    label649:
-    label801:
-    label807:
-    label1011:
+    label1035:
     for (this.nViewExtraFlag &= 0xFFFFFFFB;; this.nViewExtraFlag |= 0x4)
     {
       this.troopPhotos = paramTroopInfo.getQZonePhotoUrls();
@@ -670,9 +692,10 @@ public class TroopInfoData
         QLog.i("TroopInfoData", 2, "updateTroopInfoData: time = " + (System.currentTimeMillis() - l));
       }
       return;
+      label673:
       if (paramTroopInfo.isOnlyTroopMemberInviteOption())
       {
-        this.troopAuthen = paramResources.getString(2131718776);
+        this.troopAuthen = paramResources.getString(2131718926);
         this.dwGroupFlagExt |= 0x80;
         break;
       }
@@ -682,67 +705,69 @@ public class TroopInfoData
       default: 
         break;
       case 1: 
-        this.troopAuthen = paramResources.getString(2131718777);
+        this.troopAuthen = paramResources.getString(2131718927);
         break;
       case 2: 
-        this.troopAuthen = paramResources.getString(2131718782);
+        this.troopAuthen = paramResources.getString(2131718932);
         break;
       case 4: 
-        this.troopAuthen = paramResources.getString(2131718779);
+        this.troopAuthen = paramResources.getString(2131718929);
         break;
       case 5: 
-        this.troopAuthen = paramResources.getString(2131718778);
+        this.troopAuthen = paramResources.getString(2131718928);
         break;
       case 3: 
-        this.troopAuthen = paramResources.getString(2131718784);
+        this.troopAuthen = paramResources.getString(2131718934);
         break;
+        label825:
         j = 0;
-        break label475;
+        break label499;
+        label831:
         if (i == 1)
         {
-          this.inviteModeDescription = paramResources.getString(2131695790);
+          this.inviteModeDescription = paramResources.getString(2131695833);
           this.inviteMode = 5;
-          break label497;
+          break label521;
         }
         if (j != 0)
         {
           if (i == 6)
           {
-            this.inviteModeDescription = paramResources.getString(2131695789);
+            this.inviteModeDescription = paramResources.getString(2131695832);
             this.inviteMode = 6;
-            break label497;
+            break label521;
           }
           this.inviteModeDescription = paramTroopInfo.getInviteModeDesWording(paramResources);
           if ((paramTroopInfo.troopPrivilegeFlag & 0x100000) == 1048576L)
           {
             this.inviteMode = 2;
-            break label497;
+            break label521;
           }
           if ((paramTroopInfo.troopPrivilegeFlag & 0x6100000) == 0L)
           {
             this.inviteMode = 3;
-            break label497;
+            break label521;
           }
           if ((paramTroopInfo.troopPrivilegeFlag & 0x2000000) == 33554432L)
           {
             this.inviteMode = 7;
-            break label497;
+            break label521;
           }
           if ((paramTroopInfo.troopPrivilegeFlag & 0x4000000) == 67108864L)
           {
             this.inviteMode = 8;
-            break label497;
+            break label521;
           }
           if (!this.isOnlyTroopMemberInvite) {
-            break label497;
+            break label521;
           }
           this.inviteMode = 8;
-          this.inviteModeDescription = paramResources.getString(2131695792);
-          break label497;
+          this.inviteModeDescription = paramResources.getString(2131695835);
+          break label521;
         }
-        this.inviteModeDescription = paramResources.getString(2131695794);
+        this.inviteModeDescription = paramResources.getString(2131695837);
         this.inviteMode = 1;
-        break label497;
+        break label521;
       }
     }
   }
@@ -768,6 +793,9 @@ public class TroopInfoData
       this.troopMemo = paramTroopInfo.troopmemo;
       this.troopIntro = paramTroopInfo.fingertroopmemo;
       this.mRichFingerMemo = paramTroopInfo.mRichFingerMemo;
+      this.location = paramTroopInfo.location;
+      this.grade = paramTroopInfo.grade;
+      this.school = paramTroopInfo.school;
       if ((this.troopClass == null) || (this.dwGroupClassExt != paramTroopInfo.dwGroupClassExt))
       {
         this.dwGroupClassExt = paramTroopInfo.dwGroupClassExt;
@@ -780,13 +808,13 @@ public class TroopInfoData
       this.hasSetNewTroopHead = paramTroopInfo.hasSetNewTroopHead;
       this.hasSetNewTroopName = paramTroopInfo.hasSetNewTroopName;
       this.isUseClassAvatar = paramTroopInfo.isUseClassAvatar();
-      if ((!QLog.isColorLevel()) || (!bgjw.a(this.troopowneruin, paramTroopInfo.troopowneruin)))
+      if ((!QLog.isColorLevel()) || (!bhjx.a(this.troopowneruin, paramTroopInfo.troopowneruin)))
       {
         this.troopowneruin = paramTroopInfo.troopowneruin;
         this.troopOwnerNick = null;
         updateOwnerFlag(paramString);
       }
-      if (!bgjw.a(this.Administrator, paramTroopInfo.Administrator))
+      if (!bhjx.a(this.Administrator, paramTroopInfo.Administrator))
       {
         this.Administrator = paramTroopInfo.Administrator;
         updateAdminFlag(paramString);
@@ -825,7 +853,7 @@ public class TroopInfoData
   
   public void updateOwnerFlag(String paramString)
   {
-    this.bOwner = bgjw.a(paramString, this.troopowneruin);
+    this.bOwner = bhjx.a(paramString, this.troopowneruin);
   }
   
   public void updateTroopAdmMemberNum(String paramString1, int paramInt, String paramString2, Resources paramResources)

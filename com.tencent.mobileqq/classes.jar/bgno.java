@@ -1,69 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import tencent.im.troop.homework.ErrorInfo;
+import tencent.im.troop.homework.ReqSend1V1Msg;
+import tencent.im.troop.homework.RspSend1V1Msg;
 
 public class bgno
+  extends aojs
 {
-  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
+  public bgno(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public static final bgno a()
+  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
   {
-    return bgnq.a();
-  }
-  
-  public MessageProgressView.RefreshProgressRunnable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.a.isEmpty()) {
-      return null;
-    }
-    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext()) {
-      a((String)localIterator.next());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-      if (localRefreshProgressRunnable != null) {
-        localRefreshProgressRunnable.a();
+    if (QLog.isColorLevel()) {
+      if (paramRspSend1V1Msg != null) {
+        break label97;
       }
     }
-    try
+    label97:
+    for (Object localObject = "null";; localObject = zow.a(paramRspSend1V1Msg))
     {
-      this.a.remove(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
+      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
+      if (this.a.jdField_a_of_type_Zpv != null)
+      {
+        this.a.jdField_a_of_type_Zpv.a();
+        this.a.jdField_a_of_type_Zpv = null;
       }
+      localObject = this.a.getActivity();
+      if (localObject != null) {
+        break;
+      }
+      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
       return;
     }
-    catch (Exception paramString)
+    if (paramRspSend1V1Msg == null)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
-        }
-      }
+      QQToast.a((Context)localObject, 1, anzj.a(2131700144), 1).a();
+      return;
     }
-  }
-  
-  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.put(paramString, paramRefreshProgressRunnable);
+    if (paramRspSend1V1Msg.result.error_code.get() != 0)
+    {
+      QQToast.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
+      return;
     }
+    QQToast.a((Context)localObject, 2, anzj.a(2131700140), 1).a();
+    ((FragmentActivity)localObject).finish();
+    ((FragmentActivity)localObject).overridePendingTransition(0, 2130772001);
+    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    if (paramRspSend1V1Msg != null) {
+      paramRspSend1V1Msg.sendEmptyMessage(1009);
+    }
+    paramRspSend1V1Msg = bhju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
+    bhju.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
   }
 }
 

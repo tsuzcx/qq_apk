@@ -1,18 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bpgo
-  implements xry
+  implements View.OnClickListener
 {
-  public bpgo(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public bpgo(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void a_(xrt paramxrt)
+  public void onClick(View paramView)
   {
-    yqp.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    this.a.f();
+    this.a.j();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

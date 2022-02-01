@@ -1,87 +1,222 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class bgjx
 {
-  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public int a;
+  private LinkedHashMap<String, List<akfc>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private List<akfc> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  public int b;
+  private List<akfc> b;
+  public int c;
+  private List<akfc> c;
+  
+  public bgjx(List<akfc> paramList)
   {
-    boolean bool = true;
-    CardProfile localCardProfile = null;
-    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
-    paramQQAppInterface = localCardProfile;
-    if (localEntityManager != null)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private bgjy a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo, String paramString, bgjy parambgjy, boolean paramBoolean)
+  {
+    if (((bgjl.a(paramQQAppInterface, paramTroopInfo)) || (bgjl.b(paramQQAppInterface, paramTroopInfo))) && (!paramBoolean))
     {
-      localCardProfile = (CardProfile)localEntityManager.find(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
-      paramQQAppInterface = localCardProfile;
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
-        if (localCardProfile == null) {
-          break label111;
-        }
+      paramQQAppInterface = bgjw.a();
+      if ((TextUtils.isEmpty(paramString)) || (bgjw.a(paramString, paramQQAppInterface))) {
+        parambgjy.jdField_a_of_type_JavaUtilList.add(0, paramQQAppInterface);
       }
     }
-    for (;;)
+    return parambgjy;
+  }
+  
+  private bgjy a(String paramString, boolean paramBoolean, TroopInfo paramTroopInfo)
+  {
+    paramTroopInfo = a(paramString, paramTroopInfo);
+    if (paramTroopInfo.length >= 3)
     {
-      QLog.i("VoteUtil", 2, bool);
-      paramQQAppInterface = localCardProfile;
-      return paramQQAppInterface;
-      label111:
-      bool = false;
+      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramTroopInfo[0]);
+      this.jdField_a_of_type_ArrayOfInt = ((int[])paramTroopInfo[1]);
+    }
+    for (this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])paramTroopInfo[2]);; this.jdField_a_of_type_ArrayOfJavaLangString = new String[0])
+    {
+      this.jdField_c_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+      paramTroopInfo = new bgjy();
+      paramTroopInfo.jdField_a_of_type_JavaLangString = paramString;
+      paramTroopInfo.jdField_a_of_type_Boolean = paramBoolean;
+      paramTroopInfo.jdField_a_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      paramTroopInfo.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      paramTroopInfo.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+      return paramTroopInfo;
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      this.jdField_a_of_type_ArrayOfInt = new int[0];
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  private List<akfc> a(LinkedHashMap<String, List<akfc>> paramLinkedHashMap)
   {
-    Object localObject = paramQQAppInterface.a().createEntityManager();
-    CardProfile localCardProfile;
-    if (localObject != null)
-    {
-      paramQQAppInterface = (CardProfile)((EntityManager)localObject).find(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.bAvailableCnt -= paramInt;
-        paramQQAppInterface.bTodayVotedCnt += paramInt;
-        if (paramQQAppInterface.getStatus() != 1000) {
-          break label238;
-        }
-        ((EntityManager)localObject).persistOrReplace(paramQQAppInterface);
-      }
-      localCardProfile = (CardProfile)((EntityManager)localObject).find(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
-      if (localCardProfile != null)
-      {
-        localCardProfile.bAvailableCnt -= paramInt;
-        localCardProfile.bTodayVotedCnt += paramInt;
-        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
-        if (localCardProfile.getStatus() != 1000) {
-          break label248;
-        }
-        ((EntityManager)localObject).persistOrReplace(localCardProfile);
-      }
-      label180:
-      ((EntityManager)localObject).close();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
-        if (paramQQAppInterface == null) {
-          break label259;
-        }
-      }
+    ArrayList localArrayList = new ArrayList();
+    paramLinkedHashMap = paramLinkedHashMap.entrySet().iterator();
+    while (paramLinkedHashMap.hasNext()) {
+      localArrayList.addAll((Collection)((Map.Entry)paramLinkedHashMap.next()).getValue());
     }
-    label259:
-    for (boolean bool = true;; bool = false)
+    return localArrayList;
+  }
+  
+  private Object[] a(String paramString, TroopInfo paramTroopInfo)
+  {
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Object localObject1;
+    Object localObject2;
+    int i;
+    for (;;)
     {
-      QLog.i("VoteUtil", 2, bool);
-      return;
-      label238:
-      ((EntityManager)localObject).update(paramQQAppInterface);
-      break;
-      label248:
-      ((EntityManager)localObject).update(localCardProfile);
-      break label180;
+      akfc localakfc;
+      try
+      {
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_c_of_type_Int = 0;
+        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localakfc = (akfc)localIterator.next();
+        if ((localakfc.jdField_a_of_type_Boolean) || ((!TextUtils.isEmpty(paramString)) && (bgjl.a(localakfc.jdField_a_of_type_JavaLangString, paramTroopInfo)))) {
+          break label664;
+        }
+        if ((TextUtils.isEmpty(paramString)) || (!bgjl.b(localakfc.jdField_a_of_type_JavaLangString, paramTroopInfo))) {
+          break label228;
+        }
+      }
+      finally {}
+      localObject2 = localObject1;
+      if (((String)localObject1).length() == 1)
+      {
+        i = ((String)localObject1).charAt(0);
+        localObject2 = localObject1;
+        if (!((String)localObject1).equals("★"))
+        {
+          if ((65 > i) || (i > 90)) {
+            break label671;
+          }
+          label160:
+          localObject2 = ((String)localObject1).toUpperCase();
+        }
+      }
+      label167:
+      if (localLinkedHashMap.get(localObject2) == null) {
+        localLinkedHashMap.put(localObject2, new ArrayList());
+      }
+      this.jdField_b_of_type_Int += 1;
+      ((List)localLinkedHashMap.get(localObject2)).add(localakfc);
+      continue;
+      label228:
+      localObject1 = localakfc.x;
+      if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+        break label688;
+      }
+      localObject1 = ((String)localObject1).substring(0, 1);
+    }
+    paramTroopInfo = new bgjp(paramTroopInfo);
+    paramString = new LinkedHashMap();
+    long l = System.currentTimeMillis();
+    if (localLinkedHashMap.get("★") != null)
+    {
+      this.jdField_a_of_type_Int += 1;
+      Collections.sort((List)localLinkedHashMap.get("★"), paramTroopInfo);
+      paramString.put("★", localLinkedHashMap.get("★"));
+    }
+    for (;;)
+    {
+      if (c1 <= 'Z')
+      {
+        if (localLinkedHashMap.get(String.valueOf(c1)) != null)
+        {
+          this.jdField_a_of_type_Int += 1;
+          Collections.sort((List)localLinkedHashMap.get(String.valueOf(c1)), paramTroopInfo);
+          paramString.put(String.valueOf(c1), localLinkedHashMap.get(String.valueOf(c1)));
+        }
+      }
+      else
+      {
+        if (localLinkedHashMap.get("#") != null)
+        {
+          this.jdField_a_of_type_Int += 1;
+          Collections.sort((List)localLinkedHashMap.get("#"), paramTroopInfo);
+          paramString.put("#", localLinkedHashMap.get("#"));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("SearchTask", 2, "constructHashStruct-sort: invoked.  cost: " + (System.currentTimeMillis() - l));
+        }
+        localLinkedHashMap.clear();
+        paramTroopInfo = new int[paramString.keySet().size()];
+        localObject1 = new String[paramTroopInfo.length];
+        localObject2 = paramString.keySet().iterator();
+        if (paramTroopInfo.length == 0) {
+          return new Object[0];
+        }
+        paramTroopInfo[0] = 0;
+        i = 1;
+        while (i < paramTroopInfo.length)
+        {
+          int j = paramTroopInfo[i];
+          int k = paramTroopInfo[(i - 1)];
+          paramTroopInfo[i] = (((List)paramString.get(((Iterator)localObject2).next())).size() + k + j);
+          i += 1;
+        }
+        localObject2 = paramString.keySet().iterator();
+        i = 0;
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject1[i] = ((String)((Iterator)localObject2).next());
+          i += 1;
+        }
+        return new Object[] { paramString, paramTroopInfo, localObject1 };
+        label664:
+        localObject1 = "★";
+        break;
+        label671:
+        if ((97 <= i) && (i <= 122))
+        {
+          break label160;
+          label688:
+          localObject1 = "#";
+          break;
+        }
+        localObject2 = "#";
+        break label167;
+        c1 = 'A';
+        continue;
+      }
+      char c1 = (char)(c1 + '\001');
+    }
+  }
+  
+  public bgjy a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
+  {
+    TroopInfo localTroopInfo = null;
+    if (paramSessionInfo != null)
+    {
+      paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramSessionInfo);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    for (this.jdField_b_of_type_JavaUtilList = bgjw.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1);; this.jdField_b_of_type_JavaUtilList = new ArrayList(bgjw.a(paramString, bgjw.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1), paramQQAppInterface, localTroopInfo))) {
+      return a(paramQQAppInterface, localTroopInfo, paramString, a(paramString, paramBoolean1, localTroopInfo), paramBoolean2);
     }
   }
 }

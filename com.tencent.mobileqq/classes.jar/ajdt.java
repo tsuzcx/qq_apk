@@ -1,43 +1,73 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajdt
-  extends bfrb
+class ajdt
+  implements View.OnClickListener
 {
-  public ajdt(NotificationView paramNotificationView) {}
+  ajdt(ajds paramajds) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    while (this.a.jdField_a_of_type_Biau == null) {
-      try
+    oci localoci = (oci)paramView.getTag();
+    Object localObject = (aody)this.a.a.a.getManager(56);
+    if ((localObject != null) && (((aody)localObject).c(localoci.jdField_a_of_type_JavaLangString) != null)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
       {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
-        localStructMsg.mergeFrom(paramBundle);
-        NotificationView.a(this.a, 1, localStructMsg);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        do
+        localObject = new Intent(this.a.a.a(), ChatActivity.class);
+        if (localoci.jdField_a_of_type_Boolean)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("NotificationView", 2, "structMsg merge error");
+          ((Intent)localObject).putExtra("uintype", 1008);
+          ((Intent)localObject).putExtra("uin", localoci.jdField_a_of_type_JavaLangString);
+          ((Intent)localObject).putExtra("uinname", localoci.b);
+          ((Intent)localObject).putExtra("start_time", System.currentTimeMillis());
+          this.a.a.a().startActivity((Intent)localObject);
+          if (!ajds.a(this.a)) {
+            break label376;
           }
-        } while (this.a.jdField_a_of_type_Biau == null);
-        this.a.jdField_a_of_type_Biau.dismiss();
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696653), 0).b(this.a.a());
+        }
+      }
+      label376:
+      for (localObject = "houtai";; localObject = "duan")
+      {
+        ocd.a(this.a.a.a, localoci.jdField_a_of_type_JavaLangString, "0X8007404", "0X8007404", 0, 0, "", "", (String)localObject, "");
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder("clickRecommendAccount->");
+          localStringBuilder.append("source:").append((String)localObject);
+          localStringBuilder.append(", puin:").append(localoci.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(", isFollow:").append(bool);
+          QLog.d("ClassificationSearchFragment", 2, localStringBuilder.toString());
+        }
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
+        ((Intent)localObject).putExtra("uintype", 1024);
+        break;
+        if (localoci.jdField_a_of_type_Boolean)
+        {
+          localObject = new Intent(this.a.a.a(), AccountDetailActivity.class);
+          ((Intent)localObject).putExtra("uintype", 1008);
+          ((Intent)localObject).putExtra("source", 118);
+        }
+        for (;;)
+        {
+          ((Intent)localObject).putExtra("uin", localoci.jdField_a_of_type_JavaLangString);
+          ((Intent)localObject).addFlags(67108864);
+          this.a.a.a().startActivity((Intent)localObject);
+          break;
+          localObject = nok.a(this.a.a.a(), null, "", false, -1, false, -1);
+        }
       }
     }
-    this.a.jdField_a_of_type_Biau.dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696653), 0).b(this.a.a());
   }
 }
 

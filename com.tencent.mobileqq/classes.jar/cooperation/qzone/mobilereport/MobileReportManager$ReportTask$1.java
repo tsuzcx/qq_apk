@@ -1,11 +1,11 @@
 package cooperation.qzone.mobilereport;
 
-import blys;
+import bmzu;
 
 public class MobileReportManager$ReportTask$1
   implements Runnable
 {
-  public MobileReportManager$ReportTask$1(blys paramblys) {}
+  public MobileReportManager$ReportTask$1(bmzu parambmzu) {}
   
   /* Error */
   public void run()
@@ -18,31 +18,31 @@ public class MobileReportManager$ReportTask$1
     //   10: invokespecial 30	java/util/HashMap:<init>	()V
     //   13: astore_2
     //   14: aload_0
-    //   15: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lblys;
-    //   18: invokestatic 36	blys:a	(Lblys;)Ljava/util/HashMap;
+    //   15: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
+    //   18: invokestatic 36	bmzu:a	(Lbmzu;)Ljava/util/HashMap;
     //   21: astore_1
     //   22: aload_1
     //   23: monitorenter
     //   24: aload_2
     //   25: aload_0
-    //   26: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lblys;
-    //   29: invokestatic 36	blys:a	(Lblys;)Ljava/util/HashMap;
+    //   26: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
+    //   29: invokestatic 36	bmzu:a	(Lbmzu;)Ljava/util/HashMap;
     //   32: invokevirtual 40	java/util/HashMap:putAll	(Ljava/util/Map;)V
     //   35: aload_0
-    //   36: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lblys;
-    //   39: invokestatic 36	blys:a	(Lblys;)Ljava/util/HashMap;
+    //   36: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
+    //   39: invokestatic 36	bmzu:a	(Lbmzu;)Ljava/util/HashMap;
     //   42: invokevirtual 43	java/util/HashMap:clear	()V
     //   45: aload_0
-    //   46: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lblys;
-    //   49: invokestatic 46	blys:a	(Lblys;)Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   46: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
+    //   49: invokestatic 46	bmzu:a	(Lbmzu;)Ljava/util/concurrent/atomic/AtomicBoolean;
     //   52: iconst_0
     //   53: invokevirtual 52	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   56: aload_1
     //   57: monitorexit
     //   58: aload_0
-    //   59: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lblys;
+    //   59: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
     //   62: aload_2
-    //   63: invokevirtual 55	blys:a	(Ljava/util/HashMap;)V
+    //   63: invokevirtual 55	bmzu:a	(Ljava/util/HashMap;)V
     //   66: invokestatic 61	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   69: ifeq +11 -> 80
     //   72: ldc 63

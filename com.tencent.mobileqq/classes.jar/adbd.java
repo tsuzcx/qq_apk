@@ -1,33 +1,8 @@
-import org.json.JSONObject;
-
-public class adbd
+public abstract interface adbd<K, V>
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract V a(K paramK);
   
-  public adbd(adbc paramadbc) {}
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
-      this.b = paramJSONObject.getString("func_name").trim();
-      return true;
-    }
-    catch (Exception paramJSONObject)
-    {
-      adax.a("KingKongNativePatch", "Parse fingerprint error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
-  }
+  public abstract void a(K paramK, Class<? extends V> paramClass);
 }
 
 

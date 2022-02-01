@@ -1,34 +1,35 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.util.XMPCoreUtil.2;
 
-class bnlh
-  implements Observer<bnuq>
+public class bnlh
+  implements ModuleDownloadListener
 {
-  bnlh(bnlc parambnlc) {}
+  public bnlh(XMPCoreUtil.2 param2) {}
   
-  public void a(@Nullable bnuq parambnuq)
+  public void onDownloadCanceled(String paramString)
   {
-    if (parambnuq == null) {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("xmpcore.jar")) {
       return;
     }
-    parambnuq = parambnuq.b;
-    bnlc.a(this.a, parambnuq);
-    if (parambnuq == AECaptureMode.GIF)
-    {
-      bnlc.a(this.a);
-      bnlc.a(this.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      bnlc.a(this.a, parambnuq);
-      bnlc.b(this.a, parambnuq);
-      return;
-      if (bnlc.a(this.a)) {
-        bnlc.a(this.a).setVisibility(8);
-      }
-    }
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bnlf.a(), " onDownloadSucceed = ", bnlf.b() });
+    LocalMultiProcConfig.putString("xmp_core_file_md5", bnlf.b());
   }
 }
 

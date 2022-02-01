@@ -1,28 +1,23 @@
 package com.tencent.biz.pubaccount;
 
-import bgjb;
+import bhjc;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import obj;
+import java.util.Vector;
+import oct;
 
 public class SoftAdExpoStatManager$2
   implements Runnable
 {
-  public SoftAdExpoStatManager$2(obj paramobj, String paramString) {}
+  public SoftAdExpoStatManager$2(oct paramoct, Vector paramVector, String paramString) {}
   
   public void run()
   {
-    Object localObject = (List)obj.b(this.this$0).get(this.a);
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return;
-    }
     StringBuilder localStringBuilder = new StringBuilder();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localStringBuilder.append(((Long)((Iterator)localObject).next()).longValue()).append(",,");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+    while (localIterator.hasNext()) {
+      localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",,");
     }
-    bgjb.a(obj.a(this.this$0), obj.a(this.this$0) + "expo_stat_key_" + this.a, localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
+    bhjc.a(oct.a(this.this$0), oct.a(this.this$0) + "expo_stat_key_" + this.jdField_a_of_type_JavaLangString, localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 

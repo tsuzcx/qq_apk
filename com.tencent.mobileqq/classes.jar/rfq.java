@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
 
 public class rfq
+  implements tkh
 {
-  public int a;
-  public long a;
-  public MessageRecord a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public String c = "";
+  public rfq(EditColumnFragment paramEditColumnFragment) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.g();
+  }
 }
 
 

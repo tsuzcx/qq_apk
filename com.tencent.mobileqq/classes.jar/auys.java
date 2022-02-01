@@ -1,16 +1,16 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
-class auys
+public class auys
   implements DialogInterface.OnClickListener
 {
-  auys(auyq paramauyq) {}
+  public auys(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    auyq.a(this.a, null);
-    auyq.b(this.a, null);
-    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

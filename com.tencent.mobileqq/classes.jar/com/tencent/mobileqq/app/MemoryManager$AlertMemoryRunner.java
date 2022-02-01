@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import adcc;
+import adla;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -11,9 +11,9 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.Pair;
-import bctj;
-import bgjd;
-import bgln;
+import bdmc;
+import bhje;
+import bhlo;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -132,8 +132,8 @@ class MemoryManager$AlertMemoryRunner
         QLog.e("Q.Memory.MemoryManager", 2, "AlertMemoryRunner exception, actionType=" + this.jdField_a_of_type_Int, localThrowable);
         localThrowable.printStackTrace();
         return;
-        l1 = bgln.e();
-        l2 = bgln.d();
+        l1 = bhlo.e();
+        l2 = bhlo.d();
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -171,7 +171,7 @@ class MemoryManager$AlertMemoryRunner
         if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0))) || (a(str))) {
           continue;
         }
-        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(bgln.a(localRunningAppProcessInfo.pid))));
+        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(bhlo.a(localRunningAppProcessInfo.pid))));
         continue;
       }
       finally
@@ -179,8 +179,8 @@ class MemoryManager$AlertMemoryRunner
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
         this.jdField_a_of_type_AndroidContentContext = null;
       }
-      long l1 = bgln.e();
-      long l2 = bgln.d();
+      long l1 = bhlo.e();
+      long l2 = bhlo.d();
       if (QLog.isColorLevel()) {
         QLog.d("Q.Memory.MemoryManager", 2, "check memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
       }
@@ -198,12 +198,12 @@ class MemoryManager$AlertMemoryRunner
       continue;
       long l4;
       label646:
-      bgjd.a((ArrayList)localObject4);
+      bhje.a((ArrayList)localObject4);
       Object localObject4 = (ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity");
       Object localObject3 = localObject2.edit();
       ((SharedPreferences.Editor)localObject3).putLong("lastClearTime", System.currentTimeMillis());
       ((SharedPreferences.Editor)localObject3).commit();
-      localObject3 = bctj.a(BaseApplication.getContext());
+      localObject3 = bdmc.a(BaseApplication.getContext());
       localObject4 = new HashMap();
       ((HashMap)localObject4).put("osVersion", Build.VERSION.RELEASE);
       ((HashMap)localObject4).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
@@ -211,7 +211,7 @@ class MemoryManager$AlertMemoryRunner
       ((HashMap)localObject4).put("totalMemSize", String.valueOf(l2));
       ((HashMap)localObject4).put("warningMemSize", String.valueOf(l3));
       ((HashMap)localObject4).put("time", String.valueOf(l4 / 60000L));
-      ((bctj)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
+      ((bdmc)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
     }
   }
 }

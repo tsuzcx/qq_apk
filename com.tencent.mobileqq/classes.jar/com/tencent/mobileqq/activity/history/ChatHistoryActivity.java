@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.history;
 
 import Override;
-import afur;
-import ajpc;
-import ajqp;
-import ajqy;
-import ajrh;
-import ajri;
-import ajuc;
+import agej;
+import akal;
+import akby;
+import akch;
+import akcq;
+import akcr;
+import akfl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +30,7 @@ public class ChatHistoryActivity
   extends FragmentActivity
 {
   int jdField_a_of_type_Int;
-  ajpc jdField_a_of_type_Ajpc;
+  akal jdField_a_of_type_Akal;
   boolean jdField_a_of_type_Boolean;
   boolean b;
   public boolean c;
@@ -52,15 +52,15 @@ public class ChatHistoryActivity
         QLog.d("Q.history.ChatHistoryActivity", 2, "getTagType, result = " + i);
       }
       return i;
-      if ((i == 2131364362) || (i == 2131364355))
+      if ((i == 2131364406) || (i == 2131364399))
       {
         i = 1;
       }
-      else if ((i == 2131364360) || (i == 2131364367))
+      else if ((i == 2131364404) || (i == 2131364411))
       {
         i = 2;
       }
-      else if ((i == 2131364364) || (i == 2131364357))
+      else if ((i == 2131364408) || (i == 2131364401))
       {
         i = 4;
         continue;
@@ -80,22 +80,22 @@ public class ChatHistoryActivity
     }
   }
   
-  private ajpc a()
+  private akal a()
   {
     if ((this.jdField_a_of_type_Boolean) || (this.c)) {
-      return new ajrh(this);
+      return new akcq(this);
     }
     if (this.jdField_a_of_type_Int == 3011) {
-      return new ajqp(this);
+      return new akby(this);
     }
     if (this.jdField_a_of_type_Int == 3012) {
-      return new ajuc(this);
+      return new akfl(this);
     }
     if (this.jdField_a_of_type_Int == 3013) {
-      return new ajri(this);
+      return new akcr(this);
     }
     if (this.jdField_a_of_type_Int == 3014) {
-      return new ajqy(this);
+      return new akch(this);
     }
     return null;
   }
@@ -182,8 +182,8 @@ public class ChatHistoryActivity
   
   public int a()
   {
-    if (this.jdField_a_of_type_Ajpc != null) {
-      return this.jdField_a_of_type_Ajpc.a();
+    if (this.jdField_a_of_type_Akal != null) {
+      return this.jdField_a_of_type_Akal.a();
     }
     return 0;
   }
@@ -202,7 +202,7 @@ public class ChatHistoryActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.history.ChatHistoryActivity", 2, "doOnActivityResult, requestCode = " + paramInt1);
     }
-    this.jdField_a_of_type_Ajpc.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Akal.a(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1) {}
     switch (paramInt1)
     {
@@ -217,7 +217,7 @@ public class ChatHistoryActivity
     paramIntent.putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
     paramIntent.putInt("PhotoConst.SEND_BUSINESS_TYPE", 1031);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-    localIntent = afur.a(localIntent, null);
+    localIntent = agej.a(localIntent, null);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     paramIntent.putBoolean("PicContants.NEED_COMPRESS", false);
     paramIntent.putBoolean("send_in_background", false);
@@ -228,14 +228,14 @@ public class ChatHistoryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558880);
+    setContentView(2131558878);
     a();
-    paramBundle = (TextView)findViewById(2131368994);
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377654);
+    paramBundle = (TextView)findViewById(2131369088);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377802);
     if ((this.jdField_a_of_type_Boolean) || (this.c))
     {
       if (paramBundle != null) {
-        paramBundle.setText(2131690664);
+        paramBundle.setText(2131690662);
       }
       if (localFrameLayout != null) {
         localFrameLayout.setVisibility(8);
@@ -243,9 +243,9 @@ public class ChatHistoryActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ajpc = a();
-      this.jdField_a_of_type_Ajpc.a();
-      paramBundle = super.findViewById(2131376788);
+      this.jdField_a_of_type_Akal = a();
+      this.jdField_a_of_type_Akal.a();
+      paramBundle = super.findViewById(2131376925);
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         paramBundle.setFitsSystemWindows(true);
@@ -255,7 +255,7 @@ public class ChatHistoryActivity
       if (this.jdField_a_of_type_Int == 3013)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131693486);
+          paramBundle.setText(2131693498);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -264,7 +264,7 @@ public class ChatHistoryActivity
       else if (this.jdField_a_of_type_Int == 3014)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131690661);
+          paramBundle.setText(2131690659);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -276,19 +276,19 @@ public class ChatHistoryActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Ajpc.d();
+    this.jdField_a_of_type_Akal.d();
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Ajpc.c();
+    this.jdField_a_of_type_Akal.c();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Ajpc.b();
+    this.jdField_a_of_type_Akal.b();
   }
   
   public boolean isWrapContent()

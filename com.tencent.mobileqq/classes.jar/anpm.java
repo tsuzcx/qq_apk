@@ -1,25 +1,48 @@
-import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
 
-class anpm
-  implements bkhw
+final class anpm
+  implements anje
 {
-  anpm(anpk paramanpk, bkho parambkho) {}
+  anpm(String paramString, String[] paramArrayOfString, anpj paramanpj, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Bkho.e();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = anpk.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (anpk.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = anpk.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Anpj.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
+            return;
+            this.jdField_a_of_type_Anpj.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Anpj.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
       }
-      this.jdField_a_of_type_Anpk.h();
-      bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
+    }
+    else
+    {
+      this.jdField_a_of_type_Anpj.a(-1, null, null);
     }
   }
 }

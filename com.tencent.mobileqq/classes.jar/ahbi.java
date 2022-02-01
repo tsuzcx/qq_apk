@@ -1,17 +1,46 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-class ahbi
-  extends ahbl
+public class ahbi
 {
-  ahbi(agwz paramagwz)
+  public URL a;
+  public boolean a;
+  public boolean b;
+  
+  public ahbi(MessageForPic paramMessageForPic)
   {
-    super(paramagwz, null);
+    paramMessageForPic.checkType();
+    if (((paramMessageForPic.imageType == 3) || (paramMessageForPic.imageType == 2000)) && (ahbe.h))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      URL localURL = beyq.a(paramMessageForPic, 1, null);
+      if (beqz.a(localURL.toString()) != null)
+      {
+        this.jdField_a_of_type_JavaNetURL = localURL;
+        this.b = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("PicItemBuilder", 2, "getThumbDrawable,using GIF_BIG,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_JavaNetURL == null)
+    {
+      this.jdField_a_of_type_JavaNetURL = beyq.a(paramMessageForPic, 65537, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicItemBuilder", 2, "getThumbDrawable,using thumb,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
+      }
+    }
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  @NonNull
+  public String toString()
   {
-    return new agwr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (this.jdField_a_of_type_JavaNetURL != null) {
+      return this.jdField_a_of_type_JavaNetURL.toString();
+    }
+    return super.toString();
   }
 }
 

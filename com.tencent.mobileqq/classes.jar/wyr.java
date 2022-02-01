@@ -1,44 +1,105 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class wyr
-  extends wlf<xap>
+  extends wyv
 {
-  public static final String a = wjz.a("StorySvc.square_720_banner_vid_list");
-  public String b;
-  public String c;
+  public static final String a;
+  public QQUserUIItem a;
+  private boolean a;
   
-  public String a()
+  static
   {
-    return a;
+    jdField_a_of_type_JavaLangString = wnu.a(2131698599);
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public wyr(ViewGroup paramViewGroup)
   {
-    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
-    try
-    {
-      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
-      return new xap(localRspBannerVideoList);
+    super(paramViewGroup, 2131561785);
+  }
+  
+  protected String a(QQUserUIItem paramQQUserUIItem)
+  {
+    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+      return null;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+      return paramQQUserUIItem.nickName;
+    }
+    return paramQQUserUIItem.getDisplayName();
+  }
+  
+  protected void a(String paramString)
+  {
+    b(zpp.b(paramString));
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, wvn paramwvn)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
+  }
+  
+  public void a(wvn paramwvn)
+  {
+    super.a(paramwvn);
+    yuk.a("FollowNodeViewHolder", "bindData %s", paramwvn);
+    this.itemView.setTag(paramwvn.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((wtt)wth.a(2)).a(paramwvn.jdField_a_of_type_JavaLangString, false);
+    this.jdField_a_of_type_Boolean = true;
+    boolean bool;
+    Object localObject2;
+    Object localObject1;
+    if (wyd.h)
     {
-      for (;;)
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
       {
-        paramArrayOfByte.printStackTrace();
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
-    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
-    return localReqBannerVideoList.toByteArray();
+    else
+    {
+      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label194;
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = anzj.a(2131703567);
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject1 = jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramwvn.c)) {
+          localObject1 = paramwvn.c;
+        }
+        yuk.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramwvn.jdField_a_of_type_JavaLangString);
+        wjj.a().dispatch(new wvm(paramwvn.jdField_a_of_type_JavaLangString));
+        localObject2 = localObject1;
+      }
+      a((String)localObject2, this.jdField_a_of_type_Boolean, paramwvn);
+      a(paramwvn.g);
+      return;
+      bool = false;
+      break;
+      label194:
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      {
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+        }
+      }
+    }
   }
 }
 

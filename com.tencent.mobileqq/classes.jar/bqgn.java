@@ -1,8 +1,21 @@
-public class bqgn
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class bqgn
+  extends SimpleJob<Object>
 {
-  public long a;
-  public long b;
-  public long c;
+  bqgn(bqgk parambqgk, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  {
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    yup.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
+  }
 }
 
 

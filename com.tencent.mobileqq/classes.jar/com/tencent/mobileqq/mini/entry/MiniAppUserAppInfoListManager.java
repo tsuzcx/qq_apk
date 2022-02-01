@@ -6,9 +6,9 @@ import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anil;
-import aoql;
-import aqpv;
+import anui;
+import apeb;
+import arfd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -49,7 +49,7 @@ public class MiniAppUserAppInfoListManager
   private LinkedList<MiniAppInfo> mTopAppList = new LinkedList();
   private COMM.StCommonExt mTopExtInfo;
   private LinkedList<MiniAppInfo> mUsedAppList = new LinkedList();
-  private anil redDotObserver = new MiniAppUserAppInfoListManager.1(this);
+  private anui redDotObserver = new MiniAppUserAppInfoListManager.1(this);
   
   public MiniAppUserAppInfoListManager(QQAppInterface paramQQAppInterface)
   {
@@ -716,7 +716,7 @@ public class MiniAppUserAppInfoListManager
       }
     }
     finally {}
-    boolean bool = aqpv.e();
+    boolean bool = arfd.e();
     localObject = ((List)localObject).iterator();
     MiniAppInfo localMiniAppInfo;
     Integer localInteger1;
@@ -829,10 +829,10 @@ public class MiniAppUserAppInfoListManager
       paramLong2 = System.currentTimeMillis();
       if (paramLong2 - paramLong1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        localObject = (aoql)((AppInterface)localObject).getBusinessHandler(148);
+        localObject = (apeb)((AppInterface)localObject).getBusinessHandler(148);
         if (localObject != null)
         {
-          ((aoql)localObject).a();
+          ((apeb)localObject).a();
           localSharedPreferences.edit().putLong(str, paramLong2).commit();
         }
       }

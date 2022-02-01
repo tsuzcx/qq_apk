@@ -18,7 +18,7 @@ class VoIPJsPlugin$3$1$1
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramString);
-      this.this$2.this$1.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onVoIPChatInterrupted", localJSONObject.toString(), 0);
+      this.this$2.this$1.val$webview.evaluateSubcribeJS("onVoIPChatInterrupted", localJSONObject.toString(), 0);
       return;
     }
     catch (JSONException paramString)
@@ -36,7 +36,7 @@ class VoIPJsPlugin$3$1$1
     try
     {
       localJSONObject.put("openIdList", paramJSONArray);
-      this.this$2.this$1.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onVoIPChatMembersChanged", localJSONObject.toString(), 0);
+      this.this$2.this$1.val$webview.evaluateSubcribeJS("onVoIPChatMembersChanged", localJSONObject.toString(), 0);
       return;
     }
     catch (JSONException paramJSONArray)
@@ -54,7 +54,7 @@ class VoIPJsPlugin$3$1$1
     try
     {
       localJSONObject.put("openIdList", paramJSONArray);
-      this.this$2.this$1.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onVoIPChatSpeakersChanged", localJSONObject.toString(), 0);
+      this.this$2.this$1.val$webview.evaluateSubcribeJS("onVoIPChatSpeakersChanged", localJSONObject.toString(), 0);
       return;
     }
     catch (JSONException paramJSONArray)

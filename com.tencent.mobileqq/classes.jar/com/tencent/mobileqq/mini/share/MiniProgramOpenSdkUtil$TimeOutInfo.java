@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.share;
 
-import biau;
+import bjbs;
 
 class MiniProgramOpenSdkUtil$TimeOutInfo
 {
   boolean isTimeout;
-  biau progressDialog;
+  bjbs progressDialog;
 }
 
 

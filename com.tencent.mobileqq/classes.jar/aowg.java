@@ -1,168 +1,94 @@
-import android.graphics.Rect;
-import android.graphics.RectF;
-import com.tencent.mobileqq.ar.DrawView2;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public class aowg
+  extends aoxg
 {
-  public float a;
-  public int a;
-  public Rect a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public float[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public static RectF a(Rect paramRect, float[] paramArrayOfFloat)
+  public aowg(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramRect == null) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length < 180))
-    {
-      paramRect = null;
-      return paramRect;
-    }
-    paramArrayOfFloat = (float[])paramArrayOfFloat.clone();
-    float[] arrayOfFloat1 = new float[2];
-    float[] arrayOfFloat2 = new float[2];
-    float[] arrayOfFloat3 = new float[2];
-    float[] arrayOfFloat4 = new float[2];
-    arrayOfFloat1[0] = paramArrayOfFloat[12];
-    arrayOfFloat1[1] = paramArrayOfFloat[13];
-    arrayOfFloat2[0] = paramArrayOfFloat[28];
-    arrayOfFloat2[1] = paramArrayOfFloat[29];
-    arrayOfFloat3[0] = paramArrayOfFloat[64];
-    arrayOfFloat3[1] = paramArrayOfFloat[65];
-    arrayOfFloat4[0] = (arrayOfFloat1[0] + arrayOfFloat2[0] - arrayOfFloat3[0]);
-    arrayOfFloat4[1] = (arrayOfFloat1[1] + arrayOfFloat2[1] - arrayOfFloat3[1]);
-    float f2 = Math.min(paramRect.left, arrayOfFloat4[0]);
-    float f3 = Math.max(paramRect.right, arrayOfFloat4[0]);
-    float f4 = Math.min(paramRect.top, arrayOfFloat4[1]);
-    float f5 = Math.max(paramRect.bottom, arrayOfFloat4[1]);
-    float f1 = DrawView2.c / DrawView2.d;
-    float f6 = Math.max(DrawView2.a, DrawView2.b);
-    float f7 = Math.min(DrawView2.a, DrawView2.b);
-    if (f1 > f7 / f6) {}
-    for (f1 = DrawView2.c / f7;; f1 = DrawView2.d / f6)
-    {
-      float f8 = (f1 * f7 - DrawView2.c) / 2.0F;
-      f7 = (f7 * f1 - DrawView2.c) / 2.0F;
-      paramArrayOfFloat = new RectF(f2 * f1 - f8, f4 * f1 - (f1 * f6 - DrawView2.d) / 2.0F, f3 * f1 - f7, f5 * f1 - (f1 * f6 - DrawView2.d) / 2.0F);
-      paramRect = paramArrayOfFloat;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DrawView", 2, "mapFaceRect2Screen  result = " + paramArrayOfFloat.toString());
-      return paramArrayOfFloat;
-    }
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static RectF a(RectF paramRectF)
+  public boolean a()
   {
-    float f4 = 40.0F;
-    if (paramRectF == null) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawView", 2, "faceRect  result = " + paramRectF.toString());
-    }
-    if ((paramRectF.left == 0.0F) && (paramRectF.top == 0.0F) && (paramRectF.right == 0.0F)) {
-      return new RectF(DrawView2.c / 2 - 210, DrawView2.d / 2 - 210, DrawView2.c / 2 + 210, DrawView2.d / 2 + 210);
-    }
-    float f3 = paramRectF.left;
-    float f5 = paramRectF.right;
-    float f1 = paramRectF.top;
-    float f2 = paramRectF.bottom;
-    f3 = (f3 + f5) / 2.0F;
-    f2 = (f1 + f2) / 2.0F;
-    f1 = f3 * (DrawView2.c / 480);
-    f2 *= DrawView2.d / 856;
-    float f6 = f1 - 210.0F;
-    f3 = f2 - 210.0F;
-    float f7 = f1 + 210.0F;
-    f5 = f2 + 210.0F;
-    if (QLog.isColorLevel()) {
-      QLog.d("DrawView", 2, "mapMigObjectRect2Screen1  result = " + f6 + "   ：" + f3 + "  ：" + f7 + "  ：" + f5);
-    }
-    f2 = f7;
-    f1 = f6;
-    if (f6 < 40.0F)
+    Object localObject1 = null;
+    for (;;)
     {
-      f2 = f7 - f6 + 40.0F;
-      f1 = 40.0F;
-    }
-    if (f3 < 40.0F) {}
-    for (f3 = f5 - f3 + 40.0F;; f3 = f5)
-    {
-      if (f2 > DrawView2.c - 40)
+      try
       {
-        f6 = DrawView2.c - 40 - (f2 - f1);
-        f5 = DrawView2.c - 40;
+        Intent localIntent = new Intent();
+        Object localObject2 = this.jdField_a_of_type_JavaLangString.split("\\?");
+        if (localObject2.length < 2) {
+          break label324;
+        }
+        localIntent.putExtra("extra_key_url_append", localObject2[1]);
+        if (localObject2[1] == null) {
+          break label324;
+        }
+        if (localObject2[1].contains("tab=game_center"))
+        {
+          i = 0;
+          j = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("CMShowAction", 2, new Object[] { "apollo_store url:", localObject1 });
+          }
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            localObject2 = annv.ah;
+          }
+          if (j != 0)
+          {
+            ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext);
+            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+              break;
+            }
+            localObject1 = (amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_clk", ((amsx)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()), 0, new String[] { "0" });
+            break;
+          }
+        }
+        else
+        {
+          if (localObject2[1].contains("tab=other_url&url="))
+          {
+            localObject1 = URLDecoder.decode(localObject2[1].substring(localObject2[1].indexOf("tab=other_url&url=") + "tab=other_url&url=".length()));
+            i = 1;
+            j = 0;
+            continue;
+          }
+          localObject1 = new HashMap();
+          xii.a(localObject2[1], (HashMap)localObject1);
+          localObject1 = amsx.b((String)((HashMap)localObject1).get("tab"), true);
+          i = 0;
+          j = 0;
+          continue;
+        }
+        if (i != 0)
+        {
+          ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2);
+          continue;
+        }
+        ApolloUtil.a(this.jdField_a_of_type_AndroidContentContext, localIntent, null, (String)localObject2, null);
       }
-      for (;;)
+      catch (Exception localException)
       {
-        f2 = f3;
-        f1 = f4;
-        if (f3 > DrawView2.d - 40)
-        {
-          f1 = DrawView2.d - 40 - (f3 - f4);
-          f2 = DrawView2.d - 40;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DrawView", 2, "mapMigObjectRect2Screen1  result = " + f6 + "   ：" + f1 + "  ：" + f5 + "  ：" + f2);
-        }
-        f4 = f5;
-        f3 = f6;
-        if ((f6 + f5) / 2.0F < DrawView2.c / 2 - 125)
-        {
-          f3 = DrawView2.c / 2 - 125 - 210;
-          f4 = DrawView2.c / 2 - 125 + 210;
-        }
-        f6 = f4;
-        f5 = f3;
-        if ((f3 + f4) / 2.0F > DrawView2.c / 2 + 125)
-        {
-          f5 = DrawView2.c / 2 + 125 - 210;
-          f6 = DrawView2.c / 2 + 125 + 210;
-        }
-        f4 = f2;
-        f3 = f1;
-        if ((f1 + f2) / 2.0F < DrawView2.d / 2 - 417)
-        {
-          f3 = DrawView2.d / 2 - 417 - 210;
-          f4 = DrawView2.d / 2 - 417 + 210;
-        }
-        f2 = f4;
-        f1 = f3;
-        if ((f3 + f4) / 2.0F > DrawView2.d / 2 + 417)
-        {
-          f1 = DrawView2.d / 2 + 417 - 210;
-          f2 = DrawView2.d / 2 + 417 + 210;
-        }
-        paramRectF = new RectF(f5, f1, f6, f2);
-        if (QLog.isColorLevel()) {
-          QLog.d("DrawView", 2, "mapMigObjectRect2Screen3  result = " + paramRectF.toString());
-        }
-        return paramRectF;
-        f5 = f2;
-        f6 = f1;
+        a("CMShowAction");
+        QLog.e("CMShowAction", 1, "doAction error: " + localException.getMessage());
+        return false;
       }
-      f4 = f3;
+      continue;
+      label324:
+      int i = 0;
+      int j = 0;
     }
-  }
-  
-  public RectF a()
-  {
-    return this.a;
+    return true;
   }
 }
 

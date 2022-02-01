@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adjv
-  implements DialogInterface.OnDismissListener
 {
-  public adjv(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(String paramString1, String paramString2)
   {
-    this.a.a = null;
+    QLog.d(paramString1, 1, paramString2);
   }
+  
+  public static void b(String paramString1, String paramString2) {}
 }
 
 

@@ -1,30 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
 
-class aibn
-  extends BroadcastReceiver
+public class aibn
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  aibn(aiay paramaiay) {}
+  public AIOGalleryAdapter a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aibn(AIOGalleryAdapter paramAIOGalleryAdapter)
   {
-    paramIntent.getStringExtra("peerUin");
-    paramIntent.getIntExtra("sessionType", -1);
-    paramContext = paramIntent.getStringExtra("sessionId");
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!paramContext.startsWith("10-")) {
+    this.a = paramAIOGalleryAdapter;
+  }
+  
+  public void onPlayRepeat(int paramInt)
+  {
+    if (paramInt != 1) {
       return;
     }
-    this.a.jdField_a_of_type_Axey.c();
-    this.a.l.setEnabled(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBind enter room setSoundDisable");
-    }
-    this.a.jdField_a_of_type_Axey.a(false);
+    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
   }
 }
 

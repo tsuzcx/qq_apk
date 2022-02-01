@@ -1,20 +1,27 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aluc
-  extends amcl
+  implements bliz
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public ImageView b;
-  public TextView b;
+  public aluc(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public aluc(altz paramaltz) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    alug.b("", "0X800656F", "0");
+  }
 }
 
 

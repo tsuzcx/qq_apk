@@ -1,25 +1,58 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvt
-  extends GestureDetector.SimpleOnGestureListener
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public auvt(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public int a;
+  public auvm a;
+  auvu a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public MessageForArkFlashChat a;
+  public FlashChatItem a;
+  public int b;
+  int c;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public auvt(View paramView, auvu paramauvu, int paramInt)
   {
-    return super.onDoubleTap(paramMotionEvent);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
+    if (paramauvu != null) {
+      this.jdField_a_of_type_Auvu = paramauvu;
+    }
+    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362928));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131370289));
+    this.itemView.setOnClickListener(this);
+    this.itemView.setOnTouchListener(paramauvu);
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return super.onDoubleTapEvent(paramMotionEvent);
+    if (this.jdField_a_of_type_Auvu != null) {
+      this.jdField_a_of_type_Auvu.a(paramView, getPosition(), this.c);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public boolean onLongClick(View paramView)
   {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    boolean bool = false;
+    if (this.jdField_a_of_type_Auvu != null)
+    {
+      this.jdField_a_of_type_Auvu.b(paramView, getPosition(), this.c);
+      bool = true;
+    }
+    return bool;
   }
 }
 

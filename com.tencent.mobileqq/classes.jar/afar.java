@@ -1,25 +1,41 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import mqq.os.MqqHandler;
 
 public class afar
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public afar(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void handleMessage(Message paramMessage)
+  public afar(NotificationActivity paramNotificationActivity, int paramInt)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int == 1) {
+        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+      }
+    }
+    while (paramInt != 1)
     {
-    default: 
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 2);
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
       return;
     }
-    this.a.finish();
+    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afar
  * JD-Core Version:    0.7.0.1
  */

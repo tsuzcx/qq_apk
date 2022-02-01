@@ -3,32 +3,32 @@ package com.tencent.mobileqq.tribe.videoupload;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import befo;
-import befq;
-import befr;
+import bfen;
+import bfep;
+import bfeq;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import wjp;
-import wjq;
+import wnk;
+import wnl;
 
 public class TribeVideoUploadTask
-  extends BasePublishTask<befq>
-  implements wjq
+  extends BasePublishTask<bfep>
+  implements wnl
 {
   protected Handler a;
   protected WeakReference<BaseActivity> a;
   
-  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, befq parambefq)
+  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, bfep parambfep)
   {
-    super(parambefq);
-    parambefq.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    befo localbefo = new befo(parambefq.jdField_a_of_type_JavaLangString);
-    localbefo.a(new befr(this, parambefq));
-    parambefq.jdField_a_of_type_JavaUtilList.add(localbefo);
+    super(parambfep);
+    parambfep.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    bfen localbfen = new bfen(parambfep.jdField_a_of_type_JavaLangString);
+    localbfen.a(new bfeq(this, parambfep));
+    parambfep.jdField_a_of_type_JavaUtilList.add(localbfen);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
     a(this);
@@ -54,7 +54,7 @@ public class TribeVideoUploadTask
   public void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
   {
     QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
-    paramBasePublishTask = (befq)paramBasePublishTask.a();
+    paramBasePublishTask = (bfep)paramBasePublishTask.a();
     if (paramBasePublishTask.b())
     {
       QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);

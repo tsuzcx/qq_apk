@@ -1,41 +1,26 @@
+import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ainz
-  implements bdvw
+  implements BusinessObserver
 {
-  private Handler a;
+  ainz(ainh paramainh) {}
   
-  ainz(Handler paramHandler)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + parambdwt);
-    }
-    if (parambdwt.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (parambdwt.jdField_a_of_type_Int == 0)
+    if (paramBundle != null)
     {
-      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ains.a(parambdwt.jdField_a_of_type_Bdws.c)))
-      {
-        this.a.sendEmptyMessage(100);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
-      }
-      this.a.sendEmptyMessage(101);
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
       return;
     }
-    this.a.sendEmptyMessage(101);
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

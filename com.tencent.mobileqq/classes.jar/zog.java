@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-class zog
-  implements View.OnClickListener
+final class zog
+  extends ThreadLocal<DateFormat>
 {
-  zog(zod paramzod) {}
-  
-  public void onClick(View paramView)
+  protected DateFormat a()
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
   }
 }
 

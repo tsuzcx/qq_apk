@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class bjzm
-  implements DialogInterface.OnClickListener
 {
-  public bjzm(VideoJsProxyImpl.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    bjzk.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, this.a.b);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
     }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
   }
 }
 

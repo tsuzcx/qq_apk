@@ -1,30 +1,55 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class ypq
-  extends QQUIEventReceiver<ypb, wor>
+  extends wov
 {
-  public ypq(@NonNull ypb paramypb)
-  {
-    super(paramypb);
-  }
+  public String a;
+  public int b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(@NonNull ypb paramypb, @NonNull wor paramwor)
+  public ypq(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
-    if (paramwor.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (paramRspGetUserGuide.pic_url.has())
     {
-      yqp.d(this.TAG, "deleted story failed");
-      paramypb.a(5, paramwor.jdField_a_of_type_JavaLangString);
-      return;
+      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
+      this.a = ((String)localObject1);
+      if (!paramRspGetUserGuide.word.has()) {
+        break label129;
+      }
+      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
+      label53:
+      this.c = ((String)localObject1);
+      this.b = paramRspGetUserGuide.seqno.get();
+      if (!paramRspGetUserGuide.confirm_word.has()) {
+        break label134;
+      }
     }
-    paramypb.a(paramwor.jdField_a_of_type_JavaLangString);
-    paramypb.a(new ymk[] { new ymf(yln.a(ypb.a(paramypb).a.jdField_a_of_type_JavaLangString)), (ymk)paramypb.c.a() });
+    label129:
+    label134:
+    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
+    {
+      this.d = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramRspGetUserGuide.cancel_word.has()) {
+        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
+      }
+      this.e = ((String)localObject1);
+      return;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label53;
+    }
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return wor.class;
+    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
   }
 }
 

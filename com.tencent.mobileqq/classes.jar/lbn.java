@@ -1,25 +1,45 @@
-import java.util.List;
+import com.tencent.qphone.base.util.Cryptor;
+import org.json.JSONObject;
 
 public class lbn
 {
-  @avnm(a="codec")
-  public int a;
-  @avnm(a="min_version")
-  public String a;
-  @avnm(a="disable_sdks")
-  public List<Integer> a;
-  @avnm(a="upload")
-  public boolean a;
-  @avnm(a="min_sdk")
-  public int b;
-  @avnm(a="expdate")
-  public String b;
-  @avnm(a="samples")
-  public List<lbo> b;
-  @avnm(a="async_min_sdk")
-  public int c;
-  @avnm(a="test_ver")
-  public int d;
+  public final String a = "uid";
+  public final String b = "ukey";
+  public final String c = "^%QAI$I+j{2HuP0L";
+  public String d;
+  public String e;
+  
+  public static lbn a(String paramString)
+  {
+    lbn locallbn = new lbn();
+    if (locallbn.a(paramString)) {
+      return locallbn;
+    }
+    return null;
+  }
+  
+  private boolean a(String paramString)
+  {
+    try
+    {
+      paramString = bhkv.decode(paramString, 0);
+      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
+      if (paramString.has("uid")) {
+        this.d = paramString.getString("uid");
+      }
+      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
+      {
+        this.e = paramString.getString("ukey");
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
 }
 
 

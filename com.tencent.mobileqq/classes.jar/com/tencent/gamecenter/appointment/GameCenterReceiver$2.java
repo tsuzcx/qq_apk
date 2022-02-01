@@ -1,13 +1,14 @@
 package com.tencent.gamecenter.appointment;
 
-import aceg;
+import acii;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auuc;
-import bizh;
-import bmwv;
+import avmc;
+import bkag;
+import bnyd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.WadlProvider;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
@@ -21,7 +22,11 @@ class GameCenterReceiver$2
   
   public void run()
   {
-    switch (this.a.getIntExtra("key_event_id", -1))
+    int i = this.a.getIntExtra("key_event_id", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterReceiver", 2, "receiveGameCenterAction eventId=" + i);
+    }
+    switch (i)
     {
     }
     do
@@ -41,47 +46,70 @@ class GameCenterReceiver$2
                   do
                   {
                     return;
-                    bizh.a().a();
+                    bkag.a().a();
+                    return;
+                    Object localObject5;
+                    synchronized (this.this$0.a)
+                    {
+                      String str = this.a.getStringExtra("key_appid");
+                      localObject5 = this.a.getStringExtra("key_pkg_name");
+                      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
+                      {
+                        Iterator localIterator = this.this$0.a.iterator();
+                        if (localIterator.hasNext()) {
+                          ((acii)localIterator.next()).onTaskDeleted(str, (String)localObject5);
+                        }
+                      }
+                    }
                     return;
                     synchronized (this.this$0.a)
                     {
-                      Object localObject2 = this.a.getStringExtra("key_appid");
-                      Object localObject4 = this.a.getStringExtra("key_pkg_name");
-                      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject4)))
+                      WadlResult localWadlResult1 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
+                      if (localWadlResult1 != null)
                       {
-                        localObject2 = new WadlResult(new WadlParams((String)localObject2, (String)localObject4));
-                        ((WadlResult)localObject2).b = 12;
-                        localObject4 = this.this$0.a.iterator();
-                        if (((Iterator)localObject4).hasNext()) {
-                          ((aceg)((Iterator)localObject4).next()).c((WadlResult)localObject2);
+                        localObject5 = this.this$0.a.iterator();
+                        if (((Iterator)localObject5).hasNext()) {
+                          ((acii)((Iterator)localObject5).next()).onTaskComplete(localWadlResult1);
+                        }
+                      }
+                    }
+                    return;
+                    synchronized (this.this$0.a)
+                    {
+                      WadlResult localWadlResult2 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
+                      if (localWadlResult2 != null)
+                      {
+                        localObject5 = this.this$0.a.iterator();
+                        if (((Iterator)localObject5).hasNext()) {
+                          ((acii)((Iterator)localObject5).next()).onTaskInstall(localWadlResult2);
                         }
                       }
                     }
                     return;
                   } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-                  ??? = bmwv.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+                  ??? = bnyd.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
                 } while (TextUtils.isEmpty((CharSequence)???));
                 Bundle localBundle = this.a.getExtras();
                 localBundle.putString("via", "provider");
                 localBundle.putInt("flags", 39);
-                auuc.a(localBundle, (String)???, false, 0);
+                avmc.a(localBundle, (String)???, false, 0);
                 return;
               } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-              ??? = bmwv.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+              ??? = bnyd.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
             } while (TextUtils.isEmpty((CharSequence)???));
-            auuc.a(0, (String)???);
+            avmc.a(0, (String)???);
             return;
           } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-          ??? = bmwv.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+          ??? = bnyd.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
         } while (TextUtils.isEmpty((CharSequence)???));
         ??? = new WadlParams((String)???, this.a.getStringExtra("pkgName"));
         ((WadlParams)???).p = "biz_src_zf_games";
-        auuc.a((WadlParams)???);
+        avmc.a((WadlParams)???);
         return;
       } while ((BaseApplicationImpl.sProcessId != 1) || (!WadlProvider.jdField_a_of_type_Boolean));
-      ??? = bmwv.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
+      ??? = bnyd.b(this.a.getStringExtra("appId"), WadlProvider.jdField_a_of_type_JavaLangString);
     } while (TextUtils.isEmpty((CharSequence)???));
-    auuc.b(0, (String)???);
+    avmc.b(0, (String)???);
   }
 }
 

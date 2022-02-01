@@ -1,30 +1,34 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehg
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aehg(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public aehg(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    switch (paramView.getId())
+    {
+    case 2131378745: 
+    default: 
+      this.a.a = 0;
     }
-    while (this.a.jdField_c_of_type_Boolean) {
+    for (;;)
+    {
+      this.a.a(this.a.a);
+      bdll.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.a.a = 1;
+      continue;
+      this.a.a = 2;
+      continue;
+      this.a.a = 3;
     }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

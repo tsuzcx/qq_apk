@@ -1,9 +1,9 @@
 package cooperation.qqfav.globalsearch;
 
-import bbfi;
-import bblw;
-import bbtk;
-import bbtx;
+import bbyb;
+import bcep;
+import bcmd;
+import bcmq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import java.util.List;
 public class FunctionSearchEngine$SearchRunnable
   implements Runnable
 {
-  public bbtk<bblw> a;
-  public bbtx a;
+  public bcmd<bcep> a;
+  public bcmq a;
   
   protected FunctionSearchEngine$SearchRunnable(FunctionSearchEngine paramFunctionSearchEngine) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bbtx == null) || (this.jdField_a_of_type_Bbtk == null)) {
+    if ((this.jdField_a_of_type_Bcmq == null) || (this.jdField_a_of_type_Bcmd == null)) {
       if (QLog.isColorLevel()) {
         QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 2, "mSearchRunnable.run, innerSearchRequest == null or innerListener == null");
       }
@@ -34,25 +34,25 @@ public class FunctionSearchEngine$SearchRunnable
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
         {
           QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 1, "mSearchRunnable.run, app is null.");
-          this.jdField_a_of_type_Bbtk.a(null, 6);
+          this.jdField_a_of_type_Bcmd.a(null, 6);
           return;
         }
-        localList = ((bbfi)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + this.jdField_a_of_type_Bbtx.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
+        localList = ((bbyb)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + this.jdField_a_of_type_Bcmq.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
         if ((localList != null) && (localList.size() != 0)) {
           break;
         }
-      } while (this.jdField_a_of_type_Bbtk == null);
-      this.jdField_a_of_type_Bbtk.a(null, 1);
+      } while (this.jdField_a_of_type_Bcmd == null);
+      this.jdField_a_of_type_Bcmd.a(null, 1);
       return;
       localArrayList = new ArrayList(localList.size());
       int i = 0;
       while (i < localList.size())
       {
-        localArrayList.add((bblw)localList.get(i));
+        localArrayList.add((bcep)localList.get(i));
         i += 1;
       }
-    } while (this.jdField_a_of_type_Bbtk == null);
-    this.jdField_a_of_type_Bbtk.a(localArrayList, 1);
+    } while (this.jdField_a_of_type_Bcmd == null);
+    this.jdField_a_of_type_Bcmd.a(localArrayList, 1);
   }
 }
 

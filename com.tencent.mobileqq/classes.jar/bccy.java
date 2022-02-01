@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment;
+import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-final class bccy
-  extends aoou
+public class bccy
+  implements ValueCallback<String>
 {
-  bccy(String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  public bccy(KDSearchResultFragment paramKDSearchResultFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString)
   {
-    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
-    long l1 = System.currentTimeMillis();
-    long l2 = bccx.a();
-    bmfi.a(paramInt, this.businessId, l1 - l2);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
-    {
-      bccx.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + bccx.a());
-    }
-    for (;;)
-    {
-      bccx.a(paramInt);
-      return;
-      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
+    QLog.d("KDSearchResultFragment", 2, "onReceiveValue: " + paramString);
+    if (!KDSearchResultFragment.a(this.a, paramString)) {
+      blho.a(new KDSearchResultFragment.3.1(this));
     }
   }
 }

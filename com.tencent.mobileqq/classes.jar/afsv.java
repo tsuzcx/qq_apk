@@ -1,19 +1,20 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afsv
-  implements afso
+  implements View.OnClickListener
 {
-  public afsv(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public afsv(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt > 0)
-    {
-      this.a.a.setEnabled(true);
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.a.a.setEnabled(false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

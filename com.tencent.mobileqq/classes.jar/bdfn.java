@@ -1,6 +1,12 @@
+import java.io.File;
+
 public abstract interface bdfn
 {
-  public abstract void a();
+  public abstract boolean a();
+  
+  public abstract boolean a(File paramFile, bdfl parambdfl, boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 

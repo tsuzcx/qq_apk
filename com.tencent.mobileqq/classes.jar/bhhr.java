@@ -1,28 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dualsim.common.IKingCardInterface.OnChangeListener;
-import dualsim.common.OrderCheckResult;
-import mqq.app.AppRuntime;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class bhhr
-  implements IKingCardInterface.OnChangeListener
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bhhr
 {
-  public void onChanged(OrderCheckResult paramOrderCheckResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.KCWraperV2", 1, "state changed");
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((AppRuntime)localObject).getAccount())
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramOrderCheckResult != null)) {
-        bhhn.a((String)localObject, paramOrderCheckResult);
-      }
-      return;
-    }
-  }
+  String a() default "";
 }
 
 

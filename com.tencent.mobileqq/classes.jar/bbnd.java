@@ -1,173 +1,161 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.opengl.GLES20;
+import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import java.io.IOException;
 
 public class bbnd
-  extends bbmu
+  extends bbna
 {
-  public MiniAppLocalSearchEntity a;
-  protected String a;
-  public int[] a;
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230756);
+  private float jdField_a_of_type_Float = 30.0F;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private int d = -1;
+  private int e;
   
-  public bbnd(QQAppInterface paramQQAppInterface, int paramInt, MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity, String paramString)
+  public bbnd()
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity = paramMiniAppLocalSearchEntity;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mTextureType = 3553;
+    this.mFilterType = 106;
   }
   
-  protected long a(String paramString)
+  public void a(float paramFloat)
   {
-    return 0L;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public CharSequence a()
+  public void a(Bitmap paramBitmap)
   {
-    return bbup.b(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName, this.jdField_a_of_type_JavaLangString, 10, true);
+    a(paramBitmap, 0);
   }
   
-  public String a()
+  public void a(@NonNull Bitmap paramBitmap, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    if ((MiniAppLocalSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(310) != null)
+    if (paramBitmap == null) {
+      return;
+    }
+    if ((paramInt == 0) || (paramInt == 180))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask != 0) {
-        break label314;
-      }
-      MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1005);
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+    Matrix localMatrix = new Matrix();
+    localMatrix.setRotate(360 - paramInt);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, false);
     }
     for (;;)
     {
-      QQAppInterface localQQAppInterface;
-      JSONObject localJSONObject;
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (bbhd.b.containsKey(this))
-        {
-          paramView = (bbhe)bbhd.b.get(this);
-          localJSONObject = new JSONObject();
-        }
-      }
-      try
-      {
-        localJSONObject.put("project", bbrf.a());
-        localJSONObject.put("event_src", "client");
-        localJSONObject.put("obj_lct", paramView.jdField_a_of_type_Int);
-        localJSONObject.put("get_src", "native");
-        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(bbrf.a(UniteSearchActivity.d));
-        if (c())
-        {
-          paramView = "1";
-          bbrf.a(null, localReportModelDC02528.ver3(paramView).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbhd.jdField_a_of_type_Long));
-          bbup.b(localQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, e(), e());
-          if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
-            break label379;
-          }
-          bbrf.a(null, 0, this.b, "0X8009D31", 3, 0, null, null);
-          return;
-          label314:
-          MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1027);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e(h, 2, "e = " + localJSONException);
-          continue;
-          paramView = "0";
-        }
-        label379:
-        if ((this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName.equals(this.jdField_a_of_type_JavaLangString)))
-        {
-          bbrf.a(null, 0, this.b, "0X8009D33", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
-          return;
-        }
-        bbrf.a(null, 0, this.b, "0X8009D45", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF1 = new RectF(0.0F, 0.0F, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF2 = new RectF();
+      localMatrix.mapRect(localRectF2, localRectF1);
+      localCanvas.translate(-localRectF2.left, -localRectF2.top);
+      localCanvas.concat(localMatrix);
+      localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+      localCanvas.drawBitmap(paramBitmap, localRect, localRectF1, new Paint());
+      localCanvas.setBitmap(null);
     }
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    return false;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = zoc.a(paramString, null);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      yuk.c("Q.qqstory.publish.edit GPUImagePixelationFilter", "setMosaicPath OutOfMemoryError", paramString);
+    }
   }
   
-  public String b()
+  public void onDestroy()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      yuk.b("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap recycle");
+    }
+    if (this.d != -1) {
+      GlUtil.deleteTexture(this.d);
+    }
   }
   
-  public int c()
+  public void onDrawTexture()
   {
-    return 0;
+    super.onDrawTexture();
+    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_b_of_type_Float);
+    GLES20.glUniform1f(this.jdField_b_of_type_Int, this.jdField_c_of_type_Float);
+    GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      yuk.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap can't be null");
+      return;
+    }
+    GLES20.glActiveTexture(33985);
+    if ((this.d == -1) || (this.jdField_a_of_type_Boolean))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
+      {
+        yuk.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap is recycled");
+        return;
+      }
+      if (this.d != -1) {
+        GlUtil.deleteTexture(this.d);
+      }
+      this.d = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+    }
+    GLES20.glBindTexture(3553, this.d);
+    GLES20.glUniform1i(this.e, 1);
   }
   
-  public CharSequence c()
+  public void onInitialized()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.desc;
+    super.onInitialized();
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageWidthFactor");
+    checkLocation(this.jdField_a_of_type_Int, "imageWidthFactor");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageHeightFactor");
+    checkLocation(this.jdField_b_of_type_Int, "imageHeightFactor");
+    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "pixel");
+    checkLocation(this.jdField_c_of_type_Int, "mPixelLocation");
+    this.e = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
+    a(this.jdField_a_of_type_Float);
   }
   
-  public String c()
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask & 0x1) != 0;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return null;
-  }
-  
-  public int e()
-  {
-    return 6;
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
-  }
-  
-  public String g()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.iconUrl;
-  }
-  
-  public String h()
-  {
-    return "https://qzonestyle.gtimg.cn/aoi/sola/20190108152813_orkMRcBegl.png";
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    yuk.a("Q.qqstory.publish.edit GPUImagePixelationFilter", "onOutputSizeChanged width=%s, height=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_b_of_type_Float = 0.0009259259F;
+    this.jdField_c_of_type_Float = 0.0005208334F;
   }
 }
 

@@ -1,33 +1,12 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.richframework.part.list.base.PublicListFragment;
-import java.util.List;
+import java.io.File;
+import java.io.FileFilter;
 
-public class zzf
-  extends FragmentPagerAdapter
+final class zzf
+  implements FileFilter
 {
-  private zzf(PublicListFragment paramPublicListFragment, FragmentManager paramFragmentManager)
+  public boolean accept(File paramFile)
   {
-    super(paramFragmentManager);
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < this.a.a.size()) {
-      return (Fragment)this.a.a.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    return (!paramFile.getName().endsWith(".")) && (!paramFile.getName().equalsIgnoreCase("__MACOSX"));
   }
 }
 

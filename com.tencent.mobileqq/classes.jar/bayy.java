@@ -1,29 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-class bayy
-  implements DialogInterface.OnClickListener
+final class bayy
+  implements Downloader.DownloadListener
 {
-  bayy(bayw parambayw, int paramInt, Object paramObject) {}
+  bayy(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadCanceled(String paramString)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+    if (this.a != null) {
+      this.a.onResult(false);
     }
-    do
-    {
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOVideoData));
-    paramDialogInterface = (AIOVideoData)this.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_Bayw.a.a(paramDialogInterface);
-    this.jdField_a_of_type_Bayw.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
-    this.jdField_a_of_type_Bayw.updateUI();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(true);
+    }
   }
 }
 

@@ -1,6 +1,26 @@
-public abstract interface bkgi<T>
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.util.Pair;
+
+public class bkgi
+  extends Handler
 {
-  public abstract void a(T paramT);
+  public bkgi(bkgh parambkgh, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    bkgh.a(this.a, bkgh.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
+  }
 }
 
 

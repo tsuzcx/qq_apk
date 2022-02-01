@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import bahj;
+import bazz;
 
 public class ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$2
   implements Runnable
 {
-  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$2(bahj parambahj, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$2(bazz parambazz, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
   public void run()
   {

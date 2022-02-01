@@ -1,17 +1,8 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-
 public class apzv
-  implements bkhw
 {
-  public apzv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_Bkho.dismiss();
-  }
+  public long a;
+  public String a;
+  public long b;
 }
 
 

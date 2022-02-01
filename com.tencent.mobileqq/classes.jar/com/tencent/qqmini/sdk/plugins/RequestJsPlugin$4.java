@@ -13,10 +13,10 @@ class RequestJsPlugin$4
   {
     if (paramBoolean)
     {
-      RequestJsPlugin.access$2300(this.this$0, this.val$req, paramJSONObject);
+      RequestJsPlugin.access$1900(this.this$0, this.val$req, paramJSONObject);
       return;
     }
-    RequestJsPlugin.access$2400(this.this$0, this.val$req, null, "do not support wnsCgiRequest");
+    RequestJsPlugin.access$2000(this.this$0, this.val$req, null, "do not support wnsCgiRequest");
   }
 }
 

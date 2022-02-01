@@ -12,14 +12,17 @@ public final class DynamicDiscovery$ReqBody
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field business = PBField.initUInt32(0);
+  public final PBUInt32Field extend_type = PBField.initUInt32(0);
   public final PBUInt32Field from_type = PBField.initUInt32(0);
   public final PBUInt32Field ignore_gender = PBField.initUInt32(0);
+  public final PBBytesField jce_req_buffer = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField version = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "from_type", "version", "business", "ignore_gender" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "from_type", "version", "business", "ignore_gender", "extend_type", "jce_req_buffer" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, ReqBody.class);
   }
 }
 

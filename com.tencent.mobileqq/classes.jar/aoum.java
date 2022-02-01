@@ -1,10 +1,6 @@
-class aoum
+public abstract interface aoum
 {
-  float jdField_a_of_type_Float;
-  boolean jdField_a_of_type_Boolean = true;
-  float b;
-  
-  aoum(aoul paramaoul) {}
+  public abstract void a();
 }
 
 

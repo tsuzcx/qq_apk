@@ -1,16 +1,37 @@
-import java.util.Random;
+import com.tencent.aekit.openrender.internal.Frame;
 
 public class boso
 {
-  private static Random a = new Random();
+  public static final Integer a;
+  private bosv jdField_a_of_type_Bosv = new bosv();
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public static bosp a()
+  static
   {
-    int i = bqja.a / 4;
-    int j = a.nextInt(bqja.a / 2);
-    int k = bqja.a / 4;
-    int m = a.nextInt(bqja.a / 2);
-    return new bosp(i - j + bqja.a / 2, k - m + (bqja.b - bqja.a(249.0F)) / 2);
+    jdField_a_of_type_JavaLangInteger = Integer.valueOf(480);
+  }
+  
+  public Frame a(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bosv.a(paramFrame, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    }
+    return localFrame;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bosv.apply();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bosv.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
   }
 }
 

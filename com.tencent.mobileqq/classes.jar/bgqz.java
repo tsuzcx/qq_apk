@@ -1,26 +1,11 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-class bgqz
-  implements View.OnClickListener
+public final class bgqz
+  implements Comparator<bgra>
 {
-  int jdField_a_of_type_Int;
-  
-  public bgqz(bgqu parambgqu, int paramInt)
+  public int a(bgra parambgra1, bgra parambgra2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bgqu.a != null)
-    {
-      this.jdField_a_of_type_Bgqu.a.onClick(this.jdField_a_of_type_Bgqu, this.jdField_a_of_type_Bgqu.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Bgqu.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return Long.signum(parambgra2.a - parambgra1.a);
   }
 }
 

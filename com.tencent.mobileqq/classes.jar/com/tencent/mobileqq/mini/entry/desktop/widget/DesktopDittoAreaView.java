@@ -8,9 +8,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import bgsp;
-import bmvi;
-import bmvj;
+import bhsr;
+import bnwq;
+import bnwr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ditto.DittoAreaView;
@@ -172,7 +172,7 @@ public class DesktopDittoAreaView
                 localObject6 = localJSONObject.optString("reserves2");
                 localObject5 = localJSONObject.optString("reserves3");
                 str3 = localJSONObject.optString("reserves4");
-                if (!bgsp.a((String)localObject1)) {
+                if (!bhsr.a((String)localObject1)) {
                   continue;
                 }
                 localObject1 = new MiniAppExposureManager.CardModuleExposureData("desktop", str1, str2, (String)localObject6, (String)localObject5, str3);
@@ -272,22 +272,22 @@ public class DesktopDittoAreaView
         }
         for (;;)
         {
-          localObject3 = new bmvj();
+          localObject3 = new bnwr();
           localObject4 = BaseApplicationImpl.getApplication().getRuntime();
           paramDittoArea = "";
           if (localObject4 != null) {
             paramDittoArea = ((AppRuntime)localObject4).getAccount();
           }
           long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          ((bmvj)localObject3).b = (paramDittoArea + "_" + l);
-          ((bmvj)localObject3).jdField_a_of_type_Int = 1;
-          ((bmvj)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
-          ((bmvj)localObject3).f = ((String)localObject2);
-          ((bmvj)localObject3).g = paramString;
-          ((bmvj)localObject3).d = 102;
-          ((bmvj)localObject3).jdField_e_of_type_Int = 1;
-          ((bmvj)localObject3).jdField_a_of_type_Long = l;
-          bmvi.a().a((bmvj)localObject3);
+          ((bnwr)localObject3).b = (paramDittoArea + "_" + l);
+          ((bnwr)localObject3).jdField_a_of_type_Int = 1;
+          ((bnwr)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
+          ((bnwr)localObject3).f = ((String)localObject2);
+          ((bnwr)localObject3).g = paramString;
+          ((bnwr)localObject3).d = 102;
+          ((bnwr)localObject3).jdField_e_of_type_Int = 1;
+          ((bnwr)localObject3).jdField_a_of_type_Long = l;
+          bnwq.a().a((bnwr)localObject3);
           if (!paramMotionEvent.has("appId")) {
             break label493;
           }

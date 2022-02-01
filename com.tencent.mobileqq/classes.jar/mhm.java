@@ -1,26 +1,32 @@
-public class mhm
+import com.tencent.av.ui.QavListItemBase;
+import com.tencent.qphone.base.util.QLog;
+
+class mhm
+  implements mig
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
+  mhm(mhi parammhi) {}
   
-  public mhm()
+  public void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.c + "], desc[" + this.d + "]";
+    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked begin, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], ignore[" + bool + "], seq[" + paramLong + "]");
+      }
+      if (!bool) {
+        break;
+      }
+      return;
+    }
+    QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked valid, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], seq[" + paramLong + "]");
+    this.a.a = System.currentTimeMillis();
+    int i = this.a.d;
+    this.a.d = paramInt;
+    this.a.e = paramInt;
+    this.a.a(i, this.a.d);
+    this.a.a(this.a.d);
+    this.a.a(paramLong, this.a.d);
   }
 }
 

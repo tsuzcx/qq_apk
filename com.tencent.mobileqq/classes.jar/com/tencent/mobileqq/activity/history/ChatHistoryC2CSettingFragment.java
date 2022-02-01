@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajqo;
+import akbx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import bcst;
-import bgnt;
-import bgyg;
+import bdll;
+import bhnv;
+import bhyk;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -57,15 +57,15 @@ public class ChatHistoryC2CSettingFragment
     while (!QLog.isColorLevel())
     {
       return;
-      localObject = getResources().getString(2131715893);
+      localObject = getResources().getString(2131716002);
       break;
-      localObject = getResources().getString(2131715891);
+      localObject = getResources().getString(2131716000);
       break;
-      localObject = getResources().getString(2131715892);
+      localObject = getResources().getString(2131716001);
       break;
-      localObject = getResources().getString(2131715894);
+      localObject = getResources().getString(2131716003);
       break;
-      localObject = getResources().getString(2131715901);
+      localObject = getResources().getString(2131716010);
       break;
     }
     QLog.d("Q.history.C2CSettingFragment", 2, "messge roam flag is error ,is : " + i);
@@ -82,16 +82,16 @@ public class ChatHistoryC2CSettingFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131690658));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131363898));
-    this.b = ((FormSimpleItem)this.mContentView.findViewById(2131363756));
+    setTitle(getString(2131690656));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131363922));
+    this.b = ((FormSimpleItem)this.mContentView.findViewById(2131363780));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.b.setOnClickListener(this);
   }
   
   public int getContentLayoutId()
   {
-    return 2131558886;
+    return 2131558884;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -117,13 +117,13 @@ public class ChatHistoryC2CSettingFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (bgnt.d(BaseApplication.getContext()))
+      if (bhnv.d(BaseApplication.getContext()))
       {
         QQAppInterface localQQAppInterface = getActivity().app;
         this.jdField_a_of_type_Int = localQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0).getInt("message_roam_flag" + localQQAppInterface.getCurrentAccountUin(), -1);
         VipUtils.a(localQQAppInterface, "chat_history", "ChatHistory", "Clk_RoamMsgSetting", 1, 0, new String[] { "0", "0", "msgHistory" });
         Intent localIntent = new Intent(getActivity(), QQBrowserActivity.class);
-        String str = bgyg.a("vipRoamChatCell");
+        String str = bhyk.a("vipRoamChatCell");
         if (!TextUtils.isEmpty(str))
         {
           if (str.contains("?")) {}
@@ -131,17 +131,17 @@ public class ChatHistoryC2CSettingFragment
           {
             localIntent.putExtra("url", str);
             startActivityForResult(localIntent, 2011);
-            bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A0AE", "0X800A0AE", 0, 0, "", "", "", "");
+            bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A0AE", "0X800A0AE", 0, 0, "", "", "", "");
             break;
           }
         }
       }
       else
       {
-        QQToast.a(BaseApplication.getContext(), 1, 2131717383, 1).a();
+        QQToast.a(BaseApplication.getContext(), 1, 2131717514, 1).a();
         continue;
-        bcst.b(getActivity().app, "dc00898", "", "", "0X800A17C", "0X800A17C", 2, 0, "", "", "", "");
-        ChatSettingActivity.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, new ajqo(this), 3);
+        bdll.b(getActivity().app, "dc00898", "", "", "0X800A17C", "0X800A17C", 2, 0, "", "", "", "");
+        ChatSettingActivity.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, new akbx(this), 3);
       }
     }
   }

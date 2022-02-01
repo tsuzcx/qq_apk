@@ -1,10 +1,14 @@
-import com.tencent.mobileqq.data.MessageRecord;
-
-abstract interface ayxm
+public abstract class ayxm
+  implements anui
 {
-  public abstract MessageRecord a(ayxr paramayxr);
+  protected void a(Object paramObject) {}
   
-  public abstract MessageRecord a(ayyg paramayyg);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((105 == paramInt) && (paramBoolean)) {
+      a(paramObject);
+    }
+  }
 }
 
 

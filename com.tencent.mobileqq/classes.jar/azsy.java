@@ -1,28 +1,52 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class azsy
-  extends azst
+  extends arac<azsz>
 {
-  public azsy(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void a(Animation paramAnimation, float paramFloat)
+  @NonNull
+  public azsz a(int paramInt)
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
-    }
+    return new azsz();
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  @Nullable
+  public azsz a(araj[] paramArrayOfaraj)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
+    azsz localazsz = new azsz();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
+      azsz.a(localazsz, paramArrayOfaraj[0].a);
     }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
+    return localazsz;
+  }
+  
+  public void a(azsz paramazsz) {}
+  
+  public Class<azsz> clazz()
+  {
+    return azsz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 495;
   }
 }
 

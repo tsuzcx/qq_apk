@@ -1,32 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiuo
+class aiuo
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  aiuo(aiul paramaiul) {}
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int != 1;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof aiuo))
-    {
-      paramObject = (aiuo)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-    }
-    return super.equals(paramObject);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

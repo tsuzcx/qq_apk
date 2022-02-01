@@ -1,29 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vrm
-  extends Handler
+public class vrm
+  implements View.OnClickListener
 {
-  vrm(vrl paramvrl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public vrm(QCirclePolyBaseLikeView paramQCirclePolyBaseLikeView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 4097: 
-      vrl.a(this.a);
-      return;
-    }
-    vrl.b(this.a);
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

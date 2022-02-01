@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import txw;
+import txy;
 
 class PreloadManager$FeedslistDownlaodImageThread
   implements Runnable
 {
   PreloadManager$FeedslistDownlaodImageThread(PreloadManager paramPreloadManager) {}
   
-  txw a()
+  txy a()
   {
     Object localObject1 = this.this$0.a;
     int i = 3;
@@ -20,7 +20,7 @@ class PreloadManager$FeedslistDownlaodImageThread
     {
       try
       {
-        txw localtxw;
+        txy localtxy;
         do
         {
           Iterator localIterator = PreloadManager.a(this.this$0).values().iterator();
@@ -36,12 +36,12 @@ class PreloadManager$FeedslistDownlaodImageThread
             }
             localObject3 = ((ArrayList)localObject3).iterator();
           }
-          localtxw = (txw)((Iterator)localObject3).next();
-          if (localtxw == null) {
+          localtxy = (txy)((Iterator)localObject3).next();
+          if (localtxy == null) {
             return null;
           }
-        } while ((PreloadManager.a(localtxw.jdField_a_of_type_JavaLangString) != 0) || (localtxw.jdField_a_of_type_Int != i));
-        return localtxw;
+        } while ((PreloadManager.a(localtxy.jdField_a_of_type_JavaLangString) != 0) || (localtxy.jdField_a_of_type_Int != i));
+        return localtxy;
       }
       finally {}
       i -= 1;
@@ -54,14 +54,14 @@ class PreloadManager$FeedslistDownlaodImageThread
     this.this$0.b = true;
     for (;;)
     {
-      txw localtxw = a();
-      if (localtxw == null) {
+      txy localtxy = a();
+      if (localtxy == null) {
         break;
       }
       if (NetworkState.getNetworkType() != 1) {
         return;
       }
-      this.this$0.b(localtxw.jdField_a_of_type_JavaLangString);
+      this.this$0.b(localtxy.jdField_a_of_type_JavaLangString);
     }
     this.this$0.b = false;
   }

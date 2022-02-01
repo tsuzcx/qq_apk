@@ -1,27 +1,50 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bhlm
-  implements DownloadListener
+public class bhlm
+  implements ThreadExcutor.IThreadListener
 {
-  bhlm(bhll parambhll) {}
+  private int jdField_a_of_type_Int;
+  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private int b;
+  private int c;
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public bhlm(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "start UniformDownloadActivity");
-    }
-    String str = this.a.mWebview.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    atzd.a(this.a.mInActivity, paramString1, localBundle);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.b = 0;
   }
+  
+  public void a()
+  {
+    if (this.b < this.jdField_a_of_type_Int)
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      if (localRunnable != null)
+      {
+        this.b += 1;
+        ThreadManager.excute(localRunnable, this.c, this, false);
+      }
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
+    a();
+  }
+  
+  public void onAdded() {}
+  
+  public void onPostRun()
+  {
+    this.b -= 1;
+    a();
+  }
+  
+  public void onPreRun() {}
 }
 
 

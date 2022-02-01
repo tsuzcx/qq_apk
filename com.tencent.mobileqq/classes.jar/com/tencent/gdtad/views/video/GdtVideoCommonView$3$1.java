@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views.video;
 
-import acto;
+import acxs;
 
 public class GdtVideoCommonView$3$1
   implements Runnable
 {
-  public GdtVideoCommonView$3$1(acto paramacto) {}
+  public GdtVideoCommonView$3$1(acxs paramacxs) {}
   
   public void run()
   {

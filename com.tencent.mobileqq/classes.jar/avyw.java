@@ -1,19 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.widget.AdapterView;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class avyw
-  implements bkij
+  implements Callable<File>
 {
-  avyw(avys paramavys, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  avyw(avyv paramavyv) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public File a()
   {
-    avys.a(this.jdField_a_of_type_Avys, true);
-    avys.a(this.jdField_a_of_type_Avys).a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
-      bcst.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
+    if (avyv.a(this.a).exists()) {
+      return avyv.a(this.a);
     }
+    return null;
   }
 }
 

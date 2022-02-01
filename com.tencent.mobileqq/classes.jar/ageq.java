@@ -1,21 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ageq
-  implements Animator.AnimatorListener
+final class ageq
+  implements agfh
 {
-  ageq(agep paramagep, ViewGroup paramViewGroup) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 47);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    paramQQAppInterface.e = paramSessionInfo.b;
+    return paramQQAppInterface;
   }
 }
 

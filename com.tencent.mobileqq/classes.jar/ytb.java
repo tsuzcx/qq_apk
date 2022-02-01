@@ -1,13 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public abstract interface ytb
+class ytb
+  implements yqb<ypi>
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  ytb(ysw paramysw, String paramString) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
-  
-  public abstract void onClick(View paramView);
+  public void a(ypi paramypi)
+  {
+    if ((paramypi.a != null) && (TextUtils.equals(paramypi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      ysw.a(this.jdField_a_of_type_Ysw).a = paramypi.a;
+      ysw.a(this.jdField_a_of_type_Ysw).sendMessage(ysw.a(this.jdField_a_of_type_Ysw).obtainMessage(0, ysw.a(this.jdField_a_of_type_Ysw)));
+    }
+  }
 }
 
 

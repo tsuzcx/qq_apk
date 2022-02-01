@@ -1,14 +1,6 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-
-public abstract interface zgr
+public abstract interface zgr<ERROR_TYPE, DATA_TYPE>
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(SlideItemInfo paramSlideItemInfo);
-  
-  public abstract void a(String paramString);
+  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
 }
 
 

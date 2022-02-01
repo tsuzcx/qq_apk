@@ -1,37 +1,16 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import java.util.Comparator;
 
-public class lsm
-  extends lsk
+class lsm
+  implements Comparator<lsh>
 {
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  lsm(lsk paramlsk) {}
   
-  public lsm(RandomWebProtocol paramRandomWebProtocol, lsk paramlsk, String paramString, boolean paramBoolean, int paramInt)
+  public int a(lsh paramlsh1, lsh paramlsh2)
   {
-    super(paramRandomWebProtocol, paramlsk);
-    this.a = 2;
-    this.c = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.c = paramInt;
-    this.d = "[m] RequestMulti";
-  }
-  
-  String a()
-  {
-    this.a = null;
-    try
-    {
-      this.a = new JSONObject().put("session_type", this.c);
-      return super.a();
+    if (paramlsh1.d() >= paramlsh2.d()) {
+      return 1;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return -1;
   }
 }
 

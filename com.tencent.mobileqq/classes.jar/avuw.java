@@ -1,28 +1,24 @@
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avuw
-  implements bkhw
+public class avuw
+  implements View.OnClickListener
 {
-  avuw(avuv paramavuv, bkho parambkho, boolean paramBoolean) {}
+  public avuw(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bkho.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
-    }
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Avuv.b(false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      avtq.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Avuv.a().e, this.jdField_a_of_type_Avuv.a().b);
-      continue;
-      this.jdField_a_of_type_Avuv.g();
-      continue;
-      this.jdField_a_of_type_Avuv.g();
+      this.a.a.a(3, paramView);
+      QLog.d("HotVideoRelativeLayout", 2, "click mute view");
     }
   }
 }

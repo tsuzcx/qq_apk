@@ -2,18 +2,18 @@ package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 public class ExcitingTransferDef$Recv$ReceiveResultCS
 {
-  public static final int ReceiveResult_CS_ReqDownload_Danger_file = 4;
-  public static final int ReceiveResult_CS_ReqDownload_DownloadInfo_NULL = 5;
-  public static final int ReceiveResult_CS_ReqDownload_DownloadUrl_NULL = 6;
-  public static final int ReceiveResult_CS_ReqDownload_Refuse = 3;
-  public static final int ReceiveResult_CS_ReqDownload_RspData_NULL = 2;
-  public static final int ReceiveResult_CS_ReqDownload_Server_Return_Err = 7;
-  public static final int ReceiveResult_CS_ReqDownload_Timeout = 1;
-  public static final int ReceiveResult_CS_SendSucc_Failed = 12;
-  public static final int ReceiveResult_CS_SendSucc_ReplyData_NULL = 13;
-  public static final int ReceiveResult_CS_SendSucc_RspData_NULL = 14;
-  public static final int ReceiveResult_CS_SendSucc_ServerFailed = 15;
-  public static final int ReceiveResult_CS_SendSucc_Timeout = 11;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_DANGER_FILE = 4;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_DOWNLOAD_INFO_NULL = 5;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_DOWNLOAD_URL_NULL = 6;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_REFUSE = 3;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_RSP_DATA_NULL = 2;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_SERVER_RETURN_ERR = 7;
+  public static final int RECEIVE_RESULT_CS_REQ_DOWNLOAD_TIMEOUT = 1;
+  public static final int RECEIVE_RESULT_CS_SEND_SUCC_FAILED = 12;
+  public static final int RECEIVE_RESULT_CS_SEND_SUCC_REPLY_DATA_NULL = 13;
+  public static final int RECEIVE_RESULT_CS_SEND_SUCC_RSP_DATA_NULL = 14;
+  public static final int RECEIVE_RESULT_CS_SEND_SUCC_SERVER_FAILED = 15;
+  public static final int RECEIVE_RESULT_CS_SEND_SUCC_TIMEOUT = 11;
 }
 
 

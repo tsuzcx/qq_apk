@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import atut;
-import atuz;
+import aumo;
+import aumu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,11 +15,11 @@ public class FMSettings$2
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.this$0.a.keySet().iterator();
     Object localObject;
-    for (long l = 0L; localIterator.hasNext(); l = atut.a(this.this$0, (String)localObject, localArrayList) + l)
+    for (long l = 0L; localIterator.hasNext(); l = aumo.a(this.this$0, (String)localObject, localArrayList) + l)
     {
       localObject = (String)localIterator.next();
-      localObject = (atuz)this.this$0.a.get(localObject);
-      localObject = atut.c(this.this$0, ((atuz)localObject).b + ((atuz)localObject).c);
+      localObject = (aumu)this.this$0.a.get(localObject);
+      localObject = aumo.c(this.this$0, ((aumu)localObject).b + ((aumu)localObject).c);
     }
   }
 }

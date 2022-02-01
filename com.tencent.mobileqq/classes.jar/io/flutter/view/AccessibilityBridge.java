@@ -1033,37 +1033,36 @@ public class AccessibilityBridge
       if (AccessibilityBridge.SemanticsNode.access$4500((AccessibilityBridge.SemanticsNode)localObject2))
       {
         paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 4096);
-        float f3 = AccessibilityBridge.SemanticsNode.access$4600((AccessibilityBridge.SemanticsNode)localObject2);
-        float f2 = AccessibilityBridge.SemanticsNode.access$4700((AccessibilityBridge.SemanticsNode)localObject2);
-        float f1 = f3;
+        float f2 = AccessibilityBridge.SemanticsNode.access$4600((AccessibilityBridge.SemanticsNode)localObject2);
+        float f3 = AccessibilityBridge.SemanticsNode.access$4700((AccessibilityBridge.SemanticsNode)localObject2);
+        float f1 = f2;
         if (Float.isInfinite(AccessibilityBridge.SemanticsNode.access$4700((AccessibilityBridge.SemanticsNode)localObject2)))
         {
-          f1 = f3;
-          if (f3 > 70000.0F) {
+          f1 = f2;
+          if (f2 > 70000.0F) {
             f1 = 70000.0F;
           }
-          f2 = 100000.0F;
+          f3 = 100000.0F;
         }
         if (Float.isInfinite(AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2)))
         {
-          f3 = f1;
-          if (f1 < -70000.0F) {
-            f3 = -70000.0F;
-          }
-          f1 = f3 + 100000.0F;
-          f3 = f2 + 100000.0F;
+          f3 += 100000.0F;
           f2 = f1;
-          f1 = f3;
-          if ((!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_UP)) && (!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_DOWN))) {
-            break label742;
+          if (f1 < -70000.0F) {
+            f2 = -70000.0F;
           }
-          paramByteBuffer.setScrollY((int)f2);
-          paramByteBuffer.setMaxScrollY((int)f1);
+          f1 = f2 + 100000.0F;
+          f2 = f3;
+          if ((!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_UP)) && (!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_DOWN))) {
+            break label732;
+          }
+          paramByteBuffer.setScrollY((int)f1);
+          paramByteBuffer.setMaxScrollY((int)f2);
         }
-        label742:
+        label732:
         for (;;)
         {
-          label637:
+          label635:
           if (AccessibilityBridge.SemanticsNode.access$1200((AccessibilityBridge.SemanticsNode)localObject2) > 0)
           {
             paramByteBuffer.setItemCount(AccessibilityBridge.SemanticsNode.access$1200((AccessibilityBridge.SemanticsNode)localObject2));
@@ -1077,17 +1076,15 @@ public class AccessibilityBridge
                 {
                   i += 1;
                   continue;
-                  float f4 = AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
-                  f3 = f1 - AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
-                  f1 = f2 - f4;
-                  f2 = f3;
+                  f2 = f3 - AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
+                  f1 -= AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
                   break;
                   if ((!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_LEFT)) && (!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_RIGHT))) {
-                    break label637;
+                    break label635;
                   }
-                  paramByteBuffer.setScrollX((int)f2);
-                  paramByteBuffer.setMaxScrollX((int)f1);
-                  break label637;
+                  paramByteBuffer.setScrollX((int)f1);
+                  paramByteBuffer.setMaxScrollX((int)f2);
+                  break label635;
                 }
               }
             }
@@ -1100,16 +1097,16 @@ public class AccessibilityBridge
         if (AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2) == null)
         {
           paramByteBuffer = "";
-          label822:
+          label812:
           if (AccessibilityBridge.SemanticsNode.access$5300((AccessibilityBridge.SemanticsNode)localObject2) != null) {
-            break label1216;
+            break label1206;
           }
           paramArrayOfString = "";
-          label834:
+          label824:
           if ((!paramByteBuffer.equals(paramArrayOfString)) || (!AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_LIVE_REGION))) {
             sendWindowContentChangeEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2));
           }
-          label862:
+          label852:
           if ((this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) == AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2)) && (!AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_SELECTED)) && (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_SELECTED)))
           {
             paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 4);
@@ -1117,27 +1114,27 @@ public class AccessibilityBridge
             sendAccessibilityEvent(paramByteBuffer);
           }
           if ((this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2)) || ((this.lastInputFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.lastInputFocusedSemanticsNode) == AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode)))) {
-            break label1278;
+            break label1268;
           }
           this.lastInputFocusedSemanticsNode = this.inputFocusedSemanticsNode;
           sendAccessibilityEvent(obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 8));
-          label1006:
+          label996:
           if ((this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2)) || (!AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || ((this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode)))) {
-            break label1291;
+            break label1281;
           }
           if (AccessibilityBridge.SemanticsNode.access$5600((AccessibilityBridge.SemanticsNode)localObject2) == null) {
-            break label1293;
+            break label1283;
           }
           paramByteBuffer = AccessibilityBridge.SemanticsNode.access$5600((AccessibilityBridge.SemanticsNode)localObject2);
-          label1088:
+          label1078:
           if (AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject2) == null) {
-            break label1300;
+            break label1290;
           }
         }
       }
-      label1291:
-      label1293:
-      label1300:
+      label1281:
+      label1283:
+      label1290:
       for (paramArrayOfString = AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject2);; paramArrayOfString = "")
       {
         paramByteBuffer = createTextChangedEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), paramByteBuffer, paramArrayOfString);
@@ -1155,24 +1152,24 @@ public class AccessibilityBridge
         sendAccessibilityEvent(paramByteBuffer);
         break;
         paramByteBuffer = AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2);
-        break label822;
-        label1216:
+        break label812;
+        label1206:
         paramArrayOfString = AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2);
-        break label834;
+        break label824;
         if ((!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || (!AccessibilityBridge.SemanticsNode.access$5500((AccessibilityBridge.SemanticsNode)localObject2)) || (this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2))) {
-          break label862;
+          break label852;
         }
         sendWindowContentChangeEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2));
-        break label862;
-        label1278:
+        break label852;
+        label1268:
         if (this.inputFocusedSemanticsNode != null) {
-          break label1006;
+          break label996;
         }
         this.lastInputFocusedSemanticsNode = null;
-        break label1006;
+        break label996;
         break;
         paramByteBuffer = "";
-        break label1088;
+        break label1078;
       }
     }
   }

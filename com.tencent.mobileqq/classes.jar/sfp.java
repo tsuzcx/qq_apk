@@ -1,6 +1,15 @@
-public abstract class sfp
+class sfp
+  extends pmr
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  sfp(sel paramsel, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.h();
+  }
 }
 
 

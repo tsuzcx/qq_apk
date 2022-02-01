@@ -1,21 +1,35 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class bffw
-  implements View.OnKeyListener
+  extends BroadcastReceiver
 {
-  bffw(bffu parambffu, bfga parambfga) {}
+  bffw(bffu parambffu) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bfga.a.getSelectionStart() == 0))
+    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
+    switch (paramIntent.getIntExtra("ret_action", 1000))
     {
-      this.jdField_a_of_type_Bffu.a.b(this.jdField_a_of_type_Bfga);
-      return true;
+    default: 
+      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
+      return;
+    case 1000: 
+      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
+      return;
+    case 1001: 
+      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
+      return;
+    case 1002: 
+      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
+      return;
+    case 1003: 
+      bffu.a(this.a, bffu.a(this.a).troopUin, 1);
+      return;
     }
-    return false;
+    bffu.a(this.a, bffu.a(this.a).troopUin, 3);
   }
 }
 

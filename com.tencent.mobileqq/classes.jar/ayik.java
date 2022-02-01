@@ -1,13 +1,17 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayik
+class ayik
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<aygk> a;
-  public boolean a;
-  public int b;
-  public String b;
+  ayik(ayhj paramayhj) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.j(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

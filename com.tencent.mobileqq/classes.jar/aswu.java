@@ -1,14 +1,13 @@
-import android.view.View;
+import java.util.ArrayList;
+import java.util.List;
 
-class aswu
-  implements bkiz
+public class aswu
+  extends asxh
 {
-  aswu(aswr paramaswr, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public int a;
+  public List<String> a = new ArrayList();
+  public int b;
+  public int c = -1;
 }
 
 

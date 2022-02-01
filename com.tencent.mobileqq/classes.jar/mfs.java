@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 
 public class mfs
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public mfs(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfs(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

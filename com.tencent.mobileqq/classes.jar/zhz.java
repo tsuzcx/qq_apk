@@ -1,6 +1,13 @@
-public abstract interface zhz
+class zhz
 {
-  public abstract void a();
+  final int jdField_a_of_type_Int;
+  final zia jdField_a_of_type_Zia;
+  
+  public zhz(zia paramzia, int paramInt)
+  {
+    this.jdField_a_of_type_Zia = paramzia;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

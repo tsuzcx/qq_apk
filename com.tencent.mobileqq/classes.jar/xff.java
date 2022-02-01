@@ -1,35 +1,11 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
 
-final class xff
-  implements URLDrawable.URLDrawableListener
+public class xff
+  extends wov
 {
-  xff(long paramLong, xfq paramxfq) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public xff(qqstory_service.RspReportEvil paramRspReportEvil)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
-    if (this.jdField_a_of_type_Xfq != null) {
-      this.jdField_a_of_type_Xfq.b();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
-    }
-    yqu.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    if (this.jdField_a_of_type_Xfq != null) {
-      this.jdField_a_of_type_Xfq.a();
-    }
+    super(paramRspReportEvil.result);
   }
 }
 

@@ -1,16 +1,22 @@
-import android.os.Handler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ngy
-  extends nhd
+public class ngy
+  extends RecyclerView.ViewHolder
 {
-  ngy(ngx paramngx) {}
+  public ImageView a;
+  public TextView a;
+  public mzl a;
+  public ImageView b;
   
-  public boolean a(int paramInt, String paramString, myc parammyc)
+  public ngy(ngv paramngv, View paramView, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView)
   {
-    bjcq.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
-    ngx.a(this.a).removeCallbacksAndMessages(null);
-    ngx.a(this.a).sendEmptyMessage(2);
-    return true;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
+    this.b = paramImageView2;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
   }
 }
 

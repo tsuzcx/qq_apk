@@ -1,63 +1,19 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class bmcu
-  extends Binder
-  implements bmct
+class bmcu
+  implements View.OnClickListener
 {
-  public bmcu()
-  {
-    attachInterface(this, "cooperation.qzone.plugin.OnQZonePluginInstallListner");
-  }
+  bmcu(bmct parambmct) {}
   
-  public static bmct a(IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    if (paramIBinder == null) {
-      return null;
+    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
+      this.a.a.a.finish();
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-    if ((localIInterface != null) && ((localIInterface instanceof bmct))) {
-      return (bmct)localIInterface;
-    }
-    return new bmcv(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      a(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      a(paramParcel1.readString(), paramParcel1.readFloat(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      b(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-    a(paramParcel1.readString(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

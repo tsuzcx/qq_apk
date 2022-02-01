@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.app.Activity;
 import android.content.Context;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 
 class TroopAlbumPlugin$2$1
@@ -17,7 +17,7 @@ class TroopAlbumPlugin$2$1
     TroopAlbumPlugin.access$202(this.this$1.this$0, this.this$1.val$jsonString);
     Activity localActivity = this.this$1.val$jsContext.getActivity();
     if (TroopAlbumPlugin.access$300(this.this$1.this$0) == null) {
-      TroopAlbumPlugin.access$302(this.this$1.this$0, bglp.a(localActivity, 230).setTitle(anni.a(2131713852)).setMessage(anni.a(2131713851)).setPositiveButton(anni.a(2131713850), new TroopAlbumPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131716691), new TroopAlbumPlugin.2.1.1(this)));
+      TroopAlbumPlugin.access$302(this.this$1.this$0, bhlq.a(localActivity, 230).setTitle(anzj.a(2131713961)).setMessage(anzj.a(2131713960)).setPositiveButton(anzj.a(2131713959), new TroopAlbumPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131716807), new TroopAlbumPlugin.2.1.1(this)));
     }
     if (!TroopAlbumPlugin.access$300(this.this$1.this$0).isShowing()) {
       TroopAlbumPlugin.access$300(this.this$1.this$0).show();

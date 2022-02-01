@@ -1,9 +1,28 @@
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
 
 public class bpyy
+  extends AnimatorListenerAdapter
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public bpyy(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
+    }
+    this.a.j();
+    awlk.b();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
+    }
+  }
 }
 
 

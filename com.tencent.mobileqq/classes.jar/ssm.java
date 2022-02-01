@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class ssm
-  implements bkqc
+public final class ssm
+  implements ozz
 {
-  public ssm(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
-  
-  public void a()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.a.a(new ssn(this, "onListViewDrawFinished"));
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
+      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
+    }
   }
 }
 

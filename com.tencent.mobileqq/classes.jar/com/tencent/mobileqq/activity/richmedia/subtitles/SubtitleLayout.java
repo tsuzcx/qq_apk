@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import aggi;
-import almp;
-import almq;
-import almt;
-import almx;
+import agpj;
+import alyh;
+import alyi;
+import alyl;
+import alyp;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import bcst;
-import bctj;
+import bdll;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -22,11 +22,11 @@ import java.util.TimerTask;
 
 public class SubtitleLayout
   extends RelativeLayout
-  implements almt
+  implements alyl
 {
   public int a;
   private long jdField_a_of_type_Long = -1L;
-  private almx jdField_a_of_type_Almx;
+  private alyp jdField_a_of_type_Alyp;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Random jdField_a_of_type_JavaUtilRandom;
   private Timer jdField_a_of_type_JavaUtilTimer;
@@ -58,19 +58,19 @@ public class SubtitleLayout
       return;
     }
     if (paramBoolean1) {
-      almq.a().a(false, false);
+      alyi.a().a(false, false);
     }
     switch (paramInt)
     {
     default: 
-      almq.a().a(this, true, paramBoolean2, paramBoolean3);
+      alyi.a().a(this, true, paramBoolean2, paramBoolean3);
       return;
     case 1: 
     case 2: 
-      almq.a().a(this, false, paramBoolean2, paramBoolean3);
+      alyi.a().a(this, false, paramBoolean2, paramBoolean3);
       return;
     }
-    almq.a().a(this, true, paramBoolean2, paramBoolean3);
+    alyi.a().a(this, true, paramBoolean2, paramBoolean3);
   }
   
   private void b(int paramInt)
@@ -133,7 +133,7 @@ public class SubtitleLayout
     if (QLog.isColorLevel()) {
       QLog.d("SubtitleLayout", 2, "startDemo begin");
     }
-    if (this.jdField_a_of_type_Almx == null) {}
+    if (this.jdField_a_of_type_Alyp == null) {}
     while (this.jdField_a_of_type_Boolean) {
       return;
     }
@@ -253,8 +253,8 @@ public class SubtitleLayout
     }
     try
     {
-      if (this.jdField_a_of_type_Almx != null) {
-        this.jdField_a_of_type_Almx.e();
+      if (this.jdField_a_of_type_Alyp != null) {
+        this.jdField_a_of_type_Alyp.e();
       }
       return;
     }
@@ -274,17 +274,17 @@ public class SubtitleLayout
     QLog.d("SubtitleLayout", 2, "setAnimText:" + paramString1 + " " + paramString2);
     try
     {
-      if ((this.jdField_a_of_type_Almx == null) || (this.jdField_b_of_type_Int != 0) || (this.jdField_a_of_type_Int == 0)) {
+      if ((this.jdField_a_of_type_Alyp == null) || (this.jdField_b_of_type_Int != 0) || (this.jdField_a_of_type_Int == 0)) {
         return;
       }
       if ((this.jdField_a_of_type_Boolean) && ((!this.jdField_c_of_type_Boolean) || (this.d)))
       {
         i();
         a();
-        if ((this.d) && (this.jdField_a_of_type_Almx != null))
+        if ((this.d) && (this.jdField_a_of_type_Alyp != null))
         {
-          this.jdField_a_of_type_Almx.d();
-          this.jdField_a_of_type_Almx.a(3);
+          this.jdField_a_of_type_Alyp.d();
+          this.jdField_a_of_type_Alyp.a(3);
           this.jdField_b_of_type_Long = 0L;
         }
       }
@@ -294,10 +294,10 @@ public class SubtitleLayout
         long l2 = this.jdField_c_of_type_Long;
         HashMap localHashMap = new HashMap();
         localHashMap.put("pressStartTransCost", String.valueOf(l1 - l2));
-        bctj.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitlePressTranslate", true, 0L, 0L, localHashMap, null);
+        bdmc.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitlePressTranslate", true, 0L, 0L, localHashMap, null);
         this.e = false;
       }
-      this.jdField_a_of_type_Almx.a(paramLong1, paramLong2, paramString1, paramString2, paramBoolean);
+      this.jdField_a_of_type_Alyp.a(paramLong1, paramLong2, paramString1, paramString2, paramBoolean);
       k();
       return;
     }
@@ -310,7 +310,7 @@ public class SubtitleLayout
       return;
     }
     int i = paramArrayOfByte.length;
-    setAnimType(aggi.a(paramArrayOfByte, 0), null, paramArrayOfByte, 4, i - 4);
+    setAnimType(agpj.a(paramArrayOfByte, 0), null, paramArrayOfByte, 4, i - 4);
   }
   
   public void b()
@@ -320,7 +320,7 @@ public class SubtitleLayout
     }
     if (this.jdField_b_of_type_Int == 0)
     {
-      bcst.b(null, "dc00898", "", "", "0X8008758", "0X8008758", 0, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X8008758", "0X8008758", 0, 0, "", "", "", "");
       if (this.jdField_a_of_type_Boolean) {
         i();
       }
@@ -340,10 +340,10 @@ public class SubtitleLayout
       k();
       try
       {
-        if (this.jdField_a_of_type_Almx != null)
+        if (this.jdField_a_of_type_Alyp != null)
         {
-          this.jdField_a_of_type_Almx.d();
-          this.jdField_a_of_type_Almx.a(3);
+          this.jdField_a_of_type_Alyp.d();
+          this.jdField_a_of_type_Alyp.a(3);
           this.jdField_b_of_type_Long = 0L;
         }
       }
@@ -360,12 +360,12 @@ public class SubtitleLayout
     m();
     try
     {
-      if (this.jdField_a_of_type_Almx != null) {
-        this.jdField_a_of_type_Almx.a(true);
+      if (this.jdField_a_of_type_Alyp != null) {
+        this.jdField_a_of_type_Alyp.a(true);
       }
       if (this.jdField_b_of_type_Int == 0)
       {
-        almq.a().a(true, false);
+        alyi.a().a(true, false);
         h();
         i();
       }
@@ -384,8 +384,8 @@ public class SubtitleLayout
       this.jdField_b_of_type_Boolean = false;
       try
       {
-        if (this.jdField_a_of_type_Almx != null) {
-          this.jdField_a_of_type_Almx.a(false);
+        if (this.jdField_a_of_type_Alyp != null) {
+          this.jdField_a_of_type_Alyp.a(false);
         }
         k();
         if ((this.jdField_b_of_type_Int != 0) || (this.d)) {
@@ -411,7 +411,7 @@ public class SubtitleLayout
     if (this.jdField_b_of_type_Int == 0)
     {
       this.d = false;
-      almq.a().a(false, false);
+      alyi.a().a(false, false);
       i();
       setState(this.jdField_c_of_type_Int);
     }
@@ -421,10 +421,10 @@ public class SubtitleLayout
   {
     try
     {
-      if (this.jdField_a_of_type_Almx != null)
+      if (this.jdField_a_of_type_Alyp != null)
       {
-        this.jdField_a_of_type_Almx.c();
-        this.jdField_a_of_type_Almx = null;
+        this.jdField_a_of_type_Alyp.c();
+        this.jdField_a_of_type_Alyp = null;
       }
       this.jdField_a_of_type_Boolean = false;
       if (this.jdField_a_of_type_AndroidOsHandler != null)
@@ -443,13 +443,13 @@ public class SubtitleLayout
   {
     try
     {
-      if (this.jdField_a_of_type_Almx != null)
+      if (this.jdField_a_of_type_Alyp != null)
       {
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_Almx.a(paramCanvas, null, -1L);
+        this.jdField_a_of_type_Long = this.jdField_a_of_type_Alyp.a(paramCanvas, null, -1L);
         int i = 10;
         while ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Long < this.jdField_b_of_type_Long) && (this.jdField_a_of_type_Long != -1L) && (this.jdField_a_of_type_Long != -2L) && (i > 0))
         {
-          this.jdField_a_of_type_Long = this.jdField_a_of_type_Almx.a(paramCanvas, null, -1L);
+          this.jdField_a_of_type_Long = this.jdField_a_of_type_Alyp.a(paramCanvas, null, -1L);
           i -= 1;
         }
       }
@@ -477,16 +477,16 @@ public class SubtitleLayout
       this.jdField_a_of_type_Int = paramInt1;
       if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
       {
-        almq.a().a(true, false);
+        alyi.a().a(true, false);
         h();
       }
-      if (this.jdField_a_of_type_Almx != null)
+      if (this.jdField_a_of_type_Alyp != null)
       {
-        this.jdField_a_of_type_Almx.c();
-        this.jdField_a_of_type_Almx = null;
+        this.jdField_a_of_type_Alyp.c();
+        this.jdField_a_of_type_Alyp = null;
       }
-      this.jdField_a_of_type_Almx = almp.a(this.jdField_a_of_type_Int);
-    } while (this.jdField_a_of_type_Almx == null);
+      this.jdField_a_of_type_Alyp = alyh.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Alyp == null);
     if (this.jdField_b_of_type_Int == 0)
     {
       paramInt1 = getWidth();
@@ -494,8 +494,8 @@ public class SubtitleLayout
       if (QLog.isColorLevel()) {
         QLog.d("SubtitleLayout", 2, "subtitlelayout width:" + paramInt1 + " height:" + paramInt2);
       }
-      this.jdField_a_of_type_Almx.a(getContext(), paramInt1, paramInt2, 30, false, paramString);
-      this.jdField_a_of_type_Almx.a(this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Alyp.a(getContext(), paramInt1, paramInt2, 30, false, paramString);
+      this.jdField_a_of_type_Alyp.a(this.jdField_c_of_type_Int);
       i();
       a();
       j();
@@ -504,15 +504,15 @@ public class SubtitleLayout
       g();
       return;
     }
-    this.jdField_a_of_type_Almx.a(getContext(), -1.0F, -1.0F, -1, paramArrayOfByte, paramInt2, paramInt3, true);
+    this.jdField_a_of_type_Alyp.a(getContext(), -1.0F, -1.0F, -1, paramArrayOfByte, paramInt2, paramInt3, true);
   }
   
   public void setState(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_Almx != null) {
-        this.jdField_a_of_type_Almx.a(paramInt);
+      if (this.jdField_a_of_type_Alyp != null) {
+        this.jdField_a_of_type_Alyp.a(paramInt);
       }
       this.jdField_c_of_type_Int = paramInt;
       return;

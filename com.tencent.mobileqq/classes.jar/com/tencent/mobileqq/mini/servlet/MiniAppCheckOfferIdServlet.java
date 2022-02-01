@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -73,7 +73,7 @@ public class MiniAppCheckOfferIdServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_pay.MiniCheckOfferId");
-      paramPacket.putSendData(bguc.a((byte[])localObject1));
+      paramPacket.putSendData(bhuf.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       if (QLog.isColorLevel()) {
         QLog.d("MiniAppCheckOfferIdServlet", 2, "onSend. intent: " + paramIntent.toString());

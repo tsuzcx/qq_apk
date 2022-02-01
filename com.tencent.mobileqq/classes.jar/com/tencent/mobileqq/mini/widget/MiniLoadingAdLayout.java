@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import bqcd;
+import anzj;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,6 +27,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.net.URLDecoder;
 import java.util.List;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
@@ -103,7 +103,7 @@ public class MiniLoadingAdLayout
     int j = 0;
     Object localObject = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
-      localObject = anni.a(2131693670);
+      localObject = anzj.a(2131693684);
     }
     this.mLoadingAdImgView.setImageDrawable(Drawable.createFromPath(paramString4));
     paramString3 = this.mGameLayout;
@@ -121,15 +121,15 @@ public class MiniLoadingAdLayout
       this.mCountdownTextView.setText(this.countdownTime + "秒");
       paramString3 = (String)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString3 = anni.a(2131693670);
+        paramString3 = anzj.a(2131693684);
       }
-      this.mDeveloperDescView.setText(anni.a(2131703800) + paramString3 + anni.a(2131703799));
+      this.mDeveloperDescView.setText(anzj.a(2131703907) + paramString3 + anzj.a(2131703906));
       localObject = (RelativeLayout.LayoutParams)this.mCountdownContainer.getLayoutParams();
       paramString3 = (RelativeLayout.LayoutParams)this.mRightContainer.getLayoutParams();
       if (!paramBoolean1) {
         break label332;
       }
-      if (!bqcd.b()) {
+      if (!LiuHaiUtils.b()) {
         break label318;
       }
       i = ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F);
@@ -165,20 +165,20 @@ public class MiniLoadingAdLayout
   
   private void initUI()
   {
-    LayoutInflater.from(getContext()).inflate(2131559428, this, true);
-    this.mAppLayout = ((RelativeLayout)findViewById(2131371096));
-    this.mGameLayout = ((RelativeLayout)findViewById(2131371102));
-    this.mRightContainer = ((RelativeLayout)findViewById(2131364995));
-    this.mCloseBtn = ((ImageView)findViewById(2131363741));
-    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371098));
-    this.mCountdownTextView = ((TextView)findViewById(2131370203));
-    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371104));
-    this.mDeveloperDescView = ((TextView)findViewById(2131365413));
-    this.mAppNameView = ((TextView)findViewById(2131371097));
-    this.mGameNameView = ((TextView)findViewById(2131371103));
-    this.mAppLogoView = ((ImageView)findViewById(2131371095));
-    this.mGameLogoView = ((ImageView)findViewById(2131371100));
-    this.mLoadingAdImgView = ((ImageView)findViewById(2131370204));
+    LayoutInflater.from(getContext()).inflate(2131559430, this, true);
+    this.mAppLayout = ((RelativeLayout)findViewById(2131371202));
+    this.mGameLayout = ((RelativeLayout)findViewById(2131371208));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131365042));
+    this.mCloseBtn = ((ImageView)findViewById(2131363765));
+    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371204));
+    this.mCountdownTextView = ((TextView)findViewById(2131370304));
+    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371210));
+    this.mDeveloperDescView = ((TextView)findViewById(2131365457));
+    this.mAppNameView = ((TextView)findViewById(2131371203));
+    this.mGameNameView = ((TextView)findViewById(2131371209));
+    this.mAppLogoView = ((ImageView)findViewById(2131371201));
+    this.mGameLogoView = ((ImageView)findViewById(2131371206));
+    this.mLoadingAdImgView = ((ImageView)findViewById(2131370305));
   }
   
   private void negativeReport() {}

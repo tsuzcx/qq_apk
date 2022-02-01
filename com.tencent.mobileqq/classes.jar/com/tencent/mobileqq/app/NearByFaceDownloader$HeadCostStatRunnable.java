@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.QQHeadInfo;
-import aocq;
-import bctj;
-import bgnt;
+import aopc;
+import bdmc;
+import bhnv;
 import com.tencent.mobileqq.app.face.FaceDownloader;
 import com.tencent.mobileqq.app.face.FaceInfo;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
@@ -36,8 +36,8 @@ class NearByFaceDownloader$HeadCostStatRunnable
   public void run()
   {
     String str1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
-    this.this$0.jdField_a_of_type_Aocq.a(str1, false);
-    if (bgnt.d(BaseApplication.getContext())) {
+    this.this$0.jdField_a_of_type_Aopc.a(str1, false);
+    if (bhnv.d(BaseApplication.getContext())) {
       if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
         break label770;
       }
@@ -65,21 +65,21 @@ class NearByFaceDownloader$HeadCostStatRunnable
           ((HashMap)localObject1).put("fail_reason", Integer.toString(this.d));
           ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.e));
           Object localObject2 = FaceDownloader.a(32);
-          Object localObject3 = bctj.a(BaseApplication.getContext());
+          Object localObject3 = bdmc.a(BaseApplication.getContext());
           String str2 = this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
           boolean bool;
           if (this.jdField_a_of_type_Int == 0)
           {
             bool = true;
-            ((bctj)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            localObject2 = bctj.a(BaseApplication.getContext());
+            ((bdmc)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
+            localObject2 = bdmc.a(BaseApplication.getContext());
             localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
             if (this.jdField_a_of_type_Int != 0) {
               break label747;
             }
             bool = true;
             label528:
-            ((bctj)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
+            ((bdmc)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
             if ((QLog.isColorLevel()) || (this.jdField_a_of_type_Long > 3000L))
             {
               localObject1 = new StringBuffer(200);

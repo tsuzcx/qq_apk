@@ -1,32 +1,57 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class oab
-  extends BroadcastReceiver
+public class oab
+  implements INetInfoHandler
 {
-  oab(nzz paramnzz) {}
+  public oab(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onNetMobile2None()
   {
-    if (this.a.a == 1)
-    {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 13, i, paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from mobile to none");
     }
-    try
-    {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
-      return;
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to mobile");
     }
-    catch (Exception paramContext)
-    {
-      break label50;
+    ReadInJoyNativeAdAppVideoView.a(this.a).removeCallbacks(this.a.b);
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to wifi");
     }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from wifi to none");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this.a.b, 1000L);
   }
 }
 

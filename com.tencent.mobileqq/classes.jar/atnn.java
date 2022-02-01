@@ -1,69 +1,120 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-class atnn
-  implements atwd
+public class atnn
+  extends anwb
 {
-  atnn(atnm paramatnm, long paramLong, boolean paramBoolean1, String paramString1, Bundle paramBundle, short paramShort, boolean paramBoolean2, String paramString2, String paramString3) {}
+  private Map<Long, FileManagerEntity> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void a(boolean paramBoolean)
+  public atnn(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  
+  FileManagerEntity a(long paramLong)
   {
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      return (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    }
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramLong, antf.z, 6000, -1L);
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localFileManagerEntity);
+    return localFileManagerEntity;
+  }
+  
+  protected void a(long paramLong, float paramFloat)
+  {
+    super.a(paramLong, paramFloat);
+    FileManagerEntity localFileManagerEntity = a(paramLong);
+    if (localFileManagerEntity == null) {
+      return;
+    }
+    localFileManagerEntity.fProgress = paramFloat;
+    QfileBaseRecentFileTabView.l(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, antf.z, 6000, 16, null, 0, null);
+  }
+  
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    paramString = a(paramLong1);
+    if (paramString == null) {
+      return;
+    }
+    paramString.status = 2;
+    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, antf.z, 6000, 10, null, 0, null);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    Object localObject = a(paramLong);
+    if (localObject == null) {
+      return;
+    }
+    long l;
     if (paramBoolean)
     {
-      localObject1 = new HashMap();
-      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
-      localObject2 = new TVK_PlayerVideoInfo();
-      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
-      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
-      this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a();
-      return;
-    }
-    if (this.jdField_a_of_type_Long == -100001L) {}
-    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
-    {
-      long l = 9360L;
-      if (this.jdField_a_of_type_Long == 0L) {
-        l = 9048L;
-      }
-      this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((int)l, BaseApplication.getContext().getResources().getString(2131690818));
-      return;
-      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
-      {
-        this.jdField_a_of_type_Atnm.jdField_a_of_type_Atnl.a(true);
-        this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692499));
-        return;
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690818));
-        return;
+      ((FileManagerEntity)localObject).status = 1;
+      QfileBaseRecentFileTabView.j(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
+      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onRecvFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).getFilePath());
+      paramString = QfileBaseRecentFileTabView.k(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
+      paramLong = ((FileManagerEntity)localObject).uniseq;
+      l = ((FileManagerEntity)localObject).nSessionId;
+      localObject = antf.z;
+      if (!paramBoolean) {
+        break label155;
       }
     }
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = "";
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    label155:
+    for (int i = 11;; i = 12)
     {
-      localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("IPv6Dns", "");
-      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("ipv6list");
-    }
-    localObject1 = atnl.a(this.jdField_a_of_type_Atnm.jdField_a_of_type_Atnl, (String)localObject2, this.jdField_a_of_type_Short, (List)localObject1, this.jdField_b_of_type_Boolean);
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
-    {
-      localObject2 = this.jdField_b_of_type_JavaLangString;
-      localObject1 = "http://" + (String)localObject1 + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
-      this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((String)localObject1, (String)localObject2);
+      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
       return;
-      localObject1 = str;
+      ((FileManagerEntity)localObject).status = 0;
+      break;
+    }
+  }
+  
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    paramString = a(paramLong1);
+    if (paramString == null) {
+      return;
+    }
+    paramString.status = 2;
+    QfileBaseRecentFileTabView.g(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, antf.z, 6000, 10, null, 0, null);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    super.a(paramBoolean, paramLong, paramString);
+    Object localObject = a(paramLong);
+    if (localObject == null) {
+      return;
+    }
+    long l;
+    if (paramBoolean)
+    {
+      ((FileManagerEntity)localObject).status = 1;
+      QfileBaseRecentFileTabView.h(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
+      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onSendFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).getFilePath());
+      paramString = QfileBaseRecentFileTabView.i(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
+      paramLong = ((FileManagerEntity)localObject).uniseq;
+      l = ((FileManagerEntity)localObject).nSessionId;
+      localObject = antf.z;
+      if (!paramBoolean) {
+        break label163;
+      }
+    }
+    label163:
+    for (int i = 11;; i = 12)
+    {
+      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
+      return;
+      ((FileManagerEntity)localObject).status = 0;
+      break;
     }
   }
 }

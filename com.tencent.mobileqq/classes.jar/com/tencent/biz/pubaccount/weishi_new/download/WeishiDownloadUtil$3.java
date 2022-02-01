@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.download;
 
-import bisa;
+import bjsz;
 import com.tencent.open.downloadnew.DownloadInfo;
-import upe;
+import uqf;
 
 public final class WeishiDownloadUtil$3
   implements Runnable
@@ -11,8 +11,8 @@ public final class WeishiDownloadUtil$3
   
   public void run()
   {
-    upe.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
-    bisa.a().b(this.a);
+    uqf.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
+    bjsz.a().b(this.a);
   }
 }
 

@@ -1,26 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.res.Resources;
+import android.os.Handler;
 
-class arto
-  implements amxk
+public abstract interface arto
 {
-  arto(arti paramarti, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abstract Resources a();
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    paramString = new Bundle();
-    if (paramBoolean)
-    {
-      paramString.putInt("apollo_result", 0);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    paramString.putInt("apollo_result", 1);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public abstract Handler a();
+  
+  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

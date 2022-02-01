@@ -3,15 +3,15 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import arpd;
-import bhod;
+import aser;
+import bioy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class ChatBackgroundUiPlugin$1
-  extends arpd
+  extends aser
 {
   ChatBackgroundUiPlugin$1(ChatBackgroundUiPlugin paramChatBackgroundUiPlugin) {}
   

@@ -1,40 +1,30 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.AppShareID;
+import mqq.os.MqqHandler;
 
 public class aeie
-  extends aniv
+  extends anvn
 {
-  public aeie(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aeie(Conversation paramConversation) {}
   
-  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
+  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
   {
-    if (paramInt != 0)
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      if (!this.a.h) {
+        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if (paramBoolean) {
+      this.a.a(0L);
     }
-    FriendProfileMoreInfoActivity.a(this.a).clear();
-    paramInt = 0;
-    while (paramInt < paramList.size())
-    {
-      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
-      paramInt += 1;
-    }
-    this.a.a.sendEmptyMessage(1003);
   }
 }
 

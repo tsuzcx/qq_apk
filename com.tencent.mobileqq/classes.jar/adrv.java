@@ -1,18 +1,40 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
-public final class adrv
-  implements DialogInterface.OnClickListener
+public class adrv
+  implements View.OnFocusChangeListener
 {
-  public adrv(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, adsx paramadsx, Bundle paramBundle) {}
+  public adrv(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_AndroidOsBundle);
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText) || (true != paramBoolean))
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
   }
 }
 

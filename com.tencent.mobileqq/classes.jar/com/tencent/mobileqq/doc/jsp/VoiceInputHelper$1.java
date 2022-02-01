@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.doc.jsp;
 
-import armk;
+import asca;
 
 public class VoiceInputHelper$1
   implements Runnable
 {
-  public VoiceInputHelper$1(armk paramarmk) {}
+  public VoiceInputHelper$1(asca paramasca) {}
   
   public void run()
   {
-    armk.a(this.this$0);
+    asca.a(this.this$0);
   }
 }
 

@@ -19,20 +19,20 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhwz;
-import bhxa;
+import bixx;
+import bixy;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class FormEditItem
   extends RelativeLayout
-  implements bhxa
+  implements bixy
 {
   private int jdField_a_of_type_Int;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bhwz(this);
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bixx(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
@@ -60,8 +60,8 @@ public class FormEditItem
   public FormEditItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i1 = getResources().getDimensionPixelSize(2131298120);
-    int i2 = getResources().getDimensionPixelSize(2131296698);
+    int i1 = getResources().getDimensionPixelSize(2131298132);
+    int i2 = getResources().getDimensionPixelSize(2131296710);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem);
     this.i = paramAttributeSet.getDimensionPixelSize(2, i1);
     this.h = paramAttributeSet.getDimensionPixelSize(1, i2);
@@ -78,7 +78,7 @@ public class FormEditItem
     this.jdField_c_of_type_JavaLangCharSequence = paramAttributeSet.getString(3);
     try
     {
-      i2 = paramContext.getResources().getDimensionPixelSize(2131296691);
+      i2 = paramContext.getResources().getDimensionPixelSize(2131296703);
       i1 = i2;
     }
     catch (Resources.NotFoundException paramContext)
@@ -110,9 +110,9 @@ public class FormEditItem
     setFocusable(true);
     setClickable(true);
     this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367021);
+    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367072);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(FormSimpleItem.b(getResources(), this.g));
-    int i1 = getContext().getResources().getDimensionPixelSize(2131296696);
+    int i1 = getContext().getResources().getDimensionPixelSize(2131296708);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, i1);
     this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
@@ -126,16 +126,16 @@ public class FormEditItem
       this.jdField_b_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
       addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetEditText = new EditText(getContext());
-      this.jdField_a_of_type_AndroidWidgetEditText.setId(2131367018);
+      this.jdField_a_of_type_AndroidWidgetEditText.setId(2131367069);
       this.jdField_a_of_type_AndroidWidgetEditText.setMinWidth(this.n);
-      i1 = getContext().getResources().getDimensionPixelSize(2131296696);
+      i1 = getContext().getResources().getDimensionPixelSize(2131296708);
       this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, i1);
       this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(-16777216);
       this.jdField_a_of_type_AndroidWidgetEditText.setGravity(21);
       this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(null);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
       localLayoutParams.leftMargin = this.i;
-      localLayoutParams.addRule(0, 2131367021);
+      localLayoutParams.addRule(0, 2131367072);
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetEditText, localLayoutParams);
       if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence))
@@ -144,9 +144,9 @@ public class FormEditItem
         this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_c_of_type_JavaLangCharSequence);
       }
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367019);
-      i1 = getContext().getResources().getDimensionPixelSize(2131296696);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166986));
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367070);
+      i1 = getContext().getResources().getDimensionPixelSize(2131296708);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166990));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, i1);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
       setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.j, this.k);
@@ -162,7 +162,7 @@ public class FormEditItem
     for (;;)
     {
       localLayoutParams.addRule(9);
-      localLayoutParams.addRule(0, 2131367018);
+      localLayoutParams.addRule(0, 2131367069);
       localLayoutParams.addRule(15);
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.l);
       addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);

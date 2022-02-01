@@ -13,13 +13,14 @@ public class SoConfig$SoDetailInfo
   public static final int TEST_FLAG_NOT_EXIST_OPEN = 15;
   public static final int TEST_FLAG_NOT_EXIST_WAIT_AND_CHECK_EXIST = 2;
   public long crc = -1L;
+  public boolean isFlowControl;
   public String md5;
   public SoConfig.RelatedFileInfo relatedFileInfo;
   public int testFlag;
   public String url;
   public String ver;
   
-  public static SoDetailInfo create(JSONObject paramJSONObject, String paramString, SoConfig.RelatedFileInfo paramRelatedFileInfo, int paramInt)
+  public static SoDetailInfo create(JSONObject paramJSONObject, String paramString, SoConfig.RelatedFileInfo paramRelatedFileInfo, int paramInt, boolean paramBoolean)
   {
     if (paramJSONObject == null) {}
     String str1;
@@ -38,12 +39,13 @@ public class SoConfig$SoDetailInfo
     paramJSONObject.crc = l;
     paramJSONObject.relatedFileInfo = paramRelatedFileInfo;
     paramJSONObject.testFlag = paramInt;
+    paramJSONObject.isFlowControl = paramBoolean;
     return paramJSONObject;
   }
   
   public String toString()
   {
-    return "SDInfo{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", v='" + this.ver + '\'' + ", c='" + this.crc + ", r='" + this.relatedFileInfo + '}';
+    return "SDInfo{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", v='" + this.ver + '\'' + ", c='" + this.crc + ", r='" + this.relatedFileInfo + ",f=" + this.isFlowControl + '}';
   }
 }
 

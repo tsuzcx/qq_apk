@@ -1,68 +1,80 @@
-import android.content.Context;
-import com.rookery.translate.AITranslator;
-import com.rookery.translate.AITranslator.TranslatorType;
-import com.tencent.qphone.base.util.QLog;
-import org.apache.http.Header;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.security.KeyStore;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 public class kzo
-  extends kzi
+  implements X509TrustManager
 {
-  public kzo(AITranslator paramAITranslator, Context paramContext) {}
+  X509TrustManager a;
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  kzo()
   {
-    if (paramString.equalsIgnoreCase("1"))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Translator", 2, "[policy update]: GOOGLE");
+      Object localObject1 = KeyStore.getInstance("JKS");
+      if (localObject1 != null)
+      {
+        localObject4 = new FileInputStream("trustedCerts");
+        ((KeyStore)localObject1).load((InputStream)localObject4, "passphrase".toCharArray());
+        localObject3 = TrustManagerFactory.getInstance("SunX509", "SunJSSE");
+        ((TrustManagerFactory)localObject3).init((KeyStore)localObject1);
+        localObject3 = ((TrustManagerFactory)localObject3).getTrustManagers();
+        localObject1 = localObject4;
+        if (localObject1 != null) {
+          ((FileInputStream)localObject1).close();
+        }
+        i = 0;
+        if (i >= localObject3.length) {
+          break label137;
+        }
+        if (!(localObject3[i] instanceof X509TrustManager)) {
+          break label130;
+        }
+        this.a = ((X509TrustManager)localObject3[i]);
       }
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 0L);
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 200000L);
     }
-    do
+    catch (Exception localException)
     {
-      return;
-      if (paramString.equals("2"))
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translator", 2, "[policy update]: MS");
-        }
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 0L);
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 200000L);
-        return;
+        int i;
+        Object localObject2 = null;
+        continue;
+        localObject2 = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        ((TrustManagerFactory)localObject2).init((KeyStore)null);
+        Object localObject4 = ((TrustManagerFactory)localObject2).getTrustManagers();
+        localObject2 = localObject3;
+        localObject3 = localObject4;
+        continue;
+        label130:
+        i += 1;
       }
-      if (paramString.equals("0"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translator", 2, "[policy update]: stop service");
-        }
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false));
-        return;
-      }
-      if (paramString.equals("3"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translator", 2, "[policy update]: decide by Client");
-        }
-        AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(true));
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Translator", 2, "[policy update]: Update Failed");
+      label137:
+      throw new Exception("Couldn't initialize");
+    }
   }
   
-  public void a(Throwable paramThrowable, String paramString)
+  public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "update policy error" + paramString);
-    }
+    this.a.checkClientTrusted(paramArrayOfX509Certificate, paramString);
+  }
+  
+  public void checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
+  {
+    this.a.checkServerTrusted(paramArrayOfX509Certificate, paramString);
+  }
+  
+  public X509Certificate[] getAcceptedIssuers()
+  {
+    return this.a.getAcceptedIssuers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kzo
  * JD-Core Version:    0.7.0.1
  */

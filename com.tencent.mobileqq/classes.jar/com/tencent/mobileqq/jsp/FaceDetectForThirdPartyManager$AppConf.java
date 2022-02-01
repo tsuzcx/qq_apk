@@ -15,6 +15,7 @@ public class FaceDetectForThirdPartyManager$AppConf
   public String errMsg;
   public final int mode;
   public int ret;
+  public final List<FaceDetectForThirdPartyManager.ServiceProtocolSerializable> serviceProtocols;
   public String session;
   
   public FaceDetectForThirdPartyManager$AppConf(String paramString, List<FaceDetectForThirdPartyManager.AppWordings> paramList, int paramInt)
@@ -23,6 +24,7 @@ public class FaceDetectForThirdPartyManager$AppConf
     this.al = new ArrayList(3);
     this.al.addAll(paramList);
     this.mode = paramInt;
+    this.serviceProtocols = new ArrayList(3);
   }
   
   public String toString()

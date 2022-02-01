@@ -1,23 +1,26 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
-class boon
-  implements bpjl
+public class boon
+  extends RecyclerView.ViewHolder
 {
-  boon(boom paramboom) {}
+  public ImageView a;
   
-  public void a(int paramInt, List<wqr> paramList)
+  public boon(View paramView)
   {
-    yqp.b("PasterDataManager", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
-    }
-    wfo.a().dispatch(new bpjj(paramInt, (List)localObject));
+    super(paramView);
+    this.a = ((ImageView)paramView.findViewById(2131378821));
+  }
+  
+  public void a()
+  {
+    this.a.setImageResource(2130845949);
+  }
+  
+  public void b()
+  {
+    this.a.setImageResource(2130845950);
   }
 }
 

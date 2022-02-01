@@ -1,12 +1,7 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import kotlin.Metadata;
 
-public abstract interface bich
-{
-  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
-  
-  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/VideoOptions$Companion;", "", "()V", "TYPE_ALPHA", "", "TYPE_ALPHA2", "TYPE_NORMAL", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bich {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

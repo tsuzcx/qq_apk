@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bnrf;
-import bnuf;
+import bost;
+import bovr;
 
 public class PngsCreator$3
   implements Runnable
 {
-  public PngsCreator$3(bnuf parambnuf, String paramString) {}
+  public PngsCreator$3(bovr parambovr, String paramString) {}
   
   public void run()
   {
-    if (bnuf.a(this.this$0) != null) {
-      bnuf.a(this.this$0).a(this.a);
+    if (bovr.a(this.this$0) != null) {
+      bovr.a(this.this$0).a(this.a);
     }
   }
 }

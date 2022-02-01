@@ -1,130 +1,161 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-public class pod
-  extends pnq
+class pod
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "https://pub.idqqimg.com/pc/misc/files/20200416/3c376048a60b488d998e1ef31153db5e.png", "https://pub.idqqimg.com/pc/misc/files/20200416/54aaad879a4042899540fafd969395f6.png", "https://pub.idqqimg.com/pc/misc/files/20200416/8b787675714740eeb21c7fc5b15712c0.png", "https://pub.idqqimg.com/pc/misc/files/20200416/1263e35cec174f0db53e0fc3bb8e7df2.png", "https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png", "https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png" };
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  HashMap<Integer, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ppm jdField_a_of_type_Ppm = new poe(this);
+  HashMap<Integer, ArrayList<Integer>> b = new HashMap();
+  HashMap<Integer, ArrayList<BaseArticleInfo>> c = new HashMap();
   
-  public pod(@NonNull pnr parampnr, Activity paramActivity)
+  pod(poc parampoc, int paramInt)
   {
-    super(parampnr, "RIJUGCAccountPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    j();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private boolean c()
+  private ppl a()
   {
-    boolean bool2 = bdch.a();
-    boolean bool3 = rjh.a();
-    boolean bool4 = qph.a().a();
-    if ((!bool2) && (bool3) && (bool4)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      QLog.i("RIJUGCAccountPopupStep", 2, "[handleUGCAccountCreate], isStudyMode = " + bool2 + "isPopupEnable = " + bool3 + ", isPtsLiteEnable = " + bool4);
-      if (bool1)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("public_fragment_window_feature", 1);
-        aevv.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, PublicTransFragmentActivity.class, RIJUGCAddAccountFragment.class, 10000);
-      }
-      return bool1;
+    AppRuntime localAppRuntime = ozs.a();
+    if (localAppRuntime != null) {
+      return ((pfg)localAppRuntime.getManager(163)).a().a();
     }
+    return null;
   }
   
-  public static void i()
+  public BaseArticleInfo a(int paramInt1, int paramInt2)
   {
-    if (!rjh.a()) {
-      return;
-    }
-    ReadInJoyUserInfoModule.a(pha.a(), null);
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      Object localObject1 = arrayOfString[i];
-      try
+      int i = ((ArrayList)localObject).indexOf(Integer.valueOf(paramInt2));
+      if (i != -1)
       {
-        localObject1 = new URL((String)localObject1);
-        if (localObject1 != null)
+        if ((this.c.containsKey(Integer.valueOf(paramInt1))) && (i < ((ArrayList)this.c.get(Integer.valueOf(paramInt1))).size()))
         {
-          tdw localtdw = new tdw();
-          localtdw.a = ((URL)localObject1);
-          localtdw.b = true;
-          tdv.a().a(localtdw, null);
-          if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-            QLog.i("RIJUGCAccountPopupStep", 2, "[preload] url = " + localObject1);
+          localObject = (BaseArticleInfo)((ArrayList)this.c.get(Integer.valueOf(paramInt1))).get(i);
+          if (localObject != null) {
+            ((BaseArticleInfo)localObject).mRecommendSeq = poc.a(1, paramInt2);
           }
+          return localObject;
         }
-        i += 1;
+        QLog.d("ReadinjoyFixPosArticleManager", 1, "article isn't exist ! positon : " + paramInt2);
       }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          QLog.e("RIJUGCAccountPopupStep", 1, "[preload] error, e = " + localMalformedURLException);
-          Object localObject2 = null;
-        }
-      }
+    }
+    for (;;)
+    {
+      return null;
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "positons is null !");
     }
   }
   
-  private void j()
+  void a(int paramInt)
   {
-    if (!rjh.a()) {
+    int j = 0;
+    b(paramInt);
+    Object localObject2 = a();
+    if (localObject2 == null)
+    {
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "adinterface is null !");
       return;
     }
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    Object localObject3 = ((ppl)localObject2).a(paramInt);
+    if ((localObject3 == null) || (localObject3.length <= 0))
     {
-      Object localObject1 = arrayOfString[i];
-      try
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "get ad position fail ~ return data is null !");
+      return;
+    }
+    Object localObject1 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localObject3.length)
+    {
+      ((ArrayList)localObject1).add(Integer.valueOf(localObject3[i]));
+      localArrayList.add(Integer.valueOf(0));
+      i += 1;
+    }
+    Collections.sort((List)localObject1, new pof(this));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject1);
+    this.b.put(Integer.valueOf(paramInt), localArrayList);
+    localObject2 = ((ppl)localObject2).a(paramInt);
+    if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
+    {
+      localObject3 = new ArrayList((Collection)localObject2);
+      this.c.put(Integer.valueOf(paramInt), localObject3);
+    }
+    localObject1 = new StringBuilder().append("ad pos : ").append(localObject1).append(", channelID : ").append(paramInt).append(", articleSize : ");
+    paramInt = j;
+    if (localObject2 != null) {
+      paramInt = ((ArrayList)localObject2).size();
+    }
+    QLog.d("ReadinjoyFixPosArticleManager", 1, paramInt);
+  }
+  
+  void a(int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localArrayList != null)
+    {
+      int i = localArrayList.indexOf(Integer.valueOf(paramInt2));
+      if (i != -1)
       {
-        localObject1 = new URL((String)localObject1);
-        if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-          QLog.i("RIJUGCAccountPopupStep", 2, "[preloadResources] url = " + localObject1);
-        }
-        if (localObject1 != null)
-        {
-          tdw localtdw = new tdw();
-          localtdw.a = ((URL)localObject1);
-          tdv.a().a(localtdw, null);
-        }
-        i += 1;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          QLog.i("RIJUGCAccountPopupStep", 1, "[preloadResources] error, e = " + localMalformedURLException);
-          Object localObject2 = null;
-        }
+        ((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1))).remove(i);
+        ((ArrayList)this.b.get(Integer.valueOf(paramInt1))).remove(i);
+        ((ArrayList)this.c.get(Integer.valueOf(paramInt1))).remove(i);
+        QLog.d("ReadinjoyFixPosArticleManager", 1, "delete ad article , position : " + paramInt2);
       }
     }
   }
   
-  protected void g()
+  boolean a(int paramInt)
   {
-    a(this.jdField_a_of_type_Boolean);
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).size() > 0) && (this.c.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.c.get(Integer.valueOf(paramInt))).size() > 0))
+        {
+          bool = true;
+          return bool;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
   }
   
-  protected void h()
+  public void b(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = c();
-    a(this.jdField_a_of_type_Boolean);
-    QLog.i("RIJUGCAccountPopupStep", 1, "[doStepFromOnShowSelf], needShow = " + this.jdField_a_of_type_Boolean);
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+      this.c.remove(Integer.valueOf(paramInt));
+      this.b.remove(Integer.valueOf(paramInt));
+      return;
+    }
+    finally {}
+  }
+  
+  void c(int paramInt)
+  {
+    ppl localppl = a();
+    if (localppl != null) {
+      localppl.a(paramInt, this.jdField_a_of_type_Ppm);
+    }
+  }
+  
+  void d(int paramInt)
+  {
+    ppl localppl = a();
+    if (localppl != null) {
+      localppl.a(paramInt);
+    }
   }
 }
 

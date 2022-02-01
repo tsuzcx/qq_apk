@@ -1,25 +1,37 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.tavcut.timeline.TimelineView.SpeedChangeCallback;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
 class bpfr
-  implements bkhe
+  implements TimelineView.SpeedChangeCallback
 {
-  int jdField_a_of_type_Int = 0;
+  bpfr(bpfq parambpfq, float paramFloat) {}
   
-  bpfr(bpfp parambpfp) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onChangeFailed(int paramInt)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    bozr.a().a(this.jdField_a_of_type_Float);
+    if (paramInt == 1000) {
+      QQToast.a(this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.getActivity(), 2131689784, 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bpfq.jdField_a_of_type_Bpfu.a(this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.jdField_a_of_type_Float);
+      return;
+      if (paramInt == 1001) {
+        QQToast.a(this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.getActivity(), 2131689783, 0).a();
+      }
+    }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onChangeSucc(float paramFloat)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == bpfp.a(this.jdField_a_of_type_Bpfp, bpfp.a(this.jdField_a_of_type_Bpfp)).a().size()) && (!bpfp.a(this.jdField_a_of_type_Bpfp, bpfp.a(this.jdField_a_of_type_Bpfp)).a()))
-    {
-      paramAbsListView = bpfp.a(this.jdField_a_of_type_Bpfp);
-      bpfp.a(this.jdField_a_of_type_Bpfp, bpfp.a(this.jdField_a_of_type_Bpfp)).b(paramAbsListView);
-    }
+    this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.jdField_a_of_type_JavaLangFloat = Float.valueOf(paramFloat);
+    AEEditorVideoClipFragment.a(this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).setSpeed(paramFloat, true);
+    AEEditorVideoClipFragment.a(this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).a(AEEditorVideoClipFragment.a(this.jdField_a_of_type_Bpfq.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).getTAVSource());
+    bozv.a().a().a = paramFloat;
+    bozr.a().a(this.jdField_a_of_type_Float);
   }
 }
 

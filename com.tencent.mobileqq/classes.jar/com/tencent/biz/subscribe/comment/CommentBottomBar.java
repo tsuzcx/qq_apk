@@ -5,18 +5,20 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaaf;
-import aadu;
-import aadv;
-import aadw;
-import aadx;
-import aady;
-import aadz;
-import aaea;
-import aaet;
-import aafc;
-import aafw;
-import aavz;
+import aaak;
+import aaam;
+import aaek;
+import aahv;
+import aahw;
+import aahx;
+import aahy;
+import aahz;
+import aaia;
+import aaib;
+import aaiu;
+import aajd;
+import aajx;
+import abac;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -29,7 +31,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
@@ -40,18 +42,16 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
-import zwp;
-import zwr;
 
 public class CommentBottomBar
   extends LinearLayout
-  implements zwr
+  implements aaam
 {
   public static final String a;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private CertifiedAccountMeta.StReply jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply;
-  private aaet jdField_a_of_type_Aaet;
+  private aaiu jdField_a_of_type_Aaiu;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -92,7 +92,7 @@ public class CommentBottomBar
       if (paramStReply.postUser == null) {
         break label162;
       }
-      paramStReply = String.format(getContext().getString(2131692041), new Object[] { paramStReply.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131692046), new Object[] { paramStReply.postUser.nick.get() });
       paramStComment = paramStReply;
       if (paramStReply.length() > 10)
       {
@@ -106,7 +106,7 @@ public class CommentBottomBar
       if ((paramStComment == null) || (paramStComment.postUser == null)) {
         break;
       }
-      paramStReply = String.format(getContext().getString(2131692041), new Object[] { paramStComment.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131692046), new Object[] { paramStComment.postUser.nick.get() });
       paramStComment = paramStReply;
     } while (paramStReply.length() <= 10);
     paramStComment = paramStReply.substring(0, 10);
@@ -120,14 +120,14 @@ public class CommentBottomBar
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839051);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839059);
     if (paramBoolean) {}
     for (ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);; localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F))
     {
       localScaleAnimation.setDuration(1000L);
       localScaleAnimation.setFillAfter(true);
       localScaleAnimation.setRepeatCount(0);
-      localScaleAnimation.setAnimationListener(new aadz(this, paramBoolean));
+      localScaleAnimation.setAnimationListener(new aaia(this, paramBoolean));
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
       return;
     }
@@ -146,7 +146,7 @@ public class CommentBottomBar
       }
     }
     label35:
-    for (paramInt = 2130839042;; paramInt = 2130839043)
+    for (paramInt = 2130839050;; paramInt = 2130839051)
     {
       localImageView.setBackgroundResource(paramInt);
       return;
@@ -161,14 +161,14 @@ public class CommentBottomBar
     setOrientation(0);
     setBackgroundColor(-1);
     setGravity(16);
-    LayoutInflater.from(getContext()).inflate(2131558806, this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369228));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379504));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369286));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369090));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369089));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369230));
-    this.jdField_b_of_type_Boolean = ((String)aavz.a().a("is_open_sharing", "1")).equals("1");
+    LayoutInflater.from(getContext()).inflate(2131558804, this);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369319));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379673));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369376));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369180));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369179));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369321));
+    this.jdField_b_of_type_Boolean = ((String)abac.a().a("is_open_sharing", "1")).equals("1");
     ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
     if (this.jdField_b_of_type_Boolean) {}
     for (int i = 0;; i = 8)
@@ -180,41 +180,41 @@ public class CommentBottomBar
   
   private void g()
   {
-    zwp.a().a(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new aadu(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new aadv(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aadw(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aadx(this));
+    aaak.a().a(this);
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new aahv(this));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new aahw(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aahx(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aahy(this));
   }
   
   private void h()
   {
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = null;
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply = null;
-    a(getContext().getString(2131700299));
+    a(getContext().getString(2131700406));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130847508);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130847527);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.8F, 1.0F, 0.8F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(600L);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setRepeatMode(2);
     localScaleAnimation.setRepeatCount(5);
-    localScaleAnimation.setAnimationListener(new aaea(this));
+    localScaleAnimation.setAnimationListener(new aaib(this));
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
   }
   
-  public aaet a()
+  public aaiu a()
   {
-    return this.jdField_a_of_type_Aaet;
+    return this.jdField_a_of_type_Aaiu;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aaet != null) {
-      this.jdField_a_of_type_Aaet.h();
+    if (this.jdField_a_of_type_Aaiu != null) {
+      this.jdField_a_of_type_Aaiu.h();
     }
   }
   
@@ -226,7 +226,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(aafw.a(paramInt));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(aajx.a(paramInt));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -236,19 +236,19 @@ public class CommentBottomBar
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_Aaet != null) {
-      this.jdField_a_of_type_Aaet.a(paramStFeed);
+    if (this.jdField_a_of_type_Aaiu != null) {
+      this.jdField_a_of_type_Aaiu.a(paramStFeed);
     }
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, aafc paramaafc)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, aajd paramaajd)
   {
-    a(paramActivity, paramStFeed, paramaafc, null);
+    a(paramActivity, paramStFeed, paramaajd, null);
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, aafc paramaafc, ExtraTypeInfo paramExtraTypeInfo)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, aajd paramaajd, ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_Aaet = new aaet(paramActivity, false, paramStFeed, paramaafc, paramExtraTypeInfo);
+    this.jdField_a_of_type_Aaiu = new aaiu(paramActivity, false, paramStFeed, paramaajd, paramExtraTypeInfo);
   }
   
   public void a(String paramString)
@@ -271,12 +271,12 @@ public class CommentBottomBar
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(getContext(), anni.a(2131700978), 0).a();
+      QQToast.a(getContext(), anzj.a(2131701085), 0).a();
       return;
     }
     this.jdField_a_of_type_Boolean = false;
     DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    VSNetworkHelper.a().a(localDoLikeRequest, new aady(this));
+    VSNetworkHelper.a().a(localDoLikeRequest, new aahz(this));
   }
   
   @SuppressLint({"DefaultLocale", "SetTextI18n"})
@@ -287,7 +287,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(aafw.a(paramInt));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(aajx.a(paramInt));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -297,34 +297,34 @@ public class CommentBottomBar
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Aaet != null) {
-      return this.jdField_a_of_type_Aaet.b();
+    if (this.jdField_a_of_type_Aaiu != null) {
+      return this.jdField_a_of_type_Aaiu.b();
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Aaet != null) {
-      this.jdField_a_of_type_Aaet.f();
+    if (this.jdField_a_of_type_Aaiu != null) {
+      this.jdField_a_of_type_Aaiu.f();
     }
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Aaet != null) && (this.jdField_a_of_type_Aaet.c());
+    return (this.jdField_a_of_type_Aaiu != null) && (this.jdField_a_of_type_Aaiu.c());
   }
   
   public void d()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839051);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839059);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_Aaet != null) && (this.jdField_a_of_type_Aaet.d());
+    return (this.jdField_a_of_type_Aaiu != null) && (this.jdField_a_of_type_Aaiu.d());
   }
   
   public void e()
@@ -365,7 +365,7 @@ public class CommentBottomBar
     b(paramStFeed.likeInfo.count.get());
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      if ((this.jdField_b_of_type_Boolean) && (aaaf.a(paramStFeed.status.get()))) {
+      if ((this.jdField_b_of_type_Boolean) && (aaek.a(paramStFeed.status.get()))) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }

@@ -1,34 +1,9 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import java.util.ArrayList;
+import com.tencent.biz.now.NowVideoLayout;
 
-class bdrc
-  implements bmvh
+public class bdrc
 {
-  bdrc(bdrb parambdrb) {}
-  
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
-  {
-    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
-    if (paramBoolean)
-    {
-      paramGetAdsRsp = bdri.a(paramBoolean, paramGetAdsRsp);
-      if (paramGetAdsRsp != null)
-      {
-        this.a.a.add(paramGetAdsRsp);
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
-        bmvi.a().a(paramGetAdsRsp.a);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
-  }
+  public bdpu a;
+  public NowVideoLayout a;
 }
 
 

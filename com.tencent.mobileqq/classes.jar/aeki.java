@@ -1,19 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeki
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public aeki(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aeki(DialogActivity paramDialogActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    return false;
+    paramDialogInterface = this.a.app.a();
+    paramDialogInterface.d();
+    paramDialogInterface.c();
+    this.a.finish();
   }
 }
 

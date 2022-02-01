@@ -1,25 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.widgets.QCircleBaseLightInteractWidget;
-import com.tencent.common.app.AppInterface;
-import feedcloud.FeedCloudMeta.StFeed;
-
-public class vbz
-  extends RecyclerView.ViewHolder
+class vbz
+  implements vrx
 {
-  public vbz(vbt paramvbt, View paramView)
+  vbz(vbr paramvbr) {}
+  
+  public void a()
   {
-    super(paramView);
+    vbr.a(this.a, 54);
   }
   
-  public void a(AppInterface paramAppInterface, Object paramObject, int paramInt1, int paramInt2, FeedCloudMeta.StFeed paramStFeed, ReportExtraTypeInfo paramReportExtraTypeInfo)
+  public void b()
   {
-    if ((this.itemView instanceof QCircleBaseLightInteractWidget))
+    if (vbr.a(this.a))
     {
-      ((QCircleBaseLightInteractWidget)this.itemView).a(paramAppInterface, paramStFeed, paramReportExtraTypeInfo, paramInt2);
-      ((QCircleBaseLightInteractWidget)this.itemView).a(paramObject, paramInt1);
+      vtr.a(55, 3, vbr.a(this.a), this.a.a());
+      return;
     }
+    vtn.a(55, 3, vbr.a(this.a), this.a.b());
   }
 }
 

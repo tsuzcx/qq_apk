@@ -1,16 +1,36 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import java.util.List;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class yfz
-  extends weu
+class yfz
+  implements woy<ygb, ygc>
 {
-  public List<MomeriesYearNode> a;
-  public boolean a;
+  yfz(yfy paramyfy, boolean paramBoolean) {}
   
-  public yfz(yfw paramyfw, ErrorMessage paramErrorMessage)
+  public void a(@NonNull ygb paramygb, @Nullable ygc arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramygb = new yga(paramErrorMessage, yfy.a(this.jdField_a_of_type_Yfy));
+    paramygb.jdField_b_of_type_Boolean = false;
+    paramygb.jdField_a_of_type_Boolean = yfy.a(this.jdField_a_of_type_Yfy);
+    paramygb.jdField_a_of_type_Int = yfy.a(this.jdField_a_of_type_Yfy);
+    if ((??? == null) || (paramErrorMessage.isFail()))
+    {
+      wjj.a().dispatch(paramygb);
+      return;
+    }
+    paramygb.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
+    paramygb.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
+    paramygb.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    paramygb.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    ((wst)wth.a(15)).a(paramygb.jdField_a_of_type_JavaUtilList, yfy.a(this.jdField_a_of_type_Yfy), yfy.c(this.jdField_a_of_type_Yfy), true);
+    synchronized (this.jdField_a_of_type_Yfy)
+    {
+      yfy.a(this.jdField_a_of_type_Yfy, true);
+      wjj.a().dispatch(paramygb);
+      yuk.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramygb);
+      return;
+    }
   }
 }
 

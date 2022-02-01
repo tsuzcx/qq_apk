@@ -1,51 +1,51 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.net.MalformedURLException;
+import java.net.URL;
+import kotlin.Metadata;
 
-public class qvf
-  extends ClickableSpan
-  implements sth
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoBigPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qvf
+  extends qva
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  protected String a;
-  boolean jdField_a_of_type_Boolean;
-  
-  public qvf(ComponentAccountSummary paramComponentAccountSummary, String paramString, int paramInt)
+  protected void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    Object localObject = a();
+    if (localObject != null) {
+      ((SocializeFeedsInfo)localObject).a = 6;
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    pha.a = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a.a.a();
-    paramView = pgc.k + bgku.encodeToString(String.valueOf(this.jdField_a_of_type_JavaLangString).getBytes(), 2);
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 16119285)
+    localObject = a();
+    if (localObject != null) {
+      ((qyg)localObject).a = true;
+    }
+    localObject = a();
+    if (localObject != null)
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      localObject = ((qxz)localObject).a;
+      if (localObject != null)
+      {
+        a().mTitle = ((qyi)localObject).g;
+        a().mVideoVid = ((qyi)localObject).e;
+      }
+    }
+    try
+    {
+      localObject = a();
+      if (localObject != null)
+      {
+        localObject = ((qxz)localObject).a;
+        if (localObject != null)
+        {
+          localObject = ((qyi)localObject).d;
+          if (localObject != null) {
+            a().mVideoCoverUrl = new URL((String)localObject);
+          }
+        }
+      }
       return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
     }
   }
 }

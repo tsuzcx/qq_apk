@@ -1,8 +1,8 @@
 package cooperation.qqreader.host;
 
 import android.content.Context;
-import blpu;
-import blpv;
+import bmqw;
+import bmqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 import mqq.app.Foreground;
@@ -18,7 +18,7 @@ public class ReaderForegroundProxy
   
   public void onDestroy(Context paramContext)
   {
-    Foreground.onDestroy(blpv.a(paramContext));
+    Foreground.onDestroy(bmqx.a(paramContext));
   }
   
   public void onPause()
@@ -33,8 +33,8 @@ public class ReaderForegroundProxy
   
   public void onStart(Context paramContext)
   {
-    blpu.e("ReaderForegroundProxy", "onStart context = " + paramContext);
-    Foreground.onStart(this.mRuntime, blpv.a(paramContext));
+    bmqw.e("ReaderForegroundProxy", "onStart context = " + paramContext);
+    Foreground.onStart(this.mRuntime, bmqx.a(paramContext));
   }
   
   public void onStop()

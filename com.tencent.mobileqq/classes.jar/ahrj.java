@@ -1,41 +1,26 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ahrj
-  implements ahrc<View>
+class ahrj
+  implements bliz
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  ahrj(ahri paramahri, MessageForShortVideo paramMessageForShortVideo, ahro paramahro, blir paramblir) {}
   
-  ahrj(BaseChatPie paramBaseChatPie)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public int a()
-  {
-    return 37;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = ((agkh)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(72)).a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public boolean a()
-  {
-    return false;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Ahri.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahro);
+      } else {
+        this.jdField_a_of_type_Ahri.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahro);
+      }
+    }
   }
 }
 

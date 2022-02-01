@@ -1,19 +1,17 @@
 package com.tencent.qqmini.minigame.manager;
 
 import android.support.annotation.Nullable;
-import com.tencent.qqmini.minigame.GameJsPluginEngine;
 import com.tencent.qqmini.minigame.gpkg.GpkgManager.Info;
 import com.tencent.qqmini.minigame.gpkg.GpkgManager.OnInitGpkgListener;
 import com.tencent.qqmini.minigame.gpkg.MiniGamePkg;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 final class JsApiUpdateManager$2
   implements GpkgManager.OnInitGpkgListener
 {
-  JsApiUpdateManager$2(GameJsPluginEngine paramGameJsPluginEngine) {}
+  JsApiUpdateManager$2(MiniAppFileManager paramMiniAppFileManager, JsApiUpdateManager.IUpdateListener paramIUpdateListener) {}
   
   public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
   
@@ -21,14 +19,14 @@ final class JsApiUpdateManager$2
   {
     if ((paramInt == 0) && (paramMiniGamePkg != null))
     {
-      if ((this.val$gameJsPluginEngine != null) && (this.val$gameJsPluginEngine.getRuntime() != null)) {
-        ((MiniAppFileManager)this.val$gameJsPluginEngine.getRuntime().getManager(MiniAppFileManager.class)).initFileManager(paramMiniGamePkg, true);
+      if (this.val$fileManager != null) {
+        this.val$fileManager.initFileManager(paramMiniGamePkg, true);
       }
       ThreadManager.executeOnDiskIOThreadPool(new JsApiUpdateManager.2.1(this));
-      JsApiUpdateManager.access$200(this.val$gameJsPluginEngine, true);
+      JsApiUpdateManager.access$200(this.val$callback, true);
       return;
     }
-    JsApiUpdateManager.access$200(this.val$gameJsPluginEngine, false);
+    JsApiUpdateManager.access$200(this.val$callback, false);
   }
 }
 

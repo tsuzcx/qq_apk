@@ -1,6 +1,30 @@
-public abstract interface uji
+import UserGrowth.stSchema;
+import com.tencent.common.app.BaseApplicationImpl;
+
+public class uji
+  implements ujg
 {
-  public abstract void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, ujk paramujk);
+  private uiv b(uix paramuix)
+  {
+    if (zqd.a(BaseApplicationImpl.getContext())) {
+      return new uiz(paramuix);
+    }
+    return new ujb(paramuix);
+  }
+  
+  public uiv a(uix paramuix)
+  {
+    switch (paramuix.a().type)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new ujc(paramuix);
+    case 2: 
+      return b(paramuix);
+    }
+    return new ujf(paramuix);
+  }
 }
 
 

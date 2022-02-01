@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar;
 
-import aoxj;
-import bctj;
+import apkz;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$1
   implements Runnable
 {
-  public ScanEntranceReport$1(aoxj paramaoxj, long paramLong1, long paramLong2, String paramString, long paramLong3) {}
+  public ScanEntranceReport$1(apkz paramapkz, long paramLong1, long paramLong2, String paramString, long paramLong3) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("proc_exist", String.valueOf(aoxj.a(this.this$0)));
-    localHashMap.put("proc_restart", String.valueOf(aoxj.b(this.this$0)));
+    localHashMap.put("proc_exist", String.valueOf(apkz.a(this.this$0)));
+    localHashMap.put("proc_restart", String.valueOf(apkz.b(this.this$0)));
     localHashMap.put("proc_load_time", String.valueOf(this.jdField_a_of_type_Long));
     localHashMap.put("activity_launch_time", String.valueOf(this.b));
     localHashMap.put("entry_source", this.jdField_a_of_type_JavaLangString);
-    bctj.a(BaseApplication.getContext()).a("", "scanner_activity_launch", true, this.c, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "scanner_activity_launch", true, this.c, 0L, localHashMap, "");
   }
 }
 

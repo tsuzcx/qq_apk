@@ -1,25 +1,29 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleSetProfileRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.List;
-import qqcircle.QQCircleProfile.SetProfileRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class vtx
-  extends zxg
+class vtx
+  extends Handler
 {
-  public MutableLiveData<vup<QQCircleProfile.SetProfileRsp>> a = new MutableLiveData();
-  
-  public String a()
+  vtx(vtw paramvtw, Looper paramLooper)
   {
-    return "QCircleDataEditViewMode";
+    super(paramLooper);
   }
   
-  public void a(String paramString, List<FeedCloudMeta.StTagInfo> paramList, List<Long> paramList1)
+  public void handleMessage(Message paramMessage)
   {
-    paramString = new QCircleSetProfileRequest(paramString, paramList, paramList1);
-    this.a.setValue(vup.b());
-    VSNetworkHelper.a().a(paramString, new vty(this));
+    if (paramMessage == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 4097: 
+      vtw.a(this.a);
+      return;
+    }
+    vtw.b(this.a);
   }
 }
 

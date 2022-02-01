@@ -1,17 +1,27 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class rxi
-  implements View.OnTouchListener
+  implements rwa
 {
-  rxi(rxg paramrxg, GestureDetector paramGestureDetector) {}
+  rxi(rxg paramrxg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(rwc paramrwc, rwf paramrwf, int paramInt1, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return true;
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
+      return;
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 

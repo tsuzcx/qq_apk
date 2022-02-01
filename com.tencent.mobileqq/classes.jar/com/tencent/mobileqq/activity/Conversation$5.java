@@ -1,24 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.IApolloRunnableTask;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class Conversation$5
-  extends IApolloRunnableTask
+  implements Runnable
 {
-  Conversation$5(Conversation paramConversation, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public String a()
-  {
-    return "Conversation_selectPhotoFromSystem";
-  }
+  Conversation$5(Conversation paramConversation) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    boolean bool = ((PhoneContactManagerImp)this.this$0.a.getManager(11)).a(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("BindMsgConstant", 2, "REQ_FOR_SETTING : " + bool);
     }
   }
 }

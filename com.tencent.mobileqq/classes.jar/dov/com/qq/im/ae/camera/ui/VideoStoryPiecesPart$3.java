@@ -1,22 +1,23 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import bniq;
-import dov.com.qq.im.ae.view.AECompoundButton;
+import agej;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import bojy;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 
 public class VideoStoryPiecesPart$3
   implements Runnable
 {
-  public VideoStoryPiecesPart$3(bniq parambniq) {}
+  public VideoStoryPiecesPart$3(bojy parambojy) {}
   
   public void run()
   {
-    bniq.a(this.this$0).a().setImageResource(2130837680);
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)bniq.a(this.this$0).a().getDrawable();
-    if (localAnimationDrawable != null) {
-      localAnimationDrawable.start();
-    }
+    Drawable localDrawable = bojy.a(this.this$0).getResources().getDrawable(2130849208);
+    int i = agej.a(36.0F, bojy.b(this.this$0).getResources());
+    localDrawable.setBounds(0, 0, i, i);
+    bojy.a(this.this$0).setImageDrawable(localDrawable);
   }
 }
 

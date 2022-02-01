@@ -1,15 +1,18 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afyu
-  implements bihh
+public class afyu
+  implements View.OnClickListener
 {
-  afyu(afys paramafys) {}
+  public afyu(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if (paramBaseResp.errCode != 0) {
-      afys.a(this.a, 1, 2131693102);
-    }
+    this.a.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,43 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-public class qys
-  extends niv
+public final class qys
+  implements Parcelable.Creator<TagInfo>
 {
-  public qys(RIJRedPacketManager paramRIJRedPacketManager, qzc paramqzc) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public TagInfo a(Parcel paramParcel)
   {
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe36 error code: " + paramInt);
-    if (paramInt == 0) {
-      paramBundle = new cmd0xe36.RspBody();
-    }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = 0;
-      paramArrayOfByte = "";
-      if (paramBundle.code.has()) {
-        paramInt = paramBundle.code.get();
-      }
-      if (paramBundle.wording.has()) {
-        paramArrayOfByte = paramBundle.wording.get();
-      }
-      QLog.i("RIJRedPacketManager", 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
-      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte))) {
-        this.jdField_a_of_type_Qzc.a(paramArrayOfByte);
-      }
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QLog.i("RIJRedPacketManager", 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
-    }
+    return new TagInfo(paramParcel);
+  }
+  
+  public TagInfo[] a(int paramInt)
+  {
+    return new TagInfo[paramInt];
   }
 }
 

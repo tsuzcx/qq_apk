@@ -1,18 +1,27 @@
-import android.graphics.Paint;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-public class aioq
+class aioq
+  extends oep
 {
-  public final Paint a;
-  public final float[] a;
-  public final String[] a;
-  public final Paint b;
+  aioq(ainh paramainh) {}
   
-  public aioq(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
-    this.b = paramPaint2;
+    if ((paramBoolean) && (ainh.a(this.a).getVisibility() != 0))
+    {
+      if (mbh.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        ainh.b(this.a).setVisibility(0);
+        ainh.c(this.a).setOnClickListener(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130847091, 2130847092);
+      }
+    }
+    else {
+      return;
+    }
+    ainh.d(this.a).setVisibility(8);
   }
 }
 

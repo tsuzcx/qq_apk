@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 
-class ajbu
-  implements Comparator<PhoneContact>
+public class ajbu
+  implements blkc
 {
-  ajbu(ajbt paramajbt) {}
+  public ajbu(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void a()
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

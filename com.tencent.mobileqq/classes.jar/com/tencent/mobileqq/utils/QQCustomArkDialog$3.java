@@ -2,21 +2,21 @@ package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bgor;
+import bhot;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialog$3
   implements Runnable
 {
-  public QQCustomArkDialog$3(bgor parambgor, Bundle paramBundle) {}
+  public QQCustomArkDialog$3(bhot parambhot, Bundle paramBundle) {}
   
   public void run()
   {
-    if (bgor.a(this.this$0) != null) {}
-    for (Activity localActivity = (Activity)bgor.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    if (bhot.a(this.this$0) != null) {}
+    for (Activity localActivity = (Activity)bhot.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
-      bgor.a(this.this$0, this.a);
+      bhot.a(this.this$0, this.a);
       return;
     }
     QLog.e("QQCustomArkDialog", 1, "init bundle activity is null or finished");

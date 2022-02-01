@@ -22,7 +22,8 @@ class InternalJSPlugin$3
       InternalJSPlugin.access$000(this.this$0, this.this$0.jsPluginEngine.getActivityContext(), str3, str2, str1, str4, i, this.val$appParameter, this.val$eventName, this.val$webview, this.val$callbackId);
       return;
     }
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, "jump check failed.", this.val$callbackId);
+    paramJSONObject = InternalJSPlugin.access$100(this.this$0, 2);
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, paramJSONObject, "jump check failed.", this.val$callbackId);
     QLog.w("InternalJSPlugin", 1, String.format("jump native app check failed, appid:%s, packageName:%s", new Object[] { this.val$appConnectId, this.val$packageName }));
   }
 }

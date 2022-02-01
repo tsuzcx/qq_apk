@@ -1,47 +1,43 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
 public class aokl
-  extends aojs
+  extends anud
 {
-  public aokl(QQAppInterface paramQQAppInterface, Context paramContext)
+  protected aokl(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramQQAppInterface);
   }
   
-  public boolean a()
+  protected Class<? extends anui> observerClass()
   {
-    try
+    return aokm.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
+      notifyUI(1, false, null);
+    }
+    String str;
+    do
     {
-      i = Integer.parseInt(this.c);
-      switch (i)
+      return;
+      str = paramToServiceMsg.getServiceCmd();
+      if (TextUtils.isEmpty(str))
       {
-      default: 
-        return true;
+        notifyUI(1, false, null);
+        return;
       }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("QQFavAction", 1, "doAction error NumberFormatException: " + localNumberFormatException.getMessage());
-        int i = -1;
+      if ((str.compareTo("VipPayLogicServer.getCommPayInfo ") == 0) && (QLog.isColorLevel())) {
+        QLog.i("VIPRecommendPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
       }
-      Intent localIntent = new Intent();
-      localIntent.putExtra("selfSet_leftViewText", BaseApplicationImpl.getApplication().getApplicationContext().getString(2131690563));
-      boolean bool = bljn.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, false);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QQFavAction", 1, "doAction error: " + localException.getMessage());
-      a("QQFavAction");
-    }
-    return false;
+    } while (str.compareTo("VipPayLogicServer.getCommPayInfo ") != 0);
+    notifyUI(1, true, paramObject);
+    bhmi.a(this.app.getCurrentAccountUin() + "_" + "VIPRecommendPayFile.txt", paramObject);
   }
 }
 

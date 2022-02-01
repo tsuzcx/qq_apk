@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -16,7 +16,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QWalletPayProgressDialog
   extends ReportDialog
 {
-  private String mMessage = anni.a(2131710214);
+  private String mMessage = anzj.a(2131710323);
   private TextView mTextView;
   
   public QWalletPayProgressDialog(Context paramContext)
@@ -40,7 +40,7 @@ public class QWalletPayProgressDialog
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131370765));
+      this.mTextView = ((TextView)super.findViewById(2131370870));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);

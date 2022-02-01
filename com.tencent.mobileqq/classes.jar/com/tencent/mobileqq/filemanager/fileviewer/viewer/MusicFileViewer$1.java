@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
 import android.widget.TextView;
-import atsl;
-import atvo;
+import aukg;
+import aunj;
 
 public class MusicFileViewer$1
   implements Runnable
 {
-  public MusicFileViewer$1(atsl paramatsl, String paramString) {}
+  public MusicFileViewer$1(aukg paramaukg, String paramString) {}
   
   public void run()
   {
-    atsl.a(this.this$0).setText(atvo.a(this.a, false, atsl.a(this.this$0).getMeasuredWidth(), atsl.a(this.this$0).getPaint(), 2));
+    aukg.a(this.this$0).setText(aunj.a(this.a, false, aukg.a(this.this$0).getMeasuredWidth(), aukg.a(this.this$0).getPaint(), 2));
   }
 }
 

@@ -1,24 +1,26 @@
-import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class ydx
-  extends wfr<ydh, wor>
+  implements Animation.AnimationListener
 {
-  public ydx(ydh paramydh)
+  public ydx(QQStoryBaseActivity paramQQStoryBaseActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramydh);
+    if (this.a.c != null)
+    {
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+    }
   }
   
-  public void a(@NonNull ydh paramydh, @NonNull wor paramwor)
-  {
-    ydh.a(paramydh, paramwor.a, this.TAG);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Class acceptEventClass()
-  {
-    return wor.class;
-  }
-  
-  public void b(@NonNull ydh paramydh, @NonNull wor paramwor) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

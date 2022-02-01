@@ -1,25 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Canvas;
 
-class blqk
-  implements View.OnClickListener
+public abstract interface blqk
 {
-  blqk(blqi paramblqi) {}
+  public abstract void a_(Canvas paramCanvas);
   
-  public void onClick(View paramView)
-  {
-    if (blqi.a(this.a))
-    {
-      if (blqi.b(this.a)) {
-        this.a.dismiss();
-      }
-      if (blqi.b(this.a) != null) {
-        blqi.b(this.a).onClick(paramView);
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract int getHeight();
+  
+  public abstract int getWidth();
 }
 
 

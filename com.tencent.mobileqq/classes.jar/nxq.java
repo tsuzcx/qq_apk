@@ -1,28 +1,15 @@
-import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nxq
-  implements old
+class nxq
+  implements DialogInterface.OnClickListener
 {
-  public nxq(ADBaseAppDownloadManager.3 param3) {}
+  nxq(nxo paramnxo, JsResult paramJsResult) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.this$0.a(this.a.a, 5, 100);
-      this.a.this$0.d(this.a.a);
-    }
-    do
-    {
-      return;
-      if (this.a.a.a)
-      {
-        nxp.a(this.a.this$0, this.a.a);
-        return;
-      }
-    } while (!bgnt.g(BaseApplicationImpl.getContext()));
-    this.a.this$0.a(this.a.a, 0);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

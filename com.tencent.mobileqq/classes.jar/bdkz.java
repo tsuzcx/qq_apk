@@ -1,23 +1,28 @@
-import android.view.View;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
-class bdkz
-  implements bkhw
+public class bdkz
+  implements DialogInterface.OnClickListener
 {
-  bdkz(bdkw parambdkw, List paramList, bdmc parambdmc, bkho parambkho) {}
+  public bdkz(LocalCrashCollector.3 param3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      paramView = (bdmd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (bdkw.a(this.jdField_a_of_type_Bdkw) != null) {
-        bdkw.a(this.jdField_a_of_type_Bdkw).a(paramView.b(), this.jdField_a_of_type_Bdmc);
-      }
-      this.jdField_a_of_type_Bkho.dismiss();
+      LocalCrashCollector.a(this.a.this$0).a.setText("");
+      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      paramDialogInterface.dismiss();
       return;
     }
-    this.jdField_a_of_type_Bkho.cancel();
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

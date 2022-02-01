@@ -1,37 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
 
 public class awqn
+  implements DialogInterface.OnClickListener
 {
-  private boolean a;
+  public awqn(LocationDialogUtil.10 param10) {}
   
-  public static awqn a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    if (awql.a(this.a.a))
     {
-      awqn localawqn = new awqn();
-      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
-      for (;;)
-      {
-        localawqn.a = bool;
-        return localawqn;
-        bool = false;
-      }
-      return null;
+      this.a.a.finish();
+      awql.a("");
     }
-    catch (Exception paramString)
-    {
-      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
   }
 }
 

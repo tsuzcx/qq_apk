@@ -1,25 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-
-public class awrn
-  implements ValueAnimator.AnimatorUpdateListener
+class awrn
+  implements awrj
 {
-  public awrn(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
+  awrn(awrk paramawrk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((0.0F - this.jdField_a_of_type_Int) * f1));
-    paramValueAnimator.topMargin = (this.b + Math.round((this.c - this.b) * f1));
-    paramValueAnimator.width = (this.d + Math.round((this.e - this.d) * f1));
-    int i = this.f;
-    paramValueAnimator.height = (Math.round(f1 * (this.g - this.f)) + i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      awrk.b(this.a);
+      return;
+    case 1: 
+      awrk.c(this.a);
+      return;
+    case 2: 
+      awrk.a(this.a);
+      return;
+    case 3: 
+      awrk.d(this.a);
+      return;
+    }
+    awrk.e(this.a);
   }
 }
 

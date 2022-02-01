@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.limitchat;
 
-import adrm;
-import avsq;
+import aean;
+import awll;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,18 +9,18 @@ import com.tencent.qphone.base.util.QLog;
 public class LimitChatDamon$1
   implements Runnable
 {
-  public LimitChatDamon$1(avsq paramavsq, String paramString, QQAppInterface paramQQAppInterface) {}
+  public LimitChatDamon$1(awll paramawll, String paramString, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     synchronized (this.this$0)
     {
-      avsq.a(this.this$0, null);
+      awll.a(this.this$0, null);
       ??? = new SessionInfo();
       ((SessionInfo)???).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       ((SessionInfo)???).b = this.jdField_a_of_type_JavaLangString;
       ((SessionInfo)???).jdField_a_of_type_Int = 1037;
-      adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)???);
+      aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)???);
       if (QLog.isColorLevel()) {
         QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm , real send:" + this.jdField_a_of_type_JavaLangString);
       }

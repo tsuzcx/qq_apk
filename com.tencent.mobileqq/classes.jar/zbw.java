@@ -1,23 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
-
 public class zbw
-  implements ViewPager.OnPageChangeListener
 {
-  public zbw(FaceViewPager paramFaceViewPager) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(zbw paramzbw)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((zbx)localIterator.next()).b(paramInt);
-    }
+    this.jdField_a_of_type_JavaLangString = paramzbw.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramzbw.jdField_a_of_type_Int;
+    this.b = paramzbw.b;
+    this.c = paramzbw.c;
+    this.d = paramzbw.d;
+  }
+  
+  public String toString()
+  {
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
   }
 }
 

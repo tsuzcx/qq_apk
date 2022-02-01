@@ -1,17 +1,25 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 class rxm
-  extends RecyclerView.AdapterDataObserver
+  extends PhoneStateListener
 {
-  private rxm(rwy paramrwy) {}
+  rxm(rxk paramrxk) {}
   
-  public void onChanged() {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    onItemRangeChanged(paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a(true);
+      return;
+    }
+    this.a.a(true);
   }
 }
 

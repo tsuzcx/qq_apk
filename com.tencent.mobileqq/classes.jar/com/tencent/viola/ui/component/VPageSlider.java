@@ -34,6 +34,7 @@ public class VPageSlider
   private int mCallbackTime = 250;
   private Handler mHandler;
   private boolean mIsHorizontal = true;
+  private VPageSlider.OnJSSetIndexListener onJSSetIndexListener;
   
   public VPageSlider(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -309,10 +310,18 @@ public class VPageSlider
     if (paramJSONObject != null)
     {
       int i = paramJSONObject.optInt("index", 0);
+      if (this.onJSSetIndexListener != null) {
+        this.onJSSetIndexListener.onSetIndex(i);
+      }
       boolean bool = paramJSONObject.optBoolean("animated", true);
       ((VPageSliderView)getHostView()).setCurrentItem(i, bool);
       callbackJs(paramString);
     }
+  }
+  
+  public void setOnJSSetIndexListener(VPageSlider.OnJSSetIndexListener paramOnJSSetIndexListener)
+  {
+    this.onJSSetIndexListener = paramOnJSSetIndexListener;
   }
   
   @VComponentProp(name="scrollEnable")

@@ -1,36 +1,32 @@
+import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bjyt
+final class bjyt
   implements URLDrawable.URLDrawableListener
 {
-  bjyt(bjys parambjys, String paramString) {}
+  bjyt(ImageView paramImageView) {}
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadCanceled get an exception when handling URLbmp:");
+    QLog.d("CommonUtils_", 1, "onLoadCanceled");
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadFialed when handling URLbmp");
-    bjyo.a(this.jdField_a_of_type_Bjys.jdField_a_of_type_Bjyo, this.jdField_a_of_type_Bjys.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjys.jdField_a_of_type_Int, this.jdField_a_of_type_Bjys.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bjys.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, this.jdField_a_of_type_JavaLangString);
+    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadProgressed get an exception when handling URLbmp:");
+    QLog.d("CommonUtils_", 1, "onLoadProgressed");
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramURLDrawable = ImageUtil.drawableToBitmap(paramURLDrawable.getCurrDrawable());
-    if (paramURLDrawable != null) {
-      bjyo.a(this.jdField_a_of_type_Bjys.jdField_a_of_type_Bjyo, this.jdField_a_of_type_Bjys.jdField_a_of_type_Int, this.jdField_a_of_type_Bjys.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bjys.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, bjyo.a(this.jdField_a_of_type_Bjys.jdField_a_of_type_Bjyo, paramURLDrawable), this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.setImageDrawable(paramURLDrawable);
+    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
   }
 }
 

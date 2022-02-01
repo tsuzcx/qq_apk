@@ -1,9 +1,27 @@
-public final class ayzy
-  extends ayzn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ayzy
+  implements View.OnClickListener
 {
-  protected int a()
+  public ayzy(ScanOcrActivity paramScanOcrActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return 508;
+    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
+    {
+      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.a(this.a, false);
+      ScanOcrActivity.b(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.finish();
+    }
   }
 }
 

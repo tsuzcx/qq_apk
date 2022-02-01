@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.model.AspectRatio;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-public final class tgj
-  implements Parcelable.Creator<AspectRatio>
+public class tgj
+  extends tgb
 {
-  public AspectRatio a(Parcel paramParcel)
+  tgj(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    return new AspectRatio(paramParcel);
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
   }
   
-  public AspectRatio[] a(int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    return new AspectRatio[paramInt];
+    tfy.a(this.a).mShareHelper.c();
   }
 }
 

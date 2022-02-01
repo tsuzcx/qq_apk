@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album.preview;
 
-import akfl;
+import akqw;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import bkij;
-import bkil;
+import bljm;
+import bljo;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class BasePreviewAdapter
   extends BaseAdapter
-  implements akfl, bkij, bkil
+  implements akqw, bljm, bljo
 {
   public static final String TAG = "BasePreviewAdapter";
   BasePreviewPresent mCurrentPreviewPresent;

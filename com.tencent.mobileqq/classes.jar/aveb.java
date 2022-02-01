@@ -1,34 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aveb
-  implements TVK_IMediaPlayer.OnInfoListener
+public class aveb
+  implements View.OnClickListener
 {
-  aveb(avdv paramavdv) {}
+  public aveb(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (avdv.a(this.a) != null) {
-        avdv.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (avdv.a(this.a) == null);
-    avdv.a(this.a).a(this.a.b, 1);
-    return false;
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

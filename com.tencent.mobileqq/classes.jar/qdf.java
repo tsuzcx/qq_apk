@@ -1,18 +1,13 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qdf
-  implements ViewBase.OnClickListener
+public class qdf
+  implements ViewBase.IBuilder
 {
-  qdf(qda paramqda, Context paramContext, rfu paramrfu, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public ViewBase build(VafContext paramVafContext)
   {
-    ryx.a(this.jdField_a_of_type_AndroidContentContext, ((rhx)this.jdField_a_of_type_Rfu.a.get(1)).a);
-    qda.a(this.jdField_a_of_type_Qda, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    return new qdc(paramVafContext);
   }
 }
 

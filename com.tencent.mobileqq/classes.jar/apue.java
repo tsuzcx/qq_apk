@@ -1,8 +1,16 @@
-public abstract interface apue
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+
+public class apue
+  implements apuf
 {
-  public abstract void a(String paramString, int paramInt);
+  public apue(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public abstract void a(String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  public void a(int paramInt)
+  {
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
+    }
+  }
 }
 
 

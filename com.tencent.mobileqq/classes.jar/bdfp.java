@@ -1,8 +1,10 @@
 public abstract interface bdfp
 {
-  public abstract void d();
+  public abstract void X_();
   
-  public abstract void e();
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

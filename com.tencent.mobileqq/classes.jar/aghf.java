@@ -1,6 +1,12 @@
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
+
 public abstract interface aghf
 {
-  public abstract void a(int paramInt, aghq paramaghq);
+  public abstract void a(int paramInt, Context paramContext, ChatMessage paramChatMessage);
+  
+  public abstract bhum[] a(View paramView);
 }
 
 

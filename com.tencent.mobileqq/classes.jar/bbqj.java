@@ -1,16 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bbqj
-  implements View.OnClickListener
+public class bbqj
 {
-  bbqj(bbqi parambbqi, bbmx parambbmx) {}
+  private static int a;
+  public ConcurrentHashMap<Long, bbqm> a;
   
-  public void onClick(View paramView)
+  static
   {
-    this.jdField_a_of_type_Bbmx.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_Int = 900000;
+  }
+  
+  private bbqj()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static final bbqj a()
+  {
+    return bbql.a();
+  }
+  
+  public bbqm a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (bbqm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new bbqm(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 

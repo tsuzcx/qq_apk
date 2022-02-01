@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arnn;
-import arov;
+import asdd;
+import asej;
 import com.tencent.mobileqq.persistence.Entity;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -12,43 +12,43 @@ public abstract class XmlData
   public static final int STATE_LOADING = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_SUCCESS = 1;
-  @arov(a=true, b=false)
+  @asej(a=true, b=false)
   public String MD5;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean StoreBackup;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public int Version;
   public long downSize;
-  @arov(a=false, b=true)
+  @asej(a=false, b=true)
   public boolean hasResDownloaded;
   public boolean isUserClick;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean load2G;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean load3G;
-  @arov(a=false, b=true)
+  @asej(a=false, b=true)
   public int loadState;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean loadWifi;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean net_2_2G;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean net_2_3G;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean net_2_wifi;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean notPreDownloadInLowEndPhone;
   public int reqLoadCount;
   public String strLog;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String strPkgName;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String strResName;
-  @arov(a=true, b=false)
+  @asej(a=true, b=false)
   public String strResURL_big;
-  @arov(a=true, b=false)
+  @asej(a=true, b=false)
   public String strResURL_small;
-  @arov(a=false, b=true)
+  @asej(a=false, b=true)
   public long tLoadFail;
   public long tStart;
   public long totalSize;
@@ -73,7 +73,7 @@ public abstract class XmlData
         {
           i += 1;
           break;
-          if (((Field)localObject).isAnnotationPresent(arov.class))
+          if (((Field)localObject).isAnnotationPresent(asej.class))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
@@ -102,14 +102,14 @@ public abstract class XmlData
     do
     {
       return;
-      arrayOfField = arnn.a(paramXmlData.getClass());
+      arrayOfField = asdd.a(paramXmlData.getClass());
     } while ((arrayOfField == null) || (arrayOfField.length == 0));
     int j = arrayOfField.length;
     int i = 0;
     while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(arov.class)) && (((arov)localField.getAnnotation(arov.class)).a())) {}
+      if ((localField.isAnnotationPresent(asej.class)) && (((asej)localField.getAnnotation(asej.class)).a())) {}
       try
       {
         localField.set(this, localField.get(paramXmlData));

@@ -1,69 +1,91 @@
-import com.tencent.lbssearch.httpresponse.AdInfo;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-abstract class ayrp
+final class ayrp
+  implements aydk
 {
-  protected static String a = "Loader";
-  protected final String b;
+  ayrp(int paramInt, ayrv paramayrv) {}
   
-  ayrp(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.b = paramString;
-  }
-  
-  protected void a(String paramString, PoiBean paramPoiBean)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null) && (paramPoiBean.poiArray.length > 0)) {
-        break label99;
-      }
-      localObject = a;
-      localStringBuilder = new StringBuilder().append("[status][poiLoader][").append(this.b).append("] from: ").append(paramString).append(" result: ");
-      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null)) {
-        break label93;
-      }
+    boolean bool3 = false;
+    bool2 = false;
+    bool1 = true;
+    paramBundle = new ArrayList();
+    int i = this.jdField_a_of_type_Int;
+    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
+    if (paramInt == 0) {
+      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
     }
-    label93:
-    for (paramString = "null";; paramString = "0")
+    for (;;)
     {
-      QLog.d((String)localObject, 2, paramString);
-      return;
-    }
-    label99:
-    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " result: " + Arrays.toString(paramPoiBean.poiArray) + " size: " + paramPoiBean.poiArray.length);
-    Object localObject = paramPoiBean.poiArray[0];
-    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " first poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
-    if (paramPoiBean.poiArray.length >= 2)
-    {
-      localObject = paramPoiBean.poiArray[1];
-      QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " second poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
-    }
-    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " result: " + Arrays.toString(paramPoiBean.poiArray) + " adInfoCity: " + paramPoiBean.adInfo.city + " adInfoDistrict: " + paramPoiBean.adInfo.district);
-  }
-  
-  protected boolean a(LatLng paramLatLng1, LatLng paramLatLng2, int paramInt)
-  {
-    if ((paramLatLng1 == null) || (paramLatLng2 == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "[status][poiLoader][" + this.b + "] accept? fail this.latLng: " + paramLatLng1 + " that.latLng: " + paramLatLng2);
+      try
+      {
+        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
+        if (!localReadNearUserFeedsRsp.result.has())
+        {
+          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
+          paramInt = i;
+          if (this.jdField_a_of_type_Ayrv != null) {
+            this.jdField_a_of_type_Ayrv.a(bool2, paramBundle, bool1, paramInt);
+          }
+          return;
+        }
+        if (localReadNearUserFeedsRsp.result.get() == 0) {
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
+          }
+        }
       }
-    }
-    double d;
-    do
-    {
-      return false;
-      d = ayqx.a(paramLatLng1, paramLatLng2);
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "[status][poiLoader][" + this.b + "] accept? this.latLng: " + paramLatLng1 + " that.latLng: " + paramLatLng2 + " distance: " + d + " acceptAccuracy: " + paramInt);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool2 = false;
+        bool1 = true;
       }
-    } while (d >= paramInt);
-    return true;
+      try
+      {
+        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
+        paramInt = localReadNearUserFeedsRsp.end_flag.get();
+        bool1 = bool3;
+        if (paramInt == 1) {
+          bool1 = true;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          bool2 = true;
+          bool1 = true;
+        }
+      }
+      try
+      {
+        paramInt = localReadNearUserFeedsRsp.pos.get();
+        bool2 = true;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool2 = true;
+        break label281;
+      }
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
+      paramInt = i;
+      continue;
+      label281:
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
+      paramInt = i;
+      continue;
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+      paramInt = i;
+    }
   }
 }
 

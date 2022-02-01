@@ -1,24 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxc
-  implements ViewBase.OnClickListener
+public class oxc
+  implements ViewBase.IBuilder
 {
-  oxc(pay parampay, pan parampan, Container paramContainer) {}
-  
-  public final void onClick(ViewBase paramViewBase)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (opu.a(this.jdField_a_of_type_Pay))
-    {
-      paramViewBase = this.jdField_a_of_type_Pan.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      opu.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pay, 2001);
-    }
+    return new owz(paramVafContext);
   }
 }
 

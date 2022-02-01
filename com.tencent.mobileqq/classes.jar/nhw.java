@@ -1,19 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.PoiMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nhw
-  implements View.OnTouchListener
+final class nhw
+  implements DialogInterface.OnClickListener
 {
-  public nhw(PoiMapActivity paramPoiMapActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    paramDialogInterface.cancel();
   }
 }
 

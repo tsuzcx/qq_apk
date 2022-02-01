@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adxa
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adxa(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adxa(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatSettingForTroop.i(this.a);
+    AuthDevActivity.h(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

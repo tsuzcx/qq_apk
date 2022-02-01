@@ -1,59 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
 class vzd
-  extends RecyclerView.ViewHolder
+  implements Animation.AnimationListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
+  vzd(vzc paramvzc) {}
   
-  public vzd(vzc paramvzc, View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369517));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369511));
-    this.b = ((ImageView)paramView.findViewById(2131369510));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369515));
+    this.a.a.clearAnimation();
+    this.a.a.c = false;
   }
   
-  public void a(long paramLong, int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    FrameLayout.LayoutParams localLayoutParams;
-    if (vyz.a(this.jdField_a_of_type_Vzc.jdField_a_of_type_Vyz) == 0)
-    {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("Q群: " + paramLong);
-      localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      if (paramInt != 0) {
-        break label165;
-      }
-      localLayoutParams.setMargins(0, 0, 0, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(bclx.a(5.0F), 0, bclx.a(5.0F), 0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new vze(this, paramLong));
-      this.b.setOnClickListener(new vzf(this, paramLong));
-      return;
-      this.b.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramLong));
-      break;
-      label165:
-      if (paramInt == this.jdField_a_of_type_Vzc.jdField_a_of_type_JavaUtilList.size() - 1) {
-        localLayoutParams.setMargins(bclx.a(5.0F), 0, bclx.a(38.0F), 0);
-      } else {
-        localLayoutParams.setMargins(bclx.a(5.0F), 0, 0, 0);
-      }
-    }
+    this.a.a.c = true;
   }
 }
 

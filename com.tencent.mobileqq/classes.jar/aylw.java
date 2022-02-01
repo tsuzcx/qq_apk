@@ -1,22 +1,49 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
 
-public class aylw
-  implements QQPermissionCallback
+class aylw
+  implements DialogInterface.OnClickListener
 {
-  public aylw(ScanTorchActivity paramScanTorchActivity) {}
+  aylw(aykx paramaykx) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    if (paramInt == 1)
+    {
+      if (this.a.jdField_a_of_type_Aypz != null) {
+        this.a.jdField_a_of_type_Aypz.a(2);
+      }
+      if (aykx.a(this.a) != null)
+      {
+        if (!this.a.m) {
+          break label88;
+        }
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, aykx.a(this.a).uin, "", "yes", "android");
+      }
+    }
+    label88:
+    do
+    {
+      do
+      {
+        return;
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, aykx.a(this.a).uin, "", "yes", "android");
+        return;
+      } while (paramInt != 0);
+      if (this.a.jdField_a_of_type_Aypz != null) {
+        this.a.jdField_a_of_type_Aypz.a(10);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697963);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+      }
+      this.a.jdField_a_of_type_Int = 2;
+    } while (aykx.a(this.a) == null);
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, aykx.a(this.a).uin, "", "yes", "android");
   }
 }
 

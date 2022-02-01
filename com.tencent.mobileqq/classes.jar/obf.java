@@ -1,6 +1,17 @@
-public abstract interface obf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+
+public class obf
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public obf(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+  }
 }
 
 

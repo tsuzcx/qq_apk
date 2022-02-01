@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -66,7 +66,7 @@ class QfileLocalFileMediaTabView$1
       break;
       if ("QQ".equalsIgnoreCase((String)localObject))
       {
-        localObject = anni.a(2131708440);
+        localObject = anzj.a(2131708549);
         continue;
         QfileLocalFileMediaTabView.a(this.this$0, new QfileLocalFileMediaTabView.1.1(this, localArrayList, localHashMap2, localHashMap1, localLinkedHashMap));
         return;

@@ -1,67 +1,81 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import cooperation.photoplus.PhotoPlusModule.1;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class blfa
-  extends QIPCModule
+  implements blfk
 {
-  private static blfa a;
+  public blfa(AudioDeviceInterface paramAudioDeviceInterface) {}
   
-  private blfa()
+  public void a(int paramInt)
   {
-    super("PhotoPlusModule");
-  }
-  
-  public static blfa a()
-  {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new blfa();
+      AudioDeviceInterface.access$000(this.a).lock();
+      AudioDeviceInterface.access$102(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
       }
-      return a;
+      AudioDeviceInterface.access$200(this.a).signalAll();
+      AudioDeviceInterface.access$000(this.a).unlock();
+      return;
     }
-    finally {}
+    catch (Exception localException) {}
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    if (paramInt == 0) {
+      AudioDeviceInterface.access$400(this.a, paramString);
     }
-    paramBundle = BaseApplicationImpl.sApplication.getRuntime();
-    if (!QQAppInterface.class.isInstance(paramBundle)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
-      }
-    }
-    do
-    {
-      return null;
-      paramBundle = (PhotoPlusManager)paramBundle.getManager(169);
-      if ("action_get_sticker_templates".equals(paramString))
-      {
-        paramBundle.b(true);
-        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
-        return null;
-      }
-      if ("action_exit_sticker".equals(paramString))
-      {
-        paramBundle.b(false);
-        return null;
-      }
-    } while (!"action_jump_to_shortvideo".equals(paramString));
-    paramBundle.c(true);
-    return null;
   }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
+  
+  public void a(long paramLong, int paramInt) {}
+  
+  public void a(long paramLong, int paramInt, String paramString) {}
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    try
+    {
+      AudioDeviceInterface.access$000(this.a).lock();
+      AudioDeviceInterface.access$102(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      }
+      AudioDeviceInterface.access$200(this.a).signalAll();
+      AudioDeviceInterface.access$000(this.a).unlock();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  {
+    if (AudioDeviceInterface.access$300(this.a)) {
+      AudioDeviceInterface.access$400(this.a, paramString1);
+    }
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, long paramLong) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(int paramInt, String paramString) {}
 }
 
 

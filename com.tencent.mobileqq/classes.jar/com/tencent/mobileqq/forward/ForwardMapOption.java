@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import aufw;
-import aufz;
-import auif;
-import bdzx;
-import bgjw;
-import bgpa;
+import auxr;
+import auxu;
+import avae;
+import beyq;
+import bhjx;
+import bhpc;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
@@ -20,10 +20,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nmp;
+import nok;
 
 public class ForwardMapOption
-  extends aufz
+  extends auxu
 {
   public ForwardMapOption(Intent paramIntent)
   {
@@ -37,7 +37,7 @@ public class ForwardMapOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bgjw.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aufw.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!bhjx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -47,7 +47,7 @@ public class ForwardMapOption
   public void a(Drawable paramDrawable, boolean paramBoolean)
   {
     if (paramBoolean) {
-      bdzx.a((URLDrawable)paramDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+      beyq.a((URLDrawable)paramDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
     }
     if (paramDrawable == null) {
       return;
@@ -55,18 +55,18 @@ public class ForwardMapOption
     paramDrawable.setBounds(0, 0, (int)(264.0F * this.jdField_a_of_type_Float), (int)(138.0F * this.jdField_a_of_type_Float));
   }
   
-  public void a(bgpa parambgpa)
+  public void a(bhpc parambhpc)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwwardMapOption", 2, "updateImageView:setDefaultDialogPreviewImage");
     }
-    a(auif.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839608), this.jdField_a_of_type_Float), false, 0);
+    a(avae.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839617), this.jdField_a_of_type_Float), false, 0);
   }
   
   public void b()
   {
     String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_location_string");
-    this.jdField_a_of_type_Bgpa.setMessage(str);
+    this.jdField_a_of_type_Bhpc.setMessage(str);
   }
   
   public boolean c()

@@ -1,22 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class yok
-  extends QQUIEventReceiver<ynm, wpw>
+  implements URLDrawable.URLDrawableListener
 {
-  public yok(@NonNull ynm paramynm)
-  {
-    super(paramynm);
-  }
+  public yok(AutoPlayImageView paramAutoPlayImageView) {}
   
-  public void a(@NonNull ynm paramynm, @NonNull wpw paramwpw)
-  {
-    paramynm.i();
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public Class acceptEventClass()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return wpw.class;
+    if (AutoPlayImageView.a(this.a) == 2) {
+      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
+      }
+    }
+    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      return;
+    }
+    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
   }
 }
 

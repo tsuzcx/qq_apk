@@ -1,10 +1,19 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+
 public class bfnv
+  extends AnimatorListenerAdapter
 {
-  public bfkq a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public bfnv(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    }
+  }
 }
 
 

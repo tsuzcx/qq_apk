@@ -1,52 +1,20 @@
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbui
+  extends Editable.Factory
 {
-  static bbui jdField_a_of_type_Bbui;
-  public String a;
-  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
+  public bbui(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  bbui()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-  }
-  
-  public static bbui a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bbui == null) {
-        jdField_a_of_type_Bbui = new bbui();
-      }
-      bbui localbbui = jdField_a_of_type_Bbui;
-      return localbbui;
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+    return new begz(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
   }
 }
 

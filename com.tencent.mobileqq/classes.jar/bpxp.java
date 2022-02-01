@@ -1,37 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bpxp
-  implements View.OnClickListener
+final class bpxp
+  implements EIPCResultCallback
 {
-  bpxp(bpxo parambpxo) {}
-  
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (!bpxo.a(this.a).f) {
-      bpxo.a(this.a);
-    }
-    for (;;)
+    if (paramEIPCResult != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (bpxo.a(this.a).p)
-      {
-        biti.a().a(2131716811);
-        bpxo.a(this.a).p = false;
-        bpxo.a(this.a).setSelected(false);
-        bpxo.a(this.a).m = false;
-        bpxo.a(this.a).c(3008);
-      }
-      else
-      {
-        biti.a().a(2131716813);
-        bpxo.a(this.a).p = true;
-        bpxo.a(this.a).setSelected(true);
-        bpxo.a(this.a).m = true;
-        bpxo.a(this.a).c(3007);
-      }
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "sendVideo result:" + bool);
     }
   }
 }

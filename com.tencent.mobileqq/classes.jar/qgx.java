@@ -1,30 +1,25 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.qphone.base.util.QLog;
 
-class qgx
-  implements View.OnAttachStateChangeListener
+public class qgx
+  extends qgz
 {
-  qgx(qgw paramqgw) {}
+  public qgx(PTSJSCLoader.3 param3) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    if (qgw.a(this.a) != null)
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
     {
-      qgw.a(this.a).b();
-      qgw.a(this.a, null);
+      QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
+      qgw.b(this.a.this$0);
     }
-    if (qgw.a(this.a) != null)
-    {
-      qgw.a(this.a).a();
-      qgw.a(this.a, null);
-    }
-    if (qgw.a(this.a) != null)
-    {
-      qgw.a(this.a).a();
-      qgw.a(this.a, null);
-    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
   }
 }
 

@@ -1,71 +1,241 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class pbd
-  extends ImageSpan
+public class pbd
+  implements AladdinConfigHandler
 {
-  private int jdField_a_of_type_Int = 2;
-  private int b;
-  private int c;
+  private static int jdField_a_of_type_Int = 41505;
+  private static String jdField_a_of_type_JavaLangString;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int;
+  private static String jdField_b_of_type_JavaLangString;
+  private static String c;
+  private static String d;
   
-  public pbd(pay parampay, Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static float a()
   {
-    super(paramContext, paramInt1, paramInt2);
-    this.c = paramInt4;
-    this.b = paramInt3;
+    Float localFloat = (Float)bnrf.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
+    QLog.d("DailyModeConfigHandler", 1, "[getJumpThreshold] " + localFloat);
+    if ((localFloat.floatValue() > 0.001D) && (localFloat.floatValue() < 10.0F)) {
+      return localFloat.floatValue();
+    }
+    return 1.0F;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public static int a()
   {
-    paramCharSequence = getDrawable();
-    if ((this.b > 0) && (this.c > 0))
+    if (b(jdField_a_of_type_Int))
     {
-      Rect localRect = new Rect();
-      localRect.left = 0;
-      localRect.right = this.b;
-      localRect.top = 0;
-      localRect.bottom = this.c;
-      paramCharSequence.setBounds(localRect);
+      QLog.d("DailyModeConfigHandler", 1, "[getMode] isDailyUnlimitChannel MODE_LOAD_MORE");
+      return 2;
     }
-    paramCanvas.save();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramInt5 - paramCharSequence.getBounds().bottom;
-    if (this.mVerticalAlignment == 1) {
-      paramInt1 -= paramPaint.descent;
+    Integer localInteger = (Integer)bnrf.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
+    QLog.d("DailyModeConfigHandler", 1, "[getMode] " + localInteger);
+    if (localInteger.intValue() == 2) {
+      return 2;
     }
+    if (localInteger.intValue() == 1) {
+      return 1;
+    }
+    return 3;
+  }
+  
+  public static String a()
+  {
+    if (jdField_b_of_type_JavaLangString != null) {
+      return jdField_b_of_type_JavaLangString;
+    }
+    jdField_b_of_type_JavaLangString = (String)bnrf.a("readinjoy_daily_mode_bottom_jump", "");
+    return jdField_b_of_type_JavaLangString;
+  }
+  
+  public static JSONObject a()
+  {
+    if (TextUtils.isEmpty(d)) {
+      d = (String)bnrf.a("readinjoy_daily_mode_footer_pts", "");
+    }
+    QLog.i("DailyModeConfigHandler", 1, "getFooterData pts = " + d);
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject(d);
+      return localJSONObject1;
+    }
+    catch (JSONException localJSONException1)
+    {
+      QLog.e("DailyModeConfigHandler", 1, "getFooterData e = " + localJSONException1);
+      JSONObject localJSONObject2 = new JSONObject();
+      try
+      {
+        localJSONObject2.put("style_ID", "ReadInjoy_daily_footer");
+        localJSONObject2.put("title_EN", "TENCENT KANDIAN");
+        localJSONObject2.put("title_CN", anzj.a(2131701617));
+        return localJSONObject2;
+      }
+      catch (JSONException localJSONException2)
+      {
+        QLog.e("DailyModeConfigHandler", 1, "getFooterData e = " + localJSONException2);
+      }
+      return localJSONObject2;
+    }
+  }
+  
+  public static void a()
+  {
+    QLog.d("DailyModeConfigHandler", 1, "DailyModeConfigHandler reset.");
+    jdField_a_of_type_JavaLangString = null;
+    jdField_b_of_type_JavaLangString = null;
+    c = null;
+    d = null;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString == null) {}
     for (;;)
     {
-      paramCanvas.translate(paramFloat, paramInt1);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
       return;
-      if (this.mVerticalAlignment == this.jdField_a_of_type_Int) {
-        paramInt1 = (paramPaint.descent + paramInt4 + (paramPaint.ascent + paramInt4)) / 2 - paramCharSequence.getBounds().bottom / 2;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        jdField_a_of_type_JavaLangString = paramString.optString("bottom_text");
+        jdField_b_of_type_JavaLangString = paramString.optString("jump_url");
+        c = paramString.optString("jump_src");
+        d = paramString.optString("ReadInjoy_daily_footer_pts");
+        if (jdField_a_of_type_JavaLangString != null) {
+          bnrf.a("readinjoy_daily_mode_bottom_text", jdField_a_of_type_JavaLangString);
+        }
+        if (jdField_b_of_type_JavaLangString != null) {
+          bnrf.a("readinjoy_daily_mode_bottom_jump", jdField_b_of_type_JavaLangString);
+        }
+        if (c != null) {
+          bnrf.a("readinjoy_daily_mode_bottom_jump_src", c);
+        }
+        if (d != null)
+        {
+          bnrf.a("readinjoy_daily_mode_footer_pts", d);
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
       }
     }
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public static boolean a()
   {
-    paramCharSequence = getDrawable().getBounds();
-    if (paramFontMetricsInt != null)
-    {
-      paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      paramInt2 = i / 2 + paramInt2 / 4;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 41505;
+  }
+  
+  public static int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    if (ohz.a() == 1) {
+      return "1";
     }
-    return this.b;
+    if (c != null) {
+      return c;
+    }
+    c = (String)bnrf.a("readinjoy_daily_mode_bottom_jump_src", "0");
+    return c;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Boolean = "1".equals((String)bnrf.a("readinjoy_daily_mode_refresh_mode", "0"));
+    jdField_a_of_type_Int = ((Integer)bnrf.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
+    if (!bnrf.f())
+    {
+      QLog.i("DailyModeConfigHandler", 1, "非独立看点->进入无限流 refreshDailyConfig   " + jdField_a_of_type_Int);
+      jdField_a_of_type_Int = 41697;
+    }
+    if (b(jdField_a_of_type_Int)) {
+      jdField_a_of_type_Boolean = true;
+    }
+    QLog.i("DailyModeConfigHandler", 1, "refreshDailyConfig " + jdField_a_of_type_Boolean + "  " + jdField_a_of_type_Int);
+    jdField_b_of_type_Int = jdField_a_of_type_Int;
+    if (ozs.c) {
+      jdField_a_of_type_Int = 41697;
+    }
+  }
+  
+  public static boolean b()
+  {
+    boolean bool = true;
+    if (a()) {
+      return false;
+    }
+    if (Aladdin.getConfig(157).getIntegerFromString("enable_dynamic_header", 0) == 1) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    if (a(jdField_a_of_type_Int)) {}
+    while (jdField_a_of_type_Int != paramInt) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Int = jdField_b_of_type_Int;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    if (a(paramInt)) {
+      return true;
+    }
+    return b(paramInt);
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("DailyModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("DailyModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "daily_plan_number")) {
+        bnrf.a("readinjoy_daily_mode_plan_number", Integer.valueOf(str2));
+      } else if (TextUtils.equals(str1, "daily_drag_threshold")) {
+        bnrf.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(str2));
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("DailyModeConfigHandler", 1, "[onWipeConfig]");
+    bnrf.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.minigame.task;
 
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 import com.tencent.mobileqq.mini.tfs.TaskExecutionStatics;
-import com.tencent.mobileqq.triton.sdk.statics.ScriptLoadResult;
-import com.tencent.mobileqq.triton.sdk.statics.ScriptLoadStatics;
+import com.tencent.mobileqq.triton.statistic.ScriptLoadResult;
+import com.tencent.mobileqq.triton.statistic.ScriptLoadStatistic;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/task/LaunchEngineUISteps$ScriptTask;", "Lcom/tencent/mobileqq/mini/tfs/BaseTask;", "(Lcom/tencent/mobileqq/minigame/task/LaunchEngineUISteps;)V", "scriptDurationMs", "", "steps", "", "Lcom/tencent/mobileqq/mini/tfs/TaskExecutionStatics;", "getSteps", "()Ljava/util/List;", "setSteps", "(Ljava/util/List;)V", "wallDurationMs", "execute", "", "getRunDurationMs", "getSubTaskExecutionStatics", "getTotalRunDurationMs", "onTaskSucceed", "timeMs", "list", "Lcom/tencent/mobileqq/triton/sdk/statics/ScriptLoadStatics;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/task/LaunchEngineUISteps$ScriptTask;", "Lcom/tencent/mobileqq/mini/tfs/BaseTask;", "(Lcom/tencent/mobileqq/minigame/task/LaunchEngineUISteps;)V", "scriptDurationMs", "", "steps", "", "Lcom/tencent/mobileqq/mini/tfs/TaskExecutionStatics;", "getSteps", "()Ljava/util/List;", "setSteps", "(Ljava/util/List;)V", "wallDurationMs", "execute", "", "getRunDurationMs", "getSubTaskExecutionStatics", "getTotalRunDurationMs", "onTaskSucceed", "timeMs", "list", "Lcom/tencent/mobileqq/triton/statistic/ScriptLoadStatistic;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 class LaunchEngineUISteps$ScriptTask
   extends BaseTask
 {
@@ -51,7 +51,7 @@ class LaunchEngineUISteps$ScriptTask
     return this.wallDurationMs;
   }
   
-  public final void onTaskSucceed(long paramLong, @NotNull List<? extends ScriptLoadStatics> paramList)
+  public final void onTaskSucceed(long paramLong, @NotNull List<ScriptLoadStatistic> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "list");
     this.wallDurationMs = paramLong;
@@ -61,16 +61,15 @@ class LaunchEngineUISteps$ScriptTask
     Iterator localIterator = paramList.iterator();
     if (localIterator.hasNext())
     {
-      ScriptLoadStatics localScriptLoadStatics = (ScriptLoadStatics)localIterator.next();
-      this.scriptDurationMs += localScriptLoadStatics.compileTimeMs + localScriptLoadStatics.executeTimeMs;
-      String str = localScriptLoadStatics.scriptName;
-      Intrinsics.checkExpressionValueIsNotNull(str, "it.scriptName");
-      paramLong = localScriptLoadStatics.compileTimeMs;
-      long l = localScriptLoadStatics.executeTimeMs;
-      if (localScriptLoadStatics.loadResult == ScriptLoadResult.SUCCESS_WITH_CACHE) {}
+      ScriptLoadStatistic localScriptLoadStatistic = (ScriptLoadStatistic)localIterator.next();
+      this.scriptDurationMs += localScriptLoadStatistic.getCompileTimeMs() + localScriptLoadStatistic.getExecuteTimeMs();
+      String str = localScriptLoadStatistic.getScriptName();
+      paramLong = localScriptLoadStatistic.getCompileTimeMs();
+      long l = localScriptLoadStatistic.getExecuteTimeMs();
+      if (localScriptLoadStatistic.getLoadResult() == ScriptLoadResult.SUCCESS_WITH_CACHE) {}
       for (paramList = "cc";; paramList = "")
       {
-        localCollection.add(new TaskExecutionStatics(str, 0L, paramLong + l, null, paramList, CollectionsKt.listOf(new TaskExecutionStatics[] { new TaskExecutionStatics("compile", localScriptLoadStatics.compileTimeMs, 0L, null, null, null, 60, null), new TaskExecutionStatics("execute", localScriptLoadStatics.executeTimeMs, 0L, null, null, null, 60, null) }), 8, null));
+        localCollection.add(new TaskExecutionStatics(str, 0L, paramLong + l, null, paramList, CollectionsKt.listOf(new TaskExecutionStatics[] { new TaskExecutionStatics("compile", localScriptLoadStatistic.getCompileTimeMs(), 0L, null, null, null, 60, null), new TaskExecutionStatics("execute", localScriptLoadStatistic.getExecuteTimeMs(), 0L, null, null, null, 60, null) }), 8, null));
         break;
       }
     }

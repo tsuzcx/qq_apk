@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.QQLogo;
 
 public class mhq
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public mhq(QavPanel paramQavPanel) {}
+  public mhq(QQLogo paramQQLogo) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.a(true);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

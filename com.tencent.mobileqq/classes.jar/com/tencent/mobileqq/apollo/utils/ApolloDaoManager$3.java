@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ancd;
+import annx;
 import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ApolloDaoManager$3
   implements Runnable
 {
-  public ApolloDaoManager$3(ancd paramancd, int paramInt) {}
+  public ApolloDaoManager$3(annx paramannx, int paramInt) {}
   
   public void run()
   {

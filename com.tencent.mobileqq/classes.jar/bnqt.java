@@ -1,264 +1,89 @@
-import android.os.Build;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.AEGifTipsPopupPart.1;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bnqt
-  extends bnva
+public final class bnqt
+  extends Drawable.ConstantState
 {
-  private static List<String> jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "Xiaomi_MI 4C" });
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anni.a(2131689762), anni.a(2131689763), anni.a(2131689764) };
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private boolean jdField_b_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  private boolean jdField_c_of_type_Boolean;
+  int jdField_a_of_type_Int = 30;
+  bnqv jdField_a_of_type_Bnqv;
+  bnrc jdField_a_of_type_Bnrc;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  private String a()
+  private bnqt(bnqp parambnqp) {}
+  
+  public int a()
   {
-    int i = Math.abs(new Random(System.currentTimeMillis()).nextInt());
-    int j = jdField_a_of_type_ArrayOfJavaLangString.length;
-    return jdField_a_of_type_ArrayOfJavaLangString[(i % j)];
+    if (this.jdField_a_of_type_Bnqv == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Bnqv.a();
   }
   
-  private void a(Runnable paramRunnable)
+  public void a(Rect paramRect)
   {
-    QLog.d("AEGifTipsPopupPart", 4, "###  showup tips");
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F);
-    localScaleAnimation.setDuration(500L);
-    localScaleAnimation.setInterpolator(new DecelerateInterpolator(3.0F));
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.5F, 1, 0.0F, 0, this.jdField_c_of_type_AndroidViewView.getY() + this.jdField_c_of_type_AndroidViewView.getHeight() / 2 - this.jdField_b_of_type_AndroidViewView.getY(), 1, 0.0F);
-    localTranslateAnimation.setDuration(500L);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator(3.0F));
-    localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setAnimationListener(new bnqv(this, paramRunnable));
-    this.jdField_b_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    this.jdField_a_of_type_Bnqv.a(paramRect);
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(String paramString, int paramInt)
   {
-    if (b()) {}
-    label145:
-    for (;;)
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_Bnqv == null)
     {
-      return;
-      this.jdField_c_of_type_Boolean = false;
-      QLog.d("AEGifTipsPopupPart", 4, "###  show tips, random = " + paramBoolean1);
-      if (this.jdField_b_of_type_Boolean)
+      this.jdField_a_of_type_Bnqv = new bnqv(BaseApplicationImpl.getApplication());
+      if (this.jdField_a_of_type_Bnrc == null) {
+        this.jdField_a_of_type_Bnrc = new bnqu(this);
+      }
+      this.jdField_a_of_type_Bnqv.a(this.jdField_a_of_type_Bnrc);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
       {
-        if (paramBoolean1) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+        if (!URLUtil.isNetworkUrl(paramString)) {
+          break label148;
         }
-        for (;;)
-        {
-          if ((a(this.jdField_a_of_type_AndroidViewAnimationAnimation)) || (a(this.jdField_b_of_type_AndroidViewAnimationAnimation))) {
-            break label145;
-          }
-          if (a(this.jdField_c_of_type_AndroidViewAnimationAnimation))
-          {
-            this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-            this.jdField_c_of_type_AndroidViewAnimationAnimation.cancel();
-            this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
-          }
-          if (this.jdField_b_of_type_AndroidViewView == null) {
-            break;
-          }
-          if (!paramBoolean2) {
-            break label147;
-          }
-          a(new AEGifTipsPopupPart.1(this));
-          return;
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(b());
-        }
+        this.jdField_a_of_type_Bnqv.a(paramString, -1, true);
       }
     }
-    label147:
-    d();
-  }
-  
-  private static boolean a(Animation paramAnimation)
-  {
-    return (paramAnimation != null) && (paramAnimation.hasStarted()) && (!paramAnimation.hasEnded());
-  }
-  
-  private String b()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString[0];
-  }
-  
-  private static boolean b()
-  {
-    String str = Build.MANUFACTURER + "_" + Build.MODEL;
-    return jdField_a_of_type_JavaUtilList.contains(str);
-  }
-  
-  private boolean c()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (bnyp.a().a("has_enter_aio_gif", false, 0)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_c_of_type_Boolean) {
+    for (;;)
+    {
+      if (paramInt > 0) {
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
       return;
-    }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 15.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatCount(-1);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatMode(2);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(new bnqu(this));
-    this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  private void e()
-  {
-    QLog.d("AEGifTipsPopupPart", 4, "###  hide tips");
-    this.jdField_c_of_type_Boolean = true;
-    if (a(this.jdField_a_of_type_AndroidViewAnimationAnimation))
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    }
-    if (a(this.jdField_b_of_type_AndroidViewAnimationAnimation))
-    {
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    }
-    if (this.jdField_b_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      this.jdField_b_of_type_AndroidViewView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    } while (this.jdField_b_of_type_AndroidViewView.getVisibility() != 0);
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F);
-    localScaleAnimation.setDuration(300L);
-    localScaleAnimation.setInterpolator(new AccelerateInterpolator(3.0F));
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.5F, 1, 0.0F, 0, this.jdField_c_of_type_AndroidViewView.getY() + this.jdField_c_of_type_AndroidViewView.getHeight() / 2 - this.jdField_b_of_type_AndroidViewView.getY());
-    localTranslateAnimation.setDuration(300L);
-    localTranslateAnimation.setInterpolator(new AccelerateInterpolator(3.0F));
-    localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setAnimationListener(new bnqw(this));
-    this.jdField_b_of_type_AndroidViewView.startAnimation(localAnimationSet);
-  }
-  
-  private void f()
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    bnyp.a().a("has_enter_aio_gif", true, 0);
-  }
-  
-  private void k()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while ((b()) || (a(this.jdField_a_of_type_AndroidViewAnimationAnimation)) || (a(this.jdField_b_of_type_AndroidViewAnimationAnimation))) {
-      return;
-    }
-    boolean bool = c();
-    QLog.d("AEGifTipsPopupPart", 4, "###  showIfFirstTimeEnter， first = " + bool);
-    if (bool)
-    {
-      a(false, false);
-      f();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidViewView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-  }
-  
-  private void l()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidViewView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    if (a(this.jdField_a_of_type_AndroidViewAnimationAnimation))
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    }
-    if (a(this.jdField_b_of_type_AndroidViewAnimationAnimation))
-    {
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    }
-    if (a(this.jdField_c_of_type_AndroidViewAnimationAnimation))
-    {
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+      if (this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.jdField_a_of_type_Bnqv.a();
+      break;
+      label148:
+      this.jdField_a_of_type_Bnqv.a(paramString, true);
     }
   }
   
-  public <T> T a(int paramInt, Object... paramVarArgs)
+  public int b()
   {
-    return super.a(paramInt, paramVarArgs);
+    return a() * 1000 / this.jdField_a_of_type_Int;
   }
   
-  protected void a()
+  public int getChangingConfigurations()
   {
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366770);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367495);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131367496));
+    return 0;
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public Drawable newDrawable()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    e();
+    return new bnqp(this);
   }
   
-  public void b()
+  public Drawable newDrawable(Resources paramResources)
   {
-    k();
-    super.b();
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public void g()
-  {
-    l();
-    super.g();
+    return new bnqp(this);
   }
 }
 

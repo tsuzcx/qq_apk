@@ -2,9 +2,9 @@ package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 public class ExcitingTransferDef$Recv$ReceiveResultIO
 {
-  public static final int ReceiveResult_IO_NoSpace = 3;
-  public static final int ReceiveResult_IO_Open_Failed = 1;
-  public static final int ReceiveResult_IO_SavePath_Error = 2;
+  public static final int RECEIVE_RESULT_IO_NO_SPACE = 3;
+  public static final int RECEIVE_RESULT_IO_OPEN_FAILED = 1;
+  public static final int RECEIVE_RESULT_IO_SAVE_PATH_ERROR = 2;
 }
 
 

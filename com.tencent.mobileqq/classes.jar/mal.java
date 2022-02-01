@@ -1,66 +1,37 @@
-import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class mal
+  extends MagicFaceDataEntity
 {
-  public static String a;
-  private static mal jdField_a_of_type_Mal;
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  static
+  public mal(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "AIOTopRightButtonConfig";
+    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
   }
   
-  public static mal a()
+  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
   {
-    try
-    {
-      if (jdField_a_of_type_Mal == null) {
-        jdField_a_of_type_Mal = new mal();
-      }
-      return jdField_a_of_type_Mal;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Int = 1;
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      return;
-      paramString = finally;
-      throw paramString;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
-      }
+    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
+    if (paramBoolean) {
+      QLog.d("SwitchFaceMagicFaceDataEntity", 2, "WL_DEBUG onReceivePeerFaceFeature uin = " + paramString + ", width = " + paramShort1 + ", height = " + paramShort2 + ", frameWidth = " + paramShort3 + ", frameHeight = " + paramShort4);
     }
   }
   
-  public boolean a(String paramString)
+  public void c()
   {
-    if (this.jdField_a_of_type_Int == -1) {
-      a(lbq.b(192).jdField_a_of_type_JavaLangString);
-    }
-    return this.jdField_a_of_type_Int == 1;
+    super.c();
+    c(0);
+    c(1);
+    a(true);
+    a(null);
+  }
+  
+  public void d()
+  {
+    super.d();
+    b(0);
+    b(1);
   }
 }
 

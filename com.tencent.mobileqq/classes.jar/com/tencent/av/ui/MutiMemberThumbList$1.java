@@ -5,9 +5,9 @@ import com.tencent.av.VideoController;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import lco;
+import lcv;
 import mqq.os.MqqHandler;
-import mue;
+import mvd;
 
 class MutiMemberThumbList$1
   implements Runnable
@@ -28,7 +28,7 @@ class MutiMemberThumbList$1
     {
       if ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < MutiMemberThumbList.a(this.this$0).length))
       {
-        localObject = (lco)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (lcv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         if ((!bool) || (i != MutiMemberThumbList.a(this.this$0).length - 1)) {}
       }
       else
@@ -41,10 +41,10 @@ class MutiMemberThumbList$1
         bool = false;
         break;
       }
-      Bitmap localBitmap = MutiMemberThumbList.a(this.this$0).a(String.valueOf(((lco)localObject).a), String.valueOf(MutiMemberThumbList.a(this.this$0)), MutiMemberThumbList.a(this.this$0), true, true);
+      Bitmap localBitmap = MutiMemberThumbList.a(this.this$0).a(String.valueOf(((lcv)localObject).a), String.valueOf(MutiMemberThumbList.a(this.this$0)), MutiMemberThumbList.a(this.this$0), true, true);
       Object localObject = localBitmap;
       if (MutiMemberThumbList.a(this.this$0)) {
-        localObject = mue.a(localBitmap, "#4C000000", true);
+        localObject = mvd.a(localBitmap, "#4C000000", true);
       }
       localArrayList.add(localObject);
       i += 1;

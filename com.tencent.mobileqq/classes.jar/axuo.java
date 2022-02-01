@@ -1,41 +1,51 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-class axuo
-  implements Animation.AnimationListener
+public class axuo
+  implements INetInfoHandler
 {
-  axuo(axtp paramaxtp) {}
+  private axuo(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2None()
   {
-    if (paramAnimation == axtp.b(this.a))
-    {
-      axtp.a(this.a).setVisibility(8);
-      axtp.a(this.a).setVisibility(4);
-      axtp.a(this.a).clearAnimation();
-      axtp.a(this.a).clearAnimation();
-      axtp.a(this.a).setBackgroundResource(2130849136);
-      axtp.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166686));
-      axtp.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166686));
+    if (NearbyAppInterface.i(this.a) != null) {
+      NearbyAppInterface.j(this.a).onNetMobile2None();
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (paramAnimation == axtp.a(this.a))
-    {
-      axtp.a(this.a).setVisibility(0);
-      axtp.a(this.a).setVisibility(0);
-      axtp.a(this.a).setBackgroundResource(2130850652);
-      axtp.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166980));
-      axtp.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166980));
+    if (NearbyAppInterface.g(this.a) != null) {
+      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.a(this.a) != null) {
+      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.e(this.a) != null) {
+      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.c(this.a) != null) {
+      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (NearbyAppInterface.k(this.a) != null) {
+      NearbyAppInterface.l(this.a).onNetWifi2None();
     }
   }
 }

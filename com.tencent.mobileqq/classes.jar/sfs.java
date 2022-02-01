@@ -1,34 +1,19 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.47.1;
 
-class sfs
-  implements ses
+public class sfs
+  implements Animation.AnimationListener
 {
-  sfs(sfq paramsfq) {}
-  
-  public List<ruh> a(List<VideoInfo> paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (VideoInfo)paramList.next();
-        if (localObject != null)
-        {
-          localObject = rup.a((VideoInfo)localObject);
-          if (localObject != null) {
-            localArrayList.add(snh.a((BaseArticleInfo)localObject, true));
-          }
-        }
-      }
-    }
-    return localArrayList;
+    this.a.post(new ReadInJoyBaseAdapter.47.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

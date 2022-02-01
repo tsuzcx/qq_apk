@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 import com.tencent.qphone.base.util.QLog;
 
 class aibw
-  extends anxg
+  implements DialogInterface.OnClickListener
 {
-  aibw(aibv paramaibv) {}
+  aibw(aibr paramaibr, int paramInt, Object paramObject, aidw paramaidw) {}
   
-  protected void d(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
-      this.a.b.a(true);
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 2: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+      }
+      break;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
-    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
+      aibr.a(this.jdField_a_of_type_Aibr, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aidw);
+      this.jdField_a_of_type_Aibr.u();
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
+    aibr.a(this.jdField_a_of_type_Aibr, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aidw);
+    this.jdField_a_of_type_Aidw.a.a = true;
+    this.jdField_a_of_type_Aibr.u();
   }
 }
 

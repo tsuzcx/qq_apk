@@ -1,31 +1,24 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 
-class ajob
-  extends niv
+public class ajob
+  implements ajom
 {
-  ajob(ajnk paramajnk) {}
+  public ajob(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction checkOpenidDiff errorCode =" + paramInt);
-    if ((ajnk.a(this.a).isFinishing()) || (this.a.a))
-    {
-      QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction activity finishing or timeout");
+    if (!(paramViewHolder instanceof ajnm)) {
       return;
     }
-    this.a.c();
-    if (ajnk.a(this.a) != null) {
-      ajnk.a(this.a).removeCallbacks(ajnk.b(this.a));
-    }
-    if (paramInt == 16)
-    {
-      this.a.d();
-      return;
-    }
-    ajnk.c(this.a);
+    paramView = ((ajnm)paramViewHolder).a;
+    bguq.a(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
+  }
+  
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    return false;
   }
 }
 

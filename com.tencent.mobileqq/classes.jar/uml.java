@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.support.annotation.UiThread;
 
-class uml
-  implements Animator.AnimatorListener
+public abstract interface uml<M>
+  extends ucj
 {
-  uml(umj paramumj) {}
+  @UiThread
+  public abstract void a(int paramInt, String paramString);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    umj.a(this.a).removeAnimatorListener(this);
-  }
+  @UiThread
+  public abstract void a(M paramM);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    umj.b(this.a);
-    umj.a(this.a).setVisibility(8);
-    umj.a(this.a).removeAnimatorListener(this);
-  }
+  @UiThread
+  public abstract void c();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  @UiThread
+  public abstract void e();
 }
 
 

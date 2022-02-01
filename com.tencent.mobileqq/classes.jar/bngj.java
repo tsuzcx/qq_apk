@@ -1,14 +1,8 @@
-class bngj
-  implements bigw
+import android.os.Bundle;
+
+public abstract interface bngj
 {
-  bngj(bngh parambngh, Runnable paramRunnable) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void onWebEvent(String paramString, Bundle paramBundle);
 }
 
 

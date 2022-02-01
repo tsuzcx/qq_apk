@@ -1,62 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wcv
-  extends JobSegment<List<wcl>, List<wcl>>
+class wcv
+  implements View.OnClickListener
 {
-  private wcz a;
+  wcv(wct paramwct, long paramLong) {}
   
-  public wcv(wcz paramwcz)
+  public void onClick(View paramView)
   {
-    this.a = paramwcz;
-  }
-  
-  protected void a(JobContext paramJobContext, List<wcl> paramList)
-  {
-    int i = 1;
-    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
-    if (paramList.isEmpty())
-    {
-      notifyResult(paramList);
-      return;
+    if (wcp.a(this.jdField_a_of_type_Wct.a.a) != null) {
+      wcp.a(this.jdField_a_of_type_Wct.a.a).a(this.jdField_a_of_type_Long);
     }
-    paramJobContext = paramList.iterator();
-    while (paramJobContext.hasNext()) {
-      ((wcl)paramJobContext.next()).a(this.a);
-    }
-    wca.a(paramList);
-    wca localwca = (wca)wpm.a(30);
-    wbs localwbs = localwca.a();
-    paramJobContext = paramList;
-    if (!this.a.a())
-    {
-      paramJobContext = paramList;
-      if (paramList.size() > localwbs.a())
-      {
-        yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localwbs.a());
-        paramJobContext = paramList.subList(0, localwbs.a());
-      }
-    }
-    if (localwca.a(paramJobContext, this.a.a()))
-    {
-      long l2;
-      for (long l1 = ((wcl)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
-      {
-        long l3 = ((wcl)paramJobContext.get(i)).e();
-        l2 = l1;
-        if (l3 > l1) {
-          l2 = l3;
-        }
-        i += 1;
-      }
-      this.a.a(((wcl)paramJobContext.get(0)).e());
-      notifyResult(paramJobContext);
-      return;
-    }
-    notifyError(new ErrorMessage(3, "save to db occur error!"));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

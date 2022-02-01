@@ -1,20 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiShareDataInfo;
 
-final class bnba
-  implements DialogInterface.OnClickListener
+public final class bnba
+  implements Parcelable.Creator<WeishiShareDataInfo>
 {
-  bnba(int paramInt, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public WeishiShareDataInfo a(Parcel paramParcel)
   {
-    if (bnaz.b(this.jdField_a_of_type_Int))
-    {
-      bnaz.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
-      return;
-    }
-    bnaz.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
+    return new WeishiShareDataInfo(paramParcel);
+  }
+  
+  public WeishiShareDataInfo[] a(int paramInt)
+  {
+    return new WeishiShareDataInfo[paramInt];
   }
 }
 

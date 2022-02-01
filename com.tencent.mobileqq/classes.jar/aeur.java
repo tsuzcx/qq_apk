@@ -1,29 +1,22 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeur
-  implements View.OnClickListener
+  extends aeuk
 {
-  public aeur(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
-  
-  public void onClick(View paramView)
+  public aeur(JumpActivity paramJumpActivity)
   {
-    String str = this.a.getIntent().getStringExtra("uin");
-    if ((str != null) && (str.equals(this.a.app.getCurrentAccountUin())))
-    {
-      ProfileLabelEditorActivity.a(this.a);
-      bcst.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeur
  * JD-Core Version:    0.7.0.1
  */

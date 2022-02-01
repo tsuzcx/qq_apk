@@ -1,20 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
 
-public class lwl
-  implements aobv
+public final class lwl
+  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
 {
-  public lwl(QQServiceForAV paramQQServiceForAV) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
-    }
-    new lxd(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lwm(this, paramString, paramBitmap));
+    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
+  }
+  
+  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  {
+    return new AVRedPacketConfig.ExpressionInfo[paramInt];
   }
 }
 

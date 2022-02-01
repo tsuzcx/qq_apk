@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/dnw" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/gfb" />
-        <TextView android:textSize="12.0sp" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="8.0dip" android:text="深圳大学" />
-    </LinearLayout>
-</FrameLayout>
+    <ImageView android:layout_width="140.0dip" android:layout_height="160.0dip" android:src="@drawable/go9" android:scaleType="fitXY" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/agi" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/wub" />
+</merge>

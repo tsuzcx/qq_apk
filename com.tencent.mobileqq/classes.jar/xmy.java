@@ -1,24 +1,11 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class xmy
-  implements xmd
+public abstract interface xmy
 {
-  public xmy(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
+  public abstract void a(ErrorMessage paramErrorMessage, List<xms> paramList, boolean paramBoolean);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
-  }
+  public abstract void b(ErrorMessage paramErrorMessage, List<xmt> paramList, boolean paramBoolean);
 }
 
 

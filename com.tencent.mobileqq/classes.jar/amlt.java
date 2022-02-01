@@ -1,35 +1,7 @@
-import java.util.ArrayList;
+import kotlin.Metadata;
 
-public class amlt
-  implements Cloneable
-{
-  public int a;
-  public long a;
-  public ArrayList<String> a;
-  public int b;
-  public int c;
-  
-  protected Object clone()
-  {
-    Object localObject = null;
-    try
-    {
-      amlt localamlt = (amlt)super.clone();
-      localObject = localamlt;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-      }
-    }
-    if (this.a != null) {
-      localObject.a = ((ArrayList)this.a.clone());
-    }
-    return localObject;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$Companion;", "", "()V", "SLIDE_DIR_HORIZONTAL", "", "SLIDE_DIR_NONE", "SLIDE_DIR_VERTICAL", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amlt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

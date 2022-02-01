@@ -1,47 +1,70 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class azqp
-  extends GestureDetector.SimpleOnGestureListener
+  implements azrg
 {
-  public azqp(VasProfileTagView paramVasProfileTagView) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public azqp(PicShareToWX paramPicShareToWX, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(azrh paramazrh) {}
+  
+  public void b(azrh paramazrh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+      QLog.d("PicShareToWX", 1, "onSend, result.result = " + paramazrh.a);
     }
-    VasProfileTagView.a(this.a, true);
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
+    if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+      ThreadManager.getUIHandler().removeCallbacks(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a.dismiss();
+    }
+    if (paramazrh.a != 0)
     {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+        PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createResult(-102, null));
       }
+      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+        QQToast.a(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), 2131718140, 0).a();
+      }
+      PicShareToWX.a(PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), false);
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramazrh.a, 0);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > VasProfileTagView.a(this.a))
+    for (;;)
     {
-      if ((paramFloat1 > 0.0F) && (this.a.b)) {
-        if (this.a.a())
-        {
-          this.a.g();
-          VasProfileTagView.a(this.a).b(null);
-        }
+      this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a();
+      if ((paramazrh.a == 0) && (!PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX)))
+      {
+        paramazrh = paramazrh.e;
+        Object localObject = new BitmapFactory.Options();
+        bhmq.a((BitmapFactory.Options)localObject, this.jdField_a_of_type_JavaLangString, 400);
+        localObject = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a(paramazrh, (Bitmap)localObject, PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
       }
-      while ((paramFloat1 >= 0.0F) || (this.a.b)) {
-        return true;
+      return;
+      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+        PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createSuccessResult(null));
       }
-      this.a.a();
-      return true;
     }
-    return false;
   }
 }
 

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public class aluv
-  implements Comparator<TroopMemberInfo>
+class aluv
+  implements View.OnLayoutChangeListener
 {
-  private aluv(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  aluv(aluu paramaluu) {}
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
-      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
-    }
-    return 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setText(anzj.a(2131706338) + this.a.jdField_a_of_type_Int + "%");
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setVisibility(0);
   }
 }
 

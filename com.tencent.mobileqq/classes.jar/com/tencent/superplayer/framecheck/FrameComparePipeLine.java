@@ -18,7 +18,7 @@ public class FrameComparePipeLine
 {
   public static final int BLACK_SCREEN_HASH = -2;
   public static final int HAMMING_DISTANCE_LIMIT = 0;
-  private static final String TAG = "MediaPlayerMgr.FrameComparePipeLine";
+  private static final String TAG = "SuperPlayer-.FrameComparePipeLine";
   private Handler mHandler;
   private HandlerThread mHandlerThread = new HandlerThread("FrameComparePipeLine");
   private FrameComparePipeLine.OnVideoFrameCheckListener mOnVideoFrameCheckListener = null;
@@ -139,7 +139,7 @@ public class FrameComparePipeLine
       FrameComparePipeLine.TaskResult localTaskResult = new FrameComparePipeLine.TaskResult(this);
       if (checkBitmapIsColor(localBitmap, 0))
       {
-        LogUtil.d("MediaPlayerMgr.FrameComparePipeLine", "checkTransparentBitmap unPass, " + paramVideoFrameCaptureTask);
+        LogUtil.d("SuperPlayer-.FrameComparePipeLine", "checkTransparentBitmap unPass, " + paramVideoFrameCaptureTask);
         localTaskResult.isTransparent = true;
       }
       try
@@ -147,7 +147,7 @@ public class FrameComparePipeLine
         localTaskResult.pHash = BitmapHashUtil.dctImageHash(localBitmap, true);
         if (BitmapHashUtil.hammingDistance(-2L, localTaskResult.pHash) == 0)
         {
-          LogUtil.d("MediaPlayerMgr.FrameComparePipeLine", "checkBlackBitmap unPass, " + paramVideoFrameCaptureTask);
+          LogUtil.d("SuperPlayer-.FrameComparePipeLine", "checkBlackBitmap unPass, " + paramVideoFrameCaptureTask);
           localTaskResult.isBlack = true;
         }
         this.mTaskResultList.add(localTaskResult);
@@ -161,7 +161,7 @@ public class FrameComparePipeLine
       {
         for (;;)
         {
-          LogUtil.e("MediaPlayerMgr.FrameComparePipeLine", "dctImageHash exception", localIOException);
+          LogUtil.e("SuperPlayer-.FrameComparePipeLine", "dctImageHash exception", localIOException);
         }
       }
     }
@@ -204,7 +204,7 @@ public class FrameComparePipeLine
   
   public void start()
   {
-    LogUtil.d("MediaPlayerMgr.FrameComparePipeLine", "start");
+    LogUtil.d("SuperPlayer-.FrameComparePipeLine", "start");
     fetchOneTaskAndRun();
   }
   

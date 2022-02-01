@@ -1,27 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
+import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
 
-class tnv
-  implements rjl
+public class tnv
+  extends anud
 {
-  tnv(tnu paramtnu, UgcVideo paramUgcVideo, List paramList) {}
+  public static long a = 1800L;
   
-  public void a(boolean paramBoolean)
+  public tnv(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean)
-    {
-      rps.a(this.jdField_a_of_type_Tnu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo, true);
-      BridgeModule.access$1500(this.jdField_a_of_type_Tnu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Tnu.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Tnu.jdField_b_of_type_JavaLangString, 0, "");
+    super(paramQQAppInterface);
+  }
+  
+  public void a()
+  {
+    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
+    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
+    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
+    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
+      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
     }
-    for (;;)
+    try
     {
-      QLog.i(BridgeModule.TAG, 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
+      localAdReqInfo.int32_req_type.set(3);
+      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
+      localReqAdvertisePara.msg_phone_info.set(tpb.a());
+      localReqBody.req_advertise_para.set(localReqAdvertisePara);
+      nkm.a(this.app, new tnw(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
       return;
-      BridgeModule.access$1500(this.jdField_a_of_type_Tnu.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Tnu.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Tnu.jdField_b_of_type_JavaLangString, -2, "cancel upload by user on mobile net");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
+        }
+      }
     }
   }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return tnx.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

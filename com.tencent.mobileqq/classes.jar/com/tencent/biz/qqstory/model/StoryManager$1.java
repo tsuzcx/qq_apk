@@ -5,15 +5,15 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import wfo;
-import wpj;
-import wxu;
-import wxv;
+import wjj;
+import wte;
+import xbp;
+import xbq;
 
 public class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(wpj paramwpj, String paramString) {}
+  public StoryManager$1(wte paramwte, String paramString) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class StoryManager$1
     {
       localObject = new ArrayList(1);
       ((List)localObject).add(this.a);
-      new wxu((List)localObject, true).a();
+      new xbp((List)localObject, true).a();
       return;
     }
-    wxv localwxv = new wxv();
-    localwxv.a = Collections.singletonList(localObject);
-    wfo.a().dispatch(localwxv);
+    xbq localxbq = new xbq();
+    localxbq.a = Collections.singletonList(localObject);
+    wjj.a().dispatch(localxbq);
   }
 }
 

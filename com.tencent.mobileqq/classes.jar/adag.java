@@ -1,52 +1,142 @@
+import android.text.TextUtils;
+import com.tencent.imcore.message.BaseMessageManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.AccostTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import java.util.List;
 
 public class adag
-  implements acxp
 {
-  public int a()
+  public static void a(QQAppInterface paramQQAppInterface, BaseMessageManager paramBaseMessageManager, QQMessageFacade paramQQMessageFacade, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    return 1001;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.AccostTmp localAccostTmp = new msg_svc.AccostTmp();
-    localAccostTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramMessageRecord.frienduin, 1001);
-    localAccostTmp.reply.set(localMessage.hasReply);
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSFriendRoutingType", 2, "LBS_FRIEND------>reply=" + localMessage.hasReply);
-    }
-    paramMessageRecord = paramQQAppInterface.a().n(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    paramInt2 = adak.a(paramInt2, paramInt3);
+    paramQQAppInterface.a(paramInt1).a(paramString1, paramInt1, paramString2, paramString3, paramInt2);
+    paramString3 = paramQQMessageFacade.a(paramString1, paramInt1);
+    if ((paramString3.senderuin != null) && (paramString3.senderuin.equals(paramString2)) && ((paramInt2 == 0) || ((paramInt2 != 0) && (paramInt2 == paramString3.getExtraKey()))))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送附近人临时会消息 有keyLBSFriend------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      paramString2 = paramQQAppInterface.a(paramInt1).b(paramString1, paramInt1);
+      if ((paramString2 == null) || (paramString2.isEmpty())) {
+        break label166;
       }
-      localAccostTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      MessageRecord.copyMessageRecordBaseField(paramString3, (MessageRecord)paramString2.get(paramString2.size() - 1));
+      paramString3.frienduin = paramString1;
+      paramString3.emoRecentMsg = null;
     }
-    paramRoutingHead.accost_tmp.set(localAccostTmp);
-    return true;
+    label166:
+    do
+    {
+      do
+      {
+        try
+        {
+          paramBaseMessageManager.a(paramString3);
+          return;
+        }
+        catch (Throwable paramQQAppInterface)
+        {
+          while (!QLog.isColorLevel()) {}
+          QLog.d("Q.msg.BaseMessageManager", 2, "removeMsgFromMsgBox ERROR", paramQQAppInterface);
+          return;
+        }
+        paramString3.emoRecentMsg = null;
+        paramString3.msg = null;
+        aqyt.a(paramString3);
+      } while (!paramBoolean);
+      paramQQAppInterface = (RecentUser)paramQQAppInterface.a().a().findRecentUserByUin(paramString1, paramInt1);
+    } while (paramQQAppInterface == null);
+    paramQQMessageFacade.a(paramQQAppInterface);
   }
   
-  public int b()
+  public static void a(QQAppInterface paramQQAppInterface, BaseMessageManager paramBaseMessageManager, QQMessageFacade paramQQMessageFacade, String paramString1, int paramInt, String paramString2, String paramString3, boolean paramBoolean)
   {
-    return 0;
+    paramQQAppInterface.a(paramInt).a(paramString1, paramInt, paramString2, paramString3, 0);
+    String str = "";
+    if (paramInt == 1010) {
+      str = antf.ab;
+    }
+    label34:
+    label42:
+    do
+    {
+      do
+      {
+        break label42;
+        break label42;
+        break label42;
+        if (TextUtils.isEmpty(str)) {}
+        for (;;)
+        {
+          return;
+          if ((paramInt != 1001) && (paramInt != 10002)) {
+            break label34;
+          }
+          str = antf.H;
+          break label34;
+          QQMessageFacade.Message localMessage = paramQQMessageFacade.a(paramString1, paramInt);
+          if ((localMessage.senderuin == null) || (!localMessage.senderuin.equals(paramString2))) {
+            break;
+          }
+          paramQQAppInterface.a(paramInt).a(str, paramInt, paramString1, paramString3, 0);
+          paramString2 = paramQQAppInterface.a(paramInt).b(paramString1, paramInt);
+          if ((paramString2 != null) && (!paramString2.isEmpty()))
+          {
+            paramString2 = (MessageRecord)paramString2.get(paramString2.size() - 1);
+            paramString3 = bcry.a(paramString2.msgtype);
+            MessageRecord.copyMessageRecordBaseField(paramString3, paramString2);
+            paramString3.frienduin = str;
+            paramString3.senderuin = paramString1;
+            if (!adak.h(paramString2.msgtype)) {
+              paramBaseMessageManager.a(paramString3, null, false, true, 1);
+            }
+            MessageRecord.copyMessageRecordBaseField(localMessage, paramString2);
+            localMessage.frienduin = paramString1;
+            localMessage.emoRecentMsg = null;
+          }
+          try
+          {
+            paramBaseMessageManager.a(localMessage);
+            paramString2 = paramQQMessageFacade.a(str, paramInt);
+            if ((paramString2.senderuin != null) && (paramString2.senderuin.equals(paramString1)))
+            {
+              paramString1 = paramQQAppInterface.a(paramInt).b(str, paramInt);
+              if ((paramString1 != null) && (!paramString1.isEmpty()))
+              {
+                MessageRecord.copyMessageRecordBaseField(paramString2, (MessageRecord)paramString1.get(paramString1.size() - 1));
+                paramString2.frienduin = str;
+                paramString2.emoRecentMsg = null;
+                try
+                {
+                  paramBaseMessageManager.a(paramString2);
+                  return;
+                }
+                catch (Throwable paramQQAppInterface) {}
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d("Q.msg.BaseMessageManager", 2, "removeMsgFromMsgBox ERROR", paramQQAppInterface);
+              }
+            }
+          }
+          catch (Throwable paramString2)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.msg.BaseMessageManager", 2, "removeMsgFromMsgBox decode msgInLBSBox ERROR", paramString2);
+              }
+            }
+            paramString2.emoRecentMsg = null;
+            paramString2.msg = null;
+          }
+        }
+      } while (!paramBoolean);
+      paramQQAppInterface = (RecentUser)paramQQAppInterface.a().a().findRecentUserByUin(str, paramInt);
+    } while (paramQQAppInterface == null);
+    paramQQMessageFacade.a(paramQQAppInterface);
   }
 }
 

@@ -1,34 +1,32 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.gdt.qq_ad_get.QQAdGet;
-
 public class laq
 {
-  private static laq a;
+  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public static laq a()
+  public laq(String paramString, boolean paramBoolean)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new laq();
-      }
-      return a;
-    }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
   }
   
-  public void a(Context paramContext, AppRuntime paramAppRuntime, qq_ad_get.QQAdGet paramQQAdGet, BusinessObserver paramBusinessObserver)
+  public Boolean a()
   {
-    paramContext = new NewIntent(BaseApplicationImpl.getApplication(), lar.class);
-    paramContext.setObserver(paramBusinessObserver);
-    paramContext.putExtra("GdtLoadAdServletCMD", "QqAd.getAd");
-    paramContext.putExtra("sso_GdtLoadAd_rquest_bytes", paramQQAdGet.toByteArray());
-    paramAppRuntime.startServlet(paramContext);
+    return this.jdField_a_of_type_JavaLangBoolean;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+      return;
+    }
   }
 }
 

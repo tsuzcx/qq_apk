@@ -1,17 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
-class bnsu
-  implements View.OnClickListener
+public class bnsu
+  implements bliz
 {
-  bnsu(bnss parambnss) {}
+  public bnsu(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    bnyh.a().ae();
-    bnss.a(this.a, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.e();
+      return;
+      TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, 29954);
+      continue;
+      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
+    }
   }
 }
 

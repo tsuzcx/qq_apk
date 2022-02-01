@@ -1,11 +1,14 @@
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class becs
-  extends becx
+  extends anyu
 {
-  public mobileqq_mp.RetInfo a;
-  public String a;
-  public String b;
+  public becs(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    this.a.a.a(paramString);
+  }
 }
 
 

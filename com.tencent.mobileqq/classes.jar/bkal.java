@@ -1,20 +1,15 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
 
-class bkal
-  implements bkbi
+public class bkal
+  implements DialogInterface.OnClickListener
 {
-  protected long a;
+  public bkal(WadlJsBridgeCallBack.2 param2) {}
   
-  public bkal(bkah parambkah, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

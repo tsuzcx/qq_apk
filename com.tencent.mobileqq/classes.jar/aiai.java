@@ -1,77 +1,27 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
-class aiai
-  implements View.OnTouchListener
+public class aiai
+  implements Handler.Callback
 {
-  long jdField_a_of_type_Long = 0L;
+  public aiai(PEPanel paramPEPanel) {}
   
-  aiai(ahzy paramahzy) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Ahzy.K) || (!(paramView instanceof ImageView))) {
+    switch (paramMessage.what)
+    {
+    default: 
       return false;
     }
-    Object localObject = (ImageView)paramView;
-    int i = paramMotionEvent.getAction();
-    localObject = null;
-    paramMotionEvent = (MotionEvent)localObject;
-    if (paramView.getTag() != null)
-    {
-      paramMotionEvent = (MotionEvent)localObject;
-      if ((paramView.getTag() instanceof axap)) {
-        paramMotionEvent = (axap)paramView.getTag();
-      }
-    }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (paramMotionEvent != null)
-      {
-        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (paramMotionEvent != null) {
-          paramView.setAlpha(paramMotionEvent.a());
-        }
-        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-        {
-          return true;
-          paramView.setAlpha(1.0F);
-        }
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramView = new Intent(this.jdField_a_of_type_Ahzy.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-        localObject = aqqb.a().a(this.jdField_a_of_type_Ahzy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        awzm.a(this.jdField_a_of_type_Ahzy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahzy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMotionEvent);
-        paramView.putExtra("url", (String)localObject);
-        paramView.putExtra("finish_animation_out_to_right", true);
-        paramView.putExtra("is_wrap_content", true);
-        paramView.putExtra("hide_left_button", false);
-        if (this.jdField_a_of_type_Ahzy.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
-        {
-          this.jdField_a_of_type_Ahzy.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
-      }
-    }
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 

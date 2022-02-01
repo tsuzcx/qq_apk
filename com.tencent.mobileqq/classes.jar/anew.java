@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Context;
 
-class anew
-  implements DialogInterface.OnClickListener
+public abstract class anew
 {
-  anew(anet paramanet, ApolloGameData paramApolloGameData) {}
+  abstract int a(Context paramContext);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  abstract String a();
+  
+  abstract void a();
+  
+  void a(String paramString1, String paramString2, anex paramanex)
   {
-    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
-    Intent localIntent = new Intent(this.jdField_a_of_type_Anet.a, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Anet.a, paramDialogInterface, -1L, localIntent, false, -1);
+    if (("destroy".equals(paramString2)) && (paramanex != null))
+    {
+      a();
+      paramanex.a(this);
+    }
   }
 }
 

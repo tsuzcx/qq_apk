@@ -1,73 +1,44 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
+import NS_QQ_STORY_META.META.StMusic;
+import android.text.TextUtils;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
 
-@TargetApi(14)
 public class bpgz
+  implements aaav<CLIENT.StBatchGetMusicInfoRsp>
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  private static int b;
+  public bpgz(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, VsMusicItemInfo paramVsMusicItemInfo) {}
   
-  public static float a(Resources paramResources)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
   {
-    if ((b == 0) || (jdField_a_of_type_Int == 0))
+    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
+      bpam.d(AEEditorVideoEditFragment.e(), "[VSDispatchObserver.onVSRspCallBack.onReceive], music - request music detail failed");
+    }
+    for (;;)
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+      return;
+      int i = 0;
+      if (i < paramStBatchGetMusicInfoRsp.vecMusic.size())
+      {
+        paramString = (META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(i);
+        if ((paramString == null) || (TextUtils.isEmpty(paramString.strSongMid.get()))) {}
+        while (!this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid.equals(paramString.strSongMid.get()))
+        {
+          i += 1;
+          break;
+        }
+        this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a(paramString);
+      }
+      for (i = 1; (i != 0) && (AEEditorMusicHelper.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo)) && (AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment) != null); i = 0)
+      {
+        AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).a(new bpis(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo, false, 2));
+        return;
+      }
     }
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a(Resources paramResources)
-  {
-    if (jdField_a_of_type_Int == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bpha(paramView));
-    paramView.setVisibility(8);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static int b(Resources paramResources)
-  {
-    if (b == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return b;
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bphb(paramView));
-    paramView.setVisibility(0);
-    paramView.startAnimation(localAlphaAnimation);
   }
 }
 

@@ -1,80 +1,51 @@
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
-public class zia
-  extends BaseAdapter
+public abstract class zia
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<zif> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected final int a;
+  protected Context a;
+  protected final String a;
+  protected zib a;
+  protected boolean a;
+  protected boolean b;
   
-  public zia(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public zia(Context paramContext, String paramString, int paramInt)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
   }
   
-  public void a(ArrayList<zif> paramArrayList)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  public void a(zib paramzib)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
+    this.jdField_a_of_type_Zib = paramzib;
   }
   
-  public int getCount()
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.b = paramBoolean;
   }
   
-  public Object getItem(int paramInt)
+  public int b()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.jdField_a_of_type_Int;
   }
   
-  public long getItemId(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    zif localzif = (zif)getItem(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561670, paramViewGroup, false);
-      paramView = new zib(this);
-      paramView.a = ((ImageView)localView.findViewById(2131368785));
-      paramView.b = ((ImageView)localView.findViewById(2131368892));
-      localView.setTag(paramView);
-      paramView.a.setImageDrawable(localzif.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break label137;
-      }
-      paramView.b.setVisibility(0);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      zib localzib = (zib)paramView.getTag();
-      localView = paramView;
-      paramView = localzib;
-      break;
-      label137:
-      paramView.b.setVisibility(8);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

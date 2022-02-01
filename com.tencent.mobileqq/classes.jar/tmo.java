@@ -1,24 +1,26 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
 class tmo
-  implements tmp
+  implements DialogInterface.OnClickListener
 {
-  tmo(tmn paramtmn) {}
+  tmo(tmk paramtmk, boolean paramBoolean) {}
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    tmn.a(this.a).b(paramString, paramOnClickListener);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    tmn.a(this.a).c(paramBoolean);
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    tmn.a(this.a).a(paramString, paramOnClickListener);
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!tmk.a(this.jdField_a_of_type_Tmk)) {}
+    }
+    while (!(tmk.a(this.jdField_a_of_type_Tmk) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Tmk.b();
+      return;
+    }
+    tqa.b(tmk.a(this.jdField_a_of_type_Tmk));
+    tpp.a(tmk.a(this.jdField_a_of_type_Tmk), tmk.a(this.jdField_a_of_type_Tmk).p, tmk.a(this.jdField_a_of_type_Tmk).q, "");
   }
 }
 

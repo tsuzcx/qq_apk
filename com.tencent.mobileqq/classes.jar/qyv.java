@@ -1,60 +1,54 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.cmd0xe40.cmd0xe40.RspBody;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
 
 public class qyv
-  extends niv
 {
-  public qyv(RIJRedPacketManager paramRIJRedPacketManager, qyw paramqyw) {}
+  public String a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static List<qyv> a(oidb_cmd0xbc9.DynamicBannerItem paramDynamicBannerItem)
   {
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 error code: " + paramInt);
-    if (paramInt == 0) {
-      paramBundle = new cmd0xe40.RspBody();
-    }
+    localArrayList = new ArrayList();
+    if (!paramDynamicBannerItem.bytes_dynamic_json.has()) {}
     for (;;)
     {
+      return localArrayList;
+      Object localObject = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.status.has()) {
-          break label208;
-        }
-        paramInt = paramBundle.status.get();
-        if (!paramBundle.tips.has()) {
-          break label202;
-        }
-        paramArrayOfByte = paramBundle.tips.get();
-        QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 status: " + paramInt + " | tips wording: " + paramArrayOfByte);
-        paramBundle = this.jdField_a_of_type_Qyw;
-        if (!TextUtils.isEmpty(paramArrayOfByte))
+        JSONArray localJSONArray = new JSONArray((String)localObject);
+        int i = 0;
+        while (i < localJSONArray.length())
         {
-          bool = true;
-          paramBundle.a(bool, paramArrayOfByte, paramInt);
-          return;
+          qyv localqyv = new qyv();
+          localqyv.a = localJSONArray.get(i).toString();
+          localArrayList.add(localqyv);
+          i += 1;
         }
-        boolean bool = false;
-        continue;
-        this.jdField_a_of_type_Qyw.a(false, "", 0);
+        return localArrayList;
       }
-      catch (Exception paramArrayOfByte)
+      catch (Exception localException)
       {
-        this.jdField_a_of_type_Qyw.a(false, "", 0);
-        QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 error: " + paramArrayOfByte.toString());
-        return;
+        QLog.d("TopBannerInfo", 4, "" + (String)localObject);
+        localObject = new qyv();
+        ((qyv)localObject).a = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
+        localArrayList.add(localObject);
       }
-      return;
-      label202:
-      paramArrayOfByte = "";
-      continue;
-      label208:
-      paramInt = 0;
     }
+  }
+  
+  public oidb_cmd0xbc9.DynamicBannerItem a()
+  {
+    oidb_cmd0xbc9.DynamicBannerItem localDynamicBannerItem = new oidb_cmd0xbc9.DynamicBannerItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localDynamicBannerItem.bytes_dynamic_json.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    return localDynamicBannerItem;
   }
 }
 

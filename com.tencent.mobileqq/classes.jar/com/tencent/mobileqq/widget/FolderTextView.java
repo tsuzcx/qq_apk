@@ -19,10 +19,10 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import bdnt;
-import bgtn;
-import bhwy;
+import anzj;
+import begp;
+import bhtq;
+import bixw;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -30,7 +30,7 @@ public class FolderTextView
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bhwy(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bixw(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
@@ -59,11 +59,11 @@ public class FolderTextView
     {
       this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(2);
       this.jdField_b_of_type_Int = a(paramAttributeSet.getColorStateList(1));
-      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, bgtn.a(12.0F));
-      this.jdField_a_of_type_Int = bgtn.e(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, bhtq.a(12.0F));
+      this.jdField_a_of_type_Int = bhtq.e(this.jdField_a_of_type_Int);
       this.c = paramAttributeSet.getInt(5, 2);
       this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(4);
-      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166299));
+      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166303));
     }
     catch (Exception paramContext)
     {
@@ -78,7 +78,7 @@ public class FolderTextView
       paramAttributeSet.recycle();
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = anni.a(2131703453);
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131703560);
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_JavaLangCharSequence = "";
@@ -167,7 +167,7 @@ public class FolderTextView
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379670);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379845);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_Int);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
@@ -178,11 +178,11 @@ public class FolderTextView
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.d);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    int i = bgtn.a(10.0F);
+    int i = bhtq.a(10.0F);
     this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(8, 2131379670);
-    localLayoutParams.addRule(7, 2131379670);
+    localLayoutParams.addRule(8, 2131379845);
+    localLayoutParams.addRule(7, 2131379845);
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       post(new FolderTextView.1(this));
@@ -232,7 +232,7 @@ public class FolderTextView
       }
       j = localLayout.getLineStart(this.c - 1);
       i = localLayout.getLineEnd(this.c - 1);
-      if ((this.jdField_a_of_type_JavaLangCharSequence instanceof bdnt))
+      if ((this.jdField_a_of_type_JavaLangCharSequence instanceof begp))
       {
         localObject1 = new SpannableStringBuilder();
         ((SpannableStringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangCharSequence, j, i);

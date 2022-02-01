@@ -1,298 +1,58 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoUIDelegate.1;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoUIDelegate.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class rsw
-  implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, sij
+  extends MSFServlet
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new rsx(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)LayoutInflater.from(BaseApplication.getContext()).inflate(2131560028, null, false);
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private riw jdField_a_of_type_Riw;
-  private sik jdField_a_of_type_Sik;
-  private boolean jdField_a_of_type_Boolean;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  
-  private int a(View paramView)
+  public String[] getPreferSSOCommands()
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof Integer)) {
-      return ((Integer)paramView).intValue();
-    }
-    return 1;
+    return null;
   }
   
-  private void a(int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Resources localResources = BaseApplication.getContext().getResources();
-    this.jdField_a_of_type_AndroidWidgetImageButton.clearAnimation();
-    switch (paramInt)
+    if (paramIntent != null)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130843178));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setTag(Integer.valueOf(1));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130843177));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setTag(Integer.valueOf(2));
-  }
-  
-  private void a(long paramLong)
-  {
-    int i = (int)(paramLong / 1000L);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(pgk.a(i));
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageButton.getVisibility() == 0;
-  }
-  
-  private boolean b()
-  {
-    return this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() == 0;
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377106));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380762));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372648));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380600));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380764));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380621));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365125));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379957));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-  }
-  
-  private void e()
-  {
-    int i = (int)this.jdField_a_of_type_Sik.a() / 1000;
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(i);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(i);
-    a(0L);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(pgk.a(i));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(pgk.a(0));
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_Sik = new sik(1000);
-    this.jdField_a_of_type_Sik.a(this);
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_Sik.d(true);
-    this.jdField_a_of_type_Sik.e(false);
-  }
-  
-  private void h()
-  {
-    if (this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() != 0) {
-      return;
-    }
-    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-  }
-  
-  private void i()
-  {
-    if (b())
-    {
-      h();
-      return;
-    }
-    j();
-  }
-  
-  private void j()
-  {
-    if (this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() == 0) {
-      return;
-    }
-    if (this.jdField_a_of_type_Sik.g()) {
-      a(1);
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
     for (;;)
     {
-      ryx.a(this.jdField_b_of_type_AndroidViewViewGroup, 0, 300);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-      if (!this.jdField_a_of_type_Sik.h()) {
-        break;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 3000L);
+      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
       return;
-      if (this.jdField_a_of_type_Sik.h()) {
-        a(2);
-      }
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
   }
   
-  public void a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_Sik.l();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup == null)
+    if (paramIntent != null)
     {
-      QLog.e("RIJUGC.SelectVideoUIDelegate", 1, "attachVideoView failed for containerView is null.");
-      return;
-    }
-    this.jdField_c_of_type_AndroidViewViewGroup = paramViewGroup;
-    paramViewGroup.setEnabled(false);
-    d();
-    f();
-    this.jdField_a_of_type_Sik.a(paramViewGroup);
-    paramViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup);
-  }
-  
-  public void a(riw paramriw)
-  {
-    if (paramriw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Riw = paramriw;
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramriw.d);
-    ThreadManager.getUIHandler().post(new SelectVideoUIDelegate.1(this, paramriw));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Sik.k();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Sik.m();
-  }
-  
-  public void onBufferEnd() {}
-  
-  public void onBufferStart() {}
-  
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (i == this.jdField_a_of_type_AndroidWidgetImageButton.getId()) {
-      switch (a(paramView))
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
+        }
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Sik.c();
-      continue;
-      this.jdField_a_of_type_Sik.d();
-      continue;
-      if (i == this.jdField_c_of_type_AndroidViewViewGroup.getId()) {
-        i();
-      }
-    }
   }
-  
-  public void onCompletion() {}
-  
-  public void onDownloadFinished() {}
-  
-  public void onFirstFrameRendered() {}
-  
-  public void onProgressChanged(long paramLong)
-  {
-    a(paramLong);
-  }
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    int i = paramSeekBar.getProgress();
-    this.jdField_a_of_type_Sik.b(i * 1000);
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-  }
-  
-  public void onVideoEnd(int paramInt) {}
-  
-  public void onVideoError(int paramInt1, int paramInt2, String paramString) {}
-  
-  public void onVideoOpen() {}
-  
-  public void onVideoPause()
-  {
-    if (a()) {
-      a(1);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-  }
-  
-  public void onVideoPrepared()
-  {
-    g();
-    this.jdField_a_of_type_Sik.c();
-    ThreadManager.getUIHandler().post(new SelectVideoUIDelegate.2(this));
-  }
-  
-  public void onVideoRestart()
-  {
-    a(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 3000L);
-  }
-  
-  public void onVideoStart()
-  {
-    a(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 3000L);
-  }
-  
-  public void onVideoStop() {}
 }
 
 

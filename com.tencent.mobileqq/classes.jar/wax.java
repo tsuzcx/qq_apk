@@ -1,23 +1,25 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.widgets.QCirclePYMKRecommendWidget;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class wax
+  implements View.OnClickListener
 {
-  public static void a(View paramView, Runnable paramRunnable)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      b(paramView, paramRunnable);
-      return;
-    }
-    paramView.postDelayed(paramRunnable, 16L);
-  }
+  public wax(QCirclePYMKRecommendWidget paramQCirclePYMKRecommendWidget) {}
   
-  @TargetApi(16)
-  private static void b(View paramView, Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    paramView.postOnAnimation(paramRunnable);
+    if (QCirclePYMKRecommendWidget.a(this.a) != null)
+    {
+      uyx.a(this.a.getContext(), uyw.a(QCirclePYMKRecommendWidget.a(this.a).urlInfo.get(), "personRecomListUrl"), null, -1);
+      vtn.a(29, 2, QCirclePYMKRecommendWidget.a(this.a), this.a.d());
+      vud.a().a(new vuf().a("more").b("click").a(this.a.a()).a(QCirclePYMKRecommendWidget.a(this.a).mDataPosition));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

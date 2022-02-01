@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import pbe;
-import pmk;
+import otv;
+import pfd;
 
 public class ReadInJoyCommentDataManager$35
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$35(pbe parampbe, boolean paramBoolean, String paramString1, String paramString2) {}
+  public ReadInJoyCommentDataManager$35(otv paramotv, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 0;; i = -1)
     {
-      pmk.a().a(i, pbe.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.b);
+      pfd.a().a(i, otv.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.b);
       return;
     }
   }

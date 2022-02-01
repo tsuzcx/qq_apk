@@ -1,30 +1,56 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbxw
-  extends aber
+public abstract class bbxw<T extends View>
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
-  private bbxt jdField_a_of_type_Bbxt = new bbxt();
-  private bbxv jdField_a_of_type_Bbxv = new bbxv();
+  protected int a;
+  public long a;
+  public boolean a;
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public bbxw(int paramInt)
   {
-    return this.jdField_a_of_type_Bbxt.a(paramToServiceMsg, paramFromServiceMsg);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public static bbxw a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Bbxv.a(paramToServiceMsg, paramUniPacket);
+    switch (paramInt1)
+    {
+    case 2: 
+    case 4: 
+    case 5: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSearchEntryModel", 2, "createSearchEntryModel, modelType = " + paramInt1 + ", tabType = " + paramInt2);
+      }
+      return null;
+    case 0: 
+      return new bbyf(paramInt2);
+    case 1: 
+    case 7: 
+      return new bbyy(paramInt1, paramInt2, paramBoolean);
+    case 3: 
+      return new bbxx(paramInt2, paramBoolean);
+    }
+    return new bcaa(paramInt2);
   }
   
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
+  public abstract T a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle);
+  
+  public void a() {}
+  
+  public void a(bcgy parambcgy) {}
+  
+  public void b() {}
+  
+  public void b(bcgy parambcgy) {}
+  
+  public void c() {}
 }
 
 

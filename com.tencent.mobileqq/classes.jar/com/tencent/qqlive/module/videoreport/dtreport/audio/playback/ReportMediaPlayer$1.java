@@ -10,7 +10,9 @@ class ReportMediaPlayer$1
   
   public void onAudioPlayPrepared(IAudioPlayer paramIAudioPlayer)
   {
-    this.val$listener.onPrepared(this.this$0);
+    if (this.val$listener != null) {
+      this.val$listener.onPrepared(this.this$0);
+    }
   }
 }
 

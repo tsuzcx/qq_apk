@@ -1,13 +1,28 @@
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
-class albf
-  implements bkiz
+public class albf
+  implements View.OnFocusChangeListener
 {
-  albf(albc paramalbc, View paramView) {}
+  public albf(LingHbFragment paramLingHbFragment) {}
   
-  public void a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
+      return;
+      LingHbFragment.a(this.a).a();
+    }
   }
 }
 

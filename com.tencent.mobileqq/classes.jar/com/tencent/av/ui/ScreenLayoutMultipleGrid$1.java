@@ -1,18 +1,18 @@
 package com.tencent.av.ui;
 
-import maf;
-import mip;
-import mue;
+import mbb;
+import mjl;
+import mvd;
 
 public class ScreenLayoutMultipleGrid$1
   implements Runnable
 {
-  public ScreenLayoutMultipleGrid$1(mip parammip) {}
+  public ScreenLayoutMultipleGrid$1(mjl parammjl) {}
   
   public void run()
   {
-    maf.a(this.this$0.a, 1054);
-    mue.a(1);
+    mbb.a(this.this$0.a, 1054);
+    mvd.a(1);
   }
 }
 

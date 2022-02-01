@@ -1,54 +1,79 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class bezh
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  private bezh(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  public static long a = -1L;
+  public static long b = -1L;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public static long a()
   {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    if (a < 0L)
     {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
+      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
       }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
     }
-    for (;;)
+    return a;
+  }
+  
+  private static long a(String paramString, long paramLong)
+  {
+    long l = -1L;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4);
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong(paramString, -1L);
+    }
+    if (l < 0L) {
+      return paramLong;
+    }
+    return l;
+  }
+  
+  public static void a(long paramLong)
+  {
+    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
+    if (paramLong > 0L) {
+      a = paramLong;
+    }
+  }
+  
+  private static void a(String paramString, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
+    localEditor.putLong(paramString, paramLong);
+    localEditor.commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
+    }
+  }
+  
+  public static long b()
+  {
+    if (b < 0L)
     {
-      yqp.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
-      {
-        this.a.b = 0.0F;
-        break;
+      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
       }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-      }
+    }
+    return b;
+  }
+  
+  public static void b(long paramLong)
+  {
+    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
+    if (paramLong > 0L) {
+      b = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bezh
  * JD-Core Version:    0.7.0.1
  */

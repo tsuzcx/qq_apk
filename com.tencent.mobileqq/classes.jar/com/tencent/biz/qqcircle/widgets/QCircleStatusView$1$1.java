@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import vyr;
+import wcd;
 
 public class QCircleStatusView$1$1
   implements Runnable
 {
-  public QCircleStatusView$1$1(vyr paramvyr, String paramString) {}
+  public QCircleStatusView$1$1(wcd paramwcd, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vyr.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.b(this.jdField_a_of_type_Vyr.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Wcd.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleStatusView.b(this.jdField_a_of_type_Wcd.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
   }
 }
 

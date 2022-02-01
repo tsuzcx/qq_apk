@@ -1,24 +1,33 @@
-public class bebz
-  extends becg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bebz
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
+  bebz(beby parambeby) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" groupFileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" groupFileKey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.b);
-    return localStringBuilder.toString();
+    if ((beby.a(this.a) instanceof CustomWebView))
+    {
+      if (2 != beby.a(this.a).c) {
+        break label57;
+      }
+      ((CustomWebView)beby.a(this.a)).callJs("openAdvPermissionsMobile()");
+      this.a.dismiss();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label57:
+      ((CustomWebView)beby.a(this.a)).callJs("openCooperationMobile()");
+      this.a.dismiss();
+      bdll.b(beby.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+    }
   }
 }
 

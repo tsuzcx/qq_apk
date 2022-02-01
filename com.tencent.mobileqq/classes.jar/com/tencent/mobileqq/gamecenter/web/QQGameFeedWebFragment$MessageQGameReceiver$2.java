@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import auvw;
+import avnw;
 import com.tencent.mobileqq.gamecenter.web.view.GameContentView;
 
 public class QQGameFeedWebFragment$MessageQGameReceiver$2
   implements Runnable
 {
-  public QQGameFeedWebFragment$MessageQGameReceiver$2(auvw paramauvw) {}
+  public QQGameFeedWebFragment$MessageQGameReceiver$2(avnw paramavnw) {}
   
   public void run()
   {

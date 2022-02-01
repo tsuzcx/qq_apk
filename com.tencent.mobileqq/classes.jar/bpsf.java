@@ -1,72 +1,27 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class bpsf
 {
-  public final int a;
-  public long a;
-  public bpsl a;
-  public bpsn a;
-  public final PublishVideoEntry a;
-  public TribeVideoPublishParams a;
-  public LpReportInfo_pf00064 a;
-  public final EditVideoParams.EditSource a;
-  public final EditVideoParams a;
-  public PublishParam a;
+  public int a;
   public String a;
-  public WeakReference<View> a;
-  public boolean a;
-  public int b = 1;
+  public int b;
   public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  public String c;
   
-  public bpsf(EditVideoParams paramEditVideoParams)
+  public static bpsf a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
-    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    bpsf localbpsf = new bpsf();
+    localbpsf.jdField_a_of_type_JavaLangString = paramJSONObject.optString("resurl");
+    localbpsf.jdField_b_of_type_JavaLangString = paramJSONObject.optString("md5");
+    localbpsf.c = paramJSONObject.optString("name");
+    localbpsf.jdField_a_of_type_Int = paramJSONObject.optInt("text_id");
+    localbpsf.jdField_b_of_type_Int = paramJSONObject.optInt("progress");
+    return localbpsf;
   }
   
-  public View a()
+  public String a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bpsl.jdField_a_of_type_Int > 0);
-  }
-  
-  public String toString()
-  {
-    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
+    return this.c + "_" + this.jdField_b_of_type_JavaLangString;
   }
 }
 

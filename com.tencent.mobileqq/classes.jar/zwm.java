@@ -1,14 +1,36 @@
+import android.os.CountDownTimer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity.24;
+
 public class zwm
+  implements View.OnTouchListener
 {
-  public String a;
-  public boolean a;
-  public String b;
+  public zwm(QRDisplayActivity.24 param24) {}
   
-  public zwm(String paramString1, boolean paramBoolean, String paramString2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramString2;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        return true;
+      } while (QRDisplayActivity.a(this.a.this$0) == null);
+      QRDisplayActivity.a(this.a.this$0, false);
+      QRDisplayActivity.a(this.a.this$0).start();
+      return true;
+      if (QRDisplayActivity.a(this.a.this$0) != null) {
+        QRDisplayActivity.a(this.a.this$0).cancel();
+      }
+    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
+    bhga.c(this.a.this$0.d);
+    this.a.this$0.onClick(this.a.this$0.d);
+    return true;
   }
 }
 

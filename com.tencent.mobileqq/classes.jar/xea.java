@@ -1,25 +1,33 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+
 public class xea
-  extends xdz
+  extends xcg<qqstory_service.ReqGetPromoteTaskList>
 {
-  public String a;
-  public int b = 0;
-  public int c = 16296448;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 1;
-  public String e;
-  public String f = wes.a;
-  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
-  public String h;
-  public String i = "";
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n = "";
-  public String o;
-  public String p;
+  public static final String b = wnu.a("StorySvc.get_promote_tasklist");
+  
+  public xea(String paramString)
+  {
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    return new xeb(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    yuk.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return zow.a(this.a);
+  }
 }
 
 

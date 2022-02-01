@@ -1,12 +1,26 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public abstract interface bnhj
+public class bnhj
+  implements View.OnClickListener
 {
-  public abstract void a(bnid parambnid);
+  public bnhj(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public abstract void a(VideoMaterial paramVideoMaterial);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public void onClick(View paramView)
+  {
+    bmwa.a().a(QZoneShareActivity.a, paramView);
+    this.a.a(false);
+    Intent localIntent = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+    localIntent.putExtra("param_only_friends", true);
+    localIntent.putExtra("param_min", 1);
+    this.a.startActivityForResult(localIntent, 1000);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

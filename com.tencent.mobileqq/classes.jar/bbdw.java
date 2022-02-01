@@ -1,8 +1,11 @@
-import com.tencent.mobileqq.robotchat.RobotChatTipLayout;
+import rx.functions.Action1;
 
-public abstract interface bbdw
+class bbdw
+  implements Action1<Throwable>
 {
-  public abstract void a(RobotChatTipLayout paramRobotChatTipLayout);
+  bbdw(bbdu parambbdu) {}
+  
+  public void a(Throwable paramThrowable) {}
 }
 
 

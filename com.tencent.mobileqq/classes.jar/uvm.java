@@ -1,52 +1,79 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import UserGrowth.stSimpleMetaFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.event.WSFriendFeedExposureEvent;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-class uvm
-  implements BusinessObserver
+public class uvm
+  extends uvh
 {
-  uvm(uvi paramuvi) {}
+  private int b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public uvm(urv paramurv)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-          }
-          this.a.a = true;
-          uvi.a(this.a);
-          return;
-        }
-        if (paramInt == 58)
-        {
-          uvi.a(this.a, 2131694614);
-          return;
-        }
-        if (paramInt == 65)
-        {
-          uvi.a(this.a, 2131694591);
-          return;
-        }
-        uvi.a(this.a, 2131694617);
-        return;
-        uvi.a(this.a, 2131694617);
-      }
-      return;
+    super(paramurv);
+  }
+  
+  public List<usv> a(ArrayList paramArrayList)
+  {
+    paramArrayList = new ArrayList();
+    Iterator localIterator = uep.a().a().iterator();
+    while (localIterator.hasNext()) {
+      paramArrayList.addAll((Collection)((uho)localIterator.next()).a());
     }
-    catch (Exception paramBundle) {}
+    paramArrayList = usd.a(paramArrayList);
+    if (paramArrayList != null) {
+      this.b = paramArrayList.size();
+    }
+    return paramArrayList;
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    paramViewHolder = uep.a().a();
+    urv localurv = a();
+    int i;
+    if (localurv != null)
+    {
+      i = paramInt;
+      if (paramInt >= this.b) {
+        i = this.b - 1;
+      }
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      if (paramInt < paramViewHolder.size())
+      {
+        uho localuho = (uho)paramViewHolder.get(paramInt);
+        if ((localuho.b() <= i) && (localuho.b() + localuho.a() > i))
+        {
+          localuho.a(true);
+          paramViewHolder = new WSFriendFeedExposureEvent((stSimpleMetaFeed)((usv)localurv.a().a(i)).a(), paramInt);
+          uhf.a().a(paramViewHolder);
+        }
+      }
+      else
+      {
+        return;
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    usm.a().a(this);
+    return true;
+  }
+  
+  public void b()
+  {
+    super.b();
+    usm.a().a();
   }
 }
 

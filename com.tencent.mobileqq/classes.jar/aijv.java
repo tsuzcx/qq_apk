@@ -1,33 +1,18 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aijv
-  extends MSFServlet
+class aijv
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      aijp.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-    }
-  }
+  aijv(aijm paramaijm) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null)
-    {
-      QLog.e("StickerRecServlet", 1, "onSend : req is null");
-      return;
+    if (!this.a.M) {
+      aean.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
     }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

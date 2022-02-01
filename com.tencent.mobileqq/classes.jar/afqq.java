@@ -1,29 +1,55 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class afqq
-  extends aywi
+  extends biht
 {
-  public afqq(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public afqq(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
+  {
+    super(paramString1, paramString2);
+  }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onCancel(bihu parambihu)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambihu);
     }
-    this.a.a();
-    if (paramBoolean1)
+    super.onCancel(parambihu);
+  }
+  
+  public void onDone(bihu parambihu)
+  {
+    super.onDone(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambihu);
+    }
+    if (parambihu.b()) {}
+    do
     {
-      if (paramBoolean2)
+      return;
+      if (parambihu.a() == -1)
       {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
+        parambihu = new Message();
+        parambihu.what = 17;
+        TextPreviewSettingActivity.a(this.a).sendMessage(parambihu);
         return;
       }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
+      parambihu = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
+    } while (parambihu == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambihu;
+    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bihu parambihu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambihu);
     }
-    VerifyPhoneNumActivity.c(this.a);
+    return super.onStart(parambihu);
   }
 }
 

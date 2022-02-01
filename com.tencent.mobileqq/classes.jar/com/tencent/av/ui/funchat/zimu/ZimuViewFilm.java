@@ -8,17 +8,17 @@ import com.tencent.av.app.VideoAppInterface;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import lga;
-import mnv;
-import mnw;
-import mnx;
+import lgi;
+import mos;
+import mot;
+import mou;
 
 public class ZimuViewFilm
   extends ZimuView
 {
   WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
   final int[] jdField_a_of_type_ArrayOfInt = { 44, 30 };
-  mnv[] jdField_a_of_type_ArrayOfMnv = { new mnv(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 5), new mnv(Color.parseColor("#fdeabd"), Color.parseColor("#000000"), 4) };
+  mos[] jdField_a_of_type_ArrayOfMos = { new mos(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 5), new mos(Color.parseColor("#fdeabd"), Color.parseColor("#000000"), 4) };
   
   public ZimuViewFilm(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,9 +36,9 @@ public class ZimuViewFilm
       paramVideoAppInterface[i] = ((int)(paramVideoAppInterface[i] * f));
       i += 1;
     }
-    while (j < this.jdField_a_of_type_ArrayOfMnv.length)
+    while (j < this.jdField_a_of_type_ArrayOfMos.length)
     {
-      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfMnv[j];
+      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfMos[j];
       paramVideoAppInterface.jdField_a_of_type_Float *= f;
       j += 1;
     }
@@ -46,7 +46,7 @@ public class ZimuViewFilm
   
   public int a()
   {
-    return (int)getContext().getResources().getDimension(2131297648);
+    return (int)getContext().getResources().getDimension(2131297660);
   }
   
   public String a()
@@ -54,25 +54,25 @@ public class ZimuViewFilm
     return "film";
   }
   
-  protected List<mnw> a(lga paramlga, boolean paramBoolean)
+  protected List<mot> a(lgi paramlgi, boolean paramBoolean)
   {
     a();
-    mnx localmnx = new mnx(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Float);
-    localmnx.a(paramBoolean);
-    localmnx.a(0, 0);
-    localmnx.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfMnv[0]);
-    localmnx.b(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[1], this.jdField_a_of_type_ArrayOfMnv[1]);
-    localmnx.a(paramlga);
-    localmnx.a(0L);
-    paramlga = new ArrayList();
-    paramlga.add(localmnx);
-    return paramlga;
+    mou localmou = new mou(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Float);
+    localmou.a(paramBoolean);
+    localmou.a(0, 0);
+    localmou.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfMos[0]);
+    localmou.b(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[1], this.jdField_a_of_type_ArrayOfMos[1]);
+    localmou.a(paramlgi);
+    localmou.a(0L);
+    paramlgi = new ArrayList();
+    paramlgi.add(localmou);
+    return paramlgi;
   }
   
   void d()
   {
-    mnx localmnx = (mnx)this.jdField_a_of_type_JavaUtilList.get(0);
-    if ((localmnx != null) && (localmnx.f())) {
+    mou localmou = (mou)this.jdField_a_of_type_JavaUtilList.get(0);
+    if ((localmou != null) && (localmou.f())) {
       e();
     }
   }

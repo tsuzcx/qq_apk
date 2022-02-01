@@ -1,21 +1,19 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pxg
-  implements riy<oidb_cmd0x977.FollowStatusInfo, rfi>
+  implements ViewBase.OnClickListener
 {
-  pxg(pxd parampxd) {}
+  pxg(pxe parampxe, Container paramContainer, ppu paramppu, int paramInt) {}
   
-  public rfi a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramFollowStatusInfo = new rfi(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
-    QLog.i("FollowingInfoModule", 1, "[handleGetFollowMemberListFromServer], followingMember = " + paramFollowStatusInfo);
-    return paramFollowStatusInfo;
+    pxe.a(this.jdField_a_of_type_Pxe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 

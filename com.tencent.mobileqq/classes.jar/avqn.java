@@ -1,48 +1,80 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.plugin.PluginInfo;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.SparseArray;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class avqn
-  implements aaob
+  implements BusinessObserver
 {
-  public avqn(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private final SparseArray<WeakReference<avqp>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void callback(Bundle paramBundle)
+  private void a(boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 12;
-    if (paramBundle != null)
+    int j = 0;
+    int i;
+    if (paramBundle != null) {
+      i = paramBundle.getInt("req_id");
+    }
+    for (;;)
     {
-      if (paramBundle.getBoolean("isSuccess"))
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
       {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
+        localObject1 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (localObject1 == null) {
+          break label149;
         }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
+        localObject2 = (avqp)((WeakReference)localObject1).get();
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+          return;
+        }
+        i = paramBundle.getInt("result");
+        j = paramBundle.getInt("jump_result");
+        ??? = paramBundle.getString("jump_url");
+        localObject2 = paramBundle.getString("ext_info");
+        paramBundle = (Bundle)???;
+        if (localObject1 == null) {
+          break label148;
+        }
+        ((avqp)localObject1).a(paramBoolean, i, j, paramBundle, (String)localObject2);
+        return;
       }
+      Object localObject1 = null;
+      Object localObject2 = null;
+      paramBundle = null;
+      i = 0;
+      continue;
+      label148:
+      return;
+      label149:
+      localObject1 = null;
     }
-    else {
+  }
+  
+  int a(avqp paramavqp)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, new WeakReference(paramavqp));
+      i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    a(paramBoolean, paramBundle);
   }
 }
 

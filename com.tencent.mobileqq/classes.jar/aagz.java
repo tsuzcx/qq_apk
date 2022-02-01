@@ -1,17 +1,61 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeAdFeedItemView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class aagz
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public aagz(SubscribeHybirdFragment paramSubscribeHybirdFragment, aabx paramaabx) {}
-  
-  public void onClick(View paramView)
+  public aagz(aagu paramaagu, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Aabx);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+  }
+  
+  private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
+      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
+        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
+      }
+    }
+    return false;
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    if (a(paramStFeed)) {
+      return;
+    }
+    if ((this.itemView instanceof RelativeFeedItemView))
+    {
+      ((RelativeFeedItemView)this.itemView).setIsInNightMode(aagu.a(this.a));
+      ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
+      ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
+    }
+    for (;;)
+    {
+      if (aagu.a(this.a) != null) {
+        this.itemView.setOnClickListener(new aaha(this, paramStFeed));
+      }
+      this.itemView.setOnLongClickListener(new aahb(this, paramExtraTypeInfo, paramStFeed));
+      return;
+      if ((this.itemView instanceof RelativeAdFeedItemView))
+      {
+        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(aagu.a(this.a));
+        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
+      }
+    }
   }
 }
 

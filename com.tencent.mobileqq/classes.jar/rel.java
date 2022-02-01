@@ -1,99 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import kotlin.Metadata;
-import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterShortContent;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rel
-  extends reh
+public class rel
+  extends SimpleAdapter
 {
-  protected void a()
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131368439, 2131378800, 2131378799 };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
+  
+  public rel(Context paramContext, List<Map<String, CharSequence>> paramList)
   {
-    rho localrho = null;
-    Object localObject1 = a();
-    if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).jdField_a_of_type_Int = 3;
-    }
-    rhn localrhn = a();
-    if (localrhn != null)
+    super(paramContext, paramList, 2131560295, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
+  }
+  
+  public void setViewImage(ImageView paramImageView, String paramString)
+  {
+    if ("create_topic".equals(paramString))
     {
-      localrhn.jdField_a_of_type_Boolean = true;
-      localObject1 = a();
-      if (localObject1 != null)
-      {
-        localObject1 = ((rhg)localObject1).a;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = a();
-        if (localObject1 == null) {
-          break label352;
-        }
-        localObject1 = ((rhg)localObject1).a;
-        if (localObject1 == null) {
-          break label352;
-        }
-      }
-      label352:
-      for (localObject1 = ((rgw)localObject1).jdField_a_of_type_JavaUtilArrayList;; localObject1 = null)
-      {
-        if (localObject1 == null) {
-          return;
-        }
-        Object localObject2 = a();
-        Object localObject3 = a();
-        localObject1 = localrho;
-        if (localObject3 != null)
-        {
-          localObject3 = ((rhg)localObject3).a;
-          localObject1 = localrho;
-          if (localObject3 != null) {
-            localObject1 = ((rgw)localObject3).jdField_b_of_type_JavaLangString;
-          }
-        }
-        ((BaseArticleInfo)localObject2).mTitle = ((String)localObject1);
-        localrhn.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        localObject1 = a();
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((rhg)localObject1).a;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((rgw)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (articlesummary.PGCPicInfo)((Iterator)localObject1).next();
-          localrho = new rho();
-          localrho.jdField_b_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_url.get().toStringUtf8();
-          localrho.jdField_c_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_thumbnail_url.get().toStringUtf8();
-          localrho.jdField_a_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_width.get();
-          localrho.jdField_b_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_height.get();
-          localrho.jdField_a_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_md5.get().toStringUtf8();
-          localrho.jdField_c_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).is_animation.get();
-          localrho.d = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_desc.get().toStringUtf8();
-          localrho.jdField_a_of_type_Long = ((articlesummary.PGCPicInfo)localObject2).uint64_gallery_index.get();
-          localrho.jdField_a_of_type_Rhp = new rhp((articlesummary.PGCVideoInfo)((articlesummary.PGCPicInfo)localObject2).msg_video_info.get());
-          localObject2 = localrhn.jdField_a_of_type_JavaUtilArrayList;
-          if (localObject2 != null) {
-            ((ArrayList)localObject2).add(localrho);
-          }
-        }
-        localObject1 = null;
-        break;
-      }
+      paramImageView.setImageResource(2130849535);
+      return;
+    }
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      paramImageView.setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
     }
   }
 }

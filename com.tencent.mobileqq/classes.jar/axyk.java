@@ -1,8 +1,18 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public abstract interface axyk
+public class axyk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, List<axzq> paramList);
+  public axyk(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
+    }
+  }
 }
 
 

@@ -1,119 +1,41 @@
-import android.content.Context;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import java.util.Comparator;
 
-public class aklg
-  extends SQLiteOpenHelper
+class aklg
+  implements Comparator<RecentBaseData>
 {
-  public aklg(Context paramContext, String paramString)
-  {
-    super(paramContext, "passwd_red_bag_" + paramString + ".db", null, 5);
-  }
+  aklg(aklf paramaklf) {}
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    try
+    int j = 0;
+    int i = j;
+    long l1;
+    long l2;
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagDBHelper", 2, " onCreate execSQL sqlRedBags=" + "CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);" + " sqlRedBagRelation=" + "CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );" + " sqlUpdateTimes=" + "CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
-      }
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);");
-      return;
-    }
-    catch (SQLException localSQLException2)
-    {
-      try
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
       {
-        paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );");
-      }
-      catch (SQLException localSQLException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
-            return;
-            localSQLException1 = localSQLException1;
-            if (QLog.isColorLevel())
-            {
-              QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException1);
-              continue;
-              localSQLException2 = localSQLException2;
-              if (QLog.isColorLevel()) {
-                QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException2);
-              }
-            }
-          }
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
         }
-        catch (SQLException paramSQLiteDatabase)
-        {
-          while (!QLog.isColorLevel()) {}
-          QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", paramSQLiteDatabase);
-        }
+        i = -1;
       }
     }
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    int i = paramInt1;
-    if (QLog.isColorLevel())
+    label83:
+    do
     {
-      QLog.d("PasswdRedBagDBHelper", 2, "onUpgrade<<<<<oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
-      i = paramInt1;
-    }
-    if (i < paramInt2)
-    {
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ");
-        }
-        catch (Exception localException1) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ", localException1);
-          continue;
-          try
-          {
-            paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0");
-          }
-          catch (Exception localException2) {}
-          if (QLog.isColorLevel())
-          {
-            QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0", localException2);
-            continue;
-            try
-            {
-              paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ");
-            }
-            catch (Exception localException3) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ", localException3);
-              continue;
-              try
-              {
-                paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ");
-              }
-              catch (Exception localException4) {}
-              if (QLog.isColorLevel()) {
-                QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ", localException4);
-              }
-            }
-          }
-        }
-      }
-    }
+      return i;
+      i = j;
+    } while (l1 >= l2);
+    return 1;
   }
 }
 

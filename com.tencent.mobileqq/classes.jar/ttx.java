@@ -1,69 +1,18 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ttx
-  implements ViewPager.OnPageChangeListener
+class ttx
+  implements View.OnClickListener
 {
-  public ttx(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  ttx(ttw paramttw, CertifiedAccountMeta.StUser paramStUser) {}
   
-  private void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == FolderBaseTabFragment.a)
-    {
-      if (ServiceAccountFolderActivityNew.a(this.a)) {}
-      for (str = "1";; str = "2")
-      {
-        aaxb.b("auth_discover", "tofollow", 0, 0, new String[] { str });
-        blyl.a().a("", "", "qq_live", "tab_page", "", 100, 1, System.currentTimeMillis(), "");
-        return;
-      }
-    }
-    if (ServiceAccountFolderActivityNew.a(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      aaxb.b("auth_follow", "todiscover", 0, 0, new String[] { str });
-      blyl.a().a("", "", "qq_live", "find_page", "", 100, 1, System.currentTimeMillis(), "");
-      return;
-    }
-  }
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    zzx.a();
-    a(paramInt);
-    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
-    {
-      ServiceAccountFolderActivityNew.a(this.a).getChildAt(paramInt).performClick();
-      ServiceAccountFolderActivityNew.a(this.a, false);
-    }
-    ((FolderBaseTabFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt)).a(this.a, paramInt);
-    long l1;
-    long l2;
-    if (ServiceAccountFolderActivityNew.a(this.a) > 0L)
-    {
-      l1 = System.currentTimeMillis();
-      l2 = ServiceAccountFolderActivityNew.a(this.a);
-      if (ServiceAccountFolderActivityNew.a(this.a) != FolderBaseTabFragment.a) {
-        break label173;
-      }
-    }
-    label173:
-    for (String str = "auth_follow";; str = "auth_discover")
-    {
-      aaxb.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
-      ServiceAccountFolderActivityNew.a(this.a, 0L);
-      ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
-      ServiceAccountFolderActivityNew.a(this.a, paramInt);
-      return;
-    }
+    aaej.a(this.jdField_a_of_type_Ttw.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+    abbe.b("auth_follow", "clk_head", 0, 0, new String[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

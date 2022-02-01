@@ -1,81 +1,110 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.qav.observer.FilterableObservable.1;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
 public class bkdw
-  implements bkeg
 {
-  public bkdw(AudioDeviceInterface paramAudioDeviceInterface) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final List<bkdx> jdField_a_of_type_JavaUtilList = new Vector();
+  private Handler jdField_b_of_type_AndroidOsHandler;
+  private final List<bkdx> jdField_b_of_type_JavaUtilList = new Vector();
   
-  public void a(int paramInt)
+  bkdw()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    if (this.jdField_b_of_type_AndroidOsHandler == null)
+    {
+      HandlerThread localHandlerThread = new HandlerThread("FilterableObservable-bg-thread");
+      localHandlerThread.start();
+      this.jdField_b_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    }
+  }
+  
+  private void a(bkdx parambkdx, Handler paramHandler, int paramInt, Object... paramVarArgs)
+  {
+    paramHandler.post(new FilterableObservable.1(this, parambkdx, paramInt, paramVarArgs));
+  }
+  
+  public void a()
   {
     try
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_b_of_type_JavaUtilList.clear();
+      if (this.jdField_b_of_type_AndroidOsHandler != null) {
+        this.jdField_b_of_type_AndroidOsHandler.getLooper().quit();
       }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
+      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.jdField_b_of_type_AndroidOsHandler = null;
       return;
     }
-    catch (Exception localException) {}
+    finally {}
   }
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a(bkdx parambkdx)
   {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
+    if (parambkdx != null) {}
     try
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
+      this.jdField_a_of_type_JavaUtilList.remove(parambkdx);
+      this.jdField_b_of_type_JavaUtilList.remove(parambkdx);
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
+    finally
+    {
+      parambkdx = finally;
+      throw parambkdx;
     }
   }
   
-  public void a(String paramString) {}
+  public void a(bkdx parambkdx, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_b_of_type_JavaUtilList.add(parambkdx);
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilList.add(parambkdx);
+    }
+  }
   
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
+  public void a(Class<? extends bkdx> paramClass, int paramInt, Object... paramVarArgs)
+  {
+    Iterator localIterator;
+    bkdx localbkdx;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localbkdx = (bkdx)localIterator.next();
+        if ((paramClass != null) && (localbkdx != null) && (paramClass.isAssignableFrom(localbkdx.getClass()))) {
+          a(localbkdx, this.jdField_a_of_type_AndroidOsHandler, paramInt, paramVarArgs);
+        }
+      }
+    }
+    synchronized (this.jdField_b_of_type_JavaUtilList)
+    {
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localbkdx = (bkdx)localIterator.next();
+        if ((paramClass != null) && (localbkdx != null) && (paramClass.isAssignableFrom(localbkdx.getClass()))) {
+          a(localbkdx, this.jdField_b_of_type_AndroidOsHandler, paramInt, paramVarArgs);
+        }
+      }
+    }
+  }
 }
 
 

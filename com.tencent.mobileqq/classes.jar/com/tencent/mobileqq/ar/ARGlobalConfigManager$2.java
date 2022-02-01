@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aorb;
+import aper;
 
 public class ARGlobalConfigManager$2
   implements Runnable
 {
-  public ARGlobalConfigManager$2(aorb paramaorb) {}
+  public ARGlobalConfigManager$2(aper paramaper) {}
   
   public void run()
   {

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import java.io.File;
-import tnm;
+import tek;
 
 public class BridgeModule$27$1
   implements Runnable
 {
-  public BridgeModule$27$1(tnm paramtnm, File paramFile) {}
+  public BridgeModule$27$1(tek paramtek, File paramFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tnm.a.shareImageToAIOInner(this.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Tek.a.shareImageToAIOInner(this.jdField_a_of_type_JavaIoFile);
   }
 }
 

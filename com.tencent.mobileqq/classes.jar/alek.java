@@ -1,53 +1,17 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.SoLoadInfo;
+import eipc.EIPCResult;
 
-public class alek
-  extends aleq
+class alek
+  implements bdgs
 {
-  public alek(Context paramContext, String paramString)
-  {
-    a(paramString);
-  }
+  alek(alee paramalee, int paramInt) {}
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void a(SoLoadInfo paramSoLoadInfo)
   {
-    paramQQAppInterface = null;
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      paramQQAppInterface = appj.a((MessageForArkApp)paramMessageRecord);
-    }
-    if ((paramObject instanceof alek))
-    {
-      paramObject = (alek)paramObject;
-      if (paramQQAppInterface != null) {
-        paramObject.a(paramQQAppInterface);
-      }
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-    }
-    paramObject = BaseApplication.getContext();
-    if (paramQQAppInterface != null) {}
-    for (;;)
-    {
-      paramObject = new alek(paramObject, paramQQAppInterface);
-      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-      paramQQAppInterface = "";
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = "";; paramString = '[' + paramString + ']')
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("res", paramSoLoadInfo);
+    this.jdField_a_of_type_Alee.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

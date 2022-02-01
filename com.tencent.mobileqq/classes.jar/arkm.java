@@ -1,56 +1,49 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.text.TextUtils;
 import org.json.JSONObject;
 
 public class arkm
-  extends arjk
 {
-  public ArrayList<arkl> a;
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
   public static arkm a(JSONObject paramJSONObject)
   {
-    arkm localarkm = new arkm();
-    localarkm.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
-    paramJSONObject = paramJSONObject.optJSONArray("configs");
-    localarkm.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      arkl localarkl = arkl.a(paramJSONObject.optJSONObject(i));
-      localarkl.a = localarkm;
-      localarkm.jdField_a_of_type_JavaUtilArrayList.add(localarkl);
-      i += 1;
+    if (paramJSONObject == null) {
+      return null;
     }
+    arkm localarkm = new arkm();
+    localarkm.a = paramJSONObject.getString("tips");
+    localarkm.b = paramJSONObject.getString("buttonText");
+    localarkm.c = paramJSONObject.getString("url");
+    localarkm.d = paramJSONObject.getString("icon");
     return localarkm;
   }
   
-  public JSONObject a()
+  public String a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put(((arkl)localIterator.next()).a());
-      }
-      localJSONObject.put("configs", localJSONException);
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject;
-    }
-    return localJSONObject;
+    return this.a;
   }
   
   public boolean a()
   {
-    return false;
+    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 

@@ -1,42 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-class bbfx
-  implements View.OnClickListener
+public class bbfx
+  implements GLGestureListener
 {
-  bbfx(bbfs parambbfs) {}
-  
-  public void onClick(View paramView)
+  public int onGetPriority()
   {
-    boolean bool;
-    if (bbfs.a(this.a) != null)
-    {
-      KDSearchHistoryFlowLayout localKDSearchHistoryFlowLayout = bbfs.a(this.a);
-      if (bbfs.a(this.a).a) {
-        break label111;
-      }
-      bool = true;
-      localKDSearchHistoryFlowLayout.a = bool;
-      if (!bbfs.a(this.a).a) {
-        break label116;
-      }
-      bbfs.a(this.a).setImageResource(2130846018);
+    return 1020;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    if (paramMotionEvent.getPointerCount() > 2) {
+      return false;
     }
-    for (;;)
+    int i = paramMotionEvent.getAction();
+    GLSurfaceView localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
+    switch (i & 0xFF)
     {
-      bbfs.a(this.a).a(bbfs.a(this.a).a(), bbfs.a(this.a).a);
-      bbfs.a(this.a).notifyDataSetChanged();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label111:
-      bool = false;
-      break;
-      label116:
-      bbfs.a(this.a).setImageResource(2130846019);
     }
+    do
+    {
+      do
+      {
+        return false;
+      } while ((!(localGLSurfaceView instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)localGLSurfaceView).c()));
+      ((AECameraGLSurfaceView)localGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY());
+      return true;
+    } while ((!(localGLSurfaceView instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)localGLSurfaceView).c()));
+    ((AECameraGLSurfaceView)localGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(1) + paramMotionEvent.getRawX() - paramMotionEvent.getX(0), paramMotionEvent.getY(1) + paramMotionEvent.getRawY() - paramMotionEvent.getY(0));
+    return true;
   }
 }
 

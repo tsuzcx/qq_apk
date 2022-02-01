@@ -1,72 +1,48 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose.1;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
 import java.lang.ref.WeakReference;
-import org.json.JSONObject;
 
-class acqc
-  implements acqj
+public final class acqc
+  implements AdIPCManager.Handler
 {
-  private GdtDwellTimeStatisticsAfterClick a;
-  
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
   {
-    Object localObject = null;
-    if (paramacpp != null) {}
-    GdtHandler.Params localParams;
-    for (Activity localActivity = paramacpp.a();; localActivity = null)
+    String str2 = null;
+    AdIPCManager.Result localResult = new AdIPCManager.Result();
+    if (paramParams == null) {
+      if (paramParams == null) {
+        break label179;
+      }
+    }
+    label179:
+    for (String str1 = paramParams.getAction();; str1 = null)
     {
-      localParams = new GdtHandler.Params();
-      boolean bool = GdtHandler.a(localParams, paramVarArgs[0]);
-      if ((paramacpp != null) && (localActivity != null) && (bool)) {
+      if (paramParams != null) {
+        str2 = paramParams.getToProcessName();
+      }
+      acvc.b("GdtInterstitialAd", String.format("IPCHandlerForClose.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localResult.success) }));
+      return localResult;
+      if ((!paramParams.isValid()) || (paramParams.bundle == null)) {
         break;
       }
-      acqy.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    for (;;)
-    {
-      try
-      {
-        acqy.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
-        localParams.jdField_c_of_type_Int = 7;
-        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-        localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramacpp.a());
-        localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
-        localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
-        localParams.jdField_c_of_type_JavaLangClass = GdtBaseHalfScreenFragmentForJs.class;
-        paramVarArgs = paramacpp.a().getIntent();
-        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
-        {
-          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
-          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
-          this.a = new GdtDwellTimeStatisticsAfterClick(localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramacpp.mRuntime.a()));
-          this.a.a();
-          GdtHandler.a(localParams);
-          paramacpp.callJs(paramString, null);
-          paramString = localObject;
-          if (paramacpp != null) {
-            paramString = paramacpp.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-          return true;
-        }
+      str1 = paramParams.bundle.getString("TRACE_ID");
+      if (paramParams.bundle == null) {
+        break;
       }
-      catch (Throwable paramacpp)
-      {
-        acqy.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramacpp);
-        return true;
+      WeakReference localWeakReference = acqd.a().a(str1);
+      if ((localWeakReference == null) || (localWeakReference.get() == null)) {
+        break;
       }
-      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
+      acqe.c(BaseApplicationImpl.getContext(), ((GdtInterstitialFragment)localWeakReference.get()).a(), ((GdtInterstitialFragment)localWeakReference.get()).a());
+      localResult.success = true;
+      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialAd.IPCHandlerForClose.1(this, str1), 0, 2000L);
+      break;
     }
   }
 }

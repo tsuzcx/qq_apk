@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.util;
 
-import anuq;
+import aoha;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SearchHistory;
 import com.tencent.qphone.base.util.QLog;
@@ -20,11 +20,11 @@ public final class SearchUtils$1
     localSearchHistory.uin = this.b;
     localSearchHistory.troopUin = this.c;
     localSearchHistory.displayName = this.jdField_a_of_type_JavaLangString;
-    anuq localanuq = (anuq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localanuq == null) {
+    aoha localaoha = (aoha)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
+    if (localaoha == null) {
       return;
     }
-    localanuq.a(localSearchHistory);
+    localaoha.a(localSearchHistory);
     com.tencent.mobileqq.search.activity.UniteSearchActivity.c = true;
   }
 }

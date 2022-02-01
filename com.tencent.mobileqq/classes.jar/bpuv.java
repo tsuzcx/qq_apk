@@ -1,26 +1,25 @@
-import android.util.Property;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-class bpuv
-  extends Property<bput, Integer>
+public class bpuv
+  implements bhtj<Float>
 {
-  bpuv(bput parambput, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bpuv(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
   
-  public Integer a(bput parambput)
+  @TargetApi(11)
+  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    if (parambput != null) {
-      return Integer.valueOf(bput.a(parambput));
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bput parambput, Integer paramInteger)
-  {
-    if (parambput != null) {
-      bput.a(parambput, paramInteger.intValue());
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
     }
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
   }
 }
 

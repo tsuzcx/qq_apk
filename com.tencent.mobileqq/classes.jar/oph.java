@@ -1,88 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oph
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initAdImageAreaClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oph
+  implements opd
 {
-  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull otd paramotd, @NotNull otp paramotp, @NotNull ViewBase paramViewBase)
   {
-    int k = 1;
-    for (;;)
-    {
-      try
-      {
-        if (paramAdData.a == null) {
-          return paramJSONObject;
-        }
-        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
-        if (!TextUtils.isEmpty(paramAdData.a.k)) {
-          paramJSONObject.put("id_inner_small_img", new JSONObject());
-        }
-        JSONObject localJSONObject;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
-          paramJSONObject.put("id_inner_title", localJSONObject);
-        }
-        if ((!opz.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.h);
-          paramJSONObject.put("id_inner_category", localJSONObject);
-        }
-        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.d)) {
-          break label424;
-        }
-        paramJSONObject.put("id_inner_game_img1", new JSONObject());
-        paramJSONObject.put("id_game_img1_container1", new JSONObject());
-        i = 1;
-        j = 1;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.e))
-        {
-          paramJSONObject.put("id_inner_game_img2", new JSONObject());
-          paramJSONObject.put("id_game_img2_container2", new JSONObject());
-          i = 1;
-          j = 1;
-        }
-        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.f)) {
-          break label421;
-        }
-        paramJSONObject.put("id_inner_game_img3", new JSONObject());
-        paramJSONObject.put("id_game_img3_container3", new JSONObject());
-        i = 0;
-        j = 1;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.g))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Omk.g);
-          paramJSONObject.put("id_inner_ad_name", localJSONObject);
-          j = k;
-          if (j != 0) {
-            paramJSONObject.put("id_bottom_operation", new JSONObject());
-          }
-          if (i != 0) {
-            paramJSONObject.put("id_game_img_right_space", new JSONObject());
-          }
-          localJSONObject = new JSONObject();
-          localJSONObject.put("innerGameModel", paramAdData);
-          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
-          return paramJSONObject;
-        }
-      }
-      catch (JSONException paramAdData)
-      {
-        paramAdData.printStackTrace();
-        return paramJSONObject;
-      }
-      continue;
-      label421:
-      continue;
-      label424:
-      int i = 0;
-      int j = 0;
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(paramotd, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramotp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new opi(paramotp, paramotd, paramContainer));
   }
 }
 

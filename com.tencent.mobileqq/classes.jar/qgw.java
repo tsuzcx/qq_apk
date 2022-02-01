@@ -1,122 +1,104 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.2;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.4;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class qgw
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private tbm jdField_a_of_type_Tbm;
-  private tpa jdField_a_of_type_Tpa;
-  private uai jdField_a_of_type_Uai;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile qgw jdField_a_of_type_Qgw;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private final String b = nmp.a("4044") + "4044";
+  private final String c = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_jsc";
   
-  public qgw(ArticleInfo paramArticleInfo, Context paramContext)
+  public static qgw a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (jdField_a_of_type_Qgw == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qgw == null) {
+        jdField_a_of_type_Qgw = new qgw();
+      }
+      return jdField_a_of_type_Qgw;
+    }
+    finally {}
   }
   
-  public static String a(ArticleInfo paramArticleInfo)
+  private void b()
+  {
+    ThreadManager.excute(new PTSJSCLoader.3(this), 128, null, true);
+  }
+  
+  private boolean b()
+  {
+    Object localObject = this.c + "/" + "pts_jsc_config.json";
+    boolean bool1 = bhmi.a(this.c + "/" + "libjsc.so");
+    boolean bool2 = qgy.a((String)localObject);
+    jdField_a_of_type_JavaLangString = qgy.b((String)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[checkInnerPTSJSCIsValid]").append("\n").append(", ptsJSCVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isJSCSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
+    QLog.i("PTSJSCLoader", 1, ((StringBuilder)localObject).toString());
+    return (bool1) && (bool2);
+  }
+  
+  private void c()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      pha.a(localJSONObject, paramArticleInfo);
-      localJSONObject.put("feed_type", 1043);
-      localJSONObject.put("version", och.a);
-      localJSONObject.put("os", "1");
-      if (paramArticleInfo != null)
-      {
-        localJSONObject.put("comment_id", paramArticleInfo.commentId);
-        localJSONObject.put("entry", paramArticleInfo.commentSrc);
-      }
-      if (paramArticleInfo.mChannelID == 0L) {
-        localJSONObject.put("place", 1);
-      }
-      for (;;)
-      {
-        return localJSONObject.toString();
-        if (paramArticleInfo.mChannelID == 70L) {
-          localJSONObject.put("place", 2);
-        }
-      }
-      return "";
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.d("OnShareClickListener", 2, paramArticleInfo.getMessage());
-    }
-  }
-  
-  private List<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(13));
-    localArrayList.add(Integer.valueOf(2));
-    localArrayList.add(Integer.valueOf(3));
-    localArrayList.add(Integer.valueOf(9));
-    localArrayList.add(Integer.valueOf(10));
-    return localArrayList;
-  }
-  
-  private void a(ArticleInfo paramArticleInfo)
-  {
-    String str = a(paramArticleInfo);
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    oat.a(null, paramArticleInfo.mSubscribeID, "0X800AB52", "0X800AB52", 0, 0, String.valueOf(localSocializeFeedsInfo.a), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str, false);
-  }
-  
-  private void a(ViewBase paramViewBase)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_Uai == null)
-    {
-      this.jdField_a_of_type_Uai = new uai((Activity)paramViewBase.getNativeView().getContext(), localQQAppInterface, new qgy(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new WeakReference((Activity)paramViewBase.getNativeView().getContext())));
-      paramViewBase.getNativeView().addOnAttachStateChangeListener(new qgx(this));
-    }
-    paramViewBase = this.jdField_a_of_type_Uai.a().getIntent();
-    if ((paramViewBase != null) && (TextUtils.isEmpty(paramViewBase.getStringExtra("big_brother_source_key")))) {
-      paramViewBase.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
-    }
-    this.jdField_a_of_type_Uai.a().setActionSheetTitle(anni.a(2131712353));
-    int i;
-    if (snh.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      i = 15;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Uai.a(new List[] { a() }, i);
+      ThreadManager.excute(new PTSJSCLoader.4(this), 64, null, false);
       return;
-      if (snh.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-        i = 16;
-      } else if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-        i = 12;
-      } else {
-        i = 0;
-      }
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    a(paramViewBase);
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      PTSJSCLoader.1 local1 = new PTSJSCLoader.1(this);
+      ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (a())
+    {
+      QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jsc has loaded, no need to load again.");
+      if (paramRunnable != null) {
+        ThreadManager.getFileThreadHandler().post(paramRunnable);
+      }
+      return;
+    }
+    if (b())
+    {
+      paramRunnable = new PTSJSCLoader.2(this, paramRunnable);
+      ThreadManager.getFileThreadHandler().post(paramRunnable);
+      return;
+    }
+    QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], pts jsc is not valid, load jsc so failed.");
+    c();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,19 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class ojg
-  implements nkl
+  implements TextWatcher
 {
-  public ojg(ReadInJoyNewFeedsActivity.2 param2) {}
+  public ojg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    this.a.a(paramEditable);
   }
   
-  public void progress(int paramInt) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.b(paramCharSequence, paramInt1, paramInt2, paramInt3);
+  }
 }
 
 

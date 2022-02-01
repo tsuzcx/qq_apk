@@ -1,82 +1,64 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Media;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicView$topicAdapter$1", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicView$MyTopicViewHolder;", "bindViewHolder", "", "topicInfo", "holder", "createView", "Landroid/view/View;", "context", "Landroid/content/Context;", "viewGroup", "Landroid/view/ViewGroup;", "createViewHolder", "itemView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class riv
+  extends rij<ColumnInfo, riu>
 {
-  @NotNull
-  public static final ArrayList<riw> a(int paramInt1, int paramInt2)
+  public riv(Context paramContext)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = BaseApplication.getContext().getContentResolver();
-    Object localObject2 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-    String str = "date_modified DESC limit " + paramInt2 + " offset " + paramInt1;
-    localObject1 = ((ContentResolver)localObject1).query((Uri)localObject2, new String[] { "_id", "_data", "_size", "date_modified", "duration", "resolution", "title", "mime_type" }, "duration>0", null, str);
-    if (localObject1 != null)
-    {
-      ((Cursor)localObject1).moveToFirst();
-      paramInt1 = 0;
-      while (!((Cursor)localObject1).isAfterLast())
-      {
-        localObject2 = new riw();
-        ((riw)localObject2).jdField_a_of_type_Boolean = true;
-        ((riw)localObject2).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_id"));
-        ((riw)localObject2).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("_data"));
-        ((riw)localObject2).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_size"));
-        ((riw)localObject2).jdField_d_of_type_Long = ((Cursor)localObject1).getInt(((Cursor)localObject1).getColumnIndexOrThrow("duration"));
-        ((riw)localObject2).jdField_c_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("resolution"));
-        ((riw)localObject2).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_modified"));
-        ((riw)localObject2).jdField_d_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("title"));
-        ((riw)localObject2).jdField_a_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("mime_type"));
-        ((riw)localObject2).f = ((riw)localObject2).jdField_b_of_type_JavaLangString;
-        localArrayList.add(localObject2);
-        ((Cursor)localObject1).moveToNext();
-        QLog.d("AlbumUtils", 2, "queryVideoList index:" + paramInt1);
-        paramInt1 += 1;
-      }
-    }
-    return localArrayList;
+    super(localContext);
   }
   
   @NotNull
-  public static final ArrayList<riw> b(int paramInt1, int paramInt2)
+  public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = BaseApplication.getContext().getContentResolver();
-    Object localObject2 = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-    Object localObject3 = "date_modified DESC limit " + paramInt2 + " offset " + paramInt1;
-    localObject1 = ((ContentResolver)localObject1).query((Uri)localObject2, new String[] { "_id", "_data", "_size", "date_modified", "mime_type" }, null, null, (String)localObject3);
-    if (localObject1 != null)
-    {
-      ((Cursor)localObject1).moveToFirst();
-      while (!((Cursor)localObject1).isAfterLast())
-      {
-        localObject2 = new riw();
-        ((riw)localObject2).jdField_a_of_type_Boolean = false;
-        ((riw)localObject2).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_id"));
-        ((riw)localObject2).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("_data"));
-        ((riw)localObject2).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_size"));
-        ((riw)localObject2).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_modified"));
-        ((riw)localObject2).jdField_a_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("mime_type"));
-        ((riw)localObject2).e = ((riw)localObject2).jdField_b_of_type_JavaLangString;
-        ((riw)localObject2).f = ((riw)localObject2).e;
-        localObject3 = new LocalMediaInfo();
-        ((LocalMediaInfo)localObject3).mediaWidth = ((riw)localObject2).a();
-        ((LocalMediaInfo)localObject3).mediaHeight = ((riw)localObject2).b();
-        ((LocalMediaInfo)localObject3).path = ((riw)localObject2).jdField_b_of_type_JavaLangString;
-        ((riw)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject3);
-        localArrayList.add(localObject2);
-        ((Cursor)localObject1).moveToNext();
-      }
-    }
-    return localArrayList;
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560208, paramViewGroup, false);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…  false\n                )");
+    return paramContext;
+  }
+  
+  @NotNull
+  public riu a(@NotNull Context paramContext, @NotNull View paramView)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
+    paramContext = (TextView)paramView.findViewById(2131379030);
+    TextView localTextView = (TextView)paramView.findViewById(2131379196);
+    paramView = (ImageView)paramView.findViewById(2131369184);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "titleText");
+    Intrinsics.checkExpressionValueIsNotNull(localTextView, "introView");
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "coverView");
+    return new riu(paramContext, localTextView, paramView);
+  }
+  
+  public void a(@NotNull ColumnInfo paramColumnInfo, @NotNull riu paramriu)
+  {
+    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
+    Intrinsics.checkParameterIsNotNull(paramriu, "holder");
+    paramriu.a().setImageDrawable((Drawable)URLDrawable.getDrawable(paramColumnInfo.coverUrl, URLDrawable.URLDrawableOptions.obtain()));
+    Drawable localDrawable = a().getResources().getDrawable(2130843006);
+    localDrawable.setBounds(0, 0, zps.a(a(), 15.0F), zps.a(a(), 15.0F));
+    TextView localTextView = paramriu.a();
+    localTextView.setText((CharSequence)paramColumnInfo.title);
+    localTextView.setCompoundDrawablePadding(zps.a(localTextView.getContext(), 3.0F));
+    localTextView.setCompoundDrawables(localDrawable, null, null, null);
+    paramColumnInfo = a().getResources().getString(2131717271, new Object[] { Integer.valueOf(paramColumnInfo.videoCount), Integer.valueOf(paramColumnInfo.subscribeCount) });
+    paramriu.b().setText((CharSequence)paramColumnInfo);
   }
 }
 

@@ -1,32 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-class uxs
-  implements View.OnClickListener
+public class uxs
+  implements Animation.AnimationListener
 {
-  uxs(uxp paramuxp) {}
+  public uxs(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    uxv localuxv;
-    if (uxp.a(this.a) != null)
-    {
-      localuxv = (uxv)uxp.a(this.a).get();
-      if (localuxv != null) {
-        switch (paramView.getId())
-        {
-        }
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localuxv.a(uxw.c);
-    }
+    paramAnimation = (ImageView)this.a.findViewById(2131380543);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131380544);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

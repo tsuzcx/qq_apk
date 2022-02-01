@@ -1,14 +1,8 @@
-import android.os.Bundle;
-
-public abstract interface rje
+public abstract interface rje<V>
 {
-  public abstract void a(Bundle paramBundle, float paramFloat);
+  public abstract void a();
   
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
+  public abstract void a(V paramV);
 }
 
 

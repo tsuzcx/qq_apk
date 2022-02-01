@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class aiau
-  implements DialogInterface.OnClickListener
+  implements aiey
 {
-  aiau(aias paramaias) {}
+  aiau(aiar paramaiar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    aias.a(this.a);
+    if (aiar.a(this.a).J) {
+      aiar.a(this.a).ba();
+    }
+    aiar.a(this.a).b(aiar.a(this.a).hashCode());
   }
 }
 

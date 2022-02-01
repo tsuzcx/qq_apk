@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import yqp;
+import yuk;
 
 class QQStoryBaseFragment$2
   implements Runnable
@@ -13,7 +13,7 @@ class QQStoryBaseFragment$2
   {
     if (this.this$0.a())
     {
-      yqp.d("IphoneTitleBarFragment", "Activity has been destroy.");
+      yuk.d("IphoneTitleBarFragment", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)

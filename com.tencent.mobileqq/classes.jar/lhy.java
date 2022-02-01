@@ -1,116 +1,52 @@
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lhy
 {
-  public int a;
-  public long a;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long[] jdField_a_of_type_ArrayOfLong = new long[41];
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  private static String b = "actAVFunChatDecorate";
   
-  lhy()
+  public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
-  }
-  
-  public String a()
-  {
-    String str1 = Build.MODEL;
-    String str2 = String.valueOf(Build.VERSION.SDK_INT);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Android").append('|');
-    localStringBuilder.append(str1).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
-    if (this.jdField_b_of_type_Int != -1) {
-      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
-    }
-    for (;;)
+    if (paramVideoAppInterface.a(2))
     {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
-      return localStringBuilder.toString();
-      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+      paramVideoAppInterface = (PendantItem)((lhx)paramVideoAppInterface.a(2)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(paramString, null);
+      }
     }
   }
   
-  public String a(int paramInt, long paramLong)
+  static void a(String paramString1, String paramString2)
   {
-    if ((paramInt >= 0) && (paramInt < 41))
+    long l1 = System.currentTimeMillis();
+    if (!lsv.a(paramString2, jdField_a_of_type_JavaLangString))
     {
-      StringBuilder localStringBuilder;
-      if (paramLong == 1L)
+      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_Long != 0L))
       {
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
-        localStringBuilder = new StringBuilder();
-        paramInt = 0;
-        label34:
-        if (paramInt >= 41) {
-          break label242;
-        }
-        switch (paramInt)
-        {
-        default: 
-          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
-        }
+        long l2 = jdField_a_of_type_Long;
+        a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
       }
-      for (;;)
-      {
-        paramInt += 1;
-        break label34;
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-        break;
-        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
-        {
-          this.jdField_a_of_type_JavaLangString = lhw.a();
-          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
-        }
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(0).append('|');
-        continue;
-        if (this.jdField_b_of_type_Long > 0L) {
-          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
-        }
-        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
-      }
-      label242:
-      return localStringBuilder.toString();
+      jdField_a_of_type_JavaLangString = paramString2;
+      jdField_a_of_type_Long = l1;
     }
-    lbc.d("VideoNodeReporter", "buildBody report error:" + paramInt);
-    return null;
   }
   
-  public void a(ley paramley, String paramString)
+  public static void a(String paramString1, String paramString2, long paramLong)
   {
-    if (paramley != null)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      if (paramley.k != -1) {
-        this.jdField_a_of_type_Int = paramley.k;
-      }
-      if (paramley.jdField_d_of_type_Int != 0) {
-        this.jdField_b_of_type_Int = paramley.jdField_d_of_type_Int;
-      }
-      if (!TextUtils.isEmpty(paramley.jdField_d_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramley.jdField_d_of_type_JavaLangString;
-      }
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
+      long l = (System.currentTimeMillis() - paramLong) / 1000L;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("tempID", paramString2);
+      localHashMap.put("duration", l + "");
+      UserAction.onUserAction(b, true, -1L, -1L, localHashMap, true);
+      lbj.c(paramString1, "onStateReport, ID: " + paramString2 + "  pendant time: " + paramLong);
     }
   }
 }

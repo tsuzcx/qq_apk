@@ -1,6 +1,6 @@
 public abstract interface blqz
 {
-  public abstract byte[] flushMsgData(int paramInt);
+  public abstract boolean a();
 }
 
 

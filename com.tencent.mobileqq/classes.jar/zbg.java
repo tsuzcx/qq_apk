@@ -1,63 +1,12 @@
-import android.graphics.drawable.Drawable;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.PointF;
 
-public class zbg
+public abstract interface zbg
 {
-  public Drawable a;
-  public String a;
-  public zbh a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public abstract void a(zfw paramzfw);
   
-  public zbg()
-  {
-    this.jdField_a_of_type_Zbh = new zbh();
-  }
+  public abstract void a(zfw paramzfw, int paramInt1, int paramInt2);
   
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Zbh == null) {
-      this.jdField_a_of_type_Zbh = new zbh();
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.e);
-      int i = localJSONObject.getInt("align");
-      Object localObject = localJSONObject.getJSONArray("picture_margin");
-      int j = ((JSONArray)localObject).getInt(0);
-      int k = ((JSONArray)localObject).getInt(1);
-      int m = ((JSONArray)localObject).getInt(2);
-      int n = ((JSONArray)localObject).getInt(3);
-      localObject = localJSONObject.getString("text_color");
-      int i1 = localJSONObject.getInt("text_size");
-      int i2 = localJSONObject.getInt("picture_width");
-      int i3 = localJSONObject.getInt("picture_height");
-      int i4 = localJSONObject.getInt("standard_width");
-      int i5 = localJSONObject.getInt("standard_height");
-      this.jdField_a_of_type_Zbh.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Zbh.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
-      this.jdField_a_of_type_Zbh.jdField_a_of_type_JavaLangString = ((String)localObject);
-      this.jdField_a_of_type_Zbh.b = i1;
-      this.jdField_a_of_type_Zbh.c = i2;
-      this.jdField_a_of_type_Zbh.d = i3;
-      this.jdField_a_of_type_Zbh.e = i4;
-      this.jdField_a_of_type_Zbh.f = i5;
-      return true;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Zbh + '}';
-  }
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 

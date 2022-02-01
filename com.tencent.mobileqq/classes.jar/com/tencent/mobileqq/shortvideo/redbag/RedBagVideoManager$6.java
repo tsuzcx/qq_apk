@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import bckg;
+import bdcy;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
 public class RedBagVideoManager$6
   implements Runnable
 {
-  public RedBagVideoManager$6(bckg parambckg, AIORichMediaData paramAIORichMediaData) {}
+  public RedBagVideoManager$6(bdcy parambdcy, AIORichMediaData paramAIORichMediaData) {}
   
   public void run()
   {

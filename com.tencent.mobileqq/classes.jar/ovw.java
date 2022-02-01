@@ -1,4 +1,7 @@
-class ovw {}
+public abstract interface ovw
+{
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

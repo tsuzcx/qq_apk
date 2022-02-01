@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stFollowFeedsRsp;
 import mqq.util.WeakReference;
-import uej;
-import upe;
+import uel;
+import uqf;
 
 class WeiShiCacheManager$2$1
   implements Runnable
@@ -12,11 +12,11 @@ class WeiShiCacheManager$2$1
   
   public void run()
   {
-    uej localuej = (uej)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCacheWeiShiCacheManager$2.a.get();
-    if (localuej != null)
+    uel localuel = (uel)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCacheWeiShiCacheManager$2.a.get();
+    if (localuel != null)
     {
-      upe.b("CacheResponseLog", "getCacheDataForFollow endTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
-      localuej.a(this.jdField_a_of_type_UserGrowthStFollowFeedsRsp);
+      uqf.b("CacheResponseLog", "getCacheDataForFollow endTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+      localuel.a(this.jdField_a_of_type_UserGrowthStFollowFeedsRsp);
     }
   }
 }

@@ -1,26 +1,24 @@
 import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
-class axxo
-  implements bkhw
+public class axxo
+  implements bljm
 {
-  axxo(axxm paramaxxm, axxt paramaxxt, axzq paramaxzq, bkho parambkho) {}
+  public axxo(GameQuickWordsPanel paramGameQuickWordsPanel) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    axlq localaxlq = new axlq().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Axxm.a(this.jdField_a_of_type_Axxt)).b(this.jdField_a_of_type_Axzq.c).c(String.valueOf(this.jdField_a_of_type_Axxm.a(this.jdField_a_of_type_Axxt)));
-    if (this.jdField_a_of_type_Axxm.jdField_a_of_type_Boolean) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localaxlq.e(paramView).b(this.jdField_a_of_type_Axxm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      axxm.a(this.jdField_a_of_type_Axxm, this.jdField_a_of_type_Axxt);
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
+    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView = new aeau();
+    paramView.c = bhnv.a(BaseApplication.getContext());
+    paramView.a = System.currentTimeMillis();
+    aean.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
+    this.a.jdField_a_of_type_Aikq.aJ();
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
   }
 }
 

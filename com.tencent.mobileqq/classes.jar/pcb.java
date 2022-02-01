@@ -1,14 +1,27 @@
-class pcb
-  extends pcm
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+public class pcb
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pcb(pbe parampbe, int paramInt1, pay parampay, int paramInt2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bnrf.a((String)paramString.get("readinjoy_single_video_switch"));
+    }
+    return true;
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    parampcp.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Pay, this.b);
+    super.onWipeConfig(paramInt);
+    bnrf.a(null);
   }
 }
 

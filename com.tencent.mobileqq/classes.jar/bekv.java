@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.List;
+import java.util.regex.Matcher;
 
-class bekv
-  implements QQPermissionCallback
+final class bekv
+  implements belv
 {
-  bekv(beku parambeku) {}
+  bekv(List paramList, beko parambeko) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String a(Matcher paramMatcher)
   {
-    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    TroopBarReplyActivity.a(this.a.a, 4);
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Beko.a(beks.a(paramMatcher.group(1))));
+    return "";
   }
 }
 

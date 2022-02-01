@@ -1,45 +1,57 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class amto
-  implements TVK_SDKMgr.OnLogListener
+  extends biht
 {
-  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  WeakReference<QQAppInterface> a;
+  WeakReference<amtn> b;
   
-  public int d(String paramString1, String paramString2)
+  public amto(QQAppInterface paramQQAppInterface, amtn paramamtn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramamtn);
+  }
+  
+  public void onDone(bihu parambihu)
+  {
+    Object localObject = (QQAppInterface)this.a.get();
+    amtn localamtn = (amtn)this.b.get();
+    if ((localObject == null) || (localamtn == null) || (parambihu == null) || (parambihu.a() == null) || (parambihu.jdField_a_of_type_JavaUtilMap == null)) {
+      return;
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(a, 1, paramString1 + ":" + paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
+    super.onDone(parambihu);
     if (QLog.isColorLevel()) {
-      QLog.i(a, 2, paramString1 + ":" + paramString2);
+      QLog.d("ApolloManager", 2, new Object[] { "mDownload403Listener [onDoneFile] httpCode: ", Integer.valueOf(parambihu.f), ", status: ", Integer.valueOf(parambihu.a()), ",task.currUrl:", parambihu.c });
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    if (parambihu.jdField_a_of_type_Int == 0)
+    {
+      localObject = ((QQAppInterface)localObject).getApplication().getSharedPreferences("apollo_sp", 0).edit();
+      ((SharedPreferences.Editor)localObject).putLong(parambihu.c + "_lastModifiedTime", parambihu.i);
+      long l2 = 0L;
+      File localFile = (File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.c);
+      long l1 = l2;
+      if (localFile != null)
+      {
+        l1 = l2;
+        if (localFile.exists())
+        {
+          l1 = localFile.lastModified();
+          ((SharedPreferences.Editor)localObject).putLong(parambihu.c, l1);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "mDownload403Listener [onDoneFile] lastModifiedTime:", Long.valueOf(parambihu.i), ",file sd lastModifiedTime:", Long.valueOf(l1) });
+      }
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w(a, 1, paramString1 + ":" + paramString2);
-    return 0;
+    localamtn.a(parambihu.jdField_a_of_type_Int, parambihu.f);
   }
 }
 

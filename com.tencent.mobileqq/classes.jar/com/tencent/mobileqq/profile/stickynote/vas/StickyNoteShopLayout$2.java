@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.os.Handler;
-import bgmg;
+import bhmi;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
@@ -13,7 +13,7 @@ class StickyNoteShopLayout$2
   
   public void run()
   {
-    byte[] arrayOfByte = bgmg.a(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
+    byte[] arrayOfByte = bhmi.a(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
     if (arrayOfByte != null)
     {
       GetSuixintieSigFontRsp localGetSuixintieSigFontRsp = new GetSuixintieSigFontRsp();

@@ -1,9 +1,19 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public abstract interface aplg
+public final class aplg
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public abstract EIPCResult a(Bundle paramBundle);
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
+  {
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
+  
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+  }
 }
 
 

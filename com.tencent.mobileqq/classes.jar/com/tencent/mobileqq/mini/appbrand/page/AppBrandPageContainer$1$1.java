@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
 import android.text.TextUtils;
-import anni;
-import biau;
+import anzj;
+import bjbs;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -51,7 +51,7 @@ class AppBrandPageContainer$1$1
         ((AppBrandPageContainer)localObject).launch(this.this$1.val$url, "reLaunch");
         continue;
         AppBrandPageContainer.access$100(this.this$1.this$0, this.this$1.val$url);
-        QQToast.a(this.this$1.val$dialog.getContext(), anni.a(2131699406), 1).a();
+        QQToast.a(this.this$1.val$dialog.getContext(), anzj.a(2131699513), 1).a();
         QLog.e("AppBrandPageContainer", 1, "Page not found." + this.this$1.val$url);
         if ((this.val$apkgInfo != null) && (this.val$apkgInfo.mAppConfigInfo != null) && (this.val$apkgInfo.appConfig != null) && (this.val$apkgInfo.appConfig.config != null))
         {

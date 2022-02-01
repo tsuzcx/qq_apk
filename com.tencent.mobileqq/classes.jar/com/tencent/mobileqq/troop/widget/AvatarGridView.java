@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akeh;
+import akps;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
@@ -41,13 +41,13 @@ public class AvatarGridView
     if (localListAdapter != null)
     {
       localObject1 = localObject2;
-      if ((a().getItem(paramInt1 - 1) instanceof akeh)) {
-        localObject1 = (akeh)a().getItem(paramInt1 - 1);
+      if ((a().getItem(paramInt1 - 1) instanceof akps)) {
+        localObject1 = (akps)a().getItem(paramInt1 - 1);
       }
     }
     int i;
     if (localObject1 != null) {
-      if ((((akeh)localObject1).b != 0) && (((akeh)localObject1).b == 4)) {
+      if ((((akps)localObject1).b != 0) && (((akps)localObject1).b == 4)) {
         i = paramInt1 - 1;
       }
     }

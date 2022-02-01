@@ -1,7 +1,7 @@
 package com.rookery.translate.model;
 
 import android.content.Context;
-import lak;
+import lar;
 
 public final class TranslateCache$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class TranslateCache$1
   
   public void run()
   {
-    lak.a(this.a);
+    lar.a(this.a);
   }
 }
 

@@ -8,13 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anni;
-import bksa;
-import wjz;
+import anzj;
+import bltd;
+import wnu;
 
 public class XLoadMoreLayout
   extends FrameLayout
-  implements bksa
+  implements bltd
 {
   protected int a;
   protected View a;
@@ -101,19 +101,19 @@ public class XLoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131715691);
-    this.c = anni.a(2131715692);
-    this.d = anni.a(2131715693);
-    this.b = wjz.a(2131698503);
-    this.e = anni.a(2131715694);
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131715800);
+    this.c = anzj.a(2131715801);
+    this.d = anzj.a(2131715802);
+    this.b = wnu.a(2131698610);
+    this.e = anzj.a(2131715803);
   }
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131560358, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373094);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373098));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373099));
+    LayoutInflater.from(getContext()).inflate(2131560370, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373207);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373211));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373212));
     c(0);
   }
   

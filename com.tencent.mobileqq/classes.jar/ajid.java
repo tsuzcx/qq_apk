@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajid
-  implements ValueAnimator.AnimatorUpdateListener
+class ajid
+  extends anuw
 {
-  public ajid(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  ajid(ajic paramajic) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
+    }
+    ajic.a(this.a, ajic.a(this.a, paramInt));
+    if ((ajic.a(this.a)) && (ajic.a(this.a) != null)) {
+      this.a.b(ajic.a(this.a).c());
+    }
   }
 }
 

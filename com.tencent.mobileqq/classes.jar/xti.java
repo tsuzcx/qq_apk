@@ -1,30 +1,13 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.io.File;
+import org.json.JSONObject;
 
-public final class xti
-  extends QQUIEventReceiver<xsw, yio>
+public abstract interface xti
 {
-  public xti(@NonNull xsw paramxsw)
-  {
-    super(paramxsw);
-  }
+  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
   
-  public void a(@NonNull xsw paramxsw, @NonNull yio paramyio)
-  {
-    if ((paramyio.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramyio.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxsw.a != null) && (TextUtils.equals(paramyio.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxsw.a.b)))
-    {
-      yqp.a(paramxsw.b, "refresh feed item , feed id :%s", paramxsw.a.b);
-      paramxsw.i();
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public Class acceptEventClass()
-  {
-    return yio.class;
-  }
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

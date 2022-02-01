@@ -1,8 +1,85 @@
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpInterfaceForTVK;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.security.InvalidParameterException;
+import java.util.HashMap;
+
 public class beuj
+  extends HttpInterfaceForTVK
 {
   public int a;
+  private beul jdField_a_of_type_Beul = new beul(this, null);
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
-  public int b;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
+  
+  public int a(String arg1, String paramString2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if ((??? == null) || (paramString2 == null)) {
+      return -1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HttpInterfaceForTVKImp", 0, "downLoadSync, url = " + ??? + ", filePath = " + paramString2);
+    }
+    beum localbeum;
+    try
+    {
+      localbeum = new beum();
+      localbeum.jdField_a_of_type_Beuq = this.jdField_a_of_type_Beul;
+      localbeum.jdField_a_of_type_JavaLangString = ???;
+      localbeum.jdField_a_of_type_Int = 0;
+      localbeum.c = paramString2;
+      localbeum.e = String.valueOf(System.currentTimeMillis());
+      ??? = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(??? instanceof QQAppInterface)) {
+        throw new InvalidParameterException("can't get AppInterface");
+      }
+    }
+    catch (Exception ???)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 1", ???);
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        try
+        {
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(600000L);
+            continue;
+          }
+          ???.put("param_isSuccess", "1");
+        }
+        catch (InterruptedException paramString2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 2", paramString2);
+          }
+          ??? = new HashMap();
+          if (this.b != 0) {
+            break label289;
+          }
+        }
+        ???.put("param_ErrorCode", String.valueOf(this.c));
+        ???.put("param_ErrDesc", this.jdField_a_of_type_JavaLangString);
+        ???.put("param_HttpCode", String.valueOf(this.jdField_a_of_type_Int));
+        bdmc.a(BaseApplication.getContext()).a(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
+        return this.b;
+        ((QQAppInterface)???).getNetEngine(0).a(localbeum);
+      }
+      label289:
+      ???.put("param_isSuccess", "0");
+    }
+  }
 }
 
 

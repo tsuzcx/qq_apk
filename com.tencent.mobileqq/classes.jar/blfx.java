@@ -1,8 +1,12 @@
-class blfx
+import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+
+public class blfx
+  implements LowLightResource
 {
-  private bdvs jdField_a_of_type_Bdvs;
-  private beat jdField_a_of_type_Beat;
-  private blfy jdField_a_of_type_Blfy;
+  public String getLowLightDir()
+  {
+    return antf.ba;
+  }
 }
 
 

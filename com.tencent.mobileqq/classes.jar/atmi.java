@@ -1,62 +1,77 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import cooperation.weiyun.AlbumBackupProxyActivity;
 
-class atmi
-  implements atkw
+public class atmi
+  implements blop
 {
-  atmi(atmh paramatmh, BaseActivity paramBaseActivity) {}
+  public atmi(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public atoo a()
+  public void a(bloo parambloo)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_Atmh.a())
+    switch (parambloo.a)
     {
     default: 
-      localObject1 = null;
-    }
-    int j;
-    int k;
-    for (;;)
-    {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject2 = (atmn)((List)localObject1).get(i);
-          j = ((atmn)localObject2).c();
-          k = ((atmn)localObject2).b();
-          if (j != 7) {
-            break;
-          }
-          localObject2 = new atow(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-        }
+      return;
+    case 0: 
+      parambloo = new Intent(this.a.getApplicationContext(), LiteActivity.class);
+      if (this.a.l) {
+        aunh.a("0X8005534");
       }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_Atmh.a();
-      i = this.jdField_a_of_type_Atmh.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_Atmh.a();
-      i = this.jdField_a_of_type_Atmh.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_Atmh.a());
+      for (;;)
+      {
+        try
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("category", 12);
+          parambloo.putExtra("bundle", localBundle);
+          parambloo.putExtra("from", "FileAssistant");
+          this.a.startActivityForResult(parambloo, 101);
+          return;
+        }
+        catch (Exception parambloo)
+        {
+          parambloo.printStackTrace();
+          return;
+        }
+        aunh.a("0X800681A");
+      }
+    case 1: 
+      if (this.a.l) {
+        aunh.a("0X8005535");
+      }
+      for (;;)
+      {
+        FileAssistantActivity.b(this.a);
+        return;
+        aunh.a("0X800681B");
+      }
+    case 2: 
+      if (this.a.l) {
+        aunh.a("0X8005536");
+      }
+      for (;;)
+      {
+        AlbumBackupProxyActivity.a(this.a, this.a.app.getCurrentAccountUin(), "source_qfile_assistant", 10001);
+        FileAssistantActivity.a(this.a, this.a.c, "100160.100162");
+        return;
+        aunh.a("0X800681C");
+      }
+    case 3: 
+      aunh.a("0X800A15F");
+      parambloo = new Bundle();
+      parambloo.putString("url", "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
+      parambloo.putString("tdsourcetag", "s_qq_myfile_menu_create");
+      TeamWorkDocEditBrowserActivity.a(this.a, parambloo, false);
+      return;
     }
-    if (j == 9) {
-      return new aubq(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    switch (k)
-    {
-    default: 
-      return new atns(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new atny(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    return new aubl(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    aunh.a("0X8005532");
+    aunj.a(this.a.app, this.a, "_is_from_qfile_shortcut", this.a.getString(2131692095), 2130844361);
+    auna.b(2131692140);
   }
 }
 

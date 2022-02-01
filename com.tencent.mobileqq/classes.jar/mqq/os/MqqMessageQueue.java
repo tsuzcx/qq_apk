@@ -20,8 +20,8 @@ public class MqqMessageQueue
   private static final String TAG = "MqqMessage.Queue";
   public static boolean sRemoveIdleTimeOutMsg = true;
   private static MqqMessageQueue sSubMainQueue;
-  private volatile boolean hookReqeusted;
-  private volatile boolean idleHandlerAttached;
+  private volatile boolean hookReqeusted = false;
+  private volatile boolean idleHandlerAttached = false;
   Handler mHandler = new MqqMessageQueue.1(this, paramLooper, this);
   Printer mLogging;
   MqqMessage mMessages;

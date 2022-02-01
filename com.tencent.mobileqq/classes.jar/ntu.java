@@ -1,21 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountSettingFragment;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ntu
-  implements obd<OACProfilePb.ProfileDataRsp>
+class ntu
+  implements View.OnClickListener
 {
-  public ntu(AccountSettingFragment paramAccountSettingFragment) {}
+  ntu(ntc paramntc, Dialog paramDialog) {}
   
-  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      AccountSettingFragment.a(this.a, new AccountDetail(paramProfileDataRsp));
-      AccountSettingFragment.a(this.a, AccountSettingFragment.a(this.a));
-      AccountSettingFragment.b(this.a);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,24 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
+import java.util.HashMap;
 
 public class mvm
-  implements Animation.AnimationListener
 {
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public mvn a;
+  public int b;
+  public int c = 60000;
+  
+  public mvm()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_b_of_type_Int = 5000;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
+    if (this.jdField_a_of_type_Mvn != null)
+    {
+      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_Boolean);
+      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_Long);
+      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_Int);
+      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mvn.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mvn.jdField_b_of_type_Int);
+      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mvn.jdField_b_of_type_Long).append("ms");
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append(",mResult = null");
+    }
+  }
 }
 
 

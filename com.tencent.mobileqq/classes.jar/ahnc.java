@@ -1,28 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-
-final class ahnc
-  implements nkl
+public class ahnc
 {
-  public void loaded(String paramString, int paramInt)
+  public static boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
-    }
-    if ((paramInt == 0) && (paramString == null))
-    {
-      paramString = ahmy.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((ahnd)((Map.Entry)paramString.next()).getValue()).a(paramInt);
-      }
-      ahmy.a.clear();
-    }
+    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

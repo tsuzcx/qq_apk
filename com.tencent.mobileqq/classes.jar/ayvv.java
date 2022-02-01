@@ -1,87 +1,81 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ShieldListInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
-import com.tencent.mobileqq.persistence.OGAbstractDao;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.AnchorInfo;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.GetAnchorOnline1Rsp;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.RetInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ayvv
-  extends OGAbstractDao
+class ayvv
+  implements aywl
 {
-  public ayvv()
+  ayvv(ayvu paramayvu, ayvt paramayvt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    this.columnLen = 4;
+    ayvu.a(this.jdField_a_of_type_Ayvu, false);
+    ayvu.b(this.jdField_a_of_type_Ayvu, true);
+    this.jdField_a_of_type_Ayvu.a(this.jdField_a_of_type_Ayvt);
+    if (QLog.isColorLevel()) {
+      QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 errCode:" + paramInt + " msg:" + paramString);
+    }
   }
   
-  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  public void a(byte[] paramArrayOfByte)
   {
-    paramEntity = (ShieldListInfo)paramEntity;
-    if (paramNoColumnErrorHandler == null)
+    try
     {
-      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramEntity.flags = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
-      paramEntity.source_id = paramCursor.getInt(paramCursor.getColumnIndex("source_id"));
-      paramEntity.source_sub_id = paramCursor.getInt(paramCursor.getColumnIndex("source_sub_id"));
-      return paramEntity;
+      ayvu.a(this.jdField_a_of_type_Ayvu, false);
+      ayvu.b(this.jdField_a_of_type_Ayvu, false);
+      Object localObject1 = new NowQQLiveFocusProto.GetAnchorOnline1Rsp();
+      ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).mergeFrom(paramArrayOfByte);
+      Object localObject2 = ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).anchor_info.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 anchorInfoList:" + ((List)localObject2).size() + " rsp code:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_code + " msg:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_msg);
+      }
+      paramArrayOfByte = new ArrayList();
+      localObject1 = ((List)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (NowQQLiveFocusProto.AnchorInfo)((Iterator)localObject1).next();
+        ayvx localayvx = new ayvx();
+        localayvx.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).uin.get());
+        localayvx.d(((NowQQLiveFocusProto.AnchorInfo)localObject2).anchor_logo_url.get());
+        localayvx.e(((NowQQLiveFocusProto.AnchorInfo)localObject2).audience_sum.get());
+        localayvx.b(((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+        localayvx.c(((NowQQLiveFocusProto.AnchorInfo)localObject2).nick_name.get());
+        localayvx.c(((NowQQLiveFocusProto.AnchorInfo)localObject2).room_id.get());
+        localayvx.e(((NowQQLiveFocusProto.AnchorInfo)localObject2).room_name.get());
+        localayvx.d(((NowQQLiveFocusProto.AnchorInfo)localObject2).start_time.get());
+        localayvx.b(((NowQQLiveFocusProto.AnchorInfo)localObject2).user_type.get());
+        localayvx.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).type.get());
+        localayvx.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).cover_url.get());
+        paramArrayOfByte.add(localayvx);
+        if (QLog.isColorLevel()) {
+          QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 nick_name:" + localayvx.b() + " jump_url:" + localayvx.a() + " anchor_logo_url: " + localayvx.c() + " anchorInfo.jump_url.get():" + ((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+        }
+      }
+      this.jdField_a_of_type_Ayvt.a(paramArrayOfByte);
     }
-    int i = paramCursor.getColumnIndex("uin");
-    if (i == -1)
+    catch (Exception paramArrayOfByte)
     {
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("flags");
-      if (i != -1) {
-        break label240;
+      ayvu.a(this.jdField_a_of_type_Ayvu, false);
+      ayvu.b(this.jdField_a_of_type_Ayvu, true);
+      this.jdField_a_of_type_Ayvu.a(this.jdField_a_of_type_Ayvt);
+      if (QLog.isColorLevel()) {
+        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 Exception:" + paramArrayOfByte.getMessage());
       }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("flags", Integer.TYPE));
-      label153:
-      i = paramCursor.getColumnIndex("source_id");
-      if (i != -1) {
-        break label255;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("source_id", Integer.TYPE));
+      return;
     }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("source_sub_id");
-      if (i != -1) {
-        break label270;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("source_sub_id", Integer.TYPE));
-      return paramEntity;
-      paramEntity.uin = paramCursor.getString(i);
-      break;
-      label240:
-      paramEntity.flags = paramCursor.getInt(i);
-      break label153;
-      label255:
-      paramEntity.source_id = paramCursor.getInt(i);
-    }
-    label270:
-    paramEntity.source_sub_id = paramCursor.getInt(i);
-    return paramEntity;
-  }
-  
-  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
-  {
-    paramEntity = (ShieldListInfo)paramEntity;
-    paramContentValues.put("uin", paramEntity.uin);
-    paramContentValues.put("flags", Integer.valueOf(paramEntity.flags));
-    paramContentValues.put("source_id", Integer.valueOf(paramEntity.source_id));
-    paramContentValues.put("source_sub_id", Integer.valueOf(paramEntity.source_sub_id));
-  }
-  
-  public String getCreateTableSql(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT ,flags INTEGER ,source_id INTEGER ,source_sub_id INTEGER,UNIQUE(uin) ON CONFLICT REPLACE)");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayvv
  * JD-Core Version:    0.7.0.1
  */

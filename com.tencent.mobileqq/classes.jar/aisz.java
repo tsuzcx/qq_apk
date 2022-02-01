@@ -1,18 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aisz
-  implements View.OnClickListener
 {
-  public aisz(SearchBaseActivity paramSearchBaseActivity) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public static aisz a(String paramString)
   {
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    aisz localaisz = new aisz();
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
+      {
+        localaisz.a(paramString.getBoolean("useRecommendedSticker"));
+        localaisz.a(paramString.getInt("maxMatchLength"));
+      }
+      return localaisz;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+    }
+    return localaisz;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

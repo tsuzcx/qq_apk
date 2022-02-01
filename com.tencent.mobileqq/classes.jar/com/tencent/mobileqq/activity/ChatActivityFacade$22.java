@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import awwg;
-import bbzh;
-import bdzi;
+import axoz;
+import bcry;
+import beyb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,12 +23,12 @@ public final class ChatActivityFacade$22
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.frienduin, localMessageRecord.uniseq));
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      localMessageRecord = bbzh.a(localMessageRecord);
+      localMessageRecord = bcry.a(localMessageRecord);
       if ((localMessageRecord != null) && (localMessageRecord.msgtype == -1051))
       {
-        awwg localawwg = (awwg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166);
+        axoz localaxoz = (axoz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166);
         localMessageRecord.extStr = null;
-        localawwg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
+        localaxoz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);

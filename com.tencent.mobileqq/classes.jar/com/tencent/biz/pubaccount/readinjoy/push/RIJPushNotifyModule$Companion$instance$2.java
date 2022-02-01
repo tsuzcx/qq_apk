@@ -4,12 +4,12 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import qpv;
+import qij;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyModule$Companion$instance$2
   extends Lambda
-  implements Function0<qpv>
+  implements Function0<qij>
 {
   public static final 2 INSTANCE = new 2();
   
@@ -19,9 +19,9 @@ public final class RIJPushNotifyModule$Companion$instance$2
   }
   
   @NotNull
-  public final qpv invoke()
+  public final qij invoke()
   {
-    return new qpv();
+    return new qij();
   }
 }
 

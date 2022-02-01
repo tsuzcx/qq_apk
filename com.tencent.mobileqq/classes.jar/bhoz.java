@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bhoz
-  implements ThreadExcutor.IThreadListener
+  implements ArkViewImplement.LoadCallback
 {
-  public bhoz(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
+  bhoz(bhox parambhox) {}
   
-  public void onAdded() {}
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  {
+    onLoadState(paramInt1);
+  }
   
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public void onLoadState(int paramInt)
+  {
+    WeakReference localWeakReference = new WeakReference(this.a);
+    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
+  }
 }
 
 

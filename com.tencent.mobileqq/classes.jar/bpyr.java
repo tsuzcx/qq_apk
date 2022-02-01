@@ -1,14 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bpyr
-  extends bpyt
+class bpyr
+  implements DialogInterface.OnClickListener
 {
-  public void a()
+  bpyr(bpyn parambpyn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.d();
-    }
+    this.a.a.a(2);
   }
 }
 

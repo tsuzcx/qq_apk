@@ -1,16 +1,8 @@
-class bcip
-  implements bcgp
+import android.view.View;
+
+public abstract interface bcip
 {
-  bcip(bcio parambcio, bcit parambcit) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramInt == 1) && (this.jdField_a_of_type_Bcit != null)) {
-      this.jdField_a_of_type_Bcit.a(paramBoolean, true);
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

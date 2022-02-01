@@ -1,67 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
-public class auum
-  extends BroadcastReceiver
+public abstract interface auum
 {
-  private auum(GameSessionView paramGameSessionView) {}
+  public abstract int a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    String str1 = paramIntent.getAction();
-    if (QLog.isColorLevel())
-    {
-      String str2 = GameSessionView.a;
-      if ("[onRecevier] action:" + str1 + ",data:" + paramIntent.getExtras() != null)
-      {
-        paramContext = paramIntent.getExtras().toString();
-        QLog.d(str2, 0, paramContext);
-      }
-    }
-    else
-    {
-      if (str1 != null) {
-        break label78;
-      }
-    }
-    label78:
-    int i;
-    label163:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramContext = null;
-            break;
-            if (!"action_qgame_messgae_change".equals(str1)) {
-              break label163;
-            }
-            paramContext = paramIntent.getExtras();
-          } while (paramContext == null);
-          paramIntent = (GameCenterSessionInfo)paramContext.getParcelable("key_game_msg");
-          i = paramContext.getInt("key_msg_change_type");
-          if (QLog.isColorLevel()) {
-            QLog.d(GameSessionView.a, 0, "[onReceive] type:" + i + ",info:" + paramIntent);
-          }
-          this.a.a();
-          return;
-        } while (!"action_qgame_unread_change".equals(str1));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      i = paramContext.getInt("key_msg_unread_cnt");
-    } while (!QLog.isColorLevel());
-    QLog.d(GameSessionView.a, 0, "[onReceive] cnt:" + i);
-  }
+  public abstract int a(auun paramauun);
+  
+  public abstract int a(String paramString, Bundle paramBundle);
+  
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 

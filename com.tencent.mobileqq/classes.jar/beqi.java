@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
 
 public class beqi
-  extends beqn
+  implements benf
 {
-  public beqi(TroopAioKeywordTipBar.4 param4) {}
+  public beqi(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void a(String paramString)
   {
-    if (!this.a.this$0.a) {}
-    do
+    if ((paramString == null) || (paramString.length() == 0) || (!WriteTogetherEditorFragment.a(this.a)) || (WriteTogetherEditorFragment.b(this.a)))
     {
+      this.a.setRightButtonEnable(false);
       return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    beqc.a(this.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    }
+    this.a.setRightButtonEnable(true);
   }
 }
 

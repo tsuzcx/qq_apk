@@ -2,9 +2,9 @@ package com.tencent.mobileqq.multimsg.save;
 
 import android.os.Handler;
 import android.os.Message;
-import awxc;
-import awxe;
-import bgmo;
+import axpv;
+import axpx;
+import bhmq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import fd;
@@ -14,17 +14,17 @@ public class FileSaveRunnable
   implements Runnable
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private awxe jdField_a_of_type_Awxe;
+  private axpx jdField_a_of_type_Axpx;
   private File jdField_a_of_type_JavaIoFile;
   private boolean jdField_a_of_type_Boolean;
   private File b;
   
-  public FileSaveRunnable(File paramFile1, File paramFile2, Handler paramHandler, awxe paramawxe, boolean paramBoolean)
+  public FileSaveRunnable(File paramFile1, File paramFile2, Handler paramHandler, axpx paramaxpx, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaIoFile = paramFile1;
     this.b = paramFile2;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Awxe = paramawxe;
+    this.jdField_a_of_type_Axpx = paramaxpx;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
@@ -39,9 +39,9 @@ public class FileSaveRunnable
         QLog.e("PictureSaveRunnable", 2, "save file fail");
       }
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      this.jdField_a_of_type_Awxe.b = 10003;
-      this.jdField_a_of_type_Awxe.jdField_a_of_type_JavaLangString = awxc.a(this.jdField_a_of_type_Awxe.b);
-      ((Message)localObject).obj = this.jdField_a_of_type_Awxe;
+      this.jdField_a_of_type_Axpx.b = 10003;
+      this.jdField_a_of_type_Axpx.jdField_a_of_type_JavaLangString = axpv.a(this.jdField_a_of_type_Axpx.b);
+      ((Message)localObject).obj = this.jdField_a_of_type_Axpx;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
     }
@@ -51,7 +51,7 @@ public class FileSaveRunnable
         QLog.e("PictureSaveRunnable", 2, "desFile exist");
       }
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-      ((Message)localObject).obj = this.jdField_a_of_type_Awxe;
+      ((Message)localObject).obj = this.jdField_a_of_type_Axpx;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
     }
@@ -78,7 +78,7 @@ public class FileSaveRunnable
         if (QLog.isColorLevel()) {
           QLog.e("PictureSaveRunnable", 2, "savePhotoToSysAlbum...");
         }
-        bgmo.a(BaseApplicationImpl.getContext(), this.b.getAbsolutePath());
+        bhmq.a(BaseApplicationImpl.getContext(), this.b.getAbsolutePath());
         i = 1;
         if (i == 0) {
           continue;
@@ -90,29 +90,29 @@ public class FileSaveRunnable
           continue;
         }
         QLog.e("PictureSaveRunnable", 2, "save exception = " + localException.getMessage());
-        this.jdField_a_of_type_Awxe.b = 10005;
-        this.jdField_a_of_type_Awxe.jdField_a_of_type_JavaLangString = awxc.a(this.jdField_a_of_type_Awxe.b);
+        this.jdField_a_of_type_Axpx.b = 10005;
+        this.jdField_a_of_type_Axpx.jdField_a_of_type_JavaLangString = axpv.a(this.jdField_a_of_type_Axpx.b);
         continue;
         j = 2;
         continue;
         int i = -1;
         continue;
       }
-      localObject = this.jdField_a_of_type_Awxe;
+      localObject = this.jdField_a_of_type_Axpx;
       if (i == 0) {
         continue;
       }
       i = k;
-      ((awxe)localObject).jdField_a_of_type_Int = i;
+      ((axpx)localObject).jdField_a_of_type_Int = i;
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(j);
-      ((Message)localObject).obj = this.jdField_a_of_type_Awxe;
+      ((Message)localObject).obj = this.jdField_a_of_type_Axpx;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
       if (QLog.isColorLevel()) {
         QLog.e("PictureSaveRunnable", 2, "copyFile error");
       }
-      this.jdField_a_of_type_Awxe.b = 10004;
-      this.jdField_a_of_type_Awxe.jdField_a_of_type_JavaLangString = awxc.a(this.jdField_a_of_type_Awxe.b);
+      this.jdField_a_of_type_Axpx.b = 10004;
+      this.jdField_a_of_type_Axpx.jdField_a_of_type_JavaLangString = axpv.a(this.jdField_a_of_type_Axpx.b);
       i = 0;
     }
   }

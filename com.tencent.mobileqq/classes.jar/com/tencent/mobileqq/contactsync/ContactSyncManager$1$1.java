@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.contactsync;
 
-import arcz;
+import arso;
 
 public class ContactSyncManager$1$1
   implements Runnable
 {
-  public ContactSyncManager$1$1(arcz paramarcz) {}
+  public ContactSyncManager$1$1(arso paramarso) {}
   
   public void run()
   {

@@ -1,20 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjgp
-  implements bjfs
+  implements View.OnClickListener
 {
-  public bjgp(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bjgp(QUSDragFloatingScreenView paramQUSDragFloatingScreenView) {}
   
-  public void a(bjhe parambjhe)
+  public void onClick(View paramView)
   {
-    if (parambjhe != null)
-    {
-      parambjhe = parambjhe.b;
-      if (!TextUtils.isEmpty(parambjhe)) {
-        QidianProfileCardActivity.a(this.a, parambjhe);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QUSDragFloatingScreenView", 2, "on empty click");
     }
+    if (QUSDragFloatingScreenView.a(this.a) != null) {
+      QUSDragFloatingScreenView.a(this.a).d();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

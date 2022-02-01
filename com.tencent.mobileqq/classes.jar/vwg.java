@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Build;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 
-class vwg
-  implements DialogInterface.OnClickListener
+final class vwg
+  implements aabw
 {
-  vwg(vwe paramvwe) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean a(MotionEvent paramMotionEvent, RecyclerView paramRecyclerView)
+  {
+    return (Build.BRAND.equalsIgnoreCase("HUAWEI")) && (paramMotionEvent.getAction() == 2);
+  }
 }
 
 

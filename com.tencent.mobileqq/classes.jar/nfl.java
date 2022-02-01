@@ -1,24 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class nfl
-  extends BroadcastReceiver
+public abstract interface nfl
 {
-  public nfl(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  public abstract Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "receive broadcast");
-    if ("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH".equals(paramContext))
-    {
-      nfu.a().a("param_StepLoading", 0);
-      AvGameLoadingActivity.a(this.a);
-    }
-  }
+  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
 }
 
 

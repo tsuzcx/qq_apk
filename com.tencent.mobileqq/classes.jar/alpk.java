@@ -1,76 +1,40 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.menu.AbsMenuFlag;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class alpk
-  implements InputFilter
+  extends AbsMenuFlag
 {
-  private int jdField_a_of_type_Int;
-  
-  public alpk(ExtendEditText paramExtendEditText, int paramInt)
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a()
-  {
-    if (ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
-      ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
+    if (!(paramRecentBaseData instanceof RecentUserBaseData)) {
+      return false;
     }
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    alpj localalpj = ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText);
-    if (localalpj == null)
+    switch (((RecentUserBaseData)paramRecentBaseData).mUser.getType())
     {
-      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
-      if (localalpj != null) {
-        break label95;
-      }
-      paramInt2 -= paramInt1;
-    }
-    for (;;)
-    {
-      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
-      if (paramInt3 > 0) {
-        break label109;
-      }
-      a();
-      return "";
-      paramInt3 = localalpj.a(paramSpanned, 0, paramInt3) + localalpj.a(paramSpanned, paramInt4, paramSpanned.length());
-      break;
-      label95:
-      paramInt2 = localalpj.a(paramCharSequence, paramInt1, paramInt2);
-    }
-    label109:
-    if (paramInt3 >= paramInt2) {
-      return null;
-    }
-    a();
-    if (localalpj != null)
-    {
-      paramInt3 = localalpj.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
-      paramInt2 = paramInt3;
-      if (paramInt3 <= 0) {
-        return "";
+    default: 
+      label116:
+      ((RecentUserBaseData)paramRecentBaseData).updateMsgUnreadStateMenu();
+      paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
+      if (((RecentUserBaseData)paramRecentBaseData).mUser.showUpTime != 0L) {
+        break;
       }
     }
-    else
+    for (paramRecentBaseData.mMenuFlag |= 0x10;; paramRecentBaseData.mMenuFlag |= 0x20)
     {
-      paramInt2 = paramInt3;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
+      paramRecentBaseData.mMenuFlag &= 0xF0FFFFFF;
+      if (((RecentUserBaseData)paramRecentBaseData).mUser.isHiddenChat != 1) {
+        break;
       }
+      paramRecentBaseData.mMenuFlag |= 0x1000000;
+      return false;
+      paramRecentBaseData.mMenuFlag |= 0x1000;
+      break label116;
+      paramRecentBaseData.mMenuFlag |= 0x2000;
+      break label116;
     }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

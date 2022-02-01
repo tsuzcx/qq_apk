@@ -1,46 +1,32 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ybr
-  implements wld<wyt, wyu>
+public class ybr
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wzr>
 {
-  ybr(ybq paramybq, JobContext paramJobContext, yia paramyia) {}
-  
-  public void a(@NonNull wyt paramwyt, @Nullable wyu paramwyu, @NonNull ErrorMessage paramErrorMessage)
+  public ybr(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wzr paramwzr)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwzr.jdField_a_of_type_JavaLangString)) {}
+    while ((paramwzr.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
       return;
     }
-    if ((paramwyu == null) || (paramErrorMessage.isFail()))
-    {
-      yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
-      ybq.a(this.jdField_a_of_type_Ybq, paramErrorMessage);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramwzr.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramwzr.toString());
     }
-    if (this.jdField_a_of_type_Yia.b == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      ((woj)wpm.a(17)).a(paramwyu.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Yia.jdField_a_of_type_JavaLangString, bool1, true);
-      boolean bool3 = paramwyu.jdField_a_of_type_Boolean;
-      boolean bool2 = bool3;
-      if (!paramwyu.jdField_a_of_type_Boolean)
-      {
-        bool2 = bool3;
-        if (paramwyu.jdField_a_of_type_JavaUtilList.size() == 0)
-        {
-          yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
-          bool2 = true;
-        }
-      }
-      paramwyt = new ybn(bool1, paramwyu.jdField_a_of_type_JavaUtilList, paramwyu.b, bool2, paramwyu.jdField_a_of_type_JavaLangString);
-      ybq.a(this.jdField_a_of_type_Ybq, paramwyt);
-      return;
-    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwzr);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wzr.class;
   }
 }
 

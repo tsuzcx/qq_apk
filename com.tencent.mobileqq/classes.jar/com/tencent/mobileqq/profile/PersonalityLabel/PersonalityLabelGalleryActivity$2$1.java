@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import azdt;
+import azwg;
 
 public class PersonalityLabelGalleryActivity$2$1
   implements Runnable
 {
-  public PersonalityLabelGalleryActivity$2$1(azdt paramazdt) {}
+  public PersonalityLabelGalleryActivity$2$1(azwg paramazwg) {}
   
   public void run()
   {

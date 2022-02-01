@@ -1,34 +1,40 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class arjz
-  implements View.OnClickListener
+public class arjz
 {
-  arjz(arjx paramarjx, ReportData paramReportData, WindowManager paramWindowManager) {}
+  public int a = 1;
+  public int b = 1;
   
-  public void onClick(View paramView)
+  public static arjz a(String paramString)
   {
-    ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_Arjx.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
-    if (localClipboardManager != null)
+    arjz localarjz = new arjz();
+    try
     {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString()));
-      QQToast.a(this.jdField_a_of_type_Arjx.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), anni.a(2131701565), 0).a();
+      paramString = new JSONObject(paramString);
+      localarjz.a = paramString.optInt("preloadPskey", 1);
+      localarjz.b = paramString.optInt("enableFTSMerge", 1);
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localarjz.toString());
+      return localarjz;
     }
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Arjx.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    }
+    return localarjz;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("preloadPskey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjz
  * JD-Core Version:    0.7.0.1
  */

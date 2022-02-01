@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ahgy;
+import ahqk;
 import android.os.Message;
-import bbag;
+import bbsz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,11 +17,11 @@ import org.json.JSONObject;
 class BaseChatPie$67
   implements Runnable
 {
-  BaseChatPie$67(BaseChatPie paramBaseChatPie, bbag parambbag) {}
+  BaseChatPie$67(BaseChatPie paramBaseChatPie, bbsz parambbsz) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ahgy.a);
+    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ahqk.a);
     Object localObject;
     Message localMessage;
     if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForRichState)))

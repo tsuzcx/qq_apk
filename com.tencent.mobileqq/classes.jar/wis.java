@@ -1,93 +1,19 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 class wis
-  implements zmv
+  extends LruCache<KEY, VALUE>
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  
-  public wis(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
+  wis(wir paramwir, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
   }
   
-  public void onFailure(String paramString)
+  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
   {
-    yqp.d(wip.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    yqp.d(wip.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 1: 
-        yqp.e(wip.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
-        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
-      }
-    }
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-    if (paramBoolean)
-    {
-      label152:
-      localAtomicInteger.set(i);
-      for (;;)
-      {
-        label158:
-        return;
-        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (!paramBoolean) {
-          break;
-        }
-        i = j;
-        label174:
-        localAtomicInteger.set(i);
-      }
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!paramBoolean) {
-        break label248;
-      }
-    }
-    label248:
-    for (i = k;; i = 945001)
-    {
-      localAtomicInteger.set(i);
-      break label158;
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (paramBoolean) {}
-      for (i = m;; i = 944004)
-      {
-        localAtomicInteger.set(i);
-        break;
-      }
-      break;
-      i = 943004;
-      break label152;
-      i = 942004;
-      break label174;
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    yqp.c(wip.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    yqp.c(wip.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
+    this.a.a();
   }
 }
 

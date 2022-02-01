@@ -1,80 +1,145 @@
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.net.URL;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGifView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class qbs
+  extends ViewBase
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private NativeGifView a;
+  
+  public qbs(VafContext paramVafContext)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    int i;
-    if (paramBaseArticleInfo.mSinglePicture != null)
+    super(paramVafContext);
+    this.a = new NativeGifView(paramVafContext.getContext());
+  }
+  
+  private boolean a()
+  {
+    return this.mParams.mLayoutHeight * this.mParams.mLayoutWidth > 2000000;
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setGifHeight(this.mParams.mLayoutHeight);
+    this.a.setGifWidth(this.mParams.mLayoutWidth);
+    this.a.setIsBigImg(a());
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.displayGif(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
+    this.a.invalidate();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject2.put("article_model", paramBaseArticleInfo);
-      localJSONObject1.put("id_article_double_image", localJSONObject2);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      qcd.a(paramBaseArticleInfo, localJSONObject1, true, "3");
-      if (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label292;
-      }
-      qcd.d(paramBaseArticleInfo, localJSONObject1);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("article_model", paramBaseArticleInfo);
-      if (((AdvertisementInfo)paramBaseArticleInfo).mShowAdButton) {
-        localJSONObject1.put("id_view_AdDownloadView", localObject);
-      }
-      if (!TextUtils.isEmpty(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg))
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    case 59: 
+      try
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
-        localObject = URLDrawable.getDrawable(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg, (URLDrawable.URLDrawableOptions)localObject);
-        if (localObject != null) {
-          ((URLDrawable)localObject).startDownload();
+        this.mParams.mLayoutWidth = ((Integer)paramObject).intValue();
+        this.a.requestLayout();
+        return true;
+      }
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
         }
       }
-      if (new JSONObject(((AdvertisementInfo)paramBaseArticleInfo).mAdExtInfo).optInt("is_video_new") != 1) {
-        break label275;
-      }
-      i = 1;
     }
-    for (;;)
+    try
     {
-      label220:
-      qcd.l(paramBaseArticleInfo, localJSONObject1);
-      qcd.e(paramBaseArticleInfo, localJSONObject1);
-      qcd.c(paramBaseArticleInfo, localJSONObject1);
-      oqj.b(paramBaseArticleInfo, localJSONObject1);
-      oqj.a(paramBaseArticleInfo, localJSONObject1);
-      oqj.c(paramBaseArticleInfo, localJSONObject1);
-      if (i != 0) {
-        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell_new_division");
-      }
+      this.mParams.mLayoutHeight = ((Integer)paramObject).intValue();
+      this.a.requestLayout();
+      return true;
+    }
+    catch (Exception paramObject)
+    {
       for (;;)
       {
-        qcd.a(localJSONObject1, paramBaseArticleInfo);
-        return localJSONObject1;
-        localObject = null;
-        break;
-        label275:
-        i = 0;
-        break label220;
-        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell");
+        QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
       }
-      label292:
-      i = 0;
     }
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = super.setAttribute(paramInt, paramString);
+    case 1150: 
+    case 1159: 
+    case 51: 
+      for (;;)
+      {
+        return bool1;
+        this.a.setGifUrl(paramString);
+        return true;
+        this.a.setCoverUrl(paramString);
+        return true;
+        try
+        {
+          paramString = Utils.toInteger(paramString);
+          bool1 = bool2;
+          if (this.a != null)
+          {
+            bool1 = bool2;
+            if (paramString != null)
+            {
+              this.a.setScaleType(paramString.intValue());
+              return true;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramString.getMessage());
+          return true;
+        }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.a.setNeedGifUrl("yes".equals(paramString.toLowerCase()));
+      return true;
+    }
+    return false;
   }
 }
 

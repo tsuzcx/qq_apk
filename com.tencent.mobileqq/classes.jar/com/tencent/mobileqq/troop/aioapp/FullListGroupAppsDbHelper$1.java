@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bemz;
+import bflx;
 import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 
 public class FullListGroupAppsDbHelper$1
   implements Runnable
 {
-  public FullListGroupAppsDbHelper$1(bemz parambemz, FullListGroupAppEntity paramFullListGroupAppEntity) {}
+  public FullListGroupAppsDbHelper$1(bflx parambflx, FullListGroupAppEntity paramFullListGroupAppEntity) {}
   
   public void run()
   {
-    bemz.a(this.this$0, this.a);
+    bflx.a(this.this$0, this.a);
   }
 }
 

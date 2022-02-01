@@ -1,30 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class anxc
-  implements anwz
+  extends QIPCModule
 {
-  public int a;
-  public String a;
-  public String b;
+  private static volatile anxc a;
   
-  private anxc(TroopManager paramTroopManager) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public anxc(String paramString)
   {
-    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin))) {
-      return;
+    super(paramString);
+  }
+  
+  public static anxc a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new anxc("ExtendFriendQIPCModule");
+      }
+      return a;
     }
-    paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "newRealLevel:" + this.jdField_a_of_type_Int + ",troopUin : " + this.b + ",memberUin" + this.jdField_a_of_type_JavaLangString);
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      return null;
     }
-    if (paramTroopMemberInfo.getStatus() == 1000) {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
+    localObject = (QQAppInterface)localObject;
+    boolean bool;
+    if ("notifyCampusFriendCertificateResult".equals(paramString))
+    {
+      bool = paramBundle.getBoolean("key_result");
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT ,result = " + bool);
+      }
+      paramString = (asvi)((QQAppInterface)localObject).getManager(264);
+      if (paramString != null)
+      {
+        if (!bool) {
+          break label132;
+        }
+        paramInt = 2;
+        paramString.a(paramInt, 1);
+        ((asvg)((QQAppInterface)localObject).a(127)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
+    for (;;)
+    {
+      return null;
+      label132:
+      paramInt = 3;
+      break;
+      if ("notifyUploadSutudentIDResult".equals(paramString))
+      {
+        bool = paramBundle.getBoolean("key_result");
+        paramString = (asvi)((QQAppInterface)localObject).getManager(264);
+        if (bool)
+        {
+          paramString.a(1, 2);
+          ((asvg)((QQAppInterface)localObject).a(127)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT ,result = " + bool);
+        }
+      }
+      else if ("notifyUpdateSchoolInfo".equals(paramString))
+      {
+        paramString = paramBundle.getString("name", "");
+        paramInt = paramBundle.getInt("category", 0);
+        String str1 = paramBundle.getString("schoolid", "");
+        int i = paramBundle.getInt("idx", 0);
+        asvi localasvi = (asvi)((QQAppInterface)localObject).getManager(264);
+        String str2 = localasvi.g();
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_SCHOOL_INFO_UPDATE ，schoolName = " + paramString + "，oldSchoolName = " + str2);
+        }
+        if (!paramString.equals(str2)) {
+          localasvi.a(0, -1);
+        }
+        localasvi.a(i, paramString, str1, paramInt);
+        ((asvg)((QQAppInterface)localObject).a(127)).notifyUI(22, true, paramBundle);
+      }
+    }
   }
 }
 

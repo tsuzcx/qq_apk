@@ -1,20 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.Comparator;
 
 class whb
-  extends SimpleJob
+  implements Comparator<wgg>
 {
-  whb(wha paramwha, String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  whb(wgz paramwgz) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public int a(wgg paramwgg1, wgg paramwgg2)
   {
-    this.jdField_a_of_type_Wha.b(this.jdField_a_of_type_Boolean);
-    return null;
+    if (paramwgg1.f() == paramwgg2.f()) {
+      return 0;
+    }
+    if (paramwgg1.f() > paramwgg2.f()) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -21,12 +21,12 @@ class FileJsPlugin$12
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$dirPath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "fail parameter error: parameter.dirPath should be String instead of Null;");
     }
-    if (((MiniAppFileManager)FileJsPlugin.access$5500(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$dirPath) != 2)
+    if (((MiniAppFileManager)FileJsPlugin.access$5300(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$dirPath) != 2)
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$dirPath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
     }
-    String str = ((MiniAppFileManager)FileJsPlugin.access$5600(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$dirPath);
+    String str = ((MiniAppFileManager)FileJsPlugin.access$5400(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$dirPath);
     if (!new File(str).exists())
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, str);

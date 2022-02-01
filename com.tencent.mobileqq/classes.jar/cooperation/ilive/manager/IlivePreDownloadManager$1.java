@@ -1,24 +1,24 @@
 package cooperation.ilive.manager;
 
-import bldz;
-import bleo;
+import bmfc;
+import bmfr;
 import com.tencent.qphone.base.util.QLog;
 
 public class IlivePreDownloadManager$1
   implements Runnable
 {
-  public IlivePreDownloadManager$1(bleo parambleo) {}
+  public IlivePreDownloadManager$1(bmfr parambmfr) {}
   
   public void run()
   {
-    bldz.a().b();
-    bldz.a().a(this.this$0);
-    if (bldz.a().b())
+    bmfc.a().b();
+    bmfc.a().a(this.this$0);
+    if (bmfc.a().b())
     {
       QLog.e("IlivePreDownloadManager", 1, "preloadPluginConfig plugin exist stop preload");
       return;
     }
-    bleo.a(this.this$0);
+    bmfr.a(this.this$0);
   }
 }
 

@@ -1,41 +1,58 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-class xuj
-  implements View.OnLongClickListener
+public class xuj
+  implements TVK_SDKMgr.OnLogListener
 {
-  xuj(xui paramxui) {}
+  public int a;
   
-  public boolean onLongClick(View paramView)
+  public int d(String paramString1, String paramString2)
   {
-    int i = 0;
-    paramView = (wpf)wpm.a(10);
-    boolean bool;
-    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
-    {
-      bool = true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-      if (paramView != null)
-      {
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-        if (paramView != null) {
-          if (!bool) {
-            break label90;
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    for (;;)
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
     {
-      paramView.a(i);
-      return true;
-      bool = false;
-      break;
-      label90:
-      i = 8;
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
     }
   }
 }

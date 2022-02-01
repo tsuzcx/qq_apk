@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome.memory.model;
 
-import ygl;
-import ygm;
+import ykg;
+import ykh;
 
 class StoryQQ2UidConverter$1$1
   implements Runnable
@@ -10,8 +10,8 @@ class StoryQQ2UidConverter$1$1
   
   public void run()
   {
-    if (ygl.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter$1.this$0) != null) {
-      ygl.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter$1.this$0).a(this.jdField_a_of_type_JavaLangString, false);
+    if (ykg.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter$1.this$0) != null) {
+      ykg.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter$1.this$0).a(this.jdField_a_of_type_JavaLangString, false);
     }
   }
 }

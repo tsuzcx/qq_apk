@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.av.utils.PopupDialogQQSide;
-
 public class msl
-  implements DialogInterface.OnDismissListener
 {
-  public msl(PopupDialogQQSide paramPopupDialogQQSide) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public msl(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().doOnBackPressed();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

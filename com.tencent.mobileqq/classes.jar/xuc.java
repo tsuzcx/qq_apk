@@ -1,27 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class xuc
-  extends QQUIEventReceiver<xts, wwx>
+  implements xvs
 {
-  public xuc(@NonNull xts paramxts)
-  {
-    super(paramxts);
-  }
+  public xuc(TextureVideoView paramTextureVideoView) {}
   
-  public void a(@NonNull xts paramxts, @NonNull wwx paramwwx)
+  public boolean a_(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    if (paramwwx.a.isSuccess())
-    {
-      yqp.a(paramxts.b, "receive user info event. %s.", paramwwx.toString());
-      paramxts.i();
+    if (this.a.a != null) {
+      this.a.a.a_(paramxvo, paramInt1, paramInt2);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwx.class;
+    return true;
   }
 }
 

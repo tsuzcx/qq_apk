@@ -1,14 +1,30 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import cooperation.qzone.statistic.access.concept.Key;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.List;
 
-class bnij
-  implements Observer<bnnb>
+final class bnij
+  extends bnii
 {
-  bnij(bnii parambnii) {}
-  
-  public void a(@Nullable bnnb parambnnb)
+  public String a(List<Statistic> paramList)
   {
-    bnii.a(this.a, parambnnb);
+    Key[] arrayOfKey = ((Statistic)paramList.get(0)).getKeys();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      Statistic localStatistic = (Statistic)paramList.get(i);
+      int k = arrayOfKey.length;
+      int j = 0;
+      while (j < k)
+      {
+        Key localKey = arrayOfKey[j];
+        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
+        j += 1;
+      }
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,43 +1,20 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajev
-  extends bfrb
+  implements ajho
 {
-  public ajev(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ajev(SearchContactsFragment paramSearchContactsFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public Activity a()
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    while (this.a.jdField_a_of_type_Biau == null) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
-        localStructMsg.mergeFrom(paramBundle);
-        TroopNotifyAndRecommendView.a(this.a, 1, localStructMsg);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        do
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopNotifyAndRecommendView", 2, "structMsg merge error");
-          }
-        } while (this.a.jdField_a_of_type_Biau == null);
-        this.a.jdField_a_of_type_Biau.dismiss();
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696653), 0).b(this.a.a());
-        return;
-      }
-    }
-    this.a.jdField_a_of_type_Biau.dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696653), 0).b(this.a.a());
+    return this.a.a();
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.a;
   }
 }
 

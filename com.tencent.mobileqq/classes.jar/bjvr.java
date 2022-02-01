@@ -1,24 +1,105 @@
 import android.content.Context;
-import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.proxy.IFlutterProxy;
-import io.flutter.view.FlutterMain;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bjvr
-  implements IFlutterProxy
+public class bjvr
 {
-  bjvr(bjvo parambjvo) {}
-  
-  public void initFlutterRuntime(BaseRuntime paramBaseRuntime, Context paramContext)
+  public static int a()
   {
-    try
+    int j = bjvf.a(bjjo.a().a(), null).a("Common_BusinessReportMaxcount");
+    int i = j;
+    if (j == 0) {
+      i = 20;
+    }
+    return i;
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i;
+    if (paramInt == 0)
     {
-      FlutterMain.setNativeLibDir(TissueEnvImpl.getNativeLibDirInSubProgress());
-      FlutterMain.startInitialization(paramContext.getApplicationContext());
-      FlutterMain.ensureInitializationComplete(paramContext.getApplicationContext(), null);
+      i = bjvf.a(bjjo.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
+      paramInt = i;
+      if (i == 0) {
+        paramInt = 20;
+      }
+    }
+    do
+    {
+      return paramInt;
+      i = bjvf.a(bjjo.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
+      paramInt = i;
+    } while (i != 0);
+    return 50;
+  }
+  
+  public static int a(String paramString)
+  {
+    int j = bjvf.a(bjjo.a().a(), paramString).a("Common_BusinessReportFrequency");
+    int i = j;
+    if (j == 0) {
+      i = 100;
+    }
+    return i;
+  }
+  
+  public static long a()
+  {
+    return bjjo.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
+  }
+  
+  protected static SharedPreferences a()
+  {
+    return bjjo.a().a().getSharedPreferences("reportConfig", 0);
+  }
+  
+  public static String a()
+  {
+    if (bjjo.a().a() == null) {
+      return "";
+    }
+    return a().getString("uin", "");
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (bjjo.a().a() == null) {
       return;
     }
-    catch (IllegalStateException paramBaseRuntime) {}
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putLong("lastTime", paramLong);
+    localEditor.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (bjjo.a().a() == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("uin", paramString);
+    localEditor.commit();
+  }
+  
+  public static int b()
+  {
+    int j = bjvf.a(bjjo.a().a(), null).a("Common_HttpRetryCount");
+    int i = j;
+    if (j == 0) {
+      i = 2;
+    }
+    return i;
+  }
+  
+  public static long b()
+  {
+    long l2 = bjvf.a(bjjo.a().a(), null).a("Common_BusinessReportTimeinterval");
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = 3600L;
+    }
+    return l1;
   }
 }
 

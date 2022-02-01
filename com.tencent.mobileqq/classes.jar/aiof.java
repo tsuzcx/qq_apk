@@ -1,19 +1,23 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.38.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class aiof
-  extends GridLayoutManager.SpanSizeLookup
+public class aiof
+  implements DialogInterface.OnClickListener
 {
-  aiof(aioe paramaioe) {}
+  aiof(ainh paramainh, PublicAccountInfo paramPublicAccountInfo, aody paramaody) {}
   
-  public int getSpanSize(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.a.getItemViewType(paramInt))
-    {
-    case 1: 
-    default: 
-      return 1;
-    }
-    return 3;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Aody.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Ainh.a(1, null);
+    paramDialogInterface = new PublicAccountChatPie.38.1(this);
+    this.jdField_a_of_type_Ainh.a.a(paramDialogInterface);
+    ainh.i(this.jdField_a_of_type_Ainh);
   }
 }
 

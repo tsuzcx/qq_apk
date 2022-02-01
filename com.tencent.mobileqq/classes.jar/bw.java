@@ -18,13 +18,13 @@ public class bw
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    LiteActivity.a(this.a).setPadding(0, afur.a(8.0F, this.a.app.getApplication().getResources()), 0, 0);
+    LiteActivity.a(this.a).setPadding(0, agej.a(8.0F, this.a.app.getApplication().getResources()), 0, 0);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams().height = -2;
-    ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(afur.a(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
+    ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(agej.a(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(6);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130849832);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130849843);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(16);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(afur.a(11.0F, this.a.app.getApplication().getResources()), afur.a(6.0F, this.a.app.getApplication().getResources()), afur.a(11.0F, this.a.app.getApplication().getResources()), afur.a(6.0F, this.a.app.getApplication().getResources()));
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(agej.a(11.0F, this.a.app.getApplication().getResources()), agej.a(6.0F, this.a.app.getApplication().getResources()), agej.a(11.0F, this.a.app.getApplication().getResources()), agej.a(6.0F, this.a.app.getApplication().getResources()));
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestLayout();
     this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new LiteActivity.52.1(this), 100L);
   }
@@ -35,7 +35,7 @@ public class bw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     bw
  * JD-Core Version:    0.7.0.1
  */

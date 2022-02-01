@@ -1,25 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.widget.IndexView;
 
 public class akon
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public akon(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public akon(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      akww.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
-    }
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
 }
 

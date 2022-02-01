@@ -1,25 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class snn
-  implements sow
+public class snn
+  implements spf
 {
-  snn(snh paramsnh) {}
+  public snn(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void onClick(View paramView)
+  public BaseData a()
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
-    if (localBaseArticleInfo == null) {
-      return;
-    }
-    snh localsnh = this.a;
-    if (paramView.getId() == 2131369765) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localsnh.b(bool, localBaseArticleInfo);
-      puf.a(paramView);
-      return;
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    ssy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

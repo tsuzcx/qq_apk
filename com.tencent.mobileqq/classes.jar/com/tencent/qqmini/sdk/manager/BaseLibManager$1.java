@@ -14,7 +14,7 @@ class BaseLibManager$1
   public void run()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str2 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    String str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     QMLog.i("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str2);
     QMLog.i("miniapp-process_BaseLibManager", "forceUpdateBaseLib current requestVersion is:" + str2);
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(str2, true, true, new BaseLibManager.1.1(this, str2, str1));

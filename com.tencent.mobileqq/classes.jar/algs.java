@@ -1,21 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
 public class algs
-  implements DialogInterface.OnClickListener
+  implements View.OnLongClickListener
 {
-  public algs(LoginView paramLoginView) {}
+  public algs(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    bcst.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).show();
     }
-    catch (Exception paramDialogInterface) {}
+    return true;
   }
 }
 

@@ -1,69 +1,39 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xza
-  extends xyp
+  extends QQUIEventReceiver<xyd, wsm>
 {
-  public TextView a;
-  public xyy a;
-  public TextView b;
-  public xyy b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  
-  public xza(View paramView, xyv paramxyv)
+  public xza(@NonNull xyd paramxyd)
   {
-    View localView = paramView.findViewById(2131374502);
-    paramView = paramView.findViewById(2131374553);
-    this.jdField_a_of_type_Xyy = new xyy(localView, paramxyv.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_Xyy = new xyy(paramView, paramxyv.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364209));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364209));
-    this.c = ((TextView)localView.findViewById(2131364189));
-    this.d = ((TextView)paramView.findViewById(2131364189));
-    this.e = ((TextView)localView.findViewById(2131364205));
-    this.f = ((TextView)paramView.findViewById(2131364205));
-    QQStoryContext.a();
-    if (ThemeUtil.isInNightMode(QQStoryContext.a()))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.c.setTextColor(Color.parseColor("#6991b8"));
-      this.d.setTextColor(Color.parseColor("#6991b8"));
-      this.e.setTextColor(Color.parseColor("#6991b8"));
-      this.f.setTextColor(Color.parseColor("#6991b8"));
+    super(paramxyd);
+  }
+  
+  public void a(@NonNull xyd paramxyd, @NonNull wsm paramwsm)
+  {
+    paramxyd.l();
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramxyd.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
     }
-    if (paramxyv.jdField_a_of_type_Xys != null)
+    yuk.b(this.TAG, "delete onEvent");
+    if ((!paramwsm.jdField_a_of_type_Boolean) && (paramwsm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
     {
-      this.jdField_a_of_type_Xyy.a(paramxyv.jdField_a_of_type_Xys);
-      this.jdField_b_of_type_Xyy.a(paramxyv.jdField_a_of_type_Xys);
+      if (QLog.isColorLevel()) {
+        yuk.d(this.TAG, "删除失败：%s", new Object[] { paramwsm.a() });
+      }
+      QQToast.a(paramxyd.b(), 1, anzj.a(2131705769), 0).a();
     }
   }
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
+  public Class acceptEventClass()
   {
-    if ((paramVideoCollectionItem == null) || (paramView == null))
-    {
-      yqp.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "qqstory sharegroup hotsort erro. view  or data is null.");
-      return;
-    }
-    paramView = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(0);
-    paramVideoCollectionItem = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(1);
-    this.jdField_a_of_type_Xyy.a(paramView);
-    if (paramVideoCollectionItem == null)
-    {
-      this.jdField_b_of_type_Xyy.a();
-      return;
-    }
-    this.jdField_b_of_type_Xyy.a(paramVideoCollectionItem);
+    return wsm.class;
   }
 }
 

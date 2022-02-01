@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
-
-public final class pxx
-  implements Parcelable.Creator<ReadInJoyDraftboxItem.ReadInJoyDraftboxContent>
+class pxx
+  implements plu
 {
-  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(Parcel paramParcel)
-  {
-    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent(paramParcel);
-  }
+  pxx(pxl parampxl) {}
   
-  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[] a(int paramInt)
+  public boolean a()
   {
-    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[paramInt];
+    return false;
   }
 }
 

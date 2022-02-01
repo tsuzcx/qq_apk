@@ -1,143 +1,203 @@
+import android.animation.ObjectAnimator;
 import android.app.Activity;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.GameArkView;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanageraux.widget.DocCooperationBanner.2;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvc
+  implements View.OnClickListener
 {
-  public static auuq a(MessageRecord paramMessageRecord, Activity paramActivity)
+  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public View a;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  arqo jdField_a_of_type_Arqo;
+  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private RelativeLayout b;
+  
+  private void a(boolean paramBoolean, int paramInt)
   {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    int j = 1;
+    Object localObject = arqq.a();
+    int i;
+    if (paramBoolean)
     {
-      if ((paramMessageRecord instanceof MessageForArkApp)) {
-        return new GameArkView(paramActivity, null);
+      localObject = ((arqo)localObject).b;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        i = j;
+        if (paramInt != 1)
+        {
+          if (paramInt != 3000) {
+            break label80;
+          }
+          i = j;
+        }
       }
-      if (!(paramMessageRecord instanceof MessageForStructing)) {}
     }
     for (;;)
     {
-      int n;
-      int i1;
-      try
-      {
-        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
-        if (paramMessageRecord != null) {
-          break label268;
-        }
-        return null;
-      }
-      catch (Throwable paramMessageRecord)
-      {
-        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
-        return null;
-      }
-      if (n < paramMessageRecord.size())
-      {
-        if (!(paramMessageRecord.get(n) instanceof bcvt)) {
-          break label290;
-        }
-        ArrayList localArrayList = ((bcvt)paramMessageRecord.get(n)).a;
-        k = i;
-        i = j;
-        i1 = 0;
-        j = k;
-        k = j;
-        m = i;
-        if (i1 >= localArrayList.size()) {
-          break label296;
-        }
-        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
-        {
-          k = 1;
-          if ((k != 0) && (j != 0))
-          {
-            paramMessageRecord = new ImgHeaderView(paramActivity);
-            return paramMessageRecord;
-          }
-        }
-        else
-        {
-          k = i;
-          if (!(localArrayList.get(i1) instanceof bcxv)) {
-            continue;
-          }
-          j = 1;
-          k = i;
-          continue;
-        }
-      }
-      else
-      {
-        if (paramMessageRecord.size() != 2) {
-          continue;
-        }
-        paramMessageRecord = new TextHeaderView(paramActivity);
-        return paramMessageRecord;
-        if ((paramMessageRecord instanceof MessageForPubAccount)) {
-          return new ImgHeaderView(paramActivity);
-        }
-        return new MoreMsgHeaderView(paramActivity);
-        QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
-        return null;
-        label268:
-        n = 0;
+      bdll.b(null, "dc00898", "", "", (String)localObject, (String)localObject, i, 0, "", "", "", "");
+      return;
+      localObject = ((arqo)localObject).d;
+      break;
+      label80:
+      if (paramInt == 0) {
         i = 0;
-        j = 0;
-        continue;
+      } else {
+        i = 3;
       }
-      i1 += 1;
-      int i = k;
-      continue;
-      label290:
-      int m = j;
-      int k = i;
-      label296:
-      n += 1;
-      int j = m;
-      i = k;
     }
   }
   
-  public static auuq a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
+  public void a(String paramString1, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, boolean paramBoolean, String paramString2)
   {
-    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    StringBuilder localStringBuilder;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramTeamWorkFileImportInfo != null))
     {
-      if (paramQQGameMsgInfo == null) {}
-      try
+      new StringBuilder(paramString1);
+      if (paramString1.indexOf("?") <= 0) {
+        break label204;
+      }
+      paramString1 = paramString1 + "&adtag=s_qq_file_inviteedit";
+      if (paramBoolean)
       {
-        return new MoreMsgHeaderView(paramActivity);
+        paramBoolean = arqq.a().a(paramTeamWorkFileImportInfo.b);
+        localStringBuilder = new StringBuilder(anzj.a(2131702280));
+        if ((paramTeamWorkFileImportInfo.a != 1) && (paramTeamWorkFileImportInfo.a != 3000)) {
+          break label227;
+        }
+        localStringBuilder.append("群成员");
+        label104:
+        if (!paramBoolean) {
+          break label245;
+        }
+        localStringBuilder.append("一起编辑");
       }
-      catch (Throwable paramQQGameMsgInfo)
-      {
-        QLog.d("QQGamePubHeaderFactory", 4, "decode header(web) faile:" + paramQQGameMsgInfo.getMessage());
-        return null;
-      }
-      if (paramQQGameMsgInfo.msgType == 1)
-      {
-        paramQQGameMsgInfo = new GameArkView(paramActivity, null);
-        return paramQQGameMsgInfo;
-      }
-      if (paramQQGameMsgInfo.msgType == 2) {
-        return new ImgHeaderView(paramActivity);
-      }
-      if (paramQQGameMsgInfo.msgType == 3) {
-        return new TextHeaderView(paramActivity);
-      }
-      paramQQGameMsgInfo = new MoreMsgHeaderView(paramActivity);
-      return paramQQGameMsgInfo;
     }
-    QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
-    return null;
+    for (;;)
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, localStringBuilder.toString(), 1).a();
+      ThreadManager.excute(new DocCooperationBanner.2(this, paramTeamWorkFileImportInfo, paramString1, paramBoolean, paramString2), 128, null, false);
+      bedq.a(null, "0X800A637");
+      paramString2 = new Bundle();
+      paramString2.putString("url", paramString1);
+      paramString2.putBoolean("temp_preview_from_qq", true);
+      paramString2.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
+      TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, false);
+      return;
+      label204:
+      paramString1 = paramString1 + "?adtag=s_qq_file_inviteedit";
+      break;
+      label227:
+      if (paramTeamWorkFileImportInfo.a != 0) {
+        break label104;
+      }
+      localStringBuilder.append("好友");
+      break label104;
+      label245:
+      localStringBuilder.append("一起查看");
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Arqo != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+    {
+      if (!paramBoolean) {
+        break label105;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+    }
+    return;
+    label105:
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { this.jdField_a_of_type_AndroidViewView.getHeight() });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new auvd(this));
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!bhnv.d(BaseApplication.getContext())) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anzj.a(2131702278), 0).a();
+    }
+    label200:
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+      {
+        Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+        if ((localObject instanceof QQAppInterface))
+        {
+          localObject = (beav)((QQAppInterface)localObject).a(120);
+          if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (!((beav)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo)))
+          {
+            bedq.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k + "-" + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
+            this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
+            ((beav)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+          }
+        }
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {
+          break label200;
+        }
+        a(bool, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a);
+        break;
+        if (this.b.getVisibility() == 0) {
+          a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, false, "");
+        }
+      }
+    }
   }
 }
 

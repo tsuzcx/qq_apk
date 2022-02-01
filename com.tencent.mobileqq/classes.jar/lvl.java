@@ -1,86 +1,28 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import com.tencent.av.VideoConstants.EmShareOps;
-import com.tencent.av.VideoConstants.EmShareOpsRet;
-import com.tencent.av.VideoController;
-import com.tencent.av.screenshare.ScreenShareCtrl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lvl
-  implements los, miv
+  extends lvf
 {
-  private final lvm jdField_a_of_type_Lvm = new lvm();
-  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public lvl(ScreenShareCtrl paramScreenShareCtrl)
+  public lvl()
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
+    this.c = new lvr[6];
+    this.b = 1000L;
+    a(255);
   }
   
-  @TargetApi(21)
-  public void a(int paramInt)
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
-    }
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    while (paramInt != 2) {
-      return;
-    }
-    if (localScreenShareCtrl.a(VideoConstants.EmShareOps.STOP) == VideoConstants.EmShareOpsRet.SUC) {}
-    for (paramInt = 2;; paramInt = 3)
+    int i = 0;
+    while (i < this.c.length)
     {
-      ScreenShareCtrl.a(paramInt);
-      return;
+      this.c[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_lightning_" + (i + 1) + ".png"));
+      i += 1;
     }
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(Bitmap paramBitmap, lvj paramlvj)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(paramBitmap, paramlvj);
-    }
-  }
-  
-  @TargetApi(21)
-  public void a(lvj paramlvj, int paramInt1, int paramInt2)
-  {
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    do
-    {
-      return;
-      localScreenShareCtrl.a(paramlvj, paramInt1, paramInt2);
-      if (localScreenShareCtrl.a(VideoConstants.EmShareOps.START) == VideoConstants.EmShareOpsRet.SUC)
-      {
-        ScreenShareCtrl.a(4);
-        return;
-      }
-      ScreenShareCtrl.a(6);
-      paramlvj = VideoController.a().a();
-    } while (paramlvj == null);
-    paramlvj.a(1);
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, lvj paramlvj)
-  {
-    this.jdField_a_of_type_Lvm.a(1, paramArrayOfByte, paramInt1, paramInt2, paramlvj);
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, paramlvj);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
-    }
+    a(0, paramInt2 - paramInt1 * 120 / 750, paramInt1, paramInt2);
   }
 }
 

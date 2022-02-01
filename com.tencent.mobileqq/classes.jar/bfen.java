@@ -1,68 +1,44 @@
 import android.text.TextUtils;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bfen
+  extends wnf
 {
-  static HashMap<String, Integer> a = new HashMap();
+  public String a;
+  public wmj a;
   
-  static
+  public bfen(String paramString)
   {
-    a.put("str", Integer.valueOf(0));
-    a.put("img", Integer.valueOf(1));
-    a.put("video", Integer.valueOf(2));
-    a.put("voice", Integer.valueOf(3));
-    a.put("recite", Integer.valueOf(4));
-    a.put("calculation", Integer.valueOf(7));
+    this.jdField_a_of_type_Wmj = new wmj();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static bfem a(String paramString)
+  private void c()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    beyg localbeyg = new beyg();
+    localbeyg.jdField_a_of_type_Azrg = new bfeo(this);
+    localbeyg.i = this.jdField_a_of_type_JavaLangString;
+    localbeyg.jdField_a_of_type_Boolean = true;
+    localbeyg.jdField_b_of_type_Int = 327681;
+    QQStoryContext.a();
+    localbeyg.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localbeyg.c = "";
+    localbeyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localbeyg);
   }
   
-  public static bfem a(JSONObject paramJSONObject)
+  protected void a()
   {
-    try
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!zom.c(this.jdField_a_of_type_JavaLangString)))
     {
-      Object localObject = paramJSONObject.getString("type");
-      localObject = (Integer)a.get(localObject);
-      if (localObject == null) {
-        return null;
-      }
-      switch (((Integer)localObject).intValue())
-      {
-      case 0: 
-        paramJSONObject = new bfev(paramJSONObject);
-        return paramJSONObject;
-      }
+      yuk.d("tribe_publish_TribeVideoFileObject", "end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      super.notifyResult(new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString })));
+      return;
     }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      break label142;
-      return new bfer(paramJSONObject);
-      return new bfex(paramJSONObject);
-      return new bfel(paramJSONObject);
-      return new bfeo(paramJSONObject);
-      paramJSONObject = new bfej(paramJSONObject);
-      return paramJSONObject;
-    }
-    label142:
-    return null;
+    c();
   }
 }
 

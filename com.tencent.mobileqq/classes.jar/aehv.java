@@ -1,12 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
+
 public class aehv
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public aehv(Conversation paramConversation) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
+  }
 }
 
 

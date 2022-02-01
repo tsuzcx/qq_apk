@@ -1,27 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.support.annotation.NonNull;
 
-class azlm
-  implements Handler.Callback
+public class azlm
 {
-  azlm(azlk paramazlk) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
   
-  public boolean handleMessage(Message paramMessage)
+  public azlm()
   {
-    if (paramMessage.what == 100)
-    {
-      paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-      if (azlk.a(this.a) == null)
-      {
-        View localView = azlk.a(this.a, azlk.b(this.a), 5, 0, 5, 0);
-        azlk.a(this.a, new RedTouch(azlk.a(this.a), localView).a(53).d(5).a());
-      }
-      azlk.a(this.a).a(paramMessage);
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "MusicStatus[needConvert:" + this.jdField_a_of_type_Boolean + ", , songId:" + this.jdField_a_of_type_JavaLangString + ", songName:" + this.jdField_b_of_type_JavaLangString + ", songType:" + this.jdField_a_of_type_Int + ", singerName:" + this.jdField_c_of_type_JavaLangString + ", remainTime:" + this.jdField_b_of_type_Int + ", sourceType:" + this.jdField_c_of_type_Int + ", pauseFlag:" + this.jdField_b_of_type_Boolean + ", duration:" + this.d;
   }
 }
 

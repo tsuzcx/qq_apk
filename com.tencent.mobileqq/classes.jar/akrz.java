@@ -1,54 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import mqq.observer.AccountObserver;
 
-public class akrz
-  extends Handler
+class akrz
+  extends AccountObserver
 {
-  private LinkedList<aksb> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  akrz(akry paramakry) {}
   
-  public akrz(PreloadManager paramPreloadManager, Looper paramLooper)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    super(paramLooper);
-  }
-  
-  private void a()
-  {
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
-    aksb localaksb = (aksb)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localaksb), 64, null, false);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
-    do
+    if (paramString1 == null)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((aksb)paramMessage.obj);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = true;
-    sendEmptyMessage(2);
-    return;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
+      akry.b(this.a, null);
+      akry.a(this.a, null);
+      this.a.b();
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a.a(akry.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    akry.a(this.a, null);
   }
 }
 

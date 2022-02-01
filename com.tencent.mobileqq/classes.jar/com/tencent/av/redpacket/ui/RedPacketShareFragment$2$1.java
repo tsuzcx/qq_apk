@@ -2,11 +2,11 @@ package com.tencent.av.redpacket.ui;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import blsb;
-import blsi;
+import bmtd;
+import bmtk;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import zvc;
+import zyx;
 
 class RedPacketShareFragment$2$1
   implements Runnable
@@ -21,18 +21,18 @@ class RedPacketShareFragment$2$1
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0);
-      zvc.a(1, 2131695773);
+      zyx.a(1, 2131695816);
       return;
     }
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a(false);
-    String str = String.format(BaseApplication.getContext().getString(2131695150), new Object[] { RedPacketShareFragment.b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0), RedPacketShareFragment.c(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0) });
-    blsi localblsi = blsi.a();
+    String str = String.format(BaseApplication.getContext().getString(2131695193), new Object[] { RedPacketShareFragment.b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0), RedPacketShareFragment.c(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0) });
+    bmtk localbmtk = bmtk.a();
     if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a != null)
     {
-      localblsi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getAccount();
-      localblsi.b = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getDisplayName(0, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getCurrentAccountUin(), null);
+      localbmtk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getAccount();
+      localbmtk.b = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getDisplayName(0, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getCurrentAccountUin(), null);
     }
-    blsb.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.getActivity(), localblsi, this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getString(2131691908), str, 1);
+    bmtd.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.getActivity(), localbmtk, this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getString(2131691912), str, 1);
   }
 }
 

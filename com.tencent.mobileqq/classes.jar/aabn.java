@@ -1,24 +1,17 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
-
 public class aabn
-  implements aabq
 {
-  public aabn(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
+  public Object a;
+  public boolean a;
   
-  public void a()
+  public aabn(Object paramObject)
   {
-    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
-      PopViewAnimationDrawableHelper.a(this.a).b();
-    }
-    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
-      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
-    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public void b()
+  public aabn(Object paramObject, boolean paramBoolean)
   {
-    PopViewAnimationDrawableHelper.a(this.a);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

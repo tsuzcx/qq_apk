@@ -1,18 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class nnf
-  implements aaob
+public final class nnf
 {
-  public nnf(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
-  
-  public void callback(Bundle paramBundle)
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    if (paramBundle != null)
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      int i = paramBundle.getInt("state");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
+      return;
     }
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
 }
 

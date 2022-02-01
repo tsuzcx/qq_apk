@@ -1,18 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class avlq
-  implements Parcelable.Creator<SingTogetherSession>
+public class avlq
 {
-  public SingTogetherSession a(Parcel paramParcel)
+  public static avlq a;
+  private Set<String> a;
+  
+  static
   {
-    return new SingTogetherSession(paramParcel, null);
+    jdField_a_of_type_Avlq = new avlq();
   }
   
-  public SingTogetherSession[] a(int paramInt)
+  public avlq()
   {
-    return new SingTogetherSession[paramInt];
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+  }
+  
+  static avlq a(String paramString)
+  {
+    localavlq = new avlq();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("appid_arr");
+        int i = 0;
+        while (i < paramString.length())
+        {
+          String str = paramString.optString(i);
+          if (!TextUtils.isEmpty(str)) {
+            localavlq.jdField_a_of_type_JavaUtilSet.add(str);
+          }
+          i += 1;
+        }
+        return localavlq;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("GameShare.confBean", 1, paramString, new Object[0]);
+      }
+    }
+  }
+  
+  boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+  }
+  
+  public String toString()
+  {
+    return "NGConfBean{appidArr=" + this.jdField_a_of_type_JavaUtilSet + '}';
   }
 }
 

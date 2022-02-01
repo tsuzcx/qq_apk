@@ -1,42 +1,42 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
 
-class bdam
-  extends URLDrawableDownListener.Adapter
+public class bdam
+  extends AsyncTask<Void, Void, Integer>
 {
-  bdam(bdak parambdak) {}
+  public bdam(SVHwEncoder.HwEncode paramHwEncode) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  protected Integer a(Void... paramVarArgs)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
+    long l = System.currentTimeMillis();
+    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
+    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
+    int i = j;
+    String str;
+    if (j == 0)
+    {
+      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
+      if (!bhmi.c(paramVarArgs, str)) {
+        break label177;
+      }
+      this.a.a.b = str;
+      i = j;
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+      this.a.a.jdField_a_of_type_Int = i;
+      SVHwEncoder.HwEncode.a(this.a, true);
+      return Integer.valueOf(i);
+      label177:
+      i = j;
+      if (!bhmi.b(str))
+      {
+        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
+        i = -3;
+      }
     }
   }
 }

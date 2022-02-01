@@ -11,19 +11,19 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
-import rvx;
-import rwa;
-import rxv;
-import sar;
-import sfb;
-import tlg;
+import rmt;
+import rmw;
+import roq;
+import rrm;
+import rwf;
+import tbz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "data", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class VideoColumnBannerManager$jumpToColumnPlay$1
   extends Lambda
   implements Function1<String, Unit>
 {
-  public VideoColumnBannerManager$jumpToColumnPlay$1(rvx paramrvx, rxv paramrxv, VideoInfo paramVideoInfo, int paramInt)
+  public VideoColumnBannerManager$jumpToColumnPlay$1(rmt paramrmt, roq paramroq, VideoInfo paramVideoInfo, int paramInt1, int paramInt2)
   {
     super(1);
   }
@@ -38,33 +38,42 @@ public final class VideoColumnBannerManager$jumpToColumnPlay$1
       {
         localObject = this.$playingVideoHolder.a.a;
         if (localObject == null) {
-          break label148;
+          break label179;
         }
-        str = ((sfb)localObject).c();
+        str = ((rwf)localObject).c();
         label30:
         if (paramString == null) {
-          break label153;
+          break label184;
         }
-      }
-      label148:
-      label153:
-      for (paramString = this.this$0.a(paramString, this.$videoInfo, this.$playingVideoHolder, this.$fromType);; paramString = null)
-      {
-        SPSeamlessHelper.get().jumpScene(str, (SPSeamlessHelper.SeamlessCallback)new rwa((sfb)localObject));
+        paramString = this.this$0.a(paramString, this.$videoInfo, this.$playingVideoHolder, this.$fromType);
+        label55:
+        SPSeamlessHelper.get().jumpScene(str, (SPSeamlessHelper.SeamlessCallback)new rmw((rwf)localObject));
         localObject = new Bundle();
         ((Bundle)localObject).putString("param", String.valueOf(paramString));
-        tlg.a((Context)this.this$0.a(), "", "https://viola.qq.com/js/TopicVideo.js?_rij_violaUrl=1&v_bid=3811&v_tid=15&hideNav=1&v_bundleName=TopicVideo&v_debug_test=1&supportNV=1&v_push_animated_disable=1&v_bg_color=00ffffff&v_content_full=1&v_nav_immer=1&v_error_white=1&videoToken=" + str + "&rowkey=" + this.$videoInfo.g, (Bundle)localObject, true);
+        paramString = "https://viola.qq.com/js/TopicVideo.js?_rij_violaUrl=1&v_bid=3811&v_tid=15&hideNav=1&v_bundleName=TopicVideo&v_debug_test=1&supportNV=1&v_push_animated_disable=1&v_bg_color=00ffffff&v_content_full=1&v_nav_immer=1&v_error_white=1&videoToken=" + str + "&rowkey=" + this.$videoInfo.g;
+        if (this.$videoFromType != 125) {
+          break label195;
+        }
+        paramString = paramString + "&pagetype=1";
+      }
+      for (;;)
+      {
+        tbz.a((Context)this.this$0.a(), "", paramString, (Bundle)localObject, true);
         return;
         localObject = null;
         break;
+        label179:
         str = null;
         break label30;
+        label184:
+        paramString = null;
+        break label55;
       }
-      return;
     }
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
+      return;
     }
   }
 }

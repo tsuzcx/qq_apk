@@ -1,8 +1,9 @@
-import NS_KING_PUBLIC.stAuth;
-
-public abstract interface blel
+class blel
 {
-  public abstract void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth);
+  public int a;
+  public byte[] a;
+  public int b;
+  public int c;
 }
 
 

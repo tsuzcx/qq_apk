@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import afpv;
-import afpw;
+import afyz;
+import afza;
 import android.text.TextUtils;
-import bgjw;
+import bhjx;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
@@ -18,83 +18,83 @@ class TroopTransferActivity$14
     int i = 0;
     boolean bool = false;
     Object localObject;
-    afpv localafpv;
+    afyz localafyz;
     if (i < this.a.size())
     {
       localObject = (TroopMemberCardInfo)this.a.get(i);
-      localafpv = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
-      if (localafpv != null) {}
+      localafyz = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
+      if (localafyz != null) {}
     }
     for (;;)
     {
       i += 1;
       break;
-      if (!bgjw.a(((TroopMemberCardInfo)localObject).name, localafpv.m))
+      if (!bhjx.a(((TroopMemberCardInfo)localObject).name, localafyz.m))
       {
-        localafpv.m = ((TroopMemberCardInfo)localObject).name;
-        if (!TextUtils.isEmpty(localafpv.m))
+        localafyz.m = ((TroopMemberCardInfo)localObject).name;
+        if (!TextUtils.isEmpty(localafyz.m))
         {
-          localafpv.n = ChnToSpell.a(localafpv.m, 2);
-          localafpv.o = ChnToSpell.a(localafpv.m, 1);
+          localafyz.n = ChnToSpell.a(localafyz.m, 2);
+          localafyz.o = ChnToSpell.a(localafyz.m, 1);
         }
       }
       else
       {
         label118:
-        if (!bgjw.a(((TroopMemberCardInfo)localObject).nick, localafpv.g))
+        if (!bhjx.a(((TroopMemberCardInfo)localObject).nick, localafyz.g))
         {
-          localafpv.g = ((TroopMemberCardInfo)localObject).nick;
-          if (TextUtils.isEmpty(localafpv.g)) {
+          localafyz.g = ((TroopMemberCardInfo)localObject).nick;
+          if (TextUtils.isEmpty(localafyz.g)) {
             break label277;
           }
-          localafpv.h = ChnToSpell.a(localafpv.g, 2);
-          localafpv.i = ChnToSpell.a(localafpv.g, 1);
+          localafyz.h = ChnToSpell.a(localafyz.g, 2);
+          localafyz.i = ChnToSpell.a(localafyz.g, 1);
         }
         label181:
-        if (TextUtils.isEmpty(localafpv.j)) {
+        if (TextUtils.isEmpty(localafyz.j)) {
           break label294;
         }
-        localObject = localafpv.j;
+        localObject = localafyz.j;
       }
       for (;;)
       {
-        if (!bgjw.a(localObject, localafpv.b))
+        if (!bhjx.a(localObject, localafyz.b))
         {
-          localafpv.b = ((String)localObject);
-          if (!TextUtils.isEmpty(localafpv.b))
+          localafyz.b = ((String)localObject);
+          if (!TextUtils.isEmpty(localafyz.b))
           {
-            localafpv.c = ChnToSpell.a(localafpv.b, 2);
-            localafpv.d = ChnToSpell.a(localafpv.b, 1);
+            localafyz.c = ChnToSpell.a(localafyz.b, 2);
+            localafyz.d = ChnToSpell.a(localafyz.b, 1);
             bool = true;
             break;
-            localafpv.n = "";
-            localafpv.o = "";
+            localafyz.n = "";
+            localafyz.o = "";
             break label118;
             label277:
-            localafpv.h = "";
-            localafpv.i = "";
+            localafyz.h = "";
+            localafyz.i = "";
             break label181;
             label294:
-            if (!TextUtils.isEmpty(localafpv.m))
+            if (!TextUtils.isEmpty(localafyz.m))
             {
-              localObject = localafpv.m;
+              localObject = localafyz.m;
               continue;
             }
-            if (!TextUtils.isEmpty(localafpv.g))
+            if (!TextUtils.isEmpty(localafyz.g))
             {
-              localObject = localafpv.g;
+              localObject = localafyz.g;
               continue;
             }
-            if (!TextUtils.isEmpty(localafpv.a))
+            if (!TextUtils.isEmpty(localafyz.a))
             {
-              localObject = localafpv.a;
+              localObject = localafyz.a;
               continue;
             }
             localObject = "";
             continue;
           }
-          localafpv.c = "";
-          localafpv.d = "";
+          localafyz.c = "";
+          localafyz.d = "";
           bool = true;
           break;
           this.this$0.a(bool);

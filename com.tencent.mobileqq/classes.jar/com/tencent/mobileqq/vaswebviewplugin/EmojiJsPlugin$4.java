@@ -3,14 +3,14 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bgpp;
+import bhpr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class EmojiJsPlugin$4
   implements DialogInterface.OnKeyListener
 {
-  EmojiJsPlugin$4(EmojiJsPlugin paramEmojiJsPlugin, bgpp parambgpp, String paramString) {}
+  EmojiJsPlugin$4(EmojiJsPlugin paramEmojiJsPlugin, bhpr parambhpr, String paramString) {}
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {

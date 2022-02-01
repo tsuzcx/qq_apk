@@ -1,54 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-public class llv
+class llv
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  String b;
-  String c;
-  String d;
+  static final float[] a;
   
-  public static llv a()
+  static
   {
-    Object localObject = lbq.b(298).jdField_a_of_type_JavaLangString;
-    llv localllv = null;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      localllv = a((String)localObject);
-    }
-    localObject = localllv;
-    if (localllv == null) {
-      localObject = new llv();
-    }
-    return localObject;
-  }
-  
-  static llv a(String paramString)
-  {
-    try
+    int k = 0;
+    a = new float[16384];
+    int i = 0;
+    int j;
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      llv localllv = new llv();
-      localllv.jdField_a_of_type_Boolean = paramString.getBoolean("enable");
-      localllv.jdField_a_of_type_Int = paramString.getInt("task_id");
-      localllv.jdField_a_of_type_JavaLangString = paramString.getString("url_zip_so");
-      localllv.b = paramString.getString("MD5_zip_so");
-      localllv.c = paramString.getString("MD5_so");
-      localllv.d = paramString.getString("so_name");
-      return localllv;
+      j = k;
+      if (i >= 16384) {
+        break;
+      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
+      i += 1;
     }
-    catch (Exception paramString)
+    while (j < 360)
     {
-      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
+      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
     }
-    return null;
-  }
-  
-  public String toString()
-  {
-    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
   }
 }
 

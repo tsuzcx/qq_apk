@@ -1,21 +1,16 @@
-final class bcjl
-  extends bcjo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bcjl
+  implements View.OnClickListener
 {
-  public double a(int paramInt1, int paramInt2)
+  bcjl(bcjk parambcjk, bcga parambcga) {}
+  
+  public void onClick(View paramView)
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
-    {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
-    }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
-    }
-    return d2 / Math.log(2.0D);
+    this.jdField_a_of_type_Bcga.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

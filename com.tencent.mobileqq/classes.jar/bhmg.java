@@ -1,53 +1,44 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 
 public class bhmg
 {
-  public long a;
-  private bhmj a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  
-  public bhmg(bhmj parambhmj)
+  public static float a(Context paramContext, float paramFloat)
   {
-    this.jdField_a_of_type_Bhmj = parambhmj;
+    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
   }
   
-  public void a(Bundle paramBundle, AppInterface paramAppInterface, Intent paramIntent)
+  @SuppressLint({"NewApi"})
+  public static int a(Context paramContext)
   {
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_init_webview_plugin", true))) {
-      this.jdField_a_of_type_Bhmj.preInitWebviewPlugin();
+    int i = 0;
+    if (Build.VERSION.SDK_INT >= 11) {
+      i = ((ActivityManager)paramContext.getSystemService("activity")).getLauncherLargeIconSize();
     }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_get_key", true))) {
-      WebAccelerateHelper.getInstance().preGetKey(paramIntent, paramAppInterface);
-    }
-    long l2 = System.currentTimeMillis();
-    this.jdField_a_of_type_Bhmj.buildLayout();
-    long l1 = System.currentTimeMillis();
-    this.b = (l1 - l2);
-    this.jdField_a_of_type_Bhmj.buildContentView(paramBundle);
-    l2 = System.currentTimeMillis();
-    this.e = (l2 - l1);
-    this.jdField_a_of_type_Bhmj.buildTitleBar();
-    l1 = System.currentTimeMillis();
-    this.c = (l1 - l2);
-    this.jdField_a_of_type_Bhmj.buildBottomBar();
-    l2 = System.currentTimeMillis();
-    this.d = (l2 - l1);
-    this.jdField_a_of_type_Bhmj.buildWebView(paramAppInterface);
-    l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = (l1 - l2);
-    this.jdField_a_of_type_Bhmj.buildData();
-    this.f = (System.currentTimeMillis() - l1);
+    int j = (int)paramContext.getResources().getDimension(17104896);
     if (QLog.isColorLevel()) {
-      QLog.i("WebViewDirector", 2, "buildLayoutTime : " + this.b + ", buildContentTime " + this.e + ", buildTitleTime " + this.c + ", buildWebViewTime " + this.jdField_a_of_type_Long + ", buildBottomTime " + this.d + ", buildDataTime " + this.f);
+      QLog.d("DisplayUtils", 2, "launcher icon size = " + i + " , app icon size = " + j);
     }
+    return Math.max(i, j);
+  }
+  
+  public static int a(TextView paramTextView, int paramInt)
+  {
+    if ((paramTextView != null) && (paramTextView.getText() != null) && (paramInt > 0))
+    {
+      TextPaint localTextPaint = paramTextView.getPaint();
+      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
+    }
+    return -1;
   }
 }
 

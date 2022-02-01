@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.widget.Button;
-import anni;
+import anzj;
 
 class RegisterSendUpSms$2
   implements Runnable
@@ -13,7 +13,7 @@ class RegisterSendUpSms$2
   {
     if (RegisterSendUpSms.a(this.this$0) == 1)
     {
-      RegisterSendUpSms.a(this.this$0).setText(anni.a(2131712107));
+      RegisterSendUpSms.a(this.this$0).setText(anzj.a(2131712216));
       RegisterSendUpSms.a(this.this$0).setEnabled(true);
       RegisterSendUpSms.a(this.this$0).setClickable(true);
       RegisterSendUpSms.a(this.this$0, 0);
@@ -21,7 +21,7 @@ class RegisterSendUpSms$2
       return;
     }
     RegisterSendUpSms.b(this.this$0);
-    RegisterSendUpSms.a(this.this$0).setText(anni.a(2131712105) + "(" + RegisterSendUpSms.a(this.this$0) + "s)");
+    RegisterSendUpSms.a(this.this$0).setText(anzj.a(2131712214) + "(" + RegisterSendUpSms.a(this.this$0) + "s)");
     this.this$0.a.postDelayed(this, 1000L);
   }
 }

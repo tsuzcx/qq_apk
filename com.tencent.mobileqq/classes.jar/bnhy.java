@@ -1,6 +1,8 @@
-public abstract interface bnhy
+import cooperation.qzone.statistic.StatisticCollector;
+
+public class bnhy
 {
-  public abstract void i(int paramInt);
+  private static final StatisticCollector a = new StatisticCollector();
 }
 
 

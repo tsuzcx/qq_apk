@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class apzo
+class apzo
+  implements bnsj
 {
-  public String a;
-  public boolean a;
-  public String b;
+  apzo(apzn paramapzn, QQAppInterface paramQQAppInterface) {}
   
-  public apzo(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public void a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Apzn.jdField_a_of_type_Aojs);
+      ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(antz.a(this.jdField_a_of_type_Apzn.jdField_a_of_type_JavaLangString), true, 0);
+    }
+  }
 }
 
 

@@ -20,10 +20,10 @@ public class LoginAnimBtnView$2
     //   18: return
     //   19: new 37	com/tencent/mobileqq/dinifly/LottieComposition$Factory$ListenerAdapter
     //   22: dup
-    //   23: new 39	alft
+    //   23: new 39	alrl
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 42	alft:<init>	(Lcom/tencent/mobileqq/activity/registerGuideLogin/LoginAnimBtnView$2;)V
+    //   28: invokespecial 42	alrl:<init>	(Lcom/tencent/mobileqq/activity/registerGuideLogin/LoginAnimBtnView$2;)V
     //   31: invokespecial 45	com/tencent/mobileqq/dinifly/LottieComposition$Factory$ListenerAdapter:<init>	(Lcom/tencent/mobileqq/dinifly/OnCompositionLoadedListener;)V
     //   34: astore_2
     //   35: aload_0

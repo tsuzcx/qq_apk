@@ -1,22 +1,12 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcShortContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-class qfb
-  extends ComponentContentPgcShortContentGridImage
+public class qfb
+  extends RecyclerView.ViewHolder
 {
-  qfb(qfa paramqfa, Context paramContext, ArticleInfo paramArticleInfo)
+  public qfb(qeu paramqeu, View paramView)
   {
-    super(paramContext);
-  }
-  
-  public int d()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
-    }
-    return super.d();
+    super(paramView);
   }
 }
 

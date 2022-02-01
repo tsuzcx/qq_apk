@@ -13,9 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import bamn;
-import baqe;
+import anzj;
+import bbfg;
+import bbix;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class BeautyProviderView
@@ -35,13 +35,13 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845910);
+    paramTextView.setBackgroundResource(2130845925);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845909);
+    paramTextView.setBackgroundResource(2130845924);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
   
@@ -51,10 +51,10 @@ public class BeautyProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561464, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561505, this, false));
     }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363338));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363362));
     int i = 0;
     while (i < this.jdField_a_of_type_Int)
     {
@@ -66,13 +66,13 @@ public class BeautyProviderView
       paramBundle.setOnClickListener(this);
       paramBundle.setTag(Integer.valueOf(i));
       localObject = new TextView(getContext());
-      ((TextView)localObject).setBackgroundResource(2130845909);
+      ((TextView)localObject).setBackgroundResource(2130845924);
       ((TextView)localObject).setText(i + "");
       ((TextView)localObject).setTextSize(18.0F);
       ((TextView)localObject).setGravity(17);
       ((TextView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       paramBundle.addView((View)localObject);
-      paramBundle.setContentDescription(anni.a(2131699889) + i);
+      paramBundle.setContentDescription(anzj.a(2131699996) + i);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramBundle);
       i += 1;
     }
@@ -82,13 +82,13 @@ public class BeautyProviderView
   public void aI_()
   {
     super.aI_();
-    bamn.a().b(getContext());
+    bbfg.a().b(getContext());
   }
   
   public void onClick(View paramView)
   {
     setBeautyLevel(((Integer)paramView.getTag()).intValue());
-    this.jdField_a_of_type_Baqe.a(((Integer)paramView.getTag()).intValue());
+    this.jdField_a_of_type_Bbix.a(((Integer)paramView.getTag()).intValue());
     EventCollector.getInstance().onViewClicked(paramView);
   }
   

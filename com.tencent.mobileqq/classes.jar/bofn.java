@@ -1,13 +1,25 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-
-public class bofn
-  implements bogc
+class bofn
+  implements boja
 {
-  public bofn(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  bofn(bofh parambofh) {}
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return paramInt1 != paramInt2;
+    bpam.b("AEPituCameraUnit", "tryOpenCamera result=" + paramBoolean + ", whichCamera=" + paramInt + ", mActivityResume=" + bofh.a(this.a));
+    if (paramBoolean)
+    {
+      if (bofh.d(this.a)) {
+        bbgb.a(paramInt);
+      }
+      if (!bofh.a(this.a)) {
+        bofh.b(this.a, false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    bofh.f(this.a);
   }
 }
 

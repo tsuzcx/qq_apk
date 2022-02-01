@@ -1,8 +1,17 @@
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface bmvh
+public class bmvh
 {
-  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
+  private final String jdField_a_of_type_JavaLangString;
+  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private volatile String b;
+  private volatile String c;
+  
+  private bmvh(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
+  }
 }
 
 

@@ -1,18 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class akfi
-  extends akey
+  implements TextWatcher
 {
-  public akfi(PhotoCropActivity paramPhotoCropActivity)
+  public akfi(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramPhotoCropActivity);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.e(paramEditable);
   }
   
-  public void a(int paramInt)
-  {
-    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

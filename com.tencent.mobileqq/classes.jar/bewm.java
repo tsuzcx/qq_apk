@@ -1,21 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
-import java.util.List;
-
 public class bewm
-  extends anxg
+  extends bewn
 {
-  bewm(bewl parambewl) {}
+  private int a = 420000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 15000;
+  private int e = 30000;
+  private int f = 4000;
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public int a()
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
-    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
-    }
-    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 

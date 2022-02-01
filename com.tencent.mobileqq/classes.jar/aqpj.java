@@ -1,65 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class aqpj
-  extends aqkz<aqpi>
+class aqpj
+  extends RecyclerView.OnScrollListener
 {
-  @NonNull
-  public aqpi a(int paramInt)
-  {
-    return new aqpi();
-  }
+  aqpj(aqph paramaqph) {}
   
-  @Nullable
-  public aqpi a(aqlg[] paramArrayOfaqlg)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
-    }
-    return aqpi.a(paramArrayOfaqlg);
-  }
-  
-  public void a(aqpi paramaqpi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
+    if (paramInt == 0) {
+      aqph.a(this.a, paramRecyclerView);
     }
   }
   
-  public Class<aqpi> clazz()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return aqpi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 598;
+    if (aqph.a(this.a))
+    {
+      aqph.a(this.a, false);
+      aqph.a(this.a, paramRecyclerView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpj
  * JD-Core Version:    0.7.0.1
  */

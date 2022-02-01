@@ -10,13 +10,13 @@ import android.view.View.MeasureSpec;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import bizt;
+import bkas;
 
 public class KeyboardDetectorRelativeLayout
   extends RelativeLayout
 {
   protected Rect a;
-  protected bizt a;
+  protected bkas a;
   
   public KeyboardDetectorRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,9 +26,9 @@ public class KeyboardDetectorRelativeLayout
     }
   }
   
-  public void a(bizt parambizt)
+  public void a(bkas parambkas)
   {
-    this.jdField_a_of_type_Bizt = parambizt;
+    this.jdField_a_of_type_Bkas = parambkas;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -38,19 +38,19 @@ public class KeyboardDetectorRelativeLayout
     localActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
     int j = this.jdField_a_of_type_AndroidGraphicsRect.top;
     int k = localActivity.getWindowManager().getDefaultDisplay().getHeight();
-    if ((this.jdField_a_of_type_Bizt != null) && (i != 0))
+    if ((this.jdField_a_of_type_Bkas != null) && (i != 0))
     {
       if (k - j - i <= 100) {
         break label112;
       }
-      this.jdField_a_of_type_Bizt.a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
+      this.jdField_a_of_type_Bkas.a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
     }
     for (;;)
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
       label112:
-      this.jdField_a_of_type_Bizt.b();
+      this.jdField_a_of_type_Bkas.b();
     }
   }
 }

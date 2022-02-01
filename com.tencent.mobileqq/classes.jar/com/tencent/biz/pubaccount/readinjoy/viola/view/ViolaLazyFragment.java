@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import akwo;
+import alid;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -13,12 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bqcd;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -28,391 +29,208 @@ import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import ryx;
-import tsv;
-import tsw;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import rpt;
+import tjs;
+import tjt;
 
 public abstract class ViolaLazyFragment
   extends PublicBaseFragment
 {
-  private int jdField_a_of_type_Int = 0;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tsv(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private NavBarCommon jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
-  private SystemBarCompact jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-  private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-  private String jdField_a_of_type_JavaLangString = "status_bar_color_style";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
+  public static final String LEFT_VIEW_BACK_DRAWABLE_BLACK = "drawable_black";
+  public static final String LEFT_VIEW_BACK_DRAWABLE_WHITE = "drawable_white";
+  public static final String STATUS_BAR_NORMAL_COLOR = "status_bar_color_style";
+  private static final String TAG = "ViolaLazyFragment";
+  private boolean fullScreenAlways;
+  private ViewGroup mContainer;
+  private ViewGroup mContentView;
+  private boolean mIsContentInit;
+  private boolean mIsStart;
+  private boolean mIsStatusImmersive;
+  private boolean mIsStatusViewTransparent;
+  private LayoutInflater mLayoutInflater;
+  private View.OnClickListener mOnBackListener = new tjs(this);
+  private int mOriginalTitleVisibility = 0;
+  private View mRootView;
+  private String mStatusBarColor = "status_bar_color_style";
+  private Boolean mStatusBarFontColorWhite = Boolean.valueOf(true);
+  private SystemBarCompact mSystemBarComp;
+  private TextView mTitleCenterView;
+  private NavBarCommon mTitleContainer;
+  private ImageView mTitleLeftBackIcon;
+  private TextView mTitleLeftBackText;
+  private TextView mTitleLeftView;
+  private TextView mTitleLeftViewNotBack;
+  private TextView mTitleRightHightView;
+  private ImageView mTitleRightViewIcon;
+  private TextView mTitleRightViewText;
+  private RelativeLayout mTitleRootView;
+  private int originUIFlags = -1;
   
-  public static void a(Activity paramActivity, int paramInt)
+  private void initTitleView(NavBarCommon paramNavBarCommon)
+  {
+    this.mTitleLeftView = ((TextView)paramNavBarCommon.findViewById(2131369042));
+    this.mTitleLeftView.setOnClickListener(this.mOnBackListener);
+    this.mTitleLeftBackText = ((TextView)paramNavBarCommon.findViewById(2131379635));
+    this.mTitleLeftBackIcon = ((ImageView)paramNavBarCommon.findViewById(2131369452));
+    if ((this.mTitleLeftBackText != null) && (this.mTitleLeftBackIcon != null))
+    {
+      this.mTitleLeftBackText.setOnClickListener(this.mOnBackListener);
+      this.mTitleLeftBackIcon.setOnClickListener(this.mOnBackListener);
+    }
+    this.mTitleCenterView = ((TextView)paramNavBarCommon.findViewById(2131369088));
+    this.mTitleRightViewText = ((TextView)paramNavBarCommon.findViewById(2131369073));
+    this.mTitleRightViewIcon = ((ImageView)paramNavBarCommon.findViewById(2131369056));
+  }
+  
+  private void setStatusBarTrans()
+  {
+    if ((!this.mIsStatusViewTransparent) && (needImmersive()) && (needStatusTrans()) && (getActivity().findViewById(16908310) != null))
+    {
+      ViewParent localViewParent = getActivity().findViewById(16908310).getParent();
+      if ((localViewParent != null) && ((localViewParent instanceof FrameLayout))) {
+        ((FrameLayout)localViewParent).setVisibility(8);
+      }
+    }
+  }
+  
+  public static void setWindowFlag(Activity paramActivity, int paramInt)
   {
     if ((paramActivity != null) && (paramActivity.getWindow() != null)) {
       paramActivity.getWindow().setFlags(paramInt, paramInt);
     }
   }
   
-  private void a(NavBarCommon paramNavBarCommon)
+  public abstract void doOnBackPressed();
+  
+  public void exitFullScreen()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368947));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131379468));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131369362));
-    if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
+    getActivity().getWindow().getDecorView().setSystemUiVisibility(this.originUIFlags);
+    this.originUIFlags = -1;
+  }
+  
+  public ViewGroup getContentView()
+  {
+    return this.mContentView;
+  }
+  
+  public abstract int getContentViewId();
+  
+  public View getRootView()
+  {
+    return this.mRootView;
+  }
+  
+  public String getStatusBarColor()
+  {
+    return this.mStatusBarColor;
+  }
+  
+  public Boolean getStatusBarFontColorWhite()
+  {
+    return this.mStatusBarFontColorWhite;
+  }
+  
+  public ViewGroup getTitleRootView()
+  {
+    return this.mTitleRootView;
+  }
+  
+  public void hideLeftBackView()
+  {
+    this.mTitleLeftView.setVisibility(8);
+  }
+  
+  public void hideNavBar()
+  {
+    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new tjt(this));
+    int i = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    getActivity().getWindow().getDecorView().setSystemUiVisibility(i | 0x2 | 0x400);
+  }
+  
+  public void hideStatusBar()
+  {
+    if (this.mSystemBarComp != null) {
+      this.mSystemBarComp.setStatusBarVisible(2, 0);
+    }
+  }
+  
+  public void hideStatusBarByParams()
+  {
+    if (((getActivity() instanceof BaseActivity)) && (getActivity().mSystemBarComp != null))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      Window localWindow = getActivity().getWindow();
+      if (localWindow != null) {
+        localWindow.setFlags(1024, 1024);
+      }
+      this.mSystemBarComp = getActivity().mSystemBarComp;
+      this.mSystemBarComp.init();
+      hideStatusBar();
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368994));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368979));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131368961));
   }
   
-  public abstract int a();
-  
-  public View a()
+  public void hideTitleBar()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_b_of_type_AndroidViewViewGroup;
-  }
-  
-  public Boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangBoolean;
-  }
-  
-  public abstract void a();
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setAlpha(paramFloat);
-  }
-  
-  public void a(int paramInt, ViewGroup paramViewGroup)
-  {
-    if ((a() == null) || (a().getParent() == null)) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558979, paramViewGroup, false);
-    }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378887));
-      if (ImmersiveUtils.isSupporImmersive() == 1)
+      if (getRootView() != null)
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
+        this.mTitleContainer = ((NavBarCommon)getRootView().findViewById(2131376731));
+        this.mOriginalTitleVisibility = this.mTitleContainer.getVisibility();
+        if (this.mTitleContainer.getVisibility() == 0) {
+          this.mTitleContainer.setVisibility(8);
+        }
       }
-      paramViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131376599);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup, localLayoutParams);
-      this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
       return;
     }
-    catch (Exception paramViewGroup)
+    catch (Throwable localThrowable)
     {
-      QLog.e("ViolaLazyFragment", 1, paramViewGroup.getMessage());
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ViolaLazyFragment", 2, localThrowable, new Object[0]);
     }
   }
   
-  public abstract void a(Bundle paramBundle);
+  public abstract void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup);
   
-  public abstract void a(Bundle paramBundle, ViewGroup paramViewGroup);
+  public abstract void initBeforeVisible(Bundle paramBundle);
   
-  public void a(View.OnClickListener paramOnClickListener)
+  protected void initFragmentLazy(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnClickListener(paramOnClickListener);
-    }
+    setContentView(getContentViewId(), paramViewGroup);
+    setTitleView();
+    initAfterVisible(getArguments(), this.mContentView);
   }
   
-  public void a(Boolean paramBoolean)
+  public void initStatusBarColor(String paramString)
   {
-    this.jdField_a_of_type_JavaLangBoolean = paramBoolean;
-  }
-  
-  public void a(Boolean paramBoolean, boolean paramBoolean1)
-  {
-    FragmentActivity localFragmentActivity;
-    if ((paramBoolean1) && (paramBoolean != this.jdField_a_of_type_JavaLangBoolean))
+    if ((!this.mIsStatusImmersive) && (ImmersiveUtils.isSupporImmersive() == 1) && (!"status_bar_color_style".equals(paramString)) && ((getActivity() instanceof BaseActivity)) && (getActivity().mSystemBarComp != null))
     {
-      localFragmentActivity = getActivity();
-      if (paramBoolean.booleanValue()) {
-        break label37;
-      }
+      this.mSystemBarComp = getActivity().mSystemBarComp;
+      this.mSystemBarComp.init();
+      this.mSystemBarComp.setStatusBarColor(Color.parseColor(paramString));
     }
-    label37:
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+  }
+  
+  public void initViewAfterVisible()
+  {
+    if ((!this.mIsContentInit) && (getRootView() != null))
     {
-      akwo.a(localFragmentActivity, paramBoolean1);
-      this.jdField_a_of_type_JavaLangBoolean = paramBoolean;
-      return;
+      this.mIsContentInit = true;
+      initFragmentLazy(this.mContainer);
     }
   }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setTitle(paramCharSequence);
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, false);
-  }
-  
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (("status_bar_color_style".equals(this.jdField_a_of_type_JavaLangString)) || (paramBoolean)) {
-      this.jdField_a_of_type_JavaLangString = paramString;
-    }
-  }
-  
-  public ViewGroup b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  protected void b(ViewGroup paramViewGroup)
-  {
-    if ((getUserVisibleHint()) && (!this.jdField_c_of_type_Boolean))
-    {
-      this.jdField_c_of_type_Boolean = true;
-      c(paramViewGroup);
-      return;
-    }
-    k();
-  }
-  
-  public void b(String paramString)
-  {
-    if ((!this.jdField_b_of_type_Boolean) && (ImmersiveUtils.isSupporImmersive() == 1) && (!"status_bar_color_style".equals(paramString)) && ((getActivity() instanceof BaseActivity)) && (getActivity().mSystemBarComp != null))
-    {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = getActivity().mSystemBarComp;
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarColor(Color.parseColor(paramString));
-    }
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_d_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void c(ViewGroup paramViewGroup)
-  {
-    a(a(), paramViewGroup);
-    e();
-    a(getArguments(), this.jdField_b_of_type_AndroidViewViewGroup);
-  }
-  
-  public void c(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(0);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBackgroundColor(Color.parseColor(paramString));
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBackgroundColor(0);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBackgroundColor(-1);
-  }
-  
-  public void d(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramString));
-    }
-  }
-  
-  public void e()
-  {
-    if (getActivity() == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376599));
-    a(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon);
-  }
-  
-  public void e(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramString));
-    }
-  }
-  
-  protected void f() {}
-  
-  public void f(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if ((this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() != 0) && (!TextUtils.isEmpty(this.jdField_d_of_type_AndroidWidgetTextView.getText()))) {
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramString));
-    }
-  }
-  
-  protected void g()
-  {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      akwo.a(localFragmentActivity, bool);
-      return;
-    }
-  }
-  
-  public void g(String paramString)
-  {
-    if (getActivity() != null)
-    {
-      if (!"drawable_black".equals(paramString)) {
-        break label46;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849526));
-    }
-    label46:
-    while (!"drawable_white".equals(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130850652));
-  }
-  
-  protected void h() {}
-  
-  public void h(String paramString)
-  {
-    this.jdField_b_of_type_AndroidViewViewGroup.setBackgroundColor(Color.parseColor(paramString));
-  }
-  
-  protected void i() {}
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
     if (Build.VERSION.SDK_INT >= 11) {
-      a(getActivity(), 16777216);
+      setWindowFlag(getActivity(), 16777216);
     }
   }
   
-  protected void j() {}
-  
-  protected void k()
+  public boolean isTransparent()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558979, this.jdField_a_of_type_AndroidViewViewGroup, false);
-    a(getArguments());
-  }
-  
-  public void l()
-  {
-    if ((!this.jdField_c_of_type_Boolean) && (a() != null))
-    {
-      this.jdField_c_of_type_Boolean = true;
-      c(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-  }
-  
-  public void m()
-  {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(false);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      if (getActivity().mSystemBarComp != null) {
-        break label135;
-      }
-      getActivity().setImmersiveStatus(0);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon) != -1)
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon);
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getLayoutParams();
-        localLayoutParams.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setLayoutParams(localLayoutParams);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon);
-        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        this.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-      }
-      return;
-      label135:
-      getActivity().mSystemBarComp.setStatusBarDrawable(null);
-      getActivity().mSystemBarComp.setStatusBarColor(0);
-      getActivity().mSystemBarComp.setStatusColor(0);
-    }
-  }
-  
-  public void n()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarVisible(2, 0);
-    }
-  }
-  
-  public void o()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarVisible(0, 0);
-    }
+    return this.mIsStatusViewTransparent;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -432,17 +250,28 @@ public abstract class ViolaLazyFragment
     QLog.d("ViolaLazyFragment", 2, "debugForTimeCost onCreate:" + System.currentTimeMillis());
   }
   
+  protected void onCreateFragment(ViewGroup paramViewGroup)
+  {
+    if ((getUserVisibleHint()) && (!this.mIsContentInit))
+    {
+      this.mIsContentInit = true;
+      initFragmentLazy(paramViewGroup);
+      return;
+    }
+    setLazyEmptyLayout();
+  }
+  
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     QLog.d("ViolaLazyFragment", 2, "debugForTimeCost onCreateView:" + System.currentTimeMillis());
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.mLayoutInflater = paramLayoutInflater;
+    this.mContainer = paramViewGroup;
     if (Build.VERSION.SDK_INT >= 11) {
-      a(getActivity(), 16777216);
+      setWindowFlag(getActivity(), 16777216);
     }
-    b(paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);; paramLayoutInflater = this.jdField_a_of_type_AndroidViewView)
+    onCreateFragment(paramViewGroup);
+    if (this.mRootView == null) {}
+    for (paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);; paramLayoutInflater = this.mRootView)
     {
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
@@ -452,41 +281,60 @@ public abstract class ViolaLazyFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_b_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = null;
-    if (this.jdField_c_of_type_Boolean) {
-      j();
+    this.mContentView = null;
+    this.mLayoutInflater = null;
+    if (this.mIsContentInit) {
+      onDestroyViewLazy();
     }
-    this.jdField_c_of_type_Boolean = false;
+    this.mIsContentInit = false;
   }
+  
+  protected void onDestroyViewLazy() {}
+  
+  protected void onFragmentStartLazy() {}
+  
+  protected void onFragmentStopLazy() {}
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_c_of_type_Boolean) {
-      h();
+    if (this.mIsContentInit) {
+      onPauseLazy();
     }
   }
+  
+  protected void onPauseLazy() {}
   
   public void onResume()
   {
     super.onResume();
-    b(this.jdField_a_of_type_JavaLangString);
+    initStatusBarColor(this.mStatusBarColor);
     FragmentActivity localFragmentActivity;
     if (getUserVisibleHint())
     {
       localFragmentActivity = getActivity();
-      if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+      if (this.mStatusBarFontColorWhite.booleanValue()) {
         break label53;
       }
     }
     label53:
     for (boolean bool = true;; bool = false)
     {
-      akwo.a(localFragmentActivity, bool);
-      if (this.jdField_c_of_type_Boolean) {
-        g();
+      alid.a(localFragmentActivity, bool);
+      if (this.mIsContentInit) {
+        onResumeLazy();
       }
+      return;
+    }
+  }
+  
+  protected void onResumeLazy()
+  {
+    FragmentActivity localFragmentActivity = getActivity();
+    if (!this.mStatusBarFontColorWhite.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      alid.a(localFragmentActivity, bool);
       return;
     }
   }
@@ -496,141 +344,361 @@ public abstract class ViolaLazyFragment
     super.onStart();
     VideoReport.addToDetectionWhitelist(getActivity());
     QLog.d("ViolaLazyFragment", 2, "debugForTimeCost onStart:" + System.currentTimeMillis());
-    if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean) && (getUserVisibleHint()))
+    if ((this.mIsContentInit) && (!this.mIsStart) && (getUserVisibleHint()))
     {
-      this.jdField_a_of_type_Boolean = true;
-      f();
+      this.mIsStart = true;
+      onFragmentStartLazy();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (getUserVisibleHint()))
+    if ((this.mIsContentInit) && (this.mIsStart) && (getUserVisibleHint()))
     {
-      this.jdField_a_of_type_Boolean = false;
-      i();
+      this.mIsStart = false;
+      onFragmentStopLazy();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_d_of_type_Boolean) {
-      t();
+    if (this.fullScreenAlways) {
+      setFullScreen();
     }
   }
   
-  public void p()
+  public void recoverStatusBar()
   {
-    if (((getActivity() instanceof BaseActivity)) && (getActivity().mSystemBarComp != null))
+    if (this.mSystemBarComp != null) {
+      this.mSystemBarComp.setStatusBarVisible(0, 0);
+    }
+  }
+  
+  public void setCenterTextColor(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
     {
-      Window localWindow = getActivity().getWindow();
-      if (localWindow != null) {
-        localWindow.setFlags(1024, 1024);
+      if (this.mTitleCenterView.getVisibility() != 0) {
+        this.mTitleCenterView.setVisibility(0);
       }
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = getActivity().mSystemBarComp;
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
-      n();
+      this.mTitleCenterView.setTextColor(Color.parseColor(paramString));
     }
   }
   
-  public void q()
+  public void setContentFullScreen()
   {
+    setWindowFlag(getActivity(), 1024);
+    LiuHaiUtils.a(getActivity());
+    if (LiuHaiUtils.b()) {
+      LiuHaiUtils.enableNotch(getActivity());
+    }
+    VideoFeedsPlayActivity.a(getActivity());
+  }
+  
+  public void setContentView(int paramInt, ViewGroup paramViewGroup)
+  {
+    if ((getRootView() == null) || (getRootView().getParent() == null)) {
+      this.mRootView = this.mLayoutInflater.inflate(2131558978, paramViewGroup, false);
+    }
     try
     {
-      if (a() != null)
+      this.mTitleRootView = ((RelativeLayout)this.mRootView.findViewById(2131379050));
+      if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)a().findViewById(2131376599));
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility();
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() == 0) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(8);
-        }
+        this.mTitleRootView.setFitsSystemWindows(true);
+        this.mTitleRootView.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
       }
+      paramViewGroup = (ViewGroup)this.mLayoutInflater.inflate(paramInt, (ViewGroup)this.mRootView, false);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.addRule(3, 2131376731);
+      this.mTitleRootView.addView(paramViewGroup, localLayoutParams);
+      this.mContentView = paramViewGroup;
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramViewGroup)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaLazyFragment", 2, localThrowable, new Object[0]);
+      QLog.e("ViolaLazyFragment", 1, paramViewGroup.getMessage());
     }
   }
   
-  public void r()
+  public void setContentViewColor(String paramString)
   {
-    try
+    this.mContentView.setBackgroundColor(Color.parseColor(paramString));
+  }
+  
+  public void setFullScreen()
+  {
+    if (this.originUIFlags < 0) {
+      this.originUIFlags = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    }
+    rpt.a(getActivity());
+  }
+  
+  public void setFullScreenAlways(boolean paramBoolean)
+  {
+    this.fullScreenAlways = paramBoolean;
+    if (this.fullScreenAlways)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376599));
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() != 0) && (this.jdField_a_of_type_Int == 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(0);
-      }
+      setFullScreen();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaLazyFragment", 2, localThrowable, new Object[0]);
+    exitFullScreen();
+  }
+  
+  protected void setLazyEmptyLayout()
+  {
+    this.mRootView = this.mLayoutInflater.inflate(2131558978, this.mContainer, false);
+    initBeforeVisible(getArguments());
+  }
+  
+  public void setLeftButtonText(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.mTitleLeftView.setVisibility(0);
+    this.mTitleLeftView.setText(paramString);
+    this.mTitleLeftView.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.mTitleLeftView.setOnClickListener(paramOnClickListener);
     }
   }
   
-  public void s()
+  public void setLeftTextBackDrawable(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      a("#ffffff");
+    if (getActivity() != null)
+    {
+      if (!"drawable_black".equals(paramString)) {
+        break label45;
+      }
+      this.mTitleLeftView.setVisibility(0);
+      this.mTitleLeftView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849533));
     }
-    c("#ffffff");
-    e("#000000");
-    d("#000000");
-    g("drawable_black");
-    f("#000000");
+    label45:
+    while (!"drawable_white".equals(paramString)) {
+      return;
+    }
+    this.mTitleLeftView.setVisibility(0);
+    this.mTitleLeftView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130850668));
+  }
+  
+  public void setLeftTextColor(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (this.mTitleLeftView.getVisibility() != 0) {
+        this.mTitleLeftView.setVisibility(0);
+      }
+      this.mTitleLeftView.setTextColor(Color.parseColor(paramString));
+    }
+  }
+  
+  public void setNoPadding()
+  {
+    this.mTitleRootView.setPadding(0, 0, 0, 0);
+  }
+  
+  public void setReadInjoyTitleStyle()
+  {
+    if (!this.mIsStatusImmersive) {
+      setStatusBarColor("#ffffff");
+    }
+    setTitleContainerBackgroundColor("#ffffff");
+    setCenterTextColor("#000000");
+    setLeftTextColor("#000000");
+    setLeftTextBackDrawable("drawable_black");
+    setRightTextColor("#000000");
+  }
+  
+  public void setRightButtonText(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.mTitleRightViewText.setVisibility(0);
+    this.mTitleRightViewText.setText(paramString);
+    this.mTitleRightViewText.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.mTitleRightViewText.setOnClickListener(paramOnClickListener);
+    }
+  }
+  
+  public void setRightTextColor(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if ((this.mTitleRightViewText.getVisibility() != 0) && (!TextUtils.isEmpty(this.mTitleRightViewText.getText()))) {
+        this.mTitleRightViewText.setVisibility(0);
+      }
+      this.mTitleRightViewText.setTextColor(Color.parseColor(paramString));
+    }
+  }
+  
+  public void setStatusBarColor(String paramString)
+  {
+    setStatusBarColor(paramString, false);
+  }
+  
+  public void setStatusBarColor(String paramString, boolean paramBoolean)
+  {
+    if (("status_bar_color_style".equals(this.mStatusBarColor)) || (paramBoolean)) {
+      this.mStatusBarColor = paramString;
+    }
+  }
+  
+  public void setStatusBarFontColor(Boolean paramBoolean)
+  {
+    this.mStatusBarFontColorWhite = paramBoolean;
+  }
+  
+  public void setStatusBarFontColor(Boolean paramBoolean, boolean paramBoolean1)
+  {
+    FragmentActivity localFragmentActivity;
+    if ((paramBoolean1) && (paramBoolean != this.mStatusBarFontColorWhite))
+    {
+      localFragmentActivity = getActivity();
+      if (paramBoolean.booleanValue()) {
+        break label37;
+      }
+    }
+    label37:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      alid.a(localFragmentActivity, paramBoolean1);
+      this.mStatusBarFontColorWhite = paramBoolean;
+      return;
+    }
+  }
+  
+  public void setStatusBarImmersive()
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      this.mIsStatusImmersive = true;
+      this.mTitleRootView.setFitsSystemWindows(false);
+      setNoPadding();
+      if (getActivity().mSystemBarComp != null) {
+        break label128;
+      }
+      getActivity().setImmersiveStatus(0);
+    }
+    for (;;)
+    {
+      if (this.mTitleRootView.indexOfChild(this.mTitleContainer) != -1)
+      {
+        this.mTitleRootView.removeView(this.mTitleContainer);
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mTitleContainer.getLayoutParams();
+        localLayoutParams.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
+        this.mTitleContainer.setLayoutParams(localLayoutParams);
+        this.mTitleRootView.addView(this.mTitleContainer);
+        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        this.mContentView.setLayoutParams(localLayoutParams);
+      }
+      return;
+      label128:
+      getActivity().mSystemBarComp.setStatusBarDrawable(null);
+      getActivity().mSystemBarComp.setStatusBarColor(0);
+      getActivity().mSystemBarComp.setStatusColor(0);
+    }
+  }
+  
+  public void setTitle(CharSequence paramCharSequence)
+  {
+    this.mTitleContainer.setTitle(paramCharSequence);
+  }
+  
+  public void setTitle(CharSequence paramCharSequence, String paramString)
+  {
+    this.mTitleContainer.setTitle(paramCharSequence, paramString);
+  }
+  
+  public void setTitleAlpha(float paramFloat)
+  {
+    this.mTitleContainer.setAlpha(paramFloat);
+  }
+  
+  public void setTitleContainerBackgroundColor(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (this.mTitleContainer.getVisibility() != 0) {
+        this.mTitleContainer.setVisibility(0);
+      }
+      this.mTitleContainer.setBackgroundColor(Color.parseColor(paramString));
+    }
+  }
+  
+  public void setTitleContainerClick(View.OnClickListener paramOnClickListener)
+  {
+    if (this.mTitleContainer != null) {
+      this.mTitleContainer.setOnClickListener(paramOnClickListener);
+    }
+  }
+  
+  public void setTitleTransparent(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.mTitleContainer.setBackgroundColor(0);
+      return;
+    }
+    this.mTitleContainer.setBackgroundColor(-1);
+  }
+  
+  public void setTitleView()
+  {
+    if (getActivity() == null) {
+      return;
+    }
+    this.mTitleContainer = ((NavBarCommon)this.mTitleRootView.findViewById(2131376731));
+    initTitleView(this.mTitleContainer);
+  }
+  
+  public void setTransparent(boolean paramBoolean)
+  {
+    this.mIsStatusViewTransparent = paramBoolean;
+    setStatusBarTrans();
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    if ((paramBoolean) && (!this.jdField_c_of_type_Boolean)) {
-      l();
+    if ((paramBoolean) && (!this.mIsContentInit)) {
+      initViewAfterVisible();
     }
-    if ((this.jdField_c_of_type_Boolean) && (a() != null))
+    if ((this.mIsContentInit) && (getRootView() != null))
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_Boolean = true;
-        f();
-        g();
+        this.mIsStart = true;
+        onFragmentStartLazy();
+        onResumeLazy();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    h();
-    i();
+    this.mIsStart = false;
+    onPauseLazy();
+    onFragmentStopLazy();
   }
   
-  public void t()
+  public void showLeftBackView()
   {
-    if (this.jdField_b_of_type_Int < 0) {
-      this.jdField_b_of_type_Int = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.mTitleLeftView.setVisibility(0);
+  }
+  
+  public void showTitleBar()
+  {
+    try
+    {
+      this.mTitleContainer = ((NavBarCommon)this.mTitleRootView.findViewById(2131376731));
+      if ((this.mTitleContainer.getVisibility() != 0) && (this.mOriginalTitleVisibility == 0)) {
+        this.mTitleContainer.setVisibility(0);
+      }
+      return;
     }
-    ryx.a(getActivity());
-  }
-  
-  public void u()
-  {
-    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new tsw(this));
-    int i = getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    getActivity().getWindow().getDecorView().setSystemUiVisibility(i | 0x2 | 0x400);
-  }
-  
-  public void v()
-  {
-    a(getActivity(), 1024);
-    bqcd.a(getActivity());
-    if (bqcd.b()) {
-      bqcd.c(getActivity());
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ViolaLazyFragment", 2, localThrowable, new Object[0]);
     }
-    VideoFeedsPlayActivity.a(getActivity());
   }
 }
 

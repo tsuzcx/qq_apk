@@ -82,7 +82,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      paramString = ((MiniAppFileManager)AudioJsPlugin.access$3100(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(paramString);
+      paramString = ((MiniAppFileManager)AudioJsPlugin.access$3000(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(paramString);
       QMLog.d("AudioJsPlugin", "handleOnRecordEnd, tempFilePath:" + paramString + ", duration:" + paramLong1 + ", fileSize:" + paramLong2);
       localJSONObject.put("tempFilePath", paramString);
       localJSONObject.put("duration", paramLong1);
@@ -91,7 +91,7 @@ class AudioJsPlugin$AudioManager
       if (this.isRecordManagerApi)
       {
         localJSONObject.put("state", "stop");
-        AudioJsPlugin.access$3200(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+        AudioJsPlugin.access$3100(this.this$0, "onRecorderStateChange", localJSONObject.toString());
         return;
       }
       this.startRecordReq.ok(localJSONObject);
@@ -128,7 +128,7 @@ class AudioJsPlugin$AudioManager
       {
         localJSONObject.put("state", "error");
         localJSONObject.put("errMsg", "recordError:" + paramString);
-        AudioJsPlugin.access$3300(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+        AudioJsPlugin.access$3200(this.this$0, "onRecorderStateChange", localJSONObject.toString());
         return;
       }
       catch (Exception paramString)
@@ -204,9 +204,9 @@ class AudioJsPlugin$AudioManager
     try
     {
       localJSONObject.put("state", "frameRecorded");
-      NativeBuffer.packNativeBuffer(AudioJsPlugin.access$2900(this.this$0), paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", localJSONObject);
+      NativeBuffer.packNativeBuffer(null, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", localJSONObject);
       localJSONObject.put("isLastFrame", paramBoolean);
-      AudioJsPlugin.access$3000(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+      AudioJsPlugin.access$2900(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
     }
     catch (Throwable paramArrayOfByte)

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import adea;
+import admy;
 import org.json.JSONObject;
 
 public final class DoraemonUtil$1
   implements Runnable
 {
-  public DoraemonUtil$1(adea paramadea, JSONObject paramJSONObject) {}
+  public DoraemonUtil$1(admy paramadmy, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Adea.onSuccess(this.jdField_a_of_type_OrgJsonJSONObject);
-    this.jdField_a_of_type_Adea.onComplete();
+    this.jdField_a_of_type_Admy.onSuccess(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Admy.onComplete();
   }
 }
 

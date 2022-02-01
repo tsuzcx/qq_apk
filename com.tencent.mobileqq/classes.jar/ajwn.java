@@ -1,33 +1,80 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
-import com.tencent.mobileqq.app.GuardManager;
+import android.content.res.Resources;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
-public class ajwn
-  extends ayev
+class ajwn
+  implements ajwy
 {
-  ajwn(ajvr paramajvr) {}
+  ajwn(ajwm paramajwm) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void a(List<MayKnowRecommend> paramList)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    Object localObject2 = this.a.a(3);
+    boolean bool3 = ((ajwh)localObject2).c;
+    Object localObject1 = ((ajwh)localObject2).jdField_a_of_type_JavaLangObject;
+    Object localObject3;
+    boolean bool2;
+    boolean bool1;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+      ((ajwh)localObject2).jdField_a_of_type_JavaLangString = ajwm.a(this.a).getApp().getResources().getString(2131698165);
+      ((ajwh)localObject2).b = "";
+      ((ajwh)localObject2).jdField_a_of_type_JavaLangObject = paramList;
+      localObject3 = (aobl)ajwm.a(this.a).getManager(159);
+      if (localObject3 == null) {
+        break label262;
       }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
+      bool2 = ((aobl)localObject3).b("sp_mayknow_entry_list_recommend");
+      bool1 = ((aobl)localObject3).b("sp_mayknow_entry_list_head");
     }
-    else
+    for (;;)
     {
-      return;
+      label128:
+      Object localObject4;
+      if ((bool1) && (!bool2))
+      {
+        ((ajwh)localObject2).c = true;
+        ajwm.a(this.a);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = Locale.getDefault();
+          bool1 = ((ajwh)localObject2).c;
+          localObject4 = ((ajwh)localObject2).jdField_a_of_type_JavaLangObject;
+          localObject2 = ((ajwh)localObject2).b;
+          if (paramList == null) {
+            break label257;
+          }
+        }
+      }
+      label257:
+      for (int i = paramList.size();; i = 0)
+      {
+        QLog.i("CTEntryMng", 2, String.format((Locale)localObject3, "updateMayKnow pre: [%s,%s], cur: [%s,%s], subtitle: %s recommends:%s", new Object[] { Boolean.valueOf(bool3), localObject1, Boolean.valueOf(bool1), localObject4, localObject2, Integer.valueOf(i) }));
+        return;
+        ((ajwh)localObject2).jdField_a_of_type_JavaLangObject = null;
+        ((ajwh)localObject2).b = null;
+        break;
+        ((ajwh)localObject2).c = false;
+        break label128;
+      }
+      label262:
+      bool1 = true;
+      bool2 = false;
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
-      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
+  }
+  
+  public boolean a()
+  {
+    ajwh localajwh = this.a.a(3);
+    ajwt localajwt = this.a.a(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "isMayKnowEntryShown, canBeShown = " + localajwh.c + ", flagValue = " + localajwt.b);
     }
-    this.a.g();
+    return (localajwh.c) && (localajwt.b == 0);
   }
 }
 

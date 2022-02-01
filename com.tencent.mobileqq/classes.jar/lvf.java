@@ -1,70 +1,39 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class lvf
+public abstract class lvf
+  extends lur
 {
-  private static mrr a;
+  protected long b;
+  public lvr[] c;
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
-    }
-    if (a != null)
+    long l = this.jdField_a_of_type_Long;
+    if (this.c != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVPushReport", 2, "ReportTask is running.");
-      }
-      return;
-    }
-    String str;
-    if (a()) {
-      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
-    }
-    try
-    {
-      for (;;)
-      {
-        paramString = new JSONObject(paramString).optJSONObject("attach");
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
-          localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "8.4.1");
-          localJSONObject.put("time", System.currentTimeMillis());
-          if (paramString != null) {
-            localJSONObject.put("attach", paramString);
-          }
-        }
-        catch (JSONException paramVideoAppInterface)
-        {
-          for (;;)
-          {
-            paramVideoAppInterface.printStackTrace();
-          }
-        }
-        a = new lvg(str, localJSONObject.toString(), null);
-        a.execute(new Void[0]);
-        return;
-        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
+      int i = (int)((paramLong - l) % this.b * this.c.length / this.b);
+      if ((i >= 0) && (i < this.c.length)) {
+        this.jdField_a_of_type_Lvr = this.c[i];
       }
     }
   }
   
-  public static boolean a()
+  public void b()
   {
-    return false;
+    super.b();
+    if (this.c != null)
+    {
+      lvr[] arrayOflvr = this.c;
+      int j = arrayOflvr.length;
+      int i = 0;
+      while (i < j)
+      {
+        lvr locallvr = arrayOflvr[i];
+        if (locallvr != null) {
+          locallvr.a();
+        }
+        i += 1;
+      }
+      this.c = null;
+    }
   }
 }
 

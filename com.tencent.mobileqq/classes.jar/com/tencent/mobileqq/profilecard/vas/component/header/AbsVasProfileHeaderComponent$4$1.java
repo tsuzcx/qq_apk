@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
 import android.os.Message;
-import azpu;
-import azpx;
-import bkgm;
+import baik;
+import bain;
+import blhq;
 import com.tencent.mobileqq.data.Card;
 
 public class AbsVasProfileHeaderComponent$4$1
   implements Runnable
 {
-  public AbsVasProfileHeaderComponent$4$1(azpx paramazpx, Card paramCard) {}
+  public AbsVasProfileHeaderComponent$4$1(bain parambain, Card paramCard) {}
   
   public void run()
   {
-    if (azpu.b(this.jdField_a_of_type_Azpx.a) == null) {
+    if (baik.b(this.jdField_a_of_type_Bain.a) == null) {
       return;
     }
-    boolean bool = azpu.a(this.jdField_a_of_type_Azpx.a, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet, this.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo, this.jdField_a_of_type_ComTencentMobileqqDataCard.cardId);
-    Message localMessage = azpu.c(this.jdField_a_of_type_Azpx.a).obtainMessage(13, Boolean.valueOf(bool));
-    azpu.d(this.jdField_a_of_type_Azpx.a).sendMessage(localMessage);
+    boolean bool = baik.a(this.jdField_a_of_type_Bain.a, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet, this.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo, this.jdField_a_of_type_ComTencentMobileqqDataCard.cardId);
+    Message localMessage = baik.c(this.jdField_a_of_type_Bain.a).obtainMessage(13, Boolean.valueOf(bool));
+    baik.d(this.jdField_a_of_type_Bain.a).sendMessage(localMessage);
   }
 }
 

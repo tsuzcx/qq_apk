@@ -1,6 +1,6 @@
 package com.tencent.common.app;
 
-import abex;
+import abjb;
 import android.annotation.TargetApi;
 import android.content.ComponentCallbacks;
 import android.content.Context;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import rbc;
+import qrw;
 
 public class ToolRuntimeBase
   extends PluginRuntime
@@ -80,7 +80,7 @@ public class ToolRuntimeBase
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    rbc.a().a(getApplication());
+    qrw.a().a(getApplication());
   }
   
   @TargetApi(14)
@@ -122,7 +122,7 @@ public class ToolRuntimeBase
     {
       if (this.componentCallbacks == null)
       {
-        this.componentCallbacks = new abex(this);
+        this.componentCallbacks = new abjb(this);
         BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
       }
       return;

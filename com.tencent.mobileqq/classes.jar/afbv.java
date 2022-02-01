@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.activity.Now;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afbv
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public afbv(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public afbv(Now paramNow) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+    if (Now.a(this.a) != null) {
+      Now.a(this.a).m();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

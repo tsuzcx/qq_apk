@@ -1,16 +1,55 @@
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.lang.reflect.Field;
 
-class blce
-  implements FilenameFilter
+public class blce
 {
-  blce(blcd paramblcd) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public static Object a(Object paramObject, String paramString)
   {
-    return (paramFile != null) && (paramFile.isDirectory()) && (blcd.a(this.a).matcher(paramString).matches());
+    try
+    {
+      paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+      return paramObject;
+    }
+    catch (NoSuchFieldException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (IllegalAccessException paramObject) {}
+    return null;
+  }
+  
+  public static Object b(Object paramObject, String paramString)
+  {
+    try
+    {
+      String[] arrayOfString = paramString.split("\\.");
+      int j = arrayOfString.length;
+      int i = 0;
+      for (;;)
+      {
+        paramString = paramObject;
+        if (i >= j) {
+          break;
+        }
+        paramString = arrayOfString[i];
+        paramObject = paramObject.getClass().getField(paramString).get(paramObject);
+        i += 1;
+      }
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramString = null;
+      return paramString;
+    }
+    catch (IllegalArgumentException paramObject)
+    {
+      return null;
+    }
+    catch (NoSuchFieldException paramObject) {}
   }
 }
 

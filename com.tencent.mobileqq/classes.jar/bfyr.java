@@ -1,12 +1,18 @@
-public class bfyr
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+
+public final class bfyr
+  implements Parcelable.Creator<HWGuideItem>
 {
-  public long a;
-  public String a;
-  public String b;
-  
-  public String toString()
+  public HWGuideItem a(Parcel paramParcel)
   {
-    return "CheckInResEntity{filePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cover='" + this.b + '\'' + ", videoDuration=" + this.jdField_a_of_type_Long + '}';
+    return new HWGuideItem(paramParcel);
+  }
+  
+  public HWGuideItem[] a(int paramInt)
+  {
+    return new HWGuideItem[paramInt];
   }
 }
 

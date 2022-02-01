@@ -1,17 +1,19 @@
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+
 public class bgwf
+  implements bgug
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
+  public bgwf(RobotPanelLayoutBase paramRobotPanelLayoutBase, bgwj parambgwj) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, anzj.a(2131712362) + "", 0).a();
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import acvk;
-import acwh;
+import aczn;
+import adak;
 import java.util.Map;
 
 class BaseMessageManagerForTroopAndDisc$4$1
@@ -11,8 +11,8 @@ class BaseMessageManagerForTroopAndDisc$4$1
   
   public void run()
   {
-    if (this.a.this$0.a.b.containsKey(acwh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.this$0.a.b.remove(acwh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (this.a.this$0.a.b.containsKey(adak.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.this$0.a.b.remove(adak.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }

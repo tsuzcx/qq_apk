@@ -1,21 +1,28 @@
-class ajcw
-  implements ajcx<T>
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.widget.FormMutiItem;
+
+public class ajcw
+  implements bivl
 {
-  ajcw(ajcv paramajcv, int paramInt) {}
+  public ajcw(AddContactsView paramAddContactsView) {}
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
   
-  public void a(ajdf paramajdf, T paramT, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Ajcv.a(paramajdf, paramT, paramInt);
-  }
-  
-  public boolean a(T paramT, int paramInt)
-  {
-    return true;
+    if (this.a.i != null)
+    {
+      if (paramInt2 < this.a.i.getY() + this.a.i.getHeight() * 2 / 3) {
+        break label74;
+      }
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        AddContactsView.a(this.a, false);
+      }
+    }
+    return;
+    label74:
+    AddContactsView.a(this.a);
   }
 }
 

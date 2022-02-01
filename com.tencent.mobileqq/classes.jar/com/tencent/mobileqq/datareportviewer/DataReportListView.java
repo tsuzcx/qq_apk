@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ListView;
-import bggq;
+import bhgr;
 
 public class DataReportListView
   extends ListView
@@ -19,8 +19,8 @@ public class DataReportListView
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    if (getMeasuredHeight() > bggq.a(getContext(), 100.0F)) {
-      setMeasuredDimension(paramInt1, bggq.a(getContext(), 100.0F));
+    if (getMeasuredHeight() > bhgr.a(getContext(), 100.0F)) {
+      setMeasuredDimension(paramInt1, bhgr.a(getContext(), 100.0F));
     }
   }
 }

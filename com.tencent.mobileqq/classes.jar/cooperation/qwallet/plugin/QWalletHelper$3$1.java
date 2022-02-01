@@ -19,7 +19,7 @@ class QWalletHelper$3$1
     if (this.val$info != null) {
       try
       {
-        QWalletAnimDialog localQWalletAnimDialog = new QWalletAnimDialog(localActivity, 2131755279, this.val$info, this.this$0.val$reportSeq);
+        QWalletAnimDialog localQWalletAnimDialog = new QWalletAnimDialog(localActivity, 2131755280, this.val$info, this.this$0.val$reportSeq);
         localQWalletAnimDialog.setF2fRedpackInfo(this.this$0.val$uin, this.this$0.val$nickName, this.this$0.val$url);
         localQWalletAnimDialog.show();
         return;

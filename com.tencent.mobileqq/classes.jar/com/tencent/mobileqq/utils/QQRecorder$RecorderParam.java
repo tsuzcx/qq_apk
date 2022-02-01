@@ -3,12 +3,12 @@ package com.tencent.mobileqq.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgrg;
+import bhri;
 
 public class QQRecorder$RecorderParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecorderParam> CREATOR = new bgrg();
+  public static final Parcelable.Creator<RecorderParam> CREATOR = new bhri();
   public int a;
   public Object a;
   public String a;

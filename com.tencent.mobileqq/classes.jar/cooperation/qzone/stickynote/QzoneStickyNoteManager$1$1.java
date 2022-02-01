@@ -1,25 +1,25 @@
 package cooperation.qzone.stickynote;
 
 import android.os.Handler;
-import blvu;
-import bmht;
-import bmhu;
+import bmww;
+import bniv;
+import bniw;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
 
 public class QzoneStickyNoteManager$1$1
   implements Runnable
 {
-  public QzoneStickyNoteManager$1$1(bmhu parambmhu) {}
+  public QzoneStickyNoteManager$1$1(bniw parambniw) {}
   
   public void run()
   {
     try
     {
       QzonePluginProxyActivity.a(this.a.jdField_a_of_type_AndroidAppActivity);
-      boolean bool = blvu.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((blvu.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (bool)) {
-        bmht.a(this.a.jdField_a_of_type_Bmht).post(new QzoneStickyNoteManager.1.1.1(this));
+      boolean bool = bmww.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((bmww.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (bool)) {
+        bniv.a(this.a.jdField_a_of_type_Bniv).post(new QzoneStickyNoteManager.1.1.1(this));
       }
       return;
     }

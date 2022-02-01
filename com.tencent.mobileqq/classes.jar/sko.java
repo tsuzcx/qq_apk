@@ -1,61 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class sko
-  extends skd
+  implements AdapterView.OnItemClickListener
 {
-  sko(ske paramske) {}
+  sko(skn paramskn, Context paramContext) {}
   
-  public int a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return 5;
-  }
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    ske.a(this.a, false);
-    Object localObject = null;
-    try
+    pqu localpqu = (pqu)this.jdField_a_of_type_Skn.getItem(paramInt);
+    Object localObject;
+    if ((localpqu != null) && (!TextUtils.isEmpty(localpqu.b)))
     {
-      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.getSubscribeUin()))
-      {
-        paramString = paramBaseArticleInfo.getSubscribeUin();
-        paramBaseArticleInfo = "https://post.mp.qq.com/jubao/index?_wv=3&puin=" + paramString + "&uin_type=0&url=" + paramActionSheetItem + "&type=4&key=" + paramBaseArticleInfo.getInnerUniqueID();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "click jubao btn, reportUrl:" + paramBaseArticleInfo);
-        }
-        paramString = new Intent(ske.a(this.a), QQBrowserActivity.class);
-        paramString.putExtra("url", paramBaseArticleInfo);
-        paramString.putExtra("hide_more_button", true);
-        ske.a(this.a).startActivity(paramString);
-        return;
+      if (!localpqu.b.startsWith("mqq://")) {
+        break label178;
+      }
+      localObject = bhni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, localpqu.b);
+      if (localObject != null) {
+        ((bhmr)localObject).a();
       }
     }
-    catch (UnsupportedEncodingException paramString)
+    for (;;)
     {
-      for (;;)
-      {
-        paramActionSheetItem = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "encode url failed, because UTF-8 is unknown");
-          paramActionSheetItem = localObject;
-          continue;
-          if (!TextUtils.isEmpty(paramBaseArticleInfo.thirdUin)) {
-            paramString = paramBaseArticleInfo.thirdUin;
-          } else {
-            paramString = "0";
-          }
-        }
+      localObject = new paa().b().a();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        ocd.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + localpqu.c, "" + localpqu.a, "", (String)localObject, false);
       }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      label178:
+      ozs.b(skn.a(this.jdField_a_of_type_Skn), localpqu.b);
     }
   }
 }

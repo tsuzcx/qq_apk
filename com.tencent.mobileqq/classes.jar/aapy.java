@@ -1,54 +1,86 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.HashMap;
 
-public abstract class aapy
+public class aapy
+  extends SubscribeBannerView.BannerAdapter
 {
-  aapy jdField_a_of_type_Aapy;
-  aapz jdField_a_of_type_Aapz;
-  String c;
-  String d;
+  public aapy(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
   
-  public aapy(aapa paramaapa, aapz paramaapz, String paramString)
+  private String a(Object paramObject)
   {
-    this.jdField_a_of_type_Aapz = paramaapz;
-    this.c = paramString;
+    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
+      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
+    }
+    return "";
   }
   
-  public aapk a()
+  public View a(View paramView, Object paramObject)
   {
-    synchronized (this.b.jdField_a_of_type_JavaLangObject)
+    String str = a(paramObject);
+    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
     {
-      aapk localaapk = (aapk)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
-      return localaapk;
+      paramObject = (CertifiedAccountMeta.StImage)paramObject;
+      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
+      {
+        float f = paramObject.height.get() / paramObject.width.get();
+        paramObject = paramView.getLayoutParams();
+        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
+        int i = j;
+        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
+          i = RelativeMultiPicHeadItemView.b(this.a);
+        }
+        paramObject.width = i;
+        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
+      }
     }
+    if (str != null) {
+      try
+      {
+        paramObject = aame.a(str);
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          paramObject = new File(paramObject);
+          if (paramObject.exists())
+          {
+            ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
+            return paramView;
+          }
+        }
+        aaec.a(str, (URLImageView)paramView);
+        return paramView;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
+        return paramView;
+      }
+      catch (Error paramObject)
+      {
+        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!error:" + paramObject.getMessage());
+      }
+    }
+    return paramView;
   }
   
-  public File a()
+  protected URLImageView a(ViewGroup paramViewGroup)
   {
-    int i = this.c.indexOf("_");
-    Object localObject = this.c.substring(i + 1, this.c.length());
-    localObject = new File(aapa.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return localObject;
-  }
-  
-  public abstract void a();
-  
-  public File b()
-  {
-    File localFile = new File(aapa.jdField_a_of_type_JavaLangString + File.separator + "cache");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aapy != null) {
-      this.jdField_a_of_type_Aapy.a();
+    paramViewGroup = new URLImageView(paramViewGroup.getContext());
+    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
+    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
+    {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
+      return paramViewGroup;
     }
   }
 }

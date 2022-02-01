@@ -1,11 +1,16 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aida
-  extends anxg
+  implements DialogInterface.OnClickListener
 {
-  aida(aicv paramaicv) {}
+  aida(aicz paramaicz) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aicv.a(this.a, paramBoolean, paramObject);
+    paramDialogInterface.dismiss();
+    aicy.h(this.a.a).setResult(8001);
   }
 }
 

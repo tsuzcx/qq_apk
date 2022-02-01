@@ -1,67 +1,66 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class uhj
-  extends uhi<ArrayList<stSimpleMetaFeed>>
+  extends uej
 {
-  protected int a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  private uhz jdField_a_of_type_Uhz;
   
-  public uhj()
+  public uhj(Context paramContext, uhz paramuhz)
   {
-    this.jdField_a_of_type_JavaLangObject = new ArrayList();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    super(paramContext);
+    this.jdField_a_of_type_Uhz = paramuhz;
   }
   
-  private boolean b(stSimpleMetaFeed paramstSimpleMetaFeed)
+  private void g()
   {
-    return ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (a() == 0)) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramstSimpleMetaFeed.poster_id));
-  }
-  
-  public int a()
-  {
-    return ((ArrayList)this.jdField_a_of_type_JavaLangObject).size();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean) {
-      uen.a().a(a());
+    f();
+    WSPlayerManager localWSPlayerManager = this.jdField_a_of_type_Uhz.a();
+    if ((localWSPlayerManager != null) && (localWSPlayerManager.i())) {
+      this.jdField_a_of_type_Uhz.a(localWSPlayerManager);
     }
   }
   
-  public boolean a()
+  private void h()
   {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uhl(this));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
   }
   
-  public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  protected void a() {}
+  
+  protected int b()
   {
-    if ((paramstSimpleMetaFeed == null) || (!b(paramstSimpleMetaFeed))) {
-      return false;
+    return 2131560387;
+  }
+  
+  protected void b() {}
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131368899));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/muteguide/muteguide.json");
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetsFolder("wsfollow/muteguide/images");
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new uhk(this));
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Uhz.a())
+    {
+      h();
+      this.jdField_a_of_type_Uhz.d();
+      uqf.e("WSFollowTabMuteGuideController", "[WSFollowTabMuteGuideController.java][playAnimationForMuteGuide] doPlay!");
     }
-    this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
-    ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uhj
  * JD-Core Version:    0.7.0.1
  */

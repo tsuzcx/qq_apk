@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bgmg;
-import uen;
+import bhmi;
+import uep;
 
 public class WeiShiCacheManager$5
   implements Runnable
 {
-  public WeiShiCacheManager$5(uen paramuen) {}
+  public WeiShiCacheManager$5(uep paramuep) {}
   
   public void run()
   {
-    bgmg.a(uen.b(this.this$0), false);
+    bhmi.a(uep.b(this.this$0), false);
   }
 }
 

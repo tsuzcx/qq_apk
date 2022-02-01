@@ -1,19 +1,88 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.util.List;
+import mqq.manager.Manager;
+import qqcircle.QQCircleCounter.RedPointInfo;
 
-class vtf
-  implements DialogInterface.OnShowListener
+public class vtf
+  implements Manager, vte
 {
-  vtf(vtd paramvtd, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private final vtc jdField_a_of_type_Vtc;
+  private vte jdField_a_of_type_Vte;
+  private final vti jdField_a_of_type_Vti;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public vtf(QQAppInterface paramQQAppInterface)
   {
-    paramDialogInterface = vtd.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
-    vtd.a(this.jdField_a_of_type_Vtd).a(vtd.a(this.jdField_a_of_type_Vtd).a(paramDialogInterface));
-    vtd.a(this.jdField_a_of_type_Vtd).a = true;
+    this.jdField_a_of_type_Vtc = new vtc(paramQQAppInterface);
+    this.jdField_a_of_type_Vti = new vti(paramQQAppInterface);
+    boolean bool1 = QzoneConfig.isEeveeSysTemPolling();
+    boolean bool2 = QzoneConfig.isQQCircleUseEeveeRedPoint();
+    this.jdField_a_of_type_Vte = this.jdField_a_of_type_Vtc;
+    jdField_a_of_type_Boolean = true;
+    QLog.e("QCircleRedPointManager", 1, "isQQCircleCurrentUseEeveeRedPoint: " + jdField_a_of_type_Boolean + ", ( isEeveeSysTemPolling: " + bool1 + ", isQQCircleUseEeveeRedPoint: " + bool2 + " )");
+  }
+  
+  private vte a()
+  {
+    return this.jdField_a_of_type_Vte;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public QQCircleCounter.RedPointInfo a(String paramString)
+  {
+    return a().a(paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vtc.a();
+    this.jdField_a_of_type_Vti.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Vtc.a(paramString);
+    this.jdField_a_of_type_Vti.a(paramString);
+  }
+  
+  public void a(String paramString, List<Integer> paramList)
+  {
+    this.jdField_a_of_type_Vtc.a(paramString, paramList);
+    this.jdField_a_of_type_Vti.a(paramString, paramList);
+  }
+  
+  public void a(String paramString, vtg paramvtg, boolean paramBoolean)
+  {
+    a().a(paramString, paramvtg, paramBoolean);
+  }
+  
+  public void a(String paramString, vth paramvth)
+  {
+    this.jdField_a_of_type_Vtc.a(paramString, paramvth);
+    this.jdField_a_of_type_Vti.a(paramString, paramvth);
+  }
+  
+  public QQCircleCounter.RedPointInfo b(String paramString)
+  {
+    return a().b(paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Vtc.b(paramString);
+    this.jdField_a_of_type_Vti.b(paramString);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Vtc.onDestroy();
+    this.jdField_a_of_type_Vti.onDestroy();
   }
 }
 

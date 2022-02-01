@@ -1,4 +1,8 @@
-// INTERNAL ERROR //
+public abstract interface son
+{
+  public abstract void a();
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     son

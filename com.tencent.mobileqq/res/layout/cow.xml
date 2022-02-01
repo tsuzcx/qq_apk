@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="74.0dip" android:layout_height="52.0dip" android:layout_marginTop="2.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/mvp" android:background="@drawable/dnw" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:drawableLeft="@drawable/ggt" android:drawablePadding="5.0dip" />
+    <TextView android:textSize="18.0dip" android:textColor="#ff7a7a8d" android:layout_gravity="center" android:id="@id/nvv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" />
+    <View android:layout_gravity="bottom|center" android:id="@id/nxl" android:background="@drawable/dxz" android:layout_width="20.0dip" android:layout_height="4.0dip" android:layout_marginBottom="11.0dip" />
+    <FrameLayout android:layout_gravity="center|right|top" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include layout="@layout/coz" />
+    </FrameLayout>
 </FrameLayout>

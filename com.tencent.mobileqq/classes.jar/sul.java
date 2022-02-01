@@ -1,72 +1,172 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 import com.tencent.qphone.base.util.QLog;
 
 public class sul
-  extends Handler
+  implements sum
 {
-  public sul(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  static int jdField_a_of_type_Int;
+  static int b;
+  public Drawable a;
+  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
+  private String jdField_a_of_type_JavaLangString = "zimage.DrawableController";
+  public suk a;
+  suo jdField_a_of_type_Suo;
+  uyg jdField_a_of_type_Uyg;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void handleMessage(Message paramMessage)
+  public sul(Drawable paramDrawable, ZImageView paramZImageView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView = paramZImageView;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + ".v" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.hashCode());
+  }
+  
+  private void a(suk paramsuk, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Suk != null) {
+      this.jdField_a_of_type_Suk.a();
+    }
+    this.jdField_a_of_type_Suk = paramsuk;
+    paramsuk = new suw(this.jdField_a_of_type_Suk.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(paramsuk, paramBoolean);
+  }
+  
+  private boolean a(suk paramsuk)
+  {
+    if ((this.jdField_a_of_type_Suk != null) && (paramsuk != null) && (this.jdField_a_of_type_Suk.a() == paramsuk.a())) {
+      return (!(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() instanceof BitmapDrawable)) || (((BitmapDrawable)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable()).getBitmap() != this.jdField_a_of_type_Suk.a());
+    }
+    return true;
+  }
+  
+  public suo a()
+  {
+    return this.jdField_a_of_type_Suo;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    if (this.jdField_a_of_type_Suo != null) {
+      a("setPlaceHolder");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(paramDrawable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Suo != null) {
+      this.jdField_a_of_type_Suo.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      suv.a(this.jdField_a_of_type_JavaLangString, "detachFromWindow " + paramString + " " + this.jdField_a_of_type_Suo + " " + this.jdField_a_of_type_Suk);
+    }
+    if (!a())
     {
-    default: 
-      return;
-    case 1: 
-      i = paramMessage.arg1;
-      if (i > 0)
-      {
-        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
-        paramMessage.red_content.set(String.valueOf(i));
-        paramMessage.red_desc.set("{'cn':'#FF0000'}");
-        paramMessage.red_type.set(5);
-        ReadinjoyTabFrame.a(this.a).a(paramMessage);
-        ReadinjoyTabFrame.a(this.a).invalidate();
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() instanceof suw))) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
-      for (;;)
+      if (this.jdField_a_of_type_Suk != null)
       {
-        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point, value : " + i);
-        return;
-        ReadinjoyTabFrame.a(this.a).d();
-        ReadinjoyTabFrame.a(this.a).invalidate();
-      }
-    case 3: 
-      if (paramMessage.arg1 > 0)
-      {
-        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
-        paramMessage.red_type.set(0);
-        ReadinjoyTabFrame.a(this.a).a(paramMessage);
-        ReadinjoyTabFrame.a(this.a).invalidate();
-      }
-      for (;;)
-      {
-        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point for coin campaign");
-        return;
-        ReadinjoyTabFrame.a(this.a).d();
-        ReadinjoyTabFrame.a(this.a).invalidate();
+        this.jdField_a_of_type_Suk.a();
+        this.jdField_a_of_type_Suk = null;
       }
     }
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    if ((i <= 0) || ((j == 2131376089) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
+    if (this.jdField_a_of_type_Suo != null)
     {
-      ReadinjoyTabFrame.a(this.a).a(j);
+      sun.a().a(this.jdField_a_of_type_Suo, "reset");
+      this.jdField_a_of_type_Suo = null;
+    }
+  }
+  
+  public void a(suo paramsuo)
+  {
+    blqm.a("DrawableController.setImageRequest");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.isRound()) {
+      paramsuo.c = 1;
+    }
+    jdField_a_of_type_Int += 1;
+    a("resetUrl");
+    suk localsuk = sun.a().a(paramsuo);
+    if (localsuk == null)
+    {
+      this.jdField_a_of_type_Suo = paramsuo;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      pni.a(this.jdField_a_of_type_Suo);
+      sun.a().a(this.jdField_a_of_type_Suo, this);
+    }
+    for (;;)
+    {
+      blqm.a();
+      return;
+      b += 1;
+      pnj.b(1, paramsuo);
+      a(paramsuo, localsuk, false, "setImageRequest");
+    }
+  }
+  
+  public void a(suo paramsuo, int paramInt)
+  {
+    if (this.jdField_a_of_type_Uyg != null) {
+      this.jdField_a_of_type_Uyg.a(paramsuo.jdField_a_of_type_JavaNetURL, paramInt);
+    }
+  }
+  
+  public void a(suo paramsuo, Throwable paramThrowable)
+  {
+    if (this.jdField_a_of_type_Uyg != null) {
+      this.jdField_a_of_type_Uyg.a(paramsuo.jdField_a_of_type_JavaNetURL, paramThrowable);
+    }
+  }
+  
+  public void a(suo paramsuo, suk paramsuk)
+  {
+    if ((paramsuo.equals(this.jdField_a_of_type_Suo)) && (paramsuk.a() != null))
+    {
+      a(paramsuo, paramsuk, true, "onSuccess");
       return;
     }
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    localRedTypeInfo.red_type.set(0);
-    localRedTypeInfo.red_content.set(String.valueOf(i));
-    localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-    QLog.d("Q.readinjoy.4tab", 2, "update indicator red point , index : " + paramMessage.obj + ", value : " + i);
+    paramsuk.a();
+  }
+  
+  void a(suo paramsuo, suk paramsuk, boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Suo = paramsuo;
+    if (QLog.isColorLevel()) {
+      suv.a(this.jdField_a_of_type_JavaLangString, "attachImage " + paramString + " " + this.jdField_a_of_type_Suo + " " + paramsuk + " total:" + jdField_a_of_type_Int + " cache:" + b);
+    }
+    if ((!a()) || (a(paramsuk))) {
+      a(paramsuk, paramBoolean);
+    }
+    this.jdField_a_of_type_Suo.e = 0;
+    pnj.a(this.jdField_a_of_type_Suo, true, "attached");
+    if (this.jdField_a_of_type_Uyg != null) {
+      this.jdField_a_of_type_Uyg.a(paramsuo.jdField_a_of_type_JavaNetURL, paramsuk);
+    }
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    this.jdField_a_of_type_Uyg = paramuyg;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  boolean a()
+  {
+    return (pnh.a.e()) && (suv.a());
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      suv.a(this.jdField_a_of_type_JavaLangString, "attachToWindow " + paramString + " " + this.jdField_a_of_type_Suo);
+    }
   }
 }
 

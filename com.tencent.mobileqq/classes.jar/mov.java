@@ -1,48 +1,30 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class mov
-  extends lvt
+  extends Handler
 {
-  mov(mou parammou) {}
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<mou> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
+  mov(String paramString, mou parammou)
   {
-    this.a.jdField_a_of_type_Mox = new mox();
-    this.a.jdField_a_of_type_Mox.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
-    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
-      this.a.jdField_a_of_type_Mox.jdField_a_of_type_Boolean = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_Mox.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_Mox.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
-    }
-    this.a.a(this.a.jdField_a_of_type_Mox);
-    if ((this.a.jdField_a_of_type_Mox.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
-    {
-      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_Lvs))
-      {
-        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
-        return;
-      }
-      this.a.b(this.a.jdField_a_of_type_Mox);
-      return;
-    }
-    this.a.b(this.a.jdField_a_of_type_Mox);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammou);
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
+    mou localmou = (mou)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmou != null) {}
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    this.a.jdField_a_of_type_Mox.jdField_a_of_type_JavaLangString = paramString1;
-    this.a.jdField_a_of_type_Mox.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_Mox.c = paramBoolean;
-    if (paramBoolean) {
-      mpu.a(paramString1);
-    }
-    this.a.b(this.a.jdField_a_of_type_Mox);
+    mou.a(localmou);
+    lbj.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 

@@ -1,12 +1,6 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-class uwn
+public abstract interface uwn
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  
-  uwn(uwm paramuwm) {}
+  public abstract void a(int paramInt);
 }
 
 

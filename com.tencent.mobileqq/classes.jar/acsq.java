@@ -1,19 +1,94 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.form.GdtFormView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class acsq
-  implements View.OnClickListener
+  implements DownloadListener
 {
-  public acsq(GdtFormView paramGdtFormView) {}
+  private WeakReference<GdtMvDownloadBtnManager> a;
   
-  public void onClick(View paramView)
+  public acsq(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
   {
-    if (GdtFormView.a(this.a)) {
-      GdtFormView.a(this.a);
+    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
+  }
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    acvc.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    acvc.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    acvc.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    acvc.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    acvc.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
+    }
   }
 }
 

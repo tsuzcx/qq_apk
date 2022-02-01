@@ -1,20 +1,9 @@
-import com.tencent.ims.signature.SignatureReport;
+import SummaryCard.CondFitUser;
+import java.util.List;
 
-public class anvk
+public abstract interface anvk
 {
-  public int a;
-  public long a;
-  public signature.SignatureReport a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  anvk(anvf paramanvf, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
-  }
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

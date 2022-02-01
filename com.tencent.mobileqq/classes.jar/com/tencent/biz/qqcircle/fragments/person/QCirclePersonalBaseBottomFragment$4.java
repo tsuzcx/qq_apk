@@ -1,10 +1,10 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
+import aabf;
 import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
 import com.tencent.biz.richframework.part.BasePartFragment;
 import java.util.ArrayList;
-import uxx;
-import zxk;
+import uzg;
 
 class QCirclePersonalBaseBottomFragment$4
   implements Runnable
@@ -13,7 +13,7 @@ class QCirclePersonalBaseBottomFragment$4
   
   public void run()
   {
-    if ((uxx.a(this.this$0.jdField_a_of_type_JavaLangString)) && (this.this$0.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null) && (this.this$0.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList() != null) && (this.this$0.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().size() > 0)) {
+    if ((uzg.a(this.this$0.jdField_a_of_type_JavaLangString)) && (this.this$0.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null) && (this.this$0.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList() != null) && (this.this$0.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().size() > 0) && (this.this$0.a() != null) && (this.this$0.a().a() != null)) {
       this.this$0.a().a().a("publish_show_or_hide", Boolean.valueOf(true));
     }
   }

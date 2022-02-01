@@ -1,33 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
 
-public class bllf
-  implements aqck
+public final class bllf
+  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Long jdField_a_of_type_JavaLangLong;
-  
-  public bllf(Context paramContext, Long paramLong)
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
   }
   
-  public ColorNote getColorNote()
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
   {
-    aqcs localaqcs = new aqcs();
-    if (QLog.isColorLevel()) {
-      QLog.i("FavColorNoteServiceInfo", 2, "getColorNote: colorNote key [" + "qfav" + "]");
-    }
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689563);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131691986);
-    localaqcs.a(17104896);
-    localaqcs.a("" + this.jdField_a_of_type_JavaLangLong + "-4");
-    localaqcs.b(str1);
-    localaqcs.c(str2);
-    localaqcs.d("resdrawable://2130844178");
-    return localaqcs.a();
+    return new ExpandableListConnector.GroupMetadata[paramInt];
   }
 }
 

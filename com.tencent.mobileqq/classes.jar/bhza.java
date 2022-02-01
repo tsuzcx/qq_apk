@@ -1,45 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bhza
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bhza
 {
-  public bhza(ParticipleView paramParticipleView) {}
+  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    long l = System.currentTimeMillis();
-    paramValueAnimator = ParticipleView.a(this.a).iterator();
-    int i = 1;
-    if (paramValueAnimator.hasNext())
-    {
-      bhze localbhze = (bhze)paramValueAnimator.next();
-      float f = Math.min((float)(l - bhze.a(localbhze)) / ParticipleView.a(this.a), 1.0F);
-      bhze.a(localbhze, f);
-      if (f < 1.0F) {
-        i = 0;
-      }
-      for (;;)
-      {
-        break;
-        paramValueAnimator.remove();
-      }
-    }
-    if (i != 0)
-    {
-      ParticipleView.a(this.a).cancel();
-      ParticipleView.a(this.a, null);
-      ParticipleView.a(this.a).clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
-      }
-    }
-    this.a.invalidate();
-  }
+  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
 }
 
 

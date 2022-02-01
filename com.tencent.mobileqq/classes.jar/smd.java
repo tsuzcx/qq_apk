@@ -1,19 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-class smd
-  implements ValueAnimator.AnimatorUpdateListener
+public class smd
+  implements ViewPager.OnPageChangeListener
 {
-  smd(smc paramsmc, View paramView) {}
+  public smd(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setX(f);
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_Smc.a).setX(f + this.jdField_a_of_type_AndroidViewView.getWidth() * 0.32F);
+    qig.a.a().a(true, "MATCH_ALL_UIN");
   }
 }
 

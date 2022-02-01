@@ -1,10 +1,119 @@
-import com.tencent.image.URLImageView;
-
-class nyo
+public final class nyo
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString = "";
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString = "";
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
+  private String f = "";
+  private String g = "";
+  private String h = "";
+  private String i = "";
   
-  nyo(nyn paramnyn) {}
+  public nym a()
+  {
+    return new nym(this, null);
+  }
+  
+  public nyo a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public nyo a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public nyo b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public nyo b(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_b_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public nyo c(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public nyo c(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public nyo d(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public nyo d(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_d_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public nyo e(String paramString)
+  {
+    if (paramString != null) {
+      this.e = paramString;
+    }
+    return this;
+  }
+  
+  public nyo f(String paramString)
+  {
+    if (paramString != null) {
+      this.f = paramString;
+    }
+    return this;
+  }
+  
+  public nyo g(String paramString)
+  {
+    if (paramString != null) {
+      this.g = paramString;
+    }
+    return this;
+  }
+  
+  public nyo h(String paramString)
+  {
+    if (paramString != null) {
+      this.h = paramString;
+    }
+    return this;
+  }
+  
+  public nyo i(String paramString)
+  {
+    if (paramString != null) {
+      this.i = paramString;
+    }
+    return this;
+  }
 }
 
 

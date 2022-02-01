@@ -1,30 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
 public class aypv
-  implements View.OnTouchListener
+  extends axud
 {
-  private View a;
+  public aypv(NearbyProfileFragment paramNearbyProfileFragment, long paramLong) {}
   
-  public aypv(View paramView)
+  public void a(long paramLong1, long paramLong2)
   {
-    this.a = paramView;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
+    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L))
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.a.setVisibility(0);
-      return false;
+      NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).tinyId = paramLong2;
+      NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a;
+      if (!NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.j)) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.jdField_a_of_type_Long = paramLong2;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a(paramLong2);
     }
-    this.a.setVisibility(8);
-    return false;
   }
 }
 

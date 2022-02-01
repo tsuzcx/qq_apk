@@ -1,28 +1,78 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-public class oia
-  implements bkhw
+class oia
+  extends pfh
 {
-  public oia(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  oia(ohz paramohz) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.a.a) {
-      return;
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramInt);
     }
-    this.a.a = true;
-    switch (paramInt)
-    {
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramInt, paramList);
     }
-    for (;;)
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ohz.a(this.a)))
     {
-      this.a.b.dismiss();
-      return;
-      this.a.j();
-      this.a.finish();
-      continue;
-      this.a.k();
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+      ohz.a(this.a);
+    }
+  }
+  
+  public void as_()
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).p();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((ohz.a(this.a) != null) && ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ohz.a(this.a)).b(paramInt, paramList);
+    }
+  }
+  
+  public void d(int paramInt, List<oor> paramList)
+  {
+    if ((ohz.a(this.a) instanceof ReadInJoyListViewGroup))
+    {
+      pmm localpmm = (pmm)((ReadInJoyListViewGroup)ohz.a(this.a)).a(2);
+      if (localpmm != null) {
+        localpmm.b(paramInt, paramList);
+      }
     }
   }
 }

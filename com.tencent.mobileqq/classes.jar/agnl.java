@@ -1,22 +1,15 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class agnl
-  implements arzx
+  implements bdxo
 {
-  agnl(agnk paramagnk) {}
+  agnl(agnj paramagnj) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (paramInt == 8) {
-      agnk.a(this.a).b();
-    }
-    while ((paramInt != 0) || (agnk.a(this.a) == 0L)) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = agnk.a(this.a);
-    bctj.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
-    agnk.a(this.a, 0L);
+    bdxu localbdxu = new bdxu(3000, 360, 0);
+    localbdxu.a = true;
+    this.a.a.e.a(new bdxn[] { localbdxu });
   }
 }
 

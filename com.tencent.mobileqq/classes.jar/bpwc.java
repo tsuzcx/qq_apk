@@ -1,13 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-class bpwc
+public class bpwc
+  implements Animation.AnimationListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  public bpwc(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  bpwc(bpwb parambpwb) {}
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

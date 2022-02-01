@@ -1,19 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import java.util.Iterator;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
 public class asat
-  implements ValueAnimator.AnimatorUpdateListener
+  extends asbb
 {
-  public asat(EmotionSearchPanel paramEmotionSearchPanel) {}
+  public asat(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
   {
-    EmotionSearchPanel localEmotionSearchPanel = this.a;
-    int i = EmotionSearchPanel.b(this.a);
-    EmotionSearchPanel.c(localEmotionSearchPanel, ((Integer)paramValueAnimator.getAnimatedValue()).intValue() + i);
-    this.a.a.setAlpha(paramValueAnimator.getAnimatedFraction() * 0.71F);
+    if (paramBoolean)
+    {
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
+      {
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      }
+    }
   }
 }
 

@@ -3,33 +3,33 @@ package com.tencent.biz.qqstory.base.preload;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import wgm;
-import wgv;
-import whl;
-import whm;
-import yqp;
+import wkh;
+import wkq;
+import wlg;
+import wlh;
+import yuk;
 
 public class StorySingleFileDownloader$1
   implements Runnable
 {
-  public StorySingleFileDownloader$1(whl paramwhl) {}
+  public StorySingleFileDownloader$1(wlg paramwlg) {}
   
   public void run()
   {
-    Iterator localIterator = whl.a(this.this$0).values().iterator();
+    Iterator localIterator = wlg.a(this.this$0).values().iterator();
     while (localIterator.hasNext())
     {
-      wgv localwgv = (wgv)localIterator.next();
-      whl.a(this.this$0).a(localwgv);
-      Object localObject = localwgv.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-      if ((localObject != null) && ((localObject instanceof whm)))
+      wkq localwkq = (wkq)localIterator.next();
+      wlg.a(this.this$0).a(localwkq);
+      Object localObject = localwkq.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
+      if ((localObject != null) && ((localObject instanceof wlh)))
       {
-        whl.a(this.this$0, localwgv.b, localwgv.jdField_a_of_type_Int, (whm)localObject);
-        yqp.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localwgv.jdField_a_of_type_JavaLangString });
+        wlg.a(this.this$0, localwkq.b, localwkq.jdField_a_of_type_Int, (wlh)localObject);
+        yuk.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localwkq.jdField_a_of_type_JavaLangString });
       }
     }
-    whl.a(this.this$0).clear();
-    yqp.d("Q.qqstory.download:StorySingleFileDownloader", "stop!!");
+    wlg.a(this.this$0).clear();
+    yuk.d("Q.qqstory.download:StorySingleFileDownloader", "stop!!");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import awvx;
+import axoq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.multicard.RecommendPerson;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class TroopMemberRecommendHandler$1
   implements Runnable
 {
-  public TroopMemberRecommendHandler$1(awvx paramawvx, long paramLong, ArrayList paramArrayList) {}
+  public TroopMemberRecommendHandler$1(axoq paramaxoq, long paramLong, ArrayList paramArrayList) {}
   
   public void run()
   {

@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -36,7 +36,7 @@ public class MiniAppCheckNavigateRightServlet
       try
       {
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
         INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
         localStCheckNavigateRightRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
         int i = localStCheckNavigateRightRsp.actionCode.get();
@@ -82,7 +82,7 @@ public class MiniAppCheckNavigateRightServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.CheckNavigateRight");
-      paramPacket.putSendData(bguc.a((byte[])localObject1));
+      paramPacket.putSendData(bhuf.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

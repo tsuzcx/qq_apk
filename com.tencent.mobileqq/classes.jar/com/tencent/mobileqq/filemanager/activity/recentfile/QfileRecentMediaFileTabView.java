@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
 import android.content.Context;
-import anni;
-import asti;
-import asxz;
-import asyc;
-import atvo;
-import atwn;
-import atwr;
+import anzj;
+import atjm;
+import atod;
+import atog;
+import aunj;
+import auoi;
+import auom;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import java.util.List;
 public class QfileRecentMediaFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private atwn a;
+  private auoi a;
   
   public QfileRecentMediaFileTabView(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class QfileRecentMediaFileTabView
   
   private String a(String paramString)
   {
-    switch (atvo.a(paramString))
+    switch (aunj.a(paramString))
     {
     default: 
       return null;
     case 2: 
-      return anni.a(2131708468);
+      return anzj.a(2131708577);
     }
-    return anni.a(2131708466);
+    return anzj.a(2131708575);
   }
   
   private void k()
@@ -53,19 +53,19 @@ public class QfileRecentMediaFileTabView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().I();
     }
-    while (this.jdField_a_of_type_Atwn != null)
+    while (this.jdField_a_of_type_Auoi != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Auoi);
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().N();
     }
-    this.jdField_a_of_type_Atwn = new asyc(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
+    this.jdField_a_of_type_Auoi = new atog(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Auoi);
   }
   
-  protected asti a()
+  protected atjm a()
   {
-    return new asxz(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new atod(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()

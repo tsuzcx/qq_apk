@@ -1,31 +1,102 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.35.1;
+import com.tencent.mobileqq.activity.Conversation.35.2;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeih
-  implements bkhw
+  extends anuw
 {
-  public aeih(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, bkho parambkho) {}
+  public aeih(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bkho != null) {
-      this.jdField_a_of_type_Bkho.dismiss();
-    }
-    switch (paramInt)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-    default: 
-      return;
-    case 0: 
-      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 1);
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(3) }));
-      return;
-    case 1: 
-      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 2);
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(2) }));
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if (!bhjx.a(paramObject.uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          this.a.a(8, paramObject.uin, -2147483648);
+        }
+      }
+      else {
+        return;
+      }
+      Conversation.a(this.a, "onCardDownload");
       return;
     }
-    FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 3);
-    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(1) }));
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " conversation onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.a(0L);
+    }
+  }
+  
+  public void onGetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    super.onGetNotDisturb(paramBoolean, paramString1, paramString2);
+    Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
+  }
+  
+  protected void onGreetingRecv(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      }
+      this.a.a(8, antf.H, 1001);
+    }
+  }
+  
+  protected void onSetNick(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      Conversation.a(this.a, "onSetNick", paramString);
+    }
+  }
+  
+  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
+    if (!"not_disturb_from_conversation".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 4, "onSetNotDisturb NOT FROM THIS" + paramString2);
+      }
+    }
+    do
+    {
+      return;
+      if (!paramBoolean)
+      {
+        ThreadManagerV2.getUIHandlerV2().post(new Conversation.35.1(this));
+        return;
+      }
+      Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
+    } while (FriendsStatusUtil.a(this.a.a()));
+    ThreadManagerV2.getUIHandlerV2().post(new Conversation.35.2(this));
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "Conversation.onUpdateAvatar: uin:" + paramString + ", success :" + paramBoolean);
+    }
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bhjx.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendEmptyMessage(3);
+    }
   }
 }
 

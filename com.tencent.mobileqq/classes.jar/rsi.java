@@ -1,8 +1,8 @@
-public abstract interface rsi<V>
+public abstract interface rsi
 {
-  public abstract void a();
+  public abstract void b();
   
-  public abstract void a(V paramV);
+  public abstract void c();
 }
 
 

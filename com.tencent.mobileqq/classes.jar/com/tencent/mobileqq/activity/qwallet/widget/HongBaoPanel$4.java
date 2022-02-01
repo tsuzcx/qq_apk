@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import afxp;
+import aghj;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class HongBaoPanel$4
-  implements afxp
+  implements aghj
 {
   HongBaoPanel$4(HongBaoPanel paramHongBaoPanel, String paramString, ImageView paramImageView, int paramInt) {}
   

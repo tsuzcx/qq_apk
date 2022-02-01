@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import com.tencent.qphone.base.util.QLog;
-import nkl;
+import nmg;
 
 class IVOfflinePluginImpl$3
-  implements nkl
+  implements nmg
 {
   IVOfflinePluginImpl$3(IVOfflinePluginImpl paramIVOfflinePluginImpl) {}
   

@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.scrollers;
 
-import vsc;
+import vup;
 
 public class QCircleFeedPlayerScroller$1
   implements Runnable
 {
-  public QCircleFeedPlayerScroller$1(vsc paramvsc) {}
+  public QCircleFeedPlayerScroller$1(vup paramvup) {}
   
   public void run()
   {
-    this.this$0.f();
+    this.this$0.g();
   }
 }
 

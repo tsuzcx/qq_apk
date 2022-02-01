@@ -1,76 +1,44 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afbs
-  extends bgzm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afbs(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public afbs(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void handlePendantAuth(boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramObject = (Bundle)paramObject;
-    long l = paramObject.getLong("pendantId");
-    String str = paramObject.getString("uin");
+    boolean bool = false;
     if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
+      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    if ((l == -1L) || (str == null)) {
-      return;
-    }
-    if (paramBoolean)
+    if (!NotifyPushSettingActivity.a(this.a).c())
     {
-      anmw localanmw = (anmw)this.a.app.getManager(51);
-      ExtensionInfo localExtensionInfo = localanmw.a(str);
-      paramObject = localExtensionInfo;
-      if (localExtensionInfo == null)
-      {
-        paramObject = new ExtensionInfo();
-        paramObject.uin = str;
+      NotifyPushSettingActivity.a(this.a).a(this.a);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
+      FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.a(this.a);
+      if (!NotifyPushSettingActivity.a(this.a).a()) {
+        bool = true;
       }
-      paramObject.pendantId = l;
-      paramObject.timestamp = System.currentTimeMillis();
-      localanmw.a(paramObject);
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      this.a.finish();
-      return;
-    }
-    int i = paramObject.getInt("result");
-    if (bgnt.d(this.a))
-    {
-      paramObject = "4";
-      switch (i)
-      {
-      default: 
-        label225:
-        i = -1;
-      }
+      localFormSwitchItem.setChecked(bool);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
     for (;;)
     {
-      if ((i != -1) && (QLog.isColorLevel())) {
-        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      mrl.a(this.a.app.getCurrentAccountUin(), paramBoolean);
+      if (!paramBoolean) {
+        bdll.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
       }
-      QQToast.a(this.a.app.getApp(), 1, anni.a(2131712217), 0).a();
-      break;
-      paramObject = "3";
-      break label225;
-      i = 2131716016;
-      continue;
-      paramObject = "0";
-      i = 2131716017;
-      continue;
-      paramObject = "1";
-      i = 2131716018;
-      continue;
-      paramObject = "2";
-      i = -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
+      }
     }
   }
 }

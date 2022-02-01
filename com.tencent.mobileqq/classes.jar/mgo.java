@@ -1,13 +1,15 @@
-class mgo
-  implements bkle
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+
+public class mgo
+  implements DialogInterface.OnClickListener
 {
-  mgo(mgm parammgm) {}
+  public mgo(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(0L);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

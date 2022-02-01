@@ -9,16 +9,16 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import pdx;
-import pdz;
-import pea;
+import owp;
+import owr;
+import ows;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "commentId", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createFirstComment$1
   extends Lambda
   implements Function1<String, Unit>
 {
-  public RIJCommentNetworkHelper$createFirstComment$1(boolean paramBoolean1, pea parampea, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, FirstCommentCreateData paramFirstCommentCreateData, long paramLong2)
+  public RIJCommentNetworkHelper$createFirstComment$1(boolean paramBoolean1, ows paramows, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, FirstCommentCreateData paramFirstCommentCreateData, long paramLong2)
   {
     super(1);
   }
@@ -29,7 +29,7 @@ public final class RIJCommentNetworkHelper$createFirstComment$1
     if (!this.$needBiuAfterComment)
     {
       this.$callback.a(this.$commentSeq, true, 1, paramString, this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-      pdz.a(pdz.a, 0, System.currentTimeMillis() - this.$requestTime);
+      owr.a(owr.a, 0, System.currentTimeMillis() - this.$requestTime);
       if (TextUtils.isEmpty((CharSequence)this.$requestData.b())) {
         break label128;
       }
@@ -37,9 +37,9 @@ public final class RIJCommentNetworkHelper$createFirstComment$1
     label128:
     for (String str = this.$requestData.b();; str = this.$requestData.c())
     {
-      pdz.a(pdz.a, this.$requestData.a(), str, "", "", paramString);
+      owr.a(owr.a, this.$requestData.a(), str, "", "", paramString);
       return;
-      pdx.a.a((SimpleCommentData)this.$requestData, (Function1)new RIJCommentNetworkHelper.createFirstComment.1.1(this, paramString));
+      owp.a.a((SimpleCommentData)this.$requestData, (Function1)new RIJCommentNetworkHelper.createFirstComment.1.1(this, paramString));
       break;
     }
   }

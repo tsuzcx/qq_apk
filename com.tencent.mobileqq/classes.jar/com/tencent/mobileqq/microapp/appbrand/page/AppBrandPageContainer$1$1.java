@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import biau;
+import bjbs;
 import com.tencent.mobileqq.widget.QQToast;
 import java.lang.ref.WeakReference;
 

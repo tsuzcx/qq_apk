@@ -8,6 +8,7 @@ import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.superplayer.utils.Utils;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
+import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager;
 import com.tencent.thumbplayer.datatransport.ITPProxyManagerAdapter;
 import com.tencent.thumbplayer.datatransport.TPProxyGlobalManager;
 import com.tencent.thumbplayer.datatransport.TPProxyUtils;
@@ -27,23 +28,37 @@ public class SPlayerDownloaderImpl
     }
   }
   
-  private int getDlType(int paramInt)
+  private int getDlTypeForDownloadParam(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return 0;
-    case 301: 
+      return 10;
+    case 101: 
       return 1;
     }
-    return 10;
+    return 3;
+  }
+  
+  public void pauseOfflineDownload(int paramInt)
+  {
+    if (this.mTPDownloadProxy != null) {
+      this.mTPDownloadProxy.pauseDownload(paramInt);
+    }
+  }
+  
+  public void resumeOfflineDownload(int paramInt)
+  {
+    if (this.mTPDownloadProxy != null) {
+      this.mTPDownloadProxy.resumeDownload(paramInt);
+    }
   }
   
   public int startOfflineDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, ISPlayerDownloader.Listener paramListener)
   {
-    if (this.mTPDownloadProxy == null)
+    if ((this.mTPDownloadProxy == null) || (paramSuperPlayerVideoInfo == null))
     {
-      LogUtil.e(TAG, "error, mTPDownloadProxy == null, return");
+      LogUtil.e(TAG, "error, mTPDownloadProxy = " + this.mTPDownloadProxy + ", videoInfo = " + paramSuperPlayerVideoInfo + ", return");
       return 0;
     }
     TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
@@ -51,11 +66,12 @@ public class SPlayerDownloaderImpl
     localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
     localTPDownloadParamData.setDownloadFileID(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo));
     localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-    localTPDownloadParamData.setDlType(getDlType(paramSuperPlayerVideoInfo.getFormat()));
+    localTPDownloadParamData.setDlType(getDlTypeForDownloadParam(paramSuperPlayerVideoInfo.getFormat()));
     if (paramSuperPlayerVideoInfo.getCookie() != null) {
       localTPDownloadParamData.setUrlCookieList(paramSuperPlayerVideoInfo.getCookie());
     }
-    int i = this.mTPDownloadProxy.startOfflineDownload(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, localTPDownloadParamData), new SPlayerDownloaderImpl.1(this, paramListener));
+    int i = this.mTPDownloadProxy.startOfflineDownload(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, localTPDownloadParamData), null);
+    TPListenerManager.getInstance().setOfflineDownloadListener(i, new SPlayerDownloaderImpl.1(this, paramListener, i));
     this.mTPDownloadProxy.startTask(i);
     return i;
   }

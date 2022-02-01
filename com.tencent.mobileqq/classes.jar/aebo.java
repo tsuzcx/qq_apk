@@ -1,43 +1,17 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class aebo
-  extends anmu
+public final class aebo
+  implements DialogInterface.OnCancelListener
 {
-  public aebo(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aebo(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      this.a.a();
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, 0);
     }
-    while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()) || (this.a.isFinishing())) {
-      return;
-    }
-    this.a.jdField_a_of_type_Biau.dismiss();
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
-      {
-        paramString = ((anmw)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
-        if (paramString != null) {
-          this.a.d = paramString.name;
-        }
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

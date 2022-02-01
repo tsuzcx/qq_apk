@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import yty;
+import yxt;
 
 public class EditVideoPartManager$8
   implements Runnable
 {
-  public EditVideoPartManager$8(yty paramyty) {}
+  public EditVideoPartManager$8(yxt paramyxt) {}
   
   public void run()
   {

@@ -1,20 +1,75 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-final class agxv
-  implements ahbm
+class agxv
+  extends avhb
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  agxv(agxr paramagxr) {}
+  
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
   {
-    paramQQAppInterface = (MessageForDeviceFile)paramChatMessage;
-    if (paramQQAppInterface.nFileMsgType == 2) {
-      return 36;
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
     }
-    if (paramQQAppInterface.nFileMsgType == 1) {
-      return 37;
+    if ((this.a.jdField_a_of_type_Axmv != null) && (this.a.jdField_a_of_type_Axmv.a() == 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
+      }
     }
-    return -1;
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Axmv != null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + agxr.a(this.a));
+      }
+    } while (agxr.a(this.a));
+    paramObject = null;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      long l1 = 0L;
+      try
+      {
+        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException paramObject)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err ");
+        }
+      }
+    }
+    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
+    {
+      if (paramHashMap == null) {
+        break label272;
+      }
+      paramObject = agxr.a(this.a).obtainMessage();
+      paramObject.what = 0;
+      paramObject.obj = paramHashMap;
+      agxr.a(this.a).removeMessages(0);
+      agxr.a(this.a).sendMessage(paramObject);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Axmv.a());
+      break;
+      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+    }
+    label272:
+    paramHashMap = agxr.a(this.a).obtainMessage();
+    paramHashMap.what = 1;
+    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693090);
+    agxr.a(this.a).sendMessage(paramHashMap);
   }
 }
 

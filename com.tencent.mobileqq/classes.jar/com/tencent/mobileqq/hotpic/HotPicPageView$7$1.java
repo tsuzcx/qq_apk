@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.hotpic;
 
-import avbv;
+import avtx;
 
 public class HotPicPageView$7$1
   implements Runnable
 {
-  public HotPicPageView$7$1(avbv paramavbv) {}
+  public HotPicPageView$7$1(avtx paramavtx) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_Avbz, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_Avub, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
   }
 }
 

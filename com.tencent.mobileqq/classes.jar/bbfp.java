@@ -1,19 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-class bbfp
-  implements View.OnTouchListener
+public final class bbfp
+  implements Parcelable.Creator<FilterCategoryItem>
 {
-  bbfp(bbfm parambbfm) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public FilterCategoryItem a(Parcel paramParcel)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return new FilterCategoryItem(paramParcel);
+  }
+  
+  public FilterCategoryItem[] a(int paramInt)
+  {
+    return new FilterCategoryItem[paramInt];
   }
 }
 

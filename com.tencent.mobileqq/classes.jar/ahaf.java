@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahaf
-  extends ahbl
+public class ahaf
+  implements View.OnClickListener
 {
-  ahaf(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public ahaf(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new abue(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

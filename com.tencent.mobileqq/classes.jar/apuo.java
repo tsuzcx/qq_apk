@@ -1,21 +1,21 @@
-import mqq.util.WeakReference;
+import com.tencent.ark.ark.VariantWrapper;
 
 class apuo
-  implements ankk
+  implements apvt
 {
-  WeakReference<apul> a;
+  apuo(apun paramapun, long paramLong) {}
   
-  public apuo(apul paramapul)
+  public void a(long paramLong)
   {
-    this.a = new WeakReference(paramapul);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apun.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    apul localapul = (apul)this.a.get();
-    if (localapul != null) {
-      localapul.a(paramBoolean);
-    }
+    apuk.a(this.jdField_a_of_type_Apun.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

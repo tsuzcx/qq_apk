@@ -1,11 +1,18 @@
-public class wrr
-  extends weu
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
+class wrr
+  implements View.OnLongClickListener
 {
-  public final String a;
+  wrr(wrp paramwrp, wro paramwro) {}
   
-  public wrr(String paramString)
+  public boolean onLongClick(View paramView)
   {
-    this.a = paramString;
+    int i = this.jdField_a_of_type_Wro.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Wrp.a.b(this.jdField_a_of_type_Wro.itemView, i);
+    }
+    return true;
   }
 }
 

@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class auan
-  implements Parcelable.Creator<WeiYunFileInfo>
+class auan
+  implements View.OnClickListener
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
-  {
-    return new WeiYunFileInfo(paramParcel);
-  }
+  auan(auam paramauam, bcfr parambcfr) {}
   
-  public WeiYunFileInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WeiYunFileInfo[paramInt];
+    ((aual)this.jdField_a_of_type_Bcfr).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

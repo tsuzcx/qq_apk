@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.comment.handler.bean;
 
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
-import pdu;
+import owm;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentStickyData;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "rowkey", "", "contentSrc", "", "businessInfo", "commentID", "(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V", "getCommentID", "()Ljava/lang/String;", "opType", "getOpType", "()I", "setOpType", "(I)V", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class FirstCommentStickyData
   extends SimpleCommentData
 {
-  public static final pdu a;
+  public static final owm a;
   private int jdField_a_of_type_Int;
   @NotNull
   private final String jdField_a_of_type_JavaLangString;
   
   static
   {
-    jdField_a_of_type_Pdu = new pdu(null);
+    jdField_a_of_type_Owm = new owm(null);
   }
   
   public FirstCommentStickyData(@NotNull String paramString1, int paramInt, @NotNull String paramString2, @NotNull String paramString3)

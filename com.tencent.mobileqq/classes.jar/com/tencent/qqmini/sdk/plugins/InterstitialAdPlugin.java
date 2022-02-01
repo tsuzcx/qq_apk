@@ -32,7 +32,7 @@ public class InterstitialAdPlugin
   private static final String ERRMSG = "errMsg";
   public static final String EVENT_INTERSTITIAL_CLOSE = "onInterstitialAdClose";
   public static final String KEY_REF_ID = "biz_src_miniapp";
-  public static final HashMap<Integer, String> S_CodeMsg_Map = MiniSDKConst.AdConst.CodeMsgMap;
+  public static final HashMap<Integer, String> S_CodeMsg_Map = MiniSDKConst.AdConst.CODE_MSG_MAP;
   private static final String TAG = "InterstitialAdPlugin";
   private Map<Integer, InterstitialAdPlugin.MiniInterstitialAd> mInterstitialMap = new HashMap();
   

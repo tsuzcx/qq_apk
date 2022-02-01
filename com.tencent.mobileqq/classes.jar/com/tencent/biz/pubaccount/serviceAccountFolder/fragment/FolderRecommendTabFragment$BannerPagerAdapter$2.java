@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import tun;
+import tup;
 
 public class FolderRecommendTabFragment$BannerPagerAdapter$2
   implements Runnable
 {
-  public FolderRecommendTabFragment$BannerPagerAdapter$2(tun paramtun) {}
+  public FolderRecommendTabFragment$BannerPagerAdapter$2(tup paramtup) {}
   
   public void run()
   {

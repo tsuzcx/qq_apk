@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import android.widget.ImageButton;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class axbi
-  implements View.OnClickListener
+public class axbi
+  implements PopupWindow.OnDismissListener
 {
-  axbi(Function0 paramFunction0) {}
+  public axbi(MedalGuideView paramMedalGuideView) {}
   
-  public final void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.invoke();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    }
+    this.a.d = true;
+    this.a.a.performClick();
   }
 }
 

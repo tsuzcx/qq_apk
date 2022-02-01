@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aisa
-  extends Handler
+  implements airx
 {
-  public aisa(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  aisa(airy paramairy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
-      return;
-    }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+    airy.a(this.a, airy.b(this.a));
+    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
+  }
+  
+  public void b()
+  {
+    airy.b(this.a, airy.b(this.a));
   }
 }
 

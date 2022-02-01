@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 public class AndroidOreoUtils
 {
   private Activity mActivity;
-  private ActivityInfo mActivityInfo;
+  private ActivityInfo mActivityInfo = null;
   
   public AndroidOreoUtils(Activity paramActivity)
   {

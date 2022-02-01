@@ -1,16 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.qphone.base.util.QLog;
 
-public final class avpt
-  implements ovc
+public class avpt
+  extends BroadcastReceiver
 {
-  public avpt(tol paramtol, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  private avpt(JefsClass paramJefsClass) {}
   
-  public void a(ovf paramovf)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_Tol != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Tol.a(this.jdField_a_of_type_JavaLangString, UiApiPlugin.a(paramovf, this.b, this.c, this.d));
+    if (!BaseApplicationImpl.processName.equals(paramIntent.getStringExtra("key_process_id"))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|JefsClass", 2, "is not current process");
+      }
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|JefsClass", 2, "start");
+      }
+      if ("com.tencent.mobileqq.telescreen.action_run".equals(paramIntent.getAction()))
+      {
+        JefsClass.a(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
+        return;
+      }
+    } while (!"com.tencent.mobileqq.telescreen.action_remove".equals(paramIntent.getAction()));
+    JefsClass.b(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
   }
 }
 

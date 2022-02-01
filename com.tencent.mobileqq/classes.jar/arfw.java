@@ -1,89 +1,87 @@
-import android.graphics.Canvas;
-import android.graphics.SurfaceTexture;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfw
-  implements TextureView.SurfaceTextureListener, arft
+  extends arac<arfv>
 {
-  private TextureView jdField_a_of_type_AndroidViewTextureView;
-  private arfu jdField_a_of_type_Arfu;
-  
-  public arfw(TextureView paramTextureView)
+  public static boolean a()
   {
-    this.jdField_a_of_type_AndroidViewTextureView = paramTextureView;
-    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(this);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_AndroidViewTextureView.getY();
-  }
-  
-  public Canvas a()
-  {
-    return this.jdField_a_of_type_AndroidViewTextureView.lockCanvas();
-  }
-  
-  public void a() {}
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.unlockCanvasAndPost(paramCanvas);
-  }
-  
-  public void a(View.OnTouchListener paramOnTouchListener)
-  {
-    this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(paramOnTouchListener);
-  }
-  
-  public void a(arfu paramarfu)
-  {
-    this.jdField_a_of_type_Arfu = paramarfu;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Arfu = null;
-    if (this.jdField_a_of_type_AndroidViewTextureView != null)
+    arfv localarfv = (arfv)aran.a().a(613);
+    if (localarfv != null) {}
+    for (boolean bool = localarfv.a();; bool = false)
     {
-      this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(null);
-      this.jdField_a_of_type_AndroidViewTextureView = null;
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
+      return bool;
     }
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  @NonNull
+  public arfv a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    if (this.jdField_a_of_type_Arfu != null)
+    return new arfv();
+  }
+  
+  @Nullable
+  public arfv a(araj[] paramArrayOfaraj)
+  {
+    int i = 0;
+    if (paramArrayOfaraj == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Arfu.i();
-      this.jdField_a_of_type_Arfu.j();
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+        break;
+      }
+      new arfv();
+      return arfv.a(paramArrayOfaraj);
+      i = paramArrayOfaraj.length;
+    }
+    return null;
+  }
+  
+  public void a(arfv paramarfv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramarfv.toString());
     }
   }
   
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  public Class<arfv> clazz()
   {
-    if (this.jdField_a_of_type_Arfu != null) {
-      this.jdField_a_of_type_Arfu.k();
-    }
+    return arfv.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
   }
   
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public int migrateOldVersion()
   {
-    if (this.jdField_a_of_type_Arfu != null) {
-      this.jdField_a_of_type_Arfu.j();
-    }
+    return 0;
   }
   
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 613;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfw
  * JD-Core Version:    0.7.0.1
  */

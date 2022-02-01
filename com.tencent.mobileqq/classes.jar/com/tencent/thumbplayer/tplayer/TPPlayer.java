@@ -397,6 +397,11 @@ public class TPPlayer
     return this.mPlayerInternal.getDurationMs();
   }
   
+  public long getFileSizeBytes()
+  {
+    return this.mPlayerInternal.getFileSizeBytes();
+  }
+  
   public long getPlayableDurationMs()
   {
     return this.mPlayerInternal.getPlayableDurationMs();
@@ -549,6 +554,11 @@ public class TPPlayer
   public long handleGetDurationMs()
   {
     return this.mPlayerAdapter.getDurationMs();
+  }
+  
+  public long handleGetFileSizeBytes()
+  {
+    return this.mTotalFileSizeByte;
   }
   
   public Object handleGetPlayInfo(long paramLong)
@@ -737,6 +747,7 @@ public class TPPlayer
       this.mPlayerAdapter.prepareAsync();
       String str = UUID.randomUUID().toString() + System.nanoTime() + "_" + TPPlayerConfig.getPlatform();
       pushEvent(102, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("url", this.mUrl).put("p2p", Boolean.valueOf(isUseProxyEnable())).put("flowid", str).build());
+      pushEvent(501, this.mPlayerAdapter.getNativePlayerId(), 0, null, null);
       notifyIsUseProxyInfo();
       return;
     }
@@ -872,6 +883,7 @@ public class TPPlayer
             localTPUrlDataSource = this.mPlayProxyManager.startDownloadPlay(paramTPDataSourceParams.url);
             TPLogUtil.i(this.TAG, "handleSetDataSource selfPlayerUrl=" + localTPUrlDataSource.getSelfPlayerUrl());
             TPLogUtil.i(this.TAG, "handleSetDataSource systemPlayerUrl=" + localTPUrlDataSource.getSystemPlayerUrl());
+            TPLogUtil.d("SuperPlayer", "日志过滤(DataTransport)：【" + TPCommonUtils.getTaskIdFromDataTransportUrl(localTPUrlDataSource.getSelfPlayerUrl()) + "】, playId:" + (sPlayId - 1) + " , originalUrl=" + paramTPDataSourceParams.url + ", localUrl=" + localTPUrlDataSource.getSelfPlayerUrl());
           }
           if (paramTPDataSourceParams.httpHeader != null)
           {

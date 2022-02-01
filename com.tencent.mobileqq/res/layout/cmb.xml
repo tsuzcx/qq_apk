@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/du3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mte" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+<LinearLayout android:orientation="vertical" android:id="@id/nzf" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ViewStub android:id="@id/mez" android:visibility="gone" android:layout="@layout/c_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krd" android:visibility="gone" android:layout="@layout/cmc" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krc" android:visibility="gone" android:layout="@layout/ab4" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" />
+</LinearLayout>

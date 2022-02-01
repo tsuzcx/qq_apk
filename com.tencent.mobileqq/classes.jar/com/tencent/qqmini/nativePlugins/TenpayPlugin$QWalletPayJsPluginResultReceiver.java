@@ -1,6 +1,6 @@
 package com.tencent.qqmini.nativePlugins;
 
-import akwr;
+import alig;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,7 +35,7 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
     do
     {
       return;
-      paramBundle = akwr.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+      paramBundle = alig.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
     } while (paramBundle == null);
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
   }

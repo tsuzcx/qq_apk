@@ -1,12 +1,25 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface avwo
+class avwo
+  implements EIPCResultCallback
 {
-  public abstract void a();
+  avwo(avwn paramavwn, long paramLong) {}
   
-  public abstract void a(LocationRoom.Venue paramVenue);
-  
-  public abstract void a(String paramString);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    switch (paramEIPCResult.code)
+    {
+    }
+    for (;;)
+    {
+      bdll.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - avwn.a(this.jdField_a_of_type_Avwn)), String.valueOf(this.jdField_a_of_type_Long), "", "");
+      return;
+      avwn.a(this.jdField_a_of_type_Avwn).a(2, paramEIPCResult.data);
+      continue;
+      avwn.a(this.jdField_a_of_type_Avwn).a(1, paramEIPCResult.data);
+    }
+  }
 }
 
 

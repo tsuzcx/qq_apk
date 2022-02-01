@@ -1,31 +1,12 @@
-import java.util.Iterator;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/studymode/ModeSwitchManager$simpleUIObserver$1", "Lcom/tencent/mobileqq/simpleui/SimpleUIObserver;", "onReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onSwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bdce
-  extends bcni
+final class bdce
+  extends bdcg
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public double a(int paramInt1, int paramInt2)
   {
-    this.a.a(false);
-    if (bdch.b())
-    {
-      this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-      return;
+    if (paramInt1 > paramInt2) {
+      return paramInt2 / (paramInt1 + paramInt2);
     }
-    Iterator localIterator = ((Iterable)bdby.a(this.a)).iterator();
-    while (localIterator.hasNext()) {
-      ((bdbz)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
-  {
-    Iterator localIterator = ((Iterable)bdby.a(this.a)).iterator();
-    while (localIterator.hasNext()) {
-      ((bdbz)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString);
-    }
+    return paramInt1 / (paramInt1 + paramInt2);
   }
 }
 

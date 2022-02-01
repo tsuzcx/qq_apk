@@ -1,54 +1,44 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aomt
-  extends aojs
+  extends aocj
 {
-  public aomt(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aomt(QQComicStep paramQQComicStep) {}
   
-  public boolean a()
+  public void a(List<MessageRecord> paramList)
   {
-    if (!(this.a instanceof BaseActivity)) {}
-    Object localObject2;
-    do
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
     {
-      do
+      return;
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
       {
-        do
+        Object localObject = bdow.a(((MessageRecord)paramList.next()).msgData);
+        if ((localObject instanceof StructMsgForImageShare))
         {
-          return true;
-          localObject1 = ((BaseActivity)this.a).getIntent();
-        } while (localObject1 == null);
-        localObject2 = ((Intent)localObject1).getExtras();
-      } while (localObject2 == null);
-      localObject1 = ((Bundle)localObject2).getString("localAPKPath");
-      localObject2 = ((Bundle)localObject2).getString("sourceId");
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlAction", 1, "gamecenter installApk, pkgName=" + this.e + ",localAPKPath=" + (String)localObject1 + ",sourceId=" + (String)localObject2);
+          localObject = (StructMsgForImageShare)localObject;
+          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
+          {
+            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
+            if (arrayOfString.length >= 8) {
+              bmbt.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], aics.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+            }
+          }
+        }
       }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Intent localIntent = FileProvider7Helper.openApkIntent(this.a, (String)localObject1);
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "biz_src_zf_games";
     }
-    localIntent.putExtra("big_brother_source_key", (String)localObject1);
-    this.a.startActivity(localIntent);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomt
  * JD-Core Version:    0.7.0.1
  */

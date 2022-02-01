@@ -8,22 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bglp;
-import bgnt;
-import bgpa;
+import bhlq;
+import bhnv;
+import bhpc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import org.jetbrains.annotations.NotNull;
-import pmk;
-import rjh;
-import ror;
-import ros;
-import rot;
-import rpa;
-import tlg;
+import pfd;
+import rab;
+import rfn;
+import rfo;
+import rfp;
+import rfw;
+import tbz;
 
 public class CreateColumnFragment
   extends AbsPublishColumnFragment
@@ -33,7 +33,7 @@ public class CreateColumnFragment
   public void a(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean)
   {
     super.a(paramColumnInfo, paramBoolean);
-    pmk.a().g();
+    pfd.a().g();
     if (paramBoolean)
     {
       Object localObject = new Intent();
@@ -44,49 +44,49 @@ public class CreateColumnFragment
       ((Intent)localObject).putExtra("key_column_info", paramColumnInfo);
       getActivity().setResult(2, (Intent)localObject);
       i();
-      if ((this.jdField_b_of_type_Int == 1) && (rjh.h() == 2))
+      if ((this.jdField_b_of_type_Int == 1) && (rab.i() == 2))
       {
-        localObject = rjh.a() + paramColumnInfo.columnID;
-        tlg.a(getActivity(), "", (String)localObject, null, false);
+        localObject = rab.a() + paramColumnInfo.columnID;
+        tbz.a(getActivity(), "", (String)localObject, null, false);
       }
-      rot.a(paramColumnInfo);
+      rfp.a(paramColumnInfo);
     }
     QLog.i("RIJUGC.PublishTopicFragment", 1, "onColumnCreated, result = " + paramBoolean + ", id= " + paramColumnInfo.columnID + ", title = " + paramColumnInfo.title);
   }
   
   protected boolean a()
   {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a() > 0) || (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a() > 0);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.b() > 0) || (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.b() > 0);
   }
   
   protected boolean b()
   {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a() > 0);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.b() > 0);
   }
   
   public void e()
   {
     super.e();
-    bglp.a(getActivity(), 230).setMessage(2131716909).setNegativeButton(2131716906, new ros(this)).setPositiveButton(2131716908, new ror(this)).show();
+    bhlq.a(getActivity(), 230).setMessage(2131717025).setNegativeButton(2131717022, new rfo(this)).setPositiveButton(2131717024, new rfn(this)).show();
   }
   
   public void f()
   {
     super.f();
-    if (!bgnt.a())
+    if (!bhnv.a())
     {
-      QQToast.a(getActivity(), 0, getString(2131693946), 0).a();
+      QQToast.a(getActivity(), 0, getString(2131693963), 0).a();
       return;
     }
-    this.jdField_a_of_type_Rpa.b(a());
+    this.jdField_a_of_type_Rfw.b(a());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716954);
-    this.c.setText(2131716949);
-    this.jdField_a_of_type_Rpa.b();
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131717070);
+    this.c.setText(2131717065);
+    this.jdField_a_of_type_Rfw.b();
     paramViewGroup = getArguments();
     if (paramViewGroup != null) {
       this.jdField_b_of_type_Int = paramViewGroup.getInt("key_from", 0);

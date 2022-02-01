@@ -1,14 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class axes
-  implements axkr
+public abstract interface axes
 {
-  axes(axeq paramaxeq) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
-  }
+  public abstract void onEngineLoad(boolean paramBoolean, String paramString);
 }
 
 

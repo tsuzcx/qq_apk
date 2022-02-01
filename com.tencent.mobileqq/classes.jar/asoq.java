@@ -1,28 +1,10 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
-import com.tencent.qphone.base.util.QLog;
-
 public class asoq
-  implements apyj
 {
-  public asoq(SignalBombAnimationView paramSignalBombAnimationView) {}
-  
-  public void a()
-  {
-    SignalBombAnimationView.a(this.a).setVisibility(4);
-    if (SignalBombAnimationView.a(this.a) != null) {
-      SignalBombAnimationView.a(this.a).b();
-    }
-    QLog.d("SignalBombAnimationViewExtendFriendLimitChat", 2, "onAnimationEnd");
-    if (SignalBombAnimationView.a(this.a) != null) {
-      SignalBombAnimationView.a(this.a).sendEmptyMessage(1);
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b() {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

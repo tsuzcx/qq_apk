@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+
 public abstract interface alpv
 {
-  public abstract void a(String paramString);
+  public abstract void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 

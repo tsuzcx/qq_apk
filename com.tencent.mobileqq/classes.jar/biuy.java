@@ -1,14 +1,8 @@
-import android.database.Cursor;
+import android.view.View;
 
-public abstract interface biuy<T extends biux>
+public abstract interface biuy
 {
-  public abstract int a();
-  
-  public abstract T a(Cursor paramCursor);
-  
-  public abstract String a();
-  
-  public abstract biuz[] a();
+  public abstract void a(View paramView);
 }
 
 

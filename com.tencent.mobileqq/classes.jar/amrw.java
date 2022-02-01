@@ -1,24 +1,9 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import java.lang.ref.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public class amrw
+public abstract interface amrw
 {
-  public int a;
-  public long a;
-  public CmGameStartChecker.StartCheckParam a;
-  public String a;
-  public WeakReference<Activity> a;
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("GameRunningTask{");
-    localStringBuffer.append("mStartCheckParam=").append(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    localStringBuffer.append(", mActivityRef=").append(this.jdField_a_of_type_JavaLangRefWeakReference);
-    localStringBuffer.append(", mActivityState=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
-  }
+  public abstract void a(Canvas paramCanvas, Paint paramPaint);
 }
 
 

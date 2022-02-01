@@ -73,35 +73,42 @@ public abstract class PluginProxyActivity
   public static final String READER_ID = "qqreaderplugin.apk";
   private static final String TAG = "PluginProxyActivity";
   public static Locale locale;
-  public static boolean mAppForground = true;
-  public static boolean mGestureLockEnable;
-  private static String mUin = "";
+  public static boolean mAppForground;
+  public static boolean mGestureLockEnable = false;
+  private static String mUin;
   public static IActivityDispatchCallback sActivityDispatchCallback;
   public static PluginProxyActivity.IPluginManifestChecker sChecker;
-  private static Field sMMapField;
+  private static Field sMMapField = null;
   private static Method sUnparcelMethod;
   public boolean mActNeedImmersive = true;
   AndroidOreoUtils mAndroidOreoUtils;
   private boolean mCanLock = true;
-  private Class<?> mClassLaunchActivity;
-  protected String mCreateErrorInfo;
+  private Class<?> mClassLaunchActivity = null;
+  protected String mCreateErrorInfo = null;
   protected FlingHandler mFlingHandler;
   protected boolean mIsShowQQBackgroundIcon = true;
-  protected String mLaunchActivity;
+  protected String mLaunchActivity = null;
   protected boolean mNeedStatusTrans = true;
   private SparseArray<List> mPermissionCallerMap = new SparseArray();
-  protected IPluginActivity mPluginActivity;
-  protected String mPluginApkFilePath;
-  private boolean mPluginGestureLock;
-  protected String mPluginID;
-  protected String mPluginName;
+  protected IPluginActivity mPluginActivity = null;
+  protected String mPluginApkFilePath = null;
+  private boolean mPluginGestureLock = false;
+  protected String mPluginID = null;
+  protected String mPluginName = null;
   protected int mPluginResoucesType;
   private BroadcastReceiver mScreenOffReceiver = new PluginProxyActivity.2(this);
   protected int mStatusColor = 0;
-  protected int mStopFlag;
-  private String mUinString;
-  protected boolean mUseSkinEngine;
+  protected int mStopFlag = 0;
+  private String mUinString = null;
+  protected boolean mUseSkinEngine = false;
   Object msystemBar;
+  
+  static
+  {
+    mAppForground = true;
+    mUin = "";
+    sUnparcelMethod = null;
+  }
   
   private boolean getAppForground(Context paramContext)
   {
@@ -201,10 +208,10 @@ public abstract class PluginProxyActivity
       paramThrowable = getApplicationInfo();
       if (paramThrowable != null) {
         if ((paramThrowable.flags & 0x1) <= 0) {
-          break label173;
+          break label176;
         }
       }
-      label173:
+      label176:
       for (boolean bool1 = true;; bool1 = false)
       {
         if ((paramThrowable.flags & 0x80) > 0) {
@@ -869,7 +876,7 @@ public abstract class PluginProxyActivity
               super.onCreate(paramBundle);
             }
             if (localObject1 == null) {
-              break label1074;
+              break label1077;
             }
             this.mCreateErrorInfo = PluginUtils.getExceptionInfo((Throwable)localObject1);
             if (DebugHelper.sDebug) {
@@ -948,7 +955,7 @@ public abstract class PluginProxyActivity
               PluginRuntime.handleCrash(localThrowable1, this.mPluginID, this);
               handleCrash((Bundle)localObject2, localThrowable1);
               continue;
-              label1074:
+              label1077:
               this.mCreateErrorInfo = "success";
               if (DebugHelper.sDebug) {
                 DebugHelper.log("PluginProxyActivity.onCreate Success");

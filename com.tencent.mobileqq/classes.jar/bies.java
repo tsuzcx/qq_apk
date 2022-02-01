@@ -1,122 +1,108 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
 
-public class bies
+public abstract class bies
+  implements bien
 {
-  private static int a;
+  protected Rect a;
+  protected SurfaceHolder a;
+  private boolean a;
   
-  @Deprecated
-  public static void a(Context paramContext)
+  public bies(SurfaceHolder paramSurfaceHolder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
-    }
-    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
-    localIntent.setPackage(paramContext.getPackageName());
-    localIntent.putExtra("param_curr_window_status", 104);
-    paramContext.sendBroadcast(localIntent);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewSurfaceHolder = paramSurfaceHolder;
   }
   
-  public static void a(Context paramContext, int paramInt)
+  private void b(Drawable paramDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
-    }
-    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
-    localIntent.setPackage(paramContext.getPackageName());
-    localIntent.putExtra("param_curr_window_status", 104);
-    localIntent.putExtra("param_busitype", paramInt);
-    paramContext.sendBroadcast(localIntent);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenUtils", 2, "sendWindowClosedBroadcast");
-    }
-    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
-    localIntent.setPackage(paramContext.getPackageName());
-    localIntent.putExtra("param_concern_floating_type", paramInt2);
-    localIntent.putExtra("param_curr_window_status", 104);
-    localIntent.putExtra("param_busitype", paramInt1);
-    paramContext.sendBroadcast(localIntent);
-  }
-  
-  @Deprecated
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean) });
-    }
-    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
-    localIntent.setPackage(paramContext.getPackageName());
-    if (paramBoolean) {}
-    for (int i = 103;; i = 102)
+    if (bicd.a(paramDrawable))
     {
-      localIntent.putExtra("param_curr_window_status", i);
-      paramContext.sendBroadcast(localIntent);
+      bicd.a().a(paramDrawable, true);
+      paramDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
       return;
     }
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean), " ,busiType:", Integer.valueOf(paramInt) });
-    }
-    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
-    localIntent.setPackage(paramContext.getPackageName());
-    if (paramBoolean) {}
-    for (int i = 103;; i = 102)
+    Rect localRect = new Rect();
+    Object localObject;
+    float f2;
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      localIntent.putExtra("param_curr_window_status", i);
-      localIntent.putExtra("param_busitype", paramInt);
-      paramContext.sendBroadcast(localIntent);
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatingScreenUtils", 2, new Object[] { "sendWindowVisibleBroadcast:", Boolean.valueOf(paramBoolean), " ,busiType:", Integer.valueOf(paramInt1) });
-    }
-    Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
-    localIntent.setPackage(paramContext.getPackageName());
-    localIntent.putExtra("param_concern_floating_type", paramInt2);
-    if (paramBoolean) {}
-    for (paramInt2 = 103;; paramInt2 = 102)
-    {
-      localIntent.putExtra("param_curr_window_status", paramInt2);
-      localIntent.putExtra("param_busitype", paramInt1);
-      paramContext.sendBroadcast(localIntent);
-      return;
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (a == 0)
-    {
-      if ((Build.VERSION.SDK_INT < 26) || (Build.VERSION.SDK_INT >= 28) || (!bqcd.b(paramContext))) {
-        break label56;
+      localObject = (BitmapDrawable)paramDrawable;
+      localRect.set(0, 0, ((BitmapDrawable)localObject).getBitmap().getWidth(), ((BitmapDrawable)localObject).getBitmap().getHeight());
+      float f1 = this.jdField_a_of_type_AndroidGraphicsRect.width() / localRect.width();
+      f2 = this.jdField_a_of_type_AndroidGraphicsRect.height() / localRect.height();
+      if (f1 <= f2) {
+        break label200;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatingScreenUtils", 2, "AndroidO With Notch in Screen.");
+      localRect.right = this.jdField_a_of_type_AndroidGraphicsRect.right;
+      localRect.bottom = ((int)(f1 * localRect.bottom));
+    }
+    for (;;)
+    {
+      Gravity.apply(17, localRect.width(), localRect.height(), this.jdField_a_of_type_AndroidGraphicsRect, localRect);
+      paramDrawable.setBounds(localRect);
+      return;
+      if (!(paramDrawable instanceof ApngDrawable)) {
+        break;
       }
+      localObject = (ApngDrawable)paramDrawable;
+      localRect.set(0, 0, ((ApngDrawable)localObject).getImage().getWidth(), ((ApngDrawable)localObject).getImage().getHeight());
+      break;
+      label200:
+      localRect.bottom = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      localRect.right = ((int)(localRect.right * f2));
     }
-    label56:
-    for (a = 1; a == 1; a = 2) {
-      return true;
+  }
+  
+  abstract Canvas a(SurfaceHolder paramSurfaceHolder);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public final void a(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public final void a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {}
+    Canvas localCanvas;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_AndroidViewSurfaceHolder == null) || (this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface() == null) || (!this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().isValid()));
+      localCanvas = a(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    } while (localCanvas == null);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      }
+      this.jdField_a_of_type_Boolean = false;
+      b(paramDrawable);
     }
-    return false;
+    paramDrawable.draw(localCanvas);
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(localCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bies
  * JD-Core Version:    0.7.0.1
  */

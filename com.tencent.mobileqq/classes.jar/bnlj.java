@@ -1,26 +1,65 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
+import android.os.Build;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QzoneHardwareRestriction;
 
-class bnlj
-  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
+public class bnlj
 {
-  bnlj(bnlc parambnlc) {}
+  public static final int a = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifLowDeviceSize", 720);
+  public static final int b = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifMiddleDeviceSize", 720);
+  public static final int c = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifHighDeviceSize", 720);
+  public static final int d = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_delay", 200);
+  public static final int e = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_size_limit", 64);
+  public static final int f = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_max_speed", 20);
+  public static final int g = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_min_multiple_speed", 3);
+  private static int h = -1;
   
-  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  public static int a()
   {
-    bnzb.b("VideoStoryCapturePart", "mCurrentRatio---onChanged: ratio=" + paramRatio);
-    if (paramRatio == null) {}
-    while (bnlc.a(this.a) == paramRatio) {
-      return;
+    int i = 2;
+    if (QzoneHardwareRestriction.meetHardwareRestriction(2, 2)) {
+      i = 3;
     }
-    bnlc.a(this.a, paramRatio);
-    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {}
-    for (int i = bnlc.a;; i = 0)
+    while (QzoneHardwareRestriction.meetHardwareRestriction(1, 1)) {
+      return i;
+    }
+    return 1;
+  }
+  
+  public static boolean a()
+  {
+    if (h >= 0) {
+      return h == 1;
+    }
+    String[] arrayOfString = QzoneConfig.getInstance().getConfig("QZoneSetting", "GenerateGifBlackList", "X9007,MI 2C,A0001").split(",");
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      bnlc.a(this.a, i, bnza.a(bnlc.a(this.a), bnza.a(), bnlc.b(this.a), paramRatio));
-      return;
+      String str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str))
+      {
+        h = 1;
+        return true;
+      }
+      i += 1;
     }
+    h = 0;
+    return false;
+  }
+  
+  public static int b()
+  {
+    int i = a();
+    if (i == 1) {
+      return a;
+    }
+    if (i == 2) {
+      return b;
+    }
+    if (i == 3) {
+      return c;
+    }
+    return 720;
   }
 }
 

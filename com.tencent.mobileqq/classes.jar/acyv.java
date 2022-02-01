@@ -1,26 +1,73 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.MarketTrans;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class acyv
-  extends aczg
+  extends WebViewPlugin
 {
-  public int a()
+  private ArrayList<acyt> a = new ArrayList();
+  
+  public acyv()
   {
-    return 1000;
+    this.mPluginNameSpace = "GdtWebReportPlugin";
+    acyu localacyu = new acyu(this);
+    acyw localacyw = new acyw(this);
+    tod localtod = new tod();
+    this.a.add(localacyu);
+    this.a.add(localacyw);
+    this.a.add(localtod);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public Activity a()
   {
-    new bbzc().a(paramList, paramList1, paramStringBuilder);
-    return true;
+    if (this.mRuntime != null) {}
+    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
+    {
+      Activity localActivity2 = localActivity1;
+      if ((localActivity1 instanceof BasePluginActivity)) {
+        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
+      }
+      return localActivity2;
+    }
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void callJs(String paramString)
   {
-    return paramElem.market_trans.has();
+    super.callJs(paramString);
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    int i = 0;
+    while (i < this.a.size())
+    {
+      ((acyt)this.a.get(i)).a(paramString, paramLong, paramMap);
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    return super.handleSchemaRequest(paramString1, paramString2);
+  }
+  
+  public void onActivityReady()
+  {
+    super.onActivityReady();
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
   }
 }
 

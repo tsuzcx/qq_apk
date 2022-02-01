@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import mqq.os.MqqHandler;
 
-class ajrv
-  implements attj
+public class ajrv
+  extends aojs
 {
-  ajrv(ajru paramajru) {}
+  public ajrv(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0)) {
-      bcst.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1018);
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1016);
     }
   }
 }

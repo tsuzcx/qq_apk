@@ -47,12 +47,12 @@ class FileJsPlugin$9
         JSONObject localJSONObject = new JSONObject();
         if ((FileJsPlugin.access$4600(this.this$0)) && ((localObject instanceof byte[])))
         {
-          NativeBuffer.packNativeBuffer(FileJsPlugin.access$4700(this.this$0), (byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject);
+          NativeBuffer.packNativeBuffer(this.val$req.jsService, (byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject);
           FileJsPlugin.access$1100(this.this$0, this.val$req.event, true, this.val$startMS, l, str);
           return FileJsPlugin.access$1300(this.this$0, this.val$req, localJSONObject);
         }
-        if ((!FileJsPlugin.access$4800(this.this$0)) && ((localObject instanceof byte[]))) {
-          NativeBuffer.packNativeBuffer(FileJsPlugin.access$4900(this.this$0), (byte[])localObject, NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject);
+        if ((!FileJsPlugin.access$4700(this.this$0)) && ((localObject instanceof byte[]))) {
+          NativeBuffer.packNativeBuffer(this.val$req.jsService, (byte[])localObject, NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject);
         } else {
           localJSONObject.put("data", localThrowable);
         }

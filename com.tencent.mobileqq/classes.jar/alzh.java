@@ -1,18 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class alzh
-  implements apsw
+class alzh
+  implements alzk
 {
-  public alzh(SessionClearFragment paramSessionClearFragment) {}
+  alzh(alzg paramalzg) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
+      return false;
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    return alzg.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
   }
 }
 

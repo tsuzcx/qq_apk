@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import tvx;
-import tzo;
+import tvz;
+import tzq;
 
 public class SubscriptRecommendController$3
   implements Runnable
 {
-  public SubscriptRecommendController$3(tvx paramtvx) {}
+  public SubscriptRecommendController$3(tvz paramtvz) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Boolean = tvx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (tzo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    this.this$0.jdField_a_of_type_Boolean = tvz.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (tzq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
       this.this$0.jdField_a_of_type_Boolean = true;
     }
   }

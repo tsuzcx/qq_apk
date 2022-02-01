@@ -7,15 +7,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TopEdgeGestureLayout;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import pha;
-import rvd;
+import ozs;
+import rlz;
 
 public class ReadInJoyDraftboxActivity
   extends IphoneTitleBarActivity
@@ -29,16 +29,16 @@ public class ReadInJoyDraftboxActivity
     if (this.app == null) {
       return;
     }
-    rvd.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    rlz.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     setContentView(2131558457);
-    setTitle(anni.a(2131711662));
-    this.leftView.setText(anni.a(2131711651));
+    setTitle(anzj.a(2131711771));
+    this.leftView.setText(anzj.a(2131711760));
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new TopEdgeGestureLayout(this));
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment = new ReadInJoyDraftboxFragment();
-    localFragmentTransaction.add(2131367058, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
+    localFragmentTransaction.add(2131367109, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
     localFragmentTransaction.show(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
     localFragmentTransaction.commit();
   }
@@ -54,7 +54,7 @@ public class ReadInJoyDraftboxActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)pha.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ozs.a());
     a();
     return true;
   }

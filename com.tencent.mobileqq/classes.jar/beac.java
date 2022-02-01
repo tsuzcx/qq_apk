@@ -1,21 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import java.io.File;
-import java.io.OutputStream;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 public class beac
-  extends bdsh
+  extends begp
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public beac(CharSequence paramCharSequence, int paramInt)
   {
-    return new File(anhk.aZ);
+    super(paramCharSequence, paramInt);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected void a(View paramView, String paramString)
   {
-    return AlbumThumbManager.getInstance(BaseApplicationImpl.getContext()).getThumb(paramDownloadParams.url, new bead(this));
+    paramString = Uri.parse(paramString);
+    paramView = paramView.getContext();
+    paramString = new Intent("android.intent.action.VIEW", paramString);
+    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
+    try
+    {
+      paramView.startActivity(paramString);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
+    }
   }
 }
 

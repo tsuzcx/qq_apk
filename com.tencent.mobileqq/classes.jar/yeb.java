@@ -1,30 +1,61 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 
 public class yeb
-  implements yck
+  implements yel
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ybl> jdField_a_of_type_JavaLangRefWeakReference;
+  public yeb(QQStoryMainActivity paramQQStoryMainActivity) {}
   
-  public yeb(int paramInt)
+  public View a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return QQStoryMainActivity.a(this.a);
   }
   
-  public void a(String paramString, int paramInt)
+  public ImageView a()
   {
-    yqp.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+    return this.a.rightViewImg;
+  }
+  
+  public TextView a()
+  {
+    return this.a.rightViewText;
+  }
+  
+  public void a()
+  {
+    this.a.onBackEvent();
+  }
+  
+  public void a(String paramString)
+  {
+    QQStoryMainActivity.a(this.a, paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.startTitleProgress();
       return;
     }
-    ((ybl)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+    this.a.stopTitleProgress();
   }
   
-  public void a(ybl paramybl)
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramybl);
+    if (paramBoolean)
+    {
+      QQStoryMainActivity.a(this.a, win.a, anzj.a(2131709826));
+      return;
+    }
+    a(win.a);
   }
+  
+  public void c() {}
 }
 
 

@@ -1,11 +1,22 @@
-import android.widget.TextView;
+import android.view.View;
 
 class qab
+  implements bliz
 {
-  int jdField_a_of_type_Int = 2;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  qab(pzz parampzz) {}
   
-  private qab(pzy parampzy) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      pzz.a(this.a).dismiss();
+      return;
+      pzz.a(this.a, false);
+    }
+  }
 }
 
 

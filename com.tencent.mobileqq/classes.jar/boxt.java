@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.ae.play.AEVideoPreviewFragment;
 
-class boxt
-  implements View.OnClickListener
+public class boxt
+  implements DialogInterface.OnClickListener
 {
-  boxt(boxr paramboxr) {}
+  public boxt(AEVideoPreviewFragment paramAEVideoPreviewFragment) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setStatus(true);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleX(1.0F);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleY(1.0F);
-    this.a.a.j();
-    avsp.b();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

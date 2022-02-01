@@ -1,10 +1,16 @@
-public abstract class wnn
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+
+public class wnn
+  implements wng
 {
-  public abstract String a();
+  public wnn(StoryVideoUploadTask paramStoryVideoUploadTask, wnm paramwnm) {}
   
-  public abstract wno a(byte[] paramArrayOfByte);
-  
-  protected abstract byte[] a();
+  public void a(wnf paramwnf)
+  {
+    this.jdField_a_of_type_Wnm.k = ((wna)paramwnf).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+  }
 }
 
 

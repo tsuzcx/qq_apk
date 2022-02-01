@@ -1,32 +1,62 @@
-import android.text.Layout.Alignment;
-import android.text.Spanned;
-import android.text.StaticLayout;
+import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import java.io.File;
+import java.util.HashMap;
 
-class bors
-  extends bpkc
+public class bors
 {
-  bors(borq paramborq, int paramInt)
+  private HashMap<String, Typeface> a = new HashMap();
+  
+  public static bors a()
   {
-    super(paramInt);
+    return boru.a;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  @NonNull
+  public Typeface a(@Nullable String paramString)
   {
-    String str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    String str2 = bfsj.b(str1);
-    Object localObject = this.jdField_a_of_type_Borq.a(str2);
-    localObject = this.jdField_a_of_type_Borq.a((String)localObject);
-    localObject = this.jdField_a_of_type_Borq.a((String[])localObject);
-    if (bory.a((CharSequence)localObject, 0, ((CharSequence)localObject).length(), this.jdField_a_of_type_Borq.a, this.jdField_a_of_type_Borq.b, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4).getLineCount() > 3)
-    {
-      if (!TextUtils.equals("", paramCharSequence)) {
-        a();
-      }
-      return "";
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = Typeface.DEFAULT;
     }
-    this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    Typeface localTypeface;
+    do
+    {
+      return paramString;
+      localTypeface = (Typeface)this.a.get(paramString);
+      paramString = localTypeface;
+    } while (localTypeface != null);
+    return Typeface.DEFAULT;
+  }
+  
+  public void a(@Nullable String paramString, @Nullable Typeface paramTypeface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramTypeface == null)) {
+      return;
+    }
+    this.a.put(paramString, paramTypeface);
+  }
+  
+  public void a(@Nullable String paramString1, @NonNull String paramString2)
+  {
+    paramString2 = new File(paramString2);
+    if (paramString2.exists()) {
+      try
+      {
+        paramString2 = Typeface.createFromFile(paramString2);
+        if (paramString2 != null) {
+          a(paramString1, paramString2);
+        }
+        return;
+      }
+      catch (Throwable paramString1)
+      {
+        bpam.a("AEFontManager", "[setTypeface], create typeface raised exception, e=", paramString1);
+        return;
+      }
+    }
+    bpam.b("AEFontManager", "[setTypeface], fontFile not exists, path=" + paramString2.getAbsolutePath());
   }
 }
 

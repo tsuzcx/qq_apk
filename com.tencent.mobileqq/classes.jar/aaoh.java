@@ -1,30 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaoh
-  extends annz
+  implements View.OnClickListener
 {
-  public aaoh(TroopMemberApiService paramTroopMemberApiService) {}
+  public aaoh(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
+  public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1050);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(5));
-    this.a.a(3, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putStringArrayList("uins", paramArrayList1);
-    localBundle.putStringArrayList("tinyIds", paramArrayList2);
-    this.a.a(102, localBundle);
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).setVisibility(8);
+    }
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.a(true);
+    this.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

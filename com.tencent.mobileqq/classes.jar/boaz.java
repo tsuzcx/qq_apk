@@ -1,8 +1,8 @@
 public abstract interface boaz
 {
-  public abstract void a(long paramLong);
+  public abstract void a(String paramString, long paramLong, float paramFloat);
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt);
 }
 
 

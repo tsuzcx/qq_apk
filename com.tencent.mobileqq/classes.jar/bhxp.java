@@ -1,14 +1,14 @@
-import android.widget.FrameLayout.LayoutParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhxp
-  extends FrameLayout.LayoutParams
+class bhxp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
+  bhxp(bhxk parambhxk, long paramLong, int paramInt, String paramString) {}
   
-  public bhxp(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Bhxk.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

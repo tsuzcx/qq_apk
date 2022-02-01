@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acqx;
+import acvb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,17 +10,17 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjuv;
-import bjuw;
-import bjux;
-import bjuy;
-import bjuz;
-import bjva;
-import bjve;
-import bjvg;
-import bjvj;
-import bjvl;
-import bjvn;
+import bkvw;
+import bkvx;
+import bkvy;
+import bkvz;
+import bkwa;
+import bkwb;
+import bkwf;
+import bkwh;
+import bkwk;
+import bkwm;
+import bkxw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
@@ -55,6 +55,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IRewardVideoAdListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IGetAdPosInfo;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
@@ -75,7 +76,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AdProxyImpl
   extends AdProxy
 {
-  private static HashMap<String, bjuz> jdField_a_of_type_JavaUtilHashMap;
+  private static HashMap<String, bkwa> jdField_a_of_type_JavaUtilHashMap;
   private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
   private RewardedBrowsingCallbackReceiver jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver;
   private final String jdField_a_of_type_JavaLangString = "AdProxyImpl";
@@ -138,7 +139,7 @@ public class AdProxyImpl
       localParams.jdField_a_of_type_AndroidOsBundle = paramActivity;
       paramActivity = localParams;
     } while (paramAdInfo.report_info == null);
-    localParams.jdField_a_of_type_OrgJsonJSONObject = bjvn.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get());
+    localParams.jdField_a_of_type_OrgJsonJSONObject = bkxw.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get());
     return localParams;
   }
   
@@ -167,7 +168,7 @@ public class AdProxyImpl
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
       return localAdInfo;
     }
     catch (Exception localException)
@@ -193,7 +194,7 @@ public class AdProxyImpl
     if ((paramAdInfo == null) || (paramAdInfo.report_info == null)) {
       return;
     }
-    bjvn.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get());
+    bkxw.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get());
   }
   
   private void a(String paramString, int paramInt)
@@ -239,14 +240,14 @@ public class AdProxyImpl
     if ((paramIntent != null) && (jdField_a_of_type_JavaUtilHashMap != null))
     {
       String str = paramIntent.getStringExtra("KEY_MOTIVE_BROWSING");
-      Object localObject = (bjuz)jdField_a_of_type_JavaUtilHashMap.get(str);
+      Object localObject = (bkwa)jdField_a_of_type_JavaUtilHashMap.get(str);
       if (localObject != null)
       {
-        localObject = bjuz.a((bjuz)localObject);
+        localObject = bkwa.a((bkwa)localObject);
         QLog.i("AdProxyImpl", 1, "mvBrowing dataKey = " + str + ", data =" + localObject);
         jdField_a_of_type_JavaUtilHashMap.remove(str);
         if (localObject != null) {
-          ((bjvl)localObject).a(-1, paramIntent.getExtras());
+          ((bkwm)localObject).a(-1, paramIntent.getExtras());
         }
       }
     }
@@ -260,78 +261,95 @@ public class AdProxyImpl
     Activity localActivity = (Activity)paramContext;
     for (;;)
     {
+      JSONObject localJSONObject1;
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString1);
-        paramString1 = "";
-        paramString2 = new JSONObject();
-        paramContext = paramString1;
-        if (localJSONObject.has("data"))
+        paramString2 = new JSONObject(paramString1);
+        paramContext = "";
+        paramString1 = new JSONObject();
+        localJSONObject1 = new JSONObject();
+        if (!paramString2.has("data")) {
+          break label461;
+        }
+        JSONObject localJSONObject2 = paramString2.optJSONObject("data");
+        if ((localJSONObject2 != null) && ((localJSONObject2.has("ads_info")) || (localJSONObject2.has("antiSpamParamsForClick")) || (localJSONObject2.has("antiSpamParams"))))
         {
-          localJSONObject = localJSONObject.optJSONObject("data");
-          if ((localJSONObject != null) && ((localJSONObject.has("ads_info")) || (localJSONObject.has("extraReportData"))))
-          {
-            paramString1 = localJSONObject.optString("ads_info");
-            paramContext = paramString1;
-            if (localJSONObject.has("extraReportData"))
-            {
-              paramContext = localJSONObject.optJSONObject("extraReportData");
-              paramString1 = new JSONObject(paramString1);
-              paramString2 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString1));
-              if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
-              {
-                this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-                this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(localActivity);
-              }
-              paramString1 = new GdtHandler.Params();
-              paramString1.c = 11;
-              paramString1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-              paramString1.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramString2);
-              paramString1.jdField_a_of_type_Boolean = true;
-              paramString1.jdField_b_of_type_Boolean = true;
-              paramString1.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-              paramString1.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
-              paramString2 = new Bundle();
-              paramString2.putString("big_brother_ref_source_key", "biz_src_miniappD");
-              paramString1.jdField_a_of_type_AndroidOsBundle = paramString2;
-              paramString1.jdField_a_of_type_OrgJsonJSONObject = paramContext;
-              GdtHandler.a(paramString1);
-              return true;
-            }
+          String str = localJSONObject2.optString("ads_info");
+          paramContext = paramString1;
+          if (localJSONObject2.has("antiSpamParamsForClick")) {
+            paramContext = localJSONObject2.optJSONObject("antiSpamParamsForClick");
           }
-          else
+          paramString2 = paramContext;
+          localObject = str;
+          if (localJSONObject2.has("antiSpamParams"))
           {
-            paramContext = paramString1;
-            if (localJSONObject != null)
+            localObject = localJSONObject2.optJSONObject("antiSpamParams");
+            paramString1 = str;
+            paramString2 = paramContext;
+            paramContext = (Context)localObject;
+            paramString1 = new JSONObject(paramString1);
+            localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString1));
+            if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
             {
-              paramContext = paramString1;
-              if (localJSONObject.has("data"))
-              {
-                localJSONObject = localJSONObject.optJSONObject("data");
-                paramContext = paramString1;
-                if (localJSONObject != null)
-                {
-                  if (localJSONObject.has("ads_info")) {
-                    paramString1 = localJSONObject.optString("ads_info");
-                  }
-                  paramContext = paramString1;
-                  if (localJSONObject.has("extraReportData"))
-                  {
-                    paramContext = localJSONObject.optJSONObject("extraReportData");
-                    continue;
-                  }
-                }
-              }
+              this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
+              this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(localActivity);
             }
+            paramString1 = new GdtHandler.Params();
+            paramString1.c = 11;
+            paramString1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
+            paramString1.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
+            paramString1.jdField_a_of_type_Boolean = true;
+            paramString1.jdField_b_of_type_Boolean = true;
+            paramString1.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+            paramString1.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
+            localObject = new Bundle();
+            ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniappD");
+            paramString1.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
+            paramString1.jdField_a_of_type_OrgJsonJSONObject = paramString2;
+            paramString1.jdField_a_of_type_JavaLangString = paramContext.toString();
+            GdtHandler.a(paramString1);
+            return true;
           }
         }
-        paramString1 = paramContext;
+        else
+        {
+          if ((localJSONObject2 == null) || (!localJSONObject2.has("data"))) {
+            break label461;
+          }
+          paramString2 = localJSONObject2.optJSONObject("data");
+          if (paramString2 == null) {
+            break label461;
+          }
+          if (paramString2.has("ads_info")) {
+            paramContext = paramString2.optString("ads_info");
+          }
+          if (paramString2.has("antiSpamParamsForClick")) {
+            paramString1 = paramString2.optJSONObject("antiSpamParamsForClick");
+          }
+          paramString2 = paramString1;
+          localObject = paramContext;
+          if (localJSONObject2.has("antiSpamParams"))
+          {
+            localObject = localJSONObject2.optJSONObject("antiSpamParams");
+            paramString2 = paramString1;
+            paramString1 = paramContext;
+            paramContext = (Context)localObject;
+            continue;
+          }
+        }
+        paramString1 = (String)localObject;
       }
       catch (JSONException paramContext)
       {
         return false;
       }
-      paramContext = paramString2;
+      paramContext = localJSONObject1;
+      continue;
+      label461:
+      Object localObject = "";
+      paramString2 = paramString1;
+      paramContext = localJSONObject1;
+      paramString1 = (String)localObject;
     }
   }
   
@@ -340,12 +358,12 @@ public class AdProxyImpl
     return super.adExposure(paramContext, paramString1, paramString2);
   }
   
-  public AdProxy.AbsBannerAdView createBannerAdView(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, AdProxy.IBannerAdListener paramIBannerAdListener, Bundle paramBundle, IMiniAppContext paramIMiniAppContext)
+  public AdProxy.AbsBannerAdView createBannerAdView(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, AdProxy.IBannerAdListener paramIBannerAdListener, Bundle paramBundle, IMiniAppContext paramIMiniAppContext, IGetAdPosInfo paramIGetAdPosInfo)
   {
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjva(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInt1, paramInt2, paramIBannerAdListener, paramIMiniAppContext);
+    return new bkwb(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInt1, paramInt2, paramIBannerAdListener, paramIMiniAppContext, paramIGetAdPosInfo);
   }
   
   public AdProxy.AbsBlockAdView createBlockAdView(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, AdProxy.IBlockAdListener paramIBlockAdListener, Bundle paramBundle)
@@ -353,7 +371,7 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjve(this, paramActivity, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBlockAdListener);
+    return new bkwf(this, paramActivity, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBlockAdListener);
   }
   
   public AdProxy.AbsBoxAdView createBoxAdView(Activity paramActivity, String paramString1, String paramString2, AdProxy.IBoxADLisener paramIBoxADLisener, Bundle paramBundle)
@@ -361,7 +379,7 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjvg(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBoxADLisener);
+    return new bkwh(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIBoxADLisener);
   }
   
   public AdProxy.AbsInterstitialAdView createInterstitialAdView(Activity paramActivity, String paramString1, String paramString2, AdProxy.InterstitialADLisener paramInterstitialADLisener, Bundle paramBundle)
@@ -369,15 +387,15 @@ public class AdProxyImpl
     if ((paramActivity == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjvj(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInterstitialADLisener);
+    return new bkwk(this, paramActivity, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramInterstitialADLisener);
   }
   
-  public AdProxy.AbsRewardVideoAdView createRewardVideoAdView(Context paramContext, String paramString1, String paramString2, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener, Bundle paramBundle)
+  public AdProxy.AbsRewardVideoAdView createRewardVideoAdView(Context paramContext, String paramString1, String paramString2, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener, Bundle paramBundle, IMiniAppContext paramIMiniAppContext)
   {
     if ((paramContext == null) || (paramBundle == null)) {
       return null;
     }
-    return new bjvl(this, paramContext, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIRewardVideoAdListener);
+    return new bkwm(this, paramContext, paramString1, paramString2, paramBundle.getString(AdProxy.KEY_ACCOUNT), paramBundle.getInt(AdProxy.KEY_AD_TYPE), paramBundle.getInt(AdProxy.KEY_ORIENTATION), paramBundle.getString(AdProxy.KEY_GDT_COOKIE), paramBundle.getString(AdProxy.KEY_ENTRY_PATH), paramBundle.getString(AdProxy.KEY_REPORT_DATA), paramBundle.getString(AdProxy.KEY_REFER), paramBundle.getString(AdProxy.KEY_VIA), paramIRewardVideoAdListener, paramIMiniAppContext);
   }
   
   public void destroy(Activity paramActivity)
@@ -436,7 +454,7 @@ public class AdProxyImpl
       }
     }
     paramString2 = new MiniLoadingAdManager.CachedAdInfo((GdtAd)localObject, paramString2, paramString3);
-    paramString3 = new bjuy(this, paramILoadingAdListener, paramString1, l1, paramString2);
+    paramString3 = new bkvz(this, paramILoadingAdListener, paramString1, l1, paramString2);
     if (new File(paramString2.filePath).exists())
     {
       QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd 之前的实时广告下载过 因实时广告不落地 导致的本地有图片但是没信息的情况 直接回调");
@@ -449,19 +467,19 @@ public class AdProxyImpl
   public void onActivityStart()
   {
     super.onActivityStart();
-    bjvn.b();
+    bkxw.b();
   }
   
   public void onActivityStop()
   {
     super.onActivityStop();
-    bjvn.c();
+    bkxw.c();
   }
   
   public void onFirstFrame()
   {
     super.onFirstFrame();
-    bjvn.a();
+    bkxw.a();
   }
   
   public void preloadLoadingAd(Context paramContext, Bundle paramBundle, AdProxy.ILoadingAdListener paramILoadingAdListener)
@@ -472,7 +490,7 @@ public class AdProxyImpl
     paramContext = a(paramBundle);
     String str = paramBundle.getString(AdProxy.KEY_APPID);
     paramBundle = paramBundle.getString(AdProxy.KEY_ACCOUNT);
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bjuw(this, paramBundle, str, paramILoadingAdListener));
+    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bkvx(this, paramBundle, str, paramILoadingAdListener));
   }
   
   public void requestAdInfo(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt4, AdProxy.ICmdListener paramICmdListener)
@@ -494,7 +512,7 @@ public class AdProxyImpl
       return;
     }
     paramContext = a(paramBundle);
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bjuv(this, paramILoadingAdListener));
+    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(paramContext, new bkvw(this, paramILoadingAdListener));
   }
   
   public void updateLoadingAdLayoutAndShow(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AdProxy.ILoadingAdListener paramILoadingAdListener)
@@ -502,7 +520,7 @@ public class AdProxyImpl
     paramContext = new MiniLoadingAdLayout(paramContext);
     if (paramContext.setupUIForSDK(paramBoolean, paramString1, paramString2, paramString3, paramString4, paramString5, paramILoadingAdListener))
     {
-      paramContext.show(new bjux(this, paramILoadingAdListener));
+      paramContext.show(new bkvy(this, paramILoadingAdListener));
       if (paramILoadingAdListener != null) {
         paramILoadingAdListener.onAdShow(paramContext);
       }

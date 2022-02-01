@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ExpandableListView;
-
-class astj
-  implements View.OnClickListener
+public class astj
 {
-  astj(asti paramasti, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (asti.a(this.jdField_a_of_type_Asti).c(this.jdField_a_of_type_Int)) {
-      asti.a(this.jdField_a_of_type_Asti).b(this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      asti.a(this.jdField_a_of_type_Asti).a(this.jdField_a_of_type_Int);
-    }
+    return "SearchResultItem{md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", resourceId='" + this.c + '\'' + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", imgSize=" + this.jdField_a_of_type_Long + ", imgOther='" + this.d + '\'' + '}';
   }
 }
 

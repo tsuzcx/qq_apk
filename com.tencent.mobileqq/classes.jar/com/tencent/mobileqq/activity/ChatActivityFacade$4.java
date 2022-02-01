@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adrm;
+import aaaz;
+import aean;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
-import mqu;
-import zxe;
+import mrs;
 
 public final class ChatActivityFacade$4
   implements Runnable
@@ -17,21 +17,21 @@ public final class ChatActivityFacade$4
   public void run()
   {
     NewIntent localNewIntent;
-    if (adrm.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
+    if (aean.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
     {
-      long l = adrm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      long l = aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       QLog.i("ChatActivityFacade.QZoneStoryFeeds", 1, "lastTime: " + l);
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), zxe.class);
+      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), aaaz.class);
       localNewIntent.putExtra("key_last_aio_story_create_time", l);
     }
     try
     {
-      localNewIntent.putExtra("key_friend_uid", mqu.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      adrm.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      adrm.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      localNewIntent.setObserver(adrm.a());
+      localNewIntent.putExtra("key_friend_uid", mrs.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+      aean.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      aean.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      localNewIntent.setObserver(aean.a());
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      adrm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
+      aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
       return;
     }
     catch (Exception localException)

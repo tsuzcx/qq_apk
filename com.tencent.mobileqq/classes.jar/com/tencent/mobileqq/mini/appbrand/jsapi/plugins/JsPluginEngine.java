@@ -51,6 +51,7 @@ public class JsPluginEngine
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PersonalizeJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ReportJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InterstitialAdPlugin"));
+    localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.NativePageJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ImageJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.MapJsPlugin"));
@@ -61,6 +62,7 @@ public class JsPluginEngine
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.EmbeddedLivePusherJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PreCacheJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OpenDataPlugin"));
+    localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ChooseMessageFileJsPlugin"));
     if (Build.VERSION.SDK_INT >= 18) {
       localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BluetoothJsPlugin"));
     }
@@ -81,6 +83,7 @@ public class JsPluginEngine
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppBoxPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.SubpackageJsPlugin"));
     localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AdJsPlugin"));
+    localArrayList.add(MiniAppDexLoader.getInstance().createJsPlugin("com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BookShelfJsPlugin"));
     return localArrayList;
   }
   

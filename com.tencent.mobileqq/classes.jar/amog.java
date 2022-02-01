@@ -1,30 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
 public class amog
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public amog(CmGameLoadingView.1 param1) {}
+  public amog(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700889));
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    this.a.a.a(2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
+    if (AppSetting.c)
+    {
+      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
+      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label124;
+      }
+    }
+    label124:
+    for (int i = 2131690708;; i = 2131719083)
+    {
+      paramValueAnimator = paramValueAnimator.getString(i);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amog
  * JD-Core Version:    0.7.0.1
  */

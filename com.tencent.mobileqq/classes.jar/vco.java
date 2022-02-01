@@ -1,36 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqcircle.requests.QCircleSetUserSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class vco
-  implements CompoundButton.OnCheckedChangeListener
+  implements TextWatcher
 {
-  vco(vcl paramvcl) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  vco(vcn paramvcn) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i;
-    if (paramBoolean)
-    {
-      i = 0;
-      QCircleSetUserSwitchRequest localQCircleSetUserSwitchRequest = new QCircleSetUserSwitchRequest(2, i);
-      VSNetworkHelper.a().a(localQCircleSetUserSwitchRequest, new vcp(this, paramBoolean));
-      if (!paramBoolean) {
-        break label62;
-      }
-      vrf.a("", 11, 23, 5);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (paramEditable == null) {
       return;
-      i = 1;
-      break;
-      label62:
-      vrf.a("", 11, 23, 4);
     }
+    vcn.a(this.jdField_a_of_type_Vcn).removeTextChangedListener(this);
+    if ((paramEditable.toString().length() > 80) && (this.jdField_a_of_type_Int + this.b <= paramEditable.toString().length()))
+    {
+      int i = this.jdField_a_of_type_Int + this.b - (paramEditable.toString().length() - 80);
+      paramEditable = paramEditable.toString().substring(0, i) + paramEditable.toString().substring(this.jdField_a_of_type_Int + this.b);
+      vcn.a(this.jdField_a_of_type_Vcn).setText(paramEditable);
+      vcn.a(this.jdField_a_of_type_Vcn).setSelection(i);
+      vws.a(-1L, BaseApplicationImpl.getContext(), 1, anzj.a(2131697194), 1);
+    }
+    vcn.a(this.jdField_a_of_type_Vcn).addTextChangedListener(this);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt3;
   }
 }
 

@@ -1,64 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
-public class aejx
-  implements View.OnClickListener
+class aejx
+  implements DialogInterface.OnClickListener
 {
-  public aejx(GroupManagerActivity paramGroupManagerActivity) {}
+  aejx(aejv paramaejv, HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.app, null);
-    int i;
-    label31:
-    QQToast localQQToast;
-    if ((k & 0x2) != 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {}
+    for (paramInt = 1;; paramInt = 2)
     {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label103;
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
+      if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
+        break;
       }
-      if ((i == 0) && (j == 0)) {
-        break label108;
-      }
-      if (30 != this.a.a.size()) {
-        break label162;
-      }
-      localQQToast = new QQToast(this.a);
-      localQQToast.d(2000);
-      localQQToast.c(2131718623);
-      localQQToast.a();
-    }
-    label162:
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), anzj.a(2131701506), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       return;
-      i = 0;
-      break;
-      label103:
-      j = 0;
-      break label31;
-      label108:
-      if (16 == this.a.a.size())
-      {
-        localQQToast = new QQToast(this.a);
-        localQQToast.d(2000);
-        localQQToast.c(2131718622);
-        localQQToast.a();
-      }
-      else
-      {
-        GroupManagerActivity.a(this.a, bglp.a(this.a, 2131692817, 2131692823, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-        GroupManagerActivity.a(this.a, 0);
-      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(aejv.a(this.jdField_a_of_type_Aejv));
+    ((anzp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL__ACTION_DELETE_SHELL);
+    this.jdField_a_of_type_Aejv.a = new bjbs(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    this.jdField_a_of_type_Aejv.a.setContentView(2131562849);
+    this.jdField_a_of_type_Aejv.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691900));
+    this.jdField_a_of_type_Aejv.a.setCancelable(true);
+    this.jdField_a_of_type_Aejv.a.show();
   }
 }
 

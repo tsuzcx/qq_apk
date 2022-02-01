@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzs;
+import bnau;
 import java.util.HashMap;
 
 public class WeishiBottomButton
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiBottomButton> CREATOR = new blzs();
+  public static final Parcelable.Creator<WeishiBottomButton> CREATOR = new bnau();
   public int a;
   public String a;
   public HashMap<Integer, Integer> a;

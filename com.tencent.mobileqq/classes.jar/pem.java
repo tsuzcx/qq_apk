@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class pem
-  implements ViewBase.IBuilder
+  extends anyu
 {
-  public ViewBase build(VafContext paramVafContext)
+  public pem(KandianMergeManager paramKandianMergeManager) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new pel(paramVafContext);
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, antf.aA))) {
+      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { antf.aA });
+    }
   }
 }
 

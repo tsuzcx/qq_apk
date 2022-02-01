@@ -1,26 +1,16 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-class bpee
-  implements View.OnTouchListener
+public class bpee
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bpee(bped parambped) {}
+  public bpee(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
+    AEEditorAILoadingView.c(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

@@ -1,53 +1,29 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfip
-  extends bfhq
+  implements View.OnClickListener
 {
-  public bfip(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 22;
-  }
+  public bfip(TroopBarPublishActivity.16 param16) {}
   
-  @Nullable
-  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((localObject != null) && (a((MessageRecord)localObject, paramLong2, paramLong3)))
+    Intent localIntent = new Intent();
+    localIntent.putExtra("path", this.a.a);
+    PublicFragmentActivity.a(this.a.this$0, localIntent, TribeVideoPreviewFragment.class);
+    this.a.this$0.overridePendingTransition(2130772331, 2130772332);
+    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-      paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131696968);
-      paramObject = bepx.a(paramInt1, ((MessageRecord)localObject).shmsgseq, paramInt2);
-      localObject = ((MessageRecord)localObject).senderuin;
-      MessageForReplyText.reportReplyMsg(null, "AIOchat", "Appear_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-      return new bfhr(true, paramList, paramObject, (String)localObject);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
-    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "exp_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-      return;
-    }
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString)
-  {
-    MessageForReplyText.reportReplyMsg(null, "AIOchat", "Clk_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
-    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "clk_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      bdll.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
   }

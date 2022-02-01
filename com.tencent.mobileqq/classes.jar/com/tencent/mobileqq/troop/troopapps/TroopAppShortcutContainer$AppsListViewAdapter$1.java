@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.troopapps;
 
-import bfnx;
-import bfom;
+import bgny;
+import bgon;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class TroopAppShortcutContainer$AppsListViewAdapter$1
-  extends LinkedHashMap<Integer, ArrayList<bfnx>>
+  extends LinkedHashMap<Integer, ArrayList<bgny>>
 {
-  public TroopAppShortcutContainer$AppsListViewAdapter$1(bfom parambfom)
+  public TroopAppShortcutContainer$AppsListViewAdapter$1(bgon parambgon)
   {
     put(Integer.valueOf(0), new ArrayList());
     put(Integer.valueOf(1), new ArrayList());

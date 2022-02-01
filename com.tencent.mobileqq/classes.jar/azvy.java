@@ -1,25 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
 
 public class azvy
-  implements View.OnTouchListener
 {
-  public azvy(QCallDetailActivity paramQCallDetailActivity) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  beyg jdField_a_of_type_Beyg;
+  public PersonalityLabelPhoto a;
+  public int b = 0;
+  public int c = 0;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      QCallDetailActivity.a(this.a).setPressed(true);
-    }
-    while (1 != paramMotionEvent.getAction()) {
-      return false;
-    }
-    QCallDetailActivity.a(this.a).setPressed(false);
-    return false;
-  }
+  azvy(azvx paramazvx) {}
 }
 
 

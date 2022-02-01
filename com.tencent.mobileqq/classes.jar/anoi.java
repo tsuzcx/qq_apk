@@ -1,60 +1,44 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.tools.MD5;
+import eipc.EIPCResult;
 import org.json.JSONObject;
 
-public class anoi
+final class anoi
+  implements anom
 {
-  String a;
-  String b;
-  String c;
+  anoi(int paramInt) {}
   
-  public static anoi a(String paramString)
+  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      paramString = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
     }
-    for (;;)
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
+    }
+    try
     {
-      return paramString;
-      try
+      paramQQAppInterface = anog.a(paramInt2, paramArrayOfInt);
+      if (paramQQAppInterface == null)
       {
-        anoi localanoi = new anoi();
-        paramString = new JSONObject(paramString);
-        localanoi.a = paramString.getString("url");
-        if (localanoi.a != null)
-        {
-          localanoi.a = localanoi.a.trim();
-          localanoi.c = MD5.toMD5(localanoi.a);
-        }
-        localanoi.b = paramString.getString("md5");
-        if (localanoi.b != null) {
-          localanoi.b = localanoi.b.trim();
-        }
-        paramString = localanoi;
-        if (QLog.isDevelopLevel())
-        {
-          axei.a("HotchatSCMng", "parse ConfigData", new Object[] { localanoi });
-          return localanoi;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
       }
     }
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[url:").append(this.a).append(",").append("md5:").append(this.b).append("]");
-    return localStringBuilder.toString();
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (this.a == 1000) {
+      paramQQAppInterface.put("uin", paramString1);
+    }
+    paramQQAppInterface.put("openId", paramString2);
+    paramString1 = new Bundle();
+    paramString1.putString("resData", paramQQAppInterface.toString());
+    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
+    anav.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

@@ -1,36 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
 
-public class abda
-  extends WebViewPlugin
+class abda
+  implements aaav<CLIENT.StSmartMatchMusicRsp>
 {
-  public abda()
-  {
-    this.mPluginNameSpace = "troop_member_level_JS_API";
-  }
+  abda(abcu paramabcu) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    if (!"troop_member_level_JS_API".equals(paramString2)) {
-      return false;
-    }
-    if (("setTitleBar".equals(paramString3)) && (paramVarArgs.length == 3))
-    {
-      paramString2 = (bhql)super.getBrowserComponent(2);
-      if (paramString2 != null)
-      {
-        paramString1 = paramVarArgs[0];
-        paramJsBridgeListener = paramString1;
-        if ("RETURN".equals(paramString1)) {
-          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
-        }
-        paramString2.a.a(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
-      }
-      return true;
-    }
-    return false;
+    long l = System.currentTimeMillis() - abcu.a(this.a);
+    abbe.a("edit_smart_music", abbe.a(paramLong, l, "", 0L));
+    this.a.a(anzj.a(2131702798) + l + "ms");
+    abcu.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
   }
 }
 

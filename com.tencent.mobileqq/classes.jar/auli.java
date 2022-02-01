@@ -1,16 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import java.util.List;
 
 class auli
-  extends RecyclerView.ViewHolder
+  implements aumz
 {
-  public int a = aulb.b;
+  auli(aulf paramaulf, List paramList) {}
   
-  public auli(View paramView)
+  public void a()
   {
-    super(paramView);
-    paramView.setTag(this);
+    auoo.a(aulf.a(this.jdField_a_of_type_Aulf), this.jdField_a_of_type_JavaUtilList, aulf.a(this.jdField_a_of_type_Aulf), aulf.a(this.jdField_a_of_type_Aulf));
   }
+  
+  public void b() {}
 }
 
 

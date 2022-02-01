@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bpfn;
+import bqhi;
 
 public class EditVideoStoryButton$2
   implements Runnable
 {
-  public EditVideoStoryButton$2(bpfn parambpfn) {}
+  public EditVideoStoryButton$2(bqhi parambqhi) {}
   
   public void run()
   {
-    bpfn.a(this.this$0).show();
+    bqhi.a(this.this$0).show();
   }
 }
 

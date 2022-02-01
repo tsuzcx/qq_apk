@@ -1,44 +1,18 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
 
 public class awtm
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public awtm(TabPageIndicator paramTabPageIndicator) {}
+  public awtm(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
-    }
-    TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof awtp)) {}
-    for (localObject = (awtp)localObject;; localObject = null)
-    {
-      if (localObject == null) {}
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        int i = TabPageIndicator.a(this.a).a();
-        int j = ((awtp)localObject).jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        ((awtp)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        TabPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
-          TabPageIndicator.a(this.a).a(j);
-        }
-        if (TabPageIndicator.a(this.a) != null) {
-          TabPageIndicator.a(this.a).a(j);
-        }
-      }
+    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
     }
   }
 }

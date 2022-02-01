@@ -1,43 +1,50 @@
 package a.a.a.b;
 
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.secprotocol.t.s;
+import org.json.JSONObject;
+
 public class f
 {
-  public static byte[][] a;
-  public static byte[][] b;
+  public Context a;
   
-  static
+  public f(Context paramContext)
   {
-    byte[] arrayOfByte1 = { 7, 73, -121, 101, 17, 31, 86, -55, 4, 79, -111, 127, 13, 20, 81, -44, 2 };
-    byte[] arrayOfByte2 = { 39, 70, -74, 82 };
-    byte[] arrayOfByte3 = { 106, 65, -70, 67, 33, 53, 57, -1, 40, 96 };
-    a = new byte[][] { arrayOfByte1, arrayOfByte2, { 39, 88, -78, 83, 38 }, arrayOfByte3 };
-    arrayOfByte1 = new byte[] { 54, 115 };
-    arrayOfByte2 = new byte[] { 54, 115, -91 };
-    arrayOfByte3 = new byte[] { 36, 121 };
-    byte[] arrayOfByte4 = { 33, 121 };
-    byte[] arrayOfByte5 = { 40, 116, -70 };
-    byte[] arrayOfByte6 = { 48, 121 };
-    byte[] arrayOfByte7 = { 54, 121 };
-    byte[] arrayOfByte8 = { 42, 102 };
-    byte[] arrayOfByte9 = { 54, 102 };
-    byte[] arrayOfByte10 = { 49, 121 };
-    byte[] arrayOfByte11 = { 53, 118 };
-    byte[] arrayOfByte12 = { 48, 116 };
-    byte[] arrayOfByte13 = { 53, 126 };
-    byte[] arrayOfByte14 = { 53, 99, -67 };
-    byte[] arrayOfByte15 = { 55, 120 };
-    byte[] arrayOfByte16 = { 49, 104, -89 };
-    byte[] arrayOfByte17 = { 33, 102 };
-    byte[] arrayOfByte18 = { 49, 96 };
-    byte[] arrayOfByte19 = { 45, 99 };
-    byte[] arrayOfByte20 = { 54, 100 };
-    byte[] arrayOfByte21 = { 54, 99, -70 };
-    b = new byte[][] { arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, arrayOfByte6, { 40, 121 }, arrayOfByte7, { 39, 102 }, arrayOfByte8, { 36, 102 }, arrayOfByte9, arrayOfByte10, arrayOfByte11, { 40, 116 }, arrayOfByte12, arrayOfByte13, arrayOfByte14, { 53, 99, -74 }, arrayOfByte15, { 55, 114 }, arrayOfByte16, { 33, 100 }, arrayOfByte17, { 38, 121 }, arrayOfByte18, { 33, 99 }, { 51, 117, -95 }, arrayOfByte19, arrayOfByte20, { 54, 114, -80 }, arrayOfByte21 };
+    this.a = paramContext;
   }
   
-  public static String a(int paramInt)
+  public JSONObject a(int paramInt1, int paramInt2, String paramString, b paramb)
   {
-    return g.a(b[paramInt]);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put(g.a(0), paramInt1);
+      localJSONObject.put(g.a(1), paramInt2);
+      localJSONObject.put(g.a(2), paramb.b);
+      localJSONObject.put(g.a(3), paramb.d);
+      localJSONObject.put(g.a(4), paramb.c);
+      localJSONObject.put(g.a(5), paramb.e);
+      localJSONObject.put(g.a(6), paramString);
+      localJSONObject.put(g.a(7), paramb.f);
+      localJSONObject.put(g.a(8), paramb.g);
+      localJSONObject.put(g.a(9), Build.VERSION.SDK_INT);
+      localJSONObject.put(g.a(10), s.b(paramb.a));
+      localJSONObject.put(g.a(11), paramb.h);
+      localJSONObject.put(g.a(12), System.currentTimeMillis());
+      localJSONObject.put(g.a(13), 1);
+      localJSONObject.put(g.a(14), "");
+      localJSONObject.put(g.a(15), s.getProcessName(this.a));
+      localJSONObject.put(g.a(16), s.c(this.a));
+      localJSONObject.put(g.a(17), s.d(this.a));
+      localJSONObject.put(g.a(18), s.e(this.a));
+      return localJSONObject;
+    }
+    finally
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
 }
 

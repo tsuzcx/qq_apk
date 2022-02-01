@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afcw
-  implements View.OnFocusChangeListener
+class afcw
+  implements DialogInterface.OnClickListener
 {
-  public afcw(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  afcw(afcv paramafcv) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramBoolean);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcw
  * JD-Core Version:    0.7.0.1
  */

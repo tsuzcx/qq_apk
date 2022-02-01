@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import alvz;
-import bglp;
-import bgpa;
+import amhr;
+import bhlq;
+import bhpc;
 
 public class ShortVideoPlayActivity$14
   implements Runnable
@@ -11,8 +11,8 @@ public class ShortVideoPlayActivity$14
   
   public void run()
   {
-    bgpa localbgpa = bglp.a(this.this$0, 232, null, this.a, new alvz(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbgpa);
+    bhpc localbhpc = bhlq.a(this.this$0, 232, null, this.a, new amhr(this), null);
+    ShortVideoPlayActivity.a(this.this$0, localbhpc);
   }
 }
 

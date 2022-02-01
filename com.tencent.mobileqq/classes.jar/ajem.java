@@ -1,72 +1,39 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class ajem
-  extends anvm
+  extends Handler
 {
-  public ajem(TroopActivity paramTroopActivity) {}
+  public ajem(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
+    }
+    switch (paramMessage.what)
     {
-      if (paramPBRepeatMessageField != null)
-      {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        while (paramPBRepeatMessageField.hasNext())
-        {
-          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
-          QLog.d("TroopActivity", 2, "ondelete: uin " + localDelResult.uin.get());
-          if (this.a.a != null)
-          {
-            int i = 0;
-            while (i < this.a.a.size())
-            {
-              Stranger localStranger = (Stranger)this.a.a.get(i);
-              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
-                this.a.a.remove(localStranger);
-              }
-              i += 1;
-            }
-          }
-        }
-      }
-    }
-    else if (QLog.isColorLevel()) {
-      QLog.d("TroopActivity", 2, "onDelete is failed");
-    }
-  }
-  
-  public void a(boolean paramBoolean, List<Stranger> paramList)
-  {
-    if (paramBoolean) {
-      if (paramList != null)
-      {
-        this.a.a.clear();
-        this.a.a.addAll(paramList);
-        QLog.d("TroopActivity", 2, "onGetListRemote :" + this.a.a.size());
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
+      return;
+    case 3: 
+      this.a.c();
+      return;
+    case 4: 
+      this.a.a((List)paramMessage.obj);
       return;
     }
-    QLog.d("TroopActivity", 2, "onGetListRemote is failed");
-  }
-  
-  public void b(boolean paramBoolean, List<Stranger> paramList)
-  {
-    if ((paramBoolean) && (paramList != null))
-    {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-      QLog.d("TroopActivity", 2, "onGetListLocal :" + this.a.a.size());
-    }
+    this.a.h();
   }
 }
 

@@ -1,20 +1,33 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-final class bdnu
-  extends Spannable.Factory
+public class bdnu
+  extends RecyclablePool.Recyclable
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  
+  public void recycle()
   {
-    if ((!bdnt.b) && ((paramCharSequence instanceof bdnt))) {
-      try
-      {
-        bdnt localbdnt = (bdnt)((bdnt)paramCharSequence).clone();
-        return localbdnt;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    }
-    return super.newSpannable(paramCharSequence);
+    super.recycle();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("StorageItem info[size=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",accessTime=").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",isFile=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",fileCount=").append(this.c);
+    localStringBuilder.append(",dirCount=").append(this.d);
+    localStringBuilder.append(",name=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",path=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

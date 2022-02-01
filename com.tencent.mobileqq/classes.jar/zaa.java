@@ -1,24 +1,27 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
-public abstract interface zaa
+public class zaa
+  implements Animation.AnimationListener
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public zaa(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public abstract void a(String paramString);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
+    }
+  }
   
-  public abstract void a(zbg paramzbg);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

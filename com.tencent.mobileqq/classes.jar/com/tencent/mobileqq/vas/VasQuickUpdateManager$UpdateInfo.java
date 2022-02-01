@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
 import android.text.TextUtils;
-import bqfh;
+import brgs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -50,7 +50,7 @@ public class VasQuickUpdateManager$UpdateInfo
         if (!paramString.exists()) {
           paramString.mkdirs();
         }
-        bqfh.a(paramTagItemInfo);
+        brgs.a(paramTagItemInfo);
         str = paramTagItemInfo + "/tempFile_" + System.currentTimeMillis() + "_" + paramInt;
       }
       return str;

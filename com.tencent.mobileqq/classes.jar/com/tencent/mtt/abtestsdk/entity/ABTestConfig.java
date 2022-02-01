@@ -9,36 +9,10 @@ import java.util.Map;
 
 public class ABTestConfig
 {
-  public static final String ENV = "ENV";
   public static final String ENV_DEBUG = "DEBUG";
   public static final String ENV_RELEASE = "RELEASE";
   public static final String GUID = "guid";
   public static final String GUID_DEV = "guid_dev";
-  public static final String KEY_OF_BRAND = "brand";
-  public static final String KEY_OF_BUNDLE_INFO = "bundle_app_info";
-  public static final String KEY_OF_BUNDLE_VERSION = "bundle_version";
-  public static final String KEY_OF_CITY = "city";
-  public static final String KEY_OF_DEVICE_BRAND = "device_brand";
-  public static final String KEY_OF_DEVICE_HEIGHT = "device_height";
-  public static final String KEY_OF_DEVICE_VERSION = "device_version";
-  public static final String KEY_OF_DEVICE_WIDTH = "device_width";
-  public static final String KEY_OF_LANGUAGE = "language";
-  public static final String KEY_OF_MODEL = "model";
-  public static final String KEY_OF_OS_VERSION = "os_version";
-  public static final String KEY_OF_PLATFORM = "platform";
-  public static final String KEY_OF_PLATFORM_VERSION = "platform_version";
-  public static final String KEY_OF_PROVINCE = "province";
-  public static final String KEY_OF_RESOLUTION_RATIO = "resolution_ratio";
-  public static final String KEY_OF_ROMA_BRAND = "ROMA_BRAND";
-  public static final String KEY_OF_ROMA_BUNDLE_ID = "ROMA_BUNDLE_ID";
-  public static final String KEY_OF_ROMA_BUNDLE_NAME = "ROMA_BUNDLE_NAME";
-  public static final String KEY_OF_ROMA_BUNDLE_VER = "ROMA_BUNDLE_VER";
-  public static final String KEY_OF_ROMA_OS_MODEL = "ROMA_OS_MODEL";
-  public static final String KEY_OF_ROMA_OS_VER = "ROMA_OS_VER";
-  public static final String KEY_OF_ROMA_PLATFORM = "ROMA_PLATFORM";
-  public static final String KEY_OF_ROMA_RESOLUTION = "ROMA_RESOLUTION";
-  public static final String KEY_OF_ROMA_SDK_VERSION = "ROMA_SDK_VERSION";
-  public static final String KEY_OF_SEX = "sex";
   private static final String TAG = "ABTestConfig";
   private String appId;
   private String appKey;
@@ -80,9 +54,15 @@ public class ABTestConfig
   
   public String getRequestUrl()
   {
+    String str;
     if ("DEBUG".equals(this.mEnv)) {
-      return "https://qbad.sparta.html5.qq.com/wabt/get_gray_policy_response";
+      str = "https://qbad.sparta.html5.qq.com/wabt/get_gray_policy_response";
     }
+    do
+    {
+      return str;
+      str = "https://casestudy.html5.qq.com/wabt/get_gray_policy_response";
+    } while (!"505".equals(this.appId));
     return "https://ad.browser.qq.com/wabt/get_gray_policy_response";
   }
   
@@ -98,7 +78,7 @@ public class ABTestConfig
       this.mCustomProfiles.remove(paramString);
       return;
     }
-    ABTestLog.error("remove profiles error. [" + paramString + "]" + "is not exist.", new Object[0]);
+    ABTestLog.error("remove profiles error. [" + paramString + "]is not exist.", new Object[0]);
   }
   
   public void setAppId(String paramString)

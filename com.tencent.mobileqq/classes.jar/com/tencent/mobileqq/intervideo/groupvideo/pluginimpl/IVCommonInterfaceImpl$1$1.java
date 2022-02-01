@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.os.Bundle;
-import aoou;
+import apck;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CountDownLatch;
 
 class IVCommonInterfaceImpl$1$1
-  extends aoou
+  extends apck
 {
   IVCommonInterfaceImpl$1$1(IVCommonInterfaceImpl.1 param1, String paramString, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch)
   {

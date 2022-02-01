@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.precover;
 
-import azcg;
-import azch;
+import azut;
+import azuu;
 
 public class PrecoverManager$4
   implements Runnable
 {
-  public PrecoverManager$4(azcg paramazcg) {}
+  public PrecoverManager$4(azut paramazut) {}
   
   public void run()
   {
-    azcg.a(this.this$0).a();
+    azut.a(this.this$0).a();
   }
 }
 

@@ -1,34 +1,12 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class apbh
-  extends apbj
+final class apbh
+  implements DialogInterface.OnDismissListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public ArCloudConfigInfo a;
-  public String a;
-  public float[] a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  
-  public apbh()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_b_of_type_Long = 1L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  }
-  
-  public String toString()
-  {
-    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
+    apbg.a(null);
   }
 }
 

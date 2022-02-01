@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-
-public final class bamw
-  implements Parcelable.Creator<FilterCategoryItem>
+public abstract interface bamw
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public abstract void a(bamu parambamu, bamv parambamv);
   
-  public FilterCategoryItem[] a(int paramInt)
-  {
-    return new FilterCategoryItem[paramInt];
-  }
+  public abstract void b(bamu parambamu, bamv parambamv);
 }
 
 

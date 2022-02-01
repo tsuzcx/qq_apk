@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
-import mmi;
+import mnf;
 
 public class VideoChatRoomListView
   extends ListView
 {
-  private mmi a;
+  private mnf a;
   
   public VideoChatRoomListView(Context paramContext)
   {
@@ -40,9 +40,9 @@ public class VideoChatRoomListView
     return 0.0F;
   }
   
-  public void setOnDispatchTouchEventResponseListener(mmi parammmi)
+  public void setOnDispatchTouchEventResponseListener(mnf parammnf)
   {
-    this.a = parammmi;
+    this.a = parammnf;
   }
 }
 

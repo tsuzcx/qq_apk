@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acow;
+import acsz;
 
 public class GdtMvViewController$6
   implements Runnable
 {
-  public GdtMvViewController$6(acow paramacow, long paramLong1, long paramLong2) {}
+  public GdtMvViewController$6(acsz paramacsz, long paramLong1, long paramLong2) {}
   
   public void run()
   {

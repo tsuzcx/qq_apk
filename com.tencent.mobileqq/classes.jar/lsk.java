@@ -1,85 +1,292 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Rect;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import com.tencent.av.opengl.ui.GLRootView;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class lsk
+  extends lsh
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  public int b;
-  String b;
-  public String c;
-  public String d;
-  String e = "client";
+  protected TextureRender a;
+  private ArrayList<lsh> jdField_a_of_type_JavaUtilArrayList;
+  private Comparator<lsh> jdField_a_of_type_JavaUtilComparator = new lsm(this);
+  protected TextureRender b;
+  private lsh jdField_b_of_type_Lsh;
+  private lsj jdField_b_of_type_Lsj = new lsl(this);
+  protected boolean b;
   
-  public lsk(RandomWebProtocol paramRandomWebProtocol)
+  public lsk(Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
-    String str = RandomWebProtocol.a(paramRandomWebProtocol).getAccount();
-    paramRandomWebProtocol = (TicketManager)RandomWebProtocol.a(paramRandomWebProtocol).getManager(2);
-    if (paramRandomWebProtocol == null) {
+    super(paramContext);
+  }
+  
+  public lsh a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      throw new ArrayIndexOutOfBoundsException(paramInt);
+    }
+    return (lsh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public void a(lqt paramlqt)
+  {
+    paramlqt.a(b() / 2, c() / 2, 0.0F);
+    c(paramlqt);
+    paramlqt.a(-b() / 2, -c() / 2, 0.0F);
+    e(paramlqt);
+  }
+  
+  public void a(lqt paramlqt, lsh paramlsh)
+  {
+    if (!paramlsh.a()) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = "8.4.1";
-    this.jdField_a_of_type_Boolean = false;
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(str);
-      this.jdField_b_of_type_JavaLangString = paramRandomWebProtocol.getSkey(str);
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_a_of_type_OrgJsonJSONObject = null;
-      this.c = null;
-      this.d = null;
-      return;
+    int i = -this.e;
+    int j = -this.d;
+    paramlqt.a(i, j);
+    paramlsh.a(paramlqt);
+    paramlqt.a(-i, -j);
+  }
+  
+  public void a(lsh paramlsh)
+  {
+    if (paramlsh.jdField_a_of_type_Lsh != null) {
+      throw new IllegalStateException();
     }
-    catch (NumberFormatException localNumberFormatException)
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramlsh);
+    paramlsh.jdField_a_of_type_Lsh = this;
+    paramlsh.a(this.jdField_b_of_type_Lsj);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
+      paramlsh.b(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
+    }
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, lsh paramlsh, boolean paramBoolean)
+  {
+    Rect localRect = paramlsh.jdField_a_of_type_AndroidGraphicsRect;
+    if ((!paramBoolean) || (localRect.contains(paramInt1, paramInt2)))
     {
-      for (;;)
+      if (paramlsh.b(paramMotionEvent)) {}
+      while ((this.jdField_a_of_type_Lsi != null) && (this.jdField_a_of_type_Lsi.a(paramlsh, paramMotionEvent))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(lsh paramlsh)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (!this.jdField_a_of_type_JavaUtilArrayList.remove(paramlsh)) {
+      return false;
+    }
+    if (this.jdField_b_of_type_Lsh == paramlsh)
+    {
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+      b(localMotionEvent);
+      localMotionEvent.recycle();
+    }
+    paramlsh.d();
+    paramlsh.jdField_a_of_type_Lsh = null;
+    paramlsh.a(null);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    return true;
+  }
+  
+  protected void b(GLRootView paramGLRootView)
+  {
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = paramGLRootView;
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).b(paramGLRootView);
+      i += 1;
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  protected boolean b(MotionEvent paramMotionEvent)
+  {
+    int j = (int)paramMotionEvent.getX();
+    int k = (int)paramMotionEvent.getY();
+    int i = paramMotionEvent.getAction();
+    Object localObject;
+    if (this.jdField_b_of_type_Lsh != null)
+    {
+      if (i == 0)
       {
-        this.jdField_a_of_type_Long = 0L;
-        if (QLog.isColorLevel()) {
-          QLog.d("RandomWebProtocol", 2, "[randomWeb] init Req error: failed parse self_uin: " + str);
-        }
+        localObject = MotionEvent.obtain(paramMotionEvent);
+        ((MotionEvent)localObject).setAction(3);
+        a((MotionEvent)localObject, j, k, this.jdField_b_of_type_Lsh, false);
+        this.jdField_b_of_type_Lsh = null;
+      }
+    }
+    else
+    {
+      if (i != 0) {
+        break label151;
+      }
+      i = e() - 1;
+      if (i < 0) {
+        break label151;
+      }
+      localObject = a(i);
+      if (((lsh)localObject).a() == 0) {
+        break label129;
+      }
+    }
+    label129:
+    while (!a(paramMotionEvent, j, k, (lsh)localObject, true))
+    {
+      i -= 1;
+      break;
+      a(paramMotionEvent, j, k, this.jdField_b_of_type_Lsh, false);
+      if ((i == 3) || (i == 1)) {
+        this.jdField_b_of_type_Lsh = null;
+      }
+      return true;
+    }
+    this.jdField_b_of_type_Lsh = ((lsh)localObject);
+    return true;
+    label151:
+    return super.b(paramMotionEvent);
+  }
+  
+  protected void d()
+  {
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).d();
+      i += 1;
+    }
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = null;
+  }
+  
+  protected void d(lqt paramlqt) {}
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  public int e()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  protected void e()
+  {
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).e();
+      i += 1;
+    }
+  }
+  
+  protected void e(lqt paramlqt)
+  {
+    if ((this.jdField_b_of_type_Boolean) || (d())) {
+      d(paramlqt);
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      int j = e();
+      while (i < j)
+      {
+        a(paramlqt, a(i));
+        i += 1;
       }
     }
   }
   
-  lsk(RandomWebProtocol paramRandomWebProtocol, lsk paramlsk)
+  protected void f(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramlsk.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramlsk.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramlsk.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Long = paramlsk.jdField_a_of_type_Long;
-    this.jdField_b_of_type_JavaLangString = paramlsk.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Int = paramlsk.jdField_b_of_type_Int;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramlsk.jdField_a_of_type_OrgJsonJSONObject;
-    this.c = paramlsk.c;
-    this.d = paramlsk.d;
-    this.e = paramlsk.e;
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      lsh locallsh = a(i);
+      if (locallsh.a() == 0) {
+        locallsh.f(paramInt);
+      }
+      i += 1;
+    }
   }
   
-  public String a()
+  public void h()
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return "";
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    try
+  }
+  
+  public void i()
+  {
+    int j = e();
+    int i = 0;
+    while (i < j)
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("reqtype", this.jdField_a_of_type_Int).put("qqversion", this.jdField_a_of_type_JavaLangString).put("isdebug", this.jdField_a_of_type_Boolean).put("self_uin", this.jdField_a_of_type_Long).put("self_skey", this.jdField_b_of_type_JavaLangString).put("self_gender", this.jdField_b_of_type_Int).put("reqbody", this.jdField_a_of_type_OrgJsonJSONObject);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      lsh locallsh = (lsh)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (this.jdField_b_of_type_Lsh == locallsh)
+      {
+        long l = SystemClock.uptimeMillis();
+        MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        b(localMotionEvent);
+        localMotionEvent.recycle();
+      }
+      locallsh.d();
+      locallsh.jdField_a_of_type_Lsh = null;
+      locallsh.a(null);
+      i += 1;
     }
-    catch (Exception localException)
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void j()
+  {
+    f();
+    int i = 0;
+    int j = e();
+    while (i < j)
     {
-      localException.printStackTrace();
+      a(i).f();
+      i += 1;
     }
-    return "";
+  }
+  
+  public void k()
+  {
+    g();
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).g();
+      i += 1;
+    }
   }
 }
 

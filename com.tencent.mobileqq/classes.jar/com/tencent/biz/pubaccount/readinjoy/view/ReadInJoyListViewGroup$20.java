@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pmh;
+import pfa;
 
 class ReadInJoyListViewGroup$20
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyListViewGroup$20
   
   public void run()
   {
-    pmh.a().a(this.this$0.getContext());
+    pfa.a().a(this.this$0.getContext());
   }
 }
 

@@ -1,14 +1,15 @@
+import com.tencent.mobileqq.webview.webso.WebSoService;
+
 public class bisq
-  extends biss
 {
-  public static bisq a()
+  public static void a(String paramString)
   {
-    return new bisq();
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c();
+    long l = System.currentTimeMillis();
+    if ((bitb.b(paramString)) && (!bitb.d(paramString)) && (aroa.c().b > 0))
+    {
+      WebSoService.a().a(paramString, null, true);
+      bitb.a("preload spned time = " + (System.currentTimeMillis() - l));
+    }
   }
 }
 

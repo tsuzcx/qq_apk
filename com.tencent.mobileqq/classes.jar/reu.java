@@ -1,8 +1,15 @@
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
 
-public abstract interface reu
+public class reu
+  implements swr
 {
-  public abstract URL a(URL paramURL);
+  public reu(EditVideoFragment paramEditVideoFragment) {}
+  
+  public void a(TopicInfo paramTopicInfo)
+  {
+    ocd.a("0X800B24D", new paa().a("topic_id", Long.valueOf(paramTopicInfo.a())).a());
+  }
 }
 
 

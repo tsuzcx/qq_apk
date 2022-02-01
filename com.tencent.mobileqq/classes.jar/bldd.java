@@ -1,169 +1,30 @@
-import android.os.Bundle;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class bldd
-  extends bjsi
+public class bldd
+  implements bldf
 {
-  bldd(bldc parambldc, boolean paramBoolean1, boolean paramBoolean2) {}
+  public bldd(QSecFramework paramQSecFramework) {}
   
-  public void a()
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    if (paramLong1 != 0L)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_exit_room");
-      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if ((paramInt == 0) || (paramInt == 1003)) {
-      blck.a().b(this.jdField_a_of_type_Bldc.d, this.jdField_a_of_type_Boolean, this.b);
-    }
-    while ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
-    localBundle.putInt("gmesdk_event_ret", paramInt);
-    localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
-    ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-  }
-  
-  public void a(int paramInt, String[] paramArrayOfString)
-  {
-    int i = 0;
-    switch (paramInt)
-    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      }
+      paramObject1 = String.valueOf(paramLong1);
+      if (paramLong2 == 0L) {
+        break label84;
+      }
+      QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramObject1), 1000L * paramLong2);
     }
     for (;;)
     {
-      return;
-      paramInt = 0;
-      String str;
-      Bundle localBundle;
-      while (paramInt < paramArrayOfString.length)
-      {
-        str = paramArrayOfString[paramInt];
-        if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-        {
-          localBundle = new Bundle();
-          localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
-          localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
-          localBundle.putString("gmesdk_event_key_member_uin", str);
-          ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-        }
-        paramInt += 1;
-      }
-      continue;
-      while (i < paramArrayOfString.length)
-      {
-        str = paramArrayOfString[i];
-        if (!this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.contains(str))
-        {
-          this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.add(str);
-          if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-          {
-            localBundle = new Bundle();
-            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
-            localBundle.putBoolean("gmesdk_event_key_member_speaking", true);
-            localBundle.putString("gmesdk_event_key_member_uin", str);
-            ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-          }
-        }
-        i += 1;
-      }
-      continue;
-      paramInt = 0;
-      while (paramInt < paramArrayOfString.length)
-      {
-        str = paramArrayOfString[paramInt];
-        if (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.contains(str))
-        {
-          this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaUtilList.remove(str);
-          if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-          {
-            localBundle = new Bundle();
-            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
-            localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
-            localBundle.putString("gmesdk_event_key_member_uin", str);
-            ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-          }
-        }
-        paramInt += 1;
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    Bundle localBundle;
-    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      localBundle = new Bundle();
-      if (!paramBoolean) {
-        break label70;
-      }
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_mic");
-      localBundle.putInt("gmesdk_event_ret", paramInt);
-    }
-    for (;;)
-    {
-      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-      return;
-      label70:
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_mic");
-      localBundle.putInt("gmesdk_event_ret", paramInt);
-    }
-  }
-  
-  public void a(String[] paramArrayOfString) {}
-  
-  public void b(int paramInt, String paramString)
-  {
-    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
-      localBundle.putInt("gmesdk_event_ret", paramInt);
-      localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
-      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-    }
-  }
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    Bundle localBundle;
-    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      localBundle = new Bundle();
-      if (!paramBoolean) {
-        break label70;
-      }
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_speaker");
-      localBundle.putInt("gmesdk_event_ret", paramInt);
-    }
-    for (;;)
-    {
-      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
-      return;
-      label70:
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_speaker");
-      localBundle.putInt("gmesdk_event_ret", paramInt);
-    }
-  }
-  
-  public void c(int paramInt, String paramString)
-  {
-    if ((this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_room_disconnect");
-      localBundle.putInt("gmesdk_event_ret", paramInt);
-      localBundle.putString("gmesdk_event_value_room_disconnect_ret_msg", paramString);
-      ((blde)this.jdField_a_of_type_Bldc.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return 0;
+      label84:
+      QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramObject1));
     }
   }
 }

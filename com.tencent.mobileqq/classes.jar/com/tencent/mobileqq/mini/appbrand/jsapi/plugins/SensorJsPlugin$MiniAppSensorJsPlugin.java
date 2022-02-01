@@ -4,6 +4,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,8 +18,12 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
   private float[] mMagneticFieldValues = new float[3];
   private float[] mMatrix = new float[9];
   private float[] mValues = new float[3];
+  JsRuntime runtime;
   
-  private SensorJsPlugin$MiniAppSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin) {}
+  SensorJsPlugin$MiniAppSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin, @NonNull JsRuntime paramJsRuntime)
+  {
+    this.runtime = paramJsRuntime;
+  }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt)
   {
@@ -27,7 +32,7 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
   
   public void onCompass(SensorEvent paramSensorEvent)
   {
-    if (!SensorJsPlugin.access$400(this.this$0)) {
+    if (!SensorJsPlugin.access$100(this.this$0)) {
       return;
     }
     if (paramSensorEvent.sensor.getType() == 1) {
@@ -50,7 +55,7 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("direction", f);
         localJSONObject.put("accuracy", paramSensorEvent);
-        this.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onCompassChange", localJSONObject.toString(), 0);
+        this.runtime.evaluateSubcribeJS("onCompassChange", localJSONObject.toString(), 0);
         return;
       }
       catch (JSONException paramSensorEvent)
@@ -89,7 +94,7 @@ class SensorJsPlugin$MiniAppSensorJsPlugin
       paramSensorEvent.put("x", f1);
       paramSensorEvent.put("y", f2);
       paramSensorEvent.put("z", f3);
-      this.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onAccelerometerChange", paramSensorEvent.toString(), 0);
+      this.runtime.evaluateSubcribeJS("onAccelerometerChange", paramSensorEvent.toString(), 0);
       return;
     }
     catch (JSONException paramSensorEvent)

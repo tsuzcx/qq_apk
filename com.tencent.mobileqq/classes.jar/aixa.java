@@ -1,20 +1,66 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aixa
-  implements View.OnClickListener
+public abstract class aixa
 {
-  public aixa(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  protected QQAppInterface a;
   
-  public void onClick(View paramView)
+  protected String a(SessionInfo paramSessionInfo, String paramString)
   {
-    aiwt.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
-    bcst.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramSessionInfo != null) && (paramSessionInfo.a != 0) && (1 != paramSessionInfo.a) && (3000 != paramSessionInfo.a)) {
+      return paramString;
+    }
+    return "";
+  }
+  
+  protected boolean a(List<MessageRecord> paramList)
+  {
+    boolean bool2;
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      boolean bool1 = true;
+      bool2 = bool1;
+      if (!paramList.hasNext()) {
+        break label46;
+      }
+      if (((MessageRecord)paramList.next()).isSend()) {
+        break label48;
+      }
+      bool1 = false;
+    }
+    label46:
+    label48:
+    for (;;)
+    {
+      break;
+      bool2 = true;
+      return bool2;
+    }
+  }
+  
+  protected byte[] a(List<MessageRecord> paramList, int paramInt, String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((MessageRecord)localIterator.next()).uniseq));
+    }
+    int j = 8;
+    int i = j;
+    if (paramList.size() == 1)
+    {
+      i = j;
+      if (paramInt == 1) {
+        i = aixg.a((MessageRecord)paramList.get(0));
+      }
+    }
+    return new UpComingMsgModel(((MessageRecord)paramList.get(0)).frienduin, paramString2, localArrayList, ((MessageRecord)paramList.get(0)).istroop, paramInt, i, paramString1).toJson().getBytes();
   }
 }
 

@@ -1,30 +1,16 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lmz
-  implements mhj
 {
-  public lmz(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public long a;
+  String jdField_a_of_type_JavaLangString = null;
+  public boolean a;
   
-  public void a()
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.setViewEnable(2131373372, false);
-      this.a.a.setViewEnable(2131373371, false);
-      this.a.a.setViewEnable(2131363071, false);
-    }
-  }
-  
-  public void b()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772169);
-  }
+  public lmz(AVNotifyCenter paramAVNotifyCenter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lmz
  * JD-Core Version:    0.7.0.1
  */

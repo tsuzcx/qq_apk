@@ -1,96 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-public class aqtc
-  extends aqkz<aqtd>
+class aqtc
+  implements aqsw
 {
-  @NonNull
-  public aqtd a(int paramInt)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = bgsg.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new aqtd(bgsg.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
-  }
+  aqtc(aqsy paramaqsy) {}
   
-  @Nullable
-  public aqtd a(aqlg[] paramArrayOfaqlg)
+  public void a(View paramView)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return null;
-    }
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaqlg);
-    }
-    try
-    {
-      paramArrayOfaqlg = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaqlg.getBytes("utf-8")));
-      NodeList localNodeList = paramArrayOfaqlg.getElementsByTagName("video_redbag_config");
-      if ((localNodeList != null) && (localNodeList.getLength() > 0))
-      {
-        paramArrayOfaqlg = new aqtd(paramArrayOfaqlg.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaqlg.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
-        return paramArrayOfaqlg;
-      }
-    }
-    catch (Exception paramArrayOfaqlg)
-    {
-      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(aqtd paramaqtd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
-    }
-  }
-  
-  public Class<aqtd> clazz()
-  {
-    return aqtd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return bgsg.an(localQQAppInterface.getApp(), localQQAppInterface.c());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 252;
+    aqsy.a(this.a, aqsy.a(this.a).inflate());
+    aqsy.a(this.a).setOnClickListener(new aqtd(this));
+    ((TextView)aqsy.a(this.a).findViewById(2131365540)).setOnClickListener(new aqte(this));
+    bdll.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtc
  * JD-Core Version:    0.7.0.1
  */

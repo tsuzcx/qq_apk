@@ -1,25 +1,36 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aout
-  extends aouc
 {
-  public ArCloudConfigInfo a;
-  
-  public aout(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static boolean a(int paramInt)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
   }
   
-  public String toString()
+  public static boolean a(MessageRecord paramMessageRecord)
   {
-    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.b);
-    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    int i = paramMessageRecord.msgtype;
+    return (i == -2011) || (i == -2060) || (i == -2065) || (i == -5008) || (i == -5010) || (i == -2050) || (i == -1051) || (i == -2021) || (i == -2018) || (i == -4502);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return paramInt == -2022;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return paramInt == -1035;
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return paramInt == -2011;
   }
 }
 

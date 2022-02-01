@@ -190,7 +190,7 @@ public class DBDelayManager
       default: 
         return;
       }
-    } while (!this.app.isBackground_Pause);
+    } while (!this.app.isBackgroundPause);
     if (QLog.isColorLevel()) {
       QLog.d("Q.db.Cache", 2, "addMsgQueue write notify");
     }

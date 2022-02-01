@@ -1,13 +1,19 @@
-import java.util.List;
-
-public abstract interface apde
-  extends apcx
+public class apde
 {
-  public abstract void a(long paramLong);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
   
-  public abstract void a(List<apcu> paramList, long paramLong);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public apde(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
 }
 
 

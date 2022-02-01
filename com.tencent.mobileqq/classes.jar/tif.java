@@ -1,37 +1,84 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import org.json.JSONObject;
 
-class tif
-  implements ViewTreeObserver.OnPreDrawListener
+public abstract interface tif
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  public abstract void a();
   
-  tif(tie paramtie, View paramView, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(float paramFloat);
   
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_Tie.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a) + tie.a(this.jdField_a_of_type_Tie));
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tie.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tie.a) + tie.b(this.jdField_a_of_type_Tie));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a, this.jdField_a_of_type_Tie.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a)));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a).setVisibility(4);
-    }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tie.a, this.jdField_a_of_type_Int, this.b);
-    return true;
-  }
+  public abstract void a(int paramInt, VVideoView paramVVideoView, boolean paramBoolean, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  
+  public abstract void a(VVideoView paramVVideoView);
+  
+  public abstract void a(VVideoView paramVVideoView, int paramInt);
+  
+  public abstract void a(VVideoView paramVVideoView, String paramString);
+  
+  public abstract void a(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  
+  public abstract void a(VVideoView paramVVideoView, JSONObject paramJSONObject);
+  
+  public abstract void a(VVideoView paramVVideoView, boolean paramBoolean);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(VVideoView paramVVideoView);
+  
+  public abstract void b(VVideoView paramVVideoView, int paramInt);
+  
+  public abstract void b(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  
+  public abstract void b(VVideoView paramVVideoView, JSONObject paramJSONObject);
+  
+  public abstract void b(VVideoView paramVVideoView, boolean paramBoolean);
+  
+  public abstract void b_(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(VVideoView paramVVideoView);
+  
+  public abstract void c(VVideoView paramVVideoView, int paramInt);
+  
+  public abstract void c(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  
+  public abstract void c(VVideoView paramVVideoView, boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void c_(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void d(VVideoView paramVVideoView);
+  
+  public abstract void e();
+  
+  public abstract void e(VVideoView paramVVideoView);
+  
+  public abstract void f();
+  
+  public abstract void f(VVideoView paramVVideoView);
+  
+  public abstract void f_(int paramInt);
+  
+  public abstract void g();
+  
+  public abstract void g(VVideoView paramVVideoView);
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

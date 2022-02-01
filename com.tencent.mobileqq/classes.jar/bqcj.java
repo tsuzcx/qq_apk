@@ -1,20 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bqcj
-  extends Handler
 {
-  public bqcj(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static String a;
   
-  public void handleMessage(Message paramMessage)
+  public static boolean a(long paramLong, Context paramContext)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    a = anxf.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    }
+    return (bool1) || (bool2);
   }
 }
 

@@ -1,6 +1,8 @@
-public abstract interface awtq
+public class awtq
 {
-  public abstract void a(int paramInt);
+  float a;
+  public Integer a;
+  float b;
 }
 
 

@@ -1,35 +1,20 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
 
-class bbgc
-  implements View.OnClickListener
+public class bbgc
 {
-  bbgc(bbfs parambbfs) {}
-  
-  public void onClick(View paramView)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ViewPager localViewPager;
-    if (bbfs.a(this.a).getCurrentItem() != 1)
-    {
-      localViewPager = bbfs.a(this.a);
-      if (bbfs.a(this.a)) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool = true;; bool = false)
-    {
-      localViewPager.setCurrentItem(1, bool);
-      this.a.c();
-      this.a.a(1);
-      this.a.a(this.a.a.getResources().getString(2131708844));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new bbge(paramInt1, paramView));
+    return localValueAnimator;
+  }
+  
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  {
+    return new bhtd(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bbgd(paramView));
   }
 }
 

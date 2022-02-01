@@ -2,15 +2,15 @@ package cooperation.qzone.util;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bctj;
-import bmiw;
+import bdmc;
+import bnjz;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.HashMap;
 
 public class PanoramaUtil$1
   implements Runnable
 {
-  public PanoramaUtil$1(bmiw parambmiw, String paramString1, String paramString2, int paramInt) {}
+  public PanoramaUtil$1(bnjz parambnjz, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class PanoramaUtil$1
       localHashMap.put(this.b, this.jdField_a_of_type_JavaLangString);
       Context localContext = BaseApplication.getContext();
       if (localContext != null) {
-        bctj.a(localContext).a(null, "qzone_panorama", true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
+        bdmc.a(localContext).a(null, "qzone_panorama", true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
       }
     }
   }

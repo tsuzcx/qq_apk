@@ -1,151 +1,125 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView.2;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView.3;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ovs
-  implements bkij
+  extends PopupWindow
 {
-  public static int a;
-  public static int b = 1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private ArrayList<ChannelCoverInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ovq jdField_a_of_type_Ovq;
-  protected pmn a;
-  private int c;
+  private int jdField_a_of_type_Int = 0;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private ovw jdField_a_of_type_Ovw;
   
-  static
+  public ovs(Activity paramActivity, ArticleInfo paramArticleInfo)
   {
-    jdField_a_of_type_Int = 2;
+    super(paramActivity);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    a(a());
+    setTouchable(true);
+    setFocusable(true);
+    setOutsideTouchable(false);
+    setInputMethodMode(1);
+    setBackgroundDrawable(new ColorDrawable(0));
+    a();
   }
   
-  public ovs(Context paramContext, int paramInt, ListView paramListView)
+  private void a(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Pmn = new ovt(this);
-    this.c = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)pmh.a().a(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverView", 2, "ChannelCoverView createSimpleView");
+    TemplateBean localTemplateBean = pbb.a(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
+    oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
+    setContentView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramVafContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    setHeight(paramVafContext.mLayoutHeight);
+    setWidth(paramVafContext.mLayoutWidth);
+  }
+  
+  public VafContext a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
+      oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "comment_feeds");
     }
-    a(paramContext);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_ComTencentWidgetListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    }
-    pmk.a().a(this.jdField_a_of_type_Pmn);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      pmh.a().c(paramInt);
-    }
-    pmh.a().a(paramInt);
-  }
-  
-  public static void a(String paramString, ChannelCoverInfo paramChannelCoverInfo, int paramInt)
-  {
-    a(paramString, paramChannelCoverInfo, paramInt, -1, -1);
-  }
-  
-  public static void a(String paramString, ChannelCoverInfo paramChannelCoverInfo, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ThreadManager.post(new ChannelCoverView.4(paramChannelCoverInfo, paramInt1, paramInt2, paramInt3, paramString), 5, null, true);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, ChannelCoverInfo paramChannelCoverInfo, int paramInt)
-  {
-    ThreadManager.executeOnSubThread(new ChannelCoverView.3(paramChannelCoverInfo, paramInt, paramString1, paramString2, paramString3, paramString4));
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
   }
   
   public void a()
   {
-    pmk.a().b(this.jdField_a_of_type_Pmn);
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverView", 2, "onDestroy()");
+    setOnDismissListener(new ovt(this));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
     }
   }
   
-  void a(Context paramContext)
+  protected void a(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramContext).inflate(2131558819, null, false));
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364961);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131381232));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(afur.a(6.0F, paramContext.getResources()));
-    this.jdField_a_of_type_Ovq = new ovq(paramContext, this.jdField_a_of_type_JavaUtilArrayList, this.c);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Ovq);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    if (this.c == 56)
-    {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnTouchListener(new ovu(this, paramContext));
-      localLinearLayout.setPadding(0, (int)bgme.a(paramContext, 2.0F), 0, (int)bgme.a(paramContext, 2.0F));
-    }
-    if (this.c == 41523) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, afur.a(10.0F, paramContext.getResources()), 0, 0);
-    }
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    localLayoutParams.alpha = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView)
+  {
+    if (isShowing())
     {
-      paramAdapterView = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (!TextUtils.isEmpty(paramAdapterView.mChannelJumpUrl)) {
-        break label249;
-      }
-      paramView = new HashMap();
-      paramView.put("param_key_ariticle_id", Long.valueOf(paramAdapterView.mArticleId));
-      paramView.put("param_key_channel_cover_style", Integer.valueOf(paramAdapterView.mChannelCoverStyle));
-      if (this.c != 56) {
-        break label225;
-      }
-      ohp.b(this.jdField_a_of_type_AndroidContentContext, paramAdapterView.mChannelCoverId, paramAdapterView.mChannelCoverName, paramAdapterView.mChannelType, 4, paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "launchChannelActivity info.mArticleId:" + paramAdapterView.mArticleId + " info.mChannelCoverStyle: " + paramAdapterView.mChannelCoverStyle + " info.mChannelCoverId:" + paramAdapterView.mChannelCoverId + " info.mChannelCoverName:" + paramAdapterView.mChannelCoverName + " info.mChannelType: " + paramAdapterView.mChannelType);
-      }
-      if (this.c == 56) {
-        ThreadManager.executeOnSubThread(new ChannelCoverView.2(this, paramAdapterView));
-      }
-    }
-    for (;;)
-    {
-      if (this.c == 0) {
-        a("0X8007F02", paramAdapterView, jdField_a_of_type_Int);
-      }
+      dismiss();
       return;
-      label225:
-      ohp.a(this.jdField_a_of_type_AndroidContentContext, paramAdapterView.mChannelCoverId, paramAdapterView.mChannelCoverName, paramAdapterView.mChannelType, 4, paramView);
-      break;
-      label249:
-      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.mChannelJumpUrl);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "info.mChannelJumpUrl:" + paramAdapterView.mChannelJumpUrl);
-      }
-      paramAdapterView.mPreUpdateTime = paramAdapterView.mUpdateTime;
     }
+    this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+    a(0);
+    a(1.0F);
+    setAnimationStyle(2131755038);
+    showAtLocation(paramView, 17, 0, 0);
+    paramView = new paa();
+    paramView.i().b("wording", "" + pbb.a());
+    osp.a("0X8009FE7", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramView);
+  }
+  
+  public void a(ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(Container paramContainer)
+  {
+    if (paramContainer == null) {
+      return;
+    }
+    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new ovu(this));
+  }
+  
+  public void a(ovw paramovw)
+  {
+    this.jdField_a_of_type_Ovw = paramovw;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
-import wrs;
+import wvn;
 
 public class MsgTabHaloEntity
   extends Entity
@@ -29,9 +29,9 @@ public class MsgTabHaloEntity
     return "uid=?";
   }
   
-  public static String[] getSelectionArgs(wrs paramwrs)
+  public static String[] getSelectionArgs(wvn paramwvn)
   {
-    return new String[] { String.valueOf(paramwrs.b) };
+    return new String[] { String.valueOf(paramwvn.b) };
   }
   
   public String toString()

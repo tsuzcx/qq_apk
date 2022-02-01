@@ -1,25 +1,36 @@
-import java.util.Arrays;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
-public final class bjcd
+public class bjcd
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+  private WeakReference<bjca> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public String toString()
+  public bjcd(QQToast paramQQToast, bjca parambjca)
   {
-    return "MultiParams{mRelationType=" + this.jdField_a_of_type_Int + ", mMultiAVType=" + this.b + ", mMultiAVSubType=" + this.c + ", mRoomId=" + this.d + ", mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSourceId=" + this.e + ", mSig=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", mSvrRecogFlag=" + this.f + '}';
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjca);
+  }
+  
+  private boolean a()
+  {
+    bjca localbjca = (bjca)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (localbjca != null) && (localbjca.a());
+  }
+  
+  @Nullable
+  QQToast a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjcd
  * JD-Core Version:    0.7.0.1
  */

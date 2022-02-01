@@ -1,36 +1,40 @@
-import android.text.TextUtils;
-import cooperation.qzone.remote.IActionListener.Stub;
-import cooperation.qzone.remote.RecvMsg;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 class bmfe
-  extends IActionListener.Stub
+  extends biht
 {
-  bmfe(bmfd parambmfd) {}
+  private bmfe(bmfc parambmfc) {}
   
-  public void onRecvFromMsg(RecvMsg paramRecvMsg)
+  public void onDone(bihu parambihu)
   {
-    if (paramRecvMsg == null) {}
-    for (;;)
+    super.onDone(parambihu);
+    if ((parambihu.a() == 3) && (parambihu.jdField_a_of_type_Int == 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (bmfd.a(this.a) != null))
-      {
-        Iterator localIterator = bmfd.a(this.a).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (WeakReference)localIterator.next();
-          if (localObject != null)
-          {
-            localObject = (bmfh)((WeakReference)localObject).get();
-            if (localObject != null) {
-              ((bmfh)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("IlivePluginDownloadManager", 2, "onDone , url = " + parambihu.c + " isSuccess = " + bool + " errorCode = " + parambihu.jdField_a_of_type_Int + " httpCode = " + parambihu.f + " errMsg = " + parambihu.b);
       }
+      bmfc.a(this.a).remove(parambihu);
+      bmfc.a(this.a);
+      if (!bool) {
+        break;
+      }
+      bmfc.b(this.a);
+      return;
+    }
+    bmfc.a(this.a, parambihu);
+  }
+  
+  public void onProgress(bihu parambihu)
+  {
+    super.onProgress(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.e("IlivePluginDownloadManager", 2, "onProgress ,  percent = " + parambihu.jdField_a_of_type_Float + " url = " + parambihu.c + " runTime = " + BaseApplicationImpl.getApplication().getRuntime().getClass());
+    }
+    if (bmfc.a(this.a) != null) {
+      bmfc.a(this.a).onProgress(parambihu.jdField_a_of_type_Float);
     }
   }
 }

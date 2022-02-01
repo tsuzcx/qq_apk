@@ -1,6 +1,8 @@
-public abstract interface wfb<T>
+import android.view.View;
+
+public abstract interface wfb
 {
-  public abstract T a();
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
 }
 
 

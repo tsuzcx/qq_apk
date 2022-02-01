@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -34,9 +34,9 @@ public class QCirclePushRankIndicator
   
   private void a()
   {
-    int j = afur.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = afur.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = agej.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = agej.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = agej.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
@@ -80,8 +80,8 @@ public class QCirclePushRankIndicator
         if (QLog.isDevelopLevel()) {
           QLog.d("AccountDetailBannerIndicator", 2, "updateCurrentItem->pos:" + paramInt + ", newPos:" + i);
         }
-        paramInt = afur.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        int j = afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramInt = agej.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        int j = agej.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#B8B9C7")));
         ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setLayoutParams(new RelativeLayout.LayoutParams(paramInt, paramInt));
         this.jdField_b_of_type_Int = i;

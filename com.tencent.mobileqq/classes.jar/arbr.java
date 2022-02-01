@@ -1,42 +1,44 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbr
-  extends aqkz<arbo>
+  extends arac<arbq>
 {
-  public static arbo a()
+  public static void a()
   {
-    return (arbo)aqlk.a().a(346);
+    arbq localarbq = (arbq)aran.a().a(430);
+    arbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localarbq);
   }
   
   @NonNull
-  public arbo a(int paramInt)
+  public arbq a(int paramInt)
   {
-    return new arbo();
+    return new arbq();
   }
   
   @Nullable
-  public arbo a(aqlg[] paramArrayOfaqlg)
+  public arbq a(araj[] paramArrayOfaraj)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arbo.a(paramArrayOfaqlg);
-    }
-    return null;
+    return arbq.a(paramArrayOfaraj);
   }
   
-  public void a(arbo paramarbo)
+  public void a(arbq paramarbq)
   {
-    if ((paramarbo != null) && (!TextUtils.isEmpty(paramarbo.d()))) {
-      ((bdkg)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramarbo);
-    }
+    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
+    arbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramarbq);
   }
   
-  public Class<arbo> clazz()
+  public Class<arbq> clazz()
   {
-    return arbo.class;
+    return arbq.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
   }
   
   public boolean isNeedCompressed()
@@ -54,11 +56,14 @@ public class arbr
     return 0;
   }
   
-  public void onReqFailed(int paramInt) {}
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
+  }
   
   public int type()
   {
-    return 346;
+    return 430;
   }
 }
 

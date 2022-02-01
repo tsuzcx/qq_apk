@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadTraceHelper.Proxy;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import protocol.KQQConfig.GetResourceReqInfo;
 
-public final class bcqj
-  implements IMCoreProxyRoute.ThreadTraceHelper.Proxy
+public class bcqj
 {
-  public void addWaitingTransThread(long paramLong, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    bctw.b(paramLong, paramString);
+    ArrayList localArrayList = new ArrayList();
+    GetResourceReqInfo localGetResourceReqInfo = new GetResourceReqInfo();
+    localGetResourceReqInfo.uiResID = 0L;
+    localGetResourceReqInfo.strPkgName = paramString2;
+    localGetResourceReqInfo.uiCurVer = 0L;
+    localGetResourceReqInfo.sResType = 4;
+    localGetResourceReqInfo.sLanType = 0;
+    localGetResourceReqInfo.sReqType = 1;
+    localArrayList.add(localGetResourceReqInfo);
+    a(paramQQAppInterface, paramString1, localArrayList);
   }
   
-  public void removeWaitingTransThread(long paramLong)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<GetResourceReqInfo> paramArrayList)
   {
-    bctw.a(paramLong);
-  }
-  
-  public void setCurrentTransThread(long paramLong, String paramString)
-  {
-    bctw.a(paramLong, paramString);
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramString = new ToServiceMsg("mobileqq.service", paramString, "ResourceConfig.GetResourceReq");
+      paramString.extraData.putSerializable("getResourceReqInfos", paramArrayList);
+      paramQQAppInterface.sendToService(paramString);
+    }
   }
 }
 

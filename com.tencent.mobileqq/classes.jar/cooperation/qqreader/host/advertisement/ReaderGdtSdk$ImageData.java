@@ -1,6 +1,6 @@
 package cooperation.qqreader.host.advertisement;
 
-import ackj;
+import acon;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
@@ -10,11 +10,11 @@ public class ReaderGdtSdk$ImageData
   public String url;
   public int width;
   
-  public ReaderGdtSdk$ImageData(@NonNull ackj paramackj)
+  public ReaderGdtSdk$ImageData(@NonNull acon paramacon)
   {
-    this.url = paramackj.jdField_a_of_type_JavaLangString;
-    this.width = paramackj.jdField_a_of_type_Int;
-    this.height = paramackj.b;
+    this.url = paramacon.jdField_a_of_type_JavaLangString;
+    this.width = paramacon.jdField_a_of_type_Int;
+    this.height = paramacon.b;
   }
   
   public boolean isValid()

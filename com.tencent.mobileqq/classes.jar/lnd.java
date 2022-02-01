@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
-
 public class lnd
-  implements DialogInterface.OnClickListener
 {
-  public lnd(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c = 2;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    mqw.e(false, false);
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface.dismiss();
-      if ((this.a.a != null) && (this.a.a.a != null)) {
-        this.a.a.a.b();
-      }
-    }
+    return "AVUserInfo{account=" + this.jdField_a_of_type_Long + ", openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountType=" + this.jdField_a_of_type_Int + ", pstnStatus=" + this.b + ", micAuthByAdmin=" + this.c + '}';
   }
 }
 

@@ -25,6 +25,7 @@ import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.browser.BrowserPluginEngine;
 import com.tencent.qqmini.sdk.core.utils.StringUtil;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 
 @MiniKeep

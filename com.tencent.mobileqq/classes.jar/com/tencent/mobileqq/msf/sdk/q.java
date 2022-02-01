@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class q
-  extends aa
+  extends ab
   implements IMsfProxy
 {
   private static final String t = "MSF.D.ProxyNew";
@@ -499,12 +499,12 @@ public class q
     if (paramToServiceMsg.getTimeout() == -1L) {
       paramToServiceMsg.setTimeout(30000L);
     }
-    aa.b localb;
+    ab.b localb;
     if (paramToServiceMsg.isNeedCallback())
     {
       paramToServiceMsg.addAttribute("appTimeoutReq", Integer.valueOf(this.m.incrementAndGet()));
       f.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramToServiceMsg);
-      localb = new aa.b(this, paramToServiceMsg);
+      localb = new ab.b(this, paramToServiceMsg);
       if ((!"LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))) {
         break label298;
       }

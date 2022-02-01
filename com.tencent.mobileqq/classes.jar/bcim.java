@@ -1,20 +1,62 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
 public class bcim
+  extends bcjf
 {
-  public Handler a;
-  public bcin a;
-  
-  public bcim(Handler paramHandler, bcin parambcin)
+  public bcim(aoof paramaoof)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Bcin = parambcin;
+    super(paramaoof);
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  protected bcik<bcfr, bcnz> a(aoof paramaoof)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
+    return new bcin(paramaoof);
+  }
+  
+  public void a(bcfp parambcfp, bcny parambcny)
+  {
+    Object localObject = (bcfq)parambcfp;
+    parambcfp = ((bcob)parambcny).a();
+    if (parambcfp != null)
+    {
+      List localList = ((bcfq)localObject).a();
+      if (localList != null)
+      {
+        parambcfp.removeAllViews();
+        int k = Math.min(localList.size(), ((bcfq)localObject).a());
+        int i = 0;
+        if (i < k)
+        {
+          localObject = (bcfr)localList.get(i);
+          View localView = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562883, null);
+          bcoc localbcoc = new bcoc(localView);
+          localView.setTag(2131381109, localObject);
+          localView.setTag(2131381115, localbcoc);
+          localView.setTag(2131381110, Integer.valueOf(i));
+          localView.setTag(2131381108, Integer.valueOf(localList.size()));
+          localView.setTag(2131381111, this.a);
+          bcnl.a((bcfr)localObject, k, i);
+          int m = ((bcfr)localObject).a();
+          int n = ((bcfr)localObject).b();
+          if ((localObject instanceof bcfs)) {}
+          for (int j = ((bcfs)localObject).u;; j = 0)
+          {
+            bcnl.a(m, n, localView, j);
+            parambcfp.addView(localView);
+            this.a.a((bcfp)localObject, localbcoc);
+            i += 1;
+            break;
+          }
+        }
+      }
+    }
+    if (parambcny.b() != null) {
+      parambcny.b().setVisibility(8);
+    }
   }
 }
 

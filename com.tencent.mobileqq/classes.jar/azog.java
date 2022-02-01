@@ -1,284 +1,131 @@
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.widget.MiniAppProfileCardGuestView;
-import com.tencent.mobileqq.mini.widget.MiniAppProfileCardView;
-import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class azog
-  extends azkr
-  implements View.OnClickListener
+  extends OGAbstractDao
 {
-  public azog(azlw paramazlw, azfe paramazfe)
+  public azog()
   {
-    super(paramazlw, paramazfe);
+    this.columnLen = 8;
   }
   
-  private void a(MiniAppProfileCardGuestView paramMiniAppProfileCardGuestView)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    Object localObject = ((azfe)this.b).jdField_a_of_type_Azfl.a.get("commonItemContentColor");
-    if (localObject != null)
+    paramEntity = (SearchHistory)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      if (!(localObject instanceof ColorStateList)) {
-        break label39;
+      paramEntity.key = paramCursor.getString(paramCursor.getColumnIndex("key"));
+      paramEntity.type = paramCursor.getInt(paramCursor.getColumnIndex("type"));
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramEntity.displayName = paramCursor.getString(paramCursor.getColumnIndex("displayName"));
+      paramEntity.extralInfo = paramCursor.getString(paramCursor.getColumnIndex("extralInfo"));
+      paramEntity.count = paramCursor.getInt(paramCursor.getColumnIndex("count"));
+      paramEntity.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("key");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("key", String.class));
+      i = paramCursor.getColumnIndex("type");
+      if (i != -1) {
+        break label448;
       }
-      paramMiniAppProfileCardGuestView.setTextColor((ColorStateList)localObject);
-    }
-    label39:
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localObject instanceof String));
-      localObject = (String)localObject;
-    } while (!((String)localObject).startsWith("#"));
-    paramMiniAppProfileCardGuestView.setTextColor(Color.parseColor((String)localObject));
-  }
-  
-  private void a(MiniAppProfileCardView paramMiniAppProfileCardView)
-  {
-    Object localObject = ((azfe)this.b).jdField_a_of_type_Azfl.a.get("commonItemContentColor");
-    if (localObject != null)
-    {
-      if (!(localObject instanceof ColorStateList)) {
-        break label39;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("type", Integer.TYPE));
+      label225:
+      i = paramCursor.getColumnIndex("uin");
+      if (i != -1) {
+        break label463;
       }
-      paramMiniAppProfileCardView.setTextColor((ColorStateList)localObject);
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      label259:
+      i = paramCursor.getColumnIndex("troopUin");
+      if (i != -1) {
+        break label478;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+      label293:
+      i = paramCursor.getColumnIndex("displayName");
+      if (i != -1) {
+        break label493;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("displayName", String.class));
+      label327:
+      i = paramCursor.getColumnIndex("extralInfo");
+      if (i != -1) {
+        break label508;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("extralInfo", String.class));
+      label361:
+      i = paramCursor.getColumnIndex("count");
+      if (i != -1) {
+        break label523;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("count", Integer.TYPE));
     }
-    label39:
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localObject instanceof String));
-      localObject = (String)localObject;
-    } while (!((String)localObject).startsWith("#"));
-    paramMiniAppProfileCardView.setTextColor(Color.parseColor((String)localObject));
-  }
-  
-  private boolean a(Card paramCard)
-  {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool4 = false;
-    boolean bool1 = false;
-    Object localObject2 = (azfe)this.b;
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramCard == null) {
-      bool2 = bool1;
-    }
-    boolean bool5;
-    Object localObject1;
-    int i;
-    label75:
-    do
-    {
-      do
-      {
-        return bool2;
-        bool5 = paramCard.uin.equals(((QQAppInterface)localObject3).getCurrentAccountUin());
-        localObject1 = (View)this.jdField_a_of_type_JavaLangObject;
-        ThemeUtil.isInNightMode((AppRuntime)localObject3);
-        if (((azfe)localObject2).jdField_a_of_type_Azfl == null) {
-          break;
-        }
-        i = 1;
-        if (!paramCard.isShowMiniPlaying) {
-          break label673;
-        }
-        if (localObject1 != null) {
-          break label391;
-        }
-        localObject1 = new ProfileContentTitleView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        if (!bool5) {
-          break label262;
-        }
-        bool2 = bool1;
-      } while (paramCard.miniAppInfoArrayList == null);
-      bool2 = bool1;
-    } while (paramCard.miniAppInfoArrayList.size() <= 0);
-    ((ProfileContentTitleView)localObject1).setTitle(QzoneConfig.getInstance().getConfig("QZoneSetting", "ProfileCardMiniPlayingName", "最近在玩"));
-    bool1 = bool3;
-    if (paramCard.miniAppInfoArrayList.size() > 1) {
-      bool1 = true;
-    }
-    ((ProfileContentTitleView)localObject1).setArrowEnable(bool1);
-    localObject2 = new MiniAppProfileCardView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    ((MiniAppProfileCardView)localObject2).setData(paramCard.miniAppInfoArrayList);
-    ((ProfileContentTitleView)localObject1).setVisibility(8);
-    ((ProfileContentTitleView)localObject1).a((View)localObject2);
-    if (i != 0) {
-      a((MiniAppProfileCardView)localObject2);
-    }
-    label219:
-    this.jdField_a_of_type_JavaLangObject = localObject1;
-    MiniAppUtils.reportProfileCardExposed(paramCard, bool5);
-    paramCard = (Card)localObject1;
-    bool1 = true;
     for (;;)
     {
-      bool2 = bool1;
-      if (!(paramCard instanceof ProfileContentTitleView)) {
-        break;
+      i = paramCursor.getColumnIndex("time");
+      if (i != -1) {
+        break label538;
       }
-      a((ProfileContentTitleView)paramCard, true);
-      return bool1;
-      i = 0;
-      break label75;
-      label262:
-      bool2 = bool1;
-      if (paramCard.appPlayingInfos == null) {
-        break;
-      }
-      bool2 = bool1;
-      if (paramCard.appPlayingInfos.size() <= 0) {
-        break;
-      }
-      ((ProfileContentTitleView)localObject1).setTitle(QzoneConfig.getInstance().getConfig("QZoneSetting", "ProfileCardMiniPlayingNameGuestDefault", "一起在玩"));
-      bool1 = bool4;
-      if (paramCard.appPlayingInfos.size() > 1) {
-        bool1 = true;
-      }
-      ((ProfileContentTitleView)localObject1).setArrowEnable(bool1);
-      localObject2 = new MiniAppProfileCardGuestView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      ((MiniAppProfileCardGuestView)localObject2).setData(paramCard.appPlayingInfos, paramCard.guestJumpUrl, paramCard.uin);
-      ((ProfileContentTitleView)localObject1).setVisibility(8);
-      ((ProfileContentTitleView)localObject1).a((View)localObject2);
-      if (i == 0) {
-        break label219;
-      }
-      a((MiniAppProfileCardGuestView)localObject2);
-      break label219;
-      label391:
-      if (bool5)
-      {
-        if ((localObject1 instanceof ProfileContentTitleView))
-        {
-          localObject2 = (ProfileContentTitleView)localObject1;
-          if (paramCard.miniAppInfoArrayList.size() > 1) {}
-          for (bool1 = true;; bool1 = false)
-          {
-            ((ProfileContentTitleView)localObject2).setArrowEnable(bool1);
-            localObject3 = (MiniAppProfileCardView)((ProfileContentTitleView)localObject2).a();
-            ((MiniAppProfileCardView)localObject3).setData(paramCard.miniAppInfoArrayList);
-            if (i != 0) {
-              a((MiniAppProfileCardView)localObject3);
-            }
-            if (paramCard.miniAppInfoArrayList.size() > 1)
-            {
-              paramCard = ((ProfileContentTitleView)localObject2).b;
-              paramCard.setTag(new azde(96, Boolean.valueOf(true)));
-              paramCard.setOnClickListener(this);
-            }
-            paramCard = (Card)localObject1;
-            bool1 = bool2;
-            break;
-          }
-        }
-      }
-      else if ((localObject1 instanceof ProfileContentTitleView))
-      {
-        localObject2 = (ProfileContentTitleView)localObject1;
-        ((ProfileContentTitleView)localObject2).setTitle(paramCard.guestAppTotal + QzoneConfig.getInstance().getConfig("QZoneSetting", "ProfileCardMiniPlayingNameGuest", "个一起在玩的小游戏"));
-        if (paramCard.guestAppTotal > 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          ((ProfileContentTitleView)localObject2).setArrowEnable(bool1);
-          localObject3 = (MiniAppProfileCardGuestView)((ProfileContentTitleView)localObject2).a();
-          ((MiniAppProfileCardGuestView)localObject3).setData(paramCard.appPlayingInfos, paramCard.guestJumpUrl, paramCard.uin);
-          if (i != 0) {
-            a((MiniAppProfileCardGuestView)localObject3);
-          }
-          if (paramCard.guestAppTotal > 1)
-          {
-            paramCard = ((ProfileContentTitleView)localObject2).b;
-            paramCard.setTag(new azde(96, Boolean.valueOf(false)));
-            paramCard.setOnClickListener(this);
-          }
-          paramCard = (Card)localObject1;
-          bool1 = bool2;
-          break;
-        }
-        label673:
-        if (localObject1 != null)
-        {
-          this.jdField_a_of_type_JavaLangObject = null;
-          paramCard = (Card)localObject1;
-          bool1 = true;
-          continue;
-        }
-      }
-      paramCard = (Card)localObject1;
-      bool1 = bool2;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("time", Long.TYPE));
+      return paramEntity;
+      paramEntity.key = paramCursor.getString(i);
+      break;
+      label448:
+      paramEntity.type = paramCursor.getInt(i);
+      break label225;
+      label463:
+      paramEntity.uin = paramCursor.getString(i);
+      break label259;
+      label478:
+      paramEntity.troopUin = paramCursor.getString(i);
+      break label293;
+      label493:
+      paramEntity.displayName = paramCursor.getString(i);
+      break label327;
+      label508:
+      paramEntity.extralInfo = paramCursor.getString(i);
+      break label361;
+      label523:
+      paramEntity.count = paramCursor.getInt(i);
     }
+    label538:
+    paramEntity.time = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public int a()
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    return 1014;
+    paramEntity = (SearchHistory)paramEntity;
+    paramContentValues.put("key", paramEntity.key);
+    paramContentValues.put("type", Integer.valueOf(paramEntity.type));
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("troopUin", paramEntity.troopUin);
+    paramContentValues.put("displayName", paramEntity.displayName);
+    paramContentValues.put("extralInfo", paramEntity.extralInfo);
+    paramContentValues.put("count", Integer.valueOf(paramEntity.count));
+    paramContentValues.put("time", Long.valueOf(paramEntity.time));
   }
   
-  public String a()
+  public String getCreateTableSql(String paramString)
   {
-    return "ProfileMiniAppPlayingComponent";
-  }
-  
-  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-  }
-  
-  public boolean a(azfe paramazfe)
-  {
-    boolean bool = super.a(paramazfe);
-    return a(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard) | bool;
-  }
-  
-  public String a_()
-  {
-    return "map_key_mini_playing";
-  }
-  
-  public void onClick(View paramView)
-  {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = 2062;
-    boolean bool = ((Boolean)((azde)paramView.getTag()).jdField_a_of_type_JavaLangObject).booleanValue();
-    MiniAppUtils.reportProfileCardClick(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, bool);
-    Context localContext = paramView.getContext();
-    if (bool) {}
-    for (String str = ((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.tabJumpUrl;; str = ((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.guestJumpUrl)
-    {
-      MiniAppController.startAppByLink(localContext, str, 2, localLaunchParam, null);
-      azmk.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (azfe)this.b);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,key TEXT UNIQUE ,type INTEGER ,uin TEXT ,troopUin TEXT ,displayName TEXT ,extralInfo TEXT ,count INTEGER ,time INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azog
  * JD-Core Version:    0.7.0.1
  */

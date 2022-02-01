@@ -1,12 +1,12 @@
 package com.tencent.biz.authorize;
 
 import java.io.File;
-import nkc;
+import nlx;
 
 public class FlatBuffersConfig$1
   implements Runnable
 {
-  public FlatBuffersConfig$1(nkc paramnkc) {}
+  public FlatBuffersConfig$1(nlx paramnlx) {}
   
   public void run()
   {

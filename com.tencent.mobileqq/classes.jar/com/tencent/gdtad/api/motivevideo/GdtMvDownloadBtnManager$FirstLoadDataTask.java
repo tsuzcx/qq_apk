@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acon;
-import acqy;
+import acsp;
+import acvc;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -16,13 +16,13 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
   
   private void a(GdtMvAppBtnData paramGdtMvAppBtnData)
   {
-    acqy.a("FirstLoadDataTask", "postResultToUI() called with: tempAppBtnData = [" + paramGdtMvAppBtnData + "]");
+    acvc.a("FirstLoadDataTask", "postResultToUI() called with: tempAppBtnData = [" + paramGdtMvAppBtnData + "]");
     new Handler(Looper.getMainLooper()).post(new GdtMvDownloadBtnManager.FirstLoadDataTask.1(this, paramGdtMvAppBtnData));
   }
   
   public void run()
   {
-    acqy.a("FirstLoadDataTask", "run() called");
+    acvc.a("FirstLoadDataTask", "run() called");
     if (this.jdField_a_of_type_Boolean) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do
@@ -30,7 +30,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
       return;
       localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localGdtMvDownloadBtnManager == null) || (GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager) == null) || (TextUtils.isEmpty(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick())));
-    GdtMvAppBtnData localGdtMvAppBtnData = new acon().a(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick(), "&gd=1", 1);
+    GdtMvAppBtnData localGdtMvAppBtnData = new acsp().a(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick(), "&gd=1", 1);
     if ((localGdtMvAppBtnData != null) && (localGdtMvAppBtnData.isValid()))
     {
       GdtMvDownloadBtnManager.a(localGdtMvAppBtnData.apkUrlhttp);
@@ -38,7 +38,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
       a(localGdtMvAppBtnData);
       return;
     }
-    acqy.b("FirstLoadDataTask", "load gdt mv app btn data error");
+    acvc.b("FirstLoadDataTask", "load gdt mv app btn data error");
   }
 }
 

@@ -1,15 +1,6 @@
-import com.tencent.av.VideoController;
-import java.util.Comparator;
-
 public class lcj
-  implements Comparator<lco>
 {
-  public lcj(VideoController paramVideoController) {}
-  
-  public int a(lco paramlco1, lco paramlco2)
-  {
-    return (int)(paramlco1.d - paramlco2.d);
-  }
+  public static String a = "0";
 }
 
 

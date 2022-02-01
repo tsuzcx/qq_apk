@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class atya
-  implements View.OnClickListener
+class atya
+  extends atxl
 {
-  public atya(SendBottomBar paramSendBottomBar) {}
-  
-  public void onClick(View paramView)
+  public atya(atwy paramatwy)
   {
-    if (this.a.a.isShowing()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.show();
-    }
+    super(paramatwy);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSend";
   }
 }
 

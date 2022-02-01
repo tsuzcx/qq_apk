@@ -2,9 +2,14 @@ class twv
 {
   int jdField_a_of_type_Int;
   boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  int b;
+  
+  public twv(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

@@ -1,15 +1,39 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-final class axgu
-  implements DialogInterface.OnClickListener
+public class axgu
 {
-  axgu(Activity paramActivity) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axgt a()
   {
-    axgp.a(this.a, 10);
+    return new axgt(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+  }
+  
+  public axgu a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public axgu a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public axgu a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public axgu b(String paramString)
+  {
+    this.b = paramString;
+    return this;
   }
 }
 

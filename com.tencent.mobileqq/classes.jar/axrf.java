@@ -1,29 +1,35 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import android.os.Build;
 import com.tencent.qphone.base.util.QLog;
 
 public class axrf
-  implements apue
 {
-  public axrf(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  public static String[] a = { "samsung SM-N7508V", "samsung SM-N9002", "samsung SM-N9005", "samsung SM-N9006", "samsung SM-N9008", "samsung SM-N9009", "samsung SM-N9009V", "samsung SM-G3858", "samsung SM-G7108V", "samsung SM-G7108U", "samsung SM-G9008V", "samsung GT-I9308I", "samsung GT-I9508V", "samsung SM-G3588V", "samsung SM-T2558", "samsung SM-G9300", "HTC T528w", "MI 3", "HTC 802t", "GT-I9100", "GT-I9300", "SCH-I939", "MX4", "HUAWEI C8813D" };
   
-  public void a(String paramString, int paramInt)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQPlayerService", 2, "isPhoneInWhiteList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
+      }
+      i += 1;
     }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

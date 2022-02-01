@@ -1,12 +1,12 @@
 package com.tencent.widget;
 
-import bkho;
+import blir;
 import com.tencent.image.URLDrawable;
 
 public class ActionSheet$5
   implements Runnable
 {
-  public ActionSheet$5(bkho parambkho, URLDrawable paramURLDrawable) {}
+  public ActionSheet$5(blir paramblir, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ActionSheet$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.5
  * JD-Core Version:    0.7.0.1
  */

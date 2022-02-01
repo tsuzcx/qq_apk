@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.Comparator;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
 
-public class bahe
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+class bahe
+  implements Comparator<oidb_0xd9f.TopicItem>
 {
-  public bahe(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  bahe(bahb parambahb) {}
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public int a(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
   {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
-    }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
-    }
-    return 1;
+    if (paramTopicItem1 == null) {}
+    do
+    {
+      return 1;
+      if (paramTopicItem2 == null) {
+        return -1;
+      }
+    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
+    return -1;
   }
 }
 

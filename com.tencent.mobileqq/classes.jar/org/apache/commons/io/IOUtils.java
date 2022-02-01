@@ -1055,29 +1055,29 @@ public class IOUtils
     //   45: invokevirtual 450	org/apache/commons/io/output/ByteArrayOutputStream:close	()V
     //   48: aload_0
     //   49: areturn
-    //   50: astore_1
-    //   51: aload_1
+    //   50: astore_0
+    //   51: aload_0
     //   52: athrow
-    //   53: astore_0
+    //   53: astore_1
     //   54: aload_3
     //   55: ifnull +11 -> 66
-    //   58: aload_1
+    //   58: aload_0
     //   59: ifnull +18 -> 77
     //   62: aload_3
     //   63: invokevirtual 450	org/apache/commons/io/output/ByteArrayOutputStream:close	()V
-    //   66: aload_0
+    //   66: aload_1
     //   67: athrow
     //   68: astore_2
-    //   69: aload_1
+    //   69: aload_0
     //   70: aload_2
     //   71: invokevirtual 72	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   74: goto -8 -> 66
     //   77: aload_3
     //   78: invokevirtual 450	org/apache/commons/io/output/ByteArrayOutputStream:close	()V
     //   81: goto -15 -> 66
-    //   84: astore_0
+    //   84: astore_1
     //   85: aload_2
-    //   86: astore_1
+    //   86: astore_0
     //   87: goto -33 -> 54
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1273,29 +1273,29 @@ public class IOUtils
     //   45: invokevirtual 64	org/apache/commons/io/output/StringBuilderWriter:close	()V
     //   48: aload_0
     //   49: areturn
-    //   50: astore_1
-    //   51: aload_1
+    //   50: astore_0
+    //   51: aload_0
     //   52: athrow
-    //   53: astore_0
+    //   53: astore_1
     //   54: aload_3
     //   55: ifnull +11 -> 66
-    //   58: aload_1
+    //   58: aload_0
     //   59: ifnull +18 -> 77
     //   62: aload_3
     //   63: invokevirtual 64	org/apache/commons/io/output/StringBuilderWriter:close	()V
-    //   66: aload_0
+    //   66: aload_1
     //   67: athrow
     //   68: astore_2
-    //   69: aload_1
+    //   69: aload_0
     //   70: aload_2
     //   71: invokevirtual 72	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   74: goto -8 -> 66
     //   77: aload_3
     //   78: invokevirtual 64	org/apache/commons/io/output/StringBuilderWriter:close	()V
     //   81: goto -15 -> 66
-    //   84: astore_0
+    //   84: astore_1
     //   85: aload_2
-    //   86: astore_1
+    //   86: astore_0
     //   87: goto -33 -> 54
     // Local variable table:
     //   start	length	slot	name	signature

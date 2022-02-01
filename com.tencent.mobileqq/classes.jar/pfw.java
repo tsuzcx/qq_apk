@@ -1,35 +1,152 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class pfw
-  implements ViewFactory.FoundClickableViewListener
+public class pfw
 {
-  pfw(int paramInt, Container paramContainer, pxk parampxk, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, ProteusItemView paramProteusItemView, aobu paramaobu, snh paramsnh) {}
+  public static int a;
+  public static long a;
+  private static List<pgb> jdField_a_of_type_JavaUtilList;
+  private static Map<Integer, pgb> jdField_a_of_type_JavaUtilMap;
+  private static int b;
+  public static long b;
+  public static long c;
+  public static long d;
   
-  public void onFound(ViewBase paramViewBase)
+  static
   {
-    qft localqft = (qft)pfr.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if ((localqft != null) && (localqft.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pxk, paramViewBase))) {}
-    int i;
-    do
+    jdField_b_of_type_Int = -1;
+    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_Int = 2;
+    d();
+  }
+  
+  public static void a()
+  {
+    jdField_b_of_type_Int = -1;
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_b_of_type_Int = paramInt;
+    switch (paramInt)
     {
-      do
+    default: 
+      return;
+    case 2: 
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
+    case 3: 
+      jdField_b_of_type_Long = System.currentTimeMillis();
+      return;
+    case 25: 
+      c = System.currentTimeMillis();
+      return;
+    }
+    d = System.currentTimeMillis();
+  }
+  
+  public static void a(pgb parampgb)
+  {
+    if (parampgb == null) {}
+    for (;;)
+    {
+      return;
+      try
       {
-        return;
-      } while ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null));
-      i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-      if (QLog.isColorLevel()) {
-        QLog.d("ProteusSupportUtil", 2, "configListener viewID : " + paramViewBase.getViewId() + ", cmd : " + i + ",, event : " + paramViewBase.getClickEvnet());
+        if (jdField_a_of_type_JavaUtilList.contains(parampgb)) {
+          continue;
+        }
+        jdField_a_of_type_JavaUtilList.add(parampgb);
       }
-    } while (!pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, i, paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext));
-    paramViewBase.setOnClickListener(new pfx(this, i, paramViewBase));
+      finally {}
+    }
+  }
+  
+  private static boolean a()
+  {
+    if (jdField_b_of_type_Int > 0) {}
+    switch (jdField_b_of_type_Int)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      jdField_a_of_type_Int = 1;
+      pfs.e(System.currentTimeMillis());
+      if (a())
+      {
+        localObject1 = (pgb)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
+        if (localObject1 != null) {
+          ((pgb)localObject1).l();
+        }
+      }
+      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        pgb localpgb = (pgb)((Iterator)localObject1).next();
+        if (localpgb != null) {
+          localpgb.l();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public static void b(pgb parampgb)
+  {
+    if (parampgb != null) {}
+    try
+    {
+      jdField_a_of_type_JavaUtilList.remove(parampgb);
+      return;
+    }
+    finally
+    {
+      parampgb = finally;
+      throw parampgb;
+    }
+  }
+  
+  public static void c()
+  {
+    try
+    {
+      jdField_a_of_type_Int = 2;
+      if (a())
+      {
+        localObject1 = (pgb)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(jdField_b_of_type_Int));
+        if (localObject1 != null) {
+          ((pgb)localObject1).m();
+        }
+      }
+      Object localObject1 = jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        pgb localpgb = (pgb)((Iterator)localObject1).next();
+        if (localpgb != null) {
+          localpgb.m();
+        }
+      }
+    }
+    finally {}
+  }
+  
+  private static void d()
+  {
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), new pfx());
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), new pfy());
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(25), new pfz());
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), new pga());
   }
 }
 

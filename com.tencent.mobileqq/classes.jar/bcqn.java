@@ -1,15 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils.Proxy;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class bcqn
-  implements RecentRoute.MsgUtils.Proxy
+public class bcqn
+  extends abiv
 {
-  public void buildMsgSummaryForMsg(Context paramContext, IMCoreAppRuntime paramIMCoreAppRuntime, IMCoreMessageStub paramIMCoreMessageStub, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
+  private bcqk jdField_a_of_type_Bcqk = new bcqk();
+  private bcqm jdField_a_of_type_Bcqm = new bcqm();
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    bgnr.a(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
+    return this.jdField_a_of_type_Bcqk.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return this.jdField_a_of_type_Bcqm.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

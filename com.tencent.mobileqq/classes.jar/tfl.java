@@ -1,33 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tfl
-  extends Handler
+  extends tfp
 {
-  private WeakReference<ReadInJoySkinAnimManager> a;
-  
-  public tfl(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
+  public tfl(BridgeModule paramBridgeModule)
   {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
+    super(paramBridgeModule);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
-    }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
+    BridgeModule.access$900(this.a, paramInt2, paramIntent);
   }
 }
 

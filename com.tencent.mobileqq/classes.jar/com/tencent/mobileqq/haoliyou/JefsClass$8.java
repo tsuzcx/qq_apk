@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.haoliyou;
 
-import anni;
-import auxm;
-import auxn;
-import bglp;
-import bgpa;
+import anzj;
+import avpn;
+import avpo;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class JefsClass$8
@@ -14,7 +14,7 @@ public class JefsClass$8
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
-      bglp.a(localBaseActivity, 0, null, anni.a(2131704661), localBaseActivity.getString(2131690582), localBaseActivity.getString(2131694081), new auxm(this), new auxn(this)).show();
+      bhlq.a(localBaseActivity, 0, null, anzj.a(2131704768), localBaseActivity.getString(2131690580), localBaseActivity.getString(2131694098), new avpn(this), new avpo(this)).show();
     }
   }
 }

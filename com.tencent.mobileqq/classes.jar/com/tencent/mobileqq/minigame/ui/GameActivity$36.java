@@ -7,7 +7,7 @@ class GameActivity$36
   
   public void run()
   {
-    this.this$0.moveTaskToBack(true);
+    this.this$0.finish();
   }
 }
 

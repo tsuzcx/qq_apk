@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
-import atvf;
+import auna;
 import com.tencent.mobileqq.widget.QQToast;
 
 public final class FMToastUtil$11
@@ -11,7 +11,7 @@ public final class FMToastUtil$11
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b, 0).b(atvf.a());
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b, 0).b(auna.a());
   }
 }
 

@@ -1,64 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import java.util.Comparator;
 
-final class amxg
-  extends bhhe
+class amxg
+  implements Comparator<CmGamePushItem>
 {
-  amxg(File paramFile) {}
+  amxg(amxf paramamxf) {}
   
-  public void onDone(bhhf parambhhf)
+  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    super.onDone(parambhhf);
-    if ((3 == parambhhf.a()) && (this.a.exists())) {}
-    try
-    {
-      nmk.a(this.a, this.a.getParent() + File.separator);
-      label166:
-      return;
+    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
+      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
     }
-    catch (Exception parambhhf)
-    {
-      parambhhf = parambhhf;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambhhf.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambhhf)
-      {
-        return;
-      }
-    }
-    catch (OutOfMemoryError parambhhf)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambhhf.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambhhf)
-      {
-        return;
-      }
-    }
-    finally
-    {
-      try
-      {
-        this.a.delete();
-        throw parambhhf;
-      }
-      catch (Exception localException)
-      {
-        break label166;
-      }
-    }
+    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
   }
 }
 

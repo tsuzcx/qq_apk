@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class oca
-  implements Parcelable.Creator<VideoInfo.TopBarInfo>
+public class oca
+  implements View.OnClickListener
 {
-  public VideoInfo.TopBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.TopBarInfo(paramParcel);
-  }
+  public oca(PublicAccountMenuBar paramPublicAccountMenuBar, boolean paramBoolean, mobileqq_mp.ButtonInfo paramButtonInfo, aayp paramaayp) {}
   
-  public VideoInfo.TopBarInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VideoInfo.TopBarInfo[paramInt];
+    if (this.jdField_a_of_type_Boolean) {
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ButtonInfo);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_Aayp);
+    }
   }
 }
 

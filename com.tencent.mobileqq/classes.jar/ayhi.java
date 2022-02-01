@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class ayhi
-  implements aygv
+class ayhi
+  implements aycj
 {
-  public ayhi(ScanOcrActivity paramScanOcrActivity) {}
+  ayhi(ayhf paramayhf) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    if (ayhf.a(this.a) != null)
+    {
+      if (paramInt == 0)
+      {
+        ayhf.a(this.a).b(paramComment);
+        ayhf.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695716));
+        bdll.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
+      }
+    }
+    else {
+      return;
+    }
+    ayhf.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695715));
   }
 }
 

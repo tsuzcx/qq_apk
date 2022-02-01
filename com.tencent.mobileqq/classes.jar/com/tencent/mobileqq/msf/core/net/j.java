@@ -149,7 +149,11 @@ public class j
     }
     if (NetConnInfoCenter.isMobileConn())
     {
-      int m = NetConnInfoCenter.getMobileNetworkType() + 100;
+      int i1 = NetConnInfoCenter.getMobileNetworkType();
+      int m = i1;
+      if (i1 != 20) {
+        m = i1 + 100;
+      }
       if (m > 254)
       {
         m = n;

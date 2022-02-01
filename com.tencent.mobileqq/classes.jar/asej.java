@@ -1,56 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class asej
-  extends anlc
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface asej
 {
-  public asej(AIOEmotionFragment paramAIOEmotionFragment) {}
+  boolean a() default false;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    EmoticonResp localEmoticonResp;
-    int i;
-    label134:
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      localEmoticonResp = (EmoticonResp)paramObject;
-      if (paramBoolean)
-      {
-        i = localEmoticonResp.delEpId;
-        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
-          paramObject = anni.a(2131698830);
-        }
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
-          break label134;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
-        return;
-        paramObject = localEmoticonResp.keySeq;
-        continue;
-        i = -404;
-        paramObject = anni.a(2131698831);
-      }
-      localQQAppInterface = this.a.a();
-    } while (localQQAppInterface == null);
-    ((awmr)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new asek(this, paramInt, localQQAppInterface, i, paramObject));
-  }
+  boolean b() default false;
 }
 
 

@@ -1,23 +1,59 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
+import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
 
 public class bbjt
-  extends bbip<bbmy, bbvg>
+  extends bbkf
 {
-  public bbjt(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, aobu paramaobu)
+  private bbjv a;
+  private boolean b;
+  
+  public bbjt(Context paramContext)
   {
-    super(paramListView, paramaobu);
+    super(paramContext);
   }
   
-  protected bbps<bbmy, bbvg> a(int paramInt)
+  public void a()
   {
-    return new bboz(this.jdField_a_of_type_Aobu, 268435456);
+    if ((this.a != null) && (!this.b))
+    {
+      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
+      DataReport.a().a(localReportTask);
+      this.b = true;
+    }
   }
   
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean)
   {
-    return new bbwo(paramViewGroup, 268435456);
+    if ((this.a == null) && (!this.b))
+    {
+      bbjv localbbjv = new bbjv(null);
+      bbjv.a(localbbjv, paramBoolean);
+      bbjv.a(localbbjv, SystemClock.uptimeMillis());
+      this.a = localbbjv;
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.a != null) && (!this.b)) {
+      bbjv.b(this.a, SystemClock.uptimeMillis());
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.a != null) && (!this.b)) {
+      bbjv.c(this.a, SystemClock.uptimeMillis());
+    }
+  }
+  
+  public void d()
+  {
+    if ((this.a != null) && (!this.b)) {
+      bbjv.b(this.a, true);
+    }
   }
 }
 

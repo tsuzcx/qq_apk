@@ -1,18 +1,108 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import java.math.BigDecimal;
 
-class bbfz
-  implements View.OnClickListener
+public class bbfz
+  implements GLGestureListener
 {
-  bbfz(bbfs parambbfs) {}
+  public float a;
+  public GLSurfaceView a;
+  private float b;
+  private float c;
   
-  public void onClick(View paramView)
+  public bbfz(GLSurfaceView paramGLSurfaceView)
   {
-    if (bbfs.a(this.a) != null) {
-      bbfs.a(this.a, this.a.a);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+  }
+  
+  public int onGetPriority()
+  {
+    return 0;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((j != 3) || ((i == 1) && (paramBoolean))) {
+      switch (j)
+      {
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f4;
+    float f2;
+    float f3;
+    for (;;)
+    {
+      return false;
+      this.c = this.jdField_a_of_type_Float;
+      continue;
+      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
+      {
+        this.c = this.jdField_a_of_type_Float;
+      }
+      else
+      {
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+        {
+          if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+            ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+          }
+          for (;;)
+          {
+            this.c = paramMotionEvent.getY();
+            break;
+            if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
+              ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+            }
+          }
+          if ((i == 2) && (!paramBoolean))
+          {
+            yuk.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
+            if (i != 2) {
+              break;
+            }
+            f4 = paramMotionEvent.getX(0);
+            f2 = paramMotionEvent.getY(0);
+            f3 = paramMotionEvent.getX(1);
+            f1 = paramMotionEvent.getY(1);
+            label254:
+            switch (j)
+            {
+            }
+          }
+        }
+      }
+    }
+    float f1 = yzv.a(f4, f2, f3, f1);
+    i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+    if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+    {
+      if (!(this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+        break label421;
+      }
+      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+    }
+    for (;;)
+    {
+      this.b = f1;
+      return true;
+      f4 = paramMotionEvent.getX(1);
+      f2 = paramMotionEvent.getY(1);
+      f3 = paramMotionEvent.getX(2);
+      f1 = paramMotionEvent.getY(2);
+      break label254;
+      this.b = yzv.a(f4, f2, f3, f1);
+      break;
+      label421:
+      if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
+        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+      }
+    }
   }
 }
 

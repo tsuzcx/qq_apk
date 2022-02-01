@@ -1,23 +1,42 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.biz.qqcircle.hippy.QCircleHippyFragment;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.Entry;
+import java.util.Arrays;
 
 public class vql
-  extends zzj
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  private String a = "QCircleFuelInfoPreLoaderTask";
+  public vql(QCircleHippyFragment paramQCircleHippyFragment) {}
   
-  public void a() {}
-  
-  public void a(zzp paramzzp)
+  public void onError(int paramInt, String paramString)
   {
-    if (vog.a().a())
-    {
-      paramzzp = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      paramzzp.setEnableCache(true);
-      VSNetworkHelper.a().a(paramzzp, new vqm(this));
+    QCircleHippyFragment.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleHippyFragment", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
     }
+    double d = 0.0D;
+    if (QCircleHippyFragment.a(this.a) > 0L)
+    {
+      d = (float)(System.currentTimeMillis() - QCircleHippyFragment.a(this.a)) / 1000.0F;
+      QCircleHippyFragment.a(this.a, 0L);
+    }
+    vts.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("time_cost", String.valueOf(d)), vtt.a("ret_code", String.valueOf(paramInt)), vtt.a("attach_info", "errMsg:" + paramString + ",module name:" + QCircleHippyFragment.a(this.a)) }), false);
+  }
+  
+  public void onSuccess()
+  {
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("QCircleHippyFragment", 2, "Hippy: initHippy success!");
+    }
+    double d = 0.0D;
+    if (QCircleHippyFragment.a(this.a) > 0L)
+    {
+      d = (float)(System.currentTimeMillis() - QCircleHippyFragment.a(this.a)) / 1000.0F;
+      QCircleHippyFragment.a(this.a, 0L);
+    }
+    vts.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("time_cost", String.valueOf(d)), vtt.a("ret_code", "0"), vtt.a("attach_info", "module name:" + QCircleHippyFragment.a(this.a)) }), false);
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import twi;
+import twk;
 
 public final class RecentUtil$4
   implements Runnable
@@ -14,7 +14,7 @@ public final class RecentUtil$4
   
   public void run()
   {
-    List localList = twi.a().a(this.a);
+    List localList = twk.a().a(this.a);
     int i;
     int j;
     label19:
@@ -40,7 +40,7 @@ public final class RecentUtil$4
       label58:
       localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
       if (localObject != null) {
-        twi.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
+        twk.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
       }
     }
   }

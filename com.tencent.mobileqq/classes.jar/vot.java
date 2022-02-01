@@ -1,68 +1,108 @@
-import com.tencent.TMG.utils.QLog;
-import java.lang.ref.SoftReference;
-import java.util.LinkedList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.launchbean.QCircleLikeBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StLike;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StReply;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import qqcircle.QQCircleFeedBase.StNoticeBusiData;
 
-public class vot
+class vot
+  implements View.OnClickListener
 {
-  public static final String a;
-  private static volatile vot jdField_a_of_type_Vot;
-  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  vot(voq paramvoq) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = vot.class.getSimpleName();
-  }
-  
-  public static vot a()
-  {
-    if (jdField_a_of_type_Vot == null) {}
-    try
+    Object localObject2 = "";
+    if (this.a.jdField_a_of_type_Int == 6)
     {
-      if (jdField_a_of_type_Vot == null) {
-        jdField_a_of_type_Vot = new vot();
+      localObject1 = (FeedCloudMeta.StComment)this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.operation.comment.get();
+      if ((localObject1 == null) || (((FeedCloudMeta.StComment)localObject1).likeInfo.get() == null)) {
+        break label435;
       }
-      return jdField_a_of_type_Vot;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    label410:
+    label435:
+    for (Object localObject1 = ((FeedCloudMeta.StLike)((FeedCloudMeta.StComment)localObject1).likeInfo.get()).id.get();; localObject1 = "")
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (a(paramString))
-    {
-      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString == null)
+      int i = 6;
+      long l1 = 0L;
+      if ((this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData != null) && (this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get() != null)) {}
+      for (;;)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "mTagFollowMap getValue tagId null");
-        return false;
+        try
+        {
+          j = Integer.parseInt(uzg.a(this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "unread_like_count", "0"));
+        }
+        catch (Exception localException1)
+        {
+          long l2;
+          Object localObject3;
+          j = 0;
+        }
+        try
+        {
+          l2 = Long.parseLong(uzg.a(this.a.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "last_like_time", "0"));
+          l1 = l2;
+          localObject2 = new QCircleLikeBean();
+          ((QCircleLikeBean)localObject2).setFeed(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed);
+          ((QCircleLikeBean)localObject2).setRequestType(i);
+          ((QCircleLikeBean)localObject2).setLikeId((String)localObject1);
+          ((QCircleLikeBean)localObject2).setCount(j);
+          ((QCircleLikeBean)localObject2).setTime(l1);
+          ((QCircleLikeBean)localObject2).setFromReportBean(this.a.a().clone());
+          uyx.a(paramView.getContext(), (QCircleLikeBean)localObject2);
+          vtq.a("", 17, 12, 1);
+          EventCollector.getInstance().onViewClicked(paramView);
+          return;
+        }
+        catch (Exception localException2)
+        {
+          break label410;
+        }
+        if (this.a.jdField_a_of_type_Int == 7)
+        {
+          localObject3 = (FeedCloudMeta.StComment)this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.operation.comment.get();
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject3 = ((FeedCloudMeta.StComment)localObject3).vecReply.get();
+            localObject1 = localObject2;
+            if (localObject3 != null)
+            {
+              localObject1 = localObject2;
+              if (((List)localObject3).size() > 0)
+              {
+                localObject1 = localObject2;
+                if (((List)localObject3).get(0) != null)
+                {
+                  localObject1 = localObject2;
+                  if (((FeedCloudMeta.StReply)((List)localObject3).get(0)).likeInfo.get() != null) {
+                    localObject1 = ((FeedCloudMeta.StLike)((FeedCloudMeta.StReply)((List)localObject3).get(0)).likeInfo.get()).id.get();
+                  }
+                }
+              }
+            }
+          }
+          i = 7;
+          break;
+        }
+        i = 2;
+        localObject1 = localObject2;
+        break;
+        QLog.e("QCircleDefaultMessagePresenter", 1, localException1, new Object[0]);
+        continue;
+        int j = 0;
       }
-      return paramString.booleanValue();
     }
-    return false;
   }
 }
 

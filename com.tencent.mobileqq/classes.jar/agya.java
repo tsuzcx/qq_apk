@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-final class agya
-  implements ahbm
+class agya
+  extends agen
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    paramQQAppInterface = (MessageForPoke)paramChatMessage;
-    if ((paramQQAppInterface.interactType == 126) && (!aheh.a(paramQQAppInterface.minVersion))) {
-      return 0;
-    }
-    return 62;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  
+  agya(agxy paramagxy) {}
 }
 
 

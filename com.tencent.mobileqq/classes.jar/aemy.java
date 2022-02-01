@@ -1,18 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.Leba.42;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class aemy
-  implements DialogInterface.OnClickListener
+public abstract class aemy
+  extends ClickableSpan
 {
-  public aemy(Leba.42 param42) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aemy(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, true).apply();
-    this.a.jdField_a_of_type_Aenb.a();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      paramTextPaint.setColor(i);
+      paramTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 

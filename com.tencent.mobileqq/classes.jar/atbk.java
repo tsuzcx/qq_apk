@@ -1,140 +1,216 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class atbk
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  public atht a;
-  String jdField_a_of_type_JavaLangString;
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  List<atbh> jdField_a_of_type_JavaUtilList;
-  List<atbh> b;
-  List<atbh> c;
-  public List<atbh> d;
-  List<atbh> e;
+  public final int a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private atbi jdField_a_of_type_Atbi;
+  private atbj jdField_a_of_type_Atbj;
+  public atbl a;
+  private atbm jdField_a_of_type_Atbm;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public final String a;
+  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  protected boolean a;
+  public final int b = 2;
+  public final int c = 4;
+  public final int d = 6;
+  public final int e = 7;
   
-  public atbk(String paramString, atht paramatht, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  public atbk(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramatht;
-    this.jdField_a_of_type_Atht = paramHashMap;
-    this.jdField_a_of_type_Int = 0;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.b = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.d = new ArrayList();
-    this.e = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.b.size();
+    this.jdField_a_of_type_JavaLangString = "ExtendFriendLimitChatStateMachine";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Atbj = new atbj(this, 100);
+    this.jdField_a_of_type_Atbm = new atbm(this, 101);
+    a(100, null);
   }
   
   public void a()
   {
-    c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((atbh)localIterator.next()).a();
-    }
-    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
   }
   
-  public void a(atbh paramatbh)
+  public void a(int paramInt)
   {
-    if (paramatbh != null) {
-      this.b.add(paramatbh);
+    int i = paramInt;
+    if (paramInt < 0)
+    {
+      QLog.e("ExtendFriendLimitChatStateMachine", 2, "requestmatch with wrong id");
+      i = 1;
+    }
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, i, i).sendToTarget();
+  }
+  
+  public void a(int paramInt, aswv paramaswv)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      QLog.i("ExtendFriendLimitChatStateMachine", 2, "setStatus  " + paramInt);
+      if (this.jdField_a_of_type_Atbi != null) {
+        this.jdField_a_of_type_Atbi.b(paramaswv);
+      }
+      return;
+      try
+      {
+        this.jdField_a_of_type_Atbi = this.jdField_a_of_type_Atbj;
+        continue;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      this.jdField_a_of_type_Atbi = this.jdField_a_of_type_Atbm;
+    }
+  }
+  
+  public void a(atbl paramatbl)
+  {
+    this.jdField_a_of_type_Atbl = paramatbl;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "onMatchPushMsg success:" + paramBoolean);
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 7, Integer.valueOf(i)).sendToTarget();
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, aswv paramaswv, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "onCSMatchResponseMsg success:" + paramBoolean + " retCode:" + paramInt);
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 4, i, paramInt, new Object[] { paramaswv, paramString }).sendToTarget();
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, aswv paramaswv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "onMatchPushMsg success:" + paramBoolean + " info:" + paramaswv);
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 6, i, 0, paramaswv).sendToTarget();
+      return;
     }
   }
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((atbh)localIterator.next()).b();
+    if (this.jdField_a_of_type_Atbj != null)
+    {
+      this.jdField_a_of_type_Atbj.b();
+      this.jdField_a_of_type_Atbj = null;
     }
-    this.jdField_a_of_type_Int = 5;
+    if (this.jdField_a_of_type_Atbm != null)
+    {
+      this.jdField_a_of_type_Atbm.b();
+      this.jdField_a_of_type_Atbm = null;
+    }
+    this.jdField_a_of_type_Atbi = null;
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatStateMachine", 2, "machine Clear ");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  void c()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (10 <= this.b.size()) {}
-    ArrayList localArrayList;
-    for (int i = 10;; i = this.b.size())
-    {
-      localArrayList = new ArrayList(i);
-      int j = 0;
-      while (j < i)
-      {
-        atbh localatbh = (atbh)this.b.get(j);
-        this.jdField_a_of_type_JavaUtilList.add(localatbh);
-        localArrayList.add(localatbh);
-        j += 1;
-      }
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Atbi == null) {
+      return true;
     }
-    this.b.removeAll(localArrayList);
-  }
-  
-  public void d()
-  {
-    int j = this.c.size();
-    int k = this.e.size();
-    int m = this.d.size();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    atbh localatbh;
-    if (localIterator.hasNext())
+    switch (paramMessage.what)
     {
-      localatbh = (atbh)localIterator.next();
-      if ((localatbh.b == 2) || (localatbh.b == 3) || (localatbh.b == 4)) {
-        localIterator.remove();
-      }
-      if (localatbh.b == 2)
+    case 3: 
+    case 5: 
+    default: 
+      return true;
+    case 1: 
+      int i = paramMessage.arg1;
+      this.jdField_a_of_type_Atbi.a(i);
+      return true;
+    case 2: 
+      this.jdField_a_of_type_Atbi.a();
+      return true;
+    case 4: 
+      if (paramMessage.arg1 == 1)
       {
-        this.c.add(localatbh);
-        i += 1;
+        bool1 = true;
+        if ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Object[]))) {
+          break label214;
+        }
+        Object localObject = (Object[])paramMessage.obj;
+        if ((localObject == null) || (localObject.length != 2)) {
+          break label197;
+        }
+        aswv localaswv = (aswv)localObject[0];
+        localObject = (String)localObject[1];
+        this.jdField_a_of_type_Atbi.a(bool1, paramMessage.arg2, localaswv, (String)localObject);
       }
-    }
-    for (;;)
-    {
-      break;
-      if (localatbh.b == 3)
+      for (;;)
       {
-        this.e.add(localatbh);
-        i += 1;
-      }
-      else if (localatbh.b == 4)
-      {
-        this.d.add(localatbh);
-        i += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendLimitChatStateMachine", 2, "CS_RESPONSE_MSG mIsGetMatchInfoWaitingHandle");
+        }
+        this.jdField_a_of_type_Boolean = false;
+        return true;
+        bool1 = false;
+        break;
+        this.jdField_a_of_type_Atbi.a(bool1, paramMessage.arg2, null, null);
         continue;
-        c();
-        if (QLog.isColorLevel())
-        {
-          int n = this.jdField_a_of_type_JavaUtilList.size();
-          int i1 = this.b.size();
-          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
-        }
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          ((atbh)localIterator.next()).a();
-        }
-        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
-        {
-          this.jdField_a_of_type_Int = 5;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "]");
-          }
-          atan.a(this.jdField_a_of_type_Atan, this.jdField_a_of_type_JavaLangString);
-        }
-        return;
+        this.jdField_a_of_type_Atbi.a(bool1, paramMessage.arg2, null, null);
+        QLog.e("ExtendFriendLimitChatStateMachine", 2, "CS_RESPONSE_MSG obj err");
       }
+    case 6: 
+      label197:
+      label214:
+      if (paramMessage.arg1 == 1) {
+        bool1 = true;
+      }
+      if (paramMessage.obj == null) {
+        break;
+      }
+    }
+    for (paramMessage = (aswv)paramMessage.obj;; paramMessage = null)
+    {
+      this.jdField_a_of_type_Atbi.a(bool1, paramMessage);
+      return true;
+      bool1 = bool2;
+      if (paramMessage.arg1 == 1) {
+        bool1 = true;
+      }
+      this.jdField_a_of_type_Atbi.a(bool1);
+      return true;
     }
   }
 }

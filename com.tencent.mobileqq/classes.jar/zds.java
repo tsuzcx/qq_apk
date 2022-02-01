@@ -1,30 +1,15 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class zds
+  implements zek
 {
-  public static zdw a(Context paramContext, String paramString)
-  {
-    paramContext = zdw.a(paramContext);
-    if (paramContext != null)
-    {
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext())
-      {
-        zdw localzdw = (zdw)paramContext.next();
-        if (TextUtils.equals(paramString, localzdw.a)) {
-          return localzdw;
-        }
-      }
-    }
-    return null;
-  }
+  public zds(DoodleLayout paramDoodleLayout) {}
   
-  public static boolean a(Context paramContext)
+  public void a()
   {
-    return !TextUtils.isEmpty(bgjb.a(paramContext, "qqstory_savedMusicList"));
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
   }
 }
 

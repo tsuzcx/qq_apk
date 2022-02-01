@@ -1,42 +1,45 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.utils.SoUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class anma
-  implements View.OnTouchListener
+class anma
+  implements AVCallback
 {
-  public anma(FrameHelperActivity paramFrameHelperActivity) {}
+  anma(anlu paramanlu) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onComplete(int paramInt, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramInt == 0)
     {
-    }
-    do
-    {
-      do
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      if (!this.a.a())
       {
-        return false;
-      } while (!bddy.c(this.a.getActivity().app, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
-      return false;
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
-        break;
+        bhmi.d(anml.a() + "libqav_graphics.so", anml.a() + "libtmg_graphics.so");
+        boolean bool = SoUtil.loadSo("tmg_graphics");
+        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
+        if (!this.a.a())
+        {
+          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
+          anlu.a(this.a, false);
+          this.a.a();
+          paramInt = 1;
+        }
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
       }
-    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    return false;
-    FrameHelperActivity.b(this.a);
-    return false;
+      return;
+      anlu.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
+      continue;
+      anlu.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
+      continue;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
+    }
   }
 }
 

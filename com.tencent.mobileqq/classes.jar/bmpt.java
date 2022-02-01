@@ -1,13 +1,20 @@
-import android.graphics.drawable.AnimationDrawable;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bmpt
+class bmpt
+  implements View.OnClickListener
 {
-  public QzoneZipCacheHelperCallBack mCallBack;
+  bmpt(bmpr parambmpr) {}
   
-  public void onLoadedFailed() {}
-  
-  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
+  public void onClick(View paramView)
+  {
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().loadUrl("javascript:" + bmpr.a(this.a) + "()");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

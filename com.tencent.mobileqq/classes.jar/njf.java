@@ -1,39 +1,10 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
-
-public class njf
-  implements INetInfoHandler
+public abstract interface njf
 {
-  protected WeakReference<niz> a;
+  public abstract void a();
   
-  public njf(niz paramniz)
-  {
-    this.a = new WeakReference(paramniz);
-  }
+  public abstract void b();
   
-  public void onNetMobile2None()
-  {
-    niz localniz = (niz)this.a.get();
-    if (localniz != null) {
-      localniz.a = 2;
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    niz localniz = (niz)this.a.get();
-    if (localniz != null) {
-      localniz.a = 2;
-    }
-  }
+  public abstract void c();
 }
 
 

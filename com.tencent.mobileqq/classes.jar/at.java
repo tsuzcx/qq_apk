@@ -10,7 +10,7 @@ public class at
   
   public void onClick(View paramView)
   {
-    afur.n = true;
+    agej.n = true;
     ek localek = (ek)((ek)paramView.getTag()).clone();
     this.a.a(localek);
     EventCollector.getInstance().onViewClicked(paramView);

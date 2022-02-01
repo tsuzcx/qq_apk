@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import acvr;
-import acvy;
-import acwh;
+import aczu;
+import adab;
+import adak;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anhk;
-import bbzh;
+import antf;
+import bcry;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -24,7 +24,6 @@ public class QQUpdateVersion
   private final String b = "qq_update_5.6";
   private final String c = "qq_update_6.5.5";
   private final String d = "qq_update_version";
-  private final String e = "QQUpdateVersion";
   
   private void a()
   {
@@ -33,16 +32,16 @@ public class QQUpdateVersion
     int j;
     Object localObject3;
     Object localObject1;
-    if (i < acwh.c.length)
+    if (i < adak.c.length)
     {
-      str = acwh.c[i];
-      j = acwh.u[i];
+      str = adak.c[i];
+      j = adak.u[i];
       localObject3 = this.a.app.a().b(str, j);
-      localObject1 = anhk.aj;
-      if ((acwh.a(j) != 1001) && (acwh.a(j) != 10002)) {
+      localObject1 = antf.aj;
+      if ((adak.a(j) != 1001) && (adak.a(j) != 10002)) {
         break label85;
       }
-      localObject1 = anhk.aj;
+      localObject1 = antf.aj;
     }
     for (;;)
     {
@@ -50,8 +49,8 @@ public class QQUpdateVersion
       {
         return;
         label85:
-        if (acwh.a(j) == 1010) {
-          localObject1 = anhk.ak;
+        if (adak.a(j) == 1010) {
+          localObject1 = antf.ak;
         }
       }
       else
@@ -63,7 +62,7 @@ public class QQUpdateVersion
         while (localIterator.hasNext())
         {
           localObject3 = (MessageRecord)localIterator.next();
-          if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (acwh.d((MessageRecord)localObject3)))
+          if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (adak.d((MessageRecord)localObject3)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("QQUpdateVersion", 2, "doMergeSayHelloBox oneWay=" + ((MessageRecord)localObject3).getBaseInfoString());
@@ -88,7 +87,7 @@ public class QQUpdateVersion
           if (localObject2 != null)
           {
             this.a.app.a().a(str, j, localObject2.frienduin, localObject2.selfuin);
-            localObject3 = bbzh.a(localObject2.msgtype);
+            localObject3 = bcry.a(localObject2.msgtype);
             MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject3, localObject2);
             ((MessageRecord)localObject3).senderuin = ((String)localObject1);
             ((MessageRecord)localObject3).frienduin = str;
@@ -108,9 +107,9 @@ public class QQUpdateVersion
     }
   }
   
-  private void b()
+  private void d()
   {
-    Object localObject = this.a.app.a().b(anhk.ak, 1010);
+    Object localObject = this.a.app.a().b(antf.ak, 1010);
     MessageRecord localMessageRecord;
     if (localObject != null)
     {
@@ -121,7 +120,7 @@ public class QQUpdateVersion
         this.a.app.a().a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
       }
     }
-    localObject = this.a.app.a().b(anhk.ab, 1010);
+    localObject = this.a.app.a().b(antf.ab, 1010);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -146,7 +145,7 @@ public class QQUpdateVersion
     }
     try
     {
-      String[] arrayOfString = "8.4.1".split("\\.");
+      String[] arrayOfString = "8.4.5".split("\\.");
       if ((arrayOfString != null) && (arrayOfString.length >= 2))
       {
         int i = Integer.parseInt(arrayOfString[0]);
@@ -162,15 +161,15 @@ public class QQUpdateVersion
       {
         do
         {
-          b();
+          d();
           localSharedPreferences.edit().putBoolean("qq_update_6.5.5", false).commit();
-          if (!"8.4.1".equals(str))
+          if (!"8.4.5".equals(str))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { str, "8.4.1" }));
+              QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { str, "8.4.5" }));
             }
             this.a.app.getApp().getSharedPreferences("loginwelcome_" + this.a.app.getCurrentAccountUin(), 0).edit().putBoolean("request_state", true).commit();
-            localSharedPreferences.edit().putString("qq_update_version", "8.4.1").commit();
+            localSharedPreferences.edit().putString("qq_update_version", "8.4.5").commit();
           }
           return 7;
           localException1 = localException1;

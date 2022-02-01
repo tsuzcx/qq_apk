@@ -1,138 +1,95 @@
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class argp
 {
-  public static final int a;
-  private static arfl jdField_a_of_type_Arfl;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "分享给你1张图片";
+  public String d = "";
   
-  static
+  public argp()
   {
-    if (ardw.a().a().a()) {}
-    for (int i = 4;; i = 3)
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 10485760L;
+    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
+    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public static argp a(String paramString)
+  {
+    boolean bool2 = false;
+    if (paramString == null)
     {
-      jdField_a_of_type_Int = i;
-      jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-      return;
+      paramString = null;
+      return paramString;
     }
-  }
-  
-  public static void a(arfl paramarfl)
-  {
-    jdField_a_of_type_Arfl = paramarfl;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Arfl != null)) {
-      jdField_a_of_type_Arfl.a(paramString1, paramString2);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Arfl != null)) {
-      jdField_a_of_type_Arfl.a(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Arfl != null))
+    argp localargp = new argp();
+    for (;;)
     {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
+      try
       {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (localJSONObject.has("picShareToWeChatEnable"))
+        {
+          if (localJSONObject.getInt("picShareToWeChatEnable") == 1)
+          {
+            bool1 = true;
+            localargp.jdField_a_of_type_Boolean = bool1;
+          }
+        }
+        else
+        {
+          if (localJSONObject.has("picShareToWeChatSize")) {
+            localargp.jdField_a_of_type_Long = localJSONObject.getLong("picShareToWeChatSize");
+          }
+          if (localJSONObject.has("PicShareToWeChatUserName")) {
+            localargp.jdField_a_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatUserName");
+          }
+          if (localJSONObject.has("PicShareToWeChatPath")) {
+            localargp.jdField_b_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatPath");
+          }
+          if (localJSONObject.has("PicShareToWeChatShareTicket"))
+          {
+            bool1 = bool2;
+            if (localJSONObject.getInt("PicShareToWeChatShareTicket") == 1) {
+              bool1 = true;
+            }
+            localargp.jdField_b_of_type_Boolean = bool1;
+          }
+          if (localJSONObject.has("PicShareToWeChatMiniType")) {
+            localargp.jdField_a_of_type_Int = localJSONObject.getInt("PicShareToWeChatMiniType");
+          }
+          if (localJSONObject.has("PicShareToWeChatTitle")) {
+            localargp.c = localJSONObject.getString("PicShareToWeChatTitle");
+          }
+          paramString = localargp;
+          if (!localJSONObject.has("PicShareToWeChatDescription")) {
+            break;
+          }
+          localargp.d = localJSONObject.getString("PicShareToWeChatDescription");
+          return localargp;
+        }
       }
-      jdField_a_of_type_Arfl.a(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Arfl != null)) {
-      jdField_a_of_type_Arfl.b(paramString1, paramString2);
-    }
-  }
-  
-  public static void b(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Arfl != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
+      catch (JSONException paramString)
       {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
+        QLog.e("PicShareToWXConfigProcessor", 1, "parse error.", paramString);
+        return localargp;
       }
-      jdField_a_of_type_Arfl.b(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Arfl != null)) {
-      jdField_a_of_type_Arfl.c(paramString1, paramString2);
-    }
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Arfl != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
-      }
-      jdField_a_of_type_Arfl.c(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 2) && (jdField_a_of_type_Arfl != null)) {
-      jdField_a_of_type_Arfl.d(paramString1, paramString2);
-    }
-  }
-  
-  public static void d(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Arfl != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
-      }
-      jdField_a_of_type_Arfl.e(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Arfl != null)) {
-      jdField_a_of_type_Arfl.e(paramString1, paramString2);
+      boolean bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argp
  * JD-Core Version:    0.7.0.1
  */

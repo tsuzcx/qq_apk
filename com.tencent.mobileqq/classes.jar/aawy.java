@@ -1,59 +1,44 @@
-import java.io.File;
-import java.util.Arrays;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aawy
+  implements aaxv
 {
-  public String a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public aawy(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public aawy(aawv paramaawv, String paramString, JSONObject paramJSONObject)
+  public void a(int paramInt) {}
+  
+  public void a(List<bgtf> paramList, aawq paramaawq)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
+    if (this.a.jdField_a_of_type_Aawm == null)
     {
-      this.b = paramJSONObject.getString("title");
-      this.c = paramJSONObject.getString("title_color");
-      this.d = paramJSONObject.getString("bg_color");
-      this.e = paramJSONObject.getString("bg_border_color");
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftPanel", 2, "getPackGiftStorage--onGetPackGift error--mTroopGifPanelData is null");
+      }
       return;
     }
-    catch (JSONException paramaawv)
+    this.a.jdField_a_of_type_Aawm.b(paramList);
+    this.a.jdField_a_of_type_Aawm.a(paramaawq);
+    if ((this.a.jdField_a_of_type_Aawm != null) && (this.a.jdField_a_of_type_Aawm.jdField_e_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_Aawm.jdField_e_of_type_JavaUtilArrayList.size() > 0) && (this.a.jdField_a_of_type_Aawm.b.size() > 0) && (this.a.jdField_a_of_type_Aawm.jdField_e_of_type_Int != -1))
     {
-      paramaawv.printStackTrace();
+      this.a.jdField_a_of_type_Aawl = ((aawl)this.a.jdField_a_of_type_Aawm.jdField_e_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Aawm.jdField_e_of_type_Int));
+      TroopGiftPanel.a(this.a, this.a.jdField_a_of_type_Aawl);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
+    if (this.a.d())
     {
-      localObject = Arrays.asList(((File)localObject).list());
-      if (((List)localObject).contains("take_video@2x.png"))
+      paramList = this.a;
+      if ((!TextUtils.isEmpty(this.a.f)) && (TroopGiftPanel.a(this.a))) {}
+      for (boolean bool = true;; bool = false)
       {
-        String str = paramString + "/" + "take_video@2x.png";
-        if (new File(str).exists()) {
-          this.f = str;
-        }
-      }
-      if (((List)localObject).contains("take_video_no_bg@2x.png"))
-      {
-        paramString = paramString + "/" + "take_video_no_bg@2x.png";
-        if (new File(paramString).exists()) {
-          this.g = paramString;
-        }
+        paramList.setSendGiftBtnEnabled(bool);
+        return;
       }
     }
+    this.a.setSendGiftBtnEnabled(TroopGiftPanel.a(this.a));
   }
 }
 

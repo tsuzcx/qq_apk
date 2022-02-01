@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import feedcloud.FeedCloudMeta.StNotice;
-import vnc;
+import vpg;
 
 public class QCircleUnsupportedMessageItemView
   extends QCircleBaseWidgetView<FeedCloudMeta.StNotice>
 {
-  private vnc a;
+  private vpg a;
   
   public QCircleUnsupportedMessageItemView(@NonNull Context paramContext)
   {
@@ -19,7 +19,7 @@ public class QCircleUnsupportedMessageItemView
   
   public int a()
   {
-    return 2131560728;
+    return 2131560749;
   }
   
   public String a()
@@ -29,7 +29,7 @@ public class QCircleUnsupportedMessageItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.a = new vnc(c());
+    this.a = new vpg(c());
     this.a.a(paramContext, paramView);
   }
   

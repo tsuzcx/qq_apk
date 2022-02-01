@@ -1,18 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
 public class beit
-  extends BroadcastReceiver
 {
-  public beit(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public void a() {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public boolean a(int paramInt)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
+    return false;
+  }
+  
+  public boolean a(beio parambeio)
+  {
+    return false;
   }
 }
 

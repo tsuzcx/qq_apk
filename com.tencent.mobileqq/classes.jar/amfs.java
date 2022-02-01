@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.persistence.Entity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amfs
+class amfs
+  implements View.OnClickListener
 {
-  public int a;
-  public Entity a;
+  amfs(amfr paramamfr) {}
   
-  public amfs(int paramInt, Entity paramEntity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+    Object localObject = paramView.getTag();
+    amfr.a(this.a, (ajuk)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

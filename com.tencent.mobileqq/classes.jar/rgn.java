@@ -1,11 +1,21 @@
-import tencent.im.oidb.articlesummary.articlesummary.GameLiveInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import java.util.List;
 
-public final class rgn
-  implements pvb<articlesummary.GameLiveInfo, rhc>
+class rgn
+  implements rfg
 {
-  public rhc a(articlesummary.GameLiveInfo paramGameLiveInfo)
+  rgn(rgm paramrgm, UgcVideo paramUgcVideo) {}
+  
+  public void a(List<String> paramList)
   {
-    return rhc.a(paramGameLiveInfo);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.rowkey = ((String)paramList.get(0));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
+    }
+    rgm.a(this.jdField_a_of_type_Rgm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
   }
 }
 

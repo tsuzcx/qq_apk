@@ -1,14 +1,23 @@
-public class ahlu
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+
+class ahlu
+  implements axfu<EmoticonPackage>
 {
-  public int a;
-  public String a;
-  public int b;
+  ahlu(ahlt paramahlt, ahmg paramahmg, bjbs parambjbs) {}
   
-  public ahlu(int paramInt1, String paramString, int paramInt2)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    bdll.b(this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Ahmg.a.a.eId, "");
+    if (paramEmoticonPackage == null)
+    {
+      this.jdField_a_of_type_Ahlt.jdField_a_of_type_Ahmf.a(107, this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahlt.b, this.jdField_a_of_type_Ahmg.a, this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ahlt.a(this.jdField_a_of_type_Ahlt));
+      askc.a().a(this.jdField_a_of_type_Ahlt.jdField_a_of_type_Ahmf);
+      this.jdField_a_of_type_Ahlt.jdField_a_of_type_Askd.a(this.jdField_a_of_type_Ahmg.a.a.epId, askd.c);
+      return;
+    }
+    ahlt.a(107, this.jdField_a_of_type_Ahlt.b, this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Ahmg.a, this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bjbs);
   }
 }
 

@@ -1,18 +1,76 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import android.graphics.PointF;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class bqbk
-  implements DialogInterface.OnClickListener
+class bqbk
+  implements zbi
 {
-  public bqbk(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  int jdField_a_of_type_Int = agej.a(18.0F, bqav.a(this.jdField_a_of_type_Bqav).getResources());
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bqbk(bqav parambqav) {}
+  
+  public void a()
   {
-    PhotoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    bqav.e(this.jdField_a_of_type_Bqav);
+    bqav.a(this.jdField_a_of_type_Bqav, true);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat == 1.0F)
+    {
+      zbw localzbw = ((zbh)bqav.a(this.jdField_a_of_type_Bqav).a("TextLayer")).a();
+      localzbw.b = this.jdField_a_of_type_Int;
+      bqav.a(this.jdField_a_of_type_Bqav).a(localzbw);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  {
+    zbc localzbc = (zbc)bqav.a(this.jdField_a_of_type_Bqav).a("GuideLineLayer");
+    if (localzbc != null) {
+      localzbc.a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
+    }
+  }
+  
+  public boolean a(zbj paramzbj)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bqav.a(this.jdField_a_of_type_Bqav) != null)
+    {
+      bool1 = bool2;
+      if (paramzbj != null)
+      {
+        bqav.a(this.jdField_a_of_type_Bqav).setVisibility(0);
+        if (bqav.a(this.jdField_a_of_type_Bqav).a.b())
+        {
+          Object localObject = bqav.a(this.jdField_a_of_type_Bqav).a.a();
+          ((zfw)localObject).d = false;
+          if ((localObject instanceof zbj))
+          {
+            localObject = (zbh)bqav.a(this.jdField_a_of_type_Bqav).a("TextLayer");
+            if (localObject != null) {
+              ((zbh)localObject).d();
+            }
+          }
+        }
+        bqav.a(this.jdField_a_of_type_Bqav).a.a(paramzbj);
+        paramzbj.d = true;
+        bqav.a(this.jdField_a_of_type_Bqav).requestLayout();
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void b()
+  {
+    bqav.a(this.jdField_a_of_type_Bqav, "");
+    bqav.b(this.jdField_a_of_type_Bqav).setVisibility(0);
+    bqav.c(this.jdField_a_of_type_Bqav, false);
   }
 }
 

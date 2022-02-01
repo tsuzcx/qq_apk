@@ -1,6 +1,17 @@
-public abstract interface axnx
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+
+public class axnx
+  implements aoog
 {
-  public abstract void a(axns paramaxns);
+  public axnx(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (MultiCardRecommendFragment.a(this.a) != null) {
+      MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    }
+  }
 }
 
 

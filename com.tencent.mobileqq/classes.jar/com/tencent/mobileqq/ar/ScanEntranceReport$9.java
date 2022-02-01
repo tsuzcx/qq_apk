@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar;
 
-import aoxj;
-import bctj;
+import apkz;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$9
   implements Runnable
 {
-  public ScanEntranceReport$9(aoxj paramaoxj) {}
+  public ScanEntranceReport$9(apkz paramapkz) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    bctj.a(BaseApplication.getContext()).a("", "scanner_zoom_camera", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "scanner_zoom_camera", true, 0L, 0L, localHashMap, "");
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.gdtad.statistics;
 
-import acqy;
-import acrc;
-import acrd;
+import acvc;
+import acvg;
+import acvh;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -70,30 +70,30 @@ public final class GdtDwellTimeStatisticsAfterClick
   private void c()
   {
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    acqy.b("GdtDwellTimeStatisticsAfterClick", String.format("enter %d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+    acvc.b("GdtDwellTimeStatisticsAfterClick", String.format("enter %d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
   }
   
   private void d()
   {
     long l = SystemClock.elapsedRealtime();
-    acqy.b("GdtDwellTimeStatisticsAfterClick", String.format("leave %d", new Object[] { Long.valueOf(l) }));
+    acvc.b("GdtDwellTimeStatisticsAfterClick", String.format("leave %d", new Object[] { Long.valueOf(l) }));
     if (this.jdField_a_of_type_Long == -2147483648L) {
-      acqy.d("GdtDwellTimeStatisticsAfterClick", "leave error");
+      acvc.d("GdtDwellTimeStatisticsAfterClick", "leave error");
     }
     l -= this.jdField_a_of_type_Long;
-    acqy.b("GdtDwellTimeStatisticsAfterClick", String.format("dwell %d", new Object[] { Long.valueOf(l) }));
+    acvc.b("GdtDwellTimeStatisticsAfterClick", String.format("dwell %d", new Object[] { Long.valueOf(l) }));
     this.jdField_a_of_type_Long = -2147483648L;
-    acrd localacrd = new acrd();
-    localacrd.jdField_a_of_type_ComTencentAdTangramAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-    localacrd.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
-    localacrd.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(l);
-    acrc.a(localacrd);
+    acvh localacvh = new acvh();
+    localacvh.jdField_a_of_type_ComTencentAdTangramAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+    localacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
+    localacvh.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(l);
+    acvg.a(localacvh);
   }
   
   public void a()
   {
     if (!a()) {
-      acqy.d("GdtDwellTimeStatisticsAfterClick", "click error");
+      acvc.d("GdtDwellTimeStatisticsAfterClick", "click error");
     }
     while (this.jdField_a_of_type_Boolean) {
       return;

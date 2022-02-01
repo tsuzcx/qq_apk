@@ -1,18 +1,13 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.os.Build.VERSION;
 
-public class bhrx
-  extends LruCache<String, WebSoService.WebSoState>
+public final class bhrx
 {
-  public bhrx(WebSoService paramWebSoService, int paramInt)
+  public static int a()
   {
-    super(paramInt);
-  }
-  
-  protected WebSoService.WebSoState a(String paramString)
-  {
-    return new WebSoService.WebSoState();
+    if (Build.VERSION.SDK_INT > 10) {
+      return 4;
+    }
+    return 0;
   }
 }
 

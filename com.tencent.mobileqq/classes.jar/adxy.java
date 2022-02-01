@@ -1,41 +1,55 @@
-import android.content.res.Resources;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class adxy
-  implements View.OnTouchListener
+  implements bliz
 {
-  public adxy(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adxy(BaseChatPie paramBaseChatPie, blir paramblir) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
+    switch (paramInt)
     {
-      i = 1;
-      if ((!this.a.a.isMember) && (i != 0)) {
-        break label66;
-      }
     }
-    label66:
-    do
+    for (;;)
     {
-      return false;
-      i = 0;
-      break;
-      if (paramMotionEvent.getAction() == 0) {
-        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
-      }
-    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131297009) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
-    return false;
+      this.jdField_a_of_type_Blir.dismiss();
+      do
+      {
+        for (;;)
+        {
+          return;
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+          bdll.b(null, "dc00898", "", "", "0X800ACA3", "0X800ACA3", 0, 0, "", "0", "0", "");
+          paramView = (aohx)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
+          ArrayList localArrayList = new ArrayList();
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+            paramView.a(localArrayList);
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c == null) {
+              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c = new bjbs(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 0);
+            }
+            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.show();
+          }
+          catch (NumberFormatException paramView) {}
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_JavaLangString, 2, "delete Stranger parseLong() error", paramView);
+      return;
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", "https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=" + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+      bdll.b(null, "dc00898", "", "", "0X800ACA4", "0X800ACA4", 0, 0, "", "0", "0", "");
+    }
   }
 }
 

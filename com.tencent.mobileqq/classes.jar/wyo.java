@@ -1,41 +1,13 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
 
 public class wyo
-  extends wlf<xam>
+  implements View.OnClickListener
 {
-  public static final String a = wjz.a("StorySvc.get_user_black_status");
-  public String b;
+  public wyo(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
   
-  public String a()
-  {
-    return a;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
-    try
-    {
-      localRspGetBlackList.mergeFrom(paramArrayOfByte);
-      return new xam(localRspGetBlackList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
-    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetBlackList.toByteArray();
-  }
+  public void onClick(View paramView) {}
 }
 
 

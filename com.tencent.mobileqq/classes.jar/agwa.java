@@ -1,23 +1,46 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-class agwa
-  implements atwb
+public class agwa
+  implements agvc
 {
-  agwa(agup paramagup, String paramString) {}
+  private aijm a;
   
-  public void onClick(View paramView)
+  public agwa(aijm paramaijm)
   {
-    paramView = new Intent(this.jdField_a_of_type_Agup.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
-    paramView.putExtra("uin", this.jdField_a_of_type_Agup.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("uintype", this.jdField_a_of_type_Agup.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Agup.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Agup.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    atvm.a("0X800506C");
+    this.a = paramaijm;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    SessionInfo localSessionInfo;
+    do
+    {
+      return;
+      localObject = this.a.b;
+      localSessionInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      if ((localObject != null) && ((localSessionInfo.jdField_a_of_type_Int == 1024) || (((bkgt)localObject).a(localSessionInfo.jdField_a_of_type_JavaLangString)))) {
+        ((bkgt)localObject).a(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int);
+      }
+      if ((localObject != null) && (((bkgt)localObject).a(localSessionInfo.jdField_a_of_type_JavaLangString))) {
+        ((bkib)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(85)).a(null, localSessionInfo.jdField_a_of_type_JavaLangString, false);
+      }
+    } while ((!(this.a instanceof aihh)) && (!nmd.b(localSessionInfo.jdField_a_of_type_JavaLangString)));
+    if (localObject == null) {}
+    for (Object localObject = "";; localObject = ((bkgt)localObject).a(localSessionInfo.jdField_a_of_type_JavaLangString))
+    {
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", localSessionInfo.jdField_a_of_type_JavaLangString, "0X8009787", "CloseAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.4.5", "");
+      return;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13 };
   }
 }
 

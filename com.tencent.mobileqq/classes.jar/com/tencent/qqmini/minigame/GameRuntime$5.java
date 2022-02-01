@@ -1,36 +1,15 @@
 package com.tencent.qqmini.minigame;
 
-import com.tencent.qqmini.minigame.debug.DebugWebSocket.DebuggerStateListener;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import android.os.Process;
 
 class GameRuntime$5
-  implements DebugWebSocket.DebuggerStateListener
+  implements Runnable
 {
   GameRuntime$5(GameRuntime paramGameRuntime) {}
   
-  public void onDebuggerBreakPointPaused()
+  public void run()
   {
-    QMLog.e("GameRuntime DebugSocket", "launchGame debugger BreakPointPaused");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("断点中", null, true);
-  }
-  
-  public void onDebuggerConnectedNormal()
-  {
-    QMLog.e("GameRuntime DebugSocket", "launchGame debugger connected ");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("已连接", null, false);
-    this.this$0.launchGame();
-  }
-  
-  public void onDebuggerDisconnect(String paramString)
-  {
-    QMLog.e("GameRuntime DebugSocket", "launchGame debugger Disconnect");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("连接断开", "关闭调试连接", false);
-  }
-  
-  public void onDebuggerReconnecting(String paramString)
-  {
-    QMLog.e("GameRuntime DebugSocket", "launchGame debugger Reconnecting");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("连接断开", "重新建立调试连接...", false);
+    Process.killProcess(Process.myPid());
   }
 }
 

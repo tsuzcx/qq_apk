@@ -1,18 +1,48 @@
-public class aohs
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.NewIntent;
+
+class aohs
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
-  
-  public aohs(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  aohs(aohr paramaohr, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      Object localObject;
+      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+      {
+        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), nkl.class);
+        ((NewIntent)localObject).putExtra("data", ((aohw)paramMessage.obj).a.toByteArray());
+        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
+        ((NewIntent)localObject).setObserver(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Aohw = null;
+        return;
+        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
+        ((ToServiceMsg)localObject).putWupBuffer(((aohw)paramMessage.obj).a.toByteArray());
+        this.a.sendPbReq((ToServiceMsg)localObject);
+      }
+    }
+    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
   }
 }
 

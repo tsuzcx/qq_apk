@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.model.item;
 
 import android.text.TextUtils;
-import bcrp;
-import bgsp;
+import bdkh;
+import bhsr;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.LikeEntry;
 import com.tencent.biz.qqstory.database.StoryVideoEntry;
@@ -51,29 +51,29 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wev;
-import wgw;
-import wpj;
-import wpm;
-import wpy;
-import wqu;
-import wqv;
-import wqw;
-import wqz;
-import wrb;
-import wrd;
-import xqn;
-import yij;
-import yqp;
-import zhi;
-import zhq;
-import zka;
-import zkr;
-import zls;
+import wiq;
+import wkr;
+import wte;
+import wth;
+import wtt;
+import wup;
+import wuq;
+import wur;
+import wuu;
+import wuw;
+import wuy;
+import xui;
+import yme;
+import yuk;
+import zld;
+import zll;
+import znv;
+import zom;
+import zpn;
 
 public class StoryVideoItem
   extends BaseUIItem
-  implements Comparable<StoryVideoItem>, wev
+  implements Comparable<StoryVideoItem>, wiq
 {
   public static final int BASIC_INFO_STATE_INIT = 0;
   public static final int BASIC_INFO_STATE_SUCC = 1;
@@ -108,18 +108,18 @@ public class StoryVideoItem
   public int mBanType = -1;
   public int mBasicInfoState = 0;
   public int mCommentCount = -1;
-  public zhi mCompInfoBase;
+  public zld mCompInfoBase;
   public long mCreateTime = -1L;
   public String mDoodleText;
   public String mDownloadNetType;
   public int mErrorCode;
-  public wqz mGameInfo;
+  public wuu mGameInfo;
   public String mGameInfoJson;
   public String mGroupId;
   public int mHadRead = -1;
   public int mHasLike = -1;
   public int mHasRelatedVideo = -1;
-  private wqv mInteractLayoutAttr;
+  private wuq mInteractLayoutAttr;
   public String mInteractLayoutJson;
   public int mInteractStatus = -1;
   public String mInteractThumbnailLocalPath;
@@ -138,12 +138,12 @@ public class StoryVideoItem
   public String mLocalVideoPath;
   public AddressItem mLocation;
   public int mLongitude;
-  public wrb mOALinkInfo;
+  public wuw mOALinkInfo;
   public String mOALinkInfoJson;
   public String mOriginalMaskPicUrl;
   public String mOwnerName = "";
   public String mOwnerUid = "";
-  private wqw mPollLayoutAttr;
+  private wur mPollLayoutAttr;
   public String mPollLayoutJson;
   public int[] mPollNumbers;
   public int mPollResult = -1;
@@ -152,7 +152,7 @@ public class StoryVideoItem
   public CopyOnWriteArrayList<QQUserUIItem> mPollUsers = new CopyOnWriteArrayList();
   public String mPreloadMsg;
   public String mPublishDate;
-  public wqu mQimVideoInfoItem;
+  public wup mQimVideoInfoItem;
   public int mRateResult = -1;
   public CopyOnWriteArrayList<QQUserUIItem> mRateUsers = new CopyOnWriteArrayList();
   public String mRecommendWording;
@@ -162,7 +162,7 @@ public class StoryVideoItem
   public int mStoryType = 1;
   public int mStrangerLikeCount = -1;
   public int mStrangerViewCount = -1;
-  public zhq mTagInfoBase;
+  public zll mTagInfoBase;
   public String mTempThumbUrl;
   public String mTempVideoUrl;
   public long mTimeZoneOffsetMillis = 2147483647L;
@@ -178,12 +178,12 @@ public class StoryVideoItem
   public long mVideoDuration = -1L;
   public int mVideoHeight = -1;
   public long mVideoIndex;
-  public wrb mVideoLinkInfo;
+  public wuw mVideoLinkInfo;
   public String mVideoLocalThumbnailOrigFakePath;
   public String mVideoLocalThumbnailPath;
   public String mVideoMd5;
   public int mVideoSource = -1;
-  public wrd mVideoSpreadGroupList;
+  public wuy mVideoSpreadGroupList;
   public String mVideoThumbnailUrl;
   public String mVideoUrl;
   public int mVideoWidth = -1;
@@ -219,7 +219,7 @@ public class StoryVideoItem
     this.mAddTime = paramStoryVideoEntry.addTime;
     this.mPublishDate = paramStoryVideoEntry.mPublishDate;
     if (TextUtils.isEmpty(this.mPublishDate)) {
-      this.mPublishDate = yij.a().format(new Date(this.mCreateTime));
+      this.mPublishDate = yme.a().format(new Date(this.mCreateTime));
     }
     this.mUploadStatus = paramStoryVideoEntry.uploadStatus;
     this.mRetryUploadTimes = paramStoryVideoEntry.retryUploadTimes;
@@ -263,7 +263,7 @@ public class StoryVideoItem
       try
       {
         ((qqstory_struct.VideoSpreadGroupList)localObject).mergeFrom(paramStoryVideoEntry.videoSpreadGroupList);
-        this.mVideoSpreadGroupList = new wrd((qqstory_struct.VideoSpreadGroupList)localObject);
+        this.mVideoSpreadGroupList = new wuy((qqstory_struct.VideoSpreadGroupList)localObject);
         this.mVideoMd5 = paramStoryVideoEntry.md5;
         this.mGroupId = paramStoryVideoEntry.groupId;
         this.mHadRead = paramStoryVideoEntry.hadRead;
@@ -287,7 +287,7 @@ public class StoryVideoItem
         try
         {
           ((qqstory_struct.TagInfoBase)localObject).mergeFrom(paramStoryVideoEntry.mTagBytes);
-          this.mTagInfoBase = new zhq((qqstory_struct.TagInfoBase)localObject);
+          this.mTagInfoBase = new zll((qqstory_struct.TagInfoBase)localObject);
           if ((paramStoryVideoEntry.mCompBytes != null) && (paramStoryVideoEntry.mCompBytes.length > 0)) {
             localObject = new qqstory_struct.CompInfoBase();
           }
@@ -301,7 +301,7 @@ public class StoryVideoItem
               for (;;)
               {
                 ((qqstory_struct.CompInfoBase)localObject).mergeFrom(paramStoryVideoEntry.mCompBytes);
-                this.mCompInfoBase = new zhi((qqstory_struct.CompInfoBase)localObject);
+                this.mCompInfoBase = new zld((qqstory_struct.CompInfoBase)localObject);
                 this.mPollLayoutJson = paramStoryVideoEntry.pollJsonData;
                 if (TextUtils.isEmpty(paramStoryVideoEntry.pollNumbers)) {
                   break;
@@ -316,17 +316,17 @@ public class StoryVideoItem
                   i += 1;
                 }
                 localException = localException;
-                yqp.b("StoryVideoItem ,StoryVideoItem(StoryVideoEntry entry) error :", localException.toString());
+                yuk.b("StoryVideoItem ,StoryVideoItem(StoryVideoEntry entry) error :", localException.toString());
                 localException.printStackTrace();
                 continue;
                 localInvalidProtocolBufferMicroException5 = localInvalidProtocolBufferMicroException5;
                 if (QLog.isColorLevel()) {
-                  yqp.b("StoryVideoItem ,StoryVideoItem(StoryVideoEntry entry) error :", localInvalidProtocolBufferMicroException5.toString());
+                  yuk.b("StoryVideoItem ,StoryVideoItem(StoryVideoEntry entry) error :", localInvalidProtocolBufferMicroException5.toString());
                 }
               }
               localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
             } while (!QLog.isColorLevel());
-            yqp.b("StoryVideoItem ,StoryVideoItem(StoryVideoEntry entry) error :", localInvalidProtocolBufferMicroException1.toString());
+            yuk.b("StoryVideoItem ,StoryVideoItem(StoryVideoEntry entry) error :", localInvalidProtocolBufferMicroException1.toString());
           }
           catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
           {
@@ -380,7 +380,7 @@ public class StoryVideoItem
                   this.mRateUsers.add(localQQUserUIItem);
                   i += 1;
                 }
-                this.mQimVideoInfoItem = wqu.a(paramStoryVideoEntry.mQimBytes);
+                this.mQimVideoInfoItem = wup.a(paramStoryVideoEntry.mQimBytes);
               }
               catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException4) {}
             }
@@ -435,7 +435,7 @@ public class StoryVideoItem
       }
       catch (Exception paramStoryVideoItem)
       {
-        yqp.b(paramString2, "decode json fail", paramStoryVideoItem);
+        yuk.b(paramString2, "decode json fail", paramStoryVideoItem);
       }
       if (i != 0)
       {
@@ -464,13 +464,13 @@ public class StoryVideoItem
       Object localObject = paramString1.optJSONObject("pl");
       if ((localObject != null) && (paramStoryVideoItem.hasParsedPollLayout != 1))
       {
-        paramStoryVideoItem.mPollLayoutAttr = wqw.a((JSONObject)localObject);
+        paramStoryVideoItem.mPollLayoutAttr = wur.a((JSONObject)localObject);
         if (paramStoryVideoItem.mPollLayoutAttr == null)
         {
           paramStoryVideoItem.mPollLayoutJson = null;
           label361:
           paramStoryVideoItem.hasParsedPollLayout = 1;
-          yqp.b(paramString2, "pl: " + ((JSONObject)localObject).toString());
+          yuk.b(paramString2, "pl: " + ((JSONObject)localObject).toString());
         }
       }
       else
@@ -479,7 +479,7 @@ public class StoryVideoItem
         localObject = paramString1.optJSONObject("i_l");
         if (localObject != null)
         {
-          paramStoryVideoItem.mInteractLayoutAttr = wqv.a((JSONObject)localObject);
+          paramStoryVideoItem.mInteractLayoutAttr = wuq.a((JSONObject)localObject);
           if (paramStoryVideoItem.mInteractLayoutAttr != null) {
             break label529;
           }
@@ -488,10 +488,10 @@ public class StoryVideoItem
       label529:
       for (paramStoryVideoItem.mInteractLayoutJson = null;; paramStoryVideoItem.mInteractLayoutJson = paramStoryVideoItem.mInteractLayoutAttr.a())
       {
-        yqp.b(paramString2, "il: " + ((JSONObject)localObject).toString());
+        yuk.b(paramString2, "il: " + ((JSONObject)localObject).toString());
         paramStoryVideoItem.mInteractThumbnailUrl = paramString1.optString("il_pic");
         paramStoryVideoItem.mGameInfoJson = paramString1.optString("game");
-        paramStoryVideoItem.mGameInfo = wqz.a(paramStoryVideoItem.mGameInfoJson);
+        paramStoryVideoItem.mGameInfo = wuu.a(paramStoryVideoItem.mGameInfoJson);
         paramStoryVideoItem.comparedLevel = paramString1.optInt("comp_lv");
         break;
         paramStoryVideoItem.mPollLayoutJson = paramStoryVideoItem.mPollLayoutAttr.a();
@@ -532,7 +532,7 @@ public class StoryVideoItem
       }
       catch (JSONException paramStoryVideoItem)
       {
-        yqp.b(paramString, "encode json fail", paramStoryVideoItem);
+        yuk.b(paramString, "encode json fail", paramStoryVideoItem);
         continue;
       }
       try
@@ -572,7 +572,7 @@ public class StoryVideoItem
   
   public static String getCacheKey(String paramString)
   {
-    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).a(paramString);
+    StoryVideoItem localStoryVideoItem = ((wte)wth.a(5)).a(paramString);
     if (localStoryVideoItem == null) {}
     while (TextUtils.isEmpty(localStoryVideoItem.mVideoMd5)) {
       return paramString;
@@ -582,14 +582,14 @@ public class StoryVideoItem
   
   public static int getPlayableFlag(String paramString, boolean paramBoolean)
   {
-    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).a(paramString);
+    StoryVideoItem localStoryVideoItem = ((wte)wth.a(5)).a(paramString);
     if ((localStoryVideoItem == null) || (localStoryVideoItem.isMaskDownloaded() == 0)) {
       return 1;
     }
-    if ((paramBoolean) && (xqn.a(BaseApplicationImpl.getContext()).a()) && ((!TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)) || (!TextUtils.isEmpty(localStoryVideoItem.mTempVideoUrl)))) {
+    if ((paramBoolean) && (xui.a(BaseApplicationImpl.getContext()).a()) && ((!TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)) || (!TextUtils.isEmpty(localStoryVideoItem.mTempVideoUrl)))) {
       return 2;
     }
-    if (wgw.a(paramString, 0, false, false) != null) {
+    if (wkr.a(paramString, 0, false, false) != null) {
       return 3;
     }
     return 4;
@@ -722,7 +722,7 @@ public class StoryVideoItem
       this.mBanType = paramStoryVideoFullInfo.ban_type.get();
     }
     if ((paramStoryVideoFullInfo.group_list != null) && (paramStoryVideoFullInfo.group_list.has())) {
-      this.mVideoSpreadGroupList = new wrd(paramStoryVideoFullInfo.group_list);
+      this.mVideoSpreadGroupList = new wuy(paramStoryVideoFullInfo.group_list);
     }
     if (paramStoryVideoFullInfo.video_source.has()) {
       this.mVideoSource = paramStoryVideoFullInfo.video_source.get();
@@ -741,10 +741,10 @@ public class StoryVideoItem
         this.mVideoIndex = paramStoryVideoFullInfo.video_index.get();
       }
       if (paramStoryVideoFullInfo.video_tag.has()) {
-        this.mTagInfoBase = new zhq((qqstory_struct.TagInfoBase)paramStoryVideoFullInfo.video_tag.get());
+        this.mTagInfoBase = new zll((qqstory_struct.TagInfoBase)paramStoryVideoFullInfo.video_tag.get());
       }
       if (paramStoryVideoFullInfo.qim_video_info.has()) {
-        this.mQimVideoInfoItem = new wqu((qqstory_struct.QimVideoInfo)paramStoryVideoFullInfo.qim_video_info.get());
+        this.mQimVideoInfoItem = new wup((qqstory_struct.QimVideoInfo)paramStoryVideoFullInfo.qim_video_info.get());
       }
       if (paramStoryVideoFullInfo.player_scale_type.has()) {
         this.playerScaleType = paramStoryVideoFullInfo.player_scale_type.get();
@@ -781,7 +781,7 @@ public class StoryVideoItem
     this.mVid = paramVideoInfoItem.story_id.get().toStringUtf8();
     this.mBasicInfoState = 1;
     this.mOwnerUid = paramVideoInfoItem.union_id.get().toStringUtf8();
-    ((wpy)wpm.a(2)).a(this.mOwnerUid, String.valueOf(paramVideoInfoItem.uin.get()));
+    ((wtt)wth.a(2)).a(this.mOwnerUid, String.valueOf(paramVideoInfoItem.uin.get()));
     this.mCreateTime = (paramVideoInfoItem.publish_time.get() * 1000L);
     this.mVideoDuration = paramVideoInfoItem.duration.get();
     this.mVideoMd5 = paramVideoInfoItem.vid.get().toStringUtf8();
@@ -831,7 +831,7 @@ public class StoryVideoItem
     this.mVideoThumbnailUrl = paramFeedVideoInfo.video_cover.get().toStringUtf8();
     this.mCreateTime = (paramFeedVideoInfo.time.get() * 1000L);
     if (paramFeedVideoInfo.video_tag.has()) {
-      this.mTagInfoBase = new zhq((qqstory_struct.TagInfoBase)paramFeedVideoInfo.video_tag.get());
+      this.mTagInfoBase = new zll((qqstory_struct.TagInfoBase)paramFeedVideoInfo.video_tag.get());
     }
     if (paramFeedVideoInfo.video_extern_link_attr.has()) {
       this.mLinkInfoJson = paramFeedVideoInfo.video_extern_link_attr.get().toStringUtf8();
@@ -911,7 +911,7 @@ public class StoryVideoItem
       this.mLocation = AddressItem.getAddressFromProtoObject((qqstory_struct.Address)paramStoryVideoBasicInfo.address.get());
     }
     if ((paramStoryVideoBasicInfo.group_list != null) && (paramStoryVideoBasicInfo.group_list.has())) {
-      this.mVideoSpreadGroupList = new wrd(paramStoryVideoBasicInfo.group_list);
+      this.mVideoSpreadGroupList = new wuy(paramStoryVideoBasicInfo.group_list);
     }
     if (paramStoryVideoBasicInfo.video_source.has()) {
       this.mVideoSource = paramStoryVideoBasicInfo.video_source.get();
@@ -920,7 +920,7 @@ public class StoryVideoItem
       this.mVideoIndex = paramStoryVideoBasicInfo.video_index.get();
     }
     if (paramStoryVideoBasicInfo.video_tag.has()) {
-      this.mTagInfoBase = new zhq((qqstory_struct.TagInfoBase)paramStoryVideoBasicInfo.video_tag.get());
+      this.mTagInfoBase = new zll((qqstory_struct.TagInfoBase)paramStoryVideoBasicInfo.video_tag.get());
     }
   }
   
@@ -955,7 +955,7 @@ public class StoryVideoItem
       this.mBanType = paramStoryVideoSimpleInfo.ban_type.get();
     }
     if ((paramStoryVideoSimpleInfo.group_list != null) && (paramStoryVideoSimpleInfo.group_list.has())) {
-      this.mVideoSpreadGroupList = new wrd(paramStoryVideoSimpleInfo.group_list);
+      this.mVideoSpreadGroupList = new wuy(paramStoryVideoSimpleInfo.group_list);
     }
     if (paramStoryVideoSimpleInfo.video_attr.has()) {
       convertFromVideoAttr(this, paramStoryVideoSimpleInfo.video_attr.get().toStringUtf8(), "StoryVideoSimpleInfo");
@@ -1338,18 +1338,18 @@ public class StoryVideoItem
     if (localObject1 != null)
     {
       localObject2 = new qqstory_struct.TagInfoBase();
-      ((qqstory_struct.TagInfoBase)localObject2).tag_id.set(((zhq)localObject1).jdField_a_of_type_Long);
-      ((qqstory_struct.TagInfoBase)localObject2).tag_type.set(((zhq)localObject1).jdField_a_of_type_Int);
-      ((qqstory_struct.TagInfoBase)localObject2).tag_name.set(((zhq)localObject1).jdField_a_of_type_JavaLangString);
-      ((qqstory_struct.TagInfoBase)localObject2).tag_desc.set(((zhq)localObject1).b);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_id.set(((zll)localObject1).jdField_a_of_type_Long);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_type.set(((zll)localObject1).jdField_a_of_type_Int);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_name.set(((zll)localObject1).jdField_a_of_type_JavaLangString);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_desc.set(((zll)localObject1).b);
       localStoryVideoEntry.mTagBytes = ((qqstory_struct.TagInfoBase)localObject2).toByteArray();
     }
     localObject1 = this.mCompInfoBase;
     if (localObject1 != null)
     {
       localObject2 = new qqstory_struct.CompInfoBase();
-      ((qqstory_struct.CompInfoBase)localObject2).title.set(((zhi)localObject1).jdField_a_of_type_JavaLangString);
-      ((qqstory_struct.CompInfoBase)localObject2).backgroud_url.set(((zhi)localObject1).b);
+      ((qqstory_struct.CompInfoBase)localObject2).title.set(((zld)localObject1).jdField_a_of_type_JavaLangString);
+      ((qqstory_struct.CompInfoBase)localObject2).backgroud_url.set(((zld)localObject1).b);
       localStoryVideoEntry.mCompBytes = ((qqstory_struct.CompInfoBase)localObject2).toByteArray();
     }
     int i;
@@ -1421,8 +1421,8 @@ public class StoryVideoItem
       if (i != 0)
       {
         new IllegalStateException("Error on cover2StoryEntry");
-        yqp.e("StoryVideoItem", "cover2StoryEntry badData: vid=%s, polllist=%s", new Object[] { this.mVid, this.mPollUsers });
-        bcrp.a(zls.a("cover2StoryEntry, " + this.mPollUsers.toString(), null), "StoryVideoItem::cover2StoryEntry bad data");
+        yuk.e("StoryVideoItem", "cover2StoryEntry badData: vid=%s, polllist=%s", new Object[] { this.mVid, this.mPollUsers });
+        bdkh.a(zpn.a("cover2StoryEntry, " + this.mPollUsers.toString(), null), "StoryVideoItem::cover2StoryEntry bad data");
       }
       return localStoryVideoEntry;
       i = 0;
@@ -1497,21 +1497,21 @@ public class StoryVideoItem
     return String.format("InteractItem%s-%s-%s-%s", new Object[] { this.mVid, String.valueOf(this.mRateResult), String.valueOf(this.mTotalScore), String.valueOf(this.mTotalRateCount) });
   }
   
-  public wqv getInteractLayout()
+  public wuq getInteractLayout()
   {
     if (!isInteractVideo()) {
       return null;
     }
     if (this.mInteractLayoutAttr == null) {
-      this.mInteractLayoutAttr = wqv.a(this.mInteractLayoutJson);
+      this.mInteractLayoutAttr = wuq.a(this.mInteractLayoutJson);
     }
     return this.mInteractLayoutAttr;
   }
   
-  public wrb getOALinkInfo()
+  public wuw getOALinkInfo()
   {
     if (this.mOALinkInfo == null) {
-      this.mOALinkInfo = wrb.a(this.mOALinkInfoJson);
+      this.mOALinkInfo = wuw.a(this.mOALinkInfoJson);
     }
     return this.mOALinkInfo;
   }
@@ -1521,15 +1521,15 @@ public class StoryVideoItem
     if (!isPollVideo()) {
       return "NotPollItem";
     }
-    return String.format("PollItem%s-%s-%s", new Object[] { this.mVid, String.valueOf(zka.a(this.mPollNumbers)), String.valueOf(this.mPollResult) });
+    return String.format("PollItem%s-%s-%s", new Object[] { this.mVid, String.valueOf(znv.a(this.mPollNumbers)), String.valueOf(this.mPollResult) });
   }
   
-  public wqw getPollLayout()
+  public wur getPollLayout()
   {
     if ((this.mPollLayoutAttr != null) || (this.hasParsedPollLayout == 1) || (TextUtils.isEmpty(this.mPollLayoutJson))) {
       return this.mPollLayoutAttr;
     }
-    this.mPollLayoutAttr = wqw.a(this.mPollLayoutJson);
+    this.mPollLayoutAttr = wur.a(this.mPollLayoutJson);
     this.hasParsedPollLayout = 1;
     return this.mPollLayoutAttr;
   }
@@ -1542,22 +1542,22 @@ public class StoryVideoItem
     return this.mVideoThumbnailUrl;
   }
   
-  public wqz getVideoGameInfo()
+  public wuu getVideoGameInfo()
   {
-    wrb localwrb = getOALinkInfo();
-    if ((localwrb != null) && (localwrb.a != null)) {
-      return localwrb.a;
+    wuw localwuw = getOALinkInfo();
+    if ((localwuw != null) && (localwuw.a != null)) {
+      return localwuw.a;
     }
     if (this.mGameInfo == null) {
-      this.mGameInfo = wqz.a(this.mGameInfoJson);
+      this.mGameInfo = wuu.a(this.mGameInfoJson);
     }
     return this.mGameInfo;
   }
   
-  public wrb getVideoLinkInfo()
+  public wuw getVideoLinkInfo()
   {
     if (this.mVideoLinkInfo == null) {
-      this.mVideoLinkInfo = wrb.a(this.mLinkInfoJson);
+      this.mVideoLinkInfo = wuw.a(this.mLinkInfoJson);
     }
     return this.mVideoLinkInfo;
   }
@@ -1565,7 +1565,7 @@ public class StoryVideoItem
   public int getVideoMaskType()
   {
     boolean bool1 = isMaskVideo();
-    boolean bool2 = zkr.c(this.mAtImagePath);
+    boolean bool2 = zom.c(this.mAtImagePath);
     if (bool1)
     {
       if (bool2) {
@@ -1628,7 +1628,7 @@ public class StoryVideoItem
     if (TextUtils.isEmpty(this.mOriginalMaskPicUrl)) {
       i = -1;
     }
-    while (wgw.a(this.mVid, 1, false, false) != null) {
+    while (wkr.a(this.mVid, 1, false, false) != null) {
       return i;
     }
     return 0;
@@ -1646,7 +1646,7 @@ public class StoryVideoItem
   
   public boolean isPollVideo()
   {
-    return !bgsp.a(this.mPollLayoutJson);
+    return !bhsr.a(this.mPollLayoutJson);
   }
   
   public boolean isTroopLocalVideoOnly()

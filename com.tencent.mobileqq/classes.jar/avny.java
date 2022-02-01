@@ -1,110 +1,70 @@
-import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
 import eipc.EIPCResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class avny
-  extends WebViewPlugin
 {
-  private String a;
+  private static volatile avny jdField_a_of_type_Avny;
+  private Map<String, avoa> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   
-  public avny()
+  public static avny a()
   {
-    this.mPluginNameSpace = "deviceProtect";
+    if (jdField_a_of_type_Avny == null) {}
+    try
+    {
+      if (jdField_a_of_type_Avny == null) {
+        jdField_a_of_type_Avny = new avny();
+      }
+      return jdField_a_of_type_Avny;
+    }
+    finally {}
   }
   
-  private void a()
+  private void c()
   {
-    Object localObject2;
-    try
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() == 1) && (this.jdField_a_of_type_JavaUtilMap.containsKey("task_qgame_task_all_complete")))
     {
-      Object localObject4 = QIPCClientHelper.getInstance().getClient().callServer("DeviceProtectQIPCModule", "ACTION_GET_DEVICE_INFO", null);
-      if (((EIPCResult)localObject4).code != 0)
+      avoa localavoa = (avoa)this.jdField_a_of_type_JavaUtilMap.get("task_qgame_task_all_complete");
+      if ((localavoa != null) && (avoa.a(localavoa) != null))
       {
-        QLog.e("DeviceProtectJsApiPlugin", 1, "handleGetDeviceInfo error: result.code != EIPCResult.CODE_NO_ERR");
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("retCode", -1);
-        callJs(this.a, new String[] { ((JSONObject)localObject1).toString() });
-        return;
-      }
-      Object localObject3 = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject1 = ((EIPCResult)localObject4).data.getString("guid", "");
-      localObject2 = ((EIPCResult)localObject4).data.getString("qimei", "");
-      String str1 = ((EIPCResult)localObject4).data.getString("subappid", "");
-      String str2 = ((EIPCResult)localObject4).data.getString("platform", "");
-      String str3 = ((EIPCResult)localObject4).data.getString("brand", "");
-      String str4 = ((EIPCResult)localObject4).data.getString("model", "");
-      localObject4 = ((EIPCResult)localObject4).data.getString("bssid", "");
-      localJSONObject.put("guid", localObject1);
-      localJSONObject.put("qimei", localObject2);
-      localJSONObject.put("subappid", str1);
-      localJSONObject.put("platform", str2);
-      localJSONObject.put("brand", str3);
-      localJSONObject.put("model", str4);
-      localJSONObject.put("bssid", localObject4);
-      ((JSONObject)localObject3).put("retCode", 0);
-      ((JSONObject)localObject3).put("retData", localJSONObject);
-      callJs(this.a, new String[] { ((JSONObject)localObject3).toString() });
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("guid:").append((String)localObject1).append("qimei:").append((String)localObject2).append("subappid:").append(str1).append("platform:").append(str2).append("brand:").append(str3).append("model:").append(str4).append("bssid:").append((String)localObject4);
-      QLog.d("DeviceProtectJsApiPlugin", 1, "handleGetDeviceInfo info: " + localObject3);
-      return;
-    }
-    catch (Exception localException) {}
-    try
-    {
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("retCode", -1);
-      callJs(this.a, new String[] { ((JSONObject)localObject2).toString() });
-      QLog.e("DeviceProtectJsApiPlugin", 1, "GetDeviceInfo callJs error", localException);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("DeviceProtectJsApiPlugin", 1, "GetDeviceInfo callJs JSONException", localJSONException);
+        avoa.a(localavoa).a("task_qgame_task_all_complete", new EIPCResult());
+        this.jdField_a_of_type_JavaUtilMap.remove(localavoa);
       }
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo error, url is empty");
-    }
-    do
+    if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      return false;
-      QLog.d("DeviceProtectJsApiPlugin", 1, "Call DeviceProtectJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
-    } while ((!"deviceProtect".equals(paramString2)) || (!"getDeviceInfo".equals(paramString3)));
-    QLog.d("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo, args:" + paramVarArgs);
-    paramJsBridgeListener = paramString1.split("#");
-    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length == 2))
-    {
-      this.a = paramJsBridgeListener[1];
-      a();
-      return true;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.jdField_a_of_type_JavaUtilMap.put("task_get_qgame_msg", new avoa(this, "findMessage"));
+      this.jdField_a_of_type_JavaUtilMap.put("task_get_qgame_session_msg", new avoa(this, "getGameMsg"));
+      this.jdField_a_of_type_JavaUtilMap.put("task_qgame_task_all_complete", new avoa(this, "task_qgame_task_all_complete"));
     }
-    QLog.e("DeviceProtectJsApiPlugin", 1, "Call getDeviceInfo error, jsapi does not contain callback");
-    return false;
   }
   
-  public void onCreate()
+  public void a(String paramString, avob paramavob)
   {
-    super.onCreate();
+    if ((paramavob != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      avoa.a((avoa)this.jdField_a_of_type_JavaUtilMap.get(paramString), paramavob);
+    }
   }
   
-  public void onDestroy()
+  public void a(String paramString, boolean paramBoolean)
   {
-    super.onDestroy();
+    avoa localavoa = (avoa)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localavoa == null) {
+      return;
+    }
+    QIPCClientHelper.getInstance().callServer("QQGameIPCModule", avoa.a(localavoa), null, new avnz(this, localavoa, paramString, paramBoolean));
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_Avny = null;
   }
 }
 

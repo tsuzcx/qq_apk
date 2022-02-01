@@ -1,64 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aqzv
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
   
-  public static aqzv a(aqlg[] paramArrayOfaqlg)
+  public aqzv(String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      paramArrayOfaqlg = null;
-    }
-    aqzv localaqzv;
-    for (;;)
-    {
-      return paramArrayOfaqlg;
-      localaqzv = new aqzv();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[0].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("AndroidGroupListJumpURL"))
-        {
-          localaqzv.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localaqzv.jdField_a_of_type_JavaLangString);
-          }
-        }
-        paramArrayOfaqlg = localaqzv;
-        if (localJSONObject.has("AndroidGroupListWebEnable"))
-        {
-          localaqzv.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
-          paramArrayOfaqlg = localaqzv;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localaqzv.jdField_a_of_type_Boolean);
-            return localaqzv;
-          }
-        }
-      }
-      catch (JSONException paramArrayOfaqlg)
-      {
-        paramArrayOfaqlg.printStackTrace();
-      }
-    }
-    return localaqzv;
+    this.a = paramString;
   }
   
-  public String a()
+  public boolean equals(Object paramObject)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
+    if ((paramObject == null) || (!(paramObject instanceof aqzv))) {}
+    while (!toString().equals(paramObject.toString())) {
+      return false;
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return true;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
 }
 

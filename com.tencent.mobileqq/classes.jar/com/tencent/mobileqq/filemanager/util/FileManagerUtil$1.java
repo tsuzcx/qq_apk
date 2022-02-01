@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import atwg;
+import auob;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FileManagerUtil$1
@@ -10,7 +10,7 @@ public final class FileManagerUtil$1
   
   public void run()
   {
-    atwg.a(this.a);
+    auob.a(this.a);
   }
 }
 

@@ -1,43 +1,15 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-public class bazo
-  extends WebViewClient
+class bazo
+  implements bliz
 {
-  private bazo(ActionUrlActivity paramActionUrlActivity) {}
+  bazo(bazn parambazn, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, blir paramblir) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-    this.a.a();
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    ActionUrlActivity.a(this.a).clearView();
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
+    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
+    this.jdField_a_of_type_Blir.dismiss();
   }
 }
 

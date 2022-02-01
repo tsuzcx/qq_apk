@@ -1,8 +1,11 @@
-public abstract interface bnaa
+import cooperation.qzone.model.BusinessAlbumInfo;
+
+public class bnaa
 {
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, bmza parambmza);
+  public static String a(int paramInt)
+  {
+    return BusinessAlbumInfo.a(paramInt);
+  }
 }
 
 

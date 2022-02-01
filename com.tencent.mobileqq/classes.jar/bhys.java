@@ -1,8 +1,13 @@
-import com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView;
+import com.tencent.mobileqq.vas.PendantInfo;
 
-public abstract interface bhys
+public class bhys
 {
-  public abstract void a(OverScrollCallbackHorizontalListView paramOverScrollCallbackHorizontalListView);
+  public String a;
+  
+  public bhys(PendantInfo paramPendantInfo, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

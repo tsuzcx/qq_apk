@@ -1,31 +1,29 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yhq
-  extends QQUIEventReceiver<StoryMessageListActivity, wwx>
+  extends QQUIEventReceiver<yhc, wtr>
 {
-  public yhq(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  public yhq(@NonNull yhc paramyhc)
   {
-    super(paramStoryMessageListActivity);
+    super(paramyhc);
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wwx paramwwx)
+  public void a(@NonNull yhc paramyhc, @NonNull wtr paramwtr)
   {
-    if (paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (yhc.a(paramyhc) == null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramwwx.jdField_a_of_type_JavaUtilList);
-      }
-      paramStoryMessageListActivity.g();
+      yuk.b(this.TAG, "ignore this troop nick name change event. %s.", paramwtr.toString());
+      return;
     }
+    yuk.a(this.TAG, "receive troop nick name change event. %s.", paramwtr.toString());
+    yhc.a(paramyhc).c();
   }
   
   public Class acceptEventClass()
   {
-    return wwx.class;
+    return wtr.class;
   }
 }
 

@@ -1,26 +1,21 @@
-public abstract interface aski
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+
+class aski
+  extends askr
 {
-  public abstract long a();
+  aski(askd paramaskd, String paramString, Object paramObject) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
+  {
+    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        return;
+      }
+    }
+  }
 }
 
 

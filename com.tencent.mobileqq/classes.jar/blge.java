@@ -1,11 +1,25 @@
-public abstract interface blge
-  extends blgf
+import android.graphics.Point;
+import java.util.ArrayList;
+
+public final class blge
 {
-  public abstract void b(boolean paramBoolean, String paramString);
+  ArrayList<Point> a;
   
-  public abstract void e(String paramString);
+  public int a()
+  {
+    return this.a.size();
+  }
   
-  public abstract void f(String paramString);
+  public int a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
+      return 0;
+    }
+    if (paramInt2 == 0) {
+      return ((Point)this.a.get(paramInt1)).x;
+    }
+    return ((Point)this.a.get(paramInt1)).y;
+  }
 }
 
 

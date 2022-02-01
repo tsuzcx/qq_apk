@@ -1,27 +1,41 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.Switch;
 
-class amrn
-  implements andx
+public class amrn
+  extends amof
 {
-  amrn(amrk paramamrk) {}
+  public amrl a;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public Switch a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
+  public TextView e;
   
-  public void a(int paramInt)
+  public amrn(View paramView)
   {
-    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
-    andw.b(amrk.a(this.a));
-    Activity localActivity = this.a.a();
-    if (paramInt == 0) {
-      if ((localActivity != null) && (!amrk.c(this.a)))
-      {
-        amrk.a(this.a, true);
-        amrk.c(this.a);
-      }
-    }
-    while (localActivity == null) {
-      return;
-    }
-    localActivity.finish();
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370633));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377963));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376892));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378604));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378606));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371492));
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379360));
+    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131373870));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379453);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379524));
+    this.e = ((TextView)paramView.findViewById(2131379523));
   }
 }
 

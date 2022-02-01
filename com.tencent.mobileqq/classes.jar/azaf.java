@@ -1,9 +1,18 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
+
 public final class azaf
-  extends ayzn
+  implements Parcelable.Creator<OcrConfig>
 {
-  protected int a()
+  public OcrConfig a(Parcel paramParcel)
   {
-    return 600;
+    return new OcrConfig(paramParcel);
+  }
+  
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
   }
 }
 

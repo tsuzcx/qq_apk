@@ -1,12 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import java.util.ArrayList;
 
-public class xbk
-  extends wla
+public final class xbk
+  extends wip
 {
-  public xbk(qqstory_service.RspReportEvil paramRspReportEvil)
-  {
-    super(paramRspReportEvil.result);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public int b;
+  public String b;
 }
 
 

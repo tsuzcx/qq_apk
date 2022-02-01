@@ -1,418 +1,226 @@
-import android.content.IntentFilter;
-import android.os.Handler;
-import com.tencent.avgame.qav.AVGameBusinessCtrl.2.1;
-import com.tencent.avgame.qav.AVGameCameraAssistant;
-import com.tencent.avgame.session.AVGameSession;
-import com.tencent.avgame.session.AVGameSession.SessionStatus;
-import com.tencent.avgame.session.AVGameUserInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qav.QavDef.MultiUserInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import mqq.util.WeakReference;
+import java.util.Random;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ndv
-  extends bjcp
+  implements ncy
 {
-  ndv(ndt paramndt) {}
+  private ArrayList<Pair<String, Boolean>> jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
+  ncz jdField_a_of_type_Ncz;
+  nda jdField_a_of_type_Nda;
   
-  public void onEnterRoom()
+  public ndv(ncz paramncz)
   {
-    if (!ndt.a()) {}
-    do
-    {
-      return;
-      bjcq.d("AVGameBusinessCtrl", "onEnterRoom success.");
-      ??? = ndt.a(this.a).a();
-    } while (??? == null);
-    ndt.a(this.a, true);
-    ndt.b(this.a, false);
-    ndt.c(this.a, true);
-    ((AVGameSession)???).a(AVGameSession.SessionStatus.ENTERED);
-    this.a.b(true);
-    this.a.c(true);
-    neq.a().a().post(new AVGameBusinessCtrl.2.1(this));
-    ??? = new IntentFilter();
-    ((IntentFilter)???).addAction("android.intent.action.HEADSET_PLUG");
-    ((IntentFilter)???).addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
-    ((IntentFilter)???).addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
-    ((IntentFilter)???).addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    BaseApplicationImpl.getContext().registerReceiver(ndt.a(this.a), (IntentFilter)???);
-    if (ndt.a(this.a) != null) {
-      ndt.a(this.a).a(0);
-    }
-    ndt.a(this.a, null);
-    ndt.b(this.a);
-    nfu.a().a("param_QAVEnterRoom", 0);
-    synchronized (ndt.a(this.a))
-    {
-      Iterator localIterator = ndt.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((mwx)localWeakReference.get()).a();
-        }
-      }
-    }
+    this.jdField_a_of_type_Ncz = paramncz;
   }
   
-  public void onError(int paramInt)
+  public String a(Context paramContext, mze parammze)
   {
-    bjcq.d("AVGameBusinessCtrl", "onError, errorType[" + paramInt + "]");
-    if ((paramInt == 2) || (paramInt == 1))
+    paramContext = "";
+    Object localObject = parammze.a();
+    if (localObject == null)
     {
-      bjcq.d("AVGameBusinessCtrl", "onEnterRoom failed. errorType = " + paramInt);
-      if (ndt.a(this.a).a() == null)
+      QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip null gameItem");
+      localObject = paramContext;
+      if (TextUtils.isEmpty(paramContext))
       {
-        bjcq.a("AVGameBusinessCtrl", "onEnterRoom failed. session == null.");
-        return;
+        localObject = BaseApplicationImpl.getContext().getResources().getString(2131690279);
+        QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip tips isEmpty");
       }
-      ndt.a(this.a).b(ndt.a(this.a).a().a);
-      bcst.b(null, "dc00898", "", "", "0X800B041", "0X800B041", 0, 0, "", "", "", "");
-      if (ndt.a(this.a) != null) {
-        ndt.a(this.a).a(paramInt);
+      paramContext = parammze.c();
+      if (TextUtils.isEmpty(paramContext)) {
+        break label98;
       }
-      ndt.a(this.a, null);
+      paramContext = paramContext + "\n";
     }
     for (;;)
     {
-      nfu.a().a("param_QAVEnterRoom", paramInt);
-      synchronized (ndt.a(this.a))
-      {
-        Iterator localIterator = ndt.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((mwx)localWeakReference.get()).a(paramInt);
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label109;
       }
-      if ((paramInt == 4) || (paramInt != 3)) {}
+      return localObject;
+      paramContext = ((mzj)localObject).m;
+      break;
+      label98:
+      QLog.e("GuessPictureStagePresenter", 1, "textTypeString tips isEmpty");
     }
+    label109:
+    return paramContext + (String)localObject;
   }
   
-  public void onGoOffStageRet(boolean paramBoolean, long paramLong, int paramInt)
+  public String a(Context paramContext, boolean paramBoolean)
   {
-    Object localObject = AVGameSession.a(paramInt, paramLong);
-    localObject = ndt.a(this.a).a((String)localObject);
-    if (localObject == null) {
-      bjcq.a("AVGameBusinessCtrl", "onGoOffStageRet failed. session == null.");
-    }
-    AVGameCameraAssistant localAVGameCameraAssistant;
-    do
+    if (paramContext == null)
     {
-      return;
-      bjcq.d("AVGameBusinessCtrl", "onGoOffStageRet, ret[" + paramBoolean + "], relationId[" + paramLong + "], relationType[" + paramInt + "]");
-      if (!((AVGameSession)localObject).a(1)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessPictureStagePresenter", 2, "getGameRuleAnswerTip null context");
       }
-      localAVGameCameraAssistant = this.a.a();
-    } while (localAVGameCameraAssistant == null);
-    localAVGameCameraAssistant.b((AVGameSession)localObject);
-    return;
-    ((AVGameSession)localObject).a(0);
+      return "";
+    }
+    return paramContext.getResources().getString(2131690278);
   }
   
-  public void onGoOnStageRet(boolean paramBoolean, long paramLong, int paramInt)
+  public nda a()
   {
-    Object localObject = AVGameSession.a(paramInt, paramLong);
-    localObject = ndt.a(this.a).a((String)localObject);
-    if (localObject == null) {
-      bjcq.a("AVGameBusinessCtrl", "onGoOnStageRet failed. session == null.");
-    }
-    do
-    {
-      AVGameCameraAssistant localAVGameCameraAssistant;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            bjcq.d("AVGameBusinessCtrl", "onGoOnStageRet, ret[" + paramBoolean + "], relationId[" + paramLong + "], relationType[" + paramInt + "]");
-            if (!paramBoolean) {
-              break;
-            }
-          } while (((AVGameSession)localObject).d != 1);
-          localAVGameCameraAssistant = this.a.a();
-        } while (localAVGameCameraAssistant == null);
-        localAVGameCameraAssistant.a((AVGameSession)localObject);
-        return;
-        if (!((AVGameSession)localObject).a(1)) {
-          break;
-        }
-        localAVGameCameraAssistant = this.a.a();
-      } while (localAVGameCameraAssistant == null);
-      localAVGameCameraAssistant.b((AVGameSession)localObject);
-      return;
-    } while (((AVGameSession)localObject).d != 1);
-    ((AVGameSession)localObject).a(0);
+    return this.jdField_a_of_type_Nda;
   }
   
-  public void onMemberVideoInOrOut(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2)
+  public void a(myp parammyp)
   {
-    paramInt2 = 1;
-    bjcq.c("AVGameBusinessCtrl", "onMemberVideoInOrOut. videoIn = " + paramBoolean + ", userUin = " + paramLong1);
-    ??? = AVGameSession.a(paramInt1, paramLong2);
-    ??? = ndt.a(this.a).a((String)???);
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onMemberVideoInOrOut failed. session == null.");
-      return;
-    }
-    if (paramBoolean) {}
-    for (paramInt1 = paramInt2;; paramInt1 = 0)
-    {
-      boolean bool = ((AVGameSession)???).a(paramLong1, paramBoolean, paramInt1);
-      bjcq.c("AVGameBusinessCtrl", "onMemberVideoInOrOut. updateUserCameraVideoStatus result = " + bool);
-      synchronized (ndt.a(this.a))
-      {
-        Iterator localIterator = ndt.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((mwx)localWeakReference.get()).a(paramBoolean, paramLong1, 1);
-      }
+    this.jdField_a_of_type_Ncz.a(parammyp);
+  }
+  
+  public void a(mze parammze)
+  {
+    a(myk.a(parammze), false);
+    this.jdField_a_of_type_Nda.a().d(false);
+  }
+  
+  public void a(nda paramnda)
+  {
+    this.jdField_a_of_type_Nda = paramnda;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Ncz.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Ncz.a(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public void b(mze parammze)
+  {
+    myp localmyp = parammze.a();
+    a(myk.a(parammze), true);
+    a(localmyp);
+    this.jdField_a_of_type_Nda.a().d(true);
+    this.jdField_a_of_type_Nda.a().a(parammze.a().a.c * 1000, parammze.a().e());
+    this.jdField_a_of_type_Nda.a(this.jdField_a_of_type_Ncz.a(), parammze.a().f(), parammze.a().d());
+    if (localmyp != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(localmyp.b(), Boolean.valueOf(false)));
     }
   }
   
-  public void onSelfVolumeUpdate(int paramInt)
+  public void c(mze parammze)
   {
-    ??? = ndt.a(this.a).a();
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onSelfVolumeUpdate failed. session == null.");
-      return;
+    myp localmyp = parammze.a();
+    a(myk.a(parammze), true);
+    a(localmyp);
+    this.jdField_a_of_type_Nda.a(this.jdField_a_of_type_Ncz.a(), parammze.a().f(), parammze.a().d());
+    this.jdField_a_of_type_Nda.a().a(parammze.a().a.c * 1000, parammze.a().e());
+    if (localmyp != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(localmyp.b(), Boolean.valueOf(false)));
     }
-    ??? = ((AVGameSession)???).a();
-    if (??? != null) {
-      ((AVGameUserInfo)???).mVolumeValue = paramInt;
-    }
-    synchronized (ndt.a(this.a))
+  }
+  
+  public void d(mze parammze)
+  {
+    parammze = parammze.a();
+    if ((parammze != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
-      Iterator localIterator = ndt.a(this.a).iterator();
-      while (localIterator.hasNext())
+      parammze = parammze.b();
+      this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      this.jdField_a_of_type_JavaUtilArrayList.add(new Pair(parammze, Boolean.valueOf(true)));
+      QLog.d("GuessPictureStagePresenter", 2, "onAnswerRight " + parammze);
+    }
+  }
+  
+  public void e(mze parammze) {}
+  
+  public void f(mze parammze)
+  {
+    Object localObject1;
+    Object localObject2;
+    int i;
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      parammze = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((mwx)localWeakReference.get()).b(paramInt);
+        localObject2 = (Pair)((Iterator)localObject1).next();
+        if (!((Boolean)((Pair)localObject2).second).booleanValue()) {
+          parammze.add(((Pair)localObject2).first);
         }
       }
-    }
-  }
-  
-  public void onStartRemoteVideoRequestResult(int paramInt)
-  {
-    ??? = new StringBuilder().append("onStartRemoteVideoRequestResult. success = ");
-    if (paramInt == 96) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bjcq.c("AVGameBusinessCtrl", bool);
-      synchronized (ndt.a(this.a))
-      {
-        Iterator localIterator = ndt.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((mwx)localWeakReference.get()).c(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessPictureStagePresenter", 2, "onGameOver all:" + this.jdField_a_of_type_JavaUtilArrayList.size() + " notAnswer:" + parammze.size());
       }
-    }
-  }
-  
-  public void onSystemCallStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameBusinessCtrl", 2, "onSystemCallStateChanged, isCalling[" + paramBoolean + "], enter[" + ndt.a(this.a) + "]");
-    }
-    if (paramBoolean) {
-      this.a.d();
+      localObject1 = new Random();
+      if (parammze.isEmpty())
+      {
+        i = ((Random)localObject1).nextInt(this.jdField_a_of_type_JavaUtilArrayList.size());
+        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break label362;
+        }
+        parammze = (String)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i)).first;
+      }
     }
     for (;;)
     {
-      synchronized (ndt.a(this.a))
+      localObject2 = a().a().b();
+      localObject1 = new JSONObject();
+      try
       {
-        Iterator localIterator = ndt.a(this.a).iterator();
-        if (!localIterator.hasNext()) {
-          break;
+        if (!TextUtils.isEmpty(parammze)) {
+          ((JSONObject)localObject1).putOpt("textContent", parammze);
         }
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-          continue;
-        }
-        ((mwx)localWeakReference.get()).a(paramBoolean);
-      }
-      this.a.c();
-    }
-    if ((paramBoolean) && (ndt.a(this.a))) {
-      bjct.a().c();
-    }
-  }
-  
-  public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    bjcq.d("AVGameBusinessCtrl", "onUserAudioAvailable. uin = " + paramMultiUserInfo.mUin + ", available = " + paramBoolean);
-    ??? = ndt.a(this.a).a();
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onUserAudioAvailable failed. session == null.");
-      return;
-    }
-    ((AVGameSession)???).a(paramMultiUserInfo);
-    synchronized (ndt.a(this.a))
-    {
-      Iterator localIterator = ndt.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((mwx)localWeakReference.get()).a(paramMultiUserInfo, paramBoolean);
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((JSONObject)localObject1).putOpt("bgUrl", localObject2);
         }
       }
-    }
-  }
-  
-  public void onUserEnter(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    bjcq.d("AVGameBusinessCtrl", "onUserEnter. uin = " + paramMultiUserInfo.mUin + ", isMicOn = " + paramMultiUserInfo.mMicOn);
-    ??? = ndt.a(this.a).a();
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onUserEnter failed. session == null.");
-      return;
-    }
-    ??? = ((AVGameSession)???).a(paramMultiUserInfo);
-    if (??? != null)
-    {
-      ((AVGameUserInfo)???).mEnterTime = System.currentTimeMillis();
-      bjcq.d("AVGameBusinessCtrl", "onUserEnter time is " + ((AVGameUserInfo)???).mEnterTime);
-    }
-    synchronized (ndt.a(this.a))
-    {
-      Iterator localIterator = ndt.a(this.a).iterator();
-      while (localIterator.hasNext())
+      catch (JSONException parammze)
       {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((mwx)localWeakReference.get()).a(paramMultiUserInfo);
-        }
-      }
-    }
-  }
-  
-  public void onUserExit(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    bjcq.d("AVGameBusinessCtrl", "onUserExit. uin = " + paramMultiUserInfo.mUin);
-    ??? = ndt.a(this.a).a();
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onUserExit failed. session == null.");
-      return;
-    }
-    ((AVGameSession)???).a(paramMultiUserInfo.mUin);
-    synchronized (ndt.a(this.a))
-    {
-      Iterator localIterator = ndt.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((mwx)localWeakReference.get()).b(paramMultiUserInfo);
-        }
-      }
-    }
-  }
-  
-  public void onUserFirstVideoFrameIn(long paramLong, int paramInt)
-  {
-    bjcq.c("AVGameBusinessCtrl", "onUserFirstVideoFrameIn. userUin = " + paramLong + ", videoSrcType = " + paramInt);
-  }
-  
-  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt)
-  {
-    ??? = ndt.a(this.a).a();
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onUserSpeaking failed. session == null.");
-      return;
-    }
-    ??? = ((AVGameSession)???).a(paramMultiUserInfo);
-    if (((AVGameUserInfo)???).mIsSpeaking != paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((AVGameUserInfo)???).mIsSpeaking = paramBoolean;
-      ((AVGameUserInfo)???).mAudioEnergy = paramInt;
-      if ((QLog.isDevelopLevel()) || (i != 0)) {
-        bjcq.d("AVGameBusinessCtrl", "onUserSpeaking. uin[ " + paramMultiUserInfo.mUin + "], isSpeaking[" + paramBoolean + "], audioEnergy[" + paramInt + "]");
-      }
-      if ((paramBoolean) && (paramInt < 10)) {
-        break;
-      }
-      synchronized (ndt.a(this.a))
-      {
-        Iterator localIterator = ndt.a(this.a).iterator();
-        WeakReference localWeakReference;
-        do
+        for (;;)
         {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localWeakReference = (WeakReference)localIterator.next();
-        } while ((localWeakReference == null) || (localWeakReference.get() == null));
-        ((mwx)localWeakReference.get()).a(paramMultiUserInfo, paramBoolean, paramInt);
+          QLog.d("GuessPictureStagePresenter", 2, parammze, new Object[0]);
+        }
       }
-    }
-  }
-  
-  public void onUserUpdate(List<QavDef.MultiUserInfo> paramList)
-  {
-    ??? = ndt.a(this.a).a();
-    if (??? == null)
-    {
-      bjcq.a("AVGameBusinessCtrl", "onUserUpdate failed. session == null.");
+      parammze = ((JSONObject)localObject1).toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessPictureStagePresenter", 2, "onGameOver str:" + parammze);
+      }
+      myk.a().a().a(parammze);
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
       return;
-    }
-    Object localObject2 = new ArrayList(paramList.size());
-    Object localObject3 = paramList.iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)((Iterator)localObject3).next();
-      bjcq.d("AVGameBusinessCtrl", "onUserUpdate. uin = " + localMultiUserInfo.mUin + ", isMicOn = " + localMultiUserInfo.mMicOn);
-      ((AVGameSession)???).a(localMultiUserInfo);
-      ((List)localObject2).add(Long.valueOf(localMultiUserInfo.mUin));
-    }
-    ((AVGameSession)???).a((List)localObject2);
-    synchronized (ndt.a(this.a))
-    {
-      localObject2 = ndt.a(this.a).iterator();
-      while (((Iterator)localObject2).hasNext())
+      if (parammze.size() == 1)
       {
-        localObject3 = (WeakReference)((Iterator)localObject2).next();
-        if ((localObject3 != null) && (((WeakReference)localObject3).get() != null)) {
-          ((mwx)((WeakReference)localObject3).get()).a(paramList);
+        parammze = (String)parammze.get(0);
+      }
+      else
+      {
+        i = ((Random)localObject1).nextInt(parammze.size());
+        if (i < parammze.size()) {
+          parammze = (String)parammze.get(i);
+        } else {
+          label362:
+          parammze = null;
         }
       }
     }
   }
-  
-  public void onUserVideoSrcChange(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
 }
 
 

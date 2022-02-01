@@ -1,8 +1,8 @@
 package com.tencent.hippy.qq.adapter;
 
 import android.text.TextUtils;
-import arvq;
-import bdnt;
+import asle;
+import begp;
 import com.tencent.mtt.hippy.adapter.font.HippyFontScaleAdapter;
 
 public class HippyQQFontAdapter
@@ -16,7 +16,7 @@ public class HippyQQFontAdapter
     {
       if ((paramString.charAt(i) == '\024') && (i + 2 < paramString.length()))
       {
-        int j = arvq.b((paramString.charAt(i + 1) - 'A') * 128 + paramString.charAt(i + 2) - 65);
+        int j = asle.b((paramString.charAt(i + 1) - 'A') * 128 + paramString.charAt(i + 2) - 65);
         if (j >= 0)
         {
           localStringBuilder.append(paramString.charAt(i));
@@ -39,7 +39,7 @@ public class HippyQQFontAdapter
     if (TextUtils.isEmpty(paramCharSequence)) {
       return "";
     }
-    return new bdnt(decodeEmojiFromString(paramCharSequence.toString()), 2, (int)(paramInt / 2.5D));
+    return new begp(decodeEmojiFromString(paramCharSequence.toString()), 2, (int)(paramInt / 2.5D));
   }
   
   public float getFontScale()

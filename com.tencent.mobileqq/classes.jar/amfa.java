@@ -1,6 +1,9 @@
-public abstract interface amfa
+class amfa
+  implements blkc
 {
-  public abstract void a(String paramString);
+  amfa(amez paramamez) {}
+  
+  public void a() {}
 }
 
 

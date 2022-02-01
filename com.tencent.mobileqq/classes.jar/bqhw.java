@@ -1,42 +1,33 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-public class bqhw
+class bqhw
+  implements DialogInterface.OnClickListener
 {
-  public static bqhw a;
-  public static String a;
-  private bqgy a;
-  
   static
   {
-    jdField_a_of_type_Bqhw = new bqhw();
-  }
-  
-  private bqhw()
-  {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static bqhw a()
-  {
-    return jdField_a_of_type_Bqhw;
-  }
-  
-  public bqgy a()
-  {
-    if (this.jdField_a_of_type_Bqgy == null) {
-      this.jdField_a_of_type_Bqgy = new bqgy(40, bcjb.c);
+    if (!bqhv.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    return this.jdField_a_of_type_Bqgy;
   }
   
-  public bqha a()
-  {
-    return bqha.a();
-  }
+  bqhw(bqhv parambqhv, int paramInt) {}
   
-  public AVCodec a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return AVCodec.get();
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Bundle();
+    bqkh localbqkh = this.jdField_a_of_type_Bqhv.a().a;
+    if ((!jdField_a_of_type_Boolean) && (localbqkh == null)) {
+      throw new AssertionError();
+    }
+    bqhv.a(paramDialogInterface, localbqkh);
+    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bqhv.a.a(35, paramDialogInterface);
   }
 }
 

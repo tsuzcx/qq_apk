@@ -1,34 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class njp
+  implements bhtj<Integer>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public njp(PoiMapActivity paramPoiMapActivity) {}
   
-  public byte[] a()
+  public void a(bhtd<Integer> parambhtd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (TextUtils.isEmpty(this.a)) {}
-    do
-    {
-      return null;
-      try
-      {
-        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
-        return arrayOfByte;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
-    return null;
+    parambhtd = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    parambhtd.bottomMargin = (this.a.q + this.a.t);
+    PoiMapActivity.c(this.a).setLayoutParams(parambhtd);
   }
 }
 

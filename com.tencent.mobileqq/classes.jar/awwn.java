@@ -1,373 +1,179 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Paint;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import localpb.richMsg.RichMsg.PicRec;
-import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
-import tencent.im.msg.hummer.resv6.NotOnlineImageExtPb.ResvAttr;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NotOnlineImage;
-import tencent.im.msg.im_msg_body.RichText;
 
-class awwn
-  extends ayys
+public class awwn
 {
-  awwn(awwm paramawwm, int paramInt1, MessageRecord paramMessageRecord, ArrayList paramArrayList, QQAppInterface paramQQAppInterface, String paramString, int paramInt2, HashMap paramHashMap) {}
-  
-  private boolean a(MessageForPic paramMessageForPic, ayxy paramayxy)
+  public static void a(String paramString, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, ArrayList<String> paramArrayList)
   {
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.Elem localElem = new im_msg_body.Elem();
-    Object localObject = "";
-    if (paramayxy.jdField_a_of_type_JavaLangObject != null) {
-      if ((paramayxy.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage))
-      {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramayxy.jdField_a_of_type_JavaLangObject);
-        if (paramMessageForPic.picExtraData != null)
-        {
-          localObject = paramMessageForPic.picExtraData.getOfflineImageResvAttr();
-          localElem.not_online_image.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((NotOnlineImageExtPb.ResvAttr)((NotOnlineImageExtPb.ResvAttr)localObject).get()).toByteArray()), true);
-        }
-        if ((paramayxy.b) || (this.jdField_a_of_type_Int == 5))
-        {
-          if (!localElem.not_online_image.res_id.has()) {
-            break label332;
-          }
-          localObject = localElem.not_online_image.res_id.get().toStringUtf8();
-        }
-      }
-    }
-    for (;;)
-    {
-      paramMessageForPic.uuid = ((String)localObject);
-      if (this.jdField_a_of_type_Int != 5)
-      {
-        paramMessageForPic.path = ((String)localObject);
-        paramMessageForPic.md5 = bgmg.c(awwm.jdField_a_of_type_JavaLangString);
-      }
-      paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
-      paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
-      paramMessageForPic.thumbWidth = localElem.not_online_image.uint32_thumb_width.get();
-      paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, " pic resp uuid = " + (String)localObject + " picMsgMD5 = " + paramMessageForPic.md5 + " hasCode = " + paramMessageForPic.hashCode());
-      }
-      int i = 1;
-      label285:
-      boolean bool;
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "updateMessageForPic success");
-        }
-        localRichText.elems.add(localElem);
-        if (paramayxy.jdField_a_of_type_Int == 0) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        paramMessageForPic.richText = localRichText;
-        return bool;
-        label332:
-        if (!localElem.not_online_image.download_path.has()) {
-          break label659;
-        }
-        localObject = localElem.not_online_image.download_path.get().toStringUtf8();
-        break;
-        if ((paramayxy.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace))
-        {
-          localElem.custom_face.set((im_msg_body.CustomFace)paramayxy.jdField_a_of_type_JavaLangObject);
-          if (paramMessageForPic.picExtraData != null)
-          {
-            CustomFaceExtPb.ResvAttr localResvAttr = paramMessageForPic.picExtraData.getCustomFaceResvAttr();
-            localElem.custom_face.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((CustomFaceExtPb.ResvAttr)localResvAttr.get()).toByteArray()), true);
-          }
-          if ((paramayxy.b) || (this.jdField_a_of_type_Int == 5))
-          {
-            if (localElem.custom_face.str_file_path.has()) {
-              localObject = localElem.custom_face.str_file_path.get();
-            }
-            paramMessageForPic.uuid = ((String)localObject);
-            if (this.jdField_a_of_type_Int != 5)
-            {
-              paramMessageForPic.path = ((String)localObject);
-              paramMessageForPic.md5 = bgmg.c(awwm.jdField_a_of_type_JavaLangString);
-            }
-            paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
-          }
-          if ((localElem.custom_face.uint32_file_id.get() == 0) && (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 0))
-          {
-            if (!QLog.isColorLevel()) {
-              break label612;
-            }
-            QLog.d("MultiMsg_TAG", 2, "updateMessageForPic but custom_face's file id is 0");
-            i = 0;
-            break label285;
-          }
-          i = 1;
-          break label285;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("MultiMsg_TAG", 2, "WTF, picResult.mExtraObj is " + paramayxy.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
-        }
-        label612:
-        i = 0;
-        break label285;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("MultiMsg_TAG", 2, "[requestUploadPics] Bad picture element");
-          bool = false;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("MultiMsg_TAG", 2, "updateMessageForPic failed, add empty element");
-          }
-        }
-        bool = false;
-      }
-      label659:
-      localObject = "";
-    }
-  }
-  
-  private boolean a(ArrayList<ayxy> paramArrayList)
-  {
+    paramString = paramString.toCharArray();
+    int i1 = 0;
+    int i = -1;
+    int n = 0;
     int j = 0;
-    int i = 0;
-    boolean bool1 = true;
-    int m = 0;
-    Object localObject1;
-    if (m < this.jdField_a_of_type_JavaUtilArrayList.size())
+    paramInt1 = 0;
+    int i2 = paramInt2;
+    paramInt2 = j;
+    if (paramInt1 < paramString.length)
     {
-      localObject1 = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-      if ((i >= paramArrayList.size()) || ((!((ayxy)paramArrayList.get(i)).b) && (this.jdField_a_of_type_Int != 5))) {
-        break label989;
-      }
-      j = 1;
-    }
-    label214:
-    label475:
-    label989:
-    for (;;)
-    {
-      if ((localObject1 instanceof MessageForPic))
-      {
-        if ((i >= paramArrayList.size()) && (QLog.isColorLevel())) {
-          QLog.e("MultiMsg_TAG", 2, "WTF, The count of MessageForPics is not equal to the count of PicResults");
-        }
-        localObject1 = (MessageForPic)localObject1;
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "updateMessageForPic for MessageForPic, MsgIndex[" + m + "], resultIndex[" + i + "]");
-        }
-        if (!a((MessageForPic)localObject1, (ayxy)paramArrayList.get(i))) {
-          bool1 = false;
-        }
-        i += 1;
-        m += 1;
-        break;
-      }
-      int n;
+      char c = paramString[paramInt1];
+      int i3 = paramInt2 + (int)paramPaint.measureText(c + "");
       int k;
-      boolean bool2;
-      Object localObject2;
-      if ((localObject1 instanceof MessageForMixedMsg))
+      int m;
+      if (c == '\n')
       {
-        localObject1 = (MessageForMixedMsg)localObject1;
-        if (((MessageForMixedMsg)localObject1).msgElemList != null)
-        {
-          n = 0;
-          k = i;
-          bool2 = bool1;
-          if (n >= ((MessageForMixedMsg)localObject1).msgElemList.size()) {
-            break label391;
-          }
-          localObject2 = (MessageRecord)((MessageForMixedMsg)localObject1).msgElemList.get(n);
-          if (!(localObject2 instanceof MessageForPic)) {
-            break label986;
-          }
-          if ((i >= paramArrayList.size()) && (QLog.isColorLevel())) {
-            QLog.e("MultiMsg_TAG", 2, "WTF, The count of MessageForPics is not equal to the count of PicResults");
-          }
-          localObject2 = (MessageForPic)localObject2;
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiMsg_TAG", 2, "updateMessageForPic for MessageForMixedMsg, MsgIndex[" + m + "], subMsgIndex[" + n + ", resultIndex[" + i + "]");
-          }
-          if (!a((MessageForPic)localObject2, (ayxy)paramArrayList.get(i))) {
-            bool1 = false;
-          }
-          i += 1;
-        }
+        paramArrayList.add(new String(paramString, i1, paramInt1 - i1));
+        i = -1;
+        k = paramInt1 + 1;
+        paramInt2 = 0;
+        j = k;
+        m = paramInt3;
       }
       for (;;)
       {
-        n += 1;
-        break label214;
-        bool2 = bool1;
-        k = i;
-        i = k;
-        bool1 = bool2;
+        paramInt1 = k + 1;
+        i1 = j;
+        i2 = m;
         break;
-        if (((MessageRecord)localObject1).msgtype == -1036) {
-          localObject1 = ((MessageForLongMsg)localObject1).longMsgFragmentList.iterator();
-        }
-        for (;;)
+        if ((i3 > i2) && (paramInt1 > 0))
         {
-          Object localObject3;
-          if (((Iterator)localObject1).hasNext())
+          if ((c == ' ') || (c == '\t'))
           {
-            localObject2 = (MessageRecord)((Iterator)localObject1).next();
-            if (!(localObject2 instanceof MessageForMixedMsg)) {
-              continue;
-            }
-            localObject2 = (MessageForMixedMsg)localObject2;
-            if (((MessageForMixedMsg)localObject2).msgElemList == null) {
-              continue;
-            }
-            k = 0;
-            if (k >= ((MessageForMixedMsg)localObject2).msgElemList.size()) {
-              break label983;
-            }
-            localObject3 = (MessageRecord)((MessageForMixedMsg)localObject2).msgElemList.get(k);
-            if (!(localObject3 instanceof MessageForPic)) {
-              break label980;
-            }
-            if ((i >= paramArrayList.size()) && (QLog.isColorLevel())) {
-              QLog.e("MultiMsg_TAG", 2, "WTF, The count of MessageForPics is not equal to the count of PicResults");
-            }
-            localObject3 = (MessageForPic)localObject3;
-            if (QLog.isColorLevel()) {
-              QLog.d("MultiMsg_TAG", 2, "updateMessageForPic for MessageForMixedMsg, MsgIndex[" + m + "], subMsgIndex[" + k + ", resultIndex[" + i + "]");
-            }
-            if (!a((MessageForPic)localObject3, (ayxy)paramArrayList.get(i))) {
-              bool1 = false;
-            }
-            i += 1;
+            paramArrayList.add(new String(paramString, i1, paramInt1 - i1));
+            paramInt2 = paramInt1 + 1;
+            j = 0;
+            i = -1;
+            paramInt1 = paramInt2;
           }
           for (;;)
           {
-            k += 1;
-            break label475;
+            m = paramInt3;
+            k = paramInt2;
+            paramInt2 = j;
+            j = paramInt1;
             break;
-            if ((localObject1 instanceof MessageForStructing))
+            if (i == -1)
             {
-              localObject2 = ((MessageForStructing)localObject1).structingMsg;
-              if ((localObject2 != null) && ((localObject2 instanceof StructMsgForImageShare)))
-              {
-                localObject3 = ((StructMsgForImageShare)localObject2).getFirstImageElement();
-                if ((localObject3 != null) && (((bcxy)localObject3).a != null))
-                {
-                  MessageForPic localMessageForPic = ((bcxy)localObject3).a;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("MultiMsg_TAG", 2, "updateMessageForPic for MessageForPic, MsgIndex[" + m + "], resultIndex[" + i + "]");
-                  }
-                  if (((MessageForStructing)localObject1).isHotPicsStruct())
-                  {
-                    PicMessageExtraData localPicMessageExtraData = new PicMessageExtraData();
-                    localPicMessageExtraData.imageBizType = 2;
-                    localMessageForPic.picExtraData = localPicMessageExtraData;
-                  }
-                  if (!a(localMessageForPic, (ayxy)paramArrayList.get(i))) {
-                    bool1 = false;
-                  }
-                  for (;;)
-                  {
-                    i += 1;
-                    break;
-                    ((bcxy)localObject3).ab = localMessageForPic.uuid;
-                    ((bcxy)localObject3).ac = localMessageForPic.md5;
-                    ((bcxy)localObject3).aa = localMessageForPic.path;
-                    ((MessageRecord)localObject1).msgData = ((AbsStructMsg)localObject2).getBytes();
-                  }
-                  if (j != 0)
-                  {
-                    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isReMultiMsg) {
-                      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800662B", "0X800662B", 0, 1, 0, "", "", "", "");
-                    }
-                    if (QLog.isColorLevel()) {
-                      QLog.e("MultiMsg_TAG", 2, "requestUploadPics isPicMsgModify");
-                    }
-                    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
-                  }
-                  if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isReMultiMsg) {
-                    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800662A", "0X800662A", 0, 1, 0, "", "", "", "");
-                  }
-                  return bool1;
-                }
+              paramInt2 = paramInt1;
+              if (paramInt1 > i1 + 1) {
+                paramInt2 = paramInt1 - 1;
               }
+              paramArrayList.add(new String(paramString, i1, paramInt2 - i1));
+              j = 0;
+              paramInt1 = paramInt2;
             }
-            break;
+            else
+            {
+              j = i3 - n;
+              paramArrayList.add(new String(paramString, i1, i - i1));
+              k = i + 1;
+              i = -1;
+              paramInt2 = paramInt1;
+              paramInt1 = k;
+            }
           }
+        }
+        if (c != ' ')
+        {
+          k = paramInt1;
+          paramInt2 = i3;
+          j = i1;
+          m = i2;
+          if (c != '\t') {}
+        }
+        else
+        {
+          n = i3;
+          i = paramInt1;
+          k = paramInt1;
+          paramInt2 = i3;
+          j = i1;
+          m = i2;
         }
       }
     }
+    paramArrayList.add(new String(paramString, i1, paramString.length - i1));
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ArrayList<ayxy> paramArrayList)
+  public static String[] a(String paramString, Paint paramPaint, int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    return a(paramString, paramPaint, paramInt1, paramInt2, 99999);
+  }
+  
+  public static String[] a(String paramString, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return new String[] { paramString };
+    }
+    if ((int)paramPaint.measureText(paramString) <= paramInt1) {
+      return new String[] { paramString };
+    }
+    ArrayList localArrayList = new ArrayList();
+    char[] arrayOfChar = paramString.toCharArray();
+    int n = 0;
+    int i = 0;
+    int m = 32;
+    int k = 0;
+    int j = paramInt1;
+    paramInt1 = n;
+    if (paramInt1 < arrayOfChar.length)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "onForwardMultiMsgPicsUpload success[" + paramArrayList.size() + "]");
-      }
-      bool2 = a(paramArrayList);
-      bool1 = bool2;
-      if (QLog.isColorLevel())
+      n = arrayOfChar[paramInt1];
+      if ((n == 13) && (paramInt1 < arrayOfChar.length - 1) && (arrayOfChar[(paramInt1 + 1)] == '\n'))
       {
-        QLog.d("MultiMsg_TAG", 2, "updateMsgRecords done, goto onPackAndSendMsg");
-        bool1 = bool2;
+        m = 1;
+        label113:
+        if ((n != 10) && (paramInt1 != arrayOfChar.length - 1) && (m == 0)) {
+          break label357;
+        }
+        if (paramInt1 != arrayOfChar.length - 1) {
+          break label239;
+        }
+        paramString = new String(arrayOfChar, k, paramInt1 + 1 - k);
+        label161:
+        k = (int)paramPaint.measureText(paramString);
+        if (k > j) {
+          break label258;
+        }
+        localArrayList.add(paramString);
+        label183:
+        j = paramInt1;
+        if (m != 0) {
+          j = paramInt1 + 1;
+        }
+        k = j + 1;
+        m = i + 1;
+        i = paramInt2;
+        paramInt1 = j;
+        j = i;
+        i = m;
       }
-      if (this.jdField_a_of_type_Int != 5) {
-        break label190;
-      }
-      awwm.a(this.jdField_a_of_type_Awwm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, 1);
-      label110:
-      if ((this.jdField_a_of_type_Int == 5) || (awwm.c(this.jdField_a_of_type_Awwm) != 0)) {
-        break label201;
-      }
-      awwm.a(this.jdField_a_of_type_Awwm, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, bool1, this.jdField_a_of_type_Int);
     }
-    label190:
-    label201:
-    while ((this.jdField_a_of_type_Int != 5) || (!awwm.a(this.jdField_a_of_type_Awwm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)))
+    label258:
+    label357:
+    for (;;)
     {
-      return;
-      bool1 = bool2;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("MultiMsg_TAG", 2, "onForwardMultiMsgPicsUpload failed");
-      bool1 = bool2;
+      paramInt1 += 1;
+      m = n;
       break;
-      awwm.a(this.jdField_a_of_type_Awwm, 1);
-      break label110;
+      m = 0;
+      break label113;
+      label239:
+      paramString = new String(arrayOfChar, k, paramInt1 - k);
+      break label161;
+      a(paramString, paramPaint, k, j, paramInt2, localArrayList);
+      break label183;
+      if ((i > 1) && ((m == 10) || (m == 10))) {
+        localArrayList.add("");
+      }
+      paramInt1 = paramInt3;
+      if (paramInt3 < 1) {
+        paramInt1 = 1;
+      }
+      while (localArrayList.size() > paramInt1) {
+        localArrayList.remove(localArrayList.size() - 1);
+      }
+      return (String[])localArrayList.toArray(new String[localArrayList.size()]);
     }
-    if (bool1)
-    {
-      awwm.a(this.jdField_a_of_type_Awwm, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.jdField_a_of_type_Int);
-      return;
-    }
-    awwm.a(this.jdField_a_of_type_Awwm, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

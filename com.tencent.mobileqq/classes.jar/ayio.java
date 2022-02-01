@@ -1,25 +1,9 @@
-public class ayio
+class ayio
 {
-  ayif[] a = new ayif[3];
+  public String a;
+  public String b;
   
-  public ayif a(int paramInt)
-  {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a[paramInt] = localObject;
-      return localObject;
-      localObject = new ayil();
-      continue;
-      localObject = new ayii();
-    }
-  }
+  private ayio(ayhj paramayhj) {}
 }
 
 

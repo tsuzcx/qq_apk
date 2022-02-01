@@ -1,21 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05503.1;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader.PicDownLoadTask;
+import java.util.Comparator;
 
 public class vre
+  implements Comparator<Runnable>
 {
-  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
-  {
-    a(paramLong1, paramLong2, paramLong3, "", "", "", "", "", "", paramInt);
-  }
+  public vre(QCircleFeedPicLoader paramQCircleFeedPicLoader) {}
   
-  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
+  public int a(Runnable paramRunnable1, Runnable paramRunnable2)
   {
-    vrl.a().a().post(new QCircleLpReportDc05503.1(paramLong1, paramLong2, paramLong3, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt));
-  }
-  
-  private static int b()
-  {
-    return 5503;
+    if (((paramRunnable1 instanceof QCircleFeedPicLoader.PicDownLoadTask)) && ((paramRunnable2 instanceof QCircleFeedPicLoader.PicDownLoadTask))) {
+      return ((QCircleFeedPicLoader.PicDownLoadTask)paramRunnable1).a().d() - ((QCircleFeedPicLoader.PicDownLoadTask)paramRunnable2).a().d();
+    }
+    return 0;
   }
 }
 

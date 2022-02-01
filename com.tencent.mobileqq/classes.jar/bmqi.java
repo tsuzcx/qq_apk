@@ -1,77 +1,125 @@
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.persistence.TableBuilder;
-import cooperation.readinjoy.content.ReadInJoyDataProvider;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
+import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+import java.io.File;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class bmqi
-  extends SQLiteOpenHelper
+  implements IShadow
 {
-  public String a;
+  private static bmqi jdField_a_of_type_Bmqi;
+  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   
-  public bmqi(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
+  private bmqi()
   {
-    super(paramContext, "readinjoy_main_" + paramString, null, 84);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
+    setILoggerFactory();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = aoik.b(192);
   }
   
-  private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  public static bmqi a()
   {
-    if ((paramString.equals("subscribe_msg_records")) || (paramString.equals("notify_msg_records"))) {
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "msgID" + " INTEGER UNIQUE NOT NULL, " + "subscribeID" + " TEXT NOT NULL, " + "msgURL" + " TEXT NOT NULL, " + "msgContent" + " TEXT NOT NULL, " + "msgTime" + " INTEGER NOT NULL, " + "bindUin" + " INTEGER NOT NULL);");
-    }
-    while (!paramString.equals("feeds_msg_records")) {
-      return;
-    }
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "pushTime" + " INTEGER NOT NULL, " + "notifyType" + " INTEGER NOT NULL, " + "feedsOwner" + " INTEGER NOT NULL, " + "feedsID" + " INTEGER NOT NULL, " + "feedsSubject" + " TEXT DEFAULT '', " + "deleteUin" + " INTEGER NOT NULL, " + "publishFail" + " INTEGER NOT NULL, " + "likeUin" + " INTEGER NOT NULL, " + "commentUin" + " INTEGER NOT NULL, " + "commentID" + " VARCHAR(32) DEFAULT '', " + "replyUin" + " INTEGER NOT NULL, " + "replyID" + " VARCHAR(32) DEFAULT '', " + "commentInfo" + " TEXT DEFAULT '', " + "isDelete" + " INTEGER DEFAULT 0, " + "processSeq" + " INTEGER DEFAULT 0, " + "receiveTime" + " INTEGER NOT NULL);");
-  }
-  
-  private void b(SQLiteDatabase paramSQLiteDatabase, String paramString)
-  {
-    if ("common_records".equalsIgnoreCase(paramString)) {
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "common_version" + " INTEGER NOT NULL, " + "common_key" + " TEXT DEFAULT '', " + "common_content" + " TEXT DEFAULT '');");
-    }
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
-  {
-    a(paramSQLiteDatabase, "subscribe_msg_records");
-    a(paramSQLiteDatabase, "notify_msg_records");
-    a(paramSQLiteDatabase, "feeds_msg_records");
-    b(paramSQLiteDatabase, "common_records");
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < 80)
+    if (jdField_a_of_type_Bmqi == null) {}
+    try
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("subscribe_msg_records"));
-      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("notify_msg_records"));
-      a(paramSQLiteDatabase, "subscribe_msg_records");
-      a(paramSQLiteDatabase, "notify_msg_records");
+      if (jdField_a_of_type_Bmqi == null) {
+        jdField_a_of_type_Bmqi = new bmqi();
+      }
+      return jdField_a_of_type_Bmqi;
     }
-    if (paramInt1 < 81) {
-      a(paramSQLiteDatabase, "feeds_msg_records");
+    finally {}
+  }
+  
+  private PluginManager a(Context paramContext, String paramString)
+  {
+    new avyv("Reader");
+    avyr localavyr = new avyr(paramContext, "Reader", paramString, "5");
+    boolean bool;
+    if ((localavyr.wasUpdating()) || (localavyr.getLatest() == null))
+    {
+      bool = true;
+      bmqw.d("ReaderShadowImpl", "needWaitingUpdate:" + bool);
+      paramString = localavyr.update();
+      if (!bool) {
+        break label209;
+      }
     }
     for (;;)
     {
-      if (paramInt1 < 84) {
-        b(paramSQLiteDatabase, "common_records");
+      try
+      {
+        paramString = (File)paramString.get();
+        if ((paramString == null) || (bmqh.a(paramContext, paramString))) {
+          break label220;
+        }
+        bool = paramString.delete();
+        bmqw.a("ReaderShadowImpl", "[loadPluginManager] pm apk is invalid and delete result=" + bool);
+        paramContext = null;
+        if (paramContext == null) {
+          break label218;
+        }
+        return new DynamicPluginManager(new bmqk(localavyr, paramContext));
+        bool = false;
       }
-      return;
-      if (paramInt1 < 82) {
-        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "isDelete", "INTEGER DEFAULT 0" }));
+      catch (ExecutionException paramString)
+      {
+        bmqw.a("ReaderShadowImpl", "[loadPluginManager] ExecutionException:", paramString);
+        bmqz.a(paramContext, -101, "cdn update ExecutionException!", paramString.getMessage());
+        paramString = null;
+        continue;
       }
-      if (paramInt1 < 83) {
-        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "processSeq", "INTEGER DEFAULT 0" }));
+      catch (InterruptedException paramString)
+      {
+        bmqw.a("ReaderShadowImpl", "[loadPluginManager] InterruptedException:", paramString);
+        bmqz.a(paramContext, -102, "cdn update InterruptedException!", paramString.getMessage());
+        paramString = null;
+        continue;
       }
+      label209:
+      paramString = localavyr.getLatest();
+      continue;
+      label218:
+      return null;
+      label220:
+      paramContext = paramString;
+    }
+  }
+  
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ReaderShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public PluginManager getPluginManager(Context paramContext, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager == null) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = a(paramContext, paramString1);
+    }
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager != null;
+  }
+  
+  public void setILoggerFactory()
+  {
+    if (LoggerFactory.getILoggerFactory() == null) {
+      LoggerFactory.setILoggerFactory(avyz.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmqi
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public class ReportConst$ACTION
   public static final String MORE_BUTTON_RESERVERS_OPEN = "open";
   public static final String MORE_BUTTON_RESERVERS_SETTOP_OFF = "settop_off";
   public static final String MORE_BUTTON_RESERVERS_SETTOP_ON = "settop_on";
-  public static final String MORE_BUTTON_RESERVERS_SHARE_Moments = "share_Moments";
+  public static final String MORE_BUTTON_RESERVERS_SHARE_MOMENTS = "share_Moments";
   public static final String MORE_BUTTON_RESERVERS_SHARE_QQ = "share_QQ";
   public static final String MORE_BUTTON_RESERVERS_SHARE_QZ = "share_QZ";
   public static final String MORE_BUTTON_RESERVERS_SHARE_WX = "share_WX";

@@ -1,37 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aoms
-  extends aojt
+public final class aoms
+  implements beup
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    paramQQAppInterface = new aomr(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "groupopenapp";
-    paramQQAppInterface.c = "openapp";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {}
-    for (;;)
+    if ((parambevl == null) || (parambevm == null)) {}
+    do
     {
-      return paramQQAppInterface;
-      paramContext = paramContext[1].split("&");
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
+      do
       {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+        return;
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+      if (parambevm.contains("range="))
+      {
+        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + parambevm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoms
  * JD-Core Version:    0.7.0.1
  */

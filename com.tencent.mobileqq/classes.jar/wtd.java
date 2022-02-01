@@ -1,35 +1,71 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import android.os.Build;
+import android.text.TextUtils;
 
-class wtd
-  extends SimpleJob<Void>
+public class wtd
 {
-  wtd(wtc paramwtc, String paramString, Context paramContext, List paramList)
+  public static wtd a;
+  public static wtd b;
+  @zoq(a="manufacturer")
+  public String a;
+  @zoq(a="model")
+  public String b;
+  
+  static
   {
-    super(paramString);
+    jdField_a_of_type_Wtd = new wtd();
+    jdField_b_of_type_Wtd = new wtd();
+    jdField_b_of_type_Wtd.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
+    jdField_b_of_type_Wtd.jdField_b_of_type_JavaLangString = Build.MODEL;
+    jdField_a_of_type_Wtd.jdField_a_of_type_JavaLangString = "all";
+    jdField_a_of_type_Wtd.jdField_b_of_type_JavaLangString = "all";
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean a()
   {
-    if (!wtc.a(this.jdField_a_of_type_Wtc, this.jdField_a_of_type_AndroidContentContext)) {
-      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
+    if (jdField_a_of_type_Wtd.equals(this)) {}
+    while ((jdField_b_of_type_Wtd.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_Wtd.jdField_b_of_type_JavaLangString)))) {
+      return true;
     }
+    return false;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
     do
     {
-      return null;
-      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
-      paramJobContext = wtc.a(this.jdField_a_of_type_Wtc, this.jdField_a_of_type_JavaUtilList);
-    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Wtc.a()));
-    wtc.a(this.jdField_a_of_type_Wtc);
-    wtc.a(this.jdField_a_of_type_Wtc, paramJobContext);
-    this.jdField_a_of_type_Wtc.b();
-    return null;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wtd)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null)
+      {
+        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
+      }
+      else {
+        while (paramObject.jdField_a_of_type_JavaLangString != null) {
+          return false;
+        }
+      }
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_b_of_type_JavaLangString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
+    {
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        j = this.jdField_b_of_type_JavaLangString.hashCode();
+      }
+      return i * 31 + j;
+    }
   }
 }
 

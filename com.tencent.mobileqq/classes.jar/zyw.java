@@ -1,16 +1,13 @@
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class zyw
-  implements zxa<T>
+public class zyw
 {
-  zyw(zyv paramzyv, String paramString, VSBaseRequest paramVSBaseRequest, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, T paramT)
-  {
-    QLog.d(this.jdField_a_of_type_Zyv.getLogTag(), 1, this.jdField_a_of_type_JavaLangString + "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + this.b);
-    this.jdField_a_of_type_Zyv.handleResponse(paramBoolean, this.jdField_a_of_type_Boolean, paramLong, this.jdField_a_of_type_JavaLangString, paramString, paramT);
-  }
+  public HashMap<String, String> a = new HashMap();
+  public HashMap<String, String> b = new HashMap();
+  public HashMap<String, String> c = new HashMap();
+  public HashMap<String, String> d = new HashMap();
+  public HashMap<String, String> e = new HashMap();
+  public HashMap<String, String> f = new HashMap();
 }
 
 

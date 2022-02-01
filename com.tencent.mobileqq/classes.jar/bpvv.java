@@ -1,33 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bpvv
-  extends RecyclerView.ViewHolder
+  extends AnimatorListenerAdapter
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RoundCornerImageView a;
-  public boolean a;
-  public RelativeLayout b;
-  public TextView b;
+  public bpvv(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public bpvv(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377651));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131377647));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363306));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377648));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377650));
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377649));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if ((this.a.c) && (this.a.b != null)) {
+      this.a.b.start();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    }
   }
 }
 

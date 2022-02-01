@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import UserGrowth.stPublisherReq;
+import UserGrowth.stPublisherRsp;
 
 public class uor
-  implements DialogInterface.OnCancelListener
+  extends ukl<stPublisherRsp>
 {
-  public uor(OuterInterceptManager.1 param1) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public uor()
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    super("Publisher", 10004);
+    stPublisherReq localstPublisherReq = new stPublisherReq();
+    this.a = localstPublisherReq;
+    uqf.b("GetPublisherRequest", "stSimpleGetFeedDetailReq = " + localstPublisherReq.toString());
   }
 }
 

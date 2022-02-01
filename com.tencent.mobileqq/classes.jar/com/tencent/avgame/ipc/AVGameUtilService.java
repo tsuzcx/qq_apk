@@ -15,9 +15,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import mqq.app.AppService;
-import mxl;
-import myc;
-import ndg;
+import myk;
+import mze;
+import nez;
 
 public class AVGameUtilService
   extends AppService
@@ -31,7 +31,7 @@ public class AVGameUtilService
     if (QLog.isColorLevel()) {
       QLog.d("AVGameUtilService", 2, "startServiceForeground ");
     }
-    long l = mxl.a().a().a();
+    long l = myk.a().a().a();
     if (l == 0L)
     {
       if (QLog.isColorLevel()) {
@@ -42,10 +42,10 @@ public class AVGameUtilService
     Object localObject = new Intent(this, AVGameActivity.class);
     ((Intent)localObject).putExtra("key_room_be_new_enter", false);
     ((Intent)localObject).putExtra("key_room_id", String.valueOf(l));
-    String str1 = getResources().getString(2131690312);
-    String str2 = getResources().getString(2131690311);
+    String str1 = getResources().getString(2131690316);
+    String str2 = getResources().getString(2131690315);
     localObject = PendingIntent.getActivity(getApplication(), 0, (Intent)localObject, 134217728);
-    startForeground(3000531, NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130840337).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setContentIntent((PendingIntent)localObject).build());
+    startForeground(3000531, NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130840347).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setContentIntent((PendingIntent)localObject).build());
   }
   
   public static void a(Context paramContext)
@@ -115,7 +115,7 @@ public class AVGameUtilService
     for (;;)
     {
       return;
-      if (ndg.a())
+      if (nez.a())
       {
         if (paramBoolean) {
           a(paramQQAppInterface);
@@ -188,7 +188,7 @@ public class AVGameUtilService
   
   public static boolean a()
   {
-    if (ndg.a()) {
+    if (nez.a()) {
       return true;
     }
     return jdField_a_of_type_Boolean;

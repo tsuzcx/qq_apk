@@ -3,23 +3,23 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import android.content.res.Resources;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
-import pha;
-import phd;
+import ozs;
+import ozv;
 
 public class ReadInJoyUtils$16$2
   implements Runnable
 {
-  public ReadInJoyUtils$16$2(phd paramphd) {}
+  public ReadInJoyUtils$16$2(ozv paramozv) {}
   
   public void run()
   {
-    if (pha.g() >= 2)
+    if (ozs.g() >= 2)
     {
-      QQToast.a(this.this$0.a, 0, this.this$0.a.getString(2131716998), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(this.this$0.a, 0, this.this$0.a.getString(2131717114), 0).b(this.this$0.a.getResources().getDimensionPixelSize(2131299011));
       return;
     }
-    pha.a(this.this$0.a);
-    pha.a("3", "2");
+    ozs.a(this.this$0.a);
+    ozs.a("3", "2");
   }
 }
 

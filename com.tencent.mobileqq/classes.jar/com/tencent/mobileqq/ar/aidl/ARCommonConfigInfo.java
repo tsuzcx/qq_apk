@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import aovr;
-import aoxp;
+import apjh;
+import aplf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.ARRecognition;
 import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
@@ -25,7 +25,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARCommonConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ARCommonConfigInfo> CREATOR = new aoxp();
+  public static final Parcelable.Creator<ARCommonConfigInfo> CREATOR = new aplf();
   public static final long DEFAULT_AR_CLOUD_UPLOAD_CHECK_TIMEOUT = 5000L;
   public static final long DEFAULT_AR_CLOUD_UPLOAD_DELAY = 2000L;
   public static final long DEFAULT_AR_LOCAL_START_DELAY = 0L;
@@ -529,19 +529,19 @@ public class ARCommonConfigInfo
             break;
             if (str5.equalsIgnoreCase("Begin"))
             {
-              ((ARScanAR)localObject1).jdField_a_of_type_Long = aovr.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_a_of_type_Long = apjh.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("End"))
             {
-              ((ARScanAR)localObject1).jdField_b_of_type_Long = aovr.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_b_of_type_Long = apjh.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("UserGuideBeginTime"))
             {
-              ((ARScanAR)localObject1).jdField_c_of_type_Long = aovr.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_c_of_type_Long = apjh.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("UserGuideEndTime"))
             {
-              ((ARScanAR)localObject1).jdField_d_of_type_Long = aovr.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_d_of_type_Long = apjh.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("ActType"))
             {
@@ -772,7 +772,7 @@ public class ARCommonConfigInfo
             if (!((String)localObject1).equalsIgnoreCase("Begin")) {
               break label1485;
             }
-            localARCommonConfigInfo.aRCloudBegin = aovr.a(localException1.nextText());
+            localARCommonConfigInfo.aRCloudBegin = apjh.a(localException1.nextText());
           }
           label1485:
           label1663:
@@ -784,7 +784,7 @@ public class ARCommonConfigInfo
               break;
               if (((String)localObject1).equalsIgnoreCase("End"))
               {
-                localARCommonConfigInfo.aRCloudEnd = aovr.a(localException1.nextText());
+                localARCommonConfigInfo.aRCloudEnd = apjh.a(localException1.nextText());
               }
               else
               {
@@ -1056,7 +1056,7 @@ public class ARCommonConfigInfo
     //   187: invokevirtual 558	java/io/BufferedOutputStream:flush	()V
     //   190: aload 7
     //   192: aload 6
-    //   194: invokestatic 563	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   194: invokestatic 563	bhmi:b	(Ljava/io/File;Ljava/io/File;)Z
     //   197: istore 4
     //   199: aload_1
     //   200: ifnull +7 -> 207

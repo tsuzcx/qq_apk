@@ -2,9 +2,9 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import aryo;
-import aryp;
-import aryq;
+import asoc;
+import asod;
+import asoe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonPanelMallHelper$3
   implements Runnable
 {
-  public EmoticonPanelMallHelper$3(aryo paramaryo) {}
+  public EmoticonPanelMallHelper$3(asoc paramasoc) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class EmoticonPanelMallHelper$3
           if (QLog.isColorLevel()) {
             QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for market open strategy");
           }
-          localWebProcessManager.a(-1, new aryp(this));
+          localWebProcessManager.a(-1, new asod(this));
           return;
         }
         l = ((SharedPreferences)localObject).getLong("sp_key_send_h5_magic_face_time", 0L);
@@ -47,7 +47,7 @@ public class EmoticonPanelMallHelper$3
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
         }
-        localWebProcessManager.a(-1, new aryq(this));
+        localWebProcessManager.a(-1, new asoe(this));
         return;
       }
     }

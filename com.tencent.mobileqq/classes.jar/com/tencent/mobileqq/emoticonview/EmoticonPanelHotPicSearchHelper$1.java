@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arqt;
-import aryi;
+import asgh;
+import asnw;
 
 public class EmoticonPanelHotPicSearchHelper$1
   implements Runnable
 {
-  public EmoticonPanelHotPicSearchHelper$1(aryi paramaryi, arqt paramarqt) {}
+  public EmoticonPanelHotPicSearchHelper$1(asnw paramasnw, asgh paramasgh) {}
   
   public void run()
   {

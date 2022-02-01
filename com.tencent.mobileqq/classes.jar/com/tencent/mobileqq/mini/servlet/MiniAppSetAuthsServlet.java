@@ -6,7 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -36,7 +36,7 @@ public class MiniAppSetAuthsServlet
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
         new INTERFACE.StSetAuthsRsp().mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppSetAuthsServlet", 2, "onReceive. inform MiniAppSetAuthsServlet resultcode success.");
@@ -86,7 +86,7 @@ public class MiniAppSetAuthsServlet
             localObject1 = new byte[4];
           }
           paramPacket.setSSOCommand("LightAppSvc.mini_user_info.SetAuths");
-          paramPacket.putSendData(bguc.a((byte[])localObject1));
+          paramPacket.putSendData(bhuf.a((byte[])localObject1));
           paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
           super.onSend(paramIntent, paramPacket);
           return;

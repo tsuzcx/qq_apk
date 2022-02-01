@@ -1,6 +1,14 @@
-public abstract interface axnv
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.ThemeRecentDynamicAvatarView;
+
+public class axnv
 {
-  public abstract boolean a(axns paramaxns, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public ThemeRecentDynamicAvatarView a;
+  public String a;
 }
 
 

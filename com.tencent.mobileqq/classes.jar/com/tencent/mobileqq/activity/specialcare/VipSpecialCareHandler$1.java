@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import alyx;
-import alyy;
+import amkp;
+import amkq;
 import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -9,17 +9,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class VipSpecialCareHandler$1
   implements Runnable
 {
-  public VipSpecialCareHandler$1(alyx paramalyx) {}
+  public VipSpecialCareHandler$1(amkp paramamkp) {}
   
   public void run()
   {
-    alyx.a(this.this$0, ThreadManager.newFreeHandlerThread("special-timer", 0));
-    alyx.a(this.this$0).start();
-    Looper localLooper = alyx.a(this.this$0).getLooper();
+    amkp.a(this.this$0, ThreadManager.newFreeHandlerThread("special-timer", 0));
+    amkp.a(this.this$0).start();
+    Looper localLooper = amkp.a(this.this$0).getLooper();
     if (localLooper == null) {
       return;
     }
-    alyx.a(this.this$0, new alyy(this, localLooper));
+    amkp.a(this.this$0, new amkq(this, localLooper));
   }
 }
 

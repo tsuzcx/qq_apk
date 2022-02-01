@@ -1,18 +1,38 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class svb
-  implements ViewPager.OnPageChangeListener
+  implements ComplementFileStringLoader
 {
-  public svb(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  private svi a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public svb(svi paramsvi)
   {
-    qps.a.a().a(true, "MATCH_ALL_UIN");
+    this.a = paramsvi;
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    try
+    {
+      InputStream localInputStream = this.a.a(paramString);
+      if (localInputStream == null) {
+        throw new IllegalStateException(paramString + " not found");
+      }
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+      return null;
+    }
+    String str = svr.a(localIOException);
+    return str;
   }
 }
 

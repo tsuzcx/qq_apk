@@ -1,37 +1,46 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class bioh
-  extends Handler
+  implements View.OnLayoutChangeListener
 {
-  public bioh(SocialFriendChooser paramSocialFriendChooser) {}
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public void handleMessage(Message paramMessage)
+  public bioh(WebViewFragment paramWebViewFragment) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
+    paramView.getWindowVisibleDisplayFrame(this.b);
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", biip.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = biyo.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      binj.a().a(str, paramMessage, new bioi(this));
-      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView == null) {
+        break label100;
+      }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.webView.getPluginEngine();
+      if (paramView != null)
+      {
+        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
+        if (paramInt1 >= -100) {
+          break label105;
+        }
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934614L, null);
+      }
     }
-    if ((this.a.jdField_a_of_type_Bitt != null) && (!this.a.jdField_a_of_type_Bitt.isCancelled())) {
-      this.a.jdField_a_of_type_Bitt.cancel(true);
+    label100:
+    label105:
+    while (paramInt1 <= 100)
+    {
+      return;
+      paramView = null;
+      break;
     }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", biuc.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl, 8589934613L, null);
   }
 }
 

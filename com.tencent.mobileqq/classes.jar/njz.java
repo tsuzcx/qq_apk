@@ -1,8 +1,17 @@
-import android.os.Bundle;
+import com.tencent.biz.PoiMapActivity;
 
-public abstract interface njz
+public class njz
+  extends nkj
 {
-  public abstract void a(Bundle paramBundle);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public njz(PoiMapActivity paramPoiMapActivity)
+  {
+    super(paramPoiMapActivity);
+  }
 }
 
 

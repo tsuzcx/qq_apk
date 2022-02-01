@@ -1,36 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeqw
-  implements DialogInterface.OnClickListener
+class aeqw
+  extends anyu
 {
-  public aeqw(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  aeqw(aeqv paramaeqv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    try
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
     {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
       }
-      MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app);
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
       return;
     }
-    catch (Exception paramDialogInterface) {}finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
     }
+    this.a.b(this.a.jdField_a_of_type_Aeqz);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Aeqz, false);
+      this.a.c(this.a.jdField_a_of_type_Aeqz);
+      return;
+    }
+    this.a.jdField_a_of_type_Aeqz.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Aeqz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqw
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import kotlin.ranges.IntRange;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"asReversed", "", "T", "", "asReversedMutable", "reverseElementIndex", "", "index", "reverseElementIndex$CollectionsKt__ReversedViewsKt", "reversePositionIndex", "reversePositionIndex$CollectionsKt__ReversedViewsKt", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-class CollectionsKt__ReversedViewsKt
+public class CollectionsKt__ReversedViewsKt
   extends CollectionsKt__MutableCollectionsKt
 {
   @NotNull

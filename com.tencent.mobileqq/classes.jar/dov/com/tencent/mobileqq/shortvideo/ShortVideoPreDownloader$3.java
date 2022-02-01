@@ -1,15 +1,15 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bqgl;
-import bqgp;
-import bqgq;
+import brhw;
+import bria;
+import bric;
 
 public class ShortVideoPreDownloader$3
   implements Runnable
 {
   public void run()
   {
-    bqgp.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
+    bria.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
     this.this$0.a(this.a);
   }
 }

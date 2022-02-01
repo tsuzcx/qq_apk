@@ -1,26 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class beie
-  implements bkhw
+  extends bhzs
 {
-  public beie(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bkho parambkho) {}
+  beie(beic parambeic) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if ((paramInt == 36) && ((paramObject instanceof Integer)))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
+      if (QLog.isColorLevel()) {
+        QLog.i("FloatViewSkin", 2, "mMusicBusinessObserver: isSuccess" + paramBoolean + "  music player id:" + paramObject);
+      }
+      paramInt = ((Integer)paramObject).intValue();
+      beic.a(this.a, paramInt);
+      if (paramInt > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Akgq.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
-        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
+        this.a.a = true;
+        bicl.a.download(null, beic.a(this.a), beic.a(this.a), false);
       }
     }
+    else
+    {
+      return;
+    }
+    this.a.a = false;
+    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.2.1(this));
   }
 }
 

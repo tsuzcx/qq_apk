@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bhqg;
+import birb;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class SwiftBrowserTBSHandler$6
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$6(bhqg parambhqg) {}
+  public SwiftBrowserTBSHandler$6(birb parambirb) {}
   
   public void run()
   {

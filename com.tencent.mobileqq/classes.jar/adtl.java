@@ -1,17 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.17.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
 
 public class adtl
   implements DialogInterface.OnClickListener
 {
-  public adtl(ChatHistory paramChatHistory) {}
+  public adtl(AddFriendVerifyActivity.30 param30) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new ChatHistory.17.1(this), 8, null, false);
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+    }
   }
 }
 

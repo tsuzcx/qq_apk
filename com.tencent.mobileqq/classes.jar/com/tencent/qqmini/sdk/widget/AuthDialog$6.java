@@ -13,7 +13,7 @@ class AuthDialog$6
   
   public void onClick(View paramView)
   {
-    AuthDialog.access$600(this.this$0, (INTERFACE.StSubscribeMessage)this.val$subMsgNoMaintainAuth.get(2));
+    AuthDialog.access$1000(this.this$0, (INTERFACE.StSubscribeMessage)this.val$subMsgNoMaintainAuth.get(1));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

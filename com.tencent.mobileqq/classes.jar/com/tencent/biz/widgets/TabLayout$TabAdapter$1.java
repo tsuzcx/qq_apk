@@ -1,12 +1,12 @@
 package com.tencent.biz.widgets;
 
-import abei;
+import abil;
 import android.view.View;
 
 public class TabLayout$TabAdapter$1
   implements Runnable
 {
-  public TabLayout$TabAdapter$1(abei paramabei, int paramInt, View paramView) {}
+  public TabLayout$TabAdapter$1(abil paramabil, int paramInt, View paramView) {}
   
   public void run()
   {

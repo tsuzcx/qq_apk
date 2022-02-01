@@ -1,183 +1,73 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenStatusReceiver;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper.3;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class bifd
-  extends biew
-  implements awcg, biel, IVideoOuterStatusListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private IVideoInnerStatusListener a;
-  private ImageView b;
+  public bifd(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
   
-  bifd(Context paramContext)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setOnDragListener(this);
-  }
-  
-  private void f()
-  {
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374361);
-    localView.setContentDescription("一起看悬浮窗");
-    if (bkpg.a())
-    {
-      localView.setBackgroundColor(Color.parseColor("#4D000000"));
-      return;
+    Iterator localIterator;
+    if (((paramSeekBar.getProgress() == paramSeekBar.getMax()) || (this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int > paramSeekBar.getProgress())) && (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b)) {
+      localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
     }
-    localView.setBackgroundColor(Color.parseColor("#00000000"));
-  }
-  
-  public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
-  {
-    FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
-    if (paramFloatingScreenParams == null)
+    while (localIterator.hasNext())
     {
-      if (this.jdField_a_of_type_AndroidContentContext != null) {
-        localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(1).build();
-      }
+      Object localObject1 = (String)localIterator.next();
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).seekTo(0);
+      paramSeekBar.setProgress(0);
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
+      Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_JavaUtilHashMap.get(localObject1);
+      localObject1 = (SeekBar)((FrameLayout)localObject2).findViewById(2131377245);
+      TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131374455);
+      TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131374454);
+      ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131374453);
+      ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131374452);
+      localObject2 = (TextView)((FrameLayout)localObject2).findViewById(2131374451);
+      localImageView1.setImageResource(2130849180);
+      localImageView1.setVisibility(0);
+      ((SeekBar)localObject1).setVisibility(4);
+      localTextView1.setVisibility(4);
+      localTextView2.setVisibility(4);
+      localImageView2.setVisibility(4);
+      ((TextView)localObject2).setVisibility(4);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = 0;
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
     }
-    else
-    {
-      paramFloatingScreenParams = new FloatingWatchTogetherWrapper.2(this, paramView, localFloatingScreenParams);
-      ThreadManager.getUIHandlerV2().postDelayed(paramFloatingScreenParams, 500L);
-      return 0;
-    }
-    return 2;
   }
   
-  public IVideoOuterStatusListener a(IVideoInnerStatusListener paramIVideoInnerStatusListener)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoInnerStatusListener = paramIVideoInnerStatusListener;
-    return this;
-  }
-  
-  public void a()
-  {
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = true;
     if (QLog.isColorLevel()) {
-      QLog.d("FloatingWatchTogetherWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingWatchTogetherWrapper" });
+      QLog.d("HealthBusinessPlugin", 2, "onStartTrackingTouch");
     }
-    f();
   }
   
-  public void a(Context paramContext)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    super.a(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("关闭一起看悬浮窗");
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374358));
-    this.b.setContentDescription(anni.a(2131703423));
-    a(new View[] { this.b });
-    a(false, new View[] { this.b });
-    f();
-  }
-  
-  public void a(FloatingScreenParams paramFloatingScreenParams)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4);
-    int i = localSharedPreferences.getInt("KEY_QQFS_WATCH_TOGETHER_CENTER_X", -2147483648);
-    int j = localSharedPreferences.getInt("KEY_QQFS_WATCH_TOGETHER_CENTER_Y", -2147483648);
-    if ((i != -2147483648) && (j != -2147483648))
-    {
-      paramFloatingScreenParams.setFloatingCenterX(i);
-      paramFloatingScreenParams.setFloatingCenterY(j);
-    }
+    int i = paramSeekBar.getProgress();
+    long l = ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getDuration();
+    i = (int)(i / 100.0D * l);
+    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).seekTo(i);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = false;
     if (QLog.isColorLevel()) {
-      QLog.d("FloatingWatchTogetherWrapper", 2, new Object[] { "restoreLastCenterPosition: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j) });
+      QLog.d("HealthBusinessPlugin", 2, "mLastprogressTime1:" + this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int);
     }
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    FloatingWatchTogetherWrapper.3 local3 = new FloatingWatchTogetherWrapper.3(this, paramInt);
-    ThreadManager.getUIHandlerV2().post(local3);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver = new FloatingScreenStatusReceiver(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver.a(2, new bife(this));
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer != null)
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
-      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a();
-      int j = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
-      localEditor.putInt("KEY_QQFS_WATCH_TOGETHER_CENTER_X", i);
-      localEditor.putInt("KEY_QQFS_WATCH_TOGETHER_CENTER_Y", j);
-      localEditor.apply();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatingWatchTogetherWrapper", 2, new Object[] { "saveFloatingCenter: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j), " isSmallFloating: ", Boolean.valueOf(bool) });
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131374358) {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoInnerStatusListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenListenerIVideoInnerStatusListener.notifyVideoStart();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      super.onClick(paramView);
-    }
-  }
-  
-  public void onOrientationChange(boolean paramBoolean) {}
-  
-  public void onSetVideoCover(Bitmap paramBitmap) {}
-  
-  public void onSetVideoCover(Drawable paramDrawable) {}
-  
-  public void onVideoBuffering() {}
-  
-  public void onVideoComplete(boolean paramBoolean) {}
-  
-  public void onVideoError(int paramInt) {}
-  
-  public void onVideoProgressUpdate(int paramInt) {}
-  
-  public void onVideoSize(int paramInt1, int paramInt2) {}
-  
-  public void onVideoStart(int paramInt)
-  {
-    a(false, new View[] { this.b });
-  }
-  
-  public void onVideoStop()
-  {
-    a(true, new View[] { this.b });
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

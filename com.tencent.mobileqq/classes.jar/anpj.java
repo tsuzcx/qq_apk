@@ -1,14 +1,9 @@
-public class anpj
-  implements anil
+import android.support.annotation.NonNull;
+import java.util.Map;
+
+public abstract interface anpj
 {
-  public void a(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 1) {
-      a(paramObject);
-    }
-  }
+  public abstract void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte);
 }
 
 

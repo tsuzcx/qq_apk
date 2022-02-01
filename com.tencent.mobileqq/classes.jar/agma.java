@@ -1,6 +1,9 @@
-public abstract interface agma
-  extends afyr, aglz
-{}
+import android.widget.RelativeLayout;
+
+public class agma
+{
+  public RelativeLayout a;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

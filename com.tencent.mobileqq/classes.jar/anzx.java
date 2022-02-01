@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class anzx
-  extends anhl
+final class anzx
+  implements DialogInterface.OnDismissListener
 {
-  private anzx(GetCheckUpdate paramGetCheckUpdate) {}
+  anzx(Activity paramActivity, int paramInt) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(7);
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzx
  * JD-Core Version:    0.7.0.1
  */

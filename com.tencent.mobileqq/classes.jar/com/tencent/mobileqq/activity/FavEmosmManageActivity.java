@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aeeg;
-import ajnk;
+import aenk;
+import ajyt;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import arow;
-import arpl;
-import arpp;
-import arpy;
-import bcst;
+import asek;
+import asez;
+import asfd;
+import asfm;
+import bdll;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -23,12 +23,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FavEmosmManageActivity
   extends IphoneTitleBarActivity
-  implements arpy
+  implements asfm
 {
-  private ajnk jdField_a_of_type_Ajnk;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aeeg(this);
-  private arow jdField_a_of_type_Arow;
-  private arpp jdField_a_of_type_Arpp;
+  private ajyt jdField_a_of_type_Ajyt;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aenk(this);
+  private asek jdField_a_of_type_Asek;
+  private asfd jdField_a_of_type_Asfd;
   
   private void a()
   {
@@ -47,9 +47,9 @@ public class FavEmosmManageActivity
         QLog.d("FavEmosmManageActivity", 2, "initParam fromSdkSetAvatar =  " + bool);
       }
     } while (!bool);
-    this.jdField_a_of_type_Ajnk = new ajnk(this);
-    this.jdField_a_of_type_Ajnk.a(localIntent);
-    this.jdField_a_of_type_Ajnk.a();
+    this.jdField_a_of_type_Ajyt = new ajyt(this);
+    this.jdField_a_of_type_Ajyt.a(localIntent);
+    this.jdField_a_of_type_Ajyt.a();
   }
   
   public void a(boolean paramBoolean)
@@ -86,10 +86,10 @@ public class FavEmosmManageActivity
     super.doOnCreate(paramBundle);
     super.setContentView(2131559127);
     int i = getIntent().getIntExtra("camera_emo_mode", 0);
-    this.jdField_a_of_type_Arpp = new arpp(this.app, this);
-    this.jdField_a_of_type_Arpp.a(this);
-    this.jdField_a_of_type_Arow = arpl.a(this.app, this.jdField_a_of_type_Arpp, i);
-    this.jdField_a_of_type_Arpp.a(this.jdField_a_of_type_Arow);
+    this.jdField_a_of_type_Asfd = new asfd(this.app, this);
+    this.jdField_a_of_type_Asfd.a(this);
+    this.jdField_a_of_type_Asek = asez.a(this.app, this.jdField_a_of_type_Asfd, i);
+    this.jdField_a_of_type_Asfd.a(this.jdField_a_of_type_Asek);
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
     {
       paramBundle = new IntentFilter("com.tencent.mobileqq.action.update.emotiom");
@@ -98,8 +98,8 @@ public class FavEmosmManageActivity
       getApplicationContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     }
     a();
-    this.jdField_a_of_type_Arow.a();
-    this.jdField_a_of_type_Arow.g();
+    this.jdField_a_of_type_Asek.a();
+    this.jdField_a_of_type_Asek.g();
     return true;
   }
   
@@ -111,21 +111,21 @@ public class FavEmosmManageActivity
       getApplicationContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
     }
-    if (this.jdField_a_of_type_Arow.b) {
+    if (this.jdField_a_of_type_Asek.b) {
       getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
     }
-    if (this.jdField_a_of_type_Ajnk != null) {
-      this.jdField_a_of_type_Ajnk.e();
+    if (this.jdField_a_of_type_Ajyt != null) {
+      this.jdField_a_of_type_Ajyt.e();
     }
-    this.jdField_a_of_type_Arow.d();
+    this.jdField_a_of_type_Asek.d();
   }
   
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Ajnk != null)
+    if (this.jdField_a_of_type_Ajyt != null)
     {
-      this.jdField_a_of_type_Ajnk.b(paramIntent);
+      this.jdField_a_of_type_Ajyt.b(paramIntent);
       return;
     }
     setIntent(paramIntent);
@@ -135,13 +135,13 @@ public class FavEmosmManageActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Arpp.b();
+    this.jdField_a_of_type_Asfd.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Arpp.a();
+    this.jdField_a_of_type_Asfd.a();
   }
   
   public void doOnStart()
@@ -156,20 +156,20 @@ public class FavEmosmManageActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Arow != null) {
-      this.jdField_a_of_type_Arow.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Asek != null) {
+      this.jdField_a_of_type_Asek.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean onBackEvent()
   {
-    bcst.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D4", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Ajnk != null) {
-      this.jdField_a_of_type_Ajnk.b();
+    bdll.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D4", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Ajyt != null) {
+      this.jdField_a_of_type_Ajyt.b();
     }
-    if (this.jdField_a_of_type_Arpp != null) {
-      this.jdField_a_of_type_Arpp.g();
+    if (this.jdField_a_of_type_Asfd != null) {
+      this.jdField_a_of_type_Asfd.g();
     }
     return super.onBackEvent();
   }

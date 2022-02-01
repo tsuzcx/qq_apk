@@ -1,10 +1,21 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class aqio
+  extends AnimatorListenerAdapter
 {
-  public ProgressBar a;
-  public TextView a;
+  public aqio(SelectCoverActivity paramSelectCoverActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = null;
+  }
 }
 
 

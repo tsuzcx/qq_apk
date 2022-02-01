@@ -1,9 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class vzv
-  implements bkiz
+  implements DialogInterface.OnClickListener
 {
-  vzv(vzq paramvzq) {}
+  vzv(vzr paramvzr) {}
   
-  public void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,6 +1,20 @@
-public abstract interface boct
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+
+class boct
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public abstract void a();
+  boct(bocn parambocn) {}
+  
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.a.a(101);
+      return;
+    }
+    this.a.a(this.a.a, paramLocalMediaInfo);
+  }
 }
 
 

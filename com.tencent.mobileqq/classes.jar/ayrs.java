@@ -1,29 +1,83 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.lbssearch.TencentSearch;
-import com.tencent.lbssearch.object.param.Geo2AddressParam;
-import com.tencent.lbssearch.object.param.Geo2AddressParam.PoiOptions;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-class ayrs
-  extends ayrp
+final class ayrs
+  implements aydt
 {
-  private TencentSearch a;
+  ayrs(ayrw paramayrw) {}
   
-  ayrs(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramString);
-    jdField_a_of_type_JavaLangString = "NetworkLoader";
-    this.jdField_a_of_type_ComTencentLbssearchTencentSearch = new TencentSearch(BaseApplicationImpl.getContext());
-  }
-  
-  public boolean a(LatLng paramLatLng, int paramInt, ayry paramayry)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] netGet. latLng: " + paramLatLng);
+    bool3 = true;
+    boolean bool2 = true;
+    int j = 0;
+    int k = 0;
+    i = 0;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
     }
-    this.jdField_a_of_type_ComTencentLbssearchTencentSearch.geo2address(new Geo2AddressParam(paramLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(ayqi.d).setPageIndex(0)), new ayrt(this, paramLatLng, paramayry));
-    return true;
+    for (;;)
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (paramArrayOfByte.ret.has())
+          {
+            paramInt = paramArrayOfByte.ret.get();
+            if (paramInt == 0) {
+              i = k;
+            }
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool1 = false;
+        paramInt = j;
+      }
+      try
+      {
+        j = paramArrayOfByte.total.get();
+        paramInt = j;
+        bool1 = bool2;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          i = j;
+          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
+          bool1 = bool2;
+          paramInt = j;
+        }
+        if (this.a != null) {
+          this.a.a(bool1, paramInt);
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramInt = i;
+          bool1 = bool3;
+        }
+      }
+      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
+      bool1 = false;
+      paramInt = i;
+      continue;
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

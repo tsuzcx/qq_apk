@@ -1,11 +1,10 @@
-import java.util.Comparator;
-
-public final class bfqy
-  implements Comparator<bfqz>
+public class bfqy
 {
-  public int a(bfqz parambfqz1, bfqz parambfqz2)
+  public static String a(int paramInt)
   {
-    return Long.signum(parambfqz2.a - parambfqz1.a);
+    long l1 = 0x7FFFFFFF & paramInt;
+    long l2 = paramInt >> 31 & 0x1;
+    return (l2 << 31 | l1) + "";
   }
 }
 

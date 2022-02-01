@@ -1,79 +1,125 @@
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class alae
-  implements alaf
+public class alae
+  extends RecyclerView.Adapter<alaf>
 {
-  private alah jdField_a_of_type_Alah;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
   
-  public alae(String paramString, QQAppInterface paramQQAppInterface)
+  public alae(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(@Nullable alah paramalah)
+  public alaf a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Alah = paramalah;
+    return new alaf(this, new alag(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new ahpr(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
   }
   
-  public boolean isNeedAutoCloseWhenAccountChange()
+  public void a(alaf paramalaf, int paramInt)
   {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Alah == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramalaf.getPosition());
+    if (localRedPackGrapInfo == null) {}
+    for (;;)
     {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramalaf, paramInt, getItemId(paramInt));
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
+      alag localalag = paramalaf.a;
+      if (localalag != null) {
+        localalag.a(localRedPackGrapInfo);
+      }
+    }
   }
   
-  public void onEnter()
+  void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    Intent localIntent;
-    if (BaseActivity.sTopActivity != null)
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.addFlags(268435456);
-    }
     for (;;)
     {
       try
       {
-        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
-        akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          break label233;
+        }
+        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label234;
+        }
         return;
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      catch (Throwable paramString)
       {
-        localClassNotFoundException.printStackTrace();
+        RedPackGrapInfo localRedPackGrapInfo;
+        int j;
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
+        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
+        return;
+        i += 1;
+        continue;
+        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
+        return;
+        i = 0;
         continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
+        {
+          j = i;
+          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+            j = i - 1;
+          }
+          this.jdField_a_of_type_JavaUtilList.remove(j);
+          notifyItemRemoved(j);
+          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
+          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
+            break label233;
+          }
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+            continue;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
+            break label233;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
+        }
       }
+      label233:
+      return;
+      label234:
+      int i = 0;
     }
   }
   
-  public void onOverride() {}
+  void a(List<RedPackGrapInfo> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
 }
 
 

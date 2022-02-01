@@ -1,9 +1,8 @@
-public class osk
+import com.tencent.widget.ListView;
+
+public abstract interface osk
 {
-  public float a = 1.0F;
-  public int a;
-  public int b;
-  public int c;
+  public abstract void a(ListView paramListView);
 }
 
 

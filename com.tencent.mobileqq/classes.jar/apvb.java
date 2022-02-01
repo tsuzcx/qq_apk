@@ -1,10 +1,20 @@
-public abstract interface apvb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import cooperation.wadl.ipc.WadlParams;
+
+public class apvb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public apvb(ArkAppDownloadModule.10 param10) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    bdll.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
+  }
 }
 
 

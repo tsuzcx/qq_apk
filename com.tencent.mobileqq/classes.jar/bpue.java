@@ -1,26 +1,77 @@
-import android.util.Property;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.lang.ref.WeakReference;
 
-class bpue
-  extends Property<bpud, Integer>
+public class bpue
 {
-  bpue(bpud parambpud, Class paramClass, String paramString)
+  private static bpue jdField_a_of_type_Bpue;
+  private WeakReference<DoodleLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<DoodleLayout> b;
+  
+  public static bpue a()
   {
-    super(paramClass, paramString);
+    if (jdField_a_of_type_Bpue == null) {
+      jdField_a_of_type_Bpue = new bpue();
+    }
+    return jdField_a_of_type_Bpue;
   }
   
-  public Integer a(bpud parambpud)
+  public DoodleLayout a(int paramInt)
   {
-    if (parambpud != null) {
-      return Integer.valueOf(bpud.a(parambpud));
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramInt == 0)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+          localObject1 = (DoodleLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        }
+      }
     }
-    return Integer.valueOf(0);
+    for (;;)
+    {
+      if ((localObject1 == null) && (QLog.isColorLevel())) {
+        QLog.e("DoodleLayoutConnector", 2, "getDoodleLayout null, not init yet");
+      }
+      return localObject1;
+      localObject1 = localObject2;
+      if (this.b != null)
+      {
+        localObject1 = localObject2;
+        if (this.b.get() != null) {
+          localObject1 = (DoodleLayout)this.b.get();
+        }
+      }
+    }
   }
   
-  public void a(bpud parambpud, Integer paramInteger)
+  public void a(int paramInt)
   {
-    if (parambpud != null) {
-      bpud.a(parambpud, paramInteger.intValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleLayoutConnector", 2, "unbind " + paramInt);
     }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
+    }
+    this.b = null;
+  }
+  
+  public void a(int paramInt, DoodleLayout paramDoodleLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleLayoutConnector", 2, "bind " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleLayout);
+      return;
+    }
+    this.b = new WeakReference(paramDoodleLayout);
   }
 }
 

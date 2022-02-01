@@ -1,53 +1,44 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-public abstract class bebt
-  extends bebf
+public class bebt
+  extends ReportDialog
 {
-  public void a(bdxf parambdxf, bdxe parambdxe)
+  public bebt(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    FromServiceMsg localFromServiceMsg = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    bebv localbebv = (bebv)parambdxe.a;
-    beck localbeck = localbebv.a;
-    anqe localanqe = parambdxf.jdField_a_of_type_Anqe;
-    int i;
-    if (localFromServiceMsg.getResultCode() != 1000)
+    super(paramContext, 2131755824);
+    setContentView(2131563003);
+    paramContext = (TextView)findViewById(2131378936);
+    if (!TextUtils.isEmpty(paramString1))
     {
-      parambdxf = (String)localFromServiceMsg.getAttribute("_tag_socket_connerror", "");
-      if ((parambdxf.equals("conSucc")) || (parambdxf.equals("")))
-      {
-        i = localFromServiceMsg.getResultCode();
-        if ((i == 1002) || (i == 1013))
-        {
-          localObject = MessageHandler.b(localFromServiceMsg);
-          parambdxe = localFromServiceMsg.getBusinessFailMsg();
-          parambdxf = parambdxe;
-          if (parambdxe == null) {
-            parambdxf = "";
-          }
-          a(-1, 9311, (String)localObject, parambdxf, localanqe, localbeck.a);
-        }
+      paramContext.setVisibility(0);
+      paramContext.setText(paramString1);
+      paramContext = (TextView)findViewById(2131365046);
+      if (TextUtils.isEmpty(paramString2)) {
+        break label142;
       }
+      paramContext.setVisibility(0);
+      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
+      paramContext.setText(new beac(paramString2, 8));
     }
     for (;;)
     {
-      bedb.a(localbebv, localbeck);
+      ((Button)findViewById(2131364961)).setOnClickListener(new bebu(this, paramOnClickListener1));
+      ((ImageView)findViewById(2131364593)).setOnClickListener(new bebv(this, paramOnClickListener2));
+      setCanceledOnTouchOutside(false);
       return;
-      parambdxe = localFromServiceMsg.getBusinessFailMsg();
-      parambdxf = parambdxe;
-      if (parambdxe == null) {
-        parambdxf = "";
-      }
-      a(-1, 9044, String.valueOf(i), parambdxf, localanqe, localbeck.a);
-      continue;
-      a(-1, 9313, parambdxf, localFromServiceMsg.getBusinessFailMsg(), localanqe, localbeck.a);
-      continue;
-      a(localFromServiceMsg, (byte[])localObject, localbebv, localbeck, localanqe, parambdxf, parambdxe);
+      paramContext.setVisibility(8);
+      break;
+      label142:
+      paramContext.setVisibility(8);
     }
   }
-  
-  protected abstract void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, bebv parambebv, beck parambeck, anqe paramanqe, bdxf parambdxf, bdxe parambdxe);
 }
 
 

@@ -1,38 +1,17 @@
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import mqq.observer.BusinessObserver;
 
 class aobm
-  implements EIPCResultCallback
+  implements BusinessObserver
 {
   aobm(aobl paramaobl, String paramString) {}
   
-  private void a(EIPCResult paramEIPCResult)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      aobl.a(this.jdField_a_of_type_Aobl).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    aobl.a(this.jdField_a_of_type_Aobl).a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private boolean a(EIPCResult paramEIPCResult)
-  {
-    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (aobl.a(this.jdField_a_of_type_Aobl) == null);
-  }
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (a(paramEIPCResult))
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
-      return;
-    }
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "code=" + paramEIPCResult.code + " ssoResult=" + paramEIPCResult.data.getInt("key_sso_ret"));
-    a(paramEIPCResult);
   }
 }
 

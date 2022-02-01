@@ -1,20 +1,27 @@
-public final class tgl
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
+
+public class tgl
+  extends tgb
 {
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  tgl(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
   }
   
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    paramFloat1 /= paramFloat4 / 2.0F;
-    if (paramFloat1 < 1.0F) {
-      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, AccountDetailActivity.class);
+      paramString1.putExtra("uin", paramString3);
+      paramString1.putExtra("from_js", true);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
     }
-    paramFloat3 /= 2.0F;
-    paramFloat1 -= 2.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
   }
 }
 

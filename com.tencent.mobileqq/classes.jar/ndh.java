@@ -1,27 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.gameroom.stage.StageView;
 
 class ndh
-  implements mzp
+  implements Animator.AnimatorListener
 {
-  final WeakReference<ndg> a;
+  ndh(ndg paramndg) {}
   
-  ndh(ndg paramndg)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramndg);
+    this.a.a.removeView(this.a.a.b);
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameServerIPCModule_GameRC", 2, "GameResultCallback onReslut, playId[" + paramString1 + "], fileType[" + paramInt + "], url[" + paramString2 + "]");
-    }
-    ndg localndg = (ndg)this.a.get();
-    if (localndg == null) {
-      return;
-    }
-    localndg.a(true, paramString1, paramInt, paramString2);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

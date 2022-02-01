@@ -1,22 +1,22 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
-import bisy;
-import bivz;
+import bjtx;
+import bjwy;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.util.Map;
 
 public class DownloaderGetCodeClient$1
   implements Runnable
 {
-  public DownloaderGetCodeClient$1(bivz parambivz, String paramString, int paramInt, Bundle paramBundle) {}
+  public DownloaderGetCodeClient$1(bjwy parambjwy, String paramString, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {
-    if (((Boolean)bivz.a(this.this$0).get(bivz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))).booleanValue())
+    if (((Boolean)bjwy.a(this.this$0).get(bjwy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))).booleanValue())
     {
-      bisy.c("DownloaderGetCodeClient", "last request not back,retry ......");
-      QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", this.jdField_a_of_type_AndroidOsBundle, bivz.a(this.this$0));
+      bjtx.c("DownloaderGetCodeClient", "last request not back,retry ......");
+      QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", this.jdField_a_of_type_AndroidOsBundle, bjwy.a(this.this$0));
     }
   }
 }

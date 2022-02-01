@@ -1,8 +1,8 @@
 package dov.com.qq.im;
 
-import bgsg;
-import bnck;
-import boyn;
+import bhsi;
+import bods;
+import bqai;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -10,14 +10,14 @@ import mqq.os.MqqHandler;
 public class QIMReadinjoyEffectsCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMReadinjoyEffectsCameraCaptureUnit$2(bnck parambnck) {}
+  public QIMReadinjoyEffectsCameraCaptureUnit$2(bods parambods) {}
   
   public void run()
   {
-    if (!bgsg.u(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin()))
+    if (!bhsi.t(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin()))
     {
       ThreadManager.getUIHandler().post(new QIMReadinjoyEffectsCameraCaptureUnit.2.1(this));
-      bgsg.B(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin());
+      bhsi.B(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin());
     }
   }
 }

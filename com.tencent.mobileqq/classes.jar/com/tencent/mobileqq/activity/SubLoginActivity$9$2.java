@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import afgt;
+import afpx;
 import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class SubLoginActivity$9$2
   implements Runnable
 {
-  public SubLoginActivity$9$2(afgt paramafgt) {}
+  public SubLoginActivity$9$2(afpx paramafpx) {}
   
   public void run()
   {

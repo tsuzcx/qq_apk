@@ -1,20 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.view.View;
 
-public class blij
-  implements DialogInterface.OnDismissListener
+public abstract interface blij
 {
-  public blij(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QlinkShareJumpActivity.a(this.a))
-    {
-      QlinkShareJumpActivity.a(this.a, false);
-      this.a.finish();
-    }
-  }
+  public abstract void b(View paramView);
 }
 
 

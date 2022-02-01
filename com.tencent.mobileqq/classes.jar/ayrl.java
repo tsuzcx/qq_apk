@@ -1,12 +1,8 @@
-class ayrl
-  implements ayqr
+import java.util.List;
+
+public abstract interface ayrl
 {
-  ayrl(ayrj paramayrj) {}
-  
-  public void a(double paramDouble1, double paramDouble2)
-  {
-    this.a.a(paramDouble1);
-  }
+  public abstract void a(boolean paramBoolean1, List<aysk> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

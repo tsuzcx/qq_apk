@@ -1,18 +1,17 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class aiuf
-  implements View.OnClickListener
+  implements aiuh
 {
-  public aiuf(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public void a(MessageForStructing paramMessageForStructing, aggl paramaggl, View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {}
+    for (int i = 2130838326;; i = 2130838310)
+    {
+      paramView.setBackgroundResource(i);
+      return;
+    }
   }
 }
 

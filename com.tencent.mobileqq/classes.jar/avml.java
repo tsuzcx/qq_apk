@@ -1,8 +1,29 @@
-public abstract interface avml
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+public class avml
+  implements EIPCResultCallback
 {
-  public abstract void a(int paramInt);
+  public avml(GameSessionView paramGameSessionView, Context paramContext, GameCenterSessionInfo paramGameCenterSessionInfo) {}
   
-  public abstract void b(int paramInt);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = paramEIPCResult.getString("key_get_msg_list_url");
+        QLog.i(GameSessionView.a, 1, "[onCallback] url:" + paramEIPCResult);
+        avlf.a(paramEIPCResult, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo);
+      }
+    }
+  }
 }
 
 

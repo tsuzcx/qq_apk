@@ -1,10 +1,12 @@
-import android.content.Context;
-
-public class bmdy
+public abstract interface bmdy
 {
-  public Context a;
-  public bmco a;
-  public bmcp a;
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(String[] paramArrayOfString);
 }
 
 

@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bfba
-  implements View.OnClickListener
+  extends bfbf
 {
-  public bfba(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public int a;
+  public byte[] a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    bkft.b(paramView);
-    this.a.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" msgResId:");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfba
  * JD-Core Version:    0.7.0.1
  */

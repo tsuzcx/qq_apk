@@ -1,14 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ofj
-  extends bgey
+class ofj
+  implements View.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  ofj(ofi paramofi, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
-    bgsn.a(paramDownloadParams, 40);
-    return paramDownloadParams;
+    if (this.jdField_a_of_type_Ofi.jdField_a_of_type_Ofa != null) {
+      this.jdField_a_of_type_Ofi.jdField_a_of_type_Ofa.b(this.jdField_a_of_type_Ofi.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

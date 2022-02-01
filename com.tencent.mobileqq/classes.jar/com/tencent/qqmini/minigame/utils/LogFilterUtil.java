@@ -53,12 +53,8 @@ public class LogFilterUtil
     DEFAULT_BLACK_LIST.put("operateVideoPlayer", null);
     DEFAULT_BLACK_LIST.put("login", null);
     DEFAULT_BLACK_LIST.put("refreshSession", null);
-    DEFAULT_BLACK_LIST.put("shareAppMessageDirectly", null);
     DEFAULT_BLACK_LIST.put("showShareMenu", null);
-    DEFAULT_BLACK_LIST.put("shareAppPictureMessage", null);
-    DEFAULT_BLACK_LIST.put("shareAppPictureMessageDirectly", null);
     DEFAULT_BLACK_LIST.put("showShareMenuWithShareTicket", null);
-    DEFAULT_BLACK_LIST.put("shareAppMessage", null);
     DEFAULT_BLACK_LIST.put("hideShareMenu", null);
     DEFAULT_BLACK_LIST.put("updateShareMenuShareTicket", null);
     DEFAULT_BLACK_LIST.put("getShareInfo", null);

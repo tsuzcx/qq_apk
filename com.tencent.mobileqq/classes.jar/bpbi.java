@@ -1,31 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import java.io.File;
 
-class bpbi
-  implements View.OnClickListener
+public class bpbi
 {
-  bpbi(bpbh parambpbh) {}
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
-    }
-    MusicItemInfo localMusicItemInfo = ((bone)bojv.a().c(8)).a();
-    if ((MusicProviderView.a) && (localMusicItemInfo != null) && (localMusicItemInfo.mItemId != bpbh.a(this.a).mItemId) && (localMusicItemInfo.mType == 5)) {
-      this.a.c();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bpbh.a(this.a);
-    }
-  }
+  public static final String a = annv.k + "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip".hashCode() + ".zip";
+  public static final String b = annv.k + "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip".hashCode() + File.separator;
 }
 
 

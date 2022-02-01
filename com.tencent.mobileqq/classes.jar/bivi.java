@@ -1,8 +1,16 @@
-import android.os.Bundle;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
-public abstract interface bivi
+public class bivi
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle);
+  public bivi(BounceScrollView paramBounceScrollView) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+  }
 }
 
 

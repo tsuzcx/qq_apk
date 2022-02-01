@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bejq
-  implements View.OnClickListener
+class bejq
+  extends awxb<bejl, QQAppInterface>
 {
-  public bejq(TroopBarPublishActivity.16 param16) {}
+  bejq(bejo parambejo) {}
   
-  public void onClick(View paramView)
+  protected bejl a(QQAppInterface paramQQAppInterface)
   {
-    this.a.this$0.t();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new bejl(paramQQAppInterface);
   }
 }
 

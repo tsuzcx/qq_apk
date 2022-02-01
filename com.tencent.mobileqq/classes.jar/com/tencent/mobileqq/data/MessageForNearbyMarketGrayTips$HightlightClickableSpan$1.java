@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import arhw;
+import arxl;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(arhw paramarhw) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(arxl paramarxl) {}
   
   public void run()
   {

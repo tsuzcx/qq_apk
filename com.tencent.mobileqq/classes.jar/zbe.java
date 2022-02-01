@@ -1,8 +1,10 @@
+import android.graphics.Bitmap;
+
 public abstract interface zbe
 {
-  public abstract void a(yya paramyya, float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public abstract void a(zbg paramzbg);
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

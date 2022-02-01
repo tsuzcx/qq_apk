@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<inset android:insetLeft="9.5dip" android:insetRight="9.5dip" android:insetTop="6.5dip" android:insetBottom="6.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#ffdadce5" android:endColor="#ffebecf2" android:angle="0.0" android:type="linear" />
-</shape>
+    <shape>
+        <corners android:radius="3.0dip" />
+        <size android:height="3.0dip" android:width="26.0dip" />
+        <solid android:color="#ffb0b3bf" />
+    </shape>
+</inset>

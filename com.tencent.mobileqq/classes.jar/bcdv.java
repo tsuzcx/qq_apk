@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-
-public abstract interface bcdv
+public class bcdv
 {
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  public String a;
+  public String b;
   
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
+  public bcdv() {}
+  
+  public bcdv(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

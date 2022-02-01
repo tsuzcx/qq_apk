@@ -1,18 +1,8 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
-final class blfm
-  implements blfo
+public class blfm
 {
-  public void a(boolean paramBoolean, Context paramContext, blfq paramblfq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      blfh.f(paramContext, paramblfq);
-    }
-  }
+  public long a;
+  
+  public blfm(blfl paramblfl) {}
 }
 
 

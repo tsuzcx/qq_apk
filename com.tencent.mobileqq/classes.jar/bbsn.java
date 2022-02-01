@@ -1,37 +1,21 @@
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+
 public class bbsn
+  implements bbsr
 {
-  boolean jdField_a_of_type_Boolean;
+  public bbsn(EditActivity paramEditActivity) {}
   
-  public bbsn(bbsj parambbsj, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      bbsa localbbsa = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localbbsa != null)
+      {
+        EditActivity.a(this.a).actionText = localbbsa.d;
+        EditActivity.a(this.a, false);
+      }
     }
   }
 }

@@ -1,21 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-class xlp
-  implements ValueAnimator.AnimatorUpdateListener
+public final class xlp
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  xlp(xlo paramxlo) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onComplete(String arg1, String paramString2)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    synchronized ()
     {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      paramString2 = xlo.a();
+      xlo.a().post(new TVKPreloader.1.1(this, paramString2));
       return;
     }
-    this.a.a.setImageResource(2130850664);
   }
 }
 

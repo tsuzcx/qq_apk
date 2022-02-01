@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-class bmna
-  implements DialogInterface.OnClickListener
+public class bmna
+  extends bjbs
 {
-  bmna(bmmu parambmmu, String[] paramArrayOfString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmna(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    bmmu.a(this.jdField_a_of_type_Bmmu, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

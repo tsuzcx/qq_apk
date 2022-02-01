@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager;
 
-import bdvs;
-import bdvu;
+import beum;
+import beuo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectConfigBase$NetReqRunnable
   implements Runnable
 {
-  final bdvs a;
+  final beum a;
   
-  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, bdvs parambdvs)
+  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, beum parambeum)
   {
-    this.a = parambdvs;
+    this.a = parambeum;
   }
   
   public void run()

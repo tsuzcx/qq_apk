@@ -1,15 +1,19 @@
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.Switch;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afed
+  implements View.OnClickListener
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
-  public URLImageView a;
-  public Switch a;
-  public String a;
+  public afed(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

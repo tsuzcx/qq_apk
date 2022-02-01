@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
 import Override;
-import akgm;
+import akrx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -16,13 +16,13 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import aval;
-import axch;
-import axei;
-import bcst;
-import bctj;
-import bgnt;
+import anzj;
+import avsm;
+import axuy;
+import axxb;
+import bdll;
+import bdmc;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -36,7 +36,7 @@ public class NearbyFakeActivity
   private final int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Intent jdField_a_of_type_AndroidContentIntent;
-  private Handler jdField_a_of_type_AndroidOsHandler = new axch(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new axuy(this);
   NearbyResultReceiver jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver;
   Object jdField_a_of_type_JavaLangObject = new Object();
   private boolean jdField_a_of_type_Boolean;
@@ -64,13 +64,13 @@ public class NearbyFakeActivity
         this.jdField_b_of_type_Long = (l - this.jdField_a_of_type_Long);
       }
       Object localObject = new HashMap();
-      ((HashMap)localObject).put("param_NetType", bgnt.a(null) + "");
-      ((HashMap)localObject).put("param_DeviceType", akgm.a() + "");
+      ((HashMap)localObject).put("param_NetType", bhnv.a(null) + "");
+      ((HashMap)localObject).put("param_DeviceType", akrx.a() + "");
       if (paramInt == 0)
       {
         i = 5;
         ((HashMap)localObject).put("param_enterType", i + "");
-        bctj.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "CMD_PRELOAD_NEARBY", true, this.jdField_b_of_type_Long, this.c, (HashMap)localObject, "");
+        bdmc.a(BaseApplicationImpl.getContext()).a(getCurrentAccountUin(), "CMD_PRELOAD_NEARBY", true, this.jdField_b_of_type_Long, this.c, (HashMap)localObject, "");
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder().append("OpenNearbyAct timeout:");
@@ -119,7 +119,7 @@ public class NearbyFakeActivity
     }
     try
     {
-      bcst.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_act_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
+      bdll.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_act_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
       return;
     }
     catch (Exception paramContext) {}
@@ -128,7 +128,7 @@ public class NearbyFakeActivity
     paramContext.startActivity(localIntent);
     try
     {
-      bcst.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_fake_act_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
+      bdll.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_fake_act_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
       return;
     }
     catch (Exception paramContext) {}
@@ -136,18 +136,18 @@ public class NearbyFakeActivity
   
   public static boolean a()
   {
-    return aval.a("com.tencent.mobileqq:tool");
+    return avsm.a("com.tencent.mobileqq:tool");
   }
   
   private void b()
   {
-    setTitle(anni.a(2131705920));
+    setTitle(anzj.a(2131706027));
     this.rightViewText.setVisibility(8);
     this.rightViewImg.setVisibility(0);
-    this.rightViewImg.setImageResource(2130840281);
+    this.rightViewImg.setImageResource(2130840291);
     this.rightViewImg.setEnabled(false);
-    Drawable localDrawable = getResources().getDrawable(2130839404);
-    TextView localTextView = (TextView)findViewById(2131378445);
+    Drawable localDrawable = getResources().getDrawable(2130839412);
+    TextView localTextView = (TextView)findViewById(2131378603);
     this.centerView.setCompoundDrawablePadding(10);
     this.centerView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
     ((Animatable)localDrawable).start();
@@ -170,7 +170,7 @@ public class NearbyFakeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559492);
+    setContentView(2131559497);
     b();
     this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver = new NearbyResultReceiver(null);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver.a(this);
@@ -181,9 +181,9 @@ public class NearbyFakeActivity
     paramBundle.putExtra("resultreceiver_nearbyfakeactivity", this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver);
     BaseApplicationImpl.getContext().sendBroadcast(paramBundle);
     if (QLog.isColorLevel()) {
-      axei.a("NearbyFakeActivity", "trace", new Object[] { "NearbyFakeActivity.doOnCreate", Long.valueOf(this.jdField_a_of_type_Long) });
+      axxb.a("NearbyFakeActivity", "trace", new Object[] { "NearbyFakeActivity.doOnCreate", Long.valueOf(this.jdField_a_of_type_Long) });
     }
-    int i = akgm.a();
+    int i = akrx.a();
     if (i >= 2)
     {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 5000L);

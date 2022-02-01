@@ -1,14 +1,41 @@
-class pbf
-  extends pcm
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+public class pbf
+  implements AladdinConfigHandler
 {
-  pbf(pbe parampbe)
+  public static String a()
   {
-    super(parampbe, null);
+    return (String)bnrf.a("double_short_video_font_size", "14");
   }
   
-  void a(pcp parampcp)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    parampcp.onCommentListLoad(1, true, this.a.a(), pbe.a(this.a), 3, 3);
+    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    try
+    {
+      paramString = (String)paramString.get("double_videocard_textsize");
+      if (!TextUtils.isEmpty(paramString)) {
+        bnrf.a("double_short_video_font_size", paramString);
+      }
+      label55:
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      break label55;
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bnrf.a("double_short_video_font_size", "14");
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
+    }
   }
 }
 

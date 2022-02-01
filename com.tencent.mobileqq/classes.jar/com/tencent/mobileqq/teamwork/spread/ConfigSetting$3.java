@@ -2,18 +2,18 @@ package com.tencent.mobileqq.teamwork.spread;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdko;
+import bedj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ConfigSetting$3
   implements Runnable
 {
-  public ConfigSetting$3(bdko parambdko) {}
+  public ConfigSetting$3(bedj parambedj) {}
   
   public void run()
   {
-    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", bdko.a(this.this$0)).commit();
+    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", bedj.a(this.this$0)).commit();
   }
 }
 

@@ -1,12 +1,8 @@
-public class bjfk
+public abstract interface bjfk
 {
-  public String a;
-  public String b;
+  public abstract void a();
   
-  public String toString()
-  {
-    return "[MediaCodecInfo] name : " + this.a + " ;path = " + this.b;
-  }
+  public abstract void b();
 }
 
 

@@ -1,66 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.utils.ILog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiFeedInfo;
 
 public final class bnaw
-  implements ILog
+  implements Parcelable.Creator<WeishiFeedInfo>
 {
-  private static bnaw a;
-  
-  public static bnaw a()
+  public WeishiFeedInfo a(Parcel paramParcel)
   {
-    if (a == null) {
-      a = new bnaw();
-    }
-    return a;
+    return new WeishiFeedInfo(paramParcel);
   }
   
-  public void d(String paramString1, String paramString2)
+  public WeishiFeedInfo[] a(int paramInt)
   {
-    QLog.d(paramString1, 2, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    d(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    e(paramString1, paramString2);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    i(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2) {}
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable) {}
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    w(paramString1, paramString2);
+    return new WeishiFeedInfo[paramInt];
   }
 }
 

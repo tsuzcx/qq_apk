@@ -1,26 +1,14 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import java.io.File;
 
-class aygo
-  extends OrientationEventListener
+public abstract interface aygo
 {
-  aygo(aygn paramaygn, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void onOrientationChanged(int paramInt)
-  {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
-    {
-      return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
-  }
+  public abstract void a(String paramString1, String paramString2, long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

@@ -1,383 +1,506 @@
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import android.view.GestureDetector;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.telephony.TelephonyManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdGestureView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.3;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Timer;
+import java.util.WeakHashMap;
+import mqq.util.WeakReference;
 
 public class rxg
-  extends rxr
 {
-  private rxl jdField_a_of_type_Rxl;
+  private static rxg jdField_a_of_type_Rxg;
+  private int jdField_a_of_type_Int = -1;
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VideoVolumeControl.1(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<WeakReference<ImageView>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Map<rvy, Boolean> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private rxh jdField_a_of_type_Rxh;
+  private rxi jdField_a_of_type_Rxi;
+  private rxj jdField_a_of_type_Rxj;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString = "";
+  private Map<VideoFeedsPlayManager, Boolean> jdField_b_of_type_JavaUtilMap = new WeakHashMap();
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int = -1;
+  private boolean jdField_c_of_type_Boolean = true;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private boolean e;
+  private boolean f;
+  private boolean g = true;
+  private boolean h;
+  private boolean i = true;
+  private boolean j;
+  private boolean k;
+  private boolean l = true;
+  private boolean m;
   
-  public rxg(rwy paramrwy, rxl paramrxl)
+  public static rxg a()
   {
-    super(paramrwy, paramrxl);
-    this.jdField_a_of_type_Rxl = paramrxl;
+    if (jdField_a_of_type_Rxg == null) {}
+    try
+    {
+      if (jdField_a_of_type_Rxg == null) {
+        jdField_a_of_type_Rxg = new rxg();
+      }
+      return jdField_a_of_type_Rxg;
+    }
+    finally {}
   }
   
-  private boolean a(VideoInfo paramVideoInfo)
+  public static boolean a(Context paramContext)
   {
-    return (paramVideoInfo != null) && (paramVideoInfo.a != null) && (!paramVideoInfo.a.d) && (oqi.g(paramVideoInfo.a)) && (oqj.b(paramVideoInfo.a));
+    try
+    {
+      int n = ((TelephonyManager)paramContext.getSystemService("phone")).getCallState();
+      return (n == 1) || (n == 2);
+    }
+    catch (Exception paramContext)
+    {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 1, "obtain inCall info failed " + paramContext.toString());
+    }
+    return false;
   }
   
-  private void m(boolean paramBoolean)
+  public float a()
+  {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
+      return this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(3) / this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(3);
+    }
+    return 0.0F;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilTimer == null) {
+      this.jdField_a_of_type_JavaUtilTimer = new Timer();
+    }
+    this.i = false;
+    this.jdField_a_of_type_JavaUtilTimer.schedule(new VideoVolumeControl.3(this), 2000L);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager != null)
+    {
+      this.jdField_a_of_type_AndroidMediaAudioManager.adjustStreamVolume(3, paramInt, 0);
+      if (this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(3) == 0) {
+        a(true, "system volume 0", this.jdField_d_of_type_Int);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(false, "system volume change", this.jdField_d_of_type_Int);
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "inKandianModule errParam，activity == null");
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaLangString = paramActivity.toString();
+      if ("".equals(this.jdField_b_of_type_JavaLangString)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "inKandianModule origin:" + this.jdField_b_of_type_JavaLangString + " act:" + paramActivity.toString());
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "real inKandianModule origin:" + this.jdField_b_of_type_JavaLangString + " act:" + paramActivity.toString());
+    }
+    this.jdField_b_of_type_JavaLangString = paramActivity.toString();
+    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("audio"));
+    if (this.jdField_a_of_type_Rxj == null) {
+      this.jdField_a_of_type_Rxj = new rxj(this, null);
+    }
+    paramActivity = new IntentFilter();
+    paramActivity.addAction("android.media.VOLUME_CHANGED_ACTION");
+    paramActivity.addAction("android.intent.action.HEADSET_PLUG");
+    paramActivity.addAction("android.media.AUDIO_BECOMING_NOISY");
+    paramActivity.addAction("android.media.RINGER_MODE_CHANGED");
+    this.l = true;
+    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_Rxj, paramActivity);
+    if (this.jdField_a_of_type_Rxh == null) {
+      this.jdField_a_of_type_Rxh = new rxh(this);
+    }
+    ThreadManager.excute(new VideoVolumeControl.2(this), 16, null, true);
+    if (this.jdField_a_of_type_Rxi == null) {
+      this.jdField_a_of_type_Rxi = new rxi(this);
+    }
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioManager.getRingerMode();
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramImageView));
+  }
+  
+  public void a(rvy paramrvy)
+  {
+    if (paramrvy != null)
+    {
+      paramrvy.c(b());
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramrvy)) {
+        this.jdField_a_of_type_JavaUtilMap.put(paramrvy, Boolean.valueOf(true));
+      }
+      paramrvy.a(this.jdField_a_of_type_Rxi);
+      this.jdField_d_of_type_Int = 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "addVideoManager :" + paramrvy + " list:" + this.jdField_a_of_type_JavaUtilMap);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  /* Error */
+  public void a(boolean paramBoolean, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: iload_1
+    //   4: putfield 149	rxg:k	Z
+    //   7: aload_0
+    //   8: getfield 75	rxg:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   11: ifnull +82 -> 93
+    //   14: aload_0
+    //   15: getfield 89	rxg:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   18: ifnull +75 -> 93
+    //   21: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   24: ifeq +39 -> 63
+    //   27: ldc 127
+    //   29: iconst_2
+    //   30: new 129	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   37: ldc_w 317
+    //   40: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: iload_1
+    //   44: invokevirtual 320	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   47: ldc_w 322
+    //   50: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: aload_2
+    //   54: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: aload_0
+    //   64: getfield 75	rxg:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   67: aload_0
+    //   68: getfield 89	rxg:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   71: invokevirtual 326	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
+    //   74: aload_0
+    //   75: getfield 149	rxg:k	Z
+    //   78: ifeq +18 -> 96
+    //   81: aload_0
+    //   82: getfield 75	rxg:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   85: aload_0
+    //   86: getfield 89	rxg:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   89: invokevirtual 330	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   92: pop
+    //   93: aload_0
+    //   94: monitorexit
+    //   95: return
+    //   96: aload_0
+    //   97: getfield 75	rxg:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   100: aload_0
+    //   101: getfield 89	rxg:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   104: ldc2_w 175
+    //   107: invokevirtual 334	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   110: pop
+    //   111: goto -18 -> 93
+    //   114: astore_2
+    //   115: aload_0
+    //   116: monitorexit
+    //   117: aload_2
+    //   118: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	119	0	this	rxg
+    //   0	119	1	paramBoolean	boolean
+    //   0	119	2	paramString	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	63	114	finally
+    //   63	93	114	finally
+    //   96	111	114	finally
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (!this.e) {
+      this.e = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "setMute :" + paramBoolean + ", oldValue:" + this.jdField_b_of_type_Boolean + " reason:" + paramString + " what:" + paramInt);
+    }
+    label153:
+    label241:
+    int n;
+    if ((paramInt == 1) || (paramInt == 0))
+    {
+      paramString = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      Object localObject;
+      for (boolean bool1 = false; paramString.hasNext(); bool1 = ((rvy)localObject).b() | bool1)
+      {
+        localObject = (rvy)paramString.next();
+        if (localObject == null) {
+          break label450;
+        }
+        ((rvy)localObject).c(paramBoolean);
+      }
+      this.jdField_c_of_type_Boolean = paramBoolean;
+      if (bool1) {
+        if (this.jdField_c_of_type_Boolean) {
+          break label247;
+        }
+      }
+      label247:
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        a(bool2, "by user click mute btn ");
+        if ((paramInt != 2) && (paramInt != 0)) {
+          break label258;
+        }
+        paramString = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+        while (paramString.hasNext())
+        {
+          localObject = (VideoFeedsPlayManager)paramString.next();
+          if (localObject == null) {
+            break label444;
+          }
+          ((VideoFeedsPlayManager)localObject).e(paramBoolean);
+          paramInt = ((VideoFeedsPlayManager)localObject).d() | bool1;
+          n = paramInt;
+        }
+      }
+      this.jdField_d_of_type_Boolean = paramBoolean;
+      label258:
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        paramInt = 0;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          paramString = (WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+          if ((paramString == null) || (paramString.get() == null)) {
+            break label459;
+          }
+          if (!paramBoolean) {
+            break label399;
+          }
+          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130843031));
+          ((ImageView)paramString.get()).setContentDescription(anzj.a(2131715233));
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("Q.readinjoy.video.VideoVolumeControl", 1, "failed to update volume view:" + paramString.toString());
+      }
+      return;
+      label399:
+      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130843032));
+      ((ImageView)paramString.get()).setContentDescription(anzj.a(2131715234));
+      break label459;
+      label444:
+      paramInt = n;
+      break label241;
+      label450:
+      break;
+      n = 0;
+      break label153;
+      label459:
+      paramInt += 1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    if (!this.e) {
+      a(this.jdField_a_of_type_Boolean, "start auto play", 1);
+    }
+  }
+  
+  public void b(Activity paramActivity)
+  {
+    if (this.jdField_b_of_type_JavaLangString.equals(paramActivity.toString()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "really outKandianModule origin is:" + this.jdField_b_of_type_JavaLangString + " act:" + paramActivity.toString() + ",formDynamicTo1T3:" + this.f);
+      }
+      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
+        this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(null);
+      }
+      if (!"".equals(this.jdField_b_of_type_JavaLangString))
+      {
+        BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_Rxj);
+        ThreadManager.excute(new VideoVolumeControl.4(this), 16, null, true);
+      }
+      this.jdField_a_of_type_Rxi = null;
+      this.jdField_a_of_type_Rxj = null;
+      this.jdField_b_of_type_JavaLangString = "";
+      this.jdField_a_of_type_AndroidMediaAudioManager = null;
+      if (!this.f)
+      {
+        a(false, "outKandianModule", 2);
+        a(this.jdField_a_of_type_Boolean, "outKandianModule", 1);
+        this.e = false;
+        if ((paramActivity instanceof ReadInJoyNewFeedsActivity)) {
+          sun.a().a();
+        }
+        if (this.jdField_a_of_type_JavaUtilTimer != null)
+        {
+          this.jdField_a_of_type_JavaUtilTimer.cancel();
+          this.jdField_a_of_type_JavaUtilTimer.purge();
+          this.jdField_a_of_type_JavaUtilTimer = null;
+        }
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        this.f = false;
+        this.g = false;
+      }
+    }
+    QLog.w("Q.readinjoy.video.VideoVolumeControl", 2, "outKandianModule origin:" + this.jdField_b_of_type_JavaLangString + " act:" + paramActivity.toString());
+  }
+  
+  public void b(rvy paramrvy)
+  {
+    if (paramrvy != null) {
+      this.jdField_a_of_type_JavaUtilMap.remove(paramrvy);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "removeVideoManager :" + paramrvy + " list:" + this.jdField_a_of_type_JavaUtilMap);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.j = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (rvy)localIterator.next();
+      if (localObject != null) {
+        ((rvy)localObject).g();
+      }
+    }
+    localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (VideoFeedsPlayManager)localIterator.next();
+      if (localObject != null) {
+        ((VideoFeedsPlayManager)localObject).h();
+      }
+    }
+  }
+  
+  void c(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_Rxl.g.getLayoutParams();
-      localMarginLayoutParams.bottomMargin = afur.a(0.0F, rwy.a(this.jdField_a_of_type_Rwy).getResources());
-      this.jdField_a_of_type_Rxl.g.setLayoutParams(localMarginLayoutParams);
-      return;
-    }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_Rxl.g.getLayoutParams();
-    localMarginLayoutParams.bottomMargin = (afur.a(15.0F, rwy.a(this.jdField_a_of_type_Rwy).getResources()) - 20);
-    this.jdField_a_of_type_Rxl.g.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  int a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return 2130843083;
-    }
-    return 2130843085;
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (rwy.a(this.jdField_a_of_type_Rwy) != null) {
-      rwy.a(this.jdField_a_of_type_Rwy).a(paramInt1, paramInt2);
-    }
-    if (paramBoolean) {
-      d();
-    }
-  }
-  
-  public void a(VideoInfo paramVideoInfo)
-  {
-    rwy.g(this.jdField_a_of_type_Rwy, false);
-    rwy.b(this.jdField_a_of_type_Rwy, false);
-    opr.a(this.jdField_a_of_type_Rxl.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView);
-    a(this.jdField_a_of_type_Rxl, paramVideoInfo);
-    opt.a.a(rwy.a(this.jdField_a_of_type_Rwy), rwy.a(this.jdField_a_of_type_Rwy), rwy.a(this.jdField_a_of_type_Rwy), paramVideoInfo, this.jdField_a_of_type_Rxl, this.jdField_a_of_type_Rwy, rwy.c(this.jdField_a_of_type_Rwy));
-    if ((this.jdField_a_of_type_Rxl.jdField_a_of_type_Int != 4) && (paramVideoInfo.c))
-    {
-      opt.a.a(rwy.a(this.jdField_a_of_type_Rwy), paramVideoInfo, this.jdField_a_of_type_Rxl, new rxj(this, paramVideoInfo));
-      rwy.a(this.jdField_a_of_type_Rwy, false, this.jdField_a_of_type_Rxl);
-      opt.a.a(rwy.a(this.jdField_a_of_type_Rwy), paramVideoInfo, this.jdField_a_of_type_Rxl, this.jdField_a_of_type_Rwy, rwy.c(this.jdField_a_of_type_Rwy), new rxk(this));
-    }
-    if ((rwy.a(this.jdField_a_of_type_Rwy) == this.jdField_a_of_type_Rxl) && (this.jdField_a_of_type_Rxl.jdField_a_of_type_Int == 4) && (rwy.a(this.jdField_a_of_type_Rwy)))
-    {
-      opr.b(this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewViewGroup);
-      opr.b(this.jdField_a_of_type_Rxl.o);
-    }
-    opr.b(this.jdField_a_of_type_Rxl.h);
-    if (rwy.c(this.jdField_a_of_type_Rwy)) {
-      a(this.jdField_a_of_type_Rxl, paramVideoInfo);
-    }
-  }
-  
-  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
-  {
-    super.a(paramVideoInfo, paramBoolean);
-    rwy.g(this.jdField_a_of_type_Rwy, false);
-    Object localObject;
-    if (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.setTag(this.jdField_a_of_type_Rxl);
-      localObject = new GestureDetector(new rxh(this));
-      this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.setOnTouchListener(new rxi(this, (GestureDetector)localObject));
-    }
-    this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(0);
-    this.jdField_a_of_type_Rxl.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-    rwy.a(this.jdField_a_of_type_Rwy, false, this.jdField_a_of_type_Rxl);
-    if (paramVideoInfo.b(rwy.a(this.jdField_a_of_type_Rwy))) {
-      this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
-    }
-    while (rwy.c(this.jdField_a_of_type_Rwy))
-    {
-      opr.a(this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewViewGroup);
-      opr.a(this.jdField_a_of_type_Rxl.o);
-      this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(rwy.a(this.jdField_a_of_type_Rwy).getLongAccountUin());
-      opr.b(this.jdField_a_of_type_Rxl.jdField_a_of_type_Ruq.a());
-      return;
-      if (paramVideoInfo.a() != null)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      Object localObject;
+      while (localIterator.hasNext())
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-        paramVideoInfo = URLDrawable.getDrawable(paramVideoInfo.a(), (URLDrawable.URLDrawableOptions)localObject);
-        paramVideoInfo.setDecodeHandler(bgey.x);
-        paramVideoInfo.setAlpha(80);
-        this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramVideoInfo);
-      }
-    }
-    opr.b(this.jdField_a_of_type_Rxl.o);
-    opr.b(this.jdField_a_of_type_Rxl.s);
-  }
-  
-  public void a(rxl paramrxl, VideoInfo paramVideoInfo)
-  {
-    if (paramrxl == null) {}
-    for (;;)
-    {
-      return;
-      if (a(paramVideoInfo))
-      {
-        paramrxl = paramrxl.o;
-        if ((rwy.e(this.jdField_a_of_type_Rwy) == 0) && (paramrxl != null) && (paramrxl.getLayoutParams() != null)) {
-          rwy.b(this.jdField_a_of_type_Rwy, paramrxl.getLayoutParams().height);
+        localObject = (rvy)localIterator.next();
+        if ((localObject != null) && (((rvy)localObject).b()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayStateWhenPhoneCome:" + localObject);
+          }
+          if (((rvy)localObject).a() != 5) {
+            ((rvy)localObject).b(true);
+          }
+          ((rvy)localObject).a();
         }
       }
-      while ((rwy.d(this.jdField_a_of_type_Rwy) == 0) && (rwy.a(this.jdField_a_of_type_Rwy) != null) && ((rwy.a(this.jdField_a_of_type_Rwy) instanceof VideoFeedsPlayActivity)) && (((VideoFeedsPlayActivity)rwy.a(this.jdField_a_of_type_Rwy)).a() != null))
+      localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        rwy.c(this.jdField_a_of_type_Rwy, ((VideoFeedsPlayActivity)rwy.a(this.jdField_a_of_type_Rwy)).a().getMeasuredHeight());
-        return;
-        paramrxl = paramrxl.c;
-        if ((rwy.e(this.jdField_a_of_type_Rwy) == 0) && (paramrxl != null) && (paramrxl.getLayoutParams() != null)) {
-          rwy.b(this.jdField_a_of_type_Rwy, paramrxl.getLayoutParams().height);
+        localObject = (VideoFeedsPlayManager)localIterator.next();
+        if ((localObject != null) && (((VideoFeedsPlayManager)localObject).d()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayStateWhenPhoneCome:" + localObject);
+          }
+          if (((VideoFeedsPlayManager)localObject).a() != 5) {
+            ((VideoFeedsPlayManager)localObject).b(true);
+          }
+          ((VideoFeedsPlayManager)localObject).b();
         }
       }
     }
   }
   
-  public void b(VideoInfo paramVideoInfo)
+  public boolean c()
   {
-    super.b(paramVideoInfo);
-  }
-  
-  public void c()
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if ((rwy.i(this.jdField_a_of_type_Rwy)) && (!rwy.h(this.jdField_a_of_type_Rwy)))
-    {
-      if (this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewView.getVisibility() == 0) {}
-      for (;;)
-      {
-        rwy.i(this.jdField_a_of_type_Rwy, bool1);
-        i(bool1);
-        return;
-        bool1 = false;
-      }
-    }
-    if (this.jdField_a_of_type_Rxl.d.getVisibility() == 8) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      i(bool1);
-      return;
-    }
-  }
-  
-  void c(VideoInfo paramVideoInfo)
-  {
-    ryx.b(this.jdField_a_of_type_Rxl.A, paramVideoInfo.e, "评论");
-    this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidWidgetImageView.setImageResource(2130843082);
-    if ((rwy.c(this.jdField_a_of_type_Rwy)) && (opr.b()))
-    {
-      opr.a(this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidWidgetImageView);
-      opr.a(this.jdField_a_of_type_Rxl.n);
-      this.jdField_a_of_type_Rxl.A.setTextColor(Color.parseColor("#C6C6C6"));
-      this.jdField_a_of_type_Rxl.C.setTextColor(Color.parseColor("#C6C6C6"));
-    }
+    return this.jdField_b_of_type_Boolean;
   }
   
   public void d(boolean paramBoolean)
   {
-    i(false);
-    if (((this.jdField_a_of_type_Rxl.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Rxl.jdField_a_of_type_Int == 7)) && (!paramBoolean))
-    {
-      rwy.a(this.jdField_a_of_type_Rwy, false, this.jdField_a_of_type_Rxl);
-      if (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar != null) {
-        this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(0);
-      }
-      if (this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdGestureView != null)
-      {
-        this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdGestureView.setVisibility(4);
-        this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdGestureView.a(false);
-        this.jdField_a_of_type_Rxl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdGestureView.b();
-      }
-    }
+    this.h = paramBoolean;
   }
   
-  public void e()
+  public boolean d()
   {
-    if ((this.jdField_a_of_type_Rxl == null) || (this.jdField_a_of_type_Rxl.jdField_a_of_type_Sar == null) || (this.jdField_a_of_type_Rxl.jdField_a_of_type_Sar.a == null) || (TextUtils.isEmpty(orb.a(this.jdField_a_of_type_Rxl.jdField_a_of_type_Sar.a.a)))) {
-      return;
-    }
-    opr.a(rwy.a(this.jdField_a_of_type_Rwy), this.jdField_a_of_type_Rxl);
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      rwy.k(this.jdField_a_of_type_Rwy, true);
-      rwy.g(this.jdField_a_of_type_Rwy, true);
-      if (!paramBoolean) {
-        break label156;
-      }
-      if (!this.jdField_a_of_type_Rxl.jdField_a_of_type_Sar.a.b(rwy.a(this.jdField_a_of_type_Rwy)))
-      {
-        this.jdField_a_of_type_Rxl.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, ryx.c(rwy.a(this.jdField_a_of_type_Rwy)));
-        m(true);
-      }
-      if (this.jdField_a_of_type_Rxl.d.getVisibility() == 0) {
-        this.jdField_a_of_type_Rxl.d.setVisibility(8);
-      }
-      if (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView != null)
-      {
-        this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        opr.b(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar);
-      }
-    }
-    label156:
-    label255:
-    do
-    {
-      do
-      {
-        return;
-        rwy.k(this.jdField_a_of_type_Rwy, false);
-        rwy.g(this.jdField_a_of_type_Rwy, false);
-        break;
-        if (this.jdField_a_of_type_Rxl.jdField_a_of_type_Sar.a.b(rwy.a(this.jdField_a_of_type_Rwy))) {
-          break label255;
-        }
-        this.jdField_a_of_type_Rxl.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
-        m(false);
-      } while ((this.jdField_a_of_type_Rxl.d == null) || (this.jdField_a_of_type_Rxl.d.getVisibility() != 8) || (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView == null));
-      this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      opr.a(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar);
-      return;
-    } while ((this.jdField_a_of_type_Rxl.d == null) || (this.jdField_a_of_type_Rxl.d.getVisibility() != 8) || (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView == null));
-    this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    opr.a(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar);
-  }
-  
-  public void f(boolean paramBoolean) {}
-  
-  protected void i(boolean paramBoolean)
-  {
-    boolean bool;
-    if (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView != null) {
-      if (!paramBoolean) {
-        if (!rwy.i(this.jdField_a_of_type_Rwy))
-        {
-          opr.a(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar);
-          if (rwy.c(this.jdField_a_of_type_Rwy)) {
-            opr.a(this.jdField_a_of_type_Rxl.s);
-          }
-          if ((!rwy.i(this.jdField_a_of_type_Rwy)) || (rwy.h(this.jdField_a_of_type_Rwy))) {
-            break label278;
-          }
-          if ((this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewView.getVisibility() == 8) && (!rwy.b(this.jdField_a_of_type_Rwy)))
-          {
-            if (this.jdField_a_of_type_Rxl.i != null)
-            {
-              rwy.a(this.jdField_a_of_type_Rwy, this.jdField_a_of_type_Rxl);
-              this.jdField_a_of_type_Rxl.i.setVisibility(0);
-            }
-            ryx.a(this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewView, 0);
-          }
-          bool = paramBoolean;
-          if (rwy.b(this.jdField_a_of_type_Rwy))
-          {
-            if (this.jdField_a_of_type_Rxl.d.getVisibility() != 8) {
-              break label246;
-            }
-            bool = true;
-            this.jdField_a_of_type_Rxl.d.setVisibility(0);
-          }
-          label182:
-          super.i(bool);
-          if (!rwy.c(this.jdField_a_of_type_Rwy))
-          {
-            if ((!bool) && (!this.jdField_a_of_type_Rxl.jdField_a_of_type_Boolean) && (!rwy.i(this.jdField_a_of_type_Rwy))) {
-              break label498;
-            }
-            this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(4);
-          }
-        }
-      }
-    }
-    label246:
-    do
-    {
-      return;
-      opr.b(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar);
-      break;
-      bool = paramBoolean;
-      if (this.jdField_a_of_type_Rxl.d.getVisibility() != 0) {
-        break label182;
-      }
-      this.jdField_a_of_type_Rxl.d.setVisibility(8);
-      bool = paramBoolean;
-      break label182;
-      if ((this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.getVisibility() == 8) && (!rwy.b(this.jdField_a_of_type_Rwy))) {
-        ryx.a(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView, 0);
-      }
-      bool = paramBoolean;
-      if (this.jdField_a_of_type_Rxl.d.getVisibility() != 0) {
-        break label182;
-      }
-      this.jdField_a_of_type_Rxl.d.setVisibility(8);
-      bool = paramBoolean;
-      break label182;
-      opr.b(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar);
-      opr.b(this.jdField_a_of_type_Rxl.s);
-      if ((rwy.i(this.jdField_a_of_type_Rwy)) && (!rwy.h(this.jdField_a_of_type_Rwy)))
-      {
-        bool = paramBoolean;
-        if (this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewView.getVisibility() != 0) {
-          break label182;
-        }
-        if (this.jdField_a_of_type_Rxl.i != null) {
-          this.jdField_a_of_type_Rxl.i.setVisibility(8);
-        }
-        ryx.a(this.jdField_a_of_type_Rxl.jdField_m_of_type_AndroidViewView, 8);
-        bool = paramBoolean;
-        break label182;
-      }
-      if (this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView.getVisibility() == 0) {
-        ryx.a(this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidViewView, 8);
-      }
-      bool = paramBoolean;
-      if (this.jdField_a_of_type_Rxl.d.getVisibility() != 8) {
-        break label182;
-      }
-      this.jdField_a_of_type_Rxl.d.setVisibility(0);
-      bool = paramBoolean;
-      break label182;
-      this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(0);
-      return;
-      super.i(paramBoolean);
-    } while (rwy.c(this.jdField_a_of_type_Rwy));
-    label278:
-    label498:
-    if ((paramBoolean) || (this.jdField_a_of_type_Rxl.jdField_a_of_type_Boolean) || (rwy.i(this.jdField_a_of_type_Rwy)))
-    {
-      this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(4);
-      return;
-    }
-    this.jdField_a_of_type_Rxl.jdField_b_of_type_AndroidWidgetSeekBar.setVisibility(0);
+    return !this.e;
   }
 }
 

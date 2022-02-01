@@ -5,7 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anqg;
+import aocm;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,7 +16,7 @@ import mqq.app.MobileQQ;
 public class MessageRoamManager$10
   implements Runnable
 {
-  public MessageRoamManager$10(anqg paramanqg) {}
+  public MessageRoamManager$10(aocm paramaocm) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public class MessageRoamManager$10
         }
         localObject = localSharedPreferences.getString("blue_banner_svip_text", null);
         if (i == 0) {
-          localObject = this.this$0.a.getApp().getResources().getString(2131693493);
+          localObject = this.this$0.a.getApp().getResources().getString(2131693505);
         }
         String str2 = localSharedPreferences.getString("blue_banner_go_url", null);
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))

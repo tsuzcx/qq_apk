@@ -1,23 +1,38 @@
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class wvb
-  implements URLDrawable.URLDrawableListener
+class wvb
+  extends apcq
 {
-  wvb(wva paramwva) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  wvb(wva paramwva, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    yuk.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = wuz.a(paramSosoLbsInfo.a);
+      yuk.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
+    }
+    for (;;)
+    {
+      if (!wva.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
+      return;
+      bool = false;
+      break;
+      label114:
+      yuk.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 

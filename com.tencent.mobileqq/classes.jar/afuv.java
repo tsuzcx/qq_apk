@@ -1,12 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class afuv
-  extends afxj
+public class afuv
+  implements View.OnClickListener
 {
-  public int a;
-  public View a;
-  public TextView a;
+  public afuv(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

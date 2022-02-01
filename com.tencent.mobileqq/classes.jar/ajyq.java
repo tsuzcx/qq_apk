@@ -1,8 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import android.widget.TextView;
 
-class ajyq
+public class ajyq
+  extends RecyclerView.ViewHolder
 {
-  public TextView a;
+  TextView a;
+  
+  ajyq(View paramView)
+  {
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131380251));
+  }
 }
 
 

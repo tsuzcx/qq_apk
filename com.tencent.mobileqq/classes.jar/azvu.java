@@ -1,98 +1,89 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.qcall.QCallCardInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import com.tencent.smtt.sdk.WebView;
+import java.util.Map;
 
 public class azvu
-  implements Manager
+  extends WebViewPlugin
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, QCallCardInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public azvu(QQAppInterface paramQQAppInterface)
+  public azvu()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramQQAppInterface.a();
+    this.mPluginNameSpace = "profileJS";
   }
   
-  private EntityManager a()
+  private boolean a(String[] paramArrayOfString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if (QLog.isColorLevel()) {
+      QLog.i(this.TAG, 2, "onAddTag");
     }
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("onTagChanged", true);
+    return true;
   }
   
-  private void a()
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    }
-  }
-  
-  public QCallCardInfo a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      return (QCallCardInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    }
-    paramString = a().query(QCallCardInfo.class, false, "uin = ?", new String[] { paramString }, null, null, null, null);
-    if (paramString != null) {
-      return (QCallCardInfo)paramString.get(0);
-    }
-    return null;
-  }
-  
-  public void a(QCallCardInfo paramQCallCardInfo)
-  {
-    if (paramQCallCardInfo == null)
+    if (paramLong == 8589934598L)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QCallCardManager", 2, "saveQcallCard null ");
+        QLog.i(this.TAG, 2, "handleEvent finish or destroy. fromProfile:" + this.jdField_a_of_type_Boolean);
       }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCallCardManager", 2, "CardManager saveQcallCard");
-    }
-    b(paramQCallCardInfo);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueueAndNotify(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
-  }
-  
-  public void b(QCallCardInfo paramQCallCardInfo)
-  {
-    if (paramQCallCardInfo == null) {}
-    for (;;)
-    {
-      return;
-      try
+      if ((this.jdField_a_of_type_JavaLangString != null) && (!"".equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidOsBundle != null))
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin))
+        paramString = new Intent();
+        paramString.setAction(this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_AndroidOsBundle != null) {
+          paramString.putExtra("key_bundle_data", this.jdField_a_of_type_AndroidOsBundle);
+        }
+        this.mRuntime.a().sendBroadcast(paramString);
+        this.jdField_a_of_type_AndroidOsBundle = null;
+        if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
-          continue;
+          paramString = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
+          paramString.putExtra("fromType", 3);
+          paramString.putExtra("uin", this.mRuntime.a().getCurrentAccountUin());
+          this.mRuntime.a().startActivity(paramString);
         }
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
     }
+    return false;
   }
   
-  public void onDestroy()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    a();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("profileJS")) || (paramString3 == null)) {}
+    while ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
+      return false;
+    }
+    if (paramString3.equals("onAddTag")) {
+      return a(paramVarArgs);
+    }
+    return true;
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
+    if (this.mRuntime.a().getIntent() != null)
+    {
+      this.jdField_a_of_type_JavaLangString = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
+      this.jdField_a_of_type_Boolean = this.mRuntime.a().getIntent().getBooleanExtra("fromProfile", this.jdField_a_of_type_Boolean);
+    }
   }
 }
 

@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-public final class adsm
-  implements DialogInterface.OnCancelListener
+public class adsm
+  implements DialogInterface.OnClickListener
 {
-  public adsm(DialogInterface.OnClickListener paramOnClickListener) {}
+  public adsm(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, 0);
-    }
+    this.a.finish();
   }
 }
 

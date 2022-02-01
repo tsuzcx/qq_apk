@@ -1,21 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
 
 public class asqm
-  implements Animation.AnimationListener
-{
-  public asqm(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.b();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-}
+  extends AlbumThumbDownloader
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

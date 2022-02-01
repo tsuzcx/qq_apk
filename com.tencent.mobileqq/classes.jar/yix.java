@@ -1,31 +1,45 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-class yix
-  implements wld<wyv, xas>
+public class yix
+  extends yly<ymt>
 {
-  yix(yit paramyit, JobContext paramJobContext, yig paramyig) {}
-  
-  public void a(@NonNull wyv paramwyv, @Nullable xas paramxas, @NonNull ErrorMessage arg3)
+  public yix(@Nullable ymc paramymc)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
-    }
-    if ((paramxas == null) || (???.isFail())) {
-      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
-    }
-    synchronized (this.jdField_a_of_type_Yit)
-    {
-      yit.a(this.jdField_a_of_type_Yit, paramxas);
-      yit.a(this.jdField_a_of_type_Yit).remove(paramwyv);
-      yit.a(this.jdField_a_of_type_Yit, this.jdField_a_of_type_Yig);
-      return;
-    }
+    super(paramymc);
+  }
+  
+  protected JobSegment<ymb, ymt> a()
+  {
+    return new ymo();
+  }
+  
+  protected JobSegment<Integer, ymb> a(yma paramyma)
+  {
+    return new yiy(paramyma);
+  }
+  
+  protected ymt a()
+  {
+    yme localyme = (yme)wth.a(11);
+    List localList = localyme.c();
+    ymt localymt = new ymt(new ErrorMessage());
+    localymt.jdField_b_of_type_JavaUtilList = localyme.b(localList);
+    localymt.jdField_b_of_type_Boolean = true;
+    localymt.a = localymt.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localymt;
+  }
+  
+  protected ymt a(ErrorMessage paramErrorMessage)
+  {
+    return new ymt(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((yme)wth.a(11)).c(paramList, paramBoolean);
   }
 }
 

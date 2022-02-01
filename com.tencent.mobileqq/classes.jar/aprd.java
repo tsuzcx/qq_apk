@@ -1,91 +1,33 @@
-import android.util.DisplayMetrics;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.open.delegate.ArkDelegateManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.opengl.GLES20;
 
 public class aprd
+  extends aprj
 {
-  protected static final ark.ApplicationCallback a = new apro();
+  public int a;
+  public int b;
   
-  public static void a()
+  public aprd(int paramInt)
   {
-    String str3 = apom.a().a();
-    String str1 = "";
-    Object localObject = str1;
-    String str2 = str3;
-    if (1 != BaseApplicationImpl.sProcessId)
-    {
-      str2 = MobileQQ.getMobileQQ().getQQProcessName();
-      localObject = str1;
-      if (str2 != null)
-      {
-        int i = str2.lastIndexOf(':');
-        localObject = str1;
-        if (i > -1) {
-          localObject = "_" + str2.substring(i + 1);
-        }
-      }
-      str2 = str3 + (String)localObject;
-    }
-    ArkDelegateManager.getInstance().init(str2, (String)localObject, "8.4.1", BaseApplicationImpl.getContext());
-    localObject = BaseApplicationImpl.getApplication().getRuntime();
-    ArkEnvironmentManager.getInstance().setCurrentUin(((AppRuntime)localObject).getAccount());
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (apom.a() != null)
-    {
-      bool1 = bool2;
-      if (apom.a().a() == 1) {
-        bool1 = true;
-      }
-    }
-    ArkEnvironmentManager.getInstance().setEnv(bool1);
-    ArkDelegateManager.getInstance().setSetupDelegate(new apri());
-    ArkDelegateManager.getInstance().setNetDelegate(new aprj());
-    ArkDelegateManager.getInstance().setInputCallback(new aprp(null));
-    ArkDelegateManager.getInstance().setApplicationCallback(a);
+    super(paramInt);
+    this.e = "uniform float uA;\nuniform float uD;\n";
+    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
   }
   
-  public static void a(boolean paramBoolean)
+  protected void a()
   {
-    Object localObject1 = ArkEnvironmentManager.getInstance();
-    if (!ArkAppCenter.a) {}
-    try
-    {
-      if (!ArkAppCenter.a)
-      {
-        ((ArkEnvironmentManager)localObject1).setThreadCreator(new apre());
-        ((ArkEnvironmentManager)localObject1).setLogCallback(new aprf());
-        ((ArkEnvironmentManager)localObject1).setLibraryLoader(new aprg());
-        ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
-        ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
-        ((ArkEnvironmentManager)localObject1).setDataReport(new aprh());
-        ArkAppCenter.a = true;
-      }
-      if ((paramBoolean) && (!ArkAppCenter.b))
-      {
-        ((ArkEnvironmentManager)localObject1).loadLibrary();
-        if (ArkAppCenter.b)
-        {
-          if (BaseApplicationImpl.getContext() != null)
-          {
-            localObject1 = apoh.a;
-            ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
-          }
-          ArkEnvironmentManager.getInstance().setSingleThreadMode(true);
-          ArkEnvironmentManager.getInstance().setThreadMode();
-          QLog.i("ArkApp.ArkMultiProcUtil", 1, "setupArkEnvironment, https=true, multithreads=true");
-        }
-      }
+    this.a = GLES20.glGetUniformLocation(this.d, "uA");
+    aprn.a("glGetAttribLocation uA");
+    this.b = GLES20.glGetUniformLocation(this.d, "uD");
+    aprn.a("glGetAttribLocation uD");
+  }
+  
+  protected void a(aprm paramaprm)
+  {
+    if (paramaprm == null) {
       return;
     }
-    finally {}
+    GLES20.glUniform1f(this.a, paramaprm.d);
+    GLES20.glUniform1f(this.b, paramaprm.e);
   }
 }
 

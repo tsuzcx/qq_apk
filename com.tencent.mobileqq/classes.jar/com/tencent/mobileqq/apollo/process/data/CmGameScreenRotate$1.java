@@ -1,42 +1,42 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import ampj;
-import amrk;
-import amsc;
-import amtp;
+import anbd;
+import ande;
 import android.app.Activity;
+import andw;
+import anfj;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class CmGameScreenRotate$1
   implements Runnable
 {
-  public CmGameScreenRotate$1(amsc paramamsc, int paramInt) {}
+  public CmGameScreenRotate$1(andw paramandw, int paramInt) {}
   
   public void run()
   {
-    if (amsc.a(this.this$0) == null) {}
+    if (andw.a(this.this$0) == null) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        localObject = ampj.a(amsc.a(this.this$0).mGameId);
+        localObject = anbd.a(andw.a(this.this$0).mGameId);
       } while (localObject == null);
-      localObject = ((amrk)localObject).a();
+      localObject = ((ande)localObject).a();
     } while (localObject == null);
     if ((this.a == 0) || (this.a == 8))
     {
-      if ((amsc.a(this.this$0) != null) && (amsc.a(this.this$0).getVisibility() == 0))
+      if ((andw.a(this.this$0) != null) && (andw.a(this.this$0).getVisibility() == 0))
       {
-        ((amtp)localObject).a(false);
-        amsc.a(this.this$0).setRequestedOrientation(this.a);
+        ((anfj)localObject).a(false);
+        andw.a(this.this$0).setRequestedOrientation(this.a);
       }
       this.this$0.a = this.a;
       return;
     }
-    ((amtp)localObject).a(true);
-    amsc.a(this.this$0).setRequestedOrientation(this.a);
+    ((anfj)localObject).a(true);
+    andw.a(this.this$0).setRequestedOrientation(this.a);
     this.this$0.a = this.a;
   }
 }

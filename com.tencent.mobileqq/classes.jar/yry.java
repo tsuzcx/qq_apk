@@ -1,28 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class yry
-  implements ThreadExcutor.IThreadListener
+  implements Dispatcher.Event
 {
-  yry(yrx paramyrx) {}
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public yry(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
-    if (bcig.a().a == 1) {}
-    for (;;)
-    {
-      banm.h(i);
-      return;
-      i = 2;
-    }
+    this.d = paramFloat4;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.a = paramFloat1;
   }
-  
-  public void onPreRun() {}
 }
 
 

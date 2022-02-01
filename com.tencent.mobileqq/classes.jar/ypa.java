@@ -1,36 +1,23 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class ypa
-  extends zpa
+  implements IEventReceiver
 {
-  public static final String KEY = "NewDividerSegment";
+  protected yoj a;
   
-  public ypa(Context paramContext)
+  public yoj a()
   {
-    super(paramContext);
+    return this.a;
   }
   
-  public int a()
+  public void a(Runnable paramRunnable)
   {
-    return 1;
+    yuk.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
   }
   
-  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
+  public boolean isValidate()
   {
-    return paramynb.a();
-  }
-  
-  public String a()
-  {
-    return "NewDividerSegment";
-  }
-  
-  public ynb a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ynb(LayoutInflater.from(this.a).inflate(2131561665, paramViewGroup, false));
+    return false;
   }
 }
 

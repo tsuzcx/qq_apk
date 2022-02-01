@@ -7,7 +7,7 @@ class LoginInfoActivity$4
   
   public void run()
   {
-    LoginInfoActivity.c(this.this$0);
+    LoginInfoActivity.a(this.this$0, false);
   }
 }
 

@@ -1,59 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class atmr
+final class atmr
+  implements aumz
 {
-  public static int a(int paramInt)
+  atmr(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    int j = 9;
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
-      }
-      return i;
-      i = 8;
-      continue;
-      i = 7;
-      continue;
-      i = 6;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
-    }
+    aunj.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
   }
   
-  public static void a(long paramLong)
-  {
-    int i;
-    if (paramLong < 51200L) {
-      i = 1;
-    }
-    for (;;)
-    {
-      bcst.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
-      return;
-      if (paramLong < 102400L) {
-        i = 2;
-      } else if (paramLong < 512000L) {
-        i = 3;
-      } else if (paramLong < 1024000L) {
-        i = 4;
-      } else if (paramLong < 3072000L) {
-        i = 5;
-      } else if (paramLong < 10240000L) {
-        i = 6;
-      } else {
-        i = 7;
-      }
-    }
-  }
+  public void b() {}
 }
 
 

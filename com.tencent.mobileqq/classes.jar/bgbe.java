@@ -1,25 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
-
-public class bgbe
-  implements View.OnTouchListener
+class bgbe
+  implements bljd
 {
-  public bgbe(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
+  bgbe(bgbc parambgbc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void ak_()
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
-      }
+    if (bgbc.a(this.a) != null) {
+      bgbc.a(this.a).a();
     }
   }
 }

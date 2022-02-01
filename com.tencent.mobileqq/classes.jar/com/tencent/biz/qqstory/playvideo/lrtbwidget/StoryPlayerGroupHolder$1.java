@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import java.util.Iterator;
 import java.util.List;
-import xpc;
+import xsx;
 
 class StoryPlayerGroupHolder$1
   implements Runnable
@@ -14,7 +14,7 @@ class StoryPlayerGroupHolder$1
     StoryPlayerGroupHolder.a(this.this$0).a(this.this$0.a.c());
     Iterator localIterator = this.this$0.a.a().iterator();
     while (localIterator.hasNext()) {
-      ((xpc)localIterator.next()).a(this.this$0.a.c());
+      ((xsx)localIterator.next()).a(this.this$0.a.c());
     }
   }
 }

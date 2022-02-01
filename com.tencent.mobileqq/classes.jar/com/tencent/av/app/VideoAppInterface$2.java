@@ -1,6 +1,8 @@
 package com.tencent.av.app;
 
-import lhs;
+import android.os.Build;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class VideoAppInterface$2
   implements Runnable
@@ -9,7 +11,14 @@ class VideoAppInterface$2
   
   public void run()
   {
-    lhs.a(this.this$0.f, this.this$0.g);
+    long l1 = System.currentTimeMillis();
+    if (!Build.MANUFACTURER.toLowerCase().equals("xiaomi")) {
+      ImmersiveUtils.d = false;
+    }
+    boolean bool = ImmersiveUtils.a();
+    long l2 = System.currentTimeMillis();
+    VideoAppInterface.a(this.this$0, null);
+    QLog.w(VideoAppInterface.c(), 1, "supportStatusBarDarkMode, support[" + bool + "], start[" + l1 + "], cost[" + (l2 - l1) + "]");
   }
 }
 

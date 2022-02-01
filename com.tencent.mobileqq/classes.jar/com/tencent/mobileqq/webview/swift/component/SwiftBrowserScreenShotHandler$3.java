@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Handler;
-import bhpq;
+import biql;
 import com.tencent.qphone.base.util.QLog;
-import tce;
+import sta;
 
 public class SwiftBrowserScreenShotHandler$3
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$3(bhpq parambhpq, int paramInt) {}
+  public SwiftBrowserScreenShotHandler$3(biql parambiql, int paramInt) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaLangString = tce.a(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
+    this.this$0.jdField_a_of_type_JavaLangString = sta.a(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
     if (QLog.isDevelopLevel()) {
       QLog.d("SwiftBrowserScreenShotHandler", 2, "onDetectScreenshot->save file time:" + System.currentTimeMillis());
     }

@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
 public class suy
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public suy(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public suy(ZImageView paramZImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ReadinjoyTabFrame.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.setAlpha(i);
   }
 }
 

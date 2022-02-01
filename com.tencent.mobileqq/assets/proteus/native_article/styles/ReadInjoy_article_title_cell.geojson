@@ -26,8 +26,8 @@
                 },
                 "attributes":{
                     "setRichText:": "$id_attribute_text",
-                    "setFontSizeString:ratio:":["24","$attribute_text_size_ratio"],
                     "setNumberOfLinesString:":"0",
+                    "setFontSizeString:ratio:":["24","$attribute_text_size_ratio"],
                     "setTextColorString:":"#000000"
                 }
             }

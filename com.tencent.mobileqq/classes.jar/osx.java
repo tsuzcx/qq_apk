@@ -1,31 +1,26 @@
-import android.app.Activity;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
-
-class osx
-  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
+public class osx
 {
-  osx(ost paramost, RelativeLayout.LayoutParams paramLayoutParams) {}
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public void onSoftKeyboardClosed()
+  public osx(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    if (System.currentTimeMillis() - ost.a(this.jdField_a_of_type_Ost) > 500L)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = afur.a(140.5F, ost.a(this.jdField_a_of_type_Ost).getResources());
-      ost.a(this.jdField_a_of_type_Ost).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ost.b(this.jdField_a_of_type_Ost, System.currentTimeMillis());
-    }
+    this(paramString, paramLong, paramCharSequence, 0);
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  public osx(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    if (System.currentTimeMillis() - ost.a(this.jdField_a_of_type_Ost) > 500L)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = afur.a(40.0F, ost.a(this.jdField_a_of_type_Ost).getResources());
-      ost.a(this.jdField_a_of_type_Ost).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ost.b(this.jdField_a_of_type_Ost, System.currentTimeMillis());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramString = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramString = "";
     }
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

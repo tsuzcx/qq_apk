@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
-import bmlh;
+import bnmk;
 
 public class QZonePassivePraiseJsPlugin$1
   implements Runnable
 {
-  public QZonePassivePraiseJsPlugin$1(bmlh parambmlh, String[] paramArrayOfString) {}
+  public QZonePassivePraiseJsPlugin$1(bnmk parambnmk, String[] paramArrayOfString) {}
   
   /* Error */
   public void run()
@@ -36,18 +36,18 @@ public class QZonePassivePraiseJsPlugin$1
     //   41: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore_1
     //   45: aload_0
-    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbmlh;
+    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbnmk;
     //   49: aload_2
     //   50: ldc 36
     //   52: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: invokestatic 41	bmlh:a	(Lbmlh;Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 41	bnmk:a	(Lbnmk;Ljava/lang/String;)Ljava/lang/String;
     //   58: pop
     //   59: aload_1
     //   60: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   63: ifne +16 -> 79
     //   66: aload_0
-    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbmlh;
-    //   70: invokestatic 50	bmlh:a	(Lbmlh;)Ljava/lang/String;
+    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbnmk;
+    //   70: invokestatic 50	bnmk:a	(Lbnmk;)Ljava/lang/String;
     //   73: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   76: ifeq +15 -> 91
     //   79: return
@@ -57,11 +57,11 @@ public class QZonePassivePraiseJsPlugin$1
     //   84: aload_2
     //   85: invokevirtual 55	org/json/JSONException:printStackTrace	()V
     //   88: goto -29 -> 59
-    //   91: invokestatic 60	bmfd:a	()Lbmfd;
-    //   94: invokevirtual 63	bmfd:a	()Lbmfg;
+    //   91: invokestatic 60	bngf:a	()Lbngf;
+    //   94: invokevirtual 63	bngf:a	()Lbngi;
     //   97: ldc 52
     //   99: aload_1
-    //   100: invokevirtual 68	bmfg:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokevirtual 68	bngi:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: return
     //   104: astore_2
     //   105: goto -21 -> 84

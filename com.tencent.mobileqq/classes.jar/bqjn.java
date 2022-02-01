@@ -1,6 +1,29 @@
-public abstract interface bqjn
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class bqjn
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt, String paramString);
+  bqjn(bqjl parambqjl) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    yuk.b(bqjh.a, "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    yuk.b(bqjh.a, "scaleAnimator end!");
+    this.a.w = 1.0F;
+    this.a.j = false;
+    this.a.b.k();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    yuk.b(bqjh.a, "scaleAnimator start!");
+    this.a.j = true;
+  }
 }
 
 

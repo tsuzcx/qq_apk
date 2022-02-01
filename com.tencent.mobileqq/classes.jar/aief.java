@@ -1,23 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class aief
-  implements bfpo
+public abstract interface aief
+  extends IInterface
 {
-  aief(aidp paramaidp) {}
+  public abstract void a(CompressInfo paramCompressInfo);
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.optInt("retcode", -1) != 0) {
-      return;
-    }
-    paramJSONObject = (bfrd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
-    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
-  }
+  public abstract void b(CompressInfo paramCompressInfo);
+  
+  public abstract void c(CompressInfo paramCompressInfo);
 }
 
 

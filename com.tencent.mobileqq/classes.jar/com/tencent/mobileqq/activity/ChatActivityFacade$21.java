@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adrm;
+import aean;
 import android.content.Context;
 import android.text.TextUtils;
-import anni;
-import arpm;
-import awmq;
-import awmr;
-import bbyp;
-import bbzh;
-import bgnt;
-import bhab;
+import anzj;
+import asfa;
+import axfi;
+import axfj;
+import bcrg;
+import bcry;
+import bhnv;
+import biah;
 import com.tencent.im.msg.hummer.resv12.MarketFaceExtPb.ResvAttr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -36,7 +36,7 @@ public final class ChatActivityFacade$21
   
   public void run()
   {
-    Object localObject1 = ((awmr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+    Object localObject1 = ((axfj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
     if (localObject1 == null)
     {
       localObject2 = new StringBuilder().append("sendEmosmMsg ePackage == null name:");
@@ -59,7 +59,7 @@ public final class ChatActivityFacade$21
       for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId;; localObject1 = "~")
       {
         QLog.e("ChatActivityFacade", 1, (String)localObject1);
-        bhab.a("emotionType", "emotionActionSend", "3", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId, bgnt.b(this.jdField_a_of_type_AndroidContentContext) + "", "", "", "", "");
+        biah.a("emotionType", "emotionActionSend", "3", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId, bhnv.b(this.jdField_a_of_type_AndroidContentContext) + "", "", "", "", "");
         return;
         localObject1 = "~";
         break;
@@ -68,11 +68,11 @@ public final class ChatActivityFacade$21
       }
     }
     Object localObject2 = new MarkFaceMessage();
-    if (adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId)) {
+    if (aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId)) {
       ((MarkFaceMessage)localObject2).isReword = true;
     }
     ((MarkFaceMessage)localObject2).cSubType = ((EmoticonPackage)localObject1).type;
-    ((MarkFaceMessage)localObject2).sbufID = arpm.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType);
+    ((MarkFaceMessage)localObject2).sbufID = asfa.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType);
     ((MarkFaceMessage)localObject2).dwTabID = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).intValue();
     ((MarkFaceMessage)localObject2).sbfKey = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.encryptKey.getBytes();
     ((MarkFaceMessage)localObject2).imageWidth = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.width;
@@ -80,7 +80,7 @@ public final class ChatActivityFacade$21
     ((MarkFaceMessage)localObject2).faceName = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.name;
     boolean bool1;
     label405:
-    awmq localawmq;
+    axfi localaxfi;
     int i;
     label635:
     boolean bool2;
@@ -107,7 +107,7 @@ public final class ChatActivityFacade$21
       ((MarkFaceMessage)localObject2).voicePrintItems = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString();
       ((MarkFaceMessage)localObject2).backColor = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.backColor;
       ((MarkFaceMessage)localObject2).volumeColor = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.volumeColor;
-      localawmq = (awmq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(200);
+      localaxfi = (axfi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(200);
       MarketFaceExtPb.ResvAttr localResvAttr = new MarketFaceExtPb.ResvAttr();
       PBUInt32Field localPBUInt32Field = localResvAttr.uint32_emoji_type;
       if (!((MarkFaceMessage)localObject2).isAPNG) {
@@ -124,19 +124,19 @@ public final class ChatActivityFacade$21
         ((EmoticonPackage)localObject1).beginTime = l;
         ((EmoticonPackage)localObject1).endTime = l;
       }
-      bool1 = localawmq.b((EmoticonPackage)localObject1);
-      bool2 = localawmq.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      if ((((EmoticonPackage)localObject1).copywritingType != awmq.jdField_a_of_type_Int) || (bool1) || (bool2))
+      bool1 = localaxfi.b((EmoticonPackage)localObject1);
+      bool2 = localaxfi.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      if ((((EmoticonPackage)localObject1).copywritingType != axfi.jdField_a_of_type_Int) || (bool1) || (bool2))
       {
         if (!bool1) {
           break label1312;
         }
-        ((MarkFaceMessage)localObject2).copywritingType = awmq.f;
+        ((MarkFaceMessage)localObject2).copywritingType = axfi.f;
         ((MarkFaceMessage)localObject2).copywritingContent = ((EmoticonPackage)localObject1).ipName;
         ((MarkFaceMessage)localObject2).jumpUrl = ((EmoticonPackage)localObject1).ipJumpUrl;
         ((MarkFaceMessage)localObject2).beginTime = ((EmoticonPackage)localObject1).beginTime;
         ((MarkFaceMessage)localObject2).endTime = ((EmoticonPackage)localObject1).endTime;
-        ((MarkFaceMessage)localObject2).from = anni.a(2131700373);
+        ((MarkFaceMessage)localObject2).from = anzj.a(2131700480);
         label812:
         ((MarkFaceMessage)localObject2).hasIpProduct = ((EmoticonPackage)localObject1).hasIpProduct;
         localPBUInt32Field = localResvAttr.uint32_has_ip_product;
@@ -169,9 +169,9 @@ public final class ChatActivityFacade$21
         localResvAttr.str_volume_color.set(((MarkFaceMessage)localObject2).volumeColor);
       }
       ((MarkFaceMessage)localObject2).resvAttr = localResvAttr.toByteArray();
-      if (((MarkFaceMessage)localObject2).copywritingType != awmq.jdField_a_of_type_Int)
+      if (((MarkFaceMessage)localObject2).copywritingType != axfi.jdField_a_of_type_Int)
       {
-        i = localawmq.a((int)bbyp.a(), ((EmoticonPackage)localObject1).epId, ((MarkFaceMessage)localObject2).copywritingContent, ((MarkFaceMessage)localObject2).copywritingType);
+        i = localaxfi.a((int)bcrg.a(), ((EmoticonPackage)localObject1).epId, ((MarkFaceMessage)localObject2).copywritingContent, ((MarkFaceMessage)localObject2).copywritingType);
         if (i != 0) {
           break label1460;
         }
@@ -180,7 +180,7 @@ public final class ChatActivityFacade$21
     }
     for (;;)
     {
-      localObject2 = bbzh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (MarkFaceMessage)localObject2);
+      localObject2 = bcry.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (MarkFaceMessage)localObject2);
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo.isShown = false;
@@ -210,15 +210,15 @@ public final class ChatActivityFacade$21
       label1312:
       if (bool2)
       {
-        ((MarkFaceMessage)localObject2).copywritingType = awmq.f;
+        ((MarkFaceMessage)localObject2).copywritingType = axfi.f;
         ((MarkFaceMessage)localObject2).copywritingContent = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.ipsiteName;
         ((MarkFaceMessage)localObject2).jumpUrl = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.ipsiteUrl;
         ((MarkFaceMessage)localObject2).beginTime = ((EmoticonPackage)localObject1).beginTime;
         ((MarkFaceMessage)localObject2).endTime = ((EmoticonPackage)localObject1).endTime;
-        ((MarkFaceMessage)localObject2).from = anni.a(2131700383);
+        ((MarkFaceMessage)localObject2).from = anzj.a(2131700490);
         break label812;
       }
-      if (localawmq.a((EmoticonPackage)localObject1)) {
+      if (localaxfi.a((EmoticonPackage)localObject1)) {
         break label812;
       }
       ((MarkFaceMessage)localObject2).copywritingType = ((EmoticonPackage)localObject1).copywritingType;
@@ -236,8 +236,8 @@ public final class ChatActivityFacade$21
       {
         ((MarkFaceMessage)localObject2).shouldDisplay = true;
         ((MarkFaceMessage)localObject2).showIpProduct = true;
-        ((MarkFaceMessage)localObject2).from = awmq.jdField_a_of_type_JavaLangString;
-        ((MarkFaceMessage)localObject2).copywritingContent = awmq.b;
+        ((MarkFaceMessage)localObject2).from = axfi.jdField_a_of_type_JavaLangString;
+        ((MarkFaceMessage)localObject2).copywritingContent = axfi.b;
       }
       else
       {

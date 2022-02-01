@@ -9,8 +9,8 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import arxq;
-import ascv;
+import asne;
+import assj;
 import com.tencent.common.config.AppSetting;
 
 public class EmoticonPagerRadioGroup
@@ -44,12 +44,12 @@ public class EmoticonPagerRadioGroup
   {
     float f1 = 13.0F;
     float f2 = 10.0F;
-    arxq localarxq = new arxq(this, getContext());
+    asne localasne = new asne(this, getContext());
     Resources localResources;
     if (paramInt == 2)
     {
-      localarxq.setButtonDrawable(2130847118);
-      localarxq.setGravity(17);
+      localasne.setButtonDrawable(2130847135);
+      localasne.setGravity(17);
       localResources = super.getContext().getResources();
       if (paramInt != 2) {
         break label228;
@@ -64,30 +64,30 @@ public class EmoticonPagerRadioGroup
       int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      localarxq.setLayoutParams(localLayoutParams);
-      localarxq.setClickable(true);
+      localasne.setLayoutParams(localLayoutParams);
+      localasne.setClickable(true);
       if ((AppSetting.c) && (paramInt != 3) && (paramInt != 2))
       {
-        localarxq.setClickable(false);
-        localarxq.setFocusable(false);
+        localasne.setClickable(false);
+        localasne.setFocusable(false);
       }
-      return localarxq;
+      return localasne;
       if (paramInt == 3)
       {
-        localarxq.setButtonDrawable(2130847119);
+        localasne.setButtonDrawable(2130847136);
         break;
       }
       if (paramInt == 4)
       {
-        localarxq.setButtonDrawable(2130838603);
+        localasne.setButtonDrawable(2130838616);
         break;
       }
       if (this.jdField_b_of_type_Int == 0)
       {
-        localarxq.setButtonDrawable(2130839633);
+        localasne.setButtonDrawable(2130839642);
         break;
       }
-      localarxq.setButtonDrawable(this.jdField_b_of_type_Int);
+      localasne.setButtonDrawable(this.jdField_b_of_type_Int);
       break;
       label228:
       if (paramInt == 3) {
@@ -143,7 +143,7 @@ public class EmoticonPagerRadioGroup
         if (this.jdField_b_of_type_Int != 0) {
           break label198;
         }
-        localRadioButton.setButtonDrawable(2130839633);
+        localRadioButton.setButtonDrawable(2130839642);
       }
     }
     for (;;)
@@ -171,8 +171,8 @@ public class EmoticonPagerRadioGroup
     if (!this.jdField_a_of_type_Boolean)
     {
       removeAllViews();
-      int k = ascv.h;
-      int m = Math.max(ascv.h, paramInt);
+      int k = assj.h;
+      int m = Math.max(assj.h, paramInt);
       super.addView(this.jdField_b_of_type_AndroidWidgetRadioButton);
       int i = 0;
       while (i < m)
@@ -221,7 +221,7 @@ public class EmoticonPagerRadioGroup
       if (!this.jdField_a_of_type_Boolean) {
         break label372;
       }
-      j = ascv.h;
+      j = assj.h;
       k = this.jdField_a_of_type_Int;
       if (((this.jdField_c_of_type_Int != j) || (paramInt != j - 1)) && (paramInt != 0)) {
         break label232;

@@ -1,25 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-
 class anhf
-  extends bhhe
+  extends anhe
 {
-  anhf(anhe paramanhe, String paramString1, String paramString2, String paramString3) {}
+  private int b;
   
-  public void onDone(bhhf parambhhf)
+  public anhf(int paramInt1, int paramInt2, anhg paramanhg, anhc paramanhc)
   {
-    super.onDone(parambhhf);
-    if (3 == parambhhf.a()) {
-      this.jdField_a_of_type_Anhe.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambhhf.a());
-      }
-      return;
-      this.jdField_a_of_type_Anhe.a = 2;
-      this.jdField_a_of_type_Anhe.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+    super(paramInt1, paramanhg, paramanhc);
+    this.b = paramInt2;
+  }
+  
+  public amww a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
   }
 }
 

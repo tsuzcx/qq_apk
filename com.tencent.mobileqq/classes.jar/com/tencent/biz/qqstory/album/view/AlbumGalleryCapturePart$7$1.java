@@ -2,36 +2,36 @@ package com.tencent.biz.qqstory.album.view;
 
 import android.os.Handler;
 import java.util.List;
-import wca;
-import wef;
-import wem;
-import wep;
-import yqp;
+import wfv;
+import wia;
+import wih;
+import wik;
+import yuk;
 
 public class AlbumGalleryCapturePart$7$1
   implements Runnable
 {
-  public AlbumGalleryCapturePart$7$1(wem paramwem, List paramList, wca paramwca) {}
+  public AlbumGalleryCapturePart$7$1(wih paramwih, List paramList, wfv paramwfv) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      wef.a(this.jdField_a_of_type_Wem.a).a(this.jdField_a_of_type_JavaUtilList);
-      if ((wef.c(this.jdField_a_of_type_Wem.a) != -1) || (wef.a(this.jdField_a_of_type_Wem.a) != -1L)) {
-        wef.a(this.jdField_a_of_type_Wem.a).sendEmptyMessage(1004);
+      wia.a(this.jdField_a_of_type_Wih.a).a(this.jdField_a_of_type_JavaUtilList);
+      if ((wia.c(this.jdField_a_of_type_Wih.a) != -1) || (wia.a(this.jdField_a_of_type_Wih.a) != -1L)) {
+        wia.a(this.jdField_a_of_type_Wih.a).sendEmptyMessage(1004);
       }
-      this.jdField_a_of_type_Wca.d();
-      yqp.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data from db , size = %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
+      this.jdField_a_of_type_Wfv.d();
+      yuk.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data from db , size = %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
       return;
     }
-    wef.a(this.jdField_a_of_type_Wem.a).b();
-    this.jdField_a_of_type_Wca.d();
-    if (wef.c(this.jdField_a_of_type_Wem.a) != -1) {
-      wef.a(this.jdField_a_of_type_Wem.a).sendEmptyMessage(1004);
+    wia.a(this.jdField_a_of_type_Wih.a).b();
+    this.jdField_a_of_type_Wfv.d();
+    if (wia.c(this.jdField_a_of_type_Wih.a) != -1) {
+      wia.a(this.jdField_a_of_type_Wih.a).sendEmptyMessage(1004);
     }
-    wef.a(this.jdField_a_of_type_Wem.a).sendEmptyMessageDelayed(1005, 180000L);
-    yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data, db no data , scan now");
+    wia.a(this.jdField_a_of_type_Wih.a).sendEmptyMessageDelayed(1005, 180000L);
+    yuk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "load data, db no data , scan now");
   }
 }
 

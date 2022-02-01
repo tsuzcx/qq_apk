@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bpxt
-  implements DialogInterface.OnClickListener
+final class bpxt
+  implements EIPCResultCallback
 {
-  bpxt(bpxo parambpxo) {}
+  bpxt(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramDialogInterface.dismiss();
-    bpxo.a(this.a).q = true;
-    bpxo.b(this.a).setSelected(true);
-    bpxo.a(this.a).c(3002);
+    if (paramEIPCResult != null)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("uinname");
+      if (QLog.isColorLevel()) {
+        QLog.i("PeakIpcController", 2, "getTroopMemberName success name = " + paramEIPCResult);
+      }
+      bqvm.a().a(this.a, paramEIPCResult);
+    }
   }
 }
 

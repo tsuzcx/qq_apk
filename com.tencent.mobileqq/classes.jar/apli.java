@@ -1,23 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-class apli
-  implements aplk
+public final class apli
+  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
 {
-  apli(aplh paramaplh, aplf paramaplf) {}
-  
-  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    Bundle localBundle = new Bundle();
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      localBundle.putString("userAccount", paramString1);
-      localBundle.putString("openID", paramString2);
-      localBundle.putString("openToken", paramString3);
-      localBundle.putLong("dstAppID", paramLong);
-    }
-    this.jdField_a_of_type_Aplf.a(EIPCResult.createResult(0, localBundle));
+    return new ARScanStarFaceConfigInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 

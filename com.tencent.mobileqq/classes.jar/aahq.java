@@ -1,29 +1,21 @@
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aahq
-  extends vuq
+class aahq
+  implements View.OnTouchListener
 {
-  public aahq(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  aahq(aahk paramaahk) {}
   
-  public void a(ISuperPlayer paramISuperPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      if (QQPlayerService.a()) {
-        QQPlayerService.c(this.a.getActivity());
-      }
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      aahk.a(this.a, 0);
     }
-    catch (Exception paramISuperPlayer)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SubscribeVideoDetailFragment", 2, "QQPlayerService.stopPlayMusic exception!", paramISuperPlayer);
-      }
-      paramISuperPlayer.printStackTrace();
+    if (aahk.a(this.a) != null) {
+      aahk.a(this.a).a(paramMotionEvent);
     }
+    return true;
   }
 }
 

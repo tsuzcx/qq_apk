@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.fragment;
 
-import bbkb;
+import bccv;
 
 public class PublicAcntSearchFragment$2$2
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$2(bbkb parambbkb) {}
+  public PublicAcntSearchFragment$2$2(bccv parambccv) {}
   
   public void run()
   {

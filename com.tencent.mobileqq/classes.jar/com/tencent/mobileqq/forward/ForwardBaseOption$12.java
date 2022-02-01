@@ -1,51 +1,20 @@
 package com.tencent.mobileqq.forward;
 
-import android.os.Bundle;
-import aufz;
-import bgpa;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import auxu;
+import bhpc;
 
 public class ForwardBaseOption$12
   implements Runnable
 {
-  public ForwardBaseOption$12(aufz paramaufz, String paramString, bgpa parambgpa) {}
+  public ForwardBaseOption$12(auxu paramauxu, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {
-    Object localObject1;
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    if (this.this$0.a.isShowing())
     {
-      localObject2 = aufz.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        break label83;
-      }
-      this.this$0.a(this.jdField_a_of_type_Bgpa);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView getNormalDrawable null");
-      }
-    }
-    do
-    {
-      return;
-      localObject2 = aufz.a(this.this$0);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView getURLDrawable null");
-    return;
-    label83:
-    this.this$0.a(localObject1, this.this$0.jdField_a_of_type_Boolean);
-    Object localObject2 = (ArrayList)this.this$0.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
-    aufz localaufz = this.this$0;
-    if (localObject2 != null) {}
-    for (int i = ((ArrayList)localObject2).size();; i = 0)
-    {
-      localaufz.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
-      return;
+      this.this$0.a.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
+      this.this$0.t();
     }
   }
 }

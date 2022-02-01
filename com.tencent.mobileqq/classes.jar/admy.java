@@ -1,22 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import org.json.JSONObject;
 
-public class admy
-  implements bkhw
+public abstract interface admy
 {
-  public admy(AssociatedAccountActivity paramAssociatedAccountActivity, bkho parambkho) {}
+  public abstract void onComplete();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Bkho.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690709));
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
-  }
+  public abstract void onFailure(int paramInt, String paramString);
+  
+  public abstract void onPermission(int paramInt);
+  
+  public abstract void onSuccess(JSONObject paramJSONObject);
+  
+  public abstract void onTrigger(JSONObject paramJSONObject);
 }
 
 

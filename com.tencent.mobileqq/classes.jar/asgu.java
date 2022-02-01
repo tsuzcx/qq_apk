@@ -1,13 +1,13 @@
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public class asgu
-  extends asht
+class asgu
+  implements Comparator<String>
 {
-  public ArrayList<asgv> a;
+  asgu(asgs paramasgs) {}
   
-  public asgu()
+  public int a(String paramString1, String paramString2)
   {
-    this.mType = 6;
+    return paramString2.compareTo(paramString1);
   }
 }
 

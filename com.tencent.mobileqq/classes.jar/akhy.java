@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class akhy
-  implements DialogInterface.OnClickListener
+  extends apce
 {
-  akhy(akhu paramakhu) {}
+  akhy(akha paramakha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
     }
-    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
+      this.a.g();
     }
   }
 }

@@ -3,18 +3,14 @@ package com.tencent.qqmini.sdk.cache;
 class MiniCacheFreeManager$3
   implements Runnable
 {
-  MiniCacheFreeManager$3(MiniCacheFreeManager paramMiniCacheFreeManager, String paramString1, String paramString2, boolean paramBoolean) {}
+  MiniCacheFreeManager$3(MiniCacheFreeManager paramMiniCacheFreeManager) {}
   
   public void run()
   {
-    MiniCacheFreeManager.access$600(this.val$appId);
-    MiniCacheFreeManager.access$700(this.val$appId);
-    MiniCacheFreeManager.access$800(this.val$uin, this.val$appId);
-    MiniCacheFreeManager.access$900(this.val$uin, this.val$appId);
-    MiniCacheFreeManager.access$1000(this.val$appId);
-    if (this.val$killSelf) {
-      MiniCacheFreeManager.access$1100(this.val$appId);
-    }
+    MiniCacheFreeManager.access$600();
+    MiniCacheFreeManager.access$700();
+    MiniCacheFreeManager.access$800();
+    MiniCacheFreeManager.access$900();
   }
 }
 

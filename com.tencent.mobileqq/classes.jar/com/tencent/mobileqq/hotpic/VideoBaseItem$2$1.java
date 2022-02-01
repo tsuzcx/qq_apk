@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
-import avdv;
-import avdx;
-import avef;
+import avvx;
+import avvz;
+import avwh;
 
 public class VideoBaseItem$2$1
   implements Runnable
 {
-  public VideoBaseItem$2$1(avdx paramavdx) {}
+  public VideoBaseItem$2$1(avvz paramavvz) {}
   
   public void run()
   {
     this.a.a.c = 4;
-    if (avdv.a(this.a.a) != null) {
-      avdv.a(this.a.a).d(avdv.a(this.a.a));
+    if (avvx.a(this.a.a) != null) {
+      avvx.a(this.a.a).d(avvx.a(this.a.a));
     }
   }
 }

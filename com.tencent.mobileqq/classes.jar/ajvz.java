@@ -1,12 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 
-class ajvz
-  implements DialogInterface.OnCancelListener
+public abstract interface ajvz
 {
-  ajvz(ajvx paramajvx) {}
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
+  
+  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
 }
 
 

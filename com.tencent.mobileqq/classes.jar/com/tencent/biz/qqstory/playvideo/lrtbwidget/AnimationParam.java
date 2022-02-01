@@ -16,16 +16,16 @@ import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import wfg;
-import xlj;
-import yqp;
-import zkh;
-import zlx;
+import wjb;
+import xpe;
+import yuk;
+import zoc;
+import zps;
 
 public class AnimationParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<AnimationParam> CREATOR = new xlj();
+  public static final Parcelable.Creator<AnimationParam> CREATOR = new xpe();
   public int a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private String jdField_a_of_type_JavaLangString;
@@ -80,7 +80,7 @@ public class AnimationParam
       }
       label231:
       Drawable localDrawable;
-      if (((Rect)localObject2).bottom < zlx.d(paramView.getContext()))
+      if (((Rect)localObject2).bottom < zps.d(paramView.getContext()))
       {
         if (localObject1 != null) {
           this.b = (((Rect)localObject2).bottom - paramView.getHeight() + paramView.getPaddingTop());
@@ -88,14 +88,14 @@ public class AnimationParam
       }
       else
       {
-        if (((Rect)localObject2).right < zlx.a(paramView.getContext()))
+        if (((Rect)localObject2).right < zps.a(paramView.getContext()))
         {
           if (localObject1 == null) {
             break label411;
           }
           this.jdField_a_of_type_Int = (((Rect)localObject2).right - paramView.getWidth() + paramView.getPaddingLeft());
         }
-        localObject2 = (wfg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(181);
+        localObject2 = (wjb)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(181);
         if (localObject1 != null)
         {
           localDrawable = ((Drawable.ConstantState)localObject1).newDrawable();
@@ -104,9 +104,9 @@ public class AnimationParam
           }
           if (((URLDrawable)localDrawable).getCurrDrawable() != null)
           {
-            ((wfg)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
-            this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((wfg)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-            yqp.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localDrawable);
+            ((wjb)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
+            this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((wjb)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+            yuk.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localDrawable);
           }
         }
       }
@@ -114,12 +114,12 @@ public class AnimationParam
       {
         if (this.jdField_a_of_type_JavaLangString == null)
         {
-          paramView = zkh.a(paramView, this.c, this.d, 0, 0);
+          paramView = zoc.a(paramView, this.c, this.d, 0, 0);
           if (paramView != null)
           {
-            ((wfg)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramView);
-            this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((wfg)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-            yqp.a("Q.qqstory.playernew.AnimationParam", "getBitmapFromView, imageKey=%s, bitmap=%s, byteCount=%d", this.jdField_a_of_type_JavaLangString, paramView, Integer.valueOf(paramView.getByteCount()));
+            ((wjb)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramView);
+            this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((wjb)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+            yuk.a("Q.qqstory.playernew.AnimationParam", "getBitmapFromView, imageKey=%s, bitmap=%s, byteCount=%d", this.jdField_a_of_type_JavaLangString, paramView, Integer.valueOf(paramView.getByteCount()));
           }
         }
         return;
@@ -129,9 +129,9 @@ public class AnimationParam
         this.jdField_a_of_type_Int = (((Rect)localObject2).right - this.c);
         break label231;
         label428:
-        ((wfg)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
-        this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((wfg)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-        yqp.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localDrawable);
+        ((wjb)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
+        this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((wjb)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+        yuk.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localDrawable);
       }
       localObject1 = null;
     }
@@ -145,10 +145,10 @@ public class AnimationParam
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     }
-    Object localObject = (wfg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(181);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((wfg)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = (wjb)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(181);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((wjb)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     if (TextUtils.equals(String.valueOf(System.identityHashCode(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)), this.jdField_a_of_type_JavaLangString)) {
-      ((wfg)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      ((wjb)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     }
     while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {

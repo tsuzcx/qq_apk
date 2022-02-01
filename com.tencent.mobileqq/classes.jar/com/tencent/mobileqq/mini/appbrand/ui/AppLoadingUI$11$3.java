@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.app.Activity;
 import android.os.Handler;
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class AppLoadingUI$11$3
@@ -12,7 +12,7 @@ class AppLoadingUI$11$3
   
   public void run()
   {
-    QQToast.a(this.this$1.this$0.getActivity().getApplicationContext(), anni.a(2131699427), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity().getApplicationContext(), anzj.a(2131699534), 0).a();
     this.this$1.this$0.uiHandler.postDelayed(new AppLoadingUI.11.3.1(this), 1000L);
   }
 }

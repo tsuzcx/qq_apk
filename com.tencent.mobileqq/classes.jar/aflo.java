@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 
 public class aflo
-  implements View.OnClickListener
+  extends anyu
 {
-  public aflo(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aflo(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
-    if (this.a.jdField_a_of_type_Afnc != null) {
-      this.a.jdField_a_of_type_Afnc.a();
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

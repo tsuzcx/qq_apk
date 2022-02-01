@@ -1,89 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import org.json.JSONObject;
-import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView.1.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class qdy
-  implements qft
+  implements View.OnLayoutChangeListener
 {
-  private String a(PBBytesField paramPBBytesField)
-  {
-    if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null)) {
-      return paramPBBytesField.get().toStringUtf8();
-    }
-    return null;
-  }
+  public qdy(NativeMiddleBodyView.RadiusView paramRadiusView) {}
   
-  private void a(Context paramContext, String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("big_brother_source_key", "biz_src_kandian_hotnews");
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramString));
-    if (ryx.a(paramContext, localIntent)) {
-      paramContext.startActivity(localIntent);
-    }
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    JSONObject localJSONObject = new JSONObject(paramBaseArticleInfo.proteusItemsData);
-    long l1 = localJSONObject.getLong("updateTime") * 1000L - 10800000L;
-    paramBaseArticleInfo = "";
-    long l2 = System.currentTimeMillis();
-    if (l2 - l1 > 86400000L) {
-      paramBaseArticleInfo = (int)((l2 - l1) / 86400000L) + "天前";
-    }
-    for (;;)
+    paramView = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    paramInt1 = paramInt3 - paramInt1;
+    paramInt2 = paramInt4 - paramInt2;
+    if ((paramView.width != paramInt1) || (paramView.height != paramInt2))
     {
-      localJSONObject.put("updateTimeStr", paramBaseArticleInfo);
-      if (!bgnw.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
-        break;
-      }
-      localJSONObject.put("jump_page", "3");
-      return localJSONObject;
-      if (l2 - l1 > 3600000L) {
-        paramBaseArticleInfo = (int)((l2 - l1) / 3600000L) + "小时前";
-      } else if (l2 - l1 > 60000L) {
-        paramBaseArticleInfo = (int)((l2 - l1) / 60000L) + "分钟前";
-      }
+      paramView.width = paramInt1;
+      paramView.height = paramInt2;
+      this.a.post(new NativeMiddleBodyView.RadiusView.1.1(this, paramInt1, paramInt2, paramView));
     }
-    localJSONObject.put("jump_page", "2");
-    return localJSONObject;
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("cmd_kandian_ten_click"))) {}
-    try
-    {
-      ogc.a(a(parampxk.a().weishiUGInfo.bytes_report_base_url) + a(parampxk.a().weishiUGInfo.bytes_exposure_report_tail));
-      label80:
-      paramViewBase.setOnClickListener(new qdz(this, parampxk, paramContainer));
-      return true;
-      return false;
-    }
-    catch (Exception localException)
-    {
-      break label80;
-    }
+    QLog.i(NativeMiddleBodyView.a(), 1, "width:" + paramInt1 + " height:" + paramInt2 + " old: " + paramView.width + ":" + paramView.height);
   }
 }
 

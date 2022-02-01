@@ -1,40 +1,16 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class aknj
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public aknj(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
+  public aknj(BaseActivityView paramBaseActivityView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_c_of_type_Int > 0) {
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramEditable.length() + "/" + this.a.jdField_c_of_type_Int);
-    }
-    if (paramEditable.length() > 0)
-    {
-      this.a.a(anni.a(2131704759));
-      RedPacketKuaKuaFragment.a(this.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.a));
-      RedPacketKuaKuaFragment.a(this.a).postDelayed(RedPacketKuaKuaFragment.a(this.a), this.a.jdField_a_of_type_Long * 1000L);
-      return;
-    }
-    this.a.a(anni.a(2131704761));
+    this.a.f();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 == 0) && (paramInt3 > paramInt1)) {
-      bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
-    }
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

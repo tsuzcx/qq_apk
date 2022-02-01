@@ -631,7 +631,7 @@ public class b
   {
     try
     {
-      if (j.c(c))
+      if (j.b(c))
       {
         String str = "on_app_first_install_time_" + com.tencent.beacon.core.info.a.c(paramContext);
         long l2 = f.a(paramContext).a(str, 0L);

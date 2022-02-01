@@ -1,15 +1,10 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-
-public class alzo
-  implements biaw
+public abstract interface alzo
 {
-  public alzo(SessionClearFragment paramSessionClearFragment) {}
+  public abstract void a();
   
-  public void a()
-  {
-    SessionClearFragment.a(this.a).onBackPressed();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
 }
 
 

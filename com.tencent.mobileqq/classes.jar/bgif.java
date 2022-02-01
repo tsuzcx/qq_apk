@@ -1,8 +1,37 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public abstract interface bgif
+public class bgif
+  extends bghr
 {
-  public abstract void a(String paramString, boolean paramBoolean, Drawable paramDrawable);
+  public bgif(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.a = 7;
+  }
+  
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString) {}
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

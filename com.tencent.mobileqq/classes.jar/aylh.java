@@ -1,28 +1,38 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aylh
-  implements View.OnTouchListener
+class aylh
+  implements View.OnClickListener
 {
-  public aylh(PromotionEntry paramPromotionEntry) {}
+  aylh(aykx paramaykx, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (PromotionEntry.a(this.a) == null) {}
-    do
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
+      aykx.a(this.jdField_a_of_type_Aykx, 1);
+      new bdlq(this.jdField_a_of_type_Aykx.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Aykx.a.a.a).a();
+    }
+    for (;;)
+    {
+      aykx.b(this.jdField_a_of_type_Aykx);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == this.b)
       {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
+        aykx.a(this.jdField_a_of_type_Aykx, 2);
+        new bdlq(this.jdField_a_of_type_Aykx.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Aykx.a.a.a).a();
       }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+      else if (paramView == this.c)
+      {
+        aykx.a(this.jdField_a_of_type_Aykx, 3);
+        new bdlq(this.jdField_a_of_type_Aykx.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Aykx.a.a.a).a();
+      }
+    }
   }
 }
 

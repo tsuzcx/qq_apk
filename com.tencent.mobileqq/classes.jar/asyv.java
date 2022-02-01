@@ -1,16 +1,42 @@
-import android.app.Activity;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.widget.XEditTextEx;
 
-class asyv
-  implements bkhw
+public class asyv
+  implements atec
 {
-  asyv(asyu paramasyu, String paramString, bety parambety) {}
+  public asyv(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    bcst.b(this.jdField_a_of_type_Asyu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
-    new besy(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Asyu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Asyu.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Bety.a);
-    this.jdField_a_of_type_Asyu.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
+    }
+    this.a.b = "";
+    ExtendFriendProfileEditFragment.b(this.a, 0);
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
+      ((ExtendFriendEditFragment)localFragment).a = null;
+    }
+    ExtendFriendProfileEditFragment.a(this.a, null);
+    ExtendFriendProfileEditFragment.c(this.a);
+    if (ExtendFriendProfileEditFragment.b(this.a))
+    {
+      ExtendFriendProfileEditFragment.a(this.a, true);
+      ExtendFriendProfileEditFragment.b(this.a);
+    }
+    for (;;)
+    {
+      this.a.c = true;
+      ExtendFriendProfileEditFragment.b(this.a);
+      return;
+      ExtendFriendProfileEditFragment.a(this.a, false);
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))) {
+        ExtendFriendProfileEditFragment.a(this.a);
+      }
+    }
   }
 }
 

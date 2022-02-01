@@ -1,17 +1,34 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
-public class pro
-  extends AnimatorListenerAdapter
+public abstract interface pro<BEAN>
 {
-  public pro(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public abstract void setCenterEmpty();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
-  }
+  public abstract void setCenterError(int paramInt, String paramString);
+  
+  public abstract void setCenterHide();
+  
+  public abstract void setCenterLoading();
+  
+  public abstract void setFooterError(int paramInt, String paramString);
+  
+  public abstract void setFooterHasMore();
+  
+  public abstract void setFooterHide();
+  
+  public abstract void setFooterLoading();
+  
+  public abstract void setFooterNoMore();
+  
+  public abstract void setHeaderError(int paramInt, String paramString);
+  
+  public abstract void setHeaderLoading();
+  
+  public abstract void setHeaderSuccess();
+  
+  public abstract void setListData(List<BEAN> paramList, boolean paramBoolean);
+  
+  public abstract void setTotal(int paramInt);
 }
 
 

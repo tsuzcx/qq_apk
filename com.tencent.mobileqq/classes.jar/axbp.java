@@ -1,249 +1,283 @@
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.util.Base64;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axbp
 {
-  public static Drawable a(Resources paramResources, int paramInt)
+  public static final String g = anzj.a(2131712815);
+  Context jdField_a_of_type_AndroidContentContext;
+  public Bitmap a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f = "";
+  
+  public axbp(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    Drawable localDrawable = null;
-    if (paramInt == 0) {
-      localDrawable = bfup.a(paramResources, paramResources.getColor(2131166223));
-    }
-    while (paramInt != 1) {
-      return localDrawable;
-    }
-    return bfup.a(paramResources, paramResources.getColor(2131166221));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static String a(int paramInt)
+  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    String str = anno.c;
-    switch (paramInt)
+    Object localObject3;
+    if (paramDrawable == null)
     {
-    case 3: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return anno.c;
-    case 2: 
-      return anni.a(2131704393);
-    case 4: 
-      return anni.a(2131704391);
-    case 5: 
-      return anni.a(2131704392);
+      localObject3 = null;
+      return localObject3;
     }
-    return anni.a(2131704394);
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    Object localObject2 = null;
-    int k = 0;
-    if ((paramContext == null) || (paramQQAppInterface == null) || (paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {
-      return;
-    }
-    boolean bool = paramString2.equals(paramQQAppInterface.getCurrentAccountUin());
     Object localObject1;
-    int i;
-    if (!bool)
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      localObject1 = (anmw)paramQQAppInterface.getManager(51);
-      if ((localObject1 != null) && (((anmw)localObject1).b(paramString2))) {
-        i = 1;
+      localObject1 = (BitmapDrawable)paramDrawable;
+      if (((BitmapDrawable)localObject1).getBitmap() != null) {
+        return ((BitmapDrawable)localObject1).getBitmap();
       }
     }
     for (;;)
     {
-      HotChatManager localHotChatManager = paramQQAppInterface.a(false);
-      if (localHotChatManager != null)
+      try
       {
-        HotChatInfo localHotChatInfo = localHotChatManager.a(paramString1);
-        localObject1 = localHotChatInfo;
-        paramQQAppInterface = localObject2;
-        if (localHotChatInfo != null)
-        {
-          paramQQAppInterface = localHotChatInfo.troopCode;
-          localObject1 = localHotChatInfo;
+        if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
+          continue;
         }
+        localObject1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
       }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        Rect localRect;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("ShareHelper", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
+        Object localObject2 = null;
+        continue;
+      }
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject3 = new Canvas((Bitmap)localObject1);
+      localRect = paramDrawable.copyBounds();
+      paramDrawable.setBounds(0, 0, ((Canvas)localObject3).getWidth(), ((Canvas)localObject3).getHeight());
+      paramDrawable.draw((Canvas)localObject3);
+      paramDrawable.setBounds(localRect);
+      return localObject1;
+      localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    }
+  }
+  
+  public static String a(Long paramLong)
+  {
+    if (paramLong == null) {
+      return null;
+    }
+    return new SimpleDateFormat("yyyyMMdd").format(paramLong);
+  }
+  
+  private static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(Base64.encodeToString(paramString.getBytes(), 3).replace("=", ""));
+    char c1 = localStringBuilder.charAt(0);
+    localStringBuilder.deleteCharAt(0);
+    localStringBuilder.append(c1);
+    if (QLog.isColorLevel()) {
+      QLog.i("ShareHelper", 4, "encodeOne src:" + Base64.encodeToString(paramString.getBytes(), 0) + " dst:" + localStringBuilder.toString());
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String[] paramArrayOfString)
+  {
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      paramArrayOfString[i] = a(paramArrayOfString[i]);
+      i += 1;
+    }
+    return b(paramArrayOfString);
+  }
+  
+  private void a()
+  {
+    AbsShareMsg localAbsShareMsg = new bdoi(StructMsgForGeneralShare.class).c(114).a(this.b).e(this.jdField_a_of_type_JavaLangString).a();
+    localAbsShareMsg.mSourceName = this.e;
+    localAbsShareMsg.mSourceAction = "web";
+    localAbsShareMsg.mSourceUrl = this.f;
+    Object localObject = bdov.a(2);
+    ((bdom)localObject).a(this.d, this.b, this.c);
+    localAbsShareMsg.addItem((bdol)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("forward_type", -3);
+    ((Intent)localObject).putExtra("stuctmsg_bytes", localAbsShareMsg.getBytes());
+    ((Intent)localObject).putExtra("forwardDirect", true);
+    auxu.a((Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+  }
+  
+  private boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.e));
+  }
+  
+  private List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131695738);
+    localActionSheetItem.icon = 2130839091;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 2;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131695751);
+    localActionSheetItem.icon = 2130839092;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 3;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131695758);
+    localActionSheetItem.icon = 2130839095;
+    localActionSheetItem.action = 9;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131695741);
+    localActionSheetItem.icon = 2130839089;
+    localActionSheetItem.action = 10;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    return (List[])new ArrayList[] { localArrayList };
+  }
+  
+  private static String b(String[] paramArrayOfString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = 0;
+    int k;
+    for (int i = 0; j < paramArrayOfString.length; i = k)
+    {
+      k = i;
+      if (paramArrayOfString[j].length() > i) {
+        k = paramArrayOfString[j].length();
+      }
+      j += 1;
+    }
+    j = 0;
+    while (j < i)
+    {
+      k = 0;
+      while (k < paramArrayOfString.length)
+      {
+        if (paramArrayOfString[k].length() > j) {
+          localStringBuilder.append(paramArrayOfString[k].charAt(j));
+        }
+        k += 1;
+      }
+      j += 1;
+    }
+    return a(localStringBuilder.toString());
+  }
+  
+  private void b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(this.d)) {
+      localArrayList.add(this.d);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("title", this.b);
+    localBundle.putString("desc", this.c);
+    localBundle.putLong("req_share_id", 0L);
+    localBundle.putString("detail_url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putStringArrayList("image_url", localArrayList);
+    bmud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localBundle, null);
+  }
+  
+  private void c()
+  {
+    long l = System.currentTimeMillis();
+    WXShareHelper.a().d(String.valueOf(l), this.b, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private void d()
+  {
+    long l = System.currentTimeMillis();
+    WXShareHelper.a().c(String.valueOf(l), this.b, this.jdField_a_of_type_AndroidGraphicsBitmap, this.c, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    if (!a()) {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131712816), 0).a();
+    }
+    do
+    {
       for (;;)
       {
-        int j = k;
-        if (localHotChatManager != null)
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
         {
-          j = k;
-          if (((HotChatInfo)localObject1).isGameRoom) {
-            j = 1;
-          }
+          axbq localaxbq = new axbq(this);
+          paramOnDismissListener = new axbr(this, paramOnDismissListener);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718159));
+          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
+          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(localaxbq);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(paramOnDismissListener);
         }
-        if ((bool) || (i == 0))
+        try
         {
-          if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat()))
+          if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing())
           {
-            i = 86;
-            label173:
-            paramString2 = new ProfileActivity.AllInOne(paramString2, i);
-            paramString2.h = 33;
-            paramString2.d = paramString1;
-            paramString2.c = paramQQAppInterface;
-            paramQQAppInterface = new Intent(paramContext, NearbyPeopleProfileActivity.class);
-            paramQQAppInterface.putExtra("AllInOne", paramString2);
-            if (!bool) {
-              break label268;
-            }
-          }
-          label268:
-          for (i = 2;; i = 3)
-          {
-            paramQQAppInterface.putExtra("param_mode", i);
-            if (j != 0) {
-              paramQQAppInterface.putExtra("is_from_werewolves", true);
-            }
-            paramContext.startActivity(paramQQAppInterface);
+            this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
             return;
-            i = 0;
-            break;
-            i = 42;
-            break label173;
           }
         }
-        paramString2 = new ProfileActivity.AllInOne(paramString2, 20);
-        paramString2.a = 20;
-        paramString2.d = paramString1;
-        paramString2.c = paramQQAppInterface;
-        if (j != 0) {}
-        for (i = 113;; i = 4)
-        {
-          paramString2.h = i;
-          ProfileActivity.b(paramContext, paramString2);
-          return;
-        }
-        localObject1 = null;
-        paramQQAppInterface = localObject2;
+        catch (Exception paramOnDismissListener) {}
       }
-      i = 0;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + paramOnDismissListener);
   }
   
-  public static void a(TextView paramTextView, int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bitmap paramBitmap)
   {
-    if (paramTextView == null) {}
-    Drawable localDrawable;
-    do
-    {
-      return;
-      localDrawable = a(BaseApplication.getContext().getResources(), paramInt);
-    } while (localDrawable == null);
-    paramTextView.setBackgroundDrawable(localDrawable);
-  }
-  
-  public static void a(bbyv parambbyv, long paramLong, String paramString, int paramInt)
-  {
-    boolean bool;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
-    }
-    for (;;)
-    {
-      if (bool) {
-        parambbyv.a(0, paramString, paramLong, 1);
-      }
-      if (QLog.isColorLevel()) {
-        axei.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("needUpdateLocal:%b    from:%d     msgSeq:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt), Long.valueOf(paramLong) }) });
-      }
-      return;
-      long l = parambbyv.a(0, paramString);
-      if (1L + l == paramLong)
-      {
-        bool = true;
-      }
-      else
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        axei.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("not continuous seq local:%d    msgseq:%d    from:%d", new Object[] { Long.valueOf(l), Long.valueOf(paramLong), Integer.valueOf(paramInt) }) });
-        bool = false;
-        continue;
-        bool = true;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public static void a(HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
-  {
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", bkgj.a(bkgj.a(bkgj.a(bkgj.a(bkgj.a("https://nearby.qq.com/hot_chat/member_list.html?_wv=3&_bid=2581", "_wv", "3"), "_bid", "2581"), "gc", paramHotChatInfo.troopUin), "rid", paramHotChatInfo.uuid), "from", String.valueOf(0)));
-    paramHotChatInfo = new Bundle();
-    paramHotChatInfo.putBoolean("hide_left_button", true);
-    localIntent.putExtras(paramHotChatInfo);
-    paramActivity.startActivity(localIntent);
-    if (paramInt == 0) {
-      anqt.a(paramQQAppInterface, "0X800638B");
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    anqt.a(paramQQAppInterface, "0X800638C");
-  }
-  
-  public static boolean a(int paramInt, String paramString)
-  {
-    if (paramInt == 1) {
-      return ((HotChatManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(60)).b(paramString);
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
-  {
-    boolean bool = true;
-    if ((paramQQAppInterface == null) || (paramRecentUser == null) || (paramRecentUser.getType() != 1) || (TextUtils.isEmpty(paramRecentUser.uin))) {
-      bool = false;
-    }
-    do
-    {
-      return bool;
-      if ((paramRecentUser.lFlag & 1L) == 0L)
-      {
-        paramQQAppInterface = paramQQAppInterface.a(false);
-        if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramRecentUser.uin))) {
-          paramRecentUser.lFlag |= 1L;
-        }
-      }
-    } while ((paramRecentUser.lFlag & 1L) == 1L);
-    return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.istroop == 1) {
-      return ((HotChatManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(60)).b(paramMessageRecord.frienduin);
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString3;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
 }
 

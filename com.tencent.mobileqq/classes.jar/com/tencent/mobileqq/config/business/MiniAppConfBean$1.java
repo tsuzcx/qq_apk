@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.business;
 
-import aqpu;
+import arfc;
 import java.util.ArrayList;
 
 public class MiniAppConfBean$1
   extends ArrayList<Integer>
 {
-  public MiniAppConfBean$1(aqpu paramaqpu)
+  public MiniAppConfBean$1(arfc paramarfc)
   {
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1007));

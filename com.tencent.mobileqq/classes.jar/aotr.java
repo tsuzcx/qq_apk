@@ -1,33 +1,21 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.text.SimpleDateFormat;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
-public class aotr
+class aotr
+  implements aczq
 {
-  public static String a()
-  {
-    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-    return str + "/Camera/ARVideoRecord.tmp";
-  }
+  aotr(aoti paramaoti, long paramLong, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public static boolean a()
+  public ToServiceMsg a()
   {
-    return (Build.VERSION.SDK_INT >= 18) && (aoxi.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
-  }
-  
-  public static String b()
-  {
-    String str = ShortVideoUtils.d();
-    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
-    str = str + mnb.a;
-    File localFile = new File(str).getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return str;
+    ToServiceMsg localToServiceMsg = aoti.b(this.jdField_a_of_type_Aoti).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("type", 1L);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

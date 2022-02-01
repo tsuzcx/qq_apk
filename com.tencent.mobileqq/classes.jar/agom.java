@@ -1,63 +1,31 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 import com.tencent.qphone.base.util.QLog;
 
-class agom
-  extends ClickableSpan
+public class agom
+  implements Animation.AnimationListener
 {
-  agom(agol paramagol, IntimateInfo.DNAInfo paramDNAInfo) {}
+  public agom(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bcst.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
-    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
-    {
-      QLog.e("intimate_relationship", 2, "linkUrl is empty");
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    paramView = bgng.a(this.jdField_a_of_type_Agol.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agol.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-    if (paramView != null)
-    {
-      paramView.a();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
-    {
-      blsb.c(this.jdField_a_of_type_Agol.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-      return;
-    }
-    agof.a(this.jdField_a_of_type_Agol.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    paramTextPaint.setUnderlineText(false);
-    try
-    {
-      int j = Color.parseColor("#4D94FF");
-      paramTextPaint.setColor(j);
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
-          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
-        }
-      }
-      paramTextPaint.setColor(i);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
     }
-    catch (IllegalArgumentException paramTextPaint)
-    {
-      QLog.e("intimate_relationship", 2, " color parse err");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
   }
 }

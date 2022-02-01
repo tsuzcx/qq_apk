@@ -1,25 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class oym
-  implements DialogInterface.OnClickListener
+class oym
+  implements ViewBase.OnClickListener
 {
-  oym(pan parampan, pay parampay) {}
+  oym(oyk paramoyk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Pan != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_Pan.a();
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface.a(this.jdField_a_of_type_Pay);
-          this.jdField_a_of_type_Pan.notifyDataSetChanged();
-        }
-      }
-      bmqa.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+    if (this.a.a != null) {
+      oyj.a(this.a.a, paramViewBase);
     }
   }
 }

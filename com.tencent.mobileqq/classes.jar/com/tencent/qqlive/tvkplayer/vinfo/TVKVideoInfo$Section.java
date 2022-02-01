@@ -10,6 +10,7 @@ public class TVKVideoInfo$Section
   private int idx;
   private String indexName;
   private int size;
+  private String url;
   private String vbkey;
   private String vbkeyId;
   
@@ -31,6 +32,11 @@ public class TVKVideoInfo$Section
   public int getSize()
   {
     return this.size;
+  }
+  
+  public String getUrl()
+  {
+    return this.url;
   }
   
   public String getVbkey()
@@ -67,6 +73,11 @@ public class TVKVideoInfo$Section
   public void setSize(int paramInt)
   {
     this.size = paramInt;
+  }
+  
+  public void setUrl(String paramString)
+  {
+    this.url = paramString;
   }
   
   public void setVbkey(String paramString)

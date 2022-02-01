@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aela;
+import aeud;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 

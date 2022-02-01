@@ -1,43 +1,66 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ttu
-  implements zxa<CertifiedAccountRead.StGetMainPageRsp>
+  implements View.OnClickListener
 {
   public ttu(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void onClick(View paramView)
   {
-    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
-    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
-    String str = localStUser.icon.get();
-    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
+    if (aazb.a("service_account_folder_publish_feed_button", 2000L))
     {
-      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840523);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ttv(this, localStUser));
-    }
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
-  {
-    if (paramBoolean)
-    {
-      if (paramStGetMainPageRsp != null)
-      {
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        yqp.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
-        a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    yqp.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = apdr.a(this.a);; bool = true)
+    {
+      if (!bool)
+      {
+        bhlq.b(this.a);
+        break;
+      }
+      Object localObject = new Intent();
+      ((Intent)localObject).putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
+      ((Intent)localObject).putExtra("sourceFrom", 2);
+      label141:
+      String str;
+      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
+      {
+        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
+        {
+          bool = true;
+          ((Intent)localObject).putExtra("has_shop", bool);
+        }
+      }
+      else
+      {
+        bmtd.a(this.a.getActivity(), (Intent)localObject, 0);
+        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
+        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
+          break label230;
+        }
+      }
+      label230:
+      for (localObject = "auth_follow";; localObject = "auth_discover")
+      {
+        abbe.a(str, (String)localObject, "post_clk", 0, 0, new String[] { "", "" });
+        break;
+        bool = false;
+        break label141;
+      }
+    }
   }
 }
 

@@ -1,22 +1,49 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import GIFT_MALL_PROTOCOL.doufu_piece_req;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.Map;
 
-class bmxg
-  implements BusinessObserver
+public class bmxg
+  extends QzoneExternalRequest
 {
-  bmxg(bmxf parambmxf, String paramString) {}
+  private doufu_piece_req a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bmxg(long paramLong, Map<String, String> paramMap)
   {
-    paramInt = paramBundle.getInt("extra_result_code");
-    String str = paramBundle.getString("extra_result_err_msg");
-    paramBundle = paramBundle.getString("extra_cmd");
-    if (!paramBoolean)
-    {
-      bize.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
-      return;
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.a = new doufu_piece_req(paramLong, paramMap);
+  }
+  
+  public static doufu_piece_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    bize.c("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
+    do
+    {
+      return paramArrayOfByte;
+      paramArrayOfInt = (doufu_piece_rsp)decode(paramArrayOfByte, "getDofuPieceInfo", paramArrayOfInt);
+      paramArrayOfByte = paramArrayOfInt;
+    } while (paramArrayOfInt != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getDofuPieceInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getDofuPieceInfo";
   }
 }
 

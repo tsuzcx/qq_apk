@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class zpl
-  implements View.OnClickListener
 {
-  public zpl(LeftTabBarView paramLeftTabBarView, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {}
-    for (;;)
+    if (paramQQAppInterface == null) {}
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramQQAppInterface == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryAIOUtils", 2, "refreshAIOStoryMessages");
     }
+    paramQQAppInterface.removeMessages(267387141);
+    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(267387141), 500L);
   }
 }
 

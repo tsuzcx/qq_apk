@@ -1,21 +1,44 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class mfk
+public class mfk
   implements View.OnClickListener
 {
-  mfk(mfi parammfi) {}
+  public mfk(MultiMembersAudioUI paramMultiMembersAudioUI) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
+    if (this.a.jdField_a_of_type_Mss == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      mfp localmfp = (mfp)paramView.getTag();
+      if (localmfp == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MultiMembersAudioUI", 2, "onItemClick-->holder is null");
+        }
+      }
+      else
+      {
+        if (localmfp.c) {}
+        for (int i = 7;; i = this.a.a(localmfp.jdField_a_of_type_Long))
+        {
+          if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 8) || ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 2))) {
+            break label134;
+          }
+          this.a.jdField_a_of_type_Mss.a(localmfp.jdField_a_of_type_Long, localmfp.jdField_a_of_type_Int, i, true);
+          break;
+        }
+        label134:
+        this.a.jdField_a_of_type_Mss.a(localmfp.jdField_a_of_type_Long, localmfp.jdField_a_of_type_Int, i, false);
+      }
     }
-    bcst.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.minigame.utils.GameLog;
 class OpenDataPlugin$6
   implements DialogInterface.OnClickListener
 {
-  OpenDataPlugin$6(OpenDataPlugin paramOpenDataPlugin, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, JsRuntime paramJsRuntime, int paramInt2, String paramString8, String paramString9) {}
+  OpenDataPlugin$6(OpenDataPlugin paramOpenDataPlugin, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, JsRuntime paramJsRuntime, int paramInt2, String paramString8, String paramString9, int paramInt3) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -16,7 +16,7 @@ class OpenDataPlugin$6
     try
     {
       paramDialogInterface.dismiss();
-      OpenDataPlugin.access$200(this.this$0, this.val$key, this.val$opNum, this.val$operation, this.val$toUser, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$quiet, this.val$jsRuntime, this.val$callbackId, this.val$action, this.val$object);
+      OpenDataPlugin.access$300(this.this$0, this.val$key, this.val$opNum, this.val$operation, this.val$toUser, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$quiet, this.val$jsRuntime, this.val$callbackId, this.val$action, this.val$object, this.val$ratio);
       return;
     }
     catch (Throwable paramDialogInterface)

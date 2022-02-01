@@ -1,36 +1,27 @@
-import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
-class addi
-  implements IMemoryDumpListener
+public class addi
+  implements adci
 {
-  addi(addh paramaddh, adcb paramadcb) {}
-  
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onFinishDump " + paramBoolean + " " + paramString1 + " " + paramString2);
-  }
-  
-  public void onHprofDumped(@NotNull String paramString)
-  {
-    if (this.jdField_a_of_type_Adcb != null) {
-      this.jdField_a_of_type_Adcb.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x133");
+    }
+    paramQQAppInterface = (ajfp)paramQQAppInterface.a(169);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
     }
   }
   
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onPrepareDump " + paramString);
-    paramString = new ArrayList(4);
-    paramString.addAll(adct.a());
-    paramString.addAll(adct.b());
-    paramString.add(adct.b());
-    paramString.add(adct.a());
-    return paramString;
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

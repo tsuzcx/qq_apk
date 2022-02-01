@@ -10,6 +10,7 @@ import com.tencent.qqmini.sdk.manager.LoginManager;
 public class GameWnsUtils
 {
   private static final int MINI_GAME_SHOW_RESTART_BTN = 1;
+  private static String[] OPENGL_ES3_BLACK_LIST = { "vivo Xplay5A", "vivo X7", "vivo X7Plus", "OPPO R9 Plusm A" };
   private static final String TAG = "GameWnsUtils";
   private static final boolean sLogEnable = WnsConfig.getConfig("qqtriton", "MiniGameLogEnable", true);
   
@@ -73,7 +74,24 @@ public class GameWnsUtils
   
   public static boolean enableOpengles3()
   {
-    return WnsConfig.getConfig("qqtriton", "enableOpengles3", 1) > 0;
+    boolean bool = true;
+    String[] arrayOfString = OPENGL_ES3_BLACK_LIST;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str)) {
+        return false;
+      }
+      i += 1;
+    }
+    if (WnsConfig.getConfig("qqtriton", "enableOpengles3", 1) > 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
   
   public static boolean enablePersistentDebugVersion()
@@ -151,6 +169,11 @@ public class GameWnsUtils
     return WnsConfig.getConfig("qqtriton", "MiniGameFrameNoChangeLimit", 5);
   }
   
+  public static boolean getGameEnableCodeCache()
+  {
+    return WnsConfig.getConfig("qqtriton", "MiniGameCodeCacheEnable", true);
+  }
+  
   public static int getGameErrorBlackDetectInterval()
   {
     return WnsConfig.getConfig("qqtriton", "MiniGameBlackDetectInterval", 3000);
@@ -198,6 +221,11 @@ public class GameWnsUtils
   public static int getGamePresentDetectInterval()
   {
     return WnsConfig.getConfig("qqtriton", "MiniGamePresentDetectInterval", 1000);
+  }
+  
+  public static String getGlobalConfig()
+  {
+    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniSDKConst.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + QUAUtil.getPlatformQUA() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
   }
   
   public static int getNoPresentDurationLimit()

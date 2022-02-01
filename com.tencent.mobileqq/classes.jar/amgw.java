@@ -1,15 +1,14 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
-
-class amgw
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public abstract interface amgw
 {
-  amgw(amgt paramamgt) {}
+  public abstract void a();
   
-  public void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

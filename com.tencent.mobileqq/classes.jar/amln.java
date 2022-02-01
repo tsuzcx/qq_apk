@@ -1,76 +1,169 @@
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.Area;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsReq;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.GetWeatherByLbsRsp;
+import com.tencent.jungle.weather.proto.WeatherReportInfo.PbRspMsgHead;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import mqq.app.AppActivity;
 import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
 import mqq.app.Packet;
 
 public class amln
   extends MSFServlet
 {
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, AppActivity paramAppActivity)
+  {
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), amln.class);
+    localNewIntent.putExtra("req_type", 8888);
+    localNewIntent.putExtra("latitide", paramInt1);
+    localNewIntent.putExtra("longtitude", paramInt2);
+    a(paramQQAppInterface, localNewIntent, paramAppActivity);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, AppActivity paramAppActivity)
+  {
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), amln.class);
+    localNewIntent.putExtra("req_type", 6666);
+    localNewIntent.putExtra("uin", Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    a(paramQQAppInterface, localNewIntent, paramAppActivity);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (paramAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+      {
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0);
+        long l1 = localSharedPreferences.getLong("drawer_last_location_auth_dialog_time", 0L);
+        long l2 = System.currentTimeMillis();
+        if (l2 - l1 > 86400000L)
+        {
+          localSharedPreferences.edit().putLong("drawer_last_location_auth_dialog_time", l2).apply();
+          paramAppActivity.requestPermissions(new amlp(paramQQAppInterface, paramNewIntent, paramAppActivity, null), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 1, "without 24 hour from last location auth dialog");
+        }
+        paramNewIntent.putExtra("adcode", 0);
+        paramQQAppInterface.startServlet(paramNewIntent);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 1, "location permitted above android M");
+      }
+      b(paramQQAppInterface, paramNewIntent);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 1, "direct locate in system below android M");
+    }
+    b(paramQQAppInterface, paramNewIntent);
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "startLocation onLocationStart");
+    }
+    apch.a(new amlo("qq_weather", false, paramNewIntent, paramQQAppInterface));
+  }
+  
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
+    if (!"QQWeatherReport.getWeatherByLbs".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
     }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    boolean bool2 = paramFromServiceMsg.isSuccess();
+    int i = paramIntent.getIntExtra("req_type", 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putAll(paramIntent.getExtras());
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "WeatherServlet onReceive isSucess1:" + bool2);
     }
+    bool1 = bool2;
+    if (bool2) {}
     for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
-      localBundle.putSerializable("serializable", paramIntent.getSerializableExtra("serializable"));
-      localBundle.putString("key1", paramIntent.getStringExtra("key1"));
-      localBundle.putString("key2", paramIntent.getStringExtra("key2"));
-      localBundle.putString("key3", paramIntent.getStringExtra("key3"));
-      localBundle.putString("key4", paramIntent.getStringExtra("key4"));
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      try
+      {
+        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+        ((ByteBuffer)localObject).get(paramFromServiceMsg);
+        localObject = new WeatherReportInfo.GetWeatherByLbsRsp();
+        ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).mergeFrom(paramFromServiceMsg);
+        if (((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.uint32_result.get() != 0) {
+          continue;
+        }
+        bool1 = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 2, "WeatherServlet onReceive isSucess2:" + bool1);
+        }
+        if (!bool1) {
+          continue;
+        }
+        localBundle.putString("KEY_TEMPER", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).temper.get());
+        localBundle.putString("o_wea_code", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).o_wea_code.get());
+        localBundle.putString("area_info", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.city.get() + "-" + ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.area_name.get());
+        localBundle.putInt("adcode", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).area.area_id.get());
+        localBundle.putInt("show_flag", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).show_flag.get());
       }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        Object localObject;
+        paramFromServiceMsg.printStackTrace();
+        bool1 = false;
+        continue;
+      }
+      notifyObserver(paramIntent, i, bool1, localBundle, amll.class);
       return;
-      arrayOfByte = null;
+      bool1 = false;
+      continue;
+      localBundle.putInt("uint32_result", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.uint32_result.get());
+      localBundle.putString("string_err_msg", ((WeatherReportInfo.GetWeatherByLbsRsp)localObject).pbRspMsgHead.string_err_msg.get());
     }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
+    int i = paramIntent.getIntExtra("req_type", 0);
+    int j = paramIntent.getIntExtra("adcode", 0);
+    Object localObject;
+    switch (i)
     {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bgva.a(paramIntent, 0, arrayOfByte.length + 4);
-      bgva.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+    default: 
+      throw new RuntimeException("Weatherservlet unknow req_type: " + i);
+    case 6666: 
+      localObject = new WeatherReportInfo.GetWeatherByLbsReq();
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).uin.set(paramIntent.getLongExtra("uin", 0L));
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).adcode_from_mapsdk.set(j);
     }
-    for (;;)
+    for (paramIntent = ((WeatherReportInfo.GetWeatherByLbsReq)localObject).toByteArray();; paramIntent = ((WeatherReportInfo.GetWeatherByLbsReq)localObject).toByteArray())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_cmGame_CmGameServlet", 2, "onSend exit cmd=" + str);
-      }
+      localObject = ByteBuffer.allocate(paramIntent.length + 4);
+      ((ByteBuffer)localObject).putInt(paramIntent.length + 4).put(paramIntent);
+      paramPacket.setSSOCommand("QQWeatherReport.getWeatherByLbs");
+      paramPacket.putSendData(((ByteBuffer)localObject).array());
       return;
-      label117:
-      paramIntent = new byte[4];
-      bgva.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
+      localObject = new WeatherReportInfo.GetWeatherByLbsReq();
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).lat.set(paramIntent.getIntExtra("latitide", 0));
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).lng.set(paramIntent.getIntExtra("longtitude", 0));
+      ((WeatherReportInfo.GetWeatherByLbsReq)localObject).adcode_from_mapsdk.set(j);
     }
   }
 }

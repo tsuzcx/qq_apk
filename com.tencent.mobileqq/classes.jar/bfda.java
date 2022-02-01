@@ -1,24 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class bfda
-  implements DialogInterface.OnClickListener
+public class bfda
+  implements View.OnTouchListener
 {
-  bfda(bfcy parambfcy) {}
+  public bfda(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.e();
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).e();
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
     }
-    paramDialogInterface.dismiss();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfda
  * JD-Core Version:    0.7.0.1
  */

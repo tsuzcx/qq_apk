@@ -1,16 +1,26 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
+
 public class ajin
+  implements blpp
 {
-  public int c;
-  public int d;
-  public String f;
+  public ajin(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
   
-  public ajin() {}
-  
-  public ajin(int paramInt1, int paramInt2, String paramString)
+  public void a(View paramView)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.f = paramString;
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(false);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(true);
+    }
   }
 }
 

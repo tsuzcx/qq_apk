@@ -1,82 +1,87 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bpvd
-  implements Animator.AnimatorListener
+public class bpvd
+  extends bpor
 {
-  bpvd(bpuy parambpuy) {}
+  public bpvd(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt)
   {
+    this.a.c(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    if ((MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
+    {
+      MusicFragmentProviderView.a(this.a).mProgress = -1;
+      if (this.a.a != null) {
+        this.a.a.sendEmptyMessage(3);
+      }
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationCancel: mState:" + bpuy.c(this.a) + " isrun:" + bpuy.a(this.a));
+      QLog.d("MusicFragmentProviderView", 2, "download onCancel");
     }
-    if (this.a.isRunning())
+    MusicFragmentProviderView.a(this.a).set(false);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.a.a(paramString, paramInt);
+    MusicFragmentProviderView.a(this.a).set(true);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      bpuy.e(this.a, bpuy.c(this.a));
-      if (bpuy.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      bpuy.a(this.a, false);
-      return;
-      label105:
-      if (bpuy.c(this.a) == 4) {
-        this.a.a(5);
-      } else if (bpuy.c(this.a) == 5) {
-        this.a.a(1);
-      }
+      this.a.b(-115);
+      MusicFragmentProviderView.a(this.a).set(false);
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationEnd: mState:" + bpuy.c(this.a) + " isrun:" + bpuy.a(this.a));
-    }
-    if (this.a.isRunning())
+    this.a.b(paramInt);
+    if ((paramBoolean) && (MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
     {
-      bpuy.d(this.a, bpuy.c(this.a));
-      if (bpuy.c(this.a) != 2) {
-        break label105;
+      MusicFragmentProviderView.a(this.a).musicStart = 0;
+      MusicFragmentProviderView.a(this.a).musicEnd = (MusicFragmentProviderView.a(this.a).musicStart + MusicFragmentProviderView.a(this.a));
+      MusicFragmentProviderView.a(this.a).musicDuration = ((int)ShortVideoUtils.a(MusicFragmentProviderView.a(this.a).getLocalPath()));
+      if (MusicFragmentProviderView.a(this.a).musicEnd > MusicFragmentProviderView.a(this.a).musicDuration) {
+        MusicFragmentProviderView.a(this.a).musicEnd = MusicFragmentProviderView.a(this.a).musicDuration;
       }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      bpuy.a(this.a, false);
-      return;
-      label105:
-      if (bpuy.c(this.a) == 4)
+      MusicFragmentProviderView.a(this.a, MusicFragmentProviderView.a(this.a).musicStart);
+      MusicFragmentProviderView.b(this.a, MusicFragmentProviderView.a(this.a).musicEnd);
+      paramString = (QIMMusicConfigManager)bplq.a(2);
+      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.a(this.a).mItemId);
+      if (localMusicItemInfo != null)
       {
-        this.a.a(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("MusicFragmentProviderView", 2, "music exist name =" + localMusicItemInfo.mMusicName);
+        }
+        paramString.a(MusicFragmentProviderView.a(this.a), false);
       }
-      else if (bpuy.c(this.a) == 5)
+      if (this.a.a != null) {
+        this.a.a.sendEmptyMessage(2);
+      }
+      if (QLog.isColorLevel())
       {
-        this.a.a(1);
-        bpuy.a(this.a, 0);
+        paramString = new StringBuilder("onFinish musicStart=").append(MusicFragmentProviderView.a(this.a).musicStart);
+        paramString.append(" musicEnd=").append(MusicFragmentProviderView.a(this.a).musicEnd);
+        paramString.append(" musicDuration").append(MusicFragmentProviderView.a(this.a).musicDuration);
+        paramString.append(" premusicStart").append(MusicFragmentProviderView.b(this.a));
+        paramString.append(" premusicEnd").append(MusicFragmentProviderView.c(this.a));
+        paramString.append(" musicName").append(MusicFragmentProviderView.a(this.a).mMusicName);
+        QLog.d("MusicFragmentProviderView", 2, paramString.toString());
       }
-      else if (bpuy.c(this.a) == 6)
-      {
-        this.a.a(2);
-      }
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationStart: mState:" + bpuy.c(this.a) + " isrun:" + bpuy.a(this.a));
-    }
-    if (this.a.isRunning()) {
-      bpuy.c(this.a, bpuy.c(this.a));
-    }
+    MusicFragmentProviderView.a(this.a).set(false);
   }
 }
 

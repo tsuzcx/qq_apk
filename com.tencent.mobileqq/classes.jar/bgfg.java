@@ -1,36 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-final class bgfg
-  implements DownloadParams.DecodeHandler
+public class bgfg
+  extends bgfc<bgfh, bgej>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  public bgfg(XMediaEditor paramXMediaEditor, Context paramContext)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    float f2 = bgln.a();
-    float f1 = f2;
-    if (f2 < 0.01F) {
-      f1 = 1.0F;
-    }
-    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-    return bgmo.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    super(paramXMediaEditor);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
+  
+  public bgfh a(ViewGroup paramViewGroup)
+  {
+    return new bgfh(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(View paramView, bgfh parambgfh) {}
+  
+  public void a(bgfh parambgfh, bgej parambgej, int paramInt) {}
 }
 
 

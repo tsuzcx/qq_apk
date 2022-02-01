@@ -1,29 +1,41 @@
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-public class bdlk
-  implements View.OnClickListener
+class bdlk
+  extends ayxo
 {
-  public bdlk(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
-  
-  public void onClick(View paramView)
+  protected void e(boolean paramBoolean, Bundle paramBundle)
   {
-    bdjg.a(this.a.app, "0X800993E", String.valueOf(this.a.a));
-    PadInfo localPadInfo = (PadInfo)((bdlc)paramView.getTag()).a;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", nko.a(localPadInfo.pad_url, "_bid=2517"));
-    localBundle.putInt("key_team_work_edit_type", localPadInfo.type);
-    localBundle.putString("key_team_work_title", localPadInfo.title);
-    localBundle.putString("key_team_work_rul", localPadInfo.pad_url);
-    localBundle.putInt("key_team_work_pad_list_type", localPadInfo.type_list);
-    localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    TeamWorkDocEditBrowserActivity.a(this.a, localBundle, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
+    {
+      int i = bdli.a().decrementAndGet();
+      bdli.a(0);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
+      bdli.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneReport", 2, "next req time: " + bdli.b() + ", left: " + i);
+      }
+      bdll.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      bdli.a().set(false);
+      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(bdli.a());
+      return;
+      bdli.c();
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "qzone report failed");
+      }
+    }
   }
 }
 

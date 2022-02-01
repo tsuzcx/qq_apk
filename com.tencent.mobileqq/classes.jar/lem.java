@@ -1,52 +1,106 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.app.InviteMemberObserver.1;
+import android.content.ComponentCallbacks;
+import android.content.Context;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class lem
-  implements Observer
 {
-  Handler a = null;
+  ComponentCallbacks jdField_a_of_type_AndroidContentComponentCallbacks;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   
-  private void a(Object paramObject)
+  public lem(VideoAppInterface paramVideoAppInterface)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
-    }
-    if (paramObject.length < 4)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
-      }
-      return;
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lco> paramArrayList) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void a()
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    if (Build.VERSION.SDK_INT >= 14) {}
+    try
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
+      if (this.jdField_a_of_type_AndroidContentComponentCallbacks != null)
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
+        this.jdField_a_of_type_AndroidContentComponentCallbacks = null;
       }
-      this.a.post(new InviteMemberObserver.1(this, paramObject));
       return;
     }
-    a(paramObject);
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("GMemoryMonitor", 2, "onDestroy unregisterComponentCallbacks failed", localThrowable);
+    }
+  }
+  
+  void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GMemoryMonitor", 2, "reportLowMemory  level = " + paramInt + ",isExit = " + paramBoolean);
+    }
+    try
+    {
+      Object localObject1 = new HashMap();
+      ((HashMap)localObject1).put("lowMemoryLevel", String.valueOf(paramInt));
+      ((HashMap)localObject1).put("isExit", String.valueOf(paramBoolean));
+      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "av_qua_low_memory", true, 0L, 0L, (HashMap)localObject1, "", true);
+      localObject1 = Build.MODEL;
+      String str1 = String.valueOf(Build.VERSION.SDK_INT);
+      String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+      if (localObject2 != null)
+      {
+        String str3 = ((lff)localObject2).d;
+        localObject2 = ((lff)localObject2).c;
+        String str4 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(str3) + "";
+        if (QLog.isColorLevel()) {
+          QLog.d("GMemoryMonitor", 2, "reportLowMemory  ,roomID = " + str4);
+        }
+        localStringBuilder.append("Android").append('|');
+        localStringBuilder.append((String)localObject1).append('|');
+        localStringBuilder.append(str1).append('|');
+        localStringBuilder.append(str1).append('|');
+        localStringBuilder.append(str2).append('|');
+        localStringBuilder.append(str3).append('|');
+        localStringBuilder.append(str4).append('|');
+        localStringBuilder.append((String)localObject2).append('|');
+        localStringBuilder.append(paramInt);
+      }
+      localObject1 = localStringBuilder.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("GMemoryMonitor", 2, "reportLowMemory  dcDetail = " + (String)localObject1);
+      }
+      bdkl.a(null, "dc02660", (String)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("GMemoryMonitor", 1, "reportLowMemory  Exception", localException);
+    }
+  }
+  
+  public void b()
+  {
+    if (Build.VERSION.SDK_INT >= 14) {}
+    try
+    {
+      if (this.jdField_a_of_type_AndroidContentComponentCallbacks == null)
+      {
+        this.jdField_a_of_type_AndroidContentComponentCallbacks = new len(this);
+        BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("GMemoryMonitor", 1, "registerComponentCallbacks failed", localThrowable);
+    }
   }
 }
 

@@ -1,23 +1,16 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agfc
-  implements TextView.OnEditorActionListener
+final class agfc
+  implements agfh
 {
-  public agfc(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    boolean bool = false;
-    if (paramInt == 4)
-    {
-      bcst.b(null, "dc00898", "", "", "0X800A89F", "0X800A89F", 0, 0, "", "", "", "");
-      VoiceTextEditPanel.a(this.a);
-      bool = true;
-    }
-    return bool;
+    paramSessionInfo = new ProfileActivity.AllInOne(paramString, 70);
+    paramSessionInfo.h = bhlg.i(paramQQAppInterface, paramString);
+    return paramSessionInfo;
   }
 }
 

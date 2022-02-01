@@ -1,22 +1,19 @@
-public abstract interface bewp
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+
+class bewp
+  implements anwh
 {
-  public abstract void a(bewq parambewq);
+  bewp(bewo parambewo) {}
   
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract String e();
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
+      this.a.a(str);
+    }
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import aaqt;
-import atmn;
-import atos;
-import atpf;
+import aauw;
+import auei;
+import augn;
+import auha;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
@@ -11,14 +11,14 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopFileModel$16
   implements Runnable
 {
-  public TroopFileModel$16(atpf paramatpf, atos paramatos) {}
+  public TroopFileModel$16(auha paramauha, augn paramaugn) {}
   
   public void run()
   {
-    FileManagerEntity localFileManagerEntity = this.this$0.jdField_a_of_type_Atmn.a();
+    FileManagerEntity localFileManagerEntity = this.this$0.jdField_a_of_type_Auei.a();
     if (localFileManagerEntity.isZipInnerFile)
     {
-      aaqt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.zipFilePath, localFileManagerEntity.busId, atpf.a(this.this$0));
+      aauw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.zipFilePath, localFileManagerEntity.busId, auha.a(this.this$0));
       return;
     }
     TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(localFileManagerEntity.TroopUin);
@@ -28,7 +28,7 @@ public class TroopFileModel$16
       this.a.c();
       return;
     }
-    localTroopFileTransferManager.a(localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId, atpf.a(this.this$0));
+    localTroopFileTransferManager.a(localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId, auha.a(this.this$0));
   }
 }
 

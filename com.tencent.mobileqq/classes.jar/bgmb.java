@@ -1,27 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-final class bgmb
-  implements DialogInterface.OnClickListener
+class bgmb
+  extends aojs
 {
-  bgmb(Activity paramActivity) {}
+  bgmb(bglz parambglz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void h(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
+    if ((!paramBoolean) || (!paramString.equals(bglz.a(this.a))) || (bglz.a(this.a) == null) || (bglz.a(this.a).M)) {
+      return;
     }
+    if (this.a.a != null)
+    {
+      this.a.a.a(4);
+      this.a.a.c(75);
+      this.a.a.a();
+      return;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgmb
  * JD-Core Version:    0.7.0.1
  */

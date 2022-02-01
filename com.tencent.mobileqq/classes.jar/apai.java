@@ -1,36 +1,20 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class apai
+  extends aoxh
 {
-  public int a;
-  public long a;
-  public aozz a;
-  public apaa a;
-  public apab a;
-  public apac a;
-  public apah a;
-  public apaj a;
-  public apak a;
-  public ayex a;
-  public String a;
-  public int b;
-  public long b;
-  public apaa b;
-  public String b;
-  public int c = -1;
-  public long c;
-  
-  public apai()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudReqInfo{sessionId = " + this.jdField_a_of_type_JavaLangString + ", fileInfo = " + this.jdField_a_of_type_Apah + ", longitude = " + this.jdField_a_of_type_Int + ", latitude = " + this.jdField_b_of_type_Int + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.c + ", markerInfo = " + this.jdField_a_of_type_Apaj + ", objectClassifyInfo = " + this.jdField_a_of_type_Apaa + ", preOcrInfo = " + this.jdField_a_of_type_Apab + ", sceneRecogInfo = " + this.jdField_a_of_type_Apac + ", ocrInfo = " + this.jdField_a_of_type_Ayex + ", appid = " + this.jdField_b_of_type_JavaLangString + ", uin = " + this.jdField_b_of_type_Long + '}';
+    if (paramString.startsWith("mqqapi://gamecenter/install"))
+    {
+      paramQQAppInterface = new apah(paramQQAppInterface, paramContext);
+      paramQQAppInterface.a = paramString;
+      paramQQAppInterface.b = "gamecenter";
+      paramQQAppInterface.c = "install";
+      return paramQQAppInterface;
+    }
+    return null;
   }
 }
 

@@ -15,6 +15,7 @@ public final class TroopTips0x857$MessageRecallReminder
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
+  public TroopTips0x857.MessageRecallReminder.WithDrawWordingInfo msg_wording_info = new TroopTips0x857.MessageRecallReminder.WithDrawWordingInfo();
   public final PBBytesField str_reminder_content = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_group_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_op_type = PBField.initUInt32(0);
@@ -27,7 +28,7 @@ public final class TroopTips0x857$MessageRecallReminder
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56, 64 }, new String[] { "uint64_uin", "bytes_nickname", "uint32_recalled_msg_list", "str_reminder_content", "bytes_userdef", "uint32_group_type", "uint32_op_type", "uint64_admin_uin" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, null, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, MessageRecallReminder.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56, 64, 74 }, new String[] { "uint64_uin", "bytes_nickname", "uint32_recalled_msg_list", "str_reminder_content", "bytes_userdef", "uint32_group_type", "uint32_op_type", "uint64_admin_uin", "msg_wording_info" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, null, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null }, MessageRecallReminder.class);
   }
 }
 

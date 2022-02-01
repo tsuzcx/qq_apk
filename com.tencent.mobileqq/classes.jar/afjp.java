@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afjp
-  implements nnx
+  implements DialogInterface.OnClickListener
 {
-  public afjp(TroopInfoActivity paramTroopInfoActivity) {}
+  public afjp(RegisterActivity paramRegisterActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.k();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    paramDialogInterface.dismiss();
   }
 }
 

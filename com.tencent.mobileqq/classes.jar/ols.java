@@ -1,60 +1,47 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
 
 public class ols
+  extends Handler
 {
-  private static String d;
-  public float a;
-  public int a;
-  public String a;
-  public float b;
-  public String b = jdField_d_of_type_JavaLangString;
-  public float c;
-  public String c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
-  
-  static
+  public ols(ReadInJoyUploadAvatarFragment paramReadInJoyUploadAvatarFragment, Looper paramLooper)
   {
-    jdField_d_of_type_JavaLangString = "#40A0FF";
+    super(paramLooper);
   }
   
-  public ols()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = 14;
-    this.jdField_c_of_type_JavaLangString = jdField_d_of_type_JavaLangString;
-  }
-  
-  public static ols a(JSONObject paramJSONObject)
-  {
-    ols localols = new ols();
-    if (paramJSONObject == null) {
-      return localols;
+    super.handleMessage(paramMessage);
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity == null) {
+      return;
     }
-    localols.jdField_a_of_type_JavaLangString = nya.a(paramJSONObject, "buttonTextColor", jdField_d_of_type_JavaLangString);
-    localols.b = paramJSONObject.optString("buttonBorderColor");
-    localols.jdField_c_of_type_JavaLangString = paramJSONObject.optString("buttonBackgroundColor");
-    localols.jdField_a_of_type_Int = nya.a(paramJSONObject.optString("buttonTextSize"), 14);
-    localols.jdField_a_of_type_Float = nya.a(paramJSONObject.optString("buttonTextBold"), 0.0F);
-    localols.jdField_c_of_type_Float = nya.a(paramJSONObject.optString("buttonBorderSize"), 0.0F);
-    localols.jdField_d_of_type_Float = nya.a(paramJSONObject.optString("buttonCornerSize"), 0.0F);
-    localols.e = nya.a(paramJSONObject.optString("buttonHorizontalPadding"), 0.0F);
-    localols.f = nya.a(paramJSONObject.optString("buttonVerticalPadding"), 0.0F);
-    localols.g = nya.a(paramJSONObject.optString("drawablePadding"), 0.0F);
-    localols.h = nya.a(paramJSONObject.optString("iconSize"), 0.0F);
-    localols.i = nya.a(paramJSONObject.optString("buttonAlignment"), 0.0F);
-    localols.i = nya.a(paramJSONObject.optString("showBunttonLeftIconOrNot"), 0.0F);
-    localols.k = nya.a(paramJSONObject.optString("buttonWidth"), 0.0F);
-    localols.l = nya.a(paramJSONObject.optString("buttonHeight"), 0.0F);
-    localols.j = nya.a(paramJSONObject.optString("width"), 0.0F);
-    return localols;
+    Intent localIntent = localFragmentActivity.getIntent();
+    Bundle localBundle = new Bundle();
+    switch (paramMessage.what)
+    {
+    default: 
+      localBundle.putString("msg", anzj.a(2131711906));
+      localBundle.putInt("retCode", 3);
+      localIntent.putExtra("Bundle", localBundle);
+      localFragmentActivity.setResult(-1, localIntent);
+    }
+    for (;;)
+    {
+      localFragmentActivity.finish();
+      return;
+      localBundle.putString("url", (String)paramMessage.obj);
+      localBundle.putInt("retCode", 0);
+      localBundle.putString("msg", anzj.a(2131711965));
+      localIntent.putExtra("Bundle", localBundle);
+      localFragmentActivity.setResult(-1, localIntent);
+    }
   }
 }
 

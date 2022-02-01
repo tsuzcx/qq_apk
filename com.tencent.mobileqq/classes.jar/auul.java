@@ -1,26 +1,123 @@
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.view.GameSessionView;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class auul
-  implements EIPCResultCallback
+class auul
+  implements auun
 {
-  public auul(GameSessionView paramGameSessionView, Context paramContext, GameCenterSessionInfo paramGameCenterSessionInfo) {}
+  auul(auuk paramauuk) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if (paramEIPCResult.code == 0)
+    boolean bool = this.a.c();
+    QLog.i(auuk.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
+    if (bool) {}
+    for (;;)
     {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult != null)
+      return;
+      this.a.a(true);
+      Object localObject = auuk.a(this.a);
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", auuk.a(this.a));
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramEIPCResult = paramEIPCResult.getString("key_get_msg_list_url");
-        QLog.i(GameSessionView.a, 1, "[onCallback] url:" + paramEIPCResult);
-        autf.a(paramEIPCResult, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo);
+        auun localauun = (auun)((Iterator)localObject).next();
+        if (localauun != null) {
+          localauun.a(paramInt, paramBundle);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    QLog.i(auuk.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
+    if ((auuk.b(this.a) < 1) && (1 == auuk.a(this.a)))
+    {
+      QLog.i(auuk.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
+      auuk.c(this.a);
+      auuk.a(this.a, paramInt, paramString, paramBundle);
+    }
+    for (;;)
+    {
+      return;
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", auuk.a(this.a));
+      }
+      Iterator localIterator = auuk.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        auun localauun = (auun)localIterator.next();
+        if (localauun != null) {
+          localauun.a(paramInt, paramString, paramBundle);
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    QLog.i(auuk.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
+    paramBundle = new Bundle();
+    paramBundle.putInt("_CB_SID", auuk.a(this.a));
+    paramBundle.putString("_CB_URL", auuk.a(this.a));
+    paramBundle.putBundle("_CB_USERDATA", auuk.a(this.a));
+    Iterator localIterator = auuk.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      auun localauun = (auun)localIterator.next();
+      if (localauun != null) {
+        localauun.a(paramString, paramLong, paramBundle);
+      }
+    }
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", auuk.a(this.a));
+    }
+    Iterator localIterator = auuk.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      auun localauun = (auun)localIterator.next();
+      if (localauun != null) {
+        localauun.b(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(auuk.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", auuk.a(this.a));
+    }
+    Iterator localIterator = auuk.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      auun localauun = (auun)localIterator.next();
+      if (localauun != null) {
+        localauun.c(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(auuk.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", auuk.a(this.a));
+    }
+    Iterator localIterator = auuk.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      auun localauun = (auun)localIterator.next();
+      if (localauun != null) {
+        localauun.d(paramInt, paramBundle);
       }
     }
   }

@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
 class sbj
-  implements View.OnLayoutChangeListener
+  implements DialogInterface.OnDismissListener
 {
   sbj(sbi paramsbi) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoFeedsRecommendFragment.a(this.a.a).removeOnLayoutChangeListener(this);
-    VideoFeedsRecommendFragment.a(this.a.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    }
+    if (sbi.a(this.a) != null) {
+      sbi.a(this.a).a(sbi.a(this.a), sbi.b(this.a), false, false);
+    }
+    sbi.a(this.a, true);
+    sbi.b(this.a, false);
   }
 }
 

@@ -1,17 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import android.widget.TextView;
 
-public class ysy
-  implements View.OnTouchListener
+class ysy
+  implements wmh
 {
-  public ysy(EditVideoFilter paramEditVideoFilter) {}
+  ysy(ysw paramysw, TextView paramTextView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, int paramInt)
   {
-    return this.a.a.a(paramMotionEvent);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131706412) + paramInt + "%");
   }
 }
 

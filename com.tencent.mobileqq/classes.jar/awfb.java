@@ -1,28 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import com.tencent.qphone.base.util.QLog;
 
-final class awfb
-  extends Handler
+class awfb
+  extends bekg
 {
-  java.lang.ref.WeakReference<awer> a;
+  awfb(awfa paramawfa) {}
   
-  public awfb(awer paramawer)
+  protected void a(boolean paramBoolean, bekj parambekj, int paramInt, String paramString)
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramawer);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {}
-    awer localawer;
+    if ((!paramBoolean) || (parambekj == null)) {}
     do
     {
-      return;
-      localawer = (awer)this.a.get();
-    } while (localawer == null);
-    localawer.a(paramMessage);
+      do
+      {
+        return;
+        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambekj.e);
+      } while (!(parambekj instanceof WatchTogetherSession));
+      paramString = awfa.a(this.a, (WatchTogetherSession)parambekj);
+    } while (paramString == null);
+    this.a.b(parambekj.e, paramString);
+    paramInt = paramString.a;
+    this.a.a("100", paramInt, null);
   }
 }
 

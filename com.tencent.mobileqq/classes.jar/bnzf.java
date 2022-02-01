@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bnzf
-  implements DialogInterface.OnClickListener
+final class bnzf
+  implements boba
 {
-  bnzf(bnze parambnze, Runnable paramRunnable) {}
+  public void a(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, long paramLong, boal paramboal, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (paramBoolean)
+    {
+      if (paramboal.a != 5) {
+        break label25;
+      }
+      bocf.a(paramString, "actFileWyDown", paramboal, false, paramLong);
+    }
+    label25:
+    while (paramboal.a != 4) {
+      return;
+    }
+    bocf.a(paramString, "actFileWyDown", paramboal, true, paramLong);
   }
 }
 

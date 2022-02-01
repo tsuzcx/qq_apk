@@ -1,16 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axya
-  extends axxt
+  implements View.OnClickListener
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
+  public axya(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public axya(axxz paramaxxz)
+  public void onClick(View paramView)
   {
-    super(paramaxxz);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

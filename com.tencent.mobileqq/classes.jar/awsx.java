@@ -1,36 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awsx
-  extends awtf
+class awsx
+  implements View.OnClickListener
 {
-  private final MultiAIOBaseViewPager a;
+  awsx(awsu paramawsu, awsk paramawsk) {}
   
-  public awsx(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
+  public void onClick(View paramView)
   {
-    this.a = paramMultiAIOBaseViewPager;
-  }
-  
-  public int a(View paramView1, View paramView2)
-  {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
+    if (this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk.a()) {}
+    for (;;)
     {
-      if (paramView1.a) {
-        return 1;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!paramView.isSelected())
+      {
+        this.jdField_a_of_type_Awsu.a(paramView);
+        this.jdField_a_of_type_Awsu.jdField_a_of_type_Int = 1;
+        awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk, Integer.valueOf(1));
+        bdll.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 2, 0, "0", "0", "0", "");
       }
-      return -1;
     }
-    int i = this.a.a();
-    if (i == paramView1.b) {
-      return 1;
-    }
-    if (i == paramView2.b) {
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
   }
 }
 

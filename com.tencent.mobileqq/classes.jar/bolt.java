@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public final class bolt
-  implements Parcelable.Creator<FilterCategory>
+class bolt
+  implements Observer<Boolean>
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  bolt(boll paramboll) {}
   
-  public FilterCategory[] a(int paramInt)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return new FilterCategory[paramInt];
+    if (paramBoolean == null) {}
+    do
+    {
+      return;
+      if (boll.a(this.a).a())
+      {
+        this.a.a.setVisibility(8);
+        return;
+      }
+      if (boll.a(this.a).b())
+      {
+        if (!boll.a(this.a))
+        {
+          AEBottomListScrollView localAEBottomListScrollView = this.a.a;
+          if (paramBoolean.booleanValue()) {}
+          for (int i = 0;; i = 4)
+          {
+            localAEBottomListScrollView.setVisibility(i);
+            return;
+          }
+        }
+        this.a.a.setVisibility(8);
+        return;
+      }
+    } while (!boll.a(this.a).c());
+    this.a.a.setVisibility(8);
   }
 }
 

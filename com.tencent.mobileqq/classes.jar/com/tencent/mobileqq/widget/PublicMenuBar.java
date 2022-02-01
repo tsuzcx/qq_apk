@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aaum;
+import aayp;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import biam;
+import bjbk;
 import com.tencent.biz.ui.CustomMenuBar;
-import nmi;
+import nod;
 
 public class PublicMenuBar
   extends CustomMenuBar
@@ -22,15 +22,15 @@ public class PublicMenuBar
     super(paramContext, paramAttributeSet);
   }
   
-  public View a(aaum paramaaum, int paramInt)
+  public View a(aayp paramaayp, int paramInt)
   {
-    String str = paramaaum.b();
-    Drawable localDrawable = paramaaum.a();
+    String str = paramaayp.b();
+    Drawable localDrawable = paramaayp.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131370653);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131370644);
-    TextView localTextView = (TextView)localView.findViewById(2131370656);
-    if ((localImageView1 != null) && (paramaaum.a() > 0))
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131370757);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131370748);
+    TextView localTextView = (TextView)localView.findViewById(2131370760);
+    if ((localImageView1 != null) && (paramaayp.a() > 0))
     {
       localImageView1.setVisibility(0);
       if (localDrawable == null) {
@@ -41,19 +41,19 @@ public class PublicMenuBar
       if (str == null) {
         break label219;
       }
-      if (nmi.a(str) <= 10) {
+      if (nod.a(str) <= 10) {
         break label209;
       }
-      localTextView.setText(nmi.a(str, 10, "..."));
+      localTextView.setText(nod.a(str, 10, "..."));
     }
     for (;;)
     {
-      localView.setOnClickListener(new biam(this, paramaaum.c(), paramaaum.a()));
+      localView.setOnClickListener(new bjbk(this, paramaayp.c(), paramaayp.a()));
       localView.setFocusable(true);
       localView.setClickable(true);
-      paramaaum = new LinearLayout.LayoutParams(-1, -1, 1.0F);
-      paramaaum.gravity = 17;
-      localView.setLayoutParams(paramaaum);
+      paramaayp = new LinearLayout.LayoutParams(-1, -1, 1.0F);
+      paramaayp.gravity = 17;
+      localView.setLayoutParams(paramaayp);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       return localView;
       if (localImageView1 == null) {

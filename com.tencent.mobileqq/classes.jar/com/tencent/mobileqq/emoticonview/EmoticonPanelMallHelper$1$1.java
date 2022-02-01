@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arya;
+import asno;
 
 class EmoticonPanelMallHelper$1$1
   implements Runnable

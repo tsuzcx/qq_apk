@@ -1,26 +1,22 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Calendar;
 
-public class bgxx
-  extends bgya
+class bgxx
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 20;
+  bgxx(bgxv parambgxv, bgxz parambgxz) {}
   
-  public bgxx()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 100;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.a)) {
-      return "";
+    if ((bgxv.a(this.jdField_a_of_type_Bgxv) != null) && (bgxv.a(this.jdField_a_of_type_Bgxv).isShowing())) {
+      bgxv.a(this.jdField_a_of_type_Bgxv).dismiss();
     }
-    return this.a;
+    if ((this.jdField_a_of_type_Bgxz != null) && (bgxv.a(this.jdField_a_of_type_Bgxv) != null)) {
+      this.jdField_a_of_type_Bgxz.a(bgxv.a(this.jdField_a_of_type_Bgxv).getTimeInMillis());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,15 @@
 package cooperation.qzone.plugin;
 
-import bmdk;
+import bnem;
 
 public class QZonePluginDownloadPortConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadPortConfig$1(bmdk parambmdk) {}
+  public QZonePluginDownloadPortConfig$1(bnem parambnem) {}
   
   public void run()
   {
-    bmdk.a(this.this$0);
+    bnem.a(this.this$0);
   }
 }
 

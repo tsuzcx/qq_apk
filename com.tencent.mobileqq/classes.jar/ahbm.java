@@ -1,9 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
 
-abstract interface ahbm
+public abstract interface ahbm
 {
-  public abstract int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage);
+  public abstract void a();
+  
+  public abstract void a(Bundle paramBundle);
 }
 
 

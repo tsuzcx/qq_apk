@@ -1,16 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
 
-class qqv
-  implements bkln
+public class qqv
+  implements Animation.AnimationListener
 {
-  qqv(qqt paramqqt) {}
+  public qqv(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    qqt.a(this.a, (pxk)this.a.a, paramInt, paramArrayList, paramObject);
+    this.a.a.post(new ComponentSocialOperation.1.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,50 +1,29 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nsq
-  extends TopGestureLayout.TopGestureDetector
+final class nsq
+  implements BusinessObserver
 {
-  public nsq(ReadInJoyNewFeedsTopGestureLayout paramReadInJoyNewFeedsTopGestureLayout, Context paramContext)
-  {
-    super(paramReadInJoyNewFeedsTopGestureLayout, paramContext);
-  }
+  nsq(QQAppInterface paramQQAppInterface, boolean paramBoolean, aoeg paramaoeg) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
     }
-    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    int i;
-    if (this.a.hasGestureFlag(1)) {
-      if (paramMotionEvent1.getX() <= 0.2133333333333334D * bgln.i())
-      {
-        i = 1;
-        if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
-        {
-          this.a.setGestureFlag(-1);
-          if (!ReadInJoyNewFeedsTopGestureLayout.a(this.a)) {
-            this.a.mOnFlingGesture.flingLToR();
-          }
-        }
-      }
-    }
-    for (;;)
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = nsp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
     {
-      return false;
-      i = 0;
-      break;
-      if ((this.a.hasGestureFlag(2)) && (paramFloat1 > 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
-      {
-        this.a.setGestureFlag(-1);
-        if (!ReadInJoyNewFeedsTopGestureLayout.b(this.a)) {
-          this.a.mOnFlingGesture.flingRToL();
-        }
+      if (this.jdField_a_of_type_Aoeg != null) {
+        this.jdField_a_of_type_Aoeg.onDynamicListGet(paramBoolean, paramInt);
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      }
+      return;
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import aujy;
-import aukw;
+import avbx;
+import avcw;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
@@ -12,8 +12,8 @@ public class ForwardSdkShareOption$2
   
   public void run()
   {
-    aukw.a("KEY_STAGE_2_UPLOAD_IMAGE");
-    StructMsgForImageShare.sendAndUploadImageShare(this.this$0.a, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0, new aujy(this), true);
+    avcw.a("KEY_STAGE_2_UPLOAD_IMAGE");
+    StructMsgForImageShare.sendAndUploadImageShare(this.this$0.a, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0, new avbx(this), true);
   }
 }
 

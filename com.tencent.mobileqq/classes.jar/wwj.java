@@ -1,58 +1,67 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
-public class wwj
+class wwj
+  extends wjd
 {
-  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  wwj(wwh paramwwh) {}
   
-  @Nullable
-  public static wzp a(String paramString, List<wzp> paramList)
+  public void a(byte paramByte)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    boolean bool = true;
+    this.a.a = paramByte;
+    wwh.c(this.a, true);
+    wwh localwwh;
+    if (paramByte != -1)
     {
-      wzp localwzp = (wzp)paramList.next();
-      if (paramString.equals(localwzp.a)) {
-        return localwzp;
+      if (paramByte == 0) {
+        wwh.b(this.a);
+      }
+      localwwh = this.a;
+      if (paramByte != 2) {
+        break label88;
       }
     }
-    return null;
+    for (;;)
+    {
+      localwwh.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
+      }
+      return;
+      label88:
+      bool = false;
+    }
   }
   
-  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  public void b()
   {
-    yqp.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
-    if (paramBoolean)
+    wta localwta = (wta)wth.a(10);
+    this.a.b = ((Boolean)localwta.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    }
+    wwh.a(this.a);
+    wwh.a(this.a, true);
+    wwh.a(this.a, true);
+    wwh.b(this.a);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    if (!wwh.a(this.a))
     {
-      localObject = paramList.iterator();
-      while (((Iterator)localObject).hasNext())
+      if (paramBoolean)
       {
-        String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)a.get(str);
-        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
-        {
-          ((Iterator)localObject).remove();
-          yqp.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
-        }
-        else
-        {
-          a.put(str, Long.valueOf(System.currentTimeMillis()));
-        }
+        this.a.c = this.a.a();
+        wwh.a(this.a);
+        wwh.a(this.a, true);
       }
+      wwh.b(this.a, true);
+      wwh.b(this.a);
     }
-    if (paramList.size() == 0) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
     }
-    yqp.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
-    Object localObject = new wzo(paramList);
-    wlb.a().a((wlf)localObject, new wwk(paramList));
   }
 }
 

@@ -1,16 +1,40 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-final class afux
-  implements afvp
+public class afux
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afux(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 76);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troop_uin", this.a.b);
+    List localList = (List)this.a.jdField_a_of_type_Afwg.a.get(TroopMemberListActivity.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      localArrayList.add(((afwe)localList.get(i)).a);
+      i += 1;
+    }
+    ((Intent)localObject).putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
+    localObject = ((TroopManager)this.a.app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
+    bhju.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bhju.a((TroopMemberInfo)localObject) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

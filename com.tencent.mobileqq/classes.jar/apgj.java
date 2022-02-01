@@ -1,32 +1,66 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
 
 public class apgj
-  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public apgj(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
+  static apgl a;
+  public static String a;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (paramBoolean)
+    jdField_a_of_type_JavaLangString = "AREngine_ARPromotion";
+  }
+  
+  public static apgc a(AppInterface paramAppInterface)
+  {
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      return (apgc)((QQAppInterface)paramAppInterface).getManager(279);
+    }
+    if (AudioHelper.e()) {
+      throw new IllegalArgumentException(anzj.a(2131707397));
+    }
+    return null;
+  }
+  
+  public static apgl a(AppInterface paramAppInterface)
+  {
+    if (((paramAppInterface instanceof QQAppInterface)) && (AudioHelper.e())) {
+      throw new IllegalArgumentException(anzj.a(2131707395));
+    }
+    if (jdField_a_of_type_Apgl == null) {}
+    try
     {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      paramBundle.putExtra("filePath", this.b);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      if (jdField_a_of_type_Apgl == null) {
+        jdField_a_of_type_Apgl = new apgl(paramAppInterface);
+      }
+      return jdField_a_of_type_Apgl;
+    }
+    finally {}
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      a(paramAppInterface).a(paramAppInterface);
+      BusinessCommonConfig.getInstance(paramAppInterface).doOnReconnect();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
-    }
-    ((apep)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Apec).b(false);
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "doOnReconnect, 不是主进程");
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong < AudioHelper.a();
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    long l = AudioHelper.a();
+    return (paramLong1 < l) && (paramLong2 > l);
   }
 }
 

@@ -1,46 +1,67 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbk
+  extends arac<arbl>
 {
-  private boolean a;
-  
-  public static arbk a(aqlg[] paramArrayOfaqlg)
+  public static arbl a()
   {
-    boolean bool = true;
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0))
-    {
-      paramArrayOfaqlg = null;
-      return paramArrayOfaqlg;
+    return (arbl)aran.a().a(655);
+  }
+  
+  @NonNull
+  public arbl a(int paramInt)
+  {
+    return new arbl();
+  }
+  
+  @Nullable
+  public arbl a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arbl.a(paramArrayOfaraj);
     }
-    arbk localarbk = new arbk();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[0].a);
-        paramArrayOfaqlg = localarbk;
-        if (!localJSONObject.has("SendAsTxDoc")) {
-          break;
-        }
-        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
-        {
-          localarbk.a = bool;
-          return localarbk;
-        }
-      }
-      catch (JSONException paramArrayOfaqlg)
-      {
-        paramArrayOfaqlg.printStackTrace();
-        return localarbk;
-      }
-      bool = false;
+    return null;
+  }
+  
+  public void a(arbl paramarbl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIORelatedEmotionConfProcessor", 2, "AIORelatedEmotionConfProcessor onUpdate");
     }
   }
   
-  public boolean a()
+  public Class<arbl> clazz()
   {
-    return this.a;
+    return arbl.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 655;
   }
 }
 

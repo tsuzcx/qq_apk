@@ -1,153 +1,244 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.viola.commons.IReportDelegate;
+import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.viola.utils.ViolaUtils;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class tdd
-  implements URLDrawable.URLDrawableListener, tdh
+public class tdd
+  implements IReportDelegate
 {
-  private static tdf jdField_a_of_type_Tdf = new tdf(null);
-  private ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  public static String a;
+  public HashMap<String, String> a;
   
-  tdd(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
+  static
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView = paramReadInJoyCapsuleView;
+    jdField_a_of_type_JavaLangString = "ViolaReportDelegate";
   }
   
-  private void a(boolean paramBoolean)
+  public tdd()
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = tcx.a();
-    localURLDrawableOptions.mFailedDrawable = tcx.a();
-    localURLDrawableOptions.mPlayGifImage = paramBoolean;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  private JSONObject a(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
     try
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      return;
+      localJSONObject.put(ViolaEnvironment.COMMON_UIN, ozs.a());
+      localJSONObject.put(ViolaEnvironment.COMMON_NET, Integer.toString(ozs.a(BaseApplication.getContext())));
+      localJSONObject.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bhlo.e());
+      localJSONObject.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.4.5");
+      localJSONObject.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+      String str2 = ViolaEnvironment.COMMON_BIZ;
+      if (TextUtils.isEmpty(str1)) {}
+      for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + nmj.a(str1))
+      {
+        localJSONObject.put(str2, URLEncoder.encode(str1));
+        localJSONObject.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+        localJSONObject.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(tbz.a));
+        if (!TextUtils.isEmpty(paramString)) {
+          localJSONObject.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+        }
+        localJSONObject.put(ViolaEnvironment.COMMON_RELEASE, "1");
+        return localJSONObject;
+      }
+      return null;
     }
-    catch (MalformedURLException localMalformedURLException)
+    catch (Exception paramString)
     {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "fail to set background", localMalformedURLException);
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
-    int i = tcx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, false);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    a(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setColorFilter(tcx.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(-1);
-    int i = tcx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, true);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-  }
-  
-  private void e()
-  {
-    a(true);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "initCommonDataJson Exception:" + paramString.getMessage());
       }
     }
-  }
-  
-  public ChannelCoverInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
   }
   
   public void a()
   {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onPlayOnce: pause the animation - " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+    ThreadManager.post(new ViolaReportDelegate.2(this), 8, null, true);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ThreadManager.post(new ViolaReportDelegate.1(this, paramString, paramInt), 8, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) && (paramString2.equals(this.jdField_a_of_type_JavaUtilHashMap.get(paramString1)))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+    }
+  }
+  
+  public void addReportData(String paramString1, String paramString2)
+  {
+    if ((ViolaEnvironment.KEY_SO.equals(paramString1)) && (ViolaEnvironment.SO_START.equals(paramString2)))
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-      if ((localDrawable instanceof GifDrawable))
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 2)
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
-        ((GifDrawable)localDrawable).getImage().reset();
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
-        a(false);
-        QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public void dropFrameMonitor(int paramInt, String paramString)
+  {
+    if (paramInt == 0)
+    {
+      adlb.a().a(paramString, false);
+      return;
+    }
+    adlb.a().a(paramString);
+  }
+  
+  public HashMap<String, String> getBaseReportData(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    String str2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+      str2 = ViolaEnvironment.COMMON_BIZ;
+      if (!TextUtils.isEmpty(str1)) {
+        break label168;
+      }
+    }
+    label168:
+    for (String str1 = paramString;; str1 = paramString + "&offlineVersion=" + nmj.a(str1))
+    {
+      localHashMap.put(str2, URLEncoder.encode(str1));
+      localHashMap.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+      localHashMap.put(ViolaEnvironment.COMMON_UIN, ozs.a());
+      localHashMap.put(ViolaEnvironment.COMMON_NET, Integer.toString(ozs.a(BaseApplication.getContext())));
+      localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bhlo.e());
+      localHashMap.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.4.5");
+      localHashMap.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+      localHashMap.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+      localHashMap.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(tbz.a));
+      localHashMap.put(ViolaEnvironment.COMMON_RELEASE, "1");
+      localHashMap.put(ViolaEnvironment.COMMON_APPLICATION, "1");
+      return localHashMap;
+    }
+  }
+  
+  public void reportData(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(ViolaEnvironment.COMMON_UIN)) {
+        this.jdField_a_of_type_JavaUtilHashMap.putAll(getBaseReportData(paramString));
+      }
+      paramString = ViolaUtils.copyMap(this.jdField_a_of_type_JavaUtilHashMap);
+      if (!paramString.isEmpty()) {
+        ozs.a(ozs.a(), true, paramString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
+  
+  public void reportHttpData(HashMap<String, String> paramHashMap, String paramString)
+  {
+    paramHashMap.putAll(getBaseReportData(paramString));
+    ozs.b(ozs.a(), true, paramHashMap);
+  }
+  
+  public void reportJsError(boolean paramBoolean, int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("error_code", paramInt);
+      localJSONObject.put("error_msg", paramString);
+      localJSONObject.put("is_renderJs", paramBoolean);
+      ocd.a(null, null, "0X800AC69", "0X800AC69", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
     }
   }
   
-  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
+  public void reportNVProcess(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new tde(this, paramOnClickListener));
-    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bmqa.c(paramChannelCoverInfo.mChannelCoverId)))
+    try
     {
-      c();
+      paramString3 = a(paramString3);
+      if (paramString3 != null)
+      {
+        paramString3.put(paramString1, paramString2);
+        ozs.a(ozs.a(), true, paramString3);
+      }
       return;
     }
-    e();
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "reportPageProcessNew Exception:" + paramString1.getMessage());
+    }
   }
   
-  public boolean a()
+  public void reportNativeVueError(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Boolean;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("error", paramString1);
+      localJSONObject.put("url", paramString2);
+      ocd.a(null, null, "0X800B08D", "0X800B08D", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "reportNativeVueError: " + paramString1.getMessage());
+      }
+    }
   }
   
-  public void b()
+  public void reportPageProcess(String paramString1, String paramString2, String paramString3)
   {
-    jdField_a_of_type_Tdf.a();
+    try
+    {
+      paramString3 = a(paramString3);
+      if (paramString3 != null)
+      {
+        paramString3.put(paramString1, paramString2);
+        ozs.a(ozs.a(), true, paramString3);
+        a();
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "reportPageProcessNew Exception:" + paramString1.getMessage());
+    }
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void reportRunningData(HashMap<String, String> paramHashMap, String paramString)
   {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadCanceled: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadFialed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    d();
-    AbstractGifImage.resumeAll();
-    jdField_a_of_type_Tdf.a(this, paramURLDrawable);
+    paramHashMap.putAll(getBaseReportData(paramString));
+    ozs.c(ozs.a(), true, paramHashMap);
   }
 }
 

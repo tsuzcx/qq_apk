@@ -1,21 +1,14 @@
-import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.widget.ImageView;
 
 public class bhym
-  extends URLDrawableDownListener.Adapter
 {
-  public bhym(NewStyleDropdownView paramNewStyleDropdownView) {}
+  public ImageView a;
+  public String a;
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public bhym(String paramString, ImageView paramImageView)
   {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a(null, (ApngDrawable)paramView);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
   }
 }
 

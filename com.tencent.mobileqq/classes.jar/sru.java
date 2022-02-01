@@ -1,216 +1,124 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import android.util.StateSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import org.json.JSONObject;
 
 public class sru
-  extends BaseAdapter
-  implements View.OnClickListener
 {
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  private srw jdField_a_of_type_Srw;
-  public int b = -13879999;
-  public int c = -723466;
-  
-  public sru(Context paramContext)
+  public static void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, FastWebActivity paramFastWebActivity, JSONObject paramJSONObject, List<BaseData> paramList, ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_Int = -9387998;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private List<ChannelCoverInfo> a(List<ChannelCoverInfo> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList != null)
-    {
-      localObject = paramList;
-      if (paramList.size() > 28) {
-        localObject = paramList.subList(0, 28);
-      }
-    }
-    return localObject;
-  }
-  
-  private void a(View paramView, int paramInt)
-  {
-    GradientDrawable localGradientDrawable1 = new GradientDrawable();
-    localGradientDrawable1.setShape(0);
-    localGradientDrawable1.setCornerRadius(bgtn.a(17.0F));
-    localGradientDrawable1.setColor(-723466);
-    localGradientDrawable1.setStroke(1, paramInt);
-    GradientDrawable localGradientDrawable2 = new GradientDrawable();
-    localGradientDrawable2.setShape(0);
-    localGradientDrawable2.setCornerRadius(bgtn.a(17.0F));
-    localGradientDrawable2.setColor(-2697514);
-    localGradientDrawable2.setStroke(1, paramInt);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
-    localStateListDrawable.addState(StateSet.WILD_CARD, localGradientDrawable1);
-    paramView.setBackgroundDrawable(localStateListDrawable);
-  }
-  
-  public void a(List<ChannelCoverInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(a(paramList));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNavigationAdapter", 2, new Object[] { "mChannels size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void a(srw paramsrw)
-  {
-    this.jdField_a_of_type_Srw = paramsrw;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    int i;
-    if (paramView == null)
-    {
-      paramView = new srx(this, null);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560217, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364961);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378227));
-      localView.setTag(paramView);
-      localObject = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (localObject != null)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ChannelCoverInfo)localObject).mChannelCoverName);
-        int j = 5;
-        i = 12;
-        if (bgln.m() < 1080L)
-        {
-          j = 4;
-          i = 11;
-        }
-        if (paramView.jdField_a_of_type_AndroidWidgetTextView.length() < j) {
-          break label306;
-        }
-      }
-    }
-    for (;;)
-    {
-      float f = anll.a() / 16.0F;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(i / f);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(((ChannelCoverInfo)localObject).mFontColor);
-      a(paramView.jdField_a_of_type_AndroidViewView, this.c);
-      if (!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mIconUrl)) {}
-      for (;;)
-      {
-        if (!((ChannelCoverInfo)localObject).isReport)
-        {
-          ((ChannelCoverInfo)localObject).isReport = true;
-          ovs.a("0X8007F01", (ChannelCoverInfo)localObject, ovs.b);
-        }
-        paramView.jdField_a_of_type_AndroidViewView.setTag(localObject);
-        paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return localView;
-        localObject = (srx)paramView.getTag();
-        localView = paramView;
-        paramView = (View)localObject;
-        break;
-        paramView.jdField_a_of_type_AndroidViewView.setPadding(bgtn.a(8.0F), 0, bgtn.a(8.0F), 0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      }
-      label306:
-      i = 14;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramFastWebActivity == null) || (paramJSONObject == null)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNavigationAdapter", 2, "click container");
-    }
-    ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)paramView.getTag();
-    Object localObject;
-    if (localChannelCoverInfo != null)
+    try
     {
-      if (!TextUtils.isEmpty(localChannelCoverInfo.mChannelJumpUrl)) {
-        break label261;
+      paramJSONObject = paramJSONObject.getString("articleImageUrl");
+      if (paramArrayList.isEmpty())
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          Object localObject = (BaseData)paramList.next();
+          boolean bool = localObject instanceof ProteusItemData;
+          if (bool) {
+            try
+            {
+              localObject = (ProteusItemData)localObject;
+              if (((ProteusItemData)localObject).u == 2) {
+                paramArrayList.add(ozs.f(((ProteusItemData)localObject).c.getString("articleImageUrl")));
+              }
+            }
+            catch (Exception localException)
+            {
+              QLog.d("FastWebImageItemUtils", 1, "handlerImageClick error!!! msg=" + localException);
+            }
+          }
+        }
       }
-      localObject = new HashMap();
-      ((HashMap)localObject).put("param_key_ariticle_id", Long.valueOf(localChannelCoverInfo.mArticleId));
-      ((HashMap)localObject).put("param_key_channel_cover_style", Integer.valueOf(localChannelCoverInfo.mChannelCoverStyle));
-      ohp.a(this.jdField_a_of_type_AndroidContentContext, localChannelCoverInfo.mChannelCoverId, localChannelCoverInfo.mChannelCoverName, localChannelCoverInfo.mChannelType, 4, (Map)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNavigationAdapter", 2, "launchChannelActivity info.mArticleId:" + localChannelCoverInfo.mArticleId + " info.mChannelCoverStyle: " + localChannelCoverInfo.mChannelCoverStyle + " info.mChannelCoverId:" + localChannelCoverInfo.mChannelCoverId + " info.mChannelCoverName:" + localChannelCoverInfo.mChannelCoverName + " info.mChannelType: " + localChannelCoverInfo.mChannelType);
-      }
+      bghf.a(paramFastWebActivity, paramArrayList.indexOf(ozs.f(paramJSONObject)), paramArrayList, null, null, false, true, "4", 1000, null, null, null, null, "", true);
     }
-    label261:
-    label360:
+    catch (Exception paramArticleInfo)
+    {
+      QLog.d("FastWebImageItemUtils", 1, "handlerImageClick error! msg=" + paramArticleInfo);
+      return;
+    }
+    if (paramFastWebArticleInfo.c()) {}
+    for (paramFastWebArticleInfo = "2";; paramFastWebArticleInfo = "1")
+    {
+      ssy.a(paramArticleInfo, "0X8008996", ozs.a(paramFastWebActivity, paramArticleInfo, 0, paramFastWebArticleInfo).toString());
+      return;
+    }
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return paramInt < 100;
+  }
+  
+  public static boolean a(JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  {
+    int j;
     for (;;)
     {
-      ovs.a("0X8007F02", localChannelCoverInfo, ovs.b);
-      if ((this.jdField_a_of_type_Srw == null) || (!(paramView.getTag() instanceof ChannelCoverInfo))) {
-        break;
-      }
-      this.jdField_a_of_type_Srw.a((ChannelCoverInfo)paramView.getTag());
-      break;
-      if (tlg.b(localChannelCoverInfo.mChannelJumpUrl)) {
-        tlg.a(this.jdField_a_of_type_AndroidContentContext, "", localChannelCoverInfo.mChannelJumpUrl, null);
-      }
-      for (;;)
+      try
       {
-        if (!QLog.isColorLevel()) {
-          break label360;
+        i = FastWebActivity.a(BaseApplicationImpl.getContext());
+        j = Integer.valueOf(paramString1).intValue();
+        k = Integer.valueOf(paramString2).intValue();
+        if (a(j)) {
+          i = Utils.dp2px(j);
         }
-        QLog.d("ReadInJoyNavigationAdapter", 2, "info.mChannelJumpUrl:" + localChannelCoverInfo.mChannelJumpUrl);
-        break;
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", localChannelCoverInfo.mChannelJumpUrl);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
       }
+      catch (Exception paramJSONObject)
+      {
+        int k;
+        int m;
+        int i = 0;
+        j = 0;
+        QLog.d("FastWebImageItemUtils", 1, "insertDynamicData error! msg=" + paramJSONObject);
+        continue;
+      }
+      try
+      {
+        j = i * k / j;
+        if ((j <= 0) || (i <= 0)) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        j = 0;
+        continue;
+      }
+      try
+      {
+        paramJSONObject.put("style_ID", "ReadInjoy_article_image_cell");
+        paramJSONObject.put("imageHeight", j);
+        paramJSONObject.put("imageWidth", i);
+        paramJSONObject.put("articleImageUrl", paramString3);
+        paramJSONObject.put("lineup", "0");
+        QLog.d("FastWebImageItemUtils", 1, "insertDynamicData image w,h error! w=" + i + "  h=" + j);
+        if ((!TextUtils.isEmpty(paramString3)) && (j > 0) && (i > 0)) {
+          break label227;
+        }
+        return false;
+      }
+      catch (Exception paramJSONObject)
+      {
+        continue;
+      }
+      m = Utils.dp2px(15.0D);
+      i -= m * 2;
     }
+    label227:
+    return true;
   }
 }
 

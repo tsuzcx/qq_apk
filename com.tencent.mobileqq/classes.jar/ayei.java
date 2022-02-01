@@ -1,64 +1,33 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
+import java.io.InputStream;
 
 public class ayei
-  extends RecyclerView.ItemDecoration
 {
-  private int a;
-  
-  public ayei(int paramInt)
+  public static byte[] a(InputStream paramInputStream, int paramInt)
   {
-    this.a = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int j = 0;
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof aycp)))
-    {
-      int k = ((aycp)paramView.getTag()).a;
-      int i = -1;
-      if ((paramView.getLayoutParams() instanceof StaggeredGridLayoutManager.LayoutParams)) {
-        i = ((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex();
-      }
-      if (i >= 0)
-      {
-        if (i % 2 == 0)
-        {
-          paramRect.left = this.a;
-          if (k == 2) {}
-          for (i = this.a;; i = 0)
-          {
-            paramRect.top = i;
-            paramRect.right = (this.a / 2);
-            paramRect.bottom = this.a;
-            return;
-          }
-        }
-        paramRect.left = (this.a / 2);
-        i = j;
-        if (k == 3) {
-          i = this.a;
-        }
-        paramRect.top = i;
-        paramRect.right = this.a;
-        paramRect.bottom = this.a;
-        return;
-      }
-      paramRect.left = (this.a / 2);
-      paramRect.top = 0;
-      paramRect.right = (this.a / 2);
-      paramRect.bottom = this.a;
-      return;
+    Object localObject;
+    if (paramInt <= 0) {
+      localObject = null;
     }
-    paramRect.left = 0;
-    paramRect.top = 0;
-    paramRect.right = 0;
-    paramRect.bottom = 0;
+    for (;;)
+    {
+      return localObject;
+      int i = 0;
+      byte[] arrayOfByte = new byte[paramInt];
+      localObject = arrayOfByte;
+      if (i >= paramInt) {
+        continue;
+      }
+      try
+      {
+        int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
+        localObject = arrayOfByte;
+        if (j <= 0) {
+          continue;
+        }
+        i += j;
+      }
+      finally {}
+    }
   }
 }
 

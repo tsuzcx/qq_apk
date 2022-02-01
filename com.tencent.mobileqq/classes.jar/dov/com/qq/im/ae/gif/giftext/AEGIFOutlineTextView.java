@@ -13,7 +13,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import bnqg;
+import bors;
 
 public class AEGIFOutlineTextView
   extends View
@@ -28,9 +28,10 @@ public class AEGIFOutlineTextView
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_b_of_type_JavaLangString = "#00FFFFFF";
+  private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean = true;
-  private float c;
+  private float jdField_c_of_type_Float;
+  private String jdField_c_of_type_JavaLangString = "#00FFFFFF";
   
   public AEGIFOutlineTextView(Context paramContext)
   {
@@ -45,6 +46,13 @@ public class AEGIFOutlineTextView
   public AEGIFOutlineTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+  }
+  
+  private void a()
+  {
+    Typeface localTypeface = bors.a().a(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
+    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
   }
   
   private void a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, Paint paramPaint)
@@ -80,7 +88,7 @@ public class AEGIFOutlineTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    setFontStyle();
+    a();
     this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_AndroidTextTextPaint.getTextSize());
     this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
     this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_a_of_type_Int);
@@ -88,7 +96,7 @@ public class AEGIFOutlineTextView
     this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
     if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, Color.parseColor(this.jdField_b_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, Color.parseColor(this.jdField_c_of_type_JavaLangString));
     }
     float f1;
     int i;
@@ -145,11 +153,9 @@ public class AEGIFOutlineTextView
     }
   }
   
-  public void setFontStyle()
+  public void setFontId(String paramString)
   {
-    Typeface localTypeface = bnqg.a().a("jianqiaohei.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
   public void setOutlineColor(String paramString)
@@ -171,8 +177,8 @@ public class AEGIFOutlineTextView
   {
     this.jdField_a_of_type_Float = paramFloat1;
     this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.jdField_c_of_type_JavaLangString = paramString;
   }
   
   public void setStroke(boolean paramBoolean)

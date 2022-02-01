@@ -1,33 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahsk
-  implements bkhw
+public class ahsk
+  extends AnimatorListenerAdapter
 {
-  ahsk(ahsd paramahsd, bkho parambkho, AIOImageData paramAIOImageData, File paramFile) {}
+  public ahsk(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
       return;
     }
-    paramView = this.jdField_a_of_type_Bkho.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
-    if (this.jdField_a_of_type_Ahsd.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Bkho.dismiss();
+    this.a.b();
   }
 }
 

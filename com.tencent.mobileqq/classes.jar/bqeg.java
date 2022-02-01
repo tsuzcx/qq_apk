@@ -1,6 +1,15 @@
-public abstract interface bqeg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+
+class bqeg
+  implements DialogInterface.OnShowListener
 {
-  public abstract void a();
+  bqeg(bqeb parambqeb) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a(46);
+  }
 }
 
 

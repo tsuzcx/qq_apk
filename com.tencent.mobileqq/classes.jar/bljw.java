@@ -1,104 +1,142 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AuthorizationItem;
 import java.util.List;
 
 public class bljw
+  extends blir
+  implements View.OnClickListener
 {
-  private static bljw jdField_a_of_type_Bljw;
-  private ArrayList<bljx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
+  private acwl jdField_a_of_type_Acwl;
+  private final acwm jdField_a_of_type_Acwm;
+  private final List<bljx> jdField_a_of_type_JavaUtilList;
   
-  public static bljw a()
+  public bljw(Activity paramActivity, acwm paramacwm, acwl paramacwl, List<bljx> paramList)
   {
-    if (jdField_a_of_type_Bljw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bljw == null) {
-        jdField_a_of_type_Bljw = new bljw();
-      }
-      return jdField_a_of_type_Bljw;
-    }
-    finally {}
+    super(paramActivity);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Acwm = paramacwm;
+    this.jdField_a_of_type_Acwl = paramacwl;
+    f();
   }
   
-  public bljx a(long paramLong)
+  private AuthorizationItem a(bljx parambljx, int paramInt, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    return new AuthorizationItem(getContext(), paramString, parambljx, paramInt);
+  }
+  
+  private void f()
+  {
+    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559080, null);
+    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131368865);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int j = 0;
+      if (j < k)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
-        }
-        return null;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bljx localbljx = (bljx)localIterator.next();
-        if (localbljx.jdField_a_of_type_Long == paramLong)
+        int i;
+        if ((bljx)this.jdField_a_of_type_JavaUtilList.get(j) != AuthorizationItem.d)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localbljx);
-          if (QLog.isColorLevel()) {
-            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          if (k != 1) {
+            break label145;
           }
-          return localbljx;
+          i = 3;
+        }
+        for (;;)
+        {
+          localLinearLayout2.addView(a((bljx)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_Acwm.a(((bljx)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
+          j += 1;
+          break;
+          label145:
+          if (k == 2)
+          {
+            if (j == 0) {
+              i = 0;
+            } else {
+              i = 2;
+            }
+          }
+          else if (j == 0) {
+            i = 0;
+          } else if (j < k - 1) {
+            i = 1;
+          } else {
+            i = 2;
+          }
         }
       }
     }
-    return null;
+    a(localLinearLayout1);
+    localLinearLayout1.findViewById(2131363744).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131363768).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131369251).setOnClickListener(this);
   }
   
-  public List<Bundle> a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    Parcel localParcel = Parcel.obtain();
-    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-    localParcel.setDataPosition(0);
-    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    return paramArrayOfByte.getParcelableArrayList("pendingData");
-  }
-  
-  public boolean a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    switch (paramView.getId())
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-      return bool;
     }
-  }
-  
-  public byte[] a()
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        return null;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionSheet", 2, "onClick to show authorize description");
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        localArrayList1.add(((bljx)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
+      Object localObject1 = new bljt(getContext());
+      Object localObject2 = ((bljt)localObject1).getWindow();
+      if (localObject2 != null) {
+        ((Window)localObject2).setWindowAnimations(2131755013);
       }
+      ((bljt)localObject1).show();
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionSheet", 2, "onClick to cancel authorize dialog");
+      }
+      if (this.jdField_a_of_type_Acwl != null)
+      {
+        this.jdField_a_of_type_Acwm.a = 2;
+        this.jdField_a_of_type_Acwl.a(this.jdField_a_of_type_Acwm);
+      }
+      dismiss();
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("ActionSheet", 2, "onClick to confirm authorize user info");
+      }
+      localObject1 = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject2 = (bljx)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Acwm.a(((bljx)localObject2).b)))
+        {
+          ((SharedPreferences)localObject1).edit().putBoolean(((bljx)localObject2).b, true).apply();
+          if (QLog.isColorLevel()) {
+            QLog.d("ActionSheet", 2, "record " + ((bljx)localObject2).b + " authorize");
+          }
+        }
+        i += 1;
+      }
+      if (this.jdField_a_of_type_Acwl != null)
+      {
+        this.jdField_a_of_type_Acwm.a = 0;
+        this.jdField_a_of_type_Acwl.a(this.jdField_a_of_type_Acwm);
+      }
+      dismiss();
     }
-    if (localArrayList2.isEmpty()) {
-      return null;
-    }
-    ??? = new Bundle();
-    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
-    Parcel localParcel = Parcel.obtain();
-    ((Bundle)???).writeToParcel(localParcel, 0);
-    ??? = localParcel.marshall();
-    localParcel.recycle();
-    return ???;
   }
 }
 

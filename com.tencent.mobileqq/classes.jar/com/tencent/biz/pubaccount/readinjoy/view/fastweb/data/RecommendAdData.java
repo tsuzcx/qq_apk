@@ -5,22 +5,21 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import nxw;
-import oqk;
+import nzq;
 import org.json.JSONException;
 import org.json.JSONObject;
-import teh;
-import tyc;
+import suz;
+import tqb;
+import tye;
 
 public class RecommendAdData
   extends AdData
 {
-  public int a;
+  public int w = 2;
   
   public RecommendAdData()
   {
     super(9);
-    this.jdField_a_of_type_Int = 2;
   }
   
   private String a(String paramString, int paramInt)
@@ -68,37 +67,37 @@ public class RecommendAdData
     try
     {
       localJSONObject1.put("style_ID", "ReadInjoy_native_recommend_ad_small_cell");
-      if (!TextUtils.isEmpty(this.j))
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", this.j);
+        ((JSONObject)localObject).put("text", this.jdField_b_of_type_JavaLangString);
         localJSONObject1.put("id_recommend_title", localObject);
       }
-      if (!TextUtils.isEmpty(this.l))
+      if (!TextUtils.isEmpty(this.d))
       {
-        localObject = tyc.a(this.l, 4);
+        localObject = tye.a(this.d, 4);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("image_url", ((URL)localObject).toString());
         localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
       }
       int j = 22;
       Object localObject = new JSONObject();
-      if (!TextUtils.isEmpty(this.L))
+      if (!TextUtils.isEmpty(this.D))
       {
-        ((JSONObject)localObject).put("text", this.L);
+        ((JSONObject)localObject).put("text", this.D);
         localJSONObject1.put("id_recommend_category_txt", localObject);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("RecommendAdData", 2, "detail ad recommend adInconText:" + this.L);
+        QLog.d("RecommendAdData", 2, "detail ad recommend adInconText:" + this.D);
       }
       int i = j;
-      if (this.d == 12)
+      if (this.jdField_b_of_type_Int == 12)
       {
         i = j;
-        if (!TextUtils.isEmpty(this.p))
+        if (!TextUtils.isEmpty(this.h))
         {
           localObject = new JSONObject();
-          if (!nxw.a(BaseApplicationImpl.getContext(), this.p)) {
+          if (!nzq.a(BaseApplicationImpl.getContext(), this.h)) {
             break label353;
           }
           ((JSONObject)localObject).put("text", "打开APP");
@@ -108,16 +107,16 @@ public class RecommendAdData
       {
         localJSONObject1.put("id_recommend_category_download", localObject);
         i = 16;
-        if (!TextUtils.isEmpty(this.q))
+        if (!TextUtils.isEmpty(this.i))
         {
           localObject = new JSONObject();
-          ((JSONObject)localObject).put("text", a(this.q, i));
+          ((JSONObject)localObject).put("text", a(this.i, i));
           localJSONObject1.put("id_recommend_account_name", localObject);
         }
-        if (!TextUtils.isEmpty(this.n))
+        if (!TextUtils.isEmpty(this.f))
         {
           localObject = new JSONObject();
-          ((JSONObject)localObject).put("jump_url", this.n);
+          ((JSONObject)localObject).put("jump_url", this.f);
           localJSONObject1.put("id_native_recommend_small_container", localObject);
         }
         localJSONObject1.put("id_ad_dislike_button", new JSONObject());
@@ -139,10 +138,10 @@ public class RecommendAdData
     this.c = a();
     try
     {
-      teh localteh = teh.a("native_article", true);
+      suz localsuz = suz.a("native_article", true);
       localObject1 = localObject3;
-      if (localteh != null) {
-        localObject1 = localteh.getTemplateBean(this.c);
+      if (localsuz != null) {
+        localObject1 = localsuz.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -162,8 +161,8 @@ public class RecommendAdData
   public boolean a(JSONObject paramJSONObject, int paramInt)
   {
     super.a(paramJSONObject, paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = oqk.a(this);
+    this.w = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = tqb.a(this);
     return true;
   }
 }

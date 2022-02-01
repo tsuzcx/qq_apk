@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import biau;
+import bjbs;
 
 class NearbyPublishMenuHelper$2$1
   implements Runnable

@@ -1,39 +1,33 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-public class bdwu
+final class bdwu
+  extends SubAccountObserver
 {
-  public static bdwu a;
+  bdwu(QQAppInterface paramQQAppInterface) {}
   
-  public static bdwu a()
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (a == null) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
+    }
+    paramString1 = (bdxc)this.a.getManager(61);
+    int j;
+    if ((paramString3 != null) && (paramString3.length() > 0))
     {
-      if (a == null) {
-        a = new bdwu();
+      j = 1;
+      i = j;
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, false);
       }
-      return a;
     }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return bgnt.a(BaseApplication.getContext());
-  }
-  
-  public String a()
-  {
-    try
+    for (int i = j;; i = 0)
     {
-      String str = AppNetConnInfo.getCurrentAPN();
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      if (i == 0) {
+        paramString1.f(paramString2);
+      }
+      return;
     }
   }
 }

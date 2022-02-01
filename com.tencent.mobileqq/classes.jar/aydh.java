@@ -1,20 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class aydh
-  extends aydl
+public final class aydh
+  implements Parcelable.Creator<VideoData>
 {
-  public aydh(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForStructing paramMessageForStructing, StructMsgForGeneralShare paramStructMsgForGeneralShare) {}
-  
-  public boolean onClick(View paramView)
+  public VideoData a(Parcel paramParcel)
   {
-    ayej.b(this.jdField_a_of_type_Int + 1, aydg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "1");
-    if (MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare)) {
-      return true;
-    }
-    return super.onClick(paramView);
+    return new VideoData(paramParcel);
+  }
+  
+  public VideoData[] a(int paramInt)
+  {
+    return new VideoData[paramInt];
   }
 }
 

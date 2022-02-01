@@ -1,8 +1,15 @@
+import android.content.Context;
+import android.view.View;
+
 public abstract interface acou
 {
-  public abstract void a();
+  public abstract View a();
   
-  public abstract void b();
+  public abstract void a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
+  
+  public abstract void c(Context paramContext);
 }
 
 

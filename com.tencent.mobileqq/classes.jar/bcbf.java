@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.data.MessageForTofuAioMiniProfile;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcbf
-  implements acwy
+  implements View.OnClickListener
 {
-  public MessageRecord a(int paramInt)
+  public bcbf(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramInt == -7012) {
-      return new MessageForTofuAioMiniProfile();
-    }
-    return null;
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

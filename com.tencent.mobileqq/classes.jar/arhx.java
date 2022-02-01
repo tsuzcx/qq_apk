@@ -1,23 +1,84 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arhx
-  implements View.OnClickListener
+  extends arac<arhw>
 {
-  public arhx(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
-  
-  public void onClick(View paramView)
+  public static arhw a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (arhw)aran.a().a(631);
+  }
+  
+  @NonNull
+  public arhw a(int paramInt)
+  {
+    return new arhw();
+  }
+  
+  @Nullable
+  public arhw a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePreloadConfProcessor", 2, "onParsed ");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      new arhw();
+      return arhw.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(arhw paramarhw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePreloadConfProcessor", 2, "onUpdate " + paramarhw.toString());
+    }
+  }
+  
+  public Class<arhw> clazz()
+  {
+    return arhw.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePreloadConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 631;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhx
  * JD-Core Version:    0.7.0.1
  */

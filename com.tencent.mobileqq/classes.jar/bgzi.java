@@ -1,6 +1,21 @@
-public abstract interface bgzi
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.1.1;
+
+public class bgzi
+  implements aoou
 {
-  public abstract void a(boolean paramBoolean);
+  public bgzi(TroopGiftAnimationController.5 param5) {}
+  
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  {
+    Bitmap localBitmap = bguq.a(this.a.this$0.a(String.valueOf(this.a.a.senderUin), null));
+    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.b(new TroopGiftAnimationController.5.1.1(this, localBitmap));
+    }
+  }
 }
 
 

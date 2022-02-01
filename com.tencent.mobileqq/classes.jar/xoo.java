@@ -1,20 +1,33 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-class xoo
-  implements xpq
+public class xoo
+  extends SimpleObserver<yfw>
 {
-  xoo(xol paramxol, StoryVideoItem paramStoryVideoItem) {}
+  public xoo(xoj paramxoj) {}
   
-  public void a(xpl paramxpl)
+  public void a(yfw paramyfw)
   {
-    if (this.jdField_a_of_type_Xol.isCanceled()) {
+    super.onNext(paramyfw);
+    xoj.a(this.a, paramyfw, new ErrorMessage(), true);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    yuk.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
+    {
+      xoj.a(this.a, xoj.a(this.a), new ErrorMessage(), false);
       return;
     }
-    yqp.a(this.jdField_a_of_type_Xol.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramxpl)));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xol.a, "VP", SystemClock.uptimeMillis());
-    this.jdField_a_of_type_Xol.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    xoj.a(this.a, xoj.a(this.a), (ErrorMessage)paramError, false);
   }
 }
 

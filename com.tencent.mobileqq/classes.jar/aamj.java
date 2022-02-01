@@ -1,29 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-public class aamj
-  implements View.OnClickListener
+class aamj
+  implements TypeEvaluator<Matrix>
 {
-  public aamj(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  public static TypeEvaluator<Matrix> a;
+  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  float[] jdField_a_of_type_ArrayOfFloat = new float[9];
+  float[] b = new float[9];
   
-  public void onClick(View paramView)
+  static
   {
-    if (!aauy.a("subscribe_draft_click"))
+    jdField_a_of_type_AndroidAnimationTypeEvaluator = new aamk();
+  }
+  
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
+  {
+    paramMatrix1.getValues(this.jdField_a_of_type_ArrayOfFloat);
+    paramMatrix2.getValues(this.b);
+    int i = 0;
+    while (i < 9)
     {
-      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
-      localIntent.putExtra("has_shop", bool);
-      localIntent.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
-      blsb.a((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), localIntent, 0);
-      aaxb.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
+      float f1 = this.b[i];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[i];
+      this.b[i] = ((f1 - f2) * paramFloat + this.jdField_a_of_type_ArrayOfFloat[i]);
+      i += 1;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
+    return this.jdField_a_of_type_AndroidGraphicsMatrix;
   }
 }
 

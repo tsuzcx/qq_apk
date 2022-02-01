@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class QQGamePubViewpager
   extends ViewPager
@@ -39,10 +40,19 @@ public class QQGamePubViewpager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.requestDisallowInterceptTouchEvent(true);
+    try
+    {
+      if (this.a != null) {
+        this.a.requestDisallowInterceptTouchEvent(true);
+      }
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      return bool;
     }
-    return super.onTouchEvent(paramMotionEvent);
+    catch (Throwable paramMotionEvent)
+    {
+      QLog.d("QQGamePubViewpager", 1, "QQGamePubViewpager onTouchEvent throwable:" + paramMotionEvent.getMessage());
+    }
+    return true;
   }
   
   public void setNestedpParent(ViewGroup paramViewGroup)

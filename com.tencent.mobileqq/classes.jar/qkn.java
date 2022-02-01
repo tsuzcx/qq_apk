@@ -1,57 +1,19 @@
-import android.graphics.Paint;
-import android.graphics.RectF;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qkn
-  extends NativeText
+class qkn
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_a_of_type_JavaLangString;
-  RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_b_of_type_JavaLangString;
+  qkn(qkj paramqkj, LinearLayout paramLinearLayout) {}
   
-  public qkn(VafContext paramVafContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramVafContext);
-    this.mNative = new qko(this, paramVafContext.getContext());
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.mNative.setBackgroundColor(0);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
     }
-    if ((paramObject instanceof JSONObject)) {
-      paramObject = (JSONObject)paramObject;
-    }
-    try
-    {
-      this.jdField_a_of_type_Int = paramObject.getInt("progress");
-      this.jdField_a_of_type_JavaLangString = paramObject.getString("bgcolor");
-      this.jdField_b_of_type_JavaLangString = paramObject.getString("fgcolor");
-      return true;
-    }
-    catch (JSONException paramObject)
-    {
-      for (;;)
-      {
-        paramObject.printStackTrace();
-      }
-    }
+    return false;
   }
 }
 

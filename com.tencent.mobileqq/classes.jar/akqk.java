@@ -1,23 +1,19 @@
-import Wallet.SkinInfo;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-public class akqk
-  implements akrg
+class akqk
+  implements bliz
 {
-  public akqk(UsualHbFragment paramUsualHbFragment) {}
+  akqk(akqj paramakqj, blir paramblir) {}
   
-  public void a(akqw paramakqw)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramakqw.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramakqw.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
+    if (paramInt != this.jdField_a_of_type_Akqj.jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      paramakqw = akqv.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
-      this.a.c.setHint(paramakqw);
-      return;
+      this.jdField_a_of_type_Akqj.a(paramInt);
+      this.jdField_a_of_type_Akqj.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
     }
-    this.a.c.setHint(paramakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+    this.jdField_a_of_type_Blir.dismiss();
   }
 }
 

@@ -1,25 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 class rwx
-  extends Handler
+  implements sgo
 {
-  public rwx(rwp paramrwp, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  rwx(rwu paramrwu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (rwp.a(this.a) == null);
-    rwp.a(this.a).a(4, null, null, 0L);
+    this.a.g();
   }
 }
 

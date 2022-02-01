@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public final class afyp
-  implements Parcelable.Creator<ForwardUtils.Section_Pic>
+class afyp
+  implements DialogInterface.OnClickListener
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  afyp(afyo paramafyo, bhpc parambhpc) {}
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    bdll.b(this.jdField_a_of_type_Afyo.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Afyo.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Afyo.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Afyo.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bhpc.cancel();
   }
 }
 

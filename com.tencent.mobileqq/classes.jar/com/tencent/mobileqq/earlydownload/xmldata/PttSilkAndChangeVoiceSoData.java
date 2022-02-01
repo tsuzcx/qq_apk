@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class PttSilkAndChangeVoiceSoData
   extends XmlData
 {
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean amrV5So;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean amrV7So;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean amrV8So;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean mipsSo;
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String version = "";
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean x86So;
   
   public String getSharedPreferencesName()

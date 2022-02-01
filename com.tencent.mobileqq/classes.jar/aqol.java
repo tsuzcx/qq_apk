@@ -1,72 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class aqol
-  extends aqkz<aqom>
+  implements TextWatcher
 {
-  public static aqom a()
-  {
-    return (aqom)aqlk.a().a(620);
-  }
+  public aqol(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  @NonNull
-  public aqom a(int paramInt)
-  {
-    return new aqom();
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  @Nullable
-  public aqom a(aqlg[] paramArrayOfaqlg)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqom.a(paramArrayOfaqlg);
+    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
+      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
     }
-    return null;
-  }
-  
-  public void a(aqom paramaqom)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonSearchTagsConfProcessor", 2, "EmoticonSearchTagsConfProcessor onUpdate");
-    }
-  }
-  
-  public Class<aqom> clazz()
-  {
-    return aqom.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 620;
+    ClearEllipsisEditText.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqol
  * JD-Core Version:    0.7.0.1
  */

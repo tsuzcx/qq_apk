@@ -1,15 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.widget.AdapterView;
-
-public class qlj
-  implements bkij
+class qlj
+  implements qoe
 {
-  public qlj(NativeGridImageView paramNativeGridImageView) {}
+  qlj(qli paramqli) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

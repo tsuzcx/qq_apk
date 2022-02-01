@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5;
-
 public class bfzl
-  implements bdfr
 {
-  public bfzl(TroopGiftAnimationController.5.5 param5) {}
-  
-  public void a(bdfw parambdfw)
-  {
-    this.a.a.this$0.a();
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
 }
 
 

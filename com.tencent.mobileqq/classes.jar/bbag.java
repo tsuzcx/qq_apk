@@ -1,9 +1,19 @@
-public class bbag
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+
+public final class bbag
+  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
+  {
+    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
+  }
+  
+  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  {
+    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+  }
 }
 
 

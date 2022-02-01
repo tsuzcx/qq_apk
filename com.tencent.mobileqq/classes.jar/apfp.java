@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-
 public class apfp
-  implements TencentMap.OnCameraChangeListener
 {
-  public apfp(ARScanEntryView paramARScanEntryView) {}
-  
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
-  {
-    if ((ARScanEntryView.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("AREngine_ARScanEntryView", 2, "ARLBSPOIDialog onCameraChangeFinish");
-    }
-  }
+  public int a = 2;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 

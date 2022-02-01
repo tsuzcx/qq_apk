@@ -1,20 +1,29 @@
-import android.content.Context;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
-public abstract interface oei
+public class oei
+  extends aoeg
 {
-  public abstract void a(Context paramContext);
+  public oei(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public abstract void a(MessageRecord paramMessageRecord);
-  
-  public abstract void a(List<ChatMessage> paramList, oej paramoej);
-  
-  public abstract boolean a(Context paramContext, RelativeLayout paramRelativeLayout);
-  
-  public abstract boolean a(RelativeLayout paramRelativeLayout);
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700182));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700161));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847097);
+  }
 }
 
 

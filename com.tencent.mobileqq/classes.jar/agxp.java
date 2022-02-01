@@ -1,18 +1,9 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-class agxp
-  extends ahbl
+public abstract interface agxp
 {
-  agxp(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
-  
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new ahll(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public abstract void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
 }
 
 

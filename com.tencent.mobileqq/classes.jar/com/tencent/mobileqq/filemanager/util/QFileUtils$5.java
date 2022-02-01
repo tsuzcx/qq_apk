@@ -4,24 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.SparseArray;
-import atne;
-import bgmg;
+import auez;
+import bhmi;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import zuc;
+import zxx;
 
 public final class QFileUtils$5
   implements Runnable
 {
-  public QFileUtils$5(Context paramContext, String paramString, atne paramatne) {}
+  public QFileUtils$5(Context paramContext, String paramString, auez paramauez) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    while (!bgmg.b(this.jdField_a_of_type_JavaLangString)) {
+    while (!bhmi.b(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
     SparseArray localSparseArray = new SparseArray(2);
-    int i = zuc.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext, 3, localSparseArray);
+    int i = zxx.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext, 3, localSparseArray);
     ThreadManagerV2.getUIHandlerV2().post(new QFileUtils.5.1(this, i, localSparseArray));
   }
 }

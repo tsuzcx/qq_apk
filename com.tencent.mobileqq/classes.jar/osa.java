@@ -1,68 +1,30 @@
-import android.app.Activity;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class osa
+  implements osw
 {
-  @Nullable
-  private osb a;
+  public osa(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (ReadInJoyCommentListFragment.a(this.a) != null) {
+      ReadInJoyCommentListFragment.a(this.a).a();
     }
   }
   
-  public void a(Activity paramActivity, ListView paramListView)
+  public void onClick(View paramView)
   {
-    if ((oqr.a().a() == 1) && (oqr.e()))
+    switch (paramView.getId())
     {
-      str = oqr.a().a();
-      i = oqr.a().b();
-      if (!oqr.a(i)) {}
     }
-    while (!QLog.isColorLevel())
+    for (;;)
     {
-      String str;
-      int i;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (atwl.a(str))
-      {
-        this.a = new osb(paramActivity, paramListView, str);
-        this.a.a(i);
-        paramActivity = oqr.a().a();
-        if (paramActivity != null) {
-          oon.b(paramActivity, true, "no error");
-        }
-        oqr.a().a = this;
-      }
-      for (;;)
-      {
-        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + oqr.a().f());
-        oqr.a().a();
-        return;
-        oqr.a().b(3);
-        paramActivity = oqr.a().a();
-        if (paramActivity != null) {
-          oon.b(paramActivity, false, "apng not exit");
-        }
-      }
+      this.a.a(false, null, null);
     }
-    QLog.i("KandianAdPandentMask", 2, "status: " + oqr.a().a() + " Aladdin: " + oqr.e());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a != null) {
-      this.a.b(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (osb.a(this.a));
   }
 }
 

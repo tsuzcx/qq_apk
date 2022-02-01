@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import android.os.Message;
 
-class awxj
-  implements DialogInterface.OnClickListener
+public abstract interface awxj
 {
-  awxj(awxi paramawxi, List paramList) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_JavaUtilList, false);
-  }
+  public abstract void a(Message paramMessage);
 }
 
 

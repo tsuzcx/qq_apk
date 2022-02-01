@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.activity.contacts.base.Contacts;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajhi
-  extends aiww
+class ajhi
+  implements View.OnClickListener
 {
-  public ajhi(Contacts paramContacts) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  ajhi(ajhg paramajhg) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendVerification.manager", 2, "ui.onGetAddFriendBlockedRedPoint, success=" + paramBoolean1 + ",blockedUin=" + paramString);
+    String str = this.jdField_a_of_type_Ajhg.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
+    {
+      ajhj.a().b(ajhg.a(this.jdField_a_of_type_Ajhg), str);
+      this.jdField_a_of_type_Ajhg.a();
     }
-    ((aiyr)this.a.a.getManager(34)).c();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((paramView == this.jdField_a_of_type_AndroidViewView) && (ajhg.a(this.jdField_a_of_type_Ajhg) != null)) {
+        ajhg.a(this.jdField_a_of_type_Ajhg).a(str);
+      }
+    }
   }
 }
 

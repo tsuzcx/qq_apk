@@ -1,39 +1,81 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
 
 class aotm
-  implements View.OnTouchListener
+  implements bevw
 {
-  aotm(aotl paramaotl) {}
+  aotm(aoti paramaoti) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(bevy parambevy, bevx parambevx)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    ToServiceMsg localToServiceMsg = (ToServiceMsg)parambevx.a;
+    if (parambevy.a.getResultCode() != 1000) {
+      this.a.a(4012, false, localToServiceMsg);
     }
-    do
+    for (;;)
     {
-      do
+      try
       {
-        return true;
-        aotl.a(this.a).setAlpha(0.5F);
-        return true;
-        aotl.a(this.a).setAlpha(1.0F);
-        if (!aotl.a(this.a))
-        {
-          aotc.a(true);
-          aotl.a(this.a, true);
+        parambevy = parambevy.a.getWupBuffer();
+        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
+        localRspSystemMsgAction.mergeFrom(parambevy);
+        j = localRspSystemMsgAction.head.result.get();
+        if (j != 0) {
+          continue;
         }
-        aotl.a(this.a).setVisibility(8);
-        aotl.a(this.a).clearAnimation();
-      } while (aotl.a(this.a) == null);
-      aotl.a(this.a).g();
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
-    return true;
+        bool1 = true;
+        parambevy = localRspSystemMsgAction.msg_detail.get();
+        if (parambevy != null) {
+          continue;
+        }
+        parambevy = "";
+      }
+      catch (Exception parambevy)
+      {
+        structmsg.RspSystemMsgAction localRspSystemMsgAction;
+        int j;
+        boolean bool1;
+        int i;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambevy);
+        boolean bool2 = false;
+        continue;
+        continue;
+      }
+      i = -1;
+      if (localRspSystemMsgAction.remark_result.has()) {
+        i = localRspSystemMsgAction.remark_result.get();
+      }
+      localToServiceMsg.extraData.putString("system_msg_action_resp_key", parambevy);
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
+      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + parambevy);
+        bool2 = bool1;
+      }
+      this.a.a(4011, bool2, localToServiceMsg);
+      return;
+      parambevx = localRspSystemMsgAction.head.msg_fail.get();
+      parambevy = parambevx;
+      if (parambevx == null) {
+        parambevy = "";
+      }
+      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", parambevy);
+      bool1 = false;
+    }
   }
 }
 

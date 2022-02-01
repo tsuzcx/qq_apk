@@ -1,8 +1,9 @@
-public abstract interface bnxs
+public class bnxs
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
+  public int a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

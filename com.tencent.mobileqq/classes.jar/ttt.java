@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class ttt
-  implements View.OnClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public ttt(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  public ttt(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
   
-  public void onClick(View paramView)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.a.doOnBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (ServiceAccountFolderActivity.a(this.a) != null)
+    {
+      float f = paramMotionEvent.getY();
+      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 

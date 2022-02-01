@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import aosa;
-import bcst;
+import apfq;
+import bdll;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$9
   implements Runnable
 {
-  public ARTransferDoorLogicManager$9(aosa paramaosa) {}
+  public ARTransferDoorLogicManager$9(apfq paramapfq) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ public class ARTransferDoorLogicManager$9
         this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.d(true);
         this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b(2);
       }
-      while (aosa.b(this.this$0))
+      while (apfq.b(this.this$0))
       {
-        bcst.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, aosa.a(this.this$0), "0", "0", "");
-        aosa.b(this.this$0, false);
+        bdll.b(null, "CliOper", "", "", "0X80098C8", "0X80098C8", 0, 0, apfq.a(this.this$0), "0", "0", "");
+        apfq.b(this.this$0, false);
         return;
         this.this$0.a(false, "");
       }

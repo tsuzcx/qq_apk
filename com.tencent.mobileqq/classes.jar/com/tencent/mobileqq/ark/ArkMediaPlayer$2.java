@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.ark;
 
-import appb;
+import aqcr;
 
 public class ArkMediaPlayer$2
   implements Runnable
 {
-  public ArkMediaPlayer$2(appb paramappb) {}
+  public ArkMediaPlayer$2(aqcr paramaqcr) {}
   
   public void run()
   {
-    if (appb.a(this.this$0)) {
+    if (aqcr.a(this.this$0)) {
       return;
     }
-    appb.a(this.this$0, true);
-    if (appb.a(this.this$0) == appb.b(this.this$0)) {
+    aqcr.a(this.this$0, true);
+    if (aqcr.a(this.this$0) == aqcr.b(this.this$0)) {
       this.this$0.Play();
     }
     for (;;)
     {
-      appb.a(this.this$0, appb.f(this.this$0));
+      aqcr.a(this.this$0, aqcr.f(this.this$0));
       return;
-      if (appb.a(this.this$0) == appb.c(this.this$0)) {
+      if (aqcr.a(this.this$0) == aqcr.c(this.this$0)) {
         this.this$0.Stop();
-      } else if (appb.a(this.this$0) == appb.d(this.this$0)) {
+      } else if (aqcr.a(this.this$0) == aqcr.d(this.this$0)) {
         this.this$0.Resume();
-      } else if (appb.a(this.this$0) == appb.e(this.this$0)) {
+      } else if (aqcr.a(this.this$0) == aqcr.e(this.this$0)) {
         this.this$0.Pause();
       }
     }

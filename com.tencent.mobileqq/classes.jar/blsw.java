@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
-public final class blsw
-  implements DialogInterface.OnDismissListener
+public abstract interface blsw
 {
-  public blsw(FragmentActivity paramFragmentActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

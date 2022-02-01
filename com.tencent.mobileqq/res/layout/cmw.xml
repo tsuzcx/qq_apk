@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="#b37c878e" android:layout_gravity="center_horizontal" android:id="@id/nn7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="1.0dip" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/du3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mw_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</merge>

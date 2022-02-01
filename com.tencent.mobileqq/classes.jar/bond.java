@@ -1,127 +1,28 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bond
-  extends bomw
 {
-  private bomw jdField_a_of_type_Bomw;
-  private ConcurrentHashMap<String, MusicItemInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private ConcurrentHashMap<String, bhhf> b;
+  public String a;
+  public String b = "null";
+  public String c = "null";
   
-  public bond(ConcurrentHashMap<String, MusicItemInfo> paramConcurrentHashMap, ConcurrentHashMap<String, bhhf> paramConcurrentHashMap1, bomw parambomw)
+  public bond(@NonNull String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
-    this.b = paramConcurrentHashMap1;
-    this.jdField_a_of_type_Bomw = parambomw;
+    this.a = paramString;
   }
   
-  public void a(int paramInt)
+  public bond(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
   {
-    this.jdField_a_of_type_Bomw.a(paramInt);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void a(String paramString)
+  @NonNull
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloadListener", 2, "onCancel key=" + paramString);
-    }
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localMusicItemInfo != null) {
-      localMusicItemInfo.mProgress = -1;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    this.b.remove(paramString);
-    this.jdField_a_of_type_Bomw.a(paramString);
-    boud.a(localMusicItemInfo).c();
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    int i = paramInt;
-    if (localMusicItemInfo != null)
-    {
-      i = paramInt;
-      if (paramInt == 100)
-      {
-        i = paramInt;
-        if (this.b.contains(localMusicItemInfo.getLocalPath())) {
-          i = 99;
-        }
-      }
-      localMusicItemInfo.mProgress = i;
-    }
-    this.jdField_a_of_type_Bomw.a(paramString, i);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localMusicItemInfo != null)
-    {
-      if (paramBoolean) {
-        break label60;
-      }
-      boud.a(localMusicItemInfo).c();
-      localMusicItemInfo.mProgress = -1;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      this.b.remove(paramString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bomw.a(paramString, paramBoolean);
-      return;
-      label60:
-      localMusicItemInfo.mProgress = 1;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloadListener", 2, new Object[] { "onFinish, info:", localMusicItemInfo });
-    }
-    boolean bool = paramBoolean;
-    if (localMusicItemInfo != null)
-    {
-      if (!paramBoolean) {
-        break label214;
-      }
-      localMusicItemInfo.mProgress = 100;
-      boud.a(localMusicItemInfo).b();
-      bool = paramBoolean;
-      if (localMusicItemInfo.isMyMusicInfo())
-      {
-        bool = paramBoolean;
-        if (localMusicItemInfo.fileSize > 0L)
-        {
-          File localFile = new File(paramString);
-          if (localFile.length() != localMusicItemInfo.fileSize)
-          {
-            localMusicItemInfo.mProgress = -1;
-            boud.a(localMusicItemInfo).c();
-            paramBoolean = false;
-          }
-          bool = paramBoolean;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQMusicDownloadListener", 2, "file.length =" + localFile.length() + " info.fileSize=" + localMusicItemInfo.fileSize);
-          }
-        }
-      }
-    }
-    for (bool = paramBoolean;; bool = paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      this.b.remove(paramString);
-      this.jdField_a_of_type_Bomw.a(paramString, bool, paramInt);
-      return;
-      label214:
-      localMusicItemInfo.mProgress = -1;
-      boud.a(localMusicItemInfo).c();
-    }
+    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
   }
 }
 

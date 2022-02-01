@@ -1,6 +1,17 @@
-public abstract interface aiic
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aiic
+  implements View.OnClickListener
 {
-  public abstract void a(aiib paramaiib);
+  aiic(aihy paramaihy) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.y(true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,91 +1,51 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.2.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
 
 public class pkw
-  extends plg
+  implements tjr
 {
-  public pkw(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
+  public pkw(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
+  public void a()
   {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.a(this.a)) {
-      return;
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.2.1(this), 200L);
     }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(true, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola success!");
     }
-    ReadInJoyCGIDynamicChannelFragment.b(this.a).b();
-  }
-  
-  public void a(int paramInt1, boolean paramBoolean, List<pln> paramList, int paramInt2)
-  {
-    int i = 0;
-    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
-      return;
-    }
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a, paramInt1, paramList);
-    }
-    if (paramList != null) {
-      i = paramList.size();
-    }
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onHeaderRefreshed, channelID = ", Integer.valueOf(paramInt1), ", success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i), ", insertIndex = ", Integer.valueOf(paramInt2) });
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
-      return;
-    }
-    int i;
-    if (paramList != null)
-    {
-      i = paramList.size();
-      if ((!paramBoolean1) || (i <= 0)) {
-        break label175;
-      }
-    }
-    label175:
-    for (String str = String.format(this.a.getResources().getString(2131716884), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131716883))
-    {
-      ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
-      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-        ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      }
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
-      ReadInJoyCGIDynamicChannelFragment.d(this.a).a(true, true);
-      return;
-      i = 0;
-      break;
+    if ((this.a.a != null) && (this.a.a.c()) && (this.a.c()) && (ReadinjoyTabFrame.d_())) {
+      this.a.a.a(true);
     }
   }
   
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  public void a(int paramInt)
   {
-    int i = 0;
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
-      return;
+    ReadInJoyViolaChannelFragment.a(this.a);
+    ReadInJoyViolaChannelFragment.a(this.a).c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyViolaChannelFragment", 2, "initViola error,error code=" + paramInt);
     }
-    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
-      ReadInJoyCGIDynamicChannelFragment.e(this.a).a(true, paramBoolean2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (paz.a())) {
+      pfd.a().l();
     }
-    for (;;)
-    {
-      if (paramList != null) {
-        i = paramList.size();
-      }
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onLoadMoreData, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", size = ", Integer.valueOf(i), ", hasMore = ", Boolean.valueOf(paramBoolean2) });
-      return;
-      ReadInJoyCGIDynamicChannelFragment.f(this.a).a(false, true);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola process,process code=" + paramInt);
     }
   }
 }

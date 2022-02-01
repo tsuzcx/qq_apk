@@ -1,23 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auza
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public SquareImageView a;
+  public auza(ForwardFileOption paramForwardFileOption) {}
   
-  public auza(FontBubblePanelView paramFontBubblePanelView, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131366954));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371539));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380151));
+    this.a.F();
+    ForwardFileOption.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

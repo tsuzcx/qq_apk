@@ -1,47 +1,92 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class akas
-  extends akaj
+  extends bebs
 {
-  public akas(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  public akas(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  private void A()
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (!this.d) {}
-    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-    if (mal.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697747));
+      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
+      String str = (String)paramArrayOfObject[1];
+      long l = ((Long)paramArrayOfObject[2]).longValue();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718629).equals(str))
+      {
+        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
+        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
+        {
+          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
+            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
+          }
+          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+          localObject = new Message();
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
+          ((Message)localObject).setData(localBundle);
+          ((Message)localObject).what = 78;
+          ((Message)localObject).arg1 = 0;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+        }
+      }
+      QQToast.a(this.a.getActivity(), str, 0).a();
+      QLog.i(beai.i, 2, " onGetUserAuth  isSuccess = " + paramBoolean + " tips =" + str);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    catch (Exception paramArrayOfObject)
+    {
+      QLog.e(beai.i, 2, " onGetUserAuth  exception = " + paramArrayOfObject.toString());
+    }
   }
   
-  protected boolean b()
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    return true;
-  }
-  
-  protected void g()
-  {
-    super.g();
-    A();
-  }
-  
-  protected void y()
-  {
-    this.jdField_a_of_type_JavaLangString = "MiniPieForDisc";
+    try
+    {
+      QLog.i(beai.i, 2, " onSetUserAuth  isSuccess = " + paramBoolean);
+      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
+      String str = (String)paramArrayOfObject[1];
+      long l = ((Long)paramArrayOfObject[2]).longValue();
+      if (paramBoolean)
+      {
+        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
+        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
+        {
+          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
+            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
+          }
+          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+          localObject = new Message();
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
+          ((Message)localObject).setData(localBundle);
+          ((Message)localObject).what = 78;
+          ((Message)localObject).arg1 = 0;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+        }
+      }
+      QQToast.a(this.a.getActivity(), str, 0).a();
+      return;
+    }
+    catch (Exception paramArrayOfObject)
+    {
+      QLog.e(beai.i, 1, " onSetUserAuth  exception  = " + paramArrayOfObject.toString());
+    }
   }
 }
 

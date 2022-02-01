@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 
-class agzz
-  extends ahbl
+public class agzz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  agzz(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public agzz(ArkAppRootLayout paramArkAppRootLayout) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    return new ahfz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (ArkAppRootLayout.a(this.a) != null) {
+      ArkAppRootLayout.a(this.a).a();
+    }
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

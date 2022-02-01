@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.app.Activity;
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ScanEntryProviderContainerView$2
@@ -11,7 +11,7 @@ class ScanEntryProviderContainerView$2
   
   public void run()
   {
-    QQToast localQQToast = QQToast.a(this.this$0.a, anni.a(2131712282), 1);
+    QQToast localQQToast = QQToast.a(this.this$0.a, anzj.a(2131712391), 1);
     localQQToast.a();
     localQQToast.a();
     ((Activity)this.this$0.a).finish();

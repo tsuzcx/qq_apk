@@ -1,11 +1,18 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qnn
+class qnn
+  implements View.OnClickListener
 {
-  public void a(int paramInt, List<Long> paramList, long paramLong) {}
+  qnn(qnl paramqnl) {}
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg) {}
+  public void onClick(View paramView)
+  {
+    ozs.a(this.a.jdField_a_of_type_AndroidContentContext, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    sel.a(((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), ((ppu)this.a.jdField_a_of_type_JavaLangObject).e());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

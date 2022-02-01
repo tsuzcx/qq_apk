@@ -3,15 +3,15 @@ package com.tencent.mobileqq.app.avgameshare;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import aoaw;
+import aong;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import nlw;
+import nnr;
 
 public class AVGameShareBase$3
   implements Runnable
 {
-  public AVGameShareBase$3(aoaw paramaoaw, Map paramMap, Runnable paramRunnable) {}
+  public AVGameShareBase$3(aong paramaong, Map paramMap, Runnable paramRunnable) {}
   
   private void a(Bitmap paramBitmap)
   {
@@ -38,7 +38,7 @@ public class AVGameShareBase$3
     try
     {
       QLog.d("AVGameShareBase", 1, "shareLinkToWeChat share url icon");
-      byte[] arrayOfByte = nlw.a(this.this$0.a(), this.this$0.e(), "GET", null, null);
+      byte[] arrayOfByte = nnr.a(this.this$0.a(), this.this$0.g(), "GET", null, null);
       if (arrayOfByte != null) {
         a(BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length));
       }

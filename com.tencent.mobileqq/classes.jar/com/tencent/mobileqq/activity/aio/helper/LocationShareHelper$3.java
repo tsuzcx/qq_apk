@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agmd;
+import agvf;
 
 public class LocationShareHelper$3
   implements Runnable
 {
-  public LocationShareHelper$3(agmd paramagmd) {}
+  public LocationShareHelper$3(agvf paramagvf) {}
   
   public void run()
   {
-    agmd.a(this.this$0);
+    agvf.a(this.this$0);
   }
 }
 

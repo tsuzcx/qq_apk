@@ -1,21 +1,6 @@
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
-import java.util.List;
-
-public class bnsj
-  implements bnue
+public abstract interface bnsj
 {
-  bnsj(bnsi parambnsi) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      bnsi.a(this.a, paramString);
-    }
-    ((bnri)bnsi.a(this.a).get(paramInt)).c = paramString;
-    ((bnri)bnsi.a(this.a).get(paramInt)).a = 13;
-    bnsi.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
-  }
+  public abstract void a(int paramInt);
 }
 
 

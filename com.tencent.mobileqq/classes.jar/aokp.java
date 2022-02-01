@@ -1,95 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppActivity;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class aokp
-  extends aojs
+  implements DialogInterface.OnClickListener
 {
-  public aokp(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aokp(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
   
-  private boolean C()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80077DE", "0X80077DE", 0, 0, (String)localObject, "", "", "");
-    localObject = a();
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, (Class)localObject);
-    if (RegisterPhoneNumActivity.class == localObject) {
-      localIntent.putExtra("key_report_extra_from", 5);
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    return true;
-  }
-  
-  private Class a()
-  {
-    int i = BaseApplicationImpl.getApplication().appActivities.size() - 1;
-    while (i >= 0)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramInt = this.jdField_a_of_type_Int;
+    int i = this.jdField_b_of_type_Int;
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      Object localObject = (WeakReference)BaseApplicationImpl.getApplication().appActivities.get(i);
-      if (localObject != null) {
-        localObject = (AppActivity)((WeakReference)localObject).get();
-      }
-      while (localObject != null)
-      {
-        localObject = ((Activity)localObject).getLocalClassName();
-        if ("activity.RegisterPersonalInfoActivity".equals(localObject))
-        {
-          return RegisterPersonalInfoActivity.class;
-          localObject = null;
-        }
-        else
-        {
-          if ("activity.RegisterChooseLoginActivity".equals(localObject)) {
-            return RegisterChooseLoginActivity.class;
-          }
-          if ("activity.RegisterVerifyCodeActivity".equals(localObject)) {
-            return RegisterVerifyCodeActivity.class;
-          }
-          if ("activity.RegisterByNicknameAndPwdActivity".equals(localObject)) {
-            return RegisterByNicknameAndPwdActivity.class;
-          }
-          if ("activity.RegisterSendUpSms".equals(localObject)) {
-            return RegisterSendUpSms.class;
-          }
-          if ("activity.RegisterPhoneNumActivity".equals(localObject)) {
-            return RegisterPhoneNumActivity.class;
-          }
-        }
-      }
-      i -= 1;
+      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+      paramDialogInterface.dismiss();
+      mru.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause, this.jdField_a_of_type_Boolean);
+      return;
     }
-    return RegisterPhoneNumActivity.class;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QQRegisterAction", 1, "doAction error: " + localException.getMessage());
-      a("QQRegisterAction");
-    }
-    return false;
   }
 }
 

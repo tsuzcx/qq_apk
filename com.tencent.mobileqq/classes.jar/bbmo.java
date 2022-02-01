@@ -1,45 +1,12 @@
-import android.view.View;
-import java.util.List;
-
-public class bbmo
-  implements bbmx
+public abstract interface bbmo
 {
-  public static final String a;
-  private final List<bbmy> a;
-  private final String b;
+  public abstract void a();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = anni.a(2131704178);
-  }
+  public abstract void a(String paramString);
   
-  public bbmo(List<bbmy> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
+  public abstract void a_(int paramInt, Throwable paramThrowable);
   
-  public int a()
-  {
-    return 2147483647;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<bbmy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.b;
-  }
+  public abstract void b();
 }
 
 

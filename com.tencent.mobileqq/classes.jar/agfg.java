@@ -1,38 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agfg
-  implements INetInfoHandler
+final class agfg
+  implements agfh
 {
-  public agfg(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public void onNetMobile2None()
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
-    }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
-    }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
+    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 46);
+    paramString.h = bhlg.c(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
+    return paramString;
   }
 }
 

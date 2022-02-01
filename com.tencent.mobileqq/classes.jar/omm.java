@@ -1,32 +1,10 @@
-import org.json.JSONObject;
-
 public class omm
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public omm(JSONObject paramJSONObject)
+  public static void a(int paramInt)
   {
-    if (paramJSONObject != null)
-    {
-      this.a = paramJSONObject.optString("dest_url");
-      this.b = paramJSONObject.optString("rl");
-      this.c = paramJSONObject.optString("button_txt");
-      this.d = paramJSONObject.optString("button_bg");
+    if ((paramInt == 41516) || (paramInt == 41522)) {
+      ocd.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new omk().a().a(paramInt).a(), false);
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
-    localStringBuilder.append("destUrl=").append(this.a);
-    localStringBuilder.append(",rl=").append(this.b);
-    localStringBuilder.append(",buttonTxt=").append(this.c);
-    localStringBuilder.append(",buttonBg=").append(this.d);
-    localStringBuilder.append("}");
-    return super.toString();
   }
 }
 

@@ -1,28 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 
-class akyj
-  implements View.OnClickListener
+public class akyj
+  implements aldq
 {
-  akyj(akyh paramakyh, int paramInt) {}
+  public akyj(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (BaseActivity.sTopActivity != null) {
-      awnr.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      awnr.m();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      akyt localakyt = new akyt();
+      localakyt.a = (paramPathResult.folderPath + "/" + "original.mp3");
+      localakyt.b = (paramPathResult.folderPath + "/" + "accompany.mp3");
+      localakyt.c = (paramPathResult.folderPath + "/" + "lyrics.qrc");
+      localakyt.d = (paramPathResult.folderPath + "/" + "config.cfg");
+      RedPacketKSongFragment.a(this.a, localakyt);
+      if (this.a.c()) {
+        return;
       }
+      this.a.getActivity().runOnUiThread(new RedPacketKSongFragment.10.1(this));
+      return;
     }
+    this.a.g();
   }
 }
 

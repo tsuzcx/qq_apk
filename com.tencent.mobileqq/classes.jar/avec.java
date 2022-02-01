@@ -1,17 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import android.view.View;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
-class avec
-  implements TVK_IMediaPlayer.OnNetVideoInfoListener
+public class avec
+  implements bliz
 {
-  avec(avdv paramavdv) {}
+  public avec(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
-  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    if (paramInt == 0) {
+      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
     }
   }
 }

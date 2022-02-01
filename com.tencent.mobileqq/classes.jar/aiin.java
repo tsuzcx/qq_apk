@@ -1,262 +1,103 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.immersion.stickersampleapp.HapticManager;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.confess.ConfessConvInfo;
+import com.tencent.mobileqq.confess.ConfessInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class aiin
-  implements Handler.Callback, GestureDetector.OnGestureListener
+class aiin
+  extends aqyu
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final aiio jdField_a_of_type_Aiio;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private final View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString = "chat_item_for_sticker40";
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
+  aiin(aiim paramaiim) {}
   
-  public aiin(aiio paramaiio, View paramView, boolean paramBoolean)
+  private void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Aiio = paramaiio;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramView.getContext(), this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "finishSendingAction: " + paramInt);
-    }
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Aiio.a(paramInt, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 3000L);
-    this.jdField_c_of_type_Boolean = true;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  private void b()
-  {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
-    this.jdField_a_of_type_Int = arrayOfInt[0];
-    this.jdField_b_of_type_Int = arrayOfInt[1];
-  }
-  
-  private boolean b(MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 2) && (this.jdField_d_of_type_Int > -1) && (this.jdField_a_of_type_Aiio.a(paramMotionEvent.getX(), paramMotionEvent.getY())))
+    StringBuilder localStringBuilder;
+    if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
     {
-      a(this.jdField_d_of_type_Int);
-      return true;
+      localStringBuilder = new StringBuilder();
+      if (!paramBoolean) {}
     }
-    return false;
-  }
-  
-  private boolean c(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "handleActionUp: " + paramMotionEvent);
-      }
-      if (this.jdField_d_of_type_Int <= -1) {
-        break label80;
-      }
-      a(this.jdField_d_of_type_Int);
+      return;
     }
-    label80:
-    for (bool1 = bool2;; bool1 = false)
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Aiio.e();
-      return bool1;
+      localStringBuilder.append("屏蔽失败，请重试。");
+      this.a.a(2, localStringBuilder.toString(), 500);
+      return;
     }
+    localStringBuilder.append("屏蔽失败，").append(paramString);
+    this.a.a(2, localStringBuilder.toString(), 500);
   }
   
-  public void a()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_d_of_type_Int > -1) {
-      a(this.jdField_d_of_type_Int);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = c(paramMotionEvent);
-    boolean bool1 = bool2;
-    if (!bool2) {
-      bool1 = b(paramMotionEvent);
-    }
-    bool2 = bool1;
-    if (!bool1) {
-      bool2 = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    }
-    return bool2;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
+    if (!aqyl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
     do
     {
       do
       {
-        return true;
-      } while (this.jdField_d_of_type_Int != ((Integer)paramMessage.obj).intValue());
-      if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_Aiio.a())
-      {
-        a(this.jdField_d_of_type_Int);
-        return true;
-      }
-      this.jdField_c_of_type_Int += 1;
-      this.jdField_a_of_type_Aiio.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int);
-      if (this.jdField_d_of_type_Boolean) {
-        HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
-      }
-      for (;;)
-      {
-        if ((this.jdField_c_of_type_Int > 2) && (!this.jdField_b_of_type_Boolean))
-        {
-          this.jdField_a_of_type_Aiio.c();
-          this.jdField_b_of_type_Boolean = true;
-        }
-        if (this.jdField_c_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-          this.jdField_c_of_type_Boolean = false;
-        }
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramMessage.obj);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 80L);
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("StickerBubbleGesture", 2, "handleMessage isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
-        }
-      }
-    } while (!this.jdField_c_of_type_Boolean);
-    this.jdField_a_of_type_Aiio.d();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+        return;
+      } while ((!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int));
+      aiim.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onCheckHolmesTipsView  frdUin:" + paramString + " type:" + paramInt2 + " topicid:" + paramInt1);
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onDown: " + paramMotionEvent);
-    }
-    this.jdField_a_of_type_Aiio.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onFling: " + paramFloat1 + " / " + paramFloat2);
-    }
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    int i = this.jdField_a_of_type_Aiio.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onLongPress: " + paramMotionEvent + " on idx: " + i);
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onScroll: " + paramFloat1 + " / " + paramFloat2);
-    }
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    int i = this.jdField_a_of_type_Aiio.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleGesture", 2, "onShowPress: " + paramMotionEvent + " on idx: " + i);
-    }
-    if ((i > -1) && (!jdField_a_of_type_Boolean))
-    {
-      if (this.jdField_d_of_type_Int > -1) {
-        a(this.jdField_d_of_type_Int);
-      }
-      this.jdField_d_of_type_Int = i;
-      b();
-      this.jdField_a_of_type_Float = (paramMotionEvent.getX() + this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Float = (paramMotionEvent.getY() + this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Aiio.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, i, 1);
-      if (!this.jdField_d_of_type_Boolean) {
-        break label203;
-      }
-      HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_Int = 1;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      jdField_a_of_type_Boolean = true;
-      paramMotionEvent = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, Integer.valueOf(i));
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMotionEvent, 80L);
+    if (!aqyl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
       return;
-      label203:
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "onShowPress isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
+    }
+    if (paramBoolean2) {}
+    for (;;)
+    {
+      String str = Long.toString(paramLong2);
+      if ((!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+        break;
       }
+      if (paramBoolean1)
+      {
+        aqyy localaqyy = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+        ConfessConvInfo localConfessConvInfo = localaqyy.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+        if ((localConfessConvInfo != null) && ((localConfessConvInfo.holmesCurCount != paramInt3) || (localConfessConvInfo.holmesTolCount != paramInt4))) {
+          localaqyy.a(str, paramInt2, paramInt1, paramInt3, paramInt4);
+        }
+        aiim.a(this.a, true);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onGetHolmesProgress " + paramBoolean1 + " frdUin:" + str + " type:" + paramInt2 + " topicid:" + paramInt1 + " curCount:" + paramInt3);
+      return;
+      paramLong2 = paramLong1;
     }
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo)
   {
-    long l = SystemClock.uptimeMillis();
-    int i;
-    if (l - this.jdField_a_of_type_Long > 300L)
-    {
-      i = this.jdField_a_of_type_Aiio.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "onSingleTapUp: " + paramMotionEvent + " on idx: " + i);
-      }
-      if (i > -1)
+    String str;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (bhjx.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && (paramInt2 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e)) {
+      if (QLog.isColorLevel())
       {
-        b();
-        this.jdField_a_of_type_Aiio.a(paramMotionEvent.getX() + this.jdField_a_of_type_Int, paramMotionEvent.getY() + this.jdField_b_of_type_Int, i, 1);
-        if (!this.jdField_d_of_type_Boolean) {
-          break label153;
+        str = this.a.jdField_a_of_type_JavaLangString;
+        paramInt2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e;
+        if (paramString2 != null) {
+          break label162;
         }
-        HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
       }
     }
-    for (;;)
+    label162:
+    for (paramConfessInfo = "";; paramConfessInfo = paramString2)
     {
-      this.jdField_a_of_type_Aiio.a(i, 1);
-      this.jdField_a_of_type_Long = l;
-      return true;
-      label153:
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleGesture", 2, "onSingleTapUp isTouchEffectSupport = " + this.jdField_d_of_type_Boolean);
-      }
+      QLog.i(str, 2, String.format("onSetShieldFlag suc:%b frdUin:%s uinType:%d topicId:%d hours:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramConfessInfo }));
+      this.a.bo();
+      a(paramBoolean, paramString2);
+      return;
     }
   }
 }

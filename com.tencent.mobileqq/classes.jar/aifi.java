@@ -1,43 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.widget.RoundRectImageView;
 
 class aifi
-  implements BusinessObserver
+  implements Animation.AnimationListener
 {
   aifi(aifh paramaifh) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.a.ao = true;
-          this.a.a.bE();
-          this.a.a.bp();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.a.A(2131694617);
-    this.a.a.bp();
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.b);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

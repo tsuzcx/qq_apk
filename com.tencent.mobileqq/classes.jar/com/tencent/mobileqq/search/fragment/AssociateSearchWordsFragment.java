@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import bbgw;
-import bbji;
-import bbjj;
-import bbjl;
-import bbjm;
-import bbup;
+import bbzq;
+import bccc;
+import bccd;
+import bccf;
+import bccg;
+import bcni;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.XListView;
@@ -23,7 +23,7 @@ public class AssociateSearchWordsFragment
 {
   public View.OnClickListener a;
   public View.OnTouchListener a;
-  private bbjl jdField_a_of_type_Bbjl;
+  private bccf jdField_a_of_type_Bccf;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
   private List<AssociateSearchWordsFragment.AssociateItem> jdField_a_of_type_JavaUtilList;
@@ -32,8 +32,8 @@ public class AssociateSearchWordsFragment
   
   public AssociateSearchWordsFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbji(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bbjj(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bccc(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bccd(this);
   }
   
   public void a(String paramString)
@@ -60,25 +60,25 @@ public class AssociateSearchWordsFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == null)
     {
-      bbjm localbbjm = new bbjm(this, paramList);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localbbjm);
-      localbbjm.a(paramList);
+      bccg localbccg = new bccg(this, paramList);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localbccg);
+      localbccg.a(paramList);
     }
     for (;;)
     {
       paramList = getActivity();
-      if ((paramList instanceof bbgw)) {
-        bbup.a("sub_result", "exp_auto", new String[] { ((bbgw)paramList).a(), "", "", "" });
+      if ((paramList instanceof bbzq)) {
+        bcni.a("sub_result", "exp_auto", new String[] { ((bbzq)paramList).a(), "", "", "" });
       }
       return;
-      ((bbjm)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+      ((bccg)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559796, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377048));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559802, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377187));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_Boolean = true;

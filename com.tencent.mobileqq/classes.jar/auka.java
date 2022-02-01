@@ -1,25 +1,21 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import java.util.ArrayList;
 
-public class auka
-  extends Handler
+class auka
+  implements aumz
 {
-  public auka(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  auka(aujz paramaujz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, anni.a(2131703606), 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(atyw.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    aujy.a(this.a.a, localIntent);
   }
+  
+  public void b() {}
 }
 
 

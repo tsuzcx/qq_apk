@@ -1,217 +1,192 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.data.fts.TroopIndex;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class bfnz
-  extends BaseAdapter
-  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bfny jdField_a_of_type_Bfny;
-  private List<bfoo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final String jdField_a_of_type_JavaLangString = "RelationFriendsSearchHelper";
   
-  public bfnz(bfny parambfny, int paramInt)
+  public bfnz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Bfny = parambfny;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public bfoo a(int paramInt)
+  public ArrayList<Entity> a(String paramString)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("RelationFriendsSearchHelper", 1, "uin empty");
       return null;
     }
-    return (bfoo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<bfoo> paramList)
-  {
-    if (paramList != null)
+    Object localObject2 = (apbd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(2);
+    Object localObject1 = ((apbd)localObject2).a(paramString);
+    if ((localObject1 == null) || (((List)localObject1).size() == 0))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      QLog.e("RelationFriendsSearchHelper", 1, "Search ftsEntities empty");
+      return null;
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    bfoo localbfoo = a(paramInt);
-    if (localbfoo != null) {
-      return localbfoo.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = getItemViewType(paramInt);
-    Object localObject2;
-    if (paramView == null) {
-      if (i == 0)
+    Object localObject3 = new HashMap();
+    long l2 = NetConnInfoCenter.getServerTime();
+    Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    int j = 0;
+    long l1 = 0L;
+    int i = 0;
+    long l3;
+    if (j < ((List)localObject1).size())
+    {
+      localObject5 = (TroopIndex)((List)localObject1).get(j);
+      if (!((HashMap)localObject3).containsKey(((TroopIndex)localObject5).mTroopUin))
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559857, paramViewGroup, false);
-        localObject1 = new bfoa();
-        ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379180));
-        ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379181));
-        paramView.setTag(localObject1);
-        localObject2 = paramView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject2).height = (this.jdField_a_of_type_Int - 6);
-        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        if (!this.jdField_a_of_type_Bfny.c) {
-          break label247;
+        localObject6 = (RecentUser)((apaw)localObject4).findRecentUserByUin(((TroopIndex)localObject5).mTroopUin, 1);
+        if ((localObject6 != null) && (((RecentUser)localObject6).lastmsgtime > 0L))
+        {
+          l3 = 100L + l2 - ((RecentUser)localObject6).lastmsgtime;
+          if (l3 < 0L) {}
+          ((HashMap)localObject3).put(((TroopIndex)localObject5).mTroopUin, Long.valueOf(l3));
+          i += 1;
+          l1 += l3;
         }
-        localObject2 = new GradientDrawable();
-        ((GradientDrawable)localObject2).setCornerRadius(16.0F);
-        ((GradientDrawable)localObject2).setColor(-14934754);
-        paramView.setBackgroundDrawable((Drawable)localObject2);
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        ((HashMap)localObject3).put(((TroopIndex)localObject5).mTroopUin, Long.valueOf(0L));
+      }
+    }
+    long l4 = System.currentTimeMillis();
+    localObject1 = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    Object localObject5 = new HashMap();
+    float f3 = 1.0F / ((HashMap)localObject3).size();
+    Object localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Iterator localIterator = ((HashMap)localObject3).keySet().iterator();
+    l2 = 0L;
+    Object localObject7;
+    float f1;
+    if (localIterator.hasNext())
+    {
+      localObject7 = (String)localIterator.next();
+      float f2 = 0.0F;
+      l3 = ((Long)((HashMap)localObject3).get(localObject7)).longValue();
+      f1 = f2;
+      if (l3 > 0L)
+      {
+        f1 = f2;
+        if (l1 > 0L)
+        {
+          f1 = (0.0F + (float)l3) / (float)l1;
+          if ((f1 > 1.0F) || (i <= 0)) {
+            break label1121;
+          }
+          if (i != 1) {
+            break label502;
+          }
+          f1 = 1.0F;
+        }
       }
     }
     for (;;)
     {
-      localObject2 = a(paramInt);
-      if (localObject2 != null) {
-        break label290;
+      if (QLog.isColorLevel()) {
+        QLog.i("RelationFriendsSearchHelper", 2, "troopUin:" + (String)localObject7 + ",delta:" + l3 + "troopActiveFator_delta:" + f1);
       }
-      QLog.e("AppsGridViewBuilder", 2, "getItem() == null position:" + paramInt);
-      for (localObject1 = paramView;; localObject1 = null)
+      l3 = System.currentTimeMillis();
+      localObject7 = ((apbd)localObject2).b((String)localObject7);
+      l3 = l2 + (System.currentTimeMillis() - l3);
+      if ((localObject7 == null) || (((List)localObject7).size() == 0))
       {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return localObject1;
-        if (i == 1)
-        {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559858, paramViewGroup, false);
-          localObject1 = new bfoa();
-          ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379180));
-          paramView.setTag(localObject1);
-          break;
-        }
+        QLog.e("RelationFriendsSearchHelper", 1, "Search ftsMembers empty");
+        l2 = l3;
+        break;
+        label502:
+        f1 = (1.0F - f1) / (i - 1);
+        continue;
       }
-      label247:
-      localObject2 = new GradientDrawable();
-      ((GradientDrawable)localObject2).setCornerRadius(16.0F);
-      ((GradientDrawable)localObject2).setColor(-1);
-      paramView.setBackgroundDrawable((Drawable)localObject2);
-      continue;
-      localObject1 = (bfoa)paramView.getTag();
-    }
-    label290:
-    ((bfoa)localObject1).jdField_a_of_type_Bfoo = ((bfoo)localObject2);
-    if (i == 0)
-    {
-      ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((bfoo)localObject2).jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Bfny.c) {
-        ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
-      }
-    }
-    if (this.jdField_a_of_type_Bfny.c)
-    {
-      ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      label361:
-      if (((bfoo)localObject2).jdField_a_of_type_Int != 1) {
-        break label459;
-      }
-      ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850725));
-      bfqq.a(((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView);
-      if (AppSetting.c) {
-        if (((bfoo)localObject2).jdField_a_of_type_JavaLangString == null) {
-          break label526;
-        }
-      }
-    }
-    label526:
-    for (Object localObject1 = ((bfoo)localObject2).jdField_a_of_type_JavaLangString;; localObject1 = "")
-    {
-      paramView.setContentDescription((CharSequence)localObject1);
-      paramView.setClickable(true);
-      paramView.setOnClickListener(this);
-      localObject1 = paramView;
-      break;
-      ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView.setColorFilter(0, PorterDuff.Mode.SRC_ATOP);
-      break label361;
-      label459:
-      ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
-      Context localContext = this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidContentContext;
-      localObject1 = ((bfoa)localObject1).jdField_a_of_type_AndroidWidgetImageView;
-      String str = ((bfoo)localObject2).jdField_b_of_type_JavaLangString;
-      if (((bfoo)localObject2).d == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        bfqq.a(localContext, (ImageView)localObject1, str, 24.0F, bool);
+      j = 0;
+      l2 = l3;
+      if (j >= ((List)localObject7).size()) {
         break;
       }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = paramView.getTag();
-    if (localObject == null) {}
-    do
-    {
+      Object localObject8 = (TroopIndex)((List)localObject7).get(j);
+      if ((((anyw)localObject1).b(((TroopIndex)localObject8).mMemberUin)) && (!((String)localObject6).equals(((TroopIndex)localObject8).mMemberUin)) && (!paramString.equals(((TroopIndex)localObject8).mMemberUin)))
+      {
+        if (((HashMap)localObject5).containsKey(((TroopIndex)localObject8).mMemberUin)) {
+          break label676;
+        }
+        bfoc localbfoc = new bfoc(this, f3);
+        localbfoc.b = f1;
+        localbfoc.jdField_a_of_type_Int = 1;
+        RecentUser localRecentUser = (RecentUser)((apaw)localObject4).findRecentUserByUin(((TroopIndex)localObject8).mMemberUin, 0);
+        if (localRecentUser != null) {
+          localbfoc.jdField_a_of_type_Long = localRecentUser.lastmsgtime;
+        }
+        ((HashMap)localObject5).put(((TroopIndex)localObject8).mMemberUin, localbfoc);
+      }
       for (;;)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if ((localObject instanceof bfoa))
+        j += 1;
+        break;
+        label676:
+        localObject8 = (bfoc)((HashMap)localObject5).get(((TroopIndex)localObject8).mMemberUin);
+        ((bfoc)localObject8).jdField_a_of_type_Int += 1;
+        ((bfoc)localObject8).b += f1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("RelationFriendsSearchHelper", 2, "timecost:" + (System.currentTimeMillis() - l4) + "querycostmember:" + l2 + ",troopsSize:" + ((HashMap)localObject3).size() + "Members:" + ((HashMap)localObject5).size());
+      }
+      paramString = new ArrayList(((HashMap)localObject5).entrySet());
+      Collections.sort(paramString, new bfoa(this));
+      i = paramString.size();
+      if ((i > 1) && (((bfoc)((Map.Entry)paramString.get(i - 1)).getValue()).a() == ((bfoc)((Map.Entry)paramString.get(0)).getValue()).a())) {}
+      for (i = 1;; i = 0)
+      {
+        if (i != 0)
         {
-          localObject = (bfoa)localObject;
-          if (((bfoa)localObject).jdField_a_of_type_Bfoo != null)
+          if (QLog.isColorLevel()) {
+            QLog.i("RelationFriendsSearchHelper", 2, "isAllMemberScoreEqual");
+          }
+          Collections.sort(paramString, new bfob(this));
+        }
+        localObject2 = new ArrayList();
+        i = 0;
+        if (i < paramString.size())
+        {
+          localObject3 = (bfoc)((Map.Entry)paramString.get(i)).getValue();
+          localObject4 = ((anyw)localObject1).b((String)((Map.Entry)paramString.get(i)).getKey());
+          if (localObject4 != null)
           {
+            ((ArrayList)localObject2).add(localObject4);
+            if ((i < 20) && (QLog.isColorLevel())) {
+              QLog.i("RelationFriendsSearchHelper", 2, "top20:uin" + bhsr.e(((Friends)localObject4).uin) + ",scores:" + ((bfoc)localObject3).a() + ",frequency:" + ((bfoc)localObject3).jdField_a_of_type_Int + ",activefactor:" + ((bfoc)localObject3).b + ",c2clastmsgtime:" + ((bfoc)localObject3).jdField_a_of_type_Long);
+            }
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
             if (QLog.isColorLevel()) {
-              QLog.d("AppsGridViewBuilder", 2, "onItemClick appInfo:" + ((bfoa)localObject).jdField_a_of_type_Bfoo.toString());
+              QLog.i("RelationFriendsSearchHelper", 2, "friends null");
             }
-            if (((bfoa)localObject).jdField_a_of_type_Bfoo.jdField_a_of_type_Int != 1) {
-              break;
-            }
-            bfqq.a(1, this.jdField_a_of_type_Bfny.jdField_a_of_type_Long, this.jdField_a_of_type_Bfny.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
           }
         }
+        return localObject2;
       }
-    } while (((bfoa)localObject).jdField_a_of_type_Bfoo.jdField_a_of_type_Int != 0);
-    bfqq.a(this.jdField_a_of_type_Bfny.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfny.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Bfny.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((bfoa)localObject).jdField_a_of_type_Bfoo.jdField_b_of_type_Long, ((bfoa)localObject).jdField_a_of_type_Bfoo.c, 1, 0);
-    long l1 = this.jdField_a_of_type_Bfny.jdField_a_of_type_Long;
-    long l2 = this.jdField_a_of_type_Bfny.jdField_b_of_type_Long;
-    long l3 = ((bfoa)localObject).jdField_a_of_type_Bfoo.jdField_b_of_type_Long;
-    int i = this.jdField_a_of_type_Bfny.jdField_a_of_type_Int;
-    if (((bfoa)localObject).jdField_a_of_type_Bfoo.jdField_a_of_type_Long == 0L) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      bcst.b(null, "dc00898", "", String.valueOf(l1), "0X800AD09", "0X800AD09", 0, 0, String.valueOf(l2), String.valueOf(l3), String.valueOf(i), (String)localObject);
-      break;
+      label1121:
+      f1 = 0.0F;
     }
   }
 }

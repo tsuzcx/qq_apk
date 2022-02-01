@@ -3,7 +3,9 @@ package com.tencent.qqlive.tvkplayer.vinfo.vod;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.qqlive.tvkplayer.TVideoMgr;
+import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.HttpResponse;
 import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.ITVKHttpCallback;
+import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.InvalidResponseCodeException;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKUtils;
 import com.tencent.qqlive.tvkplayer.vinfo.apiinner.ITVKCGIVInfoResponse;
@@ -11,10 +13,13 @@ import com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyFacade;
 import com.tencent.qqlive.tvkplayer.vinfo.ckey.RSAUtils;
 import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoConfig;
 import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoEnum;
+import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoErrorCodeUtil;
 import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoHttpProcessor;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -45,6 +50,56 @@ public class TVKCGIVInfoRequest
     this.mParams = paramTVKCGIVInfoRequestParams;
     this.mCallback = paramITVKCGIVInfoResponse;
     this.mRequestID = paramTVKCGIVInfoRequestParams.getRequestID();
+  }
+  
+  private void callbackOnFailureOrRetry(int paramInt)
+  {
+    if ((this.mUseBakUrl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT) && (this.mCallback != null))
+    {
+      paramInt = 1401000 + paramInt;
+      this.mCallback.onVInfoFailure(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(101), Integer.valueOf(paramInt) }), paramInt);
+      return;
+    }
+    executeRequest();
+  }
+  
+  private void fillClipAndDtypeParams(Map<String, String> paramMap, TVKCGIVInfoRequestParams paramTVKCGIVInfoRequestParams)
+  {
+    if ((paramMap == null) || (paramTVKCGIVInfoRequestParams == null)) {
+      return;
+    }
+    if (paramTVKCGIVInfoRequestParams.getDlType() == 0)
+    {
+      paramMap.put("clip", "0");
+      paramMap.put("dtype", "3");
+      return;
+    }
+    if (paramTVKCGIVInfoRequestParams.getDlType() == 4)
+    {
+      paramMap.put("clip", "2");
+      paramMap.put("dtype", "1");
+      return;
+    }
+    if (paramTVKCGIVInfoRequestParams.getDlType() == 5)
+    {
+      paramMap.put("clip", "3");
+      paramMap.put("dtype", "1");
+      return;
+    }
+    if (paramTVKCGIVInfoRequestParams.getDlType() == 1)
+    {
+      paramMap.put("clip", "4");
+      paramMap.put("dtype", "1");
+      return;
+    }
+    if (paramTVKCGIVInfoRequestParams.getDlType() == 3)
+    {
+      paramMap.put("clip", "0");
+      paramMap.put("dtype", "3");
+      return;
+    }
+    paramMap.put("clip", "0");
+    paramMap.put("dtype", String.valueOf(paramTVKCGIVInfoRequestParams.getDlType()));
   }
   
   private String genCkey(TVKCGIVInfoRequestParams paramTVKCGIVInfoRequestParams, Map<String, String> paramMap)
@@ -81,7 +136,7 @@ public class TVKCGIVInfoRequest
       if (paramMap != null)
       {
         if ((!paramMap.containsKey("toushe")) || (!paramMap.containsKey("from_platform"))) {
-          break label319;
+          break label323;
         }
         localObject2[0] = 16;
         localObject2[1] = TVKUtils.optInt((String)paramMap.get("from_platform"), j);
@@ -94,7 +149,7 @@ public class TVKCGIVInfoRequest
       return this.mCKey;
       localObject2[0] = 4;
       break;
-      label319:
+      label323:
       if (paramMap.containsKey("sptest")) {
         localObject2[0] = 64;
       } else if (paramMap.containsKey("ottflag")) {
@@ -201,6 +256,111 @@ public class TVKCGIVInfoRequest
     }
   }
   
+  private void handleHttpCallbackOnFailure(IOException paramIOException)
+  {
+    TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "getvinfo onFailure, e:" + paramIOException.toString());
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.mStartRequestMS;
+    if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {}
+    for (int i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;; i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause()))
+    {
+      TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] failed, time cost:" + (l1 - l2) + "ms error:" + paramIOException.toString());
+      if ((this.mUseBakUrl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT) && (this.mCallback != null))
+      {
+        int j = 1401000 + i;
+        this.mCallback.onVInfoFailure(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(101), Integer.valueOf(j) }), j);
+      }
+      if ((i >= 16) && (i <= 20)) {
+        this.mRetryWithoutHttps = true;
+      }
+      if (this.mParams.useIpV6Dns()) {
+        TVKVideoInfoCache.getInstance().setIpv6Error(true);
+      }
+      executeRequest();
+      return;
+    }
+  }
+  
+  private void handleHttpCallbackOnSuccess(ITVKHttpProcessor.HttpResponse paramHttpResponse)
+  {
+    TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "getvinfo onSuccess.");
+    for (;;)
+    {
+      try
+      {
+        if ((paramHttpResponse.mHeaders.containsKey("Content-Encoding")) && (((List)paramHttpResponse.mHeaders.get("Content-Encoding")).contains("gzip")))
+        {
+          paramHttpResponse = TVKUtils.gzipDeCompress(paramHttpResponse.mData);
+          if (paramHttpResponse == null) {
+            break label355;
+          }
+          paramHttpResponse = new String(paramHttpResponse, "UTF-8");
+          long l1 = SystemClock.elapsedRealtime();
+          long l2 = this.mStartRequestMS;
+          TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] success time cost:" + (l1 - l2) + " xml:" + paramHttpResponse);
+          if (!paramHttpResponse.contains("<?xml"))
+          {
+            this.mRetryWithoutHttps = false;
+            executeRequest();
+          }
+        }
+        else
+        {
+          paramHttpResponse = new String(paramHttpResponse.mData, "UTF-8");
+          continue;
+        }
+        if (TextUtils.isEmpty(paramHttpResponse)) {
+          break label340;
+        }
+      }
+      catch (Exception paramHttpResponse)
+      {
+        TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", paramHttpResponse);
+        callbackOnFailureOrRetry(23);
+        return;
+      }
+      paramHttpResponse = new TVKCGIParser(paramHttpResponse);
+      if (paramHttpResponse.init())
+      {
+        if ((this.mCGIRetryCount <= 2) && ((paramHttpResponse.isXML85ErrorCode()) || (paramHttpResponse.isXMLHaveRetryNode())))
+        {
+          TVKLogUtil.i("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] cgi return retry or 85 error");
+          this.mCGIRetryCount += 1;
+          this.mCurrentHostUrlRetryCount -= 1;
+          this.mGetUrlCount -= 1;
+          if (this.mCGIRetryCount == 2) {
+            if (this.mUseBakUrl) {
+              break label290;
+            }
+          }
+          label290:
+          for (boolean bool = true;; bool = false)
+          {
+            this.mUseBakUrl = bool;
+            this.mCurrentHostUrlRetryCount = 0;
+            executeRequest();
+            return;
+          }
+        }
+        if (this.mCallback != null) {
+          this.mCallback.onVInfoSuccess(this.mRequestID, paramHttpResponse.getXml(), paramHttpResponse.getDocument());
+        }
+      }
+      else
+      {
+        TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] xml parse error");
+        callbackOnFailureOrRetry(15);
+        return;
+        label340:
+        TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", "[vinfo][getvinfo] return xml error!");
+        callbackOnFailureOrRetry(13);
+        return;
+        label355:
+        paramHttpResponse = "";
+      }
+    }
+  }
+  
   private Map<String, String> packRequestParams()
   {
     int j = 0;
@@ -213,101 +373,74 @@ public class TVKCGIVInfoRequest
     localHashMap.put("sphls", "1");
     localHashMap.put("defn", this.mParams.getFormat());
     localHashMap.put("ipstack", String.valueOf(this.mParams.getipstack()));
-    label331:
-    label375:
-    label381:
-    Object localObject2;
-    if (this.mParams.getDlType() == 0)
+    fillClipAndDtypeParams(localHashMap, this.mParams);
+    if ((this.mParams.getDlType() == 0) || (this.mParams.getDlType() == 3))
     {
-      localHashMap.put("clip", "0");
-      localHashMap.put("dtype", "3");
-      if ((this.mParams.getCkeyExtraParamsMap() == null) || (this.mParams.getCkeyExtraParamsMap().isEmpty()))
+      if ((this.mParams.getCkeyExtraParamsMap() != null) && (!this.mParams.getCkeyExtraParamsMap().isEmpty())) {
+        break label423;
+      }
+      i = 1;
+      if (i != 0)
       {
         localHashMap.put("sphls", "2");
         localHashMap.put("spgzip", "1");
       }
-      if (this.mParams.getPlayerCapacity() > 0) {
-        localHashMap.put("device", String.valueOf(this.mParams.getPlayerCapacity()));
-      }
-      if (this.mParams.getAppVer() != null) {
-        localHashMap.put("appVer", this.mParams.getAppVer());
-      }
-      if (65 != this.mParams.getEncrypVer()) {
-        break label696;
-      }
+    }
+    if (this.mParams.getPlayerCapacity() > 0) {
+      localHashMap.put("device", String.valueOf(this.mParams.getPlayerCapacity()));
+    }
+    if (this.mParams.getAppVer() != null) {
+      localHashMap.put("appVer", this.mParams.getAppVer());
+    }
+    label326:
+    label370:
+    label376:
+    Object localObject2;
+    if (65 == this.mParams.getEncrypVer())
+    {
       localHashMap.put("encryptVer", "4.1");
       if (TextUtils.isEmpty(this.mParams.getUpc())) {
-        break label784;
+        break label516;
       }
       if (!this.mParams.getUpc().contains("&")) {
-        break label740;
+        break label472;
       }
       localObject1 = this.mParams.getUpc().split("&");
       int k = localObject1.length;
       i = 0;
       if (i >= k) {
-        break label784;
+        break label516;
       }
       localObject2 = localObject1[i].split("=");
       if (localObject2.length != 2) {
-        break label760;
+        break label492;
       }
       localHashMap.put(localObject2[0], localObject2[1]);
     }
     for (;;)
     {
       i += 1;
-      break label381;
-      if (this.mParams.getDlType() == 4)
-      {
-        localHashMap.put("clip", "2");
-        localHashMap.put("dtype", String.valueOf("1"));
-        break;
-      }
-      if (this.mParams.getDlType() == 5)
-      {
-        localHashMap.put("clip", "3");
-        localHashMap.put("dtype", String.valueOf("1"));
-        break;
-      }
-      if (this.mParams.getDlType() == 1)
-      {
-        localHashMap.put("clip", "4");
-        localHashMap.put("dtype", String.valueOf("1"));
-        break;
-      }
-      if (this.mParams.getDlType() == 3)
-      {
-        localHashMap.put("clip", "0");
-        localHashMap.put("dtype", "3");
-        if ((this.mParams.getCkeyExtraParamsMap() != null) && (!this.mParams.getCkeyExtraParamsMap().isEmpty())) {
-          break;
-        }
-        localHashMap.put("sphls", "2");
-        localHashMap.put("spgzip", "1");
-        break;
-      }
-      localHashMap.put("clip", "0");
-      localHashMap.put("dtype", String.valueOf(this.mParams.getDlType()));
+      break label376;
+      label423:
+      i = 0;
       break;
-      label696:
       if (66 == this.mParams.getEncrypVer())
       {
         localHashMap.put("encryptVer", "4.2");
-        break label331;
+        break label326;
       }
       localHashMap.put("encryptVer", "5.1");
-      break label331;
-      label740:
+      break label326;
+      label472:
       localObject1 = new String[1];
       localObject1[0] = this.mParams.getUpc();
-      break label375;
-      label760:
+      break label370;
+      label492:
       if (localObject2.length == 1) {
         localHashMap.put(localObject2[0], "");
       }
     }
-    label784:
+    label516:
     Object localObject1 = this.mParams.getExtraParamsMap();
     int i = j;
     if (localObject1 != null)

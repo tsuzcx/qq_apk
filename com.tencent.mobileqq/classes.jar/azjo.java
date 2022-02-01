@@ -1,22 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
 
-public class azjo
-  extends Handler
+class azjo
+  implements azkr
 {
-  public azjo(CircularProgressBar paramCircularProgressBar) {}
+  azjo(azjn paramazjn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(PoiBean paramPoiBean)
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
+    try
     {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+      this.a.a(paramPoiBean);
+      return;
+    }
+    catch (Throwable paramPoiBean)
+    {
+      QLog.e("LocationCategoryDetector", 1, "getPoiResultError", paramPoiBean);
     }
   }
 }

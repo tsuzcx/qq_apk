@@ -1,11 +1,15 @@
-import com.tencent.mfsdk.MagnifierSDK;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class anap
+class anap
 {
-  public static String a()
-  {
-    return MagnifierSDK.a().a().b();
-  }
+  public ImageView a;
+  public TextView a;
+  public CornerImageView a;
+  public CornerImageView b;
+  
+  anap(anao paramanao) {}
 }
 
 

@@ -11,9 +11,10 @@ import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 public abstract class BaseJsPlugin
   implements IJsPlugin
 {
+  public static final String EMPTY_RESULT = "{}";
   private String appId;
   protected boolean isDestroy;
-  protected boolean isGameRuntime;
+  public boolean isGameRuntime;
   public BaseJsPluginEngine jsPluginEngine;
   
   private void setAppId(BaseJsPluginEngine paramBaseJsPluginEngine)

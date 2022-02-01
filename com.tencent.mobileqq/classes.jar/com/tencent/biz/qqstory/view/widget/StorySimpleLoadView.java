@@ -9,8 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import zlx;
+import anzj;
+import zps;
 
 public class StorySimpleLoadView
   extends RelativeLayout
@@ -35,14 +35,14 @@ public class StorySimpleLoadView
   {
     ProgressBar localProgressBar = new ProgressBar(getContext());
     localProgressBar.setIndeterminate(true);
-    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130846903));
-    localProgressBar.setId(2131370217);
-    int i = zlx.a(getContext(), 24.0F);
+    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130846920));
+    localProgressBar.setId(2131370318);
+    int i = zps.a(getContext(), 24.0F);
     Object localObject = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     addView(localProgressBar, (ViewGroup.LayoutParams)localObject);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setText(anni.a(2131713254));
+    ((TextView)localObject).setText(anzj.a(2131713363));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14);
     localLayoutParams.addRule(3, localProgressBar.getId());

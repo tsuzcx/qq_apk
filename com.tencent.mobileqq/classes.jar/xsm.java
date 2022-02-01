@@ -1,42 +1,75 @@
-import android.support.annotation.NonNull;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class xsm
-  extends QQUIEventReceiver<AbsVideoInfoWidget, wxv>
+class xsm
+  implements wkd
 {
-  public xsm(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
-  {
-    super(paramAbsVideoInfoWidget);
-  }
+  xsm(xsg paramxsg, StoryVideoItem paramStoryVideoItem, String paramString) {}
   
-  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull wxv paramwxv)
+  public void a(wkb paramwkb)
   {
-    if ((paramwxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwxv.jdField_a_of_type_JavaUtilList == null)) {}
-    String str;
-    StoryVideoItem localStoryVideoItem;
-    do
+    if (this.jdField_a_of_type_Xsg.isCanceled())
     {
-      do
+      yuk.d(this.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "queryAndUpdateUrl onResult. stream canceled");
+      return;
+    }
+    if (!TextUtils.equals(paramwkb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
+    {
+      yuk.e(this.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "ignore queryAndUpdateUrl onResult. oldVid=%s. newVid=%s", new Object[] { paramwkb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+    }
+    if (!this.jdField_a_of_type_Xsg.a.d())
+    {
+      xsg.c(this.jdField_a_of_type_Xsg, new ErrorMessage(-1, "queryAndUpdateUrl onResult already unBind"));
+      return;
+    }
+    Object localObject;
+    if (paramwkb.jdField_a_of_type_Boolean)
+    {
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if ((((File)localObject).exists()) && (!wkr.a((File)localObject)))
       {
-        return;
-        while (paramAbsVideoInfoWidget.a == null) {}
-        str = paramAbsVideoInfoWidget.a.a;
-        paramwxv = paramwxv.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!paramwxv.hasNext());
-      localStoryVideoItem = (StoryVideoItem)paramwxv.next();
-    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
-    paramAbsVideoInfoWidget.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wxv.class;
+        boolean bool = ((File)localObject).delete();
+        yuk.d(this.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "%s - %d found orphan tmp , delete it. %s", new Object[] { paramwkb.jdField_a_of_type_JavaLangString, Integer.valueOf(paramwkb.jdField_a_of_type_Int), Boolean.valueOf(bool) });
+      }
+    }
+    if (TextUtils.isEmpty(paramwkb.b))
+    {
+      xsg.d(this.jdField_a_of_type_Xsg, new ErrorMessage(13, "queryAndUpdateUrl onResult url empty"));
+      return;
+    }
+    int i = xlo.a(new xlu(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramwkb.b, this.jdField_a_of_type_JavaLangString, "TVKsetVideoPath"));
+    yuk.d(this.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "setVideoPath, vid=%s, cache=%d, fileName = %s, url=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, Integer.valueOf(i), this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_JavaLangString.length() - 15), paramwkb.b });
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, wjt.a(paramwkb.b));
+      this.jdField_a_of_type_Xsg.a.c = paramwkb.b;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, "SP", SystemClock.uptimeMillis());
+      VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a, SystemClock.uptimeMillis());
+      this.jdField_a_of_type_Xsg.a.jdField_a_of_type_Xtg.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_JavaLangString, paramwkb.b, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoBytes, (int)this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration, 0);
+      return;
+      VideoViewVideoHolder localVideoViewVideoHolder = this.jdField_a_of_type_Xsg.a;
+      StringBuilder localStringBuilder = new StringBuilder().append(anzj.a(2131715230));
+      if (this.jdField_a_of_type_Xsg.a.b()) {}
+      for (localObject = "TVK";; localObject = "TexView")
+      {
+        VideoViewVideoHolder.a(localVideoViewVideoHolder, (String)localObject);
+        VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a).a(this.jdField_a_of_type_Xsg.a, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramwkb.b, null, false);
+        break;
+      }
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, anzj.a(2131715228));
+      continue;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, anzj.a(2131715222));
+      continue;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, anzj.a(2131715224));
+    }
   }
 }
 

@@ -1,111 +1,71 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
-import com.tencent.mobileqq.activity.photo.album.OtherCommonData;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
-import com.tencent.qphone.base.util.QLog;
+import BOSSStrategyCenter.tAdvAppInfo;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 import java.util.ArrayList;
-import java.util.List;
-import mqq.util.WeakReference;
+import java.util.Iterator;
 
-public abstract class bnfu<K extends bnff>
-  implements MediaScanner.OnMediaScannerListener
+public class bnfu
+  extends QzoneExternalRequest
 {
-  protected static volatile bnfu a;
-  protected long a;
-  public bnfv a;
-  public bnfw a;
-  public bnfx a;
-  bnfy a;
-  public PhotoCommonBaseData<OtherCommonData> a;
-  public PhotoListBaseData a;
-  public WeakReference<K> a;
+  JceStruct a;
   
-  protected bnfu(K paramK)
+  public bnfu(long paramLong, ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bnfy = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramK);
-    paramK.getActivity().getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData = PhotoCommonBaseData.getInstance();
-    paramK.getActivity().getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.addHoldNember();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListBaseData = new PhotoListBaseData();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListActivity", 2, "PhotoListLogic new，fragment = " + paramK + ",PhotoCommonData = " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    MobileQbossAdvReq localMobileQbossAdvReq = new MobileQbossAdvReq();
+    localMobileQbossAdvReq.uiUin = paramLong;
+    ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      Integer localInteger = (Integer)paramArrayList.next();
+      tAdvAppInfo localtAdvAppInfo = new tAdvAppInfo();
+      localtAdvAppInfo.app_id = localInteger.intValue();
+      localtAdvAppInfo.i_need_adv_cnt = 5;
+      localArrayList.add(localtAdvAppInfo);
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    localMobileQbossAdvReq.vecReqApp = localArrayList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localMobileQbossAdvReq.iPullAsExposeOper = i;
+      localMobileQbossAdvReq.iReqFlag = 1;
+      this.a = localMobileQbossAdvReq;
+      return;
+    }
   }
   
-  abstract String a(LocalMediaInfo paramLocalMediaInfo);
-  
-  public abstract List<LocalMediaInfo> a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(Message paramMessage);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, Bundle paramBundle, int paramInt, Intent paramIntent);
-  
-  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean);
-  
-  public abstract void a(ArrayList<LocalMediaInfo> paramArrayList);
-  
-  public abstract void a(List<LocalMediaInfo> paramList);
-  
-  public void a(boolean paramBoolean) {}
-  
-  abstract void a(boolean paramBoolean, Intent paramIntent);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(List<LocalMediaInfo> paramList);
-  
-  public void b()
+  public static MobileQbossAdvRsp a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListActivity", 2, "PhotoListLogic close，fragment = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.releaseCommonData();
-    jdField_a_of_type_Bnfu = null;
+    paramArrayOfByte = (MobileQbossAdvRsp)decode(paramArrayOfByte, "get");
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    bnfz.a(paramArrayOfByte);
+    return paramArrayOfByte;
   }
   
-  public abstract void b(float paramFloat);
+  public String getCmdString()
+  {
+    return "QzoneNewService.mobileqboss.get";
+  }
   
-  public abstract void b(Intent paramIntent);
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
   
-  public abstract void b(View paramView);
-  
-  public abstract void c();
-  
-  public abstract void c(Intent paramIntent);
-  
-  public abstract void c(View paramView);
-  
-  public abstract void d();
-  
-  public abstract void d(View paramView);
-  
-  public abstract void e();
-  
-  public abstract void e(View paramView);
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public String uniKey()
+  {
+    return "get";
+  }
 }
 
 

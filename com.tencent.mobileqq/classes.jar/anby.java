@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class anby
-  implements amht
+  implements ancm
 {
-  public anby(ApolloConfigDataReport.1 param1) {}
+  private int a;
   
-  public void a(int paramInt1, int paramInt2)
+  public anby()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    int i = ancl.a;
+    ancl.a = i + 1;
+    this.a = i;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public JSONObject a(ancl paramancl, JSONObject paramJSONObject)
+  {
+    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    {
+      paramJSONObject = new anbl(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
+      if (paramancl != null) {
+        paramancl.a(paramJSONObject);
+      }
     }
-    if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      anbx.b();
-    }
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.a;
   }
 }
 

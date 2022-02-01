@@ -1,82 +1,138 @@
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.data.MessageForScribble.FileExistInfo;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bbxm
 {
-  private int jdField_a_of_type_Int;
-  private DataLineMsgRecord jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private Long jdField_b_of_type_JavaLangLong;
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 1;
+  public static int e = 2;
+  public static int f = 3;
+  public static int g = 4;
+  public static int h = 5;
+  public static int i = 6;
+  public static int j = 7;
   
-  public bbxm(String paramString, Long paramLong, DataLineMsgRecord paramDataLineMsgRecord)
+  public static int a(MessageForScribble paramMessageForScribble)
   {
-    this.jdField_b_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = ((this.jdField_a_of_type_JavaLangString.length() + 160 - 1) / 160);
-    if (i < this.jdField_a_of_type_JavaLangString.length())
+    boolean bool1 = paramMessageForScribble.mExistInfo.mDataFileExist;
+    if (!paramMessageForScribble.mExistInfo.mInit) {
+      bool1 = auog.a(b(paramMessageForScribble));
+    }
+    boolean bool2 = paramMessageForScribble.mExistInfo.mCombineFileExist;
+    if (!paramMessageForScribble.mExistInfo.mInit) {
+      bool2 = auog.a(a(paramMessageForScribble));
+    }
+    if ((bool1) && (bool2)) {
+      return c;
+    }
+    if ((!bool1) && (bool2)) {
+      return b;
+    }
+    return a;
+  }
+  
+  public static String a()
+  {
+    return antf.cp + "ScribbleCache/";
+  }
+  
+  public static String a(MessageForScribble paramMessageForScribble)
+  {
+    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
+      return c(paramMessageForScribble.combineFileMd5);
+    }
+    return "";
+  }
+  
+  private static void a()
+  {
+    File localFile = new File(a());
+    if (((localFile.exists()) && (!localFile.isDirectory())) || (!localFile.exists())) {
+      localFile.mkdirs();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, bbxn parambbxn)
+  {
+    a();
+    new bbxo(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, parambbxn).execute(new Void[0]);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
+  {
+    if (paramMessageForScribble == null) {}
+    bbxi localbbxi;
+    MessageForScribble localMessageForScribble;
+    do
     {
-      if (i + 160 > this.jdField_a_of_type_JavaLangString.length()) {}
-      for (int j = this.jdField_a_of_type_JavaLangString.length() - i;; j = 160)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(i, j + i));
-        i += 160;
-        break;
+      return false;
+      if (paramMessageForScribble.isSendFromLocal()) {
+        paramQQAppInterface.a().a(paramQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq));
       }
+      localbbxi = new bbxi(paramQQAppInterface);
+      localMessageForScribble = localbbxi.a(paramMessageForScribble);
+    } while (localMessageForScribble == null);
+    ThreadManager.post(new ScribbleMsgUtils.1(paramQQAppInterface, paramMessageForScribble), 5, null, false);
+    localbbxi.a(localMessageForScribble);
+    return true;
+  }
+  
+  public static int b(MessageForScribble paramMessageForScribble)
+  {
+    if ((paramMessageForScribble == null) || (paramMessageForScribble.combineFileMd5 == null)) {
+      return j;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(StringBuffer paramStringBuffer)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return -1;
+    String str1 = a(paramMessageForScribble);
+    if (!auog.a(str1)) {
+      return i;
     }
-    paramStringBuffer.append((String)this.jdField_a_of_type_JavaUtilArrayList.remove(0));
-    int i = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = (i + 1);
-    return i;
+    long l = auog.a(str1);
+    if ((paramMessageForScribble.offSet <= 0) || (paramMessageForScribble.offSet >= (int)l))
+    {
+      QLog.e("ScribbleMsgUtils", 2, " offSet = " + paramMessageForScribble.offSet + " FileSize : " + l);
+      return j;
+    }
+    String str2 = b(paramMessageForScribble);
+    if (auog.a(str2)) {
+      auog.c(str2);
+    }
+    if (bbxv.a(str1, paramMessageForScribble.offSet, str2)) {
+      return d;
+    }
+    return e;
   }
   
-  public DataLineMsgRecord a()
+  public static String b(MessageForScribble paramMessageForScribble)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord;
+    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
+      return d(paramMessageForScribble.combineFileMd5);
+    }
+    return "";
   }
   
-  public ToServiceMsg a()
+  private static String c(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
+    if (!TextUtils.isEmpty(paramString)) {
+      return a() + paramString;
+    }
+    return "";
   }
   
-  public Long a()
+  private static String d(String paramString)
   {
-    return this.jdField_b_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+    if (!TextUtils.isEmpty(paramString)) {
+      return a() + paramString + "_data";
+    }
+    return "";
   }
 }
 

@@ -1,92 +1,59 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import mqq.app.AppRuntime;
 
-public class bmra
+public final class bmra
 {
-  public static final AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public static int a(Context paramContext, int paramInt)
   {
-    if (paramBaseApplicationImpl == null) {
-      return null;
-    }
-    if ("troop_member_card_plugin.apk".equals(paramString)) {}
-    label158:
-    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
-      try
-      {
-        for (;;)
-        {
-          Class localClass = Class.forName(str);
-          paramBaseApplicationImpl = localClass;
-          if (paramBaseApplicationImpl != null) {
-            break;
-          }
-          try
-          {
-            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
-            return null;
-          }
-          catch (ClassNotFoundException paramBaseApplicationImpl)
-          {
-            paramBaseApplicationImpl.printStackTrace();
-            return null;
-          }
-          if (!"troop_manage_plugin.apk".equals(paramString)) {
-            break label158;
-          }
-          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        for (;;)
-        {
-          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
-          paramBaseApplicationImpl = paramString.loadClass(str);
-          BasicClassTypeUtil.setClassLoader(true, paramString);
-        }
-      }
-      catch (IllegalArgumentException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
-          break;
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
-      }
-      catch (IllegalAccessException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InstantiationException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InvocationTargetException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (NoSuchMethodException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (Exception paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-    }
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "type", -1);
+  }
+  
+  public static long a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), -1L);
+  }
+  
+  public static String a(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", "");
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), System.currentTimeMillis()).apply();
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt1 + "type", paramInt2).apply();
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", paramString).apply();
+  }
+  
+  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", paramBoolean).apply();
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("USE_ENTRY_CONTROL", paramBoolean).apply();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("USE_ENTRY_CONTROL", false);
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", false);
   }
 }
 

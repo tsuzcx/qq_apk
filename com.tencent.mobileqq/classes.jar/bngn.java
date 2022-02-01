@@ -1,25 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.util.QZLog;
-import dov.com.qq.im.ae.album.logic.AEPhotoListLogicDefault.7.1;
-import mqq.util.WeakReference;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bngn
-  implements wiw
+  extends MSFServlet
 {
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramInt == 0)
-    {
-      QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-      ThreadManager.postImmediately(new AEPhotoListLogicDefault.7.1(this), null, true);
+    if (paramFromServiceMsg != null) {
+      bngm.a().c(paramFromServiceMsg.getResultCode());
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    paramString1 = Message.obtain();
-    paramString1.what = 2;
-    paramString1.obj = Integer.valueOf(paramInt);
-    ((bnfn)this.jdField_a_of_type_Bngh.a.get()).a.sendMessage(paramString1);
+    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getSerializableExtra("list");
+    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
+    bngl localbngl = new bngl(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
+    byte[] arrayOfByte = localbngl.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbngl.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

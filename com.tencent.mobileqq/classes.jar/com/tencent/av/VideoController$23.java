@@ -1,8 +1,8 @@
 package com.tencent.av;
 
-import bgnt;
+import bhnv;
 import com.tencent.av.app.VideoAppInterface;
-import ley;
+import lff;
 import mqq.app.MobileQQ;
 
 class VideoController$23
@@ -14,7 +14,7 @@ class VideoController$23
   {
     this.this$0.j = null;
     this.this$0.a().a("acceptGAudioChat", 0);
-    boolean bool = bgnt.g(this.this$0.a.getApplication().getApplicationContext());
+    boolean bool = bhnv.g(this.this$0.a.getApplication().getApplicationContext());
     VideoController localVideoController = this.this$0;
     int j = this.jdField_a_of_type_Int;
     long l = this.jdField_a_of_type_Long;

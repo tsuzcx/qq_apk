@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tofumsg;
 
 import androidx.annotation.NonNull;
-import bdqn;
+import bejj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -86,7 +86,7 @@ public class TofuItem
       }
       oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo = new oidb_0xe61.BeancurdCubeInfo();
       localBeancurdCubeInfo.uint64_frd_uin.set(this.frdUin);
-      localBeancurdCubeInfo.uint64_busi_id.set(bdqn.a(this.busId));
+      localBeancurdCubeInfo.uint64_busi_id.set(bejj.a(this.busId));
       localBeancurdCubeInfo.uint64_uin.set(l);
       localBeancurdCubeInfo.uint64_last_pull_time.set(this.lastPullTsSvr);
       return localBeancurdCubeInfo;
@@ -129,7 +129,7 @@ public class TofuItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("frdUin").append("=").append(MobileQQ.getShortUinStr(Long.toString(this.frdUin)));
-    localStringBuilder.append("|").append("busId").append("=").append(bdqn.a(this.busId));
+    localStringBuilder.append("|").append("busId").append("=").append(bejj.a(this.busId));
     localStringBuilder.append("|").append("eventTs").append("=").append(this.eventTs);
     localStringBuilder.append("|").append("pullInterval").append("=").append(this.pullInterval);
     localStringBuilder.append("|").append("lastPullTsLocal").append("=").append(this.lastPullTsLocal);

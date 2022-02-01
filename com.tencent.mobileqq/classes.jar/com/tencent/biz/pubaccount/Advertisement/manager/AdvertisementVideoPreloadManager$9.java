@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
-import nuy;
+import nws;
 
 public class AdvertisementVideoPreloadManager$9
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$9(nuy paramnuy) {}
+  public AdvertisementVideoPreloadManager$9(nws paramnws) {}
   
   public void run()
   {

@@ -1,75 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class anhz
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public anhz(ApolloGameActivity paramApolloGameActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 0;
-    int i = 0;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
-        {
-          BaseActivity.mAppForground = false;
-          GesturePWDUtils.setAppForground(paramContext, BaseActivity.mAppForground);
-          BaseActivity.isUnLockSuccess = false;
-          if (BaseActivity.access$300() == null) {
-            continue;
-          }
-          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694390), "qqsetting_screenshot_key", false)) {
-            break label169;
-          }
-        }
-        for (;;)
-        {
-          if (i == 0) {
-            break label172;
-          }
-          localBaseActivity.turnOffShake();
-          return;
-          localBaseActivity.receiveScreenOff();
-          break;
-          label169:
-          i = 1;
-        }
-      }
-      else
-      {
-        label172:
-        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
-        {
-          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694390), "qqsetting_screenshot_key", false)) {}
-          for (i = j; i != 0; i = 1)
-          {
-            localBaseActivity.turnOnShake();
-            return;
-          }
-        }
-      }
-    }
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putBoolean("key_open_voice", true);
+    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhz
  * JD-Core Version:    0.7.0.1
  */

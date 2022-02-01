@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,7 +12,7 @@ class ProgressWebView$5$1
   public void run()
   {
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of picture downloadFailed");
-    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, anni.a(2131707274), 0).a();
+    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, anzj.a(2131707383), 0).a();
   }
 }
 

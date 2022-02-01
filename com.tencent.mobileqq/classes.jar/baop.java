@@ -1,19 +1,17 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.AdapterView;
 
 public class baop
-  implements bcit
+  implements bljm
 {
-  public baop(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
+  public baop(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
-    }
-    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
+    paramAdapterView = ajms.a(((TextView)paramView.findViewById(2131374336)).getText().toString());
+    this.a.a(this.a.getActivity(), paramAdapterView);
   }
 }
 

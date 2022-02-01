@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import bahs;
+import bbai;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,12 +16,12 @@ class ReceiptMessageReadMemberListContainerFragment$6
   {
     MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.this$0).a().b(ReceiptMessageReadMemberListContainerFragment.a(this.this$0).jdField_a_of_type_JavaLangString, ReceiptMessageReadMemberListContainerFragment.a(this.this$0).jdField_a_of_type_Int, ReceiptMessageReadMemberListContainerFragment.c(this.this$0));
     if (ReceiptMessageReadMemberListContainerFragment.a(this.this$0).size() == 0) {
-      bahs.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "3");
+      bbai.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "3");
     }
     while (ReceiptMessageReadMemberListContainerFragment.b(this.this$0).size() <= 0) {
       return;
     }
-    bahs.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "4");
+    bbai.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "4");
   }
 }
 

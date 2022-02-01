@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bgua;
+import bhud;
 
 public class VoicePlayer$2
   implements Runnable
 {
-  public VoicePlayer$2(bgua parambgua) {}
+  public VoicePlayer$2(bhud parambhud) {}
   
   public void run()
   {
-    bgua.a(this.this$0, false);
+    bhud.a(this.this$0, false);
   }
 }
 

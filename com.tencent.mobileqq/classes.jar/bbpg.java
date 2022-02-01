@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class bbpg
-  implements View.OnClickListener
 {
-  bbpg(bbpf parambbpf, bbmy parambbmy) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Bbmy.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private static final bbpe a = new bbpe(null);
 }
 
 

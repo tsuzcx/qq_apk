@@ -10,13 +10,13 @@ import android.text.style.ForegroundColorSpan;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import anni;
-import bgpa;
+import anzj;
+import bhpc;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ShortcutUtils$PermissionDialog
-  extends bgpa
+  extends bhpc
 {
   private static final String CONFIG_SHORTCUT_DIALOG_HIDE = "mini_shortcut_dialog_hide";
   private static final String CONFIG_SHORTCUT_HELP_URL = "mini_shortcut_help_url";
@@ -42,7 +42,7 @@ class ShortcutUtils$PermissionDialog
   
   public static PermissionDialog createPermissionDialog(Activity paramActivity, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramActivity = new PermissionDialog(paramActivity, 2131755823);
+    paramActivity = new PermissionDialog(paramActivity, 2131755824);
     paramActivity.setTitle(paramString1);
     paramActivity.setNegativeButton(paramString2, paramOnClickListener2);
     paramActivity.setPositiveButton(paramString3, paramOnClickListener1);
@@ -60,8 +60,8 @@ class ShortcutUtils$PermissionDialog
   
   public CharSequence getMessageContent()
   {
-    String str1 = anni.a(2131712768);
-    String str2 = anni.a(2131712772);
+    String str1 = anzj.a(2131712877);
+    String str2 = anzj.a(2131712881);
     SpannableString localSpannableString = new SpannableString(str1 + str2);
     localSpannableString.setSpan(new ShortcutUtils.PermissionDialog.2(this), str1.length(), str1.length() + str2.length(), 33);
     localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
@@ -70,12 +70,12 @@ class ShortcutUtils$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131559000);
+    setContentView(2131558999);
     this.text.setMovementMethod(LinkMovementMethod.getInstance());
     this.text.setText(getMessageContent());
-    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131369566));
-    this.mCheckBox = ((CheckBox)findViewById(2131379070));
-    this.mCheckText = ((TextView)findViewById(2131380055));
+    this.mCheckBoxLayout = ((ViewGroup)findViewById(2131369660));
+    this.mCheckBox = ((CheckBox)findViewById(2131379234));
+    this.mCheckText = ((TextView)findViewById(2131380240));
     this.mCheckText.setOnClickListener(new ShortcutUtils.PermissionDialog.1(this));
   }
   

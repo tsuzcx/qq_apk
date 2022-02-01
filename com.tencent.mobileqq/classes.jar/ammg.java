@@ -1,19 +1,41 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class ammg
-  implements amma
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor$Config;", "", "()V", "newWebWeatherPage", "", "getNewWebWeatherPage", "()Z", "setNewWebWeatherPage", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ammg
 {
-  public ammg(CmGameDebugView paramCmGameDebugView) {}
+  private boolean a;
   
-  public void a(int paramInt)
+  public final void a(@NotNull String paramString)
   {
-    if (CmGameDebugView.a(this.a).getVisibility() != 0)
+    Intrinsics.checkParameterIsNotNull(paramString, "configText");
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherConfigProcessor", 2, paramString);
+    }
+    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
+    try
     {
-      CmGameDebugView.b(this.a, true);
+      if (new JSONObject(paramString).optInt("ConfigEnableNewWebWeatherPage", 0) == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.a = bool;
+        return;
+      }
       return;
     }
-    CmGameDebugView.b(this.a, paramInt);
+    catch (Throwable paramString)
+    {
+      QLog.e("WeatherConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public final boolean a()
+  {
+    return this.a;
   }
 }
 

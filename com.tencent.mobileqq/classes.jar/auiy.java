@@ -1,42 +1,38 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.widget.AdapterView;
 
 class auiy
-  extends auiz
+  implements bljm
 {
-  public ImageView a;
-  public TextView a;
+  auiy(auiv paramauiv) {}
   
-  public auiy(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = auis.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368507));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380124));
-    paramView.setTag(this);
-  }
-  
-  public void a(String paramString1, String paramString2, aobu paramaobu)
-  {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new bdnt((CharSequence)localObject, 2));
-    localObject = paramaobu.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
+    paramAdapterView = this.a;
+    boolean bool;
+    if (!auiv.a(this.a))
     {
-      localObject = bgmo.a();
-      paramString2 = (String)localObject;
-      if (!paramaobu.a())
-      {
-        paramaobu.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
+      bool = true;
+      auiv.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_Aueg != null) {
+        this.a.jdField_a_of_type_Aueg.a(auiv.a(this.a));
       }
+      if (!auiv.a(this.a)) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_Aukh.a(false);
+      this.a.jdField_a_of_type_Aukh.b(false);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Aukh.e(auiv.a(this.a));
+      return;
+      bool = false;
+      break;
+      label110:
+      this.a.jdField_a_of_type_Aukh.a(true);
+      this.a.h();
+    }
   }
 }
 

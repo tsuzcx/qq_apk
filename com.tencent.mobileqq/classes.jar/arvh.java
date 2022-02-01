@@ -1,8 +1,8 @@
-public class arvh
+import android.graphics.Canvas;
+
+public abstract interface arvh
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(Canvas paramCanvas, aruc paramaruc, arul paramarul, float paramFloat1, float paramFloat2);
 }
 
 

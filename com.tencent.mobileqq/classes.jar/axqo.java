@@ -1,32 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-
 public class axqo
-  extends abgc
 {
-  public axqo(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  public abfj a(Activity paramActivity, abfp paramabfp)
+  public axqo(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    return super.a(paramActivity, paramabfp);
-  }
-  
-  public abfl a(Activity paramActivity, abfp paramabfp)
-  {
-    return new axqq((PicBrowserActivity)paramActivity, paramabfp);
-  }
-  
-  public abfp a(Activity paramActivity)
-  {
-    paramActivity = new axqz(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public abfq a(Activity paramActivity, abfp paramabfp)
-  {
-    return null;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

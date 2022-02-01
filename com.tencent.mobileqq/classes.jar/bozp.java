@@ -1,76 +1,92 @@
-import android.graphics.PointF;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.debug.EnvSwitchActivity;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import dov.com.qq.im.ae.SessionWrap;
+import eipc.EIPCResult;
 
-class bozp
-  implements yxn
+public class bozp
+  extends QIPCModule
 {
-  int jdField_a_of_type_Int = afur.a(18.0F, boza.a(this.jdField_a_of_type_Boza).getResources());
-  
-  bozp(boza paramboza) {}
-  
-  public void a()
+  public bozp()
   {
-    boza.e(this.jdField_a_of_type_Boza);
-    boza.a(this.jdField_a_of_type_Boza, true);
+    super("AECameraGetInfoServer");
   }
   
-  public void a(float paramFloat)
+  public static bozp a()
   {
-    if (paramFloat == 1.0F)
-    {
-      yyb localyyb = ((yxm)boza.a(this.jdField_a_of_type_Boza).a("TextLayer")).a();
-      localyyb.b = this.jdField_a_of_type_Int;
-      boza.a(this.jdField_a_of_type_Boza).a(localyyb);
+    return bozq.a;
+  }
+  
+  private QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
+    return null;
   }
   
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  private String a(@NonNull String paramString)
   {
-    yxh localyxh = (yxh)boza.a(this.jdField_a_of_type_Boza).a("GuideLineLayer");
-    if (localyxh != null) {
-      localyxh.a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
+    if (paramString.contains("14.18.180.90")) {
+      return "IPv4";
     }
+    if (paramString.contains("240e:e1:a900:50::18")) {
+      return "IPv6";
+    }
+    return "Unknown";
   }
   
-  public boolean a(yxo paramyxo)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (boza.a(this.jdField_a_of_type_Boza) != null)
+    if (a() == null) {
+      return null;
+    }
+    Object localObject;
+    if ("ACTION_GET_ENV_INFO".equals(paramString))
     {
-      bool1 = bool2;
-      if (paramyxo != null)
+      paramBundle = new Bundle();
+      if (EnvSwitchActivity.isTestEnvironment())
       {
-        boza.a(this.jdField_a_of_type_Boza).setVisibility(0);
-        if (boza.a(this.jdField_a_of_type_Boza).a.b())
-        {
-          Object localObject = boza.a(this.jdField_a_of_type_Boza).a.a();
-          ((zcb)localObject).d = false;
-          if ((localObject instanceof yxo))
-          {
-            localObject = (yxm)boza.a(this.jdField_a_of_type_Boza).a("TextLayer");
-            if (localObject != null) {
-              ((yxm)localObject).d();
-            }
-          }
+        localObject = EnvSwitchActivity.loadTestEnvironment()[0];
+        paramString = "Unknown";
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          paramString = a((String)localObject);
         }
-        boza.a(this.jdField_a_of_type_Boza).a.a(paramyxo);
-        paramyxo.d = true;
-        boza.a(this.jdField_a_of_type_Boza).requestLayout();
-        bool1 = true;
+        paramBundle.putString("KEY_ENV_INFO", "Test Env: " + paramString);
+      }
+      for (;;)
+      {
+        paramString = EIPCResult.createSuccessResult(paramBundle);
+        callbackResult(paramInt, paramString);
+        return paramString;
+        paramBundle.putString("KEY_ENV_INFO", "Prod Env");
       }
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    boza.a(this.jdField_a_of_type_Boza, "");
-    boza.b(this.jdField_a_of_type_Boza).setVisibility(0);
-    boza.c(this.jdField_a_of_type_Boza, false);
+    if ("ACTION_SEND_GIF".equals(paramString)) {
+      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        break label251;
+      }
+    }
+    label251:
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null) {
+        return null;
+      }
+      localObject = new SessionWrap(paramBundle.getString("curFriendUin"), paramBundle.getString("curFriendNick"), paramBundle.getInt("curType"), paramBundle.getString("troopUin"));
+      asmg localasmg = new asmg();
+      localasmg.e = paramBundle.getString("ARG_GIF_PATH");
+      localasmg.f = localasmg.e;
+      localasmg.a = paramBundle.getString("forward_summary_extra", "");
+      localasmg.c = paramBundle.getString("widgetinfo", "");
+      localasmg.a(paramString, BaseApplicationImpl.getContext(), null, ((SessionWrap)localObject).a());
+      return null;
+      return null;
+    }
   }
 }
 

@@ -1,12 +1,22 @@
-import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public abstract interface ator
+class ator
+  implements bliz
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  ator(atoq paramatoq, int paramInt, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    bdll.b(this.jdField_a_of_type_Atoq.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    this.jdField_a_of_type_Atoq.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_Atoq.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ator
  * JD-Core Version:    0.7.0.1
  */

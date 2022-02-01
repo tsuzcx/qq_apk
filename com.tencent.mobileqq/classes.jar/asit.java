@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 public class asit
-  implements DialogInterface.OnClickListener
+  extends amkp
 {
-  public asit(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  public asit(MessengerService paramMessengerService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    this.a.a(paramBundle);
   }
 }
 

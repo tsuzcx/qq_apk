@@ -1,23 +1,94 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 class asbj
-  implements View.OnClickListener
+  extends anyu
 {
-  asbj(asbi paramasbi, IPSiteModel.Goods paramGoods) {}
+  asbj(asbi paramasbi) {}
   
-  public void onClick(View paramView)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    Intent localIntent = new Intent(asbi.a(this.jdField_a_of_type_Asbi), QQBrowserActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(asbi.a(this.jdField_a_of_type_Asbi), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(asbi.a(this.jdField_a_of_type_Asbi), "IP", "aio_productclk", "", 0, 0, 0, asbi.b(this.jdField_a_of_type_Asbi), asbi.c(this.jdField_a_of_type_Asbi), "", "", "", "", "", 0, 0, 0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    localObject3 = null;
+    String str1;
+    if ((paramBoolean) && (paramSetting != null))
+    {
+      str1 = paramSetting.uin;
+      if ((str1 != null) && (str1.startsWith("stranger_")) && (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))) {
+        if (TextUtils.isEmpty(paramSetting.url)) {
+          break label186;
+        }
+      }
+    }
+    for (paramSetting = asbi.a(32, paramSetting.url, paramSetting.bHeadType, paramSetting.bFaceFlags);; paramSetting = null)
+    {
+      if (!TextUtils.isEmpty(paramSetting)) {
+        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, paramSetting);
+      }
+      try
+      {
+        i = str1.indexOf('_');
+        j = str1.indexOf('_', i + 1);
+        i = Integer.parseInt(str1.substring(i + 1, j));
+      }
+      catch (NumberFormatException localNumberFormatException1)
+      {
+        for (;;)
+        {
+          int j;
+          String str2;
+          i = 0;
+          asam.b("StrangerHdHeadUrlFetcher", new Object[] { localNumberFormatException1.toString() });
+          Object localObject1 = localObject3;
+        }
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          label186:
+          int i = 0;
+          asam.b("StrangerHdHeadUrlFetcher", new Object[] { localException1.toString() });
+          Object localObject2 = localObject3;
+        }
+      }
+      try
+      {
+        str2 = str1.substring(j + 1);
+        ConnectNearbyProcService.a(4106, new Object[] { str2, Integer.valueOf(i), paramSetting });
+        asbi.a(this.a, str1);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        break label237;
+      }
+      catch (NumberFormatException localNumberFormatException2)
+      {
+        break label209;
+      }
+      str1 = null;
+      break;
+      asam.b("StrangerHdHeadUrlFetcher", new Object[] { "setting.url is null" });
+    }
+  }
+  
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      String str1 = asbi.a(32, paramInt, paramString);
+      if (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))
+      {
+        String str2 = this.a.a(paramString, paramInt, false);
+        if (!TextUtils.isEmpty(str2)) {
+          ConnectNearbyProcService.a(4106, new Object[] { paramString, Integer.valueOf(paramInt), str2 });
+        }
+        asbi.a(this.a, str1);
+      }
+    }
   }
 }
 

@@ -4,38 +4,38 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import java.util.Timer;
 import java.util.TimerTask;
-import ley;
-import lyy;
-import lzd;
+import lff;
+import lzu;
+import lzz;
 
 public class SmallScreenVideoController$1
   extends TimerTask
 {
-  public SmallScreenVideoController$1(lyy paramlyy) {}
+  public SmallScreenVideoController$1(lzu paramlzu) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_Lzd == null)) {}
+    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_Lzz == null)) {}
     long l1;
     long l2;
     do
     {
       do
       {
-        ley localley;
+        lff locallff;
         do
         {
           return;
-          localley = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-        } while (localley == null);
-        if (localley.S > 0) {
+          locallff = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+        } while (locallff == null);
+        if (locallff.S > 0) {
           break;
         }
       } while (this.this$0.jdField_a_of_type_JavaUtilTimer == null);
       this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
       this.this$0.jdField_a_of_type_JavaUtilTimer = null;
       return;
-      l1 = this.this$0.jdField_a_of_type_Lzd.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d);
+      l1 = this.this$0.jdField_a_of_type_Lzz.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d);
       l2 = System.currentTimeMillis();
     } while ((l1 == 0L) || (l2 - l1 <= this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S * 1000));
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new SmallScreenVideoController.1.1(this, l2, l1));

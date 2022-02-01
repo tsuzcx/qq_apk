@@ -1,6 +1,15 @@
-public abstract interface amdg
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+
+public class amdg
 {
-  public abstract boolean a(arcs paramarcs);
+  public ImageView a;
+  public TextView a;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  
+  amdg(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
 }
 
 

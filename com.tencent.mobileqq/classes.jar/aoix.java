@@ -1,33 +1,56 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class aoix
-  extends aojt
+class aoix
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  private int jdField_a_of_type_Int;
+  private oidb_sso.OIDBSSOPkg jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  
+  public aoix(aoip paramaoip, byte[] paramArrayOfByte, int paramInt)
   {
-    paramQQAppInterface = new aoiw(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "contact";
-    paramQQAppInterface.c = "add";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public aoix a()
+  {
+    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = null;
+    try
     {
-      int i = 0;
-      while (i < paramContext.length)
+      this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+      this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = ((oidb_sso.OIDBSSOPkg)this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.mergeFrom(this.jdField_a_of_type_ArrayOfByte));
+      if (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg != null)
       {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopHandler", 2, "handle_oidb_0x88d_10|oidb_sso.OIDBSSOPkg.result " + this.jdField_a_of_type_Int);
         }
-        i += 1;
+      }
+      return this;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.troopdisband.", 2, "handle_oidb_0x88d_10|oidb_sso parseFrom byte " + localInvalidProtocolBufferMicroException.toString());
+        }
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
-    return paramQQAppInterface;
+  }
+  
+  public oidb_sso.OIDBSSOPkg a()
+  {
+    return this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
   }
 }
 

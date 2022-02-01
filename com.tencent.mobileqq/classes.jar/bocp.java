@@ -1,19 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class bocp
-  implements ValueAnimator.AnimatorUpdateListener
+class bocp
+  extends AnimatorListenerAdapter
 {
-  public bocp(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  bocp(bocn parambocn) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((AEEditorAILoadingView.a(this.a) >= 2) && (AEEditorAILoadingView.a(this.a)))
-    {
-      AEEditorAILoadingView.a(this.a, false);
-      AEEditorAILoadingView.a(this.a);
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.a.h();
+    this.a.g();
   }
 }
 

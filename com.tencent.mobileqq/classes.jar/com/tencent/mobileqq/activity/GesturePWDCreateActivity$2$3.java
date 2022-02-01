@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeji;
+import aesl;
 
 public class GesturePWDCreateActivity$2$3
   implements Runnable
 {
-  public GesturePWDCreateActivity$2$3(aeji paramaeji) {}
+  public GesturePWDCreateActivity$2$3(aesl paramaesl) {}
   
   public void run()
   {

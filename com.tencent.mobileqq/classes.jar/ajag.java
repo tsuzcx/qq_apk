@@ -1,42 +1,30 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
+import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SwipListView;
 
 public class ajag
-  implements tja
+  implements MediaPlayer.OnPreparedListener
 {
-  public ajag(SystemMsgListView paramSystemMsgListView) {}
+  public ajag(BlessActivity paramBlessActivity) {}
   
-  public void a(tjf paramtjf)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    int j;
-    if (paramtjf != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramtjf.a() + " tabid = " + (Integer)paramtjf.a());
-      }
-      SystemMsgListView.a(this.a).a(((Integer)paramtjf.a()).intValue(), paramtjf.a());
-      i = SystemMsgListView.a(this.a).b();
-      paramtjf = (aixs)SystemMsgListView.a(this.a).get(i);
-      if (paramtjf == null) {
-        break label141;
-      }
-      j = paramtjf.b;
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
     }
-    for (int i = paramtjf.c;; i = SystemMsgListView.a(this.a).c)
-    {
-      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
-      SystemMsgListView.a(this.a).a(0L);
-      return;
-      label141:
-      j = SystemMsgListView.a(this.a).b;
+    if (BlessActivity.a(this.a) != null) {
+      BlessActivity.a(this.a).start();
     }
+    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    }
+    bdll.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
   }
-  
-  public void b(tjf paramtjf) {}
-  
-  public void c(tjf paramtjf) {}
 }
 
 

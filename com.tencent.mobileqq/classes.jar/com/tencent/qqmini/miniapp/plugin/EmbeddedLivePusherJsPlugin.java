@@ -174,7 +174,7 @@ public class EmbeddedLivePusherJsPlugin
   public void operateXWebLivePusher(RequestEvent paramRequestEvent)
   {
     EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = getFactory();
-    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramRequestEvent.event, paramRequestEvent.jsonParams, paramRequestEvent.callbackId)))
+    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramRequestEvent.event, this.mMiniAppContext, paramRequestEvent.jsonParams, paramRequestEvent.callbackId, paramRequestEvent.jsService)))
     {
       paramRequestEvent.ok();
       return;
@@ -186,7 +186,7 @@ public class EmbeddedLivePusherJsPlugin
   public void removeXWebLivePusher(RequestEvent paramRequestEvent)
   {
     EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = getFactory();
-    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramRequestEvent.event, paramRequestEvent.jsonParams, paramRequestEvent.callbackId)))
+    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramRequestEvent.event, this.mMiniAppContext, paramRequestEvent.jsonParams, paramRequestEvent.callbackId, paramRequestEvent.jsService)))
     {
       paramRequestEvent.ok();
       return;
@@ -237,7 +237,7 @@ public class EmbeddedLivePusherJsPlugin
   public void updateXWebLivePusher(RequestEvent paramRequestEvent)
   {
     EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = getFactory();
-    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramRequestEvent.event, paramRequestEvent.jsonParams, paramRequestEvent.callbackId)))
+    if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramRequestEvent.event, this.mMiniAppContext, paramRequestEvent.jsonParams, paramRequestEvent.callbackId, paramRequestEvent.jsService)))
     {
       paramRequestEvent.ok();
       return;

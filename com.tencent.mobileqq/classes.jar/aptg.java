@@ -1,24 +1,36 @@
-public abstract interface aptg
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+
+public class aptg
+  implements TencentMap.OnMapLoadedCallback
 {
-  public abstract void onRotationUpdateOriginal(float[] paramArrayOfFloat);
+  public aptg(ARScanEntryView paramARScanEntryView) {}
   
-  public abstract void onRotationUpdateQuaternion(float[] paramArrayOfFloat);
-  
-  public abstract void onSensorSupport(int paramInt, boolean paramBoolean);
-  
-  public abstract void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
-  
-  public abstract void updateAzimuth(float paramFloat);
-  
-  public abstract void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
-  
-  public abstract void updatePitch(float paramFloat);
-  
-  public abstract void updateRoll(float paramFloat);
-  
-  public abstract void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3);
+  public void onMapLoaded()
+  {
+    this.a.j = true;
+    if (ARScanEntryView.a(this.a) != null)
+    {
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
+        {
+          localPoint.offset(0, agej.a(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+        }
+      }
+    }
+  }
 }
 
 

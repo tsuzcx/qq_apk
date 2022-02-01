@@ -1,16 +1,15 @@
-import java.util.Date;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aikj
+class aikj
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Date jdField_a_of_type_JavaUtilDate;
-  List<String> jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  Date jdField_b_of_type_JavaUtilDate;
-  String c;
-  String d;
+  aikj(aikg paramaikg, aiko paramaiko) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aikg.a(this.jdField_a_of_type_Aikg, this.jdField_a_of_type_Aiko);
+  }
 }
 
 

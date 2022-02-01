@@ -1,9 +1,12 @@
-import dov.com.qq.im.capture.data.TemplateData;
-import java.util.List;
-
-public abstract interface bolm
+class bolm
+  implements bolj
 {
-  public abstract void a(List<TemplateData> paramList);
+  bolm(boll paramboll) {}
+  
+  public void a()
+  {
+    boll.a(this.a).a(131076, new Object[0]);
+  }
 }
 
 

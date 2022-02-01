@@ -1,26 +1,32 @@
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+
 public class avgl
-  implements anil
+  implements ActionMode.Callback
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public avgl(BlockableEditTextView paramBlockableEditTextView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    if (BlockableEditTextView.a(this.a) == 0) {
+      return true;
     }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    return BlockableEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

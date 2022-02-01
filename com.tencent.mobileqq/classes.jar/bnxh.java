@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.ae.play.EditTextViewer;
+import android.graphics.drawable.Drawable;
 
-public class bnxh
-  implements DialogInterface.OnDismissListener
+public abstract class bnxh
 {
-  public bnxh(EditTextViewer paramEditTextViewer) {}
+  public volatile int mCount;
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public abstract void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable);
+  
+  public abstract void onFailed(String paramString1, int paramInt, String paramString2);
 }
 
 

@@ -1,21 +1,108 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.os.SystemClock;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class bdmv
-  implements TextView.OnEditorActionListener
+public class bdmv
 {
-  bdmv(bdmq parambdmq) {}
+  public static LinkedList<bdmw> a = new LinkedList();
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public static bdmw a(Class paramClass, int paramInt)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      bkft.b(this.a.a);
-      this.a.d();
-      return true;
+    if (paramClass == null) {
+      return null;
     }
-    return false;
+    int i = a.size() - 1;
+    while (i >= 0)
+    {
+      bdmw localbdmw = (bdmw)a.get(i);
+      if ((paramClass == localbdmw.jdField_a_of_type_JavaLangClass) && (paramInt == localbdmw.jdField_a_of_type_Long))
+      {
+        a.remove(i);
+        return localbdmw;
+      }
+      i -= 1;
+    }
+    return null;
+  }
+  
+  public static void a(long paramLong)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext())
+    {
+      bdmw localbdmw = (bdmw)localIterator.next();
+      localbdmw.b += paramLong;
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramAppInterface, paramClass, paramInt1, paramString, paramInt2, "");
+  }
+  
+  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString1, int paramInt2, String paramString2)
+  {
+    if (paramClass == null) {
+      return;
+    }
+    int i = a.size();
+    if (i > 0)
+    {
+      i -= 1;
+      if (i >= 0)
+      {
+        bdmw localbdmw = (bdmw)a.get(i);
+        if (localbdmw.jdField_a_of_type_JavaLangClass == paramClass)
+        {
+          if (!(paramAppInterface instanceof QQAppInterface)) {
+            break label123;
+          }
+          bdll.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmw.b), "", "");
+        }
+        for (;;)
+        {
+          a.remove(i);
+          i -= 1;
+          break;
+          label123:
+          if (paramAppInterface != null) {
+            paramAppInterface.reportClickEvent("CliOper", "", "", localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmw.b), "", "");
+          } else {
+            bdll.b(null, "CliOper", "", "", localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmw.b), "", "");
+          }
+        }
+      }
+    }
+    paramAppInterface = new bdmw();
+    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
+    paramAppInterface.jdField_a_of_type_Long = paramInt1;
+    paramAppInterface.b = SystemClock.elapsedRealtime();
+    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
+    paramAppInterface.jdField_a_of_type_Int = paramInt2;
+    a.add(paramAppInterface);
+  }
+  
+  public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramClass == null) || (paramString == null)) {
+      return;
+    }
+    if (paramString.contains("/qunactivity/")) {}
+    for (String str = "0X8004EC8";; str = null)
+    {
+      if (paramString.contains("/hotchat/"))
+      {
+        str = "0X8004410";
+        paramInt2 = 2;
+      }
+      if (str == null) {
+        break;
+      }
+      a(null, paramClass, paramInt1, str, paramInt2);
+      return;
+    }
   }
 }
 

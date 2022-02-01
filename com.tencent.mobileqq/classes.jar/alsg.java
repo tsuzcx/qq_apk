@@ -1,40 +1,20 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class alsg
-  extends aywi
+  implements DialogInterface.OnClickListener
 {
-  public alsg(PhoneContactTabView paramPhoneContactTabView) {}
+  public alsg(LoginView paramLoginView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
-      return;
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
     }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
-    {
-      this.a.d();
-      return;
-    }
-    PhoneContactTabView.a(this.a);
   }
 }
 

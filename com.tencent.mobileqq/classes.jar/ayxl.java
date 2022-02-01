@@ -1,84 +1,16 @@
-import java.io.File;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public abstract class ayxl
-  extends ayxs
+public class ayxl
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public ayxl()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 5;
-  }
-  
-  public File a()
-  {
-    return bdsh.a(b());
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("PicBaseInfo.check", "busiType invalid,busiType:" + this.jdField_a_of_type_Int);
-      return false;
+    if (paramInt == 10000) {
+      a(paramBoolean, paramBundle.getBoolean("new"), paramBundle.getInt("gc_notify_type", 0));
     }
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      a("PicBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
-    }
-    if (this.c == null)
-    {
-      a("PicBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
-  }
-  
-  abstract String b();
-  
-  public boolean b()
-  {
-    return a() != null;
-  }
-  
-  public String c()
-  {
-    return bdsh.d(b());
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nPicBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("busiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.f);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Ayxt);
-    return localStringBuilder.toString();
   }
 }
 

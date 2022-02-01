@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awms
-  implements awnd<Integer, List<EmoticonPackage>>
+public class awms
+  implements DialogInterface.OnClickListener
 {
-  awms(awmr paramawmr) {}
+  public awms(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public List<EmoticonPackage> a(Integer paramInteger)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a(paramInteger.intValue());
+    paramDialogInterface.dismiss();
   }
 }
 

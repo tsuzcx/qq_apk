@@ -1,42 +1,23 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.widget.XPanelContainer;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel.6;
 
-class bpjt
-  implements boqr
+public class bpjt
+  implements Animator.AnimatorListener
 {
-  bpjt(bpjo parambpjo) {}
+  public bpjt(AEEditorTextControlPanel.6 param6) {}
   
-  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((paramDynamicTextItem != null) && (paramInt > -1))
-    {
-      paramView = paramDynamicTextItem.a(paramInt);
-      if (paramView != null)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-        if (!paramView.equals(boqj.a(paramDynamicTextItem.c(), paramInt))) {
-          break label139;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bpjo.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-        }
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
-        }
-        return;
-        label139:
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
-      }
-    }
-    this.a.a(false);
+    AEEditorTextControlPanel.a(this.a.this$0).setVisibility(0);
   }
 }
 

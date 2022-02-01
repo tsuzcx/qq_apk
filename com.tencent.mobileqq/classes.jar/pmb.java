@@ -1,6 +1,17 @@
-public abstract interface pmb
+public class pmb
+  implements ply
 {
-  public abstract void ar_();
+  private static pmb a = new pmb();
+  
+  public static pmb a()
+  {
+    return a;
+  }
+  
+  public void a(String paramString, plz paramplz)
+  {
+    scq.a().a(paramString, new pmc(this, paramplz));
+  }
 }
 
 

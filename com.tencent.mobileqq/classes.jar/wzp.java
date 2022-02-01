@@ -1,21 +1,24 @@
-public class wzp
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class wzp
+  extends SimpleJob<Object>
 {
-  public final String a;
-  public final zhi a;
-  public final zhq a;
-  public final String b;
-  
-  public wzp(String paramString1, zhq paramzhq, zhi paramzhi, String paramString2)
+  wzp(wzn paramwzn, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Zhq = paramzhq;
-    this.jdField_a_of_type_Zhi = paramzhi;
-    this.b = paramString2;
+    super(paramString);
   }
   
-  public String toString()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Zhq + ", comInfo=" + this.jdField_a_of_type_Zhi + ", extCfgInfo=" + this.b + '}';
+    if (this.a.jdField_a_of_type_Wzq == null) {
+      this.a.jdField_a_of_type_Wzq = new wzq(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Wzq.jdField_a_of_type_JavaLangString;
+    wzn.a(this.a);
+    return null;
   }
 }
 

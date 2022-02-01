@@ -1,32 +1,30 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-class avbx
-  implements avcq
+public class avbx
+  implements azrg
 {
-  avbx(avbw paramavbw, HotVideoData paramHotVideoData, avbz paramavbz, URLDrawable paramURLDrawable) {}
+  public avbx(ForwardSdkShareOption.2 param2) {}
   
-  public void a(avcr paramavcr)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (paramavcr.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramavcr.a();
-      if (this.jdField_a_of_type_Avbz.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
-      {
-        this.jdField_a_of_type_Avbz.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
-      }
+    return null;
+  }
+  
+  public void a(azrh paramazrh)
+  {
+    if ((paramazrh != null) && (QLog.isColorLevel())) {
+      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramazrh.toString() });
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramavcr.jdField_a_of_type_JavaLangString);
-      }
-    } while (this.jdField_a_of_type_Avbz.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
-    this.jdField_a_of_type_Avbz.a(-10);
+  }
+  
+  public void b(azrh paramazrh)
+  {
+    avcw.b("KEY_STAGE_2_UPLOAD_IMAGE");
+    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramazrh, this.a.b, this.a.c, this.a.d);
   }
 }
 

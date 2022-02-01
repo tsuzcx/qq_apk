@@ -1,80 +1,24 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awur
+class awur
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public ViewGroup.LayoutParams a;
-  public awuc a;
-  public MultiCardCustomLayout a;
-  public MultiCardRootLayout a;
-  public float b;
-  public int b;
-  public int c;
+  awur(awuo paramawuo, BaseActivity paramBaseActivity, awpk paramawpk) {}
   
-  public awur(MultiCardFragment paramMultiCardFragment, MultiCardRootLayout paramMultiCardRootLayout, MultiCardCustomLayout paramMultiCardCustomLayout, awuc paramawuc, awue paramawue)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = paramMultiCardRootLayout;
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = paramMultiCardCustomLayout;
-    this.jdField_a_of_type_Awuc = paramawuc;
-    if (this.jdField_a_of_type_Awuc != null) {
-      this.jdField_a_of_type_Awuc.a(paramawue);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(false);
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleX();
-      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleY();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLayoutParams();
-      Object localObject = new int[2];
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLocationOnScreen((int[])localObject);
-      this.jdField_b_of_type_Int = localObject[0];
-      this.c = localObject[1];
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.findViewById(2131371428);
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_Int = ((View)localObject).getVisibility();
-        ((View)localObject).setVisibility(8);
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
-    }
-    if (this.jdField_a_of_type_Awuc != null) {
-      this.jdField_a_of_type_Awuc.b(0);
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null))
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent() instanceof ViewGroup)) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleX(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleY(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.addView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout, 0);
-    }
-    if (this.jdField_a_of_type_Awuc != null) {
-      this.jdField_a_of_type_Awuc.b(1);
-    }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+    int i = this.jdField_a_of_type_Awpk.a();
+    Object localObject = this.jdField_a_of_type_Awpk.a();
+    awpq.a(localQQAppInterface).a.a(3, i, (String)localObject);
+    localObject = new awpk(i, (String)localObject);
+    awpq.a(localQQAppInterface).a((awpk)localObject, false);
+    bdll.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

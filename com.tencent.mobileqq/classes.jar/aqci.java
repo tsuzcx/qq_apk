@@ -1,95 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqci
+class aqci
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private aqcc a;
+  aqci(aqch paramaqch, String paramString) {}
   
-  private static SharedPreferences a()
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "color_note_recent_view_switch" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
-      if (!paramBoolean) {
-        aqfv.a(BaseApplicationImpl.getContext(), 5, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteRecentView", 0, "setRecentColorNoteSwitch: " + paramBoolean);
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
-    }
-    return bool;
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("color_recent_permission_shown", paramBoolean).apply();
-    }
-  }
-  
-  public static boolean b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean c()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_recent_permission_shown", false);
-    }
-    return bool;
-  }
-  
-  public void a(aqcc paramaqcc)
-  {
-    this.a = paramaqcc;
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    Object localObject = aqcz.a();
-    if ((localObject != null) && (((aqcy)localObject).a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (paramColorNote != null) && (this.a != null) && (aqdc.a().a()))
-      {
-        localObject = aqda.a(paramColorNote);
-        this.a.c((ColorNote)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteRecentView", 0, "updateRecentNote: " + paramColorNote.toString());
-        }
-      }
-      return;
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
+      aqcf.a(this.jdField_a_of_type_Aqch.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, aqcf.a(this.jdField_a_of_type_Aqch.a), 2);
     }
   }
 }

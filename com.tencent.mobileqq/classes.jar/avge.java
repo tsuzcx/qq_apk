@@ -1,28 +1,19 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avge
-  implements URLDrawable.URLDrawableListener
+public class avge
+  implements CompoundButton.OnCheckedChangeListener
 {
-  avge(avgd paramavgd, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  public avge(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = axla.a(paramURLDrawable);
-    avgd.a(this.jdField_a_of_type_Avgd, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
+    ((axae)this.a.a.getManager(303)).a((short)-23310, paramBoolean, true);
+    bdll.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

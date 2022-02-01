@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class aebg
-  implements DialogInterface.OnCancelListener
+public final class aebg
+  implements DialogInterface.OnClickListener
 {
-  public aebg(DialogActivity paramDialogActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

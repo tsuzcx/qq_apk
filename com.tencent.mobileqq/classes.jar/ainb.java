@@ -1,21 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 class ainb
-  extends aqce
+  extends axwp
 {
   ainb(aimx paramaimx) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(aimx.a(this.a).a(), 2, 2131718961, 0).a();
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
+    }
+    if (!"tag_nearby_chat".equals(paramString1)) {}
+    while ((TextUtils.isEmpty(paramString2)) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null)) {
       return;
     }
-    QQToast.a(aimx.a(this.a).a(), 0, 2131718960, 0).a();
+    this.a.aB();
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramString2);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.selectAll();
+    this.a.g = paramString2;
   }
 }
 

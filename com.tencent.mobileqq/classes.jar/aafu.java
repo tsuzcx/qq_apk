@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aafu
-  implements View.OnClickListener
+public abstract interface aafu
 {
-  aafu(aaft paramaaft, int paramInt) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Aaft.a.a(this.jdField_a_of_type_Int, aaft.a(this.jdField_a_of_type_Aaft));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

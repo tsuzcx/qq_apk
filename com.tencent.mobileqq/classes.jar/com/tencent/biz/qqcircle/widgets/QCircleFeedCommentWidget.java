@@ -1,6 +1,9 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import aage;
+import aaak;
+import aaam;
+import aabz;
+import aakf;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +12,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import anni;
-import bkiz;
+import anzj;
+import blkc;
 import com.tencent.biz.qqcircle.events.QCircleCommentPraiseUpdateEvent;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,65 +30,64 @@ import feedcloud.FeedCloudMeta.StReply;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import uxp;
-import uxx;
-import uzb;
-import uzc;
-import uzk;
-import vhu;
-import vrc;
-import vrg;
-import vtd;
-import vwd;
-import vwe;
-import vwh;
-import vwi;
-import vwj;
-import vwk;
-import vwl;
-import vwm;
-import vwn;
-import vwo;
-import zwp;
-import zwr;
-import zyd;
+import uyx;
+import uyy;
+import uzg;
+import var;
+import vas;
+import vba;
+import vjy;
+import vtn;
+import vtr;
+import vvw;
+import vvz;
+import vzg;
+import vzh;
+import vzk;
+import vzl;
+import vzm;
+import vzn;
+import vzo;
+import vzp;
+import vzq;
+import vzr;
 
 public class QCircleFeedCommentWidget
-  extends QCircleBaseWidgetView<uzk>
-  implements View.OnClickListener, View.OnLongClickListener, zwr
+  extends QCircleBaseWidgetView<vba>
+  implements aaam, View.OnClickListener, View.OnLongClickListener
 {
   private int jdField_a_of_type_Int;
-  private aage jdField_a_of_type_Aage;
+  private aakf jdField_a_of_type_Aakf;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  bkiz jdField_a_of_type_Bkiz = new vwh(this);
+  blkc jdField_a_of_type_Blkc = new vzk(this);
   private QCircleAsyncTextView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView;
-  private final String jdField_a_of_type_JavaLangString = anni.a(2131697250);
-  private uzk jdField_a_of_type_Uzk;
+  private final String jdField_a_of_type_JavaLangString = anzj.a(2131697327);
+  private vba jdField_a_of_type_Vba;
   
   public QCircleFeedCommentWidget(@NonNull Context paramContext)
   {
     super(paramContext);
   }
   
-  private vhu a()
+  private vjy a()
   {
-    return vhu.a();
+    return vjy.a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Aage = new aage(this);
-    this.jdField_a_of_type_Aage.a(new vwi(this));
+    this.jdField_a_of_type_Aakf = new aakf(this);
+    this.jdField_a_of_type_Aakf.a(new vzl(this));
   }
   
   private void a(int paramInt)
   {
     if (b())
     {
-      vrg.a(paramInt, 2, a(), e());
+      vtr.a(paramInt, 2, a(), e());
       return;
     }
-    vrc.a(paramInt, 2, a(), d());
+    vtn.a(paramInt, 2, a(), d());
   }
   
   private void a(View paramView)
@@ -98,7 +101,7 @@ public class QCircleFeedCommentWidget
       arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
       arrayOfInt[1] += paramView.getHeight();
-      i = vtd.a().a();
+      i = vvz.a().a();
     } while ((arrayOfInt[1] <= i) || (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollBy(0, arrayOfInt[1] - i);
     QLog.i("QCircleFeedCommentWidget", 1, "scrollItemToVisbleAboveInputLayout  scrollBy: " + (arrayOfInt[1] - i));
@@ -109,40 +112,40 @@ public class QCircleFeedCommentWidget
   private void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment)
   {
     a(62);
-    uxp.a().a(paramView, paramStFeed, paramStComment, new vwo(this, paramStFeed, paramStComment), this.jdField_a_of_type_Bkiz);
+    uyy.a().a(paramView, paramStFeed, paramStComment, new vzr(this, paramStFeed, paramStComment), this.jdField_a_of_type_Blkc);
   }
   
   private void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
   {
-    uxp.a().a(paramView, paramStFeed, paramStReply, new vwe(this, paramStReply, paramStFeed, paramStComment), this.jdField_a_of_type_Bkiz);
+    uyy.a().a(paramView, paramStFeed, paramStReply, new vzh(this, paramStReply, paramStFeed, paramStComment), this.jdField_a_of_type_Blkc);
   }
   
   private void a(QCircleCommentPraiseUpdateEvent paramQCircleCommentPraiseUpdateEvent)
   {
-    if ((this.jdField_a_of_type_Uzk == null) || (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null) || (!TextUtils.equals(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), paramQCircleCommentPraiseUpdateEvent.mFeedId))) {}
+    if ((this.jdField_a_of_type_Vba == null) || (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null) || (!TextUtils.equals(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), paramQCircleCommentPraiseUpdateEvent.mFeedId))) {}
     do
     {
       do
       {
         return;
-        if ((paramQCircleCommentPraiseUpdateEvent.mType != 1) || (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply != null)) {
+        if ((paramQCircleCommentPraiseUpdateEvent.mType != 1) || (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply != null)) {
           break;
         }
-      } while (!TextUtils.equals(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), paramQCircleCommentPraiseUpdateEvent.mCommentId));
-      if (uxx.a((FeedCloudMeta.StUser)this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
-        this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.ownerStatus.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
+      } while (!TextUtils.equals(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), paramQCircleCommentPraiseUpdateEvent.mCommentId));
+      if (uzg.a((FeedCloudMeta.StUser)this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
+        this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.ownerStatus.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
       }
-      this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.status.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
-      this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.count.set(paramQCircleCommentPraiseUpdateEvent.mPraisedNum);
-      setCommentTxt(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+      this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.status.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
+      this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.count.set(paramQCircleCommentPraiseUpdateEvent.mPraisedNum);
+      setCommentTxt(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
       return;
-    } while ((paramQCircleCommentPraiseUpdateEvent.mType != 2) || (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null) || (!TextUtils.equals(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), paramQCircleCommentPraiseUpdateEvent.mCommentId)) || (!TextUtils.equals(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get(), paramQCircleCommentPraiseUpdateEvent.mReplyId)));
-    if (uxx.a((FeedCloudMeta.StUser)this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
-      this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.ownerStatus.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
+    } while ((paramQCircleCommentPraiseUpdateEvent.mType != 2) || (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null) || (!TextUtils.equals(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), paramQCircleCommentPraiseUpdateEvent.mCommentId)) || (!TextUtils.equals(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get(), paramQCircleCommentPraiseUpdateEvent.mReplyId)));
+    if (uzg.a((FeedCloudMeta.StUser)this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
+      this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.ownerStatus.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
     }
-    this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.status.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
-    this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.count.set(paramQCircleCommentPraiseUpdateEvent.mPraisedNum);
-    setReplyTxt(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+    this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.status.set(paramQCircleCommentPraiseUpdateEvent.mPraisedStatus);
+    this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.likeInfo.count.set(paramQCircleCommentPraiseUpdateEvent.mPraisedNum);
+    setReplyTxt(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
   }
   
   private void a(QCircleAsyncTextView paramQCircleAsyncTextView)
@@ -158,26 +161,34 @@ public class QCircleFeedCommentWidget
   private void a(FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
   {
     if (a()) {}
-    while (!(a() instanceof uzb)) {
+    while (!(a() instanceof var)) {
       return;
     }
-    uzb localuzb = (uzb)a();
-    uzc localuzc = new uzc();
-    localuzc.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-    localuzc.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = a();
-    localuzc.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
-    localuzc.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
-    localuzc.jdField_a_of_type_JavaLangString = b();
+    var localvar = (var)a();
+    vas localvas = new vas();
+    localvas.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+    localvas.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = a();
+    localvas.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
+    localvas.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+    localvas.jdField_a_of_type_JavaLangString = b();
     if ((paramStComment == null) && (paramStReply == null)) {
-      vrc.a(6, 2, a(), d());
+      vtn.a(6, 2, a(), d());
     }
     for (;;)
     {
-      localuzb.a("comment_input_window_show", localuzc);
+      localvar.a("comment_input_window_show", localvas);
       return;
-      vrc.a(9, 2, a(), d());
-      localuzc.c = 9;
+      vtn.a(9, 2, a(), d());
+      localvas.c = 9;
     }
+  }
+  
+  private void a(String paramString)
+  {
+    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+    localQCircleInitBean.setUin(paramString);
+    localQCircleInitBean.setFromReportBean(a().clone().setElementIdStr("portrait"));
+    uyx.b(getContext(), localQCircleInitBean);
   }
   
   private void b(int paramInt)
@@ -188,7 +199,7 @@ public class QCircleFeedCommentWidget
     {
       return;
       localView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() - 1);
-    } while ((localView == null) || (!(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findContainingViewHolder(localView) instanceof zyd)));
+    } while ((localView == null) || (!(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findContainingViewHolder(localView) instanceof aabz)));
     localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), paramInt);
     QLog.i("QCircleFeedCommentWidget", 1, "changeMarginToFooterHolder   paddingTop: " + paramInt);
   }
@@ -200,16 +211,16 @@ public class QCircleFeedCommentWidget
   
   private void c()
   {
-    if (this.jdField_a_of_type_Aage != null)
+    if (this.jdField_a_of_type_Aakf != null)
     {
-      this.jdField_a_of_type_Aage.a();
-      this.jdField_a_of_type_Aage = null;
+      this.jdField_a_of_type_Aakf.a();
+      this.jdField_a_of_type_Aakf = null;
     }
   }
   
   public int a()
   {
-    return 2131560694;
+    return 2131560711;
   }
   
   protected String a()
@@ -219,29 +230,29 @@ public class QCircleFeedCommentWidget
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView = ((QCircleAsyncTextView)paramView.findViewById(2131373784));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView = ((QCircleAsyncTextView)paramView.findViewById(2131373909));
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnLongClickListener(this);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnTriggerEllipseListener(new vwd(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnTriggerEllipseListener(new vzg(this));
   }
   
-  protected void a(uzk paramuzk) {}
+  protected void a(vba paramvba) {}
   
-  public void a(uzk paramuzk, int paramInt)
+  public void a(vba paramvba, int paramInt)
   {
-    if (paramuzk == null) {}
+    if (paramvba == null) {}
     do
     {
       return;
-      this.jdField_a_of_type_Uzk = paramuzk;
+      this.jdField_a_of_type_Vba = paramvba;
       this.jdField_a_of_type_Int = paramInt;
-    } while (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null);
-    if (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null)
+    } while (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null);
+    if (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null)
     {
-      setCommentTxt(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+      setCommentTxt(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
       return;
     }
-    setReplyTxt(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+    setReplyTxt(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
   }
   
   public boolean a()
@@ -259,7 +270,7 @@ public class QCircleFeedCommentWidget
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
     a();
   }
   
@@ -272,10 +283,16 @@ public class QCircleFeedCommentWidget
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_Uzk != null) && (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null))
-      {
-        a(this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
-        a(paramView);
+      if ((this.jdField_a_of_type_Vba != null) && (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null)) {
+        if (!vvw.a())
+        {
+          vvw.a(getContext(), 3);
+        }
+        else
+        {
+          a(this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+          a(paramView);
+        }
       }
     }
   }
@@ -283,7 +300,7 @@ public class QCircleFeedCommentWidget
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
     c();
   }
   
@@ -295,11 +312,11 @@ public class QCircleFeedCommentWidget
     for (;;)
     {
       return false;
-      if ((this.jdField_a_of_type_Uzk != null) && (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null)) {
-        if (this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null) {
-          a(paramView, this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+      if ((this.jdField_a_of_type_Vba != null) && (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment != null)) {
+        if (this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply == null) {
+          a(paramView, this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
         } else {
-          a(paramView, this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+          a(paramView, this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
         }
       }
     }
@@ -319,9 +336,9 @@ public class QCircleFeedCommentWidget
     {
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append(paramStComment.postUser.nick.get()).append("：").append(paramStComment.content.get());
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, 0, paramStComment.postUser.nick.get().length(), new vwj(this, paramStComment));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, 0, paramStComment.postUser.nick.get().length(), new vzm(this, paramStComment));
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.c();
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(localSpannableStringBuilder, new vwk(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(localSpannableStringBuilder, new vzn(this));
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setVisibility(0);
     }
   }
@@ -335,31 +352,31 @@ public class QCircleFeedCommentWidget
   {
     a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView);
     String str1;
-    if ((paramStReply != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) && (this.jdField_a_of_type_Uzk != null))
+    if ((paramStReply != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) && (this.jdField_a_of_type_Vba != null))
     {
       if (!TextUtils.isEmpty(paramStReply.targetUser.id.get())) {
         break label295;
       }
-      str1 = this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get();
+      str1 = this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get();
       if (!TextUtils.isEmpty(paramStReply.targetUser.id.get())) {
         break label310;
       }
     }
     label295:
     label310:
-    for (String str2 = this.jdField_a_of_type_Uzk.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.nick.get();; str2 = paramStReply.targetUser.nick.get())
+    for (String str2 = this.jdField_a_of_type_Vba.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.nick.get();; str2 = paramStReply.targetUser.nick.get())
     {
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append(paramStReply.postUser.nick.get()).append(this.jdField_a_of_type_JavaLangString).append(str2).append("：").append(paramStReply.content.get());
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, 0, paramStReply.postUser.nick.get().length(), new vwl(this, paramStReply));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, 0, paramStReply.postUser.nick.get().length(), new vzo(this, paramStReply));
       QCircleAsyncTextView localQCircleAsyncTextView = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView;
       int i = paramStReply.postUser.nick.get().length();
       int j = this.jdField_a_of_type_JavaLangString.length();
       int k = paramStReply.postUser.nick.get().length();
       int m = this.jdField_a_of_type_JavaLangString.length();
-      localQCircleAsyncTextView.a(localSpannableStringBuilder, i + j, str2.length() + (k + m), new vwm(this, str1));
+      localQCircleAsyncTextView.a(localSpannableStringBuilder, i + j, str2.length() + (k + m), new vzp(this, str1));
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.c();
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(localSpannableStringBuilder, new vwn(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(localSpannableStringBuilder, new vzq(this));
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setVisibility(0);
       return;
       str1 = paramStReply.targetUser.id.get();

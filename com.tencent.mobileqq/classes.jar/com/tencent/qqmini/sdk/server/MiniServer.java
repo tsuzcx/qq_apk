@@ -3,6 +3,8 @@ package com.tencent.qqmini.sdk.server;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
@@ -68,6 +70,11 @@ public class MiniServer
     catch (RemoteException localRemoteException) {}
   }
   
+  public IBinder getBinder()
+  {
+    return this.mLaunchManagerService.getBinder();
+  }
+  
   public LaunchManagerService getLaunchManagerService()
   {
     return this.mLaunchManagerService;
@@ -115,6 +122,11 @@ public class MiniServer
   public void preloadMiniApp(Bundle paramBundle)
   {
     this.mLaunchManagerService.preloadMiniApp(paramBundle);
+  }
+  
+  public void registerClientMessenger(String paramString, Messenger paramMessenger)
+  {
+    this.mLaunchManagerService.registerClientMessenger(paramString, paramMessenger);
   }
   
   public boolean sendCmdToMiniProcess(int paramInt, Bundle paramBundle, MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)

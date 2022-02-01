@@ -1,10 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeaz
-  extends Handler
+public final class aeaz
+  implements DialogInterface.OnClickListener
 {
-  public aeaz(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

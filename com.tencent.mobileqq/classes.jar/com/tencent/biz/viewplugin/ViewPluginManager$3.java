@@ -1,15 +1,15 @@
 package com.tencent.biz.viewplugin;
 
-import aazk;
+import abdn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import nko;
+import nmj;
 
 public class ViewPluginManager$3
   implements Runnable
 {
-  public ViewPluginManager$3(aazk paramaazk) {}
+  public ViewPluginManager$3(abdn paramabdn) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ViewPluginManager$3
     if (QLog.isColorLevel()) {
       QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
     }
-    nko.b(str, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    nmj.b(str, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import atbx;
-import atwg;
+import atts;
+import auob;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$1
   implements Runnable
 {
-  public OfflineFileBubbleModel$1(atbx paramatbx, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$1(atts paramatts, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    atwg.b(this.a);
+    auob.b(this.a);
   }
 }
 

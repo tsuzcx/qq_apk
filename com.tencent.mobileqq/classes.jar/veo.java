@@ -1,74 +1,91 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.launchbean.QCircleSettingBean;
+import com.tencent.biz.qqcircle.requests.QCircleGetCircleUnCareListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.part.BasePartFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
+import common.config.service.QzoneConfig;
 
 public class veo
+  extends vbk
+  implements View.OnClickListener
 {
-  private final List<vex> jdField_a_of_type_JavaUtilList;
-  private final BlockingQueue<vex> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private final vfa jdField_a_of_type_Vfa;
-  private final vfd<vex> jdField_a_of_type_Vfd;
-  private final vff jdField_a_of_type_Vff;
-  private final BlockingQueue<vex> b;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  private Switch b;
   
-  public veo(vfa paramvfa, vel paramvel, veu paramveu)
+  private void a(int paramInt)
   {
-    this.jdField_a_of_type_Vfa = paramvfa;
-    this.jdField_a_of_type_Vff = new vff(paramvel, new vey(1L), paramvfa);
-    this.jdField_a_of_type_Vff.a(paramvfa);
-    this.jdField_a_of_type_Vfd = new vfd(paramveu);
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.b = new LinkedBlockingQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  List<vex> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  void a()
-  {
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      Thread.yield();
-    }
-    vex localvex;
-    while (!this.b.isEmpty())
+    if (paramInt == 0)
     {
-      localvex = (vex)this.b.remove();
-      this.jdField_a_of_type_Vfd.b(localvex);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      return;
     }
-    while (!this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.isEmpty())
+    if (paramInt < 100)
     {
-      localvex = (vex)this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.remove();
-      this.jdField_a_of_type_Vfd.a(localvex);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("" + paramInt);
+      return;
     }
-    this.jdField_a_of_type_Vff.a(this.jdField_a_of_type_Vfa.a());
-    this.jdField_a_of_type_Vfd.a(this.jdField_a_of_type_Vff, this.jdField_a_of_type_JavaUtilList);
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
-      Thread.yield();
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("99+");
   }
   
-  public void a(List<vex> paramList)
+  public String a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.addAll(paramList);
+    return "QCirclePrivacySettingContentPart";
   }
   
-  public void b()
+  protected void a(View paramView)
   {
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      Thread.yield();
+    QCircleSettingBean localQCircleSettingBean = (QCircleSettingBean)a().getIntent().getSerializableExtra("key_bundle_common_init_bean");
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131374063));
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setThumbResource(2130844108);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setTrackResource(2130844110);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(localQCircleSettingBean.canJumpProfile());
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new vep(this));
+    View localView = paramView.findViewById(2131374060);
+    this.b = ((Switch)paramView.findViewById(2131374062));
+    this.b.setThumbResource(2130844108);
+    this.b.setTrackResource(2130844110);
+    this.b.setChecked(localQCircleSettingBean.canSyncTroopARK());
+    this.b.setOnCheckedChangeListener(new ver(this));
+    if (!QzoneConfig.isQQCircleShowTroopToolBarEntrance())
+    {
+      QLog.i("QCirclePrivacySettingContentPartonInitView", 2, "QzoneConfig.isQQCircleShowTroopToolBarEntrance()==false");
+      localView.setVisibility(8);
     }
-    this.jdField_a_of_type_Vfd.a();
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.b.clear();
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
-      Thread.yield();
+    paramView.findViewById(2131369411).setOnClickListener(this);
+    paramView.findViewById(2131374059).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373892));
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    super.onActivityResumed(paramActivity);
+    VSNetworkHelper.a().a(new QCircleGetCircleUnCareListRequest(1), new vet(this));
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((!a().onBackEvent()) && (a() != null))
+      {
+        a().finish();
+        continue;
+        uyx.e(paramView.getContext(), new QCircleInitBean());
+      }
     }
   }
 }

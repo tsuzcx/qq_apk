@@ -11,39 +11,6 @@ public class BeaconAdapter
 {
   private static boolean beaconEnable = false;
   
-  static
-  {
-    try
-    {
-      Class.forName("com.tencent.beacon.event.UserAction");
-      if (sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.1.2"))
-      {
-        beaconEnable = true;
-        return;
-      }
-      beaconEnable = false;
-      return;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        Class.forName("com.tencent.tvkbeacon.event.UserAction");
-        if (sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.1.2"))
-        {
-          beaconEnable = true;
-          return;
-        }
-      }
-      catch (Exception localException2)
-      {
-        beaconEnable = false;
-        return;
-      }
-      beaconEnable = false;
-    }
-  }
-  
   public static void doUploadRecords()
   {
     if (!beaconEnable) {

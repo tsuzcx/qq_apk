@@ -1,8 +1,6 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-
 public abstract interface ujg
 {
-  public abstract void a(FromServiceMsg paramFromServiceMsg);
+  public abstract uiv a(uix paramuix);
 }
 
 

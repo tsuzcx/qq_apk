@@ -1,17 +1,19 @@
-public class anow
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public final class anow
+  implements amth
 {
-  public int a;
-  public long a;
-  public int b;
+  public anow(anpd paramanpd, QQAppInterface paramQQAppInterface) {}
   
-  public String toString()
+  public void a()
   {
-    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
+    this.jdField_a_of_type_Anpd.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anow
  * JD-Core Version:    0.7.0.1
  */

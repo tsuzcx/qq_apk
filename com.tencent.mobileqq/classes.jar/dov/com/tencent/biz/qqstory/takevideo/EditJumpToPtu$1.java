@@ -1,25 +1,25 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpac;
-import bpad;
-import bpao;
-import yqp;
+import bqbx;
+import bqby;
+import bqcj;
+import yuk;
 
 public class EditJumpToPtu$1
   implements Runnable
 {
-  public EditJumpToPtu$1(bpac parambpac) {}
+  public EditJumpToPtu$1(bqbx parambqbx) {}
   
   public void run()
   {
-    bpac.a(this.this$0, bpao.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
-    if (this.this$0.a(bpac.a(this.this$0)))
+    bqbx.a(this.this$0, bqcj.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
+    if (this.this$0.a(bqbx.a(this.this$0)))
     {
       this.this$0.a.sendEmptyMessage(1);
       return;
     }
-    bpac.a(this.this$0, null);
-    yqp.e("EditJumpToPtu", "get rawBitmap error!");
+    bqbx.a(this.this$0, null);
+    yuk.e("EditJumpToPtu", "get rawBitmap error!");
     this.this$0.a.sendEmptyMessage(3);
   }
 }

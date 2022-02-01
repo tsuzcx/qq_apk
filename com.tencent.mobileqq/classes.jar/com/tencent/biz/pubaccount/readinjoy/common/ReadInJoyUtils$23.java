@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.biz.pubaccount.util.PreloadManager;
-import txw;
+import txy;
 
 public final class ReadInJoyUtils$23
   implements Runnable
 {
-  public ReadInJoyUtils$23(PreloadManager paramPreloadManager, txw paramtxw) {}
+  public ReadInJoyUtils$23(PreloadManager paramPreloadManager, txy paramtxy) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Txw.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_Txy.a);
   }
 }
 

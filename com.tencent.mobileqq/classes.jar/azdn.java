@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
 
-public final class azdn
-  implements Parcelable.Creator<PersonalityLabel>
+class azdn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public PersonalityLabel a(Parcel paramParcel)
-  {
-    return new PersonalityLabel(paramParcel);
-  }
+  azdn(azdh paramazdh) {}
   
-  public PersonalityLabel[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new PersonalityLabel[paramInt];
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (azdh.a(this.a) != null)
+    {
+      azdh.a(this.a).setAlpha(f);
+      azdh.a(this.a).setTranslationY((1.0F - f) * agej.a(25.0F, azdh.a(this.a)));
+    }
   }
 }
 

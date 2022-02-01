@@ -1,58 +1,26 @@
-public final class rto
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
+class rto
+  extends sbh
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  rto(rsx paramrsx) {}
   
-  public rtm a()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    return new rtm(this, null);
+    rsx.a(this.a).b(rsx.b(this.a));
+    if ((paramVideoInfo.m != null) && (paramVideoInfo.m.contains("kandianshare.html5.qq.com")))
+    {
+      this.a.a.b(paramVideoInfo.m);
+      return;
+    }
+    this.a.a.b(paramString + "&sourcefrom=6");
   }
   
-  public rto a(long paramLong)
+  public int c()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public rto a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public rto b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public rto b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public rto c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public rto d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public rto e(String paramString)
-  {
-    this.e = paramString;
-    return this;
+    return 7;
   }
 }
 

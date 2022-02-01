@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.forward;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.Intent;
-import aufz;
+import auxu;
 import com.tencent.mobileqq.activity.SplashActivity;
 
 public class ForwardCompositeOption
-  extends aufz
+  extends auxu
 {
   public ForwardCompositeOption(Intent paramIntent)
   {
@@ -16,7 +16,7 @@ public class ForwardCompositeOption
   
   public boolean c()
   {
-    Intent localIntent = afur.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+    Intent localIntent = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
     localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
     this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
     this.jdField_a_of_type_AndroidAppActivity.finish();

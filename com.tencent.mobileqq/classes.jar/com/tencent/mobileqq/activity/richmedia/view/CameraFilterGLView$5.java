@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import alin;
-import aloz;
-import alpa;
-import alpd;
-import alps;
+import aluf;
+import amar;
+import amas;
+import amav;
+import ambk;
 import android.os.SystemClock;
-import anni;
-import bcjr;
+import anzj;
+import bdcj;
 import com.tencent.aekit.api.standard.filter.AESticker;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
@@ -78,7 +78,7 @@ class CameraFilterGLView$5
       if (CameraFilterGLView.a(this.this$0) != null)
       {
         String str = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.mGuideTips;
-        if ((!this.b) || (alin.jdField_a_of_type_Int == 2)) {
+        if ((!this.b) || (aluf.jdField_a_of_type_Int == 2)) {
           break label461;
         }
         i = 1;
@@ -104,12 +104,12 @@ class CameraFilterGLView$5
         label466:
         if ((i != 0) && (!this.e))
         {
-          CameraFilterGLView.a(this.this$0).a(true, anni.a(2131700122), 0);
+          CameraFilterGLView.a(this.this$0).a(true, anzj.a(2131700229), 0);
           return;
         }
         if (this.e)
         {
-          CameraFilterGLView.a(this.this$0).a(true, alps.a(), 3);
+          CameraFilterGLView.a(this.this$0).a(true, ambk.a(), 3);
           return;
         }
         CameraFilterGLView.a(this.this$0).a(bool, (String)localObject, 1);

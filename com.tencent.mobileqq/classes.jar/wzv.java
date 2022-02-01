@@ -1,53 +1,147 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler.1;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wzv
-  extends wlf<xbg>
+  extends wzl
+  implements woy
 {
-  private static final String a = wjz.a("StorySvc.get_weather");
-  public final int c;
-  public final int d;
-  public final int e;
+  public static ConcurrentHashMap<String, Long> a;
+  public List<String> a;
+  public yme a;
+  private final boolean a;
+  public List<String> b = new ArrayList();
   
-  public wzv(int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public String a()
+  public wzv(@NonNull List<String> paramList)
   {
-    return a;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Yme = ((yme)wth.a(11));
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public wzv(@NonNull List<String> paramList, boolean paramBoolean)
   {
-    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
-    try
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Yme = ((yme)wth.a(11));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static void a(@NonNull List<String> paramList)
+  {
+    int j = paramList.size();
+    int k = (int)Math.ceil(j / 5.0D);
+    int i = 0;
+    while (i < k)
     {
-      localRspGetWeather.mergeFrom(paramArrayOfByte);
-      return new xbg(localRspGetWeather);
+      new wzv(paramList.subList(i * 5, Math.min((i + 1) * 5, j))).a();
+      i += 1;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  private void b(List<wuk> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      for (;;)
+      wuk localwuk = (wuk)paramList.next();
+      FeedItem localFeedItem = this.jdField_a_of_type_Yme.a(localwuk.a);
+      if (localFeedItem == null)
       {
-        paramArrayOfByte.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "null feedItem when saving feed feature...feedId=", localwuk.a });
+        }
+      }
+      else
+      {
+        localFeedItem.convertFromFeedFeature(localwuk);
+        localArrayList.add(localFeedItem);
       }
     }
+    this.jdField_a_of_type_Yme.a(localArrayList);
   }
   
-  protected byte[] a()
+  public void a()
   {
-    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
-    localReqGetWeather.coordinate.set(this.c);
-    localReqGetWeather.longitude.set(this.d);
-    localReqGetWeather.latitude.set(this.e);
-    return localReqGetWeather.toByteArray();
+    ThreadManager.post(new GetFeedFeatureHandler.1(this), 8, null, true);
+  }
+  
+  public void a(@NonNull wpa paramwpa, @Nullable wov paramwov, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (((paramwpa instanceof xcq)) && ((paramwov instanceof xen)))
+    {
+      paramwpa = (xen)paramwov;
+      paramwov = new wzw();
+      paramwov.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      if ((paramErrorMessage.isSuccess()) && (!paramwpa.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedFeature: first=", ((wuk)paramwpa.jdField_a_of_type_JavaUtilList.get(0)).a });
+        }
+        b(paramwpa.jdField_a_of_type_JavaUtilList);
+        paramwov.jdField_a_of_type_JavaUtilList = paramwpa.jdField_a_of_type_JavaUtilList;
+        wjj.a().dispatch(paramwov);
+        b();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, "save feedFeature failed.", paramErrorMessage);
+        }
+        wjj.a().dispatch(paramwov);
+        c();
+        return;
+      } while ((!(paramwpa instanceof xce)) || (!(paramwov instanceof xcf)));
+      paramwpa = (xcf)paramwov;
+      if (paramErrorMessage.isSuccess())
+      {
+        paramwov = new ArrayList(paramwpa.jdField_a_of_type_JavaUtilList.size());
+        paramwpa = paramwpa.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramwpa.hasNext()) {
+          paramwov.add(((ynt)paramwpa.next()).a());
+        }
+        if (!paramwov.isEmpty())
+        {
+          this.jdField_a_of_type_Yme.a(paramwov);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedItem: first=", ((FeedItem)paramwov.get(0)).feedId, ". request FeedFeature." });
+          }
+          paramwpa = new xcq();
+          paramwpa.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+          wow.a().a(paramwpa, this);
+          return;
+        }
+      }
+    } while (this.b.isEmpty());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request local FeedFeature after FeedItem. first=", this.b.get(0) });
+    }
+    paramwpa = new xcq();
+    paramwpa.jdField_a_of_type_JavaUtilList = this.b;
+    wow.a().a(paramwpa, this);
   }
 }
 

@@ -1,63 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atna
-  implements aqck
+  implements View.OnClickListener
 {
-  private FileManagerEntity a;
+  public atna(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public atna(FileManagerEntity paramFileManagerEntity)
+  public void onClick(View paramView)
   {
-    this.a = paramFileManagerEntity;
-  }
-  
-  private String a()
-  {
-    String str = "";
-    try
+    atnh localatnh = (atnh)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)localatnh.jdField_a_of_type_JavaLangObject;
+    switch (localatnh.c)
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_peerType", this.a.peerType);
-        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
-        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
-        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
-        str = localJSONObject.toString();
-      }
-      return str;
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.a == null)
+    for (;;)
     {
-      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
+      this.a.i();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.a().Z();
+      this.a.a(localFileInfo, localatnh.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
     }
-    aqcs localaqcs = new aqcs();
-    localaqcs.a(17039360);
-    String str = atwt.b(1, this.a.nSessionId + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
-    }
-    localaqcs.a(str);
-    localaqcs.b(this.a.fileName);
-    localaqcs.c(atwl.a(this.a.fileSize));
-    int i = atvo.a(atvo.a(this.a.fileName));
-    localaqcs.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaqcs.a(str.getBytes());
-    }
-    return localaqcs.a();
   }
 }
 

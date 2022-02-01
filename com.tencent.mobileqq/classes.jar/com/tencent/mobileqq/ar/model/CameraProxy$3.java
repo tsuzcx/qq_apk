@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.ar.model;
 
-import aoyz;
-import apek;
+import apmp;
+import apsa;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraProxy$3
   implements Runnable
 {
-  public CameraProxy$3(apek paramapek) {}
+  public CameraProxy$3(apsa paramapsa) {}
   
   public void run()
   {
-    if ((apek.a(this.this$0) != 3) || (apek.a(this.this$0) == null))
+    if ((apsa.a(this.this$0) != 3) || (apsa.a(this.this$0) == null))
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + apek.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + apsa.a(this.this$0));
       return;
     }
-    if (apek.a(this.this$0)) {
-      apek.a(this.this$0).a();
+    if (apsa.a(this.this$0)) {
+      apsa.a(this.this$0).a();
     }
-    apek.a(this.this$0, false);
-    apek.a(this.this$0).a();
-    if (apek.a(this.this$0) != 3)
+    apsa.a(this.this$0, false);
+    apsa.a(this.this$0).a();
+    if (apsa.a(this.this$0) != 3)
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + apek.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + apsa.a(this.this$0));
       return;
     }
-    apek.a(this.this$0, 0);
-    apek.a(this.this$0, null);
-    apek.e(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + apek.a(this.this$0));
+    apsa.a(this.this$0, 0);
+    apsa.a(this.this$0, null);
+    apsa.e(this.this$0, 0);
+    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + apsa.a(this.this$0));
   }
 }
 

@@ -1,43 +1,16 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcjh
-  extends PreviewContext
-  implements SurfaceHolder.Callback, bciv
+class bcjh
+  implements View.OnClickListener
 {
-  public bcjh(bcio parambcio, int paramInt1, int paramInt2)
-  {
-    super(parambcio, paramInt1, paramInt2);
-  }
+  bcjh(bcjg parambcjg, bcfq parambcfq) {}
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onClick(View paramView)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
-    }
+    this.jdField_a_of_type_Bcfq.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhmh;
+import binc;
 
 public class WebViewTitleStyle
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebViewTitleStyle> CREATOR = new bhmh();
+  public static final Parcelable.Creator<WebViewTitleStyle> CREATOR = new binc();
   public int b;
   public int c;
   public int d;

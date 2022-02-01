@@ -1,33 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-
-class bmxk
-  implements EIPCOnGetConnectionListener
+public abstract interface bmxk
 {
-  bmxk(bmxj parambmxj) {}
-  
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bmxj.a(this.a, paramEIPCConnection.procName);
-    }
-    bmxj.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bmxj.a(this.a, paramEIPCConnection.procName);
-    }
-    bmxj.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
-    }
-  }
+  public abstract void a(bmxj parambmxj, boolean paramBoolean);
 }
 
 

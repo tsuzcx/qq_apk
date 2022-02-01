@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.plugins;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 
 class InternalJSPlugin$4
-  implements InternalJSPlugin.openUrlCallback
+  implements InternalJSPlugin.OpenUrlCallback
 {
   InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, RequestEvent paramRequestEvent) {}
   

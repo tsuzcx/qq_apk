@@ -2,7 +2,7 @@ package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import bgoo;
+import bhoq;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -86,7 +86,7 @@ public class DiscussionInfo
   
   public int getHrExtra()
   {
-    return bgoo.a(this.mOriginExtra);
+    return bhoq.a(this.mOriginExtra);
   }
   
   public boolean hasRenamed()
@@ -96,12 +96,12 @@ public class DiscussionInfo
   
   public boolean isDiscussHrMeeting()
   {
-    return bgoo.b(this.mOrigin);
+    return bhoq.b(this.mOrigin);
   }
   
   public boolean isHidden()
   {
-    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (bgoo.a(this.mSelfRight));
+    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (bhoq.a(this.mSelfRight));
   }
   
   public boolean isOwnerOrInheritOwner(String paramString)
@@ -115,7 +115,7 @@ public class DiscussionInfo
   
   public boolean isPSTNConf()
   {
-    return bgoo.a(this.mOrigin);
+    return bhoq.a(this.mOrigin);
   }
   
   public boolean isUIControlFlag_Hidden_RecentUser()

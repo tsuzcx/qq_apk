@@ -1,20 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import java.util.List;
 
-public class blsi
+class blsi
+  extends blso
 {
-  private static blsi a;
-  public String a;
-  public String b;
-  
-  public static blsi a()
+  blsi(blsg paramblsg, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
   {
-    if (jdField_a_of_type_Blsi == null) {
-      jdField_a_of_type_Blsi = new blsi();
+    super(paramblsg, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    if (this.b) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Blsg.mCallback.clearView(this.jdField_a_of_type_Blsg.mRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      }
+      while (this.jdField_a_of_type_Blsg.mOverdrawChild == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
+      {
+        this.jdField_a_of_type_Blsg.removeChildDrawingOrderCallbackIfNecessary(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
+        return;
+        this.jdField_a_of_type_Blsg.mPendingCleanup.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Int > 0) {
+          this.jdField_a_of_type_Blsg.postDispatchSwipe(this, this.jdField_a_of_type_Int);
+        }
+      }
     }
-    jdField_a_of_type_Blsi.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    jdField_a_of_type_Blsi.b = null;
-    return jdField_a_of_type_Blsi;
   }
 }
 

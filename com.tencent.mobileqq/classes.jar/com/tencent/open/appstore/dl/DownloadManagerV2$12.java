@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bisa;
+import bjsz;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$12
   implements Runnable
 {
-  public DownloadManagerV2$12(bisa parambisa, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$12(bjsz parambjsz, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    bisa.c(this.this$0, this.a);
+    bjsz.c(this.this$0, this.a);
   }
 }
 

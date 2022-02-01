@@ -1,68 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.1;
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-public class puv
+class puv
+  implements ViewBase.OnClickListener
 {
-  public static void a()
-  {
-    Object localObject = tdv.a().a();
-    if (localObject != null)
-    {
-      QLog.d("RIJImageOptMonitor", 1, "executing jobs size: " + ((CopyOnWriteArrayList)localObject).size());
-      if (((CopyOnWriteArrayList)localObject).size() > 0)
-      {
-        localObject = ((CopyOnWriteArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          QLog.d("RIJImageOptMonitor", 1, new Object[] { (tdw)((Iterator)localObject).next() });
-        }
-      }
-    }
-  }
+  puv(puu parampuu, BaseArticleInfo paramBaseArticleInfo, ppu paramppu, ViewBase paramViewBase) {}
   
-  public static void a(tdw paramtdw)
+  public void onClick(ViewBase paramViewBase)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new RIJImageOptMonitor.1(paramtdw), puu.a.a());
-  }
-  
-  public static String[] a(String paramString)
-  {
-    try
-    {
-      InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(paramString);
-      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
-      {
-        String[] arrayOfString = new String[arrayOfInetAddress.length];
-        int i = 0;
-        for (;;)
-        {
-          paramString = arrayOfString;
-          if (i >= arrayOfInetAddress.length) {
-            break;
-          }
-          arrayOfString[i] = arrayOfInetAddress[i].getHostAddress();
-          i += 1;
-        }
-        return paramString;
-      }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
+      return;
     }
-    catch (UnknownHostException paramString)
-    {
-      QLog.e("RIJImageOptMonitor", 1, paramString.getMessage());
-      paramString = null;
+    QLog.i("BigImageVideoProteusItem", 1, "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances);
+    paramViewBase = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
+    QLog.i("BigImageVideoProteusItem", 1, "" + paramViewBase);
+    if ((paramViewBase.a != null) && (paramViewBase.a.a != 3)) {
+      rpt.a(this.jdField_a_of_type_Ppu.a().getContext(), paramViewBase.a);
     }
-    return null;
-  }
-  
-  public static void b(tdw paramtdw)
-  {
-    ThreadManager.post(new RIJImageOptMonitor.2(paramtdw), 2, null, true);
+    oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
   }
 }
 

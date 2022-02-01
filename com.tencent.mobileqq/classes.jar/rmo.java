@@ -1,39 +1,24 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import java.util.List;
-
 public class rmo
-  extends bkrs<rmz, rmp>
 {
-  public rmo(Context paramContext, List<rmz> paramList)
-  {
-    super(paramContext, paramList);
-  }
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
   
-  public int a(int paramInt)
+  public String toString()
   {
-    return 0;
-  }
-  
-  public rmp a(ViewGroup paramViewGroup, int paramInt)
-  {
-    ImageView localImageView = new ImageView(this.a);
-    paramInt = paramViewGroup.getLayoutParams().height;
-    localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt, paramInt));
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    return new rmp(this, localImageView);
-  }
-  
-  public void a(rmp paramrmp, int paramInt)
-  {
-    Bitmap localBitmap = ((rmz)a(paramInt)).a();
-    if (localBitmap != null) {
-      ((ImageView)paramrmp.itemView).setImageBitmap(localBitmap);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mCurIndexDiff: ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mPreIndexDiff: ").append(this.c);
+    localStringBuilder.append(", mTimeInterval: ").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mIsPull: ").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.model;
 
-import awmr;
+import axfj;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class EmoticonManager$14
   implements Runnable
 {
-  public EmoticonManager$14(awmr paramawmr, String paramString) {}
+  public EmoticonManager$14(axfj paramaxfj, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class EmoticonManager$14
     if (localEmoticonTab != null) {}
     for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
     {
-      awmr.a(this.this$0, localEmoticonTab);
+      axfj.a(this.this$0, localEmoticonTab);
       return;
       localEmoticonTab = new EmoticonTab();
       localEmoticonTab.epId = this.a;

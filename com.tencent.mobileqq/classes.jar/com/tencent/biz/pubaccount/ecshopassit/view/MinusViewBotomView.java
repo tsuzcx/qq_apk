@@ -7,15 +7,15 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import bgsp;
+import bhsr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import oek;
-import off;
-import zlx;
+import ofu;
+import ogn;
+import zps;
 
 public class MinusViewBotomView
   extends FrameLayout
@@ -36,32 +36,32 @@ public class MinusViewBotomView
   
   private void a(Context paramContext)
   {
-    setBackgroundColor(paramContext.getResources().getColor(2131167279));
+    setBackgroundColor(paramContext.getResources().getColor(2131167302));
     this.a = new Button(paramContext);
     addView(this.a);
     this.a.getLayoutParams().width = -1;
-    this.a.getLayoutParams().height = zlx.a(paramContext, 45.0F);
-    this.a.setBackgroundResource(2130842634);
-    this.a.setTextColor(paramContext.getResources().getColor(2131167279));
+    this.a.getLayoutParams().height = zps.a(paramContext, 45.0F);
+    this.a.setBackgroundResource(2130842647);
+    this.a.setTextColor(paramContext.getResources().getColor(2131167302));
     this.a.setTextSize(1, 17.0F);
-    int i = zlx.a(getContext(), 16.0F);
+    int i = zps.a(getContext(), 16.0F);
     setPadding(i, i, i, i);
   }
   
-  public void setBtnText(oek paramoek)
+  public void setBtnText(ofu paramofu)
   {
-    if ((this.a == null) || (paramoek == null) || (getContext() == null))
+    if ((this.a == null) || (paramofu == null) || (getContext() == null))
     {
       QLog.i("MinusViewBotomView", 2, "params error!!");
       return;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     MessageRecord localMessageRecord = localQQAppInterface.a().b("3046055438", 1008);
-    if (bgsp.a(paramoek.a)) {}
-    for (paramoek = getContext().getString(2131691675);; paramoek = paramoek.a)
+    if (bhsr.a(paramofu.a)) {}
+    for (paramofu = getContext().getString(2131691678);; paramofu = paramofu.a)
     {
-      this.a.setText(paramoek);
-      this.a.setOnClickListener(new off(this, localQQAppInterface, localMessageRecord));
+      this.a.setText(paramofu);
+      this.a.setOnClickListener(new ogn(this, localQQAppInterface, localMessageRecord));
       return;
     }
   }

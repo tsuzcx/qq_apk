@@ -1,23 +1,17 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
-class qqx
-  implements PopupWindow.OnDismissListener
+public class qqx
+  implements Animation.AnimationListener
 {
-  qqx(qqt paramqqt, bklp parambklp) {}
+  public qqx(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void onDismiss()
-  {
-    this.jdField_a_of_type_Bklp.a(1.0F);
-    if (this.jdField_a_of_type_Qqt.a.b)
-    {
-      seu localseu = this.jdField_a_of_type_Qqt.a.a();
-      if (localseu != null)
-      {
-        localseu.c();
-        this.jdField_a_of_type_Qqt.a.b = false;
-      }
-    }
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

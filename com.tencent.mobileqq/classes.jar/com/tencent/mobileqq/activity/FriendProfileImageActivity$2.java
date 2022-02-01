@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aeht;
-import anmw;
+import aeqx;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -14,7 +14,7 @@ class FriendProfileImageActivity$2
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((anmw)this.this$0.app.getManager(51)).a(this.this$0.a.b);
+    ExtensionInfo localExtensionInfo = ((anyw)this.this$0.app.getManager(51)).a(this.this$0.a.b);
     if (localExtensionInfo != null) {
       ThreadManager.getUIHandler().post(new FriendProfileImageActivity.2.1(this, localExtensionInfo));
     }

@@ -1,13 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
+import java.util.List;
 
 public class pqn
-  implements prw
 {
-  public pqn(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  private int jdField_a_of_type_Int = 1;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
   
-  public void a()
+  public ReadInJoyUserInfoModule.Request0xb81Params a()
   {
-    ReadInJoySelfFragment.a(this.a, 12);
+    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
+  }
+  
+  public pqn a(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
+  }
+  
+  public pqn a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public pqn b(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public pqn c(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
+  }
+  
+  public pqn d(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
   }
 }
 

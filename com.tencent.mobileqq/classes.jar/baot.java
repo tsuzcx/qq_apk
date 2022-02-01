@@ -1,20 +1,58 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.QCallRecord;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public abstract interface baot
+public class baot
+  extends BaseAdapter
 {
-  public abstract void a();
+  public List<QCallRecord> a;
   
-  public abstract void a(int paramInt);
+  public baot(QCallDetailActivity paramQCallDetailActivity)
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
   
-  public abstract void a(baox parambaox);
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
   
-  public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
   
-  public abstract void b();
+  public int getItemViewType(int paramInt)
+  {
+    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
+      return QCallRecord.TYPE_DATE;
+    }
+    return QCallRecord.TYPE_REALRECORD;
+  }
   
-  public abstract void c();
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
 }
 
 

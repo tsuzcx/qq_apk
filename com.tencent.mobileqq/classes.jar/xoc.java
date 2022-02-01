@@ -1,29 +1,42 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class xoc
   implements View.OnClickListener
 {
-  public xoc(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xoc(xoa paramxoa) {}
   
   public void onClick(View paramView)
   {
-    if (!bgnt.g(this.a.jdField_a_of_type_AndroidViewView.getContext())) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131693946, 0).a();
-    }
-    for (;;)
+    String str1;
+    if ((xoa.a(this.a) != null) && (xoa.a(this.a).a()))
     {
+      xoa.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
+      if (!this.a.a()) {
+        break label116;
+      }
+      str1 = "2";
+      label64:
+      if (!this.a.b()) {
+        break label122;
+      }
+    }
+    label116:
+    label122:
+    for (String str2 = "2";; str2 = "1")
+    {
+      yup.a("play_video", "close_reply", 0, 1, new String[] { str1, str2 });
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      yqp.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.a(10, true, "retry play");
+      this.a.a();
+      break;
+      str1 = "1";
+      break label64;
     }
   }
 }

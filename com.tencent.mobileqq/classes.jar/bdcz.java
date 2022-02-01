@@ -1,18 +1,42 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface bdcz
+class bdcz
+  extends BroadcastReceiver
 {
-  public abstract void a(DownloaderTask paramDownloaderTask);
+  bdcz(bdcy parambdcy) {}
   
-  public abstract void b(DownloaderTask paramDownloaderTask);
-  
-  public abstract void c(DownloaderTask paramDownloaderTask);
-  
-  public abstract void d(DownloaderTask paramDownloaderTask);
-  
-  public abstract void e(DownloaderTask paramDownloaderTask);
-  
-  public abstract void f(DownloaderTask paramDownloaderTask);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    for (;;)
+    {
+      return;
+      paramContext = paramIntent.getStringExtra("event");
+      if (paramContext != null)
+      {
+        paramIntent = paramIntent.getStringExtra("data");
+        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
+          try
+          {
+            paramContext = new JSONObject(paramIntent);
+            paramIntent = paramContext.optString("shortVideoId");
+            boolean bool = paramContext.optBoolean("isPaid");
+            if ((bdcy.a(this.a) != null) && (bdcy.a(this.a).h != 1) && (bool) && (bdcy.a(this.a).c.equals(paramIntent)))
+            {
+              new bddh(this.a).execute(new String[0]);
+              return;
+            }
+          }
+          catch (JSONException paramContext) {}
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,19 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public final class ruw
-  implements Parcelable.Creator<LikeAnimationInfo>
+public abstract interface ruw
 {
-  public LikeAnimationInfo a(Parcel paramParcel)
-  {
-    return new LikeAnimationInfo(paramParcel);
-  }
+  public abstract int a();
   
-  public LikeAnimationInfo[] a(int paramInt)
-  {
-    return new LikeAnimationInfo[paramInt];
-  }
+  public abstract CharSequence a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(double paramDouble);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(VideoInfo paramVideoInfo, rot paramrot);
+  
+  public abstract void a(rot paramrot);
+  
+  public abstract void a(ruv paramruv);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(VideoInfo paramVideoInfo);
+  
+  public abstract boolean a(VideoInfo paramVideoInfo, rot paramrot, double paramDouble, long paramLong);
+  
+  public abstract String b();
+  
+  public abstract void b(rot paramrot);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract void c(rot paramrot);
+  
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract void onClick(View paramView);
 }
 
 

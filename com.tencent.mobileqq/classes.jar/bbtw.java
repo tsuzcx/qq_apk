@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
-public final class bbtw
-  implements Comparator<bboc>
+public class bbtw
+  implements DialogInterface.OnClickListener
 {
-  public int a(bboc parambboc1, bboc parambboc2)
+  public bbtw(SignatureEditFragment paramSignatureEditFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = Long.signum(parambboc2.b() - parambboc1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(parambboc2.a() - parambboc1.a());
-    }
-    j = i;
-    if (i == 0) {
-      j = PublicAccountSearchEngine.a(parambboc1, parambboc2);
-    }
-    return j;
+    SignatureEditFragment.a(this.a, 8589934618L, null);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,55 +1,82 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.os.AsyncTask;
+import android.widget.TextView;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.activity.QQMapActivity;
 import com.tencent.qphone.base.util.QLog;
+import org.apache.http.client.HttpClient;
 
 public class afhj
-  extends bhhe
+  extends AsyncTask<GeoPoint, Void, String>
 {
-  public afhj(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected GeoPoint a;
+  protected HttpClient a;
+  
+  public afhj(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
   {
-    super(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
   }
   
-  public void onCancel(bhhf parambhhf)
+  protected String a(GeoPoint... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambhhf);
-    }
-    super.onCancel(parambhhf);
-  }
-  
-  public void onDone(bhhf parambhhf)
-  {
-    super.onDone(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambhhf);
-    }
-    if (parambhhf.b()) {}
-    do
+    int i = 0;
+    if (i < 3)
     {
-      return;
-      if (parambhhf.a() == -1)
+      if (isCancelled())
       {
-        parambhhf = new Message();
-        parambhhf.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambhhf);
-        return;
+        localObject = "";
+        label17:
+        return localObject;
       }
-      parambhhf = this.a.jdField_a_of_type_Gc.a(this.a.e);
-    } while (parambhhf == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambhhf;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      paramVarArgs = bhrr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
+        if (paramVarArgs != null) {
+          break label125;
+        }
+      }
+      label125:
+      for (Object localObject = "";; localObject = paramVarArgs)
+      {
+        QLog.i("fetch_address", 2, (String)localObject);
+        if (paramVarArgs != null)
+        {
+          localObject = paramVarArgs;
+          if (paramVarArgs.length() > 0) {
+            break label17;
+          }
+        }
+        i += 1;
+        break;
+      }
+    }
+    return "";
   }
   
-  public boolean onStart(bhhf parambhhf)
+  protected void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambhhf);
+      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
     }
-    return super.onStart(parambhhf);
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
+      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+          break label115;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+    }
+    return;
+    label115:
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.g = paramString;
   }
 }
 

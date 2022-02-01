@@ -1,46 +1,32 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class aomi
-  extends aojt
+  extends ResourcePluginListener
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  private aomi(GetConfig paramGetConfig) {}
+  
+  public void a(byte paramByte)
   {
-    paramQQAppInterface = new aomh(paramQQAppInterface, paramContext);
-    paramContext = paramString.split("\\?");
-    if (paramContext.length < 1) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = paramContext[0];
-    paramQQAppInterface.c = paramContext[1];
-    paramContext = Uri.parse(paramString);
-    paramString = paramContext.getQueryParameterNames().iterator();
-    while (paramString.hasNext())
+    if (this.a.b == 44)
     {
-      paramaojw = (String)paramString.next();
-      if (!TextUtils.isEmpty(paramaojw))
-      {
-        String str = paramContext.getQueryParameter(paramaojw);
-        if (!TextUtils.isEmpty(str)) {
-          paramQQAppInterface.a(paramaojw.toLowerCase(), str);
-        }
-      }
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      this.a.a.app.c(GetConfig.a(this.a));
+      this.a.a(7);
     }
-    return paramQQAppInterface;
+  }
+  
+  public void b(byte paramByte)
+  {
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    this.a.a.app.d(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomi
  * JD-Core Version:    0.7.0.1
  */

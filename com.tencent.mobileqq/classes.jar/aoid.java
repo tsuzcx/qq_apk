@@ -1,37 +1,12 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import java.util.List;
 
-class aoid
-  implements View.OnTouchListener
+public class aoid
+  implements anuh
 {
-  aoid(aohz paramaohz, ImageView paramImageView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
-    {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    return null;
   }
 }
 

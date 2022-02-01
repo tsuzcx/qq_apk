@@ -1,54 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.observer.SSOAccountObserver;
 
-public class beto
-  extends atdl
+class beto
+  extends SSOAccountObserver
 {
-  long jdField_a_of_type_Long;
-  anif jdField_a_of_type_Anif = null;
-  bety jdField_a_of_type_Bety;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  beto(betn parambetn) {}
   
-  public beto(QQAppInterface paramQQAppInterface, long paramLong, bety parambety)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bety = parambety;
-    this.jdField_a_of_type_Long = paramLong;
-    b();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Anif = new betp(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anif);
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Anif != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anif);
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
+    if (this.a.b.a == 11) {
+      avcw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
     }
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
   }
   
-  public boolean a()
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      return false;
+    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onGetTicketNoPasswd|account=" + bjqq.a(paramString) + ",type=" + paramInt);
+    if (this.a.b.a == 11) {
+      avcw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
     }
-    if (this.jdField_a_of_type_Bety.a != null) {
-      localTroopFileTransferManager.e(this.jdField_a_of_type_Bety.a);
-    }
-    for (;;)
+    long l = System.currentTimeMillis();
+    if (paramInt == 4096)
     {
-      return true;
-      localTroopFileTransferManager.a(this.jdField_a_of_type_Bety.e, this.jdField_a_of_type_Bety.g, this.jdField_a_of_type_Bety.h);
+      betj.a(this.a.b, new String(paramArrayOfByte));
+      betn.a(this.a).set(true);
+      bjwg.a(paramString, l);
+      this.a.b();
+      return;
     }
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
+    if (this.a.b.a == 11) {
+      avcw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
+    }
+    this.a.b.b(9401, "onUserCancel");
+    this.a.c();
   }
 }
 

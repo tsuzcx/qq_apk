@@ -1,8 +1,25 @@
-import android.graphics.SurfaceTexture;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public abstract interface xsc
+public class xsc
 {
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  wlg jdField_a_of_type_Wlg;
+  
+  private xsc(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public wlg a()
+  {
+    if (this.jdField_a_of_type_Wlg == null) {
+      this.jdField_a_of_type_Wlg = new wlg();
+    }
+    return this.jdField_a_of_type_Wlg;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Wlg != null) {
+      this.jdField_a_of_type_Wlg.a();
+    }
+  }
 }
 
 

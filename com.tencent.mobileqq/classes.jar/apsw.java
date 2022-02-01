@@ -1,8 +1,54 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public abstract interface apsw
+public final class apsw
 {
-  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap);
+  public static int a(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+  }
+  
+  public static void a(Context paramContext, View paramView)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
+      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      paramContext.topMargin = i;
+      paramView.setLayoutParams(paramContext);
+    }
+  }
+  
+  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams;
+    int i;
+    if (bdep.a(paramContext))
+    {
+      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      i = paramInt;
+      if (paramBoolean) {
+        i = paramInt + bdep.d(paramContext);
+      }
+      if (localMarginLayoutParams.bottomMargin != i) {}
+    }
+    else
+    {
+      return;
+    }
+    localMarginLayoutParams.bottomMargin = i;
+    paramView.setLayoutParams(localMarginLayoutParams);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+  }
 }
 
 

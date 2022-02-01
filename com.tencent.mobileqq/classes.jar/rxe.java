@@ -1,124 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.support.v4.os.TraceCompat;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
 class rxe
-  implements sbt
+  extends beyf
 {
-  rxe(rwy paramrwy) {}
+  rxe(rxd paramrxd) {}
   
-  public void D_() {}
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
+  public void handleMessage(Message paramMessage)
   {
-    rwy.a(this.a).removeMessages(7);
-    rxq localrxq = rwy.a(this.a);
-    Object localObject;
-    if ((paramViewHolder instanceof rxo))
-    {
-      localObject = (rxo)paramViewHolder;
-      if ((localrxq != null) && (localrxq.jdField_a_of_type_Rur != null)) {
-        localrxq.jdField_a_of_type_Rur.d(false);
-      }
-      if ((((rxo)localObject).c >= this.a.getItemCount() - 5) && (rwy.a(this.a) != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "onCenterViewChanged() holder.position = " + ((rxo)localObject).c + ", getCount() = " + this.a.getItemCount() + ", 推荐视频列表提前预拉取");
-        }
-        rwy.a(this.a).d();
-      }
+    Object localObject = (bete)paramMessage.obj;
+    if ((localObject == null) || ((((bete)localObject).jdField_b_of_type_Int != 24) && (((bete)localObject).jdField_b_of_type_Int != 32))) {}
+    while ((((bete)localObject).jdField_b_of_type_Int == 24) && (((bete)localObject).c != 54)) {
+      return;
     }
-    if (((paramViewHolder instanceof rxt)) && (((rxt)paramViewHolder).a == 6))
+    switch (paramMessage.what)
     {
-      rwy.a(this.a);
-      rwy.a(this.a, null);
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    case 1005: 
+    case 2001: 
+    case 2003: 
+    default: 
+      return;
     }
-    boolean bool;
-    rgi localrgi;
-    if ((paramViewHolder instanceof rxq))
+    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((bete)localObject).jdField_b_of_type_Long));
+    paramMessage.putLong("uniseq", ((bete)localObject).jdField_b_of_type_Long);
+    paramMessage.putString("pic_server_id", ((bete)localObject).i);
+    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
+    try
     {
-      localObject = (rxy)paramViewHolder;
-      rwy.a(this.a, (rxq)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "onCenterViewChanged() videoInfo = " + rwy.a(this.a).jdField_a_of_type_Sar.a.b());
-      }
-      if ((rwy.a(this.a) != null) && (rwy.a(this.a).jdField_a_of_type_Sar != null)) {
-        rwy.a(this.a).a(rwy.a(this.a).jdField_a_of_type_Sar.a);
-      }
-      if (rwy.d(this.a)) {
-        break label730;
-      }
-      rwy.a(this.a).jdField_a_of_type_Rur.a(false, rwy.e(this.a));
-      rwy.c(this.a, true);
-      bool = false;
-      if ((rwy.a(this.a) != null) && (rwy.a(this.a).jdField_a_of_type_Sar != null) && (!rwy.a()))
+      localRspStoryVideo.mergeFrom(((bete)localObject).a);
+      if (localRspStoryVideo.retcode.get() == 0)
       {
-        localrgi = new rgi();
-        if (rwy.a(this.a) == null) {
-          break label763;
+        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramMessage.putString("cdn_url", (String)localObject);
         }
-        localrgi.b = rwy.a(this.a).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
       }
+      label214:
+      this.a.a.a(83, paramMessage);
+      return;
     }
-    label730:
-    label763:
-    for (int i = rwy.a(this.a).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_CHANNEL_ID", -1);; i = -1)
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      och.b(rwy.a(this.a).jdField_a_of_type_Sar.a, i, 7, -1, localrgi, rwy.a(this.a).g);
-      if (rwy.f(this.a))
-      {
-        TraceCompat.beginSection("playVideo");
-        this.a.a((rxy)localObject);
-        TraceCompat.endSection();
-        rwy.d(this.a, false);
-      }
-      for (;;)
-      {
-        if (rwy.a(this.a) != null) {
-          rwy.a(this.a).a(rwy.a(this.a).jdField_a_of_type_Sar.a);
-        }
-        rwy.a(this.a, rwy.a(this.a), localrxq, bool);
-        rwy.a(this.a, System.currentTimeMillis());
-        if ((rwy.a(this.a) != null) && (!AppSetting.c))
-        {
-          rwy.a(this.a).removeMessages(0);
-          rwy.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-        }
-        VideoFeedsAccessibilityHelper.a(paramViewHolder);
-        if (rwy.a(this.a) != null) {
-          rwy.a(this.a).a(rwy.a(this.a));
-        }
-        if (rwy.a(this.a) != null)
-        {
-          rwy.a(this.a, rwy.a(this.a).a, false);
-          rwy.a(this.a, rwy.a(this.a).b, false);
-        }
-        if ((paramViewHolder instanceof rxy))
-        {
-          rwy.a(this.a, ((rxy)paramViewHolder).a, true);
-          rwy.a(this.a, ((rxy)paramViewHolder).b, true);
-          rwy.a(this.a, (rxy)paramViewHolder);
-        }
-        return;
-        rwy.a(this.a).jdField_a_of_type_Rur.d(true);
-        bool = true;
-        break;
-        rwy.d(this.a, true);
-      }
-    }
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    rwy.e(this.a, paramBoolean);
-    if ((paramViewHolder instanceof rxq)) {
-      ((rxq)paramViewHolder).jdField_a_of_type_Rur.f(rwy.a(this.a));
+      break label214;
     }
   }
 }

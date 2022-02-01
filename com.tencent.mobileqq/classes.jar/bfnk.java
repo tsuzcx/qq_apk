@@ -1,16 +1,15 @@
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+
 public class bfnk
+  extends anyu
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public bfnk(NewTroopContactView paramNewTroopContactView) {}
   
-  public bfnk(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramBoolean1) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

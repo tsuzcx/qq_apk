@@ -1,17 +1,23 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.URLThemeImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class beqj
+public class beqj
+  implements View.OnClickListener
 {
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public URLThemeImageView a;
-  public TextView b;
+  public beqj(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  beqj(beqc parambeqc) {}
+  public void onClick(View paramView)
+  {
+    WriteTogetherEditorFragment.a(this.a, true);
+    WriteTogetherEditorFragment.d(this.a);
+    if ((bemv.a(WriteTogetherEditorFragment.a(this.a).f)) || (!WriteTogetherEditorFragment.a(this.a).a())) {
+      WriteTogetherEditorFragment.e(this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,37 +1,20 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class bcms
+  extends bclc
 {
-  bcmv a;
+  private Comparator<bcfn> a = new bcmt(this);
   
-  public bcms()
+  public bcms(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
-    }
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
   }
   
-  public boolean a()
+  public Comparator<bcfn> a()
   {
-    if (this.a != null) {
-      return this.a.a();
-    }
-    return false;
-  }
-  
-  public boolean a(File paramFile, bcmt parambcmt, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, parambcmt, paramBoolean);
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return (this.a != null) && (this.a.b());
+    return this.a;
   }
 }
 

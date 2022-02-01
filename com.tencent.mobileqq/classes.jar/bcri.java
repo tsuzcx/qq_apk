@@ -1,27 +1,9 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
-
 public class bcri
 {
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
-    }
-    try
-    {
-      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
-    }
-  }
+  public long a;
+  public String a;
+  public boolean a = true;
+  public boolean b = true;
 }
 
 

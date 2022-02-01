@@ -1,17 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class wnf
-  implements View.OnClickListener
+public abstract class wnf
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public wnf(EditText paramEditText) {}
+  protected AtomicInteger a;
+  public wng a;
   
-  public void onClick(View paramView)
+  public wnf()
   {
-    this.a.append("@");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  }
+  
+  protected abstract void a();
+  
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
+  {
+    a();
+  }
+  
+  public void a(wng paramwng)
+  {
+    this.jdField_a_of_type_Wng = paramwng;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Wng != null) {
+      this.jdField_a_of_type_Wng.a(this);
+    }
   }
 }
 

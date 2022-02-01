@@ -1,18 +1,16 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bpvw
-  implements AdapterView.OnItemClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bpvw(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public bpvw(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c();
   }
 }
 

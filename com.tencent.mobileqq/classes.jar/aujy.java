@@ -1,30 +1,53 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 
 public class aujy
-  implements ayyt
+  extends aupe
 {
-  public aujy(ForwardSdkShareOption.2 param2) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aujz(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public aujy(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    return null;
+    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    c();
   }
   
-  public void a(ayyu paramayyu)
+  private void c()
   {
-    if ((paramayyu != null) && (QLog.isColorLevel())) {
-      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramayyu.toString() });
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377314));
+    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371887));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692068) + this.jdField_a_of_type_AndroidContentContext.getString(2131692296) + atyw.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692297);
+    long l = atyw.d();
+    String str = "";
+    if (l > 0L) {
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692135) + auog.a(l);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (atyw.b() > 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((TextView)localObject).setEnabled(bool);
+      this.b.setText(str);
+      return;
     }
   }
   
-  public void b(ayyu paramayyu)
+  public void a(Bundle paramBundle)
   {
-    aukw.b("KEY_STAGE_2_UPLOAD_IMAGE");
-    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramayyu, this.a.b, this.a.c, this.a.d);
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Boolean) {}
   }
 }
 

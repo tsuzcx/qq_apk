@@ -1,16 +1,54 @@
-import android.app.Activity;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class atuo
-  implements atve
+public class atuo
 {
-  atuo(atul paramatul, Activity paramActivity, int paramInt) {}
+  public int a;
+  public List<atun> a;
   
-  public void a()
+  public atuo()
   {
-    atul.a(this.jdField_a_of_type_Atul, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void b() {}
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0);
+  }
+  
+  public String toString()
+  {
+    if (a()) {
+      localObject = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
+    }
+    String str;
+    Iterator localIterator;
+    do
+    {
+      return localObject;
+      str = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = str;
+    } while (!localIterator.hasNext());
+    Object localObject = (atun)localIterator.next();
+    if (localObject != null) {
+      if (!TextUtils.isEmpty(((atun)localObject).jdField_a_of_type_JavaLangString))
+      {
+        localObject = ((atun)localObject).jdField_a_of_type_JavaLangString + ":" + ((atun)localObject).jdField_a_of_type_Int + " ";
+        label145:
+        str = str + (String)localObject;
+      }
+    }
+    for (;;)
+    {
+      break;
+      localObject = ":" + ((atun)localObject).jdField_a_of_type_Int + " ";
+      break label145;
+    }
+  }
 }
 
 

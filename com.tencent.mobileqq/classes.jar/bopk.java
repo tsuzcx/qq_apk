@@ -1,23 +1,36 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class bopk
-  implements bkhe
+  implements aaav<CLIENT.StGetWatermarkDictRsp>
 {
-  int jdField_a_of_type_Int = 0;
+  bopk(bopi parambopi) {}
   
-  bopk(bopj parambopj) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (bopj.a(this.jdField_a_of_type_Bopj).a() != null) && (this.jdField_a_of_type_Int == bopj.a(this.jdField_a_of_type_Bopj).a().size() - 1)) {
-      bopj.a(this.jdField_a_of_type_Bopj).a();
+    if (paramBoolean)
+    {
+      bpam.b(bopi.a(), "[onReceive]:");
+      paramString = paramStGetWatermarkDictRsp.extInfo;
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
+      paramString = new HashMap();
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
+      while (paramStGetWatermarkDictRsp.hasNext())
+      {
+        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
+        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
+      }
+      bpam.b(bopi.a(), "[onReceive] watermarkDict.size:" + paramString.size());
+      bopi.a(this.a, paramString);
+      return;
     }
+    bpam.d(bopi.a(), "retCode:" + paramLong + " errMSg:" + paramString);
   }
 }
 

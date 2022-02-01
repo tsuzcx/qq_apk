@@ -1,48 +1,77 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbg
+  extends arac<arbh>
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
-  
-  public static arbg a(aqlg[] paramArrayOfaqlg)
+  @NonNull
+  public arbh a(int paramInt)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      return null;
-    }
-    arbg localarbg = new arbg();
-    try
+    return new arbh();
+  }
+  
+  @Nullable
+  public arbh a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
-      localarbg.a = paramArrayOfaqlg.getBoolean("fastload");
-      localarbg.b = paramArrayOfaqlg.getBoolean("prefetch");
-      localarbg.c = paramArrayOfaqlg.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localarbg.a + ", prefetch = " + localarbg.b + ", preloadWebView = " + localarbg.c);
-      return localarbg;
+      arbh localarbh = arbh.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaraj[0].a);
+      }
+      return localarbh;
     }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfaqlg.getLocalizedMessage(), paramArrayOfaqlg);
+    return null;
+  }
+  
+  public void a(arbh paramarbh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramarbh.a());
     }
-    return localarbg;
+    ShortVideoUtils.a(paramarbh.a());
   }
   
-  public boolean a()
+  public Class<arbh> clazz()
   {
-    return this.a;
+    return arbh.class;
   }
   
-  public boolean b()
+  public boolean isAccountRelated()
   {
-    return this.b;
+    return false;
   }
   
-  public boolean c()
+  public boolean isNeedCompressed()
   {
-    return this.c;
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int onSend(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public int type()
+  {
+    return 574;
   }
 }
 

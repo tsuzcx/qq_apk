@@ -1,145 +1,120 @@
-import android.support.annotation.NonNull;
-import java.util.Arrays;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LbsDataV2.GpsInfo;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bnlr
+class bnlr
+  extends apck
+  implements bnll
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  private static long jdField_a_of_type_Long;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static ConcurrentHashMap<String, bnlr> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private String jdField_a_of_type_JavaLangString;
   
-  private void a()
+  private bnlr(String paramString)
   {
-    double d4 = this.f * 1.0D / this.e;
-    double d5 = this.jdField_b_of_type_Int * 1.0D / this.jdField_a_of_type_Int;
-    double d2 = this.e;
-    double d3 = this.f;
-    double d1;
-    if (d4 > d5) {
-      d1 = d5 * d2;
+    super(paramString, false);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static bnlr a(String paramString)
+  {
+    Object localObject1 = (bnlr)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localObject1 == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        bnlr localbnlr = (bnlr)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject1 = localbnlr;
+        if (localbnlr == null)
+        {
+          localObject1 = new bnlr(paramString);
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+        }
+        return localObject1;
+      }
+    }
+    return localObject1;
+  }
+  
+  public static LbsDataV2.GpsInfo a(SosoInterface.SosoLocation paramSosoLocation)
+  {
+    if (paramSosoLocation == null) {
+      return null;
+    }
+    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
+    localGpsInfo.accuracy = ((int)paramSosoLocation.jdField_a_of_type_Float);
+    localGpsInfo.alt = ((int)paramSosoLocation.jdField_e_of_type_Double);
+    if ((paramSosoLocation.d == 0.0D) && (paramSosoLocation.c == 0.0D))
+    {
+      localGpsInfo.gpsType = 1;
+      localGpsInfo.lat = ((int)(paramSosoLocation.jdField_a_of_type_Double * 1000000.0D));
+      localGpsInfo.lon = ((int)(paramSosoLocation.b * 1000000.0D));
+      return localGpsInfo;
+    }
+    localGpsInfo.gpsType = 0;
+    localGpsInfo.lat = ((int)(paramSosoLocation.c * 1000000.0D));
+    localGpsInfo.lon = ((int)(paramSosoLocation.d * 1000000.0D));
+    return localGpsInfo;
+  }
+  
+  public void a(Handler paramHandler)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    try
+    {
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      apch.a(this);
+      return;
+    }
+    catch (Exception paramHandler)
+    {
+      QLog.e("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]exception ", paramHandler);
+    }
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QZLog.i("QzoneNewLiveInitLocation.NewLbsInterface", 1, "[QZLIVE_LBS_MODULE]----Info");
+    long l1 = System.currentTimeMillis();
+    long l2 = jdField_a_of_type_Long;
+    bngk.a(paramInt, this.jdField_a_of_type_JavaLangString, l1 - l2);
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_initlocation_success", false);
+    if (paramInt == 0)
+    {
+      SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
+      paramSosoLbsInfo = a(paramSosoLbsInfo.a);
+      if ((localSosoLocation != null) && (paramSosoLbsInfo != null) && (!TextUtils.isEmpty(localSosoLocation.jdField_e_of_type_JavaLangString)) && (!localSosoLocation.jdField_e_of_type_JavaLangString.equalsIgnoreCase("unknown")))
+      {
+        localBundle.putBoolean("key_initlocation_success", true);
+        localBundle.putString("key_select_poi_name", localSosoLocation.jdField_e_of_type_JavaLangString.trim());
+        localBundle.putString("key_select_poi_default_name", localSosoLocation.jdField_a_of_type_JavaLangString);
+        localBundle.putInt("key_select_latitude", paramSosoLbsInfo.lat);
+        localBundle.putInt("key_select_longtitude", paramSosoLbsInfo.lon);
+        localBundle.putInt("key_select_altitude", paramSosoLbsInfo.alt);
+        localBundle.putInt("key_select_gpstype", paramSosoLbsInfo.gpsType);
+        QLog.i("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]#onGetDeviceData succeed! just location--->" + paramSosoLbsInfo);
+      }
     }
     for (;;)
     {
-      this.k = ((int)d2);
-      this.l = ((int)d1);
+      localMessage.obj = localBundle;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
       return;
-      d1 = d3;
-      if (d4 < d5)
-      {
-        d2 = 1.0D / d5 * d3;
-        d1 = d3;
-      }
+      QLog.e("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]location failed: error in force gps info update..");
     }
-  }
-  
-  private String h()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return i();
-    }
-    return e();
-  }
-  
-  private String i()
-  {
-    if ((this.j != 0) && (this.i != 0)) {
-      return this.j + "*" + this.i;
-    }
-    return "none";
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Int != 0)) {
-      return this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int;
-    }
-    return "none";
-  }
-  
-  public List<String> a()
-  {
-    a();
-    return Arrays.asList(new String[] { "取景框大小: " + this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int, "设置的预览分辨率: " + this.d + "*" + this.c, "设置的照片分辨率: " + this.f + "*" + this.e, "普通渲染 & 截帧分辨率: " + this.h + "*" + this.g, "高清渲染 & 截帧分辨率: " + this.j + "*" + this.i, "大图拍照分辨率: " + this.l + "*" + this.k, "视频分辨率: " + this.n + "*" + this.m, "预览帧率: TODO" });
-  }
-  
-  public String b()
-  {
-    if ((this.d != 0) && (this.c != 0)) {
-      return this.d + "*" + this.c;
-    }
-    return "none";
-  }
-  
-  public String c()
-  {
-    if ((this.f != 0) && (this.e != 0)) {
-      return this.f + "*" + this.e;
-    }
-    return "none";
-  }
-  
-  public String d()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return h();
-    }
-    return f();
-  }
-  
-  public String e()
-  {
-    if ((this.h != 0) && (this.g != 0)) {
-      return this.h + "*" + this.g;
-    }
-    return "none";
-  }
-  
-  public String f()
-  {
-    a();
-    if ((this.l != 0) && (this.k != 0)) {
-      return this.l + "*" + this.k;
-    }
-    return "none";
-  }
-  
-  public String g()
-  {
-    if ((this.n != 0) && (this.m != 0)) {
-      return this.n + "*" + this.m;
-    }
-    return "none";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    List localList = a();
-    int i2 = localList.size();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      localStringBuilder.append((String)localList.get(i1));
-      if (i1 < i2 - 1) {
-        localStringBuilder.append("\n");
-      }
-      i1 += 1;
-    }
-    return localStringBuilder.toString();
   }
 }
 

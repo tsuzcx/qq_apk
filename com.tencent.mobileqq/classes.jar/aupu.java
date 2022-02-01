@@ -1,39 +1,33 @@
-import android.util.Log;
-import java.nio.charset.Charset;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
 
 public class aupu
-  implements aupt
 {
-  public static final Charset a = Charset.forName("UTF-8");
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c = true;
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public aupu(QfileTabBarView paramQfileTabBarView, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    a(paramString1, paramString2, paramString3, null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  public String a()
   {
-    if ("d".equals(paramString2))
-    {
-      Log.d(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    if ("e".equals(paramString2))
-    {
-      Log.e(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    if ("w".equals(paramString2))
-    {
-      Log.w(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    if ("i".equals(paramString2))
-    {
-      Log.i(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    Log.i(paramString1, paramString3, paramThrowable);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -31,8 +31,8 @@ public class OverlapLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OverlapLayout);
-    this.a = paramAttributeSet.getDimension(1, afur.a(4.0F, paramContext.getResources()));
-    this.b = paramAttributeSet.getDimension(0, afur.a(15.0F, paramContext.getResources()));
+    this.a = paramAttributeSet.getDimension(1, agej.a(4.0F, paramContext.getResources()));
+    this.b = paramAttributeSet.getDimension(0, agej.a(15.0F, paramContext.getResources()));
     paramAttributeSet.recycle();
   }
   

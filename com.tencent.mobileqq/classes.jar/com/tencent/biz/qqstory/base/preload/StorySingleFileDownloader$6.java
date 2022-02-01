@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import whl;
-import whm;
+import wlg;
+import wlh;
 
 public class StorySingleFileDownloader$6
   implements Runnable
 {
-  public StorySingleFileDownloader$6(whl paramwhl, whm paramwhm, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$6(wlg paramwlg, wlh paramwlh, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Whm.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Wlh.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

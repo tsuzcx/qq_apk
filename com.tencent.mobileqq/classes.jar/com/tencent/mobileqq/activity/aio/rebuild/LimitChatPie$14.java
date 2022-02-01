@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aicl;
-import asfu;
+import aimd;
+import asvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class LimitChatPie$14
   implements Runnable
 {
-  public LimitChatPie$14(aicl paramaicl) {}
+  public LimitChatPie$14(aimd paramaimd) {}
   
   public void run()
   {
-    asfu localasfu;
+    asvi localasvi;
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localasfu = (asfu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264);
-      if (localasfu != null) {
+      localasvi = (asvi)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264);
+      if (localasvi != null) {
         break label45;
       }
       QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 2, "saveExtendFriendInfoInSubThread  extendFriendManager Is null");
     }
     label45:
-    while (aicl.a(this.this$0) == null) {
+    while (aimd.a(this.this$0) == null) {
       return;
     }
-    localasfu.a(aicl.a(this.this$0));
+    localasvi.a(aimd.a(this.this$0));
   }
 }
 

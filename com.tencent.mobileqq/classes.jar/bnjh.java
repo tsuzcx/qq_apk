@@ -1,367 +1,51 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import java.io.ByteArrayOutputStream;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-public class bnjh
-  implements bnje
+class bnjh
+  implements ModuleDownloadListener
 {
-  private static final Double jdField_a_of_type_JavaLangDouble = Double.valueOf(0.005D);
-  private static final Double b = Double.valueOf(0.01D);
-  private static final Double c = Double.valueOf(0.35D);
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  bnjh(bnje parambnje) {}
   
-  private bnji a(Bitmap paramBitmap, ArrayList<bnjf> paramArrayList)
-  {
-    bnji localbnji = new bnji(this);
-    if ((paramBitmap == null) || (paramArrayList == null)) {
-      return localbnji;
-    }
-    double d1 = paramBitmap.getWidth() * paramBitmap.getHeight();
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      paramBitmap = (bnjf)paramArrayList.get(i);
-      int j = paramBitmap.jdField_b_of_type_Int;
-      double d2 = paramBitmap.jdField_a_of_type_Int * j;
-      double d3 = localbnji.jdField_a_of_type_Double;
-      localbnji.jdField_a_of_type_Double = (d2 / d1 + d3);
-      if (localbnji.jdField_a_of_type_Double > jdField_a_of_type_JavaLangDouble.doubleValue()) {
-        localbnji.jdField_a_of_type_Boolean = true;
-      }
-      i += 1;
-    }
-    if ((paramArrayList.size() > 1) && (localbnji.jdField_a_of_type_Double > b.doubleValue())) {
-      localbnji.b = true;
-    }
-    return localbnji;
-  }
+  public void onDownloadCanceled(String paramString) {}
   
-  private bnjk a(String paramString)
-  {
-    bnjk localbnjk = new bnjk();
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-        break;
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject = a();
-    } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
-    JSONArray localJSONArray1 = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("sceneList");
-    int i = 0;
-    while (i < localJSONArray1.length())
-    {
-      JSONObject localJSONObject1 = localJSONArray1.optJSONObject(i);
-      JSONArray localJSONArray2 = localJSONObject1.optJSONArray("sceneLvTwoList");
-      int j = 0;
-      JSONObject localJSONObject2;
-      if (j < localJSONArray2.length())
-      {
-        localJSONObject2 = localJSONArray2.optJSONObject(j);
-        if (localJSONObject2.optString("sceneName").equals(paramString))
-        {
-          localbnjk.jdField_a_of_type_Int = localJSONObject1.optInt("sceneLvOne");
-          localbnjk.jdField_b_of_type_Int = localJSONObject2.optInt("sceneLvTwo");
-          localbnjk.jdField_a_of_type_JavaLangString = localJSONObject2.optString("sceneName");
-          localbnjk.jdField_b_of_type_JavaLangString = localJSONObject2.optString("sceneFilterID");
-          localbnjk.jdField_a_of_type_Double = localJSONObject2.optDouble("sceneFilterPercent");
-        }
-      }
-      else
-      {
-        i += 1;
-        continue;
-      }
-      JSONArray localJSONArray3 = localJSONObject2.optJSONArray("sceneLabels");
-      String[] arrayOfString = new String[localJSONArray3.length()];
-      int k = 0;
-      while (k < localJSONArray3.length())
-      {
-        arrayOfString[k] = localJSONArray3.optString(k);
-        k += 1;
-      }
-      int m = arrayOfString.length;
-      k = 0;
-      for (;;)
-      {
-        if (k < m)
-        {
-          if (arrayOfString[k].equals(paramString))
-          {
-            localbnjk.jdField_a_of_type_Int = localJSONObject1.optInt("sceneLvOne");
-            localbnjk.jdField_b_of_type_Int = localJSONObject2.optInt("sceneLvTwo");
-            localbnjk.jdField_a_of_type_JavaLangString = localJSONObject2.optString("sceneName");
-            localbnjk.jdField_b_of_type_JavaLangString = localJSONObject2.optString("sceneFilterID");
-            localbnjk.jdField_a_of_type_Double = localJSONObject2.optDouble("sceneFilterPercent");
-          }
-        }
-        else
-        {
-          j += 1;
-          break;
-        }
-        k += 1;
-      }
-    }
-    return localbnjk;
-  }
+  public void onDownloadFailed(String paramString) {}
   
-  private bnjk a(JSONArray paramJSONArray)
-  {
-    double d2 = -1.0D;
-    Object localObject1 = new bnjk();
-    Object localObject2 = localObject1;
-    if (paramJSONArray.length() > 0)
-    {
-      int i = 0;
-      double d3 = -1.0D;
-      localObject2 = localObject1;
-      if (i < paramJSONArray.length())
-      {
-        localObject2 = paramJSONArray.optJSONObject(i);
-        Object localObject3 = ((JSONObject)localObject2).optString("label");
-        double d4 = ((JSONObject)localObject2).optDouble("confidence");
-        bnjk localbnjk = a((String)localObject3);
-        double d6;
-        double d5;
-        if (localbnjk == null)
-        {
-          d6 = d3;
-          d5 = d2;
-          localObject2 = localObject1;
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject1 = localObject2;
-          d2 = d5;
-          d3 = d6;
-          break;
-          localObject2 = localObject1;
-          d5 = d2;
-          d6 = d3;
-          if (localbnjk.jdField_b_of_type_Int != -1)
-          {
-            localObject3 = localObject1;
-            double d1 = d2;
-            if (localbnjk.jdField_a_of_type_Int == 3)
-            {
-              localObject3 = localObject1;
-              d1 = d2;
-              if (d4 > c.doubleValue())
-              {
-                localObject3 = localObject1;
-                d1 = d2;
-                if (d4 > d2)
-                {
-                  d1 = d4;
-                  localObject3 = localbnjk;
-                }
-              }
-            }
-            localObject2 = localObject3;
-            d5 = d1;
-            d6 = d3;
-            if (d4 > d3)
-            {
-              localObject2 = localObject3;
-              d5 = d1;
-              d6 = d3;
-              if (d1 <= 0.0D)
-              {
-                localObject2 = localbnjk;
-                d5 = d1;
-                d6 = d4;
-              }
-            }
-          }
-        }
-      }
-    }
-    return localObject2;
-  }
+  public void onDownloadProgress(String paramString, float paramFloat) {}
   
-  private String a(Bitmap paramBitmap, int paramInt)
+  public void onDownloadSucceed(String paramString)
   {
-    int i = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight());
-    if (i > paramInt)
+    if (!paramString.equals("libandroidndkbeauty.so")) {}
+    for (;;)
     {
-      paramBitmap = ayma.a(paramBitmap, i / paramInt);
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
-      return bnjc.a(localByteArrayOutputStream.toByteArray());
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
-    return bnjc.a(localByteArrayOutputStream.toByteArray());
-  }
-  
-  private JSONObject a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(bgmg.d("video_story_aiSceneParams.json"));
-      return localJSONObject2;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return localJSONObject1;
-  }
-  
-  private JSONObject a(String paramString)
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("raw_base64", paramString);
-      localJSONObject2.put("only_gender", 0);
-      localJSONObject2.put("token", b(paramString));
-      paramString = bnjd.a("https://tu.qq.com/cgi-bin/qq/get_face_detail.fcg", localJSONObject2.toString());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localJSONObject1;
-  }
-  
-  private String b(String paramString)
-  {
-    int i = paramString.length();
-    int j = i / 2;
-    paramString = paramString.substring(j, (int)(i * 0.1D) + j);
-    return a(paramString + "9996ef4aa4fb4378826bc1f1a8409dd7");
-  }
-  
-  private JSONObject b(String paramString)
-  {
-    long l = System.currentTimeMillis() / 1000L;
-    String str = String.valueOf(l).hashCode() + "";
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("request_id", str);
-      localJSONObject2.put("appid", "10301");
-      localJSONObject2.put("raw_base64", paramString);
-      localJSONObject2.put("user", "PTU");
-      localJSONObject2.put("token", b(paramString));
-      paramString = bnjd.a("https://tu.qq.com/cgi-bin/qq/do_image_classify.fcg", localJSONObject2.toString());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localJSONObject1;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      paramString = String.format("%032x", new Object[] { new BigInteger(1, MessageDigest.getInstance("MD5").digest(paramString.getBytes())) });
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public void a(Bitmap paramBitmap, ArrayList<bnjf> paramArrayList, bnjg parambnjg)
-  {
-    if (paramBitmap == null)
-    {
-      parambnjg.a("image is null");
       return;
-    }
-    long l = System.currentTimeMillis();
-    bnjk localbnjk = new bnjk();
-    paramArrayList = a(paramBitmap, paramArrayList);
-    paramBitmap = a(paramBitmap, 256);
-    if (paramArrayList.jdField_a_of_type_Boolean) {
-      if (paramArrayList.b) {
-        paramBitmap = a(anni.a(2131714503));
-      }
-    }
-    while (paramBitmap == null)
-    {
-      parambnjg.a("unknown error");
-      bnjd.a(System.currentTimeMillis() - l, 1);
-      return;
-      paramBitmap = a(paramBitmap);
-      if ((paramBitmap == null) || (paramBitmap.isNull("retcode")))
+      String str = bnje.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+      if (paramString.exists()) {}
+      try
       {
-        parambnjg.a("network error");
-        bnjd.a(System.currentTimeMillis() - l, 1);
+        bnje.a(paramString, new File(bnje.a.getPath() + "/libandroidndkbeauty.zip"));
+        paramString = new File(str);
+        if (!paramString.exists()) {
+          paramString.mkdirs();
+        }
+        if (this.a.a(bnje.b, false)) {
+          continue;
+        }
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
+        bnjl.b(new File(bnje.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
         return;
       }
-      if ((paramBitmap != null) && (paramBitmap.has("retcode")) && (paramBitmap.optInt("retcode") == 0))
+      catch (Exception paramString)
       {
-        paramBitmap = paramBitmap.optJSONObject("retdata");
-        int i = paramBitmap.optInt("age");
-        int j = paramBitmap.optInt("gender");
-        if (i <= 5) {
-          paramBitmap = a(anni.a(2131714506));
-        } else if (j < 50) {
-          paramBitmap = a(anni.a(2131714504));
-        } else {
-          paramBitmap = a(anni.a(2131714501));
-        }
-      }
-      else
-      {
-        paramBitmap = a(anni.a(2131714505));
-        continue;
-        paramArrayList = b(paramBitmap);
-        if ((paramArrayList == null) || (paramArrayList.isNull("retcode")))
+        for (;;)
         {
-          parambnjg.a("network error");
-          l = System.currentTimeMillis() - l;
-          bnjd.a(l, 1);
-          aaxb.a("record_smart_filter", aaxb.a(1L, l));
-          return;
-        }
-        paramBitmap = localbnjk;
-        if (paramArrayList != null)
-        {
-          paramBitmap = localbnjk;
-          if (paramArrayList.has("retcode"))
-          {
-            paramBitmap = localbnjk;
-            if (paramArrayList.optInt("retcode") == 0)
-            {
-              paramArrayList = paramArrayList.optJSONObject("retdata");
-              paramBitmap = localbnjk;
-              if (paramArrayList.has("message"))
-              {
-                paramBitmap = localbnjk;
-                if (paramArrayList.optString("message").equals("ok")) {
-                  paramBitmap = a(paramArrayList.optJSONObject("data").optJSONArray("tags"));
-                }
-              }
-            }
-          }
+          paramString.printStackTrace();
         }
       }
     }
-    parambnjg.a(paramBitmap);
-    l = System.currentTimeMillis() - l;
-    bnjd.a(l, 0);
-    aaxb.a("record_smart_filter", aaxb.a(0L, l));
   }
 }
 

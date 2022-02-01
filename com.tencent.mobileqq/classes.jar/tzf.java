@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class tzf
-  implements DialogInterface.OnClickListener
+class tzf
+  implements EIPCResultCallback
 {
-  public tzf(PublicAccountH5AbilityPlugin.7 param7) {}
+  tzf(tyo paramtyo, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult.data != null)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
+      this.jdField_a_of_type_Tyo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzf
  * JD-Core Version:    0.7.0.1
  */

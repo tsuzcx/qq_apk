@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bpsz;
+import bquu;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishParam> CREATOR = new bpsz();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new bquu();
   public static final String a;
   public final int a;
   public final long a;

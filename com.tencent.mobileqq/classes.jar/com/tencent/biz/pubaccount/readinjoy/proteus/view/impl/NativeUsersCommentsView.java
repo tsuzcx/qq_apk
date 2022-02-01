@@ -9,17 +9,17 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbzj;
-import bdnt;
-import bgtn;
+import bcsa;
+import begp;
+import bhtq;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qkz;
-import qlu;
+import qdl;
+import qeg;
 
 public class NativeUsersCommentsView
   extends LinearLayout
@@ -64,10 +64,10 @@ public class NativeUsersCommentsView
     TextView localTextView = a(paramInt);
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
-    paramString1 = bbzj.b(paramString1);
-    paramString2 = bbzj.b(paramString2);
+    paramString1 = bcsa.b(paramString1);
+    paramString2 = bcsa.b(paramString2);
     paramInt = paramString1.length();
-    paramString1 = new bdnt(paramString1 + ": " + paramString2, 7, 16);
+    paramString1 = new begp(paramString1 + ": " + paramString2, 7, 16);
     paramString2 = new ForegroundColorSpan(Color.parseColor("#D9000000"));
     StyleSpan localStyleSpan = new StyleSpan(1);
     paramString1.setSpan(paramString2, 0, paramInt, 33);
@@ -75,7 +75,7 @@ public class NativeUsersCommentsView
     paramString1.setSpan(new ForegroundColorSpan(Color.parseColor("#D9000000")), paramInt, paramString1.length(), 33);
     localTextView.setTextSize(0, Utils.dp2px(14.0D));
     localTextView.setText(paramString1);
-    localTextView.setPadding(0, 0, 0, bgtn.a(2.0F));
+    localTextView.setPadding(0, 0, 0, bhtq.a(2.0F));
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
   }
@@ -134,16 +134,16 @@ public class NativeUsersCommentsView
           ((ReadInJoyYAFolderTextView)localObject1).setTextColor(Color.parseColor("#FF4D7CAF"));
           ((ReadInJoyYAFolderTextView)localObject1).setTextSize(0, Utils.dp2px(14.0D));
           if (i != 0) {
-            ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, bgtn.a(5.0F), 0, 0);
+            ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, bhtq.a(5.0F), 0, 0);
           }
           localObject2 = new SpannableStringBuilder(this.jdField_a_of_type_JavaLangString);
-          qkz localqkz = new qkz(-15504151, 16777215, 860716207);
-          localqkz.a(new qlu(this));
-          ((SpannableStringBuilder)localObject2).setSpan(localqkz, 0, ((SpannableStringBuilder)localObject2).length(), 33);
+          qdl localqdl = new qdl(-15504151, 16777215, 860716207);
+          localqdl.a(new qeg(this));
+          ((SpannableStringBuilder)localObject2).setSpan(localqdl, 0, ((SpannableStringBuilder)localObject2).length(), 33);
           ((ReadInJoyYAFolderTextView)localObject1).setText((CharSequence)localObject2);
           ((ReadInJoyYAFolderTextView)localObject1).setFocusable(false);
         }
-        setPadding(bgtn.a(12.0F), 0, bgtn.a(12.0F), bgtn.a(12.0F));
+        setPadding(bhtq.a(12.0F), 0, bhtq.a(12.0F), bhtq.a(12.0F));
         return;
       }
       catch (Exception localException)

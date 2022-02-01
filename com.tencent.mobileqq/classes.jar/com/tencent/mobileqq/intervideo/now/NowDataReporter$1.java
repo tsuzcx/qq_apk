@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import avjl;
+import awbt;
 
 public class NowDataReporter$1
   implements Runnable
 {
-  public NowDataReporter$1(avjl paramavjl, long paramLong) {}
+  public NowDataReporter$1(awbt paramawbt, long paramLong) {}
   
   public void run()
   {

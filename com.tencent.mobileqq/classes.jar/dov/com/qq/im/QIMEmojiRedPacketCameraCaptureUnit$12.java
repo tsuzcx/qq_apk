@@ -2,16 +2,16 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.view.View;
-import bnbz;
+import bodh;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$12
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$12(bnbz parambnbz) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$12(bodh parambodh) {}
   
   public void run()
   {
-    this.this$0.a().findViewById(2131364145).setVisibility(8);
+    this.this$0.a().findViewById(2131364186).setVisibility(8);
   }
 }
 

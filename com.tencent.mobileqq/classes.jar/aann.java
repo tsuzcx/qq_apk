@@ -1,16 +1,27 @@
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.content.Context;
+import android.view.View;
 
-public class aann
+final class aann
+  implements bliz
 {
-  private int jdField_a_of_type_Int = 0;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
+  aann(Context paramContext, String paramString, aanq paramaanq, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (aank.a()) {
+      return;
+    }
+    aank.a(true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      aank.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aanq);
+    }
+  }
 }
 
 

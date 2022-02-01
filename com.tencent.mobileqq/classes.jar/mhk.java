@@ -1,8 +1,14 @@
-import com.tencent.av.ui.QavListItemBase;
-
-public abstract interface mhk
+class mhk
+  implements blmh
 {
-  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
+  mhk(mhi parammhi) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(0L);
+    }
+  }
 }
 
 

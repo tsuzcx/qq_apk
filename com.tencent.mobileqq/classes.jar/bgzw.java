@@ -1,83 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
 public class bgzw
+  implements bdyi
 {
-  private static int a = 57600;
-  private static int b = -1;
+  public bgzw(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bdyi parambdyi) {}
   
-  private static Bitmap a(Bitmap paramBitmap)
+  public void a()
   {
-    double d2 = -1.0D;
-    int i;
-    double d1;
-    if (a > 0)
-    {
-      i = paramBitmap.getWidth() * paramBitmap.getHeight();
-      d1 = d2;
-      if (i > a) {
-        d1 = Math.sqrt(a / i);
-      }
-    }
-    while (d1 <= 0.0D)
-    {
-      return paramBitmap;
-      d1 = d2;
-      if (b > 0)
-      {
-        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
-        d1 = d2;
-        if (i > b) {
-          d1 = b / i;
-        }
-      }
-    }
-    try
-    {
-      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
-      return paramBitmap;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      QLog.e("VasPalette", 1, "scaleBitmapDown failed.", paramBitmap);
-    }
-    return null;
-  }
-  
-  public static List<bgzx> a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      paramBitmap = a(paramBitmap);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-      {
-        bgzz localbgzz = new bgzz();
-        try
-        {
-          localbgzz.a(a(paramBitmap), 16);
-          paramBitmap.recycle();
-          return localbgzz.a();
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  private static int[] a(Bitmap paramBitmap)
-  {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[i * j];
-    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
-    return arrayOfInt;
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bgzx(this));
   }
 }
 

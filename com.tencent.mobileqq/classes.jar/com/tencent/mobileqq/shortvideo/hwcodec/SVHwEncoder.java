@@ -5,10 +5,10 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
-import bchr;
-import bcht;
-import bchy;
-import bchz;
+import bdaj;
+import bdal;
+import bdaq;
+import bdar;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -25,19 +25,19 @@ public class SVHwEncoder
   private double jdField_a_of_type_Double;
   private volatile float jdField_a_of_type_Float = 30.0F;
   public int a;
-  private bchz jdField_a_of_type_Bchz;
+  private bdar jdField_a_of_type_Bdar;
   private SVHwEncoder.HwEncode jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<bchy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bdaq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[4];
   private double jdField_b_of_type_Double;
   private int jdField_b_of_type_Int;
-  private ArrayList<bchy> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bdaq> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private ArrayList<bchy> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bdaq> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_c_of_type_Boolean;
   private volatile int jdField_d_of_type_Int = 480000;
   private volatile boolean jdField_d_of_type_Boolean;
@@ -58,7 +58,7 @@ public class SVHwEncoder
   
   private native boolean adjustDstresolution(int[] paramArrayOfInt);
   
-  int a(ArrayList<bchy> paramArrayList)
+  int a(ArrayList<bdaq> paramArrayList)
   {
     try
     {
@@ -84,7 +84,7 @@ public class SVHwEncoder
     {
       if (n < paramList.size())
       {
-        localCodecCapabilities = bchr.a((MediaCodecInfo)paramList.get(n), paramString);
+        localCodecCapabilities = bdaj.a((MediaCodecInfo)paramList.get(n), paramString);
         if (localCodecCapabilities != null) {}
       }
       else
@@ -119,7 +119,7 @@ public class SVHwEncoder
   }
   
   /* Error */
-  public bchy a()
+  public bdaq a()
   {
     // Byte code:
     //   0: aconst_null
@@ -151,7 +151,7 @@ public class SVHwEncoder
     //   48: getfield 74	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   51: iconst_0
     //   52: invokevirtual 172	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   55: checkcast 174	bchy
+    //   55: checkcast 174	bdaq
     //   58: astore_1
     //   59: aload_0
     //   60: getfield 74	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -163,7 +163,7 @@ public class SVHwEncoder
     //   70: aload_1
     //   71: ifnull +10 -> 81
     //   74: aload_1
-    //   75: getfield 180	bchy:jdField_a_of_type_ArrayOfByte	[B
+    //   75: getfield 180	bdaq:jdField_a_of_type_ArrayOfByte	[B
     //   78: ifnonnull +112 -> 190
     //   81: aload_0
     //   82: getfield 101	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_b_of_type_Int	I
@@ -176,19 +176,19 @@ public class SVHwEncoder
     //   93: idiv
     //   94: newarray byte
     //   96: astore_3
-    //   97: new 174	bchy
+    //   97: new 174	bdaq
     //   100: dup
-    //   101: invokespecial 181	bchy:<init>	()V
+    //   101: invokespecial 181	bdaq:<init>	()V
     //   104: astore_2
     //   105: aload_2
     //   106: aload_3
-    //   107: putfield 180	bchy:jdField_a_of_type_ArrayOfByte	[B
+    //   107: putfield 180	bdaq:jdField_a_of_type_ArrayOfByte	[B
     //   110: aload_2
     //   111: ldc 182
-    //   113: putfield 183	bchy:jdField_a_of_type_Float	F
+    //   113: putfield 183	bdaq:jdField_a_of_type_Float	F
     //   116: aload_2
     //   117: iconst_m1
-    //   118: putfield 184	bchy:jdField_c_of_type_Int	I
+    //   118: putfield 184	bdaq:jdField_c_of_type_Int	I
     //   121: aload_2
     //   122: astore_1
     //   123: aload_1
@@ -217,10 +217,10 @@ public class SVHwEncoder
     //   160: aload_2
     //   161: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   164: aload_0
-    //   165: getfield 204	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_a_of_type_Bchz	Lbchz;
+    //   165: getfield 204	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_a_of_type_Bdar	Lbdar;
     //   168: ifnull +15 -> 183
     //   171: aload_0
-    //   172: getfield 204	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_a_of_type_Bchz	Lbchz;
+    //   172: getfield 204	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:jdField_a_of_type_Bdar	Lbdar;
     //   175: bipush 229
     //   177: iconst_0
     //   178: invokeinterface 209 3 0
@@ -251,7 +251,7 @@ public class SVHwEncoder
     //   start	length	slot	name	signature
     //   0	224	0	this	SVHwEncoder
     //   1	139	1	localObject1	Object
-    //   143	62	1	localbchy	bchy
+    //   143	62	1	localbdaq	bdaq
     //   208	13	1	localObject2	Object
     //   3	142	2	localObject3	Object
     //   148	60	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
@@ -267,15 +267,15 @@ public class SVHwEncoder
     //   105	121	206	java/lang/OutOfMemoryError
   }
   
-  bchy a(ArrayList<bchy> paramArrayList)
+  bdaq a(ArrayList<bdaq> paramArrayList)
   {
-    bchy localbchy = null;
+    bdaq localbdaq = null;
     try
     {
       if (paramArrayList.size() > 0) {
-        localbchy = (bchy)paramArrayList.get(0);
+        localbdaq = (bdaq)paramArrayList.get(0);
       }
-      return localbchy;
+      return localbdaq;
     }
     finally
     {
@@ -328,16 +328,16 @@ public class SVHwEncoder
   
   public void a(float paramFloat, int paramInt)
   {
-    bchy localbchy = new bchy();
-    localbchy.jdField_a_of_type_Boolean = true;
-    localbchy.jdField_b_of_type_Boolean = true;
-    localbchy.jdField_a_of_type_Float = paramFloat;
-    localbchy.jdField_c_of_type_Int = paramInt;
-    a(localbchy, true);
-    localbchy = new bchy();
-    localbchy.jdField_a_of_type_Boolean = true;
-    localbchy.jdField_b_of_type_Boolean = false;
-    a(localbchy, false);
+    bdaq localbdaq = new bdaq();
+    localbdaq.jdField_a_of_type_Boolean = true;
+    localbdaq.jdField_b_of_type_Boolean = true;
+    localbdaq.jdField_a_of_type_Float = paramFloat;
+    localbdaq.jdField_c_of_type_Int = paramInt;
+    a(localbdaq, true);
+    localbdaq = new bdaq();
+    localbdaq.jdField_a_of_type_Boolean = true;
+    localbdaq.jdField_b_of_type_Boolean = false;
+    a(localbdaq, false);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -368,7 +368,7 @@ public class SVHwEncoder
   }
   
   /* Error */
-  public void a(bchy parambchy, boolean paramBoolean)
+  public void a(bdaq parambdaq, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
@@ -394,12 +394,12 @@ public class SVHwEncoder
     //   39: ldc 249
     //   41: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: aload_1
-    //   45: getfield 228	bchy:jdField_a_of_type_Boolean	Z
+    //   45: getfield 228	bdaq:jdField_a_of_type_Boolean	Z
     //   48: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   51: ldc 254
     //   53: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_1
-    //   57: getfield 255	bchy:jdField_b_of_type_Int	I
+    //   57: getfield 255	bdaq:jdField_b_of_type_Int	I
     //   60: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   63: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   66: invokevirtual 156	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:a	(Ljava/lang/String;Ljava/lang/String;)V
@@ -422,12 +422,12 @@ public class SVHwEncoder
     //   99: ldc 249
     //   101: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: aload_1
-    //   105: getfield 228	bchy:jdField_a_of_type_Boolean	Z
+    //   105: getfield 228	bdaq:jdField_a_of_type_Boolean	Z
     //   108: invokevirtual 252	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   111: ldc 254
     //   113: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload_1
-    //   117: getfield 255	bchy:jdField_b_of_type_Int	I
+    //   117: getfield 255	bdaq:jdField_b_of_type_Int	I
     //   120: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   123: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   126: invokevirtual 156	com/tencent/mobileqq/shortvideo/hwcodec/SVHwEncoder:a	(Ljava/lang/String;Ljava/lang/String;)V
@@ -440,7 +440,7 @@ public class SVHwEncoder
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	137	0	this	SVHwEncoder
-    //   0	137	1	parambchy	bchy
+    //   0	137	1	parambdaq	bdaq
     //   0	137	2	paramBoolean	boolean
     // Exception table:
     //   from	to	target	type
@@ -449,10 +449,10 @@ public class SVHwEncoder
     //   72	129	132	finally
   }
   
-  public void a(bchz parambchz, bcht parambcht, boolean paramBoolean)
+  public void a(bdar parambdar, bdal parambdal, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bchz = parambchz;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode = new SVHwEncoder.HwEncode(this, this.jdField_a_of_type_JavaLangString, parambchz, parambcht, paramBoolean, 99000);
+    this.jdField_a_of_type_Bdar = parambdar;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode = new SVHwEncoder.HwEncode(this, this.jdField_a_of_type_JavaLangString, parambdar, parambdal, paramBoolean, 99000);
     ThreadManagerV2.executeOnSubThread(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode);
   }
   
@@ -494,7 +494,7 @@ public class SVHwEncoder
     a(paramString, "Configdata =" + localStringBuilder.toString());
   }
   
-  void a(ArrayList<bchy> paramArrayList)
+  void a(ArrayList<bdaq> paramArrayList)
   {
     try
     {
@@ -550,7 +550,7 @@ public class SVHwEncoder
     return true;
   }
   
-  boolean a(bchy parambchy)
+  boolean a(bdaq parambdaq)
   {
     boolean bool = false;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
@@ -558,7 +558,7 @@ public class SVHwEncoder
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(parambchy);
+          this.jdField_a_of_type_JavaUtilArrayList.add(parambdaq);
           bool = true;
         }
         return bool;
@@ -572,14 +572,14 @@ public class SVHwEncoder
     this.jdField_b_of_type_Boolean = true;
   }
   
-  public void b(bchz parambchz, bcht parambcht, boolean paramBoolean)
+  public void b(bdar parambdar, bdal parambdal, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bchz = parambchz;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode = new SVHwEncoder.HwEncode(this, this.jdField_a_of_type_JavaLangString, parambchz, parambcht, paramBoolean, 0);
+    this.jdField_a_of_type_Bdar = parambdar;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode = new SVHwEncoder.HwEncode(this, this.jdField_a_of_type_JavaLangString, parambdar, parambdal, paramBoolean, 0);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.run();
   }
   
-  void b(ArrayList<bchy> paramArrayList)
+  void b(ArrayList<bdaq> paramArrayList)
   {
     try
     {
@@ -603,16 +603,16 @@ public class SVHwEncoder
   {
     try
     {
-      bchy localbchy = new bchy();
-      localbchy.jdField_a_of_type_Boolean = true;
-      localbchy.jdField_b_of_type_Boolean = true;
-      localbchy.jdField_a_of_type_Float = 30.0F;
-      localbchy.jdField_c_of_type_Int = 480000;
-      this.jdField_b_of_type_JavaUtilArrayList.add(localbchy);
-      localbchy = new bchy();
-      localbchy.jdField_a_of_type_Boolean = true;
-      localbchy.jdField_b_of_type_Boolean = false;
-      this.jdField_c_of_type_JavaUtilArrayList.add(localbchy);
+      bdaq localbdaq = new bdaq();
+      localbdaq.jdField_a_of_type_Boolean = true;
+      localbdaq.jdField_b_of_type_Boolean = true;
+      localbdaq.jdField_a_of_type_Float = 30.0F;
+      localbdaq.jdField_c_of_type_Int = 480000;
+      this.jdField_b_of_type_JavaUtilArrayList.add(localbdaq);
+      localbdaq = new bdaq();
+      localbdaq.jdField_a_of_type_Boolean = true;
+      localbdaq.jdField_b_of_type_Boolean = false;
+      this.jdField_c_of_type_JavaUtilArrayList.add(localbdaq);
       a("hw_video_write_frame", "addMediaEndFrame finish...");
       a("hw_audio_write_frame", "addMediaEndFrame finish...");
       return;

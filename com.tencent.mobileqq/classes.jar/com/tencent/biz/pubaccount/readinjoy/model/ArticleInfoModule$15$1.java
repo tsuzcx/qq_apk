@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pmk;
+import pfd;
 
 class ArticleInfoModule$15$1
   implements Runnable
@@ -10,7 +10,7 @@ class ArticleInfoModule$15$1
   
   public void run()
   {
-    pmk.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$15.a, this.jdField_a_of_type_JavaUtilList);
+    pfd.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule$15.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

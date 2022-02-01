@@ -1,53 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.contentbox.QZoneMsgActivity;
 
 public class aolw
-  extends aojs
+  extends aoeg
 {
-  public aolw(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private aolw(CheckPublicAccount paramCheckPublicAccount) {}
   
-  private boolean C()
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
   {
-    if (this.a == null) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
     }
-    long l = bkyx.a();
-    if (l != 0L) {
-      QZoneMsgActivity.a(l, this.a);
-    }
-    for (;;)
+    if ((paramBoolean) && (paramInt == 0))
     {
-      return true;
-      Intent localIntent = new Intent(this.a, QZoneMsgActivity.class);
-      localIntent.addFlags(67108864);
-      this.a.startActivity(localIntent);
+      this.a.a.a.edit().putBoolean("isPublicAccountListOK", true).commit();
+      this.a.a(7);
     }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
+    while (paramInt == 0) {
+      return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("QzonePublicAccountAction", 1, "doAction error: " + localException.getMessage());
-      a("QzonePublicAccountAction");
-    }
-    return false;
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolw
  * JD-Core Version:    0.7.0.1
  */

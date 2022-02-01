@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.1;
 
-class aurf
-  implements DialogInterface.OnDismissListener
+public class aurf
+  extends BroadcastReceiver
 {
-  aurf(aure paramaure) {}
+  public aurf(UniformDownloadMgr.1 param1) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aurd.a(this.a.a).dismiss();
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getBundleExtra("param");
+    paramIntent = paramIntent.getStringExtra("url");
+    aure.a().a(paramIntent, paramContext);
   }
 }
 

@@ -1,50 +1,55 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class wxl
-  extends wlf<wxm>
 {
-  public final String a;
-  public String b = "";
-  
-  public wxl(wxk paramwxk, String paramString)
+  public static int a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = wjz.a("StorySvc.forbid_video");
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public wxm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
-    try
-    {
-      localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new wxm(this.jdField_a_of_type_Wxk, localRspForbidVideo);
+    if (paramLong1 < paramLong2) {
+      return -1;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    if (paramLong1 == paramLong2) {
+      return 0;
     }
-    return null;
+    return 1;
   }
   
-  protected byte[] a()
+  public static wvn a(@NonNull List<wvn> paramList1, @NonNull List<wvn> paramList2, @NonNull String paramString)
   {
-    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
-    return localReqForbidVideo.toByteArray();
+    paramList2.clear();
+    wvn localwvn = null;
+    Iterator localIterator = paramList1.iterator();
+    paramList1 = localwvn;
+    if (localIterator.hasNext())
+    {
+      localwvn = (wvn)localIterator.next();
+      if (a(localwvn)) {
+        paramList2.add(localwvn);
+      }
+      if ((paramList1 != null) || (!TextUtils.equals(paramString, localwvn.jdField_a_of_type_JavaLangString))) {
+        break label76;
+      }
+      paramList1 = localwvn;
+    }
+    label76:
+    for (;;)
+    {
+      break;
+      return paramList1;
+    }
   }
   
-  public String toString()
+  public static boolean a()
   {
-    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
+    return Build.VERSION.SDK_INT > 19;
+  }
+  
+  public static boolean a(wvn paramwvn)
+  {
+    return (paramwvn.jdField_a_of_type_Int == 5) || (paramwvn.jdField_a_of_type_Int == 6) || (paramwvn.jdField_a_of_type_Int == 7) || (paramwvn.jdField_a_of_type_Int == 8) || (paramwvn.jdField_a_of_type_Int == 9) || (paramwvn.jdField_a_of_type_Int == 12) || (paramwvn.jdField_a_of_type_Int == 13);
   }
 }
 

@@ -1,26 +1,23 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class ayer
-  extends RecyclerView.ItemDecoration
+public abstract interface ayer
 {
-  private int a;
+  public abstract void a();
   
-  public ayer(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract void a(Comments.Comment paramComment);
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.top = this.a;
-    paramRect.bottom = 0;
-    paramRect.left = (this.a / 2);
-    paramRect.right = (this.a / 2);
-  }
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  
+  public abstract void a(Comments paramComments);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

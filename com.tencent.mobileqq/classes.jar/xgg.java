@@ -1,17 +1,27 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class xgg
-  implements View.OnTouchListener
+class xgg
+  implements URLDrawable.URLDrawableListener
 {
-  public xgg(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  xgg(xgf paramxgf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    xgf.c(this.a, false);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    xgf.b(this.a, false);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    xgf.a(this.a, true);
   }
 }
 

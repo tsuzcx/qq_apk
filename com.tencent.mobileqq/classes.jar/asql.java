@@ -1,8 +1,24 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.qphone.base.util.QLog;
+
 public class asql
+  implements Animation.AnimationListener
 {
-  public static long a;
-  public static long b;
-  public static long c;
+  public asql(FastImagePreviewLayout paramFastImagePreviewLayout) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
+    }
+    this.a.removeAllViews();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -2,17 +2,17 @@ package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
 import android.graphics.drawable.Drawable;
 import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import vfx;
+import vib;
 
 public class EmoObjectPool$1$1
   implements Runnable
 {
-  public EmoObjectPool$1$1(vfx paramvfx, Drawable paramDrawable) {}
+  public EmoObjectPool$1$1(vib paramvib, Drawable paramDrawable) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Vfx.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null) {
-      this.jdField_a_of_type_Vfx.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Vfx.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
+    if (this.jdField_a_of_type_Vib.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null) {
+      this.jdField_a_of_type_Vib.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Vib.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import bgmg;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,7 @@ class OlympicManager$7
         localObjectOutputStream.writeObject(this.a);
         localObjectOutputStream.close();
         localByteArrayOutputStream.close();
-        bgmg.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+        bhmi.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
         return;
       }
       catch (Throwable localThrowable)

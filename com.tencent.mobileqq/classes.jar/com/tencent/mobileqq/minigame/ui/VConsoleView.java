@@ -35,9 +35,9 @@ public class VConsoleView
   
   private void initUI()
   {
-    LayoutInflater.from(getContext()).inflate(2131559427, this);
-    this.vConsoleGap = ((ImageView)findViewById(2131371094));
-    this.vConsoleWebView = ((WebView)findViewById(2131371089));
+    LayoutInflater.from(getContext()).inflate(2131559429, this);
+    this.vConsoleGap = ((ImageView)findViewById(2131371200));
+    this.vConsoleWebView = ((WebView)findViewById(2131371194));
     this.vConsoleWebView.getSettings().setJavaScriptEnabled(true);
     if (Build.VERSION.SDK_INT >= 11)
     {

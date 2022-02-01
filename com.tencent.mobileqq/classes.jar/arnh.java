@@ -1,73 +1,53 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class arnh
-  extends BitmapDrawable
+  extends armf<arng>
 {
-  private float jdField_a_of_type_Float = 1920.0F;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private int b;
-  private int c;
-  
-  public arnh(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
+  @NonNull
+  public arng a()
   {
-    super(paramResources, paramBitmap);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
-    super.setGravity(17);
+    return new arng();
   }
   
-  public void draw(Canvas paramCanvas)
+  @NonNull
+  public arng a(araj[] paramArrayOfaraj)
   {
-    if (this.c >>> 24 != 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramArrayOfaraj = paramArrayOfaraj[0].a;
+    biho.a().a(localQQAppInterface.getApplication(), paramArrayOfaraj, localQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfaraj);
     }
-    super.draw(paramCanvas);
+    return new arng();
   }
   
-  public int getIntrinsicHeight()
+  @NonNull
+  public arng b()
   {
-    if (this.b > 0) {
-      return this.b;
-    }
-    return super.getIntrinsicHeight();
+    return new arng();
   }
   
-  public int getIntrinsicWidth()
+  public Class<arng> clazz()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
-    }
-    return super.getIntrinsicWidth();
+    return arng.class;
   }
   
-  public void setAlpha(int paramInt)
+  public boolean isNeedCompressed()
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    }
-    super.setAlpha(paramInt);
+    return false;
   }
   
-  public void setTargetDensity(int paramInt)
+  public int type()
   {
-    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
-    super.setTargetDensity(paramInt);
+    return 76;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnh
  * JD-Core Version:    0.7.0.1
  */

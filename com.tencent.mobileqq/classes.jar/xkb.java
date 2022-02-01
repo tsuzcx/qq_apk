@@ -1,22 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
-class xkb
-  implements wld<wzr, wzs>
+public class xkb
+  implements View.OnTouchListener
 {
-  xkb(xka paramxka, xjd paramxjd) {}
+  public xkb(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(@NonNull wzr paramwzr, @Nullable wzs paramwzs, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramErrorMessage.isFail()) || (paramwzs == null))
-    {
-      yqp.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Xjd.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Xka.a.a(paramwzs.jdField_a_of_type_JavaUtilList, paramwzs.jdField_a_of_type_JavaLangString, paramwzs.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Xjd.a(paramErrorMessage, xil.b(paramwzs.jdField_a_of_type_JavaUtilList), paramwzs.jdField_a_of_type_Boolean);
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

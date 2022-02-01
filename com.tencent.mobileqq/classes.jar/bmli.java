@@ -1,16 +1,37 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Handler;
+import android.os.Message;
 
-class bmli
-  implements bltv
+public class bmli
+  implements anui
 {
-  bmli(bmlh parambmlh, String paramString) {}
+  private Handler a;
+  
+  public bmli(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bmlh.a != null)
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (this.a == null) {
+      return;
+    }
+    switch (paramInt)
     {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
-      this.jdField_a_of_type_Bmlh.a.callJs(str);
+    default: 
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
     }
   }
 }

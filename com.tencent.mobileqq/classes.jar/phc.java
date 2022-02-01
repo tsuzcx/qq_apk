@@ -1,13 +1,28 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-final class phc
-  implements tlo
+public class phc
+  implements View.OnClickListener
 {
-  phc(Context paramContext, String paramString) {}
+  public phc(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    this.a.doOnBackEvent();
+    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("stat_src", "5");
+      nzq.a(new tlx().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nzq.u).b(nzq.ag).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nzq.a(localHashMap)).a());
+    }
   }
 }
 

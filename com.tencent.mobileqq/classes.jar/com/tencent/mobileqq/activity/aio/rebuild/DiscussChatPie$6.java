@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahzo;
+import aijc;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 
 public class DiscussChatPie$6
   implements Runnable
 {
-  public DiscussChatPie$6(ahzo paramahzo) {}
+  public DiscussChatPie$6(aijc paramaijc) {}
   
   public void run()
   {

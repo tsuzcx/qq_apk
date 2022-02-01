@@ -1,22 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-class pfv
-  implements ViewBase.OnClickListener
+public class pfv
 {
-  pfv(pfs parampfs, ViewBase paramViewBase) {}
+  public oidb_cmd0x80a.AttributeList a;
+  public oidb_cmd0x80a.AttributeList b;
+  public oidb_cmd0x80a.AttributeList c;
+  public oidb_cmd0x80a.AttributeList d;
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (this.jdField_a_of_type_Pfs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
-    {
-      pfr.a(this.jdField_a_of_type_Pfs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
-      pfr.a(this.jdField_a_of_type_Pfs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-    }
-    pha.d(this.jdField_a_of_type_Pfs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
-  }
+  public pfv(pfs parampfs) {}
 }
 
 

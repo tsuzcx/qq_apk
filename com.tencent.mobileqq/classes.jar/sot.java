@@ -1,17 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class sot
-  implements View.OnClickListener
+public class sot
+  implements pre
 {
-  sot(snh paramsnh, String paramString, pum parampum) {}
+  public sot(AuthorData paramAuthorData) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    oat.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-    puf.b(this.jdField_a_of_type_Pum.f);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(true);
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
+      paramString = "2";
+    }
+    for (;;)
+    {
+      paramString = ozs.a(localBaseApplication, localArticleInfo, 0, paramString);
+      if (paramBoolean) {
+        paramInt = 1;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramString.put("is_done", paramInt);
+          ssy.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
+          return;
+          paramString = "1";
+          break;
+          paramInt = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

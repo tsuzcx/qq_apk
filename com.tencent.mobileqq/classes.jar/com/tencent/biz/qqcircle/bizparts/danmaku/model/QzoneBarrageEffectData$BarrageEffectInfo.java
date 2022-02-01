@@ -8,7 +8,7 @@ import NS_MOBILE_MATERIAL.MaterialItem;
 import NS_MOBILE_MATERIAL.UgcDecoQualReq;
 import android.graphics.Color;
 import android.text.TextUtils;
-import bmip;
+import bnjr;
 import com.tencent.component.annotation.NeedParcel;
 import com.tencent.component.app.common.SmartParcelable;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class QzoneBarrageEffectData$BarrageEffectInfo
     if (paramArrayOfByte == null) {
       return null;
     }
-    paramArrayOfByte = (CommentUgcDeco)bmip.a(CommentUgcDeco.class, paramArrayOfByte);
+    paramArrayOfByte = (CommentUgcDeco)bnjr.a(CommentUgcDeco.class, paramArrayOfByte);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.stBubble == null) || (paramArrayOfByte.stBubble.iItemId <= 0)) {
       return null;
     }
@@ -161,7 +161,7 @@ public class QzoneBarrageEffectData$BarrageEffectInfo
     localCommentUgcDeco.stBubble.stSource = this.stSource;
     localCommentUgcDeco.stBubble.strFrameZip = this.strFrameZip;
     localCommentUgcDeco.stBubble.iFrameRate = this.iFrameRate;
-    return bmip.a(localCommentUgcDeco);
+    return bnjr.a(localCommentUgcDeco);
   }
   
   public byte[] toJceReqData()
@@ -169,7 +169,7 @@ public class QzoneBarrageEffectData$BarrageEffectInfo
     UgcDecoQualReq localUgcDecoQualReq = new UgcDecoQualReq();
     localUgcDecoQualReq.mapItemId = new HashMap();
     localUgcDecoQualReq.mapItemId.put(Integer.valueOf(128), Integer.valueOf(this.id));
-    return bmip.a(localUgcDecoQualReq);
+    return bnjr.a(localUgcDecoQualReq);
   }
   
   public String toJson()

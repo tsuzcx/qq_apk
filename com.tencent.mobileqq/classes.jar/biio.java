@@ -1,63 +1,69 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.io.File;
 import mqq.app.AppRuntime;
 
 public class biio
-  extends QIPCModule
 {
-  private static volatile biio a;
-  
-  private biio(String paramString)
+  public String a(Context paramContext)
   {
-    super(paramString);
+    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "kcsdk_4.4.7.3661.jar";
+    }
+    return paramContext + File.separator + "kcsdk_4.4.7.3661.jar";
   }
   
-  public static biio a()
+  public void a()
   {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new biio("open_sdk_qipc_module");
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
       }
-      return a;
+      return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(Context paramContext, int paramInt)
   {
-    QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall main proc action : " + paramString);
-    if ("action_get_accountInfo".equals(paramString))
-    {
-      paramString = new Bundle();
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, paramString);
-      paramBundle = paramBundle.getString("key_uin");
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!TextUtils.isEmpty(paramBundle)) && ((localAppRuntime instanceof QQAppInterface))) {
-        paramString.putString("key_nickname", bglf.i((QQAppInterface)localAppRuntime, paramBundle));
-      }
-      callbackResult(paramInt, localEIPCResult);
-    }
+    if (paramInt == 0) {}
     for (;;)
     {
-      return null;
-      if ("action_ptlogin_cancel".equals(paramString))
+      try
       {
-        paramString = BaseActivity.sTopActivity;
-        QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall ptlogin cancel activity=" + paramString);
-        if ((paramString instanceof SplashActivity)) {
-          paramString.doOnBackPressed();
+        String str = paramContext.getDir("lib", 0).getAbsolutePath();
+        paramContext = biim.a().b(paramContext);
+        if (bhto.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
+        {
+          QLog.d("KC.TMSManager", 1, "unzip succ");
+          biim.a(biim.a());
+          return;
         }
+        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
+        continue;
+        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
       }
+      finally {}
     }
+  }
+  
+  public String b(Context paramContext)
+  {
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "libtmsdualcore.zip";
+    }
+    return paramContext + File.separator + "libtmsdualcore.zip";
   }
 }
 

@@ -1,18 +1,15 @@
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
 public class bbun
+  implements bljb
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public bbun(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public String toString()
+  public void onDismiss()
   {
-    return "source = " + this.jdField_c_of_type_JavaLangString + " editDistance = " + this.d + " matchDegree = " + this.jdField_c_of_type_Int;
+    SignatureHistoryFragment.a(this.a, null);
+    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

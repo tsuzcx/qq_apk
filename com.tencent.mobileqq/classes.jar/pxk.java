@@ -1,49 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public abstract interface pxk
+class pxk
+  implements View.OnClickListener
 {
-  public abstract int a();
+  pxk(pxe parampxe, ppu paramppu, Container paramContainer, int paramInt) {}
   
-  public abstract ArticleInfo a();
-  
-  public abstract VafContext a();
-  
-  public abstract snh a();
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract ArticleInfo b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract boolean d();
-  
-  public abstract int e();
-  
-  public abstract boolean e();
-  
-  public abstract int f();
-  
-  public abstract boolean f();
-  
-  public abstract int g();
-  
-  public abstract boolean g();
-  
-  public abstract int h();
-  
-  public abstract boolean h();
-  
-  public abstract boolean i();
+  public void onClick(View paramView)
+  {
+    Object localObject = this.jdField_a_of_type_Ppu.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((qyg)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (qyh)((qyg)localObject).a.get(0);
+      pxe.a(this.jdField_a_of_type_Pxe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu.a(), (int)((qyh)localObject).a, this.jdField_a_of_type_Ppu.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Ppu.a());
+    }
+  }
 }
 
 

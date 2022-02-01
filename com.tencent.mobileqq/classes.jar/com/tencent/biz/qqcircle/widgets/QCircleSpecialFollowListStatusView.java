@@ -33,8 +33,8 @@ public class QCircleSpecialFollowListStatusView
   public void a(Context paramContext, View paramView)
   {
     super.a(paramContext, paramView);
-    this.e = ((ImageView)findViewById(2131369218));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379811));
+    this.e = ((ImageView)findViewById(2131369309));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379991));
   }
   
   public void a(String paramString)

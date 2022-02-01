@@ -1,20 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahkv
-  extends Handler
+  extends ahkx
 {
-  ahkv(ahku paramahku, Looper paramLooper)
+  ahkv(ahgk paramahgk)
   {
-    super(paramLooper);
+    super(paramahgk, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (paramMessage.what == ahku.a) {
-      this.a.b();
-    }
+    return new ScribbleItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

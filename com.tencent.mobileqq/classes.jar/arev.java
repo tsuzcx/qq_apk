@@ -1,64 +1,78 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.danmaku.data.ViewDanmaku.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arev
-  extends areu
+  extends arac<areu>
 {
-  private arfy a;
-  private boolean e;
-  
-  public arev(arew paramarew)
+  @NonNull
+  public areu a(int paramInt)
   {
-    super(paramarew);
+    return new areu();
   }
   
-  public int a()
+  @Nullable
+  public areu a(araj[] paramArrayOfaraj)
   {
-    return -2147483647;
-  }
-  
-  public arfy a()
-  {
-    return this.a;
-  }
-  
-  public arga a(argk paramargk)
-  {
-    if (this.a != null)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      View localView = this.a.a(paramargk);
-      if (localView != null) {
-        ardw.a().a().a().post(new ViewDanmaku.1(this, localView));
+      areu localareu = areu.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
       }
+      return localareu;
     }
-    return super.a(paramargk);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  public void a(arfy paramarfy)
+  public void a(areu paramareu)
   {
-    this.a = paramarfy;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramareu.toString());
+    }
   }
   
-  public void e()
+  public Class<areu> clazz()
   {
-    super.e();
-    this.e = false;
+    return areu.class;
   }
   
-  public void f(boolean paramBoolean)
+  public boolean isNeedCompressed()
   {
-    this.e = paramBoolean;
+    return true;
   }
   
-  public boolean i()
+  public boolean isNeedStoreLargeFile()
   {
-    return this.e;
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 575;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arev
  * JD-Core Version:    0.7.0.1
  */

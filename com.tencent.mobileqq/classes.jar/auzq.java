@@ -1,232 +1,35 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class auzq
-  extends anun
+  implements azrg
 {
-  private WeakReference<Context> a;
+  public auzq(ForwardMultServerShare.2 param2) {}
   
-  public auzq(Context paramContext)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a = new WeakReference(paramContext);
+    return null;
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public void a(azrh paramazrh)
   {
-    int k = -1;
-    Context localContext = (Context)this.a.get();
-    if (localContext == null)
-    {
-      QLog.e("HiBoomFont.HiBoomManager", 1, "onAuthHiBoom: context == null");
-      return;
+    if (paramazrh != null) {
+      QLog.d(auzo.a(), 1, "requestImageShare updateMsg info =" + paramazrh);
     }
-    Object localObject = auzk.a(localContext);
-    if ((localObject != null) && (((biau)localObject).isShowing())) {
-      ((biau)localObject).dismiss();
-    }
-    label124:
-    int j;
-    if ((paramBoolean) && ((paramObject instanceof Object[])))
-    {
-      Object[] arrayOfObject = (Object[])paramObject;
-      if (arrayOfObject.length >= 5)
-      {
-        int i;
-        if ((arrayOfObject[0] instanceof Integer))
-        {
-          i = ((Integer)arrayOfObject[0]).intValue();
-          if (!(arrayOfObject[1] instanceof byte[])) {
-            break label217;
-          }
-          localObject = (byte[])arrayOfObject[1];
-          if (!(arrayOfObject[2] instanceof Integer)) {
-            break label223;
-          }
-          j = ((Integer)arrayOfObject[2]).intValue();
-          label146:
-          if (!(arrayOfObject[3] instanceof String)) {
-            break label229;
-          }
-        }
-        label217:
-        label223:
-        label229:
-        for (paramObject = (String)arrayOfObject[3];; paramObject = null)
-        {
-          if ((arrayOfObject[4] instanceof Integer)) {
-            k = ((Integer)arrayOfObject[4]).intValue();
-          }
-          if (i == 0) {
-            break label234;
-          }
-          if (localObject == null) {
-            break label260;
-          }
-          auzk.a(localContext, (byte[])localObject, j);
-          auzk.b.set(false);
-          return;
-          i = -1;
-          break;
-          localObject = null;
-          break label124;
-          j = -1;
-          break label146;
-        }
-      }
-    }
-    switch (k)
-    {
-    default: 
-      QQToast.a(localContext, 1, anni.a(2131704266), 0).a();
-      auzk.b.set(false);
-      return;
-    case 1: 
-      label234:
-      localObject = new Bundle();
-      label260:
-      ((Bundle)localObject).putInt("forward_type", 37);
-      ((Bundle)localObject).putInt("emoInputType", 5);
-      ((Bundle)localObject).putString("forward_text", paramObject);
-      ((Bundle)localObject).putInt("key_hiboom_id", j);
-      ((Bundle)localObject).putInt("key_hiboom_type", auzk.a(j));
-      paramObject = new Intent();
-      paramObject.putExtras((Bundle)localObject);
-      aufz.a((Activity)localContext, paramObject, 21);
-      return;
-    }
-    if ((localContext instanceof FragmentActivity))
-    {
-      localObject = (FragmentActivity)localContext;
-      if ((((FragmentActivity)localObject).getChatFragment() != null) && (((FragmentActivity)localObject).getChatFragment().a() != null))
-      {
-        localObject = ((FragmentActivity)localObject).getChatFragment().a();
-        ((auzk)((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219)).a((BaseChatPie)localObject, paramObject, j, auzk.a(j));
-        ((BaseChatPie)localObject).aB();
-        ((BaseChatPie)localObject).jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      }
-    }
-    auzk.b.set(false);
   }
   
-  public void c(boolean paramBoolean, Object paramObject)
+  public void b(azrh paramazrh)
   {
-    int j = -1;
-    Context localContext = (Context)this.a.get();
-    if (localContext == null) {
-      QLog.e("HiBoomFont.HiBoomManager", 1, "onAuthHiBoom: context == null");
-    }
-    for (;;)
+    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramazrh);
+    QLog.d(auzo.a(), 1, new Object[] { "requestImageShare onSend result =", paramazrh, ", isTimeOut=", Boolean.valueOf(auzo.a(this.a.this$0)) });
+    if (this.a.jdField_a_of_type_JavaUtilMap.size() == auzo.a(this.a.this$0).size())
     {
-      return;
-      Object localObject = auzk.a(localContext);
-      if ((localObject != null) && (((biau)localObject).isShowing())) {
-        ((biau)localObject).dismiss();
-      }
-      if (paramBoolean)
-      {
-        if (!(paramObject instanceof Object[])) {
-          break label454;
-        }
-        localObject = (Object[])paramObject;
-        if (localObject.length >= 5)
-        {
-          int i;
-          if ((localObject[0] instanceof Integer))
-          {
-            i = ((Integer)localObject[0]).intValue();
-            label102:
-            if ((localObject[1] instanceof Integer)) {
-              j = ((Integer)localObject[1]).intValue();
-            }
-            if (!(localObject[2] instanceof byte[])) {
-              break label249;
-            }
-            paramObject = (byte[])localObject[2];
-            label145:
-            if (!(localObject[3] instanceof Boolean)) {
-              break label254;
-            }
-            paramBoolean = ((Boolean)localObject[3]).booleanValue();
-            label166:
-            if (!(localObject[4] instanceof String)) {
-              break label259;
-            }
-          }
-          label259:
-          for (localObject = (String)localObject[4];; localObject = null)
-          {
-            if (i == 0) {
-              break label265;
-            }
-            QLog.d("HiBoomFont.HiBoomManager", 1, "onSetHiBoom fail ret = " + i + " id = " + j);
-            if (!paramBoolean) {
-              break;
-            }
-            auzk.a(localContext, paramObject, j);
-            auzk.b.set(false);
-            return;
-            i = -1;
-            break label102;
-            label249:
-            paramObject = null;
-            break label145;
-            label254:
-            paramBoolean = false;
-            break label166;
-          }
-          label265:
-          if (QLog.isColorLevel()) {
-            QLog.d("HiBoomFont.HiBoomManager", 2, "onSetHiBoom success");
-          }
-          if (paramBoolean)
-          {
-            if ((localContext instanceof FragmentActivity))
-            {
-              paramObject = (FragmentActivity)localContext;
-              if ((paramObject.getChatFragment() != null) && (paramObject.getChatFragment().a() != null))
-              {
-                paramObject = paramObject.getChatFragment().a();
-                ((auzk)paramObject.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219)).a(paramObject, (String)localObject, j, auzk.a(j));
-                paramObject.aB();
-                paramObject.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-              }
-            }
-            auzk.b.set(false);
-          }
-          paramObject = BaseApplicationImpl.getApplication().getRuntime();
-          if (!(paramObject instanceof QQAppInterface)) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("HiBoomFont.HiBoomManager", 2, "onSetHiBoom get hiboom list");
-          }
-          ((anuk)((QQAppInterface)paramObject).a(13)).b();
-          return;
-        }
-        paramBoolean = false;
-      }
-      while (paramBoolean)
-      {
-        QQToast.a(localContext, 1, anni.a(2131704263), 0).a();
-        auzk.b.set(false);
-        return;
-        paramBoolean = ((Boolean)paramObject).booleanValue();
-        continue;
-        label454:
-        paramBoolean = false;
-      }
+      avcw.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
+      auzo.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
     }
   }
 }

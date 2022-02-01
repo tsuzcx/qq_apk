@@ -1,18 +1,43 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-public class tob
-  implements View.OnClickListener
+class tob
+  implements blna
 {
-  public tob(BridgeModule paramBridgeModule, String paramString) {}
+  tob(toa paramtoa, AdvertisementInfo paramAdvertisementInfo) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramInt = 0;
+    QQToast.a(toa.a(this.jdField_a_of_type_Toa), 0, 2131694621, 0).a();
+    if ((paramObject != null) && ((paramObject instanceof DislikeInfo))) {}
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    {
+      paramView = "";
+      if (paramInt < paramArrayList.size())
+      {
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label186;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
+      label186:
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        nzq.a(new tlx().a(toa.a(this.jdField_a_of_type_Toa)).a(nzq.c).b(nzq.P).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a(l).a(paramView).a());
+        return;
+      }
+    }
   }
 }
 

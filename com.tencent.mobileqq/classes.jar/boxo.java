@@ -1,26 +1,45 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
+import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.lang.ref.WeakReference;
 
 public class boxo
-  extends AnimatorListenerAdapter
+  implements IVideoShelfPlayerListener
 {
-  public boxo(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  private WeakReference<AETemplateInfoFragment> a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boxo(AETemplateInfoFragment paramAETemplateInfoFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  140ms translate end");
-    }
-    this.a.a.d = 4;
+    this.a = new WeakReference(paramAETemplateInfoFragment);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onChangVideoSize(int paramInt1, int paramInt2) {}
+  
+  public void onCompletion()
   {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AETemplateInfoFragment)this.a.get()).a();
+    }
+  }
+  
+  public boolean onError(int paramInt, String paramString, Object paramObject)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
+    }
+    return true;
+  }
+  
+  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
+  
+  public void onUpdateRate(long paramLong)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
+    }
   }
 }
 

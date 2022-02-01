@@ -1,65 +1,40 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import java.util.Collection;
+import java.util.Iterator;
 
-public class bmxm
-  extends QIPCModule
+class bmxm
+  implements ThreadPool.Job<Object>
 {
-  public static bmxm a;
+  bmxm(bmxl parambmxl, boolean paramBoolean) {}
   
-  private bmxm()
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    super("WadlQIPCModule");
-  }
-  
-  public static bmxm a()
-  {
-    if (a == null) {}
-    try
+    paramJobContext.setMode(1);
+    paramJobContext = bmxl.a(this.jdField_a_of_type_Bmxl).a();
+    if (paramJobContext != null)
     {
-      if (a == null) {
-        a = new bmxm();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCModule", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(paramBundle instanceof QQAppInterface)) {
-      return null;
-    }
-    paramBundle = (QQAppInterface)paramBundle;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if ("action.getSkey".equals(paramString))
-    {
-      paramString = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
-      paramBundle = new Bundle();
-      if (paramString != null) {}
-      for (;;)
+      paramJobContext = paramJobContext.iterator();
+      while (paramJobContext.hasNext())
       {
-        paramBundle.putString("skey", paramString);
-        return EIPCResult.createSuccessResult(paramBundle);
-        paramString = "";
+        bmxj localbmxj = (bmxj)paramJobContext.next();
+        int j = localbmxj.a(this.jdField_a_of_type_Boolean);
+        String str = localbmxj.a();
+        int i = bmxl.a(this.jdField_a_of_type_Bmxl, str);
+        j = bmxl.a(this.jdField_a_of_type_Bmxl, j, i);
+        this.jdField_a_of_type_Bmxl.a(i, j, str);
+        QLog.w("CacheManager", 1, "onLowStorage clear cache service:" + localbmxj + ": remain=" + j);
       }
-    }
-    if ("action.getUin".equals(paramString))
-    {
-      paramString = new Bundle();
-      paramString.putLong("uin", paramBundle.getLongAccountUin());
-      return EIPCResult.createSuccessResult(paramString);
+      if (bmxl.a(bmxh.p()))
+      {
+        bmxh.a(false);
+        if (bmxl.a(bmxh.p()))
+        {
+          bmxh.a(true);
+          bmxl.a(this.jdField_a_of_type_Bmxl);
+        }
+      }
     }
     return null;
   }

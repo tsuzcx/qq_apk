@@ -1,17 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
 class tcy
-  extends pmn
+  implements tcx
 {
-  tcy(tcx paramtcx) {}
-  
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public InputStream a(@Nullable InputStream paramInputStream)
   {
-    if (paramBoolean) {
-      tcx.a(this.a, tcx.a(this.a, paramList));
-    }
+    return paramInputStream;
   }
+  
+  public void a() {}
+  
+  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richstatus.sign;
 
-import bbdg;
+import bbvz;
 
 public class BaseSignViewHolder$3
   implements Runnable
 {
-  public BaseSignViewHolder$3(bbdg parambbdg) {}
+  public BaseSignViewHolder$3(bbvz parambbvz) {}
   
   public void run()
   {

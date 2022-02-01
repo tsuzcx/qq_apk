@@ -147,12 +147,12 @@ public class MainBrowserScene
   
   public void initView()
   {
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131364999));
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365046));
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
       this.recyclerView.scrollToPosition(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
     this.recyclerView.setVisibility(0);
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131365725));
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131365768));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();

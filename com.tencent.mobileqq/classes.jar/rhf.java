@@ -1,49 +1,67 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import java.util.Map;
 
 public class rhf
-  implements Cloneable
+  extends SimpleAdapter
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  
-  private static rhf b(feeds_info.LocationInfo paramLocationInfo)
+  public rhf(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    rhf localrhf = new rhf();
-    String str;
-    if (paramLocationInfo.bytes_name.has())
-    {
-      str = paramLocationInfo.bytes_name.get().toStringUtf8();
-      localrhf.jdField_a_of_type_JavaLangString = str;
-      localrhf.jdField_a_of_type_Int = paramLocationInfo.uint32_longitude.get();
-      localrhf.jdField_b_of_type_Int = paramLocationInfo.uint32_latitude.get();
-      if (!paramLocationInfo.bytes_icon_url.has()) {
-        break label90;
-      }
+    super(paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+  }
+  
+  protected void a(View paramView, ResultRecord paramResultRecord) {}
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (Map)getItem(paramInt);
+    ResultRecord localResultRecord = ResultRecord.a((String)((Map)localObject).get("key_uin"), (String)((Map)localObject).get("key_name"));
+    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
+      ((Map)localObject).put("key_checked", Boolean.valueOf(true));
     }
-    label90:
-    for (paramLocationInfo = paramLocationInfo.bytes_icon_url.get().toStringUtf8();; paramLocationInfo = "")
+    for (;;)
     {
-      localrhf.jdField_b_of_type_JavaLangString = paramLocationInfo;
-      return localrhf;
-      str = "";
-      break;
+      localObject = super.getView(paramInt, paramView, paramViewGroup);
+      a((View)localObject, localResultRecord);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      ((Map)localObject).put("key_checked", Boolean.valueOf(false));
     }
   }
   
-  public rhf a()
+  public void setViewImage(ImageView paramImageView, String paramString)
   {
+    super.setViewImage(paramImageView, paramString);
+    if (paramImageView.getId() == 2131368212) {}
     try
     {
-      rhf localrhf = (rhf)super.clone();
-      return localrhf;
+      Object localObject = this.a.getResources().getDrawable(2130840274);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      ((URLDrawable)localObject).setTag(bhez.a(140, 140));
+      ((URLDrawable)localObject).setDecodeHandler(bhez.p);
+      paramImageView.setImageDrawable((Drawable)localObject);
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    catch (Exception paramImageView)
+    {
+      QLog.e("FollowingListFragment", 2, "setViewImage: " + paramString, paramImageView);
+    }
   }
 }
 

@@ -1,44 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class avir
-  extends Handler
+public class avir
 {
-  avir(avip paramavip, Looper paramLooper)
+  public int a;
+  public String a;
+  public ArrayList<avip> a;
+  public HashMap<String, String> a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  
+  public avir()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    int i = paramMessage.arg1;
-    if ((i < avip.b(this.a)) || (i > 95)) {
-      return;
-    }
-    avip.b(this.a, i);
-    avip.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
-    {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

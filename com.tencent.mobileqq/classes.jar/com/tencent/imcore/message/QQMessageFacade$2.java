@@ -1,19 +1,19 @@
 package com.tencent.imcore.message;
 
-import anqd;
+import aocj;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class QQMessageFacade$2
   implements Runnable
 {
-  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, anqd paramanqd, boolean paramBoolean) {}
+  QQMessageFacade$2(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, aocj paramaocj, boolean paramBoolean) {}
   
   public void run()
   {
     try
     {
-      this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Anqd, this.jdField_a_of_type_Boolean);
+      this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aocj, this.jdField_a_of_type_Boolean);
       return;
     }
     catch (RuntimeException localRuntimeException)

@@ -1,31 +1,43 @@
-import android.app.Dialog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.widget.ParticipleView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aygg
-  extends bdop
+class aygg
+  implements aygo
 {
-  public aygg(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  aygg(aygb paramaygb) {}
   
-  protected void a(boolean paramBoolean, List<String> paramList)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    super.a(paramBoolean, paramList);
-    if (OCRResultFragmentNew.a(this.a) != null)
-    {
-      OCRResultFragmentNew.a(this.a).setOnCancelListener(null);
-      OCRResultFragmentNew.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
     }
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.setParticipleItems(paramList);
-      this.a.a.a();
-      OCRResultFragmentNew.a(this.a, 2);
-      return;
+    if (this.a.jdField_a_of_type_Ayeu != null) {
+      this.a.jdField_a_of_type_Ayeu.a(paramString1, 199, paramInt, "use sdk download error");
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131706595), 0).a();
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    this.a.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
+    }
+    this.a.jdField_a_of_type_Long = paramLong1;
+    if (paramLong2 > this.a.b) {
+      this.a.b = paramLong2;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
+    }
+    aygb.a(paramFile);
   }
 }
 

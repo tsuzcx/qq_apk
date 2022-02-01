@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bfmz;
+import bgna;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class VisitorTroopCardPresenter$7
   implements Runnable
 {
-  public VisitorTroopCardPresenter$7(bfmz parambfmz, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  public VisitorTroopCardPresenter$7(bgna parambgna, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {

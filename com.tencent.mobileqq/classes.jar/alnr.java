@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 final class alnr
-  implements alns
+  implements Animation.AnimationListener
 {
-  alnr(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  alnr(View paramView, Animation paramAnimation) {}
   
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    alnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
-    return true;
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

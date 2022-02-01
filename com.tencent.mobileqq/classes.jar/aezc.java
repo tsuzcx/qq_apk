@@ -1,18 +1,37 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class aezc
-  extends anun
+  extends wve
 {
-  public aezc(QQSettingMe paramQQSettingMe) {}
-  
-  public void a()
+  public aezc(NearbyActivity paramNearbyActivity, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
+      if (paramSosoLbsInfo == null) {
+        break label103;
+      }
     }
-    this.a.c(this.a.a.getCurrentAccountUin());
+    label103:
+    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
+    {
+      QLog.d("nearby.heart_beat", 2, localSosoLocation);
+      if ((!this.a.isFinishing()) && (!this.a.c))
+      {
+        this.a.c = false;
+        this.a.a.a(1, paramSosoLbsInfo);
+      }
+      return;
+    }
   }
 }
 

@@ -1,48 +1,60 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.1;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2;
+import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
+import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import mqq.os.MqqHandler;
 
-class bjxp
-  implements ServiceConnection
+public class bjxp
+  implements ITMAssistantCallBackListener
 {
-  bjxp(bjxo parambjxo) {}
+  protected bjxp(bjxd parambjxd) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onDownloadTaskProgressChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, long paramLong1, long paramLong2)
   {
-    bjxo.a(this.a, awya.a(paramIBinder));
-    try
+    bjxd.a(this.a, true);
+    bjtx.b("MyAppApi", "onDownloadTaskProgressChanged  receiveDataLen:" + paramLong1 + ",totalDataLen:" + paramLong2);
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    bjwq localbjwq = bjwq.a();
+    DownloadInfo localDownloadInfo2 = localbjwq.a(paramTMAssistantCallYYBParamStruct.SNGAppId);
+    DownloadInfo localDownloadInfo1 = localDownloadInfo2;
+    if (localDownloadInfo2 == null)
     {
-      if (bjxo.a(this.a) != null) {
-        bjxo.a(this.a).a(bjxo.a(this.a));
-      }
-      if (paramIBinder != null) {
-        paramIBinder.linkToDeath(new bjxq(this, paramIBinder), 0);
-      }
-      return;
+      localDownloadInfo1 = this.a.a(paramTMAssistantCallYYBParamStruct, null);
+      localbjwq.e(localDownloadInfo1);
     }
-    catch (Exception paramComponentName)
-    {
-      QLog.i("MusicPlayerProxyImpl", 2, "onServiceConnected " + paramComponentName);
-    }
+    localDownloadInfo1.f = i;
+    localDownloadInfo1.a(2);
+    localbjwq.a(2, localDownloadInfo1);
+    bjsz.a().a(paramTMAssistantCallYYBParamStruct, i);
+    bjtx.a("MyAppApi", "onDownloadTaskProgressChanged info state=" + localDownloadInfo1.a() + " progress=" + localDownloadInfo1.f);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onDownloadTaskStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
   {
-    QLog.i("MusicPlayerProxyImpl", 2, "onServiceDisconnected " + paramComponentName);
+    this.a.b = true;
+    bjxd.a(this.a, true);
+    bjtx.b("MyAppApi", "onDownloadTaskStateChanged");
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.1(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
+  }
+  
+  public void onQQDownloaderInvalid()
+  {
+    bjtx.b("MyAppApi", anzj.a(2131705935));
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.2(this));
+  }
+  
+  public void onServiceFree()
+  {
+    bjtx.b("MyAppApi", "OnServiceFree");
     try
     {
-      if (bjxo.a(this.a) != null)
-      {
-        bjxo.a(this.a).b(bjxo.a(this.a));
-        bjxo.a(this.a, null);
-      }
+      ((TMAssistantCallYYB_V2)this.a.a).releaseIPCConnected();
       return;
     }
-    catch (Exception paramComponentName)
-    {
-      QLog.i("MusicPlayerProxyImpl", 2, "onServiceDisconnected " + paramComponentName);
-    }
+    catch (Exception localException) {}
   }
 }
 

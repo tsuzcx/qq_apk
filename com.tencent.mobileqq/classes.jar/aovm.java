@@ -1,54 +1,194 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.5.1;
-import com.tencent.mobileqq.ar.ArConfigService.5.2;
-import com.tencent.mobileqq.ar.ArConfigService.5.3;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aovm
-  implements apcd
+  extends AsyncTask<Void, Integer, Boolean>
 {
-  public aovm(ArConfigService paramArConfigService) {}
+  WeakReference<QQAppInterface> a;
   
-  public void a()
+  public aovm(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARSDK2ResourceDownloadCallback");
-    }
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  protected Boolean a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.5.1(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, apce paramapce)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARSDK2ResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    for (;;)
     {
-      ArConfigService.c(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.5.2(this));
+      try
+      {
+        Object localObject = (QQAppInterface)this.a.get();
+        if (localObject == null) {
+          return Boolean.valueOf(false);
+        }
+        if (!((QQAppInterface)localObject).isLogin()) {
+          return Boolean.valueOf(false);
+        }
+        if (!GuardManager.jdField_a_of_type_Boolean) {
+          return Boolean.valueOf(false);
+        }
+        aovh.a((QQAppInterface)localObject);
+        if ((!aovh.jdField_a_of_type_Boolean) || (aovh.jdField_c_of_type_Boolean) || (aovh.jdField_a_of_type_AndroidContentIntent == null)) {
+          return Boolean.valueOf(false);
+        }
+        if ((aovh.b != 0) && (Build.VERSION.SDK_INT > aovh.b)) {
+          return Boolean.valueOf(false);
+        }
+        paramVarArgs = ((QQAppInterface)localObject).c();
+        if (QQToast.a() == 0)
+        {
+          i = 1;
+          if (i != 0)
+          {
+            if (!aovh.a((QQAppInterface)localObject)) {
+              return Boolean.valueOf(false);
+            }
+            localObject = PreferenceManager.getDefaultSharedPreferences(((QQAppInterface)localObject).getApp());
+            long l3 = System.currentTimeMillis();
+            if (aovh.a() == -1L) {
+              aovh.a(((SharedPreferences)localObject).getLong("push_open_notify_lasttime", l3));
+            }
+            long l1 = 0L;
+            i = 0;
+            int n = ((SharedPreferences)localObject).getInt("push_open_notify_stage", 1);
+            int i1 = ((SharedPreferences)localObject).getInt("push_open_notify_stage_count", 0);
+            int i2 = ((SharedPreferences)localObject).getInt("push_msg_notify_count", 0);
+            if (n == 1)
+            {
+              l1 = aovh.jdField_c_of_type_Int * aovh.jdField_a_of_type_Long;
+              i = aovh.d;
+              j = i;
+              m = i1;
+              l2 = l1;
+              k = n;
+              if (i1 >= i)
+              {
+                SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
+                n += 1;
+                localEditor.putInt("push_open_notify_stage", n);
+                localEditor.remove("push_open_notify_stage_count");
+                localEditor.commit();
+                i1 = 0;
+                if (n == 1)
+                {
+                  l2 = aovh.jdField_c_of_type_Int * aovh.jdField_a_of_type_Long;
+                  j = aovh.d;
+                  k = n;
+                  m = i1;
+                }
+              }
+              else
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("PushOpenNotify", 2, new Object[] { "PopOpenMsgNotifation, stage:", Integer.valueOf(k), " stagecount:", Integer.valueOf(m), " count:", Integer.valueOf(i2), " countMax:", Integer.valueOf(j), " pushInteral:", Long.valueOf(l2), " timeDiff:", Long.valueOf(l3 - aovh.a()) });
+                }
+                if ((l3 - aovh.a() <= l2) && (i2 != 0)) {
+                  break label754;
+                }
+                aovh.a(l3);
+                localObject = ((SharedPreferences)localObject).edit();
+                i = m + 1;
+                ((SharedPreferences.Editor)localObject).putInt("push_open_notify_stage_count", i);
+                ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_count", i2 + 1);
+                ((SharedPreferences.Editor)localObject).putLong("push_open_notify_lasttime", l3);
+                if ((k == 1) && (i == 1))
+                {
+                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_count");
+                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_open");
+                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_cancle");
+                }
+                ((SharedPreferences.Editor)localObject).commit();
+                return Boolean.valueOf(true);
+              }
+            }
+            else
+            {
+              if (n == 2)
+              {
+                l1 = aovh.e * aovh.jdField_a_of_type_Long;
+                i = aovh.f;
+                continue;
+              }
+              if (n != 3) {
+                continue;
+              }
+              l1 = aovh.g * aovh.jdField_a_of_type_Long;
+              i = 2147483647;
+              continue;
+            }
+            if (n == 2)
+            {
+              l2 = aovh.e * aovh.jdField_a_of_type_Long;
+              j = aovh.f;
+              m = i1;
+              k = n;
+              continue;
+            }
+            int j = i;
+            int m = i1;
+            long l2 = l1;
+            int k = n;
+            if (n != 3) {
+              continue;
+            }
+            l1 = aovh.g;
+            l2 = aovh.jdField_a_of_type_Long;
+            l2 = l1 * l2;
+            j = 2147483647;
+            m = i1;
+            k = n;
+            continue;
+          }
+          return Boolean.valueOf(false);
+        }
+      }
+      catch (Exception paramVarArgs)
+      {
+        return Boolean.valueOf(false);
+      }
+      label754:
+      int i = 0;
+    }
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+      if (paramBoolean.booleanValue())
+      {
+        if (localQQAppInterface == null) {
+          return;
+        }
+        paramBoolean = new Intent(localQQAppInterface.getApp(), DialogActivity.class);
+        paramBoolean.addFlags(268435456);
+        paramBoolean.addFlags(536870912);
+        paramBoolean.addFlags(67108864);
+        paramBoolean.addFlags(131072);
+        paramBoolean.putExtra("key_dialog_type", DialogActivity.jdField_c_of_type_Int);
+        localQQAppInterface.getApp().startActivity(paramBoolean);
+        return;
       }
     }
-    while (ArConfigService.e(this.a)) {
-      return;
+    catch (Exception paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PushOpenNotify", 2, "popOpenMsgNotifation, exception: ", paramBoolean);
+      }
     }
-    ArConfigService.a(this.a).post(new ArConfigService.5.3(this));
-    ArConfigService.a(this.a, true);
   }
-  
-  public void b() {}
 }
 
 

@@ -1,86 +1,41 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ForwardSendPicUtil.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class bgmi
+public abstract interface bgmi
 {
-  private static String a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    String str = bhgg.a(bgmo.a(paramContext, paramString, paramInt));
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramBoolean) {}
-    for (int i = 7;; i = 4)
-    {
-      bgmo.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
-      return localImageInfo.b;
-    }
-  }
+  public abstract void a();
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
-  {
-    return a(paramQQAppInterface, paramString1, paramString2, paramInt, paramString3, paramBoolean, paramContext, 0);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, boolean paramBoolean, Context paramContext, int paramInt2)
-  {
-    Object localObject;
-    if ((paramContext instanceof Activity))
-    {
-      localObject = ((Activity)paramContext).getIntent();
-      if (localObject == null) {}
-    }
-    for (boolean bool = ((Intent)localObject).getBooleanExtra("isFromFavorites", false);; bool = false)
-    {
-      localObject = "ForwardSendPicUtil.sendPicTo." + paramContext.getClass().getSimpleName();
-      bgmo.a(-1L, paramInt1, true, "image_send_prepare", (String)localObject + ", isQzoneShare=" + paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage start!");
-      }
-      paramString1 = a(paramContext, paramString1, paramInt1, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage end!");
-      }
-      if (!bgmg.b(paramString1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardSendPicUtil", 2, "sendPicTo,pic not exist,return false!");
-        }
-        return false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord start!");
-      }
-      if (paramString1 != null)
-      {
-        int i = 1009;
-        if (bool) {
-          i = 1053;
-        }
-        paramContext = new ayyh();
-        paramContext.a(paramString1);
-        paramContext.d(i);
-        paramContext.d(paramString2);
-        paramContext.c(bdzh.d);
-        paramContext.e(paramString3);
-        paramContext.c(paramQQAppInterface.getCurrentAccountUin());
-        paramContext.e(paramInt1);
-        paramString2 = ayxn.a(2, i);
-        paramString2.a(paramContext.a());
-        paramString2.c = paramInt2;
-        ayxn.a(paramString2, paramQQAppInterface);
-        ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord end!");
-      }
-      return true;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
+  
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(boolean paramBoolean, List<akps> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d();
+  
+  public abstract void d(String paramString);
+  
+  public abstract void e(String paramString);
 }
 
 

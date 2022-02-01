@@ -1,13 +1,13 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import ley;
-import man;
+import lff;
+import mbj;
 
 public class AVActivity$10$1
   implements Runnable
 {
-  public AVActivity$10$1(man paramman) {}
+  public AVActivity$10$1(mbj parammbj) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class AVActivity$10$1
       {
         ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).a();
         ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).b(true);
-        this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.f(-1028L, 65535);
+        this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.i(-1028L, 65535);
       }
     }
   }

@@ -1,16 +1,46 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhfc
+final class bhfc
+  implements DownloadParams.DecodeHandler
 {
-  public ImageView a;
-  public SeekBar a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    do
+    {
+      do
+      {
+        Object localObject;
+        do
+        {
+          do
+          {
+            return paramDownloadParams;
+            localObject = paramDownloadParams.tag;
+            paramDownloadParams = paramBitmap;
+          } while (!(localObject instanceof int[]));
+          paramDownloadParams = paramBitmap;
+        } while (((int[])localObject).length != 4);
+        paramDownloadParams = (int[])localObject;
+        if (paramDownloadParams[0] == 0) {
+          paramDownloadParams[0] = paramBitmap.getWidth();
+        }
+        if (paramDownloadParams[1] == 0) {
+          paramDownloadParams[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = bhmq.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2], paramDownloadParams[3]);
+        paramDownloadParams = paramBitmap;
+      } while (paramBitmap != null);
+      paramDownloadParams = paramBitmap;
+    } while (!QLog.isDevelopLevel());
+    QLog.w(bhez.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+    return paramBitmap;
+  }
 }
 
 

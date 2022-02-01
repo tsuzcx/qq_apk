@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import atam;
+import atsh;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FileAssistantActivity$1
@@ -14,10 +14,10 @@ class FileAssistantActivity$1
   {
     SharedPreferences localSharedPreferences = this.this$0.app.getPreferences();
     boolean bool = localSharedPreferences.getBoolean("_file_assistant_guid_tips_", false);
-    atam localatam = (atam)this.this$0.app.getManager(317);
-    if (localatam != null)
+    atsh localatsh = (atsh)this.this$0.app.getManager(317);
+    if (localatsh != null)
     {
-      this.this$0.a = localatam.a();
+      this.this$0.a = localatsh.a();
       this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
     }
     if (!bool)

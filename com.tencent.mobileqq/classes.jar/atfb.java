@@ -1,23 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.Rect;
+import android.view.View;
 
-class atfb
-  extends Handler
+public abstract interface atfb
 {
-  atfb(atey paramatey, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract int a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.d();
-  }
+  public abstract Rect a(int paramInt);
+  
+  public abstract View a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfb
  * JD-Core Version:    0.7.0.1
  */

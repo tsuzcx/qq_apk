@@ -1,74 +1,21 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aduj
-  implements awnc<asbq>
+public class aduj
+  implements View.OnClickListener
 {
-  aduj(aduc paramaduc, ImageView paramImageView1, MarkFaceMessage paramMarkFaceMessage, ImageView paramImageView2, MessageRecord paramMessageRecord) {}
+  public aduj(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void a(asbq paramasbq)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    int i;
-    if (paramasbq != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramasbq);
-      String str2 = arze.z.replace("[epId]", paramasbq.a.epId);
-      String str1 = "";
-      localObject = str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam != null)
-      {
-        localObject = str1;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam.length > 0) {
-          localObject = new String(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam);
-        }
-      }
-      i = awfd.a((String)localObject);
-      if ((!bgmg.a(str2)) || (i != 1)) {
-        break label194;
-      }
-      i = 3;
+    AgeSelectionActivity.a(this.a);
+    this.a.finish();
+    if ("VAL_FROM_STATUS_MSG_TAB".equals(AgeSelectionActivity.a(this.a))) {
+      azir.a("0X800AF47");
     }
-    for (;;)
-    {
-      if (paramasbq.b())
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        localObject = this.jdField_a_of_type_Aduc.a.getResources().getDrawable(2130847117);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      }
-      for (;;)
-      {
-        this.b.setMinimumHeight((int)(this.jdField_a_of_type_Aduc.a.a * 100.0F));
-        this.b.setMinimumWidth((int)(this.jdField_a_of_type_Aduc.a.a * 100.0F));
-        this.jdField_a_of_type_Aduc.a(this.b, i, paramasbq, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        return;
-        label194:
-        if (paramasbq.d())
-        {
-          i = 2;
-          break;
-        }
-        if (!paramasbq.e()) {
-          break label258;
-        }
-        i = 1;
-        break;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localObject = this.jdField_a_of_type_Aduc.a.getResources().getDrawable(2130838002);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        }
-      }
-      label258:
-      i = 0;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -64,7 +64,8 @@ public class m
   private void e()
   {
     Map localMap = d();
-    this.a = s.a(this.b, null, "rqd_heartbeat", true, 0L, 0L, localMap, true);
+    Context localContext = this.b;
+    this.a = s.a(localContext, com.tencent.beacon.core.info.b.b(localContext).a(), "rqd_heartbeat", true, 0L, 0L, localMap, true);
   }
   
   protected void a()

@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgbr;
+import bhbs;
 
 public class NormalPicView
   extends ImageView
-  implements bgbr
+  implements bhbs
 {
   public NormalPicView(Context paramContext)
   {

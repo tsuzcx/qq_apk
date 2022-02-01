@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 class bbpz
-  implements View.OnClickListener
+  extends MqqHandler
 {
   bbpz(bbpy parambbpy) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    bbpy.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(bbpy.a(this.a).mContext, 2131718205, 0).a();
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    bhmq.a(bbpy.a(this.a).mContext, paramMessage);
+    QQToast.a(bbpy.a(this.a).mContext, 2, anzj.a(2131699057), 0).a();
   }
 }
 

@@ -1,25 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bpxq
-  implements View.OnClickListener
+final class bpxq
+  implements EIPCResultCallback
 {
-  bpxq(bpxo parambpxo) {}
+  bpxq(bqvl parambqvl) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    yqu.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!bpxo.a(this.a).q) {
-      bpxo.b(this.a);
-    }
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramEIPCResult != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bpxo.a(this.a).q = false;
-      bpxo.b(this.a).setSelected(false);
-      bpxo.a(this.a).c(3003);
+      bool1 = bool2;
+      if (paramEIPCResult.data != null) {
+        bool1 = paramEIPCResult.data.getBoolean("key_result");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcController", 2, "cancelSendVideoOrPhoto result:" + bool1 + ", uinseq:" + this.a.a + ", status:" + this.a.b + ", progress:" + this.a.c);
     }
   }
 }

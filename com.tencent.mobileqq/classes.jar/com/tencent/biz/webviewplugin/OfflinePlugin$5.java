@@ -1,13 +1,13 @@
 package com.tencent.biz.webviewplugin;
 
-import abbc;
+import abff;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class OfflinePlugin$5
   implements Runnable
 {
-  public OfflinePlugin$5(abbc paramabbc) {}
+  public OfflinePlugin$5(abff paramabff) {}
   
   public void run()
   {

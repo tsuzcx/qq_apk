@@ -1,28 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class aatp
-  implements View.OnClickListener
+  implements aatl
 {
-  aatp(aatm paramaatm, TroopGiftPanel paramTroopGiftPanel) {}
+  aatp(aato paramaato, aatn paramaatn) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_Aatm.c();
-    this.jdField_a_of_type_Aatm.b();
-    if (this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c) {
-      this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
     }
-    for (;;)
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (this.jdField_a_of_type_Aatn.a)
+      {
+        this.jdField_a_of_type_Aato.jdField_a_of_type_Aauc.b(this.jdField_a_of_type_Aato);
+        return;
+      }
+      if (this.jdField_a_of_type_Aato.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Aato.jdField_a_of_type_Aatd.a(paramString1, this.jdField_a_of_type_Aato.jdField_a_of_type_JavaLangString, new aatq(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Aato.a(localFile, this.jdField_a_of_type_Aato.b, new aats(this, l));
       return;
-      ((BaseChatPie)this.jdField_a_of_type_Aatm.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aS();
     }
+    this.jdField_a_of_type_Aato.d = paramString2;
+    this.jdField_a_of_type_Aato.jdField_a_of_type_Aauc.a(this.jdField_a_of_type_Aato);
   }
 }
 

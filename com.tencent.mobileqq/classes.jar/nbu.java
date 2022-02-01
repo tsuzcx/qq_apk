@@ -1,22 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.gameroom.stage.StageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class nbu
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
   nbu(nbt paramnbt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.removeView(this.a.a.b);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

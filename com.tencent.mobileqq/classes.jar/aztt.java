@@ -1,17 +1,34 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.ImageShakeAnimView;
+
 public class aztt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public final azty a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public aztt(FormalView paramFormalView) {}
   
-  public aztt(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Azty = new azty();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Azty.jdField_a_of_type_Int = -2147483648;
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
+    }
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    int i = -(int)(FormalView.a(this.a) * f);
+    int j = -(int)((1.0F - f) * FormalView.b(this.a));
+    ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
+    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
+    paramValueAnimator.leftMargin = i;
+    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.b(this.a).getLayoutParams();
+    paramValueAnimator.rightMargin = i;
+    FormalView.b(this.a).setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
+    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
+    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 

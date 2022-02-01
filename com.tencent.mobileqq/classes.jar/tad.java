@@ -1,13 +1,33 @@
-import android.view.View;
+import android.content.Context;
+import com.tencent.mobileqq.widget.AnimationTextView;
 
-class tad
-  implements bkiz
+public class tad
+  extends bhpc
 {
-  tad(tab paramtab) {}
+  AnimationTextView a;
   
-  public void a()
+  public tad(Context paramContext, int paramInt)
   {
-    this.a.a.setSelected(false);
+    super(paramContext, paramInt);
+    a();
+  }
+  
+  private void a()
+  {
+    this.a = ((AnimationTextView)findViewById(2131377227));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a != null) {
+      this.a.setText(paramString);
+    }
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    a();
   }
 }
 

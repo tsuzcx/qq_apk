@@ -1,15 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nxs
-  implements bkia
+  implements DialogInterface.OnClickListener
 {
-  nxs(nxr paramnxr) {}
+  nxs(nxo paramnxo, JsResult paramJsResult, Context paramContext) {}
   
-  public void ak_()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 

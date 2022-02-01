@@ -1,102 +1,24 @@
-import NS_COMM.COMM.StCommonExt;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.biz.richframework.part.block.BlockContainer;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class zyq
-  extends zxu
 {
-  public zyq(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView c;
   
-  private void a()
+  public zyq(View paramView)
   {
-    setDatas(new ArrayList());
-    notifyLoadingComplete(true);
-  }
-  
-  public int getItemCount()
-  {
-    return getDataList().size();
-  }
-  
-  protected void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 100000;
-    }
-    if (paramInt >= getDataList().size()) {
-      return 100001;
-    }
-    return 100002;
-  }
-  
-  public int getSpanCount(int paramInt)
-  {
-    return 1;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
-  }
-  
-  protected void handleBlockChange(zxu paramzxu, int paramInt)
-  {
-    super.handleBlockChange(paramzxu, paramInt);
-  }
-  
-  public void handleShareDataChange(String paramString, zxs paramzxs)
-  {
-    super.handleShareDataChange(paramString, paramzxs);
-  }
-  
-  public boolean isEnableRefresh()
-  {
-    return false;
-  }
-  
-  public void loadData(zxz paramzxz)
-  {
-    if ((paramzxz.d()) || (paramzxz.c())) {
-      a();
-    }
-    while (!paramzxz.e()) {
-      return;
-    }
-    getLoadInfo().a(new COMM.StCommonExt());
-    getLoadInfo().a(true);
-    getLoadInfo().c("");
-    addAll(new ArrayList());
-    notifyLoadingComplete(true);
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return null;
-  }
-  
-  public void onInitBlock(Bundle paramBundle)
-  {
-    getBlockContainer().setEnableRefresh(true);
-    addFloatView(new Button(getContext()));
-    getBlockContainer().a();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365473));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366604));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131705238));
+    this.c = ((ImageView)paramView.findViewById(2131364588));
+    this.c.setContentDescription(anzj.a(2131705237));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370563));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372895));
   }
 }
 

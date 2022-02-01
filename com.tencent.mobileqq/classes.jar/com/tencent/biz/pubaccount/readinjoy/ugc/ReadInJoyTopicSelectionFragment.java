@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import aevv;
+import afez;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bkij;
+import bljm;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -23,23 +23,24 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import pha;
-import pmh;
-import pmk;
-import pmn;
-import rkv;
-import rlr;
-import rnq;
+import ozs;
+import pfa;
+import pfd;
+import pfh;
+import raa;
+import rbp;
+import rcl;
+import rel;
 
 public class ReadInJoyTopicSelectionFragment
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, bkij
+  implements View.OnClickListener, bljm
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
   public List<Map<String, CharSequence>> a;
-  private pmn jdField_a_of_type_Pmn = new rkv(this);
-  private rnq jdField_a_of_type_Rnq;
+  private pfh jdField_a_of_type_Pfh = new rbp(this);
+  private rel jdField_a_of_type_Rel;
   private List<TopicInfo> b = new ArrayList();
   
   public ReadInJoyTopicSelectionFragment()
@@ -54,14 +55,14 @@ public class ReadInJoyTopicSelectionFragment
   
   private void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131378273);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131378430);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_Rnq = new rnq(getActivity(), this.jdField_a_of_type_JavaUtilList);
-    paramViewGroup = (ListView)this.mContentView.findViewById(2131369965);
+    this.jdField_a_of_type_Rel = new rel(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    paramViewGroup = (ListView)this.mContentView.findViewById(2131370063);
     paramViewGroup.setOnItemClickListener(this);
-    paramViewGroup.addFooterView(paramLayoutInflater.inflate(2131560276, paramViewGroup, false));
-    paramViewGroup.setAdapter(this.jdField_a_of_type_Rnq);
-    pmh.a().h(null);
+    paramViewGroup.addFooterView(paramLayoutInflater.inflate(2131560288, paramViewGroup, false));
+    paramViewGroup.setAdapter(this.jdField_a_of_type_Rel);
+    pfa.a().h(null);
   }
   
   private void a(TopicInfo paramTopicInfo)
@@ -91,9 +92,9 @@ public class ReadInJoyTopicSelectionFragment
   private void b()
   {
     this.vg.changeBg(true);
-    setTitle(getString(2131717060));
-    this.leftView.setText(2131690389);
-    rlr.a(this);
+    setTitle(getString(2131717177));
+    this.leftView.setText(2131690384);
+    rcl.a(this);
   }
   
   private void c()
@@ -101,7 +102,7 @@ public class ReadInJoyTopicSelectionFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("searchTopicFrom", this.jdField_a_of_type_Int);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    aevv.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyUgcSearchTopicFragment.class, 1000);
+    afez.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyUgcSearchTopicFragment.class, 1000);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -116,7 +117,7 @@ public class ReadInJoyTopicSelectionFragment
   
   public int getContentLayoutId()
   {
-    return 2131560275;
+    return 2131560287;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -152,13 +153,14 @@ public class ReadInJoyTopicSelectionFragment
       a((TopicInfo)this.b.get(paramInt));
       paramAdapterView = (TopicInfo)this.b.get(paramInt);
       if (paramAdapterView == null) {
-        break label70;
+        break label81;
       }
     }
-    label70:
+    label81:
     for (paramLong = paramAdapterView.a();; paramLong = -1L)
     {
-      pha.a("0X800980A", this.jdField_a_of_type_Int, paramLong, "0");
+      ozs.a("0X800980A", this.jdField_a_of_type_Int, paramLong, "0");
+      raa.a(String.valueOf(paramLong), "0");
       return;
     }
   }
@@ -166,7 +168,7 @@ public class ReadInJoyTopicSelectionFragment
   public void onPause()
   {
     super.onPause();
-    pmk.a().b(this.jdField_a_of_type_Pmn);
+    pfd.a().b(this.jdField_a_of_type_Pfh);
   }
   
   public void onResume()
@@ -174,7 +176,7 @@ public class ReadInJoyTopicSelectionFragment
     super.onResume();
     b();
     a();
-    pmk.a().a(this.jdField_a_of_type_Pmn);
+    pfd.a().a(this.jdField_a_of_type_Pfh);
   }
 }
 

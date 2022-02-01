@@ -1,39 +1,33 @@
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
 public class bgcy
+  implements TextWatcher
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public bgcy(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public bgcy(bgcs parambgcs) {}
-  
-  public JSONObject a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
-    localJSONObject.put("app_version", this.c);
-    localJSONObject.put("net_type", this.d);
-    localJSONObject.put("carrier_type", this.e);
-    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
-    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
-    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
-    localJSONObject.put("cpu_type", this.f);
-    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
-    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
-    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
-    return localJSONObject;
+    if (paramEditable.length() == 0)
+    {
+      this.a.e();
+      this.a.a(false);
+      return;
+    }
+    this.a.jdField_a_of_type_Bgdh.a();
+    this.a.jdField_a_of_type_Bgdh.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
+    this.a.b = 0;
+    this.a.a(true);
+    paramEditable = paramEditable.toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,24 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agsy
-  implements bkhw
+public class agsy
+  implements View.OnClickListener
 {
-  agsy(agsw paramagsw, MessageForDeviceFile paramMessageForDeviceFile, bkho parambkho) {}
+  public agsy(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((abux)this.jdField_a_of_type_Agsw.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agsw.b();
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Agsw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    AIOLongShotHelper.c(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DEC");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

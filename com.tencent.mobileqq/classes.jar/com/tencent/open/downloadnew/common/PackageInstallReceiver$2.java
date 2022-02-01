@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew.common;
 
-import bisy;
-import bivr;
+import bjtx;
+import bjwq;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$2
@@ -11,9 +11,9 @@ class PackageInstallReceiver$2
   
   public void run()
   {
-    bisy.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
+    bjtx.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bivr.a().a(13, localDownloadInfo);
+    bjwq.a().a(13, localDownloadInfo);
   }
 }
 

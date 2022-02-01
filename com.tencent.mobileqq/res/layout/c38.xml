@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll android:id="@id/l37" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalDetail android:id="@id/l36" android:layout_width="fill_parent" android:layout_height="wrap_content" app:aelvLyricHilightColor="@color/e6" app:aelvLyricHilightSize="18.0sp" app:aelvLyricHilightThinColor="@color/e6" app:aelvLyricLineHeight="18.0dip" app:aelvLyricLineMargin="20.0dip" app:aelvLyricScoreHighColor="@color/fc" app:aelvLyricScoreLowColor="@color/fc" app:aelvLyricScoreMiddleColor="@color/fc" app:aelvLyricTextColor="@color/fc" app:aelvLyricTextSize="18.0sp" app:aelvLyricTextThinColor="@color/fc" />
-    </FrameLayout>
-</dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll>
+<RelativeLayout android:background="#66000000" android:paddingBottom="@dimen/b94" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/mzu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ProgressBar android:id="@id/g1f" android:layout_width="30.0dip" android:layout_height="30.0dip" style="@style/l8" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/jfb" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" android:text="@string/wab" android:maxLines="1" android:singleLine="true" />
+        </LinearLayout>
+        <Button android:textSize="14.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/mic" android:background="@drawable/eim" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:layout_below="@id/mzu" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

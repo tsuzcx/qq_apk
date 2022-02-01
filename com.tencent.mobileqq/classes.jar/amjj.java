@@ -1,76 +1,59 @@
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class amjj
-  extends bhhe
+public class amjj
+  implements View.OnClickListener
 {
-  amjj(String paramString1, File paramFile, AtomicInteger paramAtomicInteger1, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, amjk paramamjk, amjh paramamjh, String paramString2, List paramList) {}
+  public amjj(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onDone(bhhf parambhhf)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    super.onDone(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscDownloader", 1, "download url:" + this.jdField_a_of_type_JavaLangString + " task.getStatus()->" + parambhhf.a());
-    }
-    if (3 == parambhhf.a()) {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    do
+    Object localObject;
+    if (QQToast.a() == 0)
     {
-      for (;;)
-      {
-        try
-        {
-          nmk.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
-            break;
-          }
-          if (this.jdField_a_of_type_Amjk != null)
-          {
-            parambhhf = "";
-            if (this.jdField_a_of_type_Amjh != null) {
-              parambhhf = this.jdField_a_of_type_Amjh.c();
-            }
-            amjk localamjk = this.jdField_a_of_type_Amjk;
-            if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
-              bool = false;
-            }
-            localamjk.a(bool, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, parambhhf);
-            if (QLog.isColorLevel()) {
-              QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_b_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-            }
-          }
-          return;
-        }
-        catch (Exception parambhhf)
-        {
-          this.jdField_a_of_type_JavaIoFile.delete();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambhhf.getMessage());
-          continue;
-        }
-        catch (OutOfMemoryError parambhhf)
-        {
-          this.jdField_a_of_type_JavaIoFile.delete();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambhhf.getMessage());
-          continue;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        QLog.d("rscContent_CmShowRscDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambhhf.a());
+      localObject = new aovn(this.a, this.a.app, QQSpecialFriendSettingActivity.a(this.a));
+      ((aovn)localObject).setOnDismissListener(new amjk(this, (aovn)localObject));
+      ((aovn)localObject).show();
+      bdll.b(null, "dc00898", "", "", "0X8009ACB", "0X8009ACB", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSpecialFriendSettingActivity", 2, "finish all setings");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download uin:" + this.jdField_b_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
+      if (bhnv.g(this.a))
+      {
+        boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
+        boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
+        localObject = QQSpecialFriendSettingActivity.a(this.a);
+        String str = QQSpecialFriendSettingActivity.a(this.a);
+        int i = QQSpecialFriendSettingActivity.a(this.a);
+        ((FriendListHandler)localObject).a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
+        localObject = this.a.a.obtainMessage(8193);
+        ((Message)localObject).obj = this.a.getString(2131698421);
+        this.a.a.sendMessage((Message)localObject);
+        if ((bool1) && (bool2)) {}
+        for (localObject = "0";; localObject = "1")
+        {
+          bdll.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, (String)localObject, "", "", "");
+          break;
+        }
+      }
+      localObject = this.a.a.obtainMessage(8195);
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).arg2 = 2131691989;
+      this.a.a.sendMessage((Message)localObject);
+    }
   }
 }
 

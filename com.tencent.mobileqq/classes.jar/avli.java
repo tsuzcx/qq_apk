@@ -1,37 +1,4 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3.1.1;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-
-public class avli
-  implements EnterCallback
-{
-  public avli(ODLoadingActivity.3 param3) {}
-  
-  public void onCloseLoadingView()
-  {
-    ODLoadingActivity.b(this.a.this$0);
-    this.a.this$0.finish();
-    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
-    avjb.b("33669909");
-  }
-  
-  public void onEnterComplete()
-  {
-    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
-    avjb.b("33669911");
-  }
-  
-  public void onShowLoadingView(View paramView)
-  {
-    ODLoadingActivity.a(this.a.this$0, paramView);
-    this.a.this$0.runOnUiThread(new ODLoadingActivity.3.1.1(this));
-    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
-    avjb.b("33669908");
-  }
-}
+class avli {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

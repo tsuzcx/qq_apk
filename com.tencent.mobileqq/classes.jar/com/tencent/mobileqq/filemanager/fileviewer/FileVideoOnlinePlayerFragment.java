@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import azwr;
-import bgjq;
+import baph;
+import bhjr;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -41,7 +41,7 @@ public class FileVideoOnlinePlayerFragment
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localFragmentActivity).app)) {
           break label115;
         }
-        if ((bgjq.b()) || (bgjq.d())) {
+        if ((bhjr.b()) || (bhjr.d())) {
           break label104;
         }
         localSystemBarCompact.setStatusBarColor(0);
@@ -53,13 +53,13 @@ public class FileVideoOnlinePlayerFragment
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label115:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.b()) && (!bgjq.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.b()) && (!bhjr.d()))
     {
       localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(0);
       return;
     }
-    if (!bgjq.d())
+    if (!bhjr.d())
     {
       localSystemBarCompact.setStatusBarColor(0);
       return;
@@ -70,7 +70,7 @@ public class FileVideoOnlinePlayerFragment
   
   public int getContentLayoutId()
   {
-    return 2131560881;
+    return 2131560912;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -102,7 +102,7 @@ public class FileVideoOnlinePlayerFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376789);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376926);
     Object localObject = getActivity().getIntent();
     String str1 = ((Intent)localObject).getStringExtra("fileid");
     String str2 = ((Intent)localObject).getStringExtra("url");
@@ -116,7 +116,7 @@ public class FileVideoOnlinePlayerFragment
     localVideoPlayParam.mIsLocal = false;
     localVideoPlayParam.mIsLoop = false;
     localVideoPlayParam.mSceneId = 109;
-    this.a = ((QQVideoPlayView)azwr.a(getActivity(), 109L, localVideoPlayParam, null));
+    this.a = ((QQVideoPlayView)baph.a(getActivity(), 109L, localVideoPlayParam, null));
     localRelativeLayout.addView(this.a, -1, -1);
     this.a.play();
     super.onViewCreated(paramView, paramBundle);

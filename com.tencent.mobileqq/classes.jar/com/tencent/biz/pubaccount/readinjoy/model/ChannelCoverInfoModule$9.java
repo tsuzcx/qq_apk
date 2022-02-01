@@ -6,13 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pwl;
-import rhy;
+import pox;
+import qyr;
 
 public class ChannelCoverInfoModule$9
   implements Runnable
 {
-  public ChannelCoverInfoModule$9(pwl parampwl, List paramList1, List paramList2) {}
+  public ChannelCoverInfoModule$9(pox parampox, List paramList1, List paramList2) {}
   
   public void run()
   {
@@ -51,7 +51,7 @@ public class ChannelCoverInfoModule$9
         continue;
         if (QLog.isColorLevel())
         {
-          localObject = pwl.a(this.this$0);
+          localObject = pox.a(this.this$0);
           if (localObject != null)
           {
             QLog.i("ChannelCoverInfoModule", 2, "now channels in db are:\n");

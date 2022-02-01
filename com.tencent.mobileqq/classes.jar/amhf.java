@@ -1,69 +1,125 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-class amhf
-  implements amxk
+public class amhf
 {
-  amhf(amhd paramamhd) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
   {
-    if (paramBoolean) {
-      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
+    int i = 0;
+    if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
+      i = -1;
+    }
+    do
+    {
+      for (;;)
+      {
+        return i;
+        double d = paramPublishVideoEntry.recordTime / 1000.0D;
+        int j = paramPublishVideoEntry.videoMaxrate;
+        try
+        {
+          j = bnlk.a(new String[] { "-threads", "1", "-ss", "0.0", "-accurate_seek", "-i", paramString1, "-t", String.valueOf(d), "-vf", "null", "-metadata:s", "rotate=0", "-acodec", "aac", "-vcodec", "libx264", "-movflags", "faststart", "-preset", "veryfast", "-tune", "psnr", "-profile:v", "high", "-level", "3.0", "-b:v", String.valueOf(j), "-y", paramString2 });
+          return j;
+        }
+        catch (Exception paramString1)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: ", paramString1);
+            return 0;
+          }
+        }
+        catch (Error paramString1) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: error", paramString1);
+    return 0;
+  }
+  
+  public static amhg a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        Object localObject = new File(paramString);
+        amhg localamhg = new amhg();
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          String str = a((File)localObject);
+          localObject = b((File)localObject);
+          if (TextUtils.isEmpty(str)) {
+            return null;
+          }
+          localamhg.a = str;
+          localamhg.b = ((String)localObject);
+          localamhg.c = paramString;
+          return localamhg;
+        }
+      }
+      catch (Exception paramString)
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+          QLog.i("EncodeVideoUtil", 2, "getVideoInfoByPath error", paramString);
         }
       }
     }
-    label96:
-    do
+    return null;
+  }
+  
+  @NonNull
+  private static String a(File paramFile)
+  {
+    paramFile = paramFile.listFiles();
+    if ((paramFile != null) && (paramFile.length > 0))
     {
-      VasExtensionHandler localVasExtensionHandler;
-      do
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
       {
-        return;
-        if (paramArrayOfInt != null)
-        {
-          paramInt1 = 0;
-          for (;;)
-          {
-            if (paramInt1 >= paramArrayOfInt.length) {
-              break label96;
-            }
-            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
-              return;
-            }
-            paramInt1 += 1;
-          }
+        Object localObject = paramFile[i];
+        if (localObject.getName().endsWith(".mp4")) {
+          return localObject.getAbsolutePath();
         }
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        localVasExtensionHandler = (VasExtensionHandler)this.a.a.a(71);
-        localVasExtensionHandler.notifyUI(2, true, paramArrayOfInt);
-        ampb.a().a(paramArrayOfInt);
-        localVasExtensionHandler.a(paramString, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
-      return;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        localVasExtensionHandler = (VasExtensionHandler)this.a.a.a(71);
-        localVasExtensionHandler.notifyUI(2, false, paramArrayOfInt);
-        localVasExtensionHandler.a(paramString, null);
+        i += 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = ShortVideoUtils.a(new File(paramString).getParentFile());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
+    }
+    return null;
+  }
+  
+  @NonNull
+  private static String b(File paramFile)
+  {
+    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile != null) && (paramFile.length > 0)) {
+        return paramFile[0].getAbsolutePath();
+      }
+    }
+    return null;
   }
 }
 

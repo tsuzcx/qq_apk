@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ class ChatSettingForTroop$43$1
     if (localArrayList != null)
     {
       if (this.a.this$0.c != null) {
-        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + anni.a(2131700527));
+        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + anzj.a(2131700634));
       }
       int i = localArrayList.size() - 1;
       while (i >= 0)

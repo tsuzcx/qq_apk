@@ -1,36 +1,30 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class tfw
+class tfw
+  implements bjig
 {
-  public static CharSequence a(String paramString1, String paramString2, String paramString3, String paramString4, ArticleInfo paramArticleInfo)
+  tfw(tfv paramtfv) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
-    if (!TextUtils.isEmpty(paramString4)) {}
-    for (paramString4 = URLDrawable.getDrawable(paramString4, (URLDrawable.URLDrawableOptions)localObject);; paramString4 = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200102/f5a4461be0ec4116bc34e5b02e5c831f.png", (URLDrawable.URLDrawableOptions)localObject))
+    boolean bool = true;
+    if ((tfv.a(this.a) == null) || (!tfv.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
     {
-      paramString4.setBounds(0, 0, zby.b(BaseApplicationImpl.getContext(), 17.0F), zby.b(BaseApplicationImpl.getContext(), 17.0F));
-      localObject = new SpannableStringBuilder();
-      SpannableString localSpannableString = new SpannableString(paramString1);
-      localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF262626")), 0, paramString1.length(), 33);
-      localSpannableString.setSpan(new AbsoluteSizeSpan(16, true), 0, paramString1.length(), 33);
-      ((SpannableStringBuilder)localObject).append(localSpannableString);
-      paramString1 = " " + paramString3;
-      paramString3 = new SpannableString(paramString1);
-      paramString3.setSpan(new zqh(paramString4), 0, 1, 17);
-      paramString3.setSpan(new tfx(-15504151, 16777215, 860716207, paramString2, paramArticleInfo), 0, paramString1.length(), 33);
-      ((SpannableStringBuilder)localObject).append(paramString3);
-      return ((SpannableStringBuilder)localObject).subSequence(0, ((SpannableStringBuilder)localObject).length());
+    case -1: 
+    default: 
+      zyx.a(1, 2131718139);
+      bool = false;
+    }
+    for (;;)
+    {
+      uao.a.a(bool);
+      return;
+      zyx.a(2, 2131718157);
+      continue;
+      bool = false;
     }
   }
 }

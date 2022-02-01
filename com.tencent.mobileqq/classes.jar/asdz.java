@@ -1,8 +1,80 @@
-public abstract interface asdz
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+
+public class asdz
+  extends asdn
 {
-  public abstract void a();
+  public asdz(QQAppInterface paramQQAppInterface)
+  {
+    super("qq.android.dingdong.ring", paramQQAppInterface);
+  }
   
-  public abstract void a(float paramFloat);
+  public int a()
+  {
+    return 10050;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QQDingdongSoundData.class;
+  }
+  
+  public String a()
+  {
+    return "dingdongDownloadAudioSoundDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
+    }
+    try
+    {
+      bhmi.a(paramString, mry.a(), false);
+      super.a(paramString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
+    {
+      localQQDingdongSoundData.autoDownload = true;
+      asdd.a(localQQDingdongSoundData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if (localQQDingdongSoundData == null) {
+      return super.h();
+    }
+    return localQQDingdongSoundData.autoDownload;
+  }
 }
 
 

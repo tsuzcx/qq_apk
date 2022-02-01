@@ -1,14 +1,14 @@
 package com.tencent.biz.webviewplugin;
 
-import abcr;
+import abgu;
 import android.app.Activity;
 import java.util.HashMap;
-import nlw;
+import nnr;
 
 public class Share$6
   extends Thread
 {
-  public Share$6(abcr paramabcr, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public Share$6(abgu paramabgu, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class Share$6
     if (this.jdField_a_of_type_Boolean) {
       ((HashMap)localObject).put("url", this.jdField_a_of_type_JavaLangString);
     }
-    localObject = nlw.a((HashMap)localObject);
+    localObject = nnr.a((HashMap)localObject);
     if (this.jdField_a_of_type_Boolean) {}
     for (localObject = (String)((HashMap)localObject).get("url");; localObject = this.jdField_a_of_type_JavaLangString)
     {

@@ -1,13 +1,11 @@
-import android.os.SystemClock;
 import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class ahdd
-  implements bkhw
+public class ahdd
+  implements bliz
 {
-  ahdd(ahda paramahda, MessageForMixedMsg paramMessageForMixedMsg, bkho parambkho) {}
+  public ahdd(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, blir paramblir) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -16,17 +14,9 @@ class ahdd
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Ahda.c < 500L);
-      this.jdField_a_of_type_Ahda.c = l;
-      paramView = (awmg)this.jdField_a_of_type_Ahda.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174);
-      this.jdField_a_of_type_Ahda.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-      paramView.a(this.jdField_a_of_type_Ahda.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
     }
   }
 }

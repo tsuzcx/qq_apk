@@ -4,27 +4,27 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import blnz;
-import bloc;
+import bmpb;
+import bmpe;
 
 public class ReaderSplashImpl$3$1
   implements Runnable
 {
-  public ReaderSplashImpl$3$1(bloc parambloc, View paramView) {}
+  public ReaderSplashImpl$3$1(bmpe parambmpe, View paramView) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(blnz.a(this.jdField_a_of_type_Bloc.a));
+      RelativeLayout localRelativeLayout = new RelativeLayout(bmpb.a(this.jdField_a_of_type_Bmpe.a));
       localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      blnz.a(this.jdField_a_of_type_Bloc.a, localRelativeLayout);
+      bmpb.a(this.jdField_a_of_type_Bmpe.a, localRelativeLayout);
       return;
     }
-    blnz.a(this.jdField_a_of_type_Bloc.a, blnz.a(this.jdField_a_of_type_Bloc.a));
+    bmpb.a(this.jdField_a_of_type_Bmpe.a, bmpb.a(this.jdField_a_of_type_Bmpe.a));
   }
 }
 

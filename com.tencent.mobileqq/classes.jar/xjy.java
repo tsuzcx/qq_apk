@@ -1,28 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public class xjy
-  extends Subscriber.SingleEventSubscriberNoRefect<wii>
+class xjy
+  implements ViewPager.OnPageChangeListener
 {
-  xjt a;
+  xjy(xjw paramxjw) {}
   
-  public xjy(@NonNull xjt paramxjt)
-  {
-    this.a = paramxjt;
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  protected void a(@NonNull wii paramwii)
-  {
-    if ((paramwii.b != null) && (paramwii.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      xjt.a(this.a, paramwii.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramwii.b.mVid, paramwii.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
-    }
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public Class acceptEventClass()
+  public void onPageSelected(int paramInt)
   {
-    return wii.class;
+    this.a.a.setSelectedTab(paramInt, true);
   }
 }
 

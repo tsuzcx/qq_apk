@@ -1,26 +1,30 @@
-import com.tencent.biz.qqcircle.bizparts.danmaku.model.QzoneBarrageEffectData.BarrageEffectInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import qqcircle.QQCirclePrivateMsgShow.StFuelCostRange;
 
-public class vez
+class vez
+  implements aqxz
 {
-  public int a;
-  public long a;
-  public QzoneBarrageEffectData.BarrageEffectInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  vez(veu paramveu) {}
   
-  public vez(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, String paramString5, QzoneBarrageEffectData.BarrageEffectInfo paramBarrageEffectInfo)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuModelQzoneBarrageEffectData$BarrageEffectInfo = paramBarrageEffectInfo;
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (veu.a(this.a) != null) {
+      return veu.a(this.a).max.get() - veu.a(this.a).min.get() + 1;
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (veu.a(this.a) == null) {
+      return "";
+    }
+    return String.valueOf(veu.a(this.a).min.get() + paramInt2);
   }
 }
 

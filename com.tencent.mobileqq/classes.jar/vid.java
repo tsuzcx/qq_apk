@@ -1,28 +1,52 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoCommentRsp;
-import java.util.Map;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.SystemEmoCell;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import java.lang.ref.WeakReference;
 
 class vid
-  implements zxa<FeedCloudWrite.StDoCommentRsp>
+  implements behi
 {
-  vid(vhu paramvhu, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed, int paramInt) {}
+  private SystemEmoCell jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell;
+  private ImageLoader.ImageLoadListener jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener;
+  private WeakReference<vjg> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
+  public vid(via paramvia, vjg paramvjg, SystemEmoCell paramSystemEmoCell, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoCommentRsp == null))
+    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell = paramSystemEmoCell;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvjg);
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener = paramImageLoadListener;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell != null) && (paramDrawable != null))
     {
-      QLog.e("QCircleCommentBusiness", 1, "deleteFeedComment error:" + paramLong + "  errorMsg:" + paramString);
-      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.isDrawableLoaded = true;
+      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.emoDrawable = paramDrawable;
+      via.a(paramDrawable, this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.mHeight);
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
     }
-    QLog.d("QCircleCommentBusiness", 1, "deleteFeedComment Success");
-    paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
-    vhu.a(this.jdField_a_of_type_Vhu).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Vhu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1 - this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size()));
-    zwp.a().a(new QCircleCommentUpdateEvent(4, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vhu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()), this.jdField_a_of_type_Int));
+    for (;;)
+    {
+      return;
+      vjg localvjg = (vjg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localvjg != null)
+      {
+        if (paramDrawable.getBounds().width() == this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.mWidth) {
+          break label111;
+        }
+        localvjg.c();
+        localvjg.postInvalidate();
+      }
+      while (this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null)
+      {
+        this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(null, paramDrawable, null);
+        return;
+        label111:
+        localvjg.postInvalidate();
+      }
+    }
   }
 }
 

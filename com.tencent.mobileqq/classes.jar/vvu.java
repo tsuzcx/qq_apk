@@ -1,6 +1,10 @@
 public abstract interface vvu
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void b();
 }
 
 

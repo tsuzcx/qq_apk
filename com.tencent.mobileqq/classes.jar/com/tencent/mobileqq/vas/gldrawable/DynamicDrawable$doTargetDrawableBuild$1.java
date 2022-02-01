@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
 import android.graphics.drawable.Drawable;
-import bhbg;
+import bibn;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
@@ -12,7 +12,7 @@ public final class DynamicDrawable$doTargetDrawableBuild$1
   extends Lambda
   implements Function0<Drawable>
 {
-  public DynamicDrawable$doTargetDrawableBuild$1(bhbg parambhbg)
+  public DynamicDrawable$doTargetDrawableBuild$1(bibn parambibn)
   {
     super(0);
   }

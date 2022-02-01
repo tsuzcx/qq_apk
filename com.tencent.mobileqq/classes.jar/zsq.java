@@ -1,36 +1,26 @@
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.23;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class zsq
-  implements View.OnTouchListener
+  extends SimpleJob
 {
-  public zsq(QRDisplayActivity.23 param23) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public zsq(SegmentList paramSegmentList, String paramString)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
     }
-    do
-    {
-      do
-      {
-        return true;
-      } while (QRDisplayActivity.a(this.a.this$0) == null);
-      QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
-      return true;
-      if (QRDisplayActivity.a(this.a.this$0) != null) {
-        QRDisplayActivity.a(this.a.this$0).cancel();
-      }
-    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
-    bgfz.c(this.a.this$0.d);
-    this.a.this$0.onClick(this.a.this$0.d);
-    return true;
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
   }
 }
 

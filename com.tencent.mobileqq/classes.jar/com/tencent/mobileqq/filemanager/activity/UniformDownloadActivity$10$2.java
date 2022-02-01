@@ -2,19 +2,19 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import assw;
+import atja;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class UniformDownloadActivity$10$2
   implements Runnable
 {
-  public UniformDownloadActivity$10$2(assw paramassw, DownloadInfo paramDownloadInfo) {}
+  public UniformDownloadActivity$10$2(atja paramatja, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Assw.a).setVisibility(0);
-    UniformDownloadActivity.a(this.jdField_a_of_type_Assw.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Assw.a).setText(this.jdField_a_of_type_Assw.a.getString(2131691667, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + "%" }));
+    UniformDownloadActivity.b(this.jdField_a_of_type_Atja.a).setVisibility(0);
+    UniformDownloadActivity.a(this.jdField_a_of_type_Atja.a).setVisibility(0);
+    UniformDownloadActivity.b(this.jdField_a_of_type_Atja.a).setText(this.jdField_a_of_type_Atja.a.getString(2131691670, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + "%" }));
   }
 }
 

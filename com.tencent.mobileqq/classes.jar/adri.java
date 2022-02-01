@@ -1,26 +1,65 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-final class adri
-  implements DialogInterface.OnClickListener
+public class adri
+  implements View.OnClickListener
 {
-  adri(QQAppInterface paramQQAppInterface, adsy paramadsy, long paramLong, Context paramContext, adsx paramadsx) {}
+  public adri(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Adsy.jdField_a_of_type_Int, this.jdField_a_of_type_Adsy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adsy.jdField_c_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Adsy.jdField_a_of_type_Boolean) {
-      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    if (!this.a.b)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    this.jdField_a_of_type_Adsy.b = false;
-    this.jdField_a_of_type_Adsy.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Adsy.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_Adsy);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    Object localObject = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      label35:
+      ((AccountManageActivity)localObject).jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label254;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692262);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167076));
+    }
+    for (;;)
+    {
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        localObject = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((localObject instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localObject).f();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
+      bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
+      break;
+      bool = false;
+      break label35;
+      label254:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131691682);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166998));
     }
   }
 }

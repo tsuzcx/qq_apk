@@ -1,24 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class asjf
-  implements View.OnTouchListener
+class asjf
+  implements anje
 {
-  public asjf(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  asjf(asiw paramasiw, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
+    paramString = new Bundle();
+    if (paramBoolean)
+    {
+      paramString.putInt("apollo_result", 0);
+      paramString.putInt("apollo_roleId", paramInt1);
+      paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
+      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    while ((i != 1) && (i != 3)) {
-      return false;
-    }
-    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
-    return false;
+    paramString.putInt("apollo_result", 1);
+    paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

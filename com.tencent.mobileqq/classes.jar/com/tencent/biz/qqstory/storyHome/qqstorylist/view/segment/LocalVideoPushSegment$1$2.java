@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import yor;
-import yow;
+import ysm;
+import ysr;
 
 class LocalVideoPushSegment$1$2
   implements Runnable
 {
-  LocalVideoPushSegment$1$2(LocalVideoPushSegment.1 param1, yow paramyow) {}
+  LocalVideoPushSegment$1$2(LocalVideoPushSegment.1 param1, ysr paramysr) {}
   
   public void run()
   {
-    yor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentLocalVideoPushSegment$1.this$0, this.jdField_a_of_type_Yow);
+    ysm.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentLocalVideoPushSegment$1.this$0, this.jdField_a_of_type_Ysr);
   }
 }
 

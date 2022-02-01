@@ -1,28 +1,15 @@
+import com.tencent.avgame.gamelogic.data.RoomInfo;
 import java.util.List;
-import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
 
-public abstract interface mxq
-  extends Cloneable
+public class mxq
 {
-  public abstract int a();
+  public int a;
+  public String a;
+  public List<RoomInfo> a;
+  public int b;
+  public int c;
   
-  public abstract String a();
-  
-  public abstract List<? extends mxq> a();
-  
-  public abstract mxq a();
-  
-  public abstract void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(mxq parammxq);
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract int c();
+  public mxq(mxp parammxp) {}
 }
 
 

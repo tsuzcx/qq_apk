@@ -1,43 +1,61 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class znf
-  implements zmv
 {
-  public long a;
-  public zmv a;
+  public View a;
+  public View b;
   
-  public znf(zmv paramzmv)
+  public znf(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_Zmv = paramzmv;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131369944);
   }
   
-  public void onFailure(String paramString)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    if (this.jdField_a_of_type_Zmv != null) {
-      this.jdField_a_of_type_Zmv.onFailure(paramString);
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
+    float f = 0.0F;
+    if (localIterator.hasNext())
+    {
+      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
+      {
+      }
+      for (;;)
+      {
+        break;
+        if ((zof.b(paramTroopStoryItemInfo.publishTime)) || (zof.d(paramTroopStoryItemInfo.publishTime)))
+        {
+          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
+        }
+        else
+        {
+          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
+          continue;
+          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+          continue;
+          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
+          continue;
+          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video hflip video Error:" + paramString);
+    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
+    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+    if (i <= 0)
+    {
+      paramTroopStoryItemInfo.height = 0;
+      this.b.setLayoutParams(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
     }
-  }
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-    yqu.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
-    }
+    paramTroopStoryItemInfo.height = i;
+    this.b.setLayoutParams(paramTroopStoryItemInfo);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

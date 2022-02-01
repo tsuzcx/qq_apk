@@ -1,23 +1,23 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class awim
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public awim(MedalGuideView paramMedalGuideView) {}
+  public awim(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    MedalGuideView.a(this.a, f);
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(0) });
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

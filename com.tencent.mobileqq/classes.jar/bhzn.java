@@ -1,21 +1,17 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
-class bhzn
-  implements View.OnKeyListener
+public class bhzn<T extends VasQuickUpdateManager.CallBacker>
 {
-  bhzn(bhzm parambhzm) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      bhzm.a(this.a);
-      return true;
-    }
-    return false;
-  }
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
 }
 
 

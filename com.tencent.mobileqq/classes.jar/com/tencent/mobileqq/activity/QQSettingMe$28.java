@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbck;
+import bbvd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.richstatus.RichStatus;
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
-import ydb;
+import ygw;
 
 public class KeyboardAndEmojiManager$2
   implements Runnable
 {
-  public KeyboardAndEmojiManager$2(ydb paramydb) {}
+  public KeyboardAndEmojiManager$2(ygw paramygw) {}
   
   public void run()
   {

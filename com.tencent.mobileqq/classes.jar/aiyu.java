@@ -1,70 +1,19 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aiyu
-  extends anmu
 {
-  aiyu(aiyr paramaiyr) {}
-  
-  protected void onAddFriend(String paramString)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ajax localajax = (ajax)((Iterator)localObject).next();
-      if ((localajax instanceof ajas))
-      {
-        int i = ((ajas)localajax).a.structMsg.msg.sub_type.get();
-        String str = ((ajas)localajax).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
-        {
-          ((Iterator)localObject).remove();
-          aiyr.a(this.a).a().b(anhk.M, 0, ((ajas)localajax).a.uniseq, false);
-        }
-      }
-    }
-    aiyr.a(this.a).sendEmptyMessage(2);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("issuccess", String.valueOf(paramInt1));
+    localHashMap.put("errorcode", String.valueOf(paramInt2));
+    bdmc.a(BaseApplication.getContext()).a(null, "pttSliceToText", true, 0L, 0L, localHashMap, "");
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public static void a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramBoolean) && (aiyr.a(this.a) != null)) {
-      aiyr.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onGetPushRecommend(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (aiyr.a(this.a) != null)) {
-      aiyr.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    aiyr.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (aiyr.a(this.a) != null)) {
-      aiyr.a(this.a).sendEmptyMessage(2);
-    }
+    bdll.b(null, "dc00898", "", "", paramString, paramString, paramInt1, paramInt2, "", "", "", "");
   }
 }
 

@@ -6,14 +6,11 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.util.Pair;
-import com.tencent.mobileqq.triton.sdk.statics.GameLaunchStatistic;
-import com.tencent.qqmini.minigame.GameRuntime;
-import com.tencent.qqmini.minigame.manager.GameInfoManager;
+import com.tencent.mobileqq.triton.statistic.GameLaunchStatistic;
 import com.tencent.qqmini.minigame.report.MiniGameBeaconReport;
 import com.tencent.qqmini.minigame.task.LaunchEngineUISteps;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -26,7 +23,6 @@ import com.tencent.qqmini.sdk.task.TaskExecutionStatics;
 import com.tencent.qqmini.sdk.task.TaskExecutionStatics.Status;
 import com.tencent.qqmini.sdk.task.TaskStaticsVisualizer;
 import java.util.List;
-import org.json.JSONObject;
 
 public class GameRuntimeStateObserver
   extends AppRuntimeEventCenter.RuntimeStateObserver
@@ -51,11 +47,6 @@ public class GameRuntimeStateObserver
     this.mGameUI = paramGameUIProxy;
   }
   
-  private IJsService getJsService()
-  {
-    return this.mGameUI.getJsService();
-  }
-  
   @NonNull
   private TaskExecutionStatics getTaskExecutionStatics(long paramLong)
   {
@@ -75,45 +66,17 @@ public class GameRuntimeStateObserver
   
   private void notifyGameOnHide()
   {
-    if (getJsService() != null)
-    {
-      QMLog.i("GameRuntimeState", "onHide(). " + this.mMiniAppInfo);
-      getJsService().evaluateSubscribeJS("onAppEnterBackground", "", -1);
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onAppStateChange(this.mMiniAppInfo, 2);
-    }
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onAppStateChange(this.mMiniAppInfo, 2);
   }
   
   private void notifyGameOnShow()
   {
-    if (getJsService() != null)
-    {
-      localObject = this.mGameUI.getGameRuntime().getGameInfoManager();
-      if (localObject != null) {}
-    }
-    else
-    {
-      return;
-    }
-    JSONObject localJSONObject = ((GameInfoManager)localObject).getOnShowParam();
-    StringBuilder localStringBuilder = new StringBuilder().append("onShow(");
-    if (localJSONObject == null) {}
-    for (Object localObject = "";; localObject = localJSONObject.toString())
-    {
-      QMLog.i("GameRuntimeState", (String)localObject + "). " + this.mMiniAppInfo);
-      getJsService().evaluateSubscribeJS("onAppEnterForeground", localJSONObject.toString(), -1);
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onAppStateChange(this.mMiniAppInfo, 1);
-      return;
-    }
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onAppStateChange(this.mMiniAppInfo, 1);
   }
   
   private void notifyGameStop()
   {
-    if (getJsService() != null)
-    {
-      QMLog.i("GameRuntimeState", "onAppStop(). " + this.mMiniAppInfo);
-      getJsService().evaluateSubscribeJS("onAppStop", "", -1);
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onAppStateChange(this.mMiniAppInfo, 3);
-    }
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onAppStateChange(this.mMiniAppInfo, 3);
   }
   
   private void onGameRuntimeMsgEngineFailed(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
@@ -122,7 +85,7 @@ public class GameRuntimeStateObserver
     if ((paramMiniAppStateMessage.obj instanceof Integer))
     {
       if (((Integer)paramMiniAppStateMessage.obj).intValue() != 104) {
-        break label145;
+        break label142;
       }
       this.mGameUI.showUpdateMobileQQDialog();
     }
@@ -134,7 +97,7 @@ public class GameRuntimeStateObserver
       QMLog.e("[minigame][timecost] ", "step[load baseLib] fail, cost time: " + l);
       runOnUiThread(new GameRuntimeStateObserver.5(this));
       return;
-      label145:
+      label142:
       runOnUiThread(new GameRuntimeStateObserver.4(this));
     }
   }

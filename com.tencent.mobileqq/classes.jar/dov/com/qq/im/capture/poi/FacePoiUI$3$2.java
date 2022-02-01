@@ -1,16 +1,16 @@
 package dov.com.qq.im.capture.poi;
 
-import bopj;
-import bopl;
+import bpre;
+import bprg;
 
 public class FacePoiUI$3$2
   implements Runnable
 {
-  public FacePoiUI$3$2(bopl parambopl) {}
+  public FacePoiUI$3$2(bprg parambprg) {}
   
   public void run()
   {
-    bopj.a(this.a.a, 1);
+    bpre.a(this.a.a, 1);
   }
 }
 

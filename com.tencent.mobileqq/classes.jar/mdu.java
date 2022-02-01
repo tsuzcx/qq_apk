@@ -1,52 +1,30 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
+import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.qphone.base.util.QLog;
 
-class mdu
-  implements lri
+public class mdu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  mdu(mdt parammdt, VideoAppInterface paramVideoAppInterface) {}
+  public mdu(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public void a()
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    mdt.c(this.jdField_a_of_type_Mdt);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = mdt.a(paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.w(mdt.a(this.jdField_a_of_type_Mdt), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Mdt.w + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Mdt.x + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Mdt.v + "->" + paramInt3 + "], rotation[" + mdt.a(this.jdField_a_of_type_Mdt) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Mdt.c() + "]");
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
     }
-    if ((!this.jdField_a_of_type_Mdt.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    }
-    this.jdField_a_of_type_Mdt.w = paramInt1;
-    this.jdField_a_of_type_Mdt.x = paramInt2;
-    this.jdField_a_of_type_Mdt.v = paramInt3;
-    this.jdField_a_of_type_Mdt.i = i;
-    if (paramInt4 != -1) {
-      mdt.a(this.jdField_a_of_type_Mdt, i);
-    }
-    mdt.d(this.jdField_a_of_type_Mdt);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    for (;;)
     {
-      String str = this.jdField_a_of_type_Mdt.b();
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.a, 1, "onGlobalLayout");
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.c();
+      return;
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
-  }
-  
-  public void b()
-  {
-    mdt.b(this.jdField_a_of_type_Mdt);
-  }
-  
-  public void c()
-  {
-    mdt.a(this.jdField_a_of_type_Mdt);
   }
 }
 

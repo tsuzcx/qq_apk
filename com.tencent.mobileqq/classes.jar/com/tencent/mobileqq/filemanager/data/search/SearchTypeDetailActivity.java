@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.SparseArray;
 import android.view.MotionEvent;
-import anni;
+import anzj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -49,12 +49,12 @@ public class SearchTypeDetailActivity
     this.jdField_a_of_type_Int = super.getIntent().getIntExtra("qfile_search_param_type", -1);
     this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("qfile_search_param_uin");
     this.jdField_a_of_type_JavaUtilList = super.getIntent().getBundleExtra("qfile_search_param_others").getIntegerArrayList("qfile_search_param_others");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, anni.a(2131712438));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, anni.a(2131712442));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, anni.a(2131712441));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, anni.a(2131712440));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, anni.a(2131712439));
-    super.setContentView(2131558929);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, anzj.a(2131712547));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, anzj.a(2131712551));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, anzj.a(2131712550));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, anzj.a(2131712549));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, anzj.a(2131712548));
+    super.setContentView(2131558928);
     super.setTitle((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int));
     paramBundle = getSupportFragmentManager().beginTransaction();
     ChatFileSearchFragment localChatFileSearchFragment = new ChatFileSearchFragment();
@@ -63,7 +63,7 @@ public class SearchTypeDetailActivity
     localChatFileSearchFragment.b = this.jdField_a_of_type_Int;
     localChatFileSearchFragment.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
     localChatFileSearchFragment.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBundle.replace(2131365013, localChatFileSearchFragment);
+    paramBundle.replace(2131365060, localChatFileSearchFragment);
     paramBundle.commit();
     return true;
   }

@@ -1,54 +1,77 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OcrControl.5.1;
+import com.tencent.mobileqq.ocr.OcrControl.5.2;
+import com.tencent.mobileqq.ocr.OcrControl.5.3;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ayzn
-  extends aqkz<ayzs>
+public class ayzn
+  implements apmi
 {
-  protected abstract int a();
+  ayzn(ayzm paramayzm) {}
   
-  @NonNull
-  public ayzs a(int paramInt)
+  public void a(int paramInt, String paramString, apnt paramapnt)
   {
-    return new ayzs();
-  }
-  
-  @Nullable
-  public ayzs a(aqlg[] paramArrayOfaqlg)
-  {
-    ayzs localayzs = new ayzs();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
-      ayzs.a(localayzs, paramArrayOfaqlg[0].a);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.control", 2, "retCode:" + paramInt + ",sessionId:" + paramString + ",recogResult:" + paramapnt);
     }
-    return localayzs;
-  }
-  
-  public void a(ayzs paramayzs) {}
-  
-  public Class<ayzs> clazz()
-  {
-    return ayzs.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return a();
+    paramString = ayzm.a(this.a, paramString);
+    long l = 0L;
+    if (paramString != null) {
+      l = System.currentTimeMillis() - paramString.c;
+    }
+    int k = -1;
+    int m = -1;
+    int i = m;
+    int j = k;
+    if (paramString != null)
+    {
+      i = m;
+      j = k;
+      if (paramString.a != null)
+      {
+        if ((paramInt != 0) || (paramapnt == null) || (paramapnt.a == null)) {
+          break label282;
+        }
+        paramapnt = paramapnt.a;
+        OcrRecogResult localOcrRecogResult = paramapnt.a();
+        if (ayzm.a(this.a) != null) {
+          ayzm.a(this.a).a(0, localOcrRecogResult, paramString.a.b, l);
+        }
+        if ((localOcrRecogResult != null) && ((this.a.a == 1) || (this.a.a == 2))) {
+          ThreadManager.postImmediately(new OcrControl.5.1(this, localOcrRecogResult, paramString), null, false);
+        }
+        if (paramapnt.a == null) {
+          break label334;
+        }
+        i = paramapnt.a.a;
+        j = paramapnt.a.b;
+      }
+    }
+    for (;;)
+    {
+      k = j;
+      j = i;
+      i = k;
+      for (;;)
+      {
+        ThreadManager.postImmediately(new OcrControl.5.2(this, paramString), null, false);
+        ThreadManager.post(new OcrControl.5.3(this, j, i, paramInt), 5, null, false);
+        return;
+        label282:
+        i = m;
+        j = k;
+        if (ayzm.a(this.a) != null)
+        {
+          ayzm.a(this.a).a(3, null, paramString.a.b, l);
+          i = m;
+          j = k;
+        }
+      }
+      label334:
+      j = -1;
+      i = -1;
+    }
   }
 }
 

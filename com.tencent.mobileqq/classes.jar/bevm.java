@@ -1,32 +1,41 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.HashMap;
 
 public class bevm
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public long a;
+  public bevl a;
+  public String a;
+  public HashMap<String, String> a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  long e;
+  public long f;
+  public long g;
+  public long h;
+  
+  public bevm(bevl parambevl)
   {
-    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bevl = parambevl;
+    this.e = System.currentTimeMillis();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(int paramInt1, int paramInt2, String paramString, HashMap<String, String> paramHashMap)
   {
-    if (paramIntent == null) {
-      return;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.putAll(paramHashMap);
     }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bguc.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
-    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
-    paramPacket.autoResend = bool;
-    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
   }
 }
 

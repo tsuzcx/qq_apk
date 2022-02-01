@@ -1,41 +1,21 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class behg
-  extends AsyncTask<Void, Void, String>
+class behg
+  implements Comparator
 {
-  public behg(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  behg(behe parambehe) {}
   
-  protected String a(Void... paramVarArgs)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bgmo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694329) + " " + paramVarArgs;
-      }
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i == j) {
+      return 0;
     }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
-        }
-        paramVarArgs = null;
-      }
+    if (i > j) {
+      return 1;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694327);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    return -1;
   }
 }
 

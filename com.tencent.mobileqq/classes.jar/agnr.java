@@ -1,27 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
 
-public class agnr
-  implements agma
+class agnr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private BaseChatPie a;
+  agnr(agnq paramagnq) {}
   
-  public agnr(BaseChatPie paramBaseChatPie)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = this.a.c();
-    if (!TextUtils.isEmpty(str)) {
-      bhdd.a(this.a.a).a(str);
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (agnq.a(this.a) != null) {
+      agnq.a(this.a).setAlpha((float)d);
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[7];
+    if (agnq.a(this.a) != null) {
+      agnq.a(this.a).setAlpha((float)d * 2.0F);
+    }
   }
 }
 

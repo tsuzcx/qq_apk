@@ -1,16 +1,13 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
 
-public class auii
-  implements View.OnTouchListener
+class auii
+  implements aunx
 {
-  public auii(ForwardPhotoOption.3 param3) {}
+  auii(auih paramauih) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    aunj.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Augj.d());
   }
 }
 

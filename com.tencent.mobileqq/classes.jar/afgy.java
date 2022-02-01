@@ -1,20 +1,29 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afgy
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
-  public afgy(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public afgy(QQMapActivity paramQQMapActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
+    if (!bhnv.d(this.a)) {
+      this.a.x();
     }
-    return false;
+    for (;;)
+    {
+      abhr.a("see_streetview");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (bhnv.a(this.a)) {
+        this.a.p();
+      } else {
+        bhlq.a(this.a, 230).setTitle(this.a.getString(2131689974)).setMessage(2131694155).setPositiveButton(2131690913, new afha(this)).setNegativeButton(2131690580, new afgz(this)).show();
+      }
+    }
   }
 }
 

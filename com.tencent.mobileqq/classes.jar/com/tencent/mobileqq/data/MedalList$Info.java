@@ -2,12 +2,14 @@ package com.tencent.mobileqq.data;
 
 public class MedalList$Info
 {
+  public int isRemind;
+  public int tipsTimes;
   public int type;
   public String value;
   
   public String toString()
   {
-    return "Info{type=" + this.type + ", value='" + this.value + '\'' + '}';
+    return "Info{type=" + this.type + ", value='" + this.value + '\'' + ", isRemind='" + this.isRemind + '\'' + ", tipsTimes='" + this.tipsTimes + '\'' + '}';
   }
 }
 

@@ -124,7 +124,7 @@ public class hi
     try
     {
       List localList = paramParameters.getSupportedFocusModes();
-      if ((localList.contains("continuous-video")) && (aoxi.a().b)) {
+      if ((localList.contains("continuous-video")) && (apky.a().b)) {
         str = "continuous-video";
       }
       for (;;)

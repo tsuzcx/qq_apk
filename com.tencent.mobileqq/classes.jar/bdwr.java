@@ -1,50 +1,22 @@
-import com.tencent.common.app.AppInterface;
-import mqq.manager.Manager;
-
 public class bdwr
-  implements Manager
 {
-  public bdvu a;
-  public bdvu b;
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b = 0;
+  public String b;
+  public boolean b;
+  public int c = 0;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  public bdvu a(bguy parambguy)
+  public bdwr()
   {
-    if (this.b == null) {}
-    try
-    {
-      parambguy = new bgut(parambguy, 32);
-      parambguy.a();
-      this.b = new bdwv(parambguy, true);
-      return this.b;
-    }
-    finally {}
-  }
-  
-  public bdvu a(AppInterface paramAppInterface, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (this.a == null) {}
-      try
-      {
-        if (this.a == null) {
-          this.a = new bdwv(paramAppInterface.getHttpCommunicatort(), false);
-        }
-        return this.a;
-      }
-      finally {}
-    }
-    return null;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.a != null) {
-      ((bdwv)this.a).a();
-    }
-    if (this.b != null) {
-      ((bdwv)this.b).a();
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

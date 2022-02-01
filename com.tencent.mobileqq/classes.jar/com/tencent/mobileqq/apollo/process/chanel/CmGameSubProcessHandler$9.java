@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amqt;
-import anct;
+import ancn;
+import anon;
 
 public class CmGameSubProcessHandler$9
   implements Runnable
 {
-  public CmGameSubProcessHandler$9(amqt paramamqt) {}
+  public CmGameSubProcessHandler$9(ancn paramancn) {}
   
   public void run()
   {
-    if (amqt.a(this.this$0) != null) {
-      amqt.a(this.this$0).a();
+    if (ancn.a(this.this$0) != null) {
+      ancn.a(this.this$0).a();
     }
   }
 }

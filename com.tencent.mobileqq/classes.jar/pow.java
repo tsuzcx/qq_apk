@@ -1,23 +1,24 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.mobileqq.widget.AutoFitTextView;
-
 public class pow
-  implements bhul
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
+  public int a;
+  public long a;
+  public boolean a;
   
-  public pow(pou parampou) {}
-  
-  public int a()
+  public pow(long paramLong, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - bggq.a(pou.a(this.jdField_a_of_type_Pou), 10.0F);
+    this(paramLong, paramInt, false);
+  }
+  
+  public pow(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

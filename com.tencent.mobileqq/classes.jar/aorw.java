@@ -1,175 +1,62 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
 
 public class aorw
-  implements SoundPool.OnLoadCompleteListener
 {
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(10, 3, 0);
-  private Map<String, aorx> jdField_a_of_type_JavaUtilMap = new HashMap(10);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public aorw()
-  {
-    this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(this);
-  }
-  
-  private void b()
+  private Signature a()
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        aorx localaorx = (aorx)((Map.Entry)localIterator.next()).getValue();
-        if ((localaorx != null) && (localaorx.c()))
-        {
-          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localaorx.a);
-          localaorx.c = 2;
-        }
-      }
-      return;
+      Signature localSignature = Signature.getInstance("SHA256withRSA");
+      return localSignature;
     }
-    catch (Exception localException)
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.e("ARPromotionSoundPlayer", 2, "stopSound exception", localException);
-      }
+      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "getSignature error : ", localNoSuchAlgorithmException.getMessage() });
     }
+    return null;
   }
   
-  public void a()
+  private boolean a(Signature paramSignature, Key paramKey)
   {
-    ThreadManager.post(new ARPromotionSoundPlayer.1(this), 8, null, true);
+    try
+    {
+      paramSignature.initVerify((PublicKey)paramKey);
+      return true;
+    }
+    catch (InvalidKeyException paramSignature)
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "initForVerify error : ", paramSignature.getMessage() });
+    }
+    return false;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean a(byte[] paramArrayOfByte1, Key paramKey, byte[] paramArrayOfByte2)
   {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("ARPromotionSoundPlayer", 2, "playSound resPath: " + paramString);
-    }
-    this.b = false;
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("ARPromotionSoundPlayer", 2, "playSound resPath is empty!");
-      }
-    }
-    do
+    Signature localSignature = a();
+    if (localSignature == null)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (new File(paramString).exists()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("ARPromotionSoundPlayer", 2, "playSound file not exist");
-        return;
-      } while (this.b);
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        break;
-      }
-      b();
-      paramString = (aorx)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    } while (paramString == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARPromotionSoundPlayer", 2, "playSound contains resPath, state: " + paramString.c);
+      QLog.e("RsaUsingShaAlgorithm", 1, "verifySignature fail");
+      return false;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!a(localSignature, paramKey))
     {
-      if (paramString.b())
-      {
-        localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
-        j = paramString.b;
-        if (paramBoolean) {
-          paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
-        }
-      }
-      while (!paramString.c()) {
-        for (;;)
-        {
-          paramString.c = 3;
-          return;
-          i = 0;
-        }
-      }
-      SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
-      int j = paramString.b;
-      if (paramBoolean) {}
-      for (;;)
-      {
-        paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
-        break;
-        i = 0;
-      }
+      QLog.e("RsaUsingShaAlgorithm", 1, "initForVerify fail");
+      return false;
     }
-    paramString.c = 4;
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("ARPromotionSoundPlayer", 2, "playSound not contains resPath, load");
+    try
+    {
+      localSignature.update(paramArrayOfByte2);
+      boolean bool = localSignature.verify(paramArrayOfByte1);
+      return bool;
     }
-    i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, new aorx(this, i, 3));
-  }
-  
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARPromotionSoundPlayer", 2, "onLoadComplete sampleId:" + paramInt1 + ", status:" + paramInt2);
-    }
-    if (paramInt2 == 0) {
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            localaorx = (aorx)((Map.Entry)localIterator.next()).getValue();
-            if ((localaorx != null) && (localaorx.b == paramInt1))
-            {
-              if (localaorx.a())
-              {
-                localaorx.c = 2;
-                return;
-              }
-              if (localaorx.c()) {
-                if (!this.jdField_a_of_type_Boolean)
-                {
-                  localaorx.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
-                  return;
-                }
-              }
-            }
-          }
-        }
-      }
-      catch (Exception paramSoundPool)
-      {
-        aorx localaorx;
-        paramSoundPool.printStackTrace();
-        if (QLog.isColorLevel())
-        {
-          QLog.e("ARPromotionSoundPlayer", 2, "onLoadComplete exception", paramSoundPool);
-          return;
-          localaorx.c = 4;
-        }
-      }
-    }
+    catch (SignatureException paramArrayOfByte1) {}
+    return false;
   }
 }
 

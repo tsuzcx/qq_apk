@@ -1,30 +1,64 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aeta
-  extends anot
+  implements View.OnClickListener
 {
-  public aeta(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aeta(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    label31:
+    QQToast localQQToast;
+    if ((k & 0x2) != 0)
+    {
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label103;
+      }
+      if ((i == 0) && (j == 0)) {
+        break label108;
+      }
+      if (30 != this.a.a.size()) {
+        break label162;
+      }
+      localQQToast = new QQToast(this.a);
+      localQQToast.d(2000);
+      localQQToast.c(2131718759);
+      localQQToast.a();
     }
-    if ((paramBoolean1) && (paramInt == 64)) {
-      this.a.a(paramBoolean2);
+    label162:
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 0;
+      break;
+      label103:
+      j = 0;
+      break label31;
+      label108:
+      if (16 == this.a.a.size())
+      {
+        localQQToast = new QQToast(this.a);
+        localQQToast.d(2000);
+        localQQToast.c(2131718758);
+        localQQToast.a();
+      }
+      else
+      {
+        GroupManagerActivity.a(this.a, bhlq.a(this.a, 2131692825, 2131692831, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+        GroupManagerActivity.a(this.a, 0);
+      }
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131717834, 1);
-    }
-    this.a.a(paramBoolean2);
   }
 }
 

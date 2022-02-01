@@ -1,34 +1,51 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment.3;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.Result;
+import feedcloud.FeedCloudRead.StClearCountRsp;
+import feedcloud.FeedCloudRead.StClearCountRspInfo;
+import java.util.Iterator;
+import java.util.List;
 
-final class voi
-  implements URLDrawable.URLDrawableListener
+public class voi
+  implements aaav<FeedCloudRead.StClearCountRsp>
 {
-  voi(int[] paramArrayOfInt) {}
+  public voi(QCircleFolderRcmdTabFragment.3 param3) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StClearCountRsp paramStClearCountRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(vog.a, 2, "applyNormalPaster onLoadFialed");
+    paramString = new StringBuilder();
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      paramString.append("[sendOuterEntranceRedPointRequest] request success!");
+      if (paramStClearCountRsp != null)
+      {
+        paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
+        paramStClearCountRsp = paramStClearCountRsp.clearCountRspInfos.get();
+        if (paramStClearCountRsp != null)
+        {
+          paramStClearCountRsp = paramStClearCountRsp.iterator();
+          while (paramStClearCountRsp.hasNext())
+          {
+            FeedCloudRead.StClearCountRspInfo localStClearCountRspInfo = (FeedCloudRead.StClearCountRspInfo)paramStClearCountRsp.next();
+            if ((localStClearCountRspInfo != null) && (localStClearCountRspInfo.countType.get() == 1)) {
+              vtd.f(localStClearCountRspInfo.clearTime.get());
+            }
+          }
+        }
+      }
+      QLog.d("QCircleEeveeRedPoint_" + QCircleFolderRcmdTabFragment.e, 1, new Object[] { paramString });
+      return;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(vog.a, 2, "urlDrawableListener onLoadSuccessed");
+    paramString.append("[sendOuterEntranceRedPointRequest] request error! isSuccess : ").append(paramBoolean).append(", retCode: ").append(paramLong);
+    if (paramStClearCountRsp != null) {
+      paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
     }
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
-      ApngImage.playByTag(this.a[0]);
-    }
+    QLog.e("QCircleEeveeRedPoint_" + QCircleFolderRcmdTabFragment.e, 1, new Object[] { paramString });
   }
 }
 

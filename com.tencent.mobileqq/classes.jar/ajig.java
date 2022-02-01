@@ -1,6 +1,21 @@
-public abstract interface ajig
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import mqq.os.MqqHandler;
+
+public class ajig
+  extends MqqHandler
 {
-  public abstract void a(int paramInt);
+  public ajig(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a);
+  }
 }
 
 

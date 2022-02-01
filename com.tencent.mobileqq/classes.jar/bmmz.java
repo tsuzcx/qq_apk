@@ -1,14 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-class bmmz
-  implements DialogInterface.OnClickListener
+public class bmmz
+  extends OnPluginInstallListener.Stub
 {
-  bmmz(bmmu parambmmu) {}
+  public bmmz(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    String str = String.valueOf(paramInt);
+    paramString = anzj.a(2131709267);
+    if (this.a.b == QQIndividualityBridgeActivity.c) {
+      paramString = anzj.a(2131709260);
+    }
+    for (;;)
+    {
+      bmgk.a(str, paramString);
+      int i = bhnv.a(this.a);
+      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.c(this.a);
+      bdll.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
+      return;
+      if (this.a.b == QQIndividualityBridgeActivity.d) {
+        paramString = anzj.a(2131709261);
+      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
+        paramString = anzj.a(2131709264);
+      }
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    this.a.b();
   }
 }
 

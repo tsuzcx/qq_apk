@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class allj
+class allj
+  implements View.OnClickListener
 {
-  private static int a = 10000;
+  allj(aljw paramaljw) {}
   
-  public static void a(int paramInt)
-  {
-    a = paramInt;
-  }
-  
-  public static void a(String paramString, Properties paramProperties)
-  {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
-    }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    bcsi.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
-  }
+  public void onClick(View paramView) {}
 }
 
 

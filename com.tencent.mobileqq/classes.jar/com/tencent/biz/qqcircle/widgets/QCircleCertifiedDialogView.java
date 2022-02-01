@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.image.URLImageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import vvb;
+import vye;
 
 public class QCircleCertifiedDialogView
   extends RelativeLayout
@@ -18,7 +18,7 @@ public class QCircleCertifiedDialogView
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private vvb jdField_a_of_type_Vvb;
+  private vye jdField_a_of_type_Vye;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
   
@@ -40,12 +40,12 @@ public class QCircleCertifiedDialogView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131560671, this);
-    setBackgroundDrawable(getResources().getDrawable(2130843900));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131380875));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131380876));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369067));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369068));
+    LayoutInflater.from(getContext()).inflate(2131560687, this);
+    setBackgroundDrawable(getResources().getDrawable(2130843920));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131381054));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131381055));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369157));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369158));
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
     this.jdField_b_of_type_ComTencentImageURLImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -63,20 +63,20 @@ public class QCircleCertifiedDialogView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Vvb != null)
+      if (this.jdField_a_of_type_Vye != null)
       {
-        this.jdField_a_of_type_Vvb.a();
+        this.jdField_a_of_type_Vye.a();
         continue;
-        if (this.jdField_a_of_type_Vvb != null) {
-          this.jdField_a_of_type_Vvb.b();
+        if (this.jdField_a_of_type_Vye != null) {
+          this.jdField_a_of_type_Vye.b();
         }
       }
     }
   }
   
-  public void setCertifiedListener(vvb paramvvb)
+  public void setCertifiedListener(vye paramvye)
   {
-    this.jdField_a_of_type_Vvb = paramvvb;
+    this.jdField_a_of_type_Vye = paramvye;
   }
 }
 

@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class ouq
-  implements View.OnClickListener
+class ouq
+  extends ovd
 {
-  public ouq(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  public void onClick(View paramView)
+  ouq(otv paramotv, boolean paramBoolean1, boolean paramBoolean2, List paramList)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramovg.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, otv.e(this.jdField_a_of_type_Otv), 4);
+      return;
+    }
+    paramovg.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, otv.e(this.jdField_a_of_type_Otv), 4, 4);
   }
 }
 

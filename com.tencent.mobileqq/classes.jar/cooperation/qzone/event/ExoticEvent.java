@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import blxp;
-import blxq;
+import bmyr;
+import bmys;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.app.common.ParcelableWrapper;
 import com.tencent.component.app.common.SmartParcelable;
@@ -25,7 +25,7 @@ import java.util.Set;
 public class ExoticEvent
   implements Parcelable
 {
-  public static final Parcelable.Creator<ExoticEvent> CREATOR = new blxp();
+  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bmyr();
   private static final String TAG = "ExoticEvent";
   private static final int TYPE_BYTE_ARRAY = 5;
   private static final int TYPE_CHAR_ARRAY = 6;
@@ -87,12 +87,12 @@ public class ExoticEvent
     }
   }
   
-  private ExoticEvent(blxq paramblxq, int paramInt, String paramString)
+  private ExoticEvent(bmys parambmys, int paramInt, String paramString)
   {
-    this.mTypes = blxq.a(paramblxq);
+    this.mTypes = bmys.a(parambmys);
     this.what = paramInt;
     this.sourceName = paramString;
-    this.param = blxq.a(paramblxq);
+    this.param = bmys.a(parambmys);
   }
   
   private static Object foreachReadFromParcel(Parcel paramParcel, List<Integer> paramList, ClassLoader paramClassLoader)
@@ -297,17 +297,17 @@ public class ExoticEvent
     }
   }
   
-  private static boolean foreachType(blxq paramblxq)
+  private static boolean foreachType(bmys parambmys)
   {
-    int i = getType(blxq.b(paramblxq));
-    blxq.a(paramblxq).add(Integer.valueOf(i));
+    int i = getType(bmys.b(parambmys));
+    bmys.a(parambmys).add(Integer.valueOf(i));
     switch (i)
     {
     }
     for (;;)
     {
-      return blxq.a(paramblxq);
-      Object localObject1 = (Object[])blxq.b(paramblxq);
+      return bmys.a(parambmys);
+      Object localObject1 = (Object[])bmys.b(parambmys);
       Object localObject2 = new Object[localObject1.length];
       i = 0;
       Object localObject3;
@@ -316,19 +316,19 @@ public class ExoticEvent
         if (i >= localObject1.length) {
           break label147;
         }
-        localObject3 = new blxq(paramblxq, localObject1[i]);
-        if (!foreachType((blxq)localObject3))
+        localObject3 = new bmys(parambmys, localObject1[i]);
+        if (!foreachType((bmys)localObject3))
         {
-          blxq.a(paramblxq, false);
+          bmys.a(parambmys, false);
           break;
         }
-        localObject2[i] = blxq.a((blxq)localObject3);
+        localObject2[i] = bmys.a((bmys)localObject3);
         i += 1;
       }
       label147:
-      blxq.a(paramblxq, localObject2);
+      bmys.a(parambmys, localObject2);
       continue;
-      localObject2 = (List)blxq.b(paramblxq);
+      localObject2 = (List)bmys.b(parambmys);
       localObject1 = new ArrayList(((List)localObject2).size());
       localObject2 = ((List)localObject2).iterator();
       for (;;)
@@ -336,18 +336,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label242;
         }
-        localObject3 = new blxq(paramblxq, ((Iterator)localObject2).next());
-        if (!foreachType((blxq)localObject3))
+        localObject3 = new bmys(parambmys, ((Iterator)localObject2).next());
+        if (!foreachType((bmys)localObject3))
         {
-          blxq.a(paramblxq, false);
+          bmys.a(parambmys, false);
           break;
         }
-        ((List)localObject1).add(blxq.a((blxq)localObject3));
+        ((List)localObject1).add(bmys.a((bmys)localObject3));
       }
       label242:
-      blxq.a(paramblxq, localObject1);
+      bmys.a(parambmys, localObject1);
       continue;
-      localObject2 = (Set)blxq.b(paramblxq);
+      localObject2 = (Set)bmys.b(parambmys);
       localObject1 = new LinkedHashSet();
       localObject2 = ((Set)localObject2).iterator();
       for (;;)
@@ -355,18 +355,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label331;
         }
-        localObject3 = new blxq(paramblxq, ((Iterator)localObject2).next());
-        if (!foreachType((blxq)localObject3))
+        localObject3 = new bmys(parambmys, ((Iterator)localObject2).next());
+        if (!foreachType((bmys)localObject3))
         {
-          blxq.a(paramblxq, false);
+          bmys.a(parambmys, false);
           break;
         }
-        ((Set)localObject1).add(blxq.a((blxq)localObject3));
+        ((Set)localObject1).add(bmys.a((bmys)localObject3));
       }
       label331:
-      blxq.a(paramblxq, localObject1);
+      bmys.a(parambmys, localObject1);
       continue;
-      localObject2 = (Map)blxq.b(paramblxq);
+      localObject2 = (Map)bmys.b(parambmys);
       localObject1 = new LinkedHashMap();
       localObject2 = ((Map)localObject2).entrySet().iterator();
       for (;;)
@@ -379,20 +379,20 @@ public class ExoticEvent
         localObject4 = ((Map.Entry)localObject4).getValue();
         if ((localObject3 != null) && (localObject4 != null))
         {
-          localObject3 = new blxq(paramblxq, localObject3);
-          localObject4 = new blxq(paramblxq, localObject4);
-          if ((!foreachType((blxq)localObject3)) || (!foreachType((blxq)localObject4)))
+          localObject3 = new bmys(parambmys, localObject3);
+          localObject4 = new bmys(parambmys, localObject4);
+          if ((!foreachType((bmys)localObject3)) || (!foreachType((bmys)localObject4)))
           {
-            blxq.a(paramblxq, false);
+            bmys.a(parambmys, false);
             break;
           }
-          ((Map)localObject1).put(blxq.a((blxq)localObject3), blxq.a((blxq)localObject4));
+          ((Map)localObject1).put(bmys.a((bmys)localObject3), bmys.a((bmys)localObject4));
         }
       }
       label485:
-      blxq.a(paramblxq, localObject1);
+      bmys.a(parambmys, localObject1);
       continue;
-      blxq.a(paramblxq, false);
+      bmys.a(parambmys, false);
     }
   }
   
@@ -621,7 +621,7 @@ public class ExoticEvent
     for (;;)
     {
       return null;
-      paramObject = new blxq(paramObject, null);
+      paramObject = new bmys(paramObject, null);
       try
       {
         bool = foreachType(paramObject);

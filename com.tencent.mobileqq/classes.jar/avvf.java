@@ -1,7 +1,4 @@
-public abstract interface avvf
-{
-  public abstract void b(int paramInt1, int paramInt2);
-}
+class avvf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -1,46 +1,20 @@
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 
-public class agru
+class agru
+  implements MessageQueue.IdleHandler
 {
-  public URL a;
-  public boolean a;
-  public boolean b;
+  agru(agrt paramagrt) {}
   
-  public agru(MessageForPic paramMessageForPic)
+  public boolean queueIdle()
   {
-    paramMessageForPic.checkType();
-    if (((paramMessageForPic.imageType == 3) || (paramMessageForPic.imageType == 2000)) && (agrq.h))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      URL localURL = bdzx.a(paramMessageForPic, 1, null);
-      if (bdsh.a(localURL.toString()) != null)
-      {
-        this.jdField_a_of_type_JavaNetURL = localURL;
-        this.b = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("PicItemBuilder", 2, "getThumbDrawable,using GIF_BIG,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "queueIdle");
     }
-    if (this.jdField_a_of_type_JavaNetURL == null)
-    {
-      this.jdField_a_of_type_JavaNetURL = bdzx.a(paramMessageForPic, 65537, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicItemBuilder", 2, "getThumbDrawable,using thumb,uniseq:" + paramMessageForPic.uniseq + " url:" + this.jdField_a_of_type_JavaNetURL);
-      }
+    if (agrr.b()) {
+      this.a.a();
     }
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    if (this.jdField_a_of_type_JavaNetURL != null) {
-      return this.jdField_a_of_type_JavaNetURL.toString();
-    }
-    return super.toString();
+    return false;
   }
 }
 

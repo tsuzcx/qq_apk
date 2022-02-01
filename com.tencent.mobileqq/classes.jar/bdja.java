@@ -1,31 +1,12 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.SQLiteFTSUtils.Proxy;
 
-class bdja
-  implements View.OnClickListener
+public final class bdja
+  implements IMCoreProxyRoute.SQLiteFTSUtils.Proxy
 {
-  bdja(bdiy parambdiy, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public int getFTSNotifyFlag()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdiy, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bdiy.isShowing()) {
-        this.jdField_a_of_type_Bdiy.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    return bhut.a(BaseApplicationImpl.getApplication());
   }
 }
 

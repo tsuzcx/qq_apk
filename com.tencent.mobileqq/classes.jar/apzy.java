@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import java.util.ArrayList;
 
-public class apzy
-  implements DialogInterface.OnClickListener
+class apzy
+  implements ahag
 {
-  public apzy(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  apzy(apzw paramapzw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    boolean bool = ((agyv)apzw.a(this.a).get(apzw.a(this.a))).checkShare();
+    if (bool != apzw.a(this.a))
+    {
+      apzw.a(this.a, bool);
+      apzw.a(this.a, apzw.a(this.a));
+    }
+  }
+  
+  public void b() {}
 }
 
 

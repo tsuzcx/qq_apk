@@ -1,14 +1,22 @@
-import android.os.MessageQueue.IdleHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 class ainw
-  implements MessageQueue.IdleHandler
+  implements bgpp
 {
-  ainw(ains paramains) {}
+  ainw(ainh paramainh) {}
   
-  public boolean queueIdle()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.b();
-    return false;
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
+      return;
+    }
+    paramJSONObject = (bgre)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

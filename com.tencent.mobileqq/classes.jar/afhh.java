@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class afhh
-  implements apyt
+  implements DialogInterface.OnClickListener
 {
-  public afhh(TextPreviewActivity paramTextPreviewActivity) {}
+  public afhh(QQMapActivity paramQQMapActivity) {}
   
-  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
-  {
-    apyo.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
-    paramArrayOfHotWordItem = bgwv.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
-    {
-      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
-      return;
-    }
-    this.a.jdField_a_of_type_JavaLangCharSequence = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
-    this.a.i = 0;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

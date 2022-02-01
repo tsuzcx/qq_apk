@@ -1,17 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidp;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import zlx;
+import ainh;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import java.util.List;
 
 public class PublicAccountChatPie$7
   implements Runnable
 {
-  public PublicAccountChatPie$7(aidp paramaidp) {}
+  public PublicAccountChatPie$7(ainh paramainh) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), zlx.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F));
+    int j = ainh.a(this.this$0);
+    int i = j;
+    if (j > 2) {
+      i = 2;
+    }
+    List localList = this.this$0.a.a().a("2747277822", 1008, i);
+    ((VasExtensionHandler)this.this$0.a.a(71)).a(2, localList);
   }
 }
 

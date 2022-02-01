@@ -1,30 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.lbs.BusinessBuff;
 
 public final class bcqz
-  implements View.OnClickListener
+  implements Parcelable.Creator<BusinessBuff>
 {
-  public bcqz(bcow parambcow) {}
-  
-  public void onClick(View paramView)
+  public BusinessBuff a(Parcel paramParcel)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a(15, 1, 0L);
-      com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.needJump = false;
-      com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.hasClickJumpBtn = true;
-    }
+    return new BusinessBuff(paramParcel);
+  }
+  
+  public BusinessBuff[] a(int paramInt)
+  {
+    return new BusinessBuff[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqz
  * JD-Core Version:    0.7.0.1
  */

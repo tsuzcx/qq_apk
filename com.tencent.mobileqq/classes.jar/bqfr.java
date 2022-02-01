@@ -1,19 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import android.graphics.Bitmap;
 
-public class bqfr
-  extends Handler
+class bqfr
+  extends bqix
 {
-  public bqfr(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
+  public Bitmap a;
+  public Bitmap b;
+  
+  public bqfr(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    super(paramLooper);
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
   }
   
-  public void handleMessage(Message paramMessage)
+  public bqfr(bqix parambqix, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
-    this.a.a(paramMessage);
+    this(parambqix.jdField_c_of_type_Int, parambqix.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 

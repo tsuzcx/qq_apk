@@ -1,19 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class zqc
-  implements Animation.AnimationListener
+public class zqc
 {
-  zqc(zqa paramzqa) {}
+  public long a;
+  public long b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public zqc(long paramLong1, long paramLong2)
   {
-    this.a.dismiss();
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -39,13 +39,13 @@ public class PhoneUnityVerifyActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561357);
-    super.setTitle(getString(2131694224));
+    super.setContentView(2131561396);
+    super.setTitle(getString(2131694262));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131692831);
+    this.rightViewText.setText(2131692839);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131372366);
+    paramBundle = (Button)super.findViewById(2131372479);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }

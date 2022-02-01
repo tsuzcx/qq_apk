@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import anip;
-import azkn;
+import anum;
+import bacz;
 import java.util.ArrayList;
 
 class VisitorsActivity$9
@@ -13,11 +13,11 @@ class VisitorsActivity$9
   
   public void run()
   {
-    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Anip.a(2, 7);
-    ArrayList localArrayList2 = this.this$0.jdField_a_of_type_Anip.a(3, 7);
+    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Anum.a(2, 7);
+    ArrayList localArrayList2 = this.this$0.jdField_a_of_type_Anum.a(3, 7);
     if (!this.this$0.isFinishing())
     {
-      this.this$0.jdField_a_of_type_Azkn.a();
+      this.this$0.jdField_a_of_type_Bacz.a();
       this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, 0, 0, new Object[] { localArrayList1, localArrayList2 }).sendToTarget();
     }
   }

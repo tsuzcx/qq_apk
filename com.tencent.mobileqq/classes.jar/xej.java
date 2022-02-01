@@ -1,114 +1,53 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract class xej
+public class xej
+  extends wov
 {
-  private static Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-  public biau a;
+  public long a;
   public String a;
-  public WeakReference<Activity> a;
-  public List<int[]> a;
-  private xei jdField_a_of_type_Xei;
+  public ArrayList<VideoCollectionItem> a;
   public boolean a;
-  public boolean b = true;
+  public int b;
+  public int c = -1;
   
-  public xej(Activity paramActivity)
+  public xej(String paramString, qqstory_service.RspDateVideoCollectionList paramRspDateVideoCollectionList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-  }
-  
-  public static boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - jdField_a_of_type_JavaLangLong.longValue();
-    if ((l2 > 0L) && (l2 < 800L))
+    super(paramRspDateVideoCollectionList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramRspDateVideoCollectionList.is_end.get() == 1) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("isFastDoubleClick", 2, "time:" + l1 + ", mLastClickTIme:" + jdField_a_of_type_JavaLangLong + ", timeDiff:" + l2);
-      }
-      return true;
-    }
-    jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
-    return false;
-  }
-  
-  public Activity a()
-  {
-    return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  protected abstract void a();
-  
-  protected void a(int paramInt)
-  {
-    if (a()) {
-      return;
-    }
-    b();
-    this.jdField_a_of_type_Xei.a(b(paramInt));
-  }
-  
-  public void a(xei paramxei)
-  {
-    this.jdField_a_of_type_Xei = paramxei;
-  }
-  
-  public abstract int b(int paramInt);
-  
-  public void b()
-  {
-    if (!this.b) {}
-    do
-    {
-      Activity localActivity;
-      do
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspDateVideoCollectionList.next_cookie.get().toStringUtf8();
+      this.b = paramRspDateVideoCollectionList.total_video_count.get();
+      this.jdField_a_of_type_Long = paramRspDateVideoCollectionList.seqno.get();
+      this.c = paramRspDateVideoCollectionList.is_friend.get();
+      paramRspDateVideoCollectionList = paramRspDateVideoCollectionList.collection_list.get().iterator();
+      while (paramRspDateVideoCollectionList.hasNext())
       {
-        return;
-        if (this.jdField_a_of_type_Biau != null) {
-          break;
-        }
-        localActivity = a();
-      } while (localActivity == null);
-      int i = localActivity.getResources().getDimensionPixelSize(2131298998);
-      this.jdField_a_of_type_Biau = new biau(localActivity);
-      this.jdField_a_of_type_Biau.a(anni.a(2131712736));
-      this.jdField_a_of_type_Biau.b(i);
-    } while (this.jdField_a_of_type_Biau.isShowing());
-    this.jdField_a_of_type_Biau.show();
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-      this.jdField_a_of_type_Biau.dismiss();
+        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspDateVideoCollectionList.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.memories:GetDateCollectionListResponse", paramString, localDateVideoCollection);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
+      }
+      bool = false;
     }
   }
   
-  public void d()
+  public String toString()
   {
-    a();
-    if (this.jdField_a_of_type_Xei != null) {
-      this.jdField_a_of_type_Xei.a();
-    }
-  }
-  
-  protected void e()
-  {
-    if (this.jdField_a_of_type_Xei != null) {
-      this.jdField_a_of_type_Xei.b();
-    }
-  }
-  
-  protected void f()
-  {
-    if (this.jdField_a_of_type_Xei != null) {
-      this.jdField_a_of_type_Xei.c();
-    }
+    return "GetDateCollectionListResponse{isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mTotalVideoCount=" + this.b + ", mIsFriend=" + this.c + '}';
   }
 }
 

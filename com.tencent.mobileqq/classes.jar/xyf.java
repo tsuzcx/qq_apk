@@ -1,21 +1,25 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class xyf
-  extends xbu
+  implements bliz
 {
-  xyf(xye paramxye) {}
+  xyf(xyd paramxyd, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, blir paramblir) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    super.a();
-    xye.a(this.a).jdField_a_of_type_Xbo = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    yqu.a("share_story", "day_suc", 0, paramInt, new String[] { xye.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      xiz.a(this.jdField_a_of_type_Xyd.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new xyg(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

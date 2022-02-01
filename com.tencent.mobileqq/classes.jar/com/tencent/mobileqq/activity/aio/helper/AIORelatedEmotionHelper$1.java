@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkh;
-import aqmf;
+import agti;
+import arbk;
 
 public class AIORelatedEmotionHelper$1
   implements Runnable
 {
-  public AIORelatedEmotionHelper$1(agkh paramagkh) {}
+  public AIORelatedEmotionHelper$1(agti paramagti) {}
   
   public void run()
   {
-    aqmf.a();
+    arbk.a();
   }
 }
 

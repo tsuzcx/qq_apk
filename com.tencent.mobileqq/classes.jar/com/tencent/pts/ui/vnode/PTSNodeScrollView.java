@@ -100,7 +100,7 @@ public class PTSNodeScrollView
       localPTSLiteItemViewManager = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteItemViewManager();
       if (localIPTSLiteEventListener != null)
       {
-        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(5, (String)localObject, localHashMap, ((PTSScrollView)getView()).getChildAt(paramInt));
+        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(5, (String)localObject, localHashMap, ((PTSScrollView)getView()).getChildAt(paramInt), localPTSAppInstance.getPtsComposer());
         return;
       }
     } while (localPTSLiteItemViewManager == null);

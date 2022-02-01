@@ -1,23 +1,59 @@
-import android.os.Bundle;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0x96.submsgtype0x96.MsgBody;
 
-class adfd
-  extends niv
+public class adfd
+  implements adci
 {
-  adfd(adfb paramadfb, adfn paramadfn, JSONObject paramJSONObject, adea paramadea) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(adfb.a, 2, "onResult appid=" + adfb.b(this.jdField_a_of_type_Adfb).a + ", openid=" + this.jdField_a_of_type_Adfn.a + ", openkey=" + this.jdField_a_of_type_Adfn.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
+      QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor receive 0x96 push message ");
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    submsgtype0x96.MsgBody localMsgBody = new submsgtype0x96.MsgBody();
+    try
     {
-      adhh.a(this.jdField_a_of_type_Adea, paramInt, "reportScore result error, try again");
-      return;
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramMsgType0x210 = new Intent("tencent.qqcomic.push.msg");
+      if (localMsgBody.uint32_push_type.has()) {
+        switch (localMsgBody.uint32_push_type.get())
+        {
+        case 0: 
+          paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
+          for (;;)
+          {
+            paramMsgType0x210.putExtra("msg", localMsgBody.string_push_msg.get());
+            paramQQAppInterface.getApp().sendBroadcast(paramMsgType0x210);
+            return;
+            paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
+          }
+        }
+      }
     }
-    adhh.a(this.jdField_a_of_type_Adea, adec.jdField_a_of_type_OrgJsonJSONObject);
+    catch (Exception paramQQAppInterface)
+    {
+      while (QLog.isColorLevel())
+      {
+        QLog.d("Q.msg.BaseMessageProcessor", 4, "OnLinePushMessageProcessor mergeFrom 0x96 exception ");
+        return;
+        paramMsgType0x210.setAction("tencent.qqcomic.show.egg");
+        continue;
+        paramMsgType0x210.setAction("tencent.qqcomic.show.dialog");
+      }
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

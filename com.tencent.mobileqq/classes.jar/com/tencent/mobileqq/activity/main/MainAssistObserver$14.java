@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiwt;
-import aiyr;
-import ajld;
-import ajvr;
+import ajic;
+import ajka;
+import ajwm;
+import akha;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$14
   implements Runnable
 {
-  public MainAssistObserver$14(ajvr paramajvr, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$14(akha paramakha, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -24,9 +24,9 @@ public class MainAssistObserver$14
       Object localObject3;
       try
       {
-        Object localObject1 = (ajld)this.a.getManager(295);
-        localObject3 = (aiyr)this.a.getManager(34);
-        int i = ((aiyr)localObject3).d();
+        Object localObject1 = (ajwm)this.a.getManager(295);
+        localObject3 = (ajka)this.a.getManager(34);
+        int i = ((ajka)localObject3).d();
         if (i > 0)
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
@@ -44,7 +44,7 @@ public class MainAssistObserver$14
           this.this$0.a.sendMessage((Message)localObject3);
           return;
         }
-        if (((aiyr)localObject3).a())
+        if (((ajka)localObject3).a())
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
@@ -72,7 +72,7 @@ public class MainAssistObserver$14
         localObject2 = null;
       } else {
         label236:
-        if (aiwt.a(this.a).a())
+        if (ajic.a(this.a).a())
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);

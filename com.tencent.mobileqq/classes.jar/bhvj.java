@@ -1,11 +1,4 @@
-public abstract interface bhvj
-{
-  public abstract int a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-}
+class bhvj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

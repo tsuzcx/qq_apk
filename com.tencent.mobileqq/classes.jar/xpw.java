@@ -1,10 +1,28 @@
-public abstract interface xpw
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xpw
+  extends QQUIEventReceiver<xpv, xqa>
 {
-  public abstract void a(long paramLong1, long paramLong2, xpl paramxpl);
+  public xpw(@NonNull xpv paramxpv)
+  {
+    super(paramxpv);
+  }
   
-  public abstract void b(xpl paramxpl);
+  public void a(@NonNull xpv paramxpv, @NonNull xqa paramxqa)
+  {
+    if (paramxqa.a.isSuccess())
+    {
+      yuk.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramxqa.toString());
+      paramxpv.e();
+    }
+  }
   
-  public abstract void c(xpl paramxpl);
+  public Class acceptEventClass()
+  {
+    return xqa.class;
+  }
 }
 
 

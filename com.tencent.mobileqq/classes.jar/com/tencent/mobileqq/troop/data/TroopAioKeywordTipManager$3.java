@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.troop.data;
 
-import beqk;
-import beqn;
+import bfpr;
+import bfpu;
 import java.util.List;
 
 public class TroopAioKeywordTipManager$3
   implements Runnable
 {
-  public TroopAioKeywordTipManager$3(beqk parambeqk, List paramList1, List paramList2, int paramInt, beqn parambeqn) {}
+  public TroopAioKeywordTipManager$3(bfpr parambfpr, List paramList1, List paramList2, int paramInt, bfpu parambfpu) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
+    //   1: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
     //   4: aload_0
     //   5: getfield 19	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   8: aload_0
     //   9: getfield 21	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:b	Ljava/util/List;
     //   12: aload_0
     //   13: getfield 23	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Int	I
-    //   16: invokevirtual 35	beqk:a	(Ljava/util/List;Ljava/util/List;I)Landroid/util/Pair;
+    //   16: invokevirtual 35	bfpr:a	(Ljava/util/List;Ljava/util/List;I)Landroid/util/Pair;
     //   19: astore_3
     //   20: aload_3
     //   21: getfield 41	android/util/Pair:second	Ljava/lang/Object;
@@ -32,7 +32,7 @@ public class TroopAioKeywordTipManager$3
     //   32: checkcast 48	com/tencent/mobileqq/data/MessageRecord
     //   35: astore_3
     //   36: aload_0
-    //   37: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Beqn	Lbeqn;
+    //   37: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Bfpu	Lbfpu;
     //   40: ifnull +20 -> 60
     //   43: invokestatic 54	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
     //   46: new 56	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3$1
@@ -46,42 +46,42 @@ public class TroopAioKeywordTipManager$3
     //   60: aload_2
     //   61: ifnull +258 -> 319
     //   64: aload_0
-    //   65: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   68: getfield 68	beqk:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   65: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   68: getfield 68	bfpr:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   71: aload_2
     //   72: invokevirtual 72	java/lang/Integer:intValue	()I
     //   75: invokevirtual 78	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   78: checkcast 80	beqb
+    //   78: checkcast 80	bfpi
     //   81: astore 4
     //   83: aload_0
-    //   84: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   87: getfield 68	beqk:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   84: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   87: getfield 68	bfpr:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   90: astore 5
     //   92: aload 5
     //   94: monitorenter
     //   95: aload 4
     //   97: ifnonnull +20 -> 117
     //   100: aload_0
-    //   101: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
+    //   101: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
     //   104: aload_3
     //   105: aconst_null
     //   106: aload_0
-    //   107: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Beqn	Lbeqn;
-    //   110: invokestatic 83	beqk:a	(Lbeqk;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbeqn;)V
+    //   107: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Bfpu	Lbfpu;
+    //   110: invokestatic 83	bfpr:a	(Lbfpr;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbfpu;)V
     //   113: aload 5
     //   115: monitorexit
     //   116: return
     //   117: aload 5
     //   119: monitorexit
     //   120: aload_0
-    //   121: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   124: getfield 85	beqk:b	Landroid/util/SparseArray;
+    //   121: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   124: getfield 85	bfpr:b	Landroid/util/SparseArray;
     //   127: astore 5
     //   129: aload 5
     //   131: monitorenter
     //   132: aload_0
-    //   133: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   136: getfield 85	beqk:b	Landroid/util/SparseArray;
+    //   133: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   136: getfield 85	bfpr:b	Landroid/util/SparseArray;
     //   139: aload_2
     //   140: invokevirtual 72	java/lang/Integer:intValue	()I
     //   143: invokevirtual 78	android/util/SparseArray:get	(I)Ljava/lang/Object;
@@ -94,19 +94,19 @@ public class TroopAioKeywordTipManager$3
     //   159: aload 6
     //   161: getfield 90	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo:version	I
     //   164: aload 4
-    //   166: getfield 93	beqb:e	I
+    //   166: getfield 93	bfpi:e	I
     //   169: if_icmpeq +35 -> 204
     //   172: iconst_1
     //   173: istore_1
     //   174: iload_1
     //   175: ifeq +157 -> 332
     //   178: aload_0
-    //   179: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
+    //   179: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
     //   182: aload_2
     //   183: aload_3
     //   184: aload_0
-    //   185: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Beqn	Lbeqn;
-    //   188: invokestatic 96	beqk:a	(Lbeqk;Ljava/lang/Integer;Lcom/tencent/mobileqq/data/MessageRecord;Lbeqn;)V
+    //   185: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Bfpu	Lbfpu;
+    //   188: invokestatic 96	bfpr:a	(Lbfpr;Ljava/lang/Integer;Lcom/tencent/mobileqq/data/MessageRecord;Lbfpu;)V
     //   191: return
     //   192: astore_2
     //   193: aload 5
@@ -119,26 +119,26 @@ public class TroopAioKeywordTipManager$3
     //   202: aload_2
     //   203: athrow
     //   204: aload_0
-    //   205: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
+    //   205: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
     //   208: aload_3
     //   209: aload 6
     //   211: aload_0
-    //   212: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Beqn	Lbeqn;
-    //   215: invokestatic 83	beqk:a	(Lbeqk;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbeqn;)V
+    //   212: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Bfpu	Lbfpu;
+    //   215: invokestatic 83	bfpr:a	(Lbfpr;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbfpu;)V
     //   218: iconst_0
     //   219: istore_1
     //   220: goto -46 -> 174
     //   223: aload_0
-    //   224: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   227: getfield 99	beqk:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   224: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   227: getfield 99	bfpr:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   230: aload_2
     //   231: invokestatic 105	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   234: invokestatic 110	bepz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;
+    //   234: invokestatic 110	bfpg:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;
     //   237: astore 5
     //   239: aload 5
     //   241: ifnull +16 -> 257
     //   244: aload 4
-    //   246: getfield 93	beqb:e	I
+    //   246: getfield 93	bfpi:e	I
     //   249: aload 5
     //   251: getfield 90	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo:version	I
     //   254: if_icmpeq +8 -> 262
@@ -146,21 +146,21 @@ public class TroopAioKeywordTipManager$3
     //   258: istore_1
     //   259: goto -85 -> 174
     //   262: aload_0
-    //   263: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
+    //   263: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
     //   266: aload_3
     //   267: aload 5
     //   269: aload_0
-    //   270: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Beqn	Lbeqn;
-    //   273: invokestatic 83	beqk:a	(Lbeqk;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbeqn;)V
+    //   270: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Bfpu	Lbfpu;
+    //   273: invokestatic 83	bfpr:a	(Lbfpr;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbfpu;)V
     //   276: aload_0
-    //   277: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   280: getfield 85	beqk:b	Landroid/util/SparseArray;
+    //   277: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   280: getfield 85	bfpr:b	Landroid/util/SparseArray;
     //   283: astore 4
     //   285: aload 4
     //   287: monitorenter
     //   288: aload_0
-    //   289: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
-    //   292: getfield 85	beqk:b	Landroid/util/SparseArray;
+    //   289: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
+    //   292: getfield 85	bfpr:b	Landroid/util/SparseArray;
     //   295: aload 5
     //   297: getfield 113	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo:ruleId	I
     //   300: aload 5
@@ -176,12 +176,12 @@ public class TroopAioKeywordTipManager$3
     //   317: aload_2
     //   318: athrow
     //   319: aload_0
-    //   320: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbeqk;
+    //   320: getfield 17	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:this$0	Lbfpr;
     //   323: aconst_null
     //   324: aconst_null
     //   325: aload_0
-    //   326: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Beqn	Lbeqn;
-    //   329: invokestatic 83	beqk:a	(Lbeqk;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbeqn;)V
+    //   326: getfield 25	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$3:jdField_a_of_type_Bfpu	Lbfpu;
+    //   329: invokestatic 83	bfpr:a	(Lbfpr;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lbfpu;)V
     //   332: return
     // Local variable table:
     //   start	length	slot	name	signature

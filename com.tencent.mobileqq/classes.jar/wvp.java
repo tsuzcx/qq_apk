@@ -1,6 +1,18 @@
-public abstract interface wvp
+import java.util.Comparator;
+
+public class wvp
+  implements Comparator<wvn>
 {
-  public abstract void a(boolean paramBoolean);
+  public int a(wvn paramwvn1, wvn paramwvn2)
+  {
+    if (paramwvn1.c < paramwvn2.c) {
+      return 1;
+    }
+    if (paramwvn1.c > paramwvn2.c) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

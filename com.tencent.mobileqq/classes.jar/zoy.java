@@ -1,14 +1,43 @@
-import android.database.DataSetObserver;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-class zoy
-  extends DataSetObserver
+public abstract interface zoy
 {
-  zoy(zox paramzox) {}
+  public abstract int a();
   
-  public void onChanged()
-  {
-    zox.a(this.a, true);
-  }
+  public abstract Bitmap a();
+  
+  public abstract View a();
+  
+  public abstract zpd a(int paramInt);
+  
+  public abstract zpe a();
+  
+  public abstract void a();
+  
+  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
+  
+  public abstract void a(wur paramwur, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(zpa paramzpa);
+  
+  public abstract void a(zpc paramzpc);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract zpg[] a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 

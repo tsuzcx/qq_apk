@@ -1,21 +1,11 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.widget.BubblePopupWindow;
-
 public class bgui
-  extends TextView
 {
-  public bgui(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public long a;
+  public long b;
   
-  public boolean performClick()
+  public String toString()
   {
-    boolean bool = super.performClick();
-    QQCustomMenuImageLayout.a(this.a).b();
-    return bool;
+    return " s:" + this.a + " e:" + this.b;
   }
 }
 

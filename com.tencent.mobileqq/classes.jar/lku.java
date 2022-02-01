@@ -1,338 +1,198 @@
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.av.AVFunChat.AVFunChatMessage;
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.av.report.AVReport;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.AndroidCameraInfo;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.AudioSwitchPointInfo;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdToClientConfigInfoRspBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileQQPttInfo;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.RspBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.SharpTraeInfo;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.TransBuffer;
 
-@SuppressLint({"HandlerLeak"})
 public class lku
-  extends Handler
 {
-  private final String jdField_a_of_type_JavaLangString = "VcControllerImpl_NativeEventHandler";
+  private lkn jdField_a_of_type_Lkn = new lkn(this.jdField_a_of_type_Lkl);
+  private hd_video_putinfo.RspBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$RspBody = new hd_video_putinfo.RspBody();
   
-  public lku(VcControllerImpl paramVcControllerImpl, Looper paramLooper)
+  public lku(lkl paramlkl) {}
+  
+  private int a()
   {
-    super(paramLooper);
+    int k = 0;
+    int i;
+    if (!this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$RspBody.msg_to_client_config_info_rsq_body.has()) {
+      i = -1;
+    }
+    Object localObject1;
+    boolean bool;
+    int j;
+    label1260:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            localObject1 = (hd_video_putinfo.CmdToClientConfigInfoRspBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$RspBody.msg_to_client_config_info_rsq_body.get();
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).uint32_log_flag.has())
+            {
+              i = ((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).uint32_log_flag.get();
+              localObject2 = this.jdField_a_of_type_Lkn;
+              if (i != 0) {
+                break;
+              }
+              bool = false;
+              ((lkn)localObject2).jdField_a_of_type_Boolean = bool;
+            }
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).bytes_log_report_time.has()) {
+              ((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).bytes_log_report_time.get().toStringUtf8();
+            }
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_android_camera_set.has())
+            {
+              localObject2 = (hd_video_putinfo.AndroidCameraInfo)((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_android_camera_set.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.a = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param1.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.b = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param2.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.c = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param3.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.d = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param4.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.e = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param5.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.f = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param6.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.g = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param7.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.h = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param8.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.i = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param9.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.j = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param10.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.k = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param11.get());
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lko.l = ((byte)((hd_video_putinfo.AndroidCameraInfo)localObject2).uint32_param12.get());
+            }
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_sharp_trae_info_set.has())
+            {
+              localObject2 = (hd_video_putinfo.SharpTraeInfo)((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_sharp_trae_info_set.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.jdField_a_of_type_Int = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_trae_source.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.jdField_b_of_type_Int = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_trae_interface.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.c = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_trae_stream_type.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.d = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_trae_volume.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.e = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_trae_mode.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.f = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_arm_flag.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.g = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_cpu_hertz.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkr.h = ((hd_video_putinfo.SharpTraeInfo)localObject2).uint32_audio_set.get();
+            }
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).uint64_switch.has())
+            {
+              long l = ((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).uint64_switch.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.a = ((byte)(int)(l & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.b = ((byte)(int)(l >> 1 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.c = ((byte)(int)(l >> 2 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.d = ((byte)(int)(l >> 3 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.e = ((byte)(int)(l >> 4 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.f = ((byte)(int)(l >> 5 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.g = ((byte)(int)(l >> 6 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.h = ((byte)(int)(l >> 7 & 1L));
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lks.i = ((byte)(int)(l >> 13 & 1L));
+            }
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_qq_ptt_info_set.has())
+            {
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.jdField_a_of_type_Boolean = true;
+              localObject2 = (hd_video_putinfo.MobileQQPttInfo)((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_qq_ptt_info_set.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.jdField_a_of_type_Int = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param1.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.jdField_b_of_type_Int = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param2.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.c = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param3.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.d = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param4.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.e = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param5.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.f = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param6.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.g = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param7.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.h = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param8.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.i = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param9.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.j = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param10.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.k = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param11.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.l = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param12.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.m = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param13.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.n = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param14.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkq.o = ((hd_video_putinfo.MobileQQPttInfo)localObject2).uint32_param15.get();
+            }
+            if (((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_audio_quality_set.has())
+            {
+              localObject2 = (hd_video_putinfo.AudioSwitchPointInfo)((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).msg_audio_quality_set.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.jdField_a_of_type_Int = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_wifi_shake.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.jdField_b_of_type_Int = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_wifi_time_delay.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.c = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_wifi_pack_loss.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.d = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_wifi_pack_loss_rate.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.jdField_a_of_type_JavaLangString = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).bytes_wifi_words.get().toStringUtf8();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.e = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_nowifi_shake.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.f = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_nowifi_time_delay.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.g = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_nowifi_pack_loss.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.h = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).uint32_nowifi_pack_loss_rate.get();
+              this.jdField_a_of_type_Lkn.jdField_a_of_type_Lkp.jdField_b_of_type_JavaLangString = ((hd_video_putinfo.AudioSwitchPointInfo)localObject2).bytes_nowifi_words.get().toStringUtf8();
+            }
+            i = k;
+          } while (!((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).rpt_msg_trans_buffer_list.has());
+          localObject1 = ((hd_video_putinfo.CmdToClientConfigInfoRspBody)localObject1).rpt_msg_trans_buffer_list.get();
+          i = k;
+        } while (localObject1 == null);
+        i = k;
+      } while (((List)localObject1).size() <= 0);
+      j = 0;
+      i = k;
+    } while (j >= ((List)localObject1).size());
+    Object localObject2 = this.jdField_a_of_type_Lkn;
+    localObject2.getClass();
+    localObject2 = new lkt((lkn)localObject2);
+    ((lkt)localObject2).jdField_a_of_type_Int = ((hd_video_putinfo.TransBuffer)((List)localObject1).get(j)).uint32_type.get();
+    ((lkt)localObject2).jdField_a_of_type_JavaLangString = ((hd_video_putinfo.TransBuffer)((List)localObject1).get(j)).bytes_content.get().toStringUtf8();
+    this.jdField_a_of_type_Lkn.jdField_a_of_type_JavaUtilList.add(localObject2);
+    if (((lkt)localObject2).jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_Lkn.jdField_a_of_type_JavaLangString = ((lkt)localObject2).jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      j += 1;
+      break label1260;
+      bool = true;
+      break;
+      if (((lkt)localObject2).jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_Lkn.jdField_b_of_type_JavaLangString = ((lkt)localObject2).jdField_a_of_type_JavaLangString;
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a(byte[] paramArrayOfByte)
   {
-    int i;
-    Object localObject;
-    long l1;
-    String str;
-    label774:
-    boolean bool;
-    for (;;)
+    if (paramArrayOfByte == null) {
+      return -1;
+    }
+    try
     {
-      byte[] arrayOfByte;
-      try
+      this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$RspBody.mergeFrom(paramArrayOfByte);
+      if (!this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$RspBody.msg_putinfo_head.has()) {
+        return -1;
+      }
+      paramArrayOfByte = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$RspBody.msg_putinfo_head.get();
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_error_no.has()) && (paramArrayOfByte.uint32_error_no.get() == 0) && (paramArrayOfByte.enum_body_type.has()) && (paramArrayOfByte.enum_body_type.get() == 2))
       {
-        i = paramMessage.what;
-        localObject = (lkv)paramMessage.obj;
-        if (localObject == null)
-        {
-          lbc.e("VcControllerImpl_NativeEventHandler", "p is null");
-          return;
+        if (paramArrayOfByte.bytes_config_ver.has()) {
+          lkl.jdField_a_of_type_JavaLangString = paramArrayOfByte.bytes_config_ver.get().toStringUtf8();
         }
-        paramMessage = ((lkv)localObject).jdField_a_of_type_ArrayOfByte;
-        l1 = ((lkv)localObject).jdField_a_of_type_Long;
-        str = mqu.a(((lkv)localObject).jdField_b_of_type_Long);
-        arrayOfByte = ((lkv)localObject).jdField_b_of_type_ArrayOfByte;
-        if ((i != 16) && (i != 100) && (i != 117) && (i != 120) && (i != 124)) {
-          lbc.d("VcControllerImpl_NativeEventHandler", "handleMessage eventId: " + i + ", info: " + l1 + ", fromUin:" + str);
-        }
-        QLog.d("Native-Event", 1, "<-- Native_Event_Handler() eventId = " + i);
-        switch (i)
-        {
-        case 71: 
-        case 1: 
-        case 2: 
-        case 60: 
-        case 61: 
-          VcControllerImpl.access$300(this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl, i, (lkv)localObject);
-          break;
-        case 3: 
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(str);
-        }
-      }
-      finally {}
-      continue;
-      if (l1 > 1000L) {}
-      int j;
-      for (this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mfAudio2VideoFlag = true;; this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mfAudio2VideoFlag = false)
-      {
-        i = (int)((lkv)localObject).c;
-        j = (int)((lkv)localObject).d;
-        l1 = ((lkv)localObject).e;
-        if (((lkv)localObject).jdField_b_of_type_ArrayOfByte == null) {
-          break label2730;
-        }
-        paramMessage = new String(((lkv)localObject).jdField_b_of_type_ArrayOfByte);
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, i, j, paramMessage, l1);
-        break;
-      }
-      long l2 = ((lkv)localObject).c;
-      long l3 = ((lkv)localObject).d;
-      if (l1 == 1L) {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, arrayOfByte, 1L);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(l2, l3, l1);
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, paramMessage, 0L);
-      }
-      if (((lkv)localObject).c != 1L) {
-        break label2736;
-      }
-      bool = true;
-      label898:
-      i = (int)((lkv)localObject).d;
-      try
-      {
-        paramMessage = new String(((lkv)localObject).jdField_a_of_type_ArrayOfByte, "utf-8");
-        j = ((lkv)localObject).jdField_a_of_type_Int;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(bool, i, paramMessage, j);
-      }
-      catch (UnsupportedEncodingException paramMessage)
-      {
-        for (;;)
-        {
-          paramMessage.printStackTrace();
-          paramMessage = "";
-        }
-      }
-      l1 = ((lkv)localObject).c;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(l1, 0L, 100L);
-      continue;
-      i = (int)l1;
-      paramMessage = new StringBuilder().append("EV_VOIP_CLOSED, Param0[").append(((lkv)localObject).c).append("], Param1[").append(((lkv)localObject).d).append("], Param2[").append(((lkv)localObject).jdField_a_of_type_JavaLangString).append("], Param3[").append(((lkv)localObject).jdField_a_of_type_Int).append("], Param4[").append(((lkv)localObject).jdField_b_of_type_Int).append("], Param5[").append(((lkv)localObject).e).append("], extraBuf[");
-      if (((lkv)localObject).jdField_b_of_type_ArrayOfByte == null) {
-        break label2745;
-      }
-      bool = true;
-      label1091:
-      QLog.w("VcControllerImpl", 1, bool + "], reason[" + i + "]");
-      switch (i)
-      {
-      case 13: 
-        label1140:
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, i, ((lkv)localObject).c);
-        for (;;)
-        {
-          lhs.a(i, ((lkv)localObject).c, ((lkv)localObject).d, ((lkv)localObject).jdField_a_of_type_JavaLangString);
-          break;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.i(str);
-        }
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, 12, 0L);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.e(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.f(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.j(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.k(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.l(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(i - 19, str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, true);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, false);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.m(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.n(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.o(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.p(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(true);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(false);
-        continue;
-        if (AVReport.a().a) {
-          AVReport.a().k = SystemClock.elapsedRealtime();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(true);
-          break;
-          AVReport.a().z = SystemClock.elapsedRealtime();
-        }
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(paramMessage, l1);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.t(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, (int)l1, ((lkv)localObject).c, ((lkv)localObject).jdField_a_of_type_ArrayOfByte);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (int)l1, ((lkv)localObject).c, ((lkv)localObject).jdField_a_of_type_ArrayOfByte);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, paramMessage, l1);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(str, paramMessage, l1);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(str, paramMessage, l1);
-        continue;
-        switch ((int)((lkv)localObject).c)
-        {
-        default: 
-          label1724:
-          QLog.i("VcControllerImpl", 1, "EV_VOIP_OTHER_TER_CHATING_STAUTS, extraParam0=" + ((lkv)localObject).c);
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, ((lkv)localObject).d, i);
-          continue;
-          i = (int)((lkv)localObject).c;
-          j = (int)((lkv)localObject).d;
-          l1 = ((lkv)localObject).e;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, i, j, l1);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(str, (int)l1);
-          continue;
-          i = (int)((lkv)localObject).c;
-          j = (int)((lkv)localObject).d;
-          l2 = ((lkv)localObject).e;
-          if (((lkv)localObject).jdField_b_of_type_ArrayOfByte == null) {
-            break label2766;
-          }
-          paramMessage = new String(((lkv)localObject).jdField_b_of_type_ArrayOfByte);
-          label1881:
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (int)l1, i, j, paramMessage, l2);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(str, (int)l1);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.u(str);
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(2048);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(3);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(4);
-          continue;
-          i = (int)((lkv)localObject).jdField_a_of_type_Long;
-          if (QLog.isColorLevel()) {
-            QLog.d("NativeEventHandler", 2, "SharpConfigPayload. version = " + i);
-          }
-          BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD").putExtra("version", i));
-          lvh.a().a("load", i);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, l1, paramMessage);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.onAudioData(paramMessage);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, (int)l1, ((lkv)localObject).jdField_a_of_type_ArrayOfByte);
-        }
-        break;
+        int i = a();
+        return i;
       }
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (int)l1, paramMessage);
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c((int)l1, new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d((int)l1, new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(paramMessage);
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.q(new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.s(new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.r(new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, new String(paramMessage));
-        break;
-        try
-        {
-          localObject = new AVFunChat.AVFunChatMessage();
-          ((AVFunChat.AVFunChatMessage)localObject).mergeFrom(paramMessage);
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (AVFunChat.AVFunChatMessage)localObject);
-        }
-        catch (InvalidProtocolBufferMicroException paramMessage)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("VcControllerImpl", 2, "EM_AVFUNCHATTYPE_CreativeCop InvalidProtocolBufferMicroException fail", paramMessage);
-        }
-        catch (Throwable paramMessage) {}
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("VcControllerImpl", 2, "EM_AVFUNCHATTYPE_CreativeCop parse fail", paramMessage);
-      break;
-      i = (int)l1;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.f(str, i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("NativeEventHandler", 2, "EM_SDK_EVENT_ID_GROUND_GLASS_SWITCH. nSwitch = " + i + ", fromUin=" + str);
-      break;
-      i = (int)l1;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g(str, i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("NativeEventHandler", 2, "EM_SDK_EVENT_ID_GROUND_GLASS_WAIT_TIME. nTime = " + i + ", fromUin=" + str);
-      break;
-      i = (int)l1;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.f(i);
-      break;
-      QLog.d("NativeEventHandler", 1, "EM_SDK_EVENT_ID_CUSTOM_COMMAND: recv SDKCustomCommand from SDK, peerUin = " + str);
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, ((lkv)localObject).c, ((lkv)localObject).d, ((lkv)localObject).jdField_b_of_type_Int);
-      break;
-      QLog.d("NativeEventHandler", 1, "NETWORK_CHECK: recv send network check request from SDK, peerUin = " + str);
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.H();
-      break;
-      bcst.b(null, "CliOper", "", "", "0X800A7A4", "0X800A7A4", 0, (int)((lkv)localObject).c, "", "", "", "");
-      break;
-      bcst.b(null, "CliOper", "", "", "0X800A7A5", "0X800A7A5", 0, (int)((lkv)localObject).c, "", "", "", "");
-      break;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g((int)((lkv)localObject).c);
-      break;
-      break;
-      label2730:
-      paramMessage = "";
-      break label774;
-      label2736:
-      bool = false;
-      break label898;
-      break label1140;
-      label2745:
-      bool = false;
-      break label1091;
-      i = 0;
-      break label1724;
-      i = 2;
-      break label1724;
-      i = 1;
-      break label1724;
-      label2766:
-      paramMessage = "";
-      break label1881;
-      switch ((int)l1)
-      {
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return -1;
+  }
+  
+  public lkn a()
+  {
+    return this.jdField_a_of_type_Lkn;
   }
 }
 

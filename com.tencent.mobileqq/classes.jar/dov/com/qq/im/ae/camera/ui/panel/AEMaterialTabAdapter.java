@@ -5,11 +5,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.View;
 import android.view.ViewGroup;
-import bnmn;
-import bnmu;
-import bnpb;
-import bnpc;
-import bojv;
+import booa;
+import boof;
+import boqq;
+import boqr;
+import bplq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
@@ -18,40 +18,40 @@ public class AEMaterialTabAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private bnmu jdField_a_of_type_Bnmu;
-  private bnpc jdField_a_of_type_Bnpc;
+  private boof jdField_a_of_type_Boof;
+  private boqr jdField_a_of_type_Boqr;
   public HashMap<Integer, AEGridView> a;
-  private List<bnpb> jdField_a_of_type_JavaUtilList;
+  private List<boqq> jdField_a_of_type_JavaUtilList;
   
-  public AEMaterialTabAdapter(Context paramContext, bnmu parambnmu)
+  public AEMaterialTabAdapter(Context paramContext, boof paramboof)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bnmu = parambnmu;
-    this.jdField_a_of_type_Bnpc = ((bnpc)bojv.a(18));
+    this.jdField_a_of_type_Boof = paramboof;
+    this.jdField_a_of_type_Boqr = ((boqr)bplq.a(18));
   }
   
-  private void a(bnmn parambnmn, int paramInt)
+  private void a(booa parambooa, int paramInt)
   {
-    this.jdField_a_of_type_Bnpc.a(parambnmn, 112);
-    this.jdField_a_of_type_Bnpc.a(parambnmn, 113);
-    this.jdField_a_of_type_Bnpc.a(parambnmn, 114);
-    this.jdField_a_of_type_Bnpc.a(parambnmn, 111);
-    this.jdField_a_of_type_Bnpc.a(parambnmn, 115);
+    this.jdField_a_of_type_Boqr.a(parambooa, 112);
+    this.jdField_a_of_type_Boqr.a(parambooa, 113);
+    this.jdField_a_of_type_Boqr.a(parambooa, 114);
+    this.jdField_a_of_type_Boqr.a(parambooa, 111);
+    this.jdField_a_of_type_Boqr.a(parambooa, 115);
     if (paramInt == 0) {
-      this.jdField_a_of_type_Bnpc.a(parambnmn, 111);
+      this.jdField_a_of_type_Boqr.a(parambooa, 111);
     }
   }
   
-  public bnpb a(int paramInt)
+  public boqq a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt) && (paramInt >= 0)) {
-      return (bnpb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (boqq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public void a(List<bnpb> paramList)
+  public void a(List<boqq> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -62,8 +62,8 @@ public class AEMaterialTabAdapter
     paramViewGroup = (AEGridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     if (paramViewGroup != null)
     {
-      paramViewGroup = (bnmn)paramViewGroup.getAdapter();
-      this.jdField_a_of_type_Bnpc.a(paramViewGroup);
+      paramViewGroup = (booa)paramViewGroup.getAdapter();
+      this.jdField_a_of_type_Boqr.a(paramViewGroup);
     }
   }
   
@@ -81,18 +81,18 @@ public class AEMaterialTabAdapter
     {
       localAEGridView = new AEGridView(this.jdField_a_of_type_AndroidContentContext);
       localObject = this.jdField_a_of_type_AndroidContentContext;
-      bnmu localbnmu = this.jdField_a_of_type_Bnmu;
+      boof localboof = this.jdField_a_of_type_Boof;
       if (paramInt == 0)
       {
         bool = true;
-        localObject = new bnmn((Context)localObject, localAEGridView, localbnmu, bool);
-        a((bnmn)localObject, paramInt);
+        localObject = new booa((Context)localObject, localAEGridView, localboof, bool);
+        a((booa)localObject, paramInt);
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localAEGridView);
       }
     }
     for (;;)
     {
-      ((bnmn)localObject).a(((bnpb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      ((booa)localObject).a(((boqq)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
       localAEGridView.setAdapter((RecyclerView.Adapter)localObject);
       paramViewGroup.addView(localAEGridView);
       if (QLog.isColorLevel()) {
@@ -101,8 +101,8 @@ public class AEMaterialTabAdapter
       return localAEGridView;
       bool = false;
       break;
-      localObject = (bnmn)localAEGridView.getAdapter();
-      a((bnmn)localObject, paramInt);
+      localObject = (booa)localAEGridView.getAdapter();
+      a((booa)localObject, paramInt);
     }
   }
   

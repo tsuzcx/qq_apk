@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.addon;
 
-import amgd;
+import amrx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -13,7 +13,7 @@ import java.util.List;
 public class DiyPendantFetcher$5
   implements Runnable
 {
-  public DiyPendantFetcher$5(amgd paramamgd, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$5(amrx paramamrx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

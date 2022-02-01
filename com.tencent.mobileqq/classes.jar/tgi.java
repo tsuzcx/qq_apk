@@ -1,8 +1,26 @@
-import android.graphics.RectF;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-public abstract interface tgi
+public class tgi
+  extends tgb
 {
-  public abstract void a(RectF paramRectF);
+  tgi(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  {
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    paramString1 = tfy.a(this.a).mShareHelper.a(tfy.a(this.b), tfy.b(this.b), paramInt);
+    if ((paramString1 instanceof txg))
+    {
+      paramString1 = ((txg)paramString1).b;
+      tfy.a(this.a);
+      BridgeModule.saveImageToLocal(paramString1);
+    }
+  }
 }
 
 

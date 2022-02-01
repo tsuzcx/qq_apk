@@ -1,12 +1,32 @@
-class xdi
-  extends xca
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class xdi
+  extends wou
 {
-  xdi(xcu paramxcu, xec paramxec) {}
+  public List<ylw> a = new ArrayList();
+  public boolean b;
   
-  public boolean b()
+  public xdi(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Xec.d);
-    return true;
+    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
+    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
+    for (;;)
+    {
+      this.b = bool;
+      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
+      while (paramRspStoryFeedIdList.hasNext())
+      {
+        ylw localylw = new ylw((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
+        this.a.add(localylw);
+      }
+      bool = false;
+    }
   }
 }
 

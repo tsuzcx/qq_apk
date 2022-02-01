@@ -1,10 +1,20 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-public abstract interface asnl
+public class asnl
+  implements axfv<String, Integer>
 {
-  public abstract void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
+  public asnl(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
   
-  public abstract void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
+  public Integer a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.k);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, paramString);
+    }
+    return Integer.valueOf(i);
+  }
 }
 
 

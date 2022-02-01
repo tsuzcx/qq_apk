@@ -1,31 +1,22 @@
-import android.view.View;
-import android.view.Window;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
 
-public class aaiz
+class aaiz
+  implements DialogInterface.OnShowListener
 {
-  public static void a(Window paramWindow)
-  {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.getDecorView().setSystemUiVisibility(2);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new aaja(paramWindow));
-  }
+  aaiz(aaiu paramaaiu, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public static void b(Window paramWindow)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (paramWindow == null) {
-      return;
+    if (aaiu.a(this.jdField_a_of_type_Aaiu) != null) {
+      aaiu.a(this.jdField_a_of_type_Aaiu).a(paramDialogInterface);
     }
-    paramWindow.setFlags(8, 8);
-  }
-  
-  public static void c(Window paramWindow)
-  {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.clearFlags(8);
+    paramDialogInterface = aane.a().a(aaiu.a(this.jdField_a_of_type_Aaiu), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    aaiu.a(this.jdField_a_of_type_Aaiu).a(paramDialogInterface);
+    aaak.a().a(new CommentListShowStateEvent(true));
   }
 }
 

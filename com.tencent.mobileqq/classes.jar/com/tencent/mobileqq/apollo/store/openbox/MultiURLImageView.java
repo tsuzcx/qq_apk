@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import amwz;
-import amyh;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import anit;
+import ankb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.image.Utils;
@@ -17,7 +17,7 @@ import java.util.List;
 public class MultiURLImageView
   extends LinearLayout
 {
-  private List<amyh> a;
+  private List<ankb> a;
   
   public MultiURLImageView(Context paramContext)
   {
@@ -34,20 +34,20 @@ public class MultiURLImageView
       paramInt2 = 0;
       if (localIterator.hasNext())
       {
-        amyh localamyh = (amyh)localIterator.next();
+        ankb localankb = (ankb)localIterator.next();
         int i;
         if (super.getOrientation() == 1)
         {
-          i = localamyh.jdField_b_of_type_Int;
-          paramInt2 = Math.max(paramInt2, localamyh.jdField_a_of_type_Int);
+          i = localankb.jdField_b_of_type_Int;
+          paramInt2 = Math.max(paramInt2, localankb.jdField_a_of_type_Int);
           paramInt1 += i;
         }
         for (;;)
         {
           break;
-          i = localamyh.jdField_a_of_type_Int;
-          int j = localamyh.c;
-          paramInt1 = Math.max(paramInt1, localamyh.jdField_b_of_type_Int);
+          i = localankb.jdField_a_of_type_Int;
+          int j = localankb.c;
+          paramInt1 = Math.max(paramInt1, localankb.jdField_b_of_type_Int);
           paramInt2 += i + j;
         }
       }
@@ -66,19 +66,19 @@ public class MultiURLImageView
     super.setGravity(16);
   }
   
-  public void setViewLayoutDatas(List<amyh> paramList)
+  public void setViewLayoutDatas(List<ankb> paramList)
   {
     this.a = paramList;
     int i;
-    amyh localamyh;
+    ankb localankb;
     Object localObject;
     if (this.a != null)
     {
       i = 0;
       if (i < this.a.size())
       {
-        localamyh = (amyh)this.a.get(i);
-        if (!TextUtils.isEmpty(localamyh.jdField_a_of_type_JavaLangString)) {}
+        localankb = (ankb)this.a.get(i);
+        if (!TextUtils.isEmpty(localankb.jdField_a_of_type_JavaLangString)) {}
       }
       else
       {
@@ -92,11 +92,11 @@ public class MultiURLImageView
           i += 1;
         }
       }
-      localObject = localamyh.jdField_b_of_type_JavaLangString;
+      localObject = localankb.jdField_b_of_type_JavaLangString;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label266;
       }
-      localObject = Utils.Crc64String(localamyh.jdField_a_of_type_JavaLangString);
+      localObject = Utils.Crc64String(localankb.jdField_a_of_type_JavaLangString);
     }
     label266:
     for (;;)
@@ -116,13 +116,13 @@ public class MultiURLImageView
         for (;;)
         {
           LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramList.getLayoutParams();
-          localLayoutParams.width = localamyh.jdField_a_of_type_Int;
-          localLayoutParams.height = localamyh.jdField_b_of_type_Int;
-          localLayoutParams.leftMargin = localamyh.c;
-          localObject = amwz.a((String)localObject, null, localamyh.jdField_a_of_type_JavaLangString);
+          localLayoutParams.width = localankb.jdField_a_of_type_Int;
+          localLayoutParams.height = localankb.jdField_b_of_type_Int;
+          localLayoutParams.leftMargin = localankb.c;
+          localObject = anit.a((String)localObject, null, localankb.jdField_a_of_type_JavaLangString);
           ((URLDrawable)localObject).startDownload();
           paramList.setImageDrawable((Drawable)localObject);
-          paramList.setScaleType(localamyh.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
+          paramList.setScaleType(localankb.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
           paramList.setVisibility(0);
           i += 1;
           break;

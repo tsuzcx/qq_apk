@@ -10,9 +10,9 @@ class MiniDynamicManager$1
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
-    //   4: astore 4
+    //   4: astore 5
     //   6: new 32	java/net/URL
     //   9: dup
     //   10: aload_0
@@ -155,37 +155,37 @@ class MiniDynamicManager$1
     //   287: astore_3
     //   288: aconst_null
     //   289: astore_2
-    //   290: aload 5
-    //   292: astore 4
+    //   290: aload_2
+    //   291: ifnull +7 -> 298
     //   294: aload_2
-    //   295: ifnull +7 -> 302
-    //   298: aload_2
-    //   299: invokevirtual 135	java/io/InputStream:close	()V
-    //   302: aload 4
-    //   304: ifnull +8 -> 312
-    //   307: aload 4
-    //   309: invokevirtual 136	java/io/OutputStream:close	()V
-    //   312: aload_3
-    //   313: athrow
-    //   314: astore_2
-    //   315: goto -3 -> 312
-    //   318: astore_3
-    //   319: aload 5
+    //   295: invokevirtual 135	java/io/InputStream:close	()V
+    //   298: aload 4
+    //   300: ifnull +8 -> 308
+    //   303: aload 4
+    //   305: invokevirtual 136	java/io/OutputStream:close	()V
+    //   308: aload_3
+    //   309: athrow
+    //   310: astore_2
+    //   311: goto -3 -> 308
+    //   314: astore_3
+    //   315: goto -25 -> 290
+    //   318: astore 5
+    //   320: aload_3
     //   321: astore 4
-    //   323: goto -29 -> 294
-    //   326: astore 5
-    //   328: aload_3
-    //   329: astore 4
-    //   331: aload 5
+    //   323: aload 5
+    //   325: astore_3
+    //   326: goto -36 -> 290
+    //   329: astore_3
+    //   330: goto -40 -> 290
     //   333: astore_3
-    //   334: goto -40 -> 294
-    //   337: astore_3
-    //   338: goto -44 -> 294
-    //   341: astore_3
-    //   342: aconst_null
-    //   343: astore_2
-    //   344: goto -144 -> 200
-    //   347: astore_3
+    //   334: aconst_null
+    //   335: astore_2
+    //   336: aload 5
+    //   338: astore 4
+    //   340: goto -140 -> 200
+    //   343: astore_3
+    //   344: aload 5
+    //   346: astore 4
     //   348: goto -148 -> 200
     //   351: astore_2
     //   352: return
@@ -196,21 +196,21 @@ class MiniDynamicManager$1
     //   26	187	2	localObject1	Object
     //   227	46	2	localThrowable1	java.lang.Throwable
     //   285	1	2	localThrowable2	java.lang.Throwable
-    //   289	10	2	localObject2	Object
-    //   314	1	2	localThrowable3	java.lang.Throwable
-    //   343	1	2	localObject3	Object
+    //   289	6	2	localObject2	Object
+    //   310	1	2	localThrowable3	java.lang.Throwable
+    //   335	1	2	localObject3	Object
     //   351	1	2	localThrowable4	java.lang.Throwable
     //   117	164	3	localObject4	Object
-    //   287	26	3	localObject5	Object
-    //   318	11	3	localObject6	Object
-    //   333	1	3	localObject7	Object
-    //   337	1	3	localObject8	Object
-    //   341	1	3	localThrowable5	java.lang.Throwable
-    //   347	1	3	localThrowable6	java.lang.Throwable
-    //   4	326	4	localObject9	Object
-    //   1	1	5	localObject10	Object
-    //   192	128	5	localThrowable7	java.lang.Throwable
-    //   326	6	5	localObject11	Object
+    //   287	22	3	localObject5	Object
+    //   314	7	3	localObject6	Object
+    //   325	1	3	localObject7	Object
+    //   329	1	3	localObject8	Object
+    //   333	1	3	localThrowable5	java.lang.Throwable
+    //   343	1	3	localThrowable6	java.lang.Throwable
+    //   1	346	4	localObject9	Object
+    //   4	1	5	localObject10	Object
+    //   192	6	5	localThrowable7	java.lang.Throwable
+    //   318	27	5	localObject11	Object
     // Exception table:
     //   from	to	target	type
     //   162	169	192	java/lang/Throwable
@@ -224,29 +224,29 @@ class MiniDynamicManager$1
     //   6	45	287	finally
     //   52	76	287	finally
     //   101	106	287	finally
-    //   298	302	314	java/lang/Throwable
-    //   307	312	314	java/lang/Throwable
-    //   106	130	318	finally
-    //   130	148	318	finally
-    //   148	162	318	finally
-    //   162	169	326	finally
-    //   169	176	326	finally
-    //   181	189	326	finally
-    //   229	268	326	finally
-    //   200	208	337	finally
-    //   6	45	341	java/lang/Throwable
-    //   52	76	341	java/lang/Throwable
-    //   101	106	341	java/lang/Throwable
-    //   106	130	347	java/lang/Throwable
-    //   130	148	347	java/lang/Throwable
-    //   148	162	347	java/lang/Throwable
+    //   294	298	310	java/lang/Throwable
+    //   303	308	310	java/lang/Throwable
+    //   106	130	314	finally
+    //   130	148	314	finally
+    //   148	162	314	finally
+    //   162	169	318	finally
+    //   169	176	318	finally
+    //   181	189	318	finally
+    //   229	268	318	finally
+    //   200	208	329	finally
+    //   6	45	333	java/lang/Throwable
+    //   52	76	333	java/lang/Throwable
+    //   101	106	333	java/lang/Throwable
+    //   106	130	343	java/lang/Throwable
+    //   130	148	343	java/lang/Throwable
+    //   148	162	343	java/lang/Throwable
     //   80	88	351	java/lang/Throwable
     //   92	100	351	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.MiniDynamicManager.1
  * JD-Core Version:    0.7.0.1
  */

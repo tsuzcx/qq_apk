@@ -1,29 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bliy
+class bliy
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, Bundle paramBundle, String paramString)
+  bliy(blir paramblir) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramContext == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
-      }
-      Toast.makeText(BaseApplication.getContext(), anni.a(2131709466), 0).show();
-      return;
+    this.a.dismiss();
+    if (blir.a(this.a) != null) {
+      blir.a(this.a).onDismiss();
     }
-    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
-    localIntent.putExtra("componetname", paramString);
-    if (paramBundle != null) {
-      localIntent.putExtra("_param_", paramBundle);
-    }
-    paramContext.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

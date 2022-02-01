@@ -1,146 +1,100 @@
-import QC.LoginInfo;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
 import java.util.Map;
-import mqq.manager.TicketManager;
+import java.util.WeakHashMap;
 
 public class bhhm
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, JceStruct> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private String b;
-  private String c = "req";
-  private String d = "rsp";
+  protected int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bhhi jdField_a_of_type_Bhhi;
+  private Map<View, bhhp> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
+  private boolean jdField_a_of_type_Boolean;
+  protected int b;
+  private boolean b;
   
-  @Deprecated
-  public bhhm(String paramString1, String paramString2)
+  public bhhm(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    if (!anjf.a().containsKey(paramString2)) {
-      anjf.a(paramString2, new int[] { 13 });
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bhhi = new bhhi(bhim.a(paramContext) / 8);
   }
   
-  public bhhm(String paramString1, String paramString2, String paramString3, String paramString4)
+  private bhho a(View paramView)
   {
-    this(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    anjf.a(paramString2, a(paramString2, 13));
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public static LoginInfo a()
-  {
-    try
+    if (paramView != null)
     {
-      Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject == null) {
-        return null;
+      bhhp localbhhp = (bhhp)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+      if (localbhhp != null) {
+        paramView = localbhhp.jdField_a_of_type_Bhhn;
       }
-      String str = ((AppInterface)localObject).getCurrentAccountUin();
-      localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
-      LoginInfo localLoginInfo = new LoginInfo();
-      localLoginInfo.lUin = Long.parseLong(str);
-      localLoginInfo.iKeyType = 1;
-      localLoginInfo.sSKey = ((String)localObject);
-      localLoginInfo.iOpplat = 2;
-      localLoginInfo.sClientVer = bgln.c();
-      return localLoginInfo;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("JceProtocol", 1, localException, new Object[0]);
+      while ((paramView instanceof bhhn))
+      {
+        return ((bhhn)paramView).a();
+        if ((paramView instanceof ImageView)) {
+          paramView = ((ImageView)paramView).getDrawable();
+        } else {
+          paramView = paramView.getBackground();
+        }
+      }
     }
     return null;
   }
   
-  public static String a(ToServiceMsg paramToServiceMsg)
+  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, bhhp parambhhp)
   {
-    return paramToServiceMsg.getServiceCmd() + "_" + paramToServiceMsg.extraData.get(anid.SEQ_KEY);
-  }
-  
-  private int[] a(String paramString, int paramInt)
-  {
-    int j = 0;
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = paramInt;
-    Object localObject = arrayOfInt;
-    if (anjf.a().containsKey(paramString))
+    Object localObject = paramDrawable;
+    if (this.jdField_b_of_type_Boolean)
     {
-      localObject = (int[])anjf.a().get(paramString);
-      if ((localObject == null) || (localObject.length == 0))
+      localObject = paramDrawable;
+      if (paramBoolean)
       {
-        paramString = arrayOfInt;
-        return paramString;
-      }
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localObject.length) {
-          break label86;
+        localObject = paramDrawable;
+        if (!(paramDrawable instanceof AnimationDrawable))
+        {
+          localObject = paramDrawable;
+          if (paramDrawable != null)
+          {
+            localObject = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
+            ((TransitionDrawable)localObject).startTransition(200);
+          }
         }
-        paramString = (String)localObject;
-        if (localObject[i] == paramInt) {
-          break;
-        }
-        i += 1;
       }
-      label86:
-      paramString = new int[localObject.length + 1];
-      i = j;
-      while (i < localObject.length)
-      {
-        paramString[i] = localObject[i];
-        i += 1;
-      }
-      paramString[(paramString.length - 1)] = paramInt;
-      localObject = paramString;
     }
-    return localObject;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket)
-  {
-    paramToServiceMsg = a(paramToServiceMsg);
-    bbxq.a(paramToServiceMsg);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramToServiceMsg))
+    paramDrawable = null;
+    if (parambhhp != null) {
+      paramDrawable = parambhhp.jdField_a_of_type_Bhhl;
+    }
+    if (paramDrawable != null)
     {
-      paramFromServiceMsg = (JceStruct)this.jdField_a_of_type_JavaUtilHashMap.get(paramToServiceMsg);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramToServiceMsg);
-      return paramUniPacket.getByClass(this.d, paramFromServiceMsg);
+      paramDrawable.a(paramView, (Drawable)localObject);
+      return;
     }
-    return null;
+    if ((paramView instanceof ImageView))
+    {
+      ((ImageView)paramView).setImageDrawable((Drawable)localObject);
+      return;
+    }
+    paramView.setBackgroundDrawable((Drawable)localObject);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, int paramInt)
+  public bhhi a()
   {
-    paramUniPacket.setServantName(this.b);
-    paramUniPacket.setFuncName(paramToServiceMsg.extraData.getString("funcName"));
-    paramUniPacket.setRequestId(paramInt);
-    paramUniPacket.put(this.c, paramToServiceMsg.extraData.get("req"));
+    return this.jdField_a_of_type_Bhhi;
   }
   
-  public void a(String paramString, JceStruct paramJceStruct1, JceStruct paramJceStruct2, anil paramanil, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramanil = ((anuk)localQQAppInterface.a(13)).createToServiceMsg(this.jdField_a_of_type_JavaLangString, paramanil, paramBoolean);
-    String str = a(paramanil);
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramJceStruct2);
-    bbxq.a(this, str);
-    paramanil.extraData.putSerializable("req", paramJceStruct1);
-    paramanil.extraData.putString("funcName", paramString);
-    localQQAppInterface.sendToService(paramanil);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

@@ -14,7 +14,7 @@ class ForwardQFavBatchOption$2
     default: 
       return;
     }
-    ForwardQFavBatchOption.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+    ForwardQFavBatchOption.b(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
   }
 }
 

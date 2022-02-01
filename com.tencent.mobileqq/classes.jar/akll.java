@@ -1,14 +1,13 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-class akll
-  implements Comparator<akli>
+public class akll
 {
-  akll(aklj paramaklj) {}
-  
-  public int a(akli paramakli1, akli paramakli2)
-  {
-    return (int)(paramakli2.a - paramakli1.a);
-  }
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

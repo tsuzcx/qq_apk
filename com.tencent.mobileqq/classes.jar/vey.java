@@ -1,23 +1,9 @@
-public class vey
+class vey
+  implements bljb
 {
-  private long a;
-  private long b;
+  vey(veu paramveu) {}
   
-  public vey(long paramLong)
-  {
-    this.b = paramLong;
-    this.a = this.b;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public vey a()
-  {
-    return new vey(this.b);
-  }
+  public void onDismiss() {}
 }
 
 

@@ -1,13 +1,22 @@
-import com.tencent.av.ui.QavPanel;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
 
-public class mhw
-  implements mhz
+class mhw
+  implements Animator.AnimatorListener
 {
-  public mhw(QavPanel paramQavPanel, Runnable paramRunnable) {}
+  mhw(mhr parammhr) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    mhr.a(this.a).setAlpha(0.0F);
+    mhr.a(this.a).setVisibility(0);
   }
 }
 

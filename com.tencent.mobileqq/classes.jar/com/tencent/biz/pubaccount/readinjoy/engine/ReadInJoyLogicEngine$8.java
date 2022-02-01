@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pmh;
-import qag;
+import pfa;
+import psr;
 
 public class ReadInJoyLogicEngine$8
   implements Runnable
 {
-  public ReadInJoyLogicEngine$8(pmh parampmh) {}
+  public ReadInJoyLogicEngine$8(pfa parampfa) {}
   
   public void run()
   {
-    qag.a().a();
+    psr.a().a();
   }
 }
 

@@ -1,48 +1,39 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class akee
-  implements DialogInterface.OnClickListener
+public class akee
+  extends bgst
 {
-  akee(akec paramakec) {}
+  public akee(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (this.a.a.jdField_a_of_type_Int == 2) {
-      this.a.a.a("0X8005B8A", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
     }
-    for (;;)
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
     {
-      paramDialogInterface.dismiss();
-      if (bgnt.d(this.a.a)) {
-        break;
-      }
-      this.a.a.a(2131693991);
-      return;
-      if (this.a.a.jdField_a_of_type_Int == 6) {
-        this.a.a.a("0X8005B8A", 2);
-      } else if (this.a.a.jdField_a_of_type_Int == 7) {
-        this.a.a.a("0X8005B8A", 3);
-      }
+      paramString = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramString);
     }
-    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
+    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
+    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
     {
-      this.a.a.setResult(0);
-      this.a.a.finish();
-      return;
+      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramArrayOfLong1);
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new akef(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131717771, 300L, true);
   }
 }
 

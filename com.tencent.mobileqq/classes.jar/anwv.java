@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import android.text.TextUtils;
 
-public final class anwv
-  implements DialogInterface.OnClickListener
+public class anwv
 {
-  public anwv(TroopManager paramTroopManager, String paramString, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A57E", 2, 0, "", "", "", "");
+    String str2 = "";
+    String str1 = str2;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      i = paramString.lastIndexOf("diydoutu@");
+      str1 = str2;
+      if (i >= 0) {
+        str1 = paramString.substring(i, paramString.length());
+      }
+    }
+    paramString = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      i = str1.lastIndexOf(".");
+      paramString = str1;
+      if (i >= 0) {
+        paramString = str1.substring(0, i);
+      }
+    }
+    return paramString;
   }
 }
 

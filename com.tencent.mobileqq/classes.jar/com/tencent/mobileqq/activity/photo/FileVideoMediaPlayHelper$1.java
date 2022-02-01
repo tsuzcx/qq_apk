@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aker;
-import akhh;
-import atvo;
+import akqc;
+import akss;
+import aunj;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 public class FileVideoMediaPlayHelper$1
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$1(aker paramaker, int paramInt) {}
+  public FileVideoMediaPlayHelper$1(akqc paramakqc, int paramInt) {}
   
   public void run()
   {
-    if (aker.a(this.this$0) == null) {}
+    if (akqc.a(this.this$0) == null) {}
     do
     {
       return;
-      if (aker.a(this.this$0) > 0)
+      if (akqc.a(this.this$0) > 0)
       {
-        aker.a(this.this$0).setRemainTime(20160714, aker.b(this.this$0), 2147483647);
-        aker.a(this.this$0).stopPreLoad(aker.a(this.this$0));
+        akqc.a(this.this$0).setRemainTime(20160714, akqc.b(this.this$0), 2147483647);
+        akqc.a(this.this$0).stopPreLoad(akqc.a(this.this$0));
       }
-      int i = aker.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], atvo.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
-      aker.a(this.this$0, i);
-      aker.a(this.this$0).setPlayerState(20160714, i, 6);
+      int i = akqc.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], aunj.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
+      akqc.a(this.this$0, i);
+      akqc.a(this.this$0).setPlayerState(20160714, i, 6);
     } while (!QLog.isDevelopLevel());
-    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + aker.a(this.this$0));
+    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + akqc.a(this.this$0));
   }
 }
 

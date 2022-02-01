@@ -2,17 +2,17 @@ package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import xsw;
-import xtb;
+import xwr;
+import xww;
 
 public class BottomVideoInfoWidget$6$1
   implements Runnable
 {
-  public BottomVideoInfoWidget$6$1(xtb paramxtb, String paramString) {}
+  public BottomVideoInfoWidget$6$1(xww paramxww, String paramString) {}
   
   public void run()
   {
-    xsw.a(this.jdField_a_of_type_Xtb.jdField_a_of_type_Xsw, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xtb.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid, this.jdField_a_of_type_Xtb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xtb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_Xtb.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.nickName, this.jdField_a_of_type_Xtb.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.headUrl);
+    xwr.a(this.jdField_a_of_type_Xww.jdField_a_of_type_Xwr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xww.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid, this.jdField_a_of_type_Xww.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xww.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_Xww.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.nickName, this.jdField_a_of_type_Xww.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.headUrl);
   }
 }
 

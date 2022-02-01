@@ -44,9 +44,7 @@ public class SeqConfigEntity
       return localObject;
     }
     localObject = FileUtil.readFileContent(localFile);
-    if (VasUpdateWrapper.getLog().isColorLevel()) {
-      VasUpdateWrapper.getLog().i("VasUpdate_SeqConfig", "loadSeqConfig content = " + (String)localObject);
-    }
+    VasUpdateWrapper.getLog().e("VasUpdate_SeqConfig", "loadSeqConfig content = " + (String)localObject);
     return parseSeqJson((String)localObject);
   }
   

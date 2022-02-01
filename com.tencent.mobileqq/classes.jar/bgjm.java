@@ -1,38 +1,14 @@
-import android.os.Message;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.text.Editable;
+import java.util.Comparator;
 
 final class bgjm
-  implements View.OnTouchListener
+  implements Comparator
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bgjm(Editable paramEditable) {}
+  
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        bgjk.b(false);
-        bgjk.a = f1;
-        bgjk.b = f2;
-        paramMotionEvent = Message.obtain();
-        paramMotionEvent.what = bgjp.a;
-        paramMotionEvent.obj = paramView;
-        bgjk.a().sendMessageDelayed(paramMotionEvent, 1000L);
-        return false;
-      } while ((bgjk.a()) || ((Math.abs(bgjk.a - f1) <= 20.0F) && (Math.abs(bgjk.b - f2) <= 20.0F)));
-      bgjk.b(true);
-      bgjk.a().removeMessages(bgjp.a);
-      return false;
-    }
-    bgjk.a().removeMessages(bgjp.a);
-    return false;
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

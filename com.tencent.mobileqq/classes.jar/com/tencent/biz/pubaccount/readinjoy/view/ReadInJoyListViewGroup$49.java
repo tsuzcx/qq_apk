@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.qphone.base.util.QLog;
-import ptu;
+import pmh;
 
 class ReadInJoyListViewGroup$49
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyListViewGroup$49
   
   public void run()
   {
-    if (ptu.a(this.this$0.a()))
+    if (pmh.a(this.this$0.a()))
     {
       this.this$0.a(true);
       QLog.i("ReadInJoyListViewGroup", 1, "[handleDailyJumpToRecommendChannel], backToTop refresh, channelID = " + this.this$0.a());

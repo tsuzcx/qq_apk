@@ -1,8 +1,7 @@
 public abstract interface apvs
+  extends apvu
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2);
-  
-  public abstract boolean a();
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

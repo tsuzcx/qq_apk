@@ -1,11 +1,14 @@
-import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class rgr
-  implements pvb<feeds_info.IconWordingInfo, rhd>
+class rgr
+  implements DialogInterface.OnDismissListener
 {
-  public rhd a(feeds_info.IconWordingInfo paramIconWordingInfo)
+  rgr(rgo paramrgo) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return rhd.a(paramIconWordingInfo);
+    rgo.b(this.a, false);
   }
 }
 

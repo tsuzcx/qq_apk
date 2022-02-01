@@ -1,68 +1,104 @@
-import UserGrowth.stNewIconStyle;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
 import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.widget.RelativeLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class usd
-  extends ueh<uru>
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private use jdField_a_of_type_Use;
-  private utw jdField_a_of_type_Utw;
-  
-  public usd(Context paramContext, utw paramutw)
+  public static int a(String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Utw = paramutw;
+    int i = 2;
+    if (TextUtils.equals(paramString, "trends")) {
+      i = 6;
+    }
+    while (!TextUtils.equals(paramString, "aio_home_page")) {
+      return i;
+    }
+    return 12;
   }
   
-  private stSimpleMetaFeed a()
+  public static List<usv> a(List<stSimpleMetaFeed> paramList)
   {
-    uru localuru = (uru)a();
-    if ((localuru != null) && ((localuru.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localuru.a();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.next();
+        usv localusv = new usv();
+        localusv.a(localstSimpleMetaFeed);
+        localArrayList.add(localusv);
+      }
+      return localArrayList;
     }
     return null;
   }
   
-  private void b(uru paramuru)
+  public static List<ull> a(List<usv> paramList, int paramInt, boolean paramBoolean)
   {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    ArrayList localArrayList = new ArrayList();
+    paramList = new ArrayList(paramList);
+    if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Use == null)
+      i = paramInt + 1;
+      while (i < paramInt + 1 + 3)
       {
-        this.jdField_a_of_type_Use = new use(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Utw);
-        this.jdField_a_of_type_Use.a(this.jdField_a_of_type_AndroidViewViewStub);
+        a(localArrayList, paramList, i);
+        i += 1;
       }
-      this.jdField_a_of_type_Use.a(paramuru);
+    }
+    int i = paramInt - 1;
+    while (i > paramInt - 1 - 3)
+    {
+      a(localArrayList, paramList, i);
+      i -= 1;
+    }
+    return localArrayList;
+  }
+  
+  public static ull a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    ull localull = new ull(paramstSimpleMetaFeed.video_url, paramstSimpleMetaFeed.video.duration);
+    localull.a = paramstSimpleMetaFeed.id;
+    localull.c = paramstSimpleMetaFeed.feed_desc;
+    return localull;
+  }
+  
+  public static void a(Activity paramActivity, RelativeLayout paramRelativeLayout)
+  {
+    if ((paramActivity != null) && (paramRelativeLayout != null)) {
+      paramRelativeLayout.setPadding(paramRelativeLayout.getPaddingLeft(), paramRelativeLayout.getPaddingTop() + uqs.a(paramActivity), paramRelativeLayout.getPaddingRight(), paramRelativeLayout.getPaddingBottom());
     }
   }
   
-  protected void a() {}
-  
-  public void a(uru paramuru)
+  private static void a(List<ull> paramList, List<usv> paramList1, int paramInt)
   {
-    super.a(paramuru);
-    b(paramuru);
-  }
-  
-  protected int b()
-  {
-    return 2131560026;
-  }
-  
-  protected void b() {}
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Use != null) {
-      this.jdField_a_of_type_Use.c();
+    if ((paramList1.size() > paramInt) && (paramInt >= 0))
+    {
+      paramList1 = (usv)paramList1.get(paramInt);
+      if ((paramList1.a() instanceof stSimpleMetaFeed)) {}
     }
+    else
+    {
+      return;
+    }
+    paramList.add(a((stSimpleMetaFeed)paramList1.a()));
   }
   
-  protected void e()
+  public static int b(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380518));
+    if ((TextUtils.equals(paramString, "recommend_tab")) || (TextUtils.equals(paramString, "aio_new_msg")) || (TextUtils.equals(paramString, "mini_app_personal_main")) || (TextUtils.equals(paramString, "mini_app_personal_guest")) || (TextUtils.equals(paramString, "vertical_layer_collection")) || (TextUtils.equals(paramString, "aio_home_page")) || (TextUtils.equals(paramString, "qqchat"))) {
+      return 1;
+    }
+    if ((TextUtils.equals(paramString, "follow_tab")) || (TextUtils.equals(paramString, "friend_feed"))) {
+      return 0;
+    }
+    return -1;
   }
 }
 

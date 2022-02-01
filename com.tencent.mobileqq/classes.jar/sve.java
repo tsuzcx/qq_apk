@@ -1,30 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.BubblePopupWindow;
-
 public class sve
-  implements View.OnClickListener
 {
-  public sve(ReadinjoyTabbar paramReadinjoyTabbar) {}
+  public String a;
+  public suz a;
+  public String b;
   
-  public void onClick(View paramView)
+  public sve(String paramString, suz paramsuz, boolean paramBoolean)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
+    if (paramString == null) {
+      throw new IllegalArgumentException();
+    }
+    this.jdField_a_of_type_Suz = paramsuz;
+    if (paramBoolean)
     {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).b();
-      label49:
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_JavaLangString = paramString;
       return;
     }
-    catch (Exception localException)
-    {
-      break label49;
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return this.b;
     }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,45 +1,17 @@
-public class vgf<F, S>
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StTagInfo;
+
+class vgf
+  implements Observer<vxq<FeedCloudMeta.StTagInfo>>
 {
-  public F a;
-  public S b;
+  vgf(vge paramvge) {}
   
-  public vgf(F paramF, S paramS)
+  public void a(@Nullable vxq<FeedCloudMeta.StTagInfo> paramvxq)
   {
-    this.a = paramF;
-    this.b = paramS;
-  }
-  
-  public vgf<F, S> a(F paramF, S paramS)
-  {
-    this.a = paramF;
-    this.b = paramS;
-    return this;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    for (;;)
-    {
-      return true;
-      if (!(paramObject instanceof vgf)) {
-        return false;
-      }
-      try
-      {
-        paramObject = (vgf)paramObject;
-        if ((!this.a.equals(paramObject.a)) || (!this.b.equals(paramObject.b))) {
-          return false;
-        }
-      }
-      catch (ClassCastException paramObject) {}
+    if (paramvxq != null) {
+      vge.a(this.a, (FeedCloudMeta.StTagInfo)paramvxq.a());
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return (this.a.hashCode() + 527) * 31 + this.b.hashCode();
   }
 }
 

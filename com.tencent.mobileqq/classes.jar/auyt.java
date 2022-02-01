@@ -1,16 +1,16 @@
-class auyt
-  extends anqd
+import android.net.Uri;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+
+public class auyt
+  implements avqd
 {
-  auyt(auyq paramauyq) {}
+  public auyt(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    this.a.a(paramLong);
-  }
+  public void a(Uri paramUri) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    this.a.a(paramLong);
+    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
   }
 }
 

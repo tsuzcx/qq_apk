@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import java.util.Iterator;
+import java.util.List;
 
-public final class athm
-  implements Parcelable.Creator<ForwardFileInfo>
+public class athm
+  extends AsyncTask<Void, Void, Integer>
 {
-  public ForwardFileInfo a(Parcel paramParcel)
+  public athm(FMLocalFileActivity paramFMLocalFileActivity) {}
+  
+  protected Integer a(Void... paramVarArgs)
   {
-    return new ForwardFileInfo(paramParcel, null);
+    return Integer.valueOf(aunb.b(this.a));
   }
   
-  public ForwardFileInfo[] a(int paramInt)
+  protected void a(Integer paramInteger)
   {
-    return new ForwardFileInfo[paramInt];
+    super.onPostExecute(paramInteger);
+    this.a.stopTitleProgress();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      atzb localatzb = (atzb)localIterator.next();
+      if (localatzb.e == 4)
+      {
+        localatzb.d = paramInteger.intValue();
+        this.a.jdField_a_of_type_Atyz.notifyDataSetChanged();
+      }
+    }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.startTitleProgress();
   }
 }
 

@@ -1,47 +1,24 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class afss
-  extends anyu
+  implements nps
 {
-  public afss(ActivateFriendView paramActivateFriendView) {}
+  public afss(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void b()
+  public void a()
   {
-    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
-    do
-    {
-      return;
-      ActivateFriendView.a(this.a, 0);
-      int i = 0;
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-        {
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-          {
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
-          }
-          else
-          {
-            ActivateFriendView.b(this.a);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
-          }
-        }
-      }
-    } while (ActivateFriendView.a(this.a) == null);
-    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    }
+    bdll.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.l();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
   }
 }
 

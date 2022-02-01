@@ -1,25 +1,20 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
-class yek
-  extends xbu
+public class yek
+  extends Handler
 {
-  yek(yeh paramyeh) {}
+  private yek(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    super.a();
-    yeh.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    yqu.a("home_page", "suc_share", 2, paramInt, new String[] { yqu.b(yeh.a(this.a).a) + "", yqu.a(yeh.a(this.a).a) + "", yeh.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    yqu.a("home_page", "share_chanel", 2, paramInt, new String[] { yqu.b(yeh.a(this.a).a) + "", yqu.a(yeh.a(this.a).a) + "", yeh.a(this.a).a.feedId });
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a(false);
   }
 }
 

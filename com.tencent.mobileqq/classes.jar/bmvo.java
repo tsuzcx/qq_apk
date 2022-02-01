@@ -1,234 +1,208 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Vector;
 
 public class bmvo
-  extends Drawable
 {
-  private int jdField_a_of_type_Int = -1;
-  private bmvp jdField_a_of_type_Bmvp;
-  private int b = -1;
+  private static bmvo jdField_a_of_type_Bmvo;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  private bmvq jdField_a_of_type_Bmvq;
+  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader;
+  private Vector<bmvq> jdField_a_of_type_JavaUtilVector = new Vector();
+  private boolean jdField_a_of_type_Boolean;
   
-  public bmvo()
+  public static bmvo a()
   {
-    this.jdField_a_of_type_Bmvp = new bmvp();
-  }
-  
-  public bmvo(bmvp parambmvp)
-  {
-    this.jdField_a_of_type_Bmvp = parambmvp;
-    if (parambmvp != null)
+    if (jdField_a_of_type_Bmvo == null) {}
+    try
     {
-      h(parambmvp.d);
-      h(parambmvp.b);
-      h(parambmvp.c);
-      h(parambmvp.e);
-      h(parambmvp.f);
-      h(parambmvp.g);
-      h(parambmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      jdField_a_of_type_Bmvo = new bmvo();
+      return jdField_a_of_type_Bmvo;
     }
+    finally {}
   }
   
-  private void a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  /* Error */
+  private Downloader a()
   {
-    if (paramDrawable != null) {
-      paramDrawable.setBounds(paramDrawable.getBounds().left + paramInt1, paramDrawable.getBounds().top + paramInt2, paramDrawable.getBounds().right + paramInt1, paramDrawable.getBounds().bottom + paramInt2);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 39	bmvo:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   6: ifnull +12 -> 18
+    //   9: aload_0
+    //   10: getfield 39	bmvo:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   13: astore_1
+    //   14: aload_0
+    //   15: monitorexit
+    //   16: aload_1
+    //   17: areturn
+    //   18: aconst_null
+    //   19: astore_1
+    //   20: aload_0
+    //   21: getfield 24	bmvo:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   24: invokestatic 45	com/tencent/component/network/DownloaderFactory:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/DownloaderFactory;
+    //   27: invokevirtual 48	com/tencent/component/network/DownloaderFactory:getCommonDownloader	()Lcom/tencent/component/network/downloader/Downloader;
+    //   30: astore_2
+    //   31: aload_2
+    //   32: astore_1
+    //   33: aload_2
+    //   34: invokevirtual 53	com/tencent/component/network/downloader/Downloader:enableResumeTransfer	()V
+    //   37: aload_2
+    //   38: astore_1
+    //   39: aload_0
+    //   40: aload_1
+    //   41: putfield 39	bmvo:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   44: aload_0
+    //   45: getfield 39	bmvo:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   48: ifnonnull +26 -> 74
+    //   51: new 55	java/lang/RuntimeException
+    //   54: dup
+    //   55: ldc 57
+    //   57: invokespecial 60	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   60: athrow
+    //   61: astore_1
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload_1
+    //   65: athrow
+    //   66: astore_2
+    //   67: aload_2
+    //   68: invokevirtual 63	java/lang/Throwable:printStackTrace	()V
+    //   71: goto -32 -> 39
+    //   74: aload_0
+    //   75: getfield 39	bmvo:jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   78: astore_1
+    //   79: goto -65 -> 14
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	bmvo
+    //   13	28	1	localObject1	Object
+    //   61	4	1	localObject2	Object
+    //   78	1	1	localDownloader1	Downloader
+    //   30	8	2	localDownloader2	Downloader
+    //   66	2	2	localThrowable	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   2	14	61	finally
+    //   20	31	61	finally
+    //   33	37	61	finally
+    //   39	61	61	finally
+    //   67	71	61	finally
+    //   74	79	61	finally
+    //   20	31	66	java/lang/Throwable
+    //   33	37	66	java/lang/Throwable
   }
   
-  private void h(Drawable paramDrawable)
+  private boolean a(bmvq parambmvq)
   {
-    if (paramDrawable != null)
+    boolean bool = true;
+    for (;;)
     {
-      paramDrawable = paramDrawable.getBounds();
-      Rect localRect = getBounds();
-      if ((localRect != null) && (paramDrawable != null))
+      try
       {
-        localRect.left = Math.min(paramDrawable.left, localRect.left);
-        localRect.right = Math.max(paramDrawable.right, localRect.right);
-        localRect.top = Math.min(paramDrawable.top, localRect.top);
-        localRect.bottom = Math.max(paramDrawable.bottom, localRect.bottom);
-        setBounds(localRect);
-        this.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_Int, localRect.right - localRect.left);
-        this.b = Math.max(this.b, localRect.bottom - localRect.top);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (parambmvq.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_JavaUtilVector.add(0, parambmvq);
+            return bool;
+          }
+          this.jdField_a_of_type_JavaUtilVector.add(parambmvq);
+          continue;
+        }
+        if (parambmvq.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest == null) {
+          break label86;
+        }
       }
-    }
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Bmvp != null) && (this.jdField_a_of_type_Bmvp.b != null)) {
-      return Math.abs(this.jdField_a_of_type_Bmvp.b.getBounds().left - getBounds().left);
-    }
-    return 0;
-  }
-  
-  public Drawable.ConstantState a()
-  {
-    return this.jdField_a_of_type_Bmvp;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.b = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Bmvp != null) && (this.jdField_a_of_type_Bmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {}
-    while ((this.jdField_a_of_type_Bmvp != null) && ((this.jdField_a_of_type_Bmvp.d != null) || (this.jdField_a_of_type_Bmvp.f != null) || (this.jdField_a_of_type_Bmvp.e != null) || (this.jdField_a_of_type_Bmvp.c != null))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int b()
-  {
-    if ((this.jdField_a_of_type_Bmvp != null) && (this.jdField_a_of_type_Bmvp.b != null)) {
-      return Math.abs(this.jdField_a_of_type_Bmvp.b.getBounds().top - getBounds().top);
-    }
-    return 0;
-  }
-  
-  public void b(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.c = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void c(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.d = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void d(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.e = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    bmvp localbmvp = this.jdField_a_of_type_Bmvp;
-    if (localbmvp != null)
-    {
-      if (localbmvp.d != null) {
-        localbmvp.d.draw(paramCanvas);
-      }
-      if (localbmvp.f != null) {
-        localbmvp.f.draw(paramCanvas);
-      }
-      if (localbmvp.g != null) {
-        localbmvp.g.draw(paramCanvas);
-      }
-      if (localbmvp.e != null) {
-        localbmvp.e.draw(paramCanvas);
-      }
-      if (localbmvp.b != null) {
-        localbmvp.b.draw(paramCanvas);
-      }
-      if (localbmvp.c != null) {
-        localbmvp.c.draw(paramCanvas);
-      }
-      if (localbmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        localbmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
-    }
-  }
-  
-  public void e(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.f = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void f(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.g = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public void g(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bmvp != null)
-    {
-      this.jdField_a_of_type_Bmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return super.getChangingConfigurations() | this.jdField_a_of_type_Bmvp.jdField_a_of_type_Int;
-  }
-  
-  public final Drawable.ConstantState getConstantState()
-  {
-    this.jdField_a_of_type_Bmvp.jdField_a_of_type_Int = getChangingConfigurations();
-    return this.jdField_a_of_type_Bmvp;
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (getBounds() != null)
-    {
-      int i = getBounds().left;
-      int j = getBounds().top;
-      if ((i != paramInt1) || (j != paramInt2))
+      finally {}
+      if (a().download(parambmvq.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest, parambmvq.jdField_b_of_type_Boolean))
       {
-        a(this.jdField_a_of_type_Bmvp.d, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bmvp.e, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bmvp.f, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bmvp.b, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bmvp.c, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bmvp.g, paramInt1 - i, paramInt2 - j);
-        a(this.jdField_a_of_type_Bmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramInt1 - i, paramInt2 - j);
+        this.jdField_a_of_type_Bmvq = parambmvq;
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+        label86:
+        if (a().download(parambmvq.jdField_b_of_type_JavaLangString, parambmvq.jdField_a_of_type_JavaLangString, parambmvq.jdField_b_of_type_Boolean, parambmvq.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener))
+        {
+          this.jdField_a_of_type_Bmvq = parambmvq;
+          this.jdField_a_of_type_Boolean = true;
+        }
+        else
+        {
+          bool = false;
+        }
+      }
+      else
+      {
+        bool = false;
       }
     }
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
+  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
+  {
+    a().cancel(paramString, paramDownloadListener);
+    if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
+    {
+      paramString = (bmvq)this.jdField_a_of_type_JavaUtilVector.get(0);
+      this.jdField_a_of_type_JavaUtilVector.remove(0);
+      this.jdField_a_of_type_Boolean = false;
+      a(paramString);
+    }
+  }
+  
+  public final boolean a(DownloadRequest paramDownloadRequest, boolean paramBoolean)
+  {
+    return a(null, null, paramBoolean, false, paramDownloadRequest, paramDownloadRequest.getListener());
+  }
+  
+  public final boolean a(String paramString1, String paramString2, Downloader.DownloadListener paramDownloadListener)
+  {
+    return a(paramString1, paramString2, false, false, paramDownloadListener);
+  }
+  
+  public final boolean a(String paramString1, String paramString2, boolean paramBoolean, Downloader.DownloadListener paramDownloadListener)
+  {
+    return a(paramString1, paramString2, paramBoolean, false, paramDownloadListener);
+  }
+  
+  public final boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DownloadRequest paramDownloadRequest, Downloader.DownloadListener paramDownloadListener)
+  {
+    bmvq localbmvq = new bmvq(this);
+    localbmvq.jdField_a_of_type_JavaLangString = paramString2;
+    localbmvq.jdField_b_of_type_JavaLangString = paramString1;
+    localbmvq.jdField_b_of_type_Boolean = paramBoolean1;
+    localbmvq.jdField_a_of_type_Boolean = paramBoolean2;
+    localbmvq.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
+    localbmvq.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new bmvp(this, localbmvq);
+    if (paramDownloadRequest != null)
+    {
+      paramDownloadRequest.setListener(localbmvq.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
+      localbmvq.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest = paramDownloadRequest;
+    }
+    return a(localbmvq);
+  }
+  
+  public final boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener)
+  {
+    return a(paramString1, paramString2, paramBoolean1, paramBoolean2, null, paramDownloadListener);
+  }
+  
+  public void b(String paramString, Downloader.DownloadListener paramDownloadListener)
+  {
+    a().abort(paramString, paramDownloadListener);
+    if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
+    {
+      paramString = (bmvq)this.jdField_a_of_type_JavaUtilVector.get(0);
+      this.jdField_a_of_type_JavaUtilVector.remove(0);
+      this.jdField_a_of_type_Boolean = false;
+      a(paramString);
+    }
+  }
 }
 
 

@@ -13,8 +13,8 @@ import com.tencent.mobileqq.widget.TabBarView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import zpl;
-import zpm;
+import ztg;
+import zth;
 
 public class LeftTabBarView
   extends TabBarView
@@ -45,9 +45,9 @@ public class LeftTabBarView
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localLinearLayout1.setOnClickListener(new zpl(this, paramInt));
+      localLinearLayout1.setOnClickListener(new ztg(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new zpm(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new zth(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
     this.b.add(localLinearLayout1);
     this.c.add(paramString);
@@ -126,7 +126,7 @@ public class LeftTabBarView
           }
         }
         label660:
-        localRedDotTextView.setId(2131378522);
+        localRedDotTextView.setId(2131378681);
         if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null)) {
           localLinearLayout1.addView(localRedDotTextView, paramString);
         }

@@ -1,49 +1,17 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class blep
+public final class blep
+  implements Parcelable.Creator<String>
 {
-  public static String a = "3";
-  
-  public static String a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public String a(Parcel paramParcel)
   {
-    if ((paramAppInfo != null) && (paramAppInfo.buffer.has()) && (paramAppInfo.iNewFlag.get() != 0)) {
-      try
-      {
-        paramAppInfo = new JSONObject(paramAppInfo.buffer.get()).optString("_jump_url");
-        return paramAppInfo;
-      }
-      catch (JSONException paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-      }
-    }
-    return null;
+    return paramParcel.readString();
   }
   
-  public static String b(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public String[] a(int paramInt)
   {
-    if ((paramAppInfo == null) || (!paramAppInfo.buffer.has()) || (paramAppInfo.iNewFlag.get() == 0)) {
-      return "3";
-    }
-    try
-    {
-      paramAppInfo = new JSONObject(paramAppInfo.buffer.get());
-      if (paramAppInfo.has("param")) {
-        return "1";
-      }
-      if (paramAppInfo.has("msg")) {
-        return "2";
-      }
-    }
-    catch (JSONException paramAppInfo)
-    {
-      paramAppInfo.printStackTrace();
-    }
-    return "3";
+    return new String[paramInt];
   }
 }
 

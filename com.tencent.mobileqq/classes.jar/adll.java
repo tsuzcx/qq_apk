@@ -1,28 +1,36 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.IBatteryListener;
+import com.tencent.qphone.base.util.QLog.ILogCallback;
+import mqq.util.IServiceCmdCallback;
+import org.jetbrains.annotations.NotNull;
 
-public class adll
-  implements adqr
+class adll
+  implements IBatteryListener, QLog.ILogCallback, IServiceCmdCallback
 {
-  public adll(AgeSelectionActivity paramAgeSelectionActivity) {}
-  
-  public void a()
+  @NotNull
+  public String getSosoClassName()
   {
-    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
-      AgeSelectionActivity.a(this.a).dismiss();
-    }
+    return SosoInterface.class.getPackage().getName();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onCmdRequest(String paramString)
   {
-    this.a.b = paramInt1;
-    this.a.c = paramInt2;
-    this.a.d = paramInt3;
-    if (QLog.isColorLevel()) {
-      QLog.d("AgeSelectionActivity", 2, String.format("onBirthdayChange newBirthdayYear:%s,newBirthdayMonth:%s,newBirthdayDay:%s", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(this.a.d) }));
-    }
-    AgeSelectionActivity.a(this.a, this.a.b, this.a.c, this.a.d);
+    BatteryMonitor.getInstance().onCmdRequest(paramString);
   }
+  
+  public void onCmdResponse(String paramString) {}
+  
+  public void onPrintLog(@NotNull String paramString) {}
+  
+  public void onUsageAlarm(int paramInt1, int paramInt2, int paramInt3, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onWriteLog(String paramString1, String paramString2)
+  {
+    BatteryMonitor.getInstance().onWriteLog(paramString1, paramString2);
+  }
+  
+  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 

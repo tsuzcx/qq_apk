@@ -1,47 +1,101 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.DashboardAdapter.1;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bnma
-  extends RecyclerView.Adapter<bnmb>
+  extends bnnn
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<bnmc> jdField_a_of_type_JavaUtilList;
-  
-  public bnma(@NonNull Context paramContext)
+  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
+    do
+    {
+      return;
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
+    try
+    {
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+      paramWebViewPlugin = paramArrayOfString.optString("host");
+      paramArrayOfString = paramArrayOfString.optString("callback");
+      if (TextUtils.isEmpty(paramArrayOfString))
+      {
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
+        return;
+      }
+    }
+    catch (JSONException paramWebViewPlugin)
+    {
+      paramWebViewPlugin.printStackTrace();
+      return;
+    }
+    if (TextUtils.isEmpty(paramWebViewPlugin))
+    {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
+      return;
+    }
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
   }
   
-  public bnmb a(ViewGroup paramViewGroup, int paramInt)
+  private void a(String paramString1, int paramInt, String paramString2)
   {
-    return new bnmb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558489, paramViewGroup, false));
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
+    }
+    for (;;)
+    {
+      return;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("host_ip", paramString2);
+        paramString2 = localJSONObject.toString();
+        if ((this.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null))
+        {
+          this.a.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
+          return;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
+      }
+    }
   }
   
-  public void a(bnmb parambnmb, int paramInt)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    parambnmb.a((bnmc)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    EventCollector.getInstance().onRecyclerBindViewHolder(parambnmb, paramInt, getItemId(paramInt));
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
+      return false;
+    }
+    a(this.a, paramVarArgs);
+    return true;
   }
   
-  public void a(@NonNull List<bnmc> paramList)
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.DashboardAdapter.1(this));
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if ((paramLong == 8589934595L) && (paramMap != null))
+    {
+      paramString = paramMap.get("errorCode");
+      if ((paramString != null) && ((paramString instanceof Integer)))
+      {
+        int i = ((Integer)paramString).intValue();
+        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.2(this, i));
+      }
+    }
+    return false;
   }
 }
 

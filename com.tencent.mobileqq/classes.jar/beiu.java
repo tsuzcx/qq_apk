@@ -1,32 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.lang.ref.WeakReference;
 
-public class beiu
-  implements View.OnClickListener
+public final class beiu
+  extends BroadcastReceiver
 {
-  public beiu(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramView.getId())
-    {
+    String str2 = paramIntent.getStringExtra("themePath");
+    String str3 = paramIntent.getStringExtra("themeId");
+    String str1 = paramIntent.getStringExtra("bg3D");
+    String str4 = paramIntent.getStringExtra("aio");
+    String str5 = paramIntent.getStringExtra("playerSkin");
+    if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))) {
+      ThemeUtil.validLocalTheme(paramContext, str2, str3);
     }
-    for (;;)
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        return;
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        paramIntent = (QQAppInterface)ThemeUtil.weakApp.get();
+      } while (paramIntent == null);
+      ThemeUtil.access$000(paramContext, paramIntent, paramIntent.getCurrentAccountUin(), str1);
       return;
-      bkho localbkho = (bkho)bkif.a(this.a, null);
-      localbkho.a(2131692950, 3);
-      localbkho.c(2131690582);
-      localbkho.a(new beiv(this, localbkho));
-      localbkho.show();
-      continue;
-      TroopAvatarWallPreviewActivity.c(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.i(this.a);
-    }
+      if (!TextUtils.isEmpty(str4))
+      {
+        ThemeUtil.previewAIOTheme(paramContext, str4);
+        return;
+      }
+      if (!TextUtils.isEmpty(str5))
+      {
+        ThemeUtil.previewPlayerSkin(paramContext, str5);
+        return;
+      }
+    } while (!ThemeUtil.themeFont(paramIntent, "themeFont"));
   }
 }
 

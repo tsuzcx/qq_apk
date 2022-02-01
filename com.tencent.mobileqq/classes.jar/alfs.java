@@ -1,6 +1,15 @@
-public abstract interface alfs
+public class alfs
 {
-  public abstract void a();
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
+  
+  public alfs(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
 }
 
 

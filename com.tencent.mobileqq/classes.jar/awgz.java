@@ -1,47 +1,131 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.1;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.2;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awgz
-  extends ClickableSpan
+  extends WebViewPlugin
 {
-  public final int a;
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  final int jdField_b_of_type_Int;
-  final String jdField_b_of_type_JavaLangString;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
   
-  public awgz(Context paramContext, String paramString1, String paramString2, int paramInt)
+  public awgz()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = Color.parseColor("#00a5e0");
-    ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.1(this), 5, null, false);
+    this.mPluginNameSpace = "medalwall";
   }
   
-  public void onClick(View paramView)
+  private Context a()
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.jdField_b_of_type_JavaLangString);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("hide_more_button", true);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.2(this), 5, null, false);
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  private void a()
   {
-    paramTextPaint.setColor(this.jdField_b_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, "clearRedPoint from web!");
+    }
+    aqqm.a().a();
+  }
+  
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+        c(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+        startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, PermisionPrivacyActivity.class), (byte)100);
+        return;
+      }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
+  }
+  
+  private void c(String paramString)
+  {
+    String str = this.mRuntime.a().getCurrentAccountUin();
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + str, 4).getBoolean("medal_switch_disable", false);
+    if (!TextUtils.isEmpty(paramString)) {
+      if (!bool) {
+        break label74;
+      }
+    }
+    label74:
+    for (str = "{\"isOn\":0}";; str = "{\"isOn\":1}")
+    {
+      callJs(paramString, new String[] { str });
+      return;
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if ("medalwall".equals(paramString2))
+    {
+      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {}
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if (!"getMedalSwitch".equals(paramString3)) {
+        break label54;
+      }
+      a(paramVarArgs[0]);
+    }
+    for (;;)
+    {
+      bool = true;
+      return bool;
+      label54:
+      if ("jumpToMedalSettings".equals(paramString3)) {
+        b(paramVarArgs[0]);
+      } else if ("clearRedPoint".equals(paramString3)) {
+        a();
+      }
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 100) {
+      c(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = a();
   }
 }
 

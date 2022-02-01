@@ -1,21 +1,22 @@
-public class bhbz
-  extends bhbw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.qphone.base.util.QLog;
+
+class bhbz
+  implements DialogInterface.OnDismissListener
 {
-  public static bhbz a = new bhbz();
+  bhbz(bhbx parambhbx) {}
   
-  public long getBID()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return 39L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "musicPlayer";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "musicPlayer.";
+    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
+    {
+      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
+      }
+    }
   }
 }
 

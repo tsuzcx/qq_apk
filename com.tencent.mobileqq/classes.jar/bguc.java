@@ -1,98 +1,13 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bguc
+class bguc
+  implements bgug
 {
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
-    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
-    {
-      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
-      localDataOutputStream.write(paramArrayOfByte);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      label76:
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte = paramArrayOfByte;
-      paramArrayOfByte.printStackTrace();
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException1)
-      {
-        break label76;
-      }
-    }
-  }
+  bguc(bgty parambgty, String paramString) {}
   
-  public static byte[] b(byte[] paramArrayOfByte)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
-    try
-    {
-      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
-      label72:
-      return paramArrayOfByte;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException5) {}
-      localException1 = localException1;
-      paramArrayOfByte = null;
-      localException1.printStackTrace();
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException2)
-      {
-        return paramArrayOfByte;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException3)
-      {
-        break label72;
-      }
-    }
+    if (paramInt == 0) {}
   }
 }
 

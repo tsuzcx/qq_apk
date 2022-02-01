@@ -18,36 +18,36 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import bggq;
-import bkse;
-import bksj;
+import bhgr;
+import blth;
+import bltm;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ruy;
-import rva;
-import sbq;
-import sbr;
-import sbs;
-import sbt;
+import rlu;
+import rlw;
+import rsm;
+import rsn;
+import rso;
+import rsp;
 
 public class VideoFeedsRecyclerView
   extends RecyclerViewWithHeaderFooter
-  implements bksj, rva
+  implements bltm, rlw
 {
   private static int jdField_a_of_type_Int;
   private static int jdField_b_of_type_Int;
   private float jdField_a_of_type_Float;
   private long jdField_a_of_type_Long;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new sbq(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new rsm(this);
   private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
   private View jdField_a_of_type_AndroidViewView;
-  private bkse jdField_a_of_type_Bkse;
-  private List<sbt> jdField_a_of_type_JavaUtilList;
-  private ruy jdField_a_of_type_Ruy;
+  private blth jdField_a_of_type_Blth;
+  private List<rsp> jdField_a_of_type_JavaUtilList;
+  private rlu jdField_a_of_type_Rlu;
   private float jdField_b_of_type_Float;
   private View jdField_b_of_type_AndroidViewView;
   private boolean jdField_b_of_type_Boolean;
@@ -97,9 +97,9 @@ public class VideoFeedsRecyclerView
         return;
       } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null));
       this.jdField_d_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Ruy != null) && (this.jdField_f_of_type_Boolean))
+      if ((this.jdField_a_of_type_Rlu != null) && (this.jdField_f_of_type_Boolean))
       {
-        localObject = this.jdField_a_of_type_Ruy.a();
+        localObject = this.jdField_a_of_type_Rlu.a();
         if ((localObject instanceof Activity)) {
           ((Activity)localObject).setRequestedOrientation(1);
         }
@@ -108,7 +108,7 @@ public class VideoFeedsRecyclerView
       {
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((sbt)((Iterator)localObject).next()).a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, false);
+          ((rsp)((Iterator)localObject).next()).a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, false);
         }
       }
     } while (!paramBoolean);
@@ -141,12 +141,12 @@ public class VideoFeedsRecyclerView
         return;
       } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null));
       this.jdField_d_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_Ruy != null) && (this.jdField_f_of_type_Boolean))
+      if ((this.jdField_a_of_type_Rlu != null) && (this.jdField_f_of_type_Boolean))
       {
         if (paramInt != 0) {
           break label116;
         }
-        localObject = this.jdField_a_of_type_Ruy.a();
+        localObject = this.jdField_a_of_type_Rlu.a();
         if ((localObject instanceof Activity)) {
           ((Activity)localObject).setRequestedOrientation(0);
         }
@@ -155,9 +155,9 @@ public class VideoFeedsRecyclerView
       {
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((sbt)((Iterator)localObject).next()).a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, true);
+          ((rsp)((Iterator)localObject).next()).a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, true);
         }
-        localObject = this.jdField_a_of_type_Ruy.a();
+        localObject = this.jdField_a_of_type_Rlu.a();
         if ((localObject instanceof Activity)) {
           ((Activity)localObject).setRequestedOrientation(8);
         }
@@ -186,27 +186,27 @@ public class VideoFeedsRecyclerView
   
   private void f()
   {
-    this.jdField_a_of_type_Bkse = new bkse(this.jdField_e_of_type_Int, this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_Bkse.e(this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_Bkse.c(this.jdField_c_of_type_Int + 1);
-    this.jdField_a_of_type_Bkse.d(1);
-    this.jdField_a_of_type_Bkse.a(this);
-    this.jdField_a_of_type_Bkse.a(this);
+    this.jdField_a_of_type_Blth = new blth(this.jdField_e_of_type_Int, this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_Blth.e(this.jdField_f_of_type_Int);
+    this.jdField_a_of_type_Blth.c(this.jdField_c_of_type_Int + 1);
+    this.jdField_a_of_type_Blth.d(1);
+    this.jdField_a_of_type_Blth.a(this);
+    this.jdField_a_of_type_Blth.a(this);
     if (Build.VERSION.SDK_INT >= 23) {
-      this.jdField_a_of_type_Bkse.a(true);
+      this.jdField_a_of_type_Blth.a(true);
     }
-    addOnLayoutChangeListener(new sbr(this));
+    addOnLayoutChangeListener(new rsn(this));
   }
   
   private void g()
   {
     View localView = new View(getContext());
-    localView.setId(2131376018);
+    localView.setId(2131376158);
     localView.setLayoutParams(new StaggeredGridLayoutManager.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidViewView = localView;
     a(localView);
     localView = new View(getContext());
-    localView.setId(2131376017);
+    localView.setId(2131376157);
     localView.setLayoutParams(new StaggeredGridLayoutManager.LayoutParams(-2, -2));
     this.jdField_b_of_type_AndroidViewView = localView;
     c(localView);
@@ -214,7 +214,7 @@ public class VideoFeedsRecyclerView
   
   public int a()
   {
-    return this.jdField_a_of_type_Bkse.b() - 1;
+    return this.jdField_a_of_type_Blth.b() - 1;
   }
   
   public long a()
@@ -225,7 +225,7 @@ public class VideoFeedsRecyclerView
   public View a()
   {
     if ((getLayoutManager() instanceof LinearLayoutManager)) {
-      return this.jdField_a_of_type_Bkse.a((LinearLayoutManager)getLayoutManager());
+      return this.jdField_a_of_type_Blth.a((LinearLayoutManager)getLayoutManager());
     }
     return null;
   }
@@ -236,7 +236,7 @@ public class VideoFeedsRecyclerView
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((sbt)localIterator.next()).D_();
+        ((rsp)localIterator.next()).D_();
       }
     }
   }
@@ -279,17 +279,17 @@ public class VideoFeedsRecyclerView
       }
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((sbt)localIterator.next()).a(paramViewHolder);
+        ((rsp)localIterator.next()).a(paramViewHolder);
       }
     }
   }
   
-  public void a(sbt paramsbt)
+  public void a(rsp paramrsp)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramsbt);
+    this.jdField_a_of_type_JavaUtilList.add(paramrsp);
   }
   
   public void a(boolean paramBoolean)
@@ -303,12 +303,12 @@ public class VideoFeedsRecyclerView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Bkse.a();
+    return this.jdField_a_of_type_Blth.a();
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Bkse.b();
+    return this.jdField_a_of_type_Blth.b();
   }
   
   public void b()
@@ -335,12 +335,12 @@ public class VideoFeedsRecyclerView
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Bkse.b();
+    return this.jdField_a_of_type_Blth.b();
   }
   
   public void c()
   {
-    addOnLayoutChangeListener(new sbs(this));
+    addOnLayoutChangeListener(new rso(this));
   }
   
   public boolean c()
@@ -355,8 +355,8 @@ public class VideoFeedsRecyclerView
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_JavaUtilList = null;
     }
-    if (this.jdField_a_of_type_Ruy != null) {
-      this.jdField_a_of_type_Ruy.a();
+    if (this.jdField_a_of_type_Rlu != null) {
+      this.jdField_a_of_type_Rlu.a();
     }
   }
   
@@ -371,7 +371,7 @@ public class VideoFeedsRecyclerView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Bkse.d()) {}
+    if (this.jdField_a_of_type_Blth.d()) {}
     do
     {
       do
@@ -385,7 +385,7 @@ public class VideoFeedsRecyclerView
       }
       if ((paramMotionEvent.getAction() == 2) && (!this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null))
       {
-        int k = bggq.a(getContext(), 25.0F);
+        int k = bhgr.a(getContext(), 25.0F);
         int m = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         if ((Math.abs(this.jdField_a_of_type_Float - paramMotionEvent.getY()) > m) && ((this.jdField_a_of_type_Float < k) || (Math.abs(getHeight() - this.jdField_a_of_type_Float) < k)))
         {
@@ -401,7 +401,7 @@ public class VideoFeedsRecyclerView
   {
     boolean bool2 = false;
     boolean bool1;
-    if (this.jdField_a_of_type_Bkse.d()) {
+    if (this.jdField_a_of_type_Blth.d()) {
       bool1 = true;
     }
     do
@@ -419,7 +419,7 @@ public class VideoFeedsRecyclerView
   public void scrollToPosition(int paramInt)
   {
     super.scrollToPosition(c() + paramInt);
-    this.jdField_a_of_type_Bkse.c();
+    this.jdField_a_of_type_Blth.c();
   }
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
@@ -468,8 +468,8 @@ public class VideoFeedsRecyclerView
   public void setNeedDetectOrientation(Activity paramActivity, boolean paramBoolean)
   {
     this.jdField_e_of_type_Boolean = paramBoolean;
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Ruy == null)) {
-      this.jdField_a_of_type_Ruy = new ruy(paramActivity, this);
+    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Rlu == null)) {
+      this.jdField_a_of_type_Rlu = new rlu(paramActivity, this);
     }
   }
   
@@ -487,20 +487,20 @@ public class VideoFeedsRecyclerView
   public void setSnapOffset(int paramInt)
   {
     this.jdField_f_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Bkse != null) {
-      this.jdField_a_of_type_Bkse.e(paramInt);
+    if (this.jdField_a_of_type_Blth != null) {
+      this.jdField_a_of_type_Blth.e(paramInt);
     }
   }
   
   public void setSnapOnFling(boolean paramBoolean)
   {
     this.j = paramBoolean;
-    this.jdField_a_of_type_Bkse.c(paramBoolean);
+    this.jdField_a_of_type_Blth.c(paramBoolean);
   }
   
   public void setSnapOnIdle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bkse.b(paramBoolean);
+    this.jdField_a_of_type_Blth.b(paramBoolean);
   }
 }
 

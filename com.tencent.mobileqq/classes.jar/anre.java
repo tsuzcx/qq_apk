@@ -1,54 +1,20 @@
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.PrinterActivity;
-import com.tencent.litetransfersdk.Session;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 class anre
-  extends anke
+  implements ImageAssetDelegate
 {
   anre(anrd paramanrd) {}
   
-  protected void a(Session paramSession)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.a.a(3, paramSession, 0.0D, false);
-    if (this.a.a != null)
-    {
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+    if (this.a.a.a() == null) {
+      return null;
     }
-  }
-  
-  protected void a(Session paramSession, float paramFloat)
-  {
-    this.a.a(1, paramSession, paramFloat, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(Session paramSession, boolean paramBoolean)
-  {
-    this.a.a(2, paramSession, 0.0D, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    this.a.a(paramLong, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(Session paramSession)
-  {
-    this.a.a(0, paramSession, 0.0D, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    return (Bitmap)this.a.a.a().get(paramLottieImageAsset.getKey());
   }
 }
 

@@ -1,147 +1,92 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.face.FaceDecoder.1;
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.OutputStream;
 
 public class aobu
 {
-  aobw a;
-  
-  public aobu(Context paramContext, AppInterface paramAppInterface)
-  {
-    this(paramAppInterface);
-  }
-  
-  public aobu(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      this.a = new aoby((QQAppInterface)paramAppInterface);
-    }
-    while (this.a == null)
-    {
-      throw new NullPointerException("can not Instantiation FaceDecoder");
-      if ((paramAppInterface instanceof NearbyAppInterface)) {
-        this.a = new aodd((NearbyAppInterface)paramAppInterface);
-      }
-    }
-  }
-  
-  private byte a(int paramInt)
-  {
-    byte b = 3;
-    if (paramInt == 115) {
-      b = 4;
-    }
-    return b;
-  }
-  
-  protected static void a(QQAppInterface paramQQAppInterface, FaceInfo paramFaceInfo)
-  {
-    if ((paramQQAppInterface == null) || (paramFaceInfo == null)) {
-      return;
-    }
-    ThreadManager.post(new FaceDecoder.1(paramFaceInfo, paramQQAppInterface), 10, null, true);
-  }
-  
-  public Bitmap a(int paramInt, String paramString)
-  {
-    if (paramInt == 32) {
-      return null;
-    }
-    byte b = a(paramInt);
-    if ((paramInt == 101) || (paramInt == 1001)) {
-      b = 3;
-    }
-    return this.a.a(paramInt, paramString, 0, b);
-  }
-  
-  public Bitmap a(int paramInt1, String paramString, int paramInt2)
-  {
-    return a(paramInt1, paramString, paramInt2, (byte)3);
-  }
-  
-  public Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte)
-  {
-    return this.a.a(paramInt1, paramString, paramInt2, paramByte);
-  }
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
   
   public void a()
   {
-    this.a.c();
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2, long paramLong)
-  {
-    this.a.a(paramInt1, paramString, paramInt2, paramLong);
-  }
-  
-  public void a(aobv paramaobv)
-  {
-    this.a.a(paramaobv);
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    this.a.a(paramAppInterface);
-  }
-  
-  public boolean a()
-  {
-    return this.a.a();
-  }
-  
-  public boolean a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    return this.a.a(paramString, 200, false, paramInt, paramBoolean, (byte)0, a(paramInt));
-  }
-  
-  public boolean a(String paramString, int paramInt, boolean paramBoolean, byte paramByte)
-  {
-    return this.a.a(paramString, 200, false, paramInt, paramBoolean, paramByte, a(paramInt));
-  }
-  
-  public boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
-  {
-    return this.a.a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3);
-  }
-  
-  public boolean a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return this.a.a(paramString, paramInt, paramBoolean1, 32, paramBoolean2, (byte)1, 3);
-  }
-  
-  public Bitmap b(int paramInt1, String paramString, int paramInt2)
-  {
-    return a(paramInt1, paramString);
+    long l = bhlo.d();
+    try
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).getString("LowMemoryStat", null);
+      if (localObject == null) {
+        return;
+      }
+      if (((String)localObject).length() == 0) {
+        return;
+      }
+      localObject = new DataInputStream(new ByteArrayInputStream(bhkv.decode((String)localObject, 0)));
+      this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
+      this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
+      this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
+      this.c = ((DataInputStream)localObject).readLong();
+      this.d = ((DataInputStream)localObject).readLong();
+      this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
+      this.e = ((DataInputStream)localObject).readLong();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        b();
+      }
+    }
+    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d))
+    {
+      b();
+      return;
+    }
   }
   
   public void b()
   {
-    this.a.b();
-  }
-  
-  public boolean b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return this.a.a(paramString, paramInt, paramBoolean1, 16, paramBoolean2, (byte)1, 3);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.c = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.e = 0L;
   }
   
   public void c()
   {
-    this.a.a();
-  }
-  
-  public void d()
-  {
-    this.a.d();
+    try
+    {
+      Object localObject = new ByteArrayOutputStream();
+      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
+      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
+      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
+      localDataOutputStream.writeLong(this.c);
+      localDataOutputStream.writeLong(this.d);
+      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
+      localDataOutputStream.writeLong(this.e);
+      localDataOutputStream.flush();
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
+      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", bhkv.encodeToString((byte[])localObject, 0)).commit();
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobu
  * JD-Core Version:    0.7.0.1
  */

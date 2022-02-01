@@ -1,15 +1,46 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
+import android.database.Cursor;
+import android.os.Parcel;
 
-class bjuq
-  implements TVK_IMediaPlayer.OnErrorListener
+final class bjuq
+  implements bjvx<bjup>
 {
-  bjuq(bjul parambjul, AbsVideoPlayer.OnErrorListener paramOnErrorListener) {}
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public int a()
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjul, paramInt1, paramInt2);
+    return 1;
+  }
+  
+  public bjup a(Cursor paramCursor)
+  {
+    try
+    {
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new bjup(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
+    }
+    catch (Exception paramCursor)
+    {
+      paramCursor.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bjvy[] a()
+  {
+    return new bjvy[] { new bjvy("urlKey", "TEXT"), new bjvy("ETag", "TEXT"), new bjvy("lastModify", "INTEGER"), new bjvy("cacheTime", "INTEGER"), new bjvy("response", "BLOB") };
   }
 }
 

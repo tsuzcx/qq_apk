@@ -1,72 +1,29 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 public class axhs
-  implements View.OnClickListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public axhs(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public axhs(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    Object localObject1;
-    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
+    }
+    switch (paramInt)
     {
-      localObject1 = (InterestTagInfo)paramView.getTag();
-      if (localObject1 != null)
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localObject1);
-        ChooseInterestTagActivity.a(this.a, (InterestTagInfo)localObject1);
-        ChooseInterestTagActivity.b(this.a, (InterestTagInfo)localObject1);
-      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
-      try
-      {
-        int[] arrayOfInt = new int[2];
-        paramView.getLocationInWindow(arrayOfInt);
-        if (arrayOfInt[0] <= 0) {
-          continue;
-        }
-        InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
-        if (localInterestTagInfo == null) {
-          continue;
-        }
-        Paint localPaint = new Paint();
-        localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
-        localPaint.setColor(this.a.getResources().getColor(2131167044));
-        localPaint.setFakeBoldText(false);
-        localPaint.setAntiAlias(true);
-        Object localObject2 = localInterestTagInfo.tagName;
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = " ";
-        }
-        localObject2 = localObject1;
-        if (((String)localObject1).length() > 8) {
-          localObject2 = ((String)localObject1).substring(0, 8) + "...";
-        }
-        float f = localPaint.measureText((String)localObject2);
-        int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
-        localObject1 = new axii(this.a, arrayOfInt[0], i);
-        ((axii)localObject1).a(ChooseInterestTagActivity.a(this.a));
-        ((axii)localObject1).a(localInterestTagInfo);
-        ((axii)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
-      }
-      catch (Exception localException) {}
-      if (QLog.isDevelopLevel()) {
-        QLog.i("choose_interest_tag", 4, localException.getMessage());
-      }
+      MsgBackupDateFragment.a(this.a, 1);
+      continue;
+      MsgBackupDateFragment.a(this.a, 2);
     }
   }
 }

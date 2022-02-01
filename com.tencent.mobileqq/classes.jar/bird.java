@@ -1,15 +1,20 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bird
-  extends DownloadListener
+class bird
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  bird(birb parambirb) {}
   
-  public abstract void a(DownloadInfo paramDownloadInfo, int paramInt);
-  
-  public abstract void a(List<DownloadInfo> paramList);
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

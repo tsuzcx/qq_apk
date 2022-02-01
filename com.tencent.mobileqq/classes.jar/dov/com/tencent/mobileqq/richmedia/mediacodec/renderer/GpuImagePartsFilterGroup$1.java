@@ -1,33 +1,33 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import bqeq;
-import bqes;
-import bqfb;
+import brgb;
+import brgd;
+import brgm;
 
 public class GpuImagePartsFilterGroup$1
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$1(bqfb parambqfb, int paramInt1, int paramInt2, int paramInt3) {}
+  public GpuImagePartsFilterGroup$1(brgm parambrgm, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    bqes localbqes1 = null;
-    bqes localbqes2 = bqfb.a(this.this$0);
-    bqfb.a(this.this$0, null);
-    if ((bqfb.b(this.this$0) == null) || (bqfb.b(this.this$0).getFilterType() != this.a))
+    brgd localbrgd1 = null;
+    brgd localbrgd2 = brgm.a(this.this$0);
+    brgm.a(this.this$0, null);
+    if ((brgm.b(this.this$0) == null) || (brgm.b(this.this$0).getFilterType() != this.a))
     {
-      localbqes1 = bqfb.b(this.this$0);
-      bqfb.b(this.this$0, (bqes)bqeq.a(this.a));
-      bqfb.b(this.this$0).init();
-      bqfb.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localbrgd1 = brgm.b(this.this$0);
+      brgm.b(this.this$0, (brgd)brgb.a(this.a));
+      brgm.b(this.this$0).init();
+      brgm.b(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
-    bqfb.b(this.this$0).a(false, 0.0F);
-    bqfb.a(this.this$0, 0.0F);
-    if (localbqes2 != null) {
-      localbqes2.destroy();
+    brgm.b(this.this$0).a(false, 0.0F);
+    brgm.a(this.this$0, 0.0F);
+    if (localbrgd2 != null) {
+      localbrgd2.destroy();
     }
-    if (localbqes1 != null) {
-      localbqes1.destroy();
+    if (localbrgd1 != null) {
+      localbrgd1.destroy();
     }
   }
 }

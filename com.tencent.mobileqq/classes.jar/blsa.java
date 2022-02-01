@@ -1,48 +1,36 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Window;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class blsa
-  extends QzoneExternalRequest
 {
-  public JceStruct a;
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  private final boolean b;
   
-  public blsa(long paramLong1, long paramLong2, String paramString)
+  private blsa(Window paramWindow, boolean paramBoolean)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
-    localmobile_sub_get_photo_wall_req.uin = paramLong1;
-    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
-    this.a = localmobile_sub_get_photo_wall_req;
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
+    for (;;)
+    {
+      this.b = bool;
+      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      bool = false;
     }
-    return decode(paramArrayOfByte, "getPhotoWall");
   }
   
-  public String getCmdString()
+  public int a()
   {
-    return "QzoneNewService.getPhotoWall";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getPhotoWall";
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blsa
  * JD-Core Version:    0.7.0.1
  */

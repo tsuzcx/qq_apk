@@ -3,15 +3,16 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import athi;
-import atvo;
+import atzc;
+import aunj;
 import com.tencent.mm.vfs.VFSFile;
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FileInfo> CREATOR = new athi();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new atzc();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -54,7 +55,7 @@ public class FileInfo
     if (paramString == null) {
       throw new FileNotFoundException("file path is null!");
     }
-    paramString = new VFSFile(paramString);
+    paramString = new File(paramString);
     if (!paramString.exists()) {
       throw new FileNotFoundException("file not exist!");
     }
@@ -63,7 +64,7 @@ public class FileInfo
     d(paramString.getName());
     a(paramString.length());
     b(paramString.lastModified());
-    b(atvo.a(this.jdField_b_of_type_JavaLangString));
+    b(aunj.a(this.jdField_b_of_type_JavaLangString));
     c("");
     a("");
   }

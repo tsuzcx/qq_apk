@@ -12,7 +12,7 @@ public class QIPCClientHelper
 {
   public static final int QIPC_CLIENT_ID = 1;
   public static final String TAG = "QIPCClientHelper";
-  static volatile EIPCClient sClient;
+  static volatile EIPCClient sClient = null;
   static QIPCClientHelper sInstance;
   public static EIPCThreadEngine sThreadEngine;
   

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import biip;
+import bjjo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -64,7 +64,7 @@ class AppLoadingUI$8
         {
           if (localMiniAppInfo.clearAuths == 1)
           {
-            l = biip.a().a();
+            l = bjjo.a().a();
             if (l > 0L)
             {
               AuthorizeCenter.clearAuth(localMiniAppInfo.appId, String.valueOf(l));

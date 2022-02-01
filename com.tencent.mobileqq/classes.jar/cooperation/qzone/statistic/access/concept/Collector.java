@@ -1,10 +1,10 @@
 package cooperation.qzone.statistic.access.concept;
 
-import bmhg;
-import bmhi;
-import bmhk;
-import bmhn;
-import bmhp;
+import bnii;
+import bnik;
+import bnim;
+import bnip;
+import bnir;
 import cooperation.qzone.statistic.access.WnsKeys;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,11 +14,11 @@ public class Collector
   implements Runnable
 {
   protected volatile long a;
-  protected bmhg a;
-  protected bmhi a;
-  protected bmhk a;
-  protected bmhn a;
-  protected bmhp a;
+  protected bnii a;
+  protected bnik a;
+  protected bnim a;
+  protected bnip a;
+  protected bnir a;
   protected Thread a;
   protected List<Statistic> a;
   protected volatile boolean a;
@@ -28,14 +28,14 @@ public class Collector
   
   public Collector()
   {
-    this.jdField_a_of_type_Bmhi = bmhi.jdField_a_of_type_Bmhi;
-    this.jdField_a_of_type_Bmhn = bmhn.jdField_a_of_type_Bmhn;
-    this.jdField_a_of_type_Bmhg = bmhg.jdField_a_of_type_Bmhg;
-    this.jdField_a_of_type_Bmhk = bmhk.jdField_a_of_type_Bmhk;
+    this.jdField_a_of_type_Bnik = bnik.jdField_a_of_type_Bnik;
+    this.jdField_a_of_type_Bnip = bnip.jdField_a_of_type_Bnip;
+    this.jdField_a_of_type_Bnii = bnii.jdField_a_of_type_Bnii;
+    this.jdField_a_of_type_Bnim = bnim.jdField_a_of_type_Bnim;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_Bmhp = new bmhp();
+    this.jdField_a_of_type_Bnir = new bnir();
   }
   
   public long a()
@@ -43,24 +43,24 @@ public class Collector
     return this.jdField_a_of_type_Long;
   }
   
-  public bmhg a()
+  public bnii a()
   {
-    return this.jdField_a_of_type_Bmhg;
+    return this.jdField_a_of_type_Bnii;
   }
   
-  public bmhk a()
+  public bnim a()
   {
-    return this.jdField_a_of_type_Bmhk;
+    return this.jdField_a_of_type_Bnim;
   }
   
-  public bmhn a()
+  public bnip a()
   {
-    return this.jdField_a_of_type_Bmhn;
+    return this.jdField_a_of_type_Bnip;
   }
   
-  public bmhp a()
+  public bnir a()
   {
-    return this.jdField_a_of_type_Bmhp;
+    return this.jdField_a_of_type_Bnir;
   }
   
   public void a()
@@ -79,29 +79,29 @@ public class Collector
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a(bmhg parambmhg)
+  public void a(bnii parambnii)
   {
-    this.jdField_a_of_type_Bmhg = parambmhg;
+    this.jdField_a_of_type_Bnii = parambnii;
   }
   
-  public void a(bmhi parambmhi)
+  public void a(bnik parambnik)
   {
-    this.jdField_a_of_type_Bmhi = parambmhi;
+    this.jdField_a_of_type_Bnik = parambnik;
   }
   
-  public void a(bmhk parambmhk)
+  public void a(bnim parambnim)
   {
-    this.jdField_a_of_type_Bmhk = parambmhk;
+    this.jdField_a_of_type_Bnim = parambnim;
   }
   
-  public void a(bmhn parambmhn)
+  public void a(bnip parambnip)
   {
-    this.jdField_a_of_type_Bmhn = parambmhn;
+    this.jdField_a_of_type_Bnip = parambnip;
   }
   
   public void a(Statistic paramStatistic)
   {
-    this.jdField_a_of_type_Bmhp.a(paramStatistic);
+    this.jdField_a_of_type_Bnir.a(paramStatistic);
   }
   
   public boolean a()
@@ -120,10 +120,10 @@ public class Collector
     e();
     List localList;
     Object localObject1;
-    if ((this.jdField_a_of_type_Bmhi.a(this)) || (this.c))
+    if ((this.jdField_a_of_type_Bnik.a(this)) || (this.c))
     {
       this.c = false;
-      localList = this.jdField_a_of_type_Bmhp.a();
+      localList = this.jdField_a_of_type_Bnir.a();
       if ((localList != null) && (localList.size() > 0))
       {
         if (this.jdField_b_of_type_Boolean) {

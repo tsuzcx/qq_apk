@@ -1,6 +1,21 @@
-public abstract interface mzg<T>
+import android.os.CountDownTimer;
+import android.os.SystemClock;
+
+class mzg
+  extends CountDownTimer
 {
-  public abstract T a();
+  mzg(mzf parammzf, long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  {
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    mzf.a(this.jdField_a_of_type_Mzf, this.jdField_a_of_type_Int - i);
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 

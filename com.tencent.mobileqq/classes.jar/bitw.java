@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bitw
+public class bitw
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public bitw(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

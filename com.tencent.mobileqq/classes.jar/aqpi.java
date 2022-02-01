@@ -1,47 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aqpi
+class aqpi
+  implements View.OnTouchListener
 {
-  public boolean a;
+  aqpi(aqph paramaqph) {}
   
-  public static aqpi a(aqlg[] paramArrayOfaqlg)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
-    aqpi localaqpi = new aqpi();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaqlg != null) {
-      localObject1 = localObject2;
-    }
-    try
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (paramArrayOfaqlg.length > 0) {
-        localObject1 = paramArrayOfaqlg[0].a;
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      aqph.a(this.a, paramMotionEvent.getY());
+      mvd.a(paramView, 0.5F);
+    }
+    for (;;)
+    {
+      bool = false;
+      do
       {
-        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
-        return localaqpi;
+        return bool;
+        if (paramMotionEvent.getAction() != 1) {
+          break label101;
+        }
+        mvd.a(paramView, 1.0F);
+        aqph.b(this.a, paramMotionEvent.getY());
+        if (aqph.a(this.a) - aqph.b(this.a) <= 50.0F) {
+          break;
+        }
+      } while (aqph.a(this.a) == null);
+      aqph.a(this.a).c();
+      return true;
+      label101:
+      if (paramMotionEvent.getAction() == 3) {
+        mvd.a(paramView, 1.0F);
       }
-      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
-        bool = true;
-      }
-      localaqpi.a = bool;
-      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localaqpi.a);
-      return localaqpi;
     }
-    catch (Exception paramArrayOfaqlg)
-    {
-      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfaqlg);
-    }
-    return localaqpi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpi
  * JD-Core Version:    0.7.0.1
  */

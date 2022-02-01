@@ -1,30 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowEntryData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
 
-public class awce
+class awce
+  extends CustomizedReport
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new awcf(this);
-  private awcg jdField_a_of_type_Awcg;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  awce(awcc paramawcc) {}
   
-  public awce(QQAppInterface paramQQAppInterface)
+  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
+  
+  public void onReport(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+    awbt localawbt = awde.a().a();
+    if (localawbt != null) {
+      localawbt.a(paramBundle);
+    }
+    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
+      uno.a(awdd.jdField_a_of_type_JavaLangString, "", "", awdd.b, awdd.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
+    }
   }
   
-  public void a()
-  {
-    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
-  
-  public void a(awcg paramawcg)
-  {
-    this.jdField_a_of_type_Awcg = paramawcg;
-  }
+  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 

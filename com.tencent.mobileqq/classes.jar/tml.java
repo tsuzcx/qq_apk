@@ -1,52 +1,21 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class tml
-  implements tlf
+public class tml
+  implements tld
 {
-  tml(tmk paramtmk, FrameLayout paramFrameLayout) {}
+  tml(tmk paramtmk) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void a(tqt paramtqt, int paramInt1, int paramInt2)
   {
-    if (tmk.a(this.jdField_a_of_type_Tmk) != null) {
-      tmk.a(this.jdField_a_of_type_Tmk).a(paramInt);
+    if ((paramtqt == null) || (paramtqt.a == null) || (tmk.a(this.a) == null) || (tmk.a(this.a).a == null)) {}
+    while ((!"2".equals(tmk.a(this.a).a.s)) || (!paramtqt.d.equals(tmk.a(this.a).a.d))) {
+      return;
     }
+    ThreadManager.getUIHandler().post(new VideoFeedsGameAdComManager.1.1(this, paramInt1, paramInt2));
   }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 5)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("float_layer_finsh_action");
-      tmk.a(this.jdField_a_of_type_Tmk).getActivity().sendBroadcast(localIntent);
-    }
-    tmk.a(this.jdField_a_of_type_Tmk).getActivity().doOnBackPressed();
-    tmk.a(this.jdField_a_of_type_Tmk).getActivity().overridePendingTransition(0, 0);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt == 2) && (tmk.a(this.jdField_a_of_type_Tmk).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void c() {}
 }
 
 

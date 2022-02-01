@@ -1,23 +1,22 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.widget.QQToast;
-import eipc.EIPCResult;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
 
 class binu
-  extends QIPCModule
+  implements bhtj<Integer>
 {
-  binu(bint parambint, String paramString)
-  {
-    super(paramString);
-  }
+  binu(binq parambinq, View paramView, int paramInt) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(bhtd<Integer> parambhtd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
-      QQToast.a(BaseApplicationImpl.context, anni.a(2131709958), 1).a();
-    }
-    return null;
+    if (!this.jdField_a_of_type_Binq.a.x) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Binq.a.d = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Binq.a.d != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Binq.a.x = false;
   }
 }
 

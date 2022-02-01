@@ -1,24 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.VoteView;
-import com.tencent.mobileqq.widget.VoteView.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bidf
-  implements View.OnClickListener
 {
-  public bidf(VoteView.1 param1) {}
-  
-  public void onClick(View paramView)
+  public static bidb a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity)
   {
-    Intent localIntent = new Intent(this.a.this$0.getContext(), QQBrowserActivity.class);
-    String str = bgyg.a(this.a.this$0.getContext(), "praise", "");
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.this$0.getContext(), str, 536870912L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "1", null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    {
+      if (paramQQVipMsgInfo == null) {
+        return new MoreMsgHeaderView(paramActivity);
+      }
+      try
+      {
+        if (paramQQVipMsgInfo.msgType == 1)
+        {
+          paramQQVipMsgInfo = new QQVipArkHeaderView(paramActivity, null);
+          return paramQQVipMsgInfo;
+        }
+      }
+      catch (Throwable paramQQVipMsgInfo)
+      {
+        QLog.d("QQVipPubHeaderFactory", 4, "decode header(web) faile:" + paramQQVipMsgInfo.getMessage());
+        return null;
+      }
+      if (paramQQVipMsgInfo.msgType == 2) {
+        return new ImgHeaderView(paramActivity);
+      }
+      if (paramQQVipMsgInfo.msgType == 3) {
+        return new TextHeaderView(paramActivity);
+      }
+      paramQQVipMsgInfo = new MoreMsgHeaderView(paramActivity);
+      return paramQQVipMsgInfo;
+    }
+    QLog.d("QQVipPubHeaderFactory", 4, "createHeader fail activity is null");
+    return null;
   }
 }
 

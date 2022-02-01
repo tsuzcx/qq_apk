@@ -1,35 +1,48 @@
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
-import java.io.File;
+import com.tencent.open.virtual.OpenSdkVirtualManager.2;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bjzq
-  implements IActivityResultListener
+public class bjzq
+  extends bkaa
 {
-  bjzq(bjzk parambjzk, File paramFile, IActivityResultManager paramIActivityResultManager, boolean paramBoolean) {}
+  public bjzq(OpenSdkVirtualManager.2 param2) {}
   
-  @SuppressLint({"NewApi"})
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if (paramInt1 != 2) {
-      return false;
-    }
-    if (paramInt2 != -1)
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+    avcw.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Bjzb, paramBoolean);
+    int i = paramInt;
+    if (paramBoolean) {}
+    for (;;)
     {
-      this.jdField_a_of_type_JavaIoFile.deleteOnExit();
-      bjzk.a(this.jdField_a_of_type_Bjzk, bjzk.a(this.jdField_a_of_type_Bjzk), "chooseVideo", null);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-      return true;
+      try
+      {
+        i = new JSONObject(paramString1).optInt("ErrorCode");
+        paramInt = i;
+        i = paramInt;
+        if (paramInt == 0)
+        {
+          paramBoolean = true;
+          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+          if (this.a.jdField_a_of_type_Bjpq != null) {
+            this.a.jdField_a_of_type_Bjpq.a(paramBoolean, paramInt);
+          }
+          return;
+        }
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "Exception.e", paramString2);
+        i = paramInt;
+      }
+      paramBoolean = false;
+      paramInt = i;
     }
-    bjzk.a(this.jdField_a_of_type_Bjzk, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,49 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.HashMap;
 
-final class agac
-  extends anxg
+public class agac
+  implements DialogInterface.OnClickListener
 {
-  agac(SessionInfo paramSessionInfo) {}
+  public agac(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    this.a.l();
+    if (VipUtils.b(this.a.app))
     {
-      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      if (this.a.jdField_a_of_type_Long != 0L) {
+        break label144;
       }
+      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
+      if (!TextUtils.isEmpty(paramDialogInterface)) {
+        this.a.a(this.a.d, paramDialogInterface, false);
+      }
+    }
+    else
+    {
+      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
+        break label222;
+      }
+    }
+    label144:
+    label222:
+    for (paramDialogInterface = "3";; paramDialogInterface = "4")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nnr.a(), paramDialogInterface, "0");
+      return;
+      this.a.a(this.a.d, false);
+      break;
+      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.b))) {
+        break;
+      }
+      paramDialogInterface = azxs.a(this.a, azxy.n, this.a.jdField_a_of_type_Long);
+      this.a.a(paramDialogInterface, this.a.b, false);
+      break;
     }
   }
 }

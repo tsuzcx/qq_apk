@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark;
 
-import apop;
-import apot;
-import beat;
-import beaw;
-import beax;
+import aqcf;
+import aqcj;
+import bezs;
+import bezv;
+import bezw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -12,21 +12,21 @@ import java.lang.ref.WeakReference;
 public class ArkAppPreDownloadMgr$3
   implements Runnable
 {
-  public ArkAppPreDownloadMgr$3(apop paramapop, apot paramapot) {}
+  public ArkAppPreDownloadMgr$3(aqcf paramaqcf, aqcj paramaqcj) {}
   
   public void run()
   {
     Object localObject = new ArkAppPreDownloadMgr.3.1(this);
-    QQAppInterface localQQAppInterface = (QQAppInterface)apop.a(this.this$0).get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)aqcf.a(this.this$0).get();
     if (localQQAppInterface != null) {}
-    for (beaw localbeaw = (beaw)localQQAppInterface.getManager(193);; localbeaw = null)
+    for (bezv localbezv = (bezv)localQQAppInterface.getManager(193);; localbezv = null)
     {
-      if (localbeaw != null)
+      if (localbezv != null)
       {
-        apop.a(this.this$0);
+        aqcf.a(this.this$0);
         QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling add ark predowload to scheduler,app=", this.a.a });
-        localObject = new beax(localQQAppInterface, this.a.a, (Runnable)localObject, 10000L);
-        localbeaw.a(10080, "prd", this.a.a, apop.b(this.this$0), this.a.a, "", 1, 0, false, (beat)localObject);
+        localObject = new bezw(localQQAppInterface, this.a.a, (Runnable)localObject, 10000L);
+        localbezv.a(10080, "prd", this.a.a, aqcf.b(this.this$0), this.a.a, "", 1, 0, false, (bezs)localObject);
         return;
       }
       QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling add ark predowload to scheduler fail for predownloadCtrl null,app=", this.a.a });

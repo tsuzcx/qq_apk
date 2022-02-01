@@ -2,7 +2,7 @@ package com.tencent.biz.publicAccountImageCollection;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import anrs;
+import aody;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class PublicAccountImageCollectionMainActivity$16
@@ -13,13 +13,13 @@ class PublicAccountImageCollectionMainActivity$16
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    anrs localanrs;
+    aody localaody;
     do
     {
       return;
-      localanrs = (anrs)this.this$0.app.getManager(56);
-    } while (localanrs == null);
-    PublicAccountImageCollectionMainActivity.c(this.this$0, localanrs.a(Long.valueOf(this.this$0.a)));
+      localaody = (aody)this.this$0.app.getManager(56);
+    } while (localaody == null);
+    PublicAccountImageCollectionMainActivity.c(this.this$0, localaody.a(Long.valueOf(this.this$0.a)));
     PublicAccountImageCollectionMainActivity.a(this.this$0).postDelayed(new PublicAccountImageCollectionMainActivity.16.1(this), 0L);
   }
 }

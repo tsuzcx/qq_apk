@@ -1,26 +1,26 @@
 package com.tencent.biz.qqcircle.bizparts;
 
 import android.graphics.Bitmap;
-import biau;
+import bjbs;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
-import vde;
+import vfi;
 
 public class QCircleSharePart$5
   implements Runnable
 {
-  public QCircleSharePart$5(vde paramvde, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  public QCircleSharePart$5(vfi paramvfi, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
   public void run()
   {
-    if ((vde.a(this.this$0) != null) && (vde.a(this.this$0).isShowing())) {
-      vde.a(this.this$0).dismiss();
+    if ((vfi.a(this.this$0) != null) && (vfi.a(this.this$0).isShowing())) {
+      vfi.a(this.this$0).dismiss();
     }
-    vde.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+    vfi.a(this.this$0, String.valueOf(System.currentTimeMillis()));
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = vde.a(this.this$0);
+    String str1 = vfi.a(this.this$0);
     String str2 = this.jdField_a_of_type_JavaLangString;
     String str3 = this.b;
     String str4 = this.c;

@@ -1,17 +1,17 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfnt
+  implements View.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  TextView a;
-  public String a;
+  public bfnt(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public bfnt(View paramView)
+  public void onClick(View paramView)
   {
-    this.a = paramView;
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

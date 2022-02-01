@@ -25,8 +25,8 @@ public class Foreground
   public static final String TAG = "ApplicationLife";
   private static List<Foreground.AppLifeCycleCallback> callbacks = new LinkedList();
   private static Context sContext;
-  public static int sCountActivity;
-  public static int sCountResume;
+  public static int sCountActivity = 0;
+  public static int sCountResume = 0;
   private static Handler sHandler;
   private static String sProcessName;
   private static WeakReference<Activity> sTopActivity;
@@ -84,10 +84,10 @@ public class Foreground
     sCountResume = i;
     if ((i <= 0) && (paramAppRuntime != null))
     {
-      paramAppRuntime.isBackground_Pause = true;
+      paramAppRuntime.isBackgroundPause = true;
       Iterator localIterator = paramAppRuntime.subRuntimeMap.values().iterator();
       while (localIterator.hasNext()) {
-        ((AppRuntime)localIterator.next()).isBackground_Pause = paramAppRuntime.isBackground_Pause;
+        ((AppRuntime)localIterator.next()).isBackgroundPause = paramAppRuntime.isBackgroundPause;
       }
       paramAppRuntime.onProcPause();
     }
@@ -99,10 +99,10 @@ public class Foreground
     sCountResume = i;
     if ((i > 0) && (paramAppRuntime != null))
     {
-      paramAppRuntime.isBackground_Pause = false;
+      paramAppRuntime.isBackgroundPause = false;
       Iterator localIterator = paramAppRuntime.subRuntimeMap.values().iterator();
       while (localIterator.hasNext()) {
-        ((AppRuntime)localIterator.next()).isBackground_Pause = paramAppRuntime.isBackground_Pause;
+        ((AppRuntime)localIterator.next()).isBackgroundPause = paramAppRuntime.isBackgroundPause;
       }
       paramAppRuntime.onProcResume();
     }
@@ -176,7 +176,7 @@ public class Foreground
       if (sCountResume <= 0)
       {
         bool1 = true;
-        paramAppRuntime.isBackground_Pause = bool1;
+        paramAppRuntime.isBackgroundPause = bool1;
         if (sCountActivity > 0) {
           break label91;
         }
@@ -184,13 +184,13 @@ public class Foreground
       label91:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        paramAppRuntime.isBackground_Stop = bool1;
+        paramAppRuntime.isBackgroundStop = bool1;
         Iterator localIterator = paramAppRuntime.subRuntimeMap.values().iterator();
         while (localIterator.hasNext())
         {
           AppRuntime localAppRuntime = (AppRuntime)localIterator.next();
-          localAppRuntime.isBackground_Pause = paramAppRuntime.isBackground_Pause;
-          localAppRuntime.isBackground_Stop = paramAppRuntime.isBackground_Stop;
+          localAppRuntime.isBackgroundPause = paramAppRuntime.isBackgroundPause;
+          localAppRuntime.isBackgroundStop = paramAppRuntime.isBackgroundStop;
         }
         bool1 = false;
         break;
@@ -213,7 +213,7 @@ public class Foreground
       return true;
       if (sCountActivity > 0)
       {
-        if ((localAppRuntime != null) && (localAppRuntime.isBackground_Stop))
+        if ((localAppRuntime != null) && (localAppRuntime.isBackgroundStop))
         {
           localAppRuntime.onRunningForeground();
           ??? = localAppRuntime.subRuntimeMap.values().iterator();

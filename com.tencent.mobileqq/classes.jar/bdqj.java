@@ -1,18 +1,22 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class bdqj
-  implements ImageAssetDelegate
+class bdqj
+  implements View.OnLongClickListener
 {
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  bdqj(bdqi parambdqi) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    if (BaseApplicationImpl.sImageCache != null) {
-      return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    if (this.a.a != null)
+    {
+      agjk localagjk = (agjk)this.a.a.get();
+      if (localagjk != null) {
+        return localagjk.onLongClick(paramView);
+      }
     }
-    return null;
+    return false;
   }
 }
 

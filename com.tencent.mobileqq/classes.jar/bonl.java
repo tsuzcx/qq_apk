@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
 public class bonl
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  public bonl(HummingActivity paramHummingActivity) {}
+  bonl(bonf parambonf) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (bonh.b()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      HummingActivity.a(this.a);
-    }
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
   }
 }
 

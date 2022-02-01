@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-class azwj
-  implements Comparator<QCallRecord>
+public class azwj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  azwj(azwi paramazwi) {}
+  public azwj(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
-    }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.height = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 

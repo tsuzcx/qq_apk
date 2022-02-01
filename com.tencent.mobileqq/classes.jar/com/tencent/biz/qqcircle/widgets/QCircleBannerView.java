@@ -12,11 +12,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import feedcloud.FeedCloudMeta.StImage;
 import qqcircle.QQCircleDitto.StSinglePicBanner;
-import uxh;
-import vrf;
-import vuy;
-import vuz;
-import zby;
+import uys;
+import vtq;
+import vyb;
+import vyc;
+import zft;
 
 public class QCircleBannerView
   extends QCircleBaseWidgetView
@@ -24,7 +24,7 @@ public class QCircleBannerView
 {
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private vuz jdField_a_of_type_Vuz;
+  private vyc jdField_a_of_type_Vyc;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
   public QCircleBannerView(Context paramContext)
@@ -37,7 +37,7 @@ public class QCircleBannerView
     if ((paramStImage.width.get() != 0) && (paramStImage.height.get() != 0))
     {
       float f = paramStImage.height.get() * 1.0F / paramStImage.width.get();
-      int i = zby.a(getContext());
+      int i = zft.a(getContext());
       paramStImage = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
       paramStImage.height = Math.round(f * i);
       paramStImage.width = -1;
@@ -47,7 +47,7 @@ public class QCircleBannerView
   
   public int a()
   {
-    return 2131560720;
+    return 2131560740;
   }
   
   protected String a()
@@ -59,8 +59,8 @@ public class QCircleBannerView
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369053));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376623));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369142));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376756));
       this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(true);
@@ -76,7 +76,7 @@ public class QCircleBannerView
       {
         QLog.d("QCircleInviteBannerView", 1, "banner url is:" + paramObject.image.picUrl.get());
         a(paramObject.image);
-        uxh.a(paramObject.image.picUrl.get(), this.jdField_a_of_type_ComTencentImageURLImageView, null, false, new vuy(this));
+        uys.a(paramObject.image.picUrl.get(), this.jdField_a_of_type_ComTencentImageURLImageView, null, false, new vyb(this));
       }
     }
   }
@@ -85,7 +85,7 @@ public class QCircleBannerView
   {
     super.onAttachedToWindow();
     QLog.d("QCircleInviteBannerView", 1, "onAttachedToWindow");
-    vrf.a("", 22, 14, 1, "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
+    vtq.a("", 22, 14, 1, "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
   }
   
   public void onClick(View paramView)
@@ -97,21 +97,21 @@ public class QCircleBannerView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Vuz != null) {
-        this.jdField_a_of_type_Vuz.a();
+      if (this.jdField_a_of_type_Vyc != null) {
+        this.jdField_a_of_type_Vyc.a();
       }
-      vrf.a("", 22, 14, 2, "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
+      vtq.a("", 22, 14, 2, "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
       continue;
-      if (this.jdField_a_of_type_Vuz != null) {
-        this.jdField_a_of_type_Vuz.b();
+      if (this.jdField_a_of_type_Vyc != null) {
+        this.jdField_a_of_type_Vyc.b();
       }
-      vrf.a("", 22, 14, 3, "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
+      vtq.a("", 22, 14, 3, "", "", "", "", "", this.jdField_a_of_type_ArrayOfByte, d(), -1);
     }
   }
   
-  public void setInviteBannerClickListener(vuz paramvuz)
+  public void setInviteBannerClickListener(vyc paramvyc)
   {
-    this.jdField_a_of_type_Vuz = paramvuz;
+    this.jdField_a_of_type_Vyc = paramvyc;
   }
   
   public void setReportInfo(byte[] paramArrayOfByte)

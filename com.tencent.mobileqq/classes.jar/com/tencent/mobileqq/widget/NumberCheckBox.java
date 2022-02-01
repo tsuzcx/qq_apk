@@ -28,7 +28,7 @@ public class NumberCheckBox
   public NumberCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167286));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167309));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
   }
   

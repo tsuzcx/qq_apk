@@ -1,22 +1,36 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class aljr
-  implements bkhw
+  implements bliz
 {
-  public aljr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aljr(AppletsFolderManager.2 param2) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (aljo.a(this.a.this$0)) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_Bkho.dismiss();
+    aljo.a(this.a.this$0, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      aljo.a(this.a.this$0).dismiss();
+      return;
+      paramView = new ArrayList();
+      apek localapek = new apek();
+      localapek.a(Integer.valueOf(this.a.a).intValue());
+      localapek.a(Integer.valueOf(this.a.b).intValue());
+      localapek.b(0);
+      paramView.add(localapek.a());
+      aljo.a(this.a.this$0).a(paramView);
+      QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131699532), 0).a();
+    }
   }
 }
 

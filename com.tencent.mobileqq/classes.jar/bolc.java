@@ -1,31 +1,19 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class bolc
-  implements Handler.Callback
+  implements Observer<bowc>
 {
-  bolc(bolb parambolb) {}
+  bolc(bokv parambokv) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(@Nullable bowc parambowc)
   {
-    switch (paramMessage.what)
-    {
+    if (parambowc == null) {}
+    while (parambowc.b != AECaptureMode.PLAY) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a())
-      {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-        continue;
-        this.a.a.removeMessages(3);
-        if (this.a.b()) {
-          this.a.a.sendEmptyMessageDelayed(3, 50L);
-        }
-      }
-    }
+    bokv.a(this.a);
   }
 }
 

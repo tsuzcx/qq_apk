@@ -1,8 +1,17 @@
-public abstract interface ajko
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+
+public class ajko
+  extends amof
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
+  public Button a;
+  public TextView a;
+  public SysSuspiciousMsg a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

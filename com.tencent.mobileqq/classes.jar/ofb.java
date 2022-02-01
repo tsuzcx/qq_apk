@@ -1,63 +1,90 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPAccoutRelation;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientRsp;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPNewUserRecmd;
 
-public class ofb
-  extends BroadcastReceiver
+class ofb
+  implements BusinessObserver
 {
-  public ofb(EcshopNewPageFragment paramEcshopNewPageFragment) {}
+  ofb(ofa paramofa) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 0;
-    if (paramIntent != null)
+    Object localObject = paramBundle.getString("extra_cmd");
+    if (paramBoolean)
     {
-      paramContext = paramIntent.getAction();
-      if (!"com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramContext)) {
-        break label41;
+      if (!"SQQShopFolderSvc.GetShopBindUin".equals(localObject)) {
+        break label205;
       }
-      if (this.a.getActivity() != null) {
-        this.a.getActivity().finish();
-      }
+      paramBundle = paramBundle.getByteArray("extra_data");
+      localObject = new qqshop.SQQSHPClientRsp();
     }
-    label41:
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"action_notify_view_update".equals(paramContext));
-      j = paramIntent.getIntExtra("businessId", 0);
-      k = paramIntent.getIntExtra("viewId", 0);
-    } while ((25 != j) || (k != 1));
     for (;;)
     {
+      label205:
       try
       {
-        paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
-        if (EcshopNewPageFragment.a(this.a) == null) {
-          break;
-        }
-        paramIntent = EcshopNewPageFragment.a(this.a);
-        if (paramContext.optInt("isShow") == 1)
+        ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+        paramBundle = ((qqshop.SQQSHPClientRsp)localObject).bindlist.get();
+        paramInt = 0;
+        if (paramInt < paramBundle.size())
         {
-          paramIntent.setVisibility(i);
-          return;
+          localObject = (qqshop.SQQSHPAccoutRelation)paramBundle.get(paramInt);
+          String str = String.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).puin.get());
+          long l = ((qqshop.SQQSHPAccoutRelation)localObject).binduin.get();
+          this.a.c.put(str, Integer.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).distance.get()));
+          this.a.d.put(str, String.valueOf(l));
+          paramInt += 1;
+          continue;
         }
-      }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
+        if ((this.a.a != null) && (this.a.a.a != null) && (this.a.a.b == 1)) {
+          this.a.a.a.notifyDataSetChanged();
+        }
         return;
       }
-      i = 8;
+      catch (Exception paramBundle) {}
+      if ("SQQShopFolderSvc.GetFolderInfo".equals(localObject))
+      {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        localObject = new qqshop.SQQSHPClientRsp();
+        try
+        {
+          ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+          if (((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.has())
+          {
+            paramBundle = (qqshop.SQQSHPNewUserRecmd)((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.get();
+            if ((paramBundle.recmdflag.has()) && (paramBundle.recmdflag.get() == 1))
+            {
+              paramBundle = paramBundle.recmdurl.get();
+              if ((!TextUtils.isEmpty(paramBundle)) && (this.a.a != null))
+              {
+                QLog.i("EcshopCacheTool", 2, "newusrrecmd url:" + paramBundle);
+                localObject = new Intent(this.a.a.getActivity(), QQBrowserActivity.class);
+                ((Intent)localObject).putExtra("url", paramBundle);
+                ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+                this.a.a.startActivity((Intent)localObject);
+                this.a.a.getActivity().overridePendingTransition(2130771979, 0);
+                bdll.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
+                return;
+              }
+            }
+          }
+        }
+        catch (Exception paramBundle) {}
+      }
     }
   }
 }

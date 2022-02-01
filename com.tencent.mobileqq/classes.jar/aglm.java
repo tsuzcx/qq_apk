@@ -1,46 +1,24 @@
-import android.text.Editable;
-import android.text.Html.TagHandler;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.xml.sax.XMLReader;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aglm
-  implements Html.TagHandler
+  implements View.OnClickListener
 {
-  static
-  {
-    if (!aglj.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  aglm(agll paramagll, agky paramagky, ChatMessage paramChatMessage) {}
   
-  aglm(aglj paramaglj) {}
-  
-  public void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
+  public void onClick(View paramView)
   {
-    if (paramString.equalsIgnoreCase("newLine")) {}
-    int i;
-    do
-    {
-      do
-      {
-        paramEditable.append("\n");
-        do
-        {
-          return;
-        } while (!paramString.equalsIgnoreCase("emotion"));
-        paramXMLReader = aglj.a(this.jdField_a_of_type_Aglj, paramXMLReader, "id");
-      } while (TextUtils.isEmpty(paramXMLReader));
-      if ((!jdField_a_of_type_Boolean) && (paramXMLReader == null)) {
-        throw new AssertionError();
-      }
-      i = Integer.parseInt(paramXMLReader);
-      paramEditable.append(this.jdField_a_of_type_Aglj.a("\024" + (char)i));
-    } while (!QLog.isColorLevel());
-    QLog.d("FullScreenInputHelper", 2, "[mix]handleTag: " + paramString + " emotionTag: " + paramXMLReader + " emotionId: " + i);
+    Context localContext = agll.a(this.jdField_a_of_type_Agll).getContext();
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Agky.a);
+    localContext.startActivity(localIntent);
+    agll.a(this.jdField_a_of_type_Agll, this.jdField_a_of_type_Agky, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

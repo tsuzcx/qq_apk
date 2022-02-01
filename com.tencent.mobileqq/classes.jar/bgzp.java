@@ -1,76 +1,46 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgzp<V>
-  implements Manager
+class bgzp
+  implements bdyi
 {
-  private final ArrayList<bgzr<V>> a = new ArrayList();
+  public int a;
+  public long a;
+  public long b;
+  public long c;
   
-  static
+  bgzp(bgzd parambgzd)
   {
-    bhek.a.a();
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static <E> bgzq<E> a(bgzq<E> parambgzq)
+  public void a()
   {
-    return new bgzs(parambgzq);
-  }
-  
-  public void a(String arg1, bgzq<V> parambgzq, Object paramObject)
-  {
-    if (parambgzq != null)
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    switch (this.jdField_a_of_type_Int)
     {
-      parambgzq = new bgzr(parambgzq, paramObject, ???);
-      synchronized (this.a)
-      {
-        this.a.add(parambgzq);
-        return;
-      }
     }
-  }
-  
-  public void a(String paramString, V paramV)
-  {
-    if (paramString == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      int i;
-      synchronized (this.a)
-      {
-        i = this.a.size() - 1;
-        if (i >= 0)
-        {
-          bgzr localbgzr = (bgzr)this.a.get(i);
-          if (paramString.equals(localbgzr.jdField_a_of_type_JavaLangString))
-          {
-            this.a.remove(i);
-            localArrayList.add(localbgzr);
-          }
-        }
-        else
-        {
-          paramString = localArrayList.iterator();
-          if (!paramString.hasNext()) {
-            break;
-          }
-          ??? = (bgzr)paramString.next();
-          ((bgzr)???).jdField_a_of_type_Bgzq.a(paramV, ((bgzr)???).jdField_a_of_type_JavaLangObject);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
       }
-      i -= 1;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    synchronized (this.a)
-    {
-      this.a.clear();
       return;
+      this.jdField_a_of_type_Bgzd.a(0L);
+      continue;
+      this.jdField_a_of_type_Bgzd.a(3000L);
+      continue;
+      long l = this.c - this.b;
+      if (l >= 2000L)
+      {
+        this.jdField_a_of_type_Bgzd.a(0L);
+      }
+      else
+      {
+        this.jdField_a_of_type_Bgzd.a(2000L - l);
+        continue;
+        this.jdField_a_of_type_Bgzd.a(3000L);
+      }
     }
   }
 }

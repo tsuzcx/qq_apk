@@ -1,18 +1,18 @@
-import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akfb
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public akfb(PhotoCropActivity paramPhotoCropActivity) {}
+  public akfb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if (((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(1001);
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

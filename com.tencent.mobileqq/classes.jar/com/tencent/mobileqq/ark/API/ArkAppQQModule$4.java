@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import apih;
-import apix;
-import apoh;
-import aufz;
-import bgou;
+import apvx;
+import apwn;
+import aqbx;
+import auxu;
+import bhow;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.qphone.base.util.QLog;
@@ -16,14 +16,14 @@ import com.tencent.qphone.base.util.QLog;
 public class ArkAppQQModule$4
   implements Runnable
 {
-  public ArkAppQQModule$4(apix paramapix, ArkAppMessage paramArkAppMessage) {}
+  public ArkAppQQModule$4(apwn paramapwn, ArkAppMessage paramArkAppMessage) {}
   
   public void run()
   {
-    Activity localActivity = apih.a();
+    Activity localActivity = apvx.a();
     if ((localActivity instanceof FragmentActivity))
     {
-      Bundle localBundle = bgou.a(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, apoh.a(), null, null);
+      Bundle localBundle = bhow.a(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, aqbx.a(), null, null);
       localBundle.putBoolean("forward_ark_app_direct", false);
       localBundle.putString("forward_ark_app_name", this.a.appName);
       localBundle.putString("forward_ark_app_view", this.a.appView);
@@ -40,7 +40,7 @@ public class ArkAppQQModule$4
       if (QLog.isColorLevel()) {
         QLog.i("ArkApp.ArkAppQQModule", 2, "multiAio.buildForwardIntent: " + localBundle);
       }
-      aufz.a(localActivity, localIntent);
+      auxu.a(localActivity, localIntent);
     }
   }
 }

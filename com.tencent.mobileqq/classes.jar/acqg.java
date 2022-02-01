@@ -1,47 +1,77 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.3.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialPreDownloader.1;
+import java.lang.ref.WeakReference;
 
-public class acqg
-  implements View.OnClickListener
+public final class acqg
 {
-  public acqg(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  private static volatile acqg jdField_a_of_type_Acqg;
+  private volatile long jdField_a_of_type_Long = -2147483648L;
+  private volatile acpw jdField_a_of_type_Acpw;
+  private acpy jdField_a_of_type_Acpy = new acqi(this);
+  private AdIPCManager.Callback jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback = new acqh(this);
   
-  public void onClick(View paramView)
+  public static acqg a()
   {
-    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getActivity());
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    if (jdField_a_of_type_Acqg == null) {}
+    try
     {
-      str = "ad is not loaded";
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    }
-    for (;;)
-    {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (GdtInterstitialFragmentForJS.a(this.a) == null)
-      {
-        str = "ad is loading";
+      if (jdField_a_of_type_Acqg == null) {
+        jdField_a_of_type_Acqg = new acqg();
       }
-      else
+      return jdField_a_of_type_Acqg;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Acpw != null) {
+      return this.jdField_a_of_type_Acpw.a();
+    }
+    return -2147483648;
+  }
+  
+  public void a()
+  {
+    acvc.b("GdtInterstitialPreDownloader", "preDownloadImpl");
+    if (this.jdField_a_of_type_Acpw == null) {
+      synchronized (jdField_a_of_type_Acqg)
       {
-        if (GdtInterstitialFragmentForJS.a(this.a).a() == 0) {
-          break;
+        if (this.jdField_a_of_type_Acpw == null)
+        {
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.jdField_a_of_type_Acpw = new acpw(new WeakReference(this.jdField_a_of_type_Acpy), acqd.a().a(), -2147483648L);
+          acvp.a(BaseApplicationImpl.getApplication());
         }
-        str = GdtInterstitialFragmentForJS.a(this.a).a();
+        return;
       }
     }
-    if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {}
-    for (String str = "正在打开插屏";; str = "打开插屏错误")
+  }
+  
+  public void a(Context paramContext)
+  {
+    paramContext = new WeakReference(paramContext);
+    AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialPreDownloader.1(this, paramContext), 4, 300000L);
+  }
+  
+  public void b(Context paramContext)
+  {
+    acvc.b("GdtInterstitialPreDownloader", String.format("preDownload", new Object[0]));
+    if (acqd.a().b(paramContext)) {}
+    for (paramContext = AdProcessManager.INSTANCE.getMainProcessName();; paramContext = AdProcessManager.INSTANCE.getWebProcessName())
     {
-      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragmentForJS.3.1(this), 0, 5000L);
-      break;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("IPC_ACTION", "ipc_interstitial_predownload");
+      localBundle.putString("IPC_TO_PROCESS_NAME", paramContext);
+      AdIPCManager.INSTANCE.send(BaseApplicationImpl.getContext(), new AdIPCManager.Params(localBundle), new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback));
+      return;
     }
   }
 }

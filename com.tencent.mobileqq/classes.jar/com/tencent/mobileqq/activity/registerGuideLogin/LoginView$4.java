@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import algn;
+import alsf;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class LoginView$4
   implements Runnable
@@ -16,12 +16,12 @@ public class LoginView$4
   {
     this.this$0.c.setVisibility(0);
     this.this$0.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.clearFocus();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.clearFocus();
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
     localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
     localTranslateAnimation.setDuration(500L);
     localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new algn(this));
+    localTranslateAnimation.setAnimationListener(new alsf(this));
     this.this$0.c.startAnimation(localTranslateAnimation);
   }
 }

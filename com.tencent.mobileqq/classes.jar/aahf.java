@@ -1,21 +1,70 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLive;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLive.RoomIcon;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
-public class aahf
-  implements zxw<aacp>
+class aahf
+  implements View.OnClickListener
 {
-  public aahf(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  aahf(aahe paramaahe, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void a(zxz paramzxz, aacp paramaacp)
+  public void onClick(View paramView)
   {
-    if ((paramzxz.e()) && (this.a.a != null) && (this.a.a.a != null))
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.roomId.has())) {}
+    for (String str1 = String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.roomId.get());; str1 = "")
     {
-      paramzxz = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramzxz.b());
-      VSNetworkHelper.a().a(paramzxz, new aahg(this, paramaacp));
+      if (aagu.a(this.jdField_a_of_type_Aahe.a) == 0)
+      {
+        aagu.a(this.jdField_a_of_type_Aahe.a, 6);
+        bmzn.a().a(str1 + "", "25", "qq_live", "tab_page", "subscribe", 102, 1, System.currentTimeMillis(), str1 + "");
+      }
+      for (;;)
+      {
+        Object localObject2 = "";
+        Object localObject1 = localObject2;
+        if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live != null)
+        {
+          localObject1 = localObject2;
+          if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.rtmpURL != null)
+          {
+            localObject1 = localObject2;
+            if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.rtmpURL.has()) {
+              localObject1 = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.rtmpURL.get();
+            }
+          }
+        }
+        String str2 = "";
+        Iterator localIterator = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.roomIcon.get().iterator();
+        do
+        {
+          localObject2 = str2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject2 = (CertifiedAccountMeta.StLive.RoomIcon)localIterator.next();
+        } while (!"1:1".equals(((CertifiedAccountMeta.StLive.RoomIcon)localObject2).size.get()));
+        localObject2 = ((CertifiedAccountMeta.StLive.RoomIcon)localObject2).url.get();
+        this.jdField_a_of_type_Aahe.a.a(this.jdField_a_of_type_Aahe.itemView.getContext(), str1, (String)localObject1, this.jdField_a_of_type_Aahe.a.a(), aagu.b(this.jdField_a_of_type_Aahe.a), (String)localObject2);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (aagu.a(this.jdField_a_of_type_Aahe.a) == 1)
+        {
+          aagu.a(this.jdField_a_of_type_Aahe.a, 5);
+          bmzn.a().a(str1 + "", "25", "qq_live", "find_page", "hot_push", 102, 1, System.currentTimeMillis(), str1 + "");
+        }
+        else if (aagu.a(this.jdField_a_of_type_Aahe.a) == 2)
+        {
+          aagu.a(this.jdField_a_of_type_Aahe.a, 2);
+          bmzn.a().a(str1 + "", "25", "qq_live", "shopcart_page", "hot_push", 102, 1, System.currentTimeMillis(), str1 + "");
+        }
+      }
     }
   }
 }

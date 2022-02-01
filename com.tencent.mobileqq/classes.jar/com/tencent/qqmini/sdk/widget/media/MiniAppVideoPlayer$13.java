@@ -7,7 +7,7 @@ class MiniAppVideoPlayer$13
   
   public void run()
   {
-    MiniAppVideoPlayer.access$4200(this.this$0);
+    MiniAppVideoPlayer.access$4300(this.this$0);
   }
 }
 

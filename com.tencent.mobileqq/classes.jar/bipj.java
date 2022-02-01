@@ -1,32 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
 class bipj
-  extends Handler
+  implements ValueCallback<Bundle>
 {
-  bipj(bipi parambipi, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bipj(bipi parambipi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      bipi localbipi = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
-      {
-        localbipi.a(str);
-        break;
-      }
-      this.a.a();
+    int i = paramBundle.getInt("input-box-num", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
     }
   }
 }

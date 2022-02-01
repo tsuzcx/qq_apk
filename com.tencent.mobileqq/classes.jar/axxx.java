@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
 class axxx
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  axxx(axxw paramaxxw, ViewGroup paramViewGroup) {}
+  axxx(axxu paramaxxu, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (axxw.a(this.jdField_a_of_type_Axxw) != null) {
-      axxw.a(this.jdField_a_of_type_Axxw).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.jdField_a_of_type_Axxu.b)
+    {
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_Axxu.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Axxu.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

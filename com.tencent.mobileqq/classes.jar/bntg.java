@@ -1,23 +1,14 @@
-import android.app.Dialog;
-import android.app.FragmentManager;
-
-class bntg
-  implements bnuj
+public abstract interface bntg
 {
-  bntg(bnta parambnta, String paramString) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    bnta.a(this.jdField_a_of_type_Bnta).dismiss();
-    this.jdField_a_of_type_Bnta.getFragmentManager().popBackStack();
-  }
+  public abstract void a(String paramString, double paramDouble);
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Bnta.a.a(this.jdField_a_of_type_JavaLangString, paramString);
-    bnta.a(this.jdField_a_of_type_Bnta).dismiss();
-    this.jdField_a_of_type_Bnta.getFragmentManager().popBackStack();
-  }
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
 }
 
 

@@ -1,22 +1,27 @@
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class oqh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oqh
+  implements ViewBase.OnClickListener
 {
-  private static int a()
-  {
-    return 2;
-  }
+  oqh(otd paramotd, otp paramotp) {}
   
-  public static void a(String paramString1, String paramString2)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if (a()) {
-      QLog.d(paramString1, a(), paramString2);
+    ArrayList localArrayList = new ArrayList();
+    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
+    localArrayList.add(paramViewBase.getEventAttachedData());
+    QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
+    bghf.a((Activity)this.jdField_a_of_type_Otd.a(), 0, localArrayList, true, "", 1888);
+    if (this.jdField_a_of_type_Otd.a() != null) {
+      this.jdField_a_of_type_Otd.a().f(this.jdField_a_of_type_Otp);
     }
-  }
-  
-  private static boolean a()
-  {
-    return QLog.isColorLevel();
   }
 }
 

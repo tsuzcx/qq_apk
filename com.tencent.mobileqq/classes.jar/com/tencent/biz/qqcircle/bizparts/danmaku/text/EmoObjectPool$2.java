@@ -5,16 +5,16 @@ import android.os.Handler;
 import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
 import com.tencent.component.media.image.ImageLoader.Options;
 import com.tencent.qphone.base.util.BaseApplication;
-import vfw;
+import via;
 
 public class EmoObjectPool$2
   implements Runnable
 {
-  public EmoObjectPool$2(vfw paramvfw, String paramString, ImageLoader.Options paramOptions, ImageLoader.ImageLoadListener paramImageLoadListener) {}
+  public EmoObjectPool$2(via paramvia, String paramString, ImageLoader.Options paramOptions, ImageLoader.ImageLoadListener paramImageLoadListener) {}
   
   public void run()
   {
-    Drawable localDrawable = vfw.a(this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getResources());
+    Drawable localDrawable = via.a(this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getResources());
     if (localDrawable != null)
     {
       if (!this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.useMainThread) {
@@ -24,7 +24,7 @@ public class EmoObjectPool$2
     else {
       return;
     }
-    vfw.a(this.this$0).post(new EmoObjectPool.2.1(this, localDrawable));
+    via.a(this.this$0).post(new EmoObjectPool.2.1(this, localDrawable));
   }
 }
 

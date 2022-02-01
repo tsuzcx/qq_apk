@@ -1,285 +1,81 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.subscribe.network.DoCommentRequest;
-import com.tencent.biz.subscribe.network.DoLikeRequest;
-import com.tencent.biz.subscribe.network.DoReplyReq;
-import com.tencent.biz.subscribe.network.GetCommentListRequest;
-import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import cooperation.qzone.util.QZLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.content.res.Resources;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
 public class aaec
 {
-  private static final String jdField_a_of_type_JavaLangString = aaec.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Map<String, ArrayList<CertifiedAccountMeta.StComment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, aaem> c = new HashMap();
-  
-  private String a(COMM.StCommonExt paramStCommonExt)
+  @NotNull
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    if ((paramStCommonExt != null) && (paramStCommonExt.mapInfo.size() > 0)) {
-      return ((COMM.Entry)paramStCommonExt.mapInfo.get(0)).value.get();
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846618);
+    if (paramURLImageView.getLayoutParams() != null)
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
     }
-    return "";
+    return localURLDrawableOptions;
   }
   
-  private void a(String paramString, COMM.StCommonExt paramStCommonExt, boolean paramBoolean1, boolean paramBoolean2)
+  public static void a()
   {
-    if (this.c.get(paramString) == null)
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      aaem localaaem = new aaem();
-      localaaem.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-      localaaem.jdField_a_of_type_Boolean = paramBoolean1;
-      localaaem.b = paramBoolean2;
-      this.c.put(paramString, localaaem);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getDetailCommentSize: attachInfo:" + paramStCommonExt.attachInfo.get());
+      BaseApplicationImpl.sImageCache.evict(0);
       return;
     }
-    ((aaem)this.c.get(paramString)).jdField_a_of_type_Boolean = paramBoolean1;
-    ((aaem)this.c.get(paramString)).jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+    BaseApplicationImpl.sImageCache.evictAll();
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  public static void a(String paramString, URLImageView paramURLImageView)
   {
-    if ((this.c != null) && (this.c.get(paramString) != null)) {
-      ((aaem)this.c.get(paramString)).b = paramBoolean;
-    }
+    a(paramString, paramURLImageView, null, false);
   }
   
-  private void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, COMM.StCommonExt paramStCommonExt)
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
   {
-    if (paramStGetFeedDetailRsp != null)
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    try
     {
-      Object localObject = paramStGetFeedDetailRsp.feed;
-      String str = ((CertifiedAccountMeta.StFeed)localObject).id.get();
-      a(str, paramStGetFeedDetailRsp.extInfo, true, true);
-      ArrayList localArrayList = null;
-      if (((CertifiedAccountMeta.StFeed)localObject).vecComment.size() > 0)
+      localURLDrawableOptions = a(paramURLImageView);
+      if (paramBoolean) {}
+      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
       {
-        localArrayList = (ArrayList)a((ArrayList)((CertifiedAccountMeta.StFeed)localObject).vecComment.get(), a(paramStCommonExt), 1);
-        this.b.put(str, Integer.valueOf(((CertifiedAccountMeta.StFeed)localObject).commentCount.get()));
-      }
-      localObject = localArrayList;
-      if (localArrayList == null)
-      {
-        localObject = new ArrayList(0);
-        this.b.put(str, Integer.valueOf(0));
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(str, localObject);
-      paramStGetFeedDetailRsp.feed.vecComment.set((List)localObject);
-      if (a(str) == 0) {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, new Object[] { "后台返回评论数为0" });
-      }
-      wfo.a().dispatch(new aaep(5, new Object[] { str, Integer.valueOf(a(str)) }));
-    }
-    wfo.a().dispatch(a(new Object[] { Integer.valueOf(2), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp, Integer.valueOf(hashCode()), paramStCommonExt }));
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)this.b.get(paramString);
-    if (paramString != null) {
-      return paramString.intValue();
-    }
-    return 0;
-  }
-  
-  public long a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
-  {
-    paramStFeed = new DoLikeRequest(paramStFeed);
-    VSNetworkHelper.a().a(paramStFeed, new aaej(this));
-    return Long.parseLong(paramStComment.id.get());
-  }
-  
-  public long a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    paramStFeed = new DoReplyReq(paramStFeed, paramStComment, paramStReply, 1);
-    VSNetworkHelper.a().a(paramStFeed, new aaeh(this, paramStComment, paramStReply));
-    return 0L;
-  }
-  
-  public COMM.StCommonExt a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    paramString = (aaem)this.c.get(paramString);
-    if (paramString != null)
-    {
-      if ((paramString.b) && (paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_NS_COMMCOMM$StCommonExt != null)) {
-        return paramString.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, paramString.toString());
-    }
-    return null;
-  }
-  
-  public aaep a(Object... paramVarArgs)
-  {
-    return new aaep(6, paramVarArgs);
-  }
-  
-  public Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
-  {
-    if ((paramStComment == null) || (paramStComment.id.get().startsWith("fake_id")))
-    {
-      wfo.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), anni.a(2131700979), null }));
-      return "";
-    }
-    paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 0);
-    VSNetworkHelper.a().a(paramStFeed, new aaeg(this, paramStComment));
-    return paramStComment.id.get();
-  }
-  
-  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    if ((paramStReply == null) || (paramStReply.id.get().startsWith("fake_id")))
-    {
-      wfo.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), anni.a(2131700977), null }));
-      return "";
-    }
-    paramStFeed = new DoReplyReq(paramStFeed, paramStComment, paramStReply, 0);
-    VSNetworkHelper.a().a(paramStFeed, new aaei(this, paramStReply, paramStComment));
-    return paramStReply.id.get();
-  }
-  
-  public ArrayList<CertifiedAccountMeta.StComment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public List<CertifiedAccountMeta.StComment> a(List<CertifiedAccountMeta.StComment> paramList, String paramString)
-  {
-    return a(paramList, paramString, 0);
-  }
-  
-  public List<CertifiedAccountMeta.StComment> a(List<CertifiedAccountMeta.StComment> paramList, String paramString, int paramInt)
-  {
-    int j = paramList.size();
-    if ((TextUtils.isEmpty(paramString)) || (paramInt < 0) || (paramInt > j)) {
-      return paramList;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = paramInt;
-    if (paramInt > 0)
-    {
-      localArrayList.addAll(paramList.subList(0, paramInt));
-      i = paramInt;
-    }
-    while (i < j)
-    {
-      CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)paramList.get(i);
-      if (!localStComment.id.get().equals(paramString)) {
-        localArrayList.add(localStComment);
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.c.clear();
-    this.b.clear();
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
-  {
-    paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 1);
-    VSNetworkHelper.a().a(paramStFeed, new aaef(this, paramStComment));
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    paramStFeed = new DoLikeRequest(paramStFeed);
-    VSNetworkHelper.a().a(paramStFeed, new aaek(this));
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, COMM.StCommonExt paramStCommonExt)
-  {
-    aaed localaaed = new aaed(this, paramStCommonExt);
-    if (paramStCommonExt == null)
-    {
-      String str = paramStFeed.id.get();
-      if (zzk.a("1002" + str))
-      {
-        zzk.a("1002" + str, new aaee(this, localaaed));
-        zzk.a("1002" + str);
+        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
         return;
       }
-    }
-    paramStFeed = new GetSubscribeFeedDetailRequest(paramStFeed, paramStCommonExt);
-    paramStFeed.setEnableCache(false);
-    VSNetworkHelper.a().a(paramStFeed, localaaed);
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, COMM.StCommonExt paramStCommonExt, String paramString)
-  {
-    paramStCommonExt = new GetCommentListRequest(paramStFeed, paramStCommonExt, 20);
-    VSNetworkHelper.a().a(paramStCommonExt, new aael(this, paramStFeed, paramString));
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, boolean paramBoolean)
-  {
-    a(paramStFeed, paramBoolean, "");
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, boolean paramBoolean, String paramString)
-  {
-    COMM.StCommonExt localStCommonExt;
-    if (paramBoolean)
-    {
-      localStCommonExt = a(paramStFeed.id.get());
-      QZLog.i(jdField_a_of_type_JavaLangString, 1, "getComments loadMore: " + paramBoolean + ", attachInfo:" + localStCommonExt);
-      if (localStCommonExt == null)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, new Object[] { "getComments loadMore: " + paramBoolean + ", attachInfo is null " });
-        return;
-      }
-      a(paramStFeed.id.get(), false);
-      a(paramStFeed, localStCommonExt, paramString);
       return;
     }
-    if (!TextUtils.isEmpty(paramString))
+    catch (Exception paramString)
     {
-      localStCommonExt = new COMM.StCommonExt();
-      COMM.Entry localEntry = new COMM.Entry();
-      localEntry.key.set("commentID");
-      localEntry.value.set(paramString);
-      localStCommonExt.mapInfo.add(localEntry);
-      a(paramStFeed, localStCommonExt);
+      paramString.printStackTrace();
       return;
     }
-    a(paramStFeed, null);
+    catch (Error paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841623);
+    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
   }
 }
 

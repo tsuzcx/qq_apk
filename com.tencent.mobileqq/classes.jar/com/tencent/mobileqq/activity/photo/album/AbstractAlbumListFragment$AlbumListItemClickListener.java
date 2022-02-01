@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity.photo.album;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
-import bkij;
+import bljm;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.AdapterView;
 
 class AbstractAlbumListFragment$AlbumListItemClickListener
-  implements bkij
+  implements bljm
 {
   private AbstractAlbumListFragment$AlbumListItemClickListener(AbstractAlbumListFragment paramAbstractAlbumListFragment) {}
   
@@ -19,7 +19,7 @@ class AbstractAlbumListFragment$AlbumListItemClickListener
     paramView = this.this$0.getActivity().getIntent();
     if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
     {
-      QQToast.a(this.this$0.getActivity(), 2131689963, 0).a();
+      QQToast.a(this.this$0.getActivity(), 2131689970, 0).a();
       return;
     }
     boolean bool = this.this$0.mAlbumListLogic.onItemClick(paramAdapterView, paramInt, paramView);

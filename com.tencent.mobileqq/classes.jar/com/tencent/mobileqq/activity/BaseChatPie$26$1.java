@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import afxa;
-import bdpd;
+import aggu;
+import behz;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
@@ -13,13 +13,13 @@ class BaseChatPie$26$1
   
   public void run()
   {
-    if (bdpd.a().c()) {}
+    if (behz.a().c()) {}
     do
     {
       return;
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Afxa.jdField_a_of_type_Boolean = false;
-    } while (!afxa.a(this.a.this$0.jdField_a_of_type_AndroidContentContext, this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, 7, this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Afxa));
-    this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(60, this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Afxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aggu.jdField_a_of_type_Boolean = false;
+    } while (!aggu.a(this.a.this$0.jdField_a_of_type_AndroidContentContext, this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, 7, this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aggu));
+    this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(60, this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aggu.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
   }
 }
 

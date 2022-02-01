@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import android.view.View;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.redtouch.RedTouch;
-import lve;
+import lwa;
 
 class AVActivity$9
   implements Runnable
@@ -20,7 +20,7 @@ class AVActivity$9
       {
         return;
       } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) || (this.this$0.isDestroyed()));
-      this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = lve.a(localVideoAppInterface, this.a, 1);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = lwa.a(localVideoAppInterface, this.a, 1);
     } while ((this.a.getVisibility() != 8) || (this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null));
     this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(8);
   }

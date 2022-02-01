@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atei;
+import atwc;
 import com.tencent.qphone.base.util.QLog;
 
 class MMApkFileSafeChecker$CheckTask$3$1

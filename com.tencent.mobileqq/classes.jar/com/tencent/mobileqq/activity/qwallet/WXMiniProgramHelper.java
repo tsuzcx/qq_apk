@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akoz;
+import alak;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -30,7 +30,8 @@ public class WXMiniProgramHelper
 {
   private static WXMiniProgramHelper jdField_a_of_type_ComTencentMobileqqActivityQwalletWXMiniProgramHelper;
   private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxf0a80d0ac2e82aa7", true);
+  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_JavaLangString, true);
+  private String jdField_a_of_type_JavaLangString = "wxf0a80d0ac2e82aa7";
   
   public WXMiniProgramHelper()
   {
@@ -63,7 +64,7 @@ public class WXMiniProgramHelper
       if (QLog.isColorLevel()) {
         QLog.i("WXMiniProgramHelper", 2, "launchWXUsingPendingIntent");
       }
-      PendingIntent.getActivity(localContext, 1, localContext.getPackageManager().getLaunchIntentForPackage("com.tencent.mm"), 134217728).send(localContext, 1, null, new akoz(this), null);
+      PendingIntent.getActivity(localContext, 1, localContext.getPackageManager().getLaunchIntentForPackage("com.tencent.mm"), 134217728).send(localContext, 1, null, new alak(this), null);
       return;
     }
     catch (Exception localException)
@@ -77,7 +78,7 @@ public class WXMiniProgramHelper
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wxf0a80d0ac2e82aa7");
+      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp(this.jdField_a_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
         QLog.d("WXMiniProgramHelper", 1, "registerApp()");
       }
@@ -111,12 +112,12 @@ public class WXMiniProgramHelper
     Object localObject = ThreadManager.getUIHandler();
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled())
     {
-      a((MqqHandler)localObject, 2131692608);
+      a((MqqHandler)localObject, 2131692616);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() < 621086464)
     {
-      a((MqqHandler)localObject, 2131692609);
+      a((MqqHandler)localObject, 2131692617);
       return;
     }
     if (Build.VERSION.SDK_INT >= 29) {

@@ -2,13 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import pmk;
-import pwl;
+import pfd;
+import pox;
 
 public class ChannelCoverInfoModule$7
   implements Runnable
 {
-  public ChannelCoverInfoModule$7(pwl parampwl, int paramInt, List paramList) {}
+  public ChannelCoverInfoModule$7(pox parampox, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -16,16 +16,16 @@ public class ChannelCoverInfoModule$7
       QLog.d("ChannelCoverInfoModule", 2, "notifyUIToRefresh channelId=" + this.jdField_a_of_type_Int + " ;size = " + this.jdField_a_of_type_JavaUtilList.size());
     }
     if (this.jdField_a_of_type_Int == 0) {
-      pmk.a().f(true, this.jdField_a_of_type_JavaUtilList);
+      pfd.a().f(true, this.jdField_a_of_type_JavaUtilList);
     }
     for (;;)
     {
-      pmk.a().a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaUtilList);
+      pfd.a().a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaUtilList);
       return;
       if (this.jdField_a_of_type_Int == 56) {
-        pmk.a().g(true, this.jdField_a_of_type_JavaUtilList);
+        pfd.a().g(true, this.jdField_a_of_type_JavaUtilList);
       } else if (this.jdField_a_of_type_Int == 41402) {
-        pmk.a().h(true, this.jdField_a_of_type_JavaUtilList);
+        pfd.a().h(true, this.jdField_a_of_type_JavaUtilList);
       }
     }
   }

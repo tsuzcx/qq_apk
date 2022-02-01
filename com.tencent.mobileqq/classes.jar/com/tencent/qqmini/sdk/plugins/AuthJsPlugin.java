@@ -20,7 +20,7 @@ public class AuthJsPlugin
   @JsEvent({"login"})
   public void login(RequestEvent paramRequestEvent)
   {
-    QMLog.d("AuthJsPlugin", "call API_LOGIN callbackId:" + paramRequestEvent.callbackId + " PackageToolVersion:" + this.mApkgInfo.mAppConfigInfo.PackageToolVersion);
+    QMLog.d("AuthJsPlugin", "call API_LOGIN callbackId:" + paramRequestEvent.callbackId + " PackageToolVersion:" + this.mApkgInfo.mAppConfigInfo.packageToolVersion);
     this.mChannelProxy.login(this.mApkgInfo.appId, new AuthJsPlugin.1(this, paramRequestEvent));
   }
   

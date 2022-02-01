@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import auft;
+import auxo;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,12 +14,12 @@ public class RequestPacket
   
   public static RequestPacket fromMap(Map paramMap)
   {
-    return (RequestPacket)auft.a(paramMap, RequestPacket.class);
+    return (RequestPacket)auxo.a(paramMap, RequestPacket.class);
   }
   
   public static Map toMap(RequestPacket paramRequestPacket)
   {
-    return auft.a(paramRequestPacket);
+    return auxo.a(paramRequestPacket);
   }
 }
 

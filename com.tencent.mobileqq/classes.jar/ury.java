@@ -1,17 +1,13 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class ury
-  implements AdExposureChecker.ExposureCallback
+public class ury
+  implements uvw
 {
-  ury(urx paramurx) {}
+  public ury(WSVerticalPageFragment paramWSVerticalPageFragment) {}
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public boolean a()
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    urv.a(urx.a(this.a), (uru)this.a.a());
+    return this.a.a().a();
   }
 }
 

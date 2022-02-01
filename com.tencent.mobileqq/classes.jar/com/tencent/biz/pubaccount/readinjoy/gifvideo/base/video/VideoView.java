@@ -16,8 +16,10 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bgnt;
-import bmqa;
+import bhnv;
+import bnrf;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
@@ -26,44 +28,44 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.superplayer.api.SuperPlayerOption;
+import com.tencent.tmediacodec.util.LogUtils;
 import com.tencent.util.VersionUtils;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import oat;
-import och;
+import ocd;
+import odr;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pgk;
-import psr;
-import pss;
-import psu;
-import psy;
-import psz;
-import pta;
-import ptb;
-import ptc;
-import ptd;
-import pte;
-import ptf;
-import ptg;
-import pth;
-import pti;
-import ptl;
-import ptm;
-import pto;
-import sfa;
-import sjz;
-import ska;
+import ozc;
+import pln;
+import plp;
+import plq;
+import plr;
+import pls;
+import plt;
+import plu;
+import plv;
+import ply;
+import plz;
+import pmb;
+import rle;
+import rlf;
+import rwh;
+import rwj;
+import rzt;
+import rzv;
+import sab;
+import sae;
+import sbd;
+import sbe;
+import scq;
 
 public class VideoView
   extends FrameLayout
@@ -82,8 +84,8 @@ public class VideoView
   private long channelId;
   private String dtPgid;
   private long fileSize;
-  private ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener = new ptc(this);
-  private Runnable hideCoverRunnable = new VideoView.11(this);
+  private ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener = new plr(this);
+  private Runnable hideCoverRunnable = new VideoView.7(this);
   private int iconHeight;
   private int iconWidth;
   private boolean isLoop = true;
@@ -95,20 +97,23 @@ public class VideoView
   private Context mContext;
   private NativeReadInjoyImageView mCoverImageView;
   private String mCoverUrl;
-  private TVK_IProxyFactory mFactory;
-  private pth mOnCheckShownListener;
-  private pti mOnProgressChangedListener;
+  @NotNull
+  private rzv mFactory;
+  private plu mOnCheckShownListener;
+  private plv mOnProgressChangedListener;
   private String mPlayIconUrl;
   private NativeReadInjoyImageView mPlayImageView;
   public Handler mProgressHandler = new Handler(Looper.getMainLooper());
   private AtomicInteger mState = new AtomicInteger(0);
-  private ptl mStrategy;
+  private ply mStrategy;
   private String mVid;
-  private TVK_IMediaPlayer mVideoPlayer;
+  @Nullable
+  private rzt mVideoPlayer;
   private String mVideoUrl;
-  private IVideoViewBase mVideoView;
+  @Nullable
+  private sab mVideoView;
   public boolean needInterceptGlobalLayoutChanged;
-  private psu onVideoPluginInstallListener = new psy(this);
+  private rwj onVideoPluginInstallListener = new plp(this);
   private String openingUrl = "";
   private String pUin;
   private ObjectAnimator playCoverAnimator;
@@ -118,11 +123,12 @@ public class VideoView
   private String preparedUrl = "";
   private List<String> reportList = new ArrayList();
   private String reportR5;
-  private Runnable reportRunnable = new VideoView.12(this);
+  private Runnable reportRunnable = new VideoView.8(this);
   private String rowKey;
   private long startTime;
   private boolean useVid = true;
-  private psr videoPlayListener;
+  private pln videoPlayListener;
+  private rwh videoPluginInstall;
   private int xyaxis = 0;
   
   public VideoView(Context paramContext)
@@ -149,25 +155,35 @@ public class VideoView
     this.mState.set(paramInt);
   }
   
-  private void commonOptimizeConfig(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  private void commonOptimizeConfig(sae paramsae)
   {
-    if (paramTVK_PlayerVideoInfo != null)
+    if (paramsae != null)
     {
-      paramTVK_PlayerVideoInfo.setConfigMap("ff_probesize", String.valueOf(bmqa.b()));
-      paramTVK_PlayerVideoInfo.setConfigMap("is_ff_probelist_switch", String.valueOf(bmqa.q()));
-      paramTVK_PlayerVideoInfo.setConfigMap("is_download_async_io", String.valueOf(bmqa.r()));
-      paramTVK_PlayerVideoInfo.setConfigMap("httpbuffertime_for_playpreload", String.valueOf(bmqa.e()));
-      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_switch", String.valueOf(bmqa.f()));
-      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_config_json", String.valueOf(bmqa.c()));
+      paramsae.b(true);
+      paramsae.a(bnrf.f());
     }
   }
   
-  private IVideoViewBase createVideoView()
+  private SuperPlayerOption commonPlayerOption(boolean paramBoolean)
   {
-    if (VersionUtils.isIceScreamSandwich()) {
-      return this.mFactory.createVideoView_Scroll(this.mContext);
+    LogUtils.setLogEnable(QLog.isColorLevel());
+    SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
+    localSuperPlayerOption.isPrePlay = paramBoolean;
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(357);
+    localSuperPlayerOption.bufferPacketMinTotalDurationMs = localAladdinConfig.getIntegerFromString("bufferPacketMinTotalDurationMs", 0);
+    localSuperPlayerOption.preloadPacketDurationMs = localAladdinConfig.getIntegerFromString("preloadPacketDurationMs", 0);
+    localSuperPlayerOption.minBufferingPacketDurationMs = localAladdinConfig.getIntegerFromString("minBufferingPacketDurationMs", 0);
+    localSuperPlayerOption.enableCodecReuse = rle.a.c();
+    localSuperPlayerOption.enableVideoFrameCheck = rle.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("gifvideo.VideoView", 2, "commonPlayerOption: " + localSuperPlayerOption);
     }
-    return this.mFactory.createVideoView(this.mContext);
+    return localSuperPlayerOption;
+  }
+  
+  private sab createVideoView()
+  {
+    return this.mFactory.a(this.mContext, VersionUtils.isIceScreamSandwich());
   }
   
   private void disPlayCoverAndDoStop()
@@ -195,7 +211,7 @@ public class VideoView
       ThreadManager.getUIHandler().removeCallbacks(this.hideCoverRunnable);
       removeAutoPlayObserver();
       if (this.mVideoPlayer != null) {
-        this.mVideoPlayer.release();
+        this.mVideoPlayer.d();
       }
       this.mAction.set(6);
       changeState(0);
@@ -207,6 +223,11 @@ public class VideoView
       this.mVideoUrl = "";
       this.mCoverUrl = "";
       this.videoPlayListener = null;
+      if (this.videoPluginInstall != null)
+      {
+        this.videoPluginInstall.b();
+        this.videoPluginInstall = null;
+      }
       ThreadManager.getSubThreadHandler().removeCallbacks(this.reportRunnable);
       return;
     }
@@ -259,10 +280,10 @@ public class VideoView
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 340	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
+    //   3: getfield 340	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:mVideoPlayer	Lrzt;
     //   6: ifnull +30 -> 36
     //   9: aload_0
-    //   10: getfield 132	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:mAction	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   10: getfield 136	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:mAction	Ljava/util/concurrent/atomic/AtomicInteger;
     //   13: invokevirtual 362	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   16: istore_1
     //   17: iload_1
@@ -270,7 +291,7 @@ public class VideoView
     //   37: monitorexit
     //   38: return
     //   39: aload_0
-    //   40: invokespecial 496	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:playVideo	()V
+    //   40: invokespecial 522	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:playVideo	()V
     //   43: goto -7 -> 36
     //   46: astore_2
     //   47: aload_0
@@ -295,8 +316,11 @@ public class VideoView
       {
         if (this.mVideoPlayer == null)
         {
-          if (!pss.a()) {
-            break label46;
+          if (this.videoPluginInstall == null) {
+            this.videoPluginInstall = new rwh();
+          }
+          if (!this.videoPluginInstall.a()) {
+            break label68;
           }
           changeState(3);
           initVideoPlayer(new VideoView.2(this));
@@ -305,7 +329,7 @@ public class VideoView
         for (;;)
         {
           return;
-          label46:
+          label68:
           doInstall();
         }
         changeState(4);
@@ -317,14 +341,12 @@ public class VideoView
   
   private void doInstall()
   {
-    if (!pss.a())
+    if (!this.videoPluginInstall.a())
     {
       QLog.d("gifvideo.VideoView", 1, "not installed, now install");
       changeState(1);
-      if (!pss.a(this.onVideoPluginInstallListener)) {
-        pss.a(this.onVideoPluginInstallListener);
-      }
-      pss.a();
+      this.videoPluginInstall.a(this.onVideoPluginInstallListener);
+      this.videoPluginInstall.a();
       return;
     }
     changeState(2);
@@ -336,7 +358,7 @@ public class VideoView
     if (this.mVideoPlayer != null)
     {
       if (this.mState.get() != 8) {
-        this.mVideoPlayer.pause();
+        this.mVideoPlayer.b();
       }
       changeState(8);
       return;
@@ -359,7 +381,7 @@ public class VideoView
         if (this.videoPlayListener != null) {
           this.videoPlayListener.b();
         }
-        this.mVideoPlayer.stop();
+        this.mVideoPlayer.c();
         resetVideoView();
         changeState(9);
       }
@@ -372,7 +394,7 @@ public class VideoView
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850667);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850683);
     }
     return mLoadingDrawable;
   }
@@ -386,7 +408,7 @@ public class VideoView
       {
         this.playIconAnimator = ObjectAnimator.ofFloat(this.mCoverImageView, "alpha", new float[] { 1.0F, 0.0F });
         this.playIconAnimator.setDuration(300L);
-        this.playIconAnimator.addListener(new pta(this));
+        this.playIconAnimator.addListener(new plt(this));
       }
       if (this.playCoverAnimator == null)
       {
@@ -420,13 +442,8 @@ public class VideoView
   
   private void initVideoPlayerListeners()
   {
-    if (this.mVideoPlayer != null)
-    {
-      this.mVideoPlayer.setOnVideoPreparedListener(new ptd(this));
-      this.mVideoPlayer.setOnCompletionListener(new pte(this));
-      this.mVideoPlayer.setOnSeekCompleteListener(new ptf(this));
-      this.mVideoPlayer.setOnDownloadCallback(new ptg(this));
-      this.mVideoPlayer.setOnErrorListener(new psz(this));
+    if (this.mVideoPlayer != null) {
+      this.mVideoPlayer.a(new pls(this));
     }
   }
   
@@ -434,8 +451,8 @@ public class VideoView
   {
     if (this.mVideoPlayer != null)
     {
-      this.mVideoPlayer.setOutputMute(this.isMute);
-      this.mVideoPlayer.setLoopback(this.isLoop);
+      this.mVideoPlayer.a(this.isMute);
+      this.mVideoPlayer.b(this.isLoop);
       ThreadManager.getUIHandler().post(new VideoView.5(this, paramBoolean));
     }
   }
@@ -444,10 +461,11 @@ public class VideoView
   {
     removeAllViews();
     setBackgroundColor(Color.parseColor("#000000"));
-    if ((this.mVideoView != null) && (this.mVideoPlayer != null))
+    if ((this.mVideoView != null) && (this.mVideoPlayer != null) && (this.mVideoView.a() != null))
     {
-      ((View)this.mVideoView).setBackgroundColor(Color.parseColor("#000000"));
-      addView((View)this.mVideoView, -1, -1);
+      this.mVideoView.a().setBackgroundColor(Color.parseColor("#000000"));
+      addView(this.mVideoView.a(), -1, -1);
+      attachVideoView(this.mVideoView);
     }
     this.mCoverImageView = new NativeReadInjoyImageView(this.mContext);
     this.mCoverImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -476,7 +494,7 @@ public class VideoView
   
   private boolean isValidState()
   {
-    if ((this.mVideoPlayer == null) || (this.mVideoPlayer.getDuration() < 200L)) {}
+    if ((this.mVideoPlayer == null) || (this.mVideoPlayer.a() < 200L)) {}
     while ((this.mAction.get() == 5) || (this.mAction.get() == 4)) {
       return false;
     }
@@ -491,7 +509,7 @@ public class VideoView
       {
         reportLoadTime();
         changeState(7);
-        this.mVideoPlayer.start();
+        this.mVideoPlayer.a();
         if (this.videoPlayListener != null) {
           this.videoPlayListener.a();
         }
@@ -532,22 +550,22 @@ public class VideoView
   {
     if ((this.mVideoPlayer != null) && (this.mVideoView != null) && (this.playSessionId != null) && (!TextUtils.isEmpty(this.dtPgid)))
     {
-      long l2 = this.mVideoPlayer.getCurrentPostion();
+      long l2 = this.mVideoPlayer.b();
       long l1 = l2;
       if (l2 == 0L) {
-        l1 = this.mVideoPlayer.getDuration();
+        l1 = this.mVideoPlayer.a();
       }
-      sjz.a(ska.a((VideoInfo)null).b(this.dtPgid).d(this.channelId).c(this.rowKey).d(this.pUin).e(this.mVideoPlayer.getDuration()).e(this.playSessionId).a(1).b(System.currentTimeMillis()).d(this.mVideoView.getViewWidth()).e(this.mVideoView.getViewHeight()).c(l1).a("dt_vdend"));
+      sbd.a(sbe.a((VideoInfo)null).b(this.dtPgid).d(this.channelId).c(this.rowKey).d(this.pUin).e(this.mVideoPlayer.a()).e(this.playSessionId).a(1).b(System.currentTimeMillis()).d(this.mVideoView.a().getWidth()).e(this.mVideoView.a().getHeight()).c(l1).a("dt_vdend"));
       this.playSessionId = null;
     }
   }
   
   private void reportDtVideoStart()
   {
-    if ((this.mVideoPlayer != null) && (this.mVideoView != null) && (!TextUtils.isEmpty(this.dtPgid)))
+    if ((this.mVideoPlayer != null) && (this.mVideoView != null) && (!TextUtils.isEmpty(this.dtPgid)) && (this.mVideoView.a() != null))
     {
-      this.playSessionId = och.b();
-      sjz.a(ska.a((VideoInfo)null).b(this.dtPgid).d(this.channelId).c(this.rowKey).d(this.pUin).e(this.mVideoPlayer.getDuration()).e(this.playSessionId).a(1).a(System.currentTimeMillis()).d(this.mVideoView.getViewWidth()).e(this.mVideoView.getViewHeight()).a("dt_vdstart"));
+      this.playSessionId = odr.b();
+      sbd.a(sbe.a((VideoInfo)null).b(this.dtPgid).d(this.channelId).c(this.rowKey).d(this.pUin).e(this.mVideoPlayer.a()).e(this.playSessionId).a(1).a(System.currentTimeMillis()).d(this.mVideoView.a().getWidth()).e(this.mVideoView.a().getHeight()).a("dt_vdstart"));
     }
   }
   
@@ -557,7 +575,7 @@ public class VideoView
     {
       long l1 = System.currentTimeMillis();
       long l2 = this.startTime;
-      oat.a(null, "", "0X800A587", "0X800A587", 0, 0, this.fileSize + "", "", l1 - l2 + "", "", false);
+      ocd.a(null, "", "0X800A587", "0X800A587", 0, 0, this.fileSize + "", "", l1 - l2 + "", "", false);
       if (!TextUtils.isEmpty(this.mVideoUrl)) {
         this.reportList.add(this.mVideoUrl);
       }
@@ -577,7 +595,7 @@ public class VideoView
     {
       JSONObject localJSONObject = new JSONObject(this.reportR5);
       localJSONObject.put("playduration", l1 - l2);
-      oat.a(null, "", "0X8007408", "0X8007408", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ocd.a(null, "", "0X8007408", "0X8007408", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -588,13 +606,13 @@ public class VideoView
   
   private void resetVideoView()
   {
-    ThreadManager.getUIHandler().post(new VideoView.14(this));
+    ThreadManager.getUIHandler().post(new VideoView.10(this));
   }
   
   private void selectUrlByVid()
   {
     if ((this.mBusiType == 2) || (this.mBusiType == 6)) {
-      requestUrlByVid(pto.a(), new ptb(this));
+      requestUrlByVid(pmb.a(), new plq(this));
     }
     while (!this.useVid) {
       return;
@@ -621,7 +639,7 @@ public class VideoView
     if ((this.mCoverImageView != null) && (!TextUtils.isEmpty(this.mCoverUrl))) {}
     try
     {
-      pgk.a(this.mCoverImageView, new URL(this.mCoverUrl), this.mContext);
+      ozc.a(this.mCoverImageView, new URL(this.mCoverUrl), this.mContext);
       return;
     }
     catch (Exception localException)
@@ -633,7 +651,23 @@ public class VideoView
   private boolean shouldPlay()
   {
     QLog.d("gifvideo.VideoView", 1, "auto play mode: " + this.autoPlayMode);
-    return (this.autoPlayMode != AUTO_PLAYMODE_WIFI_ONLY) || (bgnt.b(BaseApplication.getContext()) == 1);
+    return (this.autoPlayMode != AUTO_PLAYMODE_WIFI_ONLY) || (bhnv.b(BaseApplication.getContext()) == 1);
+  }
+  
+  public void attachVideoView(sab paramsab)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("gifvideo.VideoView", 2, "attachVideoView: ");
+    }
+    if (this.mVideoPlayer == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("gifvideo.VideoView", 2, "attachVideoView: videoplayer null");
+      }
+      return;
+    }
+    this.mVideoPlayer.a(paramsab);
+    this.mVideoPlayer.a(this.xyaxis);
   }
   
   public void destroy()
@@ -645,7 +679,7 @@ public class VideoView
   public void displayCover()
   {
     ThreadManager.getUIHandler().removeCallbacks(this.hideCoverRunnable);
-    ThreadManager.getUIHandler().post(new VideoView.19(this));
+    ThreadManager.getUIHandler().post(new VideoView.15(this));
   }
   
   public int getAction()
@@ -661,7 +695,7 @@ public class VideoView
   public long getPercentage()
   {
     if (this.mVideoPlayer != null) {
-      return this.mVideoPlayer.getPlayedTime();
+      return this.mVideoPlayer.b();
     }
     return 0L;
   }
@@ -671,7 +705,7 @@ public class VideoView
     return this.playMode;
   }
   
-  public TVK_IMediaPlayer getVideoPlayer()
+  public rzt getVideoPlayer()
   {
     return this.mVideoPlayer;
   }
@@ -753,46 +787,30 @@ public class VideoView
   
   public void openVideo()
   {
-    ThreadManager.post(new VideoView.17(this), 10, null, false);
+    ThreadManager.post(new VideoView.13(this), 10, null, false);
   }
   
   public void openVideoByUrl(String paramString)
   {
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-    localTVK_PlayerVideoInfo.setPlayMode("cache_video");
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", sfa.a);
-    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    localTVK_PlayerVideoInfo.setPlayType(2);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_kandian_feeds");
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
-    commonOptimizeConfig(localTVK_PlayerVideoInfo);
-    if (this.mVideoPlayer != null)
-    {
-      QLog.d("gifvideo.VideoView", 2, getTag() + " opening " + getVideoVid() + " " + paramString);
-      changeState(5);
-      this.mVideoPlayer.openMediaPlayerByUrl(getContext(), new String[] { paramString }, 0L, 0L, localTVK_PlayerVideoInfo, null);
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 2, "video player is null");
-  }
-  
-  public void openVideoByVid(String paramString)
-  {
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, paramString, "");
-    localTVK_PlayerVideoInfo.setPreLoad(false);
-    localTVK_PlayerVideoInfo.setPlayMode("cache_video");
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", sfa.a);
-    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_kandian_feeds");
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    sae localsae = new sae(101, "", scq.a(paramString));
+    commonOptimizeConfig(localsae);
     if ((this.mContext != null) && (this.mVideoPlayer != null))
     {
       QLog.d("gifvideo.VideoView", 2, getTag() + " opening " + paramString);
       changeState(5);
-      this.mVideoPlayer.openMediaPlayer(this.mContext, null, localTVK_PlayerVideoInfo, paramString, 0L, 0L);
+      this.mVideoPlayer.a(this.mContext, localsae, 0L, commonPlayerOption(false));
+    }
+  }
+  
+  public void openVideoByVid(String paramString)
+  {
+    sae localsae = new sae(1, paramString);
+    commonOptimizeConfig(localsae);
+    if ((this.mContext != null) && (this.mVideoPlayer != null))
+    {
+      QLog.d("gifvideo.VideoView", 2, getTag() + " opening " + paramString);
+      changeState(5);
+      this.mVideoPlayer.a(this.mContext, localsae, 0L, commonPlayerOption(false));
       return;
     }
     QLog.d("gifvideo.VideoView", 2, "video player is null");
@@ -805,16 +823,16 @@ public class VideoView
     {
       this.mAction.set(4);
       changeState(8);
-      this.mVideoPlayer.pause();
+      this.mVideoPlayer.b();
       reportDtVideoEnd();
     }
   }
   
-  public void requestUrlByVid(ptl paramptl, ptm paramptm)
+  public void requestUrlByVid(ply paramply, plz paramplz)
   {
-    this.mStrategy = paramptl;
+    this.mStrategy = paramply;
     if (this.mStrategy != null) {
-      this.mStrategy.a(this.mVid, paramptm);
+      this.mStrategy.a(this.mVid, paramplz);
     }
   }
   
@@ -822,7 +840,7 @@ public class VideoView
   {
     if (this.mVideoPlayer != null)
     {
-      this.mVideoPlayer.start();
+      this.mVideoPlayer.a();
       reportDtVideoStart();
     }
   }
@@ -837,7 +855,7 @@ public class VideoView
     }
     try
     {
-      l1 = this.mVideoPlayer.getCurrentPostion();
+      l1 = this.mVideoPlayer.b();
       this.mOnProgressChangedListener.a(l1);
       return;
     }
@@ -885,7 +903,7 @@ public class VideoView
   {
     this.isLoop = paramBoolean;
     if (this.mVideoPlayer != null) {
-      this.mVideoPlayer.setLoopback(this.isLoop);
+      this.mVideoPlayer.b(this.isLoop);
     }
   }
   
@@ -893,18 +911,18 @@ public class VideoView
   {
     this.isMute = paramBoolean;
     if (this.mVideoPlayer != null) {
-      this.mVideoPlayer.setOutputMute(paramBoolean);
+      this.mVideoPlayer.a(paramBoolean);
     }
   }
   
-  public void setOnCheckShownListener(pth parampth)
+  public void setOnCheckShownListener(plu paramplu)
   {
-    this.mOnCheckShownListener = parampth;
+    this.mOnCheckShownListener = paramplu;
   }
   
-  public void setOnProgressChangedListener(pti parampti)
+  public void setOnProgressChangedListener(plv paramplv)
   {
-    this.mOnProgressChangedListener = parampti;
+    this.mOnProgressChangedListener = paramplv;
   }
   
   public void setPlayIconSize(int paramInt1, int paramInt2)
@@ -976,7 +994,7 @@ public class VideoView
       {
         this.xyaxis = 0;
         if (this.mVideoPlayer != null) {
-          this.mVideoPlayer.setXYaxis(this.xyaxis);
+          this.mVideoPlayer.a(this.xyaxis);
         }
         return;
       }
@@ -997,9 +1015,9 @@ public class VideoView
     this.mBusiType = paramInt;
   }
   
-  public void setVideoPlayListener(psr parampsr)
+  public void setVideoPlayListener(pln parampln)
   {
-    this.videoPlayListener = parampsr;
+    this.videoPlayListener = parampln;
   }
   
   public void setVideoUrl(String paramString)
@@ -1052,7 +1070,7 @@ public class VideoView
       return false;
     }
     this.mAction.set(3);
-    ThreadManager.post(new VideoView.15(this), 10, null, false);
+    ThreadManager.post(new VideoView.11(this), 10, null, false);
     return true;
   }
   
@@ -1064,7 +1082,7 @@ public class VideoView
       QLog.d("gifvideo.VideoView", 2, "has not inited, return");
       return;
     }
-    ThreadManager.post(new VideoView.16(this), 10, null, false);
+    ThreadManager.post(new VideoView.12(this), 10, null, false);
     this.mProgressHandler.removeCallbacksAndMessages(null);
   }
 }

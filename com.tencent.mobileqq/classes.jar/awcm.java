@@ -1,186 +1,36 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.logcathook.LogcatHook;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public class awcm
+class awcm
+  implements aweg
 {
-  static awcn jdField_a_of_type_Awcn;
-  private static BufferedWriter jdField_a_of_type_JavaIoBufferedWriter;
-  static String jdField_a_of_type_JavaLangString = "";
-  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd.HH");
-  private static boolean jdField_a_of_type_Boolean;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
-  private static String jdField_b_of_type_JavaLangString = "";
-  static SimpleDateFormat jdField_b_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-  private static String c = "com.tencent.mobileqq";
-  private static String d = a(BaseApplication.context) + File.separator + "tencent" + File.separator + "msflogs" + File.separator + c.replace(".", File.separator) + File.separator;
+  awcm(awcc paramawcc) {}
   
-  public static String a()
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    long l = System.currentTimeMillis();
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(l);
-    localObject = jdField_a_of_type_JavaTextSimpleDateFormat.format(((Calendar)localObject).getTime());
-    localObject = d + a((String)localObject);
-    try
-    {
-      File localFile = new File(d);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      localFile = new File((String)localObject);
-      if (!localFile.exists()) {
-        localFile.createNewFile();
-      }
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return localObject;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 101);
+    NowLive.sendServerPushMessage(awcc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
   
-  public static String a(Context paramContext)
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    if (paramContext == null) {
-      return Environment.getExternalStorageDirectory().getPath();
-    }
-    File localFile = paramContext.getExternalFilesDir(null);
-    if ((localFile != null) && (!a(paramContext))) {
-      return localFile.getPath();
-    }
-    return Environment.getExternalStorageDirectory().getPath();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 102);
+    NowLive.sendServerPushMessage(awcc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
   
-  public static String a(String paramString)
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    return jdField_b_of_type_JavaLangString.replace(":", "_") + "_syslog_." + paramString + ".log";
-  }
-  
-  static void a(long paramLong)
-  {
-    String str = jdField_b_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
-    Object localObject2 = Calendar.getInstance();
-    ((Calendar)localObject2).setTimeInMillis(paramLong);
-    localObject2 = jdField_a_of_type_JavaTextSimpleDateFormat.format(((Calendar)localObject2).getTime());
-    localObject2 = d + a((String)localObject2);
-    try
-    {
-      File localFile = new File(d);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      localFile = new File((String)localObject2);
-      if (!localFile.exists()) {
-        localFile.createNewFile();
-      }
-      jdField_a_of_type_JavaIoBufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(localFile, true)));
-      if (jdField_a_of_type_JavaIoBufferedWriter != null)
-      {
-        jdField_a_of_type_JavaIoBufferedWriter.write(str + "|" + jdField_b_of_type_JavaLangString + "|D||QQ_Version: " + jdField_a_of_type_JavaLangString + "\r\n");
-        jdField_a_of_type_JavaIoBufferedWriter.write(str + "|" + jdField_b_of_type_JavaLangString + "|D|" + "LogcatHookThread" + "|" + Build.MODEL + " " + Build.VERSION.RELEASE + " create newLogFile " + localFile.getName() + " \n");
-        jdField_a_of_type_JavaIoBufferedWriter.flush();
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        if (jdField_a_of_type_JavaIoBufferedWriter != null)
-        {
-          jdField_a_of_type_JavaIoBufferedWriter.close();
-          jdField_a_of_type_JavaIoBufferedWriter = null;
-        }
-      }
-    }
-    finally
-    {
-      if (jdField_a_of_type_JavaIoBufferedWriter == null) {
-        break label340;
-      }
-      jdField_a_of_type_JavaIoBufferedWriter.close();
-      jdField_a_of_type_JavaIoBufferedWriter = null;
-    }
-    if (LogcatHook.jdField_a_of_type_Boolean) {
-      LogcatHook.updateLogFilePath((String)localObject2);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    if (jdField_a_of_type_Awcn == null)
-    {
-      jdField_b_of_type_JavaLangString = paramString2;
-      c = paramString1;
-      jdField_a_of_type_JavaLangString = paramString3;
-      paramString1 = new HandlerThread("sysLogWriteThread");
-      paramString1.start();
-      jdField_a_of_type_Awcn = new awcn(paramString1.getLooper());
-      jdField_a_of_type_Awcn.sendEmptyMessageDelayed(1, paramLong);
-      jdField_a_of_type_Awcn.sendEmptyMessageDelayed(2, paramLong);
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool2 = jdField_a_of_type_Boolean;
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label48;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
-      {
-        bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
-        {
-          jdField_a_of_type_Boolean = true;
-          bool1 = jdField_a_of_type_Boolean;
-        }
-      }
-    }
-    return bool1;
-    label48:
-    jdField_a_of_type_Boolean = true;
-    return jdField_a_of_type_Boolean;
-  }
-  
-  static void b(long paramLong)
-  {
-    Object localObject1 = new File(d);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if ((localObject2.exists()) && (paramLong - localObject2.lastModified() > 86400000L) && (localObject2.getName().contains("syslog"))) {
-          localObject2.delete();
-        }
-        i += 1;
-      }
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 103);
+    NowLive.sendServerPushMessage(awcc.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcm
  * JD-Core Version:    0.7.0.1
  */

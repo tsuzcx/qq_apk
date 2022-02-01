@@ -1,189 +1,374 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.UniformParam.Float2fParam;
-import com.tencent.aekit.openrender.UniformParam.Float3fParam;
-import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.UniformParam.Mat4Param;
-import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.aekit.openrender.util.GlUtil;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter;
+import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilterInfo;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.model.DoodleItem;
-import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
-import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.util.AlgoUtils;
+import com.tencent.sveffects.SdkContext;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Lcom.tencent.mobileqq.richmedia.capture.data.FilterDesc;>;
 
 public class bpmt
-  extends VideoFilterBase
+  extends bpmr
 {
-  int jdField_a_of_type_Int;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  protected UniformParam.TextureBitmapParam a;
-  DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
-  private String jdField_a_of_type_JavaLangString = "doodle_image";
-  List<List<PointF>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  List<Bitmap> b;
-  public int c = 480;
-  public int d = 1080;
-  public int e = 1440;
+  public float a;
+  bpmv a;
+  public FilterDesc a;
   
-  public bpmt(DoodleItem paramDoodleItem, String paramString)
+  public bpmt(FilterDesc paramFilterDesc)
   {
-    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_DOODLE));
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = 320;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
-    initParams();
-    a(paramString);
+    super(paramFilterDesc);
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_Bpmv = new bpmv(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = paramFilterDesc;
   }
   
-  private double a(PointF paramPointF1, PointF paramPointF2)
+  public static int a(Context paramContext, List<FilterDesc> paramList, bpne parambpne, int paramInt)
   {
-    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
-  }
-  
-  private void a()
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localObject = (Bitmap)((List)localObject).get(i % this.jdField_b_of_type_JavaUtilList.size());
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam != null)
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.swapTextureBitmap((Bitmap)localObject);
-      return;
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramInt == 0) {
+      a(paramContext, paramList);
     }
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject, 33986, false);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
-    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
-  }
-  
-  private void a(String paramString)
-  {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    if (i < this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.count)
+    do
     {
-      Bitmap localBitmap = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(paramString + "/" + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_JavaLangString + "_" + i + ".png"), 80, 80);
-      if (BitmapUtils.isLegal(localBitmap)) {
-        this.jdField_b_of_type_JavaUtilList.add(localBitmap);
-      }
-      for (;;)
+      return 0;
+      if ((paramInt == 2) || (paramInt == 4))
       {
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("Personality", 2, "PersonalityImageFilter unlegal bitmap " + i);
-        }
-      }
-    }
-  }
-  
-  public void ApplyGLSLFilter()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      super.ApplyGLSLFilter();
-    }
-  }
-  
-  public void a(List<PointF> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-    if (this.jdField_b_of_type_JavaUtilList.size() < 1) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      PointF localPointF = (PointF)paramList.next();
-      localArrayList.add(new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y));
-    }
-    this.jdField_a_of_type_JavaUtilList.add(localArrayList);
-  }
-  
-  public void initAttribParams()
-  {
-    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
-    setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
-  }
-  
-  public void initParams()
-  {
-    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
-    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.FloatParam("texScaleX", 1.0F));
-    super.addParam(new UniformParam.FloatParam("texScaleY", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
-    super.addParam(new UniformParam.IntParam("blendMode", this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.blendMode));
-    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
-    super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
-  }
-  
-  public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1) || (((List)this.jdField_a_of_type_JavaUtilList.get(0)).size() < 1)) {
-      return false;
-    }
-    this.jdField_a_of_type_Int = 0;
-    Object localObject = null;
-    paramInt2 = 0;
-    while (paramInt2 < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramInt3 = 0;
-      if (paramInt3 < ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).size())
-      {
-        PointF localPointF = (PointF)((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).get(paramInt3);
-        if ((localObject != null) && (a(localPointF, (PointF)localObject) <= Math.max(this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width, this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height) * 1.2D)) {}
+        if (paramInt == 2) {}
         for (;;)
         {
-          paramInt3 += 1;
-          break;
-          a();
-          float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.d * 1.5F;
-          float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.e * 1.5F;
-          float f3 = localPointF.x - f1 / 2.0F;
-          float f4 = this.height - localPointF.y + f2 / 2.0F;
-          super.setPositions(AlgoUtils.calPositions(f3, f4, f1 + f3, f4 - f2, this.width, this.height));
-          super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
-          super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-          super.addParam(new UniformParam.FloatParam("texScaleX", 1.0F));
-          super.addParam(new UniformParam.FloatParam("texScaleY", 1.0F));
-          super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-          GLES20.glFlush();
-          super.OnDrawFrameGLSL();
-          super.renderTexture(paramInt1, this.width, this.height);
-          localObject = localPointF;
+          c(paramList, bool1);
+          return 0;
+          bool1 = false;
         }
       }
-      paramInt2 += 1;
+    } while ((paramInt != 1) && (paramInt != 3));
+    if (paramInt == 1) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      b(paramList, bool1);
+      return 0;
     }
-    return true;
   }
   
-  public void updatePreview(Object paramObject) {}
-  
-  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
+  public static void a(Context paramContext, List<FilterDesc> paramList)
   {
-    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
-    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
+    bqzz localbqzz = bqzz.a();
+    QQFilterRenderManager localQQFilterRenderManager = boec.a(boec.b);
+    if ((localQQFilterRenderManager == null) && (bojk.a() == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCombo", 2, "applyFiltersForCapture QQFilterRenderManager null");
+      }
+      return;
+    }
+    paramContext = new ArrayList();
+    paramList = paramList.iterator();
+    label53:
+    FilterDesc localFilterDesc;
+    if (paramList.hasNext())
+    {
+      localFilterDesc = (FilterDesc)paramList.next();
+      if (localFilterDesc.name.equals("EMPTY"))
+      {
+        if (bojk.a() == null) {
+          break label351;
+        }
+        bojk.a().c(false);
+        bojk.a().a(null);
+        paramContext = null;
+      }
+    }
+    for (;;)
+    {
+      label108:
+      int i;
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder().append("applyFiltersForCapture filters:");
+        if (paramContext == null)
+        {
+          i = 0;
+          label133:
+          QLog.d("QCombo", 2, i);
+        }
+      }
+      else
+      {
+        localbqzz.a(null);
+        if (localQQFilterRenderManager != null) {
+          localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramContext);
+        }
+        if ((bojk.a() == null) || (paramContext == null) || (paramContext.size() <= 0)) {
+          break;
+        }
+        paramList = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+        paramContext = (FilterDesc)paramContext.get(0);
+        if (TextUtils.isEmpty(paramContext.resRootPath)) {
+          break label342;
+        }
+      }
+      label342:
+      for (paramContext = paramContext.getResFold(paramContext.resRootPath);; paramContext = paramContext.getResFold(paramList))
+      {
+        paramList = QQPtColorFilter.getColorFilterInfo(paramContext);
+        if (paramList == null) {
+          break;
+        }
+        paramContext = paramContext + paramList.getColorPng();
+        if (!new File(paramContext).exists()) {
+          break;
+        }
+        bojk.a().c(false);
+        bojk.a().a(paramContext);
+        return;
+        if (localFilterDesc.id == 9)
+        {
+          paramContext.clear();
+          paramContext.add(localFilterDesc);
+          break label108;
+        }
+        paramContext.add(localFilterDesc);
+        break label53;
+        i = paramContext.size();
+        break label133;
+      }
+      label351:
+      paramContext = null;
+    }
+  }
+  
+  public static void a(List<FilterDesc> paramList, boolean paramBoolean)
+  {
+    bqzz localbqzz = bqzz.a();
+    QQFilterRenderManager localQQFilterRenderManager = boec.a(boec.b);
+    if (localQQFilterRenderManager == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCombo", 2, "applyFiltersForCapture QQFilterRenderManager null");
+      }
+      return;
+    }
+    Object localObject = new ArrayList();
+    paramList = paramList.iterator();
+    FilterDesc localFilterDesc;
+    if (paramList.hasNext())
+    {
+      localFilterDesc = (FilterDesc)paramList.next();
+      if (localFilterDesc.name.equals("EMPTY")) {
+        paramList = null;
+      }
+    }
+    for (;;)
+    {
+      label83:
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("applyFiltersForCapture filters:");
+        if (paramList != null) {
+          break label181;
+        }
+      }
+      label181:
+      for (int i = 0;; i = paramList.size())
+      {
+        QLog.d("QCombo", 2, i);
+        localbqzz.a(null);
+        localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramList, paramBoolean);
+        return;
+        if (localFilterDesc.id == 9)
+        {
+          ((List)localObject).clear();
+          ((List)localObject).add(localFilterDesc);
+          paramList = (List<FilterDesc>)localObject;
+          break label83;
+        }
+        ((List)localObject).add(localFilterDesc);
+        break;
+      }
+      paramList = (List<FilterDesc>)localObject;
+    }
+  }
+  
+  public static boolean a(bpnm parambpnm, int paramInt)
+  {
+    if (parambpnm != null)
+    {
+      bpnm localbpnm = bqzz.a().a[paramInt];
+      if ((parambpnm != null) && (localbpnm != null) && (parambpnm.b().equals(localbpnm.b()))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QCombo", 2, new Object[] { "isApplying :" + parambpnm + " ", Boolean.valueOf(bool) });
+        }
+        return bool;
+      }
+    }
+    return false;
+  }
+  
+  public static void b(List<FilterDesc> paramList, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    FilterDesc localFilterDesc;
+    boolean bool1;
+    if (paramList.hasNext())
+    {
+      localFilterDesc = (FilterDesc)paramList.next();
+      if (localFilterDesc.name.equals("EMPTY"))
+      {
+        localArrayList.clear();
+        bool1 = false;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCombo", 2, "applyFiltersForEditPic filters:" + localArrayList.size());
+      }
+      new bpmu(bool2, bool1, localArrayList, paramBoolean).execute(new Void[0]);
+      return;
+      if (localFilterDesc.id == 9)
+      {
+        localArrayList.clear();
+        localArrayList.add(localFilterDesc);
+        bool1 = true;
+        bool2 = false;
+      }
+      else
+      {
+        localArrayList.add(localFilterDesc);
+        break;
+        bool1 = false;
+        bool2 = false;
+      }
+    }
+  }
+  
+  public static void c(List<FilterDesc> paramList, boolean paramBoolean)
+  {
+    bqzz localbqzz = bqzz.a();
+    QQFilterRenderManager localQQFilterRenderManager = boec.a(boec.c);
+    if (localQQFilterRenderManager == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCombo", 2, "applyFiltersForEditVideo null manager");
+      }
+      return;
+    }
+    Object localObject = new ArrayList();
+    paramList = paramList.iterator();
+    FilterDesc localFilterDesc;
+    if (paramList.hasNext())
+    {
+      localFilterDesc = (FilterDesc)paramList.next();
+      if (localFilterDesc.name.equals("EMPTY")) {
+        paramList = null;
+      }
+    }
+    for (;;)
+    {
+      label84:
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("applyFiltersForEditVideo filters:");
+        if (paramList != null) {
+          break label182;
+        }
+      }
+      label182:
+      for (int i = 0;; i = paramList.size())
+      {
+        QLog.d("QCombo", 2, i);
+        localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramList);
+        localbqzz.a(null);
+        return;
+        if (localFilterDesc.id == 9)
+        {
+          ((List)localObject).clear();
+          ((List)localObject).add(localFilterDesc);
+          paramList = (List<FilterDesc>)localObject;
+          break label84;
+        }
+        ((List)localObject).add(localFilterDesc);
+        break;
+      }
+      paramList = (List<FilterDesc>)localObject;
+    }
+  }
+  
+  public float a()
+  {
+    return 0.5F;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Float == 1.0F)
+    {
+      b(3);
+      return 3;
+    }
+    if (this.jdField_a_of_type_Float >= 0.0F)
+    {
+      b(1);
+      return 1;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.getResFold(brdl.b);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.resurl)) && (!TextUtils.isEmpty(str)) && (bqzv.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc)))
+    {
+      b(2);
+      return 2;
+    }
+    b(3);
+    return 3;
+  }
+  
+  public int a(Activity paramActivity, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) {}
+    return 0;
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      paramActivity = new ArrayList();
+      paramActivity.add(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
+      a(paramActivity, false);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QCombo", 2, "download: " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.predownload + ", iconurl: " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.iconurl + ", resurl:" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.resurl);
+    }
+    bqzv.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, this.jdField_a_of_type_Bpmv);
+    a();
+    return super.b();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "Filter@" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.name + "@" + hashCode();
   }
 }
 

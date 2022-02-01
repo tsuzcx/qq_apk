@@ -1,71 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class been
-  implements lat
+  implements View.OnClickListener
 {
-  public been(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public been(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void a() {}
-  
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int j = 0;
-    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
+    beeb localbeeb = (beeb)paramView.getTag();
+    if (localbeeb.jdField_a_of_type_Int == bedz.b)
+    {
+      becb.a(this.a.app, "0X8009938");
+      becb.a(this.a.app, this.a, 2, "group_online_doc_more_temp", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      bdll.b(this.a.app, "dc00898", "", "", "0X8009C67", "0X8009C67", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
     }
     for (;;)
     {
-      int i;
-      int k;
-      try
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = auoo.a(this.a.app, this.a.a, this.a.app.getLongAccountUin());
+      if (!TextUtils.isEmpty(str))
       {
-        JSONObject localJSONObject1 = new JSONObject(paramBundle);
-        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
-        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
-        i = 0;
-        if (i < paramBundle.length())
-        {
-          Object localObject = paramBundle.optJSONObject(i);
-          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
-          k = j;
-          if (localJSONObject2 != null)
-          {
-            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
-            k = j;
-            if (m - 1 > 0)
-            {
-              k = j;
-              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-              {
-                localObject = new befg(localJSONObject2);
-                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
-                k = 1;
-              }
-            }
-          }
-        }
-        else
-        {
-          if (j != 0) {
-            this.a.jdField_a_of_type_Beeu.notifyDataSetChanged();
-          }
-          return;
-        }
+        QQToast.a(this.a, str, 0).a();
       }
-      catch (JSONException paramBundle)
+      else
       {
-        paramBundle.printStackTrace();
-        return;
+        becb.a(this.a.app, "0X8009937");
+        becb.a(this.a.app, this.a, "group_online_doc_temp", GroupTeamWorkListActivity.a(this.a), localbeeb.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo);
+        bdll.b(this.a.app, "dc00898", "", "", "0X8009C66", "0X8009C66", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
       }
-      i += 1;
-      j = k;
     }
   }
 }

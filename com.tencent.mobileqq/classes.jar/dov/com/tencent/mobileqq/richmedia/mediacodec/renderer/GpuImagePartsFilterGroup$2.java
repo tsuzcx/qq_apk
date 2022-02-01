@@ -1,55 +1,55 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import bqeq;
-import bqes;
-import bqfb;
+import brgb;
+import brgd;
+import brgm;
 
 public class GpuImagePartsFilterGroup$2
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$2(bqfb parambqfb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
+  public GpuImagePartsFilterGroup$2(brgm parambrgm, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
   
   public void run()
   {
-    bqes localbqes2 = null;
-    bqes localbqes1;
-    if ((bqfb.a(this.this$0) == null) || (bqfb.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
+    brgd localbrgd2 = null;
+    brgd localbrgd1;
+    if ((brgm.a(this.this$0) == null) || (brgm.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
     {
-      localbqes1 = bqfb.a(this.this$0);
-      bqfb.a(this.this$0, (bqes)bqeq.a(this.jdField_a_of_type_Int));
-      bqfb.a(this.this$0).init();
-      bqfb.a(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localbrgd1 = brgm.a(this.this$0);
+      brgm.a(this.this$0, (brgd)brgb.a(this.jdField_a_of_type_Int));
+      brgm.a(this.this$0).init();
+      brgm.a(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
     for (;;)
     {
-      if ((bqfb.b(this.this$0) == null) || (bqfb.b(this.this$0).getFilterType() != this.d))
+      if ((brgm.b(this.this$0) == null) || (brgm.b(this.this$0).getFilterType() != this.d))
       {
-        localbqes2 = bqfb.b(this.this$0);
-        bqfb.b(this.this$0, (bqes)bqeq.a(this.d));
-        bqfb.b(this.this$0).init();
-        bqfb.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+        localbrgd2 = brgm.b(this.this$0);
+        brgm.b(this.this$0, (brgd)brgb.a(this.d));
+        brgm.b(this.this$0).init();
+        brgm.b(this.this$0).onOutputSizeChanged(this.b, this.c);
       }
       if ((this.e == 90) || (this.e == 270))
       {
-        bqfb.a(this.this$0).a(false);
-        bqfb.b(this.this$0).a(false);
+        brgm.a(this.this$0).a(false);
+        brgm.b(this.this$0).a(false);
       }
       for (;;)
       {
-        bqfb.a(this.this$0, this.jdField_a_of_type_Float);
-        bqfb.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
-        bqfb.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
-        if (localbqes1 != null) {
-          localbqes1.destroy();
+        brgm.a(this.this$0, this.jdField_a_of_type_Float);
+        brgm.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
+        brgm.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
+        if (localbrgd1 != null) {
+          localbrgd1.destroy();
         }
-        if (localbqes2 != null) {
-          localbqes2.destroy();
+        if (localbrgd2 != null) {
+          localbrgd2.destroy();
         }
         return;
-        bqfb.a(this.this$0).a(true);
-        bqfb.b(this.this$0).a(true);
+        brgm.a(this.this$0).a(true);
+        brgm.b(this.this$0).a(true);
       }
-      localbqes1 = null;
+      localbrgd1 = null;
     }
   }
 }

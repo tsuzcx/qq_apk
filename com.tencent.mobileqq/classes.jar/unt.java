@@ -1,13 +1,49 @@
-import NS_KING_INTERFACE.stPostCommentDingReq;
-import NS_KING_INTERFACE.stPostCommentDingRsp;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class unt
-  extends ujr<stPostCommentDingRsp>
 {
-  public unt(String paramString1, String paramString2, int paramInt)
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  
+  public unt(WSPublicAccReport paramWSPublicAccReport) {}
+  
+  public int a()
   {
-    super("PostCommentDing", 10003);
-    this.a = new stPostCommentDingReq(paramString1, paramString2, paramInt);
+    this.jdField_a_of_type_Boolean = false;
+    return this.b;
+  }
+  
+  public long a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    return System.currentTimeMillis() - WSPublicAccReport.access$000(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSPublicAccReport);
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 1;
+    this.jdField_a_of_type_Int = 1;
+    if (new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication).a(paramString)) {}
+    for (;;)
+    {
+      this.b = i;
+      return;
+      i = 0;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_Int;
   }
 }
 

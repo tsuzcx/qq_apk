@@ -1,14 +1,15 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface nbm
+class nbm
+  implements DialogInterface.OnClickListener
 {
-  public abstract ImageView a();
+  nbm(nbk paramnbk) {}
   
-  public abstract void a(mxq parammxq);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.e();
+  }
 }
 
 

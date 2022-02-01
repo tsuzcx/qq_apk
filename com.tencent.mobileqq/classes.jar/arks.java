@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.dating.DatingFilters;
+import org.json.JSONObject;
 
-public final class arks
-  implements Parcelable.Creator<DatingFilters>
+public class arks
 {
-  public DatingFilters a(Parcel paramParcel)
-  {
-    return new DatingFilters(paramParcel, null);
-  }
-  
-  public DatingFilters[] a(int paramInt)
-  {
-    return new DatingFilters[paramInt];
-  }
+  public long a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arks
  * JD-Core Version:    0.7.0.1
  */

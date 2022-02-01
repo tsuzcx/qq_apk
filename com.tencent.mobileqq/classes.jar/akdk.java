@@ -1,29 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class akdk
-  implements DialogInterface.OnClickListener
+  extends bgrm
 {
-  public akdk(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akdk(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bgrl parambgrl, QQAppInterface paramQQAppInterface)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-      paramDialogInterface.putExtra("main_tab_id", 1);
-      paramDialogInterface.setFlags(603979776);
-      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
-      return;
+    super(paramContext, parambgrl, paramQQAppInterface);
+  }
+  
+  protected void b(Object paramObject)
+  {
+    super.b(paramObject);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(102);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
   }
 }
 

@@ -1,17 +1,17 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class auqq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public int b;
+  public auqq(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public auqq(int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public String toString()
-  {
-    return "Point{x=" + this.a + ", y=" + this.b + '}';
+    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

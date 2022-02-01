@@ -1,45 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class aect
-  implements View.OnClickListener
+  extends ProxyObserver
 {
-  public aect(EditActivity paramEditActivity) {}
+  public aect(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void onProxySaveToDbFinished()
   {
-    EditActivity localEditActivity = this.a;
-    boolean bool;
-    if (!EditActivity.a(this.a))
-    {
-      bool = true;
-      EditActivity.a(localEditActivity, bool);
-      if (!EditActivity.a(this.a)) {
-        break label86;
-      }
-      this.a.e();
-      EditActivity.a(this.a).setImageResource(2130838073);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool = false;
-      break;
-      label86:
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(4);
-      }
-      EditActivity.a(this.a).setImageResource(2130847887);
-      this.a.a();
-    }
+    this.a.a(11, false);
   }
 }
 

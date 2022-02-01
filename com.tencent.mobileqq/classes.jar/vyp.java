@@ -1,20 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleSpecialFollowUserItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
 
-public class vyp
+class vyp
   implements DialogInterface.OnClickListener
 {
-  public vyp(QCircleSpecialFollowUserItemView paramQCircleSpecialFollowUserItemView) {}
+  vyp(vyl paramvyl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new FeedCloudMeta.StUser();
-    paramDialogInterface.id.set(QCircleSpecialFollowUserItemView.a(this.a));
-    vol.a().a(paramDialogInterface, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

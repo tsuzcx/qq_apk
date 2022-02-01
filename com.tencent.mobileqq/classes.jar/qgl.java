@@ -1,91 +1,163 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteSwiperEventDispatcher.handleSwiperDrag.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteSwiperEventDispatcher.handleSwiperItemExposure.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qgl
-  extends qhj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "positionMap", "", "getBehaviorTypeAndStayTimeMillis", "Landroid/util/Pair;", "", "channelId", "handleSwiperDrag", "", "identifier", "dataSet", "view", "Landroid/view/View;", "handleSwiperItemExposure", "folderStatus", "Builder", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qgl
 {
-  public qgl(ArticleInfo paramArticleInfo, Context paramContext)
+  public static final qgn a;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private sel jdField_a_of_type_Sel;
+  private HashMap<String, ArticleInfo> b = new HashMap();
+  
+  static
   {
-    super(paramArticleInfo, paramContext);
+    jdField_a_of_type_Qgn = new qgn(null);
   }
   
-  public static Intent a(Activity paramActivity, ArticleInfo paramArticleInfo)
+  private final Pair<Integer, Long> a(int paramInt)
   {
-    paramActivity = new Intent(paramActivity, ReadInJoyDeliverBiuActivity.class);
-    paramActivity.putExtra("arg_article_info", paramArticleInfo);
-    paramActivity.putExtra("feedsType", paramArticleInfo.mFeedType);
-    if (paramArticleInfo.mChannelID == 70L)
+    long l2 = 0L;
+    int j = 0;
+    int i = 0;
+    Object localObject = this.jdField_a_of_type_Sel;
+    if (localObject != null)
     {
-      paramActivity.putExtra("biu_src", 9);
-      paramActivity.putExtra("arg_from_type", 14);
+      localObject = ((sel)localObject).a();
+      if (!(localObject instanceof ReadInJoyNewFeedsActivity)) {
+        break label274;
+      }
+      localObject = this.jdField_a_of_type_Sel;
+      if (localObject == null) {
+        break label72;
+      }
     }
+    label72:
+    for (localObject = ((sel)localObject).a();; localObject = null)
+    {
+      if (localObject != null) {
+        break label78;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      localObject = null;
+      break;
+    }
+    label78:
+    long l1;
+    if (((ReadInJoyNewFeedsActivity)localObject).a() > 0L)
+    {
+      localObject = this.jdField_a_of_type_Sel;
+      if (localObject != null) {}
+      for (localObject = ((sel)localObject).a(); localObject == null; localObject = null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      }
+      l1 = ((ReadInJoyNewFeedsActivity)localObject).a();
+      localObject = this.jdField_a_of_type_Sel;
+      if (localObject == null) {
+        break label233;
+      }
+    }
+    label233:
+    for (localObject = ((sel)localObject).a();; localObject = null)
+    {
+      if (localObject != null) {
+        break label239;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      l1 = System.currentTimeMillis();
+      localObject = this.jdField_a_of_type_Sel;
+      if (localObject != null) {}
+      for (localObject = ((sel)localObject).a(); localObject == null; localObject = null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      }
+      l1 -= ((ReadInJoyNewFeedsActivity)localObject).b();
+      break;
+    }
+    label239:
+    if (((ReadInJoyNewFeedsActivity)localObject).b()) {
+      paramInt = 0;
+    }
+    label398:
     for (;;)
     {
-      if (phj.a(paramArticleInfo)) {
-        paramActivity.putExtra("arg_type", 4);
+      return new Pair(Integer.valueOf(paramInt), Long.valueOf(l1));
+      paramInt = 1;
+      continue;
+      label274:
+      localObject = this.jdField_a_of_type_Sel;
+      if (localObject != null)
+      {
+        localObject = ((sel)localObject).a();
+        label292:
+        if (!(localObject instanceof SplashActivity)) {
+          break label370;
+        }
+        localObject = this.jdField_a_of_type_Sel;
+        if (localObject == null) {
+          break label359;
+        }
+        localObject = ((sel)localObject).a();
+        label318:
+        localObject = ozs.a((Context)localObject);
+        if (localObject == null) {
+          break label398;
+        }
+        if (((ReadinjoyTabFrame)localObject).b == 0) {
+          break label365;
+        }
       }
-      return paramActivity;
-      paramActivity.putExtra("biu_src", 1);
-      paramActivity.putExtra("arg_from_type", 1);
-    }
-  }
-  
-  protected int a()
-  {
-    return 25;
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    if (ube.a(paramArticleInfo.mChannelID)) {}
-    String str2;
-    for (String str1 = "0X8009361";; str1 = "0X8007EE4")
-    {
-      str2 = pha.a(paramArticleInfo);
-      if ((!snh.i(paramArticleInfo)) && (!snh.g(paramArticleInfo)) && (!snh.j(paramArticleInfo)) && (!snh.k(paramArticleInfo))) {
+      label359:
+      label365:
+      for (paramInt = j;; paramInt = 1)
+      {
+        l1 = ((ReadinjoyTabFrame)localObject).a();
         break;
+        localObject = null;
+        break label292;
+        localObject = null;
+        break label318;
       }
-      if (!snh.o(paramArticleInfo)) {
-        oat.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
+      label370:
+      if (pbd.c(paramInt))
+      {
+        l1 = l2;
+        paramInt = i;
+        if (oyc.b() == 0)
+        {
+          paramInt = 1;
+          l1 = l2;
+        }
       }
-      if ((!pha.k(paramArticleInfo)) && (!pha.l(paramArticleInfo))) {
-        snh.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      else
+      {
+        paramInt = -1;
+        l1 = l2;
       }
-      return;
     }
-    oat.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
   }
   
-  protected void a(ViewBase paramViewBase)
+  public final void a(@Nullable String paramString, @NotNull HashMap<String, String> paramHashMap, @Nullable View paramView)
   {
-    boolean bool = true;
-    QLog.d("OnBiuClickListener", 1, "click biu");
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b())) {
-      QQToast.a(BaseApplicationImpl.sApplication, 0, 2131717104, 0).a();
-    }
-    while ((!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)) {
-      return;
-    }
-    paramViewBase = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    Intent localIntent = a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    if (ouh.a() == 1) {}
-    for (;;)
-    {
-      localIntent.putExtra("fast_biu_type", bool);
-      paramViewBase.startActivity(localIntent);
-      paramViewBase.overridePendingTransition(0, 0);
-      return;
-      bool = false;
-    }
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "dataSet");
+    bkdz.a((Runnable)new PTSLiteSwiperEventDispatcher.handleSwiperDrag.1(paramString, paramHashMap));
+  }
+  
+  public final void a(@Nullable String paramString1, @NotNull HashMap<String, String> paramHashMap, @Nullable View paramView, @Nullable String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "dataSet");
+    bkdz.a((Runnable)new PTSLiteSwiperEventDispatcher.handleSwiperItemExposure.1(this, paramString1, paramString2, paramHashMap));
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sap;
-import sar;
-import sfb;
+import rrk;
+import rrm;
+import rwf;
 
 public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$3
   implements Runnable
 {
-  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$3(sap paramsap, sar paramsar) {}
+  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$3(rrk paramrrk, rrm paramrrm) {}
   
   public void run()
   {
-    if ((!VideoFeedsPlayManager.a(this.jdField_a_of_type_Sap.a, this.jdField_a_of_type_Sar)) || (VideoFeedsPlayManager.a(this.jdField_a_of_type_Sap.a, this.jdField_a_of_type_Sar) == null)) {
+    if ((!VideoFeedsPlayManager.a(this.jdField_a_of_type_Rrk.a, this.jdField_a_of_type_Rrm)) || (VideoFeedsPlayManager.a(this.jdField_a_of_type_Rrk.a, this.jdField_a_of_type_Rrm) == null)) {
       return;
     }
-    this.jdField_a_of_type_Sar.a.a();
+    this.jdField_a_of_type_Rrm.a.a();
   }
 }
 

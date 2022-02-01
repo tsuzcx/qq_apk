@@ -1,32 +1,28 @@
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.subscribe.network.DoTipOffRequest;
 
-public class aamt
-  implements URLDrawable.URLDrawableListener
+final class aamt
+  implements bliz
 {
-  private WeakReference<AsyncRichTextView> a;
+  aamt(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, aamw paramaamw, aamv paramaamv, blir paramblir) {}
   
-  public aamt(AsyncRichTextView paramAsyncRichTextView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramAsyncRichTextView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AsyncRichTextView", 4, "onLoadSuccessed ");
+    switch (paramInt)
+    {
     }
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AsyncRichTextView)this.a.get()).invalidate();
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
+      VSNetworkHelper.a().a(paramView, new aamu(this));
+      if (this.jdField_a_of_type_Aamv != null) {
+        this.jdField_a_of_type_Aamv.a(false);
+      }
     }
   }
 }

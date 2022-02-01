@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aeqc;
+import aezf;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class NewAuthDevUgFragment$1$1
   implements Runnable
 {
-  public NewAuthDevUgFragment$1$1(aeqc paramaeqc) {}
+  public NewAuthDevUgFragment$1$1(aezf paramaezf) {}
   
   public void run()
   {

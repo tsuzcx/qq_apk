@@ -106,7 +106,7 @@ public abstract class AccountObserver
       onRegisterCommitMobileResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getByteArray("mobile"), paramBundle.getString("inviteCode"));
       return;
     case 1004: 
-      onRegisterCommitSmsCodeResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getString("bind_qq_uin"), paramBundle.getString("bind_qq_nick"), paramBundle.getString("bind_qq_face_url"), paramBundle.getByteArray("promptInfo"));
+      onRegisterCommitSmsCodeResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getString("bind_qq_uin"), paramBundle.getString("bind_qq_nick"), paramBundle.getString("bind_qq_face_url"), paramBundle.getByteArray("promptInfo"), paramBundle.getString("phone_protect_uins_url"));
       return;
     case 1020: 
       onRegisterSendResendSmsreqResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getInt("next_chk_time"), paramBundle.getInt("total_time_over"));
@@ -141,7 +141,7 @@ public abstract class AccountObserver
     case 2211: 
       onOnlineStatusPush((AppRuntime.Status)paramBundle.getSerializable("onlineStatus"), paramBundle.getLong("extOnlineStatus"));
     case 1022: 
-      onRegisterQuerySmsStatResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getInt("next_chk_time"), paramBundle.getInt("total_time_over"), paramBundle.getString("uin"), paramBundle.getString("nick"), paramBundle.getString("faceUrl"), paramBundle.getString("errmsg"));
+      onRegisterQuerySmsStatResp(paramBoolean, paramBundle.getInt("code", -1), paramBundle.getByteArray("promptInfo"), paramBundle.getInt("next_chk_time"), paramBundle.getInt("total_time_over"), paramBundle.getString("uin"), paramBundle.getString("nick"), paramBundle.getString("faceUrl"), paramBundle.getString("errmsg"), paramBundle.getString("phone_protect_uins_url"));
       return;
     case 1007: 
       onDeleteAccount(paramBoolean);
@@ -207,9 +207,9 @@ public abstract class AccountObserver
   
   public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3) {}
   
-  public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, String paramString4) {}
   
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void onRegisterSendResendSmsreqResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3) {}
   

@@ -1,30 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
 public class aesj
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aesj(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
   
-  public void onClick(View paramView)
+  public aesj(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    if (NotifyPushSettingActivity.a(this.a) == null)
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
     {
-      NotifyPushSettingActivity.a(this.a, new aesp(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
-      aesp.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
     }
-    if (NotifyPushSettingActivity.a(this.a))
+    for (;;)
     {
-      int i = (int)NetConnInfoCenter.getServerTime();
-      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
-      NotifyPushSettingActivity.a(this.a).a(j - i);
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
     }
-    NotifyPushSettingActivity.a(this.a).show();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

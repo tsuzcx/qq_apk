@@ -1,36 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import java.util.List;
-import sxp;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import org.json.JSONObject;
+import ozs;
+import ssy;
 
 class FastWebActivity$38
   implements Runnable
 {
-  FastWebActivity$38(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  FastWebActivity$38(FastWebActivity paramFastWebActivity) {}
   
   public void run()
   {
-    int j = FastWebActivity.a(this.this$0).size();
-    int i = 0;
-    if (i < j)
+    FastWebActivity.n(this.this$0);
+    FastWebActivity.o(this.this$0);
+    ArticleInfo localArticleInfo1 = this.this$0.a;
+    FastWebActivity localFastWebActivity = this.this$0;
+    ArticleInfo localArticleInfo2 = this.this$0.a;
+    int i = (int)this.this$0.a.mChannelID;
+    if (FastWebActivity.a(this.this$0).c()) {}
+    for (String str = "2";; str = "1")
     {
-      BaseData localBaseData = (BaseData)FastWebActivity.a(this.this$0).get(i);
-      if (((localBaseData.t == 10) || (localBaseData.t == 17) || (localBaseData.t == 22) || (localBaseData.t == 24) || (localBaseData.t == 9)) && (localBaseData == this.a)) {
-        FastWebActivity.a(this.this$0).remove(i);
-      }
-    }
-    for (;;)
-    {
-      if (i >= 0) {
-        FastWebActivity.a(this.this$0).a(i, j);
-      }
-      FastWebActivity.a(this.this$0).notifyDataSetChanged();
+      ssy.a(localArticleInfo1, "0X800A09E", ozs.a(localFastWebActivity, localArticleInfo2, i, str).toString());
       return;
-      i += 1;
-      break;
-      i = -1;
     }
   }
 }

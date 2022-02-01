@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.now.netchannel.websso;
 
 import android.util.Log;
-import aydq;
-import ayds;
+import aywj;
+import aywl;
 
 public class ChannelCenter$1$1
   implements Runnable
 {
-  public ChannelCenter$1$1(aydq paramaydq, byte[] paramArrayOfByte) {}
+  public ChannelCenter$1$1(aywj paramaywj, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    Log.i("ChannelCenter", "WebServiceSSO--onSuccess final cmd=" + this.jdField_a_of_type_Aydq.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Aydq.jdField_a_of_type_Ayds.a(this.jdField_a_of_type_ArrayOfByte);
+    Log.i("ChannelCenter", "WebServiceSSO--onSuccess final cmd=" + this.jdField_a_of_type_Aywj.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aywj.jdField_a_of_type_Aywl.a(this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

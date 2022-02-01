@@ -1,20 +1,21 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class aeiu
-  implements bdov
+public class aeiu
+  extends BroadcastReceiver
 {
-  aeiu(aeit paramaeit, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
+  public aeiu(Conversation paramConversation) {}
   
-  public void onCancel()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Aeit.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
-  }
-  
-  public void onConfirm()
-  {
-    this.jdField_a_of_type_Aeit.a.b();
-    GeneralSettingActivity.a(this.jdField_a_of_type_Aeit.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
+    }
   }
 }
 

@@ -1,114 +1,114 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class bbae
-  extends WebViewPlugin
+  extends RecyclerView.Adapter<bbah>
+  implements aoog
 {
-  public bbae()
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bbaf(this);
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private aoof jdField_a_of_type_Aoof;
+  private List<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilList;
+  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap;
+  
+  private bbae(Context paramContext, aoof paramaoof, RecyclerView paramRecyclerView)
   {
-    this.mPluginNameSpace = "historicalSig";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aoof = paramaoof;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bhmq.a();
+    this.jdField_a_of_type_Aoof.a(this);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    paramRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private Bitmap a(String paramString)
   {
-    if (paramString2.equalsIgnoreCase("historicalSig"))
-    {
-      paramString1 = this.mRuntime.a().getAccount();
-      paramJsBridgeListener = this.mRuntime.a();
-      if (paramString3.equalsIgnoreCase("historicalSiglist")) {}
-      do
-      {
-        do
-        {
-          do
-          {
-            try
-            {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramString2.optString("fromType");
-              paramString2 = paramString2.optString("fromUin");
-              if (ChatActivityUtils.a(paramString2))
-              {
-                paramString3 = new Intent(paramJsBridgeListener, PublicFragmentActivity.class);
-                paramString3.putExtra("key_uin", paramString2);
-                if (paramString1.equalsIgnoreCase("1"))
-                {
-                  paramString3.putExtra("key_open_via", "history-msglist");
-                  paramJsBridgeListener.finish();
-                }
-                aevv.a(paramJsBridgeListener, paramString3, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-              }
-              QLog.d("JumpProfilePlugin", 1, new Object[] { "historicalSiglist", "fromType=", paramString1, " fromUin", bgsp.e(paramString2) });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              while (!QLog.isColorLevel()) {}
-              QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-              return true;
-            }
-            return true;
-            if (!paramString3.equalsIgnoreCase("personalTagList")) {
-              break;
-            }
-            try
-            {
-              paramString2 = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramString2.optString("fromType");
-              paramString2 = paramString2.optString("fromUin");
-              if (ChatActivityUtils.a(paramString2))
-              {
-                paramString3 = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
-                paramString3.putExtra("uin", paramString2);
-                if (paramString1.equalsIgnoreCase("1")) {
-                  paramString3.putExtra("fromType", 4);
-                }
-                paramJsBridgeListener.startActivity(paramString3);
-                paramJsBridgeListener.finish();
-              }
-              QLog.d("JumpProfilePlugin", 1, new Object[] { "personalTagList", "fromType=", paramString1, " fromUin", bgsp.e(paramString2) });
-              return true;
-            }
-            catch (JSONException paramJsBridgeListener) {}
-          } while (!QLog.isColorLevel());
-          QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-          return true;
-        } while (!paramString3.equalsIgnoreCase("zanlist"));
-        try
-        {
-          paramString3 = new JSONObject(paramVarArgs[0]);
-          paramString2 = paramString3.optString("fromType");
-          paramString3 = paramString3.optString("fromUin");
-          if ((ChatActivityUtils.a(paramString3)) && (paramString3.equalsIgnoreCase(paramString1)))
-          {
-            paramString1 = new Intent(paramJsBridgeListener, VisitorsActivity.class);
-            paramString1.putExtra("toUin", Long.valueOf(paramString3));
-            paramString1.putExtra("extra_show_rank", true);
-            if (paramString2.equalsIgnoreCase("1")) {
-              paramString1.putExtra("extra_from", 2);
-            }
-            paramJsBridgeListener.startActivity(paramString1);
-            paramJsBridgeListener.finish();
-          }
-          QLog.d("JumpProfilePlugin", 1, new Object[] { "zanlist", "fromType=", paramString2, " fromUin", bgsp.e(paramString3) });
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("JumpProfilePlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-      return true;
+    return a(paramString, 1, (byte)0);
+  }
+  
+  private Bitmap a(String paramString, int paramInt, byte paramByte)
+  {
+    Bitmap localBitmap = this.jdField_a_of_type_Aoof.a(paramInt, paramString);
+    if (localBitmap != null) {
+      return localBitmap;
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    if (!this.jdField_a_of_type_Aoof.a()) {
+      this.jdField_a_of_type_Aoof.a(paramString, paramInt, true, paramByte);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  private void a()
+  {
+    int j = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i);
+      localObject = (bbah)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get(bbah.a((bbah)localObject));
+      if (localBitmap != null) {
+        bbah.a((bbah)localObject).setImageBitmap(localBitmap);
+      }
+      i += 1;
+    }
+  }
+  
+  public bbah a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bbah(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562808, paramViewGroup, false), null);
+  }
+  
+  public void a(bbah parambbah, int paramInt)
+  {
+    ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    bbah.a(parambbah, localMemberInfo.a);
+    bbah.a(parambbah).setText(localMemberInfo.b);
+    bbah.a(parambbah).setImageBitmap(a(localMemberInfo.a));
+    EventCollector.getInstance().onRecyclerBindViewHolder(parambbah, paramInt, getItemId(paramInt));
+  }
+  
+  public void a(List<ReceiptMessageReadMemberListFragment.MemberInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramBitmap);
+    if (paramInt1 <= 0)
+    {
+      if (this.jdField_a_of_type_Int == 0) {
+        a();
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
   }
 }
 

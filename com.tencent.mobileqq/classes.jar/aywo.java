@@ -1,23 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class aywo
-  implements DialogInterface.OnClickListener
+  implements aywl
 {
   aywo(aywm paramaywm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
-  }
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(byte[] paramArrayOfByte) {}
 }
 
 

@@ -1,8 +1,19 @@
-public abstract interface orz
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+public class orz
+  extends pfh
 {
-  public abstract nxp a();
+  public orz(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public abstract oln a(String paramString);
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    paramString = ReadInJoyCommentListFragment.a(this.a).a(paramString, ReadInJoyCommentListFragment.a(this.a));
+    if (paramString != null) {
+      ReadInJoyCommentListFragment.a(this.a).a(paramString, oqy.a(paramString, 0), 2);
+    }
+    ReadInJoyCommentListFragment.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

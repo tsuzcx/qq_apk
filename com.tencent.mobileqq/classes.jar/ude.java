@@ -1,54 +1,21 @@
-import android.graphics.Rect;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class ude
-  extends RecyclerView.ItemDecoration
+  implements uvx
 {
-  public static final int a = uov.a(5.0F);
+  public ude(WSHomeFragment paramWSHomeFragment) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a()
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-    {
-      paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      i = paramView.getSpanIndex();
-      if (paramView.isFullSpan())
-      {
-        paramRect.left = a;
-        paramRect.right = a;
-        paramRect.top = a;
-      }
-    }
-    while ((!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) || (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).getOrientation() != 0)) {
-      for (;;)
-      {
-        int i;
-        return;
-        if (i % 2 == 0)
-        {
-          paramRect.left = a;
-          paramRect.right = (a / 2);
-        }
-        else
-        {
-          paramRect.left = (a / 2);
-          paramRect.right = a;
-        }
-      }
-    }
-    paramRect.right = a;
+    WSPublicAccReport.getInstance().reportMessageBubblePopupClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+    WSHomeFragment.b(this.a);
+    ((ulx)this.a.b()).a(this.a.getActivity(), 601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ude
  * JD-Core Version:    0.7.0.1
  */

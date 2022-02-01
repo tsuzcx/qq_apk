@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class advp
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public advp(ChatHistoryImageView paramChatHistoryImageView) {}
+  public advp(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.b = false;
-      this.a.a.a(false);
-    }
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

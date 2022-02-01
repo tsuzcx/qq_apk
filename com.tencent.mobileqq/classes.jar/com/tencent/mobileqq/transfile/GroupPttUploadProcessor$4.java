@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdvf;
+import betz;
 
 public class GroupPttUploadProcessor$4
   implements Runnable
 {
-  public GroupPttUploadProcessor$4(bdvf parambdvf) {}
+  public GroupPttUploadProcessor$4(betz parambetz) {}
   
   public void run()
   {

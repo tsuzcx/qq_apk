@@ -1,79 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class ylr
-  extends ymd
+  extends wiu<ylv>
 {
-  private ylt jdField_a_of_type_Ylt;
-  private boolean jdField_a_of_type_Boolean;
+  private Stream<yff> a;
   
-  public ylr(ylt paramylt)
+  public void a(ylv paramylv)
   {
-    this.jdField_a_of_type_Ylt = paramylt;
-  }
-  
-  public String a()
-  {
-    return "GetUserGuideInfoStep";
-  }
-  
-  public void a()
-  {
-    yqp.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
-    ylu localylu = new ylu();
-    wlb.a().a(localylu, new yls(this));
-  }
-  
-  public void a(@NonNull ylu paramylu, @Nullable ylv paramylv, @NonNull ErrorMessage paramErrorMessage)
-  {
-    yqp.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    if (b())
-    {
-      yqp.e("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep was reseted !");
-      d();
-      return;
-    }
-    if (paramErrorMessage.isFail())
-    {
-      yqp.c("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep is failed:%s", paramErrorMessage);
-      b(paramErrorMessage);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new GetUserGuideInfoStep.1(this, paramylv));
-    d();
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a = Stream.of(paramylv).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new ylt(null));
+    this.a.subscribe(new yls(this));
   }
   
   public void c()
   {
-    try
+    yuk.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
+    if (this.a != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      this.a.cancel();
+      this.a = null;
     }
   }
 }

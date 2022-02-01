@@ -1,18 +1,16 @@
 class atpd
-  implements atve
+  implements atqq
 {
-  atpd(atpc paramatpc) {}
+  atpd(atpa paramatpa) {}
   
-  public void a()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.a.a.u();
+    atpa.e(this.a, paramArrayOfObject);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atpd
  * JD-Core Version:    0.7.0.1
  */

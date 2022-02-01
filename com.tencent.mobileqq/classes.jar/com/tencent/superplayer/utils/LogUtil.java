@@ -5,19 +5,19 @@ import com.tencent.superplayer.api.SuperPlayerSDKMgr.ILogListener;
 
 public class LogUtil
 {
-  public static final String TAG = "MediaPlayerMgr";
+  public static final String TAG = "SuperPlayer-";
   
   public static void d(String paramString1, String paramString2)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
-      SuperPlayerSDKMgr.getLogListener().d(paramString1, paramString2);
+      SuperPlayerSDKMgr.getLogListener().d("SuperPlayer-" + paramString1, paramString2);
     }
   }
   
   public static void e(String paramString1, String paramString2)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
-      SuperPlayerSDKMgr.getLogListener().e(paramString1, paramString2);
+      SuperPlayerSDKMgr.getLogListener().e("SuperPlayer-" + paramString1, paramString2);
     }
   }
   
@@ -31,28 +31,28 @@ public class LogUtil
   public static void e(String paramString, Throwable paramThrowable)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
-      SuperPlayerSDKMgr.getLogListener().e(paramString, paramThrowable.getMessage());
+      SuperPlayerSDKMgr.getLogListener().e("SuperPlayer-" + paramString, paramThrowable.getMessage());
     }
   }
   
   public static void i(String paramString1, String paramString2)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
-      SuperPlayerSDKMgr.getLogListener().i(paramString1, paramString2);
+      SuperPlayerSDKMgr.getLogListener().i("SuperPlayer-" + paramString1, paramString2);
     }
   }
   
   public static void v(String paramString1, String paramString2)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
-      SuperPlayerSDKMgr.getLogListener().v(paramString1, paramString2);
+      SuperPlayerSDKMgr.getLogListener().v("SuperPlayer-" + paramString1, paramString2);
     }
   }
   
   public static void w(String paramString1, String paramString2)
   {
     if (SuperPlayerSDKMgr.getLogListener() != null) {
-      SuperPlayerSDKMgr.getLogListener().w(paramString1, paramString2);
+      SuperPlayerSDKMgr.getLogListener().w("SuperPlayer-" + paramString1, paramString2);
     }
   }
 }

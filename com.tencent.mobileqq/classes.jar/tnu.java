@@ -1,63 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class tnu
-  implements rqa
 {
-  public tnu(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
+  public static HashSet<String> a = new HashSet();
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public static void a()
   {
-    Object localObject = paramList.iterator();
-    UgcVideo localUgcVideo;
+    a.clear();
+  }
+  
+  public static void a(int paramInt, rvy paramrvy)
+  {
+    if (paramrvy == null) {}
+    rwc localrwc;
+    AdvertisementInfo localAdvertisementInfo;
     do
     {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-      localUgcVideo = (UgcVideo)((Iterator)localObject).next();
-    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
-    for (;;)
-    {
-      if (localUgcVideo != null)
+      do
       {
-        localObject = rjh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a();
-        if (localUgcVideo.status == UgcVideo.STATUS_PAUSE) {
-          oat.a("0X800AC62", (String)localObject);
-        }
-        while ((bgnt.b(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
-        {
-          long l = rjh.a(localUgcVideo);
-          if (l > 0L)
-          {
-            rjh.a(BaseActivity.sTopActivity, l, new tnv(this, localUgcVideo, paramList), null);
-            return;
-            if (localUgcVideo.status == UgcVideo.STATUS_FAILED) {
-              oat.a("0X800AC63", (String)localObject);
-            }
-          }
-          else
-          {
-            rps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
-            BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
-            return;
-          }
-        }
-        rps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
-        BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
         return;
-      }
-      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
-      return;
-      localUgcVideo = null;
+        localrwc = paramrvy.a();
+        paramrvy = paramrvy.a();
+      } while ((paramrvy == null) || (localrwc == null) || (!(localrwc.a instanceof AdvertisementInfo)));
+      localAdvertisementInfo = (AdvertisementInfo)localrwc.a;
+    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
+    a(paramrvy, localAdvertisementInfo, localrwc);
+  }
+  
+  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, rwc paramrwc)
+  {
+    if ((paramrwc == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
+    while ((!(paramrwc.a instanceof AdvertisementInfo)) || (!paramrwc.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
+      return false;
     }
+    nzq.a(new tlx().a(paramActivity).a(nzq.F).b(nzq.N).a(paramAdvertisementInfo).a());
+    a.add(paramAdvertisementInfo.mAdTraceId);
+    return true;
   }
 }
 

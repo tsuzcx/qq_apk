@@ -6,8 +6,8 @@ import android.os.Debug;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.SparseBooleanArray;
-import bctw;
-import bmqa;
+import bdmp;
+import bnrf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,9 +21,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import nmj;
-import pmf;
-import pmq;
+import noe;
+import pey;
+import pfk;
 
 public class MonitorTimeExecutor
   extends ThreadPoolExecutor
@@ -38,7 +38,7 @@ public class MonitorTimeExecutor
   
   private MonitorTimeExecutor(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue)
   {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, new pmq(), new pmf());
+    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, new pfk(), new pey());
   }
   
   private static String a(Thread paramThread)
@@ -50,8 +50,8 @@ public class MonitorTimeExecutor
     localStringBuilder.append("|").append("pub").append("|").append(System.currentTimeMillis());
     localStringBuilder.append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
     localStringBuilder.append("|").append("monitorThread=").append(paramThread.getName()).append(",tid=").append(paramThread.getId()).append(",state=").append(paramThread.getState());
-    localStringBuilder.append(bctw.a());
-    localStringBuilder.append(bctw.b());
+    localStringBuilder.append(bdmp.a());
+    localStringBuilder.append(bdmp.b());
     return localStringBuilder.toString();
   }
   
@@ -122,13 +122,13 @@ public class MonitorTimeExecutor
   private static void b(MonitorTimeExecutor paramMonitorTimeExecutor)
   {
     QLog.i("MonitorTimeExecutor", 1, "[startWatching] for " + paramMonitorTimeExecutor);
-    if (!((Boolean)bmqa.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)bnrf.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(false))).booleanValue())
     {
       QLog.i("MonitorTimeExecutor", 1, "[startWatching] won't start since monitor disabled");
       return;
     }
-    jdField_a_of_type_Long = ((Long)bmqa.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(5000L))).longValue();
-    b = ((Long)bmqa.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(30000L))).longValue();
+    jdField_a_of_type_Long = ((Long)bnrf.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(5000L))).longValue();
+    b = ((Long)bnrf.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(30000L))).longValue();
     QLog.i("MonitorTimeExecutor", 1, "[startWatching] CHECK_PERIOD=" + jdField_a_of_type_Long + " THRESHOLD=" + b);
     if (jdField_a_of_type_AndroidOsHandler == null) {
       jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
@@ -162,18 +162,18 @@ public class MonitorTimeExecutor
     {
       try
       {
-        localObject = bctw.a("kandian");
+        localObject = bdmp.a("kandian");
         str1 = str2;
-        i = bctw.a(BaseApplication.getContext(), (String)localObject, str2);
+        i = bdmp.a(BaseApplication.getContext(), (String)localObject, str2);
         if (i != 1) {
           continue;
         }
         str1 = str2;
         QLog.i("MonitorTimeExecutor", 1, "[checkBlockingState] trace dumped: " + (String)localObject);
         str1 = str2;
-        str2 = nmj.a(new FileInputStream((String)localObject));
+        str2 = noe.a(new FileInputStream((String)localObject));
         str1 = str2;
-        nmj.b((String)localObject);
+        noe.b((String)localObject);
         str1 = str2;
       }
       catch (Exception localException)

@@ -1,8 +1,17 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-public abstract interface azev
+public class azev
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  public azev(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

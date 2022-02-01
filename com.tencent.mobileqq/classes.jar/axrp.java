@@ -1,41 +1,49 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 class axrp
-  implements URLDrawable.URLDrawableListener
+  extends Handler
 {
-  axrp(axro paramaxro, ImageView paramImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  axrp(axrl paramaxrl, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
-    }
+    super(paramLooper);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
+    Object localObject = paramMessage.getData();
+    if (localObject != null) {}
+    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    {
+      paramMessage = (Bitmap)paramMessage.obj;
+      if ((paramMessage != null) && (localObject != null))
+      {
+        localObject = new File((String)localObject);
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+      }
+      try
+      {
+        localObject = new FileOutputStream((File)localObject);
+        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
+        ((FileOutputStream)localObject).flush();
+        ((FileOutputStream)localObject).close();
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
-    }
-    this.jdField_a_of_type_Axro.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 

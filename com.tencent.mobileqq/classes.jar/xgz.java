@@ -1,16 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
-import com.tribe.async.dispatch.Dispatcher.Event;
-
-public class xgz
-  implements Dispatcher.Event
+class xgz
+  extends xfv
 {
-  public final AnimationParam a;
-  public final String a;
+  xgz(xgp paramxgp, xhx paramxhx) {}
   
-  public xgz(AnimationParam paramAnimationParam, String paramString)
+  public boolean b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Xhx.d);
+    return true;
   }
 }
 

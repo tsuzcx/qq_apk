@@ -1,22 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-final class akgg
-  implements DialogInterface.OnClickListener
+class akgg
+  implements bjbn
 {
-  akgg(Activity paramActivity, String paramString1, String paramString2) {}
+  akgg(akgf paramakgf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    akgc.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
+  public void a(Bundle paramBundle) {}
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

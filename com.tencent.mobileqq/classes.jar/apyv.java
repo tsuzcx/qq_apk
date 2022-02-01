@@ -1,6 +1,8 @@
+import eipc.EIPCResult;
+
 public abstract interface apyv
 {
-  public abstract void a(apyw paramapyw);
+  public abstract void a(EIPCResult paramEIPCResult);
 }
 
 

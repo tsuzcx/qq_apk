@@ -1,25 +1,36 @@
-import com.tencent.biz.pubaccount.QualityReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class obh
+  extends AsyncTask<String, Integer, String>
 {
-  public static void a(rgc paramrgc)
+  String jdField_a_of_type_JavaLangString;
+  
+  protected String a(String... paramVarArgs)
   {
-    ThreadManager.excute(new QualityReporter.1(paramrgc), 16, null, true);
+    if (super.isCancelled()) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
   
-  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  protected void a(String paramString)
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), oaz.class);
-    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
-    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
-    localNewIntent.setObserver(new obi(localNewIntent));
-    pha.a().startServlet(localNewIntent);
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { noe.a(str), noe.a(this.jdField_a_of_type_JavaLangString) });
   }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 

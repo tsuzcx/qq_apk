@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SuperPlayerPool
   implements ISuperPlayerPool
 {
-  private static final String TAG = "MediaPlayerMgr.SuperPlayerPool";
+  private static final String TAG = "SuperPlayerPool";
   private Map<String, ISuperPlayer> mPoolMap = new ConcurrentHashMap();
   
   public ISuperPlayer get(String paramString)
@@ -22,7 +22,7 @@ public class SuperPlayerPool
     if (paramISuperPlayer == null) {
       return;
     }
-    LogUtil.d("MediaPlayerMgr.SuperPlayerPool", "SuperPlayerPool put player:" + paramISuperPlayer.getToken() + ", size:" + size());
+    LogUtil.d("SuperPlayerPool", "SuperPlayerPool put player:" + paramISuperPlayer.getToken() + ", size:" + size());
     this.mPoolMap.put(paramISuperPlayer.getToken(), paramISuperPlayer);
   }
   
@@ -32,7 +32,7 @@ public class SuperPlayerPool
     do
     {
       return false;
-      LogUtil.d("MediaPlayerMgr.SuperPlayerPool", "SuperPlayerPool remove player:" + paramISuperPlayer.getToken() + ", size:" + size());
+      LogUtil.d("SuperPlayerPool", "SuperPlayerPool remove player:" + paramISuperPlayer.getToken() + ", size:" + size());
     } while (this.mPoolMap.remove(paramISuperPlayer.getToken()) == null);
     return true;
   }

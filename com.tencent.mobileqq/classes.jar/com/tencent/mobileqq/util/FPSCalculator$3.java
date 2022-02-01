@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Handler;
-import bggs;
-import bggu;
+import bhgt;
+import bhgv;
 import java.util.Vector;
 
 public class FPSCalculator$3
   implements Runnable
 {
-  public FPSCalculator$3(bggs parambggs) {}
+  public FPSCalculator$3(bhgt parambhgt) {}
   
   public void run()
   {
-    Object localObject1 = bggs.a(this.this$0);
+    Object localObject1 = bhgt.a(this.this$0);
     int i = 0;
     try
     {
-      while (i < bggs.a(this.this$0).size())
+      while (i < bhgt.a(this.this$0).size())
       {
-        bggu localbggu = (bggu)bggs.a(this.this$0).get(i);
-        bggs.a(this.this$0, System.currentTimeMillis());
-        localbggu.onInfo(bggs.a(this.this$0), 60.0D);
+        bhgv localbhgv = (bhgv)bhgt.a(this.this$0).get(i);
+        bhgt.a(this.this$0, System.currentTimeMillis());
+        localbhgv.onInfo(bhgt.a(this.this$0), 60.0D);
         i += 1;
       }
-      bggs.a(this.this$0).postDelayed(bggs.b(this.this$0), 500L);
+      bhgt.a(this.this$0).postDelayed(bhgt.b(this.this$0), 500L);
       return;
     }
     finally {}

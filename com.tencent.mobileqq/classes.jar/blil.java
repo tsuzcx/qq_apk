@@ -1,25 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.graphics.Rect;
 
-public class blil
-  extends BroadcastReceiver
+public abstract interface blil
 {
-  public blil(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
+  public abstract void a(Rect paramRect);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blil
  * JD-Core Version:    0.7.0.1
  */

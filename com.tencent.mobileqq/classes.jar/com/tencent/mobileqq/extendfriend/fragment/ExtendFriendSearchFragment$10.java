@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import asfu;
-import asjw;
+import asvi;
+import aszn;
 
 class ExtendFriendSearchFragment$10
   implements Runnable

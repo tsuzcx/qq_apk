@@ -3,17 +3,27 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 import android.view.OrientationEventListener;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
 import java.util.Set;
 
 public class OrientationPlugin
   extends BaseJsPlugin
 {
   public static final String EVENT_ORIENTATION_CHANGE = "onDeviceOrientationChange";
+  private static final Set<String> S_EVENT_MAP = new OrientationPlugin.1();
   private static final String TAG = "[minigame] OrientationPlugin";
+  private JsRuntime cacheOrientationChangeJsRuntime;
   private String lastOrientation;
   private OrientationEventListener mOrientationListener;
+  
+  public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
+  {
+    if (("onDeviceOrientationChange".equals(paramString1)) && (this.cacheOrientationChangeJsRuntime == null)) {
+      this.cacheOrientationChangeJsRuntime = paramJsRuntime;
+    }
+    return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
+  }
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
   {
@@ -45,7 +55,7 @@ public class OrientationPlugin
   
   public Set<String> supportedEvents()
   {
-    return Collections.emptySet();
+    return S_EVENT_MAP;
   }
 }
 

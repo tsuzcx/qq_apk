@@ -1,19 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aegb
-  implements aefw
+  implements DialogInterface.OnClickListener
 {
-  public aegb(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aegb(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ForwardTroopListFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
+    if (this.jdField_a_of_type_Boolean) {
+      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,64 +1,45 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
-import cooperation.qzone.util.QZLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bmbz
+class bmbz
+  implements azrg
 {
-  public static int a(Bitmap paramBitmap, boolean paramBoolean)
+  bmbz(bmby parambmby) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
-    {
-      QZLog.e("TextureUtil", "glGenTextures: fail 0 ");
-      return 0;
-    }
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      QZLog.e("TextureUtil", "loadTexture: bitmap  == null || isRecycled");
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      return 0;
-    }
-    GLES20.glBindTexture(3553, arrayOfInt[0]);
-    if (paramBoolean)
-    {
-      GLES20.glTexParameteri(3553, 10241, 9728);
-      GLES20.glTexParameteri(3553, 10240, 9728);
-    }
-    for (;;)
-    {
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-      GLES20.glGenerateMipmap(3553);
-      GLES20.glBindTexture(3553, 0);
-      return arrayOfInt[0];
-      GLES20.glTexParameteri(3553, 10241, 9728);
-      GLES20.glTexParameteri(3553, 10240, 9729);
-    }
+    return null;
   }
   
-  public static void a(int paramInt)
-  {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
-    GLES20.glFinish();
-  }
+  public void a(azrh paramazrh) {}
   
-  public static void a(bmbu parambmbu)
+  public void b(azrh paramazrh)
   {
-    if (parambmbu == null) {}
-    for (;;)
-    {
+    if ((paramazrh == null) || (this.a.a == null)) {
       return;
-      int i = 0;
-      while (i < parambmbu.size())
-      {
-        bmbv localbmbv = (bmbv)parambmbu.valueAt(i);
-        if (localbmbv != null) {
-          localbmbv.b();
-        }
-        i += 1;
-      }
     }
+    if (paramazrh.jdField_a_of_type_Int == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramazrh.c);
+      }
+      localBundle = new Bundle();
+      localBundle.putInt("result", 0);
+      localBundle.putString("id", paramazrh.c);
+      this.a.a.onInvokeFinish(localBundle);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 1);
+    localBundle.putInt("errCode", paramazrh.b);
+    localBundle.putString("errMsg", paramazrh.jdField_a_of_type_JavaLangString);
+    this.a.a.onInvokeFinish(localBundle);
   }
 }
 

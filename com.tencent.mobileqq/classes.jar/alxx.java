@@ -1,333 +1,151 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 public class alxx
+  extends alxy
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public static HashMap<String, String> a;
-  private static boolean jdField_a_of_type_Boolean = true;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  private void d()
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    new HashSet();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bdbw.jdField_a_of_type_Boolean);
+    }
+    if (!bdbw.jdField_a_of_type_Boolean) {}
+    synchronized (bdbw.jdField_a_of_type_JavaLangObject)
     {
-      paramQQAppInterface = bgsh.a(localSharedPreferences, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.size();
-      }
-    }
-    return 0;
-  }
-  
-  public static int a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getInt("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString, 1);
-  }
-  
-  public static Set<String> a(QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    new HashSet();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      paramQQAppInterface = bgsh.a(localSharedPreferences, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-      return paramQQAppInterface;
-    }
-  }
-  
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    localEditor.putInt("special_sound_quota" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
-    localEditor.commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Object localObject = bgsh.a(paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4), "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-    if (localObject != null)
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        jdField_a_of_type_JavaUtilHashMap.put(paramQQAppInterface.getCurrentAccountUin() + str, str);
-      }
-    }
-    a(false);
-  }
-  
-  public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    localEditor.putInt("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString, paramInt);
-    localEditor.commit();
-  }
-  
-  public static void a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-    Object localObject2 = paramQQAppInterface.getCurrentAccountUin() + paramString;
-    if (!jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) {
-      jdField_a_of_type_JavaUtilHashMap.put(localObject2, paramString);
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      localObject2 = bgsh.a((SharedPreferences)localObject1, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new HashSet();
-      }
-      if (((Set)localObject1).contains(paramString)) {
-        return;
-      }
-      ((Set)localObject1).add(paramString);
-      paramString = ((Set)localObject1).toArray();
-      bgsh.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramString).commit();
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramString2 == null) || (paramString2.length() == 0))
-    {
-      if (a(paramString1, paramQQAppInterface)) {
-        b(paramString1, paramQQAppInterface);
-      }
-      if (b(paramString1, paramQQAppInterface)) {
-        c(paramString1, paramQQAppInterface);
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        int i = Integer.parseInt(paramString2);
-        if (!a(paramString1, paramQQAppInterface)) {
-          a(paramString1, paramQQAppInterface);
-        }
-        a(paramString1, i, paramQQAppInterface);
-        return;
-      }
-      catch (Exception paramString1) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("SpecialCareManager", 2, "dealWithRespSound|exception = " + paramString1.toString());
-  }
-  
-  public static void a(List<String> paramList1, int paramInt, List<String> paramList2, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (antm)paramQQAppInterface.a(15);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramList1, paramInt, paramList2);
-    }
-  }
-  
-  public static void a(List<String> paramList, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-    label224:
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        localObject1 = bgsh.a((SharedPreferences)localObject1, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-        if (localObject1 != null) {
-          break label224;
-        }
-        localObject1 = new HashSet();
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          String str1 = (String)paramList.next();
-          String str2 = paramQQAppInterface.getCurrentAccountUin() + str1;
-          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
-            jdField_a_of_type_JavaUtilHashMap.put(str2, str1);
-          }
-          if (((Set)localObject1).contains(str1)) {
-            continue;
-          }
-          ((Set)localObject1).add(str1);
-        }
-      }
-      paramList = ((Set)localObject1).toArray();
-      bgsh.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramList).commit();
-      return;
-    }
-  }
-  
-  public static void a(Map<String, Integer> paramMap, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      bdbw.jdField_a_of_type_Boolean = true;
+      bdbw.jdField_a_of_type_JavaLangObject.notifyAll();
       if (QLog.isColorLevel()) {
-        QLog.d("SpecialCareManager", 2, "getSpecialCareSounds from FriendList: " + localEntry.toString());
+        QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bdbw.jdField_a_of_type_Boolean);
       }
-      String str = (String)localEntry.getKey();
-      int i = ((Integer)localEntry.getValue()).intValue();
-      localEditor.putInt("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + str, i);
-    }
-    localEditor.commit();
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return a();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public static boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    new HashSet();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      paramQQAppInterface = bgsh.a(localSharedPreferences, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-      if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()) && (paramQQAppInterface.contains(paramString))) {
-        return true;
+      AVCodec.get().startCapture();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
+      if (localRMVideoStateMgr.b(2)) {
+        localRMVideoStateMgr.f();
       }
+      if ((localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.i())) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
     }
-    return false;
   }
   
-  public static void b(int paramInt, QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    localEditor.putInt("special_sound_svip_quota" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
-    localEditor.commit();
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    localEditor.putLong("key_get_special_sound_quota_time" + paramQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
-    localEditor.commit();
-  }
-  
-  public static void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
-    ??? = paramQQAppInterface.getCurrentAccountUin() + paramString;
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(???)) {
-      jdField_a_of_type_JavaUtilHashMap.remove(???);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.jdField_a_of_type_Alyg.o();
+    localRMVideoStateMgr.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]stopWatching");
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] initState end");
+    }
+  }
+  
+  public void a(bczu parambczu, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    parambczu = RMVideoStateMgr.a();
+    if (parambczu.jdField_b_of_type_Boolean) {}
+    for (parambczu.jdField_a_of_type_Double = (System.currentTimeMillis() - parambczu.jdField_a_of_type_Long);; parambczu.jdField_a_of_type_Double = paramInt1)
     {
-      localObject2 = bgsh.a((SharedPreferences)localObject2, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-      if (localObject2 != null)
+      if (!this.jdField_a_of_type_Boolean)
       {
-        if (!((Set)localObject2).contains(paramString)) {
-          return;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((parambczu.h()) && (!parambczu.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!parambczu.h)) {
+          parambczu.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
         }
-        ((Set)localObject2).remove(paramString);
-        paramString = ((Set)localObject2).toArray();
-        bgsh.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramString).commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + parambczu.jdField_a_of_type_Double);
+        }
+        parambczu.jdField_a_of_type_Alyg.a((int)(parambczu.jdField_a_of_type_Double + bdby.a().a().a()), this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Boolean) {
+          parambczu.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
+        }
       }
       return;
     }
   }
   
-  public static void b(List<String> paramList, QQAppInterface paramQQAppInterface)
+  public void b()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    c();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.a(2);
+    localRMVideoStateMgr.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]startWatching");
     }
-    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
-    synchronized (jdField_a_of_type_JavaLangObject)
+  }
+  
+  public void c()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [stopRecordVideo]Lock.CAPTURE_LOCK = " + bdbw.jdField_a_of_type_Boolean);
+    }
+    if (bdbw.jdField_a_of_type_Boolean)
     {
-      localObject2 = bgsh.a((SharedPreferences)localObject2, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), null);
-      if (localObject2 == null) {
-        break label217;
+      bdbw.jdField_a_of_type_Boolean = false;
+      long l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Long = (l1 - this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] current=" + l1 + " timestamp=" + this.jdField_a_of_type_Long);
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (this.jdField_a_of_type_Boolean) {
+        localRMVideoStateMgr.jdField_a_of_type_Double = bdbt.c;
+      }
+      localRMVideoStateMgr.jdField_a_of_type_Alyg.t();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
+      if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.i();
+      }
+      if (localRMVideoStateMgr.b(3))
       {
-        String str1 = (String)paramList.next();
-        String str2 = paramQQAppInterface.getCurrentAccountUin() + str1;
-        if (jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
-          jdField_a_of_type_JavaUtilHashMap.remove(str2);
+        if (localRMVideoStateMgr.jdField_a_of_type_Bddm != null) {
+          localRMVideoStateMgr.jdField_b_of_type_JavaLangString = localRMVideoStateMgr.jdField_a_of_type_Bddm.a(localRMVideoStateMgr);
         }
-        if (((Set)localObject2).contains(str1)) {
-          ((Set)localObject2).remove(str1);
-        }
+        localRMVideoStateMgr.g();
+      }
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, localRMVideoStateMgr));
+      AVCodec.get().stopCapture();
+      long l2 = localRMVideoStateMgr.jdField_a_of_type_Alyg.d();
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] timeLimit=" + l2 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      l1 = l2;
+      if (l2 == -1L) {
+        l1 = this.jdField_a_of_type_Long;
+      }
+      if ((l1 < 500L) && (!this.jdField_a_of_type_Boolean))
+      {
+        localRMVideoStateMgr.jdField_a_of_type_Alyg.g(true);
+        localRMVideoStateMgr.a(true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] stopRecordVideo end Lock.CAPTURE_LOCK = " + bdbw.jdField_a_of_type_Boolean);
       }
     }
-    paramList = ((Set)localObject2).toArray();
-    bgsh.a(localEditor, "special_sound" + paramQQAppInterface.getCurrentAccountUin(), paramList).commit();
-    label217:
   }
   
-  public static boolean b(String paramString, QQAppInterface paramQQAppInterface)
+  public void f()
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).contains("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString);
-  }
-  
-  public static void c(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    localEditor.remove("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + paramString);
-    localEditor.commit();
-  }
-  
-  public static void c(List<String> paramList, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      localEditor.remove("special_sound_type" + paramQQAppInterface.getCurrentAccountUin() + str);
-    }
-    localEditor.commit();
+    b();
   }
 }
 

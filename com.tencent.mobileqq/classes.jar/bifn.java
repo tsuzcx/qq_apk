@@ -1,16 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class bifn
-  implements MediaPlayer.OnErrorListener
 {
-  public bifn(VideoTextureView paramVideoTextureView) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    return true;
-  }
+  public ImageView a;
+  public SeekBar a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
 }
 
 

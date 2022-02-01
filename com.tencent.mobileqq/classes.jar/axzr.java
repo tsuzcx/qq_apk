@@ -1,9 +1,16 @@
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+
 public class axzr
-  extends axzs
+  extends DataSetObserver
 {
-  public int a;
-  public String a;
-  public int b;
+  public axzr(PlayerInvitePanel paramPlayerInvitePanel) {}
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    this.a.a();
+  }
 }
 
 

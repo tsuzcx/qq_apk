@@ -1,29 +1,4 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aqbn
-  implements CompoundButton.OnCheckedChangeListener
-{
-  public aqbn(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    Object localObject = this.a.getResources();
-    TextView localTextView = CampusCircleReplyActivity.a(this.a);
-    if (paramBoolean) {}
-    for (localObject = ((Resources)localObject).getColorStateList(2131166327);; localObject = ((Resources)localObject).getColorStateList(2131166329))
-    {
-      localTextView.setTextColor((ColorStateList)localObject);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-  }
-}
+public class aqbn {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

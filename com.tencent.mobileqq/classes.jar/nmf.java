@@ -1,20 +1,39 @@
-import com.tencent.mobileqq.data.OpenID;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class nmf
-  extends anqd
+class nmf
+  extends biht
 {
-  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
+  nmf(nme paramnme) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onDone(bihu parambihu)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (parambihu.a == 0) {
+      parambihu = parambihu.a().getString("file_path");
     }
-    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
-    a(paramBoolean, (OpenID)paramObject);
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        File localFile = new File(parambihu);
+        String str = bhmi.b(localFile);
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambihu);
+        }
+        localFile.delete();
+        this.a.b(str);
+        this.a.a(str);
+        return;
+      }
+      catch (IOException parambihu)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambihu));
+        return;
+      }
+    }
+    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambihu.a);
   }
 }
 

@@ -1,26 +1,11 @@
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
 
 public abstract interface xiu
 {
-  public abstract xiv a(@Nullable xix paramxix, int paramInt);
-  
-  @UiThread
-  public abstract xja a();
-  
   public abstract void a();
   
-  @UiThread
-  public abstract void a(@Nullable xix paramxix, int paramInt1, int paramInt2, String paramString);
-  
-  @UiThread
-  public abstract void a(@Nullable xix paramxix, String paramString);
-  
-  public abstract void a(xiz paramxiz);
-  
-  public abstract void b();
-  
-  public abstract void b(xiz paramxiz);
+  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
 }
 
 

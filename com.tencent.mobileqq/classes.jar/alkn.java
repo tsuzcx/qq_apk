@@ -1,11 +1,30 @@
-public class alkn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class alkn
+  implements View.OnClickListener
 {
-  public static final String a = bhgg.a(anhk.aZ);
-  public static final String b = anhk.bi;
-  public static final String c = bhgg.a(anhk.bj);
-  public static final String d = bedk.a(anhk.ba);
-  public static final String e = anhk.bn;
-  public static final String f = anhk.bu;
+  alkn(aljw paramaljw) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(-1, null);
+    if (bhdu.a().a() == 4)
+    {
+      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
+      bhdu.a().a(aljw.a(this.a));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
+      UpgradeDetailActivity.a(aljw.a(this.a), bhdu.a().a(), true, true, true);
+    }
+  }
 }
 
 

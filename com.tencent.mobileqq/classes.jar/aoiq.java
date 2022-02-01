@@ -1,17 +1,34 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoiq
-  extends aojs
+class aoiq
+  extends nkq
 {
-  public aoiq(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aoiq(aoip paramaoip) {}
   
-  public boolean a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return true;
+    if (paramInt == 0)
+    {
+      paramBundle = new oidb_0x496.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        aoip.a(this.a, paramBundle);
+        aoip.b(this.a, paramBundle);
+        aoip.c(this.a, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
+    }
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 

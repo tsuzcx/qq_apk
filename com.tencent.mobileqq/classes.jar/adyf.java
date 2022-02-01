@@ -1,27 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class adyf
-  implements Animation.AnimationListener
+  implements View.OnLongClickListener
 {
-  public adyf(ContactBindedActivity paramContactBindedActivity) {}
+  public adyf(BaseChatPie paramBaseChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    if ("//findcrash".equals(this.a.a.getText().toString())) {
+      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
-    }
+    return true;
   }
 }
 

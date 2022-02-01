@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akhu;
-import akia;
+import aktf;
+import aktl;
 import android.os.Handler;
 import android.os.Message;
-import bgmg;
+import bhmi;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import cooperation.qzone.util.QZLog;
@@ -14,7 +14,7 @@ import java.util.Map;
 public class PhotoListLogicDefault$8$1
   implements Runnable
 {
-  public PhotoListLogicDefault$8$1(akia paramakia) {}
+  public PhotoListLogicDefault$8$1(aktl paramaktl) {}
   
   public void run()
   {
@@ -33,8 +33,8 @@ public class PhotoListLogicDefault$8$1
       localLocalMediaInfo.fileSize = new File(this.a.jdField_a_of_type_JavaLangString).length();
       localLocalMediaInfo.isSystemMeidaStore = false;
       PhotoListBaseData.newCaptureMediaInfo.put(this.a.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
-      ((NewPhotoListActivity)this.a.jdField_a_of_type_Akhu.mActivity).a.sendMessage(localMessage);
-      bgmg.a(this.a.b);
+      ((NewPhotoListActivity)this.a.jdField_a_of_type_Aktf.mActivity).a.sendMessage(localMessage);
+      bhmi.a(this.a.b);
       return;
     }
     catch (Exception localException)

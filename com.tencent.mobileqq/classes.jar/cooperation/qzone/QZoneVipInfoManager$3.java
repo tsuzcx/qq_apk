@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import blsb;
+import bmtd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneVipInfoManager$3
@@ -10,7 +10,7 @@ public final class QZoneVipInfoManager$3
   
   public void run()
   {
-    blsb.a(this.a, "h5");
+    bmtd.a(this.a, "h5");
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
 import android.support.v7.widget.RecyclerView.Adapter;
-import bfeo;
-import bfgi;
+import bgei;
+import bggc;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class HWReciteItem$AudioUploadCallback$2
   implements Runnable
 {
-  public HWReciteItem$AudioUploadCallback$2(bfgi parambfgi) {}
+  public HWReciteItem$AudioUploadCallback$2(bggc parambggc) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_Bfeo.c);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_Bgei.c);
   }
 }
 

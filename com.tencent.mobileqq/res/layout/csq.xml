@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:background="@color/ea" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/b9s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="12.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="豆瓣" />
-        <TextView android:textSize="11.0sp" android:textColor="#99000000" android:ellipsize="end" android:id="@id/bg6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="来看更多爱尔兰人相关影视作品及其他有趣的事情" android:maxLines="1" />
-    </LinearLayout>
-    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/mga" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip">
-        <TextView android:textSize="14.0sp" android:textColor="#ff00cafc" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bp5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="立即下载" />
-        <com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView android:layout_gravity="end|center" android:id="@id/bpg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/ml5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip">
-        <ImageView android:id="@id/c9a" android:background="@drawable/gkd" android:layout_width="18.0dip" android:layout_height="18.0dip" />
-    </FrameLayout>
-</LinearLayout>
+    <com.tencent.mobileqq.activity.contacts.base.HeaderScrollView android:orientation="vertical" android:id="@id/d50" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/n6m" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/jb3" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="0.0dip">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/mrc" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <TextView android:textSize="16.0sp" android:textColor="#ff8f8f8f" android:gravity="center" android:id="@id/ijx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:text="@string/dn3" android:layout_centerVertical="true" />
+                        <com.tencent.widget.ThemeImageView android:id="@id/mrf" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/guf" android:layout_centerVertical="true" />
+                    </LinearLayout>
+                    <com.tencent.widget.ThemeImageView android:id="@id/bft" android:layout_width="15.0dip" android:layout_height="19.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/dep" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    <LinearLayout android:id="@id/ml7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+                        <TextView android:textSize="16.0sp" android:textColor="#ff666666" android:gravity="center" android:id="@id/mrd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/x7h" android:layout_centerVertical="true" />
+                        <View android:background="#ffcccccc" android:layout_width="0.5dip" android:layout_height="14.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="16.0dip" android:layout_centerVertical="true" />
+                        <TextView android:textSize="16.0sp" android:textColor="#ff126ce9" android:gravity="center" android:id="@id/mre" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="16.0dip" android:text="@string/b9f" android:layout_centerVertical="true" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <com.tencent.mobileqq.search.KDSearchHistoryFlowLayout android:id="@id/mo0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginRight="0.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#ff242424" android:gravity="center" android:id="@id/nm4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/x8j" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff8f8f8f" android:gravity="center" android:id="@id/nm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/qkr" android:layout_toRightOf="@id/nm4" android:layout_centerVertical="true" />
+            <View android:id="@id/nnt" android:background="#ff242424" android:layout_width="64.0dip" android:layout_height="2.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_below="@id/nm4" />
+            <View android:id="@id/bnd" android:background="#ffeeeeee" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+            <com.tencent.widget.ThemeImageView android:id="@id/mrl" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_marginRight="0.0dip" android:src="@drawable/ha_" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <android.support.v4.view.ViewPager android:id="@id/kwk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/o11" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="#ffaaaaaa" android:gravity="center" android:id="@id/nm0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/x7k" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.activity.contacts.base.HeaderScrollView>
+</RelativeLayout>

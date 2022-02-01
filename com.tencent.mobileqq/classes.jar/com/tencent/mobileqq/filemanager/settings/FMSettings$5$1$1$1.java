@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.settings;
 
 import android.widget.ProgressBar;
-import atuv;
-import atuw;
+import aumq;
+import aumr;
 
 public class FMSettings$5$1$1$1
   implements Runnable
 {
-  public FMSettings$5$1$1$1(atuw paramatuw, long paramLong1, long paramLong2) {}
+  public FMSettings$5$1$1$1(aumr paramaumr, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atuw.a.a.setVisibility(0);
+    this.jdField_a_of_type_Aumr.a.a.setVisibility(0);
     float f = (float)this.jdField_a_of_type_Long / (float)this.b;
-    this.jdField_a_of_type_Atuw.a.a.setProgress((int)(f * 100.0F));
+    this.jdField_a_of_type_Aumr.a.a.setProgress((int)(f * 100.0F));
   }
 }
 

@@ -1,20 +1,36 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-class nvx
-  implements DialogInterface.OnCancelListener
+public class nvx
+  implements ViewPager.OnPageChangeListener
 {
-  nvx(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
+  public nvx(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nvu.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
     }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 

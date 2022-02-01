@@ -1,339 +1,703 @@
-import android.opengl.GLES20;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager.1;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager.2;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager.3;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager.4;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import com.tencent.util.Pair;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class aouq
+  implements aoum, aoun, Manager
 {
-  public static float[] a;
-  public static float[] b;
-  static float[] jdField_c_of_type_ArrayOfFloat;
-  static float[] jdField_d_of_type_ArrayOfFloat;
-  public static float[] e;
-  static float[] jdField_f_of_type_ArrayOfFloat;
-  public static float[] g;
-  private static float[] jdField_i_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-  public final int a;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ByteBuffer jdField_b_of_type_JavaNioByteBuffer;
-  private int jdField_c_of_type_Int;
-  private int jdField_d_of_type_Int;
-  private int e;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int jdField_h_of_type_Int;
-  private float[] jdField_h_of_type_ArrayOfFloat;
-  private int jdField_i_of_type_Int = -1;
-  private int j = -1;
-  private int k = -1;
-  private int l = -1;
-  private int m = -1;
-  private int n = -1;
-  private int o = -1;
-  private int p = -1;
-  private int q = -1;
-  private int r = -1;
+  private long jdField_a_of_type_Long;
+  private aidz jdField_a_of_type_Aidz;
+  private aouj jdField_a_of_type_Aouj;
+  private aouo jdField_a_of_type_Aouo;
+  private aour jdField_a_of_type_Aour;
+  public PeakAppInterface a;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private List<aoui> jdField_a_of_type_JavaUtilList;
+  private ConcurrentHashMap<String, List<String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
+  private ConcurrentHashMap<String, MessageRecord> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private volatile boolean c;
+  private volatile boolean d;
+  private volatile boolean e;
   
-  static
+  public aouq()
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
-    jdField_c_of_type_ArrayOfFloat = new float[] { -1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F };
-    jdField_d_of_type_ArrayOfFloat = new float[] { 0.0F, -1.0F, 1.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    jdField_e_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F };
-    jdField_f_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    jdField_g_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
+    c();
   }
   
-  public aouq(int paramInt)
+  private long a(String paramString)
   {
-    if (((paramInt < 0) || (paramInt > 4)) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Index can only be 0 to 4");
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    a(this.jdField_a_of_type_Int);
-  }
-  
-  private int a(int paramInt, String paramString)
-  {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
+    long l1 = 0L;
+    long l3 = l1;
+    if (!TextUtils.isEmpty(paramString))
     {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
-      paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
-      if (paramString[0] == 0)
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+        break label25;
+      }
+      l3 = l1;
+    }
+    label25:
+    long l2;
+    do
+    {
+      do
       {
-        GLES20.glDeleteShader(paramInt);
-        return 0;
+        do
+        {
+          return l3;
+          ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_Aouj.a();
+          Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          l2 = l1;
+          if (localObject != null)
+          {
+            l2 = l1;
+            if (((List)localObject).size() > 0)
+            {
+              localObject = ((List)localObject).iterator();
+              for (;;)
+              {
+                l2 = l1;
+                if (!((Iterator)localObject).hasNext()) {
+                  break;
+                }
+                String str = (String)((Iterator)localObject).next();
+                aoul localaoul = (aoul)localConcurrentHashMap.get(str);
+                l2 = l1;
+                if (localaoul != null)
+                {
+                  l2 = l1 + localaoul.jdField_a_of_type_Long;
+                  localaoul.b += 1;
+                  this.jdField_a_of_type_Aouj.a(str, localaoul);
+                }
+                l1 = l2;
+              }
+            }
+          }
+          l3 = l2;
+        } while (this.jdField_b_of_type_JavaUtilHashMap == null);
+        l3 = l2;
+      } while (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString));
+      l3 = l2;
+    } while (((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).intValue() <= 0);
+    return l2 + ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).intValue() * 200;
+  }
+  
+  private Pair<String, List<String>> a(String paramString, List<MessageRecord> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return new Pair(paramString, localArrayList);
+    }
+    Iterator localIterator = paramList.iterator();
+    label327:
+    label344:
+    label345:
+    for (;;)
+    {
+      int i;
+      if (localIterator.hasNext())
+      {
+        paramList = (MessageRecord)localIterator.next();
+        i = paramList.msgtype;
+        if (aout.a(i))
+        {
+          paramList = aznl.a(paramList);
+          if ((paramList == null) || (!(paramList instanceof MessageForPic))) {
+            break label327;
+          }
+          paramList = ((MessageForPic)paramList).getBiggestFilePath();
+        }
+      }
+      for (;;)
+      {
+        if ((TextUtils.isEmpty(paramList)) || (localArrayList.contains(paramList))) {
+          break label345;
+        }
+        localArrayList.add(new File(paramList).getName());
+        break;
+        if (aout.b(i))
+        {
+          paramList = aznl.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForShortVideo)))
+          {
+            MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramList;
+            paramList = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+            if (!TextUtils.isEmpty(paramList)) {
+              break label344;
+            }
+            paramList = ShortVideoUtils.b(localMessageForShortVideo);
+          }
+        }
+        else if (aout.c(i))
+        {
+          paramList = aznl.a(paramList);
+          if (paramList != null) {
+            paramList = auoo.a(this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface, paramList);
+          }
+        }
+        else if (aout.d(i))
+        {
+          paramList = aznl.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForMixedMsg)))
+          {
+            b(paramString, ((MessageForMixedMsg)paramList).getPicMsgList());
+            paramList = "";
+          }
+        }
+        else if (aout.e(i))
+        {
+          paramList = aznl.a(paramList);
+          if ((paramList != null) && ((paramList instanceof MessageForStructing)) && (axpm.a((MessageForStructing)paramList))) {
+            b(paramString, this.jdField_a_of_type_Aour.c(MessageRecord.class, "select * from mr_multimessage where msgseq=?", "mr_multimessage", "msgseq=?", new String[] { String.valueOf(paramList.uniseq) }));
+          }
+        }
+        paramList = "";
+        continue;
+        return new Pair(paramString, localArrayList);
       }
     }
-    return paramInt;
+  }
+  
+  private Pair<Integer, List<MessageRecord>> a(List<MessageRecord> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if ((localMessageRecord instanceof MessageForText)) {
+        i += 1;
+      }
+      for (;;)
+      {
+        break;
+        localArrayList.add(localMessageRecord);
+      }
+    }
+    return new Pair(Integer.valueOf(i), localArrayList);
+  }
+  
+  private String a(MessageRecord paramMessageRecord)
+  {
+    String str1 = "";
+    String str2;
+    if ((paramMessageRecord == null) || (this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      str2 = "";
+      return str2;
+    }
+    switch (paramMessageRecord.istroop)
+    {
+    }
+    for (;;)
+    {
+      str2 = str1;
+      if (!TextUtils.isEmpty(str1)) {
+        break;
+      }
+      return paramMessageRecord.frienduin;
+      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramMessageRecord.frienduin + 0);
+      continue;
+      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramMessageRecord.frienduin + 1);
+      continue;
+      str1 = this.jdField_a_of_type_Aour.a(paramMessageRecord.frienduin);
+      continue;
+      if (this.jdField_a_of_type_Aidz != null)
+      {
+        str1 = this.jdField_a_of_type_Aidz.a(paramMessageRecord.senderuin, paramMessageRecord.frienduin);
+        continue;
+        str1 = this.jdField_a_of_type_Aour.a(paramMessageRecord.senderuin, paramMessageRecord.frienduin);
+      }
+    }
   }
   
   private void a(String paramString)
   {
-    int i1 = GLES20.glGetError();
-    if (i1 != 0) {
-      QLog.i("GreetingYUVProgram", 1, paramString + ": glError 0x" + Integer.toHexString(i1));
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
     }
   }
   
-  public int a(String paramString1, String paramString2)
+  private void a(String paramString, int paramInt)
   {
-    int i1 = a(35633, paramString1);
-    int i2 = a(35632, paramString2);
-    int i3 = GLES20.glCreateProgram();
-    if (i3 != 0)
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_b_of_type_JavaUtilHashMap != null))
     {
-      GLES20.glAttachShader(i3, i1);
-      a("glAttachShader");
-      GLES20.glAttachShader(i3, i2);
-      a("glAttachShader");
-      GLES20.glLinkProgram(i3);
-      paramString1 = new int[1];
-      GLES20.glGetProgramiv(i3, 35714, paramString1, 0);
-      if (paramString1[0] != 1)
+      if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        GLES20.glDeleteProgram(i3);
-        return 0;
+        int i = ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).intValue();
+        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i + paramInt));
       }
     }
-    return i3;
+    else {
+      return;
+    }
+    this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (paramInt == 1000) || (paramInt == 1004);
+  }
+  
+  private boolean a(aoui paramaoui)
+  {
+    if ((paramaoui == null) || (this.jdField_a_of_type_Aidz == null)) {}
+    String str;
+    do
+    {
+      return true;
+      str = MessageRecord.getTableName(paramaoui.jdField_a_of_type_JavaLangString, paramaoui.jdField_a_of_type_Int);
+    } while (TextUtils.isEmpty(str));
+    b(str);
+    if (this.jdField_a_of_type_Aidz != null) {
+      this.jdField_a_of_type_Aidz.b(paramaoui.jdField_a_of_type_JavaLangString, paramaoui.jdField_a_of_type_Int);
+    }
+    a(str);
+    return true;
+  }
+  
+  private void b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
+    {
+      Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        paramString = new ArrayList();
+        ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_Aouj.a();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str1 = (String)((Iterator)localObject).next();
+          aoul localaoul = (aoul)localConcurrentHashMap.get(str1);
+          if (localaoul != null)
+          {
+            localaoul.b -= 1;
+            if (localaoul.b == 0)
+            {
+              String str2 = this.jdField_a_of_type_Aouj.a(localaoul);
+              if (!TextUtils.isEmpty(str2))
+              {
+                this.jdField_a_of_type_Long += localaoul.jdField_a_of_type_Long;
+                paramString.add(str2);
+              }
+              this.jdField_a_of_type_Aouj.a(str1);
+            }
+            else
+            {
+              this.jdField_a_of_type_Aouj.a(str1, localaoul);
+            }
+          }
+        }
+        this.jdField_a_of_type_Aouj.a(paramString);
+      }
+    }
+  }
+  
+  private void b(String paramString, List<MessageRecord> paramList)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramList = a(paramList);
+      } while (paramList == null);
+      a(paramString, ((Integer)paramList.first).intValue());
+      paramString = a(paramString, (List)paramList.second);
+    } while (paramString == null);
+    c((String)paramString.first, (List)paramString.second);
+  }
+  
+  private boolean b()
+  {
+    return (this.jdField_a_of_type_Aouj != null) && (this.jdField_a_of_type_Aouj.a());
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Aour = new aour();
+    AppInterface localAppInterface = this.jdField_a_of_type_Aour.a();
+    if ((localAppInterface instanceof PeakAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)localAppInterface);
+    }
+  }
+  
+  private void c(String paramString, List<String> paramList)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    {
+      List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
+      {
+        String str = (String)paramList.get(i);
+        if (!localList.contains(str)) {
+          localList.add(str);
+        }
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramList);
+  }
+  
+  private void d()
+  {
+    this.d = false;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Aour.a(this);
+    this.jdField_a_of_type_Aouj = new aouj(this);
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Aour.a(0, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Aour.b(1, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadNameList finish");
+    }
+    h();
+  }
+  
+  private void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadMessageRecord");
+    }
+    Object localObject = this.jdField_a_of_type_Aour.a();
+    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageCleanManager", 2, "loadMessageRecord tableNames is empty");
+      }
+      this.jdField_b_of_type_Boolean = true;
+      h();
+      return;
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str1 = (String)((Iterator)localObject).next();
+      String str2 = String.format("select * from %s", new Object[] { str1 });
+      b(str1, this.jdField_a_of_type_Aour.a(MessageRecord.class, str2, str1, null, null));
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadMessageRecord finish");
+    }
+    h();
+  }
+  
+  private void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord");
+    }
+    Object localObject = this.jdField_a_of_type_Aour.b();
+    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord tableNames is empty");
+      }
+      this.c = true;
+      h();
+      return;
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str1 = (String)((Iterator)localObject).next();
+      String str2 = String.format("select * from %s", new Object[] { str1 });
+      b(str1, this.jdField_a_of_type_Aour.b(MessageRecord.class, str2, str1, null, null));
+    }
+    this.c = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadSlowTableMessageRecord finish");
+    }
+    h();
+  }
+  
+  private void h()
+  {
+    if ((a()) && (b()))
+    {
+      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 0)) {
+        break label288;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        aoui localaoui = new aoui();
+        localObject = (MessageRecord)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+        if ((localObject != null) && (a(((MessageRecord)localObject).istroop)))
+        {
+          localaoui.jdField_a_of_type_JavaLangString = ((MessageRecord)localObject).frienduin;
+          localaoui.jdField_b_of_type_JavaLangString = a((MessageRecord)localObject);
+          localaoui.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+          localaoui.jdField_b_of_type_Long = ((MessageRecord)localObject).time;
+          localaoui.jdField_a_of_type_Long = a(MessageRecord.getTableName(localaoui.jdField_a_of_type_JavaLangString, ((MessageRecord)localObject).istroop));
+          if ((localaoui.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_JavaUtilList != null))
+          {
+            localaoui.c = aouk.a(localaoui.jdField_a_of_type_Long);
+            this.jdField_a_of_type_JavaUtilList.add(localaoui);
+          }
+        }
+      }
+      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      }
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+      }
+      if (this.jdField_b_of_type_JavaUtilHashMap != null) {
+        this.jdField_b_of_type_JavaUtilHashMap.clear();
+      }
+      if (this.jdField_a_of_type_Aouo != null)
+      {
+        a(1);
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageCleanManager", 2, "conformAllData onLoadFinish");
+        }
+        this.jdField_a_of_type_Aouo.a(this.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    for (;;)
+    {
+      this.e = false;
+      return;
+      label288:
+      if (this.jdField_a_of_type_Aouo != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageCleanManager", 2, "conformAllData onLoadFinish cleanMessageList is empty");
+        }
+        this.jdField_a_of_type_Aouo.a(this.jdField_a_of_type_JavaUtilList);
+      }
+    }
+  }
+  
+  private void i()
+  {
+    this.e = false;
+    this.d = true;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+    if (this.jdField_b_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      this.jdField_b_of_type_JavaUtilHashMap = null;
+    }
+    if (this.jdField_a_of_type_Aour != null) {
+      this.jdField_a_of_type_Aour.a();
+    }
+    if (this.jdField_a_of_type_Aouj != null) {
+      this.jdField_a_of_type_Aouj.b();
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public List<aoui> a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilList, new aouh(paramInt));
+    }
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public List<aoui> a(List<aoui> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()) || (this.jdField_a_of_type_Aidz == null)) {
+      return this.jdField_a_of_type_JavaUtilList;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "deleteMessages");
+    }
+    ThreadManager.getFileThreadHandler().post(new MessageCleanManager.4(this, paramList));
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aoui localaoui = (aoui)paramList.next();
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilList.remove(localaoui);
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_Int <= 0) {
-      this.jdField_b_of_type_Int = a("attribute vec4 vPosition;\nattribute vec2 a_texCoord;\nvarying vec2 tc;\nvoid main() {\ngl_Position = vPosition;\ntc = a_texCoord;\n}\n", "precision mediump float;\nuniform sampler2D tex_y;\nuniform sampler2D tex_u;\nuniform sampler2D tex_v;\nvarying vec2 tc;\nvoid main() {\nvec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\nvec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\nvec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\nc += V * vec4(1.596, -0.813, 0, 0);\nc += U * vec4(0, -0.392, 2.017, 0);\nc.a = 1.0;\ngl_FragColor = c;\n}\n");
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "onScanFinish");
     }
-    this.jdField_i_of_type_Int = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "vPosition");
-    a("glGetAttribLocation vPosition");
-    if ((this.jdField_i_of_type_Int == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for vPosition");
-    }
-    this.j = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "a_texCoord");
-    a("glGetAttribLocation a_texCoord");
-    if ((this.j == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for a_texCoord");
-    }
-    this.k = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_y");
-    a("glGetUniformLocation tex_y");
-    if ((this.k == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_y");
-    }
-    this.l = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_u");
-    a("glGetUniformLocation tex_u");
-    if ((this.l == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_u");
-    }
-    this.m = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_v");
-    a("glGetUniformLocation tex_v");
-    if ((this.m == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_v");
-    }
-    this.jdField_a_of_type_Boolean = true;
+    h();
   }
   
-  public void a(int paramInt)
+  public void a(aidz paramaidz)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 1: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 2: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33987;
-      this.jdField_d_of_type_Int = 33988;
-      this.jdField_e_of_type_Int = 33989;
-      this.jdField_f_of_type_Int = 3;
-      this.jdField_g_of_type_Int = 4;
-      this.jdField_h_of_type_Int = 5;
-      return;
-    case 3: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33990;
-      this.jdField_d_of_type_Int = 33991;
-      this.jdField_e_of_type_Int = 33992;
-      this.jdField_f_of_type_Int = 6;
-      this.jdField_g_of_type_Int = 7;
-      this.jdField_h_of_type_Int = 8;
-      return;
-    }
-    this.jdField_h_of_type_ArrayOfFloat = jdField_f_of_type_ArrayOfFloat;
-    this.jdField_c_of_type_Int = 33993;
-    this.jdField_d_of_type_Int = 33994;
-    this.jdField_e_of_type_Int = 33995;
-    this.jdField_f_of_type_Int = 9;
-    this.jdField_g_of_type_Int = 10;
-    this.jdField_h_of_type_Int = 11;
+    this.jdField_a_of_type_Aidz = paramaidz;
   }
   
-  public void a(Buffer paramBuffer1, Buffer paramBuffer2, Buffer paramBuffer3, int paramInt1, int paramInt2)
+  public void a(aouo paramaouo)
   {
-    if ((paramInt1 != this.q) || (paramInt2 != this.r)) {}
-    for (int i1 = 1;; i1 = 0)
-    {
-      if (i1 != 0)
-      {
-        this.q = paramInt1;
-        this.r = paramInt2;
+    this.jdField_a_of_type_Aouo = paramaouo;
+  }
+  
+  public void a(String paramString, Entity paramEntity)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramEntity == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageCleanManager", 2, "onNotifyLastMsg tableName or entity is null");
       }
-      if ((this.n < 0) || (i1 != 0))
-      {
-        if (this.n >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-          a("glDeleteTextures");
-        }
-        int[] arrayOfInt = new int[1];
-        GLES20.glGenTextures(1, arrayOfInt, 0);
-        a("glGenTextures");
-        this.n = arrayOfInt[0];
-      }
-      QLog.d("AVGAmeRender", 1, "buildTextures : w=" + this.q + " h=" + this.r + " yData=" + paramBuffer1.capacity());
-      GLES20.glBindTexture(3553, this.n);
-      a("glBindTexture");
-      GLES20.glTexImage2D(3553, 0, 6409, this.q, this.r, 0, 6409, 5121, paramBuffer1);
-      a("glTexImage2D");
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.o < 0) || (i1 != 0))
-      {
-        if (this.o >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.o = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.o);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer2);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.p < 0) || (i1 != 0))
-      {
-        if (this.p >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.p = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.p);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer3);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
+    }
+    while ((!(paramEntity instanceof MessageRecord)) || (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
       return;
     }
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (MessageRecord)paramEntity);
   }
   
-  public void a(float[] paramArrayOfFloat)
+  public void a(String paramString, List<? extends Entity> paramList)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioByteBuffer.asFloatBuffer().put(paramArrayOfFloat);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_JavaNioByteBuffer == null)
-    {
-      this.jdField_b_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(jdField_i_of_type_ArrayOfFloat.length * 4);
-      this.jdField_b_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioByteBuffer.asFloatBuffer().put(jdField_i_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioByteBuffer.position(0);
+    if ((paramList == null) || (paramList.isEmpty())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageCleanManager", 2, "onNotifyMessageData messageRecordList is empty");
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    while (!(paramList.get(0) instanceof MessageRecord)) {
+      return;
+    }
+    b(paramString, paramList);
   }
   
   public void b()
   {
-    GLES20.glUseProgram(this.jdField_b_of_type_Int);
-    a("glUseProgram");
-    GLES20.glVertexAttribPointer(this.jdField_i_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer mPositionHandle");
-    GLES20.glEnableVertexAttribArray(this.jdField_i_of_type_Int);
-    GLES20.glVertexAttribPointer(this.j, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.j);
-    GLES20.glActiveTexture(this.jdField_c_of_type_Int);
-    GLES20.glBindTexture(3553, this.n);
-    GLES20.glUniform1i(this.k, this.jdField_f_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_d_of_type_Int);
-    GLES20.glBindTexture(3553, this.o);
-    GLES20.glUniform1i(this.l, this.jdField_g_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_e_of_type_Int);
-    GLES20.glBindTexture(3553, this.p);
-    GLES20.glUniform1i(this.m, this.jdField_h_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glFinish();
-    GLES20.glDisableVertexAttribArray(this.jdField_i_of_type_Int);
-    GLES20.glDisableVertexAttribArray(this.j);
-    GLES20.glUseProgram(0);
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadAllMessageRecord");
+    }
+    if (this.e) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageCleanManager", 2, "loadAllMessageRecord isLoadingData");
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (this.jdField_a_of_type_Aouo != null) {
+          this.jdField_a_of_type_Aouo.a();
+        }
+        i();
+        d();
+        try
+        {
+          this.e = true;
+          this.jdField_a_of_type_Aouj.a();
+          ThreadManager.getSubThreadHandler().post(new MessageCleanManager.1(this));
+          ThreadManager.getFileThreadHandler().post(new MessageCleanManager.2(this));
+          ThreadManager.getFileThreadHandler().post(new MessageCleanManager.3(this));
+          return;
+        }
+        catch (Exception localException)
+        {
+          if (this.jdField_a_of_type_Aouo != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("MessageCleanManager", 2, "loadAllMessageRecord exception = " + localException.getMessage());
+            }
+            this.jdField_a_of_type_Aouo.a(this.jdField_a_of_type_JavaUtilList);
+            return;
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError) {}
+      }
+    } while (this.jdField_a_of_type_Aouo == null);
+    if (QLog.isColorLevel()) {
+      QLog.e("MessageCleanManager", 2, "loadAllMessageRecord OutOfMemoryError");
+    }
+    this.jdField_a_of_type_Aouo.a(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void c()
+  public void onDestroy()
   {
-    if (this.n != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-      a("glDeleteTextures");
-      this.n = -1;
-    }
-    if (this.o != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-      a("glDeleteTextures");
-      this.o = -1;
-    }
-    if (this.p != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-      a("glDeleteTextures");
-      this.p = -1;
-    }
-    if (this.jdField_b_of_type_Int > 0)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      GLES20.glDeleteProgram(this.jdField_b_of_type_Int);
-      a("glDeleteProgram");
-      this.jdField_b_of_type_Int = 0;
-    }
+    i();
+    this.jdField_a_of_type_Aouo = null;
+    this.jdField_a_of_type_Aidz = null;
   }
 }
 

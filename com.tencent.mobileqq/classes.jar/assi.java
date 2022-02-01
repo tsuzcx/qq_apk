@@ -1,14 +1,11 @@
-import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.emoticonview.EmoticonImageView;
 
-class assi
-  implements bkiz
+public class assi
+  extends aslu
 {
-  assi(assg paramassg, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  EmoticonImageView[] jdField_a_of_type_ArrayOfComTencentMobileqqEmoticonviewEmoticonImageView;
 }
 
 

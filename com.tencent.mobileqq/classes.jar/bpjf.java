@@ -1,31 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-
 class bpjf
-  implements wld<wzc, xaw>
+  implements bpjh
 {
-  bpjf(bpja parambpja, WeakReference paramWeakReference) {}
-  
-  public void a(@NonNull wzc paramwzc, @Nullable xaw paramxaw, @NonNull ErrorMessage paramErrorMessage)
+  public int a()
   {
-    if (paramxaw == null)
-    {
-      paramwzc = (bpjl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramwzc != null) {
-        paramwzc.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
-      }
-      return;
-    }
-    paramwzc = (bpjl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramwzc != null)
-    {
-      paramwzc.a(0, paramxaw.a);
-      return;
-    }
-    yqp.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+    return 960;
+  }
+  
+  public int b()
+  {
+    return ((Integer)bpjj.a(Integer.valueOf(1024), Integer.valueOf(2048))).intValue();
+  }
+  
+  public int c()
+  {
+    return (int)(b() * 1.3D);
+  }
+  
+  public int d()
+  {
+    return ((Integer)bpjj.a(Integer.valueOf(1080), Integer.valueOf(1920), Integer.valueOf(2560))).intValue();
+  }
+  
+  public int e()
+  {
+    return 100;
   }
 }
 

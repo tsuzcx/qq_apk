@@ -1,7 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+
 public class aarz
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
+  public aarz(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 

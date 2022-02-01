@@ -1,30 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class afmd
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public afmd(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public afmd(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
-    }
-    TroopMemberListActivity.a(this.a, localArrayList);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afmd
  * JD-Core Version:    0.7.0.1
  */

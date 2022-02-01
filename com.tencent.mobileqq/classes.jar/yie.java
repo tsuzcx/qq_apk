@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public class yie
-  extends wvn
+class yie
+  extends xfp
 {
-  public List<String> a = new ArrayList();
+  yie(yic paramyic, FeedItem paramFeedItem) {}
   
-  public yie(ErrorMessage paramErrorMessage)
+  public void a()
   {
-    super(paramErrorMessage);
+    super.a();
+    yic.a(this.jdField_a_of_type_Yic, null);
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return "FeedData{" + super.toString() + '}';
+    super.a(paramInt);
+    yup.a("home_page", "suc_share", 2, paramInt, new String[] { yup.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", yup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
   }
 }
 

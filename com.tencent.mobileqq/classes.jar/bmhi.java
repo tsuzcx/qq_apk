@@ -1,10 +1,6 @@
-import cooperation.qzone.statistic.access.concept.Collector;
-
-public abstract class bmhi
+public abstract interface bmhi
 {
-  public static bmhi a = new bmhj();
-  
-  public abstract boolean a(Collector paramCollector);
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

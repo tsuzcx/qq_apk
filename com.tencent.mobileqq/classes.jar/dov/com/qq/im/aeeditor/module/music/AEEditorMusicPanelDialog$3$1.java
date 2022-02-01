@@ -1,24 +1,24 @@
 package dov.com.qq.im.aeeditor.module.music;
 
-import bnzb;
-import bohf;
-import bohi;
+import bpam;
+import bpja;
+import bpjd;
 
 public class AEEditorMusicPanelDialog$3$1
   implements Runnable
 {
-  public AEEditorMusicPanelDialog$3$1(bohi parambohi) {}
+  public AEEditorMusicPanelDialog$3$1(bpjd parambpjd) {}
   
   public void run()
   {
     try
     {
-      bohf.a(this.a.a);
+      bpja.a(this.a.a);
       return;
     }
     catch (Exception localException)
     {
-      bnzb.a("AEEditorMusicPanelDialog", "[animationDown], Dialog.dismiss() raised exception", localException);
+      bpam.a("AEEditorMusicPanelDialog", "[animationDown], Dialog.dismiss() raised exception", localException);
     }
   }
 }

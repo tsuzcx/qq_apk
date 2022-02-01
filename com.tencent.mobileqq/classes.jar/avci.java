@@ -1,40 +1,18 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
 
 public class avci
-  extends MSFServlet
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface)))
-    {
-      if (paramIntent.getBooleanExtra("isFrom_EmoSearch", false)) {
-        arqs.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-      }
-    }
-    else {
-      return;
-    }
-    avbk.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-  }
+  public avci(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bhpc parambhpc) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent == null)
-    {
-      QLog.e("HotPicServlet", 1, "onSend : req is null");
-      return;
-    }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    this.jdField_a_of_type_Bhpc.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
   }
 }
 

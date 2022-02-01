@@ -35,16 +35,16 @@ public final class R$attr
   public static final int mini_sdk_typeface = 2131034720;
   public static final int needFocusBgSdk = 2131034736;
   public static final int needSetHeghtSdk = 2131034739;
-  public static final int rightIconHeightSdk = 2131034915;
-  public static final int rightIconSdk = 2131034916;
-  public static final int rightIconWidthSdk = 2131034918;
-  public static final int rightTextColorSdk = 2131034921;
-  public static final int rightTextSdk = 2131034922;
-  public static final int secondLineTextSdk = 2131034961;
-  public static final int showArrowSdk = 2131034991;
-  public static final int switchCheckedSdk = 2131035057;
-  public static final int switchSubTextSdk = 2131035062;
-  public static final int switchTextSdk = 2131035065;
+  public static final int rightIconHeightSdk = 2131034918;
+  public static final int rightIconSdk = 2131034919;
+  public static final int rightIconWidthSdk = 2131034921;
+  public static final int rightTextColorSdk = 2131034924;
+  public static final int rightTextSdk = 2131034925;
+  public static final int secondLineTextSdk = 2131034966;
+  public static final int showArrowSdk = 2131034996;
+  public static final int switchCheckedSdk = 2131035062;
+  public static final int switchSubTextSdk = 2131035067;
+  public static final int switchTextSdk = 2131035070;
 }
 
 

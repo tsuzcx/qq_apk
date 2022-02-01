@@ -4,11 +4,11 @@ import android.os.SystemClock;
 
 public class IpConnInfo
 {
-  public int iFailCount;
-  public boolean isConnSucc;
-  public boolean isSameIsp;
-  public long lLastSuccTimeMills;
-  public String mHost;
+  public int iFailCount = 0;
+  public boolean isConnSucc = false;
+  public boolean isSameIsp = false;
+  public long lLastSuccTimeMills = 0L;
+  public String mHost = null;
   public int mPort = 443;
   
   public IpConnInfo(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong)

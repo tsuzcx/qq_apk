@@ -1,82 +1,35 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class aozt
-  extends apae
-  implements aozr
+  extends aoxg
 {
-  public int a;
-  public String a;
-  public aozu[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
-  
-  public aozt()
+  public aozt(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAozu = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static boolean a(aozt paramaozt)
+  public boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramaozt != null)
+    try
     {
-      bool1 = bool2;
-      if (paramaozt.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramaozt.b == 0)
-        {
-          bool1 = bool2;
-          if (paramaozt.jdField_a_of_type_ArrayOfAozu != null)
-          {
-            bool1 = bool2;
-            if (paramaozt.jdField_a_of_type_ArrayOfAozu[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramaozt.jdField_a_of_type_ArrayOfAozu[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
+      boolean bool = i();
+      return bool;
     }
-    return bool1;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAozu[0].a;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfAozu != null)
+    catch (Exception localException)
     {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAozu.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAozu[i];
-        i += 1;
-      }
+      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IdentifierWebJumpAction");
     }
-    String str2 = "null";
-    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    return false;
+  }
+  
+  public boolean i()
+  {
+    SmallVideoFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    return true;
   }
 }
 

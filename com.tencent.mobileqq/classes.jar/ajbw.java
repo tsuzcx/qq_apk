@@ -1,41 +1,52 @@
-import android.database.ContentObserver;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajbw
-  extends ContentObserver
+  extends BaseAdapter
 {
-  WeakReference<PhoneContactManagerImp> a;
+  public Handler a;
+  public QQAppInterface a;
+  public String[] a;
   
-  public ajbw(Handler paramHandler)
+  public String a(int paramInt)
   {
-    super(paramHandler);
+    return this.a[paramInt];
   }
   
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  public int getCount()
   {
-    if (this.a != null) {
-      this.a.clear();
+    if (this.a == null) {
+      return 0;
     }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
+    return this.a.length;
   }
   
-  public void onChange(boolean paramBoolean)
+  public long getItemId(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = a(paramInt);
+    View localView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559341, paramViewGroup, false);
     }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    ajbx localajbx;
+    for (paramView = new ajbx(localView);; paramView = localajbx)
     {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.g = true;
-      }
-      return;
+      paramView.a.setText(str);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localajbx = (ajbx)paramView.getTag();
+      localView = paramView;
     }
   }
 }

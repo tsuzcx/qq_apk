@@ -1,84 +1,47 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.3.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acuj
-  extends acuc
+  implements View.OnClickListener
 {
-  public acuj(GdtVideoImaxFragment paramGdtVideoImaxFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  public acuj(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.onPageFinished(paramWebView, paramString);
-    acqy.b("AbsWebView", "onPageFinished:" + paramString);
-    GdtVideoImaxFragment.a(this.a, true);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    acqy.b("AbsWebView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    GdtVideoImaxFragment.a(this.a, false);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    acqy.b("AbsWebView", "onReceivedTitle: " + paramString);
-    GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    acqy.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    {
+      str = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+    }
     for (;;)
     {
-      return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null)
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
+        str = "ad is loading";
       }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); nhe.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      else
       {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
-        paramWebView.addFlags(268435456);
-        try
-        {
-          this.mContext.startActivity(paramWebView);
-          return true;
+        if (GdtInterstitialFragmentForJS.a(this.a).a() == 0) {
+          break;
         }
-        catch (ActivityNotFoundException paramWebView)
-        {
-          acqy.d("AbsWebView", paramWebView.toString());
-          return true;
-        }
+        str = GdtInterstitialFragmentForJS.a(this.a).a();
       }
+    }
+    if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {}
+    for (String str = "正在打开插屏";; str = "打开插屏错误")
+    {
+      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragmentForJS.3.1(this), 0, 5000L);
+      break;
     }
   }
 }

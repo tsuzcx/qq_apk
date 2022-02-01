@@ -1,23 +1,17 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class akdb
-  implements Animation.AnimationListener
+  extends auoz
 {
-  public akdb(CountryActivity paramCountryActivity, int paramInt) {}
+  public akdb(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.requestLayout();
+    bdll.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

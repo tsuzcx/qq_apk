@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import java.util.List;
+import org.json.JSONObject;
 
 public abstract interface awnk
 {
-  public abstract void a(List<RecentBaseData> paramList);
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

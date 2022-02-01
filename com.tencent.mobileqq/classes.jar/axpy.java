@@ -1,17 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class axpy
-  extends Animation
 {
-  private axpy(MetaballView paramMetaballView) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public static void a(Context paramContext)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    MetaballView.a(this.a, paramFloat);
-    this.a.invalidate();
+    QQToast.a(paramContext, paramContext.getString(2131717539), 0).a();
+  }
+  
+  public static void b(Context paramContext)
+  {
+    QQToast.a(paramContext, paramContext.getString(2131717534), 0).a();
+  }
+  
+  public static void c(Context paramContext)
+  {
+    QQToast.a(paramContext, paramContext.getString(2131717551), 0).a();
   }
 }
 

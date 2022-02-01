@@ -1,19 +1,8 @@
-import com.tencent.av.ui.AVActivity;
-import java.util.Comparator;
+import java.io.File;
 
 public class mao
-  implements Comparator<lnn>
 {
-  public mao(AVActivity paramAVActivity) {}
-  
-  public int a(lnn paramlnn1, lnn paramlnn2)
-  {
-    if (paramlnn1.a) {}
-    while (paramlnn2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  public static String a = lgx.d + "huanlian" + File.separator + "allgray.png";
 }
 
 

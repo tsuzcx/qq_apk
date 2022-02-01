@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.net.URLEncoder;
-import pha;
-import szd;
+import ozs;
+import sqc;
 
 public class WebFastLikeDislikeCreator$ViewHolder$1
   implements Runnable
 {
-  public WebFastLikeDislikeCreator$ViewHolder$1(szd paramszd, ArticleInfo paramArticleInfo) {}
+  public WebFastLikeDislikeCreator$ViewHolder$1(sqc paramsqc, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class WebFastLikeDislikeCreator$ViewHolder$1
     try
     {
       str1 = "https://post.mp.qq.com/jubao/index?" + "articleId=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "&puin=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID + "&url=" + URLEncoder.encode(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, "utf-8") + "&key=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID + "&type=7&_wv=3";
-      pha.a(this.jdField_a_of_type_Szd.a.getContext(), str1);
+      ozs.a(this.jdField_a_of_type_Sqc.a.getContext(), str1);
       return;
     }
     catch (Exception localException)

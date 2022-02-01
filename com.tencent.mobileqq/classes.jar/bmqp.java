@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
-class bmqp
-  implements DialogInterface.OnDismissListener
+public class bmqp
+  implements View.OnClickListener
 {
-  bmqp(bmqo parambmqo, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public bmqp(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

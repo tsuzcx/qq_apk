@@ -1,44 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.GroupPubAccountInfo;
 
 public class adhw
-  implements View.OnClickListener
+  extends adic
 {
-  public adhw(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!aywm.a().a(this.a.app, this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
-      {
-        QQToast.a(this.a, 2131693434, 0).a();
-      }
-      else
-      {
-        AccountManageActivity.a(this.a, bddy.a(this.a.app));
-        Intent localIntent = new Intent();
-        localIntent.setPackage(this.a.getPackageName());
-        localIntent.setClass(this.a, AddAccountActivity.class);
-        this.a.startActivityForResult(localIntent, 1000);
-        this.a.overridePendingTransition(2130771997, 2130771990);
-        bddx.c(this.a.app, this.a);
-        bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
-      }
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().g(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.group_pub_acc_info.has()) && (paramElem.group_pub_acc_info.uint64_pub_account.has());
   }
 }
 

@@ -1,13 +1,13 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
-import bgmg;
+import bhmi;
 
 final class AEEditorAILoadingView$15
   implements Runnable
 {
   public void run()
   {
-    bgmg.a(AEEditorAILoadingView.a);
+    bhmi.a(AEEditorAILoadingView.a);
   }
 }
 

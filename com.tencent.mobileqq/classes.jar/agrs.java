@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-class agrs
-  implements bdzl
+final class agrs
+  implements anwh
 {
-  agrs(agrq paramagrq) {}
-  
-  public void a(ArrayList<MessageRecord> paramArrayList)
+  public void a(boolean paramBoolean)
   {
-    this.a.b();
+    if (paramBoolean) {
+      agrr.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 

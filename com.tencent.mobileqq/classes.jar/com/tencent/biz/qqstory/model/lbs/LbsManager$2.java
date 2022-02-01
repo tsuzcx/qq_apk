@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.model.lbs;
 
-import wrf;
-import yqp;
+import wva;
+import yuk;
 
 public class LbsManager$2
   implements Runnable
 {
-  public LbsManager$2(wrf paramwrf, int paramInt) {}
+  public LbsManager$2(wva paramwva, int paramInt) {}
   
   public void run()
   {
-    yqp.d("LbsManager", "onLocation Timeout  %d ms", new Object[] { Integer.valueOf(this.a) });
+    yuk.d("LbsManager", "onLocation Timeout  %d ms", new Object[] { Integer.valueOf(this.a) });
     this.this$0.a(false, this.this$0.b);
-    wrf.a(this.this$0, true);
+    wva.a(this.this$0, true);
   }
 }
 

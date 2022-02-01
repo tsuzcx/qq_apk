@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awnm
+public class awnm
+  implements DownloadParams.DecodeHandler
 {
-  public abstract awnz a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
+  public awnm(FloatIconLayout paramFloatIconLayout) {}
   
-  public abstract String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  public abstract boolean a(MessageRecord paramMessageRecord);
-  
-  public abstract boolean a(MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    return bhmq.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
+  }
 }
 
 

@@ -1,13 +1,23 @@
 public class lbk
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private static beuo jdField_a_of_type_Beuo;
+  private static bhvb jdField_a_of_type_Bhvb = new lbl();
+  
+  public static beuo a()
+  {
+    if (jdField_a_of_type_Beuo == null) {}
+    try
+    {
+      if (jdField_a_of_type_Beuo == null)
+      {
+        bhuw localbhuw = new bhuw(jdField_a_of_type_Bhvb, 128);
+        localbhuw.a();
+        jdField_a_of_type_Beuo = new bevo(localbhuw, true);
+      }
+      return jdField_a_of_type_Beuo;
+    }
+    finally {}
+  }
 }
 
 

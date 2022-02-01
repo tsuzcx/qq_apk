@@ -12,7 +12,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.LinearLayout;
-import azka;
+import bacm;
 import com.tencent.qphone.base.util.QLog;
 
 public class ShimmerLinearLayout
@@ -78,7 +78,7 @@ public class ShimmerLinearLayout
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azka(this, i, j, k, m, null));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bacm(this, i, j, k, m, null));
           localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
           continue;
           i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();

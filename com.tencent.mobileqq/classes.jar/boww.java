@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class boww
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  boww(bows parambows) {}
+  boww(bowv parambowv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a(2);
+    if ((this.a.a != null) && (bowv.a(this.a) != null)) {
+      bowv.a(this.a).a(paramView, this.a.a, bowv.a(this.a));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,81 +1,55 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectConfigManager.1;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectConfigManager.2;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class bpdm
-  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private bpdl jdField_a_of_type_Bpdl;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
+  private static volatile bpdm jdField_a_of_type_Bpdm;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private bpdn jdField_a_of_type_Bpdn;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public bpdm(bpdl parambpdl)
+  private bpdm()
   {
-    this.jdField_a_of_type_Bpdl = parambpdl;
+    bpam.b("AEEditorEffectConfigManager", "AEEditorEffectConfigManager init.");
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static bpdm a()
   {
-    if (this.jdField_a_of_type_Bpdl == null) {}
-    do
+    if (jdField_a_of_type_Bpdm == null) {}
+    try
     {
-      do
-      {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Bpdl.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bpdl.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_Bpdl.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_Bpdl.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bpdl.onClick(paramView);
+      if (jdField_a_of_type_Bpdm == null) {
+        jdField_a_of_type_Bpdm = new bpdm();
+      }
+      return jdField_a_of_type_Bpdm;
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
-    }
-    this.jdField_a_of_type_Bpdl.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+    finally {}
+  }
+  
+  public static String a()
+  {
+    return bpbq.f + File.separator + "effect_group_list.json";
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaLangRunnable = new AEEditorEffectConfigManager.2(this);
+    ThreadManager.getFileThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void a(bpdn parambpdn)
+  {
+    this.jdField_a_of_type_Bpdn = parambpdn;
+    a();
+  }
+  
+  public void a(AEEditorEffectGroupListBean paramAEEditorEffectGroupListBean)
+  {
+    ThreadManager.getFileThreadHandler().post(new AEEditorEffectConfigManager.1(this, paramAEEditorEffectGroupListBean));
   }
 }
 

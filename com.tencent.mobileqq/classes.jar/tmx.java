@@ -1,20 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class tmx
-  implements sfj
+class tmx
+  extends BroadcastReceiver
 {
-  public tmx(BridgeModule paramBridgeModule, List paramList) {}
+  tmx(tmw paramtmw) {}
   
-  public List<sfk> a(int paramInt, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return bgnt.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (tmw.a(this.a) != null))
+      {
+        if (!paramContext.equals("homekey")) {
+          break label55;
+        }
+        tmw.a(this.a).a();
+      }
+    }
+    label55:
+    while (!paramContext.equals("recentapps")) {
+      return;
+    }
+    tmw.a(this.a).b();
   }
 }
 

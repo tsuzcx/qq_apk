@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search;
 
-import bbge;
+import bbyy;
 
 class HotWordSearchEntryModel$5$1
   implements Runnable

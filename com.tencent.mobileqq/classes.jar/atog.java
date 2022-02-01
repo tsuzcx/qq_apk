@@ -1,33 +1,44 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
 
-class atog
-  implements aaqv
+public class atog
+  extends auoi
 {
-  atog(atof paramatof, boolean paramBoolean, String paramString, short paramShort) {}
+  public atog(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
   
-  public void a(List<atsc> paramList)
+  public void a()
   {
-    if (this.jdField_a_of_type_Atof.a.jdField_a_of_type_Atov != null)
-    {
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        break label126;
-      }
-      this.jdField_a_of_type_Atof.a.jdField_a_of_type_Atov.a(-1000L);
-    }
-    while (paramList != null)
-    {
-      bcst.b(this.jdField_a_of_type_Atof.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Atof.a.jdField_a_of_type_Atmn.a().TroopUin, "", atvo.f(this.jdField_a_of_type_Atof.a.c()), "1");
-      return;
-      label126:
-      this.jdField_a_of_type_Atof.a.jdField_a_of_type_Atov.a(paramList, this.jdField_a_of_type_Atof.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atof.a.b, this.jdField_a_of_type_Atof.a.c, this.jdField_a_of_type_Atof.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
-    bcst.b(this.jdField_a_of_type_Atof.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Atof.a.jdField_a_of_type_Atmn.a().TroopUin, "-1", atvo.f(this.jdField_a_of_type_Atof.a.c()), "1");
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atog
  * JD-Core Version:    0.7.0.1
  */

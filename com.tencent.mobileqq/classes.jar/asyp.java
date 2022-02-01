@@ -1,40 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
-class asyp
-  implements View.OnClickListener
+public class asyp
+  implements DialogInterface.OnClickListener
 {
-  asyp(asyo paramasyo) {}
+  public asyp(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    afwr localafwr = (afwr)afur.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localafwr != null)
-    {
-      i = -1;
-      localChatMessage = atvo.a(localafwr.a);
-      if (!this.a.b(localChatMessage)) {
-        break label83;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.a(paramView, localafwr, localChatMessage, i);
-      if (this.a.a != null) {
-        this.a.a.h(localafwr.a);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label83:
-      if (this.a.a(localChatMessage)) {
-        i = 1;
-      }
-    }
+    ExtendFriendFragment.a(this.a).dismiss();
+    ExtendFriendFragment.a(this.a, null);
   }
 }
 

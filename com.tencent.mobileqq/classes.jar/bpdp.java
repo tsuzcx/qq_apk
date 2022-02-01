@@ -1,20 +1,57 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class bpdp
-  extends AnimatorListenerAdapter
+public class bpdp
+  extends QIPCModule
 {
-  bpdp(bpdn parambpdn) {}
+  private static volatile bpdp jdField_a_of_type_Bpdp;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  private bpdp()
   {
-    bpdn.a(this.a).setVisibility(8);
+    super("AEEditorEffectIpcModule");
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static bpdp a()
   {
-    bpdn.a(this.a).setVisibility(8);
+    if (jdField_a_of_type_Bpdp == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bpdp == null) {
+        jdField_a_of_type_Bpdp = new bpdp();
+      }
+      return jdField_a_of_type_Bpdp;
+    }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = true;
+      QIPCClientHelper.getInstance().getClient().registerModule(a());
+    }
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = false;
+      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("action_get_effect_list".equals(paramString)) {
+      bpdm.a().a(new bpdq(this, paramInt));
+    }
+    return null;
   }
 }
 

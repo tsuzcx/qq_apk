@@ -160,6 +160,14 @@ public class MultiViewerFilter
     return false;
   }
   
+  public boolean isCosFunEnableGAN()
+  {
+    if (this.videoFilterList != null) {
+      return this.videoFilterList.isCosFunEnableGAN();
+    }
+    return false;
+  }
+  
   public int isFreezeFrame()
   {
     int j = 0;
@@ -226,34 +234,34 @@ public class MultiViewerFilter
   {
     int i = 0;
     Frame localFrame1;
-    Frame localFrame2;
+    Frame localFrame3;
     if (this.needOriginFrame)
     {
       localFrame1 = this.videoFilterList.blurBeforeRender(paramFrame1, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
-      localFrame2 = localFrame1;
-      paramFrame1 = localFrame1;
+      localFrame3 = localFrame1;
+      Frame localFrame2 = localFrame1;
       if (this.effectFilter != null)
       {
         BenchUtil.benchStart(TAG + " effectFilter.RenderProcess");
         this.effectFilter.RenderProcess(localFrame1.getTextureId(), paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
         BenchUtil.benchEnd(TAG + " effectFilter.RenderProcess");
-        paramFrame1 = FrameUtil.getLastRenderFrame(paramFrame2);
+        localFrame2 = FrameUtil.getLastRenderFrame(paramFrame2);
         i = 1;
       }
-      localFrame1 = paramFrame1;
+      paramFrame1 = localFrame2;
       if (this.videoFilterList != null)
       {
-        paramFrame1 = this.videoFilterList.updateAndRenderBeforeEffectTriggerFilters(paramFrame1, paramPTFaceAttr);
+        paramFrame1 = this.videoFilterList.updateAndRenderBeforeEffectTriggerFilters(localFrame2, paramPTFaceAttr);
         paramFrame1 = this.videoFilterList.updateAndRenderBeforeComicEffectFilters(paramFrame1, paramPTFaceAttr);
         localFrame1 = this.videoFilterList.updateAndRenderStylyFilters(1, paramFrame1);
         if (paramFrame1 == localFrame1) {
-          break label411;
+          break label432;
         }
         i = 1;
         paramFrame1 = localFrame1;
       }
     }
-    label411:
+    label432:
     for (;;)
     {
       if (this.videoFilterList.getFastFaceStickerFilter() != null)
@@ -265,31 +273,36 @@ public class MultiViewerFilter
         }
         for (;;)
         {
-          localFrame1 = renderStickers(paramFrame1, paramAIAttr, paramPTFaceAttr);
-          paramFrame1 = this.videoFilterList.updateAndRenderRapidNet(localFrame1, paramPTFaceAttr);
-          paramFrame1 = this.videoFilterList.updateAndRenderStyleChild(paramFrame1, paramPTFaceAttr);
-          paramFrame1 = this.videoFilterList.updateAndRenderStyleChildWarp(paramFrame1, paramPTFaceAttr);
-          paramFrame1 = this.videoFilterList.updateAndRenderHairCos(paramFrame1, paramPTFaceAttr, paramPTHairAttr);
+          paramFrame1 = renderStickers(paramFrame1, paramAIAttr, paramPTFaceAttr);
+          paramFrame2 = paramFrame1;
+          if (!this.videoFilterList.isCosFunEnableGAN())
+          {
+            paramFrame1 = this.videoFilterList.updateAndRenderRapidNet(paramFrame1, paramPTFaceAttr);
+            paramFrame1 = this.videoFilterList.updateAndRenderStyleChild(paramFrame1, paramPTFaceAttr);
+            paramFrame2 = this.videoFilterList.updateAndRenderStyleChildWarp(paramFrame1, paramPTFaceAttr);
+          }
+          paramFrame1 = this.videoFilterList.updateAndRenderHairCos(paramFrame2, paramPTFaceAttr, paramPTHairAttr);
           paramFrame1 = this.videoFilterList.blurAfterRender(paramFrame1, paramPTFaceAttr, paramPTSegAttr);
           paramFrame1 = this.videoFilterList.undateAndRenderMaskSticker(paramFrame1, paramPTFaceAttr, paramAIAttr);
           paramFrame1 = this.videoFilterList.updateAndRenderStylyFilters(2, paramFrame1);
+          paramFrame1 = this.videoFilterList.renderCustomGroup(paramFrame1);
           return this.videoFilterList.zoomFrame(paramFrame1);
           this.emptyFrame.bindFrame(-1, paramFrame2.width, paramFrame2.height, 0.0D);
           FrameUtil.clearFrame(this.emptyFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame2.width, paramFrame2.height);
           localFrame1 = this.emptyFrame;
           i = 1;
-          localFrame2 = paramFrame1;
+          localFrame3 = paramFrame1;
           break;
           this.videoFilterList.setMultiViewerSrcTexture(0);
           this.videoFilterList.setMultiViewerOutFrame(paramFrame1);
         }
       }
       if (i == 0) {
-        copyFrame(localFrame2, paramFrame2);
+        copyFrame(localFrame3, paramFrame2);
       }
       for (;;)
       {
-        localFrame1 = renderStickers(paramFrame2, paramAIAttr, paramPTFaceAttr);
+        paramFrame1 = renderStickers(paramFrame2, paramAIAttr, paramPTFaceAttr);
         break;
         paramFrame2 = paramFrame1;
       }

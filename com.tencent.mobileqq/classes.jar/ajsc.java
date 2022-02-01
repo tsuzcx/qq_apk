@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.view.View;
+import android.widget.TextView;
 
-public class ajsc
-  implements bfrk
+class ajsc
+  extends amof
 {
-  private long jdField_a_of_type_Long;
+  public int a;
+  public TextView a;
   
-  public ajsc(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
+  public ajsc(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379901));
   }
 }
 

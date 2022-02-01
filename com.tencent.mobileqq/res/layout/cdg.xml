@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/eqn" android:layout_width="@dimen/ba2" android:layout_height="@dimen/ba2"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/ba1" android:layout_alignParentTop="true" />
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/nk3" android:background="@drawable/eol" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/n3g" android:layout_below="@id/jt2" />
-    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/n3g" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b90" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mj9" android:layout_width="@dimen/ba3" android:layout_height="@dimen/ba3" android:layout_centerInParent="true" app:qqArMapGuideRadius="6">
+        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+        <ImageView android:id="@id/nm_" android:background="@color/mk" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ekl" android:scaleType="center" />
+        <ImageView android:layout_gravity="right" android:id="@id/nxe" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/env" />
+        <ImageView android:layout_gravity="right" android:id="@id/nxf" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/enw" />
+        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
 </RelativeLayout>

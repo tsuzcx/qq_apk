@@ -8,20 +8,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import arpb;
-import arpc;
-import arsw;
-import arui;
+import asep;
+import aseq;
+import asik;
+import asjw;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements arsw
+  implements asik
 {
-  public static final String tag = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new arpb(this);
+  public static final String TAG = "Q.emoji.web.Client";
+  private ServiceConnection mConnection = new asep(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new arpc(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new aseq(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)
@@ -85,12 +85,12 @@ public class Client
   
   public void onDisconnectWithService()
   {
-    arui.a().b();
+    asjw.a().b();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
   {
-    arui.a().d(paramBundle);
+    asjw.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class Client
   {
     try
     {
-      arui.a().c(paramBundle);
+      asjw.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

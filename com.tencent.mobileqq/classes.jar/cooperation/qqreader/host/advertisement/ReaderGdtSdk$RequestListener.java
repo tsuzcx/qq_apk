@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
-import ackd;
-import acke;
-import ackf;
+import acoh;
+import acoi;
+import acoj;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -20,22 +20,22 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
 public abstract class ReaderGdtSdk$RequestListener
-  implements acke
+  implements acoi
 {
-  public void onResponse(ackd paramackd)
+  public void onResponse(acoh paramacoh)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = null;
-    paramackd = paramackd.a().a;
-    if (paramackd == null) {
-      paramackd = (ackd)localObject;
+    paramacoh = paramacoh.a().a;
+    if (paramacoh == null) {
+      paramacoh = (acoh)localObject;
     }
     for (;;)
     {
-      onResult(localArrayList, paramackd);
+      onResult(localArrayList, paramacoh);
       return;
-      localObject = paramackd.pos_ads_info.get();
-      paramackd = paramackd.gdt_cookie.get();
+      localObject = paramacoh.pos_ads_info.get();
+      paramacoh = paramacoh.gdt_cookie.get();
       if (localObject != null) {
         if (!((List)localObject).isEmpty())
         {

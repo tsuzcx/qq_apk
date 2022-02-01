@@ -1,21 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aggp
-  implements DialogInterface.OnClickListener
+public abstract interface aggp
 {
-  aggp(aggo paramaggo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    DoodlePanel.a(this.a.a, false);
-  }
+  public abstract void a_(ChatMessage paramChatMessage);
 }
 
 

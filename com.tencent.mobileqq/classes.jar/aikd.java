@@ -1,14 +1,19 @@
-import java.util.List;
+import android.os.Bundle;
 
-public class aikd
+class aikd
+  extends ayxp
 {
-  public List<String> a;
-  public List<aikb> b;
+  aikd(aijm paramaijm) {}
   
-  public aikd(List<String> paramList, List<aikb> paramList1)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = paramList;
-    this.b = paramList1;
+    if ((paramInt == 0) && (paramBoolean == true))
+    {
+      paramBundle.getInt("gif_ui_show_bid");
+      long l = paramBundle.getLong("gif_ui_show_seq");
+      this.a.f(65536);
+      aijm.a(this.a, Long.valueOf(l).longValue());
+    }
   }
 }
 

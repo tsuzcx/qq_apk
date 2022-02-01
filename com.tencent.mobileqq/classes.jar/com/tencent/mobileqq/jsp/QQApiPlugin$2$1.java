@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import avow;
-import biau;
+import awhh;
+import bjbs;
 
 class QQApiPlugin$2$1
   implements Runnable

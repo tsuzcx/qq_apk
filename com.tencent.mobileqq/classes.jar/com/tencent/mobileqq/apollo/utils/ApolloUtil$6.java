@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ancb;
 import android.content.SharedPreferences;
-import bfpi;
-import bgmg;
+import annv;
+import bgpj;
+import bhmi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,14 +22,14 @@ final class ApolloUtil$6
       try
       {
         SharedPreferences localSharedPreferences = ApolloUtil.a();
-        Object localObject = new File(ancb.s);
+        Object localObject = new File(annv.s);
         if (!((File)localObject).exists()) {
           break;
         }
         if (!((File)localObject).isDirectory()) {
           return;
         }
-        if (bgmg.b(ancb.s) <= 104857600L) {
+        if (bhmi.b(annv.s) <= 104857600L) {
           break;
         }
         localObject = ((File)localObject).listFiles();
@@ -56,7 +56,7 @@ final class ApolloUtil$6
           if (str.endsWith(".zip")) {
             localObject = str.substring(0, str.indexOf("."));
           }
-          if (bfpi.b((String)localObject))
+          if (bgpj.b((String)localObject))
           {
             long l1 = localSharedPreferences.getLong((String)localObject, 0L);
             long l2 = NetConnInfoCenter.getServerTimeMillis();
@@ -69,7 +69,7 @@ final class ApolloUtil$6
               i = 1;
               if (i != 0)
               {
-                l1 = bgmg.b(ancb.s);
+                l1 = bhmi.b(annv.s);
                 if (l1 < 104857600L)
                 {
                   if (!QLog.isColorLevel()) {

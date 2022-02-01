@@ -1,25 +1,21 @@
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class woa
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public boolean a;
-  public int b;
-  public String b;
-  public JSONObject b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
+  {
+    return wot.a(paramStoryVideoItem);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return wot.a(paramString);
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return wot.a(paramString, paramBoolean);
+  }
 }
 
 

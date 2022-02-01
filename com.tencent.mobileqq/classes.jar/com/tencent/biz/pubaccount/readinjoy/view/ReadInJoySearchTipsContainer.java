@@ -15,22 +15,22 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bgme;
-import bgtn;
+import bhmg;
+import bhtq;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
-import sst;
-import ssu;
+import sjx;
+import sjy;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = bgtn.a(260.0F);
+  private int jdField_a_of_type_Int = bhtq.a(260.0F);
   private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
-  public ssu a;
+  public sjy a;
   private int jdField_b_of_type_Int = 5;
   private List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList;
   
@@ -57,12 +57,12 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130849472);
+    localButton.setBackgroundResource(2130849480);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
       localGradientDrawable.setStroke(1, paramInt2);
-      localButton.setPadding(bgtn.a(15.0F), bgtn.a(5.0F), bgtn.a(15.0F), bgtn.a(6.0F));
+      localButton.setPadding(bhtq.a(15.0F), bhtq.a(5.0F), bhtq.a(15.0F), bhtq.a(6.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -91,12 +91,12 @@ public class ReadInJoySearchTipsContainer
   
   protected int a(int paramInt)
   {
-    int i6 = (int)bgme.a(getContext(), 7.0F);
-    int i1 = (int)bgme.a(getContext(), 10.0F);
-    int i7 = (int)bgme.a(getContext(), 10.0F);
-    int i8 = (int)bgme.a(getContext(), 4.0F);
-    int m = (int)bgme.a(getContext(), 12.0F);
-    int i9 = (int)bgme.a(getContext(), 12.0F);
+    int i6 = (int)bhmg.a(getContext(), 7.0F);
+    int i1 = (int)bhmg.a(getContext(), 10.0F);
+    int i7 = (int)bhmg.a(getContext(), 10.0F);
+    int i8 = (int)bhmg.a(getContext(), 4.0F);
+    int m = (int)bhmg.a(getContext(), 12.0F);
+    int i9 = (int)bhmg.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -168,20 +168,20 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    sst localsst = new sst(this, Looper.getMainLooper());
-    Message localMessage = localsst.obtainMessage();
+    sjx localsjx = new sjx(this, Looper.getMainLooper());
+    Message localMessage = localsjx.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localsst.sendMessage(localMessage);
+    localsjx.sendMessage(localMessage);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bgme.a(getContext(), 7.0F);
-    int k = (int)bgme.a(getContext(), 10.0F);
-    int i3 = (int)bgme.a(getContext(), 4.0F);
-    paramInt4 = (int)bgme.a(getContext(), 12.0F);
-    int i4 = (int)bgme.a(getContext(), 12.0F);
+    int i2 = (int)bhmg.a(getContext(), 7.0F);
+    int k = (int)bhmg.a(getContext(), 10.0F);
+    int i3 = (int)bhmg.a(getContext(), 4.0F);
+    paramInt4 = (int)bhmg.a(getContext(), 12.0F);
+    int i4 = (int)bhmg.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -254,9 +254,9 @@ public class ReadInJoySearchTipsContainer
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setOnTipsClickListener(ssu paramssu)
+  public void setOnTipsClickListener(sjy paramsjy)
   {
-    this.jdField_a_of_type_Ssu = paramssu;
+    this.jdField_a_of_type_Sjy = paramsjy;
   }
 }
 

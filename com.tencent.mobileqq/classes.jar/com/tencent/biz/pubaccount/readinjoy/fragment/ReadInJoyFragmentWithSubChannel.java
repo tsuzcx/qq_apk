@@ -7,40 +7,40 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bmqa;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import mqq.app.Constants.LogoutReason;
-import ogh;
-import ogp;
-import ppb;
-import ppc;
-import smi;
+import ohp;
+import ohx;
+import phz;
+import pia;
+import sdm;
 
-public abstract class ReadInJoyFragmentWithSubChannel<C extends smi>
+public abstract class ReadInJoyFragmentWithSubChannel<C extends sdm>
   extends ReadInJoyBaseFragment
 {
   public ChannelClassificationListView<C> a;
-  public ogp a;
-  ppc a;
+  public ohx a;
+  pia a;
   public boolean a;
   
   protected abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<C> paramChannelClassificationListView);
   
-  public abstract ppc a();
+  public abstract pia a();
   
   protected void a() {}
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Ogp != null)
+    if (this.jdField_a_of_type_Ohx != null)
     {
-      this.jdField_a_of_type_Ogp.a(true, 0);
+      this.jdField_a_of_type_Ohx.a(true, 0);
       return;
     }
-    ogh.e(a());
+    ohp.e(a());
   }
   
   public void a(View paramView, int paramInt) {}
@@ -48,31 +48,31 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends smi>
   public void a(Constants.LogoutReason paramLogoutReason)
   {
     super.a(paramLogoutReason);
-    if ((bmqa.h()) && (this.jdField_a_of_type_Ogp != null)) {
-      this.jdField_a_of_type_Ogp.a(paramLogoutReason);
+    if ((bnrf.h()) && (this.jdField_a_of_type_Ohx != null)) {
+      this.jdField_a_of_type_Ohx.a(paramLogoutReason);
     }
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Ogp != null) {
-      this.jdField_a_of_type_Ogp.b();
+    if (this.jdField_a_of_type_Ohx != null) {
+      this.jdField_a_of_type_Ohx.b();
     }
   }
   
   public void e()
   {
     super.e();
-    if (this.jdField_a_of_type_Ogp != null) {
-      this.jdField_a_of_type_Ogp.a(true);
+    if (this.jdField_a_of_type_Ohx != null) {
+      this.jdField_a_of_type_Ohx.a(true);
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Ogp != null) {
-      this.jdField_a_of_type_Ogp.a(true);
+    if (this.jdField_a_of_type_Ohx != null) {
+      this.jdField_a_of_type_Ohx.a(true);
     }
   }
   
@@ -85,15 +85,15 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends smi>
   {
     super.g();
     this.c = false;
-    if (this.jdField_a_of_type_Ogp != null) {
-      this.jdField_a_of_type_Ogp.l();
+    if (this.jdField_a_of_type_Ohx != null) {
+      this.jdField_a_of_type_Ohx.l();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Ogp != null) {
-      this.jdField_a_of_type_Ogp.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Ohx != null) {
+      this.jdField_a_of_type_Ohx.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -106,7 +106,7 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends smi>
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (bmqa.C(getActivity().getAppRuntime()) == 0) {}
+    if (bnrf.A(getActivity().getAppRuntime()) == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -116,14 +116,14 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends smi>
       if ((!f()) && (this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView = new ChannelClassificationListView(getActivity());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setOnItemClickListener(new ppb(this));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setOnItemClickListener(new phz(this));
       }
-      this.jdField_a_of_type_Ppc = a();
-      this.jdField_a_of_type_Ogp = new ogp(a(), 0, getActivity(), this.jdField_a_of_type_Ppc);
+      this.jdField_a_of_type_Pia = a();
+      this.jdField_a_of_type_Ohx = new ohx(a(), 0, getActivity(), this.jdField_a_of_type_Pia);
       paramLayoutInflater = a(paramLayoutInflater, paramViewGroup, paramBundle, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView);
-      this.jdField_a_of_type_Ogp.a();
+      this.jdField_a_of_type_Ohx.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null) {
-        this.jdField_a_of_type_Ogp.i();
+        this.jdField_a_of_type_Ohx.i();
       }
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
@@ -133,28 +133,28 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends smi>
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Ogp.d();
+    this.jdField_a_of_type_Ohx.d();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Ogp != null) {
-      this.jdField_a_of_type_Ogp.g();
+    if (this.jdField_a_of_type_Ohx != null) {
+      this.jdField_a_of_type_Ohx.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Ogp.h();
+    this.jdField_a_of_type_Ohx.h();
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((getActivity().isFinishing()) && (this.jdField_a_of_type_Ogp != null)) {
-      this.jdField_a_of_type_Ogp.c();
+    if ((getActivity().isFinishing()) && (this.jdField_a_of_type_Ohx != null)) {
+      this.jdField_a_of_type_Ohx.c();
     }
   }
 }

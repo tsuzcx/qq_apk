@@ -1,18 +1,6 @@
-import android.support.v4.app.Fragment;
-
 public abstract interface bbgw
 {
-  public abstract int a();
-  
-  public abstract Fragment a();
-  
-  public abstract String a();
-  
-  public abstract boolean a();
-  
-  public abstract long[] a();
-  
-  public abstract boolean b();
+  public abstract void a(float paramFloat);
 }
 
 

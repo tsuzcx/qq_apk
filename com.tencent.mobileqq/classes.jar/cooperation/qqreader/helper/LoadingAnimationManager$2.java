@@ -1,7 +1,7 @@
 package cooperation.qqreader.helper;
 
 import android.content.Context;
-import bloh;
+import bmpj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieCompositionFactory;
 import com.tencent.mobileqq.dinifly.LottieResult;
@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 public class LoadingAnimationManager$2
   implements Runnable
 {
-  public LoadingAnimationManager$2(bloh parambloh, Context paramContext) {}
+  public LoadingAnimationManager$2(bmpj parambmpj, Context paramContext) {}
   
   public void run()
   {

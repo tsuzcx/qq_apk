@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import java.util.concurrent.CountDownLatch;
 
 class awdl
-  implements View.OnClickListener
+  implements avzh
 {
-  awdl(awdj paramawdj) {}
+  awdl(awdk paramawdk, avzd paramavzd, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean)
+    {
+      paramString = new Bundle();
+      paramString.putString("authid", this.jdField_a_of_type_Avzd.a().b);
+      paramString.putString("authKey", this.jdField_a_of_type_Avzd.a().jdField_a_of_type_JavaLangString);
+      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Avzd.a().jdField_a_of_type_Long);
+      paramString.putString("payToken", this.jdField_a_of_type_Avzd.a().c);
+      Bundle localBundle = new Bundle();
+      localBundle.putBundle("data", paramString);
+      localBundle.putBoolean("isSuccess", true);
+      localBundle.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+      paramString = new Bundle();
+      paramString.putBoolean("isSuccess", false);
+      paramString.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
+    }
   }
 }
 

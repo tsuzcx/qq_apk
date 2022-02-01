@@ -1,15 +1,15 @@
 package me.weishu.epic.art;
 
-import com.taobao.android.dexposed.utility.Debug;
-import com.taobao.android.dexposed.utility.Logger;
-import com.taobao.android.dexposed.utility.Runtime;
+import com.qq.android.dexposed.utility.Debug;
+import com.qq.android.dexposed.utility.Logger;
+import com.qq.android.dexposed.utility.Runtime;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import me.weishu.epic.art.arch.ShellCode;
 import me.weishu.epic.art.entry.Entry;
-import me.weishu.epic.art.entry.Entry64;
+import me.weishu.epic.art.entry.Entry64_2;
 import me.weishu.epic.art.method.ArtMethod;
 
 class Trampoline
@@ -58,23 +58,27 @@ class Trampoline
     byte[] arrayOfByte1 = new byte[getSize()];
     Object localObject = this.segments.iterator();
     int i = 0;
-    while (((Iterator)localObject).hasNext())
+    for (;;)
     {
+      if (!((Iterator)localObject).hasNext())
+      {
+        localObject = this.shellCode.createCallOrigin(this.jumpToAddress, this.originalCode);
+        System.arraycopy(localObject, 0, arrayOfByte1, i, localObject.length);
+        return arrayOfByte1;
+      }
       byte[] arrayOfByte2 = createTrampoline((ArtMethod)((Iterator)localObject).next());
       int j = arrayOfByte2.length;
       System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, j);
       i += j;
     }
-    localObject = this.shellCode.createCallOrigin(this.jumpToAddress, this.originalCode);
-    System.arraycopy(localObject, 0, arrayOfByte1, i, localObject.length);
-    return arrayOfByte1;
   }
   
   private byte[] createTrampoline(ArtMethod paramArtMethod)
   {
-    Object localObject = Epic.getMethodInfo(paramArtMethod.getAddress()).returnType;
+    Object localObject = Epic.getMethodInfo(paramArtMethod.getAddress());
+    Class localClass = ((Epic.MethodInfo)localObject).returnType;
     if (Runtime.is64Bit()) {}
-    for (localObject = Entry64.getBridgeMethod((Class)localObject);; localObject = Entry.getBridgeMethod((Class)localObject))
+    for (localObject = Entry64_2.getBridgeMethod((Epic.MethodInfo)localObject);; localObject = Entry.getBridgeMethod(localClass))
     {
       localObject = ArtMethod.of((Method)localObject);
       long l1 = ((ArtMethod)localObject).getAddress();

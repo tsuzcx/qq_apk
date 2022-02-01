@@ -7,10 +7,10 @@ import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import arhv;
-import awzy;
-import axab;
-import bgtn;
+import arxk;
+import axsr;
+import axsu;
+import bhtq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ public class MessageForGrayTips
     if ((paramHightlightItem.icon.startsWith("http://")) || (paramHightlightItem.icon.startsWith("https://"))) {
       if (paramBoolean)
       {
-        paramSpannableStringBuilder.setSpan(new arhv(paramContext, 0, paramHightlightItem.icon, 32), paramHightlightItem.start, paramHightlightItem.end, 33);
+        paramSpannableStringBuilder.setSpan(new arxk(paramContext, 0, paramHightlightItem.icon, 32), paramHightlightItem.start, paramHightlightItem.end, 33);
         if (QLog.isColorLevel()) {
           QLog.i("MessageForGrayTips", 2, "MessageForGrayTips.getHightlightMsgText Url Image=" + paramHightlightItem.icon);
         }
@@ -46,15 +46,15 @@ public class MessageForGrayTips
     for (;;)
     {
       return;
-      paramSpannableStringBuilder.setSpan(new arhv(paramContext, 0, paramHightlightItem.icon), paramHightlightItem.start, paramHightlightItem.end, 33);
+      paramSpannableStringBuilder.setSpan(new arxk(paramContext, 0, paramHightlightItem.icon), paramHightlightItem.start, paramHightlightItem.end, 33);
       break;
-      if (awzy.a(paramHightlightItem.icon))
+      if (axsr.a(paramHightlightItem.icon))
       {
-        String str = awzy.b(paramHightlightItem.icon);
+        String str = axsr.b(paramHightlightItem.icon);
         if (!TextUtils.isEmpty(str))
         {
           if (paramBoolean) {}
-          for (paramContext = new axab(paramContext, 0, str, bgtn.b(16.0F), paramCallback);; paramContext = new axab(paramContext, 0, str, paramCallback))
+          for (paramContext = new axsu(paramContext, 0, str, bhtq.b(16.0F), paramCallback);; paramContext = new axsu(paramContext, 0, str, paramCallback))
           {
             paramSpannableStringBuilder.setSpan(paramContext, paramHightlightItem.start, paramHightlightItem.end, 33);
             if (!QLog.isColorLevel()) {
@@ -71,10 +71,10 @@ public class MessageForGrayTips
         if (i != -1)
         {
           paramCallback = paramHightlightItem.icon.substring(0, i);
-          if (!awzy.b.containsKey(paramCallback)) {
+          if (!axsr.b.containsKey(paramCallback)) {
             break label382;
           }
-          i = ((Integer)awzy.b.get(paramCallback)).intValue();
+          i = ((Integer)axsr.b.get(paramCallback)).intValue();
           if (i != 0)
           {
             if (!paramBoolean) {
@@ -867,7 +867,7 @@ public class MessageForGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
-public abstract interface awnj
+class awnj
 {
-  public abstract void a();
+  private static awnh a = new awnh(null);
 }
 
 

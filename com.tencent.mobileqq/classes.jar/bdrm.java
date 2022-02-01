@@ -1,20 +1,95 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.aio.media.aio_media.RspLatestPlayingState;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface bdrm
+public class bdrm
+  extends bdom
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  protected int b()
+  {
+    return 24;
+  }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    int i = 0;
+    Object localObject1;
+    bdro localbdro;
+    if ((paramView != null) && ((paramView.getTag() instanceof bdro)))
+    {
+      localObject1 = (RelativeLayout)paramView;
+      ((RelativeLayout)localObject1).removeAllViews();
+      localbdro = (bdro)paramView.getTag();
+      localbdro.a();
+      paramView = (View)localObject1;
+    }
+    try
+    {
+      localObject1 = this.a.iterator();
+      label54:
+      if (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (bdol)((Iterator)localObject1).next();
+        if ("picture".equals(((bdol)localObject2).a))
+        {
+          localObject2 = ((bdqo)localObject2).a(paramContext, localbdro.jdField_a_of_type_AndroidViewView, true, paramBundle);
+          i = agej.a(30.0F, paramContext.getResources());
+          paramView.addView((View)localObject2, new RelativeLayout.LayoutParams(i, i));
+          localbdro.jdField_a_of_type_AndroidViewView = ((View)localObject2);
+          ((View)localObject2).setVisibility(0);
+          i = 1;
+        }
+        for (;;)
+        {
+          break label54;
+          paramView = new RelativeLayout(paramContext);
+          paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+          int j = agej.a(10.0F, paramContext.getResources());
+          int k = agej.a(13.0F, paramContext.getResources());
+          paramView.setPadding(k, j, k, agej.a(11.0F, paramContext.getResources()));
+          localbdro = new bdro(null);
+          break;
+          if ("title".equals(((bdol)localObject2).a))
+          {
+            localObject2 = (TextView)((bdol)localObject2).a(paramContext, localbdro.jdField_a_of_type_AndroidWidgetTextView, paramBundle);
+            ((TextView)localObject2).setGravity(16);
+            paramView.addView((View)localObject2, new RelativeLayout.LayoutParams(-2, agej.a(30.0F, paramContext.getResources())));
+            localbdro.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+            ((TextView)localObject2).setVisibility(0);
+          }
+          else if ("summary".equals(((bdol)localObject2).a))
+          {
+            ((bdtj)localObject2).b(2147483647);
+            localObject2 = (TextView)((bdol)localObject2).a(paramContext, localbdro.b, paramBundle);
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+            localLayoutParams.topMargin = agej.a(34.0F, paramContext.getResources());
+            localLayoutParams.bottomMargin = agej.a(3.0F, paramContext.getResources());
+            paramView.addView((View)localObject2, localLayoutParams);
+            localbdro.b = ((TextView)localObject2);
+            ((TextView)localObject2).setVisibility(0);
+          }
+        }
+      }
+      if ((i != 0) && (localbdro.jdField_a_of_type_AndroidWidgetTextView != null)) {
+        ((RelativeLayout.LayoutParams)localbdro.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).leftMargin = agej.a(38.0F, paramContext.getResources());
+      }
+      paramView.setTag(localbdro);
+      return paramView;
+    }
+    catch (Exception paramContext) {}
+    return paramView;
+  }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(String paramString, int paramInt);
+  public String b()
+  {
+    return "layout24";
+  }
 }
 
 

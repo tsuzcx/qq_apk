@@ -1,9 +1,22 @@
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
+import android.text.TextUtils;
 
-public abstract interface azuq
+public class azuq
 {
-  public abstract void a(List<PushDialogTemplate> paramList);
+  public String a;
+  public String b;
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
+    localStringBuilder.append("businessId=").append(this.a);
+    localStringBuilder.append(", name=").append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

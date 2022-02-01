@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bkft;
+import blgx;
 
 class TroopBarReplyActivity$4
   implements Runnable
@@ -9,7 +9,7 @@ class TroopBarReplyActivity$4
   
   public void run()
   {
-    bkft.b(this.this$0.a);
+    blgx.b(this.this$0.a);
   }
 }
 

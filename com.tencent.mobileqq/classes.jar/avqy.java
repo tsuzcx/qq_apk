@@ -1,65 +1,57 @@
-import NS_MOBILE_EXTRA.mobile_get_urlinfo_rsp;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import QC.BubbleRecommendRsp;
+import QC.CommonRsp;
+import QC.FontRecommendRsp;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.ArrayList;
 
 public class avqy
-  extends MSFServlet
+  extends aogx
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject1 = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareServlet", 2, "onReceive, cmd=" + (String)localObject1);
-    }
-    if ("SQQzoneSvc.getUrlInfo".equals(localObject1))
-    {
-      Object localObject2 = paramFromServiceMsg.getWupBuffer();
-      localObject1 = new Bundle();
-      localObject2 = bmjb.a((byte[])localObject2, "getUrlInfo");
-      if ((paramFromServiceMsg.isSuccess()) && ((localObject2 instanceof mobile_get_urlinfo_rsp)))
-      {
-        localObject2 = (mobile_get_urlinfo_rsp)localObject2;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebShareServlet", 2, "onReceive, mobile_get_urlinfo_rsp, ret=" + ((mobile_get_urlinfo_rsp)localObject2).ret + ", title=" + ((mobile_get_urlinfo_rsp)localObject2).title + ", summary=" + ((mobile_get_urlinfo_rsp)localObject2).summary + ", images=" + ((mobile_get_urlinfo_rsp)localObject2).images);
-        }
-        ((Bundle)localObject1).putInt("extra_ret", ((mobile_get_urlinfo_rsp)localObject2).ret);
-        ((Bundle)localObject1).putString("extra_title", ((mobile_get_urlinfo_rsp)localObject2).title);
-        ((Bundle)localObject1).putString("extra_summary", ((mobile_get_urlinfo_rsp)localObject2).summary);
-        ((Bundle)localObject1).putStringArrayList("extra_images", ((mobile_get_urlinfo_rsp)localObject2).images);
-      }
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
-    }
-  }
+  public avqy(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
   {
-    String str = paramIntent.getStringExtra("extra_cmd");
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareServlet", 2, "onSend, cmd=" + str);
-    }
-    if ("SQQzoneSvc.getUrlInfo".equals(str))
+    if (FontBubblePanelView.a(this.a) == 4)
     {
-      paramIntent = paramIntent.getStringExtra("extra_url");
-      if (QLog.isColorLevel()) {
-        QLog.d("WebShareServlet", 2, "onSend, CMD_GET_URL_INFO, url=" + paramIntent);
+      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
+        FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
       }
-      if (TextUtils.isEmpty(paramIntent)) {
-        break label116;
-      }
-      paramIntent = new avpd(paramIntent).encode();
-      paramPacket.setSSOCommand("SQQzoneSvc.getUrlInfo");
-      paramPacket.putSendData(paramIntent);
     }
-    label116:
-    while (!QLog.isColorLevel()) {
+    else {
       return;
     }
-    QLog.e("WebShareServlet", 2, "onSend, url is null!!!");
+    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
+    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
+    {
+      localStringBuilder.append("ret:");
+      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
+    }
+    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
+  }
+  
+  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
+  {
+    if (FontBubblePanelView.a(this.a) == 3)
+    {
+      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
+        FontBubblePanelView.a(this.a, paramFontRecommendRsp);
+      }
+    }
+    else {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
+    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
+    {
+      localStringBuilder.append("ret:");
+      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
+    }
+    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
   }
 }
 

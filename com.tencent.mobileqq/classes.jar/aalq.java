@@ -1,22 +1,17 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aalq
-  implements aamz
+  implements View.OnClickListener
 {
-  public aalq(BlankRecommendItemView paramBlankRecommendItemView, CertifiedAccountMeta.StUser paramStUser) {}
+  public aalq(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
-    if (paramBoolean) {}
-    for (paramStFeed = "blank_content_follow";; paramStFeed = "blank_content_unfollow")
-    {
-      aaxb.b(str, "auth_follow", paramStFeed, 0, 0, new String[] { "", BlankRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), "" });
-      return;
-    }
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

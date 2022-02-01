@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import ukg;
+import ule;
 
 public class WSVideoPluginInstall$1
   implements Runnable
 {
-  public WSVideoPluginInstall$1(ukg paramukg) {}
+  public WSVideoPluginInstall$1(ule paramule) {}
   
   public void run()
   {
-    ukg.a(this.this$0);
+    ule.a(this.this$0);
   }
 }
 

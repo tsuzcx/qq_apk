@@ -15,11 +15,11 @@ public class IpLearningImpl
 {
   public static final int DEFAULT_SUCC_FAIL_COUNT = -1;
   public static final boolean IS_DEBUG = true;
-  public static int sEnableIpLearning;
+  public static int sEnableIpLearning = 0;
   public static int sMaxFailCount = 3;
   public static long sTimeToLiveMills = 600000L;
   private ConcurrentHashMap<String, IpConnInfo> mIpConnInfos = new ConcurrentHashMap();
-  private String mSuccIpInfo_Key;
+  private String mSuccIpInfo_Key = null;
   
   private String dumpIpLearningInfos()
   {

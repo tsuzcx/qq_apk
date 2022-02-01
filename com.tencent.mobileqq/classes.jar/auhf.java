@@ -1,26 +1,12 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import android.view.View.OnClickListener;
 
-public class auhf
-  implements View.OnTouchListener
+class auhf
+  implements View.OnClickListener
 {
-  public auhf(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
+  auhf(auha paramauha) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
-    }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    return false;
-  }
+  public void onClick(View paramView) {}
 }
 
 

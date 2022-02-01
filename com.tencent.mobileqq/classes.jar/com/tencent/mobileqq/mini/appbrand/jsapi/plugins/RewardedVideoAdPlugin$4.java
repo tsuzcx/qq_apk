@@ -2,9 +2,11 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import ackk;
+import acoo;
 import android.text.TextUtils;
+import bkxw;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
@@ -37,7 +39,7 @@ class RewardedVideoAdPlugin$4
     {
       return;
       if (!paramBoolean) {
-        break label658;
+        break label689;
       }
       MiniAppAd.StGetAdRsp localStGetAdRsp;
       for (;;)
@@ -50,7 +52,7 @@ class RewardedVideoAdPlugin$4
           Object localObject = localStGetAdRsp.strAdsJson.get();
           QLog.d("[minigame] RewardedVideoAdPlugin", 1, "getRewardedVideoADInfo receive retCode= " + i + " errMsg=" + paramJSONObject + " adJson=" + (String)localObject);
           if ((i != 0) || (TextUtils.isEmpty((CharSequence)localObject))) {
-            break label547;
+            break label578;
           }
           paramJSONObject = RewardedVideoAdPlugin.access$600(this.this$0, (String)localObject, this.val$compId);
           if (TextUtils.isEmpty(paramJSONObject)) {
@@ -62,9 +64,9 @@ class RewardedVideoAdPlugin$4
           }
           RewardedVideoAdPlugin.access$902(this.this$0, new GdtAd(RewardedVideoAdPlugin.access$800(this.this$0)));
           if ((!RewardedVideoAdPlugin.access$900(this.this$0).isValid()) || (TextUtils.isEmpty(paramJSONObject))) {
-            break label431;
+            break label462;
           }
-          ackk.a().a(RewardedVideoAdPlugin.access$900(this.this$0));
+          acoo.a().a(RewardedVideoAdPlugin.access$900(this.this$0));
           localObject = this.this$0;
           GdtAd localGdtAd = RewardedVideoAdPlugin.access$900(this.this$0);
           if (RewardedVideoAdPlugin.access$1100(this.this$0))
@@ -72,12 +74,13 @@ class RewardedVideoAdPlugin$4
             i = 0;
             RewardedVideoAdPlugin.access$1002((RewardedVideoAdPlugin)localObject, RewardedVideoAdPlugin.mockMVPageData(localGdtAd, paramJSONObject, i));
             if (RewardedVideoAdPlugin.access$1000(this.this$0) == null) {
-              break label431;
+              break label462;
             }
             RewardedVideoAdPlugin.access$1200(this.this$0, true, this.val$compId);
             RewardedVideoAdPlugin.access$1300(this.this$0, true, this.val$compId);
             this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
             RewardedVideoAdPlugin.access$1400(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adType);
+            bkxw.a(RewardedVideoAdPlugin.access$1000(this.this$0).adId + "");
             return;
           }
         }
@@ -90,7 +93,7 @@ class RewardedVideoAdPlugin$4
         }
         i = 1;
       }
-      label431:
+      label462:
       if (localStGetAdRsp != null) {
         try
         {
@@ -112,7 +115,7 @@ class RewardedVideoAdPlugin$4
         }
       }
     }
-    label547:
+    label578:
     int j;
     if (j != -1)
     {
@@ -126,7 +129,7 @@ class RewardedVideoAdPlugin$4
     return;
     try
     {
-      label658:
+      label689:
       i = paramJSONObject.getInt("resultCode");
       RewardedVideoAdPlugin.access$500(this.this$0, i, this.val$compId);
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, ApiUtil.wrapCallbackFail(this.val$event, null), this.val$callbackId);

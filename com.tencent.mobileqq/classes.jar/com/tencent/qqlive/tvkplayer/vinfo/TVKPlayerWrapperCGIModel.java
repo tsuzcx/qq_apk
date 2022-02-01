@@ -29,7 +29,7 @@ public class TVKPlayerWrapperCGIModel
   private static final int STATE_COMPLETE = 3;
   private static final int STATE_INIT = 0;
   private static final int STATE_ON_GOING = 1;
-  private static final String TAG = "TVKPlayer[TVKPlayerWrapper]";
+  public static final String TAG = "TVKPlayer[TVKPlayerWrapper]";
   private static boolean sIsDDSInit = false;
   private static boolean sIsDDSSup = false;
   private TVKPlayerWrapperCGIModel.CGIWrapperCallback mCallback;
@@ -306,6 +306,7 @@ public class TVKPlayerWrapperCGIModel
     {
       for (;;)
       {
+        localException.printStackTrace();
         Object localObject2 = null;
         continue;
         boolean bool = false;

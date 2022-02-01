@@ -1,88 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.io.File;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.Comparator;
 
-public class aqrz
-  extends aqkz<bosi>
+class aqrz
+  implements Comparator<ColorNote>
 {
-  @NonNull
-  public bosi a(int paramInt)
-  {
-    return new bosi();
-  }
+  aqrz(aqry paramaqry) {}
   
-  @Nullable
-  public bosi a(aqlg[] paramArrayOfaqlg)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return null;
+    int j = 0;
+    int k = 1;
+    boolean bool1 = aqsd.c(paramColorNote1);
+    boolean bool2 = aqsd.c(paramColorNote2);
+    int i;
+    if ((bool1) && (bool2)) {
+      i = aqry.a(this.a, paramColorNote1, paramColorNote2);
     }
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onParsed, content:" + paramArrayOfaqlg);
-    }
-    return new bosf().a(paramArrayOfaqlg, QIMMusicConfigManager.a.getAbsolutePath(), "temp_music_zip", new aqsa(this));
-  }
-  
-  public void a(bosi parambosi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onUpdate");
-    }
-  }
-  
-  public Class<bosi> clazz()
-  {
-    return bosi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (!QIMMusicConfigManager.a()) {
-      return 0;
-    }
-    return bgsg.B(BaseApplicationImpl.getContext());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onReqFailed");
-    }
-  }
-  
-  public int onSend(int paramInt)
-  {
-    if (!QIMMusicConfigManager.a())
+    do
     {
-      QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
-      aqlk.a().a(305, 0);
-      return 0;
-    }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 305;
+      do
+      {
+        do
+        {
+          return i;
+          if (bool1) {
+            return -1;
+          }
+          i = k;
+        } while (bool2);
+        bool1 = aqsd.b(paramColorNote1);
+        bool2 = aqsd.b(paramColorNote2);
+        if ((bool1) && (bool2)) {
+          return aqry.a(this.a, paramColorNote1, paramColorNote2);
+        }
+        if (bool1) {
+          return -1;
+        }
+        i = k;
+      } while (bool2);
+      if (paramColorNote1.getServiceType() == 16973824) {}
+      for (i = 1;; i = 0)
+      {
+        if (paramColorNote2.getServiceType() == 16973824) {
+          j = 1;
+        }
+        if ((i == 0) || (j == 0)) {
+          break;
+        }
+        return aqry.a(this.a, paramColorNote1, paramColorNote2);
+      }
+      if (i != 0) {
+        return -1;
+      }
+      i = k;
+    } while (j != 0);
+    return aqry.a(this.a, paramColorNote1, paramColorNote2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class behy
-  implements DialogInterface.OnClickListener
 {
-  public behy(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public int a;
+  public String a;
+  private JSONObject a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public behy(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
 }
 
 

@@ -1,75 +1,103 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.util.Pair;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class ybg
-  extends yen
-  implements ykt
+  extends JobSegment<List<String>, List<String>>
+  implements xar
 {
-  public ybg(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
-  {
-    super(paramContext, paramActivity, paramInt1, paramInt2);
-    super.a(this);
-  }
+  private String a = "story.icon.UidListToUrlListSegment";
   
-  public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
+  public ybg(String paramString) {}
+  
+  private Pair<List<String>, Boolean> a(List<String> paramList)
   {
-    StringBuilder localStringBuilder1 = null;
-    StringBuilder localStringBuilder2;
-    if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
+    ArrayList localArrayList = new ArrayList();
+    wtt localwtt = (wtt)wth.a(2);
+    paramList = paramList.iterator();
+    boolean bool = true;
+    if (paramList.hasNext())
     {
-      localStringBuilder2 = new StringBuilder();
-      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
-      {
-        localStringBuilder2.append(zlx.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
-        paramStoryVideoItem = localStringBuilder2;
-        paramVideoListFeedItem = localStringBuilder1;
-        if (localStringBuilder2.length() > 0)
-        {
-          paramVideoListFeedItem = new Intent();
-          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
-          paramStoryVideoItem = localStringBuilder2;
-        }
+      QQUserUIItem localQQUserUIItem = localwtt.b((String)paramList.next());
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
+        localArrayList.add(localQQUserUIItem.headUrl);
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
-        if (paramStoryVideoItem != null) {
-          break label146;
-        }
-      }
-      label146:
-      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
-      {
-        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
-        paramActivity.setResult(-1, paramVideoListFeedItem);
-        return;
-        localStringBuilder2.append(zlx.b(paramStoryVideoItem.mCreateTime));
         break;
+        localArrayList.add("stub_url");
+        bool = false;
       }
-      paramStoryVideoItem = null;
-      paramVideoListFeedItem = localStringBuilder1;
     }
+    return new Pair(localArrayList, Boolean.valueOf(bool));
   }
   
-  public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
+  private void b(List<String> paramList)
   {
-    if (zlx.b()) {
-      return;
+    yaq.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new wuo(null, (String)paramList.next()));
     }
-    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
-    yqu.a("home_page", "choose_video", 0, 0, new String[0]);
-    this.a.finish();
+    new xaq(this).a(1, localArrayList);
   }
   
-  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
+  protected void a(JobContext paramJobContext, List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      notifyError(new ErrorMessage(-1, ""));
+    }
+    do
+    {
+      return;
+      paramJobContext = Collections.unmodifiableList(paramList);
+      paramList = a(paramJobContext);
+      yaq.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
+      a((List)paramList.first);
+    } while (((Boolean)paramList.second).booleanValue());
+    yaq.a(this.a, "fireRefreshUserInfo");
+    b(paramJobContext);
+  }
+  
+  protected void a(List<String> paramList)
+  {
+    yaq.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
+    if (paramList.size() == 1)
+    {
+      yaq.b(this.a, "add one more default item because of product logic");
+      paramList.add("stub_url");
+    }
+    super.notifyResult(paramList);
+  }
+  
+  public void a(xas paramxas)
+  {
+    if ((paramxas == null) || (paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramxas.jdField_a_of_type_JavaUtilList == null))
+    {
+      yaq.b(this.a, "refresh user info fail %s", paramxas);
+      if (paramxas == null) {}
+      for (paramxas = new ErrorMessage(-1, "event is null");; paramxas = paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      {
+        notifyError(paramxas);
+        return;
+      }
+    }
+    yaq.a(this.a, "refresh user info success, let's return the new info");
+    ArrayList localArrayList = new ArrayList();
+    paramxas = paramxas.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramxas.hasNext()) {
+      localArrayList.add(((QQUserUIItem)paramxas.next()).headUrl);
+    }
+    a(localArrayList);
+  }
 }
 
 

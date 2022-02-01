@@ -1,62 +1,118 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class pgq
-  implements WtTicketPromise
+public class pgq
 {
-  pgq(TicketManager paramTicketManager, QQAppInterface paramQQAppInterface) {}
+  private int jdField_a_of_type_Int;
+  private ArrayList<pgp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private boolean jdField_a_of_type_Boolean;
   
-  public void Done(Ticket paramTicket)
+  private void i()
   {
-    int j = 0;
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      QLog.i(pgn.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      pgn.a(this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "m.tencent.com"));
-      if ((!TextUtils.isEmpty(pgn.b())) && (pgn.b().length() > 0)) {
-        QLog.i(pgn.a(), 1, "getPskeyFromServerAndRetry get pskey from server success!");
+      pgp localpgp = (pgp)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localpgp.h();
+        return;
       }
+      localpgp.g();
       return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null))
-      {
-        i = 2;
-      }
-      else
-      {
-        i = j;
-        if (paramTicket != null)
-        {
-          i = j;
-          if (paramTicket._pskey_map != null)
-          {
-            i = j;
-            if (paramTicket._pskey_map.get("m.tencent.com") == null) {
-              i = 3;
-            }
-          }
-        }
-      }
+    }
+    QLog.d("RIJPopupAutomator", 2, "startNext currentIndex out of bound");
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pgp)localIterator.next()).a();
     }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  void a(pgp parampgp, boolean paramBoolean)
   {
-    QLog.i(pgn.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJPopupAutomator", 2, "finishStep(" + parampgp.toString() + "): isShown = " + paramBoolean);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    if (!paramBoolean)
+    {
+      this.jdField_a_of_type_Int += 1;
+      i();
+    }
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public void a(pgp... paramVarArgs)
   {
-    QLog.i(pgn.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pgp)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pgp)localIterator.next()).c();
+    }
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pgp)localIterator.next()).d();
+    }
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pgp)localIterator.next()).e();
+    }
+  }
+  
+  public void f()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pgp)localIterator.next()).f();
+    }
+  }
+  
+  public void g()
+  {
+    QLog.d("RIJPopupAutomator", 1, "startStepFromOnResume");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    i();
+  }
+  
+  public void h()
+  {
+    QLog.d("RIJPopupAutomator", 1, "startStepFromOnShowSelf");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+    i();
   }
 }
 

@@ -1,72 +1,46 @@
-public class wro
+import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class wro<M>
+  extends RecyclerView.ViewHolder
 {
-  public final String a;
-  public final String b;
-  public final String c;
+  private SparseArray<View> a = new SparseArray();
   
-  public wro(String paramString1, String paramString2, String paramString3)
+  public wro(View paramView)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
-    }
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(paramView);
   }
   
-  public boolean equals(Object paramObject)
+  public wro(ViewGroup paramViewGroup, int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  protected Context a()
+  {
+    return this.itemView.getContext();
+  }
+  
+  protected <T extends View> T a(@IdRes int paramInt)
+  {
+    View localView2 = (View)this.a.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (wro)paramObject;
-        bool1 = bool3;
-      } while (!this.a.equals(paramObject.a));
-      bool1 = bool3;
-    } while (!this.b.equals(paramObject.b));
-    if (this.c != null)
-    {
-      bool1 = bool2;
-      if (this.c.equals(paramObject.c)) {}
+      localView1 = this.itemView.findViewById(paramInt);
+      this.a.put(paramInt, localView1);
     }
-    for (boolean bool1 = false;; bool1 = bool2)
-    {
-      return bool1;
-      if (paramObject.c != null) {
-        break;
-      }
-    }
+    return localView1;
   }
   
-  public int hashCode()
-  {
-    int j = this.a.hashCode();
-    int k = this.b.hashCode();
-    if (this.c != null) {}
-    for (int i = this.c.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
-  }
+  public void a() {}
   
-  public String toString()
-  {
-    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
-  }
+  public void a(M paramM) {}
 }
 
 

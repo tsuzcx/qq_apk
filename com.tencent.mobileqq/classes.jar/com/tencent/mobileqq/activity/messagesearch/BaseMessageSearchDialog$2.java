@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import afur;
-import ajwv;
+import agej;
+import akie;
 
 public class BaseMessageSearchDialog$2
   implements Runnable
 {
-  public BaseMessageSearchDialog$2(ajwv paramajwv) {}
+  public BaseMessageSearchDialog$2(akie paramakie) {}
   
   public void run()
   {
-    afur.a(this.this$0.findViewById(2131366102));
+    agej.a(this.this$0.findViewById(2131366151));
   }
 }
 

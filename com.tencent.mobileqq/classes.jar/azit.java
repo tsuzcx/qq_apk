@@ -1,44 +1,67 @@
-import QC.UniBusiCommItemAidInfo;
-import QC.UniBusiGetOneItemWithCheckRsp;
-import QC.UniBusiSimpleItemDetail;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 
-class azit
-  implements aziy
+public class azit
 {
-  azit(azir paramazir) {}
+  public int a;
+  private long a;
   
-  public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
+  public azit(int paramInt)
   {
-    if (azir.a(this.a) == null) {}
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private boolean a()
+  {
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > azjb.O;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 40001;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + bool + " status: " + toString());
+    }
+    if (bool) {
+      a();
+    }
+    return bool;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
     do
     {
-      do
-      {
-        return;
-        if (paramBoolean) {
-          break label195;
-        }
-        if ((paramUniBusiGetOneItemWithCheckRsp == null) || (paramUniBusiGetOneItemWithCheckRsp.stDetail == null)) {
-          break;
-        }
-      } while (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId != azir.a(this.a).itemId);
-      if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
-      {
-        azir.a(this.a, false);
-        this.a.b();
-        return;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    } while (!azir.a(this.a));
-    azir.a(this.a, azir.a(this.a), azir.a(this.a).stAidInfo.androidAid, azir.a(this.a).stAidInfo.payType, azir.a(this.a).stAidInfo.errMsg, azir.a(this.a).stAidInfo.month);
-    return;
-    azir.a(this.a, false);
-    QQToast.a(azir.a(this.a), anni.a(2131713802), 0).a();
-    azir.a(this.a, null);
-    azir.a(this.a, -1);
-    return;
-    label195:
-    this.a.b();
+      paramObject = (azit)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "AutoStatus{status=" + azjb.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
   }
 }
 

@@ -1,21 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 
-abstract class aopr
+class aopr
+  implements aopw
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
+  aopr(aopq paramaopq) {}
   
-  protected abstract String a();
-  
-  protected void a()
+  public void a(FullMessageSearchResult paramFullMessageSearchResult)
   {
-    this.a.edit().putBoolean(a(), true).commit();
-  }
-  
-  protected boolean a()
-  {
-    return !this.a.contains(a());
+    aopq.a(this.a);
+    this.a.notifyObservers(paramFullMessageSearchResult);
   }
 }
 

@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aess
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public aess(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public aess(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.finish();
+    if (paramIntent != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      }
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
+      }
+    }
   }
 }
 

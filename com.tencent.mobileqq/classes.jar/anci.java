@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
 import java.util.Comparator;
 
-class anci
-  implements Comparator<ApolloActionData>
+public class anci
+  implements Comparator<ancj>
 {
-  anci(ancd paramancd) {}
+  public anci(CmGameCmdChannel paramCmGameCmdChannel) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public int a(ancj paramancj1, ancj paramancj2)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    return paramancj1.a() - paramancj2.a();
   }
 }
 

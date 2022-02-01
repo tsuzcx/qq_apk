@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
 import android.content.Context;
-import aobu;
+import aoof;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import quo;
-import snh;
+import qnc;
+import sel;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeUgcGridImageSocial;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
 public final class CellFactory$defaultFeedItemCellMap$37
   extends Lambda
-  implements Function3<Context, aobu, snh, quo>
+  implements Function3<Context, aoof, sel, qnc>
 {
   public static final 37 INSTANCE = new 37();
   
@@ -24,10 +24,10 @@ public final class CellFactory$defaultFeedItemCellMap$37
   }
   
   @NotNull
-  public final quo invoke(@NotNull Context paramContext, @Nullable aobu paramaobu, @Nullable snh paramsnh)
+  public final qnc invoke(@NotNull Context paramContext, @Nullable aoof paramaoof, @Nullable sel paramsel)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new quo(paramContext, paramaobu, paramsnh);
+    return new qnc(paramContext, paramaoof, paramsel);
   }
 }
 

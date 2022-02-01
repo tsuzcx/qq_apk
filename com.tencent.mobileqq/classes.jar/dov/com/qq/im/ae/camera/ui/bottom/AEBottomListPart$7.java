@@ -1,22 +1,23 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bnjw;
-import bnkd;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import bolg;
+import boll;
+import java.util.List;
 
 public class AEBottomListPart$7
   implements Runnable
 {
-  public AEBottomListPart$7(bnkd parambnkd, long paramLong) {}
+  public AEBottomListPart$7(boll paramboll, List paramList) {}
   
   public void run()
   {
-    if (bnkd.b(this.this$0))
+    if ((boll.a(this.this$0) != null) && (!boll.b(this.this$0).isFinishing()))
     {
-      bnkd.a(this.this$0).setVisibility(0);
-      bnkd.a(this.this$0).a(new ArrayList());
-      QLog.d("AEWaterMarkListPart", 4, "hot data is empty, updatePackage, total cost=" + (System.currentTimeMillis() - this.a));
+      if (boll.b(this.this$0)) {
+        this.this$0.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(0);
+      }
+      this.this$0.jdField_a_of_type_Bolg.a(this.a);
     }
   }
 }

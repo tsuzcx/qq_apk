@@ -1,25 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class ajsy
-  implements View.OnClickListener
+class ajsy
+  implements ajwc
 {
-  public ajsy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ajsy(ajst paramajst) {}
   
-  public void onClick(View paramView)
+  public long a()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, localArrayList);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return ajst.a(this.a);
   }
 }
 

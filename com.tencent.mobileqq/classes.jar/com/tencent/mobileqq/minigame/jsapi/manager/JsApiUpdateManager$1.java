@@ -3,15 +3,15 @@ package com.tencent.mobileqq.minigame.jsapi.manager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 final class JsApiUpdateManager$1
   implements MiniAppCmdInterface
 {
-  JsApiUpdateManager$1(MiniAppConfig paramMiniAppConfig, GameJsPluginEngine paramGameJsPluginEngine) {}
+  JsApiUpdateManager$1(MiniAppConfig paramMiniAppConfig, JsApiUpdateManager.IUpdateListener paramIUpdateListener, MiniAppFileManager paramMiniAppFileManager) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -24,11 +24,11 @@ final class JsApiUpdateManager$1
       {
         if (AppBrandUtil.needUpdate(this.val$oldMiniAppConfig.config, paramJSONObject))
         {
-          JsApiUpdateManager.handleUpdateCheckResult(this.val$gameJsPluginEngine, true);
-          JsApiUpdateManager.access$100(this.val$gameJsPluginEngine, new MiniAppConfig(paramJSONObject));
+          JsApiUpdateManager.handleUpdateCheckResult(this.val$callback, true);
+          JsApiUpdateManager.access$100(this.val$fileManager, JsApiUpdateManager.access$000(), this.val$callback);
           return;
         }
-        JsApiUpdateManager.handleUpdateCheckResult(this.val$gameJsPluginEngine, false);
+        JsApiUpdateManager.handleUpdateCheckResult(this.val$callback, false);
         return;
       }
       QLog.e("JsApiUpdateManager", 1, "onCmdListener newMiniAppInfo = null");

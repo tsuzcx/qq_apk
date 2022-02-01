@@ -1,126 +1,132 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class atdg
-  implements bmzs
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog;", "Lcom/tencent/mobileqq/mini/ui/dialog/DialogFromBottom;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "subTitleView", "Landroid/widget/TextView;", "getSubTitleView", "()Landroid/widget/TextView;", "setSubTitleView", "(Landroid/widget/TextView;)V", "taskAdapter", "Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter;", "init", "", "refresh", "maxMatchCount", "", "leftMatchCount", "tasks", "", "Lcom/tencent/mobileqq/extendfriend/limitchat/CompletePesonalDataTask;", "showDialog", "updateTasks", "Companion", "SpacesItemDecoration", "TaskAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class atdg
+  extends DialogFromBottom
 {
-  atdg(atdb paramatdb) {}
+  public static final atdh a;
+  @Nullable
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  @Nullable
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private atdj jdField_a_of_type_Atdj;
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong, bmzd parambmzd, boolean paramBoolean)
+  static
   {
-    if (this.a.jdField_a_of_type_Auam == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-        if (parambmzd.jdField_a_of_type_Int == 2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onStarted[" + this.a.c + "]");
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
-          return;
-        }
-        if (parambmzd.jdField_a_of_type_Int == 5)
-        {
-          if (parambmzd.jdField_b_of_type_Int == 1810002)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is canceled[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
-            }
-            if (bgnt.b(BaseApplication.getContext()) == 1)
-            {
-              paramString = new String[3];
-              paramString[0] = "param_WIFIFileFlow";
-              paramString[1] = "param_WIFIFlow";
-              paramString[2] = "param_Flow";
-            }
-            for (;;)
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
-              return;
-              paramString = new String[3];
-              paramString[0] = "param_XGFileFlow";
-              paramString[1] = "param_XGFlow";
-              paramString[2] = "param_Flow";
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onFailed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
-          }
-          if (bgnt.b(BaseApplication.getContext()) == 1)
-          {
-            paramString = new String[3];
-            paramString[0] = "param_WIFIFileFlow";
-            paramString[1] = "param_WIFIFlow";
-            paramString[2] = "param_Flow";
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
-            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 36, null, parambmzd.jdField_b_of_type_Int, parambmzd.jdField_a_of_type_JavaLangString);
-            return;
-            paramString = new String[3];
-            paramString[0] = "param_XGFileFlow";
-            paramString[1] = "param_XGFlow";
-            paramString[2] = "param_Flow";
-          }
-        }
-      } while (parambmzd.jdField_a_of_type_Int != 4);
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onSucceed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(parambmzd.jdField_b_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = atvo.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-      this.a.h = System.currentTimeMillis();
-      if (bgnt.b(BaseApplication.getContext()) == 1)
-      {
-        paramString = new String[3];
-        paramString[0] = "param_WIFIFileFlow";
-        paramString[1] = "param_WIFIFlow";
-        paramString[2] = "param_Flow";
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 35, null, 0, null);
-        paramString = new atvn();
-        paramString.jdField_b_of_type_JavaLangString = "rece_file_suc";
-        paramString.jdField_a_of_type_Int = 1;
-        atvm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
-        return;
-        paramString = new String[3];
-        paramString[0] = "param_XGFileFlow";
-        paramString[1] = "param_XGFlow";
-        paramString[2] = "param_Flow";
-      }
-      paramLong = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Long = parambmzd.jdField_b_of_type_Long;
-    } while (paramLong - this.a.f < 1000L);
-    this.a.f = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "Id[" + this.a.c + "]WeiYun download is onProgressChange mtransferedSize[" + this.a.jdField_a_of_type_Long + "/" + this.a.d + "]");
+    jdField_a_of_type_Atdh = new atdh(null);
+  }
+  
+  public atdg(@NotNull Context paramContext)
+  {
+    super(paramContext);
+    a(paramContext);
+  }
+  
+  private final void a(Context paramContext)
+  {
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131561181, null);
+    if (localObject1 == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+    localObject1 = (LinearLayout)localObject1;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)((LinearLayout)localObject1).findViewById(2131376409));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((LinearLayout)localObject1).findViewById(2131379026));
+    Object localObject2 = new LinearLayoutManager(paramContext);
+    ((LinearLayoutManager)localObject2).setOrientation(1);
+    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (localRecyclerView != null) {
+      localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject2);
+    }
+    int i = bhtq.b(8.0F);
+    int j = bhtq.b(0.0F);
+    localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (localObject2 != null) {
+      ((RecyclerView)localObject2).addItemDecoration((RecyclerView.ItemDecoration)new atdi(i, j));
+    }
+    this.jdField_a_of_type_Atdj = new atdj(paramContext);
+    paramContext = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (paramContext != null) {
+      paramContext.setAdapter((RecyclerView.Adapter)this.jdField_a_of_type_Atdj);
+    }
+    ((ImageView)((LinearLayout)localObject1).findViewById(2131362954)).setOnClickListener((View.OnClickListener)new atdm(this));
+    setOnCancelListener((DialogInterface.OnCancelListener)atdn.a);
+    ((LinearLayout)localObject1).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new atdo((LinearLayout)localObject1));
+    setContentView((View)localObject1);
+  }
+  
+  private final void a(List<? extends ataf> paramList)
+  {
+    atdj localatdj = this.jdField_a_of_type_Atdj;
+    if (localatdj == null) {
+      Intrinsics.throwNpe();
+    }
+    localatdj.a(paramList);
+    paramList = this.jdField_a_of_type_Atdj;
+    if (paramList == null) {
+      Intrinsics.throwNpe();
+    }
+    paramList.notifyDataSetChanged();
+  }
+  
+  public final void a(int paramInt1, int paramInt2, @Nullable List<? extends ataf> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "showDialog maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CompletePersonalDataDialog", 2, "showDialog return for empty tasks");
+      }
+      return;
+    }
+    b(paramInt1, paramInt2, paramList);
+    show();
+  }
+  
+  public final void b(int paramInt1, int paramInt2, @Nullable List<? extends ataf> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "refresh maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
+    }
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
+    {
+      Object localObject = StringCompanionObject.INSTANCE;
+      localObject = getContext().getString(2131698005);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.getString(R.stri…_personal_data_sub_title)");
+      Object[] arrayOfObject = new Object[2];
+      arrayOfObject[0] = Integer.valueOf(paramInt1);
+      arrayOfObject[1] = Integer.valueOf(paramInt2);
+      localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
+      localTextView.setText((CharSequence)localObject);
+    }
+    a(paramList);
   }
 }
 

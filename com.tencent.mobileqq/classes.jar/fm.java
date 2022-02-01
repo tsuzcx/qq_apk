@@ -27,9 +27,9 @@ public class fm
   public fm(CharacterStyle paramCharacterStyle, int paramInt)
   {
     this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
-    if ((paramCharacterStyle instanceof bdoa))
+    if ((paramCharacterStyle instanceof begw))
     {
-      paramCharacterStyle = ((bdoa)paramCharacterStyle).a().getBounds();
+      paramCharacterStyle = ((begw)paramCharacterStyle).a().getBounds();
       this.b = paramCharacterStyle.width();
       this.c = paramCharacterStyle.height();
     }
@@ -38,9 +38,9 @@ public class fm
       this.jdField_a_of_type_Int = paramInt;
       this.e = 2;
       return;
-      if ((paramCharacterStyle instanceof bbaw))
+      if ((paramCharacterStyle instanceof bbtp))
       {
-        paramCharacterStyle = (bbaw)paramCharacterStyle;
+        paramCharacterStyle = (bbtp)paramCharacterStyle;
         this.b = paramCharacterStyle.a();
         this.c = paramCharacterStyle.b();
       }
@@ -56,20 +56,20 @@ public class fm
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
   {
-    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bdoa))
+    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw))
     {
-      localObject = (bdoa)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-      paramInt2 += ((bdoa)localObject).a().getBounds().height();
-      ((bdoa)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
+      localObject = (begw)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+      paramInt2 += ((begw)localObject).a().getBounds().height();
+      ((begw)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
     }
-    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbaw)) {
+    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtp)) {
       return;
     }
     paramPaint.setTextSize(a());
-    Object localObject = (bbaw)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-    int i = ((bbaw)localObject).b();
-    ((bbaw)localObject).a = false;
-    ((bbaw)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
+    Object localObject = (bbtp)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    int i = ((bbtp)localObject).b();
+    ((bbtp)localObject).a = false;
+    ((bbtp)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, ETFont paramETFont, int paramInt1, int paramInt2)
@@ -144,10 +144,10 @@ public class fm
     return this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
   }
   
-  public bdoa a()
+  public begw a()
   {
-    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bdoa)) {
-      return (bdoa)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw)) {
+      return (begw)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
     }
     return null;
   }

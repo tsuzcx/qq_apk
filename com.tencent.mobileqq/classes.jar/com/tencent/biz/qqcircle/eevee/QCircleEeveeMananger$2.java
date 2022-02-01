@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.eevee;
 
-import viy;
+import vlc;
 
 public class QCircleEeveeMananger$2
   implements Runnable
 {
-  public QCircleEeveeMananger$2(viy paramviy) {}
+  public QCircleEeveeMananger$2(vlc paramvlc) {}
   
   public void run()
   {

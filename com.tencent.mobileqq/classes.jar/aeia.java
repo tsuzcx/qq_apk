@@ -1,56 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.16.1;
+import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.21.1;
+import com.tencent.mobileqq.activity.Conversation.21.2;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class aeia
-  extends BroadcastReceiver
+  implements GLSurfaceView.Renderer
 {
-  public aeia(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aeia(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDrawFrame(GL10 paramGL10) {}
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    paramContext = paramIntent.getAction();
-    String str1 = paramIntent.getStringExtra("event");
-    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label67;
-      }
+    Conversation.a(this.a, paramGL10.glGetString(7937));
+    if (Conversation.a(this.a) != null) {
+      ThreadManager.post(new Conversation.21.1(this), 5, null, true);
     }
-    for (;;)
-    {
-      return;
-      try
-      {
-        label67:
-        paramContext = new JSONObject(paramContext);
-        paramIntent = paramContext.optString("groupCode");
-        if (TextUtils.equals(this.a.a, paramIntent))
-        {
-          paramContext.optString("content");
-          paramIntent = paramContext.optString("source");
-          int i = paramContext.optInt("rankId", 333);
-          str1 = paramContext.optString("nickName");
-          String str2 = paramContext.optString("uin");
-          String str3 = paramContext.optString("course");
-          paramContext = paramContext.optString("name");
-          if ("qqProfile".equals(paramIntent))
-          {
-            ThreadManager.post(new FriendProfileMoreInfoActivity.16.1(this, str2, str1, i, str3, paramContext), 8, null, false);
-            return;
-          }
-        }
-      }
-      catch (JSONException paramContext) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + Conversation.a(this.a));
     }
+    this.a.a(new Conversation.21.2(this));
   }
 }
 

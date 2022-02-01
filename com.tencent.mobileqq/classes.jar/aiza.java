@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aiza
-  implements View.OnClickListener
+class aiza
+  implements blmh
 {
-  public aiza(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
+  aiza(aiyz paramaiyz) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 4097) {}
   }
 }
 

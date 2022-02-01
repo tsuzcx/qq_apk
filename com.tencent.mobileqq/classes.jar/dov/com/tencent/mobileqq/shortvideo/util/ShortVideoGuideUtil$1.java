@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import bqjb;
-import bqjc;
+import brkn;
+import brko;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
@@ -13,13 +13,13 @@ public final class ShortVideoGuideUtil$1
   {
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new bqjc(this));
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new brko(this));
       return;
     }
     catch (Throwable localThrowable)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(bqjb.a, 2, "installSDK t==" + localThrowable.toString());
+      QLog.d(brkn.a, 2, "installSDK t==" + localThrowable.toString());
     }
   }
 }

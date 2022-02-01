@@ -1,15 +1,35 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import java.util.Random;
 
-public abstract interface bdqe
+public class bdqe
 {
-  public abstract void callJs(String paramString, String... paramVarArgs);
+  private long jdField_a_of_type_Long = -1L;
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % 300 != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+  }
   
-  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
-  
-  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Long == -1L) {
+      return;
+    }
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cost", l1 - l2 + "");
+    localHashMap.put("layout", paramInt1 + "");
+    localHashMap.put("first", paramInt2 + "");
+    bdmc.a(BaseApplication.getContext()).a(null, "structmsg_builder_getview", true, 0L, 0L, localHashMap, "", false);
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

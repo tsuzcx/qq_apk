@@ -13,8 +13,8 @@ import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import qqcircle.QQCircleFeedBase.StLikeBusiData;
 import qqcircle.QQCircleFeedBase.StPolyLike;
-import vpo;
-import vqa;
+import vrx;
+import vsj;
 
 public class QCirclePolyLikeFreeView
   extends QCirclePolyBaseLikeView
@@ -46,9 +46,9 @@ public class QCirclePolyLikeFreeView
   public int a()
   {
     if (b() == 256) {
-      return 2131560753;
+      return 2131560778;
     }
-    return 2131560752;
+    return 2131560777;
   }
   
   public String a()
@@ -67,8 +67,8 @@ public class QCirclePolyLikeFreeView
       localObject = getContext();
       getContext();
       ((Vibrator)((Context)localObject).getSystemService("vibrator")).vibrate(50L);
-      if (this.jdField_a_of_type_Vpo != null) {
-        this.jdField_a_of_type_Vpo.b();
+      if (this.jdField_a_of_type_Vrx != null) {
+        this.jdField_a_of_type_Vrx.b();
       }
     }
     try
@@ -76,8 +76,8 @@ public class QCirclePolyLikeFreeView
       localObject = new QQCircleFeedBase.StLikeBusiData();
       ((QQCircleFeedBase.StLikeBusiData)localObject).mergeFrom(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.busiData.get().toByteArray());
       localObject = ((QQCircleFeedBase.StLikeBusiData)localObject).curPolyLikeInfo;
-      this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike);
-      this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView, 1, arrayOfInt, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, (QQCircleFeedBase.StPolyLike)localObject);
+      this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike);
+      this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView, 1, arrayOfInt, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, (QQCircleFeedBase.StPolyLike)localObject);
       return;
     }
     catch (Exception localException) {}

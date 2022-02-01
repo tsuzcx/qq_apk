@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
 import android.util.Log;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,10 +15,10 @@ class InternalJSPlugin$7
   
   public void run()
   {
-    bgpa localbgpa = bglp.a(this.val$activity, 230, anni.a(2131704600), String.format(anni.a(2131704598), new Object[] { this.val$appName }), anni.a(2131704595), anni.a(2131704593), new InternalJSPlugin.7.1(this), new InternalJSPlugin.7.2(this));
+    bhpc localbhpc = bhlq.a(this.val$activity, 230, anzj.a(2131704707), String.format(anzj.a(2131704705), new Object[] { this.val$appName }), anzj.a(2131704702), anzj.a(2131704700), new InternalJSPlugin.7.1(this), new InternalJSPlugin.7.2(this));
     try
     {
-      localbgpa.show();
+      localbhpc.show();
       return;
     }
     catch (Exception localException)

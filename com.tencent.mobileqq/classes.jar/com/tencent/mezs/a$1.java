@@ -1,15 +1,15 @@
 package com.tencent.mezs;
 
-import adbn;
+import adkl;
 
 public class a$1
   extends Thread
 {
-  public a$1(adbn paramadbn) {}
+  public a$1(adkl paramadkl) {}
   
   public void run()
   {
-    adbn.a(this.this$0);
+    adkl.a(this.this$0);
   }
 }
 

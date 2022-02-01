@@ -8,12 +8,12 @@ import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Iterator;
 import java.util.List;
-import ttp;
+import ttr;
 
 public class ReadInJoyNewSearchActivity$5$1
   implements Runnable
 {
-  public ReadInJoyNewSearchActivity$5$1(ttp paramttp) {}
+  public ReadInJoyNewSearchActivity$5$1(ttr paramttr) {}
   
   public void run()
   {

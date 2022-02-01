@@ -1,6 +1,6 @@
 public abstract interface bapv
 {
-  public abstract void setNeedAdvertisement(boolean paramBoolean);
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,32 +1,13 @@
-import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class ncf
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public ncf(GuessSongStageView paramGuessSongStageView) {}
+  public ncf(GameListView paramGameListView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("GuessSongStageView", 2, "onLoadFialed " + paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d("GuessSongStageView", 2, "onLoadSuccessed ");
-    if ((paramURLDrawable != null) && (paramURLDrawable.getCurrDrawable() != null) && (this.a.a != null) && (this.a.a.getImageAsset("image_6") != null))
-    {
-      paramURLDrawable = GuessSongStageView.a(this.a, paramURLDrawable, 280, 280);
-      this.a.a.updateBitmap("image_6", paramURLDrawable);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

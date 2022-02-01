@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import ackr;
-import acks;
+import acov;
+import acow;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
@@ -86,7 +86,7 @@ class AppBoxPlugin$MiniAppBox$2
         }
       }
       this.this$0.destroy();
-      AppBoxPlugin.MiniAppBox.access$002(this.this$0, ackr.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
+      AppBoxPlugin.MiniAppBox.access$002(this.this$0, acov.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
       AppBoxPlugin.MiniAppBox.access$100(this.this$0, true, "operateAppBox", this.val$compId, i, this.val$callbackId);
       AppBoxPlugin.MiniAppBox.access$500(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
       if (localStGetAdRsp != null) {

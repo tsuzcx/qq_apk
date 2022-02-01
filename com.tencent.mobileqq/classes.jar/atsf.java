@@ -1,25 +1,12 @@
-import android.content.Intent;
-import java.util.ArrayList;
-
-class atsf
-  implements atve
+public abstract interface atsf
 {
-  atsf(atse paramatse) {}
+  public abstract void a();
   
-  public void a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(athc.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    atsd.a(this.a.a, localIntent);
-  }
-  
-  public void b() {}
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsf
  * JD-Core Version:    0.7.0.1
  */

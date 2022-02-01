@@ -1,8 +1,20 @@
-public abstract class zwd
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import mqq.app.QQPermissionCallback;
+
+public class zwd
+  implements QQPermissionCallback
 {
-  public abstract String a();
+  public zwd(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public abstract String b();
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.f();
+  }
 }
 
 

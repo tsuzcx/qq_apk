@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.dating;
 
-import albc;
-import arkn;
+import alms;
+import asac;
 
 public class BaseMsgBoxActivity$1$1
   implements Runnable
 {
-  public BaseMsgBoxActivity$1$1(arkn paramarkn, boolean paramBoolean, String paramString) {}
+  public BaseMsgBoxActivity$1$1(asac paramasac, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Arkn.a.jdField_a_of_type_Albc != null)) {
-      this.jdField_a_of_type_Arkn.a.jdField_a_of_type_Albc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arkn.a.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Asac.a.jdField_a_of_type_Alms != null)) {
+      this.jdField_a_of_type_Asac.a.jdField_a_of_type_Alms.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asac.a.jdField_a_of_type_Int);
     }
   }
 }

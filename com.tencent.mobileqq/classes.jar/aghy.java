@@ -1,12 +1,7 @@
-import android.graphics.Path;
-import java.util.List;
-
 public class aghy
 {
-  public int a;
-  public Path a;
-  public List<aghs> a;
-  public boolean a;
+  public agia a;
+  public agia b;
 }
 
 

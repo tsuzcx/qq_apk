@@ -1,18 +1,65 @@
-public abstract interface mnn
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+
+public class mnn
+  extends PagerAdapter
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
   
-  public abstract void a(String paramString);
+  public mnn(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
+  {
+    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
+    paramPagerAdapter.registerDataSetObserver(new mno(this, paramEffectCycleViewPager));
+  }
   
-  public abstract void g();
+  int a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
+    }
+    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
+      return 0;
+    }
+    return paramInt - 1;
+  }
   
-  public abstract void h();
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    int i = a(paramInt);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
+    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
+  }
   
-  public abstract void i();
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
+    if (i > 0) {
+      return i + 2;
+    }
+    return 0;
+  }
   
-  public abstract void j();
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    int i = a(paramInt);
+    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
+    return paramViewGroup;
+  }
   
-  public abstract void o();
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
+    super.notifyDataSetChanged();
+  }
 }
 
 

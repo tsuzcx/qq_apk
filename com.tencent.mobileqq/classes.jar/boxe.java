@@ -1,26 +1,52 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
 
-public class boxe
-  extends AnimatorListenerAdapter
+class boxe
+  implements Observer<bowc>
 {
-  public boxe(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  boxe(boxb paramboxb) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(@Nullable bowc parambowc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
+    if (parambowc == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          parambowc = parambowc.b;
+          if (parambowc != AECaptureMode.NORMAL) {
+            break;
+          }
+          if ((bowt.a == null) || (bowt.a != boqr.a())) {
+            bozv.a().g("none");
+          }
+        } while (!this.a.b());
+        boxb.a(this.a).setVisibility(8);
+        return;
+        if (parambowc != AECaptureMode.GIF) {
+          break;
+        }
+      } while (!this.a.b());
+      boxb.a(this.a).setVisibility(8);
+      return;
+    } while (parambowc != AECaptureMode.PLAY);
+    boxb.c(this.a);
+    if (boxb.a(this.a) != null)
+    {
+      parambowc = boxb.a(this.a).a();
+      if ((!TextUtils.isEmpty(parambowc)) && (!"-1".equals(parambowc))) {
+        bozv.a().g(parambowc);
+      }
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView begin");
-    }
+    boxb.a(this.a).setVisibility(0);
+    boxb.d(this.a);
   }
 }
 

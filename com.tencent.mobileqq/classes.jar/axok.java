@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface axok
+class axok
+  extends RecyclerView.ViewHolder
 {
-  public abstract int a();
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void a();
-  
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public axok(axoh paramaxoh, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380163));
+  }
 }
 
 

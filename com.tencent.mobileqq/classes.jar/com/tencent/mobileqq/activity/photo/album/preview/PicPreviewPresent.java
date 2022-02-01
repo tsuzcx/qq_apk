@@ -4,7 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import bdzx;
+import beyq;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -56,7 +56,7 @@ public class PicPreviewPresent
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramViewGroup.getWidth();
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramViewGroup.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bdzx.a;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
       paramView = getFileUrl(paramView);
       if (paramView != null)
@@ -101,7 +101,7 @@ public class PicPreviewPresent
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramViewGroup.getWidth();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramViewGroup.getHeight();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bdzx.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
         paramViewGroup = getFileUrl(localFile);
         if (paramViewGroup != null)

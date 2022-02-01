@@ -1,64 +1,54 @@
-import com.tencent.common.app.AppInterface;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.report.lp.LpReportInfo_dc02880;
 
-class aozf
-  implements aozx
+public class aozf
+  extends aoxg
 {
-  aozf(aozd paramaozd, apai paramapai) {}
-  
-  public void a(int paramInt, apah paramapah, long paramLong)
+  public aozf(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (aozd.a(this.jdField_a_of_type_Aozd)) {}
-    do
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      do
-      {
-        return;
-      } while (paramInt != aozw.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aozd.h = paramLong;
-      aozd localaozd = this.jdField_a_of_type_Aozd;
-      localaozd.i += this.jdField_a_of_type_Aozd.h;
-      this.jdField_a_of_type_Apai.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aozd.jdField_a_of_type_Aoyp.a();
-      this.jdField_a_of_type_Apai.jdField_a_of_type_Apah = paramapah;
-      this.jdField_a_of_type_Apai.jdField_a_of_type_Int = this.jdField_a_of_type_Aozd.d;
-      this.jdField_a_of_type_Apai.jdField_b_of_type_Int = this.jdField_a_of_type_Aozd.e;
-      this.jdField_a_of_type_Apai.jdField_a_of_type_Long = this.jdField_a_of_type_Aozd.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Apai.jdField_c_of_type_Int = this.jdField_a_of_type_Aozd.f;
-      this.jdField_a_of_type_Apai.jdField_b_of_type_JavaLangString = Integer.toString(this.jdField_a_of_type_Aozd.jdField_a_of_type_ComTencentCommonAppAppInterface.getAppid());
-      this.jdField_a_of_type_Apai.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_Aozd.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      this.jdField_a_of_type_Apai.jdField_c_of_type_Long = System.currentTimeMillis();
-      aozd.a(this.jdField_a_of_type_Aozd, this.jdField_a_of_type_Apai);
-    } while (aozd.a(this.jdField_a_of_type_Aozd) == null);
-    aozd.a(this.jdField_a_of_type_Aozd).c();
+      boolean bool = h();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneFriendFeedsV1AndV2Action", 1, "doAction error: " + localException.getMessage());
+      a("QzoneFriendFeedsV1AndV2Action");
+    }
+    return false;
   }
   
-  public void a(aozz paramaozz)
+  public boolean h()
   {
-    this.jdField_a_of_type_Apai.jdField_a_of_type_Aozz = paramaozz;
-  }
-  
-  public void a(apaa paramapaa)
-  {
-    this.jdField_a_of_type_Apai.jdField_a_of_type_Apaa = paramapaa;
-  }
-  
-  public void a(apab paramapab)
-  {
-    this.jdField_a_of_type_Apai.jdField_a_of_type_Apab = paramapab;
-  }
-  
-  public void a(apac paramapac)
-  {
-    this.jdField_a_of_type_Apai.jdField_a_of_type_Apac = paramapac;
-  }
-  
-  public void a(apaj paramapaj)
-  {
-    this.jdField_a_of_type_Apai.jdField_a_of_type_Apaj = paramapaj;
-  }
-  
-  public void b(apaa paramapaa)
-  {
-    this.jdField_a_of_type_Apai.jdField_b_of_type_Apaa = paramapaa;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return false;
+    }
+    Object localObject = (bcvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
+    if ((localObject != null) && ((((bcvn)localObject).a(2) > 0) || (((bcvn)localObject).a(1) > 0))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("newflag", bool);
+      ((Intent)localObject).putExtra("refer", "schemeActiveFeeds");
+      QzonePluginProxyActivity.a((Intent)localObject, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
+      ((Intent)localObject).addFlags(805306368);
+      String str = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("push_trans_channel");
+      bmtd.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (Intent)localObject, str, -1);
+      LpReportInfo_dc02880.report(this.jdField_a_of_type_JavaLangString);
+      return true;
+    }
   }
 }
 

@@ -1,41 +1,17 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnCompletionListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnCompletionListener;
 
-public class bkze
+class bkze
+  implements IMediaPlayer.OnCompletionListener
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
-    try
-    {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
-      return paramClass;
-    }
-    catch (IllegalAccessException paramClass)
-    {
-      paramClass.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramClass)
-    {
-      for (;;)
-      {
-        paramClass.printStackTrace();
-      }
-    }
-  }
+  bkze(bkzb parambkzb, ReliableVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
   
-  public static byte[] a(JceStruct paramJceStruct)
+  public void onCompletion(IMediaPlayer paramIMediaPlayer)
   {
-    if (paramJceStruct == null) {
-      return null;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnCompletionListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bkzb);
     }
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("utf-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
   }
 }
 

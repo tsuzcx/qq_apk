@@ -1,95 +1,33 @@
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class axty
-  implements bkhw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"setBackgroundDrawableCompat", "", "Landroid/view/View;", "background", "Landroid/graphics/drawable/Drawable;", "setOnClickListener", "listener", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class axty
 {
-  axty(axtx paramaxtx, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static final void a(@NotNull View paramView, @Nullable Drawable paramDrawable)
   {
-    switch (paramInt)
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setBackgroundDrawableCompat");
+    if (Build.VERSION.SDK_INT >= 16)
     {
-    default: 
-      if (this.jdField_a_of_type_Bkho != null) {
-        this.jdField_a_of_type_Bkho.dismiss();
-      }
+      paramView.setBackground(paramDrawable);
       return;
     }
-    this.jdField_a_of_type_Axtx.a.f = true;
-    Object localObject1 = this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-    paramView = (View)localObject1;
-    if (bgsp.a((String)localObject1))
-    {
-      paramView = (View)localObject1;
-      if (axtp.a(this.jdField_a_of_type_Axtx.a) != null) {
-        paramView = axtp.a(this.jdField_a_of_type_Axtx.a).uin;
-      }
-    }
-    if (bgsp.a(paramView)) {
-      paramView = "0";
-    }
-    for (;;)
-    {
-      long l;
-      if (this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_Long == 0L) {
-        if (axtp.a(this.jdField_a_of_type_Axtx.a) != null)
-        {
-          l = axtp.a(this.jdField_a_of_type_Axtx.a).tinyId;
-          label160:
-          if ((!"0".equals(paramView)) || (l != 0L))
-          {
-            Object localObject2 = null;
-            paramInt = 20003;
-            localObject1 = null;
-            if (this.jdField_a_of_type_Axtx.a.a.app != null) {
-              localObject1 = this.jdField_a_of_type_Axtx.a.a.app.a(false);
-            }
-            if (((localObject1 == null) || (!((HotChatManager)localObject1).b(this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d))) && (this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 33) && (this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 4))
-            {
-              localObject1 = localObject2;
-              if (this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 31) {}
-            }
-            else
-            {
-              paramInt = 20012;
-              localObject1 = this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d;
-            }
-            abao.a(this.jdField_a_of_type_Axtx.a.a, this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_Long, paramView, (String)localObject1, paramInt, "", this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_AndroidOsBundle);
-          }
-          bcst.b(this.jdField_a_of_type_Axtx.a.a.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
-          if ((axtp.a(this.jdField_a_of_type_Axtx.a) != null) && (axtp.a(this.jdField_a_of_type_Axtx.a).iIsGodFlag == 1))
-          {
-            if (axtp.a(this.jdField_a_of_type_Axtx.a).gender != 0) {
-              break label622;
-            }
-            bcst.b(this.jdField_a_of_type_Axtx.a.a.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
-          }
-        }
-      }
-      for (;;)
-      {
-        bcst.b(this.jdField_a_of_type_Axtx.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
-        if (!ProfileActivity.c(this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
-          break;
-        }
-        bcst.b(this.jdField_a_of_type_Axtx.a.a.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
-        break;
-        l = 0L;
-        break label160;
-        l = this.jdField_a_of_type_Axtx.a.a.jdField_a_of_type_Long;
-        break label160;
-        label622:
-        if (axtp.a(this.jdField_a_of_type_Axtx.a).gender == 1) {
-          bcst.b(this.jdField_a_of_type_Axtx.a.a.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    paramView.setBackgroundDrawable(paramDrawable);
+  }
+  
+  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
+  {
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
+    paramView.setOnClickListener((View.OnClickListener)new axtz(paramFunction0));
   }
 }
 

@@ -13,7 +13,7 @@ class BaseChatPie$10$2
   {
     if (this.a.this$0.j != null)
     {
-      this.a.this$0.j.setText(this.a.this$0.a.getResources().getString(2131689937));
+      this.a.this$0.j.setText(this.a.this$0.a.getResources().getString(2131689944));
       this.a.this$0.j.setTag(Integer.valueOf(2));
     }
   }

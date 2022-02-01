@@ -17,7 +17,7 @@ class QCircleStatusView$2
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = new ColorDrawable(this.this$0.getResources().getColor(2131167224));
+      ColorDrawable localColorDrawable = new ColorDrawable(this.this$0.getResources().getColor(2131167247));
       localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
       localURLDrawableOptions.mFailedDrawable = localColorDrawable;
       localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();

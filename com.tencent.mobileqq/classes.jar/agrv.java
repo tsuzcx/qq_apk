@@ -1,61 +1,47 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
+import com.tencent.qphone.base.util.QLog;
 
-public class agrv
-  extends afwr
+class agrv
+  implements View.OnLayoutChangeListener
 {
-  public agru a;
-  public ImageView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  final int e = 0;
-  final int f = 1;
-  final int g = 2;
-  final int h = 3;
-  final int i = 4;
-  final int j = 5;
+  agrv(agrt paramagrt, View paramView) {}
   
-  public agrv(agrq paramagrq) {}
-  
-  int a(MessageForPic paramMessageForPic)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (!paramMessageForPic.isSendFromLocal())
+    if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
+      return;
+    }
+    paramView = new int[2];
+    paramInt1 = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)) {
-        return 1;
-      }
+      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
+      paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
     }
-    else
+    if (agrt.a(this.jdField_a_of_type_Agrt) != null)
     {
-      if (paramMessageForPic.size > 0L) {
-        return 2;
+      paramInt2 = agrt.a(this.jdField_a_of_type_Agrt).getRight();
+      label81:
+      if (agrt.a(this.jdField_a_of_type_Agrt) == null) {
+        break label180;
       }
-      paramMessageForPic = this.jdField_a_of_type_Agrq.a.a().a(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
-      if ((paramMessageForPic instanceof bdsx))
-      {
-        paramMessageForPic = (bdsx)paramMessageForPic;
-        long l = paramMessageForPic.c();
-        if ((l == 1005L) || (l == 1006L) || (l == 1004L) || (paramMessageForPic.d() == 1003L)) {
-          return 4;
-        }
-        return 3;
+    }
+    label180:
+    for (paramInt3 = agrt.a(this.jdField_a_of_type_Agrt).getHeight();; paramInt3 = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
       }
-      return 5;
+      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
+        break;
+      }
+      agrt.a(this.jdField_a_of_type_Agrt).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
+      return;
+      paramInt2 = 0;
+      break label81;
     }
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Agru != null) {
-      return this.jdField_a_of_type_Agru.b;
-    }
-    return false;
   }
 }
 

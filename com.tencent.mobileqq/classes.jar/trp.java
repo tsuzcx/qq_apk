@@ -1,90 +1,62 @@
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import org.json.JSONObject;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class trp
+class trp
+  extends BaseAdapter
 {
-  public int a;
-  public ViewGroup a;
-  private sfb a;
-  public six a;
-  public trl a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
+  trp(trm paramtrm) {}
   
-  public trp(ViewGroup paramViewGroup, JSONObject paramJSONObject)
+  public int getCount()
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 1000;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Trl = new trl(paramJSONObject.getJSONObject("video_info"));
-    if (paramJSONObject.has("autoplay")) {
-      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("autoplay");
-    }
-    if (paramJSONObject.has("muted")) {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("muted");
-    }
-    if (paramJSONObject.has("start_position")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("start_position");
-    }
-    if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
-    }
-    if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
-    }
-    if (paramJSONObject.has("controls")) {
-      this.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("controls");
-    }
-    if (paramJSONObject.has("resize")) {
-      a(paramJSONObject.getString("resize"));
-    }
-    if (paramJSONObject.has("timeupdateRate")) {
-      this.jdField_d_of_type_Int = paramJSONObject.getInt("timeupdateRate");
-    }
-    if (paramJSONObject.has("barBottomMargin")) {
-      this.jdField_e_of_type_Int = paramJSONObject.getInt("barBottomMargin");
-    }
-    if (paramJSONObject.has("disableFullScreen")) {
-      this.jdField_d_of_type_Boolean = paramJSONObject.getBoolean("disableFullScreen");
-    }
-    if (paramJSONObject.has("disableSeek")) {
-      this.jdField_e_of_type_Boolean = paramJSONObject.getBoolean("disableSeek");
-    }
-    if (paramJSONObject.has("endWithLastFrame")) {
-      this.jdField_f_of_type_Boolean = paramJSONObject.getBoolean("endWithLastFrame");
-    }
+    return trm.a(this.a).size();
   }
   
-  void a(String paramString)
+  public Object getItem(int paramInt)
   {
-    if (paramString.equals("contain")) {
-      this.jdField_f_of_type_Int = 0;
-    }
-    while (!paramString.equals("cover")) {
-      return;
-    }
-    this.jdField_f_of_type_Int = 2;
+    return trm.a(this.a).get(paramInt);
   }
   
-  public String toString()
+  public long getItemId(int paramInt)
   {
-    return "VideoPlayParam{videoInfo=" + this.jdField_a_of_type_Trl + ", startPosition=" + this.jdField_a_of_type_Int + ", muted=" + this.jdField_a_of_type_Boolean + ", autoPlay=" + this.jdField_b_of_type_Boolean + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", controls=" + this.jdField_c_of_type_Boolean + ", timeupdateRate=" + this.jdField_d_of_type_Int + ", barBottomMargin=" + this.jdField_e_of_type_Int + ", disableFullScreen=" + this.jdField_d_of_type_Boolean + ", disableSeek=" + this.jdField_e_of_type_Boolean + '}';
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560201, null);
+      paramView = new trq(this.a);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380126));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369167));
+      localView.setTag(paramView);
+      localObject = (GiftServiceBean)getItem(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
+      if (trm.a(this.a) != paramInt) {
+        break label143;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842858);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (trq)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label143:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842859);
+    }
   }
 }
 

@@ -1,26 +1,17 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import NS_QQ_STORY_META.META.StMusic;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.util.Comparator;
 
-public class bona
-  implements zxa<CLIENT.StBatchGetMusicInfoRsp>
+final class bona
+  implements Comparator<bonc>
 {
-  public bona(QIMMusicConfigManager paramQIMMusicConfigManager, boku paramboku) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  public int a(bonc parambonc1, bonc parambonc2)
   {
-    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
-      this.jdField_a_of_type_Boku.a(false, new FlowMusic());
+    if (parambonc1.a) {
+      return 1;
     }
-    while (this.jdField_a_of_type_Boku == null) {
-      return;
+    if (parambonc2.a) {
+      return -1;
     }
-    paramString = new FlowMusic((META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(0));
-    QLog.i("QIMMusicConfigManager", 1, "getSingleFullMusicInfo from story success flow info:" + paramString.toString());
-    this.jdField_a_of_type_Boku.a(true, paramString);
+    return 0;
   }
 }
 

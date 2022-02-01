@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
 public class afje
-  extends anmu
+  extends Handler
 {
-  public afje(TroopDisbandActivity paramTroopDisbandActivity) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public afje(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 

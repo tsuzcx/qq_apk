@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bubble;
 
-import apwr;
+import aqkr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -8,7 +8,7 @@ import mqq.app.AppRuntime;
 public class BubbleDiyFetcher$1
   implements Runnable
 {
-  public BubbleDiyFetcher$1(apwr paramapwr) {}
+  public BubbleDiyFetcher$1(aqkr paramaqkr) {}
   
   public void run()
   {

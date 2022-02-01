@@ -1,22 +1,7 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class awdm
-  implements View.OnClickListener
+public class awdm
+  implements anui
 {
-  awdm(awdj paramawdj, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    LoginUserGuideHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Awdj.a.a, awdj.a(this.jdField_a_of_type_Awdj));
-    this.jdField_a_of_type_Awdj.g();
-    bcst.b(this.jdField_a_of_type_Awdj.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 2, 0, "2", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,46 +1,26 @@
-import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import java.util.HashMap;
 
-public class ausy
+public final class ausy
+  implements beup
 {
-  private static ausy jdField_a_of_type_Ausy;
-  private GameCenterVideoViewController jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
-  
-  public static ausy a()
+  public void a(bevl parambevl, bevm parambevm)
   {
-    try
+    if ((parambevl == null) || (parambevm == null)) {}
+    do
     {
-      if (jdField_a_of_type_Ausy == null) {
-        jdField_a_of_type_Ausy = new ausy();
-      }
-      ausy localausy = jdField_a_of_type_Ausy;
-      return localausy;
-    }
-    finally {}
-  }
-  
-  public GameCenterVideoViewController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = null;
-    }
-  }
-  
-  public void a(GameCenterVideoViewController paramGameCenterVideoViewController)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != paramGameCenterVideoViewController) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+      do
+      {
+        return;
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+    } while (!parambevm.contains("range="));
+    parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
+    parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long);
   }
 }
 

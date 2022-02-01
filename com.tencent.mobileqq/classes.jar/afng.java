@@ -1,22 +1,44 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class afng
-  implements TextWatcher
+  extends anyu
 {
-  public afng(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public afng(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.c(paramEditable);
+    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
+    if (!paramBoolean2)
+    {
+      paramString = this.a;
+      if (!paramBoolean1)
+      {
+        paramBoolean1 = true;
+        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
+          QQToast.a(BaseApplication.getContext(), anzj.a(2131712867), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
+        }
+      }
+    }
+    do
+    {
+      return;
+      paramBoolean1 = false;
+      break;
+      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
+      {
+        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
+        return;
+      }
+      paramString = ((anyw)this.a.app.getManager(51)).e(String.valueOf(paramLong));
+    } while ((paramString == null) || (paramString.isShield()));
+    ShieldFriendsListActivity.a(this.a).a(paramString);
+    ShieldFriendsListActivity.a(this.a);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

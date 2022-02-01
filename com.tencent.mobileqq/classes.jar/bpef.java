@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-class bpef
-  implements View.OnClickListener
+public class bpef
+  implements Animator.AnimatorListener
 {
-  bpef(bped parambped) {}
+  public bpef(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.a(0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

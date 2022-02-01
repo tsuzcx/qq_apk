@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/n5i" android:layout_width="750.0px" android:layout_height="1334.0px"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n5d" android:layout_width="750.0px" android:layout_height="1624.0px" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/n5c" android:layout_width="750.0px" android:layout_height="1134.0px" android:layout_marginTop="36.0px" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/n5h" android:layout_width="619.0px" android:layout_height="1108.0px" android:layout_marginTop="39.0px" android:layout_centerHorizontal="true">
-        <RelativeLayout android:id="@id/n5j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/n5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0px" android:layout_centerHorizontal="true" />
-            <FrameLayout android:id="@id/n5a" android:background="@drawable/bjq" android:padding="8.0px" android:layout_width="370.0px" android:layout_height="370.0px" android:layout_marginTop="26.0px" android:layout_below="@id/n5f" android:layout_centerHorizontal="true">
-                <com.tencent.avgame.ui.AVGamePosterCoverView android:id="@id/n5b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            </FrameLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/n5_" android:layout_width="478.0px" android:layout_height="wrap_content" android:layout_marginLeft="64.0px" android:layout_marginTop="31.0px" android:layout_below="@id/n5a" />
-        </RelativeLayout>
-    </LinearLayout>
-    <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:layout_gravity="right" android:id="@id/n5g" android:background="@drawable/bjp" android:layout_width="100.0px" android:layout_height="120.0px" android:layout_marginTop="5.0px" android:layout_marginRight="88.0px" android:layout_below="@id/n5c" android:layout_alignRight="@id/n5c" android:layout_alignParentRight="true">
-        <ImageView android:id="@id/n5e" android:padding="5.0px" android:layout_width="98.0px" android:layout_height="98.0px" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="15.0px" android:textStyle="bold" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0px" android:text="@string/wgl" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    </com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/mw4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:contentDescription="@string/wdo" />
+</LinearLayout>

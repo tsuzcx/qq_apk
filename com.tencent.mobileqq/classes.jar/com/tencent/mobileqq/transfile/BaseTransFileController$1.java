@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import aqlk;
-import aqtl;
-import bdsv;
+import aran;
+import arix;
+import bern;
 
 public class BaseTransFileController$1
   implements Runnable
 {
-  public BaseTransFileController$1(bdsv parambdsv) {}
+  public BaseTransFileController$1(bern parambern) {}
   
   public void run()
   {
-    this.this$0.a = ((aqtl)aqlk.a().a(538));
+    this.this$0.a = ((arix)aran.a().a(538));
   }
 }
 

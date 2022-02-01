@@ -1,121 +1,141 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.bizparts.danmaku.element.ColorElement;
 import common.config.service.QzoneConfig;
+import java.util.regex.Pattern;
 
-class vik
-  implements TextWatcher
+public class vik
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public static int a;
+  public static final Pattern a;
+  public static final Pattern b = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
+  public static final Pattern c = Pattern.compile("\\{url:(.*?),text:(.*?),color:(.*?)\\}");
+  public static final Pattern d = Pattern.compile("\\{url:.*?,text:.*?\\}");
+  public static final Pattern e = Pattern.compile("\\<uin:.*?,nick(name)?:.*?\\>");
+  public static final Pattern f = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2);
+  public static final Pattern g = Pattern.compile("\\{img:.*?,w:\\d+,h:\\d+\\}");
+  public static final Pattern h = Pattern.compile("\\{img:.*?,w:\\d+,h:.+?\\}");
   
-  vik(vih paramvih) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  static
   {
-    aanc localaanc = null;
-    if (paramEditable == null) {
-      return;
-    }
-    this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.removeTextChangedListener(this);
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        int j = QzoneConfig.getQQCircleCommentMaxWordsLimit();
-        if (vih.a(this.jdField_a_of_type_Vih) != null) {
-          break label301;
-        }
-        i = 0;
-        if (i >= j)
-        {
-          this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(paramEditable.toString().substring(0, i));
-          this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText().toString().length());
-          this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.addTextChangedListener(this);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        String str = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
-        i = str.indexOf('/');
-        localObject = localaanc;
-        if (i >= 0)
-        {
-          localObject = localaanc;
-          if (i < str.length() - 1)
-          {
-            localObject = new aanb(paramEditable.toString());
-            localaanc = new aanc();
-            localaanc.jdField_a_of_type_Float = ((int)(22.0D * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5D));
-            localaanc.jdField_a_of_type_Int = 0;
-            localaanc.jdField_a_of_type_JavaLangCharSequence = paramEditable.toString();
-            aana.a(localaanc, str, null, (aanb)localObject, false);
-          }
-        }
-        if (localObject == null) {
-          break label272;
-        }
-      }
-      int i = this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
-      try
-      {
-        this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText((CharSequence)localObject);
-        this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(i);
-        label272:
-        this.b = 0;
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.addTextChangedListener(this);
-        vih.b(this.jdField_a_of_type_Vih);
-        return;
-        label301:
-        i = Integer.parseInt(vih.a(this.jdField_a_of_type_Vih).getText().toString());
-      }
-      catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_Vih.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(paramEditable.toString());
-          i = paramEditable.toString().length();
-        }
-      }
-    }
+    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "RichTextNeedDecode", 0);
+    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<uin:.*?,nickname:.*?>");
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static ColorElement a(String paramString)
   {
-    if (paramCharSequence == null) {
-      return;
+    i = paramString.indexOf("text:") + "text:".length();
+    int n = paramString.indexOf(",color:");
+    if ((i == -1) || (n == -1)) {
+      return new ColorElement();
     }
-    if ((this.jdField_a_of_type_Vih.jdField_a_of_type_Boolean) && (paramInt3 == 1) && (paramInt2 == 0))
+    ColorElement localColorElement = new ColorElement();
+    localColorElement.text = paramString.substring(i, n);
+    j = paramString.indexOf(",useDefaultFont:");
+    k = paramString.indexOf(",useSuperFont:");
+    int m = paramString.indexOf(",fontName:");
+    i = paramString.length() - 1;
+    if (j != -1) {}
+    try
     {
-      if (!paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")) {
-        break label87;
+      if (paramString.charAt(",useDefaultFont:".length() + j) == '1') {
+        localColorElement.useDefaultFont = true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QCircleBaseInputPopupWindow", 2, "输入@呼起好友选择器");
-      }
-      this.jdField_a_of_type_Vih.c = true;
-      this.jdField_a_of_type_Vih.f();
+      i = j;
     }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        i = j;
+        continue;
+        j = k;
+      }
+    }
+    if (k != -1)
+    {
+      if (j == -1) {
+        break label362;
+      }
+      i = j;
+    }
+    try
+    {
+      if (paramString.charAt(",useSuperFont:".length() + k) == '0')
+      {
+        localColorElement.useSuperFont = false;
+        i = j;
+      }
+    }
+    catch (Exception localException4)
+    {
+      for (;;)
+      {
+        i = j;
+      }
+    }
+    k = i;
+    try
+    {
+      int i1 = paramString.indexOf(",bold:");
+      j = i;
+      if (i1 >= 0)
+      {
+        k = i;
+        j = Math.min(i1, i);
+      }
+      i = j;
+      k = j;
+      if (paramString.charAt(i1 + ",bold:".length()) == '1')
+      {
+        k = j;
+        localColorElement.isBold = true;
+        i = j;
+      }
+    }
+    catch (Exception localException3)
+    {
+      for (;;)
+      {
+        i = k;
+      }
+    }
+    j = i;
+    if (m != -1) {}
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt3;
-      return;
-      label87:
-      this.jdField_a_of_type_Vih.c = false;
+      try
+      {
+        str = paramString.substring(",fontName:".length() + m, i);
+        if (!TextUtils.isEmpty(str))
+        {
+          str = str.trim();
+          localColorElement.fontFamilyUrl = ("https://downv6.qq.com/video_story/qcircle/ttf/" + str + ".ttf");
+        }
+        j = m;
+      }
+      catch (Exception localException2)
+      {
+        String str;
+        j = i;
+        continue;
+      }
+      try
+      {
+        str = paramString.substring(",color:".length() + n, j);
+        paramString = str;
+        if (!TextUtils.isEmpty(str))
+        {
+          paramString = str;
+          if (!str.startsWith("#")) {
+            paramString = "#" + str;
+          }
+        }
+        localColorElement.color = Color.parseColor(paramString);
+      }
+      catch (Exception paramString) {}
     }
+    return localColorElement;
   }
 }
 

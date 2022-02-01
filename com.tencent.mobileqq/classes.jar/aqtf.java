@@ -1,67 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.DecelerateInterpolator;
 
-public class aqtf
-  extends aqkz<aqte>
+class aqtf
+  implements Animator.AnimatorListener
 {
-  @NonNull
-  public aqte a(int paramInt)
-  {
-    return new aqte();
-  }
+  aqtf(aqsy paramaqsy, boolean paramBoolean) {}
   
-  @Nullable
-  public aqte a(aqlg[] paramArrayOfaqlg)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    aqsy.b(this.jdField_a_of_type_Aqsy).scrollTo(0, 0);
+    aqsy.b(this.jdField_a_of_type_Aqsy).setAlpha(1.0F);
+    aqsy.b(this.jdField_a_of_type_Aqsy).setBackgroundColor(aqsy.a(this.jdField_a_of_type_Aqsy).getResources().getColor(aqsy.a()));
+    paramAnimator = this.jdField_a_of_type_Aqsy.a;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (float f = -this.jdField_a_of_type_Aqsy.a.getMeasuredWidth();; f = this.jdField_a_of_type_Aqsy.a.getMeasuredWidth())
     {
-      aqte localaqte = aqte.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqte;
+      paramAnimator.setX(f);
+      this.jdField_a_of_type_Aqsy.a.setAlpha(0.0F);
+      this.jdField_a_of_type_Aqsy.a.setVisibility(0);
+      this.jdField_a_of_type_Aqsy.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
+      return;
     }
-    return new aqte();
   }
   
-  public void a(aqte paramaqte) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public Class<aqte> clazz()
-  {
-    return aqte.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 490;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtf
  * JD-Core Version:    0.7.0.1
  */

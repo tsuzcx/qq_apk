@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.base.preload;
 
 import android.annotation.TargetApi;
 import java.util.LinkedList;
-import wgv;
-import yqp;
+import wkq;
+import yuk;
 
 @TargetApi(14)
 public class PreloadQueue
-  extends LinkedList<wgv>
+  extends LinkedList<wkq>
 {
   public static final String TAG = "Q.qqstory.download.preload.PreloadQueue";
   private final Object dataSafeLock = new Object();
   private int mQueueId;
   private final Object notEmptyLock = new Object();
   
-  public void addTask(wgv paramwgv, boolean paramBoolean)
+  public void addTask(wkq paramwkq, boolean paramBoolean)
   {
     localObject = this.dataSafeLock;
     if (paramBoolean) {}
@@ -22,12 +22,12 @@ public class PreloadQueue
     {
       try
       {
-        addFirst(paramwgv);
+        addFirst(paramwkq);
         releaseBlock();
         return;
       }
       finally {}
-      add(paramwgv);
+      add(paramwkq);
     }
   }
   
@@ -40,17 +40,17 @@ public class PreloadQueue
     }
   }
   
-  public wgv getFirstAndBlockIfLowestPriority()
+  public wkq getFirstAndBlockIfLowestPriority()
   {
     try
     {
-      wgv localwgv = pollFirst();
-      ??? = localwgv;
+      wkq localwkq = pollFirst();
+      ??? = localwkq;
       if (this.mQueueId == 2)
       {
-        ??? = localwgv;
-        if (localwgv == null) {
-          yqp.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
+        ??? = localwkq;
+        if (localwkq == null) {
+          yuk.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
         }
       }
       synchronized (this.notEmptyLock)
@@ -63,7 +63,7 @@ public class PreloadQueue
     }
     catch (InterruptedException localInterruptedException)
     {
-      yqp.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
+      yuk.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
     }
   }
   
@@ -88,12 +88,12 @@ public class PreloadQueue
     }
   }
   
-  public wgv pollFirst()
+  public wkq pollFirst()
   {
     synchronized (this.dataSafeLock)
     {
-      wgv localwgv = (wgv)super.pollFirst();
-      return localwgv;
+      wkq localwkq = (wkq)super.pollFirst();
+      return localwkq;
     }
   }
   
@@ -101,7 +101,7 @@ public class PreloadQueue
   {
     synchronized (this.notEmptyLock)
     {
-      yqp.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
+      yuk.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
       this.notEmptyLock.notifyAll();
       return;
     }

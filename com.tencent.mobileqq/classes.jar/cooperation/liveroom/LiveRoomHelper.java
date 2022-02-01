@@ -1,10 +1,10 @@
 package cooperation.liveroom;
 
 import android.support.annotation.Nullable;
-import bgln;
-import bgnt;
-import biqd;
-import blfh;
+import bhlo;
+import bhnv;
+import bjrc;
+import bmgk;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -149,11 +149,11 @@ public class LiveRoomHelper
   @Nullable
   public static PluginInfo getPluginInfoInQQ()
   {
-    blfh localblfh = getPluginManagerInQQ();
-    if (localblfh == null) {
+    bmgk localbmgk = getPluginManagerInQQ();
+    if (localbmgk == null) {
       return null;
     }
-    return localblfh.a("LiveRoomPlugin.apk");
+    return localbmgk.a("LiveRoomPlugin.apk");
   }
   
   public static boolean getPluginInstalledInTool()
@@ -162,7 +162,7 @@ public class LiveRoomHelper
   }
   
   @Nullable
-  public static blfh getPluginManagerInQQ()
+  public static bmgk getPluginManagerInQQ()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
@@ -173,7 +173,7 @@ public class LiveRoomHelper
         QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
         return null;
       }
-      return (blfh)((QQAppInterface)localObject).getManager(27);
+      return (bmgk)((QQAppInterface)localObject).getManager(27);
     }
   }
   
@@ -211,7 +211,7 @@ public class LiveRoomHelper
       localJSONObject.put("platform", "androidqq");
       localJSONObject.put("platVersion", AppSetting.f());
       String str = "";
-      if ("com.tencent.mobileqq:tool".equals(biqd.r())) {
+      if ("com.tencent.mobileqq:tool".equals(bjrc.r())) {
         str = getPluginVersionInTool();
       }
       for (;;)
@@ -220,11 +220,11 @@ public class LiveRoomHelper
         localJSONObject.put("from", paramString1);
         localJSONObject.put("action", paramString2);
         localJSONObject.put("result", paramString3);
-        localJSONObject.put("imei", bgln.a());
-        localJSONObject.put("device", bgln.i());
+        localJSONObject.put("imei", bhlo.a());
+        localJSONObject.put("device", bhlo.i());
         localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
-        localJSONObject.put("network", bgnt.b(BaseApplicationImpl.getContext()));
-        localJSONObject.put("os", bgln.e());
+        localJSONObject.put("network", bhnv.b(BaseApplicationImpl.getContext()));
+        localJSONObject.put("os", bhlo.e());
         reportJson.put(localJSONObject);
         return;
         PluginInfo localPluginInfo = getPluginInfoInQQ();

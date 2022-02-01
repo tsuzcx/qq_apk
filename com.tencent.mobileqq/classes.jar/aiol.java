@@ -1,16 +1,52 @@
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aiol
+class aiol
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  @bghr(a=String.class)
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
+  aiol(ainh paramainh) {}
   
-  public String toString()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bkdr.a(this.b) + '\'' + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    boolean bool = true;
+    if (!paramBoolean)
+    {
+      this.a.A(2131694659);
+      paramBoolean = bool;
+      if (paramBoolean) {
+        this.a.bp();
+      }
+      return;
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label139;
+        }
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        paramBoolean = ainh.a(this.a, true, paramInt);
+      }
+      catch (Exception paramBundle)
+      {
+        paramBoolean = bool;
+      }
+      break;
+      label139:
+      paramBoolean = true;
+    }
   }
 }
 

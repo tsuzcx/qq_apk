@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anni;
-import blkk;
+import anzj;
+import bmln;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -22,14 +22,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<blkk> a()
+  public BaseSearchFragment<bmln> a()
   {
     return new FavoriteSearchFragment();
   }
   
   public String a()
   {
-    return anni.a(2131703173);
+    return anzj.a(2131703280);
   }
   
   @Override

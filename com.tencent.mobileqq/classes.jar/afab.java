@@ -1,39 +1,42 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class afab
-  implements amdu
+  implements DialogInterface.OnClickListener
 {
-  public afab(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public afab(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
-  
-  public void a(String paramString)
-  {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    try
+    {
+      paramDialogInterface = new AlertReport.ButtonAction();
+      paramDialogInterface.uint32_cmd.set(1);
+      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+      paramDialogInterface.str_package_name.set(blbf.c());
+      paramDialogInterface.uint32_app_id.set(AppSetting.a());
+      nkm.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+      bdll.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afab
  * JD-Core Version:    0.7.0.1
  */

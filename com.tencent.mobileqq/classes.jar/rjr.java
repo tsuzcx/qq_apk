@@ -1,17 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-public class rjr
-  implements rko
+class rjr
+  implements URLDrawable.DownloadListener
 {
-  public rjr(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  rjr(rjj paramrjj) {}
   
-  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  public void onFileDownloadFailed(int paramInt)
   {
-    ReadInJoyDeliverUGCActivity.a(this.a, true);
-    ReadInJoyDeliverUGCActivity.a(this.a, ((Integer)paramView.getTag()).intValue());
-    return false;
+    rjj.b(this.a);
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    rjj.c(this.a);
   }
 }
 

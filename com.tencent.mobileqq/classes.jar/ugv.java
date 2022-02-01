@@ -1,21 +1,21 @@
 import android.content.DialogInterface;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.content.DialogInterface.OnClickListener;
 
 final class ugv
-  extends bgmc
+  implements DialogInterface.OnClickListener
 {
-  ugv(WSDownloadParams paramWSDownloadParams) {}
+  ugv(int paramInt1, int paramInt2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    ugq.a(126, this.a);
-    umw.a(this.a.mScene, false, false);
+    unx.b(112, 2, 0);
+    uno.a(117, this.a, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ugv
  * JD-Core Version:    0.7.0.1
  */

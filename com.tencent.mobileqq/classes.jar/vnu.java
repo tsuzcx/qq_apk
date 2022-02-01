@@ -1,19 +1,38 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalPushFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
-public class vnu
-  implements Observer<vup<List<FeedCloudMeta.StFeed>>>
+class vnu
+  extends var
 {
-  public vnu(QCirclePersonalPushFragment paramQCirclePersonalPushFragment) {}
+  vnu(vnp paramvnp) {}
   
-  public void a(@Nullable vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public int a()
   {
-    QLog.d("QCirclePersonalPushFragment", 4, "initViewData:getFeedListRequestRsp");
-    this.a.a(paramvup);
+    return 0;
+  }
+  
+  public QCirclePolyLikeAniView a()
+  {
+    return vnp.a(this.a);
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.a.b("share_action_show_share_sheet", paramObject);
+  }
+  
+  public void a(String paramString, vas paramvas)
+  {
+    this.a.a().a(paramString, paramvas);
+  }
+  
+  public void a(vdq paramvdq)
+  {
+    this.a.a().a("light_interact_list_show", paramvdq);
   }
 }
 

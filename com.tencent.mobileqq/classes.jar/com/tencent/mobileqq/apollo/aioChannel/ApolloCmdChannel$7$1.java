@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import amku;
-import ampj;
-import amrk;
+import amwo;
+import anbd;
+import ande;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import java.nio.ByteBuffer;
@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 public class ApolloCmdChannel$7$1
   extends IApolloRunnableTask
 {
-  public ApolloCmdChannel$7$1(amku paramamku, int paramInt, Bitmap paramBitmap, ByteBuffer paramByteBuffer) {}
+  public ApolloCmdChannel$7$1(amwo paramamwo, int paramInt, Bitmap paramBitmap, ByteBuffer paramByteBuffer) {}
   
   public String a()
   {
@@ -19,8 +19,8 @@ public class ApolloCmdChannel$7$1
   
   public void run()
   {
-    if ((ampj.a() != null) && (ampj.a().a())) {
-      this.jdField_a_of_type_Amku.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.nativeOpenApiGetHeadCallBack(this.jdField_a_of_type_Amku.jdField_a_of_type_Long, this.jdField_a_of_type_Amku.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_JavaNioByteBuffer.array());
+    if ((anbd.a() != null) && (anbd.a().a())) {
+      this.jdField_a_of_type_Amwo.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.nativeOpenApiGetHeadCallBack(this.jdField_a_of_type_Amwo.jdField_a_of_type_Long, this.jdField_a_of_type_Amwo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_JavaNioByteBuffer.array());
     }
   }
 }

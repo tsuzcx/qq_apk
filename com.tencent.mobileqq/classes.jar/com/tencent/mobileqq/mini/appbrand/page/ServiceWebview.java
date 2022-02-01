@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import blrt;
-import blru;
+import bmsv;
+import bmsw;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -109,7 +109,7 @@ public class ServiceWebview
           }
         }
       }
-      localObject2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; __qqConfig = extend(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + (String)localObject1 + "'; __qqConfig.deviceinfo='" + blrt.a().f() + "'; __qqConfig.miniapp_version='" + (String)localObject2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      localObject2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; __qqConfig = extend(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + (String)localObject1 + "'; __qqConfig.deviceinfo='" + bmsv.a().f() + "'; __qqConfig.miniapp_version='" + (String)localObject2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
       localObject1 = localObject2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
         localObject1 = (String)localObject2 + "__qqConfig.debug=true;";
@@ -210,7 +210,7 @@ public class ServiceWebview
         if (this.mEnableNativeBuffer)
         {
           localObject = "__qqConfig.nativeBufferEnabled = true;";
-          localStringBuilder = localStringBuilder.append((String)localObject).append("__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(blru.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+          localStringBuilder = localStringBuilder.append((String)localObject).append("__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bmsw.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
           if (i == 0)
           {
             localObject = "false";

@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class afvh
-  implements afvp
+public class afvh
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afvh(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 42);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    TroopMemberListActivity.a(this.a, localArrayList);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

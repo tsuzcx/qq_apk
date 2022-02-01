@@ -1,17 +1,16 @@
+import android.view.animation.Animation;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class agaq
+  extends blgm
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView b;
-  ImageView c;
-  ImageView d;
+  public agaq(VisitorsActivity paramVisitorsActivity) {}
   
-  public agaq(agap paramagap) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.e.setVisibility(0);
+  }
 }
 
 

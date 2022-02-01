@@ -1,33 +1,11 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
 
-public abstract class bfem
+final class bfem
+  extends bhme
 {
-  protected JSONObject a;
-  protected boolean b = true;
-  public int c;
-  
-  public abstract int a();
-  
-  public JSONObject a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(String paramString) {}
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public abstract int b();
-  
-  public String toString()
-  {
-    if (this.a != null) {
-      return this.a.toString();
-    }
-    return "";
+    paramDialogInterface.dismiss();
   }
 }
 

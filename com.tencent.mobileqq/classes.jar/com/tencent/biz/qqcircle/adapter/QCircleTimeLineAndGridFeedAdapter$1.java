@@ -1,17 +1,17 @@
 package com.tencent.biz.qqcircle.adapter;
 
-import uyy;
-import vsc;
+import val;
+import vup;
 
 public class QCircleTimeLineAndGridFeedAdapter$1
   implements Runnable
 {
-  public QCircleTimeLineAndGridFeedAdapter$1(uyy paramuyy, boolean paramBoolean) {}
+  public QCircleTimeLineAndGridFeedAdapter$1(val paramval, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a) {
-      uyy.a(this.this$0).f();
+      val.a(this.this$0).g();
     }
   }
 }

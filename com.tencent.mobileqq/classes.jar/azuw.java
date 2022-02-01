@@ -1,66 +1,31 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class azuw
-  extends azut
+final class azuw
+  implements beup
 {
-  protected String a(QQAppInterface paramQQAppInterface)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    if (bgsp.a(this.f)) {
-      paramQQAppInterface = "";
-    }
-    aqji localaqji;
+    if ((parambevl == null) || (parambevm == null)) {}
     do
     {
-      String str;
       do
       {
-        return paramQQAppInterface;
-        if (this.f.equalsIgnoreCase("qqgame")) {
-          return bgyg.a("vipGameCenter");
-        }
-        if (!this.f.equalsIgnoreCase("confessmsg")) {
-          break;
-        }
-        localaqji = ((aqjm)paramQQAppInterface.getManager(269)).b();
-        str = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
-        paramQQAppInterface = str;
-      } while (localaqji == null);
-      paramQQAppInterface = str;
-    } while (TextUtils.isEmpty(localaqji.l));
-    return localaqji.l;
-    if (this.f.equalsIgnoreCase("qinterest"))
-    {
-      paramQQAppInterface = bgsg.c(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        return paramQQAppInterface.trim();
+        return;
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+      if (parambevm.contains("range="))
+      {
+        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
       }
-      return anov.a;
-    }
-    if (this.f.equalsIgnoreCase("bodong")) {}
-    return "";
-  }
-  
-  protected void a(bgmp parambgmp, QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if (this.f.equalsIgnoreCase("qqgame")) {
-      parambgmp.e("platformId=qq_m");
-    }
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (bgsp.a(paramQQAppInterface)) {
-      return;
-    }
-    this.b = paramQQAppInterface;
-  }
-  
-  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    return !bgsp.a(this.b);
+    } while (!QLog.isColorLevel());
+    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + parambevm);
   }
 }
 

@@ -1,47 +1,33 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bhsz
-  extends bhni
+final class bhsz
+  extends ClickableSpan
 {
-  public abstract long getDetect302Time();
+  bhsz(Context paramContext, aydg paramaydg) {}
   
-  public abstract boolean getIsReloadUrl();
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Aydg.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Aydg.b());
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
   
-  public abstract long getOpenUrlAfterCheckOfflineTime();
-  
-  public abstract long getReadIndexFromOfflineTime();
-  
-  public abstract JSONObject getX5Performance();
-  
-  public abstract long getgetWebViewTime();
-  
-  public abstract long getinitBrowserTime();
-  
-  public abstract long getinitTBSTime();
-  
-  public abstract long getinitTime();
-  
-  public abstract boolean getisWebViewCache();
-  
-  public abstract long getmClickTime();
-  
-  public abstract long getmOnCreateMilliTimeStamp();
-  
-  public abstract boolean getmPerfFirstLoadTag();
-  
-  public abstract long getmStartLoadUrlMilliTimeStamp();
-  
-  public abstract long getmTimeBeforeLoadUrl();
-  
-  public abstract long getonCreateTime();
-  
-  public abstract long getpluginFinished();
-  
-  public abstract long getviewInflateTime();
-  
-  public abstract boolean isMainPageUseLocalFile();
-  
-  public abstract void setX5Performance(JSONObject paramJSONObject);
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

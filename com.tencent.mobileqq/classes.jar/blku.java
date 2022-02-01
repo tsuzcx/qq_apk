@@ -1,98 +1,21 @@
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import cooperation.qqfav.QfavPluginProxyService;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.app.AppRuntime;
+import android.view.ViewTreeObserver;
+import com.tencent.widget.DynamicGridView;
 
 public class blku
+  implements blld
 {
-  private ServiceConnection a;
-  protected blkq a;
-  public final String a;
-  protected HashSet<String> a;
-  public ConcurrentLinkedQueue<blkw> a;
-  protected AppRuntime a;
-  protected boolean a;
-  public final String b = "com.qqfav.ipc.QfavRemoteProxyService";
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public blku(AppRuntime paramAppRuntime)
+  public blku(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "QfavRemoteProxyForQQ";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new blkv(this);
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  private void a(blkw paramblkw)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Blkq != null) && (paramblkw != null))
-    {
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, paramblkw));
-      }
-    }
-    else
-    {
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_Blkq.a(paramblkw.jdField_a_of_type_Int, paramblkw.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (RemoteException paramblkw) {}
-  }
-  
-  private boolean a()
-  {
-    if ((this.jdField_a_of_type_Blkq == null) && (!this.jdField_a_of_type_Boolean))
-    {
-      QfavPluginProxyService.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqfav.ipc.QfavRemoteProxyService");
-      this.jdField_a_of_type_Boolean = true;
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(blkw paramblkw)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramblkw);
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      paramString = new blkw(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_Blkq != null) {
-        a(paramString);
-      }
-      for (;;)
-      {
-        return true;
-        a(paramString);
-        a();
-      }
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new blkv(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
   }
 }
 

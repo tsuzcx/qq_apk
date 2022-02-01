@@ -1,28 +1,36 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aezy
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aezy(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public aezy(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localSvcDevLoginInfo.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, localSvcDevLoginInfo.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+      if (this.jdField_a_of_type_Boolean != bool) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      }
+      label39:
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label39;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aezy
  * JD-Core Version:    0.7.0.1
  */

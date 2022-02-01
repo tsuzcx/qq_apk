@@ -13,10 +13,10 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityManager;
-import bctj;
-import bhpd;
-import bhre;
-import bhrh;
+import bdmc;
+import bipy;
+import birz;
+import bisc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -39,12 +39,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import nhe;
-import nmj;
-import nwg;
-import nwh;
-import nwi;
-import nwj;
+import niz;
+import noe;
+import nya;
+import nyb;
+import nyc;
+import nyd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,14 +62,14 @@ public class CustomWebView
   public static String sLastContextLog;
   protected boolean attachedToWindow;
   String cookieUrl = "";
-  bhpd cookiesCallback = null;
+  bipy cookiesCallback = null;
   protected boolean isDestroyed;
   protected boolean isFirstLoad = true;
   public boolean isPaused = true;
-  protected nwi mOpenApiInfo;
+  protected nyc mOpenApiInfo;
   protected WebViewPluginEngine mPluginEngine;
   public boolean mWebIsInitMiniAIO;
-  nwj mt;
+  nyd mt;
   boolean needSetCookies = true;
   protected SonicClientImpl sonicSessionClient;
   
@@ -126,7 +126,7 @@ public class CustomWebView
     if (QLog.isDevelopLevel()) {
       QLog.i("webviewLoad", 4, "cost:" + (System.currentTimeMillis() - l) + " " + paramString);
     }
-    bctj.a(null).b("webviewLoad", paramString);
+    bdmc.a(null).b("webviewLoad", paramString);
   }
   
   private Intent getIntent()
@@ -156,7 +156,7 @@ public class CustomWebView
     return this.needSetCookies;
   }
   
-  private boolean setCookiesIfNeeded(nwh paramnwh)
+  private boolean setCookiesIfNeeded(nyb paramnyb)
   {
     if (!this.needSetCookies) {}
     Object localObject;
@@ -165,10 +165,10 @@ public class CustomWebView
       do
       {
         return false;
-        localObject = bhre.b(paramnwh.jdField_a_of_type_JavaLangString);
+        localObject = birz.b(paramnyb.jdField_a_of_type_JavaLangString);
       } while ((!"http".equals(localObject)) && (!"https".equals(localObject)));
-      this.cookiesCallback = new nwg(this, paramnwh);
-      localObject = SwiftBrowserCookieMonster.a(paramnwh.jdField_a_of_type_JavaLangString);
+      this.cookiesCallback = new nya(this, paramnyb);
+      localObject = SwiftBrowserCookieMonster.a(paramnyb.jdField_a_of_type_JavaLangString);
     } while (localObject == null);
     this.needSetCookies = false;
     Intent localIntent = getIntent();
@@ -177,8 +177,8 @@ public class CustomWebView
       ((SwiftBrowserCookieMonster)localObject).f();
       return false;
     }
-    this.cookieUrl = paramnwh.jdField_a_of_type_JavaLangString;
-    ((SwiftBrowserCookieMonster)localObject).a(paramnwh.jdField_a_of_type_JavaLangString, this.cookiesCallback, null, localIntent);
+    this.cookieUrl = paramnyb.jdField_a_of_type_JavaLangString;
+    ((SwiftBrowserCookieMonster)localObject).a(paramnyb.jdField_a_of_type_JavaLangString, this.cookiesCallback, null, localIntent);
     return true;
   }
   
@@ -217,7 +217,7 @@ public class CustomWebView
     Object localObject;
     if (sCallJsTpl == null)
     {
-      localObject = nhe.a().a("jscallback", null);
+      localObject = niz.a().a("jscallback", null);
       if ((localObject == null) || (!((String)localObject).contains("((0))")) || (!((String)localObject).contains("((1))"))) {
         break label152;
       }
@@ -239,7 +239,7 @@ public class CustomWebView
       }
     }
     ((StringBuilder)localObject).append("void(0)");
-    callJs(sCallJsTpl.replace("((0))", nmj.a(paramString)).replace("((1))", (CharSequence)localObject));
+    callJs(sCallJsTpl.replace("((0))", noe.a(paramString)).replace("((1))", (CharSequence)localObject));
   }
   
   public void callJs4OpenApi(JsBridgeListener paramJsBridgeListener, int paramInt, String... paramVarArgs)
@@ -281,7 +281,7 @@ public class CustomWebView
         if (QLog.isColorLevel()) {
           QLog.d("CustomWebView.troop.openapi", 2, "callJs4OpenApi,listener.sn" + paramJsBridgeListener.jdField_a_of_type_Long + " | result:" + paramVarArgs);
         }
-        callJs("(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);".replace("((0))", nmj.a(paramJsBridgeListener.jdField_a_of_type_Long + "")).replace("((1))", paramVarArgs));
+        callJs("(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);".replace("((0))", noe.a(paramJsBridgeListener.jdField_a_of_type_Long + "")).replace("((1))", paramVarArgs));
         return;
       }
       catch (JSONException paramJsBridgeListener) {}
@@ -481,7 +481,7 @@ public class CustomWebView
     return this.cookieUrl;
   }
   
-  public nwi getOpenApiTokenInfo()
+  public nyc getOpenApiTokenInfo()
   {
     return this.mOpenApiInfo;
   }
@@ -528,12 +528,12 @@ public class CustomWebView
         if (!isNeedSetCookies()) {
           break;
         }
-        localObject = new nwh(this);
-        ((nwh)localObject).jdField_a_of_type_Int = 3;
-        ((nwh)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((nwh)localObject).c = paramString2;
-        ((nwh)localObject).d = paramString3;
-      } while (setCookiesIfNeeded((nwh)localObject));
+        localObject = new nyb(this);
+        ((nyb)localObject).jdField_a_of_type_Int = 3;
+        ((nyb)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((nyb)localObject).c = paramString2;
+        ((nyb)localObject).d = paramString3;
+      } while (setCookiesIfNeeded((nyb)localObject));
       if (!this.isFirstLoad) {
         break;
       }
@@ -562,14 +562,14 @@ public class CustomWebView
         if (!isNeedSetCookies()) {
           break;
         }
-        localObject = new nwh(this);
-        ((nwh)localObject).jdField_a_of_type_Int = 4;
-        ((nwh)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((nwh)localObject).jdField_b_of_type_JavaLangString = paramString2;
-        ((nwh)localObject).c = paramString3;
-        ((nwh)localObject).d = paramString4;
-        ((nwh)localObject).e = paramString5;
-      } while (setCookiesIfNeeded((nwh)localObject));
+        localObject = new nyb(this);
+        ((nyb)localObject).jdField_a_of_type_Int = 4;
+        ((nyb)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((nyb)localObject).jdField_b_of_type_JavaLangString = paramString2;
+        ((nyb)localObject).c = paramString3;
+        ((nyb)localObject).d = paramString4;
+        ((nyb)localObject).e = paramString5;
+      } while (setCookiesIfNeeded((nyb)localObject));
       if (!this.isFirstLoad) {
         break;
       }
@@ -581,7 +581,7 @@ public class CustomWebView
     for (;;)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[").append(nmj.b(paramString1, new String[0])).append("]");
+      localStringBuilder.append("[").append(noe.b(paramString1, new String[0])).append("]");
       if (!TextUtils.isEmpty(paramString2)) {
         if (paramString2.length() <= 128) {
           break label228;
@@ -624,12 +624,12 @@ public class CustomWebView
   public void loadUrl(String paramString)
   {
     boolean bool2 = true;
-    QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl000: " + paramString + ", loadUrl url:" + nmj.b(paramString, new String[0]));
+    QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl000: " + paramString + ", loadUrl url:" + noe.b(paramString, new String[0]));
     if (this.isDestroyed) {}
     HashMap localHashMap;
     do
     {
-      nwh localnwh;
+      nyb localnyb;
       do
       {
         return;
@@ -638,11 +638,11 @@ public class CustomWebView
         if (!isNeedSetCookies()) {
           break;
         }
-        localnwh = new nwh(this);
-        localnwh.jdField_a_of_type_Int = 1;
-        localnwh.jdField_a_of_type_JavaLangString = paramString;
-      } while (setCookiesIfNeeded(localnwh));
-      QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl111: " + paramString + ", loadUrl url:" + nmj.b(paramString, new String[0]));
+        localnyb = new nyb(this);
+        localnyb.jdField_a_of_type_Int = 1;
+        localnyb.jdField_a_of_type_JavaLangString = paramString;
+      } while (setCookiesIfNeeded(localnyb));
+      QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl111: " + paramString + ", loadUrl url:" + noe.b(paramString, new String[0]));
       if ((this.sonicSessionClient != null) && (this.sonicSessionClient.getSession().isMatchCurrentUrl(paramString)) && (this.sonicSessionClient.getSession().onClientReady()))
       {
         this.isFirstLoad = true;
@@ -671,17 +671,17 @@ public class CustomWebView
       for (boolean bool1 = bool2;; bool1 = false)
       {
         if ((bool1) && ((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-          addContextLog(nmj.b(paramString, new String[0]));
+          addContextLog(noe.b(paramString, new String[0]));
         }
         if (QLog.isColorLevel())
         {
-          QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl222: " + bool1 + ", loadUrl url:" + nmj.b(paramString, new String[0]));
+          QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl222: " + bool1 + ", loadUrl url:" + noe.b(paramString, new String[0]));
           com.tencent.mobileqq.log.VipWebViewReportLog.d = paramString;
         }
-        if (bhrh.jdField_a_of_type_Boolean)
+        if (bisc.jdField_a_of_type_Boolean)
         {
-          bhre.a(this, bhrh.jdField_a_of_type_JavaLangString);
-          bhrh.jdField_a_of_type_Boolean = false;
+          birz.a(this, bisc.jdField_a_of_type_JavaLangString);
+          bisc.jdField_a_of_type_Boolean = false;
         }
         if (!bool1) {
           break;
@@ -710,10 +710,10 @@ public class CustomWebView
         if (!isNeedSetCookies()) {
           break;
         }
-        localObject = new nwh(this);
-        ((nwh)localObject).jdField_a_of_type_Int = 2;
-        ((nwh)localObject).jdField_a_of_type_JavaLangString = paramString;
-      } while (setCookiesIfNeeded((nwh)localObject));
+        localObject = new nyb(this);
+        ((nyb)localObject).jdField_a_of_type_Int = 2;
+        ((nyb)localObject).jdField_a_of_type_JavaLangString = paramString;
+      } while (setCookiesIfNeeded((nyb)localObject));
       QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView loadUrlOriginal111 url:" + paramString);
       if (!this.isFirstLoad) {
         break;
@@ -727,10 +727,10 @@ public class CustomWebView
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView loadUrlOriginal222 url:" + nmj.b(paramString, new String[0]));
+        QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView loadUrlOriginal222 url:" + noe.b(paramString, new String[0]));
       }
       if (((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-        addContextLog(nmj.b(paramString, new String[0]));
+        addContextLog(noe.b(paramString, new String[0]));
       }
       super.loadUrl(paramString);
       return;
@@ -830,7 +830,7 @@ public class CustomWebView
   public void saveToken(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, ArrayList<String> paramArrayList)
   {
     if (this.mOpenApiInfo == null) {
-      this.mOpenApiInfo = new nwi();
+      this.mOpenApiInfo = new nyc();
     }
     this.mOpenApiInfo.jdField_a_of_type_Int = paramInt1;
     this.mOpenApiInfo.jdField_a_of_type_JavaLangString = paramString2;
@@ -860,7 +860,7 @@ public class CustomWebView
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
-      localView = ((Activity)localObject).findViewById(2131371728);
+      localView = ((Activity)localObject).findViewById(2131371835);
     }
     for (;;)
     {
@@ -874,7 +874,7 @@ public class CustomWebView
           {
             localView = new View(getContext());
             localView.setBackgroundColor(1711276032);
-            localView.setId(2131371728);
+            localView.setId(2131371835);
             ((Activity)localObject).addContentView(localView, new ViewGroup.LayoutParams(-1, -1));
             return;
           }
@@ -888,9 +888,9 @@ public class CustomWebView
     }
   }
   
-  public void setOnCustomScrollChangeListener(nwj paramnwj)
+  public void setOnCustomScrollChangeListener(nyd paramnyd)
   {
-    this.mt = paramnwj;
+    this.mt = paramnyd;
   }
   
   public void setPluginEngine(WebViewPluginEngine paramWebViewPluginEngine)

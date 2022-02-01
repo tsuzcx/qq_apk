@@ -1,19 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public class auoh
-  implements CompoundButton.OnCheckedChangeListener
+  implements Comparator<FileInfo>
 {
-  public auoh(TempMsgSettingFragment paramTempMsgSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    ((awhm)this.a.a.getManager(303)).a((short)-23158, paramBoolean, true);
-    bcst.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 7, 7, "", "", "", "");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (paramFileInfo1.c()) {
+      if (paramFileInfo2.c()) {
+        break label25;
+      }
+    }
+    label25:
+    while (paramFileInfo1.b() > paramFileInfo2.b())
+    {
+      return -1;
+      if (paramFileInfo2.c()) {
+        return 1;
+      }
+    }
+    if (paramFileInfo1.b() == paramFileInfo2.b()) {
+      return 0;
+    }
+    return 1;
   }
 }
 

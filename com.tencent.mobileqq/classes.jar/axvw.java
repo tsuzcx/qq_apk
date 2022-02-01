@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class axvw
-  implements DialogInterface.OnClickListener
+public class axvw
 {
-  axvw(axuv paramaxuv, bgpa parambgpa) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_Bgpa.dismiss();
-    }
-    while (paramInt != 0) {
-      return;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

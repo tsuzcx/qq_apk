@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import ancb;
+import annv;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
@@ -17,7 +17,7 @@ class ApolloCardWindow$3
     {
       try
       {
-        Object localObject1 = new File(ancb.k);
+        Object localObject1 = new File(annv.k);
         if (((File)localObject1).exists())
         {
           if (!((File)localObject1).isDirectory()) {

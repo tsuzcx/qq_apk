@@ -1,67 +1,42 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
 
 public class tuv
-  extends MqqHandler
+  implements bliz
 {
-  public tuv(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public tuv(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, blir paramblir) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.isFinishing()) {}
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+    }
+    twk.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
+    paramInt = tzq.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
+    alpb.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    ocd.a(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
+    paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
+    twi localtwi;
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1002: 
-            try
-            {
-              paramMessage = twi.a().b(this.a.app);
-              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
-              return;
-            }
-            catch (Exception paramMessage) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
-        return;
-        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!bmqa.a()));
-      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
-    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
-    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
-      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
+      if (!paramView.hasNext()) {
+        break;
+      }
+      localtwi = (twi)paramView.next();
+    } while ((localtwi.jdField_a_of_type_JavaLangString == null) || (!localtwi.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
+    for (paramInt = localtwi.b;; paramInt = 0)
+    {
+      bdll.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X80064CF", "0X80064CF", 0, 0, "" + paramInt, "", "", "");
+      break;
     }
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
   }
 }
 

@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
 
 public class beqg
-  extends beqn
+  implements bemy
 {
-  public beqg(TroopAioKeywordTipBar.4 param4, List paramList, beqk parambeqk) {}
+  public beqg(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (beqc.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
-    this.jdField_a_of_type_Beqk.a(this.jdField_a_of_type_JavaUtilList, null, 2, new beqh(this));
-    return;
-    beqc.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    this.a.getActivity().finish();
   }
 }
 

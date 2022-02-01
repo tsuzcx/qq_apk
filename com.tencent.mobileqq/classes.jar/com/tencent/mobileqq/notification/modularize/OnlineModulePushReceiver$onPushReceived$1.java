@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.notification.modularize;
 
-import ayby;
-import ayca;
+import ayur;
+import ayut;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -12,14 +12,14 @@ public final class OnlineModulePushReceiver$onPushReceived$1
   extends Lambda
   implements Function0<Unit>
 {
-  public OnlineModulePushReceiver$onPushReceived$1(ayby paramayby, ayca paramayca)
+  public OnlineModulePushReceiver$onPushReceived$1(ayur paramayur, ayut paramayut)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    ayby.a(this.this$0, this.$pushComponent);
+    ayur.a(this.this$0, this.$pushComponent);
   }
 }
 

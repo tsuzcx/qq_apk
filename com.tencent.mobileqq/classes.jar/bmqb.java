@@ -1,16 +1,11 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import cooperation.readinjoy.ReadInJoyHelper.1;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bmqb
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public abstract class bmqb
+  implements bmqa
 {
-  public bmqb(ReadInJoyHelper.1 param1) {}
+  public void a(bmqc parambmqc) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if (paramInt == 0) {}
-  }
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
 }
 
 

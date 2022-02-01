@@ -1,39 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-
-public class apgv
-  implements apgw
+public abstract interface apgv
 {
-  private apgv(apgu paramapgu) {}
+  public abstract void a(long paramLong);
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (!apgt.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
-      return false;
-    }
-    if (!AppNetConnInfo.isNetSupport()) {
-      paramVariantWrapper.SetString("none");
-    }
-    for (;;)
-    {
-      return true;
-      if (AppNetConnInfo.isWifiConn())
-      {
-        paramVariantWrapper.SetString("wifi");
-      }
-      else if (AppNetConnInfo.isMobileConn())
-      {
-        int i = AppNetConnInfo.getMobileInfo();
-        if (i == 0) {
-          paramVariantWrapper.SetString("none");
-        } else if (-1 == i) {
-          paramVariantWrapper.SetString("other");
-        } else {
-          paramVariantWrapper.SetString("cellular");
-        }
-      }
-    }
-  }
+  public abstract void a(aphj paramaphj);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean b();
 }
 
 

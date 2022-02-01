@@ -1,8 +1,10 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
+
 public abstract interface wgj
 {
-  public abstract int a(String paramString1, String paramString2, long paramLong);
-  
-  public abstract void a(wfx paramwfx);
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 

@@ -1,26 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
-import java.lang.ref.WeakReference;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tip
-  extends Handler
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private WeakReference a;
+  public tip(ViolaVideoView paramViolaVideoView) {}
   
-  public tip(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramReadInJoyScrollViewSwitcher);
+    if (!ViolaVideoView.a(this.a).a()) {
+      return;
+    }
+    long l = ViolaVideoView.a(this.a).a();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    rpt.a(ViolaVideoView.a(this.a), paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (ReadInJoyScrollViewSwitcher)this.a.get();
-    if (paramMessage != null)
+    ViolaVideoView.a(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (!ViolaVideoView.a(this.a).a()) {}
+    for (;;)
     {
-      paramMessage.a();
-      paramMessage.b();
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      ViolaVideoView.a(this.a, false);
+      int i = paramSeekBar.getProgress();
+      long l = ViolaVideoView.a(this.a).a();
+      i = (int)(i / 100.0D * l);
+      ViolaVideoView.a(this.a).d(i);
+      if (ViolaVideoView.a(this.a) != null) {
+        ViolaVideoView.a(this.a).a(i);
+      }
     }
   }
 }

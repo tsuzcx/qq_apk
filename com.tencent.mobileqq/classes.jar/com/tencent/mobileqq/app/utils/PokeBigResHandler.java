@@ -2,14 +2,14 @@ package com.tencent.mobileqq.app.utils;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import anhk;
-import anii;
-import anil;
-import aoqc;
-import bgmg;
-import bhgg;
-import bkcx;
-import bqfh;
+import antf;
+import anud;
+import anui;
+import apds;
+import bhmi;
+import bigv;
+import bleb;
+import brgs;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class PokeBigResHandler
-  extends anii
+  extends anud
 {
   public static final String a;
   public static boolean a;
@@ -34,12 +34,12 @@ public class PokeBigResHandler
   public static final String d;
   private static String e = "";
   private static String f = "";
-  private static final String g = bhgg.a(anhk.ba + "bigPoke");
-  private aoqc jdField_a_of_type_Aoqc = new aoqc();
+  private static final String g = bigv.a(antf.ba + "bigPoke");
+  private apds jdField_a_of_type_Apds = new apds();
   
   static
   {
-    jdField_a_of_type_JavaLangString = bhgg.a(anhk.bI);
+    jdField_a_of_type_JavaLangString = bigv.a(antf.bI);
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
     c = jdField_a_of_type_JavaLangString + "/poke_normal";
     d = c + "/dazhao/dazhao_move.png";
@@ -64,14 +64,14 @@ public class PokeBigResHandler
       return;
       try
       {
-        if (!TextUtils.isEmpty(bhgg.a(g)))
+        if (!TextUtils.isEmpty(bigv.a(g)))
         {
-          bgmg.a(bhgg.a(jdField_a_of_type_JavaLangString), false);
-          bqfh.a(g);
-          bgmg.a(paramString, bhgg.a(jdField_a_of_type_JavaLangString), false);
-          bqfh.a(jdField_a_of_type_JavaLangString);
+          bhmi.a(bigv.a(jdField_a_of_type_JavaLangString), false);
+          brgs.a(g);
+          bhmi.a(paramString, bigv.a(jdField_a_of_type_JavaLangString), false);
+          brgs.a(jdField_a_of_type_JavaLangString);
         }
-        bgmg.a(paramString, false);
+        bhmi.a(paramString, false);
         long l2 = System.currentTimeMillis();
         if (!QLog.isColorLevel()) {
           continue;
@@ -169,7 +169,7 @@ public class PokeBigResHandler
     File localFile = new File(str);
     if ((localFile.exists()) && (localFile.list() != null))
     {
-      bqfh.a(str);
+      brgs.a(str);
       return true;
     }
     return false;
@@ -263,7 +263,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bkcx.a(localFile);
+            paramString = bleb.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -287,7 +287,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bkcx.a(localFile);
+            paramString = bleb.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -330,7 +330,7 @@ public class PokeBigResHandler
     }
   }
   
-  public Class<? extends anil> observerClass()
+  public Class<? extends anui> observerClass()
   {
     return null;
   }

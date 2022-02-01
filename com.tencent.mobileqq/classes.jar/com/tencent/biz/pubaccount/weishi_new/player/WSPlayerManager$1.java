@@ -2,14 +2,14 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ujv;
-import ukb;
-import ukc;
+import ukp;
+import ukz;
+import ula;
 
 public class WSPlayerManager$1
   implements Runnable
 {
-  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, ukb paramukb) {}
+  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, ukz paramukz) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class WSPlayerManager$1
     {
       Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((ukc)localIterator.next()).f(this.a);
+        ((ula)localIterator.next()).f(this.a);
       }
     }
     if (this.a.a != null)

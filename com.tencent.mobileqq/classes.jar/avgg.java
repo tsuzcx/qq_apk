@@ -1,27 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class avgg
+public class avgg
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public boolean a;
-  public boolean b = true;
+  public avgg(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  private void a(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a = paramString.optBoolean("input_status_gray_switch", false);
-      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
-    }
+    ((axae)this.a.a.getManager(303)).a((short)-23168, paramBoolean, true);
+    bdll.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 6, 6, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

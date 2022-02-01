@@ -1,11 +1,85 @@
-class avke
-  implements avkm
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+
+public abstract class avke
+  extends avkb
 {
-  avke(avju paramavju, avlu paramavlu) {}
+  protected Context a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected TextView b;
+  protected TextView c;
   
-  public void a(int paramInt, String paramString)
+  public avke(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Avlu.a(paramInt, paramString);
+    super(paramContext, paramView, paramViewGroup);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380032));
+    this.b = ((TextView)paramView.findViewById(2131379916));
+    this.c = ((TextView)paramView.findViewById(2131379670));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368470));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131369669));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369638));
+  }
+  
+  public void a(FeedsItemData paramFeedsItemData)
+  {
+    this.itemView.setBackgroundDrawable(avmd.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    if (!TextUtils.isEmpty(paramFeedsItemData.rcmdReason))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedsItemData.rcmdReason + "");
+      if ((!TextUtils.isEmpty(paramFeedsItemData.label)) || (!TextUtils.isEmpty(paramFeedsItemData.operateText))) {
+        break label130;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.itemView.setOnClickListener(new avkf(this, paramFeedsItemData));
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label130:
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (TextUtils.isEmpty(paramFeedsItemData.operateText))
+      {
+        this.c.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(paramFeedsItemData.label)) {
+          break label287;
+        }
+        this.b.setVisibility(8);
+        break;
+        this.c.setText(paramFeedsItemData.operateText + "");
+        this.c.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.itemView.getResources().getDrawable(2130840947);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.itemView.getResources().getDrawable(2130840947);
+        localObject = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201908/upload_edff4f642a92ef91b6cb1b7209369506.png", (URLDrawable.URLDrawableOptions)localObject);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      label287:
+      this.b.setText(paramFeedsItemData.label + "");
+      this.b.setVisibility(0);
+    }
   }
 }
 

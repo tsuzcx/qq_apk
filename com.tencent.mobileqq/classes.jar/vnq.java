@@ -1,16 +1,33 @@
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
 
-public class vnq
-  implements zxw<uyr>
+class vnq
+  extends RecyclerView.OnScrollListener
 {
-  public vnq(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
+  vnq(vnp paramvnp, String paramString1, String paramString2) {}
   
-  public void a(zxz paramzxz, uyr paramuyr)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if ((paramzxz.d()) && (QCirclePersonalDetailFragment.a(this.a) != null))
+    TextView localTextView;
+    if ((this.jdField_a_of_type_Vnp.a().a() instanceof aace))
     {
-      QCirclePersonalDetailFragment.a(this.a).a(QCirclePersonalDetailFragment.a(this.a), false);
-      QCirclePersonalDetailFragment.a(this.a).b(QCirclePersonalDetailFragment.a(this.a), false);
+      paramInt1 = ((aace)this.jdField_a_of_type_Vnp.a().a()).findFirstVisibleItemPosition();
+      if ((vnp.a(this.jdField_a_of_type_Vnp) != paramInt1) && (vnp.a(this.jdField_a_of_type_Vnp) != null))
+      {
+        localTextView = vnp.a(this.jdField_a_of_type_Vnp);
+        if (paramInt1 <= 1) {
+          break label89;
+        }
+      }
+    }
+    label89:
+    for (paramRecyclerView = this.jdField_a_of_type_JavaLangString;; paramRecyclerView = this.b)
+    {
+      localTextView.setText(paramRecyclerView);
+      vnp.a(this.jdField_a_of_type_Vnp, paramInt1);
+      return;
     }
   }
 }

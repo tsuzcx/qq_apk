@@ -1,15 +1,16 @@
-import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
 
-class axkt
-  extends niu
+public class axkt
+  implements bllt
 {
-  axkt(axks paramaxks, axkz paramaxkz) {}
+  public axkt(MultiAIOItemFragment paramMultiAIOItemFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Axkz != null) {
-      this.jdField_a_of_type_Axkz.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    MultiAIOItemFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

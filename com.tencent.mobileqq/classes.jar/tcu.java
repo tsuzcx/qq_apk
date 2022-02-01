@@ -1,39 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class tcu
-  implements View.OnClickListener
+  implements aqrn
 {
-  public int a;
+  public tcu(ViolaFragment paramViolaFragment, Bundle paramBundle) {}
   
-  private tcu(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
-  
-  public void onClick(View paramView)
+  public ColorNote getColorNote()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str;
-    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a.size())
-    {
-      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a.get(this.jdField_a_of_type_Int);
-      str = localCommunityConfigInfo.jumpUrl;
-      paramView.postDelayed(new ReadInJoyDiandianHeaderController.OnCommunityItemListener.1(this, paramView), 300L);
-      oat.a(null, "", "0X8009B9F", "0X8009B9F", 0, 0, localQQAppInterface.getCurrentAccountUin(), localCommunityConfigInfo.bid + "", this.jdField_a_of_type_Int + 1 + "", "", false);
+    if (ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment) != null) {
+      return ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment).a();
     }
-    for (;;)
-    {
-      pha.a(paramView.getContext(), str);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.d;
-      oat.a(null, "", "0X8009BA3", "0X8009BA3", 0, 0, localQQAppInterface.getCurrentAccountUin(), "", "", "", false);
-    }
+    ViolaFragment.access$302(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, new tci(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getUrl()).a(this.jdField_a_of_type_AndroidOsBundle.getString("param")).a(this.jdField_a_of_type_AndroidOsBundle.getBoolean("useTransParentFragment")).a(ViolaFragment.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment)));
+    return ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment).a();
   }
 }
 

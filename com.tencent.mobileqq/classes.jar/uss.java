@@ -1,43 +1,16 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import rx.Observable.OnSubscribe;
+import rx.Subscriber;
 
 public class uss
-  extends utw
+  implements Observable.OnSubscribe<ust>
 {
-  public uss(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public uss(WSVerticalDataManager paramWSVerticalDataManager, uko paramuko, boolean paramBoolean1, usf paramusf, boolean paramBoolean2, Object paramObject, String paramString) {}
+  
+  public void a(Subscriber<? super ust> paramSubscriber)
   {
-    super(paramViewGroup, 2131560009, paramInt, paramWSVerticalPageFragment);
+    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, this.jdField_a_of_type_Uko, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Usf, this.b, this.jdField_a_of_type_JavaLangObject, paramSubscriber, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public FrameLayout a()
-  {
-    if ((this.a instanceof usp)) {
-      return ((usp)this.a).a();
-    }
-    return null;
-  }
-  
-  public usp a(int paramInt)
-  {
-    return new utx(a(), this);
-  }
-  
-  public void a() {}
-  
-  public void b() {}
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    return true;
-  }
-  
-  public void d() {}
 }
 
 

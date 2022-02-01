@@ -1,124 +1,260 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class autw
-  implements View.OnClickListener
+public final class autw
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, blja
 {
-  public void onClick(View paramView)
+  private final auto jdField_a_of_type_Auto;
+  private final autp jdField_a_of_type_Autp;
+  private blir jdField_a_of_type_Blir;
+  private final FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  private final FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private final List<String> jdField_a_of_type_JavaUtilList;
+  private final boolean jdField_a_of_type_Boolean;
+  private final FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  private final FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  
+  public autw(auto paramauto, View paramView, boolean paramBoolean)
   {
-    String str2 = null;
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    if (Math.abs(l - autv.a()) < 1000L) {}
-    Object localObject1;
-    Object localObject2;
-    do
+    this.jdField_a_of_type_Auto = paramauto;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Autp = new autp();
+    paramauto = BaseApplicationImpl.sApplication;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramauto.getString(2131697517));
+    this.jdField_a_of_type_JavaUtilList.add(paramauto.getString(2131697516));
+    this.jdField_a_of_type_JavaUtilList.add(paramauto.getString(2131697518));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131377450));
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    if (this.jdField_a_of_type_Boolean)
     {
-      do
+      i = 2131697519;
+      ((FormSimpleItem)localObject).setLeftText(paramauto.getString(i));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(a()));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131377449));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131377462));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Autp.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+      b(false);
+      localObject = (TextView)paramView.findViewById(2131377464);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label333;
+      }
+    }
+    label333:
+    for (int i = 2131697522;; i = 2131697521)
+    {
+      ((TextView)localObject).setText(paramauto.getString(i));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131377447));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Autp.b);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+      paramView.findViewById(2131377448).setVisibility(8);
+      if (this.jdField_a_of_type_Boolean)
       {
-        do
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setBgType(0);
+      }
+      return;
+      i = 2131697515;
+      break;
+    }
+  }
+  
+  private int a()
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_Autp.jdField_a_of_type_Int == 1) {
+      i = 0;
+    }
+    while (this.jdField_a_of_type_Autp.jdField_a_of_type_Int == 2) {
+      return i;
+    }
+    return 2;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Blir == null)
+    {
+      this.jdField_a_of_type_Blir = ((blir)blji.b(this.jdField_a_of_type_Auto.a(), null));
+      Object localObject = this.jdField_a_of_type_Blir;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (int i = 2131697519;; i = 2131697515)
+      {
+        ((blir)localObject).a(i);
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          do
-          {
-            do
-            {
-              EventCollector.getInstance().onViewClicked(paramView);
-              return;
-              autv.a(l);
-            } while ((paramView == null) || (paramView.getContext() == null));
-            localObject1 = paramView.getContext();
-          } while (!(localObject1 instanceof Activity));
-          localObject1 = (Activity)localObject1;
-        } while (((Activity)localObject1).isFinishing());
-        localObject2 = paramView.getTag(-1);
-      } while (!(localObject2 instanceof String));
-      localObject2 = (String)localObject2;
-    } while (TextUtils.isEmpty((CharSequence)localObject2));
-    Object localObject3 = ((String)localObject2).substring(0, 6).toLowerCase();
+          String str = (String)((Iterator)localObject).next();
+          this.jdField_a_of_type_Blir.a(str, false);
+        }
+      }
+      this.jdField_a_of_type_Blir.c(2131690580);
+      this.jdField_a_of_type_Blir.a(this);
+    }
+    this.jdField_a_of_type_Blir.d();
+    this.jdField_a_of_type_Blir.d(a());
+    if (!this.jdField_a_of_type_Blir.isShowing()) {
+      this.jdField_a_of_type_Blir.show();
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    FormSimpleItem localFormSimpleItem = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    autp localautp = this.jdField_a_of_type_Autp;
+    Object localObject;
+    if (this.jdField_a_of_type_Autp.jdField_a_of_type_Boolean)
+    {
+      localObject = autq.a(6);
+      localautp.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localFormSimpleItem.setRightText((CharSequence)localObject);
+      localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+      if (!this.jdField_a_of_type_Autp.jdField_a_of_type_Boolean) {
+        break label104;
+      }
+      i = 0;
+      label57:
+      ((FormSimpleItem)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (!this.jdField_a_of_type_Autp.jdField_a_of_type_Boolean) {
+        break label110;
+      }
+    }
+    label104:
+    label110:
+    for (int i = 2;; i = 3)
+    {
+      ((FormSwitchItem)localObject).setBgType(i);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Auto.a();
+      }
+      return;
+      localObject = "";
+      break;
+      i = 8;
+      break label57;
+    }
+  }
+  
+  public autp a()
+  {
+    return this.jdField_a_of_type_Autp;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Blir != null)
+    {
+      this.jdField_a_of_type_Blir.e();
+      this.jdField_a_of_type_Blir = null;
+    }
+  }
+  
+  public void a(View paramView, int paramInt, String paramString)
+  {
+    int i = 1;
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
+      this.jdField_a_of_type_Blir.dismiss();
+    }
+    if (paramInt == 0)
+    {
+      paramInt = 1;
+      if (paramInt == this.jdField_a_of_type_Autp.jdField_a_of_type_Int) {
+        break label90;
+      }
+    }
     for (;;)
     {
-      int j;
-      int k;
-      try
-      {
-        if ((!((String)localObject3).startsWith("http")) && (!((String)localObject3).startsWith("https"))) {
-          break label415;
-        }
-        localObject3 = new Intent((Context)localObject1, QQBrowserActivity.class);
-        ((Intent)localObject3).putExtra("url", (String)localObject2);
-        ((Intent)localObject3).putExtra("startOpenPageTime", System.currentTimeMillis());
-        ((Activity)localObject1).startActivityForResult((Intent)localObject3, -1);
-        localObject2 = paramView.getTag(-4);
-        if (!(localObject2 instanceof String)) {
-          break;
-        }
-        localObject1 = paramView.getTag(-2);
-        localObject3 = paramView.getTag(-3);
-        Object localObject4 = paramView.getTag(-5);
-        if ((!(localObject1 instanceof Integer)) || (!(localObject3 instanceof Integer)) || (!(localObject4 instanceof Integer))) {
-          break;
-        }
-        int i = ((Integer)localObject1).intValue();
-        j = ((Integer)localObject3).intValue();
-        k = ((Integer)localObject4).intValue();
-        if ((i == 0) || (j == 0)) {
-          break label483;
-        }
-        auts.a().a((String)localObject2, ((Integer)localObject1).intValue(), ((Integer)localObject3).intValue());
+      this.jdField_a_of_type_Autp.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(paramString);
+      if (i != 0) {
+        this.jdField_a_of_type_Auto.a();
       }
-      catch (Throwable localThrowable) {}
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      return;
+      if (paramInt == 1)
+      {
+        paramInt = 2;
         break;
       }
-      localObject3 = new HashMap();
-      ((Map)localObject3).put(Integer.valueOf(2), j + "");
-      ((Map)localObject3).put(Integer.valueOf(4), "20");
-      aceh.a(null, "870", (String)localObject1, (String)localObject2, str2, "1", "145", (Map)localObject3);
+      paramInt = 3;
       break;
-      if (!QLog.isDevelopLevel()) {
+      label90:
+      i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setEnabled(paramBoolean);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(paramBoolean);
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setEnabled(paramBoolean);
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(paramBoolean);
+    }
+  }
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    int i = 1;
+    boolean bool = true;
+    if (paramCompoundButton.equals(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())) {
+      if (this.jdField_a_of_type_Autp.jdField_a_of_type_Boolean != paramBoolean)
+      {
+        this.jdField_a_of_type_Autp.jdField_a_of_type_Boolean = paramBoolean;
+        b(bool);
+      }
+    }
+    while (!paramCompoundButton.equals(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())) {
+      for (;;)
+      {
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+        bool = false;
+      }
+    }
+    if (this.jdField_a_of_type_Autp.b != paramBoolean) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Autp.b = paramBoolean;
+      if (i == 0) {
         break;
       }
-      localThrowable.printStackTrace();
+      this.jdField_a_of_type_Auto.a();
       break;
-      label415:
-      if (((String)localObject3).startsWith("mqqapi"))
-      {
-        localObject3 = new Intent(localThrowable, JumpActivity.class);
-        ((Intent)localObject3).setData(Uri.parse((String)localObject2));
-        localThrowable.startActivityForResult((Intent)localObject3, -1);
-        continue;
-        label483:
-        do
-        {
-          if (k == 2)
-          {
-            str2 = "87007";
-            str1 = "206676";
-            break;
-          }
-          str1 = null;
-          break;
-          if (k == 0)
-          {
-            str2 = "87006";
-            str1 = "206674";
-            break;
-          }
-        } while (k != 1);
-        str2 = "87006";
-        String str1 = "206675";
-      }
+      i = 0;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      b();
     }
   }
 }

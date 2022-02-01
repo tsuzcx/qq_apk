@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.imageopt;
 
 import com.tencent.qphone.base.util.QLog;
-import puv;
-import puw;
-import tdw;
+import pni;
+import pnj;
+import suo;
 
 public final class RIJImageOptMonitor$1
   implements Runnable
 {
-  public RIJImageOptMonitor$1(tdw paramtdw) {}
+  public RIJImageOptMonitor$1(suo paramsuo) {}
   
   public void run()
   {
     if ((this.a != null) && (this.a.jdField_a_of_type_Long > 0L) && ((this.a.h == 0L) || ((!this.a.jdField_a_of_type_Boolean) && (this.a.e != 0))))
     {
       QLog.d("RIJImageOptMonitor", 1, "image load too slow: " + this.a);
-      puw.a(this.a);
-      puv.a();
-      puv.b(this.a);
+      pnj.a(this.a);
+      pni.a();
+      pni.b(this.a);
     }
   }
 }

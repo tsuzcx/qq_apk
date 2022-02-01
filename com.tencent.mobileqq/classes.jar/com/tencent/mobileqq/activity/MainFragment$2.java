@@ -2,12 +2,10 @@ package com.tencent.mobileqq.activity;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.view.View;
-import awwm;
+import axpf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
-import java.util.HashMap;
 
 class MainFragment$2
   implements Runnable
@@ -16,45 +14,38 @@ class MainFragment$2
   
   public void run()
   {
-    if (this.this$0.getActivity() == null) {
+    boolean bool2 = true;
+    if (this.this$0.getActivity() == null) {}
+    do
+    {
       return;
-    }
-    MainFragment.a(this.this$0, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.this$0).getApp()));
-    if (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))
-    {
-      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.this$0));
-      localObject = ThemeUtil.getThemeInfo(this.this$0.getActivity(), (String)localObject);
-      if ((localObject == null) || (!((ThemeUtil.ThemeInfo)localObject).status.equals("5")) || (!((ThemeUtil.ThemeInfo)localObject).isVoiceTheme)) {}
-    }
-    for (boolean bool = false;; bool = true)
-    {
-      if (MainFragment.a(this.this$0) != null)
+      MainFragment.a(this.this$0, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.this$0).getApp()));
+      boolean bool1 = bool2;
+      if (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))
       {
-        if (MainFragment.a(this.this$0).get(MainFragment.a) != null) {
-          ((View)MainFragment.a(this.this$0).get(MainFragment.a)).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.this$0).get(MainFragment.b) != null) {
-          ((View)MainFragment.a(this.this$0).get(MainFragment.b)).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.this$0).get(MainFragment.c) != null) {
-          ((View)MainFragment.a(this.this$0).get(MainFragment.c)).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.this$0).get("NOW") != null) {
-          ((View)MainFragment.a(this.this$0).get("NOW")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.this$0).get(MainFragment.d) != null) {
-          ((View)MainFragment.a(this.this$0).get(MainFragment.d)).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.this$0).get("动态") != null) {
-          ((View)MainFragment.a(this.this$0).get("动态")).setSoundEffectsEnabled(bool);
+        Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.this$0));
+        localObject = ThemeUtil.getThemeInfo(this.this$0.getActivity(), (String)localObject);
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          bool1 = bool2;
+          if (((ThemeUtil.ThemeInfo)localObject).status.equals("5"))
+          {
+            bool1 = bool2;
+            if (((ThemeUtil.ThemeInfo)localObject).isVoiceTheme) {
+              bool1 = false;
+            }
+          }
         }
       }
-      if (awwm.a().a()) {
-        break;
-      }
-      awwm.a().a(MainFragment.a(this.this$0));
-      return;
-    }
+      MainFragment.a(this.this$0, bool1, MainFragment.a);
+      MainFragment.a(this.this$0, bool1, MainFragment.b);
+      MainFragment.a(this.this$0, bool1, MainFragment.c);
+      MainFragment.a(this.this$0, bool1, "NOW");
+      MainFragment.a(this.this$0, bool1, MainFragment.d);
+      MainFragment.a(this.this$0, bool1, "动态");
+    } while (axpf.a().a());
+    axpf.a().a(MainFragment.a(this.this$0));
   }
 }
 

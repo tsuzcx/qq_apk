@@ -1,16 +1,16 @@
 package com.tencent.biz;
 
-import nii;
-import nij;
+import nkd;
+import nke;
 
 public class PoiMapActivity$PoiMapNameTask$1
   implements Runnable
 {
-  public PoiMapActivity$PoiMapNameTask$1(nii paramnii, String paramString) {}
+  public PoiMapActivity$PoiMapNameTask$1(nkd paramnkd, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nii.a.a[0].a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Nkd.a.a[0].a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

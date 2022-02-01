@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.manager.FileBannerTianshuManger.4;
+import android.app.Activity;
 
-public class bmun
-  implements View.OnClickListener
+public abstract interface bmun
 {
-  public bmun(FileBannerTianshuManger.4 param4) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a(this.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void onFail(Activity paramActivity, String paramString);
 }
 
 

@@ -1,23 +1,56 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import qqcircle.QQCircleFeedBase.StMainPageBusiRspData;
 
 class vac
-  implements vye
+  implements Observer<vxq<FeedCloudRead.StGetMainPageRsp>>
 {
-  vac(vab paramvab) {}
+  vac(vaa paramvaa) {}
   
-  public void a(int paramInt)
+  public void a(@Nullable vxq<FeedCloudRead.StGetMainPageRsp> paramvxq)
   {
-    if (paramInt == 1) {
-      vab.a(this.a, 56);
+    if ((paramvxq == null) || (paramvxq.a() == null)) {
+      QLog.d("QCirclePersonalBottomBlock", 1, "uiStateData is null or getData is null");
     }
     for (;;)
     {
-      vrr.a().a(new vrt().a("pushbutton").b("push").a(vab.a(this.a).a).a(this.a.a()).a(this.a.c()).c(vab.a(this.a).a.poster.id.get()).d(String.valueOf(paramInt)));
       return;
-      if (paramInt > 1) {
-        vab.a(this.a, 57);
+      if (vaa.a(this.a) == null) {
+        QLog.d("QCirclePersonalBottomBlock", 1, "mWidgetView is null");
+      }
+      try
+      {
+        QLog.d("QCirclePersonalBottomBlock", 1, "personDetail uiStateData is " + paramvxq.a());
+        if ((paramvxq.a() != 2) && (paramvxq.a() != 3)) {
+          continue;
+        }
+        vaa.a(this.a).setFeedCount(((FeedCloudRead.StGetMainPageRsp)paramvxq.a()).feedCount.get());
+        if ((((FeedCloudRead.StGetMainPageRsp)paramvxq.a()).busiRspData.get() == null) || (paramvxq.b())) {
+          continue;
+        }
+        QQCircleFeedBase.StMainPageBusiRspData localStMainPageBusiRspData = new QQCircleFeedBase.StMainPageBusiRspData();
+        try
+        {
+          localStMainPageBusiRspData.mergeFrom(((FeedCloudRead.StGetMainPageRsp)paramvxq.a()).busiRspData.get().toByteArray());
+          return;
+        }
+        catch (Exception paramvxq)
+        {
+          QLog.e("QCirclePersonalBottomBlock", 1, "mergeFrom stMainPageBusiRspData error");
+          return;
+        }
+        return;
+      }
+      catch (Exception paramvxq)
+      {
+        paramvxq.printStackTrace();
+        QLog.e("QCirclePersonalBottomBlock", 1, "personDetail setData error" + paramvxq.getMessage());
       }
     }
   }

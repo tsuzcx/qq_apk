@@ -1,8 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public abstract interface afyl
+public class afyl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, bduk parambduk, int paramInt1, int paramInt2);
+  public afyl(TroopTransferActivity paramTroopTransferActivity, bhpc parambhpc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bhpc.cancel();
+  }
 }
 
 

@@ -1,19 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnmy
-  implements Animation.AnimationListener
+final class bnmy
+  implements DialogInterface.OnClickListener
 {
-  public bnmy(AEProviderContainerView paramAEProviderContainerView) {}
+  bnmy(bhpc parambhpc) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setVisibility(0);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 

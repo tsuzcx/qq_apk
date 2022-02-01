@@ -1,243 +1,362 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import dov.com.qq.im.ae.download.AEResUtil.1;
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bork
-  extends DynamicTextItem
 {
-  public static final int b;
-  public static final int c;
-  public static final int d;
-  protected float a;
-  protected RectF a;
-  protected TextPaint a;
-  protected float b;
-  private int e = 2147483647;
+  public static final String a = anzj.a(2131707605);
   
-  static
+  public static int a(int paramInt)
   {
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = afur.a(22.0F, localResources);
-    d = afur.a(14.0F, localResources);
-    jdField_c_of_type_Int = Math.min(localResources.getDisplayMetrics().widthPixels - bpic.jdField_a_of_type_Int, afur.a(270.0F, localResources));
+    return bozz.a().a("key_ae_res_" + paramInt, 0, 4);
   }
   
-  public bork()
+  public static int a(borf paramborf)
   {
-    this(0, boqj.a(0));
-  }
-  
-  public bork(int paramInt, List<String> paramList)
-  {
-    super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    if (!paramList.isEmpty()) {
-      a(0, (String)paramList.get(0));
+    int i;
+    if (bdek.a()) {
+      if (b(paramborf)) {
+        i = 1;
+      }
     }
-    this.jdField_a_of_type_Int = jdField_b_of_type_Int;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    int i = paramInt3 + 10;
-    c(i);
-    a(paramInt1, paramString);
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getHeight() < paramInt2) {
+    for (;;)
+    {
+      bpam.a("AEResUtil", "getFilterSoState " + i);
       return i;
+      i = 2;
+      continue;
+      i = 0;
     }
-    c(paramInt3);
-    a(paramInt1, paramString);
-    return paramInt3;
   }
   
-  public void a(int paramInt)
+  public static int a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    float f = 0.0F;
-    int i = 0;
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
-    }
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    }
-    this.jdField_b_of_type_AndroidTextStaticLayout = bory.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, jdField_c_of_type_Int, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, this.e);
-    str = paramString;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() > this.e)
+    bpam.a("AEResUtil", paramString1 + "|verifyResource() lResMd5=" + paramString2 + ", filepath=" + paramString3);
+    if (TextUtils.isEmpty(paramString3))
     {
-      paramInt = this.jdField_b_of_type_AndroidTextStaticLayout.getLineEnd(this.e - 1);
-      str = paramString;
-      if (paramInt < paramString.length()) {
-        str = paramString.subSequence(0, paramInt) + "";
+      bpam.d("AEResUtil", "[verifyResource] filePath :null");
+      return -105;
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      bpam.d("AEResUtil", "[verifyResource] lResMd5 :null");
+      return -106;
+    }
+    File localFile = new File(paramString3);
+    if (!localFile.exists())
+    {
+      bpam.d("AEResUtil", paramString1 + "|verifyResource() file[" + paramString3 + "] not exist..");
+      return -107;
+    }
+    Object localObject = null;
+    try
+    {
+      paramString3 = bhml.a(MD5.getFileMd5(paramString3));
+      bpam.a("AEResUtil", paramString1 + "|verifyResource()  lResMd5=" + paramString2 + ",md5=" + paramString3);
+      if (paramString2.equalsIgnoreCase(paramString3)) {
+        return 0;
       }
-      this.jdField_b_of_type_AndroidTextStaticLayout = bory.a(str, 0, str.length(), this.jdField_a_of_type_AndroidTextTextPaint, jdField_c_of_type_Int, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, this.e);
     }
-    paramInt = i;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() == 1)
+    catch (UnsatisfiedLinkError paramString3)
     {
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidTextTextPaint.measureText(str);
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidTextTextPaint.descent() - this.jdField_a_of_type_AndroidTextTextPaint.ascent());
-      return;
-    }
-    while (paramInt < this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount())
-    {
-      f = Math.max(f, this.jdField_b_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
-      paramInt += 1;
-    }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    float f1;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
-    {
-      if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() == 1)
+      for (;;)
       {
-        paramCanvas.save();
-        paramCanvas.translate(a() / 2.0F, b() / 2.0F);
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-        f1 = -((this.jdField_a_of_type_AndroidTextTextPaint.descent() + this.jdField_a_of_type_AndroidTextTextPaint.ascent()) / 2.0F);
-        String str2 = super.b(0);
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = "　　";
-        }
-        paramCanvas.drawText(str1, 0.0F, f1, this.jdField_a_of_type_AndroidTextTextPaint);
-        if (super.b(0))
+        try
         {
-          int i = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str1);
-          int j = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.descent() - this.jdField_a_of_type_AndroidTextTextPaint.ascent());
-          this.jdField_a_of_type_AndroidGraphicsRectF.left = (-i / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.top = (-j / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.right = (i / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j / 2.0F);
-          paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+          paramString3 = bleb.a(localFile);
         }
-        paramCanvas.restore();
+        catch (Exception paramString3)
+        {
+          paramString3.printStackTrace();
+          paramString3 = localObject;
+        }
       }
+      bpam.d("AEResUtil", "[verifyResource] equalsIgnoreCase :false");
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    paramCanvas.save();
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    if (super.b(0))
-    {
-      f1 = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-      float f2 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = f1;
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = f2;
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
-    }
-    paramCanvas.restore();
+    return -108;
   }
   
-  public boolean a()
+  public static int a(List<ShortVideoResourceManager.SVConfigItem> paramList)
   {
+    Object localObject = paramList.iterator();
+    ShortVideoResourceManager.SVConfigItem localSVConfigItem;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localSVConfigItem = (ShortVideoResourceManager.SVConfigItem)((Iterator)localObject).next();
+    } while ((!localSVConfigItem.name.startsWith(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString)) || (localSVConfigItem.versionCode != borf.jdField_b_of_type_Borf.jdField_c_of_type_Int));
+    for (;;)
+    {
+      try
+      {
+        i = Integer.valueOf(localSVConfigItem.name.substring(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString.length())).intValue();
+        if (i < borf.jdField_b_of_type_Borf.jdField_b_of_type_Int) {
+          break;
+        }
+        i = 0;
+        if (i != 0)
+        {
+          bpam.d("AEResUtil", "[checkConfigUsable] status:" + i);
+          return i;
+        }
+      }
+      catch (Exception localException2)
+      {
+        bpam.d("AEResUtil", "[checkConfigUsable] String2int error :" + localSVConfigItem.name);
+        i = 0;
+        continue;
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
+        {
+          localObject = (ShortVideoResourceManager.SVConfigItem)paramList.next();
+          if ((!((ShortVideoResourceManager.SVConfigItem)localObject).name.startsWith(borf.jdField_c_of_type_Borf.jdField_b_of_type_JavaLangString)) || (((ShortVideoResourceManager.SVConfigItem)localObject).versionCode != borf.jdField_c_of_type_Borf.jdField_c_of_type_Int)) {
+            continue;
+          }
+          try
+          {
+            i = Integer.valueOf(((ShortVideoResourceManager.SVConfigItem)localObject).name.substring(borf.jdField_c_of_type_Borf.jdField_b_of_type_JavaLangString.length())).intValue();
+            if (i < borf.jdField_c_of_type_Borf.jdField_b_of_type_Int) {
+              continue;
+            }
+            return 0;
+          }
+          catch (Exception localException1)
+          {
+            bpam.d("AEResUtil", "[checkConfigUsable] String2int error :" + ((ShortVideoResourceManager.SVConfigItem)localObject).name);
+            i = 0;
+            continue;
+          }
+        }
+        return -103;
+      }
+      int i = -103;
+    }
+  }
+  
+  public static String a()
+  {
+    return boew.a;
+  }
+  
+  @NonNull
+  public static String a(@NonNull borf paramborf)
+  {
+    if (!paramborf.jdField_a_of_type_Boolean) {
+      return "";
+    }
+    if ((borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString.equals(paramborf.jdField_b_of_type_JavaLangString)) || (borf.jdField_c_of_type_Borf.jdField_b_of_type_JavaLangString.equals(paramborf.jdField_b_of_type_JavaLangString))) {
+      return b();
+    }
+    return "";
+  }
+  
+  public static String a(String paramString)
+  {
+    return ShortVideoResourceManager.a(paramString);
+  }
+  
+  public static void a()
+  {
+    bddj.a().a("CMD_DOWNLOAD_PTU_ADDITIONAL_RES", new Bundle());
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    bozz.a().a("key_ae_res_" + paramInt1, paramInt2, 4);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    if (!bhnv.h(paramContext)) {
+      ThreadManager.getUIHandler().post(new AEResUtil.1(paramContext));
+    }
+    for (;;)
+    {
+      bpam.d("AEResUtil", "【Camera is in Prepareing】tryDownloadAEResAdditionPackage");
+      return;
+      bpam.d("AEResUtil", "【Camera is in Prepareing wifi】prepare to download");
+      a();
+    }
+  }
+  
+  public static void a(borf paramborf, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction(paramborf.jdField_b_of_type_JavaLangString);
+    localIntent.setPackage(BaseApplicationImpl.getContext().getPackageName());
+    localIntent.putExtra("ae_camera_res_downloadfinish_path", paramString);
+    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+  }
+  
+  public static boolean a()
+  {
+    return FeatureManager.isBasicFeaturesFunctionReady();
+  }
+  
+  public static boolean a(@NonNull borf paramborf)
+  {
+    int i = a(paramborf.jdField_a_of_type_Int);
+    bpam.d("AEResUtil", "[checkAEResVersionOK] packageVersion:" + i);
+    bpam.d("AEResUtil", "[checkAEResVersionOK] aeResInfo.resVersionLimit:" + paramborf.jdField_b_of_type_Int);
+    return i >= paramborf.jdField_b_of_type_Int;
+  }
+  
+  public static boolean a(@NonNull String paramString)
+  {
+    paramString = boew.jdField_b_of_type_JavaLangString + paramString + File.separator;
+    bozz.a().a("aeres_copy_final_path_key", paramString, 4);
+    if (bozz.a().a("aeres_copy_final_path_key", boew.jdField_b_of_type_JavaLangString, 4).equals(paramString))
+    {
+      bpam.a("AEResUtil", "[saveAEResUnzipFinalPath] success");
+      return true;
+    }
+    bpam.d("AEResUtil", "[saveAEResUnzipFinalPath] error");
+    return false;
+  }
+  
+  public static boolean a(@NonNull String paramString, @NonNull borf paramborf)
+  {
+    bozz.a().a(paramborf.jdField_b_of_type_JavaLangString + paramborf.jdField_c_of_type_Int + "aeres_unzip_path_key", paramString, 4);
+    if (paramString.equals(bozz.a().a(paramborf.jdField_b_of_type_JavaLangString + paramborf.jdField_c_of_type_Int + "aeres_unzip_path_key", "", 4)))
+    {
+      bpam.a("AEResUtil", "[saveAEResUnzipPath] success");
+      return true;
+    }
+    bpam.d("AEResUtil", "[saveAEResUnzipPath] error");
+    return false;
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool = true;
+    File localFile = new File(paramString2);
+    if ((!localFile.exists()) || (!localFile.isDirectory())) {
+      bool = false;
+    }
+    int i;
+    do
+    {
+      return bool;
+      i = bhmi.a(paramString2, boew.jdField_b_of_type_JavaLangString + paramString1 + File.separator, false, true, true);
+      bpam.d("AEResUtil", "copyResFileToFinalDir errorcode:" + i + ", fromPath:" + paramString2);
+    } while (i == 0);
+    return false;
+  }
+  
+  public static String b()
+  {
+    return d();
+  }
+  
+  public static String b(@NonNull borf paramborf)
+  {
+    String str = c(paramborf);
+    if (TextUtils.isEmpty(str))
+    {
+      bpam.d("AEResUtil", "[getAEResPath] pathVersion null");
+      return null;
+    }
+    if (!bcwi.a(str, paramborf.jdField_b_of_type_Int))
+    {
+      bpam.d("AEResUtil", "[getAEResPath] pathVersion is not > limitVersion");
+      return null;
+    }
+    return a() + str + File.separator;
+  }
+  
+  public static void b()
+  {
+    bddj.a().a("CMD_DOWNLOAD_PTU_BASE_RES", new Bundle());
+  }
+  
+  public static boolean b()
+  {
+    return FeatureManager.Features.FACE_DETECT.isAllSoVersionOk();
+  }
+  
+  public static boolean b(borf paramborf)
+  {
+    String str = b(paramborf);
+    if (str == null)
+    {
+      bpam.d("AEResUtil", "[isAEBaseResExist] soRootPath == null");
+      return false;
+    }
+    if (!new File(str).exists())
+    {
+      bpam.d("AEResUtil", "[isAEBaseResExist] exists = false");
+      return false;
+    }
+    if (paramborf.jdField_a_of_type_Int == borf.jdField_b_of_type_Borf.jdField_a_of_type_Int) {
+      return FeatureManager.isBasicFeaturesReadyInDir(str);
+    }
     return true;
   }
   
-  public boolean a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public static String c()
   {
-    paramInt3 -= 10;
-    if (paramInt3 > d)
-    {
-      c(paramInt3);
-      a(paramInt1, paramString);
-      if (this.jdField_b_of_type_AndroidTextStaticLayout.getHeight() >= paramInt2) {}
+    return boff.a + File.separator;
+  }
+  
+  private static String c(@NonNull borf paramborf)
+  {
+    return bozz.a().a(paramborf.jdField_b_of_type_JavaLangString + paramborf.jdField_c_of_type_Int + "aeres_unzip_path_key", "", 4);
+  }
+  
+  private static void c(@NonNull Context paramContext)
+  {
+    Bundle localBundle = bddj.a().a("CMD_QUERY_STATUS_PTU_RES", new Bundle());
+    int i = 0;
+    if (localBundle != null) {
+      i = localBundle.getInt("VALUE_MSG_PTU_RES_STATUS");
     }
-    for (paramInt3 = 0;; paramInt3 = 1)
+    if ((i == 0) || (!a(borf.jdField_c_of_type_Borf)))
     {
-      if (paramInt3 == 0)
+      bhlq.a(paramContext, 230).setMessage(a).setPositiveButton(paramContext.getString(2131693485), new borm()).setNegativeButton(paramContext.getString(2131693481), new borl()).show();
+      return;
+    }
+    bpam.a("AEResUtil", "[showDialog] is downloading");
+    QQToast.a(paramContext, 2131689669, 1).a();
+  }
+  
+  public static boolean c()
+  {
+    try
+    {
+      if (!a())
       {
-        return false;
-        paramInt3 -= 10;
-        break;
+        boem.a();
+        bool = FeatureManager.loadBasicFeatures();
+        bpam.d("AEResUtil", "SoLoader.loadSvFilterSo success:" + bool);
       }
-      double d1 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight() / this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
-      this.e = ((int)(paramInt2 / d1));
-      a(paramInt1, paramString);
-      return true;
+      boolean bool = a();
+      return bool;
     }
+    finally {}
   }
   
-  public boolean a(String paramString)
+  private static String d()
   {
-    int i = this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
-    i = this.jdField_b_of_type_AndroidTextStaticLayout.getLineEnd(i - 1);
-    return paramString.length() > i + 1;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public int e()
-  {
-    return this.jdField_a_of_type_AndroidTextTextPaint.getColor();
-  }
-  
-  public int f()
-  {
-    if (this.jdField_b_of_type_AndroidTextStaticLayout == null) {
-      return 0;
-    }
-    return this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
+    return bozz.a().a("aeres_copy_final_path_key", boew.jdField_b_of_type_JavaLangString, 4);
   }
 }
 

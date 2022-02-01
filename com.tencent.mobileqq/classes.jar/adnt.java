@@ -1,15 +1,22 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class adnt
-  extends CharacterStyle
+class adnt
+  extends axek<JobSegment>
 {
-  public adnt(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  adnt(adns paramadns, JobSegment paramJobSegment)
   {
-    paramTextPaint.setColor(-5855578);
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, axeh paramaxeh)
+  {
+    if (paramBoolean)
+    {
+      adns.a(this.a, paramaxeh);
+      return;
+    }
+    adns.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 

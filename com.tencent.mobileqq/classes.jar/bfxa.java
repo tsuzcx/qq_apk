@@ -1,199 +1,174 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.2;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-class bfxa
-  extends bfxd
+public class bfxa
+  extends bfxq
 {
-  bfxa(bfwx parambfwx)
+  aavm a;
+  
+  protected bfxa(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    super(parambfwx);
+    super(paramLong, paramItem);
+    this.jdField_a_of_type_Aavm = new bfxb(this);
   }
   
-  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  public static bfxa a(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    View localView3 = paramView;
-    if (paramView == null) {
-      localView3 = LayoutInflater.from(this.a.jdField_a_of_type_AndroidContentContext).inflate(2131560557, null);
-    }
-    bfxb localbfxb = (bfxb)localView3.getTag();
-    if (localbfxb == null)
+    if (paramLong == 0L)
     {
-      localbfxb = new bfxb(this);
-      localbfxb.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView3.findViewById(2131372517));
-      localbfxb.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView3.findViewById(2131378776));
-      localbfxb.b = ((TextView)localView3.findViewById(2131364999));
-      localbfxb.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView3.findViewById(2131361821));
-      localView3.setOnClickListener(this.a);
-      localView3.setTag(localbfxb);
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. troopuin=0");
+      return null;
     }
-    for (;;)
+    if (paramItem == null)
     {
-      localbfxb.jdField_a_of_type_Int = paramInt;
-      localbfxb.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
-      localbfxb.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(false);
-      localbfxb.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-      paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
-      localbfxb.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      localbfxb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localbfxb.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      localbfxb.b.setVisibility(0);
-      localbfxb.b.setSingleLine(false);
-      localbfxb.b.setMaxLines(2);
-      localbfxb.b.setText("");
-      localbfxb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-      localbfxb.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      String str = anni.a(2131713986) + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title;
-      if (paramTroopFeedItem.type == 5)
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. item=null");
+      return null;
+    }
+    if (paramItem.Id == null)
+    {
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. item.id=null");
+      return null;
+    }
+    if (paramItem.ForwardTroopuin == 0L)
+    {
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. ForwardTroopuin=0");
+      return null;
+    }
+    if ((paramItem.BusId != 102) && (paramItem.BusId != 104))
+    {
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. BusId err:" + paramItem.BusId);
+      return null;
+    }
+    if (TextUtils.isEmpty(paramItem.ForwardPath))
+    {
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. ForwardPath=null");
+      return null;
+    }
+    return new bfxa(paramLong, paramItem);
+  }
+  
+  private final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    paramString2 = bfvp.a();
+    bfvr.c("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult isSuccess:true retCode:" + paramInt1);
+    if (paramInt1 < 0)
+    {
+      paramInt2 = 207;
+      switch (paramInt1)
       {
-        if (this.a.b == null) {
-          this.a.b = this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843583);
-        }
-        paramView = this.a.b;
-        if (bgsp.a(paramTroopFeedItem.picPath)) {
-          break label1164;
-        }
+      default: 
+        paramString1 = paramString3;
+        paramInt1 = paramInt2;
       }
       for (;;)
       {
-        try
-        {
-          paramInt = afur.a(61.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
-          URLDrawable localURLDrawable = URLDrawable.getDrawable(paramTroopFeedItem.picPath, paramInt, paramInt, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          Object localObject;
-          if (!paramTroopFeedItem.isStoryType())
-          {
-            localObject = str;
-            if (paramTroopFeedItem.type != 5)
-            {
-              localObject = str;
-              if (paramTroopFeedItem.type != 19)
-              {
-                localObject = str;
-                if (paramTroopFeedItem.type == 99) {}
-              }
-            }
-          }
-          else
-          {
-            paramView = str;
-            if (!bgsp.a(paramTroopFeedItem.publishUin))
-            {
-              paramView = str + " " + paramTroopFeedItem.publishUin;
-              ((TextView)localbfxb.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371720)).setText(paramTroopFeedItem.publishUin);
-            }
-            localObject = paramView;
-            if (!bgsp.a(paramTroopFeedItem.feedTime))
-            {
-              try
-              {
-                localObject = anni.a(2131713989) + berw.a(Long.parseLong(paramTroopFeedItem.feedTime));
-                ((TextView)localbfxb.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131361820)).setText((CharSequence)localObject);
-                localObject = paramView + (String)localObject;
-                paramInt = 1;
-                if (paramInt != 0)
-                {
-                  localbfxb.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-                  localbfxb.b.setVisibility(8);
-                }
-                if (paramTroopFeedItem.type != 131) {
-                  continue;
-                }
-                localbfxb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(atvo.b(paramTroopFeedItem.title));
-                paramView = (View)localObject;
-                paramTroopFeedItem = paramView;
-                if (!paramBoolean) {
-                  paramTroopFeedItem = paramView + " " + anni.a(2131713990);
-                }
-                localView3.setContentDescription(paramTroopFeedItem);
-                return localView3;
-              }
-              catch (NumberFormatException localNumberFormatException)
-              {
-                localView2 = paramView;
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.e("TroopFeedViewFactory", 2, "item.feedTime:" + paramTroopFeedItem.feedTime);
-                localView2 = paramView;
-              }
-              if (paramTroopFeedItem.type == 132)
-              {
-                if (this.a.c == null) {
-                  this.a.c = this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843585);
-                }
-                paramView = this.a.c;
-                break;
-              }
-              if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-                this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843583);
-              }
-              paramView = this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-            }
-          }
+        paramString1 = new bgrk(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardTroopuin, 5, paramInt1, paramString1);
+        bfva.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+        if (paramString2 == null) {
+          break;
         }
-        catch (IllegalArgumentException localIllegalArgumentException)
+        paramString1 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
+        if (paramString1 != null)
         {
-          localView1 = paramView;
-          continue;
-          View localView2;
-          paramInt = 0;
-          continue;
-          if ((paramTroopFeedItem.type == 5) || (paramTroopFeedItem.type == 19))
-          {
-            localbfxb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localView1);
-            localbfxb.b.setText(paramTroopFeedItem.content);
-            localbfxb.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-            localbfxb.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
-            paramView = localView2 + " " + paramTroopFeedItem.content;
-            continue;
-          }
-          if ((paramTroopFeedItem.type == 133) || (paramTroopFeedItem.type == 18) || (paramTroopFeedItem.type == 0))
-          {
-            localbfxb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localView1);
-            paramView = localView2;
-            continue;
-          }
-          if (paramTroopFeedItem.type == 12)
-          {
-            localbfxb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843588);
-            paramView = localView2;
-            continue;
-          }
-          if ((paramTroopFeedItem.type == 10) || (paramTroopFeedItem.type == 132))
-          {
-            localbfxb.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
-            localbfxb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localView1);
-            localbfxb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843587);
-            paramView = localView2;
-            continue;
-          }
-          paramView = localView2;
-          if (paramTroopFeedItem.orginType != 99) {
-            continue;
-          }
-          localbfxb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localView1);
-          localbfxb.b.setText(paramTroopFeedItem.content);
-          if (!paramTroopFeedItem.tag.equals(anni.a(2131713983)))
-          {
-            localbfxb.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-            localbfxb.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
-          }
-          paramView = localView2 + " " + paramTroopFeedItem.content;
-          continue;
+          long l = paramString1.structMsgSeq;
+          paramString2.a().b("" + this.d, 1, l);
         }
-        label1164:
-        View localView1 = paramView;
+        return;
+        paramInt1 = 202;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = 600;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = 701;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = 706;
+        paramString1 = anzj.a(2131714128);
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId == 102)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
+          if (paramString2 != null)
+          {
+            bfvr.b("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: space no enough. fowrd temp.");
+            aauw.a(paramString2, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Aavm);
+            return;
+          }
+          paramInt1 = 204;
+          paramString1 = paramString3;
+        }
+        else
+        {
+          paramInt1 = 204;
+          paramString1 = paramString3;
+          continue;
+          paramInt1 = -139;
+          paramString1 = paramString3;
+          continue;
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) && (new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists()))
+          {
+            bfvr.b("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: -6101. start local uploadl.");
+            bfxt.a().a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
+            return;
+          }
+          paramInt1 = 603;
+          paramString1 = paramString3;
+          continue;
+          paramInt1 = 705;
+          paramString1 = paramString3;
+        }
+      }
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult fail. removeMsgByUniseq fail.");
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new TroopFileToTroopForwarder.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramString1;
+    bfvr.c("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. mItem.FilePath:" + paramString1);
+    paramString3 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.d);
+    if (paramString3 != null) {
+      paramString3.e = paramString1;
+    }
+    if (paramString2 != null)
+    {
+      paramString2 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
+      if (paramString2 != null) {
+        paramString2.strTroopFilePath = paramString1;
       }
     }
+    for (;;)
+    {
+      bfva.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 7, 0);
+      j();
+      return;
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. update entity.strTroopFilePath fail.");
+    }
+  }
+  
+  private int b()
+  {
+    QQAppInterface localQQAppInterface = bfvp.a();
+    if (localQQAppInterface == null)
+    {
+      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop app=null");
+      return -1;
+    }
+    bfvr.c("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath + " entrySessionID:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID + " with:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width + " height:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height);
+    aauw.a(localQQAppInterface, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Aavm);
+    bfva.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 4, 0);
+    return 0;
+  }
+  
+  public int a()
+  {
+    return b();
   }
 }
 

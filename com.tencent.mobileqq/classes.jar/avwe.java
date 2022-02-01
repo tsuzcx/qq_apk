@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 class avwe
-  implements avtt
+  implements TVK_IMediaPlayer.OnNetVideoInfoListener
 {
-  avwe(avwb paramavwb, int paramInt, String paramString) {}
+  avwe(avvx paramavvx) {}
   
-  public void a()
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    ListenTogetherManager.a(this.jdField_a_of_type_Avwb.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.jdField_a_of_type_Avwb.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
-    bcst.b(null, "dc00899", this.jdField_a_of_type_Avwb.jdField_a_of_type_Avwg.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Avwb.jdField_a_of_type_Avwg.b, "", this.jdField_a_of_type_Avwb.jdField_a_of_type_Avwg.jdField_a_of_type_Int + "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    }
   }
-  
-  public void b() {}
 }
 
 

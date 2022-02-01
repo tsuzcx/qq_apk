@@ -1,32 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
-class ajdl
+public class ajdl
   implements View.OnClickListener
 {
-  ajdl(ajdk paramajdk) {}
+  public ajdl(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
   public void onClick(View paramView)
   {
-    ajdm localajdm = (ajdm)paramView.getTag();
-    if ((localajdm == null) || (!(localajdm instanceof ajdm))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      View localView = (View)paramView.getParent();
-      if ((localView instanceof ShaderAnimLayout)) {
-        ((ShaderAnimLayout)localView).d();
-      }
-      ajdk.a(this.a, localajdm.a);
-      this.a.jdField_a_of_type_JavaUtilList.add(ajdk.a(this.a).remove(this.a.getCount() - localajdm.b - 1));
-      this.a.notifyDataSetChanged();
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getSystemService("input_method");
+    if ((localInputMethodManager != null) && (localInputMethodManager.isActive())) {
+      localInputMethodManager.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
     }
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

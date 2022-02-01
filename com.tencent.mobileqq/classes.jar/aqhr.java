@@ -1,147 +1,180 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aqhr
-  implements aqiw
 {
-  public aqhr(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
   
-  public int a()
+  public aqhr()
   {
-    int j = 1;
-    int i;
-    if (this.a.i == 0) {
-      i = 2;
-    }
+    a();
+  }
+  
+  public void a()
+  {
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.dynamic_avatar.name());
+    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    this.jdField_a_of_type_Boolean = true;
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
-      }
-      return i;
-      i = j;
-      if (this.a.i != 3) {
-        if (this.a.i != 1)
-        {
-          i = j;
-          if (this.a.i != 2) {}
+      try
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length < 11) {
+          continue;
         }
-        else
-        {
-          i = this.a.h;
+        this.jdField_a_of_type_Boolean = false;
+        if (Integer.valueOf(localObject[0]).intValue() != 1) {
+          continue;
         }
+        this.jdField_b_of_type_Boolean = true;
+        if (!this.jdField_b_of_type_Boolean) {
+          continue;
+        }
+        if (Integer.valueOf(localObject[1]).intValue() != 1) {
+          continue;
+        }
+        this.jdField_c_of_type_Boolean = true;
       }
+      catch (Exception localException)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DynamicAvatarConfig", 2, "parse config exception:" + localException.getMessage());
+        continue;
+        this.jdField_c_of_type_Boolean = false;
+        continue;
+        this.jdField_d_of_type_Boolean = false;
+        continue;
+        this.e = false;
+        continue;
+        this.f = false;
+        continue;
+        this.g = false;
+        continue;
+        this.h = false;
+        continue;
+        this.i = false;
+        continue;
+        this.j = false;
+        continue;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = false;
+        this.e = false;
+        this.f = false;
+        this.g = false;
+        this.h = false;
+        this.i = false;
+        this.j = false;
+        continue;
+        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
+          continue;
+        }
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = false;
+        this.e = false;
+        this.f = false;
+        this.g = false;
+        this.h = false;
+        this.i = false;
+        this.j = false;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
+        if (this.jdField_c_of_type_Int > 0) {
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DynamicAvatarConfig", 2, "adjust samllSizeFPS:" + this.jdField_c_of_type_Int);
+        this.jdField_c_of_type_Int = 18;
+        if (this.jdField_d_of_type_Int > 0) {
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DynamicAvatarConfig", 2, "adjust bigSizeFPS:" + this.jdField_d_of_type_Int);
+        this.jdField_d_of_type_Int = 18;
+      }
+      if (Integer.valueOf(localObject[2]).intValue() != 1) {
+        continue;
+      }
+      this.jdField_d_of_type_Boolean = true;
+      if (Integer.valueOf(localObject[3]).intValue() != 1) {
+        continue;
+      }
+      this.e = true;
+      if (Integer.valueOf(localObject[4]).intValue() != 1) {
+        continue;
+      }
+      this.f = true;
+      if (Integer.valueOf(localObject[5]).intValue() != 1) {
+        continue;
+      }
+      this.g = true;
+      if (Integer.valueOf(localObject[6]).intValue() != 1) {
+        continue;
+      }
+      this.h = true;
+      if (Integer.valueOf(localObject[11]).intValue() != 1) {
+        continue;
+      }
+      this.i = true;
+      if (Integer.valueOf(localObject[12]).intValue() != 1) {
+        continue;
+      }
+      this.j = true;
+      this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
+      this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
+      this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
+      this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
+      if (!this.jdField_a_of_type_Boolean) {
+        continue;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_d_of_type_Boolean = true;
+      this.e = true;
+      this.f = true;
+      this.g = true;
+      this.h = true;
+      this.jdField_a_of_type_Int = 8;
+      this.jdField_b_of_type_Int = 200;
+      this.jdField_c_of_type_Int = 18;
+      this.jdField_d_of_type_Int = 18;
+      this.i = true;
+      this.j = true;
+      return;
+      this.jdField_b_of_type_Boolean = false;
     }
   }
   
-  public int a(int paramInt)
+  public String toString()
   {
-    int j = 0;
-    int i;
-    if (this.a.i == 0) {
-      i = anjh.b.length - 17;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      if (this.a.i == 3)
-      {
-        i = anjh.c.length;
-      }
-      else if (this.a.i != 1)
-      {
-        i = j;
-        if (this.a.i != 2) {}
-      }
-      else
-      {
-        i = j;
-        if (paramInt < this.a.h)
-        {
-          i = j;
-          if (paramInt >= 0)
-          {
-            i = j;
-            if (this.a.a[paramInt] != null) {
-              i = ((List)this.a.a[paramInt]).size();
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i;
-    String str;
-    if (this.a.i == 0)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < anjh.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      paramInt2 = ConditionSearchFriendActivity.b(this.a, i);
-      str = anjh.b[paramInt2];
-      paramInt2 = i;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
-      }
-      return str;
-      if (this.a.i == 3)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < anjh.c.length) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        str = anjh.c[i];
-        paramInt2 = i;
-      }
-      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
-        {
-          str = ConditionSearchFriendActivity.a();
-          paramInt2 = i;
-        }
-        else
-        {
-          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
-          paramInt2 = i;
-        }
-      }
-      else
-      {
-        str = "";
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder("");
+    localStringBuilder.append("dpcString:").append(this.jdField_a_of_type_JavaLangString).append(",isPlayInAll:").append(this.jdField_b_of_type_Boolean).append(",isPlayInMsgTab:").append(this.jdField_c_of_type_Boolean).append(",isPlayInContacts:").append(this.jdField_d_of_type_Boolean).append(",isPlayInNearList:").append(this.e).append(",isPlayInFriendProfile:").append(this.f).append(",isPlayInNearProfile:").append(this.g).append(",isPlayInTroopProfile:").append(this.h).append(",maxPlayingCount:").append(this.jdField_a_of_type_Int).append(",maxPlayCountOneDay:").append(this.jdField_b_of_type_Int).append(",bigSizeFPS:").append(this.jdField_d_of_type_Int).append(",smallSizeFPS:").append(this.jdField_c_of_type_Int).append(",isConvsPlayAfterKill:").append(this.i).append(",isContactPlayAfterKill:").append(this.j).append(",isUseDefault:").append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

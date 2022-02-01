@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.qwallet;
 
 import android.content.res.Resources;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
 import com.tencent.mobileqq.activity.qwallet.voice.KSongVolumeView;
 
@@ -16,7 +16,7 @@ class RedPacketKSongFragment$13
     if (this.this$0.c()) {
       return;
     }
-    String str2 = this.this$0.getResources().getString(2131694681);
+    String str2 = this.this$0.getResources().getString(2131694723);
     String str1;
     if (this.jdField_a_of_type_Int == 2) {
       str1 = this.jdField_a_of_type_JavaLangString;
@@ -24,7 +24,7 @@ class RedPacketKSongFragment$13
     for (;;)
     {
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712095));
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131712204));
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongVolumeView.setVisibility(8);
       this.this$0.b();
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.b();

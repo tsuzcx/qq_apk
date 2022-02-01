@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adfr
-  implements View.OnClickListener
+public class adfr
+  implements adci
 {
-  adfr(adfo paramadfo) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    this.a.jdField_a_of_type_Aded.d();
-    adhh.a(this.a.jdField_a_of_type_Adea, 4);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramQQAppInterface.a().i(paramArrayOfByte);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

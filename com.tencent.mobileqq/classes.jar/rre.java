@@ -1,72 +1,19 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class rre
+  implements aqrn
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 10;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int c = 30;
+  public rre(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public int a()
+  public ColorNote getColorNote()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<String> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.c = paramInt;
+    VideoInfo localVideoInfo = VideoFeedsPlayActivity.a(this.a);
+    if (localVideoInfo == null) {
+      return null;
+    }
+    return new aqrv().a(16908290).a(aqso.a + localVideoInfo.g).b(localVideoInfo.c).c(localVideoInfo.k).d(localVideoInfo.b).a(rpt.a(localVideoInfo)).a(VideoFeedsPlayActivity.a(this.a)).a();
   }
 }
 

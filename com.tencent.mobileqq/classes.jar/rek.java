@@ -1,34 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import kotlin.Metadata;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterOutsideLink;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rek
-  extends reh
+public abstract interface rek<T extends rej>
 {
-  protected void a()
-  {
-    Object localObject = a();
-    if (localObject != null) {
-      ((SocializeFeedsInfo)localObject).a = 19191924;
-    }
-    localObject = a();
-    if (localObject != null) {
-      ((rhn)localObject).a = true;
-    }
-    BaseArticleInfo localBaseArticleInfo = a();
-    localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((rhg)localObject).a;
-      if (localObject == null) {}
-    }
-    for (localObject = ((rhm)localObject).a;; localObject = null)
-    {
-      localBaseArticleInfo.mTitle = ((String)localObject);
-      return;
-    }
-  }
+  public abstract void a(T paramT);
+  
+  public abstract void a(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void a(T paramT, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void c(T paramT, int paramInt1, int paramInt2);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import pny;
+import pgw;
 
 public class RIJSkinOperationPopupStep$2
   implements Runnable
 {
-  public RIJSkinOperationPopupStep$2(pny parampny, GuideData paramGuideData, String paramString, int paramInt) {}
+  public RIJSkinOperationPopupStep$2(pgw parampgw, GuideData paramGuideData, String paramString, int paramInt) {}
   
   public void run()
   {
-    pny.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    pgw.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

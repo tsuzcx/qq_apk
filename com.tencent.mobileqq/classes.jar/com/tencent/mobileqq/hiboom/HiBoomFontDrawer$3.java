@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.hiboom;
 
-import auze;
+import avrf;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class HiBoomFontDrawer$3
   implements Runnable
 {
-  public HiBoomFontDrawer$3(auze paramauze) {}
+  public HiBoomFontDrawer$3(avrf paramavrf) {}
   
   public void run()
   {

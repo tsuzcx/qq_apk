@@ -28,7 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nmd;
+import nny;
 
 public class MiniAppSearchDataManager
   implements Manager
@@ -68,7 +68,7 @@ public class MiniAppSearchDataManager
   
   private void checkNetwork()
   {
-    if ((!nmd.a(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
+    if ((!nny.a(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
     {
       this.mSearchResultList.clear();
       this.mResultDataChangedListener.onResultDataChanged();

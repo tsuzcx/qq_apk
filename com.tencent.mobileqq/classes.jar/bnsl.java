@@ -1,99 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
-class bnsl
-  implements View.OnClickListener
+public class bnsl
 {
-  bnsl(bnsi parambnsi) {}
+  private static bnsl jdField_a_of_type_Bnsl;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.homeworkCfg.name();
+  private int jdField_a_of_type_Int = 22;
+  private anwh jdField_a_of_type_Anwh = new bnsm(this);
   
-  public void onClick(View paramView)
+  private bnsl()
   {
-    int j = 0;
-    bnsi.a(this.a, true);
-    Set localSet = bnsi.a(this.a).a();
-    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + localSet);
-    Object localObject = bnyl.a();
-    ((bnyl)localObject).j();
-    int i = 0;
-    while (i < bnsi.a(this.a).size()) {
-      if (!localSet.contains(Integer.valueOf(i)))
-      {
-        i += 1;
-      }
-      else
-      {
-        if (((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
-        {
-          ((bnyl)localObject).k(((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
-          ((bnyl)localObject).i("none");
-          ((bnyl)localObject).j("none");
-        }
-        for (;;)
-        {
-          bnyh.a().af();
-          break;
-          if (!((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
-          {
-            ((bnyl)localObject).k("none");
-            ((bnyl)localObject).i(((bnrl)bnrk.jdField_a_of_type_JavaUtilList.get(bnrk.jdField_a_of_type_ArrayOfInt[(i % bnrk.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
-            ((bnyl)localObject).j(((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
-          }
-          else
-          {
-            ((bnyl)localObject).k("none");
-            ((bnyl)localObject).i("none");
-            ((bnyl)localObject).j("none");
-          }
-        }
-      }
-    }
-    bnsi.a(this.a).a(false);
-    bnua localbnua = bnsi.a(this.a).a();
-    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + localbnua.a + ", texts = " + localbnua.b);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    i = j;
-    if (i < localbnua.a.size())
+    DeviceProfileManager.a(this.jdField_a_of_type_Anwh);
+    a();
+  }
+  
+  public static bnsl a()
+  {
+    if (jdField_a_of_type_Bnsl == null) {}
+    try
     {
-      Integer localInteger = (Integer)localbnua.d.get(i);
-      if (localSet.contains(localInteger))
-      {
-        if ((i != 0) || (bnsi.a(this.a) == null)) {
-          break label599;
-        }
-        localArrayList1.add(bnsi.a(this.a).jdField_a_of_type_JavaLangString);
-        localArrayList2.add(bnsi.a(this.a).b);
-        localArrayList3.add(bnsi.a(this.a).c);
+      if (jdField_a_of_type_Bnsl == null) {
+        jdField_a_of_type_Bnsl = new bnsl();
       }
-      for (;;)
-      {
-        String str = bnsi.a(this.a, localInteger.intValue());
-        StringBuilder localStringBuilder = new StringBuilder().append("gif^");
-        localObject = str;
-        if (str == null) {
-          localObject = "";
-        }
-        localObject = (String)localObject;
-        localArrayList4.add(localObject);
-        bnzb.b("AEGIFChunkPreviewFragment", "save gif, index=" + i + ", widgetInfo=" + (String)localObject + ", originIndex=" + localInteger);
-        i += 1;
-        break;
-        label599:
-        localArrayList1.add(localbnua.a.get(i));
-        localArrayList2.add(localbnua.b.get(i));
-        localArrayList3.add(localbnua.c.get(i));
-      }
+      return jdField_a_of_type_Bnsl;
     }
-    bnsi.a(this.a, localArrayList1, localArrayList2, localArrayList3, localArrayList4);
-    EventCollector.getInstance().onViewClicked(paramView);
+    finally {}
+  }
+  
+  public void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
+    {
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 22;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 22;
+    }
+  }
+  
+  public boolean a()
+  {
+    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
   }
 }
 

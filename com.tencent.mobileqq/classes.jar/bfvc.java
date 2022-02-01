@@ -1,34 +1,60 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
-
 public class bfvc
-  extends Handler
 {
-  public bfvc(AutoLocationMapView paramAutoLocationMapView) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public int f;
+  public long f;
+  public int g;
+  public long g;
+  public int h;
+  public long h;
+  public int i = 0;
+  public int j;
   
-  public void handleMessage(Message paramMessage)
+  public bfvc()
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.getMap().clear();
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
-      this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
-      Bitmap localBitmap = bggl.a(this.a.getContext().getResources(), 2130842448);
-      awao.a(this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).snippet("").position(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D))));
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
-    }
+    this.jdField_h_of_type_Int = 0;
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_h_of_type_Long = 0L;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_h_of_type_Int = 0;
+    this.i = 0;
+    this.j = 0;
   }
 }
 

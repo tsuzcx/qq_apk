@@ -1,66 +1,187 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.text.TextUtils;
+import android.text.format.Time;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.OfflineExpire.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class nmq
-  implements BusinessObserver
+public class nmq
 {
-  nmq(Context paramContext, QQAppInterface paramQQAppInterface, biau parambiau, SessionInfo paramSessionInfo, String paramString) {}
+  public static int a;
+  public static String a;
+  public static boolean a;
+  private static int b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    jdField_a_of_type_JavaLangString = "OfflineExpire";
+    jdField_a_of_type_Int = 3;
+  }
+  
+  protected static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "parseExpire:" + paramString);
     }
     for (;;)
     {
+      Object localObject;
       try
       {
-        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-        {
-          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-          nmp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          nmp.a(this.jdField_a_of_type_Biau);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
-          }
-          nmp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
-          nmp.a(this.jdField_a_of_type_Biau);
-          return;
+        paramString = new JSONArray(paramString);
+        int i = 0;
+        int j = paramString.length();
+        if (i >= j) {
+          break;
+        }
+        localObject = paramString.optJSONObject(i);
+        if (localObject != null) {
+          break label121;
+        }
+        i += 1;
+        continue;
+        if (!QLog.isColorLevel()) {
+          break;
         }
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
+      catch (JSONException paramString)
       {
-        nmp.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-        nmp.a(this.jdField_a_of_type_Biau);
-        return;
+        paramString.printStackTrace();
       }
-      nmp.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-      continue;
-      nmp.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-      continue;
-      nmp.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "parseExpire: " + QLog.getStackTraceString(paramString));
+      return;
+      label121:
+      int k = ((JSONObject)localObject).optInt("bid");
+      if (k > 0)
+      {
+        localObject = nmp.a(k + "");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = (String)localObject + k;
+          if (new File((String)localObject).exists()) {
+            noe.a((String)localObject);
+          }
+        }
+      }
+    }
+  }
+  
+  protected static void a(String paramString, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "parsePreDown:" + paramString);
+    }
+    if (paramInt == 1) {}
+    for (paramInt = 300000;; paramInt = 0)
+    {
+      ArrayList localArrayList;
+      for (;;)
+      {
+        Object localObject;
+        try
+        {
+          paramString = new JSONObject(paramString).optJSONArray("data");
+          b = 0;
+          paramContext = new WeakReference(paramQQAppInterface);
+          localArrayList = new ArrayList();
+          int j = paramString.length();
+          int i = 0;
+          if (i >= j) {
+            break label399;
+          }
+          localObject = paramString.optJSONObject(i);
+          if (localObject != null) {
+            break label163;
+          }
+          i += 1;
+          continue;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+        }
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "parsePreDown: " + QLog.getStackTraceString(paramString));
+        return;
+        label163:
+        int k = ((JSONObject)localObject).optInt("code");
+        if ((k > 0) && (k < 10))
+        {
+          String str1 = ((JSONObject)localObject).optInt("bid") + "";
+          String str2 = ((JSONObject)localObject).optString("url");
+          int m = ((JSONObject)localObject).optInt("filesize", 0);
+          BidDownloader localBidDownloader = new BidDownloader(str1, paramQQAppInterface, new nmr(paramContext, str2, m, str1), true, k);
+          localBidDownloader.d = ((JSONObject)localObject).optInt("id");
+          JSONObject localJSONObject = nmj.a(str1);
+          if ((localJSONObject == null) || (localJSONObject.optInt("version", 0) < localBidDownloader.d))
+          {
+            if (((JSONObject)localObject).optInt("network", 0) == 1) {}
+            for (boolean bool = true;; bool = false)
+            {
+              localBidDownloader.f = bool;
+              b += 1;
+              localBidDownloader.jdField_c_of_type_JavaLangString = str2;
+              localBidDownloader.jdField_c_of_type_Int = m;
+              localBidDownloader.a = true;
+              localObject = new nmt(paramQQAppInterface, str1, localBidDownloader);
+              if (!localBidDownloader.f) {
+                break label388;
+              }
+              localArrayList.add(localObject);
+              break;
+            }
+            label388:
+            localArrayList.add(0, localObject);
+          }
+        }
+      }
+      label399:
+      ThreadManager.getSubThreadHandler().postDelayed(new OfflineExpire.2(paramContext, localArrayList), paramInt);
+      return;
+    }
+  }
+  
+  private static String b(ArrayList<String> paramArrayList, boolean paramBoolean)
+  {
+    Time localTime = new Time();
+    localTime.setToNow();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.process.tmdownloader.exit");
+    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
+    localStringBuilder.append(localTime.hour);
+    if (paramBoolean)
+    {
+      localStringBuilder.append(localTime.minute - 1);
+      if (paramArrayList != null) {
+        break label134;
+      }
+    }
+    label134:
+    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
+    {
+      localStringBuilder.append(paramArrayList);
+      paramArrayList = MD5.toMD5(localStringBuilder.toString());
+      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
+      localStringBuilder.append(localTime.minute);
+      break;
     }
   }
 }

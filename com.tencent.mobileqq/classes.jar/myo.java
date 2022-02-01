@@ -1,36 +1,10 @@
-import androidx.annotation.NonNull;
-import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.GameStatusInfo;
 
-public class myo
-  extends myl
+public abstract interface myo
 {
-  protected myl a()
-  {
-    return new myo();
-  }
+  public abstract void a(AvGameCommon.GameStatusInfo paramGameStatusInfo);
   
-  public void a(myl parammyl)
-  {
-    super.a(parammyl);
-  }
-  
-  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
-  {
-    super.a(paramCommonQuestionInfo);
-  }
-  
-  public int b()
-  {
-    return 4;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    return localStringBuilder.toString();
-  }
+  public abstract boolean a();
 }
 
 

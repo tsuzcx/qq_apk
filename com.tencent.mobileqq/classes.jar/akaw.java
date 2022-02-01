@@ -1,39 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class akaw
-  extends akaj
+  implements akgl
 {
-  public akaw(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  public akaw(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  protected boolean b()
+  public void a(MotionEvent paramMotionEvent)
   {
-    return true;
-  }
-  
-  protected void g()
-  {
-    this.e = true;
-    super.g();
-  }
-  
-  protected void u()
-  {
-    super.u();
-  }
-  
-  protected void v()
-  {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    this.a.a.a(paramMotionEvent);
   }
 }
 

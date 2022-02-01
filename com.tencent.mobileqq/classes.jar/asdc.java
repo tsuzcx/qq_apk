@@ -1,8 +1,24 @@
-import android.view.KeyEvent;
+import kotlin.Metadata;
+import kotlin.Unit;
+import org.jetbrains.annotations.Nullable;
 
-public abstract interface asdc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter$Companion;", "", "()V", "INSTANCT", "Lcom/tencent/mobileqq/dt/QQDtReporter;", "instance", "instance$annotations", "getInstance", "()Lcom/tencent/mobileqq/dt/QQDtReporter;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class asdc
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  @Nullable
+  public final asdb a()
+  {
+    if (asdb.a() == null) {}
+    try
+    {
+      if (asdb.a() == null) {
+        asdb.a(new asdb(null));
+      }
+      Unit localUnit = Unit.INSTANCE;
+      return asdb.a();
+    }
+    finally {}
+  }
 }
 
 

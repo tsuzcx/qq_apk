@@ -1,30 +1,14 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aedo
-  implements ActionMode.Callback
 {
-  public aedo(EditInfoActivity paramEditInfoActivity) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
+  protected aedo(ChatHistory paramChatHistory) {}
 }
 
 

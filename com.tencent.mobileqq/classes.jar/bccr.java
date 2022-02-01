@@ -1,52 +1,28 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import java.util.List;
 
 public class bccr
-  extends MSFServlet
+  extends aoki
 {
-  public static void a(int paramInt, AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bccr.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    localNewIntent.putExtra("type", paramInt);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
+  public bccr(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  public void handleBusiHotWordError(int paramInt, String paramString)
   {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bccr.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
-      }
-      return;
+    super.handleBusiHotWordError(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void handleBusiHotWordResult(int paramInt, List<BusinessGroupWord> paramList)
   {
-    paramIntent = new blyw(paramIntent.getIntExtra("type", 1), (UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
-    paramPacket.setTimeout(10000L);
-    paramPacket.setSSOCommand(paramIntent.getCmdString());
-    paramPacket.putSendData(paramIntent.encode());
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    }
   }
 }
 

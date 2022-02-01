@@ -1,49 +1,30 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 
 public class udw
-  extends StaggeredGridLayoutManager
+  implements udr
 {
-  public udw(int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  public udw(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void a(blsy<stSimpleMetaFeed> paramblsy)
   {
-    try
+    int i;
+    if (WSRecommendFragment.d(this.a))
     {
-      super.onLayoutChildren(paramRecycler, paramState);
+      i = paramblsy.getAdapterPosition();
+      paramblsy = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
+      if (paramblsy != null) {}
+    }
+    else
+    {
       return;
     }
-    catch (Exception paramRecycler)
-    {
-      upe.d("WSStaggeredGridLayoutManager", "onLayoutChildren exception: " + paramRecycler.getLocalizedMessage());
-    }
-  }
-  
-  public void scrollToPosition(int paramInt)
-  {
-    try
-    {
-      super.scrollToPosition(paramInt);
-      EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        upe.d("WSStaggeredGridLayoutManager", "scrollToPosition exception: " + localException.getLocalizedMessage());
-      }
-    }
+    WSRecommendFragment.a(this.a, paramblsy, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udw
  * JD-Core Version:    0.7.0.1
  */

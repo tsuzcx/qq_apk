@@ -1,19 +1,42 @@
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall;
 
-public abstract interface uci<V extends uch, P extends uck<V>>
+public class uci
+  implements View.OnTouchListener
 {
-  public abstract V a();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  @NonNull
-  public abstract P a();
+  private uci(FPSSuspendedBall paramFPSSuspendedBall) {}
   
-  public abstract void a(P paramP);
-  
-  public abstract P b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x;
+      this.jdField_b_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      continue;
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).updateViewLayout(paramView, FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uci
  * JD-Core Version:    0.7.0.1
  */

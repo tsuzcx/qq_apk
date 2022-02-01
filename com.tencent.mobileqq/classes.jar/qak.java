@@ -1,198 +1,116 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class qak
 {
-  public static final AtomicLong a = new AtomicLong(0L);
-  
-  public static long a(qni paramqni)
+  public static void a(@NonNull View paramView, String paramString)
   {
-    if (!a())
+    if (a()) {}
+    try
     {
-      QLog.d("FeedsPreloadHelper", 1, "updateRequestVersionAndGet = -1, preloadSwitch is off.");
-      return -1L;
+      JSONObject localJSONObject = new JSONObject();
+      a(paramView, localJSONObject);
+      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
+      return;
     }
-    if (paramqni == null)
+    catch (Exception paramView)
     {
-      QLog.d("FeedsPreloadHelper", 1, "updateRequestVersionAndGet = -1, params is null.");
-      return -1L;
+      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
     }
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "updateRequestVersionAndGet, channelID = ", Integer.valueOf(paramqni.b), ", beginSeq = ", Long.valueOf(paramqni.a) });
-    if ((paramqni.b == 0) && (paramqni.a == -1L))
-    {
-      QLog.d("FeedsPreloadHelper", 1, new Object[] { "feedsRequestVersion = ", Long.valueOf(a.incrementAndGet()) });
-      return a.get();
-    }
-    QLog.d("FeedsPreloadHelper", 1, "not recommend feeds or pull down request, return -1");
-    return -1L;
   }
   
-  public static void a()
+  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
   {
-    long l = System.currentTimeMillis();
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "enterKDTab, time = ", Long.valueOf(l) });
-    bmqa.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(l));
+    int i = paramView.getLeft();
+    int j = paramView.getRight();
+    int k = paramView.getTop();
+    int m = paramView.getBottom();
+    Object localObject1 = paramView.getClass().getSimpleName();
+    Object localObject2 = new Rect(i, k, j, m);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("name", localObject1);
+    localJSONObject.put("visibility", paramView.getVisibility());
+    localJSONObject.put("bounds", localObject2);
+    paramJSONObject.put("view", localJSONObject);
+    if ((paramView instanceof ViewGroup))
+    {
+      j = ((ViewGroup)paramView).getChildCount();
+      localObject1 = new JSONArray();
+      i = 0;
+      while (i < j)
+      {
+        localObject2 = new JSONObject();
+        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
+        ((JSONArray)localObject1).put(localObject2);
+        i += 1;
+      }
+      paramJSONObject.put("children", localObject1);
+    }
   }
   
-  public static void a(long paramLong, boolean paramBoolean) {}
+  public static void a(@NonNull ViewBase paramViewBase, String paramString)
+  {
+    if (a()) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      a(paramViewBase, localJSONObject);
+      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
+      return;
+    }
+    catch (Exception paramViewBase)
+    {
+      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
+    }
+  }
+  
+  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
+  {
+    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
+    Object localObject2 = paramViewBase.getClass().getSimpleName();
+    Object localObject3 = paramViewBase.getName();
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("name", localObject2);
+    localJSONObject.put("id", localObject3);
+    localJSONObject.put("visibility", paramViewBase.getVisibility());
+    localJSONObject.put("bounds", localObject1);
+    paramJSONObject.put("view", localJSONObject);
+    if ((paramViewBase instanceof Layout))
+    {
+      localObject1 = ((Layout)paramViewBase).getSubViews();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        paramViewBase = new JSONArray();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (ViewBase)((Iterator)localObject1).next();
+          localObject3 = new JSONObject();
+          a((ViewBase)localObject2, (JSONObject)localObject3);
+          paramViewBase.put(localObject3);
+        }
+        paramJSONObject.put("children", paramViewBase);
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
   
   public static boolean a()
   {
-    if (!bmqa.h())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, not independent kd tab.");
-      return false;
-    }
-    if (!((Boolean)bmqa.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, switch is off.");
-      return false;
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: YES.");
     return true;
-  }
-  
-  public static boolean a(ToServiceMsg paramToServiceMsg)
-  {
-    if ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes() != null))
-    {
-      paramToServiceMsg = (Boolean)paramToServiceMsg.getAttributes().get("isFeedsPreload");
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFeedsPreloadRequest, isFeedsPreload = ", paramToServiceMsg });
-        return paramToServiceMsg.booleanValue();
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isFeedsPreloadRequest, isFeedsPreload = false.");
-    return false;
-  }
-  
-  public static boolean a(qni paramqni)
-  {
-    if ((paramqni != null) && (a()) && (paramqni.b == 0) && (paramqni.a == -1L))
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAvailableToHitCache: YES");
-      return true;
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isAvailableToHitCache: NO");
-    return false;
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    if (!bmqa.h())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload : NO, not independent kd tab.");
-      return false;
-    }
-    if (!((Boolean)bmqa.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, switch is off.");
-      return false;
-    }
-    long l1 = ((Long)bmqa.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(-1L))).longValue();
-    if (l1 == -1L)
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, have not entered kd yet.");
-      return false;
-    }
-    long l2 = System.currentTimeMillis();
-    long l3 = ((Long)bmqa.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(90L))).longValue();
-    long l4 = (l2 - l1) / 1000L / 60L / 60L / 24L;
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "have left kd for ", Long.valueOf((l2 - l1) / 1000L / 60L), " minute(s), ", Long.valueOf(l4), " day(s), config days = ", Long.valueOf(l3) });
-    if (l4 > l3)
-    {
-      QLog.d("FeedsPreloadHelper", 1, new Object[] { "isAbleToPreload: NO, have left kd for more than ", Long.valueOf(l3), " day(s)." });
-      return false;
-    }
-    if (paramBoolean)
-    {
-      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES, red point preload.");
-      return true;
-    }
-    l2 = ((Long)bmqa.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(-1L))).longValue();
-    if (l2 != -1L)
-    {
-      l3 = System.currentTimeMillis();
-      l1 = ((Long)bmqa.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(30L))).longValue();
-      l2 = (l3 - l2) / 1000L / 60L;
-      QLog.d("FeedsPreloadHelper", 1, new Object[] { "it has been ", Long.valueOf(l2), " minute(s) since last feeds preload, config minutes = ", Long.valueOf(l1) });
-      if (l2 < l1)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isAbleToPreload: NO, it has been less than ", Long.valueOf(l1), " minute(s) since last feeds preload." });
-        return false;
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES.");
-    return true;
-  }
-  
-  public static void b()
-  {
-    long l = System.currentTimeMillis();
-    QLog.d("FeedsPreloadHelper", 1, new Object[] { "preload succeed, time = ", Long.valueOf(l) });
-    bmqa.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(l));
-  }
-  
-  public static boolean b()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (!(localBaseActivity instanceof SplashActivity)) {
-      QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush = false, is not splashActivity.");
-    }
-    for (;;)
-    {
-      return false;
-      try
-      {
-        int i = localBaseActivity.getIntent().getIntExtra("launch_from", 5);
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFromLockScreenPush, launchFrom = ", Integer.valueOf(i) });
-        if ((i == 6) || (i == 9)) {
-          return true;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush, t = ", localThrowable);
-        QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush = false");
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(ToServiceMsg paramToServiceMsg)
-  {
-    if (paramToServiceMsg != null)
-    {
-      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute("feedsRequestVersion");
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isLatestRequestVersion, reqVersion = ", Long.valueOf(paramToServiceMsg.longValue()), ", latestVersion = ", Long.valueOf(a.get()) });
-        return paramToServiceMsg.longValue() == a.get();
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "is not latest request version.");
-    return false;
-  }
-  
-  public static boolean b(qni paramqni)
-  {
-    if (paramqni != null)
-    {
-      if ((paramqni.i & 0x100) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFeedsPreloadRequest, isFeedsPreload = ", Boolean.valueOf(bool) });
-        return bool;
-      }
-    }
-    QLog.d("FeedsPreloadHelper", 1, "isFeedsPreloadRequest, isFeedsPreload = false.");
-    return false;
   }
 }
 

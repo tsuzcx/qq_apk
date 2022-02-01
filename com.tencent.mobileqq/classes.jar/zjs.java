@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class zjs
-  implements View.OnClickListener
+public abstract interface zjs
 {
-  zjs(zjr paramzjr) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

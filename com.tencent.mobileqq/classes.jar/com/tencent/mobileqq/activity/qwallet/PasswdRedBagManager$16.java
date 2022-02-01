@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aklh;
-import aklj;
+import akws;
+import akwu;
 import org.json.JSONObject;
 
 public class PasswdRedBagManager$16
   implements Runnable
 {
-  public PasswdRedBagManager$16(aklj paramaklj, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public PasswdRedBagManager$16(akwu paramakwu, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    aklj.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    akwu.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject.toString());
   }
 }
 

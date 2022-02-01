@@ -1,6 +1,18 @@
-public abstract interface aydw
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
+
+public class aydw
+  implements ayeg
 {
-  public abstract void a(int paramInt, String paramString);
+  aydw(aydv paramaydv) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (axup)this.a.a.getManager(106)), 16, null, false);
+    }
+  }
 }
 
 

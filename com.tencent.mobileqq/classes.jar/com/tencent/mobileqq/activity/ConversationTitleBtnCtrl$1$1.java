@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aeav;
+import aejz;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,41 +11,41 @@ class ConversationTitleBtnCtrl$1$1
   
   public void run()
   {
-    if (aeav.a(this.a.this$0) > 0) {
-      if (aeav.a(this.a.this$0) != null)
+    if (aejz.a(this.a.this$0) > 0) {
+      if (aejz.a(this.a.this$0) != null)
       {
-        if (aeav.a(this.a.this$0) > 99)
+        if (aejz.a(this.a.this$0) > 99)
         {
-          aeav.a(this.a.this$0).setText("99+");
-          aeav.a(this.a.this$0).setVisibility(0);
+          aejz.a(this.a.this$0).setText("99+");
+          aejz.a(this.a.this$0).setVisibility(0);
         }
       }
-      else if (aeav.a(this.a.this$0) != null) {
-        aeav.a(this.a.this$0).setVisibility(8);
+      else if (aejz.a(this.a.this$0) != null) {
+        aejz.a(this.a.this$0).setVisibility(8);
       }
     }
-    label225:
+    label212:
     do
     {
       do
       {
         return;
-        aeav.a(this.a.this$0).setText("" + aeav.a(this.a.this$0));
+        aejz.a(this.a.this$0).setText("" + aejz.a(this.a.this$0));
         break;
-        if ((!aeav.a(this.a.this$0)) || (aeav.b(this.a.this$0) <= 0)) {
-          break label225;
+        if (!aejz.a(this.a.this$0)) {
+          break label212;
         }
-        if (aeav.a(this.a.this$0) != null) {
-          aeav.a(this.a.this$0).setVisibility(0);
+        if (aejz.a(this.a.this$0) != null) {
+          aejz.a(this.a.this$0).setVisibility(0);
         }
-      } while (aeav.a(this.a.this$0) == null);
-      aeav.a(this.a.this$0).setVisibility(8);
+      } while (aejz.a(this.a.this$0) == null);
+      aejz.a(this.a.this$0).setVisibility(8);
       return;
-      if (aeav.a(this.a.this$0) != null) {
-        aeav.a(this.a.this$0).setVisibility(8);
+      if (aejz.a(this.a.this$0) != null) {
+        aejz.a(this.a.this$0).setVisibility(8);
       }
-    } while (aeav.a(this.a.this$0) == null);
-    aeav.a(this.a.this$0).setVisibility(8);
+    } while (aejz.a(this.a.this$0) == null);
+    aejz.a(this.a.this$0).setVisibility(8);
   }
 }
 

@@ -1,8 +1,20 @@
-import android.content.Intent;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface bhiw
+class bhiw
+  implements Animation.AnimationListener
 {
-  public abstract void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
+  bhiw(bhiu parambhiu, Dialog paramDialog) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

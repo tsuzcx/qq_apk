@@ -1,12 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
-class var
-  implements DialogInterface.OnClickListener
+public abstract class var
+  implements aafz
 {
-  var(val paramval) {}
+  public int a()
+  {
+    return -1;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public QCircleInitBean a()
+  {
+    return null;
+  }
+  
+  public QCirclePolyLikeAniView a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(String paramString, vas paramvas) {}
+  
+  public void a(vdq paramvdq) {}
 }
 
 

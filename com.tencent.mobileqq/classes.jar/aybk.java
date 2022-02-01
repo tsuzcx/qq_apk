@@ -1,151 +1,101 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import cooperation.qzone.widget.RoundCornerLinearLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import java.util.List;
 
 public class aybk
-  extends ReportDialog
 {
-  protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected View.OnClickListener a;
-  protected aybn a;
-  protected int b;
+  protected void a() {}
   
-  public aybk(Context paramContext, ArrayList<aybm> paramArrayList)
-  {
-    super(paramContext, 2131755823);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aybl(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = bggq.a(paramContext, 34.0F);
-    this.jdField_a_of_type_Int = bggq.a(paramContext, 34.0F);
-    a(paramArrayList);
-  }
+  protected void a(int paramInt, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    Window localWindow = getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.x = paramInt1;
-    localLayoutParams.y = paramInt2;
-    localLayoutParams.gravity = 85;
-    localLayoutParams.dimAmount = paramFloat;
-    localWindow.setAttributes(localLayoutParams);
-    super.show();
-  }
+  protected void a(int paramInt, String paramString, Bitmap paramBitmap) {}
   
-  protected void a(ImageView paramImageView, String paramString)
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f2f2f2"));
+    switch (paramInt)
+    {
+    default: 
+    case 4118: 
+    case 4131: 
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+        a((List)paramVarArgs[0], (List)paramVarArgs[1]);
+        return;
+      } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+      a(((Integer)paramVarArgs[0]).intValue(), ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
+    case 4113: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+      return;
+    case 4114: 
+      b(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+      return;
+    case 4115: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+      return;
+    case 4116: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+      return;
+    case 4159: 
+      b();
+      return;
+    case 4161: 
+      try
+      {
+        a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1], (Bitmap)paramVarArgs[2]);
+        return;
+      }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+    case 4162: 
+      try
+      {
+        if (((Integer)paramVarArgs[0]).intValue() == 0)
+        {
+          a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+          return;
+        }
+      }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      b(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+      return;
     }
-    Object localObject2 = null;
     try
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-      }
-      for (;;)
-      {
-        paramString = (String)localObject1;
-        if (localObject1 == null) {
-          paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        }
-        paramImageView.setImageDrawable(paramString);
-        return;
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyPublishMenu", 2, "loadImage empty url");
-          localObject1 = localObject2;
-        }
-      }
+      a();
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramVarArgs)
     {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyPublishMenu", 2, "loadImage exp: url=" + paramString, localException);
-          localObject1 = localObject2;
-        }
-      }
+      paramVarArgs.printStackTrace();
     }
   }
   
-  public void a(aybn paramaybn)
-  {
-    this.jdField_a_of_type_Aybn = paramaybn;
-  }
+  public void a(List<String> paramList1, List<String> paramList2) {}
   
-  protected void a(ArrayList<aybm> paramArrayList)
-  {
-    RoundCornerLinearLayout localRoundCornerLinearLayout = new RoundCornerLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRoundCornerLinearLayout.setOrientation(1);
-    localRoundCornerLinearLayout.setBackgroundResource(2130845540);
-    int i = bggq.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    localRoundCornerLinearLayout.setPadding(0, i, 0, i);
-    localRoundCornerLinearLayout.setRadius(bggq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    paramArrayList = paramArrayList.iterator();
-    if (paramArrayList.hasNext())
-    {
-      aybm localaybm = (aybm)paramArrayList.next();
-      ViewGroup localViewGroup = (ViewGroup)localLayoutInflater.inflate(2131559505, localRoundCornerLinearLayout, false);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131368138);
-      TextView localTextView1 = (TextView)localViewGroup.findViewById(2131378776);
-      TextView localTextView2 = (TextView)localViewGroup.findViewById(2131378008);
-      localTextView1.setText(localaybm.jdField_b_of_type_JavaLangString);
-      if (TextUtils.isEmpty(localaybm.c))
-      {
-        localTextView2.setVisibility(8);
-        label167:
-        if (TextUtils.isEmpty(localaybm.a)) {
-          break label227;
-        }
-        a(localImageView, localaybm.a);
-      }
-      for (;;)
-      {
-        localViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localViewGroup.setTag(localaybm);
-        localRoundCornerLinearLayout.addView(localViewGroup);
-        break;
-        localTextView2.setText(localaybm.c);
-        break label167;
-        label227:
-        if (localaybm.jdField_b_of_type_Int > 0) {
-          localImageView.setImageResource(localaybm.jdField_b_of_type_Int);
-        }
-      }
-    }
-    setContentView(localRoundCornerLinearLayout);
-  }
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  protected void b() {}
+  
+  protected void b(int paramInt, String paramString) {}
+  
+  public void b(boolean paramBoolean, List<Long> paramList) {}
 }
 
 

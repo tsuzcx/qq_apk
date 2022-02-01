@@ -1,22 +1,22 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bnjw;
-import bnjx;
+import bolg;
+import bolh;
 import java.util.List;
-import nlw;
+import nnr;
 
 public class AEBottomListAdapter$1$1
   implements Runnable
 {
-  public AEBottomListAdapter$1$1(bnjx parambnjx) {}
+  public AEBottomListAdapter$1$1(bolh parambolh) {}
   
   public void run()
   {
-    int i = nlw.a();
+    int i = nnr.a();
     if (i != 0) {
       this.a.a.notifyDataSetChanged();
     }
-    if ((i == 1) && (bnjw.a(this.a.a).size() > 1)) {
+    if ((i == 1) && (bolg.a(this.a.a).size() > 1)) {
       this.a.a.b();
     }
   }

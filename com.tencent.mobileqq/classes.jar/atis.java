@@ -1,68 +1,37 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.CheckBox;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Timer;
 
 public class atis
-  implements bbps<bbmy, bbvg>
+  implements View.OnClickListener
 {
-  private atix a;
+  public atis(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void a(atix paramatix)
+  public void onClick(View paramView)
   {
-    this.a = paramatix;
-  }
-  
-  public void a(bbmy parambbmy, bbvg parambbvg)
-  {
-    if ((parambbvg.a() != null) && (!TextUtils.isEmpty(parambbmy.a())))
-    {
-      parambbvg.a().setVisibility(0);
-      parambbvg.a().setText(parambbmy.a());
-    }
-    if ((parambbvg.b() != null) && (!TextUtils.isEmpty(parambbmy.b())))
-    {
-      parambbvg.b().setVisibility(0);
-      parambbvg.b().setText(parambbmy.b());
-    }
-    if ((parambbvg.c() != null) && (!TextUtils.isEmpty(parambbmy.c())))
-    {
-      parambbvg.c().setVisibility(0);
-      parambbvg.c().setText(parambbmy.c());
-    }
-    if ((parambbmy.d() == null) && (parambbvg.d() != null)) {
-      parambbvg.d().setVisibility(8);
-    }
-    if ((parambbvg.d() != null) && (parambbmy.d() != null))
-    {
-      parambbvg.d().setVisibility(0);
-      parambbvg.d().setText(parambbmy.d());
-    }
-    atir localatir = (atir)parambbmy;
-    View localView = parambbvg.a();
-    parambbvg = (AsyncImageView)parambbvg.b();
-    String str = localatir.c();
-    int i = localatir.e();
-    if (!TextUtils.isEmpty(str))
-    {
-      atvo.a(parambbvg, str, i);
-      parambbvg.setOnClickListener(new atit(this, parambbmy));
-      parambbvg = (CheckBox)localView.findViewById(2131366568);
-      if (localatir.d() <= 1) {
-        break label336;
-      }
-      parambbvg.setVisibility(8);
+    if (!bhnv.d(BaseApplicationImpl.getContext())) {
+      auna.a(BaseApplicationImpl.getContext().getString(2131693963));
     }
     for (;;)
     {
-      parambbvg.setChecked(localatir.b());
-      localView.setOnClickListener(new atiu(this, parambbmy));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      parambbvg.setDefaultImage(atvo.a(i));
-      break;
-      label336:
-      parambbvg.setVisibility(0);
+      auna.a(BaseApplicationImpl.getContext().getString(2131693775));
+      anvu localanvu = (anvu)MPFileVerifyPwdView.a(this.a).a(8);
+      MPFileVerifyPwdView.a(this.a, localanvu.a().a(3));
+      MPFileVerifyPwdView.b(this.a).setEnabled(false);
+      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
+      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
+      if (MPFileVerifyPwdView.a(this.a) != null) {
+        MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+      }
     }
   }
 }

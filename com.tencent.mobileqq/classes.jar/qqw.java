@@ -1,27 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
-class qqw
-  implements bkls
+public class qqw
+  implements Animation.AnimationListener
 {
-  qqw(qqt paramqqt) {}
+  public qqw(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCell", 2, "onAdComplain");
-    }
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", ((pxk)this.a.jdField_a_of_type_JavaLangObject).a());
-      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    }
+    this.a.a.startAnimation(this.a.c);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

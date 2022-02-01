@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aymm
+class aymm
+  implements View.OnClickListener
 {
-  public aymm(AccountOnlineStateActivity paramAccountOnlineStateActivity, boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem) {}
+  aymm(aymj paramaymj) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onClick(View paramView)
   {
-    bglp.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity), 2131697630, 2131697631);
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity).a(this.jdField_a_of_type_Boolean);
-    AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity).a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
-    AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity).show();
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
+    localIntent.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
+    this.a.a.startActivity(localIntent);
+    bdll.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

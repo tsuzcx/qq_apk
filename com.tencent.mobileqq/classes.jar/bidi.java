@@ -1,163 +1,89 @@
-class bidi
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.PayJsPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
+
+public class bidi
+  extends bimg
+  implements bine
 {
-  private static bidi jdField_a_of_type_Bidi;
-  private static bidi jdField_b_of_type_Bidi;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int = 0;
-  private int c = 9000;
-  private int d = 1800;
-  private int e;
-  
-  public bidi(int paramInt)
+  public bidi(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.c = 9000;
-    }
-    for (this.d = 1800;; this.d = 1200)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      this.e = 0;
-      this.jdField_a_of_type_ArrayOfInt = new int[3];
-      paramInt = 0;
-      while (paramInt < 3)
-      {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = 0;
-        paramInt += 1;
-      }
-      this.c = 6000;
-    }
-  }
-  
-  public static bidi a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (jdField_a_of_type_Bidi == null) {
-        jdField_a_of_type_Bidi = new bidi(0);
-      }
-      return jdField_a_of_type_Bidi;
-    }
-    if (jdField_b_of_type_Bidi == null) {
-      jdField_b_of_type_Bidi = new bidi(1);
-    }
-    return jdField_b_of_type_Bidi;
-  }
-  
-  private void b()
-  {
-    int i = 0;
-    while (i < 3)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      i += 1;
-    }
-    this.e = 0;
-  }
-  
-  private int c()
-  {
-    int i = 0;
-    int j = 0;
-    int m;
-    for (int k = 0; i < 3; k = m)
-    {
-      int n = j;
-      m = k;
-      if (this.jdField_a_of_type_ArrayOfInt[i] > 0)
-      {
-        m = k + 1;
-        n = j + this.jdField_a_of_type_ArrayOfInt[i];
-      }
-      i += 1;
-      j = n;
-    }
-    if (k > 0) {
-      return j / k;
-    }
-    return 0;
-  }
-  
-  public int a()
-  {
-    if (2 == this.jdField_b_of_type_Int) {
-      return this.c;
-    }
-    return this.d;
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
   
   public void a()
   {
-    int j = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    int k = c();
-    int i;
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      i = this.c;
-      if (k != 0) {
-        break label90;
-      }
-      i *= 3;
-      label36:
-      if (j > 100) {
-        if (j <= i) {
-          break label97;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfInt[this.e] = ((int)(i * 1.2F));
-      i = this.e + 1;
-      this.e = i;
-      this.e = (i % 3);
-      return;
-      i = this.d;
-      break;
-      label90:
-      i = k * 3;
-      break label36;
-      label97:
-      i = j;
-    }
+    super.doOnDestroy();
   }
   
-  public int b()
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    int j = nlw.a();
-    int i;
-    if (this.jdField_b_of_type_Int != j)
-    {
-      i = 1;
-      this.jdField_b_of_type_Int = j;
-      if (i == 0) {
-        break label62;
-      }
-      if (this.jdField_b_of_type_Int != 2) {
-        break label54;
-      }
-      i = this.c;
-      label43:
-      b();
-    }
-    label54:
-    label62:
-    do
-    {
-      return i;
-      i = 0;
-      break;
-      i = this.d;
-      break label43;
-      j = c();
-      i = j;
-    } while (j > 0);
-    return 0;
+    super.bindJavaScript(paramArrayList);
+    paramArrayList.add(new WadlWebViewJsPlugin());
+    paramArrayList.add(new avod());
+    paramArrayList.add(new QWalletPayJsPlugin());
+    paramArrayList.add(new PayJsPlugin());
+    paramArrayList.add(new QWalletCommonJsPlugin());
+    paramArrayList.add(new QWalletBluetoothJsPlugin());
+    paramArrayList.add(new awhh());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new awgf());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+    paramArrayList.add(new bigs());
+    paramArrayList.add(new QWalletMixJsPlugin());
+    paramArrayList.add(new abgp());
   }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

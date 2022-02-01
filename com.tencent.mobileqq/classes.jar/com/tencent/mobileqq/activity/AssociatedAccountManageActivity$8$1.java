@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import adnh;
+import adwi;
 import android.view.View;
 import android.widget.ImageView;
-import aoch;
+import aoot;
 
 public class AssociatedAccountManageActivity$8$1
   implements Runnable
 {
-  public AssociatedAccountManageActivity$8$1(adnh paramadnh, String paramString, View paramView) {}
+  public AssociatedAccountManageActivity$8$1(adwi paramadwi, String paramString, View paramView) {}
   
   public void run()
   {
     try
     {
-      aoch localaoch = aoch.a(this.jdField_a_of_type_Adnh.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368138);
+      aoot localaoot = aoot.a(this.jdField_a_of_type_Adwi.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368212);
       if (localImageView != null) {
-        localImageView.setImageDrawable(localaoch);
+        localImageView.setImageDrawable(localaoot);
       }
       return;
     }

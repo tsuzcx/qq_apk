@@ -1,11 +1,11 @@
 package cooperation.qqreader.host.advertisement;
 
-import ackd;
-import ackf;
-import ackj;
-import acqx;
-import acqy;
-import acrh;
+import acoh;
+import acoj;
+import acon;
+import acvb;
+import acvc;
+import acvl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -15,8 +15,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import blpu;
-import blpv;
+import bmqw;
+import bmqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler;
@@ -51,17 +51,17 @@ public class ReaderGdtSdk
   {
     if (paramReportListener != null)
     {
-      paramView.setTag(2131380927, ReaderGdtSdk.ReportListener.a(paramReportListener).a());
-      paramView.setTag(2131380926, paramReportListener);
+      paramView.setTag(2131381107, ReaderGdtSdk.ReportListener.a(paramReportListener).a());
+      paramView.setTag(2131381106, paramReportListener);
       return;
     }
-    paramView.setTag(2131380927, null);
-    paramView.setTag(2131380926, null);
+    paramView.setTag(2131381107, null);
+    paramView.setTag(2131381106, null);
   }
   
   public static void cleanImpressionCountingMap()
   {
-    acrh.a().a();
+    acvl.a().a();
   }
   
   public static void handleClick(@Nullable ContextWrapper paramContextWrapper, @NonNull ReaderAdWrapper paramReaderAdWrapper, ReaderGdtSdk.GdtAppReceiverWrapper paramGdtAppReceiverWrapper)
@@ -71,10 +71,10 @@ public class ReaderGdtSdk
   
   public static void handleClick(@Nullable ContextWrapper paramContextWrapper, @NonNull ReaderAdWrapper paramReaderAdWrapper, ReaderGdtSdk.GdtAppReceiverWrapper paramGdtAppReceiverWrapper, int paramInt)
   {
-    paramContextWrapper = blpv.a(paramContextWrapper);
+    paramContextWrapper = bmqx.a(paramContextWrapper);
     if (paramContextWrapper == null)
     {
-      blpu.a("ReaderGdtSdkProvider", "handleClick: act == null");
+      bmqw.a("ReaderGdtSdkProvider", "handleClick: act == null");
       return;
     }
     GdtHandler.Params localParams = new GdtHandler.Params();
@@ -125,7 +125,7 @@ public class ReaderGdtSdk
   
   public static void jumpToMotiveVideoPage(ContextWrapper paramContextWrapper, ReaderAdWrapper paramReaderAdWrapper)
   {
-    Activity localActivity = blpv.a(paramContextWrapper);
+    Activity localActivity = bmqx.a(paramContextWrapper);
     GdtAd localGdtAd;
     if ((localActivity != null) && (paramReaderAdWrapper.a() != null))
     {
@@ -137,7 +137,7 @@ public class ReaderGdtSdk
       paramReaderAdWrapper.adId = localGdtAd.getAdvertiserId();
       paramReaderAdWrapper.vid = localGdtAd.getTencent_video_id();
       paramReaderAdWrapper.url = localGdtAd.getVideoUrl();
-      acqy.d("ReaderGdtSdkProvider", "VideoUrl " + paramReaderAdWrapper.url);
+      acvc.d("ReaderGdtSdkProvider", "VideoUrl " + paramReaderAdWrapper.url);
       if ((!TextUtils.isEmpty(paramReaderAdWrapper.url)) && (paramReaderAdWrapper.url.startsWith("https://"))) {
         paramReaderAdWrapper.url = paramReaderAdWrapper.url.replaceFirst("https://", "http://");
       }
@@ -155,7 +155,7 @@ public class ReaderGdtSdk
       paramReaderAdWrapper.style = localGdtAd.getStyle();
       paramReaderAdWrapper.endcardUrl = localGdtAd.getEndcardUrl();
       paramReaderAdWrapper.endcardLoadTime = localGdtAd.getEndcardLoadTime();
-      paramContextWrapper = acqx.a(localGdtAd.info);
+      paramContextWrapper = acvb.a(localGdtAd.info);
       if (paramContextWrapper != null) {
         break label285;
       }
@@ -176,7 +176,7 @@ public class ReaderGdtSdk
   
   public static void reportImpression(View paramView)
   {
-    acrh.a().a(paramView);
+    acvl.a().a(paramView);
   }
   
   public static void requestAdData(Context paramContext, Map<String, Integer> paramMap, String paramString1, String paramString2, ReaderGdtSdk.RequestListener paramRequestListener)
@@ -204,9 +204,9 @@ public class ReaderGdtSdk
     localQQAdGet.support_https.set(true, true);
     localQQAdGet.external_exp_info.exp_id.add(paramString2);
     localQQAdGet.external_exp_info.traffic_type.set(8);
-    paramMap = new ackf();
+    paramMap = new acoj();
     paramMap.a = localQQAdGet;
-    new ackd(paramMap, new WeakReference(paramRequestListener)).a(new WeakReference(paramContext));
+    new acoh(paramMap, new WeakReference(paramRequestListener)).a(new WeakReference(paramContext));
   }
 }
 

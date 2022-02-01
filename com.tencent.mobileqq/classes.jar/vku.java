@@ -1,18 +1,16 @@
-import android.app.Activity;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentPart.10;
+import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class vku
-  implements vsz
+  implements vya
 {
-  public vku(QCircleContentPart.10 param10) {}
+  public vku(QCircleReplyItemView paramQCircleReplyItemView, FeedCloudMeta.StReply paramStReply) {}
   
   public void a()
   {
-    if (this.a.this$0.a() != null)
-    {
-      this.a.this$0.a().finish();
-      this.a.this$0.a().overridePendingTransition(0, 0);
-    }
+    QCircleReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyItemView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get());
   }
 }
 

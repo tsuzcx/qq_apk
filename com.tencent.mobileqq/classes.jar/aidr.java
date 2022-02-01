@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.content.Context;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
 
 class aidr
-  implements DialogInterface.OnClickListener
+  extends FrameLayout
 {
-  aidr(aidq paramaidq, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aidr(aido paramaido, Context paramContext)
   {
-    this.jdField_a_of_type_Aidq.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
+    super(paramContext);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = aido.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
+    }
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(aido.a(this.a).getMeasuredWidth() - aido.a(this.a).getPaddingLeft() - aido.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
   }
 }
 

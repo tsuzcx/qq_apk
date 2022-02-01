@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bhsf
-  implements Parcelable.Creator<WebSoService.WebSoState.WebSo3>
+final class bhsf
+  extends aocj
 {
-  public WebSoService.WebSoState.WebSo3 a(Parcel paramParcel)
+  public void a(boolean paramBoolean, long paramLong, aock paramaock)
   {
-    return new WebSoService.WebSoState.WebSo3(paramParcel);
-  }
-  
-  public WebSoService.WebSoState.WebSo3[] a(int paramInt)
-  {
-    return new WebSoService.WebSoState.WebSo3[paramInt];
+    if (paramaock != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(256);
+      localStringBuilder.append("StatictisInfo[ ");
+      localStringBuilder.append("appSeq: " + paramaock.jdField_a_of_type_Int);
+      localStringBuilder.append("errCode: " + paramaock.b);
+      localStringBuilder.append("retryCount: " + paramaock.c);
+      localStringBuilder.append("detailErrorReason: " + paramaock.jdField_a_of_type_Long);
+      localStringBuilder.append("timeoutReason: " + paramaock.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" ]");
+      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
+      return;
+    }
+    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
   }
 }
 

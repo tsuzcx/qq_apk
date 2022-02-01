@@ -1,21 +1,61 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class afmh
-  implements View.OnClickListener
+class afmh
+  extends beyf
 {
-  public afmh(TroopMemberListActivity paramTroopMemberListActivity) {}
+  afmh(afmg paramafmg) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.d == 11) {
-      bcst.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    int i = paramMessage.what;
+    paramMessage = (bete)paramMessage.obj;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendMultiPictureHelper", 2, "file is null");
+      }
     }
-    this.a.b.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
+      } while (this.a.jdField_d_of_type_Boolean);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        if (paramMessage.d == 1005)
+        {
+          this.a.jdField_c_of_type_Boolean = true;
+          return;
+        }
+        if (paramMessage.d == 1003)
+        {
+          this.a.a();
+          return;
+        }
+        afmg.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
+        return;
+      }
+      if (paramMessage.d == 1003)
+      {
+        if (this.a.jdField_a_of_type_Bhpc != null) {
+          this.a.jdField_a_of_type_Bhpc.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+        }
+        this.a.a();
+        return;
+      }
+      if (paramMessage.d == 1005)
+      {
+        this.a.a();
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Bhpc == null);
+    this.a.jdField_a_of_type_Bhpc.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
   }
 }
 

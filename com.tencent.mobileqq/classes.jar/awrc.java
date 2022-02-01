@@ -1,18 +1,17 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
 
-class awrc
+public class awrc
   implements DialogInterface.OnClickListener
 {
-  awrc(awqv paramawqv) {}
+  public awrc(LocationDialogUtil.9 param9) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    bcst.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
-    if (this.a.c()) {
-      awqv.a(this.a).a(false, null, false);
+    if (awql.a(this.a.a)) {
+      this.a.a.finish();
     }
   }
 }

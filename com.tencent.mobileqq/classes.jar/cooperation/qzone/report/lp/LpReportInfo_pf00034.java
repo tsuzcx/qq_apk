@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import blrt;
-import blru;
+import bmsv;
+import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -62,10 +62,10 @@ public class LpReportInfo_pf00034
       LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
       LpReportUtils.safePut(localHashMap, "touin", this.toUin);
       LpReportUtils.safePut(localHashMap, "network_type", NetworkState.getNetworkType());
-      LpReportUtils.safePut(localHashMap, "app_version", "8.4.1");
-      LpReportUtils.safePut(localHashMap, "qua", blru.a());
+      LpReportUtils.safePut(localHashMap, "app_version", "8.4.5");
+      LpReportUtils.safePut(localHashMap, "qua", bmsw.a());
       LpReportUtils.safePut(localHashMap, "platform", "android");
-      LpReportUtils.safePut(localHashMap, "device_info", blrt.a().c());
+      LpReportUtils.safePut(localHashMap, "device_info", bmsv.a().c());
       LpReportUtils.safePut(localHashMap, "login_from", this.loginFrom);
       LpReportUtils.safePut(localHashMap, "is_activity", this.isActivity);
       LpReportUtils.safePut(localHashMap, "test_id", this.testId);

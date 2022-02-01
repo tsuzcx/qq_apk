@@ -1,18 +1,20 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
 
-public class ppb
-  implements AdapterView.OnItemClickListener
+class ppb
+  implements Comparator<ChannelInfo>
 {
-  public ppb(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
+  ppb(poz parampoz) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    this.a.a(paramView, paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
+    }
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
+    }
+    return 1;
   }
 }
 

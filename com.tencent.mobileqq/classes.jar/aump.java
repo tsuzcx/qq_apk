@@ -1,116 +1,50 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.11.1;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
 
 public class aump
-  implements View.OnClickListener
+  implements aumn
 {
-  public aump(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public aump(FMSettings.4 param4) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    double d2 = 0.0D;
-    int i = paramView.getId();
-    if (i == 2131366046)
+    synchronized (this.a.this$0)
     {
-      localObject1 = aybo.a();
-      localObject1 = new aybk(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, (ArrayList)localObject1);
-      ((aybk)localObject1).a(this.a.jdField_a_of_type_Aybn);
-      ((aybk)localObject1).a(bggq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 18.0F), bggq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 67.0F) + this.a.b.getHeight(), 0.2F);
-      new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app).a("dc00899").b("grp_lbs").c("home").d("pub_download_exp").a();
-      axei.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "clk_pub", 1);
-    }
-    while (i != 2131374267)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      aumo localaumo2 = this.a.this$0;
+      localaumo2.jdField_a_of_type_Int += 1;
+      aumo.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        aumo.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Aumn.a();
+      }
       return;
     }
-    axiq localaxiq = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
-    Object localObject1 = localaxiq.a(10);
-    axzz localaxzz = new axzz();
-    if (localObject1 != null) {}
-    for (;;)
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a.this$0)
     {
-      try
+      aumo localaumo2 = this.a.this$0;
+      localaumo2.jdField_a_of_type_Int += 1;
+      aumo.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
       {
-        i = Integer.valueOf(((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_content.get()).intValue();
+        aumo.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Aumn.a(16);
       }
-      catch (Exception localException1)
-      {
-        try
-        {
-          localaxzz.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject1);
-          QLog.d("nearby.redpoint", 1, "click red info, isOfficialNotify=" + localaxzz.jdField_b_of_type_Boolean + " redContentType = " + localaxzz.jdField_b_of_type_Int + " redTopicId = " + localaxzz.jdField_b_of_type_JavaLangString);
-          localObject1 = localaxiq.a();
-          if ((localObject1 == null) || (((ayab)localObject1).jdField_b_of_type_Int != i)) {
-            break label629;
-          }
-          Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-          if (i != 1) {
-            break label560;
-          }
-          if (localaxzz.jdField_b_of_type_Int != 2) {
-            break label531;
-          }
-          localObject1 = "https://nearby.qq.com/nearby-rcmd-content/people.html?_bid=4227&msg_id=" + axzy.a();
-          localIntent.putExtra("url", (String)localObject1);
-          QLog.d("nearby.redpoint", 1, "click OfficialNotify, url" + (String)localObject1);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.startActivity(localIntent);
-          axzx.a().a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "home", "news_slip_click");
-          localaxiq.a(38);
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyHybridFragment.11.1(this), 500L);
-          axei.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "clk_msg", 0);
-          bcst.b(null, "dc00899", "grp_lbs", "", "home", "push_red_click", 0, 0, String.valueOf(((Integer)axdz.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue()), "", "", "");
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            continue;
-            double d1 = 0.0D;
-          }
-        }
-        localException1 = localException1;
-        i = 0;
-      }
-      localException1.printStackTrace();
-      continue;
-      label531:
-      localObject2 = "https://nearby.qq.com/nearby-rcmd-content/detail.html?_bid=4227&_wv=16777218&topic_tag=" + localaxzz.jdField_b_of_type_JavaLangString;
-      continue;
-      label560:
-      localObject2 = aoor.a("nearby_recommend");
-      if ((localObject2 != null) && (((SosoInterface.SosoLbsInfo)localObject2).a != null))
-      {
-        d2 = ((SosoInterface.SosoLbsInfo)localObject2).a.a;
-        d1 = ((SosoInterface.SosoLbsInfo)localObject2).a.b;
-        localObject2 = "https://nearby.qq.com/h5/helper/index.html?_wv=3&_bid=4234&latitude=$LATITUDE$&longitude=$LONGITUDE$".replace("$LATITUDE$", String.valueOf(d2)).replace("$LONGITUDE$", String.valueOf(d1));
-        continue;
-        label629:
-        localObject2 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("url", "https://nearby.qq.com/nearby-index/my_msg.html?_wv=1031&_bid=3027");
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.startActivity((Intent)localObject2);
-      }
-      else
-      {
-        i = 0;
-      }
+      return;
     }
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    aumo localaumo = this.a.this$0;
+    localaumo.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_Aumn.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

@@ -1,18 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikePayView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import java.util.List;
 
 public class vps
-  implements DialogInterface.OnClickListener
+  extends FragmentPagerAdapter
 {
-  public vps(QCirclePolyLikePayView paramQCirclePolyLikePayView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vps(QCirclePersonalBottomView paramQCirclePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    QCirclePolyLikePayView.a(this.a).cancel();
-    vrg.a(95, 2, this.a.a(), this.a.a().getPageId());
-    vrc.a(String.valueOf(uxx.a()), 95, 2, QCirclePolyLikePayView.a(this.a), this.a.a(), null, this.a.a().getPageId());
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return QCirclePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < QCirclePersonalBottomView.a(this.a).size()) {
+      return (Fragment)QCirclePersonalBottomView.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 

@@ -1,21 +1,54 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.database.Cursor;
+import android.os.Parcel;
+import com.tencent.biz.qqcircle.bizparts.danmaku.model.QzoneBarrageEffectData;
+import com.tencent.component.app.common.ParcelableWrapper;
+import cooperation.qzone.util.QZLog;
 
-class vho
-  implements Animation.AnimationListener
+public final class vho
+  implements bjvx<QzoneBarrageEffectData>
 {
-  vho(vhl paramvhl) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public int a()
   {
-    if (this.a.a != null) {
-      this.a.a.setVisibility(0);
+    return 1;
+  }
+  
+  public QzoneBarrageEffectData a(Cursor paramCursor)
+  {
+    Object localObject1 = paramCursor.getBlob(paramCursor.getColumnIndex("barrage_effect_data"));
+    paramCursor = Parcel.obtain();
+    try
+    {
+      paramCursor.unmarshall((byte[])localObject1, 0, localObject1.length);
+      paramCursor.setDataPosition(0);
+      localObject1 = (QzoneBarrageEffectData)ParcelableWrapper.createDataFromParcel(paramCursor);
+      return localObject1;
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QZLog.w("QzoneBarrageEffectData", "QzoneBarrageEffectData createFromCursor Error");
+      return null;
+    }
+    catch (Exception localException)
+    {
+      return null;
+    }
+    finally
+    {
+      if (paramCursor != null) {
+        paramCursor.recycle();
+      }
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public bjvy[] a()
+  {
+    return new bjvy[] { new bjvy("uin", "INTEGER UNIQUE"), new bjvy("barrage_effect_data", "BLOB") };
   }
 }
 

@@ -1,27 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akpr
-  implements View.OnClickListener
+  extends azov
 {
-  public akpr(LingHbFragment paramLingHbFragment) {}
+  public akpr(SettingActivity2.3 param3) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if ((paramView instanceof TextView))
+    if (this.a.this$0.c != null)
     {
-      String str = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + str);
-      this.a.c.setText(str);
-      this.a.a.post(new LingHbFragment.2.1(this));
+      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+      this.a.this$0.c = null;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      if (this.a.this$0.c != null)
+      {
+        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+        this.a.this$0.c = null;
+      }
+      this.a.this$0.a();
+      this.a.this$0.setResult(-1);
+    }
   }
 }
 

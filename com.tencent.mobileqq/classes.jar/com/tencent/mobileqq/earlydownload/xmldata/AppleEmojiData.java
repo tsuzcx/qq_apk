@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class AppleEmojiData
   extends XmlData
 {
-  @arov(a=true, b=false)
+  @asej(a=true, b=false)
   public String v7a_MD5;
   
   public String getSharedPreferencesName()

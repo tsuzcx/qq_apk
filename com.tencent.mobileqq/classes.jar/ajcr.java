@@ -1,25 +1,23 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public class ajcr
-  extends ajcv<ajce>
+class ajcr
+  implements Animator.AnimatorListener
 {
-  public ajcr(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, Context paramContext, int paramInt)
+  ajcr(ajcn paramajcn) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext, paramInt);
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
   }
   
-  protected ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return new ajcd(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  protected void a(ajdf paramajdf, ajce paramajce, int paramInt)
-  {
-    TroopRecommendFriendFragment.a(this.a, paramajdf, paramajce, paramInt);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

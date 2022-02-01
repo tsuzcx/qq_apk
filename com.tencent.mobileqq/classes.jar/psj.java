@@ -1,28 +1,85 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class psj
-  implements TVK_SDKMgr.InstallListener
+  extends BaseAdapter
 {
-  public psj(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArrayList<psl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onInstallProgress(float paramFloat)
+  public psj(Context paramContext)
   {
-    acqy.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onInstalledFailed(int paramInt)
+  private void a(int paramInt, psm parampsm)
   {
-    acqy.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
+    String str;
+    if (((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
+      str = ((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b;
+    }
+    for (;;)
+    {
+      parampsm.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      return;
+      if (((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 1) {
+        str = ((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString;
+      } else {
+        str = "";
+      }
+    }
   }
   
-  public void onInstalledSuccessed()
+  public void a(List<psl> paramList)
   {
-    acqy.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
-    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
-      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if ((paramView != null) && (((psm)paramView.getTag()).jdField_a_of_type_Int == ((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int))
+    {
+      localpsm = (psm)paramView.getTag();
+      localView = paramView;
+      a(paramInt, localpsm);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+    }
+    psm localpsm = new psm(this, null);
+    localpsm.jdField_a_of_type_Int = ((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
+    if (((psl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560262, paramViewGroup, false);
+    }
+    for (localpsm.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364540));; localpsm.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368617)))
+    {
+      localView.setTag(localpsm);
+      break;
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560265, paramViewGroup, false);
     }
   }
 }

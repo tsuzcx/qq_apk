@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,9 +13,9 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
-import bkmo;
-import bkqc;
-import bkqd;
+import blnr;
+import blrf;
+import blrg;
 import com.tencent.mobileqq.R.styleable;
 
 public class XListView
@@ -23,9 +23,9 @@ public class XListView
 {
   private int jdField_a_of_type_Int;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private bkmo jdField_a_of_type_Bkmo;
-  private bkqc jdField_a_of_type_Bkqc;
-  private bkqd jdField_a_of_type_Bkqd;
+  private blnr jdField_a_of_type_Blnr;
+  private blrf jdField_a_of_type_Blrf;
+  private blrg jdField_a_of_type_Blrg;
   private boolean jdField_a_of_type_Boolean;
   private int b = -1;
   private int c;
@@ -125,16 +125,16 @@ public class XListView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
   {
-    if (this.jdField_a_of_type_Bkmo != null) {
-      this.jdField_a_of_type_Bkmo.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
+    if (this.jdField_a_of_type_Blnr != null) {
+      this.jdField_a_of_type_Blnr.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
     }
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bkqc != null) {
-      this.jdField_a_of_type_Bkqc.a();
+    if (this.jdField_a_of_type_Blrf != null) {
+      this.jdField_a_of_type_Blrf.a();
     }
   }
   
@@ -142,12 +142,12 @@ public class XListView
   {
     boolean bool3 = false;
     boolean bool1;
-    if (this.jdField_a_of_type_Bkqd != null)
+    if (this.jdField_a_of_type_Blrg != null)
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if (localMotionEvent != null)
       {
-        bool1 = this.jdField_a_of_type_Bkqd.a(this, localMotionEvent);
+        bool1 = this.jdField_a_of_type_Blrg.a(this, localMotionEvent);
         localMotionEvent.recycle();
       }
     }
@@ -172,7 +172,7 @@ public class XListView
         {
           for (;;)
           {
-            afur.a("XLISTVIEW_dispatchTouchEvent_ERROR", "dispatchTouchEvent_ERROR", paramMotionEvent);
+            agej.a("XLISTVIEW_dispatchTouchEvent_ERROR", "dispatchTouchEvent_ERROR", paramMotionEvent);
             boolean bool2 = false;
           }
         }
@@ -241,9 +241,9 @@ public class XListView
     this.d = paramInt2;
   }
   
-  public void setDrawFinishedListener(bkqc parambkqc)
+  public void setDrawFinishedListener(blrf paramblrf)
   {
-    this.jdField_a_of_type_Bkqc = parambkqc;
+    this.jdField_a_of_type_Blrf = paramblrf;
   }
   
   public void setMaxHeight(int paramInt)
@@ -254,14 +254,14 @@ public class XListView
     }
   }
   
-  public void setMotionEventInterceptor(bkqd parambkqd)
+  public void setMotionEventInterceptor(blrg paramblrg)
   {
-    this.jdField_a_of_type_Bkqd = parambkqd;
+    this.jdField_a_of_type_Blrg = paramblrg;
   }
   
-  public void setOnSizeChangeListener(bkmo parambkmo)
+  public void setOnSizeChangeListener(blnr paramblnr)
   {
-    this.jdField_a_of_type_Bkmo = parambkmo;
+    this.jdField_a_of_type_Blnr = paramblnr;
   }
   
   public void setOverScrollDistance(int paramInt)

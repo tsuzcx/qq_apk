@@ -1,73 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class arbw
-  extends aqkz<String>
+  extends arbu
 {
-  @NonNull
-  public String a(int paramInt)
+  private arcn jdField_a_of_type_Arcn;
+  private arcx jdField_a_of_type_Arcx;
+  
+  public arbw(String paramString, arcn paramarcn, arcx paramarcx)
   {
-    return "";
+    super(paramString);
+    this.jdField_a_of_type_Arcn = paramarcn;
+    this.jdField_a_of_type_Arcx = paramarcx;
   }
   
-  @Nullable
-  public String a(aqlg[] paramArrayOfaqlg)
+  public arcn a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      paramArrayOfaqlg = null;
-    }
-    String str;
-    do
-    {
-      return paramArrayOfaqlg;
-      str = paramArrayOfaqlg[0].a;
-      paramArrayOfaqlg = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
-    return str;
+    return this.jdField_a_of_type_Arcn;
   }
   
-  public void a(String paramString)
+  public arcx a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public Class<String> clazz()
-  {
-    return String.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 462;
+    return this.jdField_a_of_type_Arcx;
   }
 }
 

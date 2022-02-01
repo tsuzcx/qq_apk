@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.content.Intent;
-import blrk;
+import bmsm;
 
 class TroopAvatarWallPreviewActivity$1
   implements Runnable
@@ -12,8 +12,8 @@ class TroopAvatarWallPreviewActivity$1
   {
     if (this.this$0.getIntent().getBooleanExtra("save_intent_to_file", false))
     {
-      Intent localIntent = blrk.a(this.this$0);
-      blrk.a(this.this$0);
+      Intent localIntent = bmsm.a(this.this$0);
+      bmsm.a(this.this$0);
       this.this$0.setIntent(localIntent);
     }
     this.this$0.runOnUiThread(new TroopAvatarWallPreviewActivity.1.1(this));

@@ -1,36 +1,31 @@
-import android.text.TextUtils;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
 
-class aqne
-  extends aqnd
+public class aqne
+  extends ContentObserver
 {
-  private String a;
-  
-  public aqne(String paramString)
+  public aqne(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
   {
-    this.a = paramString;
+    super(paramHandler);
   }
   
-  public Object a(Object paramObject)
+  public void onChange(boolean paramBoolean)
   {
-    if (paramObject == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    }
+    if (BusinessCardEditActivity.a(this.a))
     {
-      return null;
-      paramObject = (LinkedHashMap)paramObject;
-      if (!(paramObject instanceof LinkedHashMap))
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
-      }
-    } while (TextUtils.isEmpty(this.a));
-    return paramObject.get(this.a);
+      this.a.a(2131697891, 2);
+      BusinessCardEditActivity.a(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqne
  * JD-Core Version:    0.7.0.1
  */

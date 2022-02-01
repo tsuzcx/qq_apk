@@ -1,21 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
 class bozf
-  implements Animator.AnimatorListener
 {
-  bozf(boza paramboza) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    boza.b(this.a, this.a.d);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public static final bozd a = new bozd(null);
 }
 
 

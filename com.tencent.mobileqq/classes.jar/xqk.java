@@ -1,14 +1,10 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import java.util.ArrayList;
 
 public class xqk
-  implements xru
+  extends wip
 {
-  public xqk(TextureVideoView paramTextureVideoView) {}
-  
-  public void a(xrt paramxrt, int paramInt)
-  {
-    this.a.f = paramInt;
-  }
+  public ArrayList<String> a;
+  public boolean a = true;
 }
 
 

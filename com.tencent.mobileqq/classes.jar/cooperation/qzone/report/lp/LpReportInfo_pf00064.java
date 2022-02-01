@@ -1,8 +1,8 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import blrt;
-import blru;
+import bmsv;
+import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -321,8 +321,8 @@ public class LpReportInfo_pf00064
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", blru.a());
-    localHashMap.put("device_info", blrt.a().c());
+    localHashMap.put("qua", bmsw.a());
+    localHashMap.put("device_info", bmsv.a().c());
     if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
       localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
     }

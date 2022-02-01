@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import aufo;
+import auxj;
 
 public class QFlutterLauncher$2
   implements Runnable
 {
-  public QFlutterLauncher$2(aufo paramaufo, String paramString) {}
+  public QFlutterLauncher$2(auxj paramauxj, String paramString) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl.base;
 
-import agdb;
+import agnb;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class FriendShipLayout
   extends FrameLayout
 {
-  agdb a;
+  agnb a;
   
   public FriendShipLayout(Context paramContext)
   {
@@ -31,9 +31,9 @@ public class FriendShipLayout
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public void setBackListener(agdb paramagdb)
+  public void setBackListener(agnb paramagnb)
   {
-    this.a = paramagdb;
+    this.a = paramagnb;
   }
 }
 

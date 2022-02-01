@@ -1,18 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
 
-class mtv
-  implements DialogInterface.OnShowListener
+public class mtv
 {
-  mtv(mts parammts) {}
+  private static Boolean[] a;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  private static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    a = new Boolean[4];
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qavUseSurface.name(), "1|1|1|1");
+    int i;
+    if (!TextUtils.isEmpty(str))
+    {
+      String[] arrayOfString = str.split("\\|");
+      i = 0;
+      if (i < a.length)
+      {
+        if (i < arrayOfString.length) {
+          a[i] = Boolean.valueOf("1".equals(arrayOfString[i]));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          a[i] = Boolean.valueOf(false);
+        }
+      }
     }
-    bcst.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
+    else
+    {
+      i = 0;
+      while (i < a.length)
+      {
+        a[i] = Boolean.valueOf(false);
+        i += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavDpcUtil", 2, "initQavSurfaceDpc, dpcValue[" + str + "]");
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if (a == null) {
+      a();
+    }
+    if ((a == null) || (paramInt >= a.length)) {}
+    while ((a[paramInt] == null) || (!a[paramInt].booleanValue())) {
+      return false;
+    }
+    return true;
   }
 }
 

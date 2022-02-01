@@ -1,24 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class akce
-  implements DialogInterface.OnClickListener
+  implements aeef
 {
-  public akce(BindNumberActivity paramBindNumberActivity) {}
+  public akce(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(boolean paramBoolean)
   {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      this.a.a("CliOper", "0X8005DE9", 1);
+    if (paramBoolean) {
+      bnzk.a(this.a.getActivity());
     }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      this.a.a("CliOper", "0X8005DE9", 2);
-    }
+    return false;
   }
 }
 

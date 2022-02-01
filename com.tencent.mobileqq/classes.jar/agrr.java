@@ -1,65 +1,127 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
 
-class agrr
-  implements awxh
+public class agrr
 {
-  agrr(agrq paramagrq, agrv paramagrv, String paramString) {}
+  private static agrr jdField_a_of_type_Agrr;
+  public static anwh a;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.aio_config.name();
+  public boolean a;
+  private String b;
+  public boolean b;
   
-  public void a()
+  static
   {
-    if (this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
-    {
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
-      ((RelativeLayout)this.jdField_a_of_type_Agrv.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
-    }
+    jdField_a_of_type_Anwh = new agrs();
   }
   
-  public void a(awxe paramawxe)
+  private agrr()
   {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    DeviceProfileManager.a(jdField_a_of_type_Anwh);
+  }
+  
+  public static agrr a()
+  {
+    if (jdField_a_of_type_Agrr == null) {
+      b(false);
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "dealFileSaveUI onSaveComplete");
+      QLog.d("AIODrawerDpc", 2, "getInstance: " + jdField_a_of_type_Agrr);
     }
-    if (paramawxe != null)
-    {
-      if (paramawxe.jdField_a_of_type_Int != 0) {
-        break label133;
-      }
-      awxf.a(this.jdField_a_of_type_Agrq.a);
+    return jdField_a_of_type_Agrr;
+  }
+  
+  public static boolean a()
+  {
+    agrr localagrr = a();
+    if (localagrr != null) {
+      return localagrr.jdField_a_of_type_Boolean;
     }
+    return true;
+  }
+  
+  private static void b(boolean paramBoolean)
+  {
     for (;;)
     {
-      paramawxe.jdField_a_of_type_Awxd.b(this);
-      if (this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+      try
       {
-        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
-        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
-        ((RelativeLayout)this.jdField_a_of_type_Agrv.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+        long l1 = System.currentTimeMillis();
+        if (jdField_a_of_type_Agrr == null)
+        {
+          jdField_a_of_type_Agrr = new agrr();
+          paramBoolean = true;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          Object localObject1 = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+          jdField_a_of_type_Agrr.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject1 = ((String)localObject1).split("\\|");
+            if (localObject1.length < 19) {
+              break label243;
+            }
+            if (Integer.valueOf(localObject1[18]).intValue() != 1) {
+              continue;
+            }
+            jdField_a_of_type_Agrr.jdField_a_of_type_Boolean = true;
+            if (localObject1.length < 20) {
+              break label263;
+            }
+            if (Integer.valueOf(localObject1[19]).intValue() != 1) {
+              break label253;
+            }
+            jdField_a_of_type_Agrr.jdField_b_of_type_Boolean = true;
+          }
+        }
+        catch (Exception localException)
+        {
+          long l2;
+          QLog.d("AIODrawerDpc", 1, "load exp:" + localException.getMessage());
+          jdField_a_of_type_Agrr.jdField_a_of_type_Boolean = true;
+          jdField_a_of_type_Agrr.jdField_b_of_type_Boolean = true;
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          l2 = System.currentTimeMillis();
+          QLog.d("AIODrawerDpc", 2, "loadDpc: " + jdField_a_of_type_Agrr + ", costMills: " + (l2 - l1));
+        }
+        return;
       }
-      return;
-      label133:
-      awxf.b(this.jdField_a_of_type_Agrq.a);
+      finally {}
+      jdField_a_of_type_Agrr.jdField_a_of_type_Boolean = false;
+      continue;
+      label243:
+      jdField_a_of_type_Agrr.jdField_a_of_type_Boolean = true;
+      continue;
+      label253:
+      jdField_a_of_type_Agrr.jdField_b_of_type_Boolean = false;
+      continue;
+      label263:
+      jdField_a_of_type_Agrr.jdField_b_of_type_Boolean = true;
     }
   }
   
-  public void a(awxe paramawxe, int paramInt)
+  public static boolean b()
   {
-    if (this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
-    {
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(paramInt);
-      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.invalidate();
+    agrr localagrr = a();
+    if (localagrr != null) {
+      return localagrr.jdField_b_of_type_Boolean;
     }
+    return true;
   }
   
-  public void b(awxe paramawxe) {}
+  public String toString()
+  {
+    return "AIODrawerDpc{dpcValue='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isSupport=" + this.jdField_a_of_type_Boolean + ", needPreInflate=" + this.jdField_b_of_type_Boolean + '}';
+  }
 }
 
 

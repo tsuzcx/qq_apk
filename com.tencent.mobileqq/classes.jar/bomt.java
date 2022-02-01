@@ -1,44 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 class bomt
-  extends bomw
+  implements View.OnTouchListener
 {
-  bomt(boms paramboms) {}
+  bomt(bomp parambomp) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String arg1, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    synchronized (this.a)
-    {
-      this.a.a.mProgress = paramInt;
-      return;
+    if ((bomp.a(this.a) != null) && (bomp.d(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bomp.d(this.a), bomp.a(this.a));
     }
-  }
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
-    }
-    paramString = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.a.a.mProgress = 100;
-        this.a.b();
-        return;
-      }
-      finally {}
-      this.a.a.mProgress = -1;
-      this.a.a(4);
-    }
+    return true;
   }
 }
 

@@ -1,85 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.gamecenter.message.GameBasicInfo;
-import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
+import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
 
-public class autc
+public final class autc
+  implements beuq
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  static
+  private autc(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    jdField_a_of_type_JavaLangString = autn.jdField_a_of_type_JavaLangString + "GameDetailInfo";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
   }
   
-  public static autc a(GameBasicInfo paramGameBasicInfo, GameUserInfo paramGameUserInfo)
+  public void onResp(bevm parambevm)
   {
-    autc localautc = new autc();
-    if ((paramGameBasicInfo == null) || (paramGameUserInfo == null)) {
-      return localautc;
-    }
-    if ((TextUtils.isEmpty(paramGameBasicInfo.mAppId)) || (TextUtils.isEmpty(paramGameUserInfo.mAppId)))
+    int i = 0;
+    if (parambevm.jdField_a_of_type_Int == 3) {}
+    label74:
+    label80:
+    for (;;)
     {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "appId is empty.");
-      return localautc;
-    }
-    if (!paramGameBasicInfo.mAppId.equals(paramGameUserInfo.mAppId))
-    {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "warning! appId should be the same!");
-      return localautc;
-    }
-    localautc.jdField_b_of_type_JavaLangString = paramGameUserInfo.mRoleId;
-    localautc.jdField_c_of_type_JavaLangString = paramGameUserInfo.mAppId;
-    localautc.jdField_d_of_type_JavaLangString = paramGameUserInfo.mFaceUrl;
-    localautc.jdField_a_of_type_Int = paramGameUserInfo.mSex;
-    localautc.g = paramGameUserInfo.mLevelPic;
-    localautc.h = paramGameUserInfo.mLevelText;
-    localautc.e = paramGameUserInfo.mNickInGame;
-    localautc.f = paramGameUserInfo.mPartitioName;
-    localautc.jdField_b_of_type_Int = paramGameUserInfo.mOnlineType;
-    localautc.jdField_c_of_type_Int = paramGameUserInfo.mSwitchInGame;
-    localautc.k = paramGameUserInfo.mOnLineDesc;
-    localautc.i = paramGameBasicInfo.mName;
-    localautc.j = paramGameBasicInfo.mIconUrl;
-    localautc.l = paramGameBasicInfo.mStartGameUrl;
-    localautc.jdField_d_of_type_Int = paramGameBasicInfo.mMsgMaxLen;
-    return localautc;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder(600);
-      localStringBuilder.append(" roleId:").append(this.jdField_b_of_type_JavaLangString).append(",appid:").append(this.jdField_c_of_type_JavaLangString).append(",mSwitchInGame:").append(this.jdField_c_of_type_Int).append(",onlineType:").append(this.jdField_b_of_type_Int).append(",mOnLineDesc:").append(this.k).append(",partName:").append(this.f).append(",mMsgMaxLen:").append(this.jdField_d_of_type_Int).append(",levelText:").append(this.h).append(",gameName:").append(this.i).append(",sex:").append(this.jdField_a_of_type_Int).append(",nick:").append(this.e).append(",levelPic:").append(this.g).append(",iconUrl:").append(this.j).append(",faceUrl:").append(this.jdField_d_of_type_JavaLangString).append(",startGameUrl:").append(this.l);
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.d(jdField_a_of_type_JavaLangString, 0, localStringBuilder.toString());
-      }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, localThrowable.getMessage());
+      boolean bool;
+      if (parambevm.jdField_a_of_type_Int == 0)
+      {
+        bool = true;
+        if (!bool) {
+          break label74;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
+          break label80;
+        }
+        if (bool) {
+          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, parambevm.jdField_a_of_type_Long, 1.0F);
+        }
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        return;
+        bool = false;
+        break;
+        i = parambevm.b;
+      }
     }
   }
   
-  public String toString()
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
   {
-    return "GameDetailInfo{mRoleId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mAppId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mFaceUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mNickInGame='" + this.e + '\'' + ", mPartitioName='" + this.f + '\'' + ", mLevelPic='" + this.g + '\'' + ", mLevelText='" + this.h + '\'' + ", mSex=" + this.jdField_a_of_type_Int + ", mOnlineType=" + this.jdField_b_of_type_Int + ", mName='" + this.i + '\'' + ", mIconUrl='" + this.j + '\'' + ", mSwitchInGame=" + this.jdField_c_of_type_Int + ", mOnLineDesc='" + this.k + '\'' + ", mStartGameUrl='" + this.l + '\'' + ", mMsgMaxLen=" + this.jdField_d_of_type_Int + '}';
+    if (paramLong2 != 0L)
+    {
+      float f = (float)paramLong1 / (float)paramLong2;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+      }
+    }
   }
 }
 

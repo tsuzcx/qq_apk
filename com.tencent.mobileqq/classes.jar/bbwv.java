@@ -1,53 +1,72 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbwv
-  implements bbvf
+  extends arac<bbww>
 {
-  private TextView a;
-  protected List<bbvg> a;
-  protected View b;
-  protected TextView c;
-  
-  public bbwv() {}
-  
-  public bbwv(ViewGroup paramViewGroup, int paramInt)
+  @NonNull
+  public bbww a(int paramInt)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.c = ((TextView)this.b.findViewById(2131371277));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new bbww(this.b.findViewById(2131368751)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbww(this.b.findViewById(2131368757)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbww(this.b.findViewById(2131368763)));
-    if ((paramInt == 2131559633) || (paramInt == 2131562830))
+    return new bbww();
+  }
+  
+  @Nullable
+  public bbww a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      this.jdField_a_of_type_JavaUtilList.add(new bbww(this.b.findViewById(2131368769)));
-      this.jdField_a_of_type_JavaUtilList.add(new bbww(this.b.findViewById(2131368770)));
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaraj[0].a);
+      }
+      return bbww.a(paramArrayOfaraj[0].a);
+    }
+    return new bbww();
+  }
+  
+  public void a(bbww parambbww)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + parambbww);
+    }
+    bbxg.a(parambbww);
+  }
+  
+  public Class<bbww> clazz()
+  {
+    return bbww.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
     }
   }
   
-  public View a()
+  public int type()
   {
-    return this.b;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public List<bbvg> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.c;
+    return 485;
   }
 }
 

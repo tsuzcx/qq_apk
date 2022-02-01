@@ -1,15 +1,27 @@
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biob
-  implements bija
+class biob
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public biob(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  biob(bioa parambioa) {}
   
-  public void a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    bcst.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
+    int i = this.a.a(paramRadioGroup);
+    if (((QQBrowserActivity)this.a.a.a).c != i)
+    {
+      WebViewFragment localWebViewFragment = QQBrowserActivity.a(i, (QQBrowserActivity)this.a.a.a);
+      ((QQBrowserActivity)this.a.a.a).c = i;
+      if ((localWebViewFragment.mSwiftTitleUI != null) && (localWebViewFragment.mSwiftTitleUI.a != null)) {
+        localWebViewFragment.mSwiftTitleUI.a.setSelectedTab(i);
+      }
+    }
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

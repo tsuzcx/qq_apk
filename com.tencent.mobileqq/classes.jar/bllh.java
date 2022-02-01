@@ -1,29 +1,63 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import java.util.ArrayList;
 
 public class bllh
-  extends bllb
 {
-  public bllh(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, blld paramblld, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  private static ArrayList<bllh> a;
+  public int a;
+  public blli a;
+  public ExpandableListConnector.GroupMetadata a;
+  
+  static
   {
-    super(paramActivity, paramblld, paramInt1, paramInt2, paramAppRuntime);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   }
   
-  public void onClick(View paramView)
+  private static bllh a()
   {
-    if (LocationDetailActivity.a(this.a))
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      bljz.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
+      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localbllh = (bllh)jdField_a_of_type_JavaUtilArrayList.remove(0);
+        localbllh.b();
+        return localbllh;
       }
+      bllh localbllh = new bllh();
+      return localbllh;
     }
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public static bllh a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
+  {
+    bllh localbllh = a();
+    localbllh.jdField_a_of_type_Blli = blli.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localbllh.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
+    localbllh.jdField_a_of_type_Int = paramInt5;
+    return localbllh;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Blli = null;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        jdField_a_of_type_JavaUtilArrayList.add(this);
+      }
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
   }
 }
 

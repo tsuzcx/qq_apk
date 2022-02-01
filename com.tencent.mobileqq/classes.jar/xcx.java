@@ -1,37 +1,55 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class xcx
-  extends xby
+public class xcx
+  extends wpa<xer>
 {
-  xcx(xcu paramxcu, StoryVideoItem paramStoryVideoItem)
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public xcx(int paramInt1, int paramInt2)
   {
-    super(paramStoryVideoItem);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = 1;
   }
   
-  public boolean b()
+  public String a()
   {
-    Object localObject = (String)a("result");
+    return wnu.a("StorySvc.video_poi_posters_get");
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
     try
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
+      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
+      return new xer(localRspGetPOIPosters);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
+        paramArrayOfByte.printStackTrace();
       }
     }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      yqp.c(this.b, "Error: 保存投票失败", localURISyntaxException);
-    }
-    return false;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.lng.set(this.c);
+    localGpsMsg.lat.set(this.d);
+    localReqGetPOIPosters.coordinate.set(this.e);
+    localReqGetPOIPosters.gps.set(localGpsMsg);
+    return localReqGetPOIPosters.toByteArray();
   }
 }
 

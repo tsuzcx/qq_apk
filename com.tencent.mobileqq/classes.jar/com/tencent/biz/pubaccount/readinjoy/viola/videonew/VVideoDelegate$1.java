@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import pmk;
-import tri;
+import pfd;
+import tid;
 
 public class VVideoDelegate$1
   implements Runnable
 {
-  public VVideoDelegate$1(tri paramtri) {}
+  public VVideoDelegate$1(tid paramtid) {}
   
   public void run()
   {
-    pmk.a().n();
+    pfd.a().n();
   }
 }
 

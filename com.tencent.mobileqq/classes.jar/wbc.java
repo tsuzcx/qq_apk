@@ -1,8 +1,17 @@
-import android.graphics.RectF;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface wbc
+class wbc
+  implements View.OnClickListener
 {
-  public abstract void a(RectF paramRectF);
+  wbc(waz paramwaz) {}
+  
+  public void onClick(View paramView)
+  {
+    waz.a(this.a, paramView.getContext());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

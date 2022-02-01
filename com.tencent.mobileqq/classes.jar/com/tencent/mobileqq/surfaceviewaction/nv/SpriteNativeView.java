@@ -5,18 +5,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bdek;
-import bdeq;
-import bdgi;
+import bdxf;
+import bdxl;
+import bdzd;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class SpriteNativeView
   extends FrameLayout
-  implements bdeq<bdgi>, Runnable
+  implements bdxl<bdzd>, Runnable
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ArrayList<bdgi> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private ArrayList<bdzd> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
   
   public SpriteNativeView(Context paramContext)
   {
@@ -31,31 +31,31 @@ public class SpriteNativeView
   public void a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((bdgi)localIterator.next()).c() | bool) {}
+    for (boolean bool = false; localIterator.hasNext(); bool = ((bdzd)localIterator.next()).c() | bool) {}
     if (bool) {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 16L);
     }
   }
   
-  public void a(int paramInt, bdgi parambdgi)
+  public void a(int paramInt, bdzd parambdzd)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambdgi))
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambdzd))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, parambdgi);
-      parambdgi.d();
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, parambdzd);
+      parambdzd.d();
     }
   }
   
-  public void a(bdgi parambdgi)
+  public void a(bdzd parambdzd)
   {
-    a(this.jdField_a_of_type_JavaUtilArrayList.size(), parambdgi);
+    a(this.jdField_a_of_type_JavaUtilArrayList.size(), parambdzd);
   }
   
   public void b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bdek)localIterator.next()).b();
+      ((bdxf)localIterator.next()).b();
     }
   }
   
@@ -68,7 +68,7 @@ public class SpriteNativeView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bdek)localIterator.next()).c();
+      ((bdxf)localIterator.next()).c();
     }
   }
   
@@ -76,7 +76,7 @@ public class SpriteNativeView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bdek)localIterator.next()).a();
+      ((bdxf)localIterator.next()).a();
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
   }

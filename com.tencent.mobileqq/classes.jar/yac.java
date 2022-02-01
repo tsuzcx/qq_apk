@@ -1,26 +1,17 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class yac
-  implements Animation.AnimationListener
+class yac
+  extends wjd
 {
-  public yac(QQStoryBaseActivity paramQQStoryBaseActivity) {}
+  yac(yab paramyab) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void c(boolean paramBoolean)
   {
-    if (this.a.c != null)
-    {
-      this.a.c.clearAnimation();
-      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
-    }
+    wjb localwjb = (wjb)this.a.a.app.getManager(181);
+    this.a.a(2, localwjb.a());
+    this.a.a(3, localwjb.b());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

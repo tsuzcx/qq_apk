@@ -1,147 +1,70 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qku
-  extends TextBase
+  extends qjh
 {
-  private NativeSummaryView a;
-  
-  public qku(VafContext paramVafContext)
+  public qku(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    super(paramVafContext);
-    this.mTextSize = Utils.dp2px(16.0D);
-    this.mLineSpaceExtra = Utils.rp2px(5.0D);
-    this.a = new NativeSummaryView(paramVafContext.getContext());
-    this.a.setTextColor(-11644322);
+    super(paramContext, paramaoof, paramsel);
   }
   
-  public void a(pxk parampxk)
+  public qjh a()
   {
-    if (this.a.getLayoutParams() == null)
-    {
-      Object localObject = getComLayoutParams();
-      localObject = new ViewGroup.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
-      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_Boolean = true;
+    return h().i().k().l().n();
+  }
+  
+  public qjh d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    this.a.setModel(parampxk);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setBackgroundColor(this.mBackground);
-    this.a.setTextSize(0, this.mTextSize);
-    this.a.setLineSpacing(this.mLineSpaceExtra, 1.0F);
-    this.a.setIncludeFontPadding(false);
-    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
     }
-    if ((paramObject instanceof pxk)) {
-      a((pxk)paramObject);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
     }
-    return true;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  public qjh e()
   {
-    switch (paramInt)
-    {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1189: 
-      try
-      {
-        paramInt = Color.parseColor(String.valueOf(paramString));
-        this.a.setTextColor(paramInt);
-        QLog.d("SummaryView", 1, "setEmotionFontColor: " + paramInt);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("SummaryView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1188: 
-      try
-      {
-        this.mTextSize = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
-        QLog.d("SummaryView", 1, "setEmotionFontSize: " + this.mTextSize);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("SummaryView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1190: 
-      try
-      {
-        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
-        QLog.d("SummaryView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("SummaryView", 1, paramString, new Object[0]);
-        return false;
-      }
-    }
-    try
-    {
-      paramInt = Color.parseColor(paramString);
-      this.a.setLinkedTextColor(paramInt);
-      QLog.d("SummaryView", 1, "SummaryView | setLinkTextColor: " + paramInt);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("SummaryView", 1, paramString, new Object[0]);
-    }
-    return false;
+    return null;
   }
   
-  public void setTextColor(int paramInt)
+  public qjh o()
   {
-    this.a.setTextColor(paramInt);
+    return super.o();
+  }
+  
+  public qjh p()
+  {
+    return super.p();
   }
 }
 

@@ -1,31 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
 
-public class yan
-  extends ayet
+class yan
+  implements bliz
 {
-  public yan(QQStoryMainController paramQQStoryMainController) {}
+  yan(yam paramyam, blir paramblir, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  protected void a(Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    yoy localyoy;
-    do
+    this.jdField_a_of_type_Blir.e();
+    switch (paramInt)
     {
+    default: 
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((njg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + njg.a(paramObject));
-      }
-      localyoy = (yoy)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localyoy == null);
-    localyoy.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    case 0: 
+      this.jdField_a_of_type_Yam.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_Yam.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 

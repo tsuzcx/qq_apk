@@ -1,24 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.AuthorityControlFragment;
-
-public class bijr
-  implements View.OnTouchListener
+class bijr
+  implements bike
 {
-  public bijr(AuthorityControlFragment paramAuthorityControlFragment) {}
+  bijr(bijq parambijq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, String paramString)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (bijq.a(this.a) != null) {
+      bijq.a(this.a).a(false);
     }
-    for (;;)
+  }
+  
+  public void a(bijv parambijv)
+  {
+    bijq.a(this.a, parambijv);
+    if (bijq.a(this.a) != null)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      bijq.a(this.a);
+      bijq.a(this.a).a(parambijv.a);
     }
   }
 }

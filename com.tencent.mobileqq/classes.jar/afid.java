@@ -1,55 +1,17 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class afid
-  extends anmu
+  extends anvn
 {
-  public afid(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public afid(QQSettingMe paramQQSettingMe) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (this.a.jdField_a_of_type_Amfu == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = awhv.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_Amfu.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Amfu.notifyDataSetChanged();
-    this.a.b();
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if (this.a.jdField_a_of_type_Amfu == null) {
-      return;
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.o();
     }
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
-        }
-      }
-      this.a.jdField_a_of_type_Amfu.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_Amfu.notifyDataSetChanged();
-      this.a.b();
-      return;
-    }
-    this.a.jdField_a_of_type_Amfu.notifyDataSetChanged();
-    this.a.b();
-    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131718833), 0).b(this.a.getTitleBarHeight());
   }
 }
 

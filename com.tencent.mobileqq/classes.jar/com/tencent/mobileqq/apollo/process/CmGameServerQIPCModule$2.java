@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process;
 
-import ampb;
+import anav;
 import android.os.Bundle;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class CmGameServerQIPCModule$2
   implements Runnable
 {
-  public CmGameServerQIPCModule$2(ampb paramampb, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public CmGameServerQIPCModule$2(anav paramanav, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {

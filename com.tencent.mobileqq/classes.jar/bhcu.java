@@ -1,19 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bhcu
-  implements View.OnClickListener
+class bhcu
+  implements FilenameFilter
 {
-  public bhcu(TextHeaderView paramTextHeaderView, Activity paramActivity, int paramInt, QQVipMsgInfo paramQQVipMsgInfo) {}
+  bhcu(bhct parambhct, String paramString) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewTextHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 

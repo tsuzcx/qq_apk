@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import apgu;
-import apgx;
-import aphd;
-import aphe;
-import aphx;
+import apuk;
+import apun;
+import aput;
+import apuu;
+import apvn;
 
 public class ArkAppDeviceModule$ObserverMethod$5$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$5$1(aphd paramaphd) {}
+  public ArkAppDeviceModule$ObserverMethod$5$1(aput paramaput) {}
   
   public void run()
   {
-    aphe localaphe = new aphe(this);
-    this.a.jdField_a_of_type_Apgx.a.a.a(localaphe, this.a.jdField_a_of_type_Long);
+    apuu localapuu = new apuu(this);
+    this.a.jdField_a_of_type_Apun.a.a.a(localapuu, this.a.jdField_a_of_type_Long);
   }
 }
 

@@ -94,7 +94,7 @@ public class ImageDrawable
     }
     if (isMainThread())
     {
-      ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.5(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener));
+      ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.6(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener));
       return;
     }
     internalRoundImageAndBlur(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener);
@@ -227,11 +227,8 @@ public class ImageDrawable
     }
     catch (Throwable paramScaleType)
     {
-      do
-      {
-        ViolaLogUtils.e("ImageDrawable", paramScaleType.getMessage());
-      } while (paramOnImageDrawableListener == null);
-      paramOnImageDrawableListener.getDrawable(paramDrawable, paramString);
+      ViolaLogUtils.e("ImageDrawable", paramScaleType.getMessage());
+      ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.5(paramOnImageDrawableListener, paramDrawable, paramString));
     }
   }
   
@@ -252,15 +249,13 @@ public class ImageDrawable
         ViolaUtils.fastblur(localBitmap, paramInt1);
         localImageDrawable = createFromBitmap(localBitmap, paramScaleType, paramInt2, paramInt3);
       }
-      ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.6(paramOnImageDrawableListener, localImageDrawable, paramString));
+      ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.7(paramOnImageDrawableListener, localImageDrawable, paramString));
       return;
     }
     catch (Throwable paramScaleType)
     {
-      if (paramOnImageDrawableListener != null) {
-        paramOnImageDrawableListener.getDrawable(paramDrawable, paramString);
-      }
       ViolaLogUtils.e("ImageDrawable", paramScaleType.getMessage());
+      ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.8(paramOnImageDrawableListener, paramDrawable, paramString));
     }
   }
   

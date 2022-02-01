@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import common.config.service.QzoneConfig;
 import java.util.HashMap;
@@ -17,6 +17,7 @@ public class AppConfigInfo
   private static final boolean mEnableSubpakPathIntercapt;
   public String PackageToolVersion;
   private Map<String, String> configStrs = new HashMap();
+  public boolean darkmode;
   public boolean debug;
   public String entryPagePath;
   public PageInfo globalPageInfo;
@@ -97,6 +98,7 @@ public class AppConfigInfo
     localAppConfigInfo.subPackRoots = getSubPackRoots(paramString);
     localAppConfigInfo.PackageToolVersion = localJSONObject.optString("PackageToolVersion");
     localAppConfigInfo.permissionInfo = localJSONObject.optJSONObject("permission");
+    localAppConfigInfo.darkmode = localJSONObject.optBoolean("darkmode");
     return localAppConfigInfo;
   }
   
@@ -153,7 +155,7 @@ public class AppConfigInfo
   
   public String getRootPath(String paramString)
   {
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return "";
     }
     String str2 = AppBrandUtil.getUrlWithoutParams(paramString);

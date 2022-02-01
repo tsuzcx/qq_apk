@@ -1,18 +1,67 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
-import mqq.app.QQPermissionCallback;
+import android.util.Log;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.NearbyOfficalReportHelper.1;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class aysr
-  implements QQPermissionCallback
 {
-  public aysr(OnlineStatusLocationFragment paramOnlineStatusLocationFragment, BaseActivity paramBaseActivity) {}
+  public static aysr a = new aysr();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static aysr a()
   {
-    bglp.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131697626, 2131697628);
+    return a;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    ThreadManagerV2.excute(new NearbyOfficalReportHelper.1(this, paramQQAppInterface, paramString1, paramString2), 16, null, false);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo)
+  {
+    Object localObject = new ayst();
+    ((ayst)localObject).a(paramRedDotInfo);
+    if (((ayst)localObject).jdField_b_of_type_Boolean)
+    {
+      paramQQAppInterface = String.valueOf(axws.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+      paramRedDotInfo = String.valueOf(((ayst)localObject).c);
+      localObject = String.valueOf(((ayst)localObject).jdField_b_of_type_Int);
+      bdll.b(null, "dc00899", "grp_lbs", "", "entry", "official_push_received", 0, 0, paramQQAppInterface, paramRedDotInfo, (String)localObject, "");
+      Log.i(" NearbyRecommend", "reportLebaRedDotReceive op_name = official_push_receivedd1 = " + paramQQAppInterface + " d2 = " + paramRedDotInfo + " d3 = " + (String)localObject);
+    }
+  }
+  
+  public void a(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2)
+  {
+    Object localObject = paramNearbyAppInterface.a().a();
+    String str;
+    if (((aysv)localObject).a > 1)
+    {
+      paramNearbyAppInterface = "1";
+      if (((aysv)localObject).d <= 0) {
+        break label136;
+      }
+      str = "1";
+      label33:
+      if (((aysv)localObject).c <= 0) {
+        break label143;
+      }
+    }
+    label136:
+    label143:
+    for (localObject = "1";; localObject = "0")
+    {
+      bdll.b(null, "dc00899", "grp_lbs", "", paramString1, paramString2, 0, 0, str, (String)localObject, "", paramNearbyAppInterface);
+      Log.i(" NearbyRecommend", "reportNearByRedDotEvent op_type = " + paramString1 + " op_name = " + paramString2 + " d1 = " + str + " d2 = " + (String)localObject + " d4 = " + paramNearbyAppInterface);
+      return;
+      paramNearbyAppInterface = "0";
+      break;
+      str = "0";
+      break label33;
+    }
+  }
 }
 
 

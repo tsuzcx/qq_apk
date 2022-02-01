@@ -1,14 +1,20 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ahpa
-  implements ahor
+  extends aggl
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagup.a(paramMessageRecord, paramLinearLayout, paramafzq, paramagwc, paramString);
-  }
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public View c;
+  public TextView c;
+  
+  public ahpa(ahow paramahow) {}
 }
 
 

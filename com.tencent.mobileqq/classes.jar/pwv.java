@@ -1,13 +1,22 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pwv
-  implements pml
+  implements ViewBase.OnClickListener
 {
-  pwv(pwt parampwt, List paramList1, List paramList2) {}
+  pwv(pws parampws, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void a(pmn parampmn)
+  public void onClick(ViewBase paramViewBase)
   {
-    parampmn.b(this.jdField_a_of_type_JavaUtilList, this.b);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
+    {
+      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
+      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      pws.a(this.jdField_a_of_type_Pws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
+    }
   }
 }
 

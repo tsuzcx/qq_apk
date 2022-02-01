@@ -1,34 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class syf
+  implements syg
 {
-  public float a;
-  public int a;
-  public long a;
-  public BaseData a;
-  public Long a;
-  public long b;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public syf(int paramInt, Long paramLong, BaseData paramBaseData)
+  public syf(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-    this.b = 0L;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void a(syf paramsyf)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramsyf != null)
-    {
-      this.jdField_a_of_type_JavaLangLong = paramsyf.jdField_a_of_type_JavaLangLong;
-      this.jdField_a_of_type_Long = paramsyf.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Float = paramsyf.jdField_a_of_type_Float;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramsyf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-      this.b = paramsyf.b;
-    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.jdField_a_of_type_Int);
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.b);
   }
 }
 

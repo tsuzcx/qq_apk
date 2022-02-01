@@ -1,43 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class afqc
-  extends aniz
+  implements TextView.OnEditorActionListener
 {
-  public afqc(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public afqc(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!paramBoolean) {
-      return;
+    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
     }
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        afqi localafqi;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localafqi = (afqi)localIterator.next();
-        } while ((localafqi.a == null) || (!(localafqi.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localafqi.a).uin)));
-      }
-      for (int i = 1; i != 0; i = 0)
-      {
-        UncommonlyUsedContactsActivity.a(this.a);
-        this.a.jdField_a_of_type_Afqg.notifyDataSetChanged();
-        return;
-      }
-      break;
-    }
+    return false;
   }
 }
 

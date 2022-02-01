@@ -1,24 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 class bpln
-  implements Animation.AnimationListener
+  implements bqgw
 {
-  bpln(bplm parambplm) {}
+  bpln(bplj parambplj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a() {}
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bplg != null) {
-      this.a.a.jdField_a_of_type_Bplg.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureController", 2, "onSelectLocation " + paramTroopBarPOI);
+    }
+    this.a.a.setLocation(paramTroopBarPOI);
+    if (paramTroopBarPOI != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bqox.b = bool;
+      return;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

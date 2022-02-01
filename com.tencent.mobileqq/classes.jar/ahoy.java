@@ -1,13 +1,33 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ahoy
-  implements ahor
+class ahoy
+  implements View.OnTouchListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  final agjk jdField_a_of_type_Agjk;
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ahoz(this));
+  View jdField_a_of_type_AndroidViewView = null;
+  
+  public ahoy(ahow paramahow, agjk paramagjk)
   {
-    paramagup.a(paramMessageRecord, paramagwc, paramString);
+    this.jdField_a_of_type_Agjk = paramagjk;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Agjk != null) {
+      this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return true;
+    }
+    this.jdField_a_of_type_AndroidViewView = null;
+    return false;
   }
 }
 

@@ -1,16 +1,19 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.view.View;
 
-class aiaq
-  extends bcdf
+public abstract interface aiaq<T extends View>
 {
-  aiaq(ahzy paramahzy) {}
+  public abstract int a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
-    }
-  }
+  public abstract T a();
+  
+  public abstract T a(Context paramContext);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a();
 }
 
 

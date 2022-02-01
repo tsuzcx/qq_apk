@@ -1,73 +1,71 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-
-public abstract class zyr
-  extends zxu
+public class zyr
 {
-  private HorizontalRvInnerView a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public zyr(Bundle paramBundle)
+  public zyr(int paramInt)
   {
-    super(paramBundle);
-  }
-  
-  public abstract int a();
-  
-  public abstract zys a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public abstract void a(HorizontalRvInnerView paramHorizontalRvInnerView);
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public int getItemCount()
-  {
-    if ((!a()) || (getDataList().size() > 0)) {
-      return 1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = "QQ";
+    this.d = 1;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 65793: 
+      this.c = 1;
+      this.jdField_a_of_type_JavaLangString = "Windows";
+      this.jdField_a_of_type_Long = 1L;
+      this.jdField_b_of_type_Int = 1;
+      return;
+    case 66818: 
+    case 66831: 
+    case 81154: 
+      this.c = 2;
+      this.jdField_a_of_type_JavaLangString = "Mac";
+      this.jdField_b_of_type_Int = 1;
+      return;
+    case 68361: 
+    case 72194: 
+      this.c = 3;
+      this.jdField_a_of_type_JavaLangString = "iPad";
+      this.jdField_b_of_type_Int = 2;
+      this.d = 2;
+      return;
+    case 65805: 
+    case 68104: 
+      this.c = 4;
+      this.jdField_a_of_type_JavaLangString = "aPad";
+      this.jdField_b_of_type_Int = 2;
+      this.d = 2;
+      return;
+    case 75023: 
+    case 78082: 
+    case 78096: 
+      this.c = 5;
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131705236);
+      this.jdField_b_of_type_Int = 3;
+      this.d = 3;
+      return;
     }
-    return 0;
+    this.c = 6;
+    this.jdField_a_of_type_JavaLangString = "Windows";
+    this.jdField_b_of_type_JavaLangString = "TIM";
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_b_of_type_Int = 1;
   }
   
-  public int getViewTypeCount()
+  public String toString()
   {
-    return 3;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder.itemView instanceof HorizontalRvInnerView)) {
-      this.a.setData(getDataList());
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    this.a = new HorizontalRvInnerView(paramViewGroup.getContext(), this);
-    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup = new zxy(this, this.a);
-    paramViewGroup.setIsRecyclable(false);
-    a(this.a);
-    return paramViewGroup;
-  }
-  
-  public void setDatas(ArrayList paramArrayList)
-  {
-    getDataList().clear();
-    getDataList().addAll(paramArrayList);
-    if (this.a != null) {
-      this.a.setData(paramArrayList);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoginDevItem[").append(this.jdField_b_of_type_JavaLangString).append("|").append(this.jdField_a_of_type_Int).append("|").append(this.jdField_a_of_type_Long).append("|").append(this.d).append("]");
+    return localStringBuilder.toString();
   }
 }
 

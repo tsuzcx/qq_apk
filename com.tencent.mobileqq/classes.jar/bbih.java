@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bbih
-  implements View.OnClickListener
 {
-  public bbih(UniteSearchActivity paramUniteSearchActivity) {}
+  public int a;
+  public boolean a;
+  public boolean b = true;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    UniteSearchActivity.e = 1;
-    this.a.a.setText("");
-    this.a.a();
-    bbrf.a(this.a.app, 0, this.a.c, "0X8009D2B", 0, 0, null, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

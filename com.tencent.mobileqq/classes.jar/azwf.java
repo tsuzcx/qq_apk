@@ -1,11 +1,15 @@
-class azwf
-  extends anmu
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+
+public class azwf
+  implements bjbu
 {
-  azwf(azwe paramazwe) {}
+  public azwf(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    this.a.a(String.valueOf(paramObject));
+    if (!this.a.e) {
+      this.a.e = true;
+    }
   }
 }
 

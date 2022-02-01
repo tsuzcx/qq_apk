@@ -1,89 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class aquj
-  extends aqkz<aqui>
+  implements DialogInterface.OnCancelListener
 {
-  @NonNull
-  public static aqui a()
-  {
-    aqui localaqui2 = (aqui)aqlk.a().a(435);
-    aqui localaqui1 = localaqui2;
-    if (localaqui2 == null) {
-      localaqui1 = new aqui();
-    }
-    return localaqui1;
-  }
+  public aquj(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  @NonNull
-  public aqui a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return new aqui();
-  }
-  
-  @Nullable
-  public aqui a(aqlg[] paramArrayOfaqlg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaqlg != null)
+    if (this.a.getActivity() != null)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaqlg.length > 0) {
-        localObject1 = aqui.a(paramArrayOfaqlg);
-      }
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    return localObject1;
-  }
-  
-  public void a(aqui paramaqui)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramaqui.toString());
-    }
-  }
-  
-  public Class<aqui> clazz()
-  {
-    return aqui.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 435;
+    bdll.b(null, "dc00898", "", "", "0X800AB3B", "0X800AB3B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquj
  * JD-Core Version:    0.7.0.1
  */

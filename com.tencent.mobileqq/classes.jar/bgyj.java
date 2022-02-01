@@ -1,12 +1,14 @@
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+
 public class bgyj
+  implements blqt
 {
-  public String a;
-  public String b;
+  public bgyj(WheelPickerLayout paramWheelPickerLayout) {}
   
-  public bgyj(String paramString1, String paramString2)
+  public void a(View paramView, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    WheelPickerLayout.a(this.a, paramView, 1);
   }
 }
 

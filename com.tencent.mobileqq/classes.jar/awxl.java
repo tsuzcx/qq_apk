@@ -1,75 +1,125 @@
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
 
-class awxl
-  extends ayyr
+public class awxl
+  extends Drawable
+  implements awxk
 {
-  awxl(awxi paramawxi, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString1, String paramString2) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private awxn jdField_a_of_type_Awxn;
+  private awxw jdField_a_of_type_Awxw;
   
-  public void a(int paramInt, ayxy paramayxy)
+  private awxl(awxn paramawxn, Resources paramResources)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadRawImage id = " + this.jdField_a_of_type_Long + ", result = " + paramInt);
-    }
-    awxe localawxe = this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_JavaLangString);
-    if ((localawxe != null) && (!localawxe.jdField_a_of_type_Boolean))
+    this.jdField_a_of_type_Awxn = paramawxn;
+    if (paramResources != null) {}
+    for (this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;; this.jdField_a_of_type_Int = paramawxn.d)
     {
-      localawxe.jdField_a_of_type_Int = paramInt;
-      if (paramInt != 0) {
-        break label226;
-      }
-      paramInt = 1;
-      localawxe.jdField_a_of_type_Awxd.jdField_a_of_type_Int = 1;
-      if (paramayxy == null) {
-        break label236;
-      }
-      localawxe.jdField_a_of_type_Int = paramayxy.jdField_a_of_type_Int;
-      if ((paramayxy.jdField_a_of_type_Int != 0) && (paramayxy.jdField_a_of_type_Ayxt != null))
-      {
-        localawxe.jdField_b_of_type_Int = paramayxy.jdField_a_of_type_Ayxt.jdField_a_of_type_Int;
-        localawxe.jdField_a_of_type_JavaLangString = paramayxy.jdField_a_of_type_Ayxt.jdField_b_of_type_JavaLangString;
-      }
-      if (paramayxy.jdField_a_of_type_Int != 0) {
-        break label231;
-      }
-      paramInt = i;
-    }
-    label152:
-    label226:
-    label231:
-    label236:
-    for (boolean bool = paramayxy.jdField_a_of_type_Boolean;; bool = false)
-    {
-      localawxe.jdField_a_of_type_Awxv = new awxv(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_JavaLangString, bool);
-      this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_JavaLangString, localawxe);
-      awxi.a(this.jdField_a_of_type_Awxi, localawxe.jdField_a_of_type_Awxd, 0, localawxe.jdField_b_of_type_Int, localawxe.jdField_a_of_type_JavaLangString);
+      a();
       return;
-      paramInt = 2;
-      break;
-      paramInt = 2;
-      break label152;
     }
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public awxl(awxy paramawxy, Resources paramResources)
   {
-    if (this.jdField_a_of_type_Awxi.a != null) {
-      this.jdField_a_of_type_Awxi.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    this(new awxn(paramawxy), paramResources);
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func initGifEngine");
     }
-    awxe localawxe = this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_JavaLangString);
-    if ((localawxe != null) && (!localawxe.jdField_a_of_type_Boolean))
+    awxx localawxx = new awxx();
+    localawxx.jdField_a_of_type_Awxk = this;
+    localawxx.jdField_a_of_type_Int = this.jdField_a_of_type_Awxn.jdField_b_of_type_Int;
+    localawxx.jdField_b_of_type_Int = this.jdField_a_of_type_Awxn.jdField_a_of_type_Int;
+    if (!this.jdField_a_of_type_Awxn.jdField_a_of_type_Boolean) {}
+    for (localawxx.jdField_a_of_type_ArrayOfJavaLangString = null;; localawxx.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_Awxn.jdField_a_of_type_ArrayOfJavaLangString)
     {
-      if (awxi.a(this.jdField_a_of_type_Awxi)) {
-        awxi.a(this.jdField_a_of_type_Awxi, localawxe.jdField_a_of_type_Awxd, paramInt);
-      }
-    }
-    else {
+      this.jdField_a_of_type_Awxw = new awxw();
+      this.jdField_a_of_type_Awxw.a(localawxx);
       return;
     }
-    paramInt /= 100;
-    localawxe.c = paramInt;
-    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_JavaLangString, localawxe);
-    awxi.b(this.jdField_a_of_type_Awxi, localawxe, paramInt);
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Awxw == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Awxn.jdField_b_of_type_ArrayOfJavaLangString != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_Awxn.jdField_b_of_type_ArrayOfJavaLangString.length)) {
+      this.jdField_a_of_type_Awxw.a(this.jdField_a_of_type_Awxn.jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    }
+    this.jdField_a_of_type_Awxw.a();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func onBitmapReady,bitmap:" + paramBitmap);
+    }
+    if (paramBitmap == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    invalidateSelf();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func draw,bitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_Awxn.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public Drawable.ConstantState getConstantState()
+  {
+    return this.jdField_a_of_type_Awxn;
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_Awxn.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_Awxn.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_Awxn.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
   }
 }
 

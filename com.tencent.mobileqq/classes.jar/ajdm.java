@@ -1,31 +1,28 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajdm
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ShaderAnimLayout a;
-  public String a;
-  public structmsg.StructMsg a;
-  public int b;
-  public long b;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
-  public long c;
-  public TextView c;
-  public String c = "";
-  public TextView d;
+  public ajdm(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d)) {
+      ClassificationSearchActivity.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    }
+  }
 }
 
 

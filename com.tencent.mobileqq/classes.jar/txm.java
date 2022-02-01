@@ -1,210 +1,231 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.util.OpenWithQQBrowser.1;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.smtt.sdk.stat.MttLoader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class txm
+  implements Handler.Callback
 {
-  static ByteBuffer jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(8);
-  static txm jdField_a_of_type_Txm;
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString;
-  int e;
-  int f;
-  int g;
-  int h = 1;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private txn jdField_a_of_type_Txn;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static txm a()
+  public txm(Activity paramActivity, txn paramtxn)
   {
-    if (jdField_a_of_type_Txm == null) {
-      jdField_a_of_type_Txm = new txm();
-    }
-    return jdField_a_of_type_Txm;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Txn = paramtxn;
   }
   
-  public String a(String paramString1, String paramString2)
+  private void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    try
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      if (this.jdField_a_of_type_Txn != null) {
+        this.jdField_a_of_type_Txn.a();
+      }
+    }
+    for (;;)
     {
-      if ((!this.jdField_b_of_type_JavaLangString.equals(paramString2)) || (this.jdField_a_of_type_JavaLangString == null))
+      try
       {
-        paramString1 = MD5.toMD5Byte(paramString1 + String.valueOf(System.currentTimeMillis()) + Math.random());
-        jdField_a_of_type_JavaNioByteBuffer.put(paramString1, 0, 8);
-        jdField_a_of_type_JavaNioByteBuffer.flip();
-        this.h = 0;
-        long l = jdField_a_of_type_JavaNioByteBuffer.getLong();
-        return String.valueOf(l);
+        new Thread(new OpenWithQQBrowser.1(this, paramString3)).start();
+        return;
       }
-    }
-    catch (Exception paramString1) {}
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.e = 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    a();
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sVer", "1.0");
-    localHashMap.put("sScene", String.valueOf(paramInt));
-    localHashMap.put("sCurTime", String.valueOf(l));
-    a("actSearchExposure", localHashMap);
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Int = paramInt;
-    this.h = 0;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PADetailReportUtil", 4, "start report entrance event cur view:" + paramInt + ", time:" + l);
-    }
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sVer", "1.0");
-    localHashMap.put("sSearch", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("sKey", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("sCurTime", String.valueOf(l));
-    localHashMap.put("sItem", paramString);
-    localHashMap.put("sPScene", String.valueOf(this.jdField_c_of_type_Int));
-    localHashMap.put("sScene", String.valueOf(this.jdField_a_of_type_Int + paramInt1));
-    localHashMap.put("sItemPos", String.valueOf(paramInt2));
-    if (paramInt3 == 12) {
-      localHashMap.put("sFolder", "1");
-    }
-    for (;;)
-    {
-      a("actSearchNetClick", localHashMap);
-      this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int + paramInt1);
-      this.f = paramInt2;
-      this.jdField_d_of_type_JavaLangString = paramString;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PADetailReportUtil", 4, "start report click event searchID:" + this.jdField_a_of_type_JavaLangString + ", superview:" + this.jdField_b_of_type_Int + ", thisview:" + this.jdField_c_of_type_Int + ", itemPos:" + this.f + ", time:" + l + ", itemID:" + this.jdField_d_of_type_JavaLangString + ", from:" + paramInt3);
-      }
-      return;
-      localHashMap.put("sFolder", "0");
-    }
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sVer", "1.0");
-    localHashMap.put("sSearch", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("sKey", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("sCurTime", String.valueOf(l));
-    localHashMap.put("sPScene", String.valueOf(this.jdField_c_of_type_Int));
-    localHashMap.put("sScene", String.valueOf(this.jdField_a_of_type_Int + paramInt1));
-    localHashMap.put("sDirect", String.valueOf(paramInt2));
-    localHashMap.put("sItem", paramString);
-    if (paramInt3 == 12)
-    {
-      localHashMap.put("sFolder", "1");
-      if (!paramBoolean) {
-        break label308;
-      }
-      localHashMap.put("sFrom", "1");
-    }
-    for (;;)
-    {
-      a("actSearchSubscribe", localHashMap);
-      this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int + paramInt1);
-      this.jdField_d_of_type_JavaLangString = paramString;
-      this.g = paramInt2;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PADetailReportUtil", 4, "start report attention event searchID:" + this.jdField_a_of_type_JavaLangString + ", superview:" + this.jdField_b_of_type_Int + ", thisview:" + this.jdField_c_of_type_Int + ", itemID:" + this.jdField_d_of_type_JavaLangString + ", isDirectClick:" + this.g + ", time" + l + ", from:" + paramInt3 + ", isoffline:" + paramBoolean);
-      }
-      return;
-      localHashMap.put("sFolder", "0");
-      break;
-      label308:
-      localHashMap.put("sFrom", "0");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
-  {
-    long l;
-    HashMap localHashMap;
-    if (paramInt1 == 3)
-    {
-      this.h += 1;
-      this.e = ((this.h - 1) * paramInt2);
-      l = System.currentTimeMillis();
-      localHashMap = new HashMap();
-      localHashMap.put("sVer", "1.0");
-      if (paramString1 == null) {
-        break label366;
-      }
-      localHashMap.put("sSearch", paramString1);
-      label65:
-      localHashMap.put("sCurTime", String.valueOf(l));
-      localHashMap.put("sKey", paramString2);
-      localHashMap.put("sPScene", String.valueOf(this.jdField_c_of_type_Int));
-      localHashMap.put("sScene", String.valueOf(this.jdField_a_of_type_Int + paramInt1));
-      if (this.h == 0) {
-        break label381;
-      }
-      localHashMap.put("sItemListPage", String.valueOf(this.h));
-      localHashMap.put("sItemListStart", String.valueOf((this.h - 1) * paramInt2));
-    }
-    for (;;)
-    {
-      localHashMap.put("sItemlist", paramString3);
-      a("actSearchNet", localHashMap);
-      this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int + paramInt1);
-      if (paramString1 != null) {
-        this.jdField_a_of_type_JavaLangString = paramString1;
-      }
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_d_of_type_Int = this.h;
-      this.jdField_c_of_type_JavaLangString = paramString3;
-      if (QLog.isDevelopLevel())
+      catch (Throwable paramContext)
       {
-        QLog.d("PADetailReportUtil", 4, "start report searchpage searchID:" + this.jdField_a_of_type_JavaLangString + " superview:" + this.jdField_b_of_type_Int + ", thisview:" + this.jdField_c_of_type_Int + ", search:" + this.jdField_b_of_type_JavaLangString);
-        QLog.d("PADetailReportUtil", 4, "pagenum:" + this.jdField_d_of_type_Int + ", startPos:" + this.e + ", itemList:" + this.jdField_c_of_type_JavaLangString + ", time:" + l);
+        return;
       }
-      return;
-      this.h = 0;
-      break;
-      label366:
-      localHashMap.put("sSearch", this.jdField_a_of_type_JavaLangString);
-      break label65;
-      label381:
-      localHashMap.put("sItemListPage", "1");
-      localHashMap.put("sItemListStart", "0");
+      if (this.jdField_a_of_type_Txn != null) {
+        this.jdField_a_of_type_Txn.b();
+      }
     }
   }
   
-  public void a(String paramString, HashMap<String, String> paramHashMap)
+  private void a(String paramString, int paramInt)
   {
-    bctj.a(BaseApplicationImpl.getApplication()).a(null, paramString, true, 0L, 0L, paramHashMap, null);
+    if (paramInt < 12)
+    {
+      try
+      {
+        localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+        localHttpURLConnection.setDoInput(true);
+        localHttpURLConnection.setConnectTimeout(20000);
+        localHttpURLConnection.setRequestMethod("GET");
+        localHttpURLConnection.connect();
+        i = localHttpURLConnection.getResponseCode();
+        if ((i != 301) && (i != 302)) {
+          break label197;
+        }
+        paramString = localHttpURLConnection.getHeaderFields().keySet().iterator();
+        do
+        {
+          if (!paramString.hasNext()) {
+            break;
+          }
+          str = (String)paramString.next();
+        } while (!"location".equalsIgnoreCase(str));
+        paramString = localHttpURLConnection.getHeaderField(str);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          HttpURLConnection localHttpURLConnection;
+          int i;
+          String str;
+          paramString = null;
+          continue;
+          paramString = null;
+          continue;
+          paramString = null;
+        }
+      }
+      if (paramString != null)
+      {
+        a(MsfSdkUtils.insertMtype("Web", paramString), paramInt + 1);
+        return;
+      }
+      paramString = null;
+      str = paramString;
+    }
+    for (;;)
+    {
+      try
+      {
+        localHttpURLConnection.disconnect();
+        if (this.jdField_a_of_type_AndroidOsHandler == null) {}
+        label197:
+        try
+        {
+          if (this.jdField_a_of_type_AndroidOsHandler == null) {
+            this.jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this);
+          }
+          Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 101, paramString).sendToTarget();
+          return;
+        }
+        finally {}
+        if (i == 200)
+        {
+          paramString = new Bundle();
+          str = paramString;
+          paramString.putLong("_filesize", localHttpURLConnection.getContentLength());
+          str = paramString;
+          paramString.putString("qb_param_url", localHttpURLConnection.getURL().toString());
+          str = paramString;
+          paramString.putString("param_content_des", "");
+          str = paramString;
+          paramString.putString("param_mime_type", localHttpURLConnection.getContentType());
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString = str;
+        continue;
+      }
+      paramString = null;
+    }
   }
   
-  public void b()
+  public boolean a(String paramString)
   {
-    this.h = 0;
+    return a(paramString, true, "https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10367", 0);
+  }
+  
+  protected boolean a(String paramString1, boolean paramBoolean, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("KEY_PID", String.valueOf(50079));
+    ((HashMap)localObject).put("KEY_EUSESTAT", String.valueOf(5));
+    ((HashMap)localObject).put("ChannelID", this.jdField_a_of_type_AndroidAppActivity.getApplicationInfo().processName);
+    ((HashMap)localObject).put("PosID", Integer.toString(paramInt));
+    String str = MttLoader.getValidQBUrl(this.jdField_a_of_type_AndroidAppActivity, paramString1);
+    paramInt = MttLoader.loadUrl(this.jdField_a_of_type_AndroidAppActivity, str, (HashMap)localObject, null);
+    if (paramBoolean)
+    {
+      if (4 == paramInt)
+      {
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131689477);
+        a(this.jdField_a_of_type_AndroidAppActivity, paramString1, (String)localObject, 2131689483, paramString2);
+      }
+    }
+    else {
+      if (paramInt != 0) {
+        break label222;
+      }
+    }
+    label222:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      return paramBoolean;
+      if (5 == paramInt)
+      {
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131689476);
+        a(this.jdField_a_of_type_AndroidAppActivity, paramString1, (String)localObject, 2131689487, paramString2);
+        break;
+      }
+      if (paramInt == 0) {
+        break;
+      }
+      localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131689477);
+      a(this.jdField_a_of_type_AndroidAppActivity, paramString1, (String)localObject, 2131689483, paramString2);
+      break;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    {
+      paramMessage = (Bundle)paramMessage.obj;
+      if (paramMessage != null)
+      {
+        Object localObject = this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("qb_info", 0);
+        if (localObject != null)
+        {
+          paramMessage.putString("param_content_memo", ((SharedPreferences)localObject).getString("content_memo", null));
+          paramMessage.putString("param_icon_path", ((SharedPreferences)localObject).getString("icon_url", null));
+        }
+        localObject = paramMessage.getString("qb_param_url");
+        if ((localObject != null) && (((String)localObject).length() != 0))
+        {
+          paramMessage.remove("qb_param_url");
+          auqy.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, paramMessage);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Txn != null) {
+      this.jdField_a_of_type_Txn.a();
+    }
+    this.jdField_a_of_type_Boolean = false;
+    return false;
   }
 }
 

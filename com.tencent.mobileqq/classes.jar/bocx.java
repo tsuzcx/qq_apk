@@ -1,26 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView.2;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class bocx
-  implements Animator.AnimatorListener
+  implements Animation.AnimationListener
 {
-  public bocx(AEEditorComicLoadingView.2 param2) {}
+  public bocx(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.this$0.a();
+    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.this$0.a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.os.Handler;
 
-public class awvb
-  implements awtk
+final class awvb
+  implements bhvc
 {
-  public awvb(MultiCardPageIndicator paramMultiCardPageIndicator) {}
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void a(bhva parambhva1, bhva parambhva2)
   {
-    MultiCardPageIndicator.a(this.a);
-    return false;
+    awuz.a().sendEmptyMessage(10000001);
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a(bhva parambhva1, bhva parambhva2, int paramInt)
+  {
+    return true;
+  }
+  
+  public void b(bhva parambhva1, bhva parambhva2)
+  {
+    awuz.a = false;
+    awuz.a().sendEmptyMessage(10000001);
   }
 }
 

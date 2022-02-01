@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.setting.QIMSelectEffectParams;
-
-public final class boyp
-  implements Parcelable.Creator<QIMSelectEffectParams>
+public abstract interface boyp
 {
-  public QIMSelectEffectParams a(Parcel paramParcel)
-  {
-    return new QIMSelectEffectParams(paramParcel);
-  }
-  
-  public QIMSelectEffectParams[] a(int paramInt)
-  {
-    return new QIMSelectEffectParams[paramInt];
-  }
+  public abstract void a(String paramString);
 }
 
 

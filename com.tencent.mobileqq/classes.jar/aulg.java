@@ -1,16 +1,23 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import java.util.List;
 
 class aulg
-  extends GridLayoutManager.SpanSizeLookup
+  implements bjhv
 {
-  aulg(aulf paramaulf) {}
+  aulg(aulf paramaulf, List paramList, aule paramaule) {}
   
-  public int getSpanSize(int paramInt)
+  public void a(int paramInt)
   {
-    if (this.a.getItemViewType(paramInt) == aulb.b) {
-      return 5;
+    if (paramInt == 2)
+    {
+      aulf.a(this.jdField_a_of_type_Aulf, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Aule != null) {
+        this.jdField_a_of_type_Aule.a(1, 0);
+      }
     }
-    return 1;
+    while (this.jdField_a_of_type_Aule == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aule.a(1, 1);
   }
 }
 

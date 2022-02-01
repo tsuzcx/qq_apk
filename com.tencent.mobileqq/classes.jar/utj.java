@@ -1,16 +1,17 @@
-import android.content.Context;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class utj
-  extends utf
+class utj
+  implements View.OnTouchListener
 {
-  public utj(Context paramContext, utw paramutw)
-  {
-    super(paramContext, paramutw);
-  }
+  utj(uth paramuth) {}
   
-  protected int b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 2131560022;
+    uth.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

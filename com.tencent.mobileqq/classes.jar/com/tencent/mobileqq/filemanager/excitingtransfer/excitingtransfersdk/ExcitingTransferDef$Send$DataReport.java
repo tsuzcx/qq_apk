@@ -2,13 +2,13 @@ package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 public class ExcitingTransferDef$Send$DataReport
 {
-  public static final int AppType_QQ = 0;
-  public static final int Platrform_ANDROID_QQ = 2;
-  public static final int Platrform_IOS_QQ = 1;
-  public static final int Platrform_PC_QQ = 0;
-  public static final int UploadType_Buddy = 0;
-  public static final int UploadType_Group = 2;
-  public static final int UploadType_Temp = 1;
+  public static final int APP_TYPE_QQ = 0;
+  public static final int PLATRFORM_ANDROID_QQ = 2;
+  public static final int PLATRFORM_IOS_QQ = 1;
+  public static final int PLATRFORM_PC_QQ = 0;
+  public static final int UPLOAD_TYPE_BUDDY = 0;
+  public static final int UPLOAD_TYPE_GROUP = 2;
+  public static final int UPLOAD_TYPE_TEMP = 1;
 }
 
 

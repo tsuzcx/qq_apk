@@ -1,69 +1,22 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bctu
+  implements bctr
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    bctv localbctv = new bctv();
-    localbctv.jdField_c_of_type_JavaLangString = paramString1;
-    localbctv.jdField_d_of_type_JavaLangString = paramString2;
-    localbctv.jdField_e_of_type_JavaLangString = paramString3;
-    localbctv.f = paramString4;
-    localbctv.jdField_c_of_type_Long = paramInt1;
-    localbctv.jdField_d_of_type_Long = paramInt2;
-    localbctv.jdField_e_of_type_Long = paramInt3;
-    localbctv.g = paramString5;
-    localbctv.h = paramString6;
-    localbctv.i = paramString7;
-    localbctv.j = paramString8;
-    paramString1 = localbctv.a();
     if (QLog.isColorLevel()) {
-      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
+      QLog.d("Q.troopgetnews..troop.notification_center", 2, "decodeC2CMsgPkg_MsgType0x210, receive troop news push");
     }
-    return paramString1;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
-    }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc05263");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt2);
-      paramString1.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-      return;
-    }
-    bcst.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, 1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    ((aoip)paramMessageHandler.app.a(20)).a(paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 

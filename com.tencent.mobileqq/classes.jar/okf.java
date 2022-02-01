@@ -1,27 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
 public class okf
-  implements CompoundButton.OnCheckedChangeListener
+  extends pfh
 {
-  public okf(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public okf(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!paramCompoundButton.isPressed())
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
       return;
     }
-    ReadInJoySettingActivity localReadInJoySettingActivity = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ReadInJoySettingActivity.c(localReadInJoySettingActivity, bool);
-      ReadInJoySettingActivity.d(this.a, paramBoolean);
-      break;
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((ohf)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((ohf)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
     }
   }
 }

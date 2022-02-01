@@ -1,32 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.app.Activity;
-import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
+import android.os.Handler;
+import com.tencent.biz.qqcircle.report.QCircleLpReportDc05503.1;
 
 public class vtp
-  implements Animator.AnimatorListener
 {
-  public vtp(QCircleSlidBottomView paramQCircleSlidBottomView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    if (this.a.getContext() != null) {
-      uxx.a((Activity)this.a.getContext());
-    }
-    if (QCircleSlidBottomView.a(this.a) != null) {
-      QCircleSlidBottomView.a(this.a).b();
-    }
-    this.a.setVisibility(8);
-    QCircleSlidBottomView.a(this.a, false);
+    a(paramLong1, paramLong2, paramLong3, "", "", "", "", "", "", paramInt);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
   {
-    QCircleSlidBottomView.a(this.a, true);
+    vtw.a().a().post(new QCircleLpReportDc05503.1(paramLong1, paramLong2, paramLong3, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt));
+  }
+  
+  private static int b()
+  {
+    return 5503;
   }
 }
 

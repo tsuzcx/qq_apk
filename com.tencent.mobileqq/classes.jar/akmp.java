@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import mqq.app.QQPermissionCallback;
 
-public class akmp
-  implements DialogInterface.OnClickListener
+class akmp
+  implements QQPermissionCallback
 {
-  public akmp(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  akmp(akmn paramakmn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.getActivity().finish();
+    bhlq.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a, 5);
   }
 }
 

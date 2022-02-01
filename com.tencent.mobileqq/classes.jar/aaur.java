@@ -1,20 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.ui.RefreshView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
 public class aaur
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aaur(RefreshView paramRefreshView) {}
+  public aaur(MoveFileActivity paramMoveFileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a();
+    paramDialogInterface.dismiss();
   }
 }
 

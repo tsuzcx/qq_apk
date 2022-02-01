@@ -1,14 +1,21 @@
-public abstract interface bmdc
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class bmdc
+  extends BroadcastReceiver
 {
-  public abstract void a(bmdb parambmdb);
+  bmdc(bmdb parambmdb) {}
   
-  public abstract void b(bmdb parambmdb);
-  
-  public abstract void c(bmdb parambmdb);
-  
-  public abstract void d(bmdb parambmdb);
-  
-  public abstract void e(bmdb parambmdb);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
+    }
+    bmdb.a(this.a);
+    bmdb.b(this.a);
+  }
 }
 
 

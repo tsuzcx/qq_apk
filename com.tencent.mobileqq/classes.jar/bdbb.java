@@ -1,21 +1,35 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class bdbb
-  implements DialogInterface.OnClickListener
+public class bdbb
 {
-  bdbb(bdba parambdba, Context paramContext, View paramView) {}
+  private double a;
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bdbb() {}
+  
+  public bdbb(int paramInt1, int paramInt2)
   {
-    bdaz.a(this.jdField_a_of_type_Bdba.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      bcst.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
-    }
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Double = (paramInt1 / paramInt2);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof bdbb)) {
+        return false;
+      }
+      paramObject = (bdbb)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "CustomSize[width=" + this.jdField_a_of_type_Int + ", height=" + this.b + ", scaleWH='" + this.jdField_a_of_type_Double + ']';
   }
 }
 

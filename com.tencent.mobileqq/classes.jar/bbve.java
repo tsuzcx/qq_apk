@@ -1,9 +1,165 @@
-import android.widget.ImageView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import android.os.AsyncTask;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public abstract interface bbve
-  extends bbvh
+class bbve
+  extends AsyncTask<Void, Integer, Integer>
 {
-  public abstract ImageView b();
+  bbve(bbvd parambbvd) {}
+  
+  private void a(long paramLong)
+  {
+    long l = bbvd.a(this.a).getLong("k_icon", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
+    }
+    Object localObject;
+    if (l < paramLong)
+    {
+      localObject = null;
+      if (paramLong <= 104L) {
+        break label180;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        InputStream localInputStream = bbvd.a(this.a).getApp().getAssets().open("rich_status.xml");
+        localObject = localInputStream;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      localObject = (SparseArray)bbvd.a(this.a, localObject)[0];
+      if (bbvd.a(this.a, (SparseArray)localObject, bbvd.a(this.a))) {
+        bbvd.a(this.a).edit().putLong("k_icon", paramLong).commit();
+      }
+      return;
+      try
+      {
+        label180:
+        FileInputStream localFileInputStream = new FileInputStream(new File(bbvd.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        localObject = localFileInputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        localFileNotFoundException.printStackTrace();
+      }
+    }
+  }
+  
+  protected Integer a(Void... paramVarArgs)
+  {
+    long l = bbvd.a(this.a).getLong("k_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
+    }
+    if (l > 104L) {}
+    ArrayList localArrayList;
+    label221:
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new FileInputStream(new File(bbvd.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        if (paramVarArgs != null) {
+          break label221;
+        }
+        Object localObject;
+        paramVarArgs = null;
+      }
+      catch (FileNotFoundException paramVarArgs)
+      {
+        try
+        {
+          localObject = bbvd.a(this.a).getApp().getAssets().open("rich_status.xml");
+          paramVarArgs = (Void[])localObject;
+          l = 104L;
+          localObject = bbvd.a(this.a, paramVarArgs);
+          paramVarArgs = (SparseArray)localObject[0];
+          localArrayList = (ArrayList)localObject[1];
+          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
+            break;
+          }
+          publishProgress(new Integer[] { Integer.valueOf(-1) });
+          a(l);
+          return Integer.valueOf(100);
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+        }
+        paramVarArgs = paramVarArgs;
+        paramVarArgs.printStackTrace();
+      }
+    }
+    for (;;)
+    {
+      synchronized (bbvd.a(this.a))
+      {
+        if ((!isCancelled()) && (bbvd.a(this.a).size() == 0))
+        {
+          bbvd.a(this.a, paramVarArgs);
+          bbvd.a(this.a).clear();
+          bbvd.a(this.a).addAll(localArrayList);
+          publishProgress(new Integer[] { Integer.valueOf(102) });
+        }
+      }
+      cancel(true);
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
+    }
+    bbvd.a(this.a, null);
+    if (101 == bbvd.a(this.a, false)) {
+      bbvd.a(this.a);
+    }
+    this.a.a(false);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    int i = paramVarArgs[0].intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
+    }
+    if (bbvd.a(this.a) != null)
+    {
+      paramVarArgs = bbvd.a(this.a).iterator();
+      while (paramVarArgs.hasNext()) {
+        ((bbsr)paramVarArgs.next()).a(i, 300);
+      }
+    }
+    gm.a().c(i, 300);
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
+    }
+    bbvd.a(this.a, null);
+  }
 }
 
 

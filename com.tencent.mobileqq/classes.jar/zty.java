@@ -1,40 +1,40 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class zty
-  implements zuk
+  extends QQUIEventReceiver<StoryNickNameView, xas>
 {
-  public zty(ScannerActivity paramScannerActivity) {}
-  
-  public JSONObject a()
+  public zty(@NonNull StoryNickNameView paramStoryNickNameView)
   {
-    try
-    {
-      JSONObject localJSONObject = ScannerActivity.a(this.a);
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
-    }
-    return null;
+    super(paramStoryNickNameView);
   }
   
-  public void a()
+  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull xas paramxas)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
-    }
-    this.a.finish();
+    if ((paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
+    do
+    {
+      return;
+      if ((paramxas.jdField_a_of_type_JavaUtilList == null) || (paramxas.jdField_a_of_type_JavaUtilList.size() == 0))
+      {
+        yuk.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
+        return;
+      }
+      if (TextUtils.equals(paramxas.b, "Q.qqstoryStoryNickNameView")) {
+        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramxas.jdField_a_of_type_JavaUtilList.get(0));
+      }
+    } while (!TextUtils.equals(paramxas.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
+    paramStoryNickNameView.a((QQUserUIItem)paramxas.jdField_a_of_type_JavaUtilList.get(0));
   }
   
-  public void b()
+  public Class acceptEventClass()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "cameraOn");
-    }
-    this.a.finish();
+    return xas.class;
   }
 }
 

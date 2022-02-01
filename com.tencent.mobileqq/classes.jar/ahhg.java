@@ -1,16 +1,17 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 
-public class ahhg
-  extends afwr
+final class ahhg
+  implements ahky
 {
-  public RelativeLayout a;
-  public DoodleMsgLayout a;
-  public MessageProgressView a;
-  
-  public ahhg(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (alik.a((MessageForQQWalletMsg)paramChatMessage)) {
+      return 32;
+    }
+    return 90;
+  }
 }
 
 

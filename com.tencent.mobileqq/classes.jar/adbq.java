@@ -1,12 +1,18 @@
+import java.util.List;
+
 public class adbq
+  implements adbp
 {
-  public int a;
-  public long a;
+  private adbb<adbo> a = new adbc();
   
-  adbq(long paramLong, int paramInt)
+  public List<adbo> a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends adbo> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

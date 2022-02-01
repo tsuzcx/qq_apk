@@ -1,73 +1,89 @@
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.util.Pair;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import dov.com.qq.im.ae.data.AEGifCategoryWrapper;
+import dov.com.qq.im.ae.gif.AEGIFStickerListPart.7.1;
+import dov.com.qq.im.ae.gif.AEGIFStickerListPart.7.2;
+import java.util.List;
 
-class bosg
-  implements bdvw
+public class bosg
+  implements Observer<Boolean>
 {
-  bosg(bosf parambosf, String paramString1, String paramString2, bosi parambosi, String paramString3, String paramString4, bosh parambosh) {}
+  bosg(bory parambory) {}
   
-  public void onResp(bdwt parambdwt)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + parambdwt.c + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
-    if (!localFile.exists()) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-    }
-    label249:
-    do
+    if ((paramBoolean == null) || (!paramBoolean.booleanValue())) {}
+    label61:
+    label76:
+    label486:
+    label501:
+    label510:
+    for (;;)
     {
-      for (;;)
+      return;
+      bory.c(this.a);
+      paramBoolean = boqm.a().a(2);
+      if (paramBoolean.size() > 0)
       {
-        return;
-        parambdwt = "";
-        try
+        Pair localPair = bory.a(this.a, paramBoolean);
+        int i;
+        int j;
+        if ((localPair == null) || (localPair.first == null))
         {
-          String str = bgmg.c(localFile.getPath());
-          parambdwt = str;
-          if ((TextUtils.isEmpty(this.jdField_a_of_type_Bosi.c)) || (!this.jdField_a_of_type_Bosi.c.equalsIgnoreCase(parambdwt))) {}
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          for (;;)
-          {
-            try
-            {
-              nmk.a(localFile, this.c);
-              parambdwt = new File(this.d);
-              if (!parambdwt.exists()) {
-                break label249;
-              }
-              parambdwt = bqgc.a(parambdwt);
-              if ((this.jdField_a_of_type_Bosh == null) || (parambdwt == null)) {
-                break;
-              }
-              this.jdField_a_of_type_Bosh.a(parambdwt);
-              return;
-              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", localUnsatisfiedLinkError);
-            }
-            catch (IOException parambdwt)
-            {
-              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", parambdwt);
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.jdField_a_of_type_Bosi.c, " ", parambdwt });
-            }
+          i = 0;
+          if ((localPair != null) && (localPair.second != null)) {
+            break label486;
           }
+          j = 0;
+          bory.a(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).categoryId);
+          bory.a(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).fontId);
+          if (bory.a(this.a))
+          {
+            if ((i == 0) && (j == 0) && (!bory.b(this.a))) {
+              Toast.makeText(bory.a(this.a).a(), 2131689675, 1).show();
+            }
+            bory.a(this.a, true);
+          }
+          bory.b(this.a).clear();
+          bory.b(this.a).addAll(paramBoolean);
+          bory.a(this.a, bory.b(this.a, paramBoolean));
+          bory.a(this.a).setTabData((String[])bory.a(this.a).first, (int[])bory.a(this.a).second);
+          bory.a(this.a).post(new AEGIFStickerListPart.7.1(this, i));
+          bory.a(this.a).clear();
+          bory.a(this.a).addAll(((AEGifCategoryWrapper)bory.b(this.a).get(i)).materialWrapperList);
+          bory.a(this.a).notifyDataSetChanged();
+          bory.a(this.a).post(new AEGIFStickerListPart.7.2(this, j));
+          paramBoolean = (boqw)((AEGifCategoryWrapper)bory.b(this.a).get(i)).materialWrapperList.get(j);
+          if (paramBoolean.b != 1) {
+            break label501;
+          }
+          bory.a(this.a, null);
+        }
+        for (;;)
+        {
+          if ((!TextUtils.isEmpty(bory.a(this.a))) || (i != 0)) {
+            break label510;
+          }
+          bory.b(this.a, ((AEGifCategoryWrapper)bory.b(this.a).get(i)).categoryId);
+          if ((bory.a(this.a) == null) || (!bory.a(this.a).a())) {
+            break;
+          }
+          bozr.a().h(bory.a(this.a));
+          return;
+          i = ((Integer)localPair.first).intValue();
+          break label61;
+          j = ((Integer)localPair.second).intValue();
+          break label76;
+          bory.a(this.a, paramBoolean);
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
+    }
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,17 +1,21 @@
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mdm
-  extends lem
+  implements View.OnClickListener
 {
-  public mdm(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mdm(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lco> paramArrayList)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
+    QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.e();
+    this.a.a.a().aq = true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

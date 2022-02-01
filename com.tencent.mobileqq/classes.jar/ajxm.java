@@ -1,61 +1,20 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajxm
+public class ajxm
   implements View.OnClickListener
 {
-  ajxm(ajxi paramajxi) {}
+  public ajxm(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onClick, id = " + i);
-    }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.jdField_a_of_type_Ajyc != null)
-      {
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Ajyc.a.msg);
-        continue;
-        if (this.a.jdField_a_of_type_Ajyc != null)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putInt("forward_type", -1);
-          localBundle.putString("forward_text", this.a.jdField_a_of_type_Ajyc.a.msg);
-          Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
-          localIntent.putExtras(localBundle);
-          ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.i("C2CMessageSearchDialog", 2, "OnClickListener, setMessageItems");
-          }
-          this.a.c = false;
-          ajxi.a(this.a).setVisibility(8);
-          ajxi.a(this.a, 0, null);
-          this.a.jdField_a_of_type_Ajxg.a(ajxi.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-          this.a.jdField_a_of_type_Ajxg.notifyDataSetChanged();
-          this.a.b = 1;
-          VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Clk_cloudtips", 0, 0, new String[0]);
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
+    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter, this.jdField_a_of_type_Int);
+    new bdlq(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

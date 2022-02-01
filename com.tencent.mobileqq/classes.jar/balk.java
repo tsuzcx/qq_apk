@@ -1,15 +1,14 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
-
-public abstract interface balk
-  extends IInterface
+public class balk
 {
-  public abstract Bundle a(int paramInt, Bundle paramBundle);
+  public float a;
+  public int a;
+  public float b = -1.0F;
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(CompressInfo paramCompressInfo);
+  public balk()
+  {
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_Int = -1;
+  }
 }
 
 

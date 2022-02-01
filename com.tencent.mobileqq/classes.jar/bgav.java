@@ -1,29 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.common.config.AppSetting;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
-class bgav
-  implements ValueAnimator.AnimatorUpdateListener
+public class bgav
+  implements DialogInterface.OnClickListener
 {
-  bgav(bgau parambgau) {}
+  public bgav(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, bfyk parambfyk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if ((paramValueAnimator.intValue() >= this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298998)) && (AppSetting.c) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() > 0))
+    switch (paramInt)
     {
-      paramValueAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(0);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.requestFocusFromTouch();
-      }
+    default: 
+      return;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Bfyk);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Bfyk);
   }
 }
 

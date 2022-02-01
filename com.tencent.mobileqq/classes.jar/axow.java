@@ -1,20 +1,10 @@
-import android.text.TextUtils;
-
-class axow
-  extends axjb
+public abstract interface axow
 {
-  axow(axop paramaxop) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(axop.b(this.a) + ""))) {
-      this.a.h(paramBoolean);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, axpl paramaxpl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axow
  * JD-Core Version:    0.7.0.1
  */

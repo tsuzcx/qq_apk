@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vashealth;
 
-import anni;
-import biau;
+import anzj;
+import bjbs;
 
 class VideoCallBack$2
   implements Runnable
 {
-  VideoCallBack$2(VideoCallBack paramVideoCallBack, biau parambiau) {}
+  VideoCallBack$2(VideoCallBack paramVideoCallBack, bjbs parambjbs) {}
   
   public void run()
   {
     this.a.setCancelable(false);
-    this.a.a(anni.a(2131714784));
+    this.a.a(anzj.a(2131714893));
     this.a.show();
   }
 }

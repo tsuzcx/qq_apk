@@ -1,23 +1,298 @@
+import android.content.res.Resources;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoUIDelegate.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoUIDelegate.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class rjs
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, rzn
 {
-  public rjs(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new rjt(this);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)LayoutInflater.from(BaseApplication.getContext()).inflate(2131560037, null, false);
+  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private qzp jdField_a_of_type_Qzp;
+  private rzo jdField_a_of_type_Rzo;
+  private boolean jdField_a_of_type_Boolean;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  private int a(View paramView)
   {
-    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
-      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
+    paramView = paramView.getTag();
+    if ((paramView instanceof Integer)) {
+      return ((Integer)paramView).intValue();
     }
-    ReadInJoyDeliverUGCActivity.a(this.a, false);
-    return true;
+    return 1;
   }
+  
+  private void a(int paramInt)
+  {
+    Resources localResources = BaseApplication.getContext().getResources();
+    this.jdField_a_of_type_AndroidWidgetImageButton.clearAnimation();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130843196));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setTag(Integer.valueOf(1));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(localResources.getDrawable(2130843195));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setTag(Integer.valueOf(2));
+  }
+  
+  private void a(long paramLong)
+  {
+    int i = (int)(paramLong / 1000L);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ozc.a(i));
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageButton.getVisibility() == 0;
+  }
+  
+  private boolean b()
+  {
+    return this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() == 0;
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377245));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380939));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372759));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380787));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380941));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380808));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365170));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380141));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+    this.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+  }
+  
+  private void e()
+  {
+    int i = (int)this.jdField_a_of_type_Rzo.a() / 1000;
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(i);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(i);
+    a(0L);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(ozc.a(i));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ozc.a(0));
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_Rzo = new rzo(1000);
+    this.jdField_a_of_type_Rzo.a(this);
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_Rzo.d(true);
+    this.jdField_a_of_type_Rzo.e(false);
+  }
+  
+  private void h()
+  {
+    if (this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() != 0) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+  }
+  
+  private void i()
+  {
+    if (b())
+    {
+      h();
+      return;
+    }
+    j();
+  }
+  
+  private void j()
+  {
+    if (this.jdField_b_of_type_AndroidViewViewGroup.getVisibility() == 0) {
+      return;
+    }
+    if (this.jdField_a_of_type_Rzo.g()) {
+      a(1);
+    }
+    for (;;)
+    {
+      rpt.a(this.jdField_b_of_type_AndroidViewViewGroup, 0, 300);
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+      if (!this.jdField_a_of_type_Rzo.h()) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 3000L);
+      return;
+      if (this.jdField_a_of_type_Rzo.h()) {
+        a(2);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Rzo.l();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null)
+    {
+      QLog.e("RIJUGC.SelectVideoUIDelegate", 1, "attachVideoView failed for containerView is null.");
+      return;
+    }
+    this.jdField_c_of_type_AndroidViewViewGroup = paramViewGroup;
+    paramViewGroup.setEnabled(false);
+    d();
+    f();
+    this.jdField_a_of_type_Rzo.a(paramViewGroup);
+    paramViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup);
+  }
+  
+  public void a(qzp paramqzp)
+  {
+    if (paramqzp == null) {
+      return;
+    }
+    this.jdField_a_of_type_Qzp = paramqzp;
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramqzp.d);
+    ThreadManager.getUIHandler().post(new SelectVideoUIDelegate.1(this, paramqzp));
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rzo.k();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Rzo.m();
+  }
+  
+  public void onBufferEnd() {}
+  
+  public void onBufferStart() {}
+  
+  public void onClick(View paramView)
+  {
+    int i = paramView.getId();
+    if (i == this.jdField_a_of_type_AndroidWidgetImageButton.getId()) {
+      switch (a(paramView))
+      {
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Rzo.c();
+      continue;
+      this.jdField_a_of_type_Rzo.d();
+      continue;
+      if (i == this.jdField_c_of_type_AndroidViewViewGroup.getId()) {
+        i();
+      }
+    }
+  }
+  
+  public void onCompletion() {}
+  
+  public void onDownloadFinished() {}
+  
+  public void onFirstFrameRendered() {}
+  
+  public void onProgressChanged(long paramLong)
+  {
+    a(paramLong);
+  }
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    int i = paramSeekBar.getProgress();
+    this.jdField_a_of_type_Rzo.b(i * 1000);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+  }
+  
+  public void onVideoEnd(int paramInt) {}
+  
+  public void onVideoError(int paramInt1, int paramInt2, String paramString) {}
+  
+  public void onVideoOpen() {}
+  
+  public void onVideoPause()
+  {
+    if (a()) {
+      a(1);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+  }
+  
+  public void onVideoPrepared()
+  {
+    g();
+    this.jdField_a_of_type_Rzo.c();
+    ThreadManager.getUIHandler().post(new SelectVideoUIDelegate.2(this));
+  }
+  
+  public void onVideoRestart()
+  {
+    a(2);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 3000L);
+  }
+  
+  public void onVideoStart()
+  {
+    a(2);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 3000L);
+  }
+  
+  public void onVideoStop() {}
 }
 
 

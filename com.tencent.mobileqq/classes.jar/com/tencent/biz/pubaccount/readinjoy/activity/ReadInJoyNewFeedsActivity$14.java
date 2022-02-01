@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import oat;
+import ocd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ class ReadInJoyNewFeedsActivity$14
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("channel_id", 0);
-      oat.a(null, "", "0X8009665", "0X8009665", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ocd.a(null, "", "0X8009665", "0X8009665", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)

@@ -1,9 +1,34 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class aktu
+class aktu
+  implements View.OnClickListener
 {
-  public static final IRedPacket a = new RedPacketManager();
+  aktu(aktq paramaktq) {}
+  
+  public void onClick(View paramView)
+  {
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false)) {
+      if (aunj.a()) {
+        aumw.a(this.a.mActivity, 2131692326, 2131692331, new aktv(this));
+      }
+    }
+    for (;;)
+    {
+      LpReportInfo_pf00064.allReport(603, 1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.d();
+      continue;
+      this.a.d();
+    }
+  }
 }
 
 

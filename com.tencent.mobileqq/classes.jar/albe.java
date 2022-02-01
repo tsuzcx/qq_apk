@@ -1,13 +1,19 @@
-import com.tencent.widget.XListView;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 
-class albe
-  implements wxd
+public class albe
+  implements alfv
 {
-  albe(albc paramalbc) {}
+  public albe(LingHbFragment paramLingHbFragment) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.a.invalidateViews();
+    if (paramInt == 0)
+    {
+      this.a.a.findViewById(2131368613).setVisibility(8);
+      return;
+    }
+    this.a.a.findViewById(2131368613).setVisibility(0);
   }
 }
 

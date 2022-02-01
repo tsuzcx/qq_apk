@@ -1,57 +1,39 @@
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
 
-public class adar
-  implements acxp
+class adar
 {
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  
+  public adar(adan paramadan, long paramLong, MsgInfo paramMsgInfo, int paramInt)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
   public int a()
   {
-    return 10007;
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean a()
+  public long a()
   {
-    return false;
+    return this.jdField_b_of_type_Long;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public adar a()
   {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(164);
-    byte[] arrayOfByte = paramQQAppInterface.a().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (arrayOfByte != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
-    }
-    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramMessageRecord);
-      l1 = l2;
-    }
-    catch (NumberFormatException paramMessageRecord)
-    {
-      for (;;)
-      {
-        QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
-      }
-    }
-    localCommTmp.to_uin.set(l1);
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
+    this.jdField_a_of_type_Adan.a.a().a().a(2);
+    this.jdField_b_of_type_Long = 9998L;
+    this.jdField_b_of_type_Int = (-1006 - (this.jdField_a_of_type_Int - 187));
+    this.jdField_a_of_type_Adan.a.a().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_OnlinePushPackMsgInfo.shMsgSeq);
+    return this;
   }
 }
 

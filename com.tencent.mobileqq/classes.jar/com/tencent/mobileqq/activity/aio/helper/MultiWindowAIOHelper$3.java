@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agml;
+import agvn;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class MultiWindowAIOHelper$3
   implements Runnable
 {
-  public MultiWindowAIOHelper$3(agml paramagml, int paramInt1, int paramInt2) {}
+  public MultiWindowAIOHelper$3(agvn paramagvn, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    agml.a(this.this$0).a.setSelectionFromBottom(this.a, this.b);
+    agvn.a(this.this$0).a.setSelectionFromBottom(this.a, this.b);
   }
 }
 

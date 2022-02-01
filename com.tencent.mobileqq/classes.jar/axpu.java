@@ -1,9 +1,6 @@
-class axpu
+public abstract interface axpu
 {
-  public String a;
-  public String b;
-  
-  private axpu(axop paramaxop) {}
+  public abstract void a();
 }
 
 

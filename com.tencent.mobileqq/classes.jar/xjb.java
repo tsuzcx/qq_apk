@@ -1,20 +1,14 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface xjb
+public final class xjb
+  implements xad
 {
-  public abstract List<xje> a(List<xix> paramList);
-  
-  @NonNull
-  public abstract xja a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, xjd paramxjd);
-  
-  public abstract boolean a(xiy paramxiy);
-  
-  public abstract void b();
+  public void a(xac paramxac)
+  {
+    ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramxac));
+  }
 }
 
 

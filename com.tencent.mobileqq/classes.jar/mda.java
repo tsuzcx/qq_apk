@@ -1,19 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.RelativeLayout;
+import com.tencent.av.ui.QavMenuBaseView;
 
 public class mda
-  implements View.OnTouchListener
+  implements mhh
 {
-  public mda(EffectSettingUi paramEffectSettingUi) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mda(String paramString)
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1008L);
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      mrl.a(this.jdField_a_of_type_JavaLangString, 0);
+    }
+    if ((paramRelativeLayout instanceof QavMenuBaseView)) {
+      ((QavMenuBaseView)paramRelativeLayout).c(paramLong, paramBoolean);
+    }
+  }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if ((paramRelativeLayout instanceof QavMenuBaseView)) {
+      ((QavMenuBaseView)paramRelativeLayout).d(paramLong, paramBoolean);
+    }
   }
 }
 

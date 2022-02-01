@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.6;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
 
-public class avwf
-  implements View.OnClickListener
+class avwf
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  public avwf(BaseListenTogetherPanel.6 param6) {}
+  avwf(avvx paramavvx) {}
   
-  public void onClick(View paramView)
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.this$0.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    }
   }
 }
 

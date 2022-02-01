@@ -1,68 +1,83 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.media.MediaMetadataRetriever;
 
 public class bbnj
-  extends bbnh
 {
-  public static final String a;
-  public float a;
-  public int a;
-  public CharSequence a;
-  public float b;
-  public CharSequence b;
-  public String b;
-  public String j;
-  public String k;
+  private static String a = "MediaUtil";
   
-  static
+  @TargetApi(10)
+  public static long a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bbnj.class.getSimpleName();
-  }
-  
-  public bbnj(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public bbnj(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
-    }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
+    long l1 = 0L;
+    localMediaMetadataRetriever = new MediaMetadataRetriever();
     try
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
-      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
-      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
-      this.j = paramString.optString("topLeftTagText");
-      this.k = paramString.optString("topLeftTagColor");
-      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
-      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
-      return;
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = localMediaMetadataRetriever.extractMetadata(9);
     }
-    catch (JSONException paramString)
+    catch (RuntimeException localRuntimeException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      long l2;
+      yuk.c(a, "getVideoDuration path=" + paramString + " exists=" + zom.e(paramString), localRuntimeException);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    catch (Error localError)
+    {
+      label32:
+      yuk.c(a, "getVideoDuration path=" + paramString + " exists=" + zom.e(paramString), localError);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    try
+    {
+      l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+      break label32;
+    }
+    localMediaMetadataRetriever.release();
+    return l1;
+  }
+  
+  @TargetApi(10)
+  public static Bitmap a(String paramString, int paramInt)
+  {
+    Object localObject = null;
+    if (!zom.e(paramString))
+    {
+      yuk.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
+      return null;
+    }
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    long l = paramInt * 1000;
+    try
+    {
+      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
+      localMediaMetadataRetriever.release();
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        yuk.c(a, "getFrameAtTime", paramString);
+        paramString = localObject;
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1, 0);
+    if (paramString1 != null) {
+      zoc.a(paramString1, Bitmap.CompressFormat.JPEG, 80, paramString2);
     }
   }
 }

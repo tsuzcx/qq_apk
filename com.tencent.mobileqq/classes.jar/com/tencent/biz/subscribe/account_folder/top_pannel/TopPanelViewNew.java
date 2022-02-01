@@ -1,24 +1,24 @@
 package com.tencent.biz.subscribe.account_folder.top_pannel;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import aaaf;
-import aabj;
-import aabk;
-import aabw;
+import aaek;
+import aafo;
+import aafp;
+import aagb;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import bgtn;
+import bhtq;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
 import java.util.List;
 
 public class TopPanelViewNew
   extends RelativeLayout
-  implements aabk
+  implements aafp
 {
-  private aabj jdField_a_of_type_Aabj;
+  private aafo jdField_a_of_type_Aafo;
   private View jdField_a_of_type_AndroidViewView;
   private RecommendBannerViewNew jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew;
   private boolean jdField_a_of_type_Boolean;
@@ -45,7 +45,7 @@ public class TopPanelViewNew
   
   public void a(int paramInt) {}
   
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<aabw> paramList, boolean paramBoolean)
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<aagb> paramList, boolean paramBoolean)
   {
     if (((paramList == null) || (paramList.size() == 0)) && (paramStEntry == null)) {
       b();
@@ -56,25 +56,25 @@ public class TopPanelViewNew
       if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew != null) {
         this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.a(paramStEntry, paramList, paramBoolean);
       }
-      bgtn.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew, 0);
+      bhtq.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew, 0);
     } while (((paramList != null) && (paramList.size() >= 10)) || (!paramBoolean));
     this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.a();
   }
   
   protected void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = aaaf.a();
-    inflate(paramContext, 2131558774, this);
+    this.jdField_a_of_type_Boolean = aaek.a();
+    inflate(paramContext, 2131558772, this);
     if (this.jdField_a_of_type_Boolean) {
       setBackgroundColor(-16777216);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew = ((RecommendBannerViewNew)findViewById(2131376166));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369082);
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew = ((RecommendBannerViewNew)findViewById(2131376306));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369172);
   }
   
   public void b()
   {
-    bgtn.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew, 8);
+    bhtq.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew, 8);
   }
   
   public void setOnHideBtnClickListener(View.OnClickListener paramOnClickListener)
@@ -84,11 +84,11 @@ public class TopPanelViewNew
     }
   }
   
-  public void setPresenter(aabj paramaabj)
+  public void setPresenter(aafo paramaafo)
   {
-    this.jdField_a_of_type_Aabj = paramaabj;
+    this.jdField_a_of_type_Aafo = paramaafo;
     if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.setPresenter(paramaabj);
+      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.setPresenter(paramaafo);
     }
   }
 }

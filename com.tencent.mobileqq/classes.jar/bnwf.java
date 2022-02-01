@@ -1,42 +1,10 @@
-import android.graphics.SurfaceTexture;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class bnwf
-  implements TextureView.SurfaceTextureListener
+  implements BusinessObserver
 {
-  private WeakReference<AETemplateInfoFragment> a;
-  
-  public bnwf(AETemplateInfoFragment paramAETemplateInfoFragment)
-  {
-    this.a = new WeakReference(paramAETemplateInfoFragment);
-  }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
-    }
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
-    if ((this.a != null) && (this.a.get() != null)) {
-      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
-    }
-    return true;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

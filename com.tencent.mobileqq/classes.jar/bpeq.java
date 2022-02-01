@@ -1,21 +1,15 @@
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
 
-class bpeq
-  implements bkhw
+public class bpeq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bpeq(bpep parambpep, bkho parambkho) {}
+  public bpeq(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Bpep.c();
-    }
+    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

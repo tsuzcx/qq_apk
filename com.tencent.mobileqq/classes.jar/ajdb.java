@@ -1,20 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-class ajdb
-  implements View.OnClickListener
+public class ajdb
+  implements blpp
 {
-  ajdb(ajcz paramajcz, ajdf paramajdf) {}
+  public ajdb(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    if (this.jdField_a_of_type_Ajcz.a != null)
-    {
-      int i = this.jdField_a_of_type_Ajdf.getAdapterPosition();
-      this.jdField_a_of_type_Ajcz.a.a(paramView, this.jdField_a_of_type_Ajdf, i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    AddContactsView.b(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    AddContactsView.b(this.a, true);
   }
 }
 

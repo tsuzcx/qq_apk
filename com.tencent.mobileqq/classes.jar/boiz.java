@@ -1,15 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
-
 public abstract interface boiz
 {
-  public abstract void a(AEEditorTextBean paramAEEditorTextBean, int paramInt);
+  public abstract void a();
   
-  public abstract void a(AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean, @Nullable AEEditorPagStickerConfig paramAEEditorPagStickerConfig);
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void a(AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean, @NonNull String paramString);
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

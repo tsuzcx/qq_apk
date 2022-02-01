@@ -14,7 +14,7 @@ class FrameComparePipeLine$2
     if (this.val$task.isEndTask)
     {
       i = FrameComparePipeLine.access$300(this.this$0);
-      LogUtil.d("MediaPlayerMgr.FrameComparePipeLine", "checkTaskResultList resultCode:" + i + "\n" + FrameComparePipeLine.access$400(this.this$0));
+      LogUtil.d("SuperPlayer-.FrameComparePipeLine", "checkTaskResultList resultCode:" + i + "\n" + FrameComparePipeLine.access$400(this.this$0));
       if (FrameComparePipeLine.access$500(this.this$0) != null) {
         FrameComparePipeLine.access$500(this.this$0).onVideoFrameCheckResult(i);
       }
@@ -24,7 +24,7 @@ class FrameComparePipeLine$2
       int i;
       return;
     }
-    LogUtil.w("MediaPlayerMgr.FrameComparePipeLine", "No end task, when mQueue is empty.");
+    LogUtil.w("SuperPlayer-.FrameComparePipeLine", "No end task, when mQueue is empty.");
   }
 }
 

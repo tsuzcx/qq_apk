@@ -18,7 +18,7 @@ class BaseLibManager$1$1$1
     JSONObject localJSONObject = this.val$obj.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON(localJSONObject);
     QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] gameEngineLib " + localBaseLibInfo2 + ", miniAppEnginLib " + localJSONObject);
-    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.17.0.00206".equals(this.this$2.val$baseLibVersion)))
+    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.18.0.00132".equals(this.this$2.val$baseLibVersion)))
     {
       if (LocalGameEngine.g().isWnsConfigModel()) {
         break label131;

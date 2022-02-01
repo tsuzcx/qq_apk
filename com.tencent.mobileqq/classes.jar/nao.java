@@ -1,33 +1,24 @@
-import android.view.MotionEvent;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.avgame.gameroom.gamelist.GameListItemView;
+import com.tencent.avgame.gameresult.GameResultFragment;
 
 public class nao
-  implements View.OnTouchListener
+  extends ClickableSpan
 {
-  public nao(GameListItemView paramGameListItemView) {}
+  public nao(GameResultFragment paramGameResultFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView = nfx.a("avgame_start_game_owner_hl@3x.png");
-      if (paramView != null)
-      {
-        this.a.a.setImageBitmap(paramView);
-        continue;
-        paramView = nfx.a("avgame_start_game_owner_normal@3x.png");
-        if (paramView != null) {
-          this.a.a.setImageBitmap(paramView);
-        }
-      }
-    }
+    GameResultFragment.a(this.a);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,94 +1,103 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class arxn
+public final class arxn
+  implements Parcelable.Creator<MessageForPic>
 {
-  private final arxz a;
-  
-  public arxn(EmoticonMainPanel paramEmoticonMainPanel, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt)
+  public MessageForPic a(Parcel paramParcel)
   {
-    this.a = new arxz(paramEmoticonMainPanel);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.a.jdField_a_of_type_Int = paramInt;
+    boolean bool2 = true;
+    MessageForPic localMessageForPic = new MessageForPic();
+    localMessageForPic.path = paramParcel.readString();
+    localMessageForPic.size = paramParcel.readLong();
+    localMessageForPic.type = paramParcel.readInt();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localMessageForPic.isRead = bool1;
+      localMessageForPic.uuid = paramParcel.readString();
+      localMessageForPic.groupFileID = paramParcel.readLong();
+      localMessageForPic.md5 = paramParcel.readString();
+      localMessageForPic.serverStoreSource = paramParcel.readString();
+      localMessageForPic.thumbMsgUrl = paramParcel.readString();
+      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
+      localMessageForPic.thumbWidth = paramParcel.readInt();
+      localMessageForPic.thumbHeight = paramParcel.readInt();
+      localMessageForPic.bigMsgUrl = paramParcel.readString();
+      localMessageForPic.rawMsgUrl = paramParcel.readString();
+      localMessageForPic.fileSizeFlag = paramParcel.readInt();
+      localMessageForPic.picExtraFlag = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label466;
+      }
+      bool1 = true;
+      label172:
+      localMessageForPic.isMixed = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label471;
+      }
+      bool1 = true;
+      label188:
+      localMessageForPic.isShareAppActionMsg = bool1;
+      localMessageForPic.action = paramParcel.readString();
+      localMessageForPic.shareAppID = paramParcel.readLong();
+      localMessageForPic.actMsgContentValue = paramParcel.readString();
+      localMessageForPic.localUUID = paramParcel.readString();
+      localMessageForPic.subMsgId = paramParcel.readInt();
+      localMessageForPic.isReport = paramParcel.readInt();
+      localMessageForPic.subVersion = paramParcel.readInt();
+      localMessageForPic.busiType = paramParcel.readInt();
+      localMessageForPic.width = paramParcel.readLong();
+      localMessageForPic.height = paramParcel.readLong();
+      localMessageForPic.imageType = paramParcel.readInt();
+      localMessageForPic.frienduin = paramParcel.readString();
+      localMessageForPic.selfuin = paramParcel.readString();
+      localMessageForPic.senderuin = paramParcel.readString();
+      localMessageForPic.istroop = paramParcel.readInt();
+      localMessageForPic.versionCode = paramParcel.readInt();
+      localMessageForPic.uniseq = paramParcel.readLong();
+      localMessageForPic.issend = paramParcel.readInt();
+      localMessageForPic.time = paramParcel.readLong();
+      localMessageForPic.msgtype = paramParcel.readInt();
+      localMessageForPic.preDownState = paramParcel.readInt();
+      localMessageForPic.preDownNetworkType = paramParcel.readInt();
+      localMessageForPic.previewed = paramParcel.readInt();
+      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
+      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
+      if (paramParcel.readByte() == 0) {
+        break label476;
+      }
+      bool1 = true;
+      label436:
+      localMessageForPic.sync2Story = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label481;
+      }
+    }
+    label466:
+    label471:
+    label476:
+    label481:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localMessageForPic.isQzonePic = bool1;
+      return localMessageForPic;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label172;
+      bool1 = false;
+      break label188;
+      bool1 = false;
+      break label436;
+    }
   }
   
-  public arxn a(int paramInt)
+  public MessageForPic[] a(int paramInt)
   {
-    this.a.b = paramInt;
-    return this;
-  }
-  
-  public arxn a(arxk paramarxk)
-  {
-    this.a.jdField_a_of_type_Arxk = paramarxk;
-    return this;
-  }
-  
-  public arxn a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public arxn a(boolean paramBoolean)
-  {
-    this.a.h = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    this.a.b();
-  }
-  
-  public arxn b(int paramInt)
-  {
-    this.a.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public arxn b(boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public arxn c(boolean paramBoolean)
-  {
-    this.a.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public arxn d(boolean paramBoolean)
-  {
-    this.a.d = paramBoolean;
-    return this;
-  }
-  
-  public arxn e(boolean paramBoolean)
-  {
-    this.a.e = paramBoolean;
-    return this;
-  }
-  
-  public arxn f(boolean paramBoolean)
-  {
-    this.a.f = paramBoolean;
-    return this;
-  }
-  
-  public arxn g(boolean paramBoolean)
-  {
-    this.a.g = paramBoolean;
-    return this;
-  }
-  
-  public arxn h(boolean paramBoolean)
-  {
-    this.a.i = paramBoolean;
-    return this;
+    return new MessageForPic[paramInt];
   }
 }
 

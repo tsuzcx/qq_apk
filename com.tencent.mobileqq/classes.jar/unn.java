@@ -1,21 +1,10 @@
-import NS_KING_INTERFACE.stGetFeedCommentListReq;
-import UserGrowth.stQQGetFeedCommentListReq;
-import UserGrowth.stQQGetFeedCommentListRsp;
+import UserGrowth.stSimpleMetaPerson;
 
-public class unn
-  extends ujr<stQQGetFeedCommentListRsp>
+public abstract interface unn
 {
-  public unn()
-  {
-    super("QQGetFeedCommentList");
-    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
-  }
+  public abstract void a(stSimpleMetaPerson paramstSimpleMetaPerson);
   
-  public unn(String paramString1, String paramString2, int paramInt)
-  {
-    super("QQGetFeedCommentList", 10003);
-    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
-  }
+  public abstract void b(stSimpleMetaPerson paramstSimpleMetaPerson);
 }
 
 

@@ -1,93 +1,53 @@
-import com.tencent.mobileqq.data.MessageForStarLeague;
 import com.tencent.qphone.base.util.QLog;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aric
-  extends DefaultHandler
 {
-  MessageForStarLeague a;
-  public String a;
+  public List<arie> a = new ArrayList();
   
-  public aric()
+  public static aric a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)bbzh.a(-2069));
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public MessageForStarLeague a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (paramArrayOfChar.equals("\n")) {}
-    do
+    aric localaric = new aric();
+    try
     {
-      return;
-      if (this.jdField_a_of_type_JavaLangString.equals("title"))
+      paramString = new JSONObject(paramString);
+      if (paramString.has("QRCodeList"))
       {
-        localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName == null) {}
-        for (;;)
+        paramString = paramString.optJSONArray("QRCodeList");
+        Type localType = new arid().getClass().getGenericSuperclass();
+        localaric.a.addAll(awfy.a(paramString, localType));
+        if (localaric.a.size() > 0)
         {
-          localMessageForStarLeague.starName = paramArrayOfChar;
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
-          return;
-          paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
+          paramString = new arie();
+          paramString.jdField_a_of_type_JavaLangString = "default_bg";
+          paramString.c = 1;
+          paramString.jdField_b_of_type_Int = 0;
+          paramString.jdField_a_of_type_Int = 0;
+          paramString.jdField_b_of_type_JavaLangString = "";
+          localaric.a.add(paramString);
         }
       }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("summary"));
-    MessageForStarLeague localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle == null) {}
-    for (;;)
-    {
-      localMessageForStarLeague.subTitle = paramArrayOfChar;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
-      return;
-      paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
+      if (QLog.isColorLevel()) {
+        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localaric.a.size());
+      }
+      return localaric;
     }
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString3.equals("msg")) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
-    }
-    do
+    catch (JSONException paramString)
     {
-      try
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
-        return;
+        paramString.printStackTrace();
       }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
-        }
-      }
-      if (paramString3.equals("picture"))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
-        return;
-      }
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-    } while (!paramString3.equals("summary"));
-    this.jdField_a_of_type_JavaLangString = "summary";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aric
  * JD-Core Version:    0.7.0.1
  */

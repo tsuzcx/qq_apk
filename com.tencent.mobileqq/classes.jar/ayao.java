@@ -1,35 +1,63 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
-public final class ayao<Params, Result>
+public class ayao
+  implements ayba
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Params a;
-  public final String a;
-  public SoftReference<View> a;
-  public Future<?> a;
-  public SoftReference<View> b;
-  public SoftReference<Result> c;
+  public ayao(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public ayao(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
+  public void a(InterestTagInfo paramInterestTagInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
+    ChooseInterestTagActivity.a(this.a, 0);
+    blgx.b(ChooseInterestTagActivity.a(this.a));
+    boolean bool;
+    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
     {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramParams;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
-      return;
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
+      if (ChooseInterestTagActivity.b(this.a) != -1)
+      {
+        bool = true;
+        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
+        ChooseInterestTagActivity.a(this.a).setText("");
+        ChooseInterestTagActivity.a(this.a, "");
+      }
     }
+    else
+    {
+      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
+        break label132;
+      }
+      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
+      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+    }
+    label132:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
+        break label198;
+      }
+    } while (ChooseInterestTagActivity.d(this.a));
+    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
+    ChooseInterestTagActivity.b(this.a, true);
+    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
+    return;
+    label198:
+    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
+    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
+  }
+  
+  public boolean a(InterestTagInfo paramInterestTagInfo)
+  {
+    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 

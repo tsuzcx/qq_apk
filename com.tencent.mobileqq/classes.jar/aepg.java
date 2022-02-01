@@ -1,27 +1,50 @@
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class aepg
-  implements biaz
+  implements afmf
 {
-  public aepg(MainFragment paramMainFragment) {}
+  public aepg(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void a()
+  public void a(Editable paramEditable)
   {
-    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    if ((i == 2) && (j == 20))
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("mainactivity", 2, "gesturepwd manual move.");
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
       }
-      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
-      this.a.getActivity().overridePendingTransition(2130771997, 2130771990);
-      MainFragment.a(true);
+      return;
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
+    {
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131376581, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
     }
   }
 }

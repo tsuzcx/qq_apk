@@ -1,14 +1,12 @@
-public class bpcp
+import android.os.Handler;
+import android.os.Looper;
+
+final class bpcp
+  extends bpcr<Handler, Void>
 {
-  public final int a;
-  public final long a;
-  public final CharSequence a;
-  
-  public bpcp(long paramLong, int paramInt, CharSequence paramCharSequence)
+  protected Handler a(Void paramVoid)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    return new Handler(Looper.getMainLooper());
   }
 }
 

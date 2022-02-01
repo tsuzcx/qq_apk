@@ -1,6 +1,10 @@
-public abstract interface uki
+final class uki
+  extends bnhx<ukh, Void>
 {
-  public abstract void a(boolean paramBoolean);
+  protected ukh a(Void paramVoid)
+  {
+    return new ukh();
+  }
 }
 
 

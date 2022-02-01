@@ -1,63 +1,19 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONObject;
+import android.text.DynamicLayout;
+import android.text.Layout.Alignment;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
 
 public class blpk
-  extends blpb
+  extends DynamicLayout
 {
-  public blpk(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
-  
-  public void a(blpa paramblpa)
+  public blpk(CharSequence paramCharSequence1, CharSequence paramCharSequence2, TextPaint paramTextPaint, int paramInt1, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt2)
   {
-    JSONObject localJSONObject = paramblpa.a();
-    if (localJSONObject == null) {}
-    try
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
-      return;
-    }
-    catch (Exception paramblpa)
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + paramblpa.getMessage());
-      return;
-    }
-    int i = localJSONObject.getInt("ret");
-    paramblpa = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + paramblpa);
-      return;
-    }
-    i = localJSONObject.optInt("gray_level", 0);
-    int j = localJSONObject.optInt("updateStatus", 0);
-    int k = localJSONObject.optInt("updateStatus", 0);
-    int m = localJSONObject.optInt("remainMaxTime", 0);
-    blps.a(ForceUserUpdateActivity.a(this.a), i);
-    blps.b(ForceUserUpdateActivity.a(this.a), j);
-    blps.c(ForceUserUpdateActivity.a(this.a), k);
-    blps.d(ForceUserUpdateActivity.a(this.a), m);
-    blpu.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
-    if (j == 1)
-    {
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    if (j == 2)
-    {
-      ForceUserUpdateActivity.a(this.a, k);
-      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131715801, new Object[] { Integer.valueOf(m) }));
-      return;
-    }
-    ForceUserUpdateActivity.d(this.a);
-    blps.b(ForceUserUpdateActivity.a(this.a), 2);
+    super(paramCharSequence1, paramCharSequence2, paramTextPaint, paramInt1, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt2);
   }
   
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  public int getParagraphDirection(int paramInt)
   {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
+    return 1;
   }
 }
 

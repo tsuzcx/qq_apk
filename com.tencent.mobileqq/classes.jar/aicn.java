@@ -1,45 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ExtendFriendUserInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.io.File;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
 class aicn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aicn(aicl paramaicl) {}
+  aicn(aicm paramaicm, File paramFile) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!aicl.c(this.a)) {
-      if (aicl.a(this.a) == null)
-      {
-        aicl.d(this.a);
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onClick mExtendFriendUserInfo IS null");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((!aicl.a(this.a).enableQQCall) && (aicl.a(this.a).tagID != 10000))
-      {
-        aicl.d(this.a);
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onClick mExtendFriendUserInfo enableQQCall false" + aicl.a(this.a).tagID);
-      }
-      else
-      {
-        afur.n = true;
-        agaa.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-        if (aicl.a(this.a) != null) {
-          if (aicl.a(this.a).tagID == 1) {
-            bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 1, 0, "", "", "", "");
-          } else {
-            bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 2, 0, "", "", aicl.a(this.a).tagName, "");
-          }
-        }
-      }
-    }
+    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Aicm.a.a, paramDialogInterface, true));
   }
 }
 

@@ -1,23 +1,44 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aajq
+  implements AdapterView.OnItemClickListener
 {
-  private static SharedPreferences a;
+  public aajq(EmoView paramEmoView, int paramInt) {}
   
-  public static SharedPreferences a(Context paramContext)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (a == null)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramInt == 27)
     {
-      if (paramContext == null)
-      {
-        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
-        return null;
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
       }
-      a = paramContext.getSharedPreferences("biz_subscribe", 0);
+      if (!bool1) {
+        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
     }
-    return a;
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      int i = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      if (i < 107)
+      {
+        String str = aakd.b[aaju.b[i]];
+        bool1 = bool2;
+        if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+          bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        }
+        if (!bool1) {
+          EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        }
+      }
+    }
   }
 }
 

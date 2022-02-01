@@ -1,44 +1,71 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class appy
-  implements View.OnClickListener
+public class appy
 {
-  appy(appw paramappw) {}
+  protected static beup a;
+  private beuo jdField_a_of_type_Beuo;
+  public AppInterface a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<apqc> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  static
   {
-    appw.a(this.a).put(appw.a(this.a).a, Integer.valueOf(1));
-    Activity localActivity = appw.a(this.a).a();
-    if (!bgnw.a(localActivity, appw.a(this.a).c))
+    jdField_a_of_type_Beup = new apqa();
+  }
+  
+  public appy(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Beuo = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a()
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    try
     {
-      if (!TextUtils.isEmpty(appw.a(this.a).g))
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", appw.a(this.a).g);
-        localIntent.putExtra("fromArkAppDownload", true);
-        localActivity.startActivity(localIntent);
+        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((apqc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Beuo.b(((apqc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Beum);
+        i += 1;
       }
-      adhh.a(appw.a(this.a), -4, "need to download");
-    }
-    for (;;)
-    {
-      appw.a(this.a).a();
-      appw.a(this.a).dismiss();
-      appw.a(this.a, null);
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
       return;
-      appw.a(this.a, appw.a(this.a).a, appw.a(this.a).b, appw.a(this.a).c, appw.a(this.a).d, appw.a(this.a).e, appw.a(this.a).f);
-      adhh.a(appw.a(this.a), adec.a);
     }
+    finally {}
+  }
+  
+  public boolean a(apqc paramapqc, apqb arg2)
+  {
+    if ((paramapqc == null) || (??? == null)) {
+      return false;
+    }
+    ??? = new appz(this, paramapqc, ???);
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = ???;
+    localbeum.jdField_a_of_type_JavaLangString = paramapqc.jdField_a_of_type_JavaLangString;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = paramapqc.c;
+    localbeum.d = 1;
+    localbeum.jdField_a_of_type_Beup = jdField_a_of_type_Beup;
+    this.jdField_a_of_type_Beuo.a(localbeum);
+    paramapqc.jdField_a_of_type_Beum = localbeum;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramapqc);
+      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramapqc.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+  }
+  
+  public void b()
+  {
+    a();
   }
 }
 

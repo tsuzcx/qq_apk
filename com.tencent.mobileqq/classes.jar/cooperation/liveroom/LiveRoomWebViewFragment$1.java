@@ -1,13 +1,13 @@
 package cooperation.liveroom;
 
-import bhmg;
-import bhsz;
+import binb;
+import bitu;
 import org.json.JSONObject;
 
 class LiveRoomWebViewFragment$1
-  implements bhsz
+  implements bitu
 {
-  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bhmg parambhmg) {}
+  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, binb parambinb) {}
   
   public long getDetect302Time()
   {

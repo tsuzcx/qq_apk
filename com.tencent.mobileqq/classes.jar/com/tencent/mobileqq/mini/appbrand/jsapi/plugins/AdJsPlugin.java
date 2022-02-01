@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acqx;
+import acvb;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -52,7 +52,7 @@ public class AdJsPlugin
       if (i == 0)
       {
         localObject = ((JSONObject)localObject).getJSONArray("ads_info").getJSONObject(0);
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
         return localObject;
       }
     }
@@ -143,56 +143,62 @@ public class AdJsPlugin
   
   private void handleAdvertTapEvent(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
-    JSONObject localJSONObject3 = new JSONObject(paramString2);
-    paramString2 = "";
-    JSONObject localJSONObject2 = new JSONObject();
-    Object localObject = paramString2;
-    JSONObject localJSONObject1 = localJSONObject2;
-    if (localJSONObject3 != null)
+    Object localObject3 = new JSONObject(paramString2);
+    Object localObject1 = "";
+    paramString2 = new JSONObject();
+    Object localObject2 = new JSONObject();
+    if ((localObject3 != null) && (((JSONObject)localObject3).has("data")))
     {
-      localObject = paramString2;
-      localJSONObject1 = localJSONObject2;
-      if (localJSONObject3.has("data"))
+      JSONObject localJSONObject = ((JSONObject)localObject3).optJSONObject("data");
+      if (localJSONObject != null)
       {
-        localJSONObject3 = localJSONObject3.optJSONObject("data");
-        localObject = paramString2;
-        localJSONObject1 = localJSONObject2;
-        if (localJSONObject3 != null)
+        if (localJSONObject.has("ads_info")) {
+          localObject1 = localJSONObject.optString("ads_info");
+        }
+        if (localJSONObject.has("antiSpamParamsForClick")) {
+          paramString2 = localJSONObject.optJSONObject("antiSpamParamsForClick");
+        }
+        if (localJSONObject.has("antiSpamParams"))
         {
-          if (localJSONObject3.has("ads_info")) {
-            paramString2 = localJSONObject3.optString("ads_info");
-          }
-          localObject = paramString2;
-          localJSONObject1 = localJSONObject2;
-          if (localJSONObject3.has("extraReportData"))
-          {
-            localJSONObject1 = localJSONObject3.optJSONObject("extraReportData");
-            localObject = paramString2;
-          }
+          localObject3 = ((JSONObject)localObject3).optJSONObject("antiSpamParams");
+          localObject2 = paramString2;
+          paramString2 = (String)localObject3;
         }
       }
     }
-    paramString2 = new JSONObject((String)localObject);
-    localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString2));
-    if ((this.mGgtAppReceiver == null) && (this.jsPluginEngine != null) && (this.jsPluginEngine.getActivityContext() != null))
+    for (;;)
     {
-      this.mGgtAppReceiver = new GdtAppReceiver();
-      this.mGgtAppReceiver.register(this.jsPluginEngine.getActivityContext());
+      localObject1 = new JSONObject((String)localObject1);
+      localObject3 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject1));
+      if ((this.mGgtAppReceiver == null) && (this.jsPluginEngine != null) && (this.jsPluginEngine.getActivityContext() != null))
+      {
+        this.mGgtAppReceiver = new GdtAppReceiver();
+        this.mGgtAppReceiver.register(this.jsPluginEngine.getActivityContext());
+      }
+      localObject1 = new GdtHandler.Params();
+      ((GdtHandler.Params)localObject1).c = 11;
+      ((GdtHandler.Params)localObject1).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jsPluginEngine.activityContext);
+      ((GdtHandler.Params)localObject1).jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject3);
+      ((GdtHandler.Params)localObject1).jdField_a_of_type_Boolean = true;
+      ((GdtHandler.Params)localObject1).jdField_b_of_type_Boolean = true;
+      ((GdtHandler.Params)localObject1).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.mGgtAppReceiver);
+      ((GdtHandler.Params)localObject1).jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
+      localObject3 = new Bundle();
+      ((Bundle)localObject3).putString("big_brother_ref_source_key", "biz_src_miniappD");
+      ((GdtHandler.Params)localObject1).jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject3);
+      ((GdtHandler.Params)localObject1).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2);
+      ((GdtHandler.Params)localObject1).jdField_a_of_type_JavaLangString = paramString2.toString();
+      GdtHandler.a((GdtHandler.Params)localObject1);
+      this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+      return;
+      localObject3 = paramString2;
+      paramString2 = (String)localObject2;
+      localObject2 = localObject3;
+      continue;
+      localObject3 = paramString2;
+      paramString2 = (String)localObject2;
+      localObject2 = localObject3;
     }
-    paramString2 = new GdtHandler.Params();
-    paramString2.c = 11;
-    paramString2.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jsPluginEngine.activityContext);
-    paramString2.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-    paramString2.jdField_a_of_type_Boolean = true;
-    paramString2.jdField_b_of_type_Boolean = true;
-    paramString2.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.mGgtAppReceiver);
-    paramString2.jdField_b_of_type_JavaLangClass = GameBannerAdFragment.class;
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniappD");
-    paramString2.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    paramString2.jdField_a_of_type_OrgJsonJSONObject = localJSONObject1;
-    GdtHandler.a(paramString2);
-    this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
   }
   
   private void saveAdCookie(String paramString, int paramInt)

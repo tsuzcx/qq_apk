@@ -9,18 +9,21 @@ import org.json.JSONArray;
 class AdExposureListHolder$2
   implements Runnable
 {
-  AdExposureListHolder$2(AdExposureListHolder paramAdExposureListHolder, LinkedList paramLinkedList, Context paramContext) {}
+  AdExposureListHolder$2(AdExposureListHolder paramAdExposureListHolder, Context paramContext) {}
   
   public void run()
   {
     JSONArray localJSONArray = new JSONArray();
-    ??? = this.val$linkedList.iterator();
-    while (((Iterator)???).hasNext()) {
-      localJSONArray.put((String)((Iterator)???).next());
-    }
-    synchronized (AdExposureListHolder.access$200(this.this$0))
+    synchronized (AdExposureListHolder.access$100(this.this$0))
     {
-      b.write(AdExposureListHolder.access$000(this.this$0, this.val$context, AdProcessManager.INSTANCE.getCurrentProcessName(this.val$context)), localJSONArray.toString());
+      Iterator localIterator = AdExposureListHolder.access$200(this.this$0).iterator();
+      if (localIterator.hasNext()) {
+        localJSONArray.put((String)localIterator.next());
+      }
+    }
+    synchronized (AdExposureListHolder.access$300(this.this$0))
+    {
+      b.write(AdExposureListHolder.access$000(this.this$0, this.val$context, AdProcessManager.INSTANCE.getCurrentProcessName(this.val$context)), localObject1.toString());
       return;
     }
   }

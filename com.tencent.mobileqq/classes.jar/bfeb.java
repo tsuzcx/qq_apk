@@ -1,27 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppActivity;
 
-class bfeb
-  extends bhhe
+public class bfeb
+  implements View.OnClickListener
 {
-  bfeb(bfdy parambfdy, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public bfeb(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  public void onDone(bhhf parambhhf)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambhhf.c + " code = " + parambhhf.jdField_a_of_type_Int);
+    FragmentActivity localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity();
+    if (localFragmentActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
     }
-    boolean bool = bfdy.a(this.jdField_a_of_type_Bfdy, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
-    }
-    bfdy.b(this.jdField_a_of_type_Bfdy);
-  }
-  
-  public void onProgress(bhhf parambhhf)
-  {
-    int i = (int)(parambhhf.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
+    for (;;)
+    {
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localFragmentActivity.requestPermissions(new bfec(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
     }
   }
 }

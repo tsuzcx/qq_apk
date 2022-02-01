@@ -1,19 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class qry
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlServer;", "Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface$Stub;", "()V", "rijAidlInterfaceForRedPacket", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IRIJAidlInterfaceForRedPacket;", "getRedPacketInterface", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qry
+  extends qru
 {
-  qry(qrv paramqrv, LinearLayout paramLinearLayout) {}
+  private qrz a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @Nullable
+  public qrz a()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if (this.a == null) {
+      this.a = ((qrz)new qsk());
     }
-    return false;
+    return this.a;
   }
 }
 

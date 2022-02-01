@@ -1,10 +1,19 @@
-public abstract interface bqgh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+
+public final class bqgh
+  implements Parcelable.Creator<EditVideoParams>
 {
-  public abstract void a();
+  public EditVideoParams a(Parcel paramParcel)
+  {
+    return new EditVideoParams(paramParcel);
+  }
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void b();
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
+  }
 }
 
 

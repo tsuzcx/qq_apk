@@ -1,26 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class yfg
-  extends anmu
+public abstract interface yfg
 {
-  yfg(yff paramyff) {}
+  public abstract void N_();
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (yff.a(this.a) == null) {
-      return;
-    }
-    paramString = yff.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString.b(paramBoolean);
-      return;
-    }
-  }
+  public abstract void O_();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void f();
 }
 
 

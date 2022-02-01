@@ -1,17 +1,15 @@
-import java.util.List;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class bgwg
+  implements bgug
 {
-  public int a;
-  public String a;
-  public List<bgwf> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  public bgwg(RobotPanelLayoutBase paramRobotPanelLayoutBase, bgwj parambgwj) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

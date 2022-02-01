@@ -1,107 +1,173 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqwe
-  extends aqkz<aqwd>
+  implements arty
 {
-  @NonNull
-  public aqwd a(int paramInt)
-  {
-    return new aqwd();
-  }
+  private static final arva jdField_a_of_type_Arva = new aqwf();
+  private static final String jdField_a_of_type_JavaLangString = aqwe.class.getSimpleName();
+  private aqwh jdField_a_of_type_Aqwh;
+  private aqwi jdField_a_of_type_Aqwi;
+  private arvb jdField_a_of_type_Arvb;
+  private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
   
-  @Nullable
-  public aqwd a(aqlg[] paramArrayOfaqlg)
+  public aruc a(aqwj paramaqwj)
   {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          paramArrayOfaqlg = (aqwd)aqlu.a(paramArrayOfaqlg[0].a, aqwd.class);
-          return paramArrayOfaqlg;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaqlg)
-      {
-        QLog.e("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaqlg.getMessage());
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramaqwj != null)) {
+      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramaqwj);
     }
     return null;
   }
   
-  public void a(aqwd paramaqwd)
+  public void a()
   {
-    if (paramaqwd != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Arvb != null)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
+      this.jdField_a_of_type_Arvb.b(paramInt);
+      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
       }
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
+    }
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_Arvb = arul.a();
+    this.jdField_a_of_type_Arvb.a(3);
+    this.jdField_a_of_type_Arvb.c(7000);
+    this.jdField_a_of_type_Arvb.f(8.0F);
+    this.jdField_a_of_type_Arvb.c(12.0F);
+    this.jdField_a_of_type_Arvb.b(12.0F);
+    this.jdField_a_of_type_Arvb.b(false);
+    this.jdField_a_of_type_Arvb.d(true);
+    arun localarun = arul.a();
+    localarun.a(new aqwg(this));
+    localarun.a(-4);
+    localarun.a(new aqwk(paramContext));
+    paramContext = localarun.a();
+    aruz.a(jdField_a_of_type_Arva);
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = new DanmakuManager(paramView, paramContext);
+  }
+  
+  public void a(aqwh paramaqwh)
+  {
+    this.jdField_a_of_type_Aqwh = paramaqwh;
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
+    }
+  }
+  
+  public void a(aqwi paramaqwi)
+  {
+    this.jdField_a_of_type_Aqwi = paramaqwi;
+  }
+  
+  public void a(aruc paramaruc, arvz paramarvz, arvp paramarvp) {}
+  
+  public void a(DanmuItemBean paramDanmuItemBean)
+  {
+    if ((paramDanmuItemBean != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null))
     {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaqwd.a)) {
-          paramaqwd.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_groupfile_excitingdownload", paramaqwd.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramaqwd.a + "]");
-        localObject = (atam)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atam)localObject).a(paramaqwd);
-        }
+      paramDanmuItemBean = new aqwj(paramDanmuItemBean);
+      paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
+      paramDanmuItemBean.e(true);
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
+    }
+  }
+  
+  public void a(List<aruc> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
       }
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
       return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
   }
   
-  public Class<aqwd> clazz()
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
   {
-    return aqwd.class;
+    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
   }
   
-  public boolean isNeedCompressed()
+  public void b()
   {
-    return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void b(List<aruc> paramList)
   {
-    return false;
+    if ((this.jdField_a_of_type_Aqwh != null) && (!b())) {
+      this.jdField_a_of_type_Aqwh.b();
+    }
   }
   
-  public int migrateOldVersion()
+  public boolean b()
   {
-    return 0;
+    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
   }
   
-  public void onReqFailed(int paramInt)
+  public void c()
   {
-    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
+    }
   }
   
-  public int type()
+  public void d()
   {
-    return 555;
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Aqwh != null) {
+      this.jdField_a_of_type_Aqwh.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwe
  * JD-Core Version:    0.7.0.1
  */

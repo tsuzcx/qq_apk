@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.report;
 
-import akwd;
+import alhs;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class VACDReportMgr$4
   implements Runnable
 {
-  public VACDReportMgr$4(akwd paramakwd, byte[] paramArrayOfByte) {}
+  public VACDReportMgr$4(alhs paramalhs, byte[] paramArrayOfByte) {}
   
   public void run()
   {
@@ -16,8 +16,8 @@ public class VACDReportMgr$4
     {
       try
       {
-        while ((akwd.b(this.this$0).isEmpty()) && (akwd.a(this.this$0).isEmpty())) {
-          akwd.a().wait();
+        while ((alhs.b(this.this$0).isEmpty()) && (alhs.a(this.this$0).isEmpty())) {
+          alhs.a().wait();
         }
         try
         {
@@ -27,12 +27,12 @@ public class VACDReportMgr$4
           }
           do
           {
-            synchronized (akwd.a())
+            synchronized (alhs.a())
             {
-              akwd.b(this.this$0, 2);
-              if (akwd.a(this.this$0))
+              alhs.b(this.this$0, 2);
+              if (alhs.a(this.this$0))
               {
-                akwd.c(this.this$0).post(this);
+                alhs.c(this.this$0).post(this);
                 return;
                 localObject1 = finally;
                 throw localObject1;

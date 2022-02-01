@@ -19,34 +19,30 @@ import android.widget.RelativeLayout;
 public class RoundCorneredRelativeLayout
   extends RelativeLayout
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+  private static final float PRESS_ALPHA = 0.5F;
+  private boolean mEnablePressEffect;
+  private Paint mPaint = new Paint();
+  private float[] mRadii = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
   
   @TargetApi(11)
   public RoundCorneredRelativeLayout(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   @TargetApi(11)
   public RoundCorneredRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a(Context paramContext)
+  private void init(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mPaint.setAntiAlias(true);
+    this.mPaint.setStyle(Paint.Style.FILL);
+    this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -54,29 +50,34 @@ public class RoundCorneredRelativeLayout
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
     Path localPath1 = new Path();
-    localPath1.addRoundRect(new RectF(getPaddingLeft(), getPaddingTop(), i - getPaddingRight(), j - getPaddingBottom()), this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+    localPath1.addRoundRect(new RectF(getPaddingLeft(), getPaddingTop(), i - getPaddingRight(), j - getPaddingBottom()), this.mRadii, Path.Direction.CW);
     paramCanvas.saveLayer(new RectF(0.0F, 0.0F, i, j), null, 31);
     super.dispatchDraw(paramCanvas);
     if (Build.VERSION.SDK_INT <= 27)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-      paramCanvas.drawPath(localPath1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      paramCanvas.drawPath(localPath1, this.mPaint);
     }
     for (;;)
     {
       paramCanvas.restore();
       return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+      this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
       Path localPath2 = new Path();
       localPath2.addRect(0.0F, 0.0F, i, j, Path.Direction.CW);
       localPath2.op(localPath1, Path.Op.DIFFERENCE);
-      paramCanvas.drawPath(localPath2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(localPath2, this.mPaint);
     }
+  }
+  
+  public void enablePressEffect(boolean paramBoolean)
+  {
+    this.mEnablePressEffect = paramBoolean;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (!isClickable()) || (!isEnabled())) {
+    if ((!this.mEnablePressEffect) || (!isClickable()) || (!isEnabled())) {
       return super.onTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
@@ -93,7 +94,7 @@ public class RoundCorneredRelativeLayout
   
   public void setRadius(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 };
+    this.mRadii = new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 };
   }
 }
 

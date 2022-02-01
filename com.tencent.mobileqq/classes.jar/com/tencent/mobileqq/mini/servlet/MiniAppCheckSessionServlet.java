@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -31,7 +31,7 @@ public class MiniAppCheckSessionServlet
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if ((localStQWebRsp.retCode == null) || (localStQWebRsp.errMsg == null)) {
           continue;
@@ -75,7 +75,7 @@ public class MiniAppCheckSessionServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_program_auth.CheckSession");
-    paramPacket.putSendData(bguc.a((byte[])localObject));
+    paramPacket.putSendData(bhuf.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

@@ -1,10 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 
-public abstract interface aycz
+public final class aycz
+  implements Parcelable.Creator<LocationInfo>
 {
-  public abstract void a(View paramView, int paramInt);
+  public LocationInfo a(Parcel paramParcel)
+  {
+    return new LocationInfo(paramParcel);
+  }
   
-  public abstract void b(View paramView, int paramInt);
+  public LocationInfo[] a(int paramInt)
+  {
+    return new LocationInfo[paramInt];
+  }
 }
 
 

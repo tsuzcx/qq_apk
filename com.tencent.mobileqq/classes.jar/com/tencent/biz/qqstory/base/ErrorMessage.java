@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.base;
 
 import android.annotation.TargetApi;
-import anni;
+import anzj;
 
 @TargetApi(14)
 public class ErrorMessage
@@ -54,7 +54,7 @@ public class ErrorMessage
     }
     else
     {
-      str = anni.a(2131702999);
+      str = anzj.a(2131703106);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }

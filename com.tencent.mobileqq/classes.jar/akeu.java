@@ -1,88 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class akeu
-  implements Parcelable.Creator<LocalMediaInfo>
+public class akeu
+  implements View.OnClickListener
 {
-  public LocalMediaInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo._id = paramParcel.readLong();
-    localLocalMediaInfo.path = paramParcel.readString();
-    localLocalMediaInfo.fileSize = paramParcel.readLong();
-    localLocalMediaInfo.addedDate = paramParcel.readLong();
-    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
-    localLocalMediaInfo.orientation = paramParcel.readInt();
-    localLocalMediaInfo.rotation = paramParcel.readInt();
-    localLocalMediaInfo.mDuration = paramParcel.readLong();
-    if (paramParcel.readByte() == 1)
-    {
-      bool1 = true;
-      localLocalMediaInfo.mChecked = bool1;
-      localLocalMediaInfo.selectStatus = paramParcel.readInt();
-      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
-      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
-      localLocalMediaInfo.thumbnailPath = paramParcel.readString();
-      localLocalMediaInfo.index = paramParcel.readInt();
-      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
-      localLocalMediaInfo.mMimeType = paramParcel.readString();
-      localLocalMediaInfo.mMediaType = paramParcel.readInt();
-      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
-      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
-      localLocalMediaInfo.mediaOriginWidth = paramParcel.readInt();
-      localLocalMediaInfo.mediaOriginHeight = paramParcel.readInt();
-      localLocalMediaInfo.mediaOriginSize = paramParcel.readLong();
-      if (paramParcel.readByte() != 1) {
-        break label411;
-      }
-      bool1 = true;
-      label229:
-      localLocalMediaInfo.isSystemMeidaStore = bool1;
-      if (paramParcel.readByte() != 1) {
-        break label416;
-      }
-      bool1 = true;
-      label245:
-      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
-      localLocalMediaInfo.longitude = paramParcel.readInt();
-      localLocalMediaInfo.latitude = paramParcel.readInt();
-      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
-      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
-      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
-      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
-      if (paramParcel.readByte() != 1) {
-        break label421;
-      }
-    }
-    label411:
-    label416:
-    label421:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localLocalMediaInfo.isVideoReady = bool1;
-      localLocalMediaInfo.materialID = paramParcel.readString();
-      localLocalMediaInfo.materialName = paramParcel.readString();
-      localLocalMediaInfo.filterID = paramParcel.readString();
-      localLocalMediaInfo.scheme = paramParcel.readString();
-      localLocalMediaInfo.missionID = paramParcel.readString();
-      localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
-      localLocalMediaInfo.aiTextLabel = paramParcel.readArrayList(String.class.getClassLoader());
-      localLocalMediaInfo.thumbnailProgress = paramParcel.readFloat();
-      return localLocalMediaInfo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label229;
-      bool1 = false;
-      break label245;
-    }
-  }
+  public akeu(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
   
-  public LocalMediaInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new LocalMediaInfo[0];
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment))) {
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
+      {
+        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
+        localIntent.putExtra("member_uin", "0");
+        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, localIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
+        }
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), anzj.a(2131700577), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      continue;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), anzj.a(2131700515), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      }
+    }
   }
 }
 

@@ -1,23 +1,28 @@
-public class aveg
-  implements Cloneable
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aveg
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
+  aveg(avef paramavef, int paramInt) {}
   
-  public aveg(avdv paramavdv, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  protected aveg a()
-  {
-    return (aveg)super.clone();
+    if (avef.a(this.jdField_a_of_type_Avef, this.jdField_a_of_type_Int))
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
+      }
+    }
+    if (LangSettingFragment.a(this.jdField_a_of_type_Avef.a) != ((Integer)paramView.getTag()).intValue()) {
+      LangSettingFragment.a(this.jdField_a_of_type_Avef.a, ((Integer)paramView.getTag()).intValue());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

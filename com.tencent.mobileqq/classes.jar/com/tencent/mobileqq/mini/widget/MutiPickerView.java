@@ -36,13 +36,13 @@ public class MutiPickerView
   
   public MutiPickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755379);
+    super(paramContext, 2131755380);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559486, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559491, null);
     setContentView(paramContext);
     Window localWindow = getWindow();
     if (localWindow != null)
@@ -54,10 +54,10 @@ public class MutiPickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131371487));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131371488));
+    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131371595));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131371596));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131371489));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131371597));
     this.mConfirmTextView.setOnClickListener(this);
     setOnCancelListener(this);
   }
@@ -125,7 +125,7 @@ public class MutiPickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131371488)
+    if (paramView.getId() == 2131371596)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
@@ -136,7 +136,7 @@ public class MutiPickerView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131371489)
+      if (paramView.getId() == 2131371597)
       {
         if (this.mOnConfirmListener != null) {
           this.mOnConfirmListener.onValConfirm(this.mResult);

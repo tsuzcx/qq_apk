@@ -1,27 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StImage;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import qqcircle.QQCircleWrite.DoFollowTagRsp;
 
 public class wab
-  implements View.OnClickListener
+  implements aaav<QQCircleWrite.DoFollowTagRsp>
 {
-  public wab(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter, int paramInt, View paramView, FeedCloudMeta.StImage paramStImage) {}
+  public wab(QCircleFollowTagView paramQCircleFollowTagView, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleWrite.DoFollowTagRsp paramDoFollowTagRsp)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (!this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.c()) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.jdField_a_of_type_Uzb != null))
+    boolean bool = true;
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      QCircleInitBean localQCircleInitBean = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.a(this.jdField_a_of_type_Int);
-      uxo.a(this.jdField_a_of_type_AndroidViewView.getContext(), localQCircleInitBean, vsn.a((URLImageView)this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StImage.width.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StImage.height.get()));
-      vrc.a(7, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.b());
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.a(this.jdField_a_of_type_Int);
+      if (QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView) != null)
+      {
+        QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext(), QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get(), this.jdField_a_of_type_Int);
+        paramString = vrc.a();
+        paramDoFollowTagRsp = QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get();
+        if (this.jdField_a_of_type_Int != 1) {
+          break label101;
+        }
+      }
+      label101:
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.a(paramDoFollowTagRsp, paramBoolean);
+        return;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2131697224;; i = 2131697352)
+    {
+      QQToast.a(paramString, i, 0).a();
+      return;
+    }
   }
 }
 

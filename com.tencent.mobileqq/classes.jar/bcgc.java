@@ -1,97 +1,68 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-class bcgc
-  implements bcmt
+public class bcgc
+  extends bcga
 {
-  bcfu jdField_a_of_type_Bcfu;
-  bcgb jdField_a_of_type_Bcgb;
-  final String jdField_a_of_type_JavaLangString;
-  Throwable jdField_a_of_type_JavaLangThrowable;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  final String b;
+  public static final String a;
+  public float a;
+  public int a;
+  public CharSequence a;
+  public float b;
+  public CharSequence b;
+  public String b;
+  public String j;
+  public String k;
   
-  bcgc(WeakReference<QQAppInterface> paramWeakReference, String paramString1, String paramString2, bcfu parambcfu, bcgb parambcgb)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    this.jdField_a_of_type_Bcgb = parambcgb;
-    this.jdField_a_of_type_JavaLangThrowable = null;
-    if (paramString2 == null) {
-      throw new IllegalArgumentException("null == outputFilePath");
-    }
-    this.jdField_a_of_type_Bcfu = parambcfu;
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bcgc.class.getSimpleName();
   }
   
-  private boolean a()
+  public bcgc(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public bcmu a(int paramInt1, int paramInt2)
+  public bcgc(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    bcmu localbcmu = new bcmu();
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localbcmu.jdField_a_of_type_JavaIoFile = localFile;
-    localbcmu.jdField_a_of_type_Float = this.jdField_a_of_type_Bcfu.jdField_a_of_type_Float;
-    localbcmu.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Bcfu.b);
-    localbcmu.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_Bcfu.jdField_a_of_type_Long);
-    localbcmu.jdField_b_of_type_Boolean = a();
-    return localbcmu;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a()
+  public int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onSucceed");
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
     }
-    if (this.jdField_a_of_type_Bcgb != null) {
-      this.jdField_a_of_type_Bcgb.a(null, 1);
-    }
+    return i;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
+      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
+      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
+      this.j = paramString.optString("topLeftTagText");
+      this.k = paramString.optString("topLeftTagColor");
+      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
+      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
+      return;
     }
-    if ((this.jdField_a_of_type_Bcgb != null) && (paramInt >= 0) && (paramInt <= 10000)) {
-      this.jdField_a_of_type_Bcgb.a(null, paramInt / 10000.0F);
-    }
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onFailed");
-    }
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    if (this.jdField_a_of_type_Bcgb != null) {
-      this.jdField_a_of_type_Bcgb.a(null, 2);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onCanceled!");
-    }
-    if (this.jdField_a_of_type_Bcgb != null) {
-      this.jdField_a_of_type_Bcgb.a(null, 3);
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
     }
   }
 }

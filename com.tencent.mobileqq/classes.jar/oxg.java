@@ -1,27 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxg
-  implements ViewBase.OnClickListener
+public class oxg
+  implements blkc
 {
-  oxg(pan parampan, pay parampay) {}
+  public oxg(NativeCommentTextView paramNativeCommentTextView) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    if ((this.jdField_a_of_type_Pan.a() == null) || (this.jdField_a_of_type_Pay.a == null)) {}
-    do
-    {
-      return;
-      paramViewBase = this.jdField_a_of_type_Pan.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      pha.a(paramViewBase.getContext(), this.jdField_a_of_type_Pay.a.activityJumpUrl);
-    } while (this.jdField_a_of_type_Pan.a() == null);
-    this.jdField_a_of_type_Pan.a().e(this.jdField_a_of_type_Pay);
+    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167302));
   }
 }
 

@@ -1,59 +1,83 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import java.util.HashMap;
+import java.util.Map;
 
-class arwd
-  extends bhhe
+public class arwd
 {
-  arwd(arwc paramarwc) {}
+  private static int jdField_a_of_type_Int;
+  public static Paint a;
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private static final Map<Float, Float> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public static Paint b;
+  private static final Map<Float, Float> b;
+  private static final Map<Float, Float> c;
   
-  public void onDone(bhhf parambhhf)
+  static
   {
-    super.onDone(parambhhf);
-    arup localarup = this.a.a();
-    Bundle localBundle = parambhhf.a();
-    if (parambhhf.a() != 3) {}
-    for (boolean bool = true;; bool = false)
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = localBundle.getLong("vas_download_start");
-      localarup.a(localBundle, parambhhf, bool, parambhhf.a, parambhhf.d, l1 - l2, 0);
-      return;
-    }
+    jdField_b_of_type_JavaUtilMap = new HashMap();
+    c = new HashMap();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
-  public void onDoneFile(bhhf parambhhf)
+  public static float a(float paramFloat)
   {
-    Object localObject = parambhhf.a();
-    int i = ((Bundle)localObject).getInt(parambhhf.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambhhf);
-    }
-    if (parambhhf.a != 0)
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    Float localFloat = (Float)jdField_a_of_type_JavaUtilMap.get(Float.valueOf(paramFloat));
+    Object localObject = localFloat;
+    if (localFloat == null)
     {
-      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambhhf.a);
-      if (arup.a(i)) {
-        arup.a.a((EmoticonPackage)localObject, i, -1, parambhhf.a);
-      }
-      bhab.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambhhf.a + "", "", "", "");
+      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      float f1 = ((Paint.FontMetrics)localObject).descent;
+      float f2 = ((Paint.FontMetrics)localObject).ascent;
+      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
+      jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
     }
-    for (;;)
+    return ((Float)localObject).floatValue();
+  }
+  
+  public static float a(float paramFloat, String paramString)
+  {
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    return a(jdField_a_of_type_AndroidTextTextPaint, paramString);
+  }
+  
+  public static float a(Paint paramPaint, String paramString)
+  {
+    return paramPaint.measureText(paramString);
+  }
+  
+  public static float a(arvb paramarvb)
+  {
+    return a(paramarvb.c()) + arul.a().c() * 2 + paramarvb.d() * 2.0F + paramarvb.e() * 2.0F;
+  }
+  
+  public static void a(Canvas paramCanvas)
+  {
+    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+  }
+  
+  public static void a(Canvas paramCanvas, String paramString)
+  {
+    if (jdField_b_of_type_AndroidGraphicsPaint == null)
     {
-      return;
-      arup localarup = this.a.a();
-      if (arup.a(i)) {
-        arup.a.a((EmoticonPackage)localObject, i, 0, 0);
-      }
-      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
-      {
-        localarup.b(parambhhf);
-        return;
-        if (i == 7) {
-          localarup.a(parambhhf);
-        }
-      }
+      jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+      jdField_b_of_type_AndroidGraphicsPaint.setColor(-256);
+      Object localObject = artl.a().a().a().getDisplayMetrics();
+      jdField_b_of_type_AndroidGraphicsPaint.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
+      localObject = jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
+      jdField_a_of_type_Int = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
     }
+    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jdField_a_of_type_Int, jdField_b_of_type_AndroidGraphicsPaint);
   }
 }
 

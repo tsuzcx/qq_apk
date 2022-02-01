@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pmk;
-import pwb;
-import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
+import java.util.List;
+import pfd;
+import pon;
 
 public class ArticleInfoModule$51
   implements Runnable
 {
-  public ArticleInfoModule$51(pwb parampwb, String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2) {}
+  public ArticleInfoModule$51(pon parampon, List paramList) {}
   
   public void run()
   {
-    pmk.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_TencentImOidbCmd0xbd6Oidb_cmd0xbd6$RspBody, this.b);
+    pfd.a().c(this.a);
   }
 }
 

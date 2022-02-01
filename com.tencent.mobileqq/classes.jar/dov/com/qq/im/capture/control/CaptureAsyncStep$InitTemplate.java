@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.control;
 
-import bojv;
-import bqgc;
+import bplq;
+import brhn;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$InitTemplate
@@ -9,8 +9,8 @@ public class CaptureAsyncStep$InitTemplate
 {
   public int a()
   {
-    ((bqgc)bojv.a(3)).j();
-    bqgc.a = ((Integer)this.a[1]).intValue();
+    ((brhn)bplq.a(3)).e();
+    brhn.a = ((Integer)this.a[1]).intValue();
     return 7;
   }
 }

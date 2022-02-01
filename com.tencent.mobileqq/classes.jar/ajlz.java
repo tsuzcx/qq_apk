@@ -1,24 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.ContactMatch;
 
-class ajlz
-  implements View.OnClickListener
+public class ajlz
+  extends ajmf
 {
-  ajlz(ajlx paramajlx) {}
+  public ContactMatch a;
   
-  public void onClick(View paramView)
+  public ajlz(ContactMatch paramContactMatch)
   {
-    anpk localanpk = (anpk)this.a.a.getManager(159);
-    Intent localIntent = new Intent(ajlx.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", localanpk.a);
-    ajlx.b(this.a).startActivity(localIntent);
-    bcst.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
+    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
   }
 }
 

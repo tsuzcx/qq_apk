@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
 public class ajap
-  implements DialogInterface.OnDismissListener
 {
-  public ajap(SystemRequestInfoView paramSystemRequestInfoView) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(String paramString, Properties paramProperties)
   {
-    this.a.a = null;
+    bdla.a(VideoEnvironment.a()).reportKVEvent(paramString, paramProperties);
+  }
+  
+  public static void a(String paramString, Properties paramProperties, int paramInt)
+  {
+    bdla.a(VideoEnvironment.a()).reportTimeKVEvent(paramString, paramProperties, paramInt);
   }
 }
 

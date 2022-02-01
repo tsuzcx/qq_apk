@@ -1,18 +1,24 @@
-import UserGrowth.stWeishiDengtaReportReq;
-import UserGrowth.stWeishiDengtaReportRsp;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uni
-  extends ujr<stWeishiDengtaReportRsp>
+class uni
+  implements View.OnClickListener
 {
-  public uni(String paramString, Map<String, String> paramMap)
+  uni(unh paramunh) {}
+  
+  public void onClick(View paramView)
   {
-    super("WeishiDengtaReport");
-    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
-    localstWeishiDengtaReportReq.eventName = paramString;
-    localstWeishiDengtaReportReq.params = paramMap;
-    this.a = localstWeishiDengtaReportReq;
-    upe.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
+    if (!nny.a(unh.a(this.a))) {
+      bjuh.a().a(2131719373);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      unh.a(this.a);
+      uns.b(unh.a(this.a) + 1, 1004001, unh.a(this.a), unh.a(this.a).a(), unh.a(this.a).a());
+    }
   }
 }
 

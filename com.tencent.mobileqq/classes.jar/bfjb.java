@@ -1,21 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class bfjb
-  implements View.OnClickListener
+public class bfjb
+  implements TextWatcher
 {
-  bfjb(bfja parambfja) {}
+  public bfjb(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Intent localIntent = new Intent(bfja.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    bfja.a(this.a).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((!TextUtils.isEmpty(this.a.x)) && (paramInt1 > 0) && (paramInt1 < this.a.x.length() + 1) && (paramInt2 > paramInt3))
+    {
+      this.a.d(false);
+      return;
+    }
+    TroopBarPublishActivity.a(this.a);
   }
 }
 

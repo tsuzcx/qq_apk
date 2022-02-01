@@ -1,29 +1,32 @@
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import mqq.os.MqqHandler;
 
 public class aecs
-  extends anli
+  extends aocj
 {
-  public aecs(EditActivity paramEditActivity) {}
+  public aecs(ChatHistory paramChatHistory) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void b(boolean paramBoolean)
   {
-    EditActivity.a(this.a);
-    if (paramBoolean)
+    this.a.r();
+    if (!paramBoolean)
     {
-      paramObject = (CustomEmotionData)paramObject;
-      if (paramObject != null)
-      {
-        ((arrp)this.a.app.getManager(103)).c(paramObject);
-        EditActivity.b(this.a);
-      }
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
     }
-    while (!(paramObject instanceof String)) {
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
       return;
     }
-    QQToast.a(this.a, 1, (String)paramObject, 1).a();
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 

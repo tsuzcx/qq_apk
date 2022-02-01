@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
-import rwy;
+import rnu;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
   implements Runnable
@@ -19,9 +19,9 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
       Object localObject = (VideoInfo)localIterator.next();
       boolean bool = i | VideoFeedsRecommendFragment.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment$CheckAccountFollowedRunnable, (VideoInfo)localObject, this.jdField_a_of_type_Boolean);
       i = bool;
-      if (((VideoInfo)localObject).d != null)
+      if (((VideoInfo)localObject).c != null)
       {
-        localObject = ((VideoInfo)localObject).d.iterator();
+        localObject = ((VideoInfo)localObject).c.iterator();
         for (;;)
         {
           i = bool;

@@ -1,29 +1,55 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgky
-  extends BroadcastReceiver
+class bgky
+  implements View.OnClickListener
 {
-  public bgky(BusinessCommonConfig paramBusinessCommonConfig, QQAppInterface paramQQAppInterface) {}
+  bgky(bgkx parambgkx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
+    if (paramView == null) {}
+    for (;;)
     {
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((paramView == bgkx.a(this.a)) && (bgkx.a(this.a).a != null) && (bgkx.a(this.a) != null))
       {
-        return;
-      } while (!"tencent.businessnotify.subprocess.to.qq".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("event", 0);
-      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG, 1, "收到其他进程的通知, event[" + i + "]");
-    } while (i != 1);
-    BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
+        Object localObject = new int[2];
+        paramView.getLocationOnScreen((int[])localObject);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131377595);
+        if (bgkx.a(this.a) != null)
+        {
+          if (!bgkx.a(this.a).a())
+          {
+            if (bgkx.a(this.a).a() > 5) {}
+            for (int i = bhtq.a(247.0F);; i = bhtq.a(bgkx.a(this.a).a() * 40 + 7))
+            {
+              bgkx.a(this.a).b(paramView, paramView.getWidth(), 0, localObject[0] - bhtq.a(175.0F) / 2, localObject[1] - i);
+              localImageView.setImageResource(2130846217);
+              localObject = (TextView)bgkx.a(this.a).findViewById(2131377582);
+              if (localObject == null) {
+                break;
+              }
+              ((TextView)localObject).setVisibility(4);
+              break;
+            }
+          }
+          bgkx.a(this.a).d();
+        }
+      }
+      else
+      {
+        bgkx.a(this.a).onClick(paramView);
+        if (bgkx.a(this.a) != null) {
+          bgkx.a(this.a).a(paramView, 0);
+        }
+      }
+    }
   }
 }
 

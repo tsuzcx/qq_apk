@@ -1,101 +1,68 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class azcx
-  implements View.OnClickListener
+  extends azcy
 {
-  public azcx(CustomCoverFragment paramCustomCoverFragment) {}
+  public azcx(OlympicManager paramOlympicManager) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
   {
-    int i = 1;
-    if (paramView.getId() == 2131369072) {
-      if (CustomCoverFragment.a(this.a) != null)
-      {
-        localObject = this.a;
-        if (CustomCoverFragment.c(this.a)) {
-          break label165;
-        }
-        bool = true;
-        CustomCoverFragment.b((CustomCoverFragment)localObject, bool);
-        localObject = (anuk)CustomCoverFragment.a(this.a).a(13);
-        if (!CustomCoverFragment.b(this.a)) {
-          break label171;
-        }
-        i = 1;
-        ((anuk)localObject).h(i);
-        CustomCoverFragment.a(this.a).a(0, this.a.getString(2131698016), 0, CustomCoverFragment.a(this.a));
-        str = CustomCoverFragment.a(this.a).getCurrentAccountUin();
-        if (!CustomCoverFragment.b(this.a)) {
-          break label176;
-        }
-        localObject = "open_random";
-        VasWebviewUtil.reportCommercialDrainage(str, "defaultcard", (String)localObject, "", 1, 0, 0, "", "", "");
-      }
-    }
-    label165:
-    label171:
-    label176:
-    while (this.a.getActivity() == null) {
-      for (;;)
-      {
-        String str;
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        boolean bool = false;
-        continue;
-        i = 0;
-        continue;
-        localObject = "close_random";
-      }
-    }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {}
-    for (int j = ((Integer)localObject).intValue();; j = 0)
+    if (QLog.isColorLevel())
     {
-      if ((paramView instanceof Button))
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  {
+    if (QLog.isColorLevel())
+    {
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+    }
+    OlympicManager.a(this.a, false);
+    if (paramBoolean)
+    {
+      OlympicManager.a(this.a, paramArrayOfByte);
+      if (paramInt == 0)
       {
-        if (CustomCoverFragment.c(this.a))
+        bdll.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
+        this.a.a(1);
+        this.a.a(paramTorchInfo);
+        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+        paramArrayOfByte = Long.valueOf(-1L);
+        paramString = paramArrayOfByte;
+        if (OlympicManager.a(this.a) != null)
         {
-          QQToast.a(this.a.getActivity(), 0, 2131690598, 0).a();
-          break;
+          paramString = paramArrayOfByte;
+          if (OlympicManager.a(this.a).type == 2) {
+            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
+          }
         }
-        if (CustomCoverFragment.a(this.a) != j)
-        {
-          CustomCoverFragment.a(this.a, j);
-          break;
-        }
-        if (j != CustomCoverFragment.a(this.a)) {
-          break;
-        }
-        CustomCoverFragment.a(this.a, 0);
-        break;
-      }
-      if (!(paramView instanceof ImageView)) {
-        break;
-      }
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("cover_id_key", j);
-      if (!CustomCoverFragment.c(this.a)) {
-        if (CustomCoverFragment.a(this.a) != j) {}
-      }
-      for (i = 2;; i = 0)
-      {
-        ((Intent)localObject).putExtra("cover_button_key", i);
-        aevv.a(this.a.getActivity(), (Intent)localObject, PublicFragmentActivity.class, CoverDetailFragment.class, 2001);
-        break;
+        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
       }
     }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.a.a(1);
+      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+      return;
+    }
+    OlympicManager.b(this.a, false);
+    OlympicManager.b(this.a, null);
+    OlympicManager.a(this.a, 0);
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import bauf;
-import bauh;
-import bauo;
+import bbmy;
+import bbna;
+import bbnh;
 
 public class GpuImagePartsFilterGroup$1
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$1(bauo parambauo, int paramInt1, int paramInt2, int paramInt3) {}
+  public GpuImagePartsFilterGroup$1(bbnh parambbnh, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    bauh localbauh1 = null;
-    bauh localbauh2 = bauo.a(this.this$0);
-    bauo.a(this.this$0, null);
-    if ((bauo.b(this.this$0) == null) || (bauo.b(this.this$0).getFilterType() != this.a))
+    bbna localbbna1 = null;
+    bbna localbbna2 = bbnh.a(this.this$0);
+    bbnh.a(this.this$0, null);
+    if ((bbnh.b(this.this$0) == null) || (bbnh.b(this.this$0).getFilterType() != this.a))
     {
-      localbauh1 = bauo.b(this.this$0);
-      bauo.b(this.this$0, (bauh)bauf.a(this.a));
-      bauo.b(this.this$0).init();
-      bauo.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localbbna1 = bbnh.b(this.this$0);
+      bbnh.b(this.this$0, (bbna)bbmy.a(this.a));
+      bbnh.b(this.this$0).init();
+      bbnh.b(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
-    bauo.b(this.this$0).a(false, 0.0F);
-    bauo.a(this.this$0, 0.0F);
-    if (localbauh2 != null) {
-      localbauh2.destroy();
+    bbnh.b(this.this$0).a(false, 0.0F);
+    bbnh.a(this.this$0, 0.0F);
+    if (localbbna2 != null) {
+      localbbna2.destroy();
     }
-    if (localbauh1 != null) {
-      localbauh1.destroy();
+    if (localbbna1 != null) {
+      localbbna1.destroy();
     }
   }
 }

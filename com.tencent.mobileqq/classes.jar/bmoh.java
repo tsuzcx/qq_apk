@@ -1,39 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class bmoh
+  implements FilenameFilter
 {
-  public static File a()
+  bmoh(bmog parambmog) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    try
-    {
-      String str = blwp.b;
-      File localFile1 = new File(str);
-      boolean bool = localFile1.exists();
-      if (!bool) {
-        try
-        {
-          new File(str, ".nomedia").createNewFile();
-          if (!localFile1.mkdirs())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
-            }
-            return null;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localIOException.printStackTrace();
-          }
-        }
-      }
-    }
-    finally {}
-    return localFile2;
+    return (paramFile != null) && (paramFile.isDirectory()) && (bmog.a(this.a).matcher(paramString).matches());
   }
 }
 

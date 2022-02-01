@@ -1,28 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class xtj
-  extends QQUIEventReceiver<xsw, wwx>
+public abstract interface xtj
 {
-  public xtj(@NonNull xsw paramxsw)
-  {
-    super(paramxsw);
-  }
-  
-  public void a(@NonNull xsw paramxsw, @NonNull wwx paramwwx)
-  {
-    if (paramwwx.a.isSuccess())
-    {
-      yqp.a(paramxsw.b, "receive user info event. %s.", paramwwx.toString());
-      paramxsw.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwx.class;
-  }
+  public abstract boolean a(xtg paramxtg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.text.TextUtils;
-import blyk;
+import bmzm;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -80,6 +80,19 @@ public class GameInfoManager
       return null;
     }
     return this.miniGamePkg.appConfig.launchParam.fromMiniAppId;
+  }
+  
+  public String getGroupIdFromReportData()
+  {
+    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
+    {
+      QZLog.i(this.TAG, 1, "getGroupIdFromReportData = " + this.miniGamePkg.appConfig.launchParam.reportData);
+      String str = this.miniGamePkg.appConfig.launchParam.reportData;
+      if (!TextUtils.isEmpty(str)) {
+        return PathUtil.getJSONQueryString(str).optString("groupid", "");
+      }
+    }
+    return "";
   }
   
   public GameInfoManager.LaunchOptions getLaunchOptions()
@@ -257,7 +270,7 @@ public class GameInfoManager
     this.miniGamePkg = paramMiniGamePkg;
     try
     {
-      blyk.a(getMiniAppSimpleInfo());
+      bmzm.a(getMiniAppSimpleInfo());
       return;
     }
     catch (Throwable paramMiniGamePkg)

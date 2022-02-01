@@ -1,38 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class oka
-  implements biaw
+  implements nmg
 {
-  public oka(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public oka(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void a()
+  public void loaded(String paramString, int paramInt)
   {
-    boolean bool2 = true;
-    Object localObject;
-    if (this.a.a)
-    {
-      localObject = this.a;
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label61;
-      }
-      bool1 = true;
-      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label66;
-      }
-    }
-    label61:
-    label66:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Switch)localObject).setChecked(bool1);
-      return;
-      bool1 = false;
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

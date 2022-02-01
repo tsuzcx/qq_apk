@@ -10,22 +10,22 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import bgtn;
+import bhtq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import tjo;
-import tjp;
+import tai;
+import taj;
 
 public class WordNavView
   extends View
 {
-  private float jdField_a_of_type_Float = bgtn.b(15.0F);
+  private float jdField_a_of_type_Float = bhtq.b(15.0F);
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Map<Float, String> jdField_a_of_type_JavaUtilMap;
-  private tjp jdField_a_of_type_Tjp;
+  private taj jdField_a_of_type_Taj;
   private float b;
   
   public WordNavView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -46,7 +46,7 @@ public class WordNavView
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#878B99"));
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
     this.b = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().top);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tjo(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tai(this, null));
   }
   
   private float b(int paramInt)
@@ -79,14 +79,14 @@ public class WordNavView
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + bgtn.b(5.0F)));
+    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + bhtq.b(5.0F)));
     requestLayout();
     invalidate();
   }
   
-  public void setOnTouchingWordChangedListener(tjp paramtjp)
+  public void setOnTouchingWordChangedListener(taj paramtaj)
   {
-    this.jdField_a_of_type_Tjp = paramtjp;
+    this.jdField_a_of_type_Taj = paramtaj;
   }
 }
 

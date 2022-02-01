@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
 import android.view.View;
-import bpoe;
+import bqpz;
 
 public class NormalFaceAdapter$1
   implements Runnable
 {
-  public NormalFaceAdapter$1(bpoe parambpoe, View paramView) {}
+  public NormalFaceAdapter$1(bqpz parambqpz, View paramView) {}
   
   public void run()
   {
-    bpoe.a(this.this$0, this.a);
+    bqpz.a(this.this$0, this.a);
   }
 }
 

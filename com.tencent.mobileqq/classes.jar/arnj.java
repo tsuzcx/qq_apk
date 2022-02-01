@@ -1,38 +1,48 @@
-import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class arnj
-  extends ColorDrawable
+  extends armf<arni>
 {
-  private int a;
-  private int b;
-  
-  public arnj(int paramInt1, int paramInt2)
+  @NonNull
+  public arni a()
   {
-    super(0);
-    this.a = paramInt1;
-    this.b = paramInt2;
+    return arni.a();
   }
   
-  public arnj(int paramInt1, int paramInt2, int paramInt3)
+  @NonNull
+  public arni a(@NonNull araj[] paramArrayOfaraj)
   {
-    super(paramInt1);
-    this.a = paramInt2;
-    this.b = paramInt3;
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfaraj[0].a);
+    }
+    return arni.a(paramArrayOfaraj[0].a);
   }
   
-  public int getIntrinsicHeight()
+  @NonNull
+  public arni b()
   {
-    return this.b;
+    return arni.a();
   }
   
-  public int getIntrinsicWidth()
+  public Class<arni> clazz()
   {
-    return this.a;
+    return arni.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public int type()
+  {
+    return 580;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnj
  * JD-Core Version:    0.7.0.1
  */

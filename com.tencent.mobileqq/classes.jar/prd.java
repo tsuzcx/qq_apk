@@ -1,14 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import java.util.ArrayList;
 
-public class prd
-  implements prw
+public abstract interface prd
+  extends prc
 {
-  public prd(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
-  {
-    ReadInJoySelfFragment.a(this.a, this.a.getActivity());
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<pow> paramArrayList, String paramString);
 }
 
 

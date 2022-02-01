@@ -8,7 +8,7 @@ import android.support.v4.content.SharedPreferencesCompat.EditorCompat;
 
 public class SPUtils
 {
-  public static final String LAST_APP_HEART_BEAT = "last_app_heart_beat";
+  public static final String LAST_APP_HEART_BEAT_MAP = "last_app_heart_beat_map";
   public static final String LAST_AUDIO_HEART_BEAT_MAP = "last_audio_heart_beat_map";
   public static final String PREF_DEVICE_ACTIVATED = "pref_device_activated";
   private static final String VIDEO_REPORT_PROFILE = "video_report_profile";

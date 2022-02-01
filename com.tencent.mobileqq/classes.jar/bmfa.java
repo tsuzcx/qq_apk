@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.RecvMsg;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveLaunchFragment;
+import java.util.HashMap;
 
-public final class bmfa
-  implements Parcelable.Creator<RecvMsg>
+class bmfa
+  implements SDKInitListener
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  bmfa(bmez parambmez) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void onSDKInited(boolean paramBoolean)
   {
-    return new RecvMsg[paramInt];
+    bmfw.b("IliveLaunch initSDKAsync");
+    HashMap localHashMap = new HashMap();
+    if (bapg.b()) {}
+    for (String str = "sucess";; str = "error")
+    {
+      localHashMap.put("status_msg", str);
+      localHashMap.put("isDebug", "0");
+      biaq.a("live_player_load", localHashMap, System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+      QLog.e("IliveLaunchActivity", 1, "initVideoSDK status = " + bapg.b());
+      IliveLaunchFragment.access$202(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment, bapg.b());
+      QLog.e("IliveLaunchActivity", 1, "initVideoSDK onSDKInited = " + paramBoolean);
+      if (!IliveLaunchFragment.access$200(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment)) {
+        this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
+      }
+      return;
+    }
   }
 }
 

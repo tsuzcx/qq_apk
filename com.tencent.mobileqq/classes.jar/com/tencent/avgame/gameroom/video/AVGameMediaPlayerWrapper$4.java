@@ -1,38 +1,44 @@
 package com.tencent.avgame.gameroom.video;
 
-import bita;
+import bjtz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.SuperPlayerAudioInfo;
 import com.tencent.superplayer.api.SuperPlayerFactory;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import nct;
+import nej;
 
 public class AVGameMediaPlayerWrapper$4
   implements Runnable
 {
-  public AVGameMediaPlayerWrapper$4(nct paramnct, long paramLong) {}
+  public AVGameMediaPlayerWrapper$4(nej paramnej, long paramLong) {}
   
   public void run()
   {
-    nct.a(this.this$0, false);
-    if (nct.a(this.this$0) != null)
+    nej.a(this.this$0, false);
+    if (nej.a(this.this$0) != null)
     {
-      nct.a(this.this$0).stop();
-      nct.a(this.this$0).reset();
-      nct.a(this.this$0);
+      nej.a(this.this$0).stop();
+      nej.a(this.this$0).reset();
+      nej.a(this.this$0);
     }
-    if (nct.a(this.this$0) == null) {
-      nct.a(this.this$0);
+    if (nej.a(this.this$0) == null) {
+      nej.a(this.this$0);
     }
-    Object localObject = bita.d(nct.a(this.this$0));
-    localObject = SuperPlayerFactory.createVideoInfoForUrl(nct.a(this.this$0), 101, (String)localObject);
+    Object localObject = bjtz.d(nej.a(this.this$0));
+    localObject = SuperPlayerFactory.createVideoInfoForUrl(nej.a(this.this$0), 101, (String)localObject);
+    SuperPlayerAudioInfo localSuperPlayerAudioInfo = new SuperPlayerAudioInfo();
+    localSuperPlayerAudioInfo.setAudioSampleRateHZ(48000);
+    localSuperPlayerAudioInfo.setAudioChannelLayout(4L);
     SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
     localSuperPlayerOption.enableCodecReuse = false;
     localSuperPlayerOption.isPrePlay = false;
-    nct.a(this.this$0).setOutputMute(nct.a(this.this$0));
-    nct.a(this.this$0).openMediaPlayer(BaseApplicationImpl.getContext(), (SuperPlayerVideoInfo)localObject, this.a, localSuperPlayerOption);
-    nct.b(this.this$0, false);
+    localSuperPlayerOption.enableAudioFrameOutput = true;
+    localSuperPlayerOption.audioFrameOutputOption = localSuperPlayerAudioInfo;
+    nej.a(this.this$0).setOutputMute(nej.a(this.this$0));
+    nej.a(this.this$0).openMediaPlayer(BaseApplicationImpl.getContext(), (SuperPlayerVideoInfo)localObject, this.a, localSuperPlayerOption);
+    nej.b(this.this$0, false);
   }
 }
 

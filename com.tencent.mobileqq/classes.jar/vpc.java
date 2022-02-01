@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class vpc
-  implements View.OnClickListener
+class vpc
+  implements aakg
 {
-  public vpc(QCirclePolyBaseLikeView paramQCirclePolyBaseLikeView) {}
+  vpc(vow paramvow) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QQToast.a(this.a.getContext(), 0, 2131697227, 0).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    vow.a(this.a, 0);
   }
+  
+  public void a(int paramInt) {}
 }
 
 

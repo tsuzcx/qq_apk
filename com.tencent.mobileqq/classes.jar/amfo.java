@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class amfo
-  implements Comparator<CommonlyUsedTroop>
+  extends amof
 {
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
-  {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
-  }
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public TroopMemberInfo a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

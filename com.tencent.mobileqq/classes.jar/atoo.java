@@ -1,428 +1,200 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.3;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.4;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 
-public abstract class atoo
+public class atoo
+  extends atos
 {
-  protected int a;
-  public Activity a;
-  protected Bundle a;
-  private apcy a;
-  protected asrx a;
-  protected atdl a;
-  public atmk a;
-  protected atnd a;
-  protected atnf a;
-  protected atng a;
-  protected ator a;
-  public atot a;
-  public atou a;
-  protected atov a;
-  protected ArrayList<ShareActionSheetBuilder.ActionSheetItem> a;
-  protected HashMap<String, ArrayList<ShareActionSheetBuilder.ActionSheetItem>> a;
-  protected int b;
-  protected String f;
-  
-  public atoo(Activity paramActivity)
+  public atoo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = 0;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public abstract float a();
-  
-  public int a()
+  private boolean a(FileManagerEntity paramFileManagerEntity)
   {
-    int i = 3;
-    int j = e();
-    if ((d() == 3) && (atvo.c(d())) && (b() != 16))
+    return ((paramFileManagerEntity.nOpType == 7) || (paramFileManagerEntity.nOpType == 28) || (paramFileManagerEntity.nOpType == 21) || (paramFileManagerEntity.nOpType == 22) || (paramFileManagerEntity.nOpType == 3) || (paramFileManagerEntity.nOpType == 24) || (paramFileManagerEntity.nOpType == 25)) && ((paramFileManagerEntity.status == 1) || (paramFileManagerEntity.status == -1));
+  }
+  
+  private boolean b(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity.nOpType != 1) {}
+    while ((paramFileManagerEntity.status != -1) && (paramFileManagerEntity.status != 3) && (paramFileManagerEntity.status != 0) && (paramFileManagerEntity.status != 13)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean c(FileManagerEntity paramFileManagerEntity)
+  {
+    boolean bool = true;
+    if (paramFileManagerEntity.nOpType != 0) {}
+    while ((paramFileManagerEntity.status != 1) && (paramFileManagerEntity.status != -1)) {
+      return false;
+    }
+    if (!bhmi.b(paramFileManagerEntity.getFilePath())) {}
+    for (;;)
     {
-      switch (j)
-      {
-      case 3: 
-      default: 
-        i = 1;
-      case 5: 
-        return i;
-      case 1: 
-        return 4;
-      case 2: 
-        return 2;
-      case 0: 
-        return 6;
-      }
-      if (h()) {
-        return 5;
-      }
-      return 1;
+      return bool;
+      bool = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileBrowserModelBase", 2, "getCreateFileType error : this is a local file, but is invalid, may be can not find file path");
-    }
-    return 0;
   }
   
-  public Intent a()
+  protected FileManagerEntity a(ChatMessage paramChatMessage)
   {
+    if ((paramChatMessage instanceof MessageForFile))
+    {
+      paramChatMessage = (MessageForFile)paramChatMessage;
+      return aunj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    }
+    QLog.i("OfflineFileBubbleDownloadHandler", 1, "getFileManagerEntityByMsg:  msg is not message for file.");
     return null;
   }
   
-  public aqck a()
+  protected CircleFileStateView a(aggl paramaggl)
   {
-    return new atmx();
+    if (paramaggl == null) {}
+    while (!(paramaggl instanceof ahoq)) {
+      return null;
+    }
+    return ((ahoq)paramaggl).a;
   }
   
-  public abstract atnd a();
-  
-  public abstract atnf a();
-  
-  public abstract atng a();
-  
-  public atnh a()
+  protected void a(aggl paramaggl, CircleFileStateView paramCircleFileStateView)
   {
-    return null;
+    if (paramaggl == null) {}
+    while (!(paramaggl instanceof ahoq)) {
+      return;
+    }
+    ((ahoq)paramaggl).a = paramCircleFileStateView;
   }
   
-  public abstract TeamWorkFileImportInfo a();
-  
-  public String a()
+  protected void a(View paramView, aggl paramaggl, ChatMessage paramChatMessage, int paramInt)
   {
-    return "";
-  }
-  
-  public abstract List<atoq> a();
-  
-  protected abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, atoq paramatoq);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(atmk paramatmk)
-  {
-    this.jdField_a_of_type_Atmk = paramatmk;
-  }
-  
-  public void a(ator paramator)
-  {
-    this.jdField_a_of_type_Ator = paramator;
-  }
-  
-  public abstract void a(atos paramatos);
-  
-  public void a(atot paramatot)
-  {
-    this.jdField_a_of_type_Atot = paramatot;
-  }
-  
-  public void a(atou paramatou)
-  {
-    this.jdField_a_of_type_Atou = paramatou;
-  }
-  
-  public void a(atov paramatov)
-  {
-    this.jdField_a_of_type_Atov = paramatov;
-  }
-  
-  public void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
-  
-  public void a(String paramString, Bundle paramBundle) {}
-  
-  public void a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
-  {
-    if (paramList == null) {}
-    Object localObject;
+    if (paramChatMessage == null) {}
     do
     {
       do
       {
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        do
+        {
+          return;
+          QLog.i("OfflineFileBubbleDownloadHandler", 1, "handleDownloadClick: type[" + paramInt + "]");
+        } while (paramInt == -1);
+        paramView = a(paramChatMessage);
+      } while (paramView == null);
+      if (paramInt == 0)
+      {
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
+        if (paramView.getCloudType() == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.nSessionId);
+          return;
         }
-        localObject = e();
-      } while (!bgmg.b((String)localObject));
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.nSessionId);
+        return;
+      }
+    } while (paramInt != 1);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
+    aumg.a(paramView).a(false, this.jdField_a_of_type_AndroidContentContext, new atop(this, paramView));
+  }
+  
+  protected boolean a(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          return false;
+          paramChatMessage = a(paramChatMessage);
+        } while (paramChatMessage == null);
+        i = aunj.a(paramChatMessage.fileName);
+      } while ((i == 0) || (i == 2));
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubbleDownloadHandler", 1, "needShowDownloadIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "] fileName[" + paramChatMessage.fileName + "] uniseq[" + paramChatMessage.uniseq + "]");
+      }
+    } while (16 == paramChatMessage.status);
+    if ((paramChatMessage.nOpType == -1) && (paramChatMessage.status == -1)) {}
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      boolean bool1;
+      if (paramChatMessage.nOpType != 0)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.nOpType != 11) {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (paramChatMessage.getCloudType() == 1)
+        {
+          bool1 = bool2;
+          if (paramChatMessage.status == 1) {
+            bool1 = true;
+          }
+        }
+      }
+      bool2 = bool1;
+      if (paramChatMessage.nOpType == 11)
+      {
+        bool2 = bool1;
+        if (paramChatMessage.getCloudType() == 1)
+        {
+          bool2 = bool1;
+          if (paramChatMessage.status == 13) {
+            bool2 = true;
+          }
+        }
+      }
+      if (a(paramChatMessage)) {
+        bool2 = true;
+      }
+      if (b(paramChatMessage)) {
+        bool2 = true;
+      }
+      if (c(paramChatMessage)) {
+        bool2 = true;
+      }
+      if ((bool2) && (bhmi.b(paramChatMessage.getFilePath()))) {
         break;
       }
-      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    } while ((localObject == null) || (((ArrayList)localObject).isEmpty()));
-    paramList.addAll((Collection)localObject);
-    return;
-    atwt.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, new atop(this, (String)localObject));
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(atos paramatos)
-  {
-    if (paramatos != null) {
-      paramatos.aD_();
+      return bool2;
     }
-    return false;
   }
   
-  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  protected abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public void b(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  protected boolean b(ChatMessage paramChatMessage)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public abstract boolean b();
-  
-  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] b();
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Int < 0) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract long c();
-  
-  public abstract String c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract long d();
-  
-  public abstract String d();
-  
-  protected abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract boolean d();
-  
-  public abstract int e();
-  
-  public String e()
-  {
-    return "";
-  }
-  
-  public abstract void e();
-  
-  public void e(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public abstract boolean e();
-  
-  public abstract int f();
-  
-  public abstract String f();
-  
-  public abstract void f();
-  
-  protected void f(int paramInt)
-  {
-    switch (paramInt)
+    if (paramChatMessage == null) {}
+    do
     {
-    default: 
-      return;
-    case 118: 
-      bcst.b(null, "dc00898", "", "", "0X800ADBC", "0X800ADBC", 0, 0, "", "", "", "");
-      return;
-    case 52: 
-      bcst.b(null, "dc00898", "", "", "0X800ADBD", "0X800ADBD", 0, 0, "", "", "", "");
-      return;
-    case 55: 
-      bcst.b(null, "dc00898", "", "", "0X800ADBE", "0X800ADBE", 0, 0, "", "", "", "");
-      return;
-    }
-    bcst.b(null, "dc00898", "", "", "0X800ADBF", "0X800ADBF", 0, 0, "", "", "", "");
-  }
-  
-  public abstract boolean f();
-  
-  public abstract int g();
-  
-  public abstract String g();
-  
-  public abstract void g();
-  
-  public abstract boolean g();
-  
-  public abstract int h();
-  
-  public abstract String h();
-  
-  public abstract boolean h();
-  
-  public abstract int i();
-  
-  public String i()
-  {
-    return null;
-  }
-  
-  public void i()
-  {
-    a();
-    m();
-  }
-  
-  public abstract boolean i();
-  
-  public int j()
-  {
-    return 0;
-  }
-  
-  public String j()
-  {
-    return "";
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_Atou != null) {
-      this.jdField_a_of_type_Atou = null;
-    }
-    if (this.jdField_a_of_type_Atot != null) {
-      this.jdField_a_of_type_Atot = null;
-    }
-    if (this.jdField_a_of_type_Atov != null) {
-      this.jdField_a_of_type_Atov = null;
-    }
-  }
-  
-  public abstract boolean j();
-  
-  public void j_()
-  {
-    b();
-    if (this.jdField_a_of_type_Atou != null) {
-      this.jdField_a_of_type_Atou = null;
-    }
-    if (this.jdField_a_of_type_Atot != null) {
-      this.jdField_a_of_type_Atot = null;
-    }
-    if (this.jdField_a_of_type_Atov != null) {
-      this.jdField_a_of_type_Atov = null;
-    }
-    n();
-  }
-  
-  public int k()
-  {
-    return 0;
-  }
-  
-  public String k()
-  {
-    return "";
-  }
-  
-  public int l()
-  {
-    return this.b;
-  }
-  
-  public String l()
-  {
-    return "";
-  }
-  
-  public void l() {}
-  
-  public boolean l()
-  {
-    return this.b != 12;
-  }
-  
-  public int m()
-  {
-    if (this.jdField_a_of_type_Atmk != null) {
-      return this.jdField_a_of_type_Atmk.a();
-    }
-    return 0;
-  }
-  
-  public String m()
-  {
-    return "";
-  }
-  
-  protected void m()
-  {
-    if (this.jdField_a_of_type_Apcy != null) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.3(this));
-  }
-  
-  public String n()
-  {
-    return null;
-  }
-  
-  protected void n()
-  {
-    if (this.jdField_a_of_type_Apcy == null) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.4(this));
-  }
-  
-  public String o()
-  {
-    return "";
-  }
-  
-  public String p()
-  {
-    return "";
+      int i;
+      do
+      {
+        do
+        {
+          return false;
+          paramChatMessage = a(paramChatMessage);
+        } while (paramChatMessage == null);
+        i = aunj.a(paramChatMessage.fileName);
+      } while ((i == 0) || (i == 2));
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubbleDownloadHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+    } while ((paramChatMessage.nOpType != 1) || ((paramChatMessage.status != 2) && (paramChatMessage.status != 18)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atoo
  * JD-Core Version:    0.7.0.1
  */

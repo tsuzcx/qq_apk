@@ -1,90 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
 
-public class bbop
-  implements Manager
+public final class bbop
+  implements Parcelable.Creator<AIOBrowserBaseData>
 {
-  private bbok jdField_a_of_type_Bbok = new bbok("Cahce_");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public bbop(QQAppInterface paramQQAppInterface)
+  public AIOBrowserBaseData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public ArrayList<bbon> a(String paramString)
-  {
-    if (this.jdField_a_of_type_Bbok != null)
+    Object localObject = paramParcel.readString();
+    try
     {
-      paramString = this.jdField_a_of_type_Bbok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      if ((paramString != null) && (paramString.size() > 10))
-      {
-        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
-        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
-        return localArrayList;
-      }
-      return paramString;
+      localObject = AIOBrowserBaseData.a((String)localObject);
+      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
+      return localObject;
     }
-    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bbok != null)
+    catch (ClassNotFoundException paramParcel)
     {
-      this.jdField_a_of_type_Bbok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QLog.d("MostUsedSearchResultManager", 2, "init");
-      return;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
-    for (String str = paramString2;; str = paramString1)
-    {
-      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
-      int i = bboj.a(paramInt);
-      if (!a(i)) {
-        break;
-      }
-      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
-      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
-      return;
-      paramString2 = "";
+      throw new RuntimeException(paramParcel);
     }
   }
   
-  boolean a(int paramInt)
+  public AIOBrowserBaseData[] a(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bbok != null) {
-      this.jdField_a_of_type_Bbok.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    b();
-    this.jdField_a_of_type_Bbok = null;
-    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
+    return new AIOBrowserBaseData[paramInt];
   }
 }
 

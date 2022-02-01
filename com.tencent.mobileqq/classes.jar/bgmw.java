@@ -1,57 +1,39 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
-class bgmw
-  implements yaf
+public class bgmw
+  implements Animation.AnimationListener
 {
-  bgmw(bgmp parambgmp) {}
+  public bgmw(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramString = ziv.a();
-    String str1 = ((Activity)this.a.a).getIntent().getStringExtra("from_type");
-    paramInt = ((Activity)this.a.a).getIntent().getIntExtra("capture_intent_mode", -1);
-    int i = ((Activity)this.a.a).getIntent().getIntExtra("firsttab", -1);
-    int j = ((Activity)this.a.a).getIntent().getIntExtra("secondtab", -1);
-    String str2 = ((Activity)this.a.a).getIntent().getStringExtra("itemid");
-    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("story_game_id");
-    int k = ((Activity)this.a.a).getIntent().getIntExtra("key_finish_jump_to_page", 1);
-    String str4 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
-    String str5 = ((Activity)this.a.a).getIntent().getStringExtra("story_capture_album_id");
-    Bundle localBundle = new Bundle();
-    if (TextUtils.equals(str1, "msgTab"))
-    {
-      localBundle.putInt("entrance_type", 103);
-      localBundle.putInt("key_finish_jump_to_page", k);
-      if (!TextUtils.isEmpty(str4)) {
-        localBundle.putString("web_dispatch_event", str4);
-      }
-      if (paramInt == -1) {
-        break label322;
-      }
-      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, str3, str5, true, 20000);
-    }
-    for (;;)
-    {
-      yqp.c("Q.qqstory.publish.JumpAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
       return;
-      if (TextUtils.equals(str1, "msgTabNew"))
-      {
-        localBundle.putInt("entrance_type", 119);
-        break;
-      }
-      localBundle.putInt("entrance_type", 15);
-      break;
-      label322:
-      paramString.a((Activity)this.a.a, localBundle, 20000);
+    }
+    if (paramAnimation == this.a.b) {
+      VisitorTroopCardFragment.a(this.a, false);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
+    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
+      VisitorTroopCardFragment.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgmw
  * JD-Core Version:    0.7.0.1
  */

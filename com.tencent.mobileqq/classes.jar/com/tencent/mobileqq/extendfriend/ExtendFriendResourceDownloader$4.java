@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.extendfriend;
 
-import asge;
-import asgg;
-import asgk;
-import bdvs;
-import bdvu;
+import asvs;
+import asvu;
+import asvy;
+import beum;
+import beuo;
 import com.tencent.qphone.base.util.QLog;
-import lbd;
+import lbk;
 
 public class ExtendFriendResourceDownloader$4
   implements Runnable
 {
-  public ExtendFriendResourceDownloader$4(asgg paramasgg, asge paramasge) {}
+  public ExtendFriendResourceDownloader$4(asvu paramasvu, asvs paramasvs) {}
   
   public void run()
   {
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_JavaLangString = this.a.b;
-    localbdvs.jdField_a_of_type_Int = 0;
-    String str = asgg.a(this.this$0, this.a.c);
-    asgg.a(this.this$0, str);
-    localbdvs.c = str;
-    localbdvs.a(this.a);
-    QLog.d("ExtendFriendResourceDownloader", 2, "Limitchatres start download : " + this.a.jdField_a_of_type_JavaLangString + " url: " + this.a.b + " w:" + localbdvs.c);
-    localbdvs.jdField_a_of_type_Bdvw = new asgk(this);
-    lbd.a().a(localbdvs);
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_JavaLangString = this.a.b;
+    localbeum.jdField_a_of_type_Int = 0;
+    String str = asvu.a(this.this$0, this.a.c);
+    asvu.a(this.this$0, str);
+    localbeum.c = str;
+    localbeum.a(this.a);
+    QLog.d("ExtendFriendResourceDownloader", 2, "Limitchatres start download : " + this.a.jdField_a_of_type_JavaLangString + " url: " + this.a.b + " w:" + localbeum.c);
+    localbeum.jdField_a_of_type_Beuq = new asvy(this);
+    lbk.a().a(localbeum);
   }
 }
 

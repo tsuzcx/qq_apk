@@ -1,11 +1,14 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class akiq
-  extends akhj
+class akiq
+  implements Comparator<akjl>
 {
-  protected akiq(AlbumListFragment paramAlbumListFragment)
+  akiq(akip paramakip) {}
+  
+  public int a(akjl paramakjl1, akjl paramakjl2)
   {
-    super(paramAlbumListFragment);
+    return (int)(paramakjl2.a.time - paramakjl1.a.time);
   }
 }
 

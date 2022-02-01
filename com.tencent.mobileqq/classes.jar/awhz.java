@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class awhz
-  implements DialogInterface.OnDismissListener
+class awhz
+  extends apck
 {
-  public awhz(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  awhz(awhy paramawhy, String paramString)
   {
-    MatchChatMsgListFragment.a(this.a, false);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_a_of_type_Awhv.TAG, 2, "onLocationFinish errCode = " + paramInt);
+    }
+    awhv.a(this.a.jdField_a_of_type_Awhv, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

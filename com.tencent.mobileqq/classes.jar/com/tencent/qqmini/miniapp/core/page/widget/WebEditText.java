@@ -43,6 +43,11 @@ public class WebEditText
   private String textAlign = "left";
   private String textColor = "#FFFFFFFF";
   
+  public WebEditText(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
   public WebEditText(Context paramContext, WebInputHandler paramWebInputHandler)
   {
     super(paramContext);
@@ -255,7 +260,7 @@ public class WebEditText
   {
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (this.mInputHandler != null) && (this.mInputHandler.hasFocusInput()))
     {
-      this.mInputHandler.hideCurrentInput(true);
+      this.mInputHandler.hideCurrentInput();
       return true;
     }
     return super.onKeyPreIme(paramInt, paramKeyEvent);

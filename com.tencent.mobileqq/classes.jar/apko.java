@@ -1,20 +1,10 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-
-final class apko
-  extends apln
+public class apko
 {
-  apko(String paramString, long paramLong, ArrayList paramArrayList)
-  {
-    super(paramString, paramLong);
-  }
+  public int a;
+  long jdField_a_of_type_Long;
+  public int b;
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (paramBundle != null)) {
-      this.a.add(paramBundle.getString("Nickname", ""));
-    }
-  }
+  public apko(apkn paramapkn) {}
 }
 
 

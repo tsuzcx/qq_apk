@@ -51,7 +51,7 @@ class FileJsPlugin$3
       paramString.put("downloadTaskId", this.val$downloadId);
       paramString.put("state", "fail");
       paramString.put("errMsg", "download:fail abort");
-      this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", paramString.toString(), 0);
+      this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", paramString.toString(), 0);
       reportDownloadFileResult(System.currentTimeMillis() - this.val$startMS, -1);
       return;
     }
@@ -74,7 +74,7 @@ class FileJsPlugin$3
       ((JSONObject)localObject).put("downloadTaskId", this.val$downloadId);
       ((JSONObject)localObject).put("state", "fail");
       ((JSONObject)localObject).put("errMsg", "Download Failed.");
-      this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject).toString(), 0);
+      this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject).toString(), 0);
       if ((this.this$0.jsPluginEngine != null) && (this.this$0.jsPluginEngine.appBrandRuntime != null) && (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo() != null)) {
         MiniProgramLpReportDC05325.reportApiReport(paramDownloadResult, 10, this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
       }
@@ -99,9 +99,6 @@ class FileJsPlugin$3
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    if (this.val$webview1 == null) {
-      return;
-    }
     try
     {
       paramString = new JSONObject();
@@ -110,7 +107,7 @@ class FileJsPlugin$3
       paramString.put("totalBytesWritten", (float)paramLong * paramFloat);
       paramString.put("totalBytesExpectedToWrite", paramLong);
       paramString.put("state", "progressUpdate");
-      this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", paramString.toString(), 0);
+      this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", paramString.toString(), 0);
       return;
     }
     catch (Throwable paramString)
@@ -156,7 +153,7 @@ class FileJsPlugin$3
           ((JSONObject)localObject5).put("downloadTaskId", this.val$downloadId);
           ((JSONObject)localObject5).put("state", "fail");
           ((JSONObject)localObject5).put("errMsg", "Download Failed.");
-          this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject5).toString(), 0);
+          this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject5).toString(), 0);
         }
         catch (JSONException localJSONException)
         {
@@ -171,7 +168,7 @@ class FileJsPlugin$3
         ((JSONObject)localObject2).put("downloadTaskId", this.val$downloadId);
         ((JSONObject)localObject2).put("state", "fail");
         ((JSONObject)localObject2).put("errMsg", "Download Failed: file not exists or can not read.");
-        this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject2).toString(), 0);
+        this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject2).toString(), 0);
         continue;
         Object localObject6 = localObject2;
         continue;
@@ -282,7 +279,7 @@ class FileJsPlugin$3
       ((JSONObject)localObject1).put("totalBytesWritten", ((File)localObject3).length());
       ((JSONObject)localObject1).put("totalBytesExpectedToWrite", ((File)localObject3).length());
       ((JSONObject)localObject1).put("state", "progressUpdate");
-      this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject1).toString(), 0);
+      this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject1).toString(), 0);
       QLog.d("[mini] FileJsPlugin", 1, "download success.");
       localObject1 = new JSONObject();
       try
@@ -309,7 +306,7 @@ class FileJsPlugin$3
         ((JSONObject)localObject4).put("statusCode", 200);
         ((JSONObject)localObject4).put("header", localObject1);
         ((JSONObject)localObject4).put("state", "headersReceived");
-        this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject4).toString(), 0);
+        this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject4).toString(), 0);
         FileJsPlugin.access$000(this.this$0).remove(this.val$downloadId);
         localObject4 = new JSONObject();
         ((JSONObject)localObject4).put("statusCode", 200);
@@ -319,7 +316,7 @@ class FileJsPlugin$3
       ((JSONObject)localObject4).put("tempFilePath", MiniAppFileManager.getInstance().getWxFilePath((String)localObject7));
       ((JSONObject)localObject4).put("header", localObject1);
       ((JSONObject)localObject4).put("state", "success");
-      this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject4).toString(), 0);
+      this.val$webview.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject4).toString(), 0);
       if ((this.this$0.jsPluginEngine != null) && (this.this$0.jsPluginEngine.appBrandRuntime != null) && (this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo() != null)) {
         MiniProgramLpReportDC05325.reportApiReport(paramDownloadResult, 10, this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig);
       }

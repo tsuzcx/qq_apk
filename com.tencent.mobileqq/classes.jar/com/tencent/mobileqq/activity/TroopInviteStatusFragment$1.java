@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.support.v4.app.FragmentActivity;
-import biau;
+import bjbs;
 
 class TroopInviteStatusFragment$1
   implements Runnable
@@ -10,11 +10,11 @@ class TroopInviteStatusFragment$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Biau == null) || (this.this$0.jdField_a_of_type_Biau.isShowing()) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
+    if ((this.this$0.jdField_a_of_type_Bjbs == null) || (this.this$0.jdField_a_of_type_Bjbs.isShowing()) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
       return;
     }
-    this.this$0.jdField_a_of_type_Biau.c(2131717286);
-    this.this$0.jdField_a_of_type_Biau.show();
+    this.this$0.jdField_a_of_type_Bjbs.c(2131717414);
+    this.this$0.jdField_a_of_type_Bjbs.show();
   }
 }
 

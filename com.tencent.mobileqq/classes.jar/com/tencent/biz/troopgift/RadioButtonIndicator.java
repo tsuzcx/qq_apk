@@ -1,7 +1,7 @@
 package com.tencent.biz.troopgift;
 
-import aasd;
-import aatu;
+import aawg;
+import aaxx;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.v4.view.ViewCompat;
@@ -17,7 +17,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements aatu, ViewPager.OnPageChangeListener, View.OnClickListener
+  implements aaxx, ViewPager.OnPageChangeListener, View.OnClickListener
 {
   protected int a;
   protected ViewPager a;
@@ -31,19 +31,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839633;
+    this.jdField_a_of_type_Int = 2130839642;
   }
   
   public RadioButton a(int paramInt)
   {
-    aasd localaasd = new aasd(this, getContext());
-    localaasd.setButtonDrawable(this.jdField_a_of_type_Int);
-    localaasd.setPadding(10, 0, 10, 0);
-    localaasd.setClickable(true);
+    aawg localaawg = new aawg(this, getContext());
+    localaawg.setButtonDrawable(this.jdField_a_of_type_Int);
+    localaawg.setPadding(10, 0, 10, 0);
+    localaawg.setClickable(true);
     if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localaasd, 2);
+      ViewCompat.setImportantForAccessibility(localaawg, 2);
     }
-    return localaasd;
+    return localaawg;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)

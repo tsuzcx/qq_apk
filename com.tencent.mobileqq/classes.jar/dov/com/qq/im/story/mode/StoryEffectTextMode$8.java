@@ -1,27 +1,27 @@
 package dov.com.qq.im.story.mode;
 
 import android.app.Activity;
-import biax;
-import bnbf;
-import boza;
+import bjbv;
+import bocn;
+import bqav;
 import dov.com.qq.im.capture.mode.CaptureModeController;
 
 public class StoryEffectTextMode$8
   implements Runnable
 {
-  public StoryEffectTextMode$8(boza paramboza, biax parambiax) {}
+  public StoryEffectTextMode$8(bqav parambqav, bjbv parambjbv) {}
   
   public void run()
   {
-    if ((boza.b(this.this$0)) || (boza.a(this.this$0).a().isFinishing())) {
+    if ((bqav.b(this.this$0)) || (bqav.a(this.this$0).a().isFinishing())) {
       return;
     }
     if (this.a.a()) {
       this.a.b();
     }
-    boza.b(this.this$0, true);
-    boza.c(this.this$0).k();
-    boza.b(this.this$0, false);
+    bqav.b(this.this$0, true);
+    bqav.c(this.this$0).k();
+    bqav.b(this.this$0, false);
   }
 }
 

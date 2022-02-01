@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import atwl;
-import blwh;
-import bmjk;
+import auog;
+import bmxj;
+import bnkn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -46,9 +46,9 @@ final class QzoneZipCacheHelper$2
           if (!bool3)
           {
             bool2 = bool3;
-            localObject2 = bmjk.b(this.c);
+            localObject2 = bnkn.b(this.c);
             bool2 = bool3;
-            bool3 = bmjk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
+            bool3 = bnkn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
             if (!bool3) {
               continue;
             }
@@ -105,7 +105,7 @@ final class QzoneZipCacheHelper$2
           if (((File)???).exists())
           {
             bool2 = bool1;
-            atwl.a((File)???);
+            auog.a((File)???);
           }
         }
         catch (Throwable localThrowable)

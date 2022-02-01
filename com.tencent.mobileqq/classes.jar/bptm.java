@@ -1,15 +1,14 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
 class bptm
-  implements apsw
+  implements bpsk
 {
-  bptm(bptk parambptk) {}
+  bptm(bptl parambptl) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (bptk.a(this.a) != null) {
-      bptk.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
-    }
+    return bgsk.b(paramString);
   }
 }
 

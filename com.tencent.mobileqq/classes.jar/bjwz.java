@@ -1,56 +1,73 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 class bjwz
-  implements IActivityResultListener
+  implements EIPCResultCallback
 {
-  bjwz(bjww parambjww, AsyncResult paramAsyncResult, IActivityResultManager paramIActivityResultManager) {}
+  bjwz(bjwy parambjwy) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
-    if (paramInt1 == 3)
+    bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
+    if (paramEIPCResult == null) {
+      return;
+    }
+    Object localObject1 = paramEIPCResult.data;
+    if (localObject1 == null)
     {
-      String str1;
-      String str2;
-      double d1;
-      double d2;
-      if ((paramInt2 == -1) && (paramIntent != null))
-      {
-        str1 = paramIntent.getStringExtra("name");
-        str2 = paramIntent.getStringExtra("address");
-        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
-        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
-        }
-        paramIntent = new JSONObject();
-      }
+      bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
+      return;
+    }
+    paramEIPCResult = ((Bundle)localObject1).getString("PackageName");
+    int i = ((Bundle)localObject1).getInt("VersionCode");
+    bjwy.a(this.a).put(bjwy.a(this.a, paramEIPCResult, i), Boolean.valueOf(false));
+    String str1 = ((Bundle)localObject1).getString("Code");
+    boolean bool = ((Bundle)localObject1).getBoolean("IsSuccess");
+    bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + paramEIPCResult + " versionCode|" + i + " isSuc|" + bool + " code|" + str1);
+    for (;;)
+    {
+      bjwh localbjwh;
+      Bundle localBundle;
       try
       {
-        paramIntent.put("name", str1);
-        paramIntent.put("address", str2);
-        paramIntent.put("latitude", d1);
-        paramIntent.put("longitude", d2);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-        return true;
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
+        localObject1 = bjwy.a(this.a, paramEIPCResult, i);
+        String str2 = (String)bjwy.a(this.a).get(localObject1);
+        Object localObject2 = (List)bjwy.b(this.a).get(localObject1);
+        if (localObject2 == null) {
+          break label315;
         }
+        localObject2 = ((List)localObject2).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        localbjwh = (bjwh)((Iterator)localObject2).next();
+        if (localbjwh == null) {
+          continue;
+        }
+        localBundle = new Bundle();
+        if (TextUtils.isEmpty(str2))
+        {
+          localbjwh.a(paramEIPCResult, i, str1, bool, localBundle);
+          continue;
+        }
+        localBundle.putString(bjwo.a, str2);
       }
+      finally {}
+      localbjwh.a(paramEIPCResult, i, str1, bool, localBundle);
     }
-    return false;
+    bjwy.b(this.a).remove(localObject1);
+    for (;;)
+    {
+      return;
+      label315:
+      bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+    }
   }
 }
 

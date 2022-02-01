@@ -1,132 +1,141 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-public class qtn
-  extends qtm
+public abstract class qtn
+  implements Manager
 {
-  public qtn(Context paramContext, aobu paramaobu, snh paramsnh)
+  protected bihz a;
+  protected AppInterface a;
+  protected EntityManager a;
+  protected ArrayList<biht> a;
+  protected HashMap<String, String> a;
+  protected ConcurrentHashMap<String, String> a;
+  
+  public qtn(AppInterface paramAppInterface)
   {
-    super(paramContext, paramaobu, paramsnh);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bihz = ((bihw)paramAppInterface.getManager(47)).a(1);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
   }
   
-  public qqt a()
+  public String a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).f().g().h().q().l().n().j();
+    String str2 = bigv.a(antf.ba + ".readInjoy/resource/");
+    String str1 = str2;
+    if (!TextUtils.isEmpty(paramString)) {
+      str1 = str2 + paramString + "/";
+    }
+    return str1;
   }
   
-  public qqt d()
+  public String a(String paramString1, String paramString2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    String str = a(paramString1);
+    paramString1 = str;
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1 = str + paramString2 + "/";
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
+    return paramString1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
+  
+  public void a(biht parambiht)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambiht);
+  }
+  
+  public void a(String paramString, bihu parambihu) {}
+  
+  public void a(String paramString, BaseResData paramBaseResData) {}
+  
+  public void a(String[] paramArrayOfString) {}
+  
+  public boolean a(String paramString, BaseResData paramBaseResData)
+  {
+    return a(paramString, paramBaseResData, 0);
+  }
+  
+  public boolean a(String paramString, BaseResData paramBaseResData, int paramInt)
+  {
+    boolean bool = false;
+    Object localObject = paramBaseResData.id;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide: id = " + (String)localObject);
     }
-    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout2.setOrientation(1);
-    localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    pez.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841684));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
-    }
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    String str = a(paramString, (String)localObject);
+    if (bdxx.a(new File(str)))
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject = new LinearLayout.LayoutParams(-1, afur.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((LinearLayout.LayoutParams)localObject).leftMargin = afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((LinearLayout.LayoutParams)localObject).rightMargin = afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = afur.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout.setPadding(0, 0, 0, 0);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(11);
-      ((ComponentContentSmall)this.jdField_a_of_type_Qqs).setId(1);
-      ((ComponentContentSmall)this.jdField_a_of_type_Qqs).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout.addView((ComponentContentSmall)this.jdField_a_of_type_Qqs);
-      localObject = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject).addRule(9);
-      ((RelativeLayout.LayoutParams)localObject).addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Qqs).getId());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localRelativeLayout.setOnClickListener(new qto(this));
-      localRelativeLayout.setDuplicateParentStateEnabled(true);
-      localRelativeLayout.setOnTouchListener(new qtp(this, localRelativeLayout));
-      localLinearLayout2.setOnTouchListener(new qtq(this, localRelativeLayout));
-      pez.a(localRelativeLayout, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842829));
-      localLinearLayout2.addView(localRelativeLayout);
-      localLinearLayout2.setDuplicateParentStateEnabled(true);
-      localLinearLayout2.setOnTouchListener(new qtr(this, localLinearLayout2));
-      localLinearLayout1.setOnTouchListener(new qts(this, localLinearLayout2, localRelativeLayout));
-    }
-    localLinearLayout2.setOnClickListener(new qtt(this));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (localLinearLayout2.getChildCount() > 0) {
-      localLinearLayout1.addView(localLinearLayout2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
-      if ((this.jdField_a_of_type_JavaLangObject instanceof pxk))
-      {
-        pxk localpxk = (pxk)this.jdField_a_of_type_JavaLangObject;
-        if (localpxk.a() != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Snh.a(localpxk.e(), localpxk.a().mArticleID));
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("readinjoy", 4, "isAnimationPackageValid");
       }
+      bool = true;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    do
+    {
+      do
+      {
+        return bool;
+        if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString + "_" + (String)localObject) == null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("readinjoy", 4, "mDownloadingRes _");
+      return false;
+      if (!(paramBaseResData instanceof MaterialData)) {
+        bhmi.a(str);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString + "_" + (String)localObject, paramBaseResData.url);
+      str = str + ".zip";
+      File localFile = new File(str);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("resId", (String)localObject);
+      localBundle.putString("prefix", paramString);
+      localObject = new bihu(paramBaseResData.url, localFile);
+      ((bihu)localObject).b = paramInt;
+      ((bihu)localObject).d = 60L;
+      this.jdField_a_of_type_Bihz.a((bihu)localObject, new qto(this, str, paramBaseResData, paramString), localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.d("readinjoy", 4, "startDownload");
+    return false;
   }
   
-  public qqt p()
+  public void b(biht parambiht)
   {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Qrb);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_Qrb);
-    }
-    return this;
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parambiht);
+  }
+  
+  public abstract void b(String paramString, BaseResData paramBaseResData);
+  
+  public abstract boolean b(String paramString, BaseResData paramBaseResData);
+  
+  public abstract boolean c(String paramString, BaseResData paramBaseResData);
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    a();
   }
 }
 

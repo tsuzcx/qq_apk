@@ -1,59 +1,20 @@
-import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qnv
-  extends DefaultPTSLiteEventListener
+public class qnv
+  implements View.OnClickListener
 {
-  qnv(qnu paramqnu) {}
+  public qnv(ComponentComment paramComponentComment, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
+  public void onClick(View paramView)
   {
-    qnu.a(this.a, paramString, paramHashMap, paramView, "[onExposureTriggered]");
-  }
-  
-  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
-  {
-    qnu.a(this.a, paramString, paramHashMap, paramView, "[onSwiperItemExposureTriggered]");
-    if (qnu.a(this.a) == null)
-    {
-      QLog.e("PTSLiteItemViewBuilder", 1, "[onSwiperDragTriggered], ptsLiteSwiperEventDispatcher is null.");
-      return;
-    }
-    qnu.a(this.a).a(paramString, paramHashMap, paramView);
-  }
-  
-  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
-  {
-    qnu.a(this.a, paramString, paramHashMap, paramView, "[onSwiperItemExposureTriggered]");
-    if (qnu.a(this.a) == null)
-    {
-      QLog.e("PTSLiteItemViewBuilder", 1, "[onSwiperItemExposureTriggered], ptsLiteSwiperEventDispatcher is null.");
-      return;
-    }
-    qnu.a(this.a).a(paramString, paramHashMap, paramView, pha.e(qnu.a(this.a).a()));
-  }
-  
-  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
-  {
-    qnu.a(this.a, paramString, paramHashMap, paramView, "[onTapEventTriggered]");
-    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString)) || (qnu.a(this.a) == null)) {
-      return;
-    }
-    if ((ArticleInfo)qnu.a(this.a).get(paramString) == null)
-    {
-      QLog.i("PTSLiteItemViewBuilder", 1, "[onTapEventTriggered], articleInfo is null.");
-      return;
-    }
-    if (qnu.a(this.a) == null)
-    {
-      QLog.i("PTSLiteItemViewBuilder", 1, "[onTapEventTriggered], ptsLiteTapEventDispatcher is null.");
-      return;
-    }
-    qnu.a(this.a).a(paramString, paramHashMap, paramView);
+    String str = oyu.g + bhkv.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), str);
+    psx.a(1, ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class avwm
-  implements DialogInterface.OnClickListener
+public abstract interface avwm
 {
-  avwm(avwk paramavwk, bgpa parambgpa) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bgpa.dismiss();
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aypj;
+import azic;
 import com.tencent.qphone.base.util.QLog;
 
 public class OnlineStatusManager$3
   implements Runnable
 {
-  public OnlineStatusManager$3(aypj paramaypj) {}
+  public OnlineStatusManager$3(azic paramazic) {}
   
   public void run()
   {
-    aypj.a(this.this$0, true);
+    azic.a(this.this$0, true);
     QLog.d("OnlineStatusManager", 1, "cancel background runnable");
   }
 }

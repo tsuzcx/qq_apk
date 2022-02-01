@@ -1,127 +1,88 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame.2.1;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
-import mqq.util.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class amds
-  extends anmu
+public class amds
+  implements View.OnClickListener
 {
-  WeakReference<amdl> a;
+  public amds(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  amds(amdl paramamdl)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramamdl);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    amdl localamdl;
-    if (paramBoolean)
+    QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick");
+    amfg localamfg = (amfg)paramView.getTag();
+    Object localObject;
+    boolean bool;
+    if ((localamfg != null) && (localamfg.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localamfg.jdField_a_of_type_JavaLangObject != null))
     {
-      localamdl = (amdl)this.a.get();
-      if (localamdl == null) {
-        break label71;
+      localObject = "";
+      if (!(localamfg.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label263;
       }
-      paramString = amdl.a(localamdl, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
-      }
-      if (paramString != null) {
-        amdl.a(localamdl, paramString);
-      }
-    }
-    else
-    {
-      return;
-    }
-    amdl.a(localamdl);
-    return;
-    label71:
-    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = (amdl)this.a.get();
-      if (paramBundle != null)
+      localObject = ((Friends)localamfg.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localamfg.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
+        if (!localamfg.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label339;
         }
-        amdl.a(paramBundle);
+        bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localamfg.jdField_a_of_type_JavaLangString, (String)localObject, 4, "-1");
+        label108:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick = " + bool);
+        }
+        if (localamfg.jdField_a_of_type_Long == 1007L) {
+          this.a.jdField_a_of_type_Bfod.b();
+        }
+        localamfg.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.c)
+        {
+          if (!localamfg.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label362;
+          }
+          paramView.setContentDescription(localamfg.d.getText().toString() + anzj.a(2131703843));
+        }
       }
     }
-    else
+    for (;;)
     {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
-    }
-    if (paramBoolean)
-    {
-      paramList = (amdl)this.a.get();
-      if (paramList != null) {
-        amdl.a(paramList);
+      this.a.f();
+      if (AppSetting.c) {
+        paramView.postDelayed(new FriendTeamListInnerFrame.2.1(this, paramView), 2000L);
       }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
-    }
-    if (paramBoolean)
-    {
-      paramList = (amdl)this.a.get();
-      if (paramList != null) {
-        amdl.a(paramList);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      amdl localamdl = (amdl)this.a.get();
-      if (localamdl == null) {
-        break label60;
-      }
-      if (amdl.a(localamdl) != null)
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label263:
+        if ((localamfg.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+        {
+          localObject = ((PhoneContact)localamfg.jdField_a_of_type_JavaLangObject).name;
+          break;
         }
-        localamdl.notifyDataSetChanged();
-        amdl.a(localamdl).postDelayed(localamdl.a, 1600L);
+        if (!(localamfg.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
+          break;
+        }
+        localObject = (RelationTroopEntity)localamfg.jdField_a_of_type_JavaLangObject;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f(((RelationTroopEntity)localObject).troopInfo.troopuin);
+        this.a.jdField_a_of_type_Bfod.d();
       }
+      label339:
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localamfg.jdField_a_of_type_JavaLangString, (String)localObject, 0, "-1");
+      break label108;
+      label362:
+      paramView.setContentDescription(localamfg.d.getText().toString() + anzj.a(2131703842));
     }
-    return;
-    label60:
-    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
   }
 }
 

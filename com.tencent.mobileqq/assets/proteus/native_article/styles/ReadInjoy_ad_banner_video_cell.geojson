@@ -291,12 +291,10 @@
                                     "value": "14"
                                 },
                                 "width": {
-                                    "type": "relative",
-                                    "value": "36"
+                                    "type": "wrap_content"
                                 },
                                 "attributes": {
                                     "setBackgroundColorString:": "#4d000000",
-                                    "setFrameString:": "-1",
                                     "setText:": "$dislike_text_ios",
                                     "setTextColorString:": "#FFFFFF",
                                     "setFontSizeString:": "11",

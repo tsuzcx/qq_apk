@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahsd;
+import aibr;
 
 public class AIOGalleryScene$28
   implements Runnable
 {
-  public AIOGalleryScene$28(ahsd paramahsd) {}
+  public AIOGalleryScene$28(aibr paramaibr) {}
   
   public void run()
   {
     if (this.this$0.n) {
       return;
     }
-    ahsd localahsd = this.this$0;
-    localahsd.h += this.this$0.i;
+    aibr localaibr = this.this$0;
+    localaibr.h += this.this$0.i;
     if (this.this$0.h > 99)
     {
       this.this$0.h = 99;

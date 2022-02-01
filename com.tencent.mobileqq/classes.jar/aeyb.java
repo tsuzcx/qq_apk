@@ -1,35 +1,69 @@
 import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aeyb
-  implements bkhw
+public class aeyb
+  extends aoib
 {
-  aeyb(aeya paramaeya) {}
+  public aeyb(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void b(boolean paramBoolean, bdxd parambdxd)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
+      QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() isSucc=" + paramBoolean);
+      if (parambdxd != null) {
+        QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
+      }
+    }
+    this.a.c();
+    Object localObject;
+    if (paramBoolean)
+    {
+      this.a.a(2131718409, 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
+      }
+      bdws.b(this.a.app);
+      bdws.a(this.a.app);
+      bdws.c(this.a.app);
+      bdws.d(this.a.app);
+      localObject = new Intent(this.a, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
+      ((Intent)localObject).setFlags(67108864);
+      this.a.startActivity((Intent)localObject);
+      this.a.finish();
     }
     for (;;)
     {
-      this.a.a.jdField_a_of_type_Bkho.dismiss();
-      return;
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
-      abdo.a("share_success");
-      this.a.a.u();
-      continue;
-      if (bljl.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
-      {
-        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131298998);
-        QQToast.a(this.a.a, 2, this.a.a.getString(2131691987), 1).b(paramInt);
-        abdo.a("favorite_success");
+      if ((parambdxd != null) && (QLog.isColorLevel())) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + parambdxd.jdField_a_of_type_JavaLangString + "...errorType = " + parambdxd.jdField_a_of_type_Int);
       }
-      bljv.a(null, 65, 7);
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+      return;
+      if (parambdxd != null) {
+        switch (parambdxd.jdField_a_of_type_Int)
+        {
+        default: 
+          this.a.a(2131718400, 0);
+          break;
+        case 1002: 
+          bdwt.a(this.a.app, this.a);
+          break;
+        case 1003: 
+          this.a.a(2131718401, 0);
+          break;
+        case 1004: 
+          String str = parambdxd.jdField_a_of_type_JavaLangString;
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            localObject = this.a.getString(2131718402);
+          }
+          this.a.a((String)localObject, 0);
+        }
+      }
     }
   }
 }

@@ -1,16 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afit
-  extends bdzm
+  extends BroadcastReceiver
 {
-  public afit(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public afit(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSetting2Activity", 1, "bindMiBaoReceiver onReceive mIsBindMb：" + QQSettingSettingActivity.a(this.a));
+    }
+    if (QQSettingSettingActivity.a(this.a)) {
+      bdll.b(this.a.app, "dc00898", "", "", "0X800B312", "0X800B312", 0, 0, "", "", "", "");
     }
   }
 }

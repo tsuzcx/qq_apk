@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import afyl;
+import agif;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -20,12 +20,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import baps;
-import bapt;
-import bapu;
-import bclx;
-import bduk;
+import anzj;
+import bbil;
+import bbim;
+import bbin;
+import bdep;
+import bete;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class GuideVideoView
   extends LinearLayout
-  implements afyl, View.OnClickListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements agif, View.OnClickListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
   private int jdField_a_of_type_Int = -1;
   private View jdField_a_of_type_AndroidViewView;
@@ -59,9 +59,9 @@ public class GuideVideoView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private baps jdField_a_of_type_Baps;
-  private bapt jdField_a_of_type_Bapt;
-  private bapu jdField_a_of_type_Bapu;
+  private bbil jdField_a_of_type_Bbil;
+  private bbim jdField_a_of_type_Bbim;
+  private bbin jdField_a_of_type_Bbin;
   private FadedButton jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFadedButton;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
@@ -115,7 +115,7 @@ public class GuideVideoView
     }
   }
   
-  public void a(View paramView, bduk parambduk, int paramInt1, int paramInt2)
+  public void a(View paramView, bete parambete, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "handleMessage");
@@ -125,14 +125,14 @@ public class GuideVideoView
   public void b()
   {
     Object localObject1 = new LinearLayout.LayoutParams(-1, -1);
-    int i = bclx.a(getContext()) - bclx.a(95.0F) * 2;
+    int i = bdep.a(getContext()) - bdep.a(95.0F) * 2;
     double d1 = 0.0D;
     if (Double.isNaN(0.0D)) {
       d1 = 0.6D;
     }
     int m = (int)(d1 * i);
-    int n = (bclx.jdField_a_of_type_Int - m) / 2;
-    setPadding(n, bclx.a(95.0F), n, 0);
+    int n = (bdep.jdField_a_of_type_Int - m) / 2;
+    setPadding(n, bdep.a(95.0F), n, 0);
     setOrientation(1);
     setLayoutParams((ViewGroup.LayoutParams)localObject1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
@@ -151,14 +151,14 @@ public class GuideVideoView
     ((LinearLayout.LayoutParams)localObject1).topMargin = ((int)(i * 0.01D));
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131704214));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131704321));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFadedButton = new FadedButton(getContext());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130845924);
-    localObject1 = new LinearLayout.LayoutParams(bclx.a(40.0F), bclx.a(40.0F));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130845939);
+    localObject1 = new LinearLayout.LayoutParams(bdep.a(40.0F), bdep.a(40.0F));
     ((LinearLayout.LayoutParams)localObject1).gravity = 1;
     ((LinearLayout.LayoutParams)localObject1).topMargin = 16;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFadedButton.setLayoutParams((ViewGroup.LayoutParams)localObject1);
@@ -258,8 +258,8 @@ public class GuideVideoView
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFadedButton) {
-      if (this.jdField_a_of_type_Baps != null) {
-        this.jdField_a_of_type_Baps.a();
+      if (this.jdField_a_of_type_Bbil != null) {
+        this.jdField_a_of_type_Bbil.a();
       }
     }
     for (;;)
@@ -291,15 +291,15 @@ public class GuideVideoView
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Bapt != null) {
-      this.jdField_a_of_type_Bapt.a();
+    if (this.jdField_a_of_type_Bbim != null) {
+      this.jdField_a_of_type_Bbim.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bapu != null) {
-      this.jdField_a_of_type_Bapu.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_Bbin != null) {
+      this.jdField_a_of_type_Bbin.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -358,19 +358,19 @@ public class GuideVideoView
     }
   }
   
-  public void setOnCloseListener(baps parambaps)
+  public void setOnCloseListener(bbil parambbil)
   {
-    this.jdField_a_of_type_Baps = parambaps;
+    this.jdField_a_of_type_Bbil = parambbil;
   }
   
-  public void setOnCompleteListener(bapt parambapt)
+  public void setOnCompleteListener(bbim parambbim)
   {
-    this.jdField_a_of_type_Bapt = parambapt;
+    this.jdField_a_of_type_Bbim = parambbim;
   }
   
-  public void setOnErrorListener(bapu parambapu)
+  public void setOnErrorListener(bbin parambbin)
   {
-    this.jdField_a_of_type_Bapu = parambapu;
+    this.jdField_a_of_type_Bbin = parambbin;
   }
 }
 

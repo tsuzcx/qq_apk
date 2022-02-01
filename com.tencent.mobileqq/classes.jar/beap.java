@@ -1,94 +1,74 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class beap
 {
-  public static int a(String paramString1, String paramString2)
+  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
   {
-    Object localObject = null;
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {
-      return 1;
-    }
-    if (!atwl.a(paramString1)) {
-      return 2;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString1 = new FileInputStream(paramString1);
-      }
-      catch (IOException paramString1)
-      {
-        paramString1 = null;
-        paramString2 = str;
-        continue;
-      }
-      try
-      {
-        paramString2 = new FileOutputStream(paramString2);
-        try
-        {
-          byte[] arrayOfByte = new byte[1024];
-          int i = paramString1.read(arrayOfByte);
-          if (i > 0)
-          {
-            paramString2.write(arrayOfByte, 0, i);
-            continue;
-            if (paramString2 == null) {}
-          }
-        }
-        catch (IOException localIOException)
-        {
-          str = paramString2;
-          paramString2 = paramString1;
-          paramString1 = str;
-        }
-      }
-      catch (IOException paramString2)
-      {
-        str = null;
-        paramString2 = paramString1;
-        paramString1 = str;
-        continue;
-      }
-      try
-      {
-        paramString2.close();
-        if (paramString1 != null) {
-          paramString1.close();
-        }
-      }
-      catch (Exception paramString1)
-      {
-        continue;
-      }
-      return 3;
-      paramString1.close();
-      try
-      {
-        paramString2.close();
-        return 0;
-      }
-      catch (IOException paramString1)
-      {
-        paramString1 = paramString2;
-        paramString2 = str;
-      }
-    }
+    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.fileName = paramForwardFileInfo.d();
+    localFileManagerEntity.nFileType = aunj.a(localFileManagerEntity.fileName);
+    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
+    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
+    return localFileManagerEntity;
   }
   
-  public static String a(String paramString)
+  public static ForwardFileInfo a(String paramString)
   {
-    if (paramString == null) {
-      return null;
+    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+    localForwardFileInfo.d(9);
+    localForwardFileInfo.b(10001);
+    localForwardFileInfo.d(paramString);
+    localForwardFileInfo.b(aunj.a().longValue());
+    return localForwardFileInfo;
+  }
+  
+  public static String a(int paramInt)
+  {
+    String str = anzj.a(2131713596);
+    if (paramInt == 3) {
+      str = "word";
     }
-    int i = paramString.lastIndexOf(".");
-    if (i >= 0) {
-      return paramString.substring(i);
+    do
+    {
+      return str;
+      if (paramInt == 6) {
+        return "excel";
+      }
+      if (paramInt == 7) {
+        return "ppt";
+      }
+    } while (paramInt != 9);
+    return "pdf";
+  }
+  
+  public static void a(Activity paramActivity, ForwardFileInfo paramForwardFileInfo, Bundle paramBundle)
+  {
+    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
+    if (paramForwardFileInfo != null) {
+      localIntent.putExtra("fileinfo", paramForwardFileInfo);
     }
-    return "";
+    if (paramBundle != null) {
+      localIntent.putExtra("file_browser_extra_params", paramBundle);
+    }
+    paramActivity.startActivityForResult(localIntent, 102);
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    a(paramActivity, paramString, false);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isMiniProgram", paramBoolean);
+    a(paramActivity, paramString, localBundle);
   }
 }
 

@@ -1,13 +1,27 @@
+import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 class andh
-  extends andn
+  implements anps
 {
-  andh(andf paramandf) {}
+  andh(ande paramande) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    anpq.b(ande.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!ande.c(this.a)))
+      {
+        ande.a(this.a, true);
+        ande.c(this.a);
+      }
+    }
+    while (localActivity == null) {
+      return;
+    }
+    localActivity.finish();
   }
 }
 

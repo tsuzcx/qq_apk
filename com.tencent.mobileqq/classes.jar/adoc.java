@@ -1,10 +1,25 @@
-import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import org.json.JSONObject;
 
 public class adoc
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  extends adnc
 {
-  public adoc(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 7: 
+      SosoInterface.a(new adof(paramadmy, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
+    }
+    for (;;)
+    {
+      return true;
+      SosoInterface.a(new adoe(paramadmy, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
+    }
+  }
 }
 
 

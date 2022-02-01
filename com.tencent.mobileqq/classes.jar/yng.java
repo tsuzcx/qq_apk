@@ -1,8 +1,13 @@
 public abstract interface yng
+  extends ymc<ymt>
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void a(String paramString);
   
-  public abstract void i();
+  public abstract void a(ynv paramynv);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void f();
 }
 
 

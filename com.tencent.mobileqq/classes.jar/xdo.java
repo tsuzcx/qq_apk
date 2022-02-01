@@ -1,17 +1,76 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xdo
-  extends xcm
+public class xdo
+  extends wpa<xez>
 {
-  xdo(xcu paramxcu, boolean paramBoolean1, boolean paramBoolean2, xed paramxed)
+  public static final String a;
+  public List<String> a;
+  public int c;
+  
+  static
   {
-    super(paramBoolean1, paramBoolean2);
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.union_batch_vid_basic_info");
   }
   
-  public boolean b()
+  public xdo()
   {
-    this.jdField_a_of_type_Xed.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
-    return true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
+    try
+    {
+      localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
+      yuk.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", zow.a(localRspBatchGetVideoFullInfoList));
+      return new xez(localRspBatchGetVideoFullInfoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.b("Q.qqstory.net:GetVideoFullInfoListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!str.startsWith("Loading")) {}
+        for (boolean bool = true;; bool = false)
+        {
+          znw.a(bool);
+          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+          break;
+        }
+      }
+    }
+    localReqBatchGetVideoFullInfoList.source.set(this.c);
+    return localReqBatchGetVideoFullInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
   }
 }
 

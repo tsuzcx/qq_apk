@@ -1,26 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wlh
-  extends SimpleJob<Void>
+public abstract interface wlh
 {
-  public wlh(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = ((wpf)wpm.a(10)).a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.a.a(paramJobContext);
-    }
-    return null;
-  }
+  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 

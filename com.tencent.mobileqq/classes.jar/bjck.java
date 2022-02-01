@@ -1,8 +1,37 @@
-public abstract interface bjck
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+class bjck
+  implements DialogInterface.OnDismissListener
 {
-  public abstract boolean isMultiVideoMsgSupport(int paramInt);
+  private WeakReference<DialogInterface.OnDismissListener> a;
   
-  public abstract boolean isSharpVideoMsgSupport(int paramInt);
+  public bjck(DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    this.a = new WeakReference(paramOnDismissListener);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
+      }
+    }
+    do
+    {
+      return;
+      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+      if (localOnDismissListener != null)
+      {
+        localOnDismissListener.onDismiss(paramDialogInterface);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
+  }
 }
 
 

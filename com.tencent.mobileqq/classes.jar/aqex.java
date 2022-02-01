@@ -1,50 +1,12 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.ark.open.ArkAppReport;
 
-public class aqex
-  implements aqfb
+final class aqex
+  implements ArkEnvironmentManager.IDataReport
 {
-  public String a()
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692032);
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    boolean bool2 = true;
-    Context localContext = paramView.getContext();
-    boolean bool1;
-    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
-    {
-      bool1 = true;
-      if (!(localContext instanceof BaseActivity)) {
-        break label121;
-      }
-      if (((BaseActivity)localContext).isInMultiWindow()) {
-        break label116;
-      }
-      bool1 = bool2;
-    }
-    label116:
-    label121:
-    for (;;)
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bljn.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
-      bljv.b(paramView, 6, 0);
-      bljz.a(paramView.getCurrentAccountUin());
-      bcst.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-    }
+    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 

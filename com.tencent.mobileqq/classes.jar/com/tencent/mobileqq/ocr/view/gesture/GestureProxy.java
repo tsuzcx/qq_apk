@@ -2,10 +2,10 @@ package com.tencent.mobileqq.ocr.view.gesture;
 
 import android.view.MotionEvent;
 import android.view.View;
-import ayjg;
-import ayjl;
-import ayju;
-import ayjv;
+import azbz;
+import azce;
+import azcn;
+import azco;
 import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 import java.util.List;
 
@@ -17,12 +17,12 @@ public class GestureProxy
     super(paramView);
   }
   
-  public ayjl a()
+  public azce a()
   {
-    return this.jdField_a_of_type_Ayjl;
+    return this.jdField_a_of_type_Azce;
   }
   
-  public ayju a()
+  public azcn a()
   {
     return this.c;
   }
@@ -34,11 +34,11 @@ public class GestureProxy
   
   public void a()
   {
-    this.jdField_a_of_type_Ayjv.a(this.c);
-    this.jdField_a_of_type_Ayjv.a(this.d);
-    this.jdField_a_of_type_Ayjv.a(this.jdField_a_of_type_Ayju);
-    this.jdField_a_of_type_Ayjv.a(this.b);
-    if (this.jdField_a_of_type_Ayjv.b(this.c))
+    this.jdField_a_of_type_Azco.a(this.c);
+    this.jdField_a_of_type_Azco.a(this.d);
+    this.jdField_a_of_type_Azco.a(this.jdField_a_of_type_Azcn);
+    this.jdField_a_of_type_Azco.a(this.b);
+    if (this.jdField_a_of_type_Azco.b(this.c))
     {
       g();
       return;
@@ -46,14 +46,14 @@ public class GestureProxy
     f();
   }
   
-  public void a(ayjg paramayjg)
+  public void a(azbz paramazbz)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramayjg);
+    this.jdField_a_of_type_JavaUtilList.add(paramazbz);
   }
   
-  public void a(ayjl paramayjl)
+  public void a(azce paramazce)
   {
-    this.jdField_a_of_type_Ayjl = paramayjl;
+    this.jdField_a_of_type_Azce = paramazce;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -64,7 +64,7 @@ public class GestureProxy
   public void b()
   {
     e();
-    if (this.jdField_a_of_type_Ayjv.a(this.c))
+    if (this.jdField_a_of_type_Azco.a(this.c))
     {
       g();
       return;

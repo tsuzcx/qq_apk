@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.Comparator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afnf
-  implements Comparator<afna>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afnf(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public afnf(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public int a(afna paramafna1, afna paramafna2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return paramafna1.f.compareToIgnoreCase(paramafna2.f);
+    boolean bool = true;
+    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!bhnv.d(this.a.getActivity())))
+    {
+      this.a.a(2131694009, 0);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      if (!paramBoolean) {
+        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, bool);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool = false;
+      break;
+      if (paramCompoundButton == this.a.a.a()) {
+        this.a.app.f(paramBoolean, true);
+      } else if (paramCompoundButton == this.a.b.a()) {
+        this.a.app.g(paramBoolean, true);
+      }
+    }
   }
 }
 

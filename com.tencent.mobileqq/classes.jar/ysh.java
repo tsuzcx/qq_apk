@@ -1,123 +1,136 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ysh
-  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<ywk> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
+  protected StoryVideoItem a;
+  private Object a;
+  protected List<ynt> a;
+  public wkt a;
+  protected ysj a;
+  public ysk a;
+  protected ysl a;
+  protected List<wkq> b = new ArrayList();
   
-  public ysh(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public ysh()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Wkt = new wli();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = zby.b(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = zby.b(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Ysk = new ysk(this);
+    this.jdField_a_of_type_Wkt.a(1);
+    this.jdField_a_of_type_Wkt.a(this.jdField_a_of_type_Ysk);
   }
   
-  public ywk a(int paramInt)
+  private void a(StoryVideoItem paramStoryVideoItem, List<wkq> paramList, boolean paramBoolean)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ywk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<ywk> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    ywk localywk = new ywk();
-    this.jdField_a_of_type_JavaUtilList.add(localywk);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ysi localysi;
-    View localView1;
-    if (paramView == null)
+    if (paramBoolean)
     {
-      localysi = new ysi(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559316, null);
-      localysi.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131378663));
-      localysi.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131377160);
-      localView1.setTag(localysi);
+      wkq localwkq1 = wkq.a(paramStoryVideoItem.mVid, 1);
+      wkq localwkq2 = wkq.a(paramStoryVideoItem.mVid, 0);
+      paramStoryVideoItem = wkq.a(paramStoryVideoItem.mVid, 2);
+      localwkq1.g = 0;
+      localwkq2.g = 0;
+      paramStoryVideoItem.g = 1;
+      localwkq2.a.put("handleCallback", Boolean.valueOf(true));
+      paramList.add(localwkq1);
+      paramList.add(localwkq2);
+      paramList.add(paramStoryVideoItem);
+      return;
     }
-    ywk localywk;
+    paramList.add(wkq.a(paramStoryVideoItem.mVid, 2));
+    paramList.add(wkq.a(paramStoryVideoItem.mVid, 1));
+    paramStoryVideoItem = wkq.a(paramStoryVideoItem.mVid, 0);
+    paramStoryVideoItem.a.put("handleCallback", Boolean.valueOf(true));
+    paramList.add(paramStoryVideoItem);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Wkt.a();
+    this.jdField_a_of_type_Ysl = null;
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem, List<ynt> paramList)
+  {
+    if (paramStoryVideoItem == null) {
+      return;
+    }
+    paramList = new ArrayList(paramList);
+    Bosses.get().postJob(new ysi(this, "Q.qqstory.download.preload.FeedVideoPreloader", paramStoryVideoItem, paramList));
+  }
+  
+  public void a(ysl paramysl)
+  {
+    this.jdField_a_of_type_Ysl = paramysl;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return StoryVideoItem.isPlayable(paramString, false);
+  }
+  
+  protected void b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = new ArrayList();
     for (;;)
     {
-      localywk = a(paramInt);
-      if (localywk != null) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView1, paramViewGroup, getItemId(paramInt));
-      return localView1;
-      localysi = (ysi)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localywk.jdField_a_of_type_Int + localywk.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label272;
-      }
-      paramView = bggl.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841477, this.b, this.jdField_a_of_type_Int);
-      label180:
-      localView2 = paramView;
-      if (paramView != null)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localywk.jdField_a_of_type_Int + localywk.b, paramView);
-        localView2 = paramView;
+        ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+          break label290;
+        }
+        i = 0;
+        if (i >= ((List)localObject2).size()) {
+          break label285;
+        }
+        List localList = ((ynt)((List)localObject2).get(i)).d();
+        if ((localList.size() > 0) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
+        {
+          j = 1;
+          a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localArrayList, true);
+          if (j == 0)
+          {
+            i = 0;
+            j = i + 1;
+            if (j < ((List)localObject2).size())
+            {
+              ??? = ((ynt)((List)localObject2).get(j)).d();
+              if (((List)???).size() > 0) {
+                a((StoryVideoItem)((List)???).get(0), localArrayList, false);
+              }
+            }
+            i -= 1;
+            if ((i >= 0) && (i < ((List)localObject2).size()))
+            {
+              localObject2 = ((ynt)((List)localObject2).get(i)).d();
+              if (((List)localObject2).size() > 0) {
+                a((StoryVideoItem)((List)localObject2).get(0), localArrayList, false);
+              }
+            }
+            this.b = localArrayList;
+            this.jdField_a_of_type_Wkt.a(localArrayList, true);
+          }
+        }
+        else
+        {
+          i += 1;
+        }
       }
-    }
-    localysi.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0)
-    {
-      localysi.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702576));
-      label252:
-      if (paramInt != this.c) {
-        break label329;
-      }
-      localysi.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      break;
-      label272:
-      paramView = bggl.a(localywk.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break label180;
-      localysi.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702725) + localywk.c);
-      break label252;
-      label329:
-      localysi.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      continue;
+      label285:
+      int j = 0;
+      continue;
+      label290:
+      j = 0;
+      int i = 0;
     }
   }
 }

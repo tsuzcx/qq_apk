@@ -1,13 +1,9 @@
-public class lhh
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+
+public abstract interface lhh
 {
-  int a;
-  int b;
-  
-  public lhh(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
 }
 
 

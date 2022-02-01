@@ -9,7 +9,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class Submsgtype0x8a$MsgInfo
   extends MessageMicro<MsgInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 96 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_msg_seq", "uint64_msg_uid", "uint64_msg_time", "uint32_msg_random", "uint32_pkg_num", "uint32_pkg_index", "uint32_div_seq", "uint32_flag" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, MsgInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 96, 106 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_msg_seq", "uint64_msg_uid", "uint64_msg_time", "uint32_msg_random", "uint32_pkg_num", "uint32_pkg_index", "uint32_div_seq", "uint32_flag", "msg_wording_info" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, MsgInfo.class);
+  public Submsgtype0x8a.WithDrawWordingInfo msg_wording_info = new Submsgtype0x8a.WithDrawWordingInfo();
   public final PBUInt32Field uint32_div_seq = PBField.initUInt32(0);
   public final PBUInt32Field uint32_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_msg_random = PBField.initUInt32(0);

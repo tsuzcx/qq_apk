@@ -1,6 +1,49 @@
-public abstract interface ssq
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
+
+class ssq
 {
-  public abstract void a(boolean paramBoolean);
+  int a;
+  private int b;
+  private int c;
+  
+  public static ssq a(int paramInt, Object... paramVarArgs)
+  {
+    ssq localssq = new ssq();
+    localssq.a = paramInt;
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return localssq;
+    case 1: 
+    case 2: 
+      localssq.b = ((Integer)paramVarArgs[0]).intValue();
+      return localssq;
+    }
+    localssq.c = ((Integer)paramVarArgs[0]).intValue();
+    return localssq;
+  }
+  
+  public Object a()
+  {
+    switch (this.a)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new ssp(this.b);
+    case 2: 
+      return new ForegroundColorSpan(this.b);
+    case 5: 
+      return new StrikethroughSpan();
+    case 4: 
+      return new StyleSpan(this.c);
+    }
+    return new UnderlineSpan();
+  }
 }
 
 

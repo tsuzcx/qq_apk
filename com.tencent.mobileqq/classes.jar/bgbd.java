@@ -1,313 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.trooponline.data.TroopAllOnlineData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class bgbd
-  implements Manager
+class bgbd
+  implements aqxy
 {
-  protected long a;
-  protected QQAppInterface a;
-  private Map<String, bgbb> a;
-  private Map<String, TroopAllOnlineData> b = new ConcurrentHashMap();
+  bgbd(bgbc parambgbc) {}
   
-  public bgbd(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Int > 0)) {
-      return paramString.jdField_a_of_type_Int;
-    }
-    return 1;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public long a(String paramString)
-  {
-    paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.jdField_b_of_type_Long;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
+    if (bgbc.a(this.a) != null) {
+      bgbc.a(this.a).a(bgbc.b(this.a), bgbc.c(this.a), bgbc.a(this.a));
     }
   }
   
-  public String a(String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString))
+    switch (paramInt1)
     {
-      paramString = "";
-      return paramString;
     }
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(paramString);
-    if (localTroopInfo != null) {}
-    for (boolean bool = localTroopInfo.isKicked();; bool = true)
+    for (;;)
     {
-      if (bool) {
-        return "";
+      if (bgbc.a(this.a) != null) {
+        bgbc.a(this.a).a(paramInt1, paramInt2);
       }
-      paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      String str;
-      if (paramString != null) {
-        str = paramString.jdField_a_of_type_JavaLangString;
-      }
-      for (int i = paramString.jdField_b_of_type_Int;; i = 0)
+      if ((bgbc.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1)))
       {
-        if (str == null) {
-          return "";
+        bgbc.a(this.a).a(2);
+        if (bgbc.a(this.a) >= bgbc.a(this.a).a(2)) {
+          bgbc.c(this.a, bgbc.a(this.a).a(2) - 1);
         }
-        paramString = str;
-        if (localTroopInfo == null) {
-          break;
-        }
-        paramString = str;
-        if (localTroopInfo.wMemberNumClient <= 0) {
-          break;
-        }
-        paramString = str;
-        if (i <= localTroopInfo.wMemberNumClient) {
-          break;
-        }
-        paramString = str;
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        str = str.replace(String.valueOf(i), String.valueOf(localTroopInfo.wMemberNumClient));
-        paramString = str;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("TroopOnlineMemberManage", 2, String.format("getOnlineTip onlineCount: %s, memberNum: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(localTroopInfo.wMemberNumClient) }));
-        return str;
-        str = null;
       }
-    }
-  }
-  
-  public List<bgbc> a(String paramString)
-  {
-    paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
+      if (bgbc.b(this.a) != null) {
+        bgbc.b(this.a).a(paramInt1, paramInt2);
       }
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
       return;
+      bgbc.a(this.a, paramInt2);
+      continue;
+      bgbc.b(this.a, paramInt2);
+      continue;
+      bgbc.c(this.a, paramInt2);
     }
-    catch (Exception paramString)
-    {
-      QLog.i("TroopOnlineMemberManage", 1, "removeDetailOnlineData: e = " + paramString.toString());
-    }
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
-  {
-    int i = paramInt1;
-    if (paramInt1 <= 0) {
-      i = 10;
-    }
-    bgbb localbgbb2 = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-    bgbb localbgbb1 = localbgbb2;
-    if (localbgbb2 == null)
-    {
-      localbgbb1 = new bgbb();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localbgbb1);
-    }
-    if ((i != 4) || (!TextUtils.isEmpty(paramString2)))
-    {
-      localbgbb1.jdField_a_of_type_JavaLangString = paramString2;
-      localbgbb1.jdField_b_of_type_Int = paramInt3;
-    }
-    localbgbb1.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
-    if (paramInt2 != -1) {
-      localbgbb1.jdField_a_of_type_Int = paramInt2;
-    }
-  }
-  
-  public void a(String paramString, List<String> paramList, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 10;
-    }
-    TroopAllOnlineData localTroopAllOnlineData = new TroopAllOnlineData();
-    localTroopAllOnlineData.troopUin = paramString;
-    localTroopAllOnlineData.memberUinList = paramList;
-    localTroopAllOnlineData.nextReqTime = i;
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    paramString.persistOrReplace(localTroopAllOnlineData);
-    paramString.close();
-  }
-  
-  public void a(String paramString1, List<bgbc> paramList, int paramInt1, String paramString2, int paramInt2)
-  {
-    int i = paramInt1;
-    if (paramInt1 <= 0) {
-      i = 10;
-    }
-    bgbb localbgbb2 = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-    bgbb localbgbb1 = localbgbb2;
-    if (localbgbb2 == null)
-    {
-      localbgbb1 = new bgbb();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localbgbb1);
-    }
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      localbgbb1.jdField_a_of_type_JavaLangString = paramString2;
-      localbgbb1.jdField_b_of_type_Int = paramInt2;
-    }
-    if ((paramList != null) && (paramList.size() > 0)) {
-      localbgbb1.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    localbgbb1.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
-  }
-  
-  public int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (int i = paramString.jdField_b_of_type_Int;; i = 0) {
-      return i;
-    }
-  }
-  
-  public long b(String paramString)
-  {
-    paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.jdField_a_of_type_Long;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public List<String> b(String paramString)
-  {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    paramString = (TroopAllOnlineData)localEntityManager.find(TroopAllOnlineData.class, paramString);
-    localEntityManager.close();
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.memberUinList;
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      paramString = (bgbb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    } while (paramString == null);
-    paramString.jdField_a_of_type_JavaUtilList = null;
-    paramString.jdField_b_of_type_Long = NetConnInfoCenter.getServerTime();
-  }
-  
-  public void b(String paramString, List<String> paramList, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 10;
-    }
-    TroopAllOnlineData localTroopAllOnlineData2 = (TroopAllOnlineData)this.b.get(paramString);
-    TroopAllOnlineData localTroopAllOnlineData1 = localTroopAllOnlineData2;
-    if (localTroopAllOnlineData2 == null)
-    {
-      localTroopAllOnlineData1 = new TroopAllOnlineData();
-      this.b.put(paramString, localTroopAllOnlineData1);
-    }
-    localTroopAllOnlineData1.troopUin = paramString;
-    localTroopAllOnlineData1.memberUinList = paramList;
-    localTroopAllOnlineData1.nextReqTime = (NetConnInfoCenter.getServerTime() + i);
-  }
-  
-  public long c(String paramString)
-  {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    paramString = (TroopAllOnlineData)localEntityManager.find(TroopAllOnlineData.class, paramString);
-    localEntityManager.close();
-    if (paramString != null) {}
-    for (long l1 = paramString.nextReqTime;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public List<String> c(String paramString)
-  {
-    paramString = (TroopAllOnlineData)this.b.get(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.memberUinList;
-  }
-  
-  public long d(String paramString)
-  {
-    paramString = (TroopAllOnlineData)this.b.get(paramString);
-    if (paramString != null) {}
-    for (long l1 = paramString.nextReqTime;; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = NetConnInfoCenter.getServerTime();
-      }
-      return l2;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 

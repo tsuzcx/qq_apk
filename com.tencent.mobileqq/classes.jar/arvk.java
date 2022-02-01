@@ -1,320 +1,210 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Canvas;
+import android.os.Build.VERSION;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.View.OnTouchListener;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class arvk
-  implements bdvw
+  implements SurfaceHolder.Callback, arvi
 {
-  private arvi jdField_a_of_type_Arvi = new arvi();
-  private arvp jdField_a_of_type_Arvp = new arvp();
-  protected List<String> a;
+  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
+  private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
+  private arvj jdField_a_of_type_Arvj;
+  private volatile Object jdField_a_of_type_JavaLangObject;
+  private volatile ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile Object jdField_b_of_type_JavaLangObject;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public arvk()
+  public arvk(SurfaceView paramSurfaceView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(3);
+    this.jdField_a_of_type_AndroidViewSurfaceView = paramSurfaceView;
+    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotCacheDrawing(true);
+    this.jdField_a_of_type_AndroidViewSurfaceView.setDrawingCacheEnabled(false);
+    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotDraw(true);
+    this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
+    this.jdField_a_of_type_AndroidViewSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
   }
   
-  public static final arvk a()
+  private boolean a()
   {
-    return arvm.a();
+    c();
+    return (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock != null) && (this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_b_of_type_JavaLangObject != null);
   }
   
-  public static String a()
+  private Canvas b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(anhk.ba);
-    localStringBuilder.append("emoji");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("res");
-    localStringBuilder.append(File.separator);
-    return bhgg.a(localStringBuilder.toString());
-  }
-  
-  public static String a(int paramInt, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    switch (paramInt)
+    Object localObject2;
+    if (artl.a().a().b())
     {
+      localObject2 = this.jdField_a_of_type_AndroidViewSurfaceHolder.lockHardwareCanvas();
+      return localObject2;
     }
-    for (;;)
-    {
-      localStringBuilder.append(paramString);
-      return localStringBuilder.toString();
-      localStringBuilder.append("sysface_res/gif");
-      continue;
-      localStringBuilder.append("sysface_res/static");
-      continue;
-      localStringBuilder.append("emoji_res");
-    }
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      Object localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "/qq_emoticon_res");
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      localObject = ((File)localObject).getAbsolutePath() + File.separator;
-      return localObject;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      QLog.e("QQSysAndEmojiResMgr", 1, "npe:", localNullPointerException);
-    }
-    return "/qq_emoticon_res";
-  }
-  
-  protected int a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return 101;
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return 103;
-    }
-    File localFile = new File(paramString1);
-    if (!localFile.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQSysAndEmojiResMgr", 2, "verifyResMD5 file not exist!");
-      }
-      return 102;
-    }
-    StringBuilder localStringBuilder = null;
-    try
-    {
-      paramString1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString1));
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("verifyResMD5 configMd5:").append(paramString2).append(", calMd5:").append(paramString1);
-        QLog.d("QQSysAndEmojiResMgr", 2, localStringBuilder.toString());
-      }
-      if (paramString2.equalsIgnoreCase(paramString1)) {
-        return 100;
-      }
-    }
-    catch (UnsatisfiedLinkError paramString1)
-    {
-      for (;;)
-      {
-        try
-        {
-          paramString1 = bkcx.a(localFile);
-        }
-        catch (Exception paramString1)
-        {
-          paramString1 = localStringBuilder;
-        }
-        return 104;
-      }
-    }
-  }
-  
-  public QQSysAndEmojiResInfo a(int paramInt)
-  {
-    if (paramInt == 1) {}
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    e();
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaLangObject != null)) {}
     for (;;)
     {
       try
       {
-        localObject1 = this.jdField_a_of_type_Arvp;
-        return localObject1;
+        Canvas localCanvas = this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().lockHardwareCanvas();
+        localObject2 = localCanvas;
+        if (localCanvas != null) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        return null;
       }
-      finally {}
-      if (paramInt != 2) {
-        continue;
+      catch (Exception localException)
+      {
+        arwe.a("SurfaceDanmakuView", "Exception locking surface", localException);
       }
-      Object localObject1 = this.jdField_a_of_type_Arvi;
+      Object localObject1 = null;
     }
-    throw new IllegalArgumentException("not support such type:" + paramInt);
   }
   
-  protected List<arvl> a()
+  private void b(Canvas paramCanvas)
   {
-    aqsp localaqsp = (aqsp)aqlk.a().a(545);
-    ArrayList localArrayList = new ArrayList(3);
-    if ((!TextUtils.isEmpty(localaqsp.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localaqsp.b)) && (a(1, localaqsp.b))) {
-      localArrayList.add(new arvl(localaqsp.jdField_a_of_type_JavaLangString, localaqsp.b, 1));
+    if (artl.a().a().b()) {
+      this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
     }
-    if ((!TextUtils.isEmpty(localaqsp.c)) && (!TextUtils.isEmpty(localaqsp.d)) && (a(2, localaqsp.d))) {
-      localArrayList.add(new arvl(localaqsp.c, localaqsp.d, 2));
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().unlockCanvasAndPost(paramCanvas);
+    } while (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+  }
+  
+  private boolean b()
+  {
+    return (aruz.a()) && (((Build.VERSION.SDK_INT == 23) && (a())) || (artl.a().a().b()));
+  }
+  
+  private void c()
+  {
+    d();
+    e();
+  }
+  
+  private void d()
+  {
+    Object localObject = artl.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
+    if ((localObject instanceof ReentrantLock)) {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ((ReentrantLock)localObject);
     }
-    if ((!TextUtils.isEmpty(localaqsp.e)) && (!TextUtils.isEmpty(localaqsp.f)) && (a(3, localaqsp.f))) {
-      localArrayList.add(new arvl(localaqsp.e, localaqsp.f, 3));
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_JavaLangObject = artl.a().a().a(SurfaceView.class, "mDrawingStopped", this.jdField_a_of_type_AndroidViewSurfaceView);
+    this.jdField_b_of_type_JavaLangObject = artl.a().a().a(SurfaceView.class, "mWindow", this.jdField_a_of_type_AndroidViewSurfaceView);
+    if ((this.jdField_a_of_type_JavaLangObject instanceof Boolean)) {
+      this.jdField_a_of_type_Boolean = ((Boolean)this.jdField_a_of_type_JavaLangObject).booleanValue();
     }
-    return localArrayList;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_AndroidViewSurfaceView.getY();
+  }
+  
+  public Canvas a()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return b();
+    }
+    return this.jdField_a_of_type_AndroidViewSurfaceHolder.lockCanvas();
   }
   
   public void a()
   {
-    for (;;)
-    {
-      arvl localarvl;
-      try
-      {
-        Iterator localIterator = a().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localarvl = (arvl)localIterator.next();
-        String str = localarvl.a();
-        if (this.jdField_a_of_type_JavaUtilList.contains(str))
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("QQSysAndEmojiResMgr", 2, "alreary in download list!");
-          continue;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(str);
-      }
-      finally {}
-      a(localarvl);
-    }
-  }
-  
-  protected void a(arvl paramarvl)
-  {
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = this;
-    localbdvs.jdField_a_of_type_JavaLangString = paramarvl.jdField_a_of_type_JavaLangString;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = (a() + paramarvl.c);
-    localbdvs.b = bgnt.a(bdwu.a().a());
-    localbdvs.a(paramarvl);
+    ReentrantLock localReentrantLock = (ReentrantLock)artl.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
+    Surface localSurface = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().getSurface();
     try
     {
-      paramarvl = BaseApplicationImpl.getApplication().getRuntime();
-      if (QQAppInterface.class.isInstance(paramarvl)) {
-        ((QQAppInterface)paramarvl).getNetEngine(0).a(localbdvs);
+      Method localMethod = Surface.class.getDeclaredMethod("nativeRelease", new Class[] { Long.TYPE });
+      localMethod.setAccessible(true);
+      Field localField = Surface.class.getDeclaredField("mLockedObject");
+      localField.setAccessible(true);
+      Long localLong = (Long)localField.get(localSurface);
+      arwe.c("surface_lock", "SurfaceDanmakuView unlock lockObjectValue = " + localLong);
+      if (localLong.longValue() != 0L) {
+        localMethod.invoke(null, new Object[] { localLong });
       }
+      localField.setLong(localSurface, 0L);
+      arwe.b("surface_lock", "SurfaceDanmakuView unlock: release success");
       return;
     }
-    catch (Exception paramarvl) {}
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    catch (Exception localException)
     {
-      paramString = new File(paramString);
-      if (paramString.exists()) {
-        paramString.delete();
-      }
-    }
-  }
-  
-  protected boolean a(int paramInt, String paramString)
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("qq_emoticon_sp", 4).getString("md5_type_" + paramInt, "");
-    if (!str.equals(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSysAndEmojiResMgr", 2, new Object[] { "type:", Integer.valueOf(paramInt), " ,needDownload:", Boolean.valueOf(bool), " ,curr:", str, " ,new:", paramString });
-      }
-      return bool;
-    }
-  }
-  
-  protected boolean a(String paramString1, String paramString2)
-  {
-    try
-    {
-      nmk.a(new File(paramString1), paramString2);
-      return true;
-    }
-    catch (IOException paramString1)
-    {
-      QLog.e("QQSysAndEmojiResMgr", 1, "unzipFile error ", paramString1);
-    }
-    return false;
-  }
-  
-  protected void b()
-  {
-    QQSysAndEmojiResInfo.a(b());
-    this.jdField_a_of_type_Arvp.a();
-    this.jdField_a_of_type_Arvi.a();
-  }
-  
-  protected boolean b(int paramInt, String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qq_emoticon_sp", 4).edit();
-    localEditor.putString("md5_type_" + paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSysAndEmojiResMgr", 2, new Object[] { "saveResItem:", Integer.valueOf(paramInt), " ,md5:", paramString });
-    }
-    return localEditor.commit();
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    Object localObject = parambdwt.jdField_a_of_type_Bdws;
-    String str = ((bdws)localObject).c;
-    localObject = (arvl)((bdws)localObject).a();
-    if (localObject == null)
-    {
-      QLog.e("QQSysAndEmojiResMgr", 1, "DownloadResItem is null!");
+      arwe.a("surface_lock", "SurfaceDanmakuView unlock:release failed", localException);
       return;
     }
-    long l = System.currentTimeMillis();
-    int i;
-    if (parambdwt.jdField_a_of_type_Int == 0)
+    finally
     {
-      i = a(str, ((arvl)localObject).b);
-      if (i != 100) {
-        break label263;
-      }
-      if (a(str, b()))
+      arwe.c("surface_lock", "SurfaceDanmakuView unlock surfaceLock = " + localReentrantLock);
+      if ((localReentrantLock != null) && (localReentrantLock.isLocked()))
       {
-        b(((arvl)localObject).jdField_a_of_type_Int, ((arvl)localObject).b);
-        if (((arvl)localObject).jdField_a_of_type_Int != 1) {
-          break label223;
-        }
-        b();
-      }
-    }
-    label263:
-    for (;;)
-    {
-      a(str);
-      str = ((arvl)localObject).a();
-      this.jdField_a_of_type_JavaUtilList.remove(str);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQSysAndEmojiResMgr", 2, new Object[] { "onResp:", Integer.valueOf(parambdwt.jdField_a_of_type_Int), " ,type:", Integer.valueOf(((arvl)localObject).jdField_a_of_type_Int), " ,cost:", Long.valueOf(System.currentTimeMillis() - l), " ,signature:", str.substring(str.lastIndexOf(47)) });
-      return;
-      label223:
-      if (((arvl)localObject).jdField_a_of_type_Int == 2)
-      {
-        a(1).d();
-      }
-      else if (((arvl)localObject).jdField_a_of_type_Int == 3)
-      {
-        a(2).d();
-        continue;
-        QLog.e("QQSysAndEmojiResMgr", 1, new Object[] { "verifyResMD5 failed! ", Integer.valueOf(i) });
+        arwe.c("surface_lock", "SurfaceDanmakuView unlock");
+        localReentrantLock.unlock();
       }
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      b(paramCanvas);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
+  }
+  
+  public void a(View.OnTouchListener paramOnTouchListener)
+  {
+    this.jdField_a_of_type_AndroidViewSurfaceView.setOnTouchListener(paramOnTouchListener);
+  }
+  
+  public void a(arvj paramarvj)
+  {
+    this.jdField_a_of_type_Arvj = paramarvj;
+  }
+  
+  public void b() {}
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Arvj != null) {
+      this.jdField_a_of_type_Arvj.j();
+    }
+    arwe.c("SurfaceDanmakuView", "surfaceChanged, width = " + paramInt2 + ", height = " + paramInt3);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.jdField_a_of_type_Arvj != null) {
+      this.jdField_a_of_type_Arvj.i();
+    }
+    this.jdField_b_of_type_Boolean = b();
+    arwe.c("SurfaceDanmakuView", "surfaceCreated, isHardwareAccelerateEnable = " + this.jdField_b_of_type_Boolean);
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.jdField_a_of_type_Arvj != null) {
+      this.jdField_a_of_type_Arvj.k();
+    }
+    arwe.c("SurfaceDanmakuView", "surfaceDestroyed");
+  }
 }
 
 

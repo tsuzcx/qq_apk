@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.downloader;
 
-import atju;
-import atut;
+import aubo;
+import aumo;
 
 public class BaseDownloader$1
   implements Runnable
 {
-  public BaseDownloader$1(atju paramatju) {}
+  public BaseDownloader$1(aubo paramaubo) {}
   
   public void run()
   {
-    this.this$0.a = atut.a();
-    this.this$0.a(atju.a(this.this$0));
+    this.this$0.a = aumo.a();
+    this.this$0.a(aubo.a(this.this$0));
   }
 }
 

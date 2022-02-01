@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import bcst;
+import bdll;
 import java.util.List;
 
 class TroopAddFrdsInnerFrame$5
@@ -10,7 +10,7 @@ class TroopAddFrdsInnerFrame$5
   
   public void run()
   {
-    bcst.b(this.this$0.a.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_JavaUtilList.size()), "", "");
+    bdll.b(this.this$0.a.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_JavaUtilList.size()), "", "");
   }
 }
 

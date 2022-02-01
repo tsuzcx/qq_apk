@@ -1,34 +1,69 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.View;
+import java.util.ArrayList;
 
-public class aswl
+class aswl
+  implements atfb
 {
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, atmk paramatmk)
+  aswl(aswk paramaswk, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
+  
+  public int a()
   {
-    String str1 = paramFileManagerEntity.getFilePath();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FileViewerFacade", 2, "open[" + str1 + "]");
-    }
-    if ((str1 != null) && (str1.lastIndexOf(".rename") > 0))
-    {
-      String str3 = str1.replace(".rename", "");
-      String str2 = str3.substring(0, str3.lastIndexOf("."));
-      str3 = str3.substring(str3.lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
-      str2 = str2 + str3;
-      if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Rect a(int paramInt)
+  {
+    Rect localRect = new Rect(0, 0, 0, 0);
+    int i = a();
+    if (i > 1) {
+      if (paramInt == 0)
+      {
+        localRect.right = this.b;
+        localRect.left = (this.b * 2);
       }
-      atvb.a(paramActivity, paramActivity.getString(2131692493), 2131692480, new aswm(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramatmk));
-      return;
     }
-    if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
+    while (i != 1)
     {
-      atvb.a(paramActivity, paramActivity.getString(2131692493), 2131692460, new aswn(paramActivity, paramFileManagerEntity));
-      return;
+      return localRect;
+      if (paramInt == i - 1)
+      {
+        localRect.left = this.b;
+        localRect.right = (this.b * 2);
+        return localRect;
+      }
+      paramInt = this.b;
+      localRect.right = paramInt;
+      localRect.left = paramInt;
+      return localRect;
     }
-    atvo.b(paramActivity, paramFileManagerEntity.getFilePath());
+    paramInt = this.b * 2;
+    localRect.right = paramInt;
+    localRect.left = paramInt;
+    return localRect;
+  }
+  
+  public View a(int paramInt)
+  {
+    int j = a();
+    if (j <= b()) {}
+    for (int i = 2131561187;; i = 2131561188)
+    {
+      View localView = View.inflate(this.jdField_a_of_type_Aswk.itemView.getContext(), i, null);
+      aswk.a(this.jdField_a_of_type_Aswk, localView, (aswj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
+      aswk.a(this.jdField_a_of_type_Aswk, (aswj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
+      return localView;
+    }
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

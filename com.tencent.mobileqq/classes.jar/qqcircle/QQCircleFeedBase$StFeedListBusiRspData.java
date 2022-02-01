@@ -11,11 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class QQCircleFeedBase$StFeedListBusiRspData
   extends MessageMicro<StFeedListBusiRspData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56, 64, 74, 82, 88 }, new String[] { "exploredPageData", "schoolPageData", "campanyPageData", "cityPageData", "tagPageData", "followPageData", "NoUse", "opMask", "refreshAttachInfo", "gpsPageData", "rspTimestamp" }, new Object[] { null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0), "", null, Long.valueOf(0L) }, StFeedListBusiRspData.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56, 64, 74, 82, 88, 98 }, new String[] { "exploredPageData", "schoolPageData", "campanyPageData", "cityPageData", "tagPageData", "followPageData", "NoUse", "opMask", "refreshAttachInfo", "gpsPageData", "rspTimestamp", "fashionCopyPageData" }, new Object[] { null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0), "", null, Long.valueOf(0L), null }, StFeedListBusiRspData.class);
   public final PBRepeatField<Integer> NoUse = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public QQCircleFeedBase.StCampanyPageData campanyPageData = new QQCircleFeedBase.StCampanyPageData();
   public QQCircleFeedBase.StCityPageData cityPageData = new QQCircleFeedBase.StCityPageData();
   public QQCircleFeedBase.StExplorePageData exploredPageData = new QQCircleFeedBase.StExplorePageData();
+  public QQCircleFeedBase.StFashionCopyPageData fashionCopyPageData = new QQCircleFeedBase.StFashionCopyPageData();
   public QQCircleFeedBase.StFollowPageData followPageData = new QQCircleFeedBase.StFollowPageData();
   public QQCircleFeedBase.StGpsPageData gpsPageData = new QQCircleFeedBase.StGpsPageData();
   public final PBRepeatField<Integer> opMask = PBField.initRepeat(PBUInt32Field.__repeatHelper__);

@@ -1,54 +1,21 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-
-public class blax
-  extends RemoteCommand
+class blax
+  implements bkdj
 {
-  private boolean a;
+  blax(blaw paramblaw) {}
   
-  public blax(String paramString, boolean paramBoolean)
+  public boolean isMultiVideoMsgSupport(int paramInt)
   {
-    super(paramString);
-    this.a = paramBoolean;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = PluginCommunicationHandler.getInstance();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.register(new blax("qqcomicemoticonipccmd", false));
-    }
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
-      }
-    }
-    do
+    if (paramInt - 32 == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
-      {
-        return null;
-        localObject = (QQAppInterface)localObject;
-      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
-      localObject = (blav)((QQAppInterface)localObject).getManager(147);
-    } while (localObject == null);
-    ((blav)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
-    return null;
+      bkdp.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      return bool;
+    }
   }
   
-  public boolean isSynchronized()
+  public boolean isSharpVideoMsgSupport(int paramInt)
   {
-    return this.a;
+    return false;
   }
 }
 

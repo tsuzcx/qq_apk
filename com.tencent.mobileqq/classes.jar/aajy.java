@@ -1,18 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-
-public class aajy
-  implements View.OnTouchListener
+public abstract interface aajy
 {
-  public aajy(VideoPlayerView paramVideoPlayerView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    VideoPlayerView.a(this.a);
-    return false;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

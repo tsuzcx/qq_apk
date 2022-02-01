@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bgmg;
+import bhmi;
 import java.io.File;
 
 class AEEditorFilterControlPanel$4
@@ -13,7 +13,7 @@ class AEEditorFilterControlPanel$4
     Object localObject = new File(this.jdField_a_of_type_JavaLangString);
     if (((File)localObject).exists())
     {
-      localObject = bgmg.a((File)localObject);
+      localObject = bhmi.a((File)localObject);
       localObject = AEEditorFilterControlPanel.a(this.this$0, (String)localObject);
       if (localObject != null)
       {

@@ -1,13 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
 class axqj
-  extends RecyclerView.ViewHolder
+  implements ault
 {
-  public axqj(View paramView)
+  axqj(axqb paramaxqb, axpw paramaxpw) {}
+  
+  public void a(int paramInt)
   {
-    super(paramView);
+    if ((this.jdField_a_of_type_Axpw != null) && (this.jdField_a_of_type_Axpw.a != null))
+    {
+      String str = this.jdField_a_of_type_Axpw.a.a();
+      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
+      if ((localaxpx != null) && (!localaxpx.a))
+      {
+        localaxpx.c = paramInt;
+        this.jdField_a_of_type_Axqb.a(str, localaxpx);
+        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt);
+      }
+    }
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    axqb.a(this.jdField_a_of_type_Axqb, this.jdField_a_of_type_Axpw, paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

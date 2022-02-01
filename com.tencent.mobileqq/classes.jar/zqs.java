@@ -1,21 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface zqs
+final class zqs
+  extends zqh
 {
-  public abstract void a(int paramInt);
+  zqs(zqh paramzqh, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public abstract void a(View paramView, float paramFloat);
+  public void onFailure(String paramString)
+  {
+    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
+    this.jdField_a_of_type_Zqh.onFailure(paramString);
+    yup.a("music_composite", "music_clip", 0, 1, new String[0]);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
+  }
   
-  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
+  }
   
-  public abstract void a(View paramView, zqp paramzqp);
-  
-  public abstract boolean a(View paramView);
-  
-  public abstract boolean a(View paramView, zqv paramzqv, MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(View paramView);
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    yup.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
+  }
 }
 
 

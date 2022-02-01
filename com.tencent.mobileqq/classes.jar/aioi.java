@@ -1,14 +1,17 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aioi
+  extends anyu
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  WeakReference<aioj> jdField_a_of_type_JavaLangRefWeakReference;
+  aioi(ainh paramainh, ImageView paramImageView) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Ainh.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(aoot.a(this.jdField_a_of_type_Ainh.a, paramString, (byte)3));
+    }
+  }
 }
 
 

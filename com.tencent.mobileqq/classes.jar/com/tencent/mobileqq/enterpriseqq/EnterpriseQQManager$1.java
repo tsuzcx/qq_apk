@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import asfi;
-import asfk;
+import asuw;
+import asuy;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,33 +9,33 @@ import java.util.Iterator;
 public class EnterpriseQQManager$1
   implements Runnable
 {
-  public EnterpriseQQManager$1(asfi paramasfi) {}
+  public EnterpriseQQManager$1(asuw paramasuw) {}
   
   public void run()
   {
-    if ((asfi.a(this.this$0) != null) && (asfi.a(this.this$0) != null))
+    if ((asuw.a(this.this$0) != null) && (asuw.a(this.this$0) != null))
     {
       SosoInterface.a(this.this$0.a);
       return;
     }
-    synchronized (asfi.a())
+    synchronized (asuw.a())
     {
-      if ((asfi.a(this.this$0) == null) || (asfi.a(this.this$0).size() <= 0)) {
+      if ((asuw.a(this.this$0) == null) || (asuw.a(this.this$0).size() <= 0)) {
         break label144;
       }
-      Iterator localIterator = asfi.a(this.this$0).iterator();
+      Iterator localIterator = asuw.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        asfk localasfk = (asfk)localIterator.next();
-        if (localasfk != null) {
-          this.this$0.a(asfi.a(this.this$0), asfi.a(this.this$0), localasfk.a, localasfk.b, false, 0.0D, 0.0D);
+        asuy localasuy = (asuy)localIterator.next();
+        if (localasuy != null) {
+          this.this$0.a(asuw.a(this.this$0), asuw.a(this.this$0), localasuy.a, localasuy.b, false, 0.0D, 0.0D);
         }
       }
     }
-    asfi.a(this.this$0).clear();
+    asuw.a(this.this$0).clear();
     label144:
-    asfi.a(this.this$0, null);
-    asfi.a(this.this$0, null);
+    asuw.a(this.this$0, null);
+    asuw.a(this.this$0, null);
   }
 }
 

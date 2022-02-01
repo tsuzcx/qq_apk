@@ -1,124 +1,61 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
 
 class almr
-  implements INetInfoHandler
+  implements URLDrawable.URLDrawableListener
 {
-  almr(almq paramalmq) {}
+  almr(almq paramalmq, almm paramalmm, almn paramalmn) {}
   
-  public void onNetMobile2None()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    boolean bool = true;
-    synchronized (this.a)
-    {
-      if (almq.a(this.a) == null) {
-        return;
-      }
-      if (almq.a(this.a).a == null) {
-        return;
-      }
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load failed.");
+    paramURLDrawable = null;
+    if (paramThrowable != null) {
+      paramURLDrawable = paramThrowable.getMessage();
     }
-    almq localalmq2 = this.a;
-    if (!almq.a(this.a).c) {}
-    for (;;)
+    try
     {
-      localalmq2.a(bool, true);
+      if (this.jdField_a_of_type_Almm != null) {
+        bnfx.a().a(2741, this.jdField_a_of_type_Almm.c, 100, "qboss load local photo fail throwable = " + paramURLDrawable + " url = " + this.jdField_a_of_type_Almn.a + " filePath = " + this.jdField_a_of_type_Almn.c);
+      }
+      this.jdField_a_of_type_Almq.e();
       return;
-      bool = false;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadFailed Exception");
     }
   }
   
-  public void onNetMobile2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(almq.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
-    {
-      if (almq.a(this.a) == null) {
-        return;
-      }
-      if (almq.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    almq.a(this.a);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onNetNone2Mobile(String arg1)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(almq.a(), 2, "onNetNone2Mobile ");
-    }
-    synchronized (this.a)
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load success. mLayout visiable:" + this.jdField_a_of_type_Almq.jdField_a_of_type_AndroidViewView.getVisibility());
+    try
     {
-      if (almq.a(this.a) == null) {
+      if ((this.jdField_a_of_type_Almq.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Almq.jdField_a_of_type_ComTencentImageURLImageView != null) && (paramURLDrawable != null))
+      {
+        this.jdField_a_of_type_Almq.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        almq.a(this.jdField_a_of_type_Almq, this.jdField_a_of_type_Almm);
+        this.jdField_a_of_type_Almq.a(this.jdField_a_of_type_Almm);
         return;
       }
-      if (almq.a(this.a).a == null) {
+      if (this.jdField_a_of_type_Almq.jdField_a_of_type_AndroidViewView != null)
+      {
+        this.jdField_a_of_type_Almq.jdField_a_of_type_AndroidViewView.setVisibility(8);
         return;
       }
     }
-    this.a.a(false, true);
-    almq.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(almq.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
+    catch (Exception paramURLDrawable)
     {
-      if (almq.a(this.a) == null) {
-        return;
-      }
-      if (almq.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    almq.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(almq.a(), 2, "onNetWifi2Mobile, need restore:  ");
-    }
-    synchronized (this.a)
-    {
-      if (almq.a(this.a) == null) {
-        return;
-      }
-      if (almq.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    almq.a(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    boolean bool = true;
-    synchronized (this.a)
-    {
-      if (almq.a(this.a) == null) {
-        return;
-      }
-      if (almq.a(this.a).a == null) {
-        return;
-      }
-    }
-    almq localalmq2 = this.a;
-    if (!almq.a(this.a).c) {}
-    for (;;)
-    {
-      localalmq2.a(bool, true);
-      return;
-      bool = false;
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadSuccessed Exception");
     }
   }
 }

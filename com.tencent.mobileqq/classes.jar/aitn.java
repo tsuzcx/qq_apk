@@ -1,21 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import org.json.JSONObject;
 
-public class aitn
-  implements aivy
+public abstract class aitn
 {
-  public aitn(SearchContactsFragment paramSearchContactsFragment) {}
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
-      this.a.a(paramString, false);
-    }
-  }
+  public abstract JSONObject a();
 }
 
 

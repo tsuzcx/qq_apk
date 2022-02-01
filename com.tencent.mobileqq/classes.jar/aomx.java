@@ -1,37 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 
 public class aomx
-  extends aojs
+  extends Handler
 {
-  public aomx(QQAppInterface paramQQAppInterface, Context paramContext)
+  public aomx(RegisterProxy paramRegisterProxy, Looper paramLooper)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramLooper);
   }
   
-  public boolean a()
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    try
+    switch (paramMessage.what)
     {
-      if ("openPlayer".equals(this.jdField_a_of_type_JavaUtilHashMap.get("action"))) {
-        bool = ujd.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-      }
-      return bool;
+    default: 
+      return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("WeishiPublicAccountVideoAction", 1, "doAction error: " + localException.getMessage());
-      a("WeishiPublicAccountVideoAction");
-    }
-    return false;
+    RegisterProxy.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomx
  * JD-Core Version:    0.7.0.1
  */

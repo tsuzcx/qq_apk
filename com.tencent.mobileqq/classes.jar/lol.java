@@ -1,353 +1,657 @@
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.initializer.PagInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 
-public final class lol
+public class lol
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static long jdField_a_of_type_Long;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static boolean jdField_a_of_type_Boolean;
-  private static Boolean b;
+  private static String jdField_a_of_type_JavaLangString = "hwcodec_new2";
+  private static String b = "sharp/hwcodec_new/";
+  private static String c = "sharp/hwcodec_new2/";
+  private static String d = "avc_decoder/";
+  private static String e = "avc_encoder/";
+  private static String f = "hevc_decoder/";
+  private static String g = "hevc_encoder/";
+  private static String h = "test/";
+  private static String i = "white_list/";
+  private static String j = "black_list/";
+  private static String k = "min_sdk";
+  private static String l = "min_version";
+  private static String m = "max_w";
+  private static String n = "max_h";
+  private static String o = "model";
+  private static String p = "product";
+  private static String q = "fingerprint";
+  private static String r = "sdk";
+  private static String s = "version";
+  private static String t = "codec";
+  private static String u = "disable_sdk";
+  private static String v = "async/";
+  private static String w = "min_sdk";
+  private static String x = "codec";
+  private static String y = "async_min_sdk";
+  private String A;
+  private String B;
+  private String C;
+  private String D;
+  private String E;
+  private String F;
+  private String G;
+  private String H;
+  private String I;
+  private String J;
+  private String K;
+  private String L;
+  private String M;
+  private String N;
+  private String O;
+  private String P;
+  private String Q;
+  private String R;
+  private String S;
+  private String T;
+  private String U;
+  private String V;
+  private String W;
+  private String X;
+  private String Y;
+  private String Z;
+  private int jdField_a_of_type_Int = 1;
+  private lkk jdField_a_of_type_Lkk;
+  private String aa;
+  private String ab;
+  private String ac;
+  private String ad;
+  private String ae;
+  private String af;
+  private String ag;
+  private String ah;
+  private String ai;
+  private String aj;
+  private String ak;
+  private String al;
+  private String am;
+  private String an;
+  private String ao;
+  private String ap;
+  private String aq = b;
+  private String z;
   
-  /* Error */
-  public static boolean a()
+  public lol(lkk paramlkk)
   {
-    // Byte code:
-    //   0: ldc 19
-    //   2: fstore_0
-    //   3: iconst_1
-    //   4: istore 8
-    //   6: getstatic 21	lol:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   9: ifnonnull +135 -> 144
-    //   12: invokestatic 26	bgln:b	()I
-    //   15: istore 7
-    //   17: ldc 28
-    //   19: invokestatic 33	msn:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore 9
-    //   24: ldc 34
-    //   26: fstore_2
-    //   27: ldc 35
-    //   29: fstore 5
-    //   31: aload 9
-    //   33: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   36: ifne +224 -> 260
-    //   39: aload 9
-    //   41: ldc 43
-    //   43: invokevirtual 49	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   46: astore 9
-    //   48: aload 9
-    //   50: arraylength
-    //   51: iconst_4
-    //   52: if_icmplt +208 -> 260
-    //   55: aload 9
-    //   57: iconst_0
-    //   58: aaload
-    //   59: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   62: fstore_1
-    //   63: fload_0
-    //   64: fstore_3
-    //   65: aload 9
-    //   67: iconst_1
-    //   68: aaload
-    //   69: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   72: fstore 4
-    //   74: fload_0
-    //   75: fstore_3
-    //   76: fload 4
-    //   78: fstore_2
-    //   79: aload 9
-    //   81: iconst_2
-    //   82: aaload
-    //   83: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   86: fstore_0
-    //   87: fload_0
-    //   88: fstore_3
-    //   89: fload 4
-    //   91: fstore_2
-    //   92: aload 9
-    //   94: iconst_3
-    //   95: aaload
-    //   96: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   99: fstore 6
-    //   101: fload 6
-    //   103: fstore_3
-    //   104: fload 4
-    //   106: fstore_2
-    //   107: invokestatic 59	bgln:d	()J
-    //   110: l2f
-    //   111: fconst_1
-    //   112: fmul
-    //   113: ldc 60
-    //   115: fdiv
-    //   116: fstore 4
-    //   118: invokestatic 63	lkw:d	()J
-    //   121: l2f
-    //   122: ldc 64
-    //   124: fdiv
-    //   125: fstore 5
-    //   127: iload 7
-    //   129: iconst_4
-    //   130: if_icmpge +37 -> 167
-    //   133: new 66	java/lang/Boolean
-    //   136: dup
-    //   137: iconst_0
-    //   138: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   141: putstatic 21	lol:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   144: getstatic 21	lol:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   147: invokevirtual 73	java/lang/Boolean:booleanValue	()Z
-    //   150: ireturn
-    //   151: astore 9
-    //   153: ldc 19
-    //   155: fstore_1
-    //   156: aload 9
-    //   158: invokevirtual 76	java/lang/NumberFormatException:printStackTrace	()V
-    //   161: fload 5
-    //   163: fstore_3
-    //   164: goto -57 -> 107
-    //   167: iload 7
-    //   169: iconst_4
-    //   170: if_icmplt +48 -> 218
-    //   173: iload 7
-    //   175: bipush 8
-    //   177: if_icmpge +41 -> 218
-    //   180: fload 4
-    //   182: fload_1
-    //   183: fcmpl
-    //   184: iflt +28 -> 212
-    //   187: fload 5
-    //   189: fload_2
-    //   190: fcmpl
-    //   191: iflt +21 -> 212
-    //   194: iconst_1
-    //   195: istore 8
-    //   197: new 66	java/lang/Boolean
-    //   200: dup
-    //   201: iload 8
-    //   203: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   206: putstatic 21	lol:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   209: goto -65 -> 144
-    //   212: iconst_0
-    //   213: istore 8
-    //   215: goto -18 -> 197
-    //   218: fload 4
-    //   220: fload_0
-    //   221: fcmpl
-    //   222: iflt +25 -> 247
-    //   225: fload 5
-    //   227: fload_3
-    //   228: fcmpl
-    //   229: iflt +18 -> 247
-    //   232: new 66	java/lang/Boolean
-    //   235: dup
-    //   236: iload 8
-    //   238: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   241: putstatic 21	lol:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   244: goto -100 -> 144
-    //   247: iconst_0
-    //   248: istore 8
-    //   250: goto -18 -> 232
-    //   253: astore 9
-    //   255: fload_3
-    //   256: fstore_0
-    //   257: goto -101 -> 156
-    //   260: ldc 19
-    //   262: fstore_1
-    //   263: fload 5
-    //   265: fstore_3
-    //   266: goto -159 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   2	255	0	f1	float
-    //   62	201	1	f2	float
-    //   26	164	2	f3	float
-    //   64	202	3	f4	float
-    //   72	147	4	f5	float
-    //   29	235	5	f6	float
-    //   99	3	6	f7	float
-    //   15	163	7	i	int
-    //   4	245	8	bool	boolean
-    //   22	71	9	localObject	Object
-    //   151	6	9	localNumberFormatException1	NumberFormatException
-    //   253	1	9	localNumberFormatException2	NumberFormatException
-    // Exception table:
-    //   from	to	target	type
-    //   55	63	151	java/lang/NumberFormatException
-    //   65	74	253	java/lang/NumberFormatException
-    //   79	87	253	java/lang/NumberFormatException
-    //   92	101	253	java/lang/NumberFormatException
+    if ((paramlkk != null) && (!paramlkk.a()) && (paramlkk.a().contains(jdField_a_of_type_JavaLangString))) {
+      this.jdField_a_of_type_Int = 2;
+    }
+    this.jdField_a_of_type_Lkk = paramlkk;
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (paramlkk = c;; paramlkk = b)
+    {
+      this.aq = paramlkk;
+      QLog.i("CodecConfigParser", 1, "ver = " + this.jdField_a_of_type_Int + ", root = " + this.aq);
+      this.z = (this.aq + h + k);
+      this.A = (this.aq + h + u);
+      this.B = (this.aq + h + t);
+      this.C = (this.aq + h + y);
+      this.D = (this.aq + h + l);
+      this.E = (this.aq + d + i + k);
+      this.F = (this.aq + d + i + l);
+      this.G = (this.aq + d + j + o);
+      this.H = (this.aq + d + j + p);
+      this.I = (this.aq + d + j + q);
+      this.J = (this.aq + d + j + r);
+      this.K = (this.aq + d + j + s);
+      this.L = (this.aq + d + i + m);
+      this.M = (this.aq + d + i + n);
+      this.N = (this.aq + e + i + k);
+      this.O = (this.aq + e + i + l);
+      this.P = (this.aq + e + j + o);
+      this.Q = (this.aq + e + j + p);
+      this.R = (this.aq + e + j + q);
+      this.S = (this.aq + e + j + r);
+      this.T = (this.aq + e + j + s);
+      this.U = (this.aq + e + i + m);
+      this.V = (this.aq + e + i + n);
+      this.W = (this.aq + f + i + k);
+      this.X = (this.aq + f + i + l);
+      this.Y = (this.aq + f + j + o);
+      this.Z = (this.aq + f + j + p);
+      this.aa = (this.aq + f + j + q);
+      this.ab = (this.aq + f + j + r);
+      this.ac = (this.aq + f + j + s);
+      this.ad = (this.aq + f + i + m);
+      this.ae = (this.aq + f + i + n);
+      this.af = (this.aq + g + i + k);
+      this.ag = (this.aq + g + i + l);
+      this.ah = (this.aq + g + j + o);
+      this.ai = (this.aq + g + j + p);
+      this.aj = (this.aq + g + j + q);
+      this.ak = (this.aq + g + j + r);
+      this.al = (this.aq + g + j + s);
+      this.am = (this.aq + g + i + m);
+      this.an = (this.aq + g + i + n);
+      this.ao = (this.aq + v + w);
+      this.ap = (this.aq + v + x);
+      return;
+    }
   }
   
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  public static int a(lbs paramlbs)
   {
-    int i;
-    if (!jdField_a_of_type_Boolean)
-    {
-      i = bnpy.a(bnpt.c);
-      if (i != 2) {
-        break label26;
-      }
-      jdField_a_of_type_Boolean = false;
+    if (Build.VERSION.SDK_INT < 16) {}
+    while ((paramlbs == null) || (Build.VERSION.SDK_INT < paramlbs.c) || (!a(paramlbs.jdField_a_of_type_JavaLangString, null)) || (mrm.a(paramlbs.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT)))) {
+      return 0;
     }
+    if ((paramlbs.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramlbs.d)) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  static boolean a(String paramString, String[] paramArrayOfString)
+  {
+    int i2 = mvd.b();
+    if (mvd.a(paramString) > i2) {
+      return false;
+    }
+    if ((paramArrayOfString != null) && (paramArrayOfString != null))
+    {
+      int i3 = paramArrayOfString.length;
+      int i1 = 0;
+      for (;;)
+      {
+        if (i1 >= i3) {
+          break label51;
+        }
+        if (mvd.a(paramArrayOfString[i1]) == i2) {
+          break;
+        }
+        i1 += 1;
+      }
+    }
+    label51:
+    return true;
+  }
+  
+  public loh a()
+  {
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkk == null) {}
     for (;;)
     {
-      return jdField_a_of_type_Boolean;
-      label26:
-      if (i == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else if (i == 0) {
-        jdField_a_of_type_Boolean = true;
-      }
-    }
-  }
-  
-  public static boolean b()
-  {
-    Object localObject;
-    float f1;
-    if (b == null)
-    {
-      localObject = msn.a("ptuAfterTreamentLimit");
-      f3 = 3.0F;
-      j = 4;
-      f4 = 1.1F;
-      f2 = f4;
-      i = j;
-      f1 = f3;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      return null;
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        localObject = ((String)localObject).split(";");
-        f2 = f4;
-        i = j;
-        f1 = f3;
-        if (localObject.length >= 3)
+        loh localloh = new loh(4, true);
+        try
         {
-          i = j;
-          f1 = f3;
+          Object localObject = a(this.jdField_a_of_type_Lkk, this.W);
+          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkk, this.X, this.ac)))
+          {
+            localObject = a(this.jdField_a_of_type_Lkk, this.ab);
+            int i1;
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label122;
+                }
+                if (Build.VERSION.SDK_INT == localObject[i1]) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label122:
+            localObject = a(this.jdField_a_of_type_Lkk, this.Y);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label170;
+                }
+                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label170:
+            localObject = a(this.jdField_a_of_type_Lkk, this.Z);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label218;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label218:
+            localObject = a(this.jdField_a_of_type_Lkk, this.aa);
+            if (localObject != null)
+            {
+              i1 = i2;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label266;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label266:
+            localObject = a(this.jdField_a_of_type_Lkk, this.ad);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localloh.b = localObject[0];
+            }
+            localObject = a(this.jdField_a_of_type_Lkk, this.ae);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localloh.c = localObject[0];
+            }
+            return localloh;
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
         }
       }
     }
-    try
+    return null;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Lkk == null) {}
+    for (;;)
     {
-      f2 = Float.parseFloat(localObject[0]);
-      i = j;
-      f1 = f2;
-      j = Integer.parseInt(localObject[1]);
-      i = j;
-      f1 = f2;
-      f3 = Float.parseFloat(localObject[2]);
-      f1 = f2;
-      i = j;
-      f2 = f3;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+      return false;
+      try
       {
-        int k;
-        localNumberFormatException.printStackTrace();
-        f2 = f4;
-        continue;
-        b = new Boolean(false);
-        continue;
-        i = 0;
-        continue;
-        boolean bool = false;
+        int[] arrayOfInt = a(this.jdField_a_of_type_Lkk, this.ao);
+        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        {
+          arrayOfInt = a(this.jdField_a_of_type_Lkk, this.ap);
+          if (arrayOfInt != null)
+          {
+            boolean bool = mrm.a(arrayOfInt, paramInt);
+            if (bool) {
+              return true;
+            }
+          }
+        }
       }
+      catch (Exception localException) {}
     }
-    float f3 = (float)bgln.d() * 1.0F / 1.073742E+009F;
-    int j = bgln.b();
-    f4 = (float)lkw.d() / 1048576.0F;
-    if ((f1 <= f3) && (i <= j) && (f2 <= f4))
+    return false;
+  }
+  
+  boolean a(lkk paramlkk, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Int != 2) {}
+    for (;;)
     {
-      b = new Boolean(true);
-      k = b.booleanValue();
-      if (bnpy.a(bnpt.c) == 0) {
-        break label246;
+      return true;
+      int i2 = mvd.b();
+      if (mvd.a(paramlkk.a(paramString1, "")) > i2) {
+        return false;
       }
-      i = 1;
-      if (((i & k) == 0) || (Build.VERSION.SDK_INT < 21)) {
-        break label252;
+      if (paramString2 != null)
+      {
+        paramlkk = paramlkk.a(paramString2);
+        if (paramlkk != null)
+        {
+          int i3 = paramlkk.length;
+          int i1 = 0;
+          while (i1 < i3)
+          {
+            if (mvd.a(paramlkk[i1]) == i2) {
+              return false;
+            }
+            i1 += 1;
+          }
+        }
       }
-      bool = true;
-      b = Boolean.valueOf(bool);
-      return b.booleanValue();
     }
   }
   
-  public static boolean b(VideoAppInterface paramVideoAppInterface)
+  int[] a(lkk paramlkk, String paramString)
   {
-    int i;
-    if (!jdField_a_of_type_Boolean)
+    if (Build.VERSION.SDK_INT < 16) {
+      return null;
+    }
+    return paramlkk.a(paramString);
+  }
+  
+  String[] a(lkk paramlkk, String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      return null;
+    }
+    return paramlkk.a(paramString);
+  }
+  
+  public loh b()
+  {
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkk == null) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < 19)
     {
-      i = bnpy.a(bnpt.c);
-      if (i != 2) {
-        break label123;
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < 19.");
+      return null;
+    }
+    loh localloh = new loh(8, true);
+    try
+    {
+      localObject = a(this.jdField_a_of_type_Lkk, this.af);
+      if (localObject == null)
+      {
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. minsdk == null.");
+        return null;
       }
-      long l1 = System.currentTimeMillis();
-      if (l1 <= jdField_a_of_type_Long) {
-        break label106;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. err msg = " + localException.getMessage());
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < localObject[0])
+    {
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < minsdk[0]. minsdk[0] = " + localObject[0]);
+      return null;
+    }
+    if (!a(this.jdField_a_of_type_Lkk, this.ag, this.al))
+    {
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. checkQQVer failed.");
+      return null;
+    }
+    Object localObject = a(this.jdField_a_of_type_Lkk, this.ak);
+    int i1;
+    if (localObject != null)
+    {
+      i1 = 0;
+      if (i1 < localObject.length)
+      {
+        if (Build.VERSION.SDK_INT != localObject[i1]) {
+          break label453;
+        }
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT == disablesdk[i].");
+        return null;
       }
-      long l2 = AudioHelper.c();
-      paramVideoAppInterface.h();
-      long l3 = AudioHelper.c();
-      QLog.w("AEKitAbilityInfo", 1, "checkAEKitPagSoReady, getEffectLibPagSoLoadIsOk[" + jdField_a_of_type_Boolean + "], cost[" + (l3 - l2) + "]");
-      jdField_a_of_type_Long = l1 + 30000L;
-      jdField_a_of_type_Boolean = false;
+    }
+    localObject = a(this.jdField_a_of_type_Lkk, this.ah);
+    if (localObject != null)
+    {
+      i1 = 0;
+      label248:
+      if (i1 < localObject.length)
+      {
+        if (!Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+          break label460;
+        }
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.MODEL.equalsIgnoreCase(models[i]).");
+        return null;
+      }
+    }
+    localObject = a(this.jdField_a_of_type_Lkk, this.ai);
+    if (localObject != null)
+    {
+      i1 = 0;
+      label300:
+      if (i1 < localObject.length)
+      {
+        if (!Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+          break label467;
+        }
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(products[i]).");
+        return null;
+      }
+    }
+    localObject = a(this.jdField_a_of_type_Lkk, this.aj);
+    if (localObject != null) {
+      i1 = i2;
     }
     for (;;)
     {
-      return jdField_a_of_type_Boolean;
-      label106:
-      if (!QLog.isDevelopLevel()) {
+      if (i1 < localObject.length)
+      {
+        if (Build.PRODUCT.equalsIgnoreCase(localObject[i1]))
+        {
+          QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(fingerprints[i].");
+          return null;
+        }
+      }
+      else
+      {
+        localObject = a(this.jdField_a_of_type_Lkk, this.am);
+        if ((localObject != null) && (localObject[0] > 0)) {
+          localException.b = localObject[0];
+        }
+        localObject = a(this.jdField_a_of_type_Lkk, this.an);
+        if ((localObject != null) && (localObject[0] > 0)) {
+          localException.c = localObject[0];
+        }
+        return localException;
+        label453:
+        i1 += 1;
         break;
+        label460:
+        i1 += 1;
+        break label248;
+        label467:
+        i1 += 1;
+        break label300;
       }
-      QLog.w("AEKitAbilityInfo", 1, "tryDownloadPTULibPagSo, 频繁调用");
-      break;
-      label123:
-      if (i == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else if (i == 0) {
-        jdField_a_of_type_Boolean = true;
-      }
+      i1 += 1;
     }
   }
   
-  public static boolean c(VideoAppInterface paramVideoAppInterface)
+  public loh c()
   {
-    boolean bool = true;
-    if (!b())
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkk == null) {}
+    for (;;)
     {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess machine power not support");
-      return false;
-    }
-    if (jdField_a_of_type_Int != -1)
-    {
-      if (jdField_a_of_type_Int == 0) {}
-      for (;;)
+      return null;
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        return bool;
-        bool = false;
+        loh localloh = new loh(1, true);
+        try
+        {
+          Object localObject = a(this.jdField_a_of_type_Lkk, this.E);
+          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkk, this.F, this.K)))
+          {
+            localObject = a(this.jdField_a_of_type_Lkk, this.J);
+            int i1;
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label122;
+                }
+                if (Build.VERSION.SDK_INT == localObject[i1]) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label122:
+            localObject = a(this.jdField_a_of_type_Lkk, this.G);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label170;
+                }
+                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label170:
+            localObject = a(this.jdField_a_of_type_Lkk, this.H);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label218;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label218:
+            localObject = a(this.jdField_a_of_type_Lkk, this.I);
+            if (localObject != null)
+            {
+              i1 = i2;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label266;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label266:
+            localObject = a(this.jdField_a_of_type_Lkk, this.L);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localloh.b = localObject[0];
+            }
+            localObject = a(this.jdField_a_of_type_Lkk, this.M);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localloh.c = localObject[0];
+            }
+            return localloh;
+          }
+        }
+        catch (Exception localException) {}
       }
     }
-    if (!b(paramVideoAppInterface))
+    return null;
+  }
+  
+  public loh d()
+  {
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkk == null) {}
+    for (;;)
     {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess machine so not ready");
-      return false;
+      return null;
+      if (Build.VERSION.SDK_INT >= 19)
+      {
+        loh localloh = new loh(2, true);
+        try
+        {
+          Object localObject = a(this.jdField_a_of_type_Lkk, this.N);
+          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkk, this.O, this.T)))
+          {
+            localObject = a(this.jdField_a_of_type_Lkk, this.S);
+            int i1;
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label122;
+                }
+                if (Build.VERSION.SDK_INT == localObject[i1]) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label122:
+            localObject = a(this.jdField_a_of_type_Lkk, this.P);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label170;
+                }
+                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label170:
+            localObject = a(this.jdField_a_of_type_Lkk, this.Q);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label218;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label218:
+            localObject = a(this.jdField_a_of_type_Lkk, this.R);
+            if (localObject != null)
+            {
+              i1 = i2;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label266;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label266:
+            localObject = a(this.jdField_a_of_type_Lkk, this.U);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localloh.b = localObject[0];
+            }
+            localObject = a(this.jdField_a_of_type_Lkk, this.V);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localloh.c = localObject[0];
+            }
+            return localloh;
+          }
+        }
+        catch (Exception localException) {}
+      }
     }
-    long l = AudioHelper.c();
-    bool = FeatureManager.Features.PAG.init();
-    QLog.w("AEKitAbilityInfo", 1, "loadLibPag[" + jdField_a_of_type_Boolean + "], cost[" + (AudioHelper.c() - l) + "]");
-    if (!bool) {}
-    for (jdField_a_of_type_Int = 1;; jdField_a_of_type_Int = 0)
-    {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess result:=" + jdField_a_of_type_Int);
-      return bool;
-    }
+    return null;
   }
 }
 

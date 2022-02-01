@@ -1,13 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class qmg
-  implements ViewBase.IBuilder
+class qmg
+  implements View.OnTouchListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qmg(qmb paramqmb, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new qly(paramVafContext);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    }
+    return false;
   }
 }
 

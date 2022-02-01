@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afqo;
-import afqp;
-import afqq;
+import afzs;
+import afzt;
+import afzu;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -15,11 +15,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import anni;
-import aywi;
-import aywk;
-import aywm;
-import biau;
+import anzj;
+import azov;
+import azox;
+import azoz;
+import bjbs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -34,14 +34,14 @@ public class VerifyPhoneNumActivity
   implements View.OnClickListener
 {
   protected Dialog a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new afqo(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new afzs(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aywi jdField_a_of_type_Aywi = new afqq(this);
-  private biau jdField_a_of_type_Biau;
+  private azov jdField_a_of_type_Azov = new afzu(this);
+  private bjbs jdField_a_of_type_Bjbs;
   private String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new afqp(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new afzt(this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
@@ -54,17 +54,17 @@ public class VerifyPhoneNumActivity
   private void b()
   {
     this.leftView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363723));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363749));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363847));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363871));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380054));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380239));
     try
     {
       if ((this.c != null) && (this.c.length() > 4))
       {
         String str = "***" + this.c.substring(this.c.length() - 4, this.c.length());
-        str = getString(2131694225, new Object[] { this.jdField_a_of_type_JavaLangString, str, this.d });
+        str = getString(2131694263, new Object[] { this.jdField_a_of_type_JavaLangString, str, this.d });
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       }
       return;
@@ -88,7 +88,7 @@ public class VerifyPhoneNumActivity
   
   private void d()
   {
-    aywk.b(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
+    azox.b(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
   }
   
   private void e()
@@ -96,8 +96,8 @@ public class VerifyPhoneNumActivity
     if (QLog.isColorLevel()) {
       QLog.d("VerifyPhoneNumActivity", 4, "startLogin");
     }
-    aywm.a().a(true);
-    int i = aywm.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    azoz.a().a(true);
+    int i = azoz.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
@@ -155,17 +155,17 @@ public class VerifyPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131563047));
-    setTitle(2131694255);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131563082));
+    setTitle(2131694297);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
     this.c = getIntent().getStringExtra("key_register_binduin");
     this.d = getIntent().getStringExtra("uin");
     this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("key_register_sign");
     this.e = getIntent().getStringExtra("key_register_password");
-    this.app.registObserver(this.jdField_a_of_type_Aywi);
+    this.app.registObserver(this.jdField_a_of_type_Azov);
     b();
-    setRightButton(2131690582, this);
+    setRightButton(2131690580, this);
     return true;
   }
   
@@ -181,18 +181,18 @@ public class VerifyPhoneNumActivity
     if (isFinishing()) {
       return;
     }
-    if (!aywm.a().a())
+    if (!azoz.a().a())
     {
       QLog.d("VerifyPhoneNumActivity", 4, "onAccountChanged not phonenum login");
       return;
     }
-    this.app.unRegistObserver(this.jdField_a_of_type_Aywi);
+    this.app.unRegistObserver(this.jdField_a_of_type_Azov);
     this.app = ((QQAppInterface)getAppRuntime());
-    this.app.registObserver(this.jdField_a_of_type_Aywi);
+    this.app.registObserver(this.jdField_a_of_type_Azov);
     if (this.jdField_a_of_type_Boolean)
     {
       this.app.a(new VerifyPhoneNumActivity.4(this));
-      QQToast.a(BaseApplicationImpl.sApplication, anni.a(2131714725), 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, anzj.a(2131714834), 0).a();
     }
     LoginActivity.a(this.app, this.app.getAccount());
     f();
@@ -230,7 +230,7 @@ public class VerifyPhoneNumActivity
   {
     super.onDestroy();
     a();
-    this.app.unRegistObserver(this.jdField_a_of_type_Aywi);
+    this.app.unRegistObserver(this.jdField_a_of_type_Azov);
   }
 }
 

@@ -3,17 +3,17 @@ package com.tencent.biz.qqstory.playvideo;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
-import xgq;
+import xkl;
 
 public class NewProgressControler$3
   extends TimerTask
 {
-  public NewProgressControler$3(xgq paramxgq) {}
+  public NewProgressControler$3(xkl paramxkl) {}
   
   public void run()
   {
-    xgq localxgq = this.this$0;
-    localxgq.c += 50L;
+    xkl localxkl = this.this$0;
+    localxkl.c += 50L;
     if (this.this$0.c >= this.this$0.b)
     {
       this.this$0.c = this.this$0.b;

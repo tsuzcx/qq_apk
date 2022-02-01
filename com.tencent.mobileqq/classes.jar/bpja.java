@@ -1,386 +1,440 @@
-import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.location.Location;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import dov.com.qq.im.aeeditor.view.AEEditorMusicSwitchView;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
-@TargetApi(9)
 public class bpja
-  implements wou
+  extends ReportDialog
+  implements DialogInterface.OnShowListener, View.OnClickListener, bpiu
 {
-  public static final String a;
-  public final int a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  bpjl jdField_a_of_type_Bpjl = null;
-  public DoodleEmojiItem a;
-  public final Object a;
-  public final List<DoodleEmojiItem> a;
-  public final Queue<DoodleEmojiItem> a;
-  public final ConcurrentHashMap<String, DoodleEmojiItem> a;
-  public volatile AtomicInteger a;
-  wri jdField_a_of_type_Wri = new bpje(this);
-  public String b;
-  protected List<Location> b;
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private bpir jdField_a_of_type_Bpir;
+  private bpje jdField_a_of_type_Bpje;
+  private AEEditorMusicSwitchView jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView;
+  private boolean jdField_a_of_type_Boolean = true;
+  private float jdField_b_of_type_Float = 0.8F;
+  private int jdField_b_of_type_Int = 1;
+  private boolean jdField_b_of_type_Boolean = true;
+  private boolean c = true;
+  private boolean d = true;
+  private boolean e;
+  private boolean f = true;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private boolean j;
+  private boolean k = true;
+  private boolean l;
   
-  static
+  public bpja(@NonNull Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = wes.j + "emoji";
-    a(jdField_a_of_type_JavaLangString);
+    super(paramContext, 2131755054);
+    this.jdField_a_of_type_Int = paramInt;
+    this.g = bpan.a();
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558546, null);
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView = ((AEEditorMusicSwitchView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371512));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131371583));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369292));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369287));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376997));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366735));
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView.setSwitchClickListener(new bpjb(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bpjc(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+    setOnShowListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
+    this.jdField_a_of_type_Bpir = new bpir(paramContext, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bpir);
+    this.jdField_a_of_type_Bpir.a(bpis.a);
+    setContentView(this.jdField_a_of_type_AndroidViewView);
   }
   
-  public bpja()
+  private int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaLangObject = new Object[0];
-    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
-    if (localBaseApplicationImpl == null) {
-      throw new IllegalArgumentException("Context should not be null");
+    int n = this.jdField_a_of_type_Bpir.getItemCount();
+    int m;
+    if (paramInt < 0) {
+      m = 0;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("qqstory_emoji", 4);
-  }
-  
-  public static String a(bpja parambpja, String paramString)
-  {
-    return parambpja.a("emoji_pack_url_" + paramString, "");
-  }
-  
-  private static String a(@NonNull File paramFile)
-  {
-    return paramFile.getName().substring("emoji_folder_".length());
-  }
-  
-  protected static String a(@NonNull String paramString)
-  {
-    return jdField_a_of_type_JavaLangString + File.separator + "emoji_zip_" + paramString;
-  }
-  
-  public static void a(bpja parambpja, String paramString1, String paramString2)
-  {
-    parambpja.a("emoji_pack_md5_" + paramString1, paramString2);
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
+    do
     {
-      bool = paramString.delete();
-      yqp.d("DoodleEmojiManager", "delete file : " + bool);
+      return m;
+      m = paramInt;
+    } while (paramInt <= n - 1);
+    return n - 1;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramInt == 1) && (this.jdField_a_of_type_Boolean)) {
+      if (this.jdField_a_of_type_AndroidWidgetSeekBar != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(true);
+        this.jdField_a_of_type_AndroidWidgetSeekBar.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(this.jdField_a_of_type_Float * 100.0F));
+      }
     }
-    if (!paramString.exists())
+    while ((paramInt != 2) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidWidgetSeekBar == null)) {
+      return;
+    }
+    if (paramBoolean1)
     {
-      bool = paramString.mkdirs();
-      yqp.d("DoodleEmojiManager", "create folder : " + bool);
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(true);
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(this.jdField_b_of_type_Float * 100.0F));
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setAlpha(0.4F);
+    if (paramBoolean2)
+    {
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(this.jdField_b_of_type_Float * 100.0F));
   }
   
   private boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
-  }
-  
-  private static boolean a(File paramFile)
-  {
-    if ((paramFile == null) || (!paramFile.exists()) || (!paramFile.isDirectory())) {}
-    do
-    {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_Bpir == null)) {}
+    while (this.jdField_a_of_type_Bpir.getItemCount() == 0) {
       return false;
-      paramFile = paramFile.listFiles(new bpjg());
-    } while ((paramFile == null) || (paramFile.length <= 0));
+    }
     return true;
   }
   
-  public static String b(bpja parambpja, String paramString)
+  private void c()
   {
-    return parambpja.a("emoji_pack_name_" + paramString, "");
-  }
-  
-  protected static String b(@NonNull String paramString)
-  {
-    return jdField_a_of_type_JavaLangString + File.separator + "emoji_folder_" + paramString;
-  }
-  
-  private static void b(bpja parambpja, String paramString1, String paramString2)
-  {
-    parambpja.a("emoji_pack_url_" + paramString1, paramString2);
-  }
-  
-  public static String c(bpja parambpja, String paramString)
-  {
-    return parambpja.a("emoji_pack_config_" + paramString, "");
-  }
-  
-  private static void c(bpja parambpja, String paramString1, String paramString2)
-  {
-    parambpja.a("emoji_pack_name_" + paramString1, paramString2);
-  }
-  
-  public static String d(bpja parambpja, String paramString)
-  {
-    return parambpja.a("emoji_pack_md5_" + paramString, "");
-  }
-  
-  private static void d(bpja parambpja, String paramString1, String paramString2)
-  {
-    parambpja.a("emoji_pack_config_" + paramString1, paramString2);
-  }
-  
-  public String a(@NonNull String paramString1, @NonNull String paramString2)
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString1, paramString2);
-  }
-  
-  public List<DoodleEmojiItem> a()
-  {
-    if (!a())
-    {
-      yqp.b("DoodleEmojiManager", "getCurrentEmojiPackList but not init yet");
-      return Collections.EMPTY_LIST;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837757);
     }
-    return this.jdField_a_of_type_JavaUtilList;
+    if (this.jdField_a_of_type_Bpje != null) {
+      this.jdField_a_of_type_Bpje.d(true);
+    }
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, bpjl parambpjl)
+  private void d()
   {
-    parambpjl = new WeakReference(parambpjl);
-    wlb.a().a(new wzc(paramInt1, paramInt2), new bpjf(this, parambpjl));
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837759);
+    }
+    if (this.jdField_a_of_type_Bpje != null) {
+      this.jdField_a_of_type_Bpje.d(false);
+    }
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void a(@NonNull String paramString1, @NonNull String paramString2)
+  private void e()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString1, paramString2).apply();
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837758);
+    }
+    if (this.jdField_a_of_type_Bpje != null) {
+      this.jdField_a_of_type_Bpje.d(false);
+    }
   }
   
-  public void a(List<DoodleEmojiItem> arg1)
+  private void f()
   {
-    if (??? == null) {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    bpja localbpja = (bpja)wpm.a(39);
-    ArrayList localArrayList = new ArrayList(???.size());
-    Iterator localIterator = ???.iterator();
-    label36:
-    DoodleEmojiItem localDoodleEmojiItem;
-    Object localObject2;
-    if (localIterator.hasNext())
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new DecelerateInterpolator());
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new DecelerateInterpolator());
+    localAnimationSet.setDuration(200L);
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setAnimationListener(new bpjd(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+  }
+  
+  @NonNull
+  public List<bpis> a()
+  {
+    if (this.jdField_a_of_type_Bpir != null) {
+      return this.jdField_a_of_type_Bpir.a();
+    }
+    return new LinkedList();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_b_of_type_Int == 0)
     {
-      localDoodleEmojiItem = (DoodleEmojiItem)localIterator.next();
-      if (localDoodleEmojiItem.type != 1) {
-        break label436;
-      }
-      localObject2 = (DoodleEmojiItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localDoodleEmojiItem.pack_id);
-      if (localObject2 == null) {
-        break label436;
-      }
-      ??? = ((DoodleEmojiItem)localObject2).getLocalEmojiFolderPath();
-      if (TextUtils.equals(((DoodleEmojiItem)localObject2).md5, localDoodleEmojiItem.md5)) {
-        break label433;
-      }
-      yqp.a("DoodleEmojiManager", "EmojiPack md5 has changed. old : %s, new : %s", ((DoodleEmojiItem)localObject2).md5, localDoodleEmojiItem.md5);
+      this.jdField_b_of_type_Int = 1;
+      d();
+      bozv.a().a().f = 0;
     }
     for (;;)
     {
-      for (;;)
+      bozr.a().o();
+      return;
+      if (this.jdField_b_of_type_Int == 1)
       {
-        try
-        {
-          zkr.d(???);
-          localObject2 = new bpjh(localDoodleEmojiItem, 0, false, 0L, 0L);
-          ((bpjh)localObject2).b = true;
-          wfo.a().dispatch((Dispatcher.Dispatchable)localObject2);
-          ??? = null;
-          localDoodleEmojiItem.setLocalEmojiFolderPath(???);
-          b(localbpja, localDoodleEmojiItem.pack_id, localDoodleEmojiItem.icon);
-          c(localbpja, localDoodleEmojiItem.pack_id, localDoodleEmojiItem.name);
-          d(localbpja, localDoodleEmojiItem.pack_id, localDoodleEmojiItem.config);
-          a(localbpja, localDoodleEmojiItem.pack_id, localDoodleEmojiItem.md5);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localDoodleEmojiItem.pack_id, localDoodleEmojiItem);
-          if (localArrayList.contains(localDoodleEmojiItem)) {
-            break label36;
-          }
-          localArrayList.add(localDoodleEmojiItem);
-        }
-        catch (Exception localException)
-        {
-          yqp.d("DoodleEmojiManager", "remove folder : %s failed. error: %s .", new Object[] { ???, localException });
-          continue;
-        }
-        synchronized (this.jdField_a_of_type_JavaUtilList)
-        {
-          this.jdField_a_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-          if (QLog.isColorLevel()) {
-            QLog.i("DoodleEmojiManager", 2, "paster config processResponse " + this.jdField_a_of_type_JavaUtilList.size());
-          }
-          if (localArrayList.size() <= 0) {
-            break;
-          }
-          yqp.b("DoodleEmojiManager", "start download the first emoji pack if needed : " + ((DoodleEmojiItem)localArrayList.get(0)).pack_id);
-          a(((DoodleEmojiItem)localArrayList.get(0)).pack_id, false);
-          return;
-        }
+        this.jdField_b_of_type_Int = 0;
+        c();
+        bozv.a().a().f = 1;
       }
-      label433:
-      continue;
-      label436:
-      ??? = null;
     }
   }
   
-  public boolean a(String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
     if (!a()) {
-      yqp.d("DoodleEmojiManager", "downloadEmojiPack init state = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) });
+      return;
     }
-    if (paramString == null) {
-      throw new IllegalArgumentException("pack id should not be null");
-    }
-    DoodleEmojiItem localDoodleEmojiItem = (DoodleEmojiItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localDoodleEmojiItem == null)
-    {
-      yqp.d("DoodleEmojiManager", "can not find pack item by id " + paramString);
-      return false;
-    }
-    ??? = new File(b(localDoodleEmojiItem.pack_id));
-    if ((a((File)???)) && (!paramBoolean))
-    {
-      yqp.d("DoodleEmojiManager", "already has local emoji folder, notify download success directly");
-      localDoodleEmojiItem.setLocalEmojiFolderPath(((File)???).getPath());
-      wfo.a().dispatch(new bpjh(localDoodleEmojiItem, 0, true, 0L, 0L));
-      return true;
-    }
-    if (!TextUtils.isEmpty(localDoodleEmojiItem.getLocalEmojiFolderPath()))
-    {
-      yqp.d("DoodleEmojiManager", "local emoji folder is missing");
-      localDoodleEmojiItem.setLocalEmojiFolderPath(null);
-    }
-    if (TextUtils.isEmpty(localDoodleEmojiItem.download_url))
-    {
-      yqp.d("DoodleEmojiManager", "can not start download because of empty download-url is found");
-      return false;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_JavaUtilQueue.contains(localDoodleEmojiItem))
-      {
-        this.jdField_a_of_type_JavaUtilQueue.offer(localDoodleEmojiItem);
-        yqp.b("DoodleEmojiManager", "downloadEmojiPack pack " + paramString + " enqueue");
-        d();
-        return true;
+    paramInt = a(paramInt);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.scrollToPosition(paramInt);
+  }
+  
+  public void a(@NonNull bpis parambpis)
+  {
+    a(parambpis, 1, true, 2);
+  }
+  
+  public void a(@Nullable bpis parambpis, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (paramInt2 == 1) {
+      if (this.jdField_a_of_type_Bpje != null) {
+        this.jdField_a_of_type_Bpje.x();
       }
-      yqp.b("DoodleEmojiManager", "downloadEmojiPack pack " + paramString + " is already in pending list");
+    }
+    do
+    {
+      return;
+      if (!paramBoolean)
+      {
+        a(false);
+        this.c = true;
+        e();
+        return;
+      }
+      this.i = true;
+    } while (this.jdField_a_of_type_Bpje == null);
+    this.jdField_a_of_type_Bpje.a(parambpis, paramInt1);
+  }
+  
+  public void a(@Nullable bpje parambpje)
+  {
+    this.jdField_a_of_type_Bpje = parambpje;
+  }
+  
+  public void a(@NonNull List<bpis> paramList)
+  {
+    if (this.jdField_a_of_type_Bpir != null) {
+      this.jdField_a_of_type_Bpir.a(paramList);
+    }
+    if ((!CollectionUtils.isEmpty(paramList)) && (!this.h))
+    {
+      this.h = true;
+      if (isShowing()) {
+        a(true);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.i = paramBoolean;
+    if (this.jdField_a_of_type_Bpje != null) {
+      this.jdField_a_of_type_Bpje.b(this.i);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.j = paramBoolean1;
+    this.l = paramBoolean2;
+    if (paramBoolean1)
+    {
+      if (this.k)
+      {
+        this.k = false;
+        this.jdField_a_of_type_Float = 0.2F;
+        a(1, true, false);
+        if (this.jdField_a_of_type_Bpje != null) {
+          this.jdField_a_of_type_Bpje.a(this.jdField_a_of_type_Float);
+        }
+      }
+      if ((this.jdField_b_of_type_Float > 0.0F) && (this.jdField_a_of_type_AndroidWidgetButton != null)) {
+        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      }
+      this.i = true;
+      a(2, this.i, false);
+      if (this.jdField_b_of_type_Int == 1) {
+        d();
+      }
+      for (;;)
+      {
+        this.c = false;
+        return;
+        if (this.jdField_b_of_type_Int == 0)
+        {
+          d();
+          c();
+        }
+      }
+    }
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    }
+    this.i = false;
+    if (paramBoolean2) {
+      a(2, this.i, false);
+    }
+    for (;;)
+    {
+      this.c = true;
+      e();
+      return;
+      a(2, this.i, true);
     }
   }
   
   public void b()
   {
-    wrf localwrf = (wrf)wpm.a(9);
-    if ((localwrf != null) && (this.jdField_a_of_type_Wri != null)) {
-      localwrf.b(this.jdField_a_of_type_Wri);
-    }
-    this.jdField_a_of_type_Bpjl = null;
-  }
-  
-  public void c()
-  {
-    yqp.b("DoodleEmojiManager", "initLocalPackages, doodle emoji path : " + jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(0, 1))
-    {
-      bpja localbpja = (bpja)wpm.a(39);
-      Object localObject1 = new File(jdField_a_of_type_JavaLangString);
-      if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-      {
-        localObject1 = ((File)localObject1).listFiles(new bpjb(this));
-        if (localObject1 != null)
-        {
-          int j = localObject1.length;
-          int i = 0;
-          if (i < j)
-          {
-            File localFile = localObject1[i];
-            Object localObject2 = localFile.listFiles(new bpjc(this));
-            if ((localObject2 != null) && (localObject2.length > 0))
-            {
-              localObject2 = a(localFile);
-              Object localObject3 = b(localbpja, (String)localObject2);
-              localObject3 = new DoodleEmojiItem((String)localObject2, a(localbpja, (String)localObject2), (String)localObject3, null, c(localbpja, (String)localObject2), d(localbpja, (String)localObject2));
-              ((DoodleEmojiItem)localObject3).setLocalEmojiFolderPath(localFile.getPath());
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, localObject3);
-              yqp.b("DoodleEmojiManager", "load local emoji pack : " + localObject3);
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              try
-              {
-                zkr.d(localFile.getPath());
-                yqp.d("DoodleEmojiManager", "find empty local emoji folder : " + localFile.getName() + ", delete it");
-              }
-              catch (Exception localException)
-              {
-                yqp.d("DoodleEmojiManager", "find empty local emoji folder : " + localFile.getName() + ", delete failed : " + localException);
-              }
-            }
-          }
-        }
-      }
-      else
-      {
-        yqp.d("DoodleEmojiManager", "local emoji folder is empty");
-      }
-      a(((booy)bojv.a(1)).a());
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    if (this.jdField_a_of_type_Bpir != null) {
+      this.jdField_a_of_type_Bpir.b();
     }
   }
   
-  protected void d()
+  public void dismiss()
   {
-    yqp.b("DoodleEmojiManager", "startDownload");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (this.e) {
+      return;
+    }
+    if (this.jdField_a_of_type_Bpje != null) {
+      this.jdField_a_of_type_Bpje.y();
+    }
+    g();
+  }
+  
+  public void onClick(View paramView)
+  {
+    int m = paramView.getId();
+    if (m == 2131366735) {
+      dismiss();
+    }
+    for (;;)
     {
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem == null)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (m == 2131369292)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = ((DoodleEmojiItem)this.jdField_a_of_type_JavaUtilQueue.poll());
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem != null)
-        {
-          yqp.b("DoodleEmojiManager", "downloader startDownload : " + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
-          Bosses.get().postJob(new bpjd(this, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
+        if (!this.c) {
+          a();
         }
+      }
+      else if ((m == 2131369287) && (this.jdField_a_of_type_Bpje != null)) {
+        this.jdField_a_of_type_Bpje.c(this.j);
+      }
+    }
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow().getAttributes();
+    paramBundle.gravity = 81;
+    if (this.jdField_a_of_type_Int != 0) {}
+    for (paramBundle.height = this.jdField_a_of_type_Int;; paramBundle.height = -2)
+    {
+      paramBundle.width = -1;
+      getWindow().setAttributes(paramBundle);
+      setCancelable(true);
+      setCanceledOnTouchOutside(true);
+      return;
+    }
+  }
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    if (this.f)
+    {
+      this.f = false;
+      if (this.h) {
+        a(true);
+      }
+      if (!this.c) {
+        if (this.jdField_b_of_type_Int == 1) {
+          d();
+        }
+      }
+    }
+    while (this.jdField_a_of_type_Bpir == null)
+    {
+      do
+      {
         return;
-      }
-      yqp.b("DoodleEmojiManager", "can not start download because find one is still downloading : " + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
+      } while (this.jdField_b_of_type_Int != 0);
+      d();
+      c();
+      return;
+      e();
+      return;
     }
+    this.jdField_a_of_type_Bpir.a();
+  }
+  
+  public void show()
+  {
+    super.show();
+    f();
   }
 }
 

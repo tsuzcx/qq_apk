@@ -1,40 +1,37 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class afgi
-  extends anqd
+  implements ajkg
 {
-  public afgi(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public afgi(QQLSActivity paramQQLSActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, bdei parambdei)
+  public void an_() {}
+  
+  public void b() {}
+  
+  public void j_(int paramInt)
   {
-    if (QLog.isColorLevel())
+    if ((paramInt == 0) && (this.a.a.a().size() > 0))
     {
-      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
-      if (parambdei != null) {
-        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + parambdei.jdField_a_of_type_Int + "  errorMsg=" + parambdei.jdField_a_of_type_JavaLangString + " mainAccount=" + parambdei.jdField_b_of_type_JavaLangString + "  subAccount=" + parambdei.c + " isNeedStartGetMsg=" + parambdei.jdField_b_of_type_Boolean);
+      Iterator localIterator = this.a.a.a().iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
+          }
+          this.a.a.a().remove(localRecentBaseData);
+          this.a.b();
+        }
       }
     }
-    if ((parambdei == null) || (paramString == null) || (paramString.length() < 5)) {}
-    bddy localbddy;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a.isFinishing());
-        localbddy = (bddy)this.a.app.getManager(62);
-        if (parambdei.jdField_a_of_type_Int != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-      SubAccountUgActivity.a(this.a, localbddy, paramString);
-      return;
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-    localbddy.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
   }
 }
 

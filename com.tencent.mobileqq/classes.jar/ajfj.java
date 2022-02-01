@@ -1,55 +1,55 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Set;
 
-public class ajfj
-  extends MqqHandler
+class ajfj
+  extends RecyclerView.ViewHolder
+  implements Animator.AnimatorListener, View.OnClickListener
 {
-  public ajfj(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public ajfj(ajfh paramajfh, View paramView)
   {
-    switch (paramMessage.what)
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376963));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    ajfh.a(this.jdField_a_of_type_Ajfh).add(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-    case 1013: 
-    default: 
-      return;
-    case 1012: 
-      if (this.a.jdField_a_of_type_Ajdv != null) {
-        if (this.a.c == 0) {
-          break label160;
-        }
-      }
-      for (this.a.jdField_a_of_type_Ajdv.a = 0;; this.a.jdField_a_of_type_Ajdv.a = bdgn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        this.a.jdField_a_of_type_Ajdv.notifyDataSetChanged();
-        this.a.jdField_a_of_type_Antq.c = bdgn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.a.c(ajfn.a());
-        this.a.b(ajfn.b());
-        this.a.a(false, 1);
-        this.a.a(false, 2);
-        if (TroopNotifyAndRecommendView.a(this.a) == null) {
-          break;
-        }
-        TroopNotifyAndRecommendView.a(this.a).notifyDataSetChanged();
-        return;
-      }
-    case 1014: 
-      label160:
-      this.a.j();
-      return;
     }
-    paramMessage = paramMessage.obj;
-    try
+    for (;;)
     {
-      this.a.a((List)paramMessage);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
+      ajfh.a(this.jdField_a_of_type_Ajfh, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

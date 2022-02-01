@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.abtest;
 
-import adhi;
+import adqg;
 import android.text.TextUtils;
 import android.util.LruCache;
 import androidx.annotation.NonNull;
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mtt.abtestsdk.ABTestApi;
 import com.tencent.mtt.abtestsdk.entity.ABTestConfig;
@@ -15,8 +15,8 @@ import mqq.app.AppRuntime;
 public final class ABTestController
 {
   private static ABTestController jdField_a_of_type_ComTencentMobileqqAbtestABTestController = new ABTestController();
-  private LruCache<String, adhi> jdField_a_of_type_AndroidUtilLruCache;
-  private bctj jdField_a_of_type_Bctj;
+  private LruCache<String, adqg> jdField_a_of_type_AndroidUtilLruCache;
+  private bdmc jdField_a_of_type_Bdmc;
   private String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
   
@@ -39,25 +39,28 @@ public final class ABTestController
     }
   }
   
-  public adhi a(@NonNull String paramString)
+  @NonNull
+  public adqg a(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject;
     if (!this.jdField_a_of_type_Boolean)
     {
       localObject = BaseApplicationImpl.getApplication();
       a((BaseApplicationImpl)localObject, ((BaseApplicationImpl)localObject).getRuntime().getAccount());
     }
-    String str = paramString.trim();
-    paramString = (adhi)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-    if (paramString != null) {}
-    do
-    {
-      return paramString;
-      localObject = new adhi(str);
-      paramString = (String)localObject;
-    } while (!((adhi)localObject).a());
-    this.jdField_a_of_type_AndroidUtilLruCache.put(str, localObject);
-    return localObject;
+    Object localObject = a(paramString1, paramString2, paramString3);
+    adqg localadqg = (adqg)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject);
+    if (localadqg != null) {
+      return localadqg;
+    }
+    paramString1 = new adqg(paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_AndroidUtilLruCache.put(localObject, paramString1);
+    return paramString1;
+  }
+  
+  @NonNull
+  public String a(String paramString1, String paramString2, String paramString3)
+  {
+    return paramString1.trim() + "_" + paramString2.trim() + "_" + paramString3.trim();
   }
   
   public void a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -68,7 +71,7 @@ public final class ABTestController
     {
       this.jdField_a_of_type_JavaLangString = ((String)localObject);
       this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(20);
-      this.jdField_a_of_type_Bctj = bctj.a(paramBaseApplicationImpl);
+      this.jdField_a_of_type_Bdmc = bdmc.a(paramBaseApplicationImpl);
       a("start initialize ABTestApi SDK, uinAccount:" + paramString);
       long l = System.currentTimeMillis();
       localObject = new ABTestConfig();
@@ -93,7 +96,7 @@ public final class ABTestController
     localHashMap.put("eventType", paramEvtType.name());
     localHashMap.put("eventName", paramString3);
     a("report AbtestEvtExpose:" + localHashMap.toString());
-    this.jdField_a_of_type_Bctj.a(this.jdField_a_of_type_JavaLangString, "AbtestEvtExpose", true, 0L, 0L, localHashMap, null);
+    this.jdField_a_of_type_Bdmc.a(this.jdField_a_of_type_JavaLangString, "AbtestEvtExpose", true, 0L, 0L, localHashMap, null);
   }
 }
 

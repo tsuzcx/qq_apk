@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
-import apgu;
-import apgw;
+import apuk;
+import apum;
 import java.util.HashMap;
 
 public class ArkAppDeviceModule$1
-  extends HashMap<String, apgw>
+  extends HashMap<String, apum>
 {
-  public ArkAppDeviceModule$1(apgu paramapgu)
+  public ArkAppDeviceModule$1(apuk paramapuk)
   {
-    put("GetModelName", apgu.a(this.this$0));
-    put("GetScreenWidth", apgu.a(this.this$0));
-    put("GetScreenHeight", apgu.a(this.this$0));
-    put("GetPixelRatio", apgu.a(this.this$0));
-    put("GetConnectionType", apgu.a(this.this$0));
-    put("AttachEvent", apgu.a(this.this$0));
-    put("DetachEvent", apgu.a(this.this$0));
-    put("ScanCode", apgu.a(this.this$0));
-    put("GetIdentifier", apgu.a(this.this$0));
-    put("GetCurrentPosition", apgu.a(this.this$0));
+    put("GetModelName", apuk.a(this.this$0));
+    put("GetScreenWidth", apuk.a(this.this$0));
+    put("GetScreenHeight", apuk.a(this.this$0));
+    put("GetPixelRatio", apuk.a(this.this$0));
+    put("GetConnectionType", apuk.a(this.this$0));
+    put("AttachEvent", apuk.a(this.this$0));
+    put("DetachEvent", apuk.a(this.this$0));
+    put("ScanCode", apuk.a(this.this$0));
+    put("GetIdentifier", apuk.a(this.this$0));
+    put("GetCurrentPosition", apuk.a(this.this$0));
   }
 }
 

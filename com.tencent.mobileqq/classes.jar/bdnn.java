@@ -1,248 +1,77 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class bdnn
+  extends QIPCModule
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<bdns> jdField_a_of_type_JavaUtilList;
+  private static bdnn a;
   
-  private bdnn()
+  private bdnn(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramString);
   }
   
-  public bdnn(String paramString, int paramInt)
+  public static bdnn a()
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    a(new StringBuilder(this.jdField_a_of_type_JavaLangString), paramInt);
-  }
-  
-  private bdnn a(bdns parambdns)
-  {
-    if (parambdns != null) {
-      this.jdField_a_of_type_JavaUtilList.add(parambdns);
-    }
-    this.jdField_a_of_type_JavaLangString = b();
-    return this;
-  }
-  
-  private void a(StringBuilder paramStringBuilder, int paramInt)
-  {
-    int k = this.jdField_a_of_type_JavaLangString.length();
-    int m = this.jdField_a_of_type_JavaLangString.length();
-    int n = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
-    paramInt = 0;
-    while (paramInt < m)
+    if (a == null) {}
+    try
     {
-      if ((paramStringBuilder.charAt(paramInt) == '<') && (paramInt < k - 2))
+      if (a == null) {
+        a = new bdnn("NetworkMonitorIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
+    {
+      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
+      bdnk.a().a(paramString);
+    }
+    for (;;)
+    {
+      return new EIPCResult();
+      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
       {
-        int i = paramStringBuilder.charAt(paramInt + 1);
-        if ((i == 36) && (paramInt < k - 3))
+        try
         {
-          int j = paramStringBuilder.charAt(paramInt + 2);
-          if (bdnt.a) {
-            paramStringBuilder.replace(paramInt + 1, paramInt + 3, "##");
-          }
-          for (;;)
+          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
+          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
+          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
+          if (paramString != null)
           {
-            if (j >= arvq.a()) {
-              break label213;
-            }
-            if (paramStringBuilder.charAt(paramInt + 3) != '>') {
-              break label635;
-            }
-            j = arvq.b(j);
-            i = j;
-            if (j == 250) {
-              i = 10;
-            }
-            if (i >= bdnh.a) {
-              break label635;
-            }
-            a(new bdnq(paramStringBuilder.substring(paramInt, paramInt + 4), i, n));
-            paramInt += 4;
-            break;
-            if (j == 10) {
-              paramStringBuilder.setCharAt(paramInt + 2, 'ú');
-            }
-          }
-          label213:
-          if ((j >= 255) && (paramInt + 6 < k))
-          {
-            if (paramStringBuilder.charAt(paramInt + 6) == '>')
+            try
             {
-              char[] arrayOfChar = new char[3];
-              arrayOfChar[0] = paramStringBuilder.charAt(paramInt + 3);
-              arrayOfChar[1] = paramStringBuilder.charAt(paramInt + 4);
-              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(paramInt + 5) & 0xFF));
-              i = 0;
-              if (i < 3)
-              {
-                if (arrayOfChar[i] == 'ú') {
-                  arrayOfChar[i] = '\n';
-                }
-                for (;;)
-                {
-                  i += 1;
-                  break;
-                  if (arrayOfChar[i] == 'þ') {
-                    arrayOfChar[i] = '\r';
-                  }
-                }
-              }
-              a(new bdnr(paramStringBuilder.substring(paramInt, paramInt + 7), j, n));
-              i = 2;
-              if (i < 5)
-              {
-                if (paramStringBuilder.charAt(paramInt + i) == '\n') {
-                  paramStringBuilder.setCharAt(paramInt + i, 'ú');
-                }
-                for (;;)
-                {
-                  i += 1;
-                  break;
-                  if (paramStringBuilder.charAt(paramInt + i) == '\r') {
-                    paramStringBuilder.setCharAt(paramInt + i, 'þ');
-                  }
-                }
-              }
-              paramInt += 7;
+              bdnk.a().a(paramString, str, paramBundle);
             }
+            catch (Throwable paramString) {}
+            continue;
           }
-          else if (j == 250)
-          {
-            if (bdnt.a) {
-              paramStringBuilder.replace(paramInt + 1, paramInt + 3, "##");
-            }
-            a(new bdnq(paramStringBuilder.substring(paramInt, paramInt + 4), 10, n));
-            paramInt += 4;
+          if (!QLog.isColorLevel()) {
+            continue;
           }
+          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
         }
-        else if (((i == 37) || (i == 38)) && (paramInt < k - 6))
-        {
-          a(new bdnp(paramStringBuilder.substring(paramInt, paramInt + 7)));
-          paramInt += 7;
+        catch (Exception paramString) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
         }
       }
-      else
-      {
-        if ((Character.isHighSurrogate(paramStringBuilder.charAt(paramInt))) && (paramInt <= k - 2) && (Character.isSurrogatePair(paramStringBuilder.charAt(paramInt), paramStringBuilder.charAt(paramInt + 1))) && (a(paramStringBuilder.toString().codePointAt(paramInt))))
-        {
-          a(new bdnm(paramStringBuilder.substring(paramInt, paramInt + 2)));
-          paramInt += 2;
-          continue;
-        }
-        a(new bdno(String.valueOf(paramStringBuilder.charAt(paramInt))));
-      }
-      label635:
-      paramInt += 1;
     }
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return ((paramInt >= 9728) && (paramInt <= 10175)) || (paramInt == 12349) || (paramInt == 8265) || (paramInt == 8252) || ((paramInt >= 8192) && (paramInt <= 8207)) || ((paramInt >= 8232) && (paramInt <= 8239)) || (paramInt == 8287) || ((paramInt >= 8293) && (paramInt <= 8303)) || ((paramInt >= 8448) && (paramInt <= 8527)) || ((paramInt >= 8960) && (paramInt <= 9215)) || ((paramInt >= 11008) && (paramInt <= 11263)) || ((paramInt >= 10496) && (paramInt <= 10623)) || ((paramInt >= 12800) && (paramInt <= 13055)) || ((paramInt >= 55296) && (paramInt <= 57343)) || ((paramInt >= 57344) && (paramInt <= 63743)) || ((paramInt >= 65024) && (paramInt <= 65039)) || (paramInt >= 65536);
-  }
-  
-  public float a(Paint paramPaint)
-  {
-    float f = 0.0F;
-    int i = 0;
-    while (i < a())
-    {
-      f += a(i).a(paramPaint);
-      i += 1;
-    }
-    return f;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public bdnn a(int paramInt)
-  {
-    bdnn localbdnn = new bdnn();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bdns localbdns = (bdns)localIterator.next();
-      if (localbdns.a() == paramInt) {
-        localbdnn.a(localbdns);
-      }
-    }
-    return localbdnn;
-  }
-  
-  @NonNull
-  public bdns a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (bdns)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    throw new IndexOutOfBoundsException("NickString index error");
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bdns localbdns = (bdns)localIterator.next();
-      if ((localbdns.a() == 0) || (localbdns.a() == 1)) {
-        localStringBuilder.append(localbdns.a());
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public bdnn b(int paramInt)
-  {
-    bdnn localbdnn = new bdnn();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bdns localbdns = (bdns)localIterator.next();
-      if (localbdns.a() != paramInt) {
-        localbdnn.a(localbdns);
-      }
-    }
-    return localbdnn;
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append(((bdns)localIterator.next()).a());
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public String toString()
-  {
-    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdnn
  * JD-Core Version:    0.7.0.1
  */

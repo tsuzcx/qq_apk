@@ -1,143 +1,139 @@
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QzonePluginProxyActivity;
-import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
 
 public class azhv
 {
-  public static int a = -16692;
-  public static int b = -16693;
+  public static final AppRuntime.Status[] a = { AppRuntime.Status.online, AppRuntime.Status.qme, AppRuntime.Status.away, AppRuntime.Status.busy, AppRuntime.Status.dnd, AppRuntime.Status.invisiable };
   
-  public static Drawable a(int paramInt)
+  public static int a(AppRuntime.Status paramStatus)
   {
-    Iterator localIterator = azhu.a.iterator();
-    while (localIterator.hasNext())
+    switch (azhw.a[paramStatus.ordinal()])
     {
-      azia localazia = (azia)localIterator.next();
-      if (paramInt == localazia.jdField_a_of_type_Long) {
-        return localazia.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      }
+    default: 
+      QLog.d("Q..online.status", 1, "getButtonId changed to online , status: " + paramStatus);
+    case 1: 
+      return 2131361906;
+    case 2: 
+      return 2131361907;
+    case 3: 
+      return 2131361902;
+    case 4: 
+      return 2131361903;
+    case 5: 
+      return 2131361904;
     }
-    return null;
+    return 2131361905;
   }
   
-  private static Class<?> a(Context paramContext, String paramString)
+  public static Drawable a(AppRuntime.Status paramStatus)
   {
-    Object localObject1 = null;
+    return a(paramStatus, 0);
+  }
+  
+  public static Drawable a(AppRuntime.Status paramStatus, int paramInt)
+  {
+    Object localObject = null;
+    if (paramStatus != null) {}
     try
     {
-      localObject2 = Class.forName(paramString);
-      localObject1 = localObject2;
+      switch (azhw.a[paramStatus.ordinal()])
+      {
+      case 1: 
+        QLog.d("Q..online.status", 1, "getStatusIcon, not find status: " + paramStatus);
+        paramStatus = localObject;
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+        for (;;)
+        {
+          if ((paramStatus != null) && (paramInt > 0)) {
+            paramStatus.setBounds(0, 0, paramInt, paramInt);
+          }
+          return paramStatus;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837555);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837557);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837546);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837548);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837551);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837553);
+          continue;
+          QLog.d("Q..online.status", 1, "getStatusIcon, status == null");
+          paramStatus = localObject;
+        }
+      }
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramStatus)
     {
       for (;;)
       {
-        try
-        {
-          Object localObject2 = QzonePluginProxyActivity.a(paramContext).loadClass(paramString);
-          return localObject2;
-        }
-        catch (Throwable paramContext)
-        {
-          QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from qzone plugin class loader.");
-        }
-        localThrowable = localThrowable;
-        QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from normal class loader.");
-      }
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {}
-    return localObject1;
-  }
-  
-  public static String a(EditText paramEditText)
-  {
-    if (paramEditText != null)
-    {
-      if ((paramEditText.getText() instanceof bdod))
-      {
-        bdod localbdod = (bdod)paramEditText.getText();
-        if (localbdod != null) {
-          return localbdod.a();
-        }
-      }
-      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
-        return paramEditText.getEditableText().toString();
-      }
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, long paramLong1, long paramLong2, String paramString, boolean paramBoolean, bmeo parambmeo)
-  {
-    try
-    {
-      paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
-      if (paramContext != null) {
-        paramContext.getMethod("modifyStickyNotePriv", new Class[] { Long.TYPE, Long.TYPE, String.class, Boolean.TYPE, bmeo.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Boolean.valueOf(paramBoolean), parambmeo });
-      }
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("StickyNotePublishUtils", 1, "modifyStickyNotePriv fail.", paramContext);
-    }
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, bmeo parambmeo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickyNotePublishUtils", 0, String.format("publishStickyNote, hostUin=%s publishUin=%s isPublic=%s bgColor=%s bgVersion=%s vasExtendInfo=%s content=%s callback=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, paramString4, parambmeo }));
-    }
-    if ((paramContext == null) || (paramQQAppInterface == null) || (paramLong1 == 0L) || (paramLong2 == 0L) || (TextUtils.isEmpty(paramString4))) {
-      QLog.e("StickyNotePublishUtils", 1, "publishStickyNote, params invalid.");
-    }
-    for (;;)
-    {
-      return;
-      boolean bool1 = blvu.a(paramContext, paramQQAppInterface);
-      boolean bool2 = blvu.b(paramContext, paramQQAppInterface);
-      if ((!bool1) || (!bool2))
-      {
-        QLog.e("StickyNotePublishUtils", 1, String.format("publishStickyNote, init fail. initEnv=%s initServlet=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-        return;
-      }
-      try
-      {
-        paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
-        if (paramContext != null)
-        {
-          paramContext.getMethod("publishStickyNote", new Class[] { Long.TYPE, Long.TYPE, Boolean.TYPE, String.class, String.class, String.class, String.class, bmeo.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, paramString4, parambmeo });
-          return;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        QLog.e("StickyNotePublishUtils", 1, "publishStickyNote fail.", paramContext);
+        QLog.d("Q..online.status", 1, "getStatusDrawable", paramStatus);
+        paramStatus = localObject;
       }
     }
   }
   
-  public static String b(EditText paramEditText)
+  public static String a(AppRuntime.Status paramStatus)
   {
-    if (paramEditText != null)
+    if (paramStatus != null)
     {
-      paramEditText = a(paramEditText);
-      if (!TextUtils.isEmpty(paramEditText)) {
-        return bmpg.b(paramEditText.replaceAll(anni.a(2131704587), anni.a(2131704589)).replaceAll(anni.a(2131704586), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131716316), "/chigua"));
+      switch (azhw.a[paramStatus.ordinal()])
+      {
+      default: 
+        QLog.d("Q..online.status", 1, "getStatusName, not find status: " + paramStatus);
+        return "";
+      case 1: 
+        return BaseApplicationImpl.getContext().getString(2131718346);
+      case 2: 
+        return BaseApplicationImpl.getContext().getString(2131718347);
+      case 3: 
+        return BaseApplicationImpl.getContext().getString(2131718336);
+      case 4: 
+        return BaseApplicationImpl.getContext().getString(2131718338);
+      case 5: 
+        return BaseApplicationImpl.getContext().getString(2131718342);
       }
+      return BaseApplicationImpl.getContext().getString(2131718344);
     }
+    QLog.d("Q..online.status", 1, "getStatusName, status is null");
     return "";
+  }
+  
+  public static AppRuntime.Status a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return AppRuntime.Status.online;
+    case 2: 
+      return AppRuntime.Status.offline;
+    case 3: 
+      return AppRuntime.Status.away;
+    case 4: 
+      return AppRuntime.Status.invisiable;
+    case 5: 
+      return AppRuntime.Status.busy;
+    case 6: 
+      return AppRuntime.Status.qme;
+    }
+    return AppRuntime.Status.dnd;
+  }
+  
+  public static boolean a(AppRuntime.Status paramStatus)
+  {
+    return (paramStatus == AppRuntime.Status.away) || (paramStatus == AppRuntime.Status.busy) || (paramStatus == AppRuntime.Status.dnd);
   }
 }
 

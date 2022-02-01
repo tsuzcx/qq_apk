@@ -7,10 +7,10 @@ import java.io.OutputStream;
 public class RecycleableBufferedOutputStream
   extends FilterOutputStream
 {
+  private static final int MAX_POOL_SIZE = 4;
   private static final Object POOL_LOCK = new Object();
   private static int poolSize = 0;
   private static RecycleableBufferedOutputStream sPool;
-  private final int MAX_POOL_SIZE = 4;
   protected byte[] buf;
   protected int count;
   private RecycleableBufferedOutputStream next;
@@ -188,7 +188,7 @@ public class RecycleableBufferedOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.RecycleableBufferedOutputStream
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,5 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import amwz;
-import amxa;
-import amxy;
-import amxz;
-import amya;
-import amyb;
-import amyc;
-import amyd;
-import amye;
-import amyf;
-import amyg;
-import amyi;
-import amyj;
-import ancb;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -49,17 +35,31 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anll;
-import anni;
-import bgln;
-import bgmo;
-import bgnt;
-import bhhe;
-import bhhf;
-import bhhh;
-import bhhk;
-import bita;
-import bkgm;
+import anit;
+import aniu;
+import anjs;
+import anjt;
+import anju;
+import anjv;
+import anjw;
+import anjx;
+import anjy;
+import anjz;
+import anka;
+import ankc;
+import ankd;
+import annv;
+import anxh;
+import anzj;
+import bhlo;
+import bhmq;
+import bhnv;
+import biht;
+import bihu;
+import bihw;
+import bihz;
+import bjtz;
+import blhq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
@@ -87,19 +87,16 @@ import java.util.Map;
 @TargetApi(11)
 public class ApolloCardWindow
   extends RelativeLayout
-  implements amyf, amyg, amyi, Handler.Callback, View.OnClickListener
+  implements Handler.Callback, View.OnClickListener, anjz, anka, ankc
 {
   static float jdField_a_of_type_Float;
-  private static final String jdField_a_of_type_JavaLangString = anni.a(2131699123);
+  private static final String jdField_a_of_type_JavaLangString = anzj.a(2131699230);
   public static Map<String, Drawable> a;
   private static boolean jdField_a_of_type_Boolean;
   static float jdField_b_of_type_Float;
-  private static final String jdField_b_of_type_JavaLangString = anni.a(2131699112);
+  private static final String jdField_b_of_type_JavaLangString = anzj.a(2131699219);
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private amxy jdField_a_of_type_Amxy;
-  private amyd jdField_a_of_type_Amyd;
-  private amye jdField_a_of_type_Amye;
   private Context jdField_a_of_type_AndroidContentContext;
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
@@ -107,9 +104,12 @@ public class ApolloCardWindow
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bhhe jdField_a_of_type_Bhhe = new amyc(this);
-  bhhk jdField_a_of_type_Bhhk;
-  private bkgm jdField_a_of_type_Bkgm;
+  private anjs jdField_a_of_type_Anjs;
+  private anjx jdField_a_of_type_Anjx;
+  private anjy jdField_a_of_type_Anjy;
+  biht jdField_a_of_type_Biht = new anjw(this);
+  bihz jdField_a_of_type_Bihz;
+  private blhq jdField_a_of_type_Blhq;
   private ApolloOpenBoxView jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView;
   private OpeningCardGroup jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup;
   private RoundRectLinearLayout jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout;
@@ -167,19 +167,19 @@ public class ApolloCardWindow
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     d();
-    this.jdField_a_of_type_Bhhk = new bhhh(BaseApplicationImpl.getApplication().getRuntime()).a(3);
+    this.jdField_a_of_type_Bihz = new bihw(BaseApplicationImpl.getApplication().getRuntime()).a(3);
     ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 10, null, true);
   }
   
   public static void a()
   {
-    jdField_a_of_type_Float = anll.a() / 16.0F;
+    jdField_a_of_type_Float = anxh.a() / 16.0F;
     if (jdField_a_of_type_Float == 0.0F) {
       jdField_a_of_type_Float = 1.0F;
     }
-    jdField_b_of_type_Float = bgln.a() / jdField_a_of_type_Float;
+    jdField_b_of_type_Float = bhlo.a() / jdField_a_of_type_Float;
     if (jdField_b_of_type_Float == 0.0F) {
-      jdField_b_of_type_Float = bgln.a();
+      jdField_b_of_type_Float = bhlo.a();
     }
   }
   
@@ -196,33 +196,33 @@ public class ApolloCardWindow
       while (m <= 9)
       {
         str = "apollo_card_gold_" + m + ".png";
-        if (!new File(ancb.k + "boxcard/" + str).exists()) {
-          amwz.a(str, null, amwz.a(str)).startDownload();
+        if (!new File(annv.k + "boxcard/" + str).exists()) {
+          anit.a(str, null, anit.a(str)).startDownload();
         }
         m += 1;
       }
-      if (!new File(ancb.k + "boxcard/" + "apollo_card_gold_add.png").exists()) {
-        amwz.a("apollo_card_gold_add.png", null, amwz.a("apollo_card_gold_add.png")).startDownload();
+      if (!new File(annv.k + "boxcard/" + "apollo_card_gold_add.png").exists()) {
+        anit.a("apollo_card_gold_add.png", null, anit.a("apollo_card_gold_add.png")).startDownload();
       }
       m = n;
-      if (!new File(ancb.k + "boxcard/" + "apollo_card_gold_icon.png").exists())
+      if (!new File(annv.k + "boxcard/" + "apollo_card_gold_icon.png").exists())
       {
-        amwz.a("apollo_card_gold_icon.png", null, amwz.a("apollo_card_gold_icon.png")).startDownload();
+        anit.a("apollo_card_gold_icon.png", null, anit.a("apollo_card_gold_icon.png")).startDownload();
         m = n;
       }
       while (m <= 9)
       {
         str = "apollo_card_crystal_" + m + ".png";
-        if (!new File(ancb.k + "boxcard/" + str).exists()) {
-          amwz.a(str, null, amwz.a(str)).startDownload();
+        if (!new File(annv.k + "boxcard/" + str).exists()) {
+          anit.a(str, null, anit.a(str)).startDownload();
         }
         m += 1;
       }
-      if (!new File(ancb.k + "boxcard/" + "apollo_card_crystal_add.png").exists()) {
-        amwz.a("apollo_card_crystal_add.png", null, amwz.a("apollo_card_crystal_add.png")).startDownload();
+      if (!new File(annv.k + "boxcard/" + "apollo_card_crystal_add.png").exists()) {
+        anit.a("apollo_card_crystal_add.png", null, anit.a("apollo_card_crystal_add.png")).startDownload();
       }
-    } while (new File(ancb.k + "boxcard/" + "apollo_card_crystal_image.png").exists());
-    amwz.a("apollo_card_crystal_image.png", null, amwz.a("apollo_card_crystal_image.png")).startDownload();
+    } while (new File(annv.k + "boxcard/" + "apollo_card_crystal_image.png").exists());
+    anit.a("apollo_card_crystal_image.png", null, anit.a("apollo_card_crystal_image.png")).startDownload();
   }
   
   private void d()
@@ -230,11 +230,11 @@ public class ApolloCardWindow
     setPadding(0, ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()), 0, 0);
     this.jdField_i_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Amye = new amye(this);
-    this.jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Anjy = new anjy(this);
+    this.jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
     a();
-    int n = (int)bgln.i();
-    int m = (int)bgln.j() - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
+    int n = (int)bhlo.i();
+    int m = (int)bhlo.j() - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
     Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources();
     super.setBackgroundColor(-671088640);
     this.jdField_c_of_type_Int = ((int)(n * 0.706F));
@@ -255,7 +255,7 @@ public class ApolloCardWindow
     ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup, (ViewGroup.LayoutParams)localObject3);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setClickLayoutListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130850661);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130850677);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(10, -1);
     ((RelativeLayout.LayoutParams)localObject3).addRule(11, -1);
@@ -323,7 +323,7 @@ public class ApolloCardWindow
     this.jdField_g_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_g_of_type_AndroidWidgetTextView.setTextSize(14.0F / jdField_a_of_type_Float);
     this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(-34816);
-    this.jdField_g_of_type_AndroidWidgetTextView.setText(anni.a(2131699122));
+    this.jdField_g_of_type_AndroidWidgetTextView.setText(anzj.a(2131699229));
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject3).leftMargin = ((int)(n * 0.029F));
     ((RelativeLayout.LayoutParams)localObject3).addRule(14);
@@ -345,7 +345,7 @@ public class ApolloCardWindow
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject3);
     localObject3 = new LinearLayout.LayoutParams(-1, ApolloUtil.a(250.0F, jdField_b_of_type_Float) * 3 / 4);
     URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    URLDrawable localURLDrawable = amwz.a("apollo_error.png", null, amwz.a("apollo_error.png"));
+    URLDrawable localURLDrawable = anit.a("apollo_error.png", null, anit.a("apollo_error.png"));
     localURLDrawable.setTargetDensity(((Resources)localObject2).getDisplayMetrics().densityDpi / 2);
     localURLImageView.setScaleType(ImageView.ScaleType.CENTER);
     localURLImageView.setImageDrawable(localURLDrawable);
@@ -356,7 +356,7 @@ public class ApolloCardWindow
     ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ApolloUtil.a(129.0F, jdField_b_of_type_Float);
     super.addView(this.jdField_b_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839404);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839412);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(13, -1);
     super.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
@@ -373,7 +373,7 @@ public class ApolloCardWindow
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setGravity(17);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setRoundRect((int)(n * 0.008F), -7707920, false);
     this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838450);
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838463);
     localObject2 = new LinearLayout.LayoutParams(-2, -2);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.addView(this.jdField_d_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
     this.jdField_d_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -417,7 +417,7 @@ public class ApolloCardWindow
       m += 1;
     }
     this.jdField_e_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundResource(2130838449);
+    this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundResource(2130838462);
     localObject1 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject1).addRule(12);
     ((RelativeLayout.LayoutParams)localObject1).addRule(11);
@@ -430,18 +430,18 @@ public class ApolloCardWindow
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Amxy == null) || (this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList.isEmpty())) {
+    if ((this.jdField_a_of_type_Anjs == null) || (this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList.isEmpty())) {
       return;
     }
     Object localObject1;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Amxy.jdField_c_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Anjs.jdField_c_of_type_JavaLangString))
     {
       localObject1 = "";
       label50:
-      if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) || (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaLangString))) {
         break label1753;
       }
-      localObject1 = anni.a(2131699119);
+      localObject1 = anzj.a(2131699226);
     }
     label300:
     label455:
@@ -455,7 +455,7 @@ public class ApolloCardWindow
       label224:
       label376:
       int m;
-      if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() == 3)
+      if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() == 3)
       {
         this.jdField_h_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_i_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -463,56 +463,56 @@ public class ApolloCardWindow
         this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        localObject2 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2);
+        localObject2 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2);
         if (localObject2 != null)
         {
-          if (!TextUtils.isEmpty(((amya)localObject2).jdField_a_of_type_JavaLangString))
+          if (!TextUtils.isEmpty(((anju)localObject2).jdField_a_of_type_JavaLangString))
           {
-            localObject3 = amwz.a(Utils.Crc64String(((amya)localObject2).jdField_a_of_type_JavaLangString), null, ((amya)localObject2).jdField_a_of_type_JavaLangString);
+            localObject3 = anit.a(Utils.Crc64String(((anju)localObject2).jdField_a_of_type_JavaLangString), null, ((anju)localObject2).jdField_a_of_type_JavaLangString);
             this.jdField_h_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
           }
-          if (((amya)localObject2).jdField_a_of_type_Int == 7) {
+          if (((anju)localObject2).jdField_a_of_type_Int == 7) {
             this.jdField_i_of_type_AndroidWidgetTextView.setTextColor(-31676);
           }
         }
         else
         {
-          localObject2 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1);
+          localObject2 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1);
           if (localObject2 != null)
           {
-            if (!TextUtils.isEmpty(((amya)localObject2).jdField_a_of_type_JavaLangString))
+            if (!TextUtils.isEmpty(((anju)localObject2).jdField_a_of_type_JavaLangString))
             {
-              localObject3 = amwz.a(Utils.Crc64String(((amya)localObject2).jdField_a_of_type_JavaLangString), null, ((amya)localObject2).jdField_a_of_type_JavaLangString);
+              localObject3 = anit.a(Utils.Crc64String(((anju)localObject2).jdField_a_of_type_JavaLangString), null, ((anju)localObject2).jdField_a_of_type_JavaLangString);
               this.jdField_f_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
             }
-            if (((amya)localObject2).jdField_a_of_type_Int != 7) {
+            if (((anju)localObject2).jdField_a_of_type_Int != 7) {
               break label587;
             }
             this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(-31676);
           }
-          localObject2 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0);
+          localObject2 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0);
           if (localObject2 != null)
           {
-            if (!TextUtils.isEmpty(((amya)localObject2).jdField_a_of_type_JavaLangString))
+            if (!TextUtils.isEmpty(((anju)localObject2).jdField_a_of_type_JavaLangString))
             {
-              localObject3 = amwz.a(Utils.Crc64String(((amya)localObject2).jdField_a_of_type_JavaLangString), null, ((amya)localObject2).jdField_a_of_type_JavaLangString);
+              localObject3 = anit.a(Utils.Crc64String(((anju)localObject2).jdField_a_of_type_JavaLangString), null, ((anju)localObject2).jdField_a_of_type_JavaLangString);
               this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
             }
-            if (((amya)localObject2).jdField_a_of_type_Int != 7) {
+            if (((anju)localObject2).jdField_a_of_type_Int != 7) {
               break label600;
             }
             this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-31676);
           }
-          if (this.jdField_a_of_type_Amxy.jdField_a_of_type_Int != -1) {
-            super.setBackgroundColor(this.jdField_a_of_type_Amxy.jdField_a_of_type_Int);
+          if (this.jdField_a_of_type_Anjs.jdField_a_of_type_Int != -1) {
+            super.setBackgroundColor(this.jdField_a_of_type_Anjs.jdField_a_of_type_Int);
           }
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.removeAllViews();
-          if ((this.jdField_a_of_type_Amxy.jdField_b_of_type_Long == 0L) && (this.jdField_a_of_type_Amxy.jdField_a_of_type_Long != -501031L) && (this.jdField_a_of_type_Amxy.jdField_a_of_type_Long != -501027L)) {
+          if ((this.jdField_a_of_type_Anjs.jdField_b_of_type_Long == 0L) && (this.jdField_a_of_type_Anjs.jdField_a_of_type_Long != -501031L) && (this.jdField_a_of_type_Anjs.jdField_a_of_type_Long != -501027L)) {
             break label1243;
           }
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setVisibility(0);
           m = 0;
-          if (m >= this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList.size()) {
+          if (m >= this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList.size()) {
             break label1020;
           }
           if (this.jdField_a_of_type_JavaUtilList.size() <= m) {
@@ -534,7 +534,7 @@ public class ApolloCardWindow
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
         m += 1;
         break label455;
-        localObject1 = this.jdField_a_of_type_Amxy.jdField_c_of_type_JavaLangString;
+        localObject1 = this.jdField_a_of_type_Anjs.jdField_c_of_type_JavaLangString;
         break label50;
         this.jdField_i_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         break label224;
@@ -542,7 +542,7 @@ public class ApolloCardWindow
         break label300;
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         break label376;
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() == 2)
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() == 2)
         {
           this.jdField_h_of_type_AndroidWidgetImageView.setVisibility(8);
           this.jdField_i_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -550,31 +550,31 @@ public class ApolloCardWindow
           this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-          localObject2 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1);
+          localObject2 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1);
           if (localObject2 != null)
           {
-            if (!TextUtils.isEmpty(((amya)localObject2).jdField_a_of_type_JavaLangString))
+            if (!TextUtils.isEmpty(((anju)localObject2).jdField_a_of_type_JavaLangString))
             {
-              localObject3 = amwz.a(Utils.Crc64String(((amya)localObject2).jdField_a_of_type_JavaLangString), null, ((amya)localObject2).jdField_a_of_type_JavaLangString);
+              localObject3 = anit.a(Utils.Crc64String(((anju)localObject2).jdField_a_of_type_JavaLangString), null, ((anju)localObject2).jdField_a_of_type_JavaLangString);
               this.jdField_f_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
             }
-            if (((amya)localObject2).jdField_a_of_type_Int != 7) {
+            if (((anju)localObject2).jdField_a_of_type_Int != 7) {
               break label834;
             }
             this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(-31676);
           }
           for (;;)
           {
-            localObject2 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0);
+            localObject2 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0);
             if (localObject2 == null) {
               break;
             }
-            if (!TextUtils.isEmpty(((amya)localObject2).jdField_a_of_type_JavaLangString))
+            if (!TextUtils.isEmpty(((anju)localObject2).jdField_a_of_type_JavaLangString))
             {
-              localObject3 = amwz.a(Utils.Crc64String(((amya)localObject2).jdField_a_of_type_JavaLangString), null, ((amya)localObject2).jdField_a_of_type_JavaLangString);
+              localObject3 = anit.a(Utils.Crc64String(((anju)localObject2).jdField_a_of_type_JavaLangString), null, ((anju)localObject2).jdField_a_of_type_JavaLangString);
               this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
             }
-            if (((amya)localObject2).jdField_a_of_type_Int != 7) {
+            if (((anju)localObject2).jdField_a_of_type_Int != 7) {
               break label847;
             }
             this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-31676);
@@ -584,7 +584,7 @@ public class ApolloCardWindow
           this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16777216);
           break label376;
         }
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() != 1) {
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() != 1) {
           break label376;
         }
         this.jdField_h_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -593,16 +593,16 @@ public class ApolloCardWindow
         this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        localObject2 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0);
+        localObject2 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0);
         if (localObject2 == null) {
           break label376;
         }
-        if (!TextUtils.isEmpty(((amya)localObject2).jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(((anju)localObject2).jdField_a_of_type_JavaLangString))
         {
-          localObject3 = amwz.a(Utils.Crc64String(((amya)localObject2).jdField_a_of_type_JavaLangString), null, ((amya)localObject2).jdField_a_of_type_JavaLangString);
+          localObject3 = anit.a(Utils.Crc64String(((anju)localObject2).jdField_a_of_type_JavaLangString), null, ((anju)localObject2).jdField_a_of_type_JavaLangString);
           this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
         }
-        if (((amya)localObject2).jdField_a_of_type_Int == 7)
+        if (((anju)localObject2).jdField_a_of_type_Int == 7)
         {
           this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-31676);
           break label376;
@@ -610,46 +610,46 @@ public class ApolloCardWindow
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         break label376;
         label1020:
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(this.jdField_c_of_type_Int, this.jdField_f_of_type_Int, this.jdField_a_of_type_Amxy);
+        this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(this.jdField_c_of_type_Int, this.jdField_f_of_type_Int, this.jdField_a_of_type_Anjs);
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setCurrentFrame(0);
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.requestLayout();
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_b_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setVisibility(0);
         this.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 0) {
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(amxy.c(((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0)).jdField_b_of_type_Int));
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 0) {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(anjs.c(((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0)).jdField_b_of_type_Int));
         }
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 1) {
-          this.jdField_h_of_type_AndroidWidgetTextView.setText(amxy.b(((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1)).jdField_b_of_type_Int));
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 1) {
+          this.jdField_h_of_type_AndroidWidgetTextView.setText(anjs.b(((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1)).jdField_b_of_type_Int));
         }
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 2) {
-          this.jdField_i_of_type_AndroidWidgetTextView.setText(amxy.a(((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2)).jdField_b_of_type_Int));
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 2) {
+          this.jdField_i_of_type_AndroidWidgetTextView.setText(anjs.a(((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2)).jdField_b_of_type_Int));
         }
-        if ((this.jdField_a_of_type_Amxy.jdField_b_of_type_Long != -501027L) && (this.jdField_a_of_type_Long != -501027L)) {
+        if ((this.jdField_a_of_type_Anjs.jdField_b_of_type_Long != -501027L) && (this.jdField_a_of_type_Long != -501027L)) {
           break;
         }
         this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
         return;
         label1243:
         AbstractGifImage.pauseAll();
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(anni.a(2131699116) + (String)localObject1 + anni.a(2131699117));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(anzj.a(2131699223) + (String)localObject1 + anzj.a(2131699224));
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView.setVisibility(0);
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 0) {
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(amxy.c(((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0)).jdField_b_of_type_Int - ((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0)).jdField_c_of_type_Int));
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 0) {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(anjs.c(((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0)).jdField_b_of_type_Int - ((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0)).jdField_c_of_type_Int));
         }
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 1) {
-          this.jdField_h_of_type_AndroidWidgetTextView.setText(amxy.b(((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1)).jdField_b_of_type_Int - ((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1)).jdField_c_of_type_Int));
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 1) {
+          this.jdField_h_of_type_AndroidWidgetTextView.setText(anjs.b(((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1)).jdField_b_of_type_Int - ((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1)).jdField_c_of_type_Int));
         }
-        if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 2) {
-          this.jdField_i_of_type_AndroidWidgetTextView.setText(amxy.a(((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2)).jdField_b_of_type_Int - ((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2)).jdField_c_of_type_Int));
+        if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 2) {
+          this.jdField_i_of_type_AndroidWidgetTextView.setText(anjs.a(((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2)).jdField_b_of_type_Int - ((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2)).jdField_c_of_type_Int));
         }
-        if ((this.jdField_a_of_type_Amxy.jdField_b_of_type_Long == -501027L) || (this.jdField_a_of_type_Long == -501027L)) {
+        if ((this.jdField_a_of_type_Anjs.jdField_b_of_type_Long == -501027L) || (this.jdField_a_of_type_Long == -501027L)) {
           this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
         }
         localObject3 = new ArrayList();
         m = 0;
-        if (m < this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList.size())
+        if (m < this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList.size())
         {
           if (this.jdField_a_of_type_JavaUtilList.size() <= m) {
             break label1743;
@@ -666,14 +666,14 @@ public class ApolloCardWindow
             this.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
           ((List)localObject3).add(localObject2);
-          localObject1 = (amxz)this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList.get(m);
-          if ((localObject1 != null) && (((amxz)localObject1).jdField_a_of_type_Short == 15)) {
+          localObject1 = (anjt)this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList.get(m);
+          if ((localObject1 != null) && (((anjt)localObject1).jdField_a_of_type_Short == 15)) {
             VipUtils.a(null, "cmshow", "Apollo", "0X80065C002", this.jdField_a_of_type_Int, 0, new String[0]);
           }
           m += 1;
           break;
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList, (List)localObject3, this.j, this.k - this.jdField_h_of_type_Int, super.getWidth(), super.getHeight());
-          this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(256, 600);
+          this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList, (List)localObject3, this.j, this.k - this.jdField_h_of_type_Int, super.getWidth(), super.getHeight());
+          this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(256, 600);
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView.a();
           return;
           localObject1 = null;
@@ -726,10 +726,10 @@ public class ApolloCardWindow
     }
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-    amyj localamyj = new amyj(0, 0, 0, -ApolloUtil.a(144.0F, jdField_b_of_type_Float), -(ApolloUtil.a(195.0F, jdField_b_of_type_Float) - paramInt), -ApolloUtil.a(164.0F, jdField_b_of_type_Float));
-    localamyj.setDuration(500L);
-    localamyj.setStartOffset(250L);
-    localamyj.setInterpolator(new AccelerateDecelerateInterpolator());
+    ankd localankd = new ankd(0, 0, 0, -ApolloUtil.a(144.0F, jdField_b_of_type_Float), -(ApolloUtil.a(195.0F, jdField_b_of_type_Float) - paramInt), -ApolloUtil.a(164.0F, jdField_b_of_type_Float));
+    localankd.setDuration(500L);
+    localankd.setStartOffset(250L);
+    localankd.setInterpolator(new AccelerateDecelerateInterpolator());
     if (this.jdField_b_of_type_AndroidViewAnimationScaleAnimation == null)
     {
       this.jdField_b_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.0F, 0.4F, 1.0F, 0.4F);
@@ -737,7 +737,7 @@ public class ApolloCardWindow
       this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setStartOffset(250L);
     }
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_b_of_type_AndroidViewAnimationScaleAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(localamyj);
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(localankd);
     if (this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation == null)
     {
       this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
@@ -764,7 +764,7 @@ public class ApolloCardWindow
         do
         {
           return;
-        } while (this.jdField_a_of_type_Amxy == null);
+        } while (this.jdField_a_of_type_Anjs == null);
         if (4 != paramInt1) {
           break;
         }
@@ -773,7 +773,7 @@ public class ApolloCardWindow
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.b();
-      } while ((this.jdField_a_of_type_Amxy.jdField_b_of_type_Long != -501027L) && (this.jdField_a_of_type_Long != -501027L));
+      } while ((this.jdField_a_of_type_Anjs.jdField_b_of_type_Long != -501027L) && (this.jdField_a_of_type_Long != -501027L));
       this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     } while (10 != paramInt1);
@@ -782,23 +782,23 @@ public class ApolloCardWindow
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_b_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setVisibility(0);
-      if ((this.jdField_a_of_type_Amxy.jdField_b_of_type_Long == -501027L) || (this.jdField_a_of_type_Long == -501027L)) {
+      if ((this.jdField_a_of_type_Anjs.jdField_b_of_type_Long == -501027L) || (this.jdField_a_of_type_Long == -501027L)) {
         this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(this.jdField_c_of_type_Int, this.jdField_f_of_type_Int, this.jdField_a_of_type_Amxy);
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(this.jdField_c_of_type_Int, this.jdField_f_of_type_Int, this.jdField_a_of_type_Anjs);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setCurrentFrame(0);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView.setVisibility(4);
     this.jdField_c_of_type_Boolean = true;
     AbstractGifImage.resumeAll();
   }
   
-  public void a(View paramView, String paramString1, String paramString2, AppInterface paramAppInterface, amyd paramamyd)
+  public void a(View paramView, String paramString1, String paramString2, AppInterface paramAppInterface, anjx paramanjx)
   {
     if ((paramView == null) || (paramAppInterface == null) || (paramString1 == null)) {
       return;
     }
-    this.jdField_a_of_type_Amyd = paramamyd;
+    this.jdField_a_of_type_Anjx = paramanjx;
     super.setVisibility(4);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
@@ -814,20 +814,20 @@ public class ApolloCardWindow
     this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView.setVisibility(4);
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(null);
     if (this.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bkgm.sendEmptyMessage(258);
-      this.jdField_a_of_type_Bkgm.removeMessages(264);
-      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(264, 1000L);
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(258);
+      this.jdField_a_of_type_Blhq.removeMessages(264);
+      this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(264, 1000L);
     }
     for (;;)
     {
       this.jdField_d_of_type_Boolean = false;
       return;
-      this.jdField_a_of_type_Bkgm.removeMessages(264);
-      this.jdField_a_of_type_Bkgm.sendEmptyMessage(264);
-      this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(258, 500L);
+      this.jdField_a_of_type_Blhq.removeMessages(264);
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(264);
+      this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(258, 500L);
     }
   }
   
@@ -862,29 +862,29 @@ public class ApolloCardWindow
     ValueAnimator localValueAnimator = new ValueAnimator();
     localValueAnimator.setObjectValues(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     localValueAnimator.setDuration(paramInt3);
-    localValueAnimator.addUpdateListener(new amyb(this, paramTextView));
+    localValueAnimator.addUpdateListener(new anjv(this, paramTextView));
     localValueAnimator.setStartDelay(paramInt4);
     localValueAnimator.start();
   }
   
   void a(File paramFile, String paramString)
   {
-    if (this.jdField_a_of_type_Bhhk == null) {
+    if (this.jdField_a_of_type_Bihz == null) {
       return;
     }
-    bhhf localbhhf = new bhhf(paramString, paramFile);
-    localbhhf.p = true;
-    localbhhf.j = false;
-    localbhhf.n = true;
-    localbhhf.s = false;
-    localbhhf.q = true;
-    localbhhf.r = true;
-    localbhhf.jdField_b_of_type_Boolean = true;
-    localbhhf.jdField_f_of_type_JavaLangString = "apollo_res";
+    bihu localbihu = new bihu(paramString, paramFile);
+    localbihu.p = true;
+    localbihu.j = false;
+    localbihu.n = true;
+    localbihu.s = false;
+    localbihu.q = true;
+    localbihu.r = true;
+    localbihu.jdField_b_of_type_Boolean = true;
+    localbihu.jdField_f_of_type_JavaLangString = "apollo_res";
     Bundle localBundle = new Bundle();
     localBundle.putString("path", paramFile.getPath());
     localBundle.putString("url", paramString);
-    this.jdField_a_of_type_Bhhk.a(localbhhf, this.jdField_a_of_type_Bhhe, null);
+    this.jdField_a_of_type_Bihz.a(localbihu, this.jdField_a_of_type_Biht, null);
   }
   
   public void a(String paramString1, boolean paramBoolean, long paramLong, Object paramObject, String paramString2)
@@ -914,7 +914,7 @@ public class ApolloCardWindow
           break;
         }
       } while ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (!this.jdField_c_of_type_JavaLangString.equals(paramString2)));
-      paramString1 = this.jdField_a_of_type_Bkgm.obtainMessage(257);
+      paramString1 = this.jdField_a_of_type_Blhq.obtainMessage(257);
       paramString1.obj = paramObject;
       paramString1.sendToTarget();
       return;
@@ -923,55 +923,55 @@ public class ApolloCardWindow
         if ((paramLong != 0L) || (!paramBoolean))
         {
           this.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_Bkgm.obtainMessage(261).sendToTarget();
+          this.jdField_a_of_type_Blhq.obtainMessage(261).sendToTarget();
           return;
         }
-        this.jdField_a_of_type_Bkgm.obtainMessage(262).sendToTarget();
+        this.jdField_a_of_type_Blhq.obtainMessage(262).sendToTarget();
         return;
       }
     } while (!"apollo_interact.take_chips".equals(paramString1));
-    this.jdField_a_of_type_Bkgm.removeMessages(258);
-    if ((paramObject instanceof amxy)) {
-      this.jdField_a_of_type_Amxy = ((amxy)paramObject);
+    this.jdField_a_of_type_Blhq.removeMessages(258);
+    if ((paramObject instanceof anjs)) {
+      this.jdField_a_of_type_Anjs = ((anjs)paramObject);
     }
     this.jdField_a_of_type_Long = paramLong;
-    if ((this.jdField_a_of_type_Amxy != null) && ((this.jdField_a_of_type_Long == -501030L) || (this.jdField_a_of_type_Amxy.jdField_b_of_type_Long == -501030L)))
+    if ((this.jdField_a_of_type_Anjs != null) && ((this.jdField_a_of_type_Long == -501030L) || (this.jdField_a_of_type_Anjs.jdField_b_of_type_Long == -501030L)))
     {
-      if (this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList = new ArrayList();
+      if (this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList = new ArrayList();
       }
-      paramString1 = new amxz();
+      paramString1 = new anjt();
       paramString1.jdField_g_of_type_Int = 1;
-      this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList.add(0, paramString1);
+      this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList.add(0, paramString1);
     }
     if (paramBoolean)
     {
       if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long == -501030L) || (this.jdField_a_of_type_Long == -501027L) || (this.jdField_a_of_type_Long == -501040L) || (this.jdField_a_of_type_Long == -501031L))
       {
-        this.jdField_a_of_type_Bkgm.obtainMessage(260).sendToTarget();
+        this.jdField_a_of_type_Blhq.obtainMessage(260).sendToTarget();
         return;
       }
       if (this.jdField_a_of_type_Long == -501028L)
       {
         this.jdField_e_of_type_JavaLangString = jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_Bkgm.obtainMessage(259).sendToTarget();
+        this.jdField_a_of_type_Blhq.obtainMessage(259).sendToTarget();
         return;
       }
       this.jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Bkgm.obtainMessage(259).sendToTarget();
+      this.jdField_a_of_type_Blhq.obtainMessage(259).sendToTarget();
       return;
     }
     this.jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bkgm.obtainMessage(259).sendToTarget();
+    this.jdField_a_of_type_Blhq.obtainMessage(259).sendToTarget();
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (this.jdField_a_of_type_Amyd != null)) {
-      this.jdField_a_of_type_Amyd.a(this.jdField_c_of_type_JavaLangString);
+    if ((!paramBoolean) && (this.jdField_a_of_type_Anjx != null)) {
+      this.jdField_a_of_type_Anjx.a(this.jdField_c_of_type_JavaLangString);
     }
     super.setVisibility(8);
-    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.a(paramBoolean);
     if (this.jdField_f_of_type_AndroidWidgetTextView != null) {
       this.jdField_f_of_type_AndroidWidgetTextView.clearAnimation();
@@ -992,7 +992,7 @@ public class ApolloCardWindow
     {
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView.b();
       this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Amye.a();
+      this.jdField_a_of_type_Anjy.a();
     }
   }
   
@@ -1002,12 +1002,12 @@ public class ApolloCardWindow
     Object localObject3;
     File localFile1;
     File localFile2;
-    if ((this.jdField_a_of_type_Amxy != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amxy.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amxy.jdField_d_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Anjs != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Anjs.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Anjs.jdField_d_of_type_JavaLangString)))
     {
-      localObject1 = bita.d(this.jdField_a_of_type_Amxy.jdField_d_of_type_JavaLangString);
-      localObject3 = bita.d(this.jdField_a_of_type_Amxy.jdField_e_of_type_JavaLangString);
-      localFile1 = new File(ancb.k + (String)localObject1 + ".cache");
-      localFile2 = new File(ancb.k + (String)localObject3 + ".cache");
+      localObject1 = bjtz.d(this.jdField_a_of_type_Anjs.jdField_d_of_type_JavaLangString);
+      localObject3 = bjtz.d(this.jdField_a_of_type_Anjs.jdField_e_of_type_JavaLangString);
+      localFile1 = new File(annv.k + (String)localObject1 + ".cache");
+      localFile2 = new File(annv.k + (String)localObject3 + ".cache");
       if ((!localFile1.exists()) || (!localFile2.exists())) {}
     }
     synchronized (jdField_a_of_type_JavaUtilMap)
@@ -1020,10 +1020,10 @@ public class ApolloCardWindow
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloOpenBoxView.setDrawables((Drawable)localObject1, (Drawable)localObject3, null);
         }
         if (!localFile1.exists()) {
-          a(localFile1, this.jdField_a_of_type_Amxy.jdField_d_of_type_JavaLangString);
+          a(localFile1, this.jdField_a_of_type_Anjs.jdField_d_of_type_JavaLangString);
         }
         if (!localFile2.exists()) {
-          a(localFile2, this.jdField_a_of_type_Amxy.jdField_e_of_type_JavaLangString);
+          a(localFile2, this.jdField_a_of_type_Anjs.jdField_e_of_type_JavaLangString);
         }
         return;
       }
@@ -1051,27 +1051,27 @@ public class ApolloCardWindow
             default: 
               return false;
             }
-          } while (this.jdField_a_of_type_Amxy == null);
-          if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 0)
+          } while (this.jdField_a_of_type_Anjs == null);
+          if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 0)
           {
-            paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0);
+            paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0);
             if ((paramMessage != null) && (paramMessage.jdField_c_of_type_Int > 0))
             {
               this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
               this.jdField_f_of_type_AndroidWidgetTextView.setText("+" + paramMessage.jdField_c_of_type_Int);
               localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838445);
-              localObject = amwz.a("apollo_card_first_image.png", (URLDrawable.URLDrawableOptions)localObject, paramMessage.jdField_a_of_type_JavaLangString);
+              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838458);
+              localObject = anit.a("apollo_card_first_image.png", (URLDrawable.URLDrawableOptions)localObject, paramMessage.jdField_a_of_type_JavaLangString);
               m = ApolloUtil.a(25.0F / jdField_a_of_type_Float, jdField_b_of_type_Float);
               ((URLDrawable)localObject).setBounds(0, 0, (int)(m * 0.8F), m);
               this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
               a(0);
-              this.jdField_c_of_type_AndroidWidgetTextView.setText(amxy.c(paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int));
+              this.jdField_c_of_type_AndroidWidgetTextView.setText(anjs.c(paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int));
               a(this.jdField_c_of_type_AndroidWidgetTextView, paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int, paramMessage.jdField_b_of_type_Int, 200, 650);
               if (this.jdField_c_of_type_AndroidWidgetImageView == null)
               {
                 this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-                this.jdField_c_of_type_AndroidWidgetImageView.setId(2131365767);
+                this.jdField_c_of_type_AndroidWidgetImageView.setId(2131365810);
                 this.jdField_c_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 paramMessage = new RelativeLayout.LayoutParams(ApolloUtil.a(15.0F, jdField_b_of_type_Float), ApolloUtil.a(15.0F, jdField_b_of_type_Float));
                 paramMessage.leftMargin = ApolloUtil.a(12.0F, jdField_b_of_type_Float);
@@ -1080,15 +1080,15 @@ public class ApolloCardWindow
               }
               this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
               a(this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, 650);
-              this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(266, 650L);
+              this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(266, 650L);
             }
           }
         } while (!QLog.isColorLevel());
         QLog.d("ApolloCardWindow", 2, "MSG_CODE_ADD_CARD:");
         return false;
-        this.jdField_a_of_type_Amye.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_c_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+        this.jdField_a_of_type_Anjy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_c_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
         return false;
-      } while (this.jdField_a_of_type_Amxy == null);
+      } while (this.jdField_a_of_type_Anjs == null);
       return false;
       super.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
@@ -1102,19 +1102,19 @@ public class ApolloCardWindow
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       return false;
-      if (this.jdField_a_of_type_Amxy != null)
+      if (this.jdField_a_of_type_Anjs != null)
       {
         if (Build.VERSION.SDK_INT >= 11)
         {
           paramMessage = this.jdField_d_of_type_AndroidWidgetImageView;
-          if (!this.jdField_a_of_type_Amxy.jdField_a_of_type_Boolean) {
+          if (!this.jdField_a_of_type_Anjs.jdField_a_of_type_Boolean) {
             break label686;
           }
           f1 = 1.0F;
           paramMessage.setAlpha(f1);
         }
         paramMessage = this.jdField_d_of_type_AndroidWidgetTextView;
-        if (!this.jdField_a_of_type_Amxy.jdField_a_of_type_Boolean) {
+        if (!this.jdField_a_of_type_Anjs.jdField_a_of_type_Boolean) {
           break label693;
         }
       }
@@ -1124,7 +1124,7 @@ public class ApolloCardWindow
         if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0) {
           break;
         }
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, anni.a(2131699118), 0).a();
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131699225), 0).a();
         return false;
         f1 = 0.5F;
         break label629;
@@ -1136,11 +1136,11 @@ public class ApolloCardWindow
     } while (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0);
     label686:
     label693:
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, anni.a(2131699113), 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131699220), 0).a();
     return false;
     super.setVisibility(0);
     c();
-    if (this.jdField_a_of_type_Amxy == null)
+    if (this.jdField_a_of_type_Anjs == null)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -1159,13 +1159,13 @@ public class ApolloCardWindow
       }
       this.jdField_a_of_type_Int = 0;
       label890:
-      if ((this.jdField_a_of_type_Amxy.jdField_b_of_type_Long == 0L) && (this.jdField_a_of_type_Amxy.jdField_a_of_type_Long != -501031L)) {
+      if ((this.jdField_a_of_type_Anjs.jdField_b_of_type_Long == 0L) && (this.jdField_a_of_type_Anjs.jdField_a_of_type_Long != -501031L)) {
         break label1168;
       }
-      if (this.jdField_a_of_type_Amxy.jdField_b_of_type_Int <= 0) {
+      if (this.jdField_a_of_type_Anjs.jdField_b_of_type_Int <= 0) {
         break label1138;
       }
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaLangString))) {
         break label1130;
       }
       this.jdField_b_of_type_Int = 1;
@@ -1176,13 +1176,13 @@ public class ApolloCardWindow
       label996:
       e();
       return false;
-      if (this.jdField_a_of_type_Amxy.jdField_b_of_type_Int > 0)
+      if (this.jdField_a_of_type_Anjs.jdField_b_of_type_Int > 0)
       {
         this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setVisibility(0);
         if (Build.VERSION.SDK_INT >= 11)
         {
           paramMessage = this.jdField_d_of_type_AndroidWidgetImageView;
-          if (this.jdField_a_of_type_Amxy.jdField_a_of_type_Boolean)
+          if (this.jdField_a_of_type_Anjs.jdField_a_of_type_Boolean)
           {
             f1 = 1.0F;
             label1045:
@@ -1192,7 +1192,7 @@ public class ApolloCardWindow
         else
         {
           paramMessage = this.jdField_d_of_type_AndroidWidgetTextView;
-          if (!this.jdField_a_of_type_Amxy.jdField_a_of_type_Boolean) {
+          if (!this.jdField_a_of_type_Anjs.jdField_a_of_type_Boolean) {
             break label1082;
           }
         }
@@ -1219,26 +1219,26 @@ public class ApolloCardWindow
       this.jdField_b_of_type_Int = 2;
       continue;
       label1138:
-      if (this.jdField_a_of_type_Amxy.jdField_b_of_type_Long == -501030L) {
+      if (this.jdField_a_of_type_Anjs.jdField_b_of_type_Long == -501030L) {
         this.jdField_b_of_type_Int = 3;
       } else {
         this.jdField_b_of_type_Int = 4;
       }
     }
     label1168:
-    if (this.jdField_a_of_type_Amxy.jdField_b_of_type_Int > 0) {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaLangString)))
+    if (this.jdField_a_of_type_Anjs.jdField_b_of_type_Int > 0) {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaLangString)))
       {
         this.jdField_b_of_type_Int = 1;
-        paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+        paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
         if ((paramMessage != null) && (paramMessage.jdField_c_of_type_Int > 0)) {
           VipUtils.a(null, "cmshow", "Apollo", "0X80065C2", this.jdField_a_of_type_Int, 0, new String[] { "", String.valueOf(paramMessage.jdField_c_of_type_Int), "" });
         }
-        paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(7));
+        paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(7));
         if ((paramMessage != null) && (paramMessage.jdField_c_of_type_Int > 0)) {
           VipUtils.a(null, "cmshow", "Apollo", "0X80065C04", this.jdField_a_of_type_Int, 0, new String[] { "", String.valueOf(paramMessage.jdField_c_of_type_Int), "" });
         }
-        paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(15));
+        paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(15));
         if ((paramMessage != null) && (paramMessage.jdField_c_of_type_Int > 0)) {
           VipUtils.a(null, "cmshow", "Apollo", "0X80065C06", this.jdField_a_of_type_Int, 0, new String[] { "", String.valueOf(paramMessage.jdField_c_of_type_Int), "" });
         }
@@ -1246,31 +1246,31 @@ public class ApolloCardWindow
     }
     for (int m = 0;; m = 1)
     {
-      VipUtils.a(null, "cmshow", "Apollo", "0X80065C1", this.jdField_a_of_type_Int, 0, new String[] { String.valueOf(m), String.valueOf(this.jdField_a_of_type_Amxy.jdField_b_of_type_Int) });
+      VipUtils.a(null, "cmshow", "Apollo", "0X80065C1", this.jdField_a_of_type_Int, 0, new String[] { String.valueOf(m), String.valueOf(this.jdField_a_of_type_Anjs.jdField_b_of_type_Int) });
       break label996;
       this.jdField_b_of_type_Int = 2;
-      if ((this.jdField_a_of_type_Amxy.jdField_c_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_Amxy.jdField_c_of_type_JavaUtilList.isEmpty()))
+      if ((this.jdField_a_of_type_Anjs.jdField_c_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_Anjs.jdField_c_of_type_JavaUtilList.isEmpty()))
       {
-        paramMessage = this.jdField_a_of_type_Amxy.jdField_c_of_type_JavaUtilList.iterator();
+        paramMessage = this.jdField_a_of_type_Anjs.jdField_c_of_type_JavaUtilList.iterator();
         for (;;)
         {
           if (paramMessage.hasNext())
           {
-            localObject = (amxz)paramMessage.next();
-            amya localamya = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-            if ((localamya != null) && (localamya.jdField_c_of_type_Int > 0)) {
-              VipUtils.a(null, "cmshow", "Apollo", "0X80065C3", this.jdField_a_of_type_Int, 0, new String[] { String.valueOf(((amxz)localObject).jdField_a_of_type_Int), String.valueOf(0), String.valueOf(((amxz)localObject).jdField_a_of_type_Short) });
+            localObject = (anjt)paramMessage.next();
+            anju localanju = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+            if ((localanju != null) && (localanju.jdField_c_of_type_Int > 0)) {
+              VipUtils.a(null, "cmshow", "Apollo", "0X80065C3", this.jdField_a_of_type_Int, 0, new String[] { String.valueOf(((anjt)localObject).jdField_a_of_type_Int), String.valueOf(0), String.valueOf(((anjt)localObject).jdField_a_of_type_Short) });
             }
-            localObject = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(7));
-            if ((localObject != null) && (((amya)localObject).jdField_c_of_type_Int > 0)) {
+            localObject = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(7));
+            if ((localObject != null) && (((anju)localObject).jdField_c_of_type_Int > 0)) {
               VipUtils.a(null, "cmshow", "Apollo", "0X80065C3", this.jdField_a_of_type_Int, 0, new String[] { "0", String.valueOf(0), "4" });
             }
-            localObject = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(15));
-            if ((localObject != null) && (((amya)localObject).jdField_c_of_type_Int > 0))
+            localObject = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(15));
+            if ((localObject != null) && (((anju)localObject).jdField_c_of_type_Int > 0))
             {
               VipUtils.a(null, "cmshow", "Apollo", "0X80065C3", this.jdField_a_of_type_Int, 0, new String[] { "0", String.valueOf(0), "5" });
               continue;
-              if (this.jdField_a_of_type_Amxy.jdField_a_of_type_Long == -501030L)
+              if (this.jdField_a_of_type_Anjs.jdField_a_of_type_Long == -501030L)
               {
                 this.jdField_b_of_type_Int = 3;
                 VipUtils.a(null, "cmshow", "Apollo", "0X80065C4", this.jdField_a_of_type_Int, 0, new String[] { "0", "0", "1" });
@@ -1283,13 +1283,13 @@ public class ApolloCardWindow
                 break;
               }
               paramMessage = URLDrawable.URLDrawableOptions.obtain();
-              paramMessage.mLoadingDrawable = bgmo.b();
+              paramMessage.mLoadingDrawable = bhmq.b();
               paramMessage.mFailedDrawable = paramMessage.mLoadingDrawable;
-              localObject = new amxa();
-              ((amxa)localObject).jdField_a_of_type_Int = amwz.jdField_a_of_type_Int;
+              localObject = new aniu();
+              ((aniu)localObject).jdField_a_of_type_Int = anit.jdField_a_of_type_Int;
               paramMessage.mExtraInfo = localObject;
               return false;
-              if ((this.jdField_a_of_type_Amxy == null) || (this.jdField_a_of_type_Amxy.jdField_b_of_type_JavaUtilList == null)) {
+              if ((this.jdField_a_of_type_Anjs == null) || (this.jdField_a_of_type_Anjs.jdField_b_of_type_JavaUtilList == null)) {
                 break;
               }
               m = this.jdField_c_of_type_Int / 2;
@@ -1300,15 +1300,15 @@ public class ApolloCardWindow
               if (QLog.isColorLevel()) {
                 QLog.d("ApolloCardWindow", 2, "MSG_CODE_CARD_TO_NORMAL");
               }
-              if (this.jdField_a_of_type_Amxy == null) {
+              if (this.jdField_a_of_type_Anjs == null) {
                 break;
               }
-              if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 0)
+              if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 0)
               {
-                paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0);
+                paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0);
                 if ((paramMessage != null) && (paramMessage.jdField_a_of_type_Boolean) && (paramMessage.jdField_c_of_type_Int > 0))
                 {
-                  this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(255, 500L);
+                  this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(255, 500L);
                   n = 650;
                   m = 650;
                 }
@@ -1316,9 +1316,9 @@ public class ApolloCardWindow
               for (;;)
               {
                 i1 = m;
-                if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 1)
+                if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 1)
                 {
-                  paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1);
+                  paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1);
                   i1 = m;
                   if (paramMessage != null)
                   {
@@ -1328,43 +1328,43 @@ public class ApolloCardWindow
                       i1 = m;
                       if (paramMessage.jdField_c_of_type_Int > 0)
                       {
-                        this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(265, n + 500);
+                        this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(265, n + 500);
                         i1 = m + 150 + 500;
                       }
                     }
                   }
                 }
-                if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() <= 2) {
+                if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() <= 2) {
                   break;
                 }
-                paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2);
+                paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2);
                 if ((paramMessage == null) || (!paramMessage.jdField_a_of_type_Boolean) || (paramMessage.jdField_c_of_type_Int <= 0)) {
                   break;
                 }
-                this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(268, i1 + 500);
+                this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(268, i1 + 500);
                 return false;
-                if (this.jdField_a_of_type_Amxy == null) {
+                if (this.jdField_a_of_type_Anjs == null) {
                   break;
                 }
-                if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 1)
+                if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 1)
                 {
-                  paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1);
+                  paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1);
                   if ((paramMessage != null) && (paramMessage.jdField_c_of_type_Int > 0))
                   {
                     this.jdField_f_of_type_AndroidWidgetTextView.setText("+" + paramMessage.jdField_c_of_type_Int);
                     localObject = URLDrawable.URLDrawableOptions.obtain();
-                    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838446);
-                    localObject = amwz.a("apollo_card_first_image.png", (URLDrawable.URLDrawableOptions)localObject, paramMessage.jdField_a_of_type_JavaLangString);
+                    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838459);
+                    localObject = anit.a("apollo_card_first_image.png", (URLDrawable.URLDrawableOptions)localObject, paramMessage.jdField_a_of_type_JavaLangString);
                     m = ApolloUtil.a(25.0F / jdField_a_of_type_Float, jdField_b_of_type_Float);
                     ((URLDrawable)localObject).setBounds(0, 0, m, m);
                     this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
                     a(this.jdField_c_of_type_AndroidWidgetTextView.getWidth() + this.jdField_f_of_type_AndroidWidgetImageView.getWidth() + ApolloUtil.a(28.0F, jdField_b_of_type_Float));
-                    this.jdField_h_of_type_AndroidWidgetTextView.setText(amxy.b(paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int));
+                    this.jdField_h_of_type_AndroidWidgetTextView.setText(anjs.b(paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int));
                     a(this.jdField_h_of_type_AndroidWidgetTextView, paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int, paramMessage.jdField_b_of_type_Int, 200, 650);
                     if (this.jdField_g_of_type_AndroidWidgetImageView == null)
                     {
                       this.jdField_g_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-                      this.jdField_g_of_type_AndroidWidgetImageView.setId(2131374727);
+                      this.jdField_g_of_type_AndroidWidgetImageView.setId(2131374864);
                       this.jdField_g_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                       paramMessage = new RelativeLayout.LayoutParams(ApolloUtil.a(15.0F, jdField_b_of_type_Float), ApolloUtil.a(15.0F, jdField_b_of_type_Float));
                       paramMessage.leftMargin = (ApolloUtil.a(47.0F, jdField_b_of_type_Float) + this.jdField_c_of_type_AndroidWidgetTextView.getWidth());
@@ -1373,7 +1373,7 @@ public class ApolloCardWindow
                     }
                     this.jdField_g_of_type_AndroidWidgetImageView.setImageDrawable(null);
                     a(this.jdField_f_of_type_AndroidWidgetImageView, this.jdField_g_of_type_AndroidWidgetImageView, 650);
-                    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(267, 650L);
+                    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(267, 650L);
                   }
                 }
                 if (!QLog.isColorLevel()) {
@@ -1381,26 +1381,26 @@ public class ApolloCardWindow
                 }
                 QLog.d("ApolloCardWindow", 2, "MSG_CODE_ADD_GOLD:");
                 return false;
-                if (this.jdField_a_of_type_Amxy == null) {
+                if (this.jdField_a_of_type_Anjs == null) {
                   break;
                 }
-                if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 2)
+                if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 2)
                 {
-                  paramMessage = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2);
+                  paramMessage = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2);
                   if ((paramMessage != null) && (paramMessage.jdField_c_of_type_Int > 0))
                   {
                     this.jdField_f_of_type_AndroidWidgetTextView.setText("+" + paramMessage.jdField_c_of_type_Int);
-                    localObject = amwz.a("apollo_card_props_image.png", null, paramMessage.jdField_a_of_type_JavaLangString);
+                    localObject = anit.a("apollo_card_props_image.png", null, paramMessage.jdField_a_of_type_JavaLangString);
                     m = ApolloUtil.a(25.0F / jdField_a_of_type_Float, jdField_b_of_type_Float);
                     ((URLDrawable)localObject).setBounds(0, 0, m, m);
                     this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
                     a(ApolloUtil.a(125.0F, jdField_b_of_type_Float) + this.jdField_c_of_type_AndroidWidgetTextView.getWidth() + this.jdField_h_of_type_AndroidWidgetTextView.getWidth());
-                    this.jdField_i_of_type_AndroidWidgetTextView.setText(amxy.a(paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int));
+                    this.jdField_i_of_type_AndroidWidgetTextView.setText(anjs.a(paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int));
                     a(this.jdField_i_of_type_AndroidWidgetTextView, paramMessage.jdField_b_of_type_Int - paramMessage.jdField_c_of_type_Int, paramMessage.jdField_b_of_type_Int, 200, 650);
                     if (this.jdField_i_of_type_AndroidWidgetImageView == null)
                     {
                       this.jdField_i_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-                      this.jdField_i_of_type_AndroidWidgetImageView.setId(2131374727);
+                      this.jdField_i_of_type_AndroidWidgetImageView.setId(2131374864);
                       this.jdField_i_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                       paramMessage = new RelativeLayout.LayoutParams(ApolloUtil.a(15.0F, jdField_b_of_type_Float), ApolloUtil.a(15.0F, jdField_b_of_type_Float));
                       paramMessage.leftMargin = (ApolloUtil.a(82.0F, jdField_b_of_type_Float) + this.jdField_c_of_type_AndroidWidgetTextView.getWidth() + this.jdField_h_of_type_AndroidWidgetTextView.getWidth());
@@ -1408,7 +1408,7 @@ public class ApolloCardWindow
                       super.addView(this.jdField_i_of_type_AndroidWidgetImageView, paramMessage);
                     }
                     a(this.jdField_h_of_type_AndroidWidgetImageView, this.jdField_i_of_type_AndroidWidgetImageView, 650);
-                    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(269, 650L);
+                    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(269, 650L);
                   }
                 }
                 this.jdField_i_of_type_AndroidWidgetImageView.setImageDrawable(null);
@@ -1420,17 +1420,17 @@ public class ApolloCardWindow
                 if (this.jdField_c_of_type_AndroidWidgetImageView == null) {
                   break;
                 }
-                this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838448);
+                this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838461);
                 return false;
                 if (this.jdField_g_of_type_AndroidWidgetImageView == null) {
                   break;
                 }
-                this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130838448);
+                this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130838461);
                 return false;
                 if (this.jdField_i_of_type_AndroidWidgetImageView == null) {
                   break;
                 }
-                this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130838448);
+                this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130838461);
                 return false;
                 m = 0;
                 n = 0;
@@ -1458,17 +1458,17 @@ public class ApolloCardWindow
       Object localObject1;
       if ((paramView == this.jdField_c_of_type_AndroidWidgetTextView) || (paramView == this.jdField_b_of_type_AndroidWidgetImageView))
       {
-        if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Amxy != null))
+        if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Anjs != null))
         {
           localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          localObject2 = ancb.aa + "&adtag=floatlayer";
+          localObject2 = annv.aa + "&adtag=floatlayer";
           localObject1 = localObject2;
-          if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 0)
+          if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 0)
           {
-            amya localamya = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0);
+            anju localanju = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0);
             localObject1 = localObject2;
-            if (!TextUtils.isEmpty(localamya.jdField_b_of_type_JavaLangString)) {
-              localObject1 = localamya.jdField_b_of_type_JavaLangString;
+            if (!TextUtils.isEmpty(localanju.jdField_b_of_type_JavaLangString)) {
+              localObject1 = localanju.jdField_b_of_type_JavaLangString;
             }
           }
           ((Intent)localObject3).putExtra("big_brother_source_key", "biz_src_zf_lmx");
@@ -1479,16 +1479,16 @@ public class ApolloCardWindow
       }
       else if ((paramView == this.jdField_f_of_type_AndroidWidgetImageView) || (paramView == this.jdField_h_of_type_AndroidWidgetTextView))
       {
-        if (this.jdField_a_of_type_Amxy != null)
+        if (this.jdField_a_of_type_Anjs != null)
         {
-          localObject2 = ancb.Z + "&adtag=floatlayer";
+          localObject2 = annv.Z + "&adtag=floatlayer";
           localObject1 = localObject2;
-          if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 1)
+          if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 1)
           {
-            localObject3 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1);
+            localObject3 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1);
             localObject1 = localObject2;
-            if (!TextUtils.isEmpty(((amya)localObject3).jdField_b_of_type_JavaLangString)) {
-              localObject1 = ((amya)localObject3).jdField_b_of_type_JavaLangString;
+            if (!TextUtils.isEmpty(((anju)localObject3).jdField_b_of_type_JavaLangString)) {
+              localObject1 = ((anju)localObject3).jdField_b_of_type_JavaLangString;
             }
           }
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
@@ -1500,16 +1500,16 @@ public class ApolloCardWindow
       }
       else if ((paramView == this.jdField_h_of_type_AndroidWidgetImageView) || (paramView == this.jdField_i_of_type_AndroidWidgetTextView))
       {
-        if (this.jdField_a_of_type_Amxy != null)
+        if (this.jdField_a_of_type_Anjs != null)
         {
-          if (this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 2)
+          if (this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 2)
           {
-            localObject1 = (amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2);
-            if (!TextUtils.isEmpty(((amya)localObject1).jdField_b_of_type_JavaLangString))
+            localObject1 = (anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2);
+            if (!TextUtils.isEmpty(((anju)localObject1).jdField_b_of_type_JavaLangString))
             {
               localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
               ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_zf_lmx");
-              VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, ((amya)localObject1).jdField_b_of_type_JavaLangString, -1L, (Intent)localObject2, false, -1);
+              VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, ((anju)localObject1).jdField_b_of_type_JavaLangString, -1L, (Intent)localObject2, false, -1);
               VipUtils.a(null, "cmshow", "Apollo", "0X80065C001", this.jdField_a_of_type_Int, 0, new String[0]);
             }
           }
@@ -1518,37 +1518,37 @@ public class ApolloCardWindow
       }
       else if (paramView == this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout)
       {
-        if ((this.jdField_a_of_type_Amxy != null) && (this.jdField_c_of_type_Boolean))
+        if ((this.jdField_a_of_type_Anjs != null) && (this.jdField_c_of_type_Boolean))
         {
-          if ((this.jdField_a_of_type_Amxy.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-            if (bgnt.g(this.jdField_a_of_type_AndroidContentContext))
+          if ((this.jdField_a_of_type_Anjs.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
+            if (bhnv.g(this.jdField_a_of_type_AndroidContentContext))
             {
               if (Build.VERSION.SDK_INT >= 11) {
                 this.jdField_d_of_type_AndroidWidgetImageView.setAlpha(0.5F);
               }
               this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-2130706433);
               this.jdField_b_of_type_Boolean = true;
-              this.jdField_a_of_type_Amye.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Amxy.jdField_c_of_type_Long, (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_f_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+              this.jdField_a_of_type_Anjy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Anjs.jdField_c_of_type_Long, (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_f_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
               f();
             }
           }
           label667:
           for (int m = 1;; m = 2)
           {
-            if ((this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 2) && (((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(2)).jdField_c_of_type_Int > 0)) {
+            if ((this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 2) && (((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(2)).jdField_c_of_type_Int > 0)) {
               VipUtils.a(null, "cmshow", "Apollo", "sendflower", m, 0, new String[] { "3" });
             }
-            if ((this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() > 1) && (((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(1)).jdField_c_of_type_Int > 0)) {
+            if ((this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() > 1) && (((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(1)).jdField_c_of_type_Int > 0)) {
               VipUtils.a(null, "cmshow", "Apollo", "sendflower", m, 0, new String[] { "2" });
             }
-            if ((this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.size() <= 0) || (((amya)this.jdField_a_of_type_Amxy.jdField_a_of_type_JavaUtilList.get(0)).jdField_c_of_type_Int <= 0)) {
+            if ((this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.size() <= 0) || (((anju)this.jdField_a_of_type_Anjs.jdField_a_of_type_JavaUtilList.get(0)).jdField_c_of_type_Int <= 0)) {
               break;
             }
             VipUtils.a(null, "cmshow", "Apollo", "sendflower", m, 0, new String[] { "1" });
             break;
-            QQToast.a(this.jdField_a_of_type_AndroidContentContext, anni.a(2131699121), 0).a();
+            QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131699228), 0).a();
             break label667;
-            QQToast.a(this.jdField_a_of_type_AndroidContentContext, anni.a(2131699111), 0).a();
+            QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131699218), 0).a();
           }
         }
       }

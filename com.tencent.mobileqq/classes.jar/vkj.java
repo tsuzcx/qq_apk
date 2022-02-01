@@ -1,35 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import qqcircle.QQCircleFeedBase.StSimulateData;
-import qqcircle.QQCircleFeedBase.StVideoBusiData;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudWrite.StDoReplyRsp;
+import java.util.Map;
 
-public class vkj
-  implements View.OnClickListener
+class vkj
+  implements aaav<FeedCloudWrite.StDoReplyRsp>
 {
-  public vkj(QCircleContentOperationView paramQCircleContentOperationView, QQCircleFeedBase.StVideoBusiData paramStVideoBusiData) {}
+  vkj(vjy paramvjy, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    Object localObject = bgng.a(QQStoryContext.a(), paramView.getContext(), this.jdField_a_of_type_QqcircleQQCircleFeedBase$StVideoBusiData.simulate_date.simulate_schema.get());
-    if (localObject != null) {
-      ((bgmp)localObject).a();
-    }
-    ReportExtraTypeInfo localReportExtraTypeInfo = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
-    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
-    for (localObject = "1";; localObject = "2")
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoReplyRsp == null))
     {
-      vrg.a(83, 2, localReportExtraTypeInfo, new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("ext1", (String)localObject) })), QCircleContentOperationView.h(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.e("QCircleCommentBusiness", 1, "deleteCommentReply error:" + paramLong + "  errorMsg:" + paramString);
       return;
     }
+    QLog.d("QCircleCommentBusiness", 1, "deleteCommentReply Success");
+    paramStDoReplyRsp.reply.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.id.get());
+    vjy.a(this.jdField_a_of_type_Vjy).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1));
+    aaak.a().a(new QCircleCommentUpdateEvent(6, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()), this.jdField_a_of_type_Int));
   }
 }
 

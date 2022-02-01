@@ -1,60 +1,96 @@
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class anvd
-  extends MSFServlet
+  extends QIPCModule
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static anvd a;
+  
+  private anvd()
+  {
+    super("CommonModule");
+  }
+  
+  public static anvd a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new anvd();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
+      QLog.d("CommonModule", 2, "onSetAvatarBackResult， intent=" + paramIntent);
     }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
+    if (paramIntent != null)
     {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).a(41);
-      if (localSignatureHandler != null) {
-        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      int i = paramIntent.getIntExtra("param_callback_id", -1);
+      int j = paramIntent.getIntExtra("param_result_code", -99999);
+      paramIntent = paramIntent.getStringExtra("param_result_desc");
+      if (i > 0)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("param_result_code", j);
+        localBundle.putString("param_result_desc", paramIntent);
+        localBundle.putString("param_action", "set_avatar");
+        callbackResult(i, EIPCResult.createSuccessResult(localBundle));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SignatureServlet", 2, "onReceive exit");
-      }
-      return;
-      arrayOfByte = null;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if ((!TextUtils.isEmpty(str)) && (arrayOfByte != null))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bgva.a(paramIntent, 0, arrayOfByte.length + 4);
-      bgva.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
+      QLog.d("CommonModule", 2, "action = " + paramString + ", params = " + paramBundle);
     }
+    Bundle localBundle = new Bundle();
+    if ("getPhoneBindState".equals(paramString))
+    {
+      paramString = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramString instanceof QQAppInterface))
+      {
+        localBundle.putInt("selfBindState", ((axfr)((QQAppInterface)paramString).getManager(11)).d());
+        return EIPCResult.createSuccessResult(localBundle);
+      }
+    }
+    else if ("set_avatar".equals(paramString))
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        paramString = "";
+        if (paramBundle != null) {
+          paramString = paramBundle.getString("param_avatar_path");
+        }
+        paramBundle = new Intent();
+        paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
+        paramBundle.putExtra("param_callback_id", paramInt);
+        paramString = bhhz.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
+        if (paramString.jdField_a_of_type_Int == 0) {
+          break label231;
+        }
+        localBundle.putInt("param_result_code", paramString.jdField_a_of_type_Int);
+        localBundle.putString("param_result_desc", paramString.jdField_a_of_type_JavaLangString);
+        localBundle.putString("param_action", "set_avatar");
+        callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
+      }
+    }
+    return EIPCResult.createSuccessResult(localBundle);
+    label231:
+    return null;
   }
 }
 

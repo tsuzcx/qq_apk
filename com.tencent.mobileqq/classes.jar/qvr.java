@@ -1,95 +1,58 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.channel_button.channel_button.Section;
 
 public class qvr
-  implements View.OnClickListener
 {
-  public qvr(ComponentContentHotQuestion paramComponentContentHotQuestion) {}
+  public long a;
+  public String a;
+  public List<TabChannelCoverInfo> a;
+  public String b;
   
-  public void onClick(View paramView)
+  public qvr(long paramLong, String paramString1, String paramString2)
   {
-    pxk localpxk = this.a.jdField_a_of_type_Qva.a();
-    ArticleInfo localArticleInfo = localpxk.a();
-    Object localObject2 = (rfw)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-    Object localObject3;
-    if ((localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12) && (((rfw)localObject2).jdField_a_of_type_Rfy != null))
-    {
-      localObject3 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ReadInJoyDeliverUGCActivity.class);
-      ((Intent)localObject3).putExtra("arg_topic_id", String.valueOf(((rfw)localObject2).jdField_a_of_type_Rfy.jdField_b_of_type_Int));
-      ((Intent)localObject3).putExtra("support_topic", true);
-      ((Intent)localObject3).putExtra("support_linkify", true);
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public qvr(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("id");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    this.b = paramJSONObject.optString("text");
+  }
+  
+  public qvr(channel_button.Section paramSection)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramSection.uint64_section_id.get();
+    this.jdField_a_of_type_JavaLangString = paramSection.str_section_name.get();
+    this.b = paramSection.str_note_text.get();
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      String str1 = new String(bgku.decode(((rfw)localObject2).jdField_a_of_type_Rfy.jdField_b_of_type_JavaLangString, 0));
-      ((Intent)localObject3).putExtra("is_from_poly_topic", true);
-      if (localpxk.e() == 70)
-      {
-        bool = true;
-        ((Intent)localObject3).putExtra("is_from_dian_dian", bool);
-        ((Intent)localObject3).putExtra("arg_topic_name", str1);
-        ((Intent)localObject3).putExtra("arg_ad_tag", ((rfw)localObject2).jdField_a_of_type_Rfy.c);
-        this.a.getContext().startActivity((Intent)localObject3);
-        localObject3 = new JSONObject();
-      }
-      try
-      {
-        ((JSONObject)localObject3).put("channel_id", localpxk.e());
-        if (((rfw)localObject2).jdField_a_of_type_Rfx == null) {
-          break label398;
-        }
-        str1 = ((rfw)localObject2).jdField_a_of_type_Rfx.a;
-        ((JSONObject)localObject3).put("rowkey", str1);
-        if (((rfw)localObject2).jdField_a_of_type_Rfy == null) {
-          break label407;
-        }
-        i = ((rfw)localObject2).jdField_a_of_type_Rfy.jdField_b_of_type_Int;
-        ((JSONObject)localObject3).put("topicid", i);
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          int i;
-          Object localObject1;
-          localException2.printStackTrace();
-          continue;
-          String str2 = "2";
-        }
-      }
-      localObject2 = localArticleInfo.mFeedId + "";
-      if (pha.o(localArticleInfo))
-      {
-        str1 = "1";
-        oat.a(null, "CliOper", "", "", "0X800982C", "0X800982C", 0, 0, (String)localObject2, str1, localArticleInfo.mStrategyId + "", ((JSONObject)localObject3).toString(), false);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+      localJSONObject.put("id", this.jdField_a_of_type_Long);
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("text", this.b);
+      return localJSONObject;
     }
-    catch (Exception localException1)
+    catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localException1.printStackTrace();
-        localObject1 = "";
-        continue;
-        boolean bool = false;
-        continue;
-        label398:
-        localObject1 = Integer.valueOf(0);
-        continue;
-        label407:
-        i = 0;
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject;
   }
 }
 

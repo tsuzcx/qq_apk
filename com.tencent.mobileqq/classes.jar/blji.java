@@ -1,75 +1,126 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import java.util.List;
 
-public abstract class blji
-  extends Binder
-  implements bljh
+public class blji
 {
-  public blji()
+  public static Dialog a(Context paramContext, View paramView)
   {
-    attachInterface(this, "cooperation.qqdataline.ipc.IDatalineService");
+    return a(paramContext, paramView, -1, null);
   }
   
-  public static bljh a(IBinder paramIBinder)
+  public static Dialog a(Context paramContext, View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (paramIBinder == null) {
+    paramContext = blir.a(paramContext, paramInt, paramLayoutParams);
+    paramContext.a(paramView, null);
+    return paramContext;
+  }
+  
+  public static blir a(Context paramContext, blir paramblir, List<bliq> paramList, bliz parambliz)
+  {
+    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
       return null;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqdataline.ipc.IDatalineService");
-    if ((localIInterface != null) && ((localIInterface instanceof bljh))) {
-      return (bljh)localIInterface;
-    }
-    return new bljj(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    String str1 = null;
-    Object localObject = null;
-    switch (paramInt1)
+    int i;
+    if (paramblir == null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
-      str1 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {
-        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      paramblir = (blir)a(paramContext, null);
+      i = 0;
+      label35:
+      if (i >= paramList.size()) {
+        break label116;
       }
-      paramParcel1 = a(str1, (Bundle)localObject);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      paramContext = (bliq)paramList.get(i);
+      if (paramContext.d == 0)
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
+        if (paramContext.a != 1) {
+          break label99;
+        }
+        paramblir.a(paramContext, 1);
       }
     }
-    paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
-    String str2 = paramParcel1.readString();
-    localObject = str1;
-    if (paramParcel1.readInt() != 0) {
-      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    for (;;)
+    {
+      i += 1;
+      break label35;
+      paramblir.c();
+      paramblir.a();
+      break;
+      label99:
+      if (paramContext.a == 2) {
+        paramblir.a(paramContext, 3);
+      }
     }
-    a(str2, (Bundle)localObject);
-    paramParcel2.writeNoException();
-    return true;
+    label116:
+    paramblir.a(parambliz);
+    return paramblir;
+  }
+  
+  public static blir a(Context paramContext, List<bliq> paramList, bliz parambliz)
+  {
+    return a(paramContext, null, paramList, parambliz);
+  }
+  
+  public static String a(Context paramContext, int paramInt)
+  {
+    if (paramContext == null) {
+      return null;
+    }
+    return paramContext.getString(paramInt);
+  }
+  
+  public static void a(Activity paramActivity, blir paramblir)
+  {
+    if ((paramActivity == null) || (paramblir == null)) {
+      return;
+    }
+    try
+    {
+      if (!paramActivity.isFinishing())
+      {
+        paramblir.show();
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    LogUtils.e("ActionSheetHelper", "showActionSheet when activity(" + paramActivity + ") is finish!");
+  }
+  
+  public static Dialog b(Context paramContext, View paramView)
+  {
+    paramContext = blir.b(paramContext);
+    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
+    return paramContext;
+  }
+  
+  public static void b(Activity paramActivity, blir paramblir)
+  {
+    if ((paramActivity == null) || (paramblir == null)) {
+      return;
+    }
+    try
+    {
+      if (!paramActivity.isFinishing())
+      {
+        paramblir.dismiss();
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    LogUtils.e("ActionSheetHelper", "dismissActionSheet when activity(" + paramActivity + ") is finish!");
   }
 }
 

@@ -1,12 +1,12 @@
-class rsp
-  implements rsh<riw>
+import android.support.v7.widget.RecyclerView.ViewHolder;
+
+public abstract interface rsp
 {
-  rsp(rsn paramrsn) {}
+  public abstract void D_();
   
-  public boolean a(riw paramriw)
-  {
-    return paramriw.d >= 5000L;
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
 }
 
 

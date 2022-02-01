@@ -1,119 +1,103 @@
-import java.util.Comparator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
-public class argh<T>
+public class argh
+  extends arac<argf>
 {
-  private int jdField_a_of_type_Int;
-  private final argi<T> jdField_a_of_type_Argi;
-  private final argj jdField_a_of_type_Argj;
-  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
-  
-  public argh(Comparator<T> paramComparator, argj<T> paramargj)
+  public static argf b(int paramInt)
   {
-    this.jdField_a_of_type_Argj = paramargj;
-    this.jdField_a_of_type_Argi = new argi();
-    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
-  }
-  
-  private void a(long paramLong, List<T> paramList, argi<T> paramargi)
-  {
-    if ((ardw.a().a().a()) && ((paramList == null) || (paramList.isEmpty())) && (!a()) && ((paramargi.jdField_a_of_type_JavaLangObject instanceof aren)))
-    {
-      paramList = (aren)paramargi.jdField_a_of_type_JavaLangObject;
-      long l = Math.abs(paramList.d() - paramLong);
-      if (l > 60000L) {
-        argp.d("DanmakuDataSource", "Danmaku upload to screen fail, deltaTime = " + l + " , curTime = " + paramLong + ", curDanmaku = " + paramList);
-      }
+    argf localargf = (argf)aran.a().a(paramInt);
+    if (localargf != null) {
+      return localargf;
     }
+    return new argf();
   }
   
-  public int a()
+  @NonNull
+  public argf a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    return new argf();
   }
   
-  public T a()
+  @Nullable
+  public argf a(araj[] paramArrayOfaraj)
   {
-    return this.jdField_a_of_type_Argi.jdField_a_of_type_Argi.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public List<T> a(long paramLong, List<T> paramList, int paramInt)
-  {
-    argi localargi = this.jdField_a_of_type_Argi.jdField_a_of_type_Argi;
-    int j;
-    for (int i = 0; (i < paramInt) && (localargi != this.jdField_a_of_type_Argi) && (this.jdField_a_of_type_Argj.a(localargi.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaraj != null)
     {
-      j = i;
-      if (paramList != null)
+      localObject1 = localObject2;
+      if (paramArrayOfaraj.length > 0)
       {
-        paramList.add(localargi.jdField_a_of_type_JavaLangObject);
-        j = i + 1;
+        localObject1 = paramArrayOfaraj[0].a;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label125;
+        }
+        QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] type=" + type() + ", content = " + (String)localObject1);
       }
-      this.jdField_a_of_type_Int -= 1;
-      localargi = localargi.jdField_a_of_type_Argi;
     }
-    a(paramLong, paramList, localargi);
-    this.jdField_a_of_type_Argi.jdField_a_of_type_Argi = localargi;
-    localargi.b = this.jdField_a_of_type_Argi;
-    return paramList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Argi.jdField_a_of_type_Argi = this.jdField_a_of_type_Argi;
-    this.jdField_a_of_type_Argi.b = this.jdField_a_of_type_Argi;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Argi.jdField_a_of_type_Argi == this.jdField_a_of_type_Argi;
-  }
-  
-  public boolean a(T paramT)
-  {
-    if (paramT == null) {
-      return false;
+    try
+    {
+      paramArrayOfaraj = (argg)arax.a(localObject1, argg.class);
+      localObject1 = new argf((String)localObject1, paramArrayOfaraj);
+      return localObject1;
     }
-    for (argi localargi = this.jdField_a_of_type_Argi.b; (localargi != this.jdField_a_of_type_Argi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localargi.jdField_a_of_type_JavaLangObject, paramT) > 0); localargi = localargi.b) {}
-    if (paramT.equals(localargi.jdField_a_of_type_JavaLangObject)) {
-      return false;
+    catch (QStorageInstantiateException paramArrayOfaraj)
+    {
+      for (;;)
+      {
+        QLog.i("OpenSdkSwitchProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfaraj);
+        paramArrayOfaraj = null;
+      }
     }
-    paramT = new argi(paramT, localargi.jdField_a_of_type_Argi, localargi);
-    localargi.jdField_a_of_type_Argi.b = paramT;
-    localargi.jdField_a_of_type_Argi = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
-  }
-  
-  public T b()
-  {
-    argi localargi = this.jdField_a_of_type_Argi.b;
-    if (localargi != this.jdField_a_of_type_Argi) {
-      return localargi.jdField_a_of_type_JavaLangObject;
-    }
+    label125:
+    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + type());
     return null;
   }
   
-  public boolean b(T paramT)
+  public void a(argf paramargf)
   {
-    if (paramT == null) {
-      return false;
-    }
-    for (argi localargi = this.jdField_a_of_type_Argi.jdField_a_of_type_Argi; (localargi != this.jdField_a_of_type_Argi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localargi.jdField_a_of_type_JavaLangObject, paramT) < 0); localargi = localargi.jdField_a_of_type_Argi) {}
-    if (paramT.equals(localargi.jdField_a_of_type_JavaLangObject)) {
-      return false;
-    }
-    paramT = new argi(paramT, localargi, localargi.b);
-    localargi.b.jdField_a_of_type_Argi = paramT;
-    localargi.b = paramT;
-    this.jdField_a_of_type_Int += 1;
+    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onUpdate] type=" + type() + ", content = " + paramargf.a());
+  }
+  
+  public Class<argf> clazz()
+  {
+    return argf.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 467;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argh
  * JD-Core Version:    0.7.0.1
  */

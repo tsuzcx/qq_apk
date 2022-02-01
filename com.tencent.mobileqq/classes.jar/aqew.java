@@ -1,30 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.comic.VipComicJumpActivity;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aqew
-  implements aqfb
+final class aqew
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public String a()
+  public boolean Load()
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690553);
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
   }
   
-  public void a(View paramView, int paramInt)
+  public boolean isLibraryLoad()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = new Intent("android.intent.action.MAIN");
-    paramView = paramView.getContext();
-    localObject = VipComicJumpActivity.a((Intent)localObject);
-    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (blak)localObject)) {
-      VipComicJumpActivity.a(localQQAppInterface, true);
-    }
-    bcst.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", aqda.b(paramInt), 0, "", "", "", "");
+    return ArkAppCenter.b;
   }
 }
 

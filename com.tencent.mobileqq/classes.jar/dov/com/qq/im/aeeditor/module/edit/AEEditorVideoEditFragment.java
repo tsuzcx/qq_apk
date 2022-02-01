@@ -3,8 +3,9 @@ package dov.com.qq.im.aeeditor.module.edit;
 import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
-import aaxg;
-import alin;
+import aaav;
+import abbj;
+import aluf;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,57 +22,57 @@ import android.view.GestureDetector;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import bglp;
-import bgpa;
-import bnnx;
-import bnyh;
-import bnyl;
-import bnyo;
-import bnzb;
-import bnzc;
-import bnzp;
-import bnzu;
-import bnzv;
-import bnzw;
-import bocc;
-import boce;
-import bocy;
-import bocz;
-import bode;
-import bodk;
-import bodl;
-import bofb;
-import bofd;
-import bofe;
-import boff;
-import bofg;
-import bofh;
-import bofi;
-import bofj;
-import bofk;
-import bofl;
-import bofm;
-import bofn;
-import bofo;
-import bofu;
-import bofw;
-import bogc;
-import bogs;
-import bogt;
-import bogx;
-import bohe;
-import bohj;
-import bohn;
-import boho;
-import bohp;
-import boij;
-import boip;
-import boit;
-import boiv;
-import bojb;
-import bojc;
-import bpye;
+import anzj;
+import bhlq;
+import bhpc;
+import bopi;
+import bozr;
+import bozv;
+import bozy;
+import bpam;
+import bpan;
+import bpbk;
+import bpbp;
+import bpbq;
+import bpbr;
+import bpdx;
+import bpdz;
+import bpet;
+import bpeu;
+import bpez;
+import bpff;
+import bpfg;
+import bpgw;
+import bpgy;
+import bpgz;
+import bpha;
+import bphb;
+import bphc;
+import bphd;
+import bphe;
+import bphf;
+import bphg;
+import bphh;
+import bphi;
+import bphj;
+import bphp;
+import bphr;
+import bphx;
+import bpin;
+import bpio;
+import bpis;
+import bpiz;
+import bpje;
+import bpji;
+import bpjj;
+import bpjk;
+import bpke;
+import bpkk;
+import bpko;
+import bpkq;
+import bpkw;
+import bpkx;
+import bqzz;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -123,20 +124,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import zxa;
 
 public class AEEditorVideoEditFragment
   extends AEEditorCommonEditFragment
-  implements aaxg, boce, bofu, bogs, bohe, bohj, boit, StickerLyricCallback, zxa<CLIENT.StSmartMatchMusicRsp>
+  implements aaav<CLIENT.StSmartMatchMusicRsp>, abbj, bpdz, bphp, bpin, bpiz, bpje, bpko, StickerLyricCallback
 {
   private static final String jdField_c_of_type_JavaLangString = AEEditorVideoEditFragment.class.getSimpleName();
   private float jdField_a_of_type_Float = 1.0F;
   private long jdField_a_of_type_Long;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bocy jdField_a_of_type_Bocy = new bocy();
-  private bogx jdField_a_of_type_Bogx;
-  private bohp jdField_a_of_type_Bohp = bohn.a();
+  private bpet jdField_a_of_type_Bpet = new bpet();
+  private bpis jdField_a_of_type_Bpis;
+  private bpjk jdField_a_of_type_Bpjk = bpji.a();
   private VsMusicItemInfo jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
   private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
   private Size jdField_a_of_type_ComTencentTavcutBeanSize;
@@ -155,7 +155,7 @@ public class AEEditorVideoEditFragment
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private bogx jdField_b_of_type_Bogx;
+  private bpis jdField_b_of_type_Bpis;
   private Size jdField_b_of_type_ComTencentTavcutBeanSize;
   private Integer jdField_b_of_type_JavaLangInteger;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -175,7 +175,7 @@ public class AEEditorVideoEditFragment
   
   static
   {
-    File localFile = new File(bnzu.jdField_c_of_type_JavaLangString);
+    File localFile = new File(bpbp.jdField_c_of_type_JavaLangString);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -183,7 +183,7 @@ public class AEEditorVideoEditFragment
   
   private void D()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bofb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bpgw(this);
     IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
   }
@@ -198,7 +198,7 @@ public class AEEditorVideoEditFragment
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = new MoviePlayer();
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setLoopPlay(true);
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setBackColor(getResources().getColor(2131165216));
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new bofl(this));
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new bphg(this));
     if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null)
     {
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
@@ -208,18 +208,18 @@ public class AEEditorVideoEditFragment
     SessionConfig localSessionConfig = new SessionConfig();
     localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     localSessionConfig.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bohp.a());
+    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bpjk.a());
     StickerEditViewIconConfig localStickerEditViewIconConfig = new StickerEditViewIconConfig();
-    localStickerEditViewIconConfig.setDeleteIconResId(2130837728);
-    localStickerEditViewIconConfig.setEditIconResId(2130837727);
-    localStickerEditViewIconConfig.setZoomIconResId(2130837729);
+    localStickerEditViewIconConfig.setDeleteIconResId(2130837735);
+    localStickerEditViewIconConfig.setEditIconResId(2130837734);
+    localStickerEditViewIconConfig.setZoomIconResId(2130837736);
     localSessionConfig.setStickerEditViewIconConfig(localStickerEditViewIconConfig);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setSessionConfig(localSessionConfig);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setVideoPath(this.jdField_d_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addPlayer(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setTAVCutVideoView(this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerLyricCallback(this);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerOperationCallback(new bofm(this));
+    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setStickerOperationCallback(new bphh(this));
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.init(getActivity());
     e(false);
     this.jdField_e_of_type_JavaLangString = Util.md5(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().toString());
@@ -250,26 +250,26 @@ public class AEEditorVideoEditFragment
   
   private void H()
   {
-    bnyl.a().a().h = 0;
-    bnyh.a().j();
+    bozv.a().a().h = 0;
+    bozr.a().j();
   }
   
   private void I()
   {
     if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel() != null)
     {
-      bnyl.a().a().jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaEffectModel().getStickerModelList().size();
+      bozv.a().a().jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaEffectModel().getStickerModelList().size();
       a(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaEffectModel().getStickerModelList(), 0);
     }
-    bnyh.a().i();
+    bozr.a().i();
   }
   
   private void J()
   {
     Object localObject2;
-    if ((this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel == null) && (this.jdField_a_of_type_Bogx != null))
+    if ((this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel == null) && (this.jdField_a_of_type_Bpis != null))
     {
-      localObject2 = this.jdField_a_of_type_Bogx.d();
+      localObject2 = this.jdField_a_of_type_Bpis.d();
       if (a((String)localObject2)) {}
     }
     Object localObject1;
@@ -295,9 +295,9 @@ public class AEEditorVideoEditFragment
         ((SubtitleModel)localObject1).setLoopEnd(60000L);
         ((SubtitleModel)localObject1).setLoopType(1);
         ((SubtitleModel)localObject1).setLyric((String)localObject2);
-        ((SubtitleModel)localObject1).setLyricFormatIsQRC(this.jdField_a_of_type_Bogx.e().equals("QRC"));
-        ((SubtitleModel)localObject1).setMusicStartTime(a(this.jdField_a_of_type_Bogx.a()));
-        localObject2 = bofw.a().a("font_runyuan75w");
+        ((SubtitleModel)localObject1).setLyricFormatIsQRC(this.jdField_a_of_type_Bpis.e().equals("QRC"));
+        ((SubtitleModel)localObject1).setMusicStartTime(a(this.jdField_a_of_type_Bpis.a()));
+        localObject2 = bphr.a().a("font_runyuan75w", 0);
         if ((!TextUtils.isEmpty((CharSequence)((Pair)localObject2).first)) && (new File((String)((Pair)localObject2).first).exists())) {
           ((SubtitleModel)localObject1).setFontPath((String)((Pair)localObject2).first);
         }
@@ -312,14 +312,14 @@ public class AEEditorVideoEditFragment
         ((SubtitleModel)localObject1).setCenterY(0.91F);
         ((SubtitleModel)localObject1).setScale(0.8F);
       }
-      if (this.jdField_a_of_type_Bogx == null) {
+      if (this.jdField_a_of_type_Bpis == null) {
         break;
       }
-      localObject1 = this.jdField_a_of_type_Bogx.d();
+      localObject1 = this.jdField_a_of_type_Bpis.d();
     } while (!a((String)localObject1));
     this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setLyric((String)localObject1);
-    this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setLyricFormatIsQRC(this.jdField_a_of_type_Bogx.e().equals("QRC"));
-    this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setMusicStartTime(a(this.jdField_a_of_type_Bogx.a()));
+    this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setLyricFormatIsQRC(this.jdField_a_of_type_Bpis.e().equals("QRC"));
+    this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setMusicStartTime(a(this.jdField_a_of_type_Bpis.a()));
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addSticker(this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel);
   }
   
@@ -381,14 +381,14 @@ public class AEEditorVideoEditFragment
       }
       return localBundle.getLong(str);
     }
-    bnzb.d(jdField_c_of_type_JavaLangString, "no video clip start time");
+    bpam.d(jdField_c_of_type_JavaLangString, "no video clip start time");
     return 0L;
   }
   
   private Size a()
   {
     this.jdField_b_of_type_ComTencentTavcutBeanSize = VideoUtil.getVideoSize(this.jdField_d_of_type_JavaLangString);
-    return this.jdField_a_of_type_Bohp.a(this.jdField_b_of_type_ComTencentTavcutBeanSize);
+    return this.jdField_a_of_type_Bpjk.a(this.jdField_b_of_type_ComTencentTavcutBeanSize);
   }
   
   @Nullable
@@ -405,12 +405,12 @@ public class AEEditorVideoEditFragment
     }
     for (Object localObject = Float.valueOf(localBundle.getFloat((String)localObject));; localObject = null)
     {
-      bnzb.a(jdField_c_of_type_JavaLangString, "speed = " + localObject);
+      bpam.a(jdField_c_of_type_JavaLangString, "speed = " + localObject);
       return localObject;
       localObject = "speed";
       break;
       label69:
-      bnzb.d(jdField_c_of_type_JavaLangString, "no speed");
+      bpam.d(jdField_c_of_type_JavaLangString, "no speed");
     }
   }
   
@@ -420,50 +420,50 @@ public class AEEditorVideoEditFragment
     this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel = ((VideoControlPanel)this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer);
     this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.setMusicListOperationCallback(this);
     this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.setMusicLyricOperationCallback(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378309));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bofh(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378466));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bphc(this));
     g(true);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378310));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378467));
     Size localSize = VideoUtil.getVideoSize(this.jdField_d_of_type_JavaLangString);
     if ((localSize != null) && (localSize.getHeight() != 0)) {
       if (localSize.getWidth() / localSize.getHeight() > 1.0F) {
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378307));
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378464));
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378308));
-      this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView.setOnClickListener(new bofi(this));
-      paramView = new GestureDetector(paramView.getContext(), new bofj(this));
-      this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView.setOnTouchListener(new bofk(this, paramView));
+      this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378465));
+      this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView.setOnClickListener(new bphd(this));
+      paramView = new GestureDetector(paramView.getContext(), new bphe(this));
+      this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView.setOnTouchListener(new bphf(this, paramView));
       return;
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378306));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378463));
       continue;
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378306));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378463));
     }
   }
   
-  private void a(@Nullable bogx parambogx)
+  private void a(@Nullable bpis parambpis)
   {
     boolean bool2 = false;
     if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession == null) {
       return;
     }
-    if ((parambogx == null) || (!this.jdField_e_of_type_Boolean))
+    if ((parambpis == null) || (!this.jdField_e_of_type_Boolean))
     {
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setMainVolume(this.jdField_a_of_type_Float);
       if (this.jdField_a_of_type_ComTencentWeseevideoModelDataMusicData != null) {
         this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setBgmVolume(0.0F);
       }
-      parambogx = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel;
-      if (this.jdField_a_of_type_Bogx != null) {}
+      parambpis = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel;
+      if (this.jdField_a_of_type_Bpis != null) {}
       for (bool1 = true;; bool1 = false)
       {
-        parambogx.setBgmPlayed(false, bool1);
+        parambpis.setBgmPlayed(false, bool1);
         return;
       }
     }
-    String str = AEEditorMusicHelper.a(parambogx);
+    String str = AEEditorMusicHelper.a(parambpis);
     boolean bool3 = AEEditorMusicHelper.a(str);
     float f1;
     float f2;
@@ -471,7 +471,7 @@ public class AEEditorVideoEditFragment
     {
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setBgmVolume(0.0F);
       VideoControlPanel localVideoControlPanel = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel;
-      if (this.jdField_a_of_type_Bogx != null)
+      if (this.jdField_a_of_type_Bpis != null)
       {
         bool1 = true;
         localVideoControlPanel.setBgmPlayed(false, bool1);
@@ -482,9 +482,9 @@ public class AEEditorVideoEditFragment
       if (!bool3) {
         break label255;
       }
-      parambogx.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentWeseevideoModelDataMusicData = AEEditorMusicHelper.a(str, a(parambogx.a()), parambogx.b());
-      parambogx = this.jdField_a_of_type_ComTencentWeseevideoModelDataMusicData;
+      parambpis.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_ComTencentWeseevideoModelDataMusicData = AEEditorMusicHelper.a(str, a(parambpis.a()), parambpis.b());
+      parambpis = this.jdField_a_of_type_ComTencentWeseevideoModelDataMusicData;
       f1 = this.jdField_a_of_type_Float;
       f2 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_Boolean) {
@@ -494,16 +494,16 @@ public class AEEditorVideoEditFragment
     label249:
     for (boolean bool1 = true;; bool1 = false)
     {
-      a(parambogx, f1, f2, bool1);
+      a(parambpis, f1, f2, bool1);
       if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
         g(true);
       }
-      parambogx = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel;
+      parambpis = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel;
       bool1 = bool2;
-      if (this.jdField_a_of_type_Bogx != null) {
+      if (this.jdField_a_of_type_Bpis != null) {
         bool1 = true;
       }
-      parambogx.setBgmPlayed(true, bool1);
+      parambpis.setBgmPlayed(true, bool1);
       return;
       bool1 = false;
       break;
@@ -511,36 +511,36 @@ public class AEEditorVideoEditFragment
     label255:
     if ((getActivity() == null) || (getActivity().getAppInterface() == null))
     {
-      bnzb.b(jdField_c_of_type_JavaLangString, "[updateSoundAndMusicConfig], activity=null OR appInterface=null");
+      bpam.b(jdField_c_of_type_JavaLangString, "[updateSoundAndMusicConfig], activity=null OR appInterface=null");
       return;
     }
-    if (parambogx.jdField_a_of_type_Int == 1)
+    if (parambpis.jdField_a_of_type_Int == 1)
     {
-      bnzb.b(jdField_c_of_type_JavaLangString, "[updateSoundAndMusicConfig], editorMusicInfo=" + parambogx + ", downloadStatus=STATUS_DOWNLOADING");
+      bpam.b(jdField_c_of_type_JavaLangString, "[updateSoundAndMusicConfig], editorMusicInfo=" + parambpis + ", downloadStatus=STATUS_DOWNLOADING");
       return;
     }
-    parambogx.jdField_a_of_type_Int = 1;
-    ThreadManager.excute(new AEEditorMusicHelper.MusicDownloadRunnable(getActivity().getAppInterface(), parambogx, parambogx.b(), str, this), 128, null, true);
+    parambpis.jdField_a_of_type_Int = 1;
+    ThreadManager.excute(new AEEditorMusicHelper.MusicDownloadRunnable(getActivity().getAppInterface(), parambpis, parambpis.b(), str, this), 128, null, true);
   }
   
-  private void a(@NonNull bogx parambogx, boolean paramBoolean)
+  private void a(@NonNull bpis parambpis, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer == null) || (parambogx.a())) {}
+    if ((this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer == null) || (parambpis.a())) {}
     label136:
     for (;;)
     {
       return;
       List localList = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a();
       Iterator localIterator = localList.iterator();
-      bogx localbogx;
+      bpis localbpis;
       for (;;)
       {
         if (localIterator.hasNext())
         {
-          localbogx = (bogx)localIterator.next();
-          if ((localbogx != null) && (!localbogx.a()) && (parambogx.jdField_b_of_type_Int != 1) && (parambogx.jdField_b_of_type_Int != 0) && (parambogx.a().equals(localbogx.a()))) {
+          localbpis = (bpis)localIterator.next();
+          if ((localbpis != null) && (!localbpis.a()) && (parambpis.jdField_b_of_type_Int != 1) && (parambpis.jdField_b_of_type_Int != 0) && (parambpis.a().equals(localbpis.a()))) {
             if (paramBoolean) {
-              localbogx.jdField_a_of_type_Int = 2;
+              localbpis.jdField_a_of_type_Int = 2;
             }
           }
         }
@@ -552,7 +552,7 @@ public class AEEditorVideoEditFragment
         }
         this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(localList);
         return;
-        localbogx.jdField_a_of_type_Int = 0;
+        localbpis.jdField_a_of_type_Int = 0;
         break;
       }
     }
@@ -560,14 +560,14 @@ public class AEEditorVideoEditFragment
   
   private void a(@NonNull VsMusicItemInfo paramVsMusicItemInfo)
   {
-    bnzb.b(jdField_c_of_type_JavaLangString, "[requestDetailedMusicInfo]");
+    bpam.b(jdField_c_of_type_JavaLangString, "[requestDetailedMusicInfo]");
     this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = null;
     if (TextUtils.isEmpty(paramVsMusicItemInfo.mSongMid)) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramVsMusicItemInfo.mSongMid);
-    AEEditorMusicHelper.a(localArrayList, new bofe(this, paramVsMusicItemInfo));
+    AEEditorMusicHelper.a(localArrayList, new bpgz(this, paramVsMusicItemInfo));
   }
   
   private void a(@NonNull MusicData paramMusicData, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -630,7 +630,7 @@ public class AEEditorVideoEditFragment
   {
     if (getActivity() == null)
     {
-      bnzb.d(jdField_c_of_type_JavaLangString, "activity is null.");
+      bpam.d(jdField_c_of_type_JavaLangString, "activity is null.");
       return;
     }
     Intent localIntent = new Intent();
@@ -689,16 +689,16 @@ public class AEEditorVideoEditFragment
       }
       return localBundle.getLong(str);
     }
-    bnzb.d(jdField_c_of_type_JavaLangString, "no video clip start time");
+    bpam.d(jdField_c_of_type_JavaLangString, "no video clip start time");
     return 0L;
   }
   
   private void c(int paramInt)
   {
     String str;
-    if ((this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel != null) && (this.jdField_a_of_type_Bogx != null))
+    if ((this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel != null) && (this.jdField_a_of_type_Bpis != null))
     {
-      str = this.jdField_a_of_type_Bogx.d();
+      str = this.jdField_a_of_type_Bpis.d();
       if (a(str)) {}
     }
     else
@@ -706,7 +706,7 @@ public class AEEditorVideoEditFragment
       return;
     }
     this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setLyric(str);
-    this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setLyricFormatIsQRC(this.jdField_a_of_type_Bogx.e().equals("QRC"));
+    this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setLyricFormatIsQRC(this.jdField_a_of_type_Bpis.e().equals("QRC"));
     this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel.setMusicStartTime(paramInt);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addSticker(this.jdField_a_of_type_ComTencentWeseevideoModelEffectSubtitleModel);
   }
@@ -729,13 +729,13 @@ public class AEEditorVideoEditFragment
     }
     for (;;)
     {
-      a("视频裁剪Range", bojc.a(this.jdField_a_of_type_Long) + "~" + bojc.a(l2 / 1000L));
+      a("视频裁剪Range", bpkx.a(this.jdField_a_of_type_Long) + "~" + bpkx.a(l2 / 1000L));
       if (this.l)
       {
         K();
         J();
       }
-      bnyl.a().a().jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+      bozv.a().a().jdField_a_of_type_Long = this.jdField_b_of_type_Long;
       return;
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setClip(Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.jdField_b_of_type_Long), true);
     }
@@ -747,7 +747,7 @@ public class AEEditorVideoEditFragment
     if ((localBundle != null) && (localBundle.containsKey("select_path"))) {
       return localBundle.getString("select_path");
     }
-    bnzb.d(jdField_c_of_type_JavaLangString, "no video paths");
+    bpam.d(jdField_c_of_type_JavaLangString, "no video paths");
     return null;
   }
   
@@ -765,17 +765,17 @@ public class AEEditorVideoEditFragment
   
   public void A()
   {
-    if ((this.jdField_a_of_type_Bogx == null) || (this.jdField_a_of_type_JavaLangInteger == null))
+    if ((this.jdField_a_of_type_Bpis == null) || (this.jdField_a_of_type_JavaLangInteger == null))
     {
       if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
         this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
       }
       return;
     }
-    bogt.a().b(this.jdField_a_of_type_JavaLangInteger.intValue(), Math.min(this.jdField_a_of_type_JavaLangInteger.intValue() + this.jdField_b_of_type_Long, this.jdField_a_of_type_Bogx.b()));
-    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bogx);
+    bpio.a().b(this.jdField_a_of_type_JavaLangInteger.intValue(), Math.min(this.jdField_a_of_type_JavaLangInteger.intValue() + this.jdField_b_of_type_Long, this.jdField_a_of_type_Bpis.b()));
+    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bpis);
     int m = this.jdField_a_of_type_JavaLangInteger.intValue();
-    int n = this.jdField_a_of_type_Bogx.b();
+    int n = this.jdField_a_of_type_Bpis.b();
     float f1 = this.jdField_a_of_type_Float;
     float f2 = this.jdField_b_of_type_Float;
     if (!this.jdField_a_of_type_Boolean) {}
@@ -793,12 +793,12 @@ public class AEEditorVideoEditFragment
   
   public void B()
   {
-    if ((this.jdField_a_of_type_Bogx == null) || (this.jdField_a_of_type_JavaLangInteger == null)) {
+    if ((this.jdField_a_of_type_Bpis == null) || (this.jdField_a_of_type_JavaLangInteger == null)) {
       return;
     }
-    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bogx);
-    int m = a(this.jdField_a_of_type_Bogx.a());
-    int n = this.jdField_a_of_type_Bogx.b();
+    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bpis);
+    int m = a(this.jdField_a_of_type_Bpis.a());
+    int n = this.jdField_a_of_type_Bpis.b();
     float f1 = this.jdField_a_of_type_Float;
     float f2 = this.jdField_b_of_type_Float;
     if (!this.jdField_a_of_type_Boolean) {}
@@ -819,13 +819,13 @@ public class AEEditorVideoEditFragment
   public void C()
   {
     boolean bool = true;
-    if ((this.jdField_a_of_type_Bogx == null) || (this.jdField_a_of_type_JavaLangInteger == null)) {
+    if ((this.jdField_a_of_type_Bpis == null) || (this.jdField_a_of_type_JavaLangInteger == null)) {
       return;
     }
-    a(this.jdField_a_of_type_Bogx.a(), this.jdField_a_of_type_JavaLangInteger.intValue(), true);
-    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bogx);
+    a(this.jdField_a_of_type_Bpis.a(), this.jdField_a_of_type_JavaLangInteger.intValue(), true);
+    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bpis);
     int m = this.jdField_a_of_type_JavaLangInteger.intValue();
-    int n = this.jdField_a_of_type_Bogx.b();
+    int n = this.jdField_a_of_type_Bpis.b();
     float f1 = this.jdField_a_of_type_Float;
     float f2 = this.jdField_b_of_type_Float;
     if (!this.jdField_a_of_type_Boolean) {}
@@ -846,25 +846,25 @@ public class AEEditorVideoEditFragment
   
   public int a()
   {
-    return 2131558565;
+    return 2131558567;
   }
   
-  protected bofu a()
+  protected bphp a()
   {
     return this;
   }
   
-  protected bogc a()
+  protected bphx a()
   {
-    return new bofn(this);
+    return new bphi(this);
   }
   
-  protected boij a()
+  protected bpke a()
   {
-    return new bofo(this);
+    return new bphj(this);
   }
   
-  protected boip a()
+  protected bpkk a()
   {
     return this;
   }
@@ -898,7 +898,7 @@ public class AEEditorVideoEditFragment
     {
       this.jdField_d_of_type_Boolean = bool;
       this.jdField_a_of_type_Float = paramFloat;
-      bnyl.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
+      bozv.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
       L();
       return;
     }
@@ -917,7 +917,7 @@ public class AEEditorVideoEditFragment
   {
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setEffectStrength(paramFloat);
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), Float.valueOf(paramFloat));
-    bnyl.a().a().jdField_a_of_type_Float = paramFloat;
+    bozv.a().a().jdField_a_of_type_Float = paramFloat;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -928,49 +928,49 @@ public class AEEditorVideoEditFragment
     this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
   }
   
-  public void a(int paramInt, bode parambode)
+  public void a(int paramInt, bpez parambpez)
   {
     if (this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
-      ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.15(this, parambode));
+      ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.15(this, parambpez));
     }
     if (paramInt == 0)
     {
-      bnzb.b(jdField_c_of_type_JavaLangString, "onAIFilterApplySuccess");
+      bpam.b(jdField_c_of_type_JavaLangString, "onAIFilterApplySuccess");
       ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.17(this));
-      if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (parambode != null)) {
+      if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (parambpez != null)) {
         break label107;
       }
     }
     label107:
-    bodl localbodl;
+    bpfg localbpfg;
     do
     {
       return;
-      bnzb.b(jdField_c_of_type_JavaLangString, "onAIFilterAppliedFailed:" + paramInt);
+      bpam.b(jdField_c_of_type_JavaLangString, "onAIFilterAppliedFailed:" + paramInt);
       ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.16(this));
       break;
-      this.jdField_a_of_type_Bocy.a(this.jdField_d_of_type_JavaLangString, parambode);
-      this.jdField_a_of_type_JavaUtilArrayList = a(parambode);
-      localbodl = (bodl)parambode;
-    } while (localbodl == null);
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForAI(localbodl.jdField_b_of_type_JavaLangString, 0.8F, localbodl.jdField_a_of_type_JavaUtilHashMap, 0, 0.0F);
-    a(new String[] { "智能滤镜label", localbodl.jdField_a_of_type_JavaLangString, "智能滤镜errCode", String.valueOf(paramInt) });
-    parambode = "none";
+      this.jdField_a_of_type_Bpet.a(this.jdField_d_of_type_JavaLangString, parambpez);
+      this.jdField_a_of_type_JavaUtilArrayList = a(parambpez);
+      localbpfg = (bpfg)parambpez;
+    } while (localbpfg == null);
+    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForAI(localbpfg.jdField_b_of_type_JavaLangString, 0.8F, localbpfg.jdField_a_of_type_JavaUtilHashMap, 0, 0.0F);
+    a(new String[] { "智能滤镜label", localbpfg.jdField_a_of_type_JavaLangString, "智能滤镜errCode", String.valueOf(paramInt) });
+    parambpez = "none";
     Iterator localIterator = NewEnhanceCategories.newEnhanceTypes.iterator();
     if (localIterator.hasNext())
     {
       NewEnhanceCategories localNewEnhanceCategories = (NewEnhanceCategories)localIterator.next();
-      if (!localNewEnhanceCategories.serverLabel.equals(localbodl.jdField_a_of_type_JavaLangString)) {
+      if (!localNewEnhanceCategories.serverLabel.equals(localbpfg.jdField_a_of_type_JavaLangString)) {
         break label299;
       }
-      parambode = localNewEnhanceCategories.filterType;
+      parambpez = localNewEnhanceCategories.filterType;
     }
     label299:
     for (;;)
     {
       break;
-      bnyl.a().a().jdField_b_of_type_JavaLangString = ("effect_aieffect_" + parambode);
-      bnyl.a().a().jdField_a_of_type_Float = -1.0F;
+      bozv.a().a().jdField_b_of_type_JavaLangString = ("effect_aieffect_" + parambpez);
+      bozv.a().a().jdField_a_of_type_Float = -1.0F;
       this.jdField_f_of_type_JavaLangString = "effect_aieffect";
       return;
     }
@@ -979,7 +979,7 @@ public class AEEditorVideoEditFragment
   public void a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean)
   {
     n();
-    String str1 = bofw.a().a(paramAEEditorFilterBean);
+    String str1 = bphr.a().a(paramAEEditorFilterBean);
     float f2 = paramAEEditorFilterBean.getEffectExtendBean().getDefaultEffectAlpha();
     if (c(paramInt))
     {
@@ -994,10 +994,10 @@ public class AEEditorVideoEditFragment
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setSeekBarValue(f1);
       float f3 = paramAEEditorFilterBean.getEffectExtendBean().getGlowStrength();
       Map localMap = paramAEEditorFilterBean.getEffectExtendBean().getAdjustParams();
-      String str2 = bofw.a().c(paramAEEditorFilterBean);
+      String str2 = bphr.a().c(paramAEEditorFilterBean);
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModel(f1, str1, f3, localMap, str2);
-      bnyl.a().a().jdField_b_of_type_JavaLangString = paramAEEditorFilterBean.getEffectId();
-      bnyl.a().a().jdField_a_of_type_Float = f2;
+      bozv.a().a().jdField_b_of_type_JavaLangString = paramAEEditorFilterBean.getEffectId();
+      bozv.a().a().jdField_a_of_type_Float = f2;
       this.jdField_f_of_type_JavaLangString = paramAEEditorFilterBean.getEffectId();
       return;
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.b(false);
@@ -1005,57 +1005,57 @@ public class AEEditorVideoEditFragment
     }
   }
   
-  public void a(@Nullable bogx parambogx, int paramInt)
+  public void a(@Nullable bpis parambpis, int paramInt)
   {
-    if ((this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer == null) || (parambogx == null) || (parambogx.a())) {
+    if ((this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer == null) || (parambpis == null) || (parambpis.a())) {
       return;
     }
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_b_of_type_Bogx = this.jdField_a_of_type_Bogx;
-    this.jdField_a_of_type_Bogx = parambogx;
-    bnyl.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
-    bnyl.a().a().jdField_c_of_type_JavaLangString = parambogx.a();
-    bnyl.a().a().jdField_a_of_type_Boolean = this.jdField_a_of_type_Bogx.jdField_b_of_type_Boolean;
-    bnyl.a().a().jdField_b_of_type_Int = this.jdField_a_of_type_Bogx.jdField_c_of_type_Int;
-    bnyl.a().a().jdField_c_of_type_Int = this.jdField_a_of_type_Bogx.b();
-    bnyh.a().n();
+    this.jdField_b_of_type_Bpis = this.jdField_a_of_type_Bpis;
+    this.jdField_a_of_type_Bpis = parambpis;
+    bozv.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
+    bozv.a().a().jdField_c_of_type_JavaLangString = parambpis.a();
+    bozv.a().a().jdField_a_of_type_Boolean = this.jdField_a_of_type_Bpis.jdField_b_of_type_Boolean;
+    bozv.a().a().jdField_b_of_type_Int = this.jdField_a_of_type_Bpis.jdField_c_of_type_Int;
+    bozv.a().a().jdField_c_of_type_Int = this.jdField_a_of_type_Bpis.b();
+    bozr.a().n();
     List localList = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a();
     Iterator localIterator = localList.iterator();
     int m = 0;
     while (localIterator.hasNext())
     {
-      bogx localbogx = (bogx)localIterator.next();
-      if ((localbogx != null) && (!localbogx.a()) && (localbogx.jdField_b_of_type_Int != 1) && (localbogx.jdField_b_of_type_Int != 0))
+      bpis localbpis = (bpis)localIterator.next();
+      if ((localbpis != null) && (!localbpis.a()) && (localbpis.jdField_b_of_type_Int != 1) && (localbpis.jdField_b_of_type_Int != 0))
       {
-        if (parambogx.a().equals(localbogx.a()))
+        if (parambpis.a().equals(localbpis.a()))
         {
-          localbogx.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_Bogx = localbogx;
-          parambogx = localbogx;
+          localbpis.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_Bpis = localbpis;
+          parambpis = localbpis;
           m = 1;
         }
         for (;;)
         {
           break;
-          localbogx.jdField_a_of_type_Boolean = false;
+          localbpis.jdField_a_of_type_Boolean = false;
         }
       }
     }
     int n = paramInt;
     if (m == 0)
     {
-      parambogx.jdField_a_of_type_Boolean = true;
+      parambpis.jdField_a_of_type_Boolean = true;
       m = localList.size() - 1;
       if (paramInt <= m) {
         break label347;
       }
       n = m + 1;
-      localList.add(parambogx);
+      localList.add(parambpis);
     }
     for (;;)
     {
-      a(parambogx.a(), parambogx.a(), false);
-      a(parambogx);
+      a(parambpis.a(), parambpis.a(), false);
+      a(parambpis);
       this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(localList);
       this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(n);
       if ((this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar == null) || (!(this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar instanceof VideoEditToolBar))) {
@@ -1064,21 +1064,21 @@ public class AEEditorVideoEditFragment
       ((VideoEditToolBar)this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar).a(true);
       return;
       label347:
-      localList.add(paramInt, parambogx);
+      localList.add(paramInt, parambpis);
       n = paramInt;
     }
   }
   
-  public void a(@NonNull bogx parambogx, boolean paramBoolean, @NonNull String paramString)
+  public void a(@NonNull bpis parambpis, boolean paramBoolean, @NonNull String paramString)
   {
-    ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.14(this, parambogx, paramBoolean, paramString));
+    ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.14(this, parambpis, paramBoolean, paramString));
   }
   
   public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
     int i1 = 0;
     if ((!paramBoolean) || (paramStSmartMatchMusicRsp == null) || (CollectionUtils.isEmpty(paramStSmartMatchMusicRsp.vecMusic.get()))) {
-      bnzb.d(jdField_c_of_type_JavaLangString, "[VSDispatchObserver.onVSRspCallBack.onReceive], music - request music list failed");
+      bpam.d(jdField_c_of_type_JavaLangString, "[VSDispatchObserver.onVSRspCallBack.onReceive], music - request music list failed");
     }
     do
     {
@@ -1090,7 +1090,7 @@ public class AEEditorVideoEditFragment
         {
           localObject = (COMM.Entry)paramString.next();
           if ((localObject != null) && (((COMM.Entry)localObject).key.get().equals("CommonInfo"))) {
-            bnyl.a().a().jdField_d_of_type_JavaLangString = ((COMM.Entry)localObject).value.get();
+            bozv.a().a().jdField_d_of_type_JavaLangString = ((COMM.Entry)localObject).value.get();
           }
         }
       }
@@ -1110,12 +1110,12 @@ public class AEEditorVideoEditFragment
         break;
       }
     }
-    bnyl.a().a().jdField_e_of_type_JavaLangString = paramString;
+    bozv.a().a().jdField_e_of_type_JavaLangString = paramString;
     int m = 0;
     int n = i1;
     if (m < localList.size())
     {
-      paramString = (bogx)localList.get(m);
+      paramString = (bpis)localList.get(m);
       if ((paramString == null) || (paramString.a()) || (paramString.jdField_b_of_type_Int == 0)) {}
       for (;;)
       {
@@ -1127,7 +1127,7 @@ public class AEEditorVideoEditFragment
     }
     if (n < paramStSmartMatchMusicRsp.size())
     {
-      paramString = (bogx)paramStSmartMatchMusicRsp.get(n);
+      paramString = (bpis)paramStSmartMatchMusicRsp.get(n);
       if ((paramString == null) || (paramString.a())) {}
       for (;;)
       {
@@ -1151,14 +1151,14 @@ public class AEEditorVideoEditFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo != null)
     {
       paramBoolean = true;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null) && (alin.jdField_a_of_type_Int != 2)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null) && (aluf.jdField_a_of_type_Int != 2)) {
         break label77;
       }
     }
     label77:
     for (int m = 0;; m = 1)
     {
-      AEEditorMusicHelper.a(paramArrayList, bnnx.a().a(), paramBoolean, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, m, this);
+      AEEditorMusicHelper.a(paramArrayList, bopi.a().a(), paramBoolean, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, m, this);
       return;
       paramBoolean = false;
       break;
@@ -1167,7 +1167,7 @@ public class AEEditorVideoEditFragment
   
   public boolean a()
   {
-    bnyh.a().r();
+    bozr.a().r();
     if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.getVisibility() == 0) {
       j();
     }
@@ -1182,13 +1182,13 @@ public class AEEditorVideoEditFragment
         return false;
       }
       Object localObject = getActivity();
-      localObject = bglp.a((Context)localObject, 230).setTitle(anni.a(2131689705)).setMessage(((Context)localObject).getString(2131689706)).setPositiveButton(((Context)localObject).getString(2131689705), new bofg(this)).setNegativeButton(((Context)localObject).getString(2131689684), new boff(this));
+      localObject = bhlq.a((Context)localObject, 230).setTitle(anzj.a(2131689710)).setMessage(((Context)localObject).getString(2131689711)).setPositiveButton(((Context)localObject).getString(2131689710), new bphb(this)).setNegativeButton(((Context)localObject).getString(2131689689), new bpha(this));
       if (localObject != null) {
         try
         {
-          if (!((bgpa)localObject).isShowing())
+          if (!((bhpc)localObject).isShowing())
           {
-            ((bgpa)localObject).show();
+            ((bhpc)localObject).show();
             return true;
           }
         }
@@ -1205,8 +1205,8 @@ public class AEEditorVideoEditFragment
   
   public boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean)
   {
-    bnyl.a().a().jdField_b_of_type_JavaLangString = paramAEEditorFilterBean.getEffectId();
-    bnyl.a().a().jdField_a_of_type_Float = -1.0F;
+    bozv.a().a().jdField_b_of_type_JavaLangString = paramAEEditorFilterBean.getEffectId();
+    bozv.a().a().jdField_a_of_type_Float = -1.0F;
     return true;
   }
   
@@ -1231,12 +1231,12 @@ public class AEEditorVideoEditFragment
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bogx == null) {
+    if (this.jdField_a_of_type_Bpis == null) {
       return;
     }
-    bogt.a().b(paramInt, Math.min(paramInt + this.jdField_b_of_type_Long, this.jdField_a_of_type_Bogx.b()));
-    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bogx);
-    int m = this.jdField_a_of_type_Bogx.b();
+    bpio.a().b(paramInt, Math.min(paramInt + this.jdField_b_of_type_Long, this.jdField_a_of_type_Bpis.b()));
+    String str = AEEditorMusicHelper.a(this.jdField_a_of_type_Bpis);
+    int m = this.jdField_a_of_type_Bpis.b();
     float f1 = this.jdField_a_of_type_Float;
     float f2 = this.jdField_b_of_type_Float;
     if (!this.jdField_a_of_type_Boolean) {}
@@ -1266,7 +1266,7 @@ public class AEEditorVideoEditFragment
     {
       return;
       this.jdField_e_of_type_Boolean = paramBoolean;
-      bnyl.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
+      bozv.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
       localList = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a();
     } while (CollectionUtils.isEmpty(localList));
     Object localObject;
@@ -1274,7 +1274,7 @@ public class AEEditorVideoEditFragment
     int m;
     if (paramBoolean)
     {
-      if ((this.jdField_b_of_type_Bogx == null) || (this.jdField_b_of_type_Bogx.a())) {
+      if ((this.jdField_b_of_type_Bpis == null) || (this.jdField_b_of_type_Bpis.a())) {
         break label517;
       }
       int i1 = 0;
@@ -1283,10 +1283,10 @@ public class AEEditorVideoEditFragment
       m = 0;
       if (i1 < localList.size())
       {
-        bogx localbogx = (bogx)localList.get(i1);
+        bpis localbpis = (bpis)localList.get(i1);
         int i2;
-        if ((localbogx != null) && (!localbogx.a()) && (localbogx.jdField_b_of_type_Int != 1)) {
-          if (localbogx.jdField_b_of_type_Int == 0)
+        if ((localbpis != null) && (!localbpis.a()) && (localbpis.jdField_b_of_type_Int != 1)) {
+          if (localbpis.jdField_b_of_type_Int == 0)
           {
             i2 = n;
             n = m;
@@ -1301,16 +1301,16 @@ public class AEEditorVideoEditFragment
           m = i1;
           i1 = i2;
           break;
-          if (this.jdField_b_of_type_Bogx.a().equals(localbogx.a()))
+          if (this.jdField_b_of_type_Bpis.a().equals(localbpis.a()))
           {
-            localbogx.jdField_a_of_type_Boolean = true;
+            localbpis.jdField_a_of_type_Boolean = true;
             m = 1;
             n = i1;
-            localObject = localbogx;
+            localObject = localbpis;
           }
           else
           {
-            localbogx.jdField_a_of_type_Boolean = false;
+            localbpis.jdField_a_of_type_Boolean = false;
             i2 = m;
             m = n;
             n = i2;
@@ -1322,22 +1322,22 @@ public class AEEditorVideoEditFragment
     {
       if (n != 0)
       {
-        this.jdField_b_of_type_Bogx = ((bogx)localObject);
-        this.jdField_a_of_type_Bogx = ((bogx)localObject);
+        this.jdField_b_of_type_Bpis = ((bpis)localObject);
+        this.jdField_a_of_type_Bpis = ((bpis)localObject);
         label236:
-        this.jdField_a_of_type_Bogx.jdField_a_of_type_Boolean = true;
-        bnyl.a().a().jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bogx.a();
-        bnyl.a().a().jdField_a_of_type_Boolean = this.jdField_a_of_type_Bogx.jdField_b_of_type_Boolean;
-        bnyl.a().a().jdField_b_of_type_Int = this.jdField_a_of_type_Bogx.jdField_c_of_type_Int;
-        bnyl.a().a().jdField_c_of_type_Int = this.jdField_a_of_type_Bogx.b();
-        bnyh.a().n();
+        this.jdField_a_of_type_Bpis.jdField_a_of_type_Boolean = true;
+        bozv.a().a().jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bpis.a();
+        bozv.a().a().jdField_a_of_type_Boolean = this.jdField_a_of_type_Bpis.jdField_b_of_type_Boolean;
+        bozv.a().a().jdField_b_of_type_Int = this.jdField_a_of_type_Bpis.jdField_c_of_type_Int;
+        bozv.a().a().jdField_c_of_type_Int = this.jdField_a_of_type_Bpis.b();
+        bozr.a().n();
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Bogx != null) {
-          a(this.jdField_a_of_type_Bogx.a(), this.jdField_a_of_type_Bogx.a(), false);
+        if (this.jdField_a_of_type_Bpis != null) {
+          a(this.jdField_a_of_type_Bpis.a(), this.jdField_a_of_type_Bpis.a(), false);
         }
-        a(this.jdField_a_of_type_Bogx);
+        a(this.jdField_a_of_type_Bpis);
         this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(localList);
         if (paramBoolean) {
           this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(m);
@@ -1347,19 +1347,19 @@ public class AEEditorVideoEditFragment
         }
         ((VideoEditToolBar)this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar).a(paramBoolean);
         return;
-        this.jdField_b_of_type_Bogx = null;
-        this.jdField_a_of_type_Bogx = ((bogx)localList.get(1));
+        this.jdField_b_of_type_Bpis = null;
+        this.jdField_a_of_type_Bpis = ((bpis)localList.get(1));
         break label236;
-        this.jdField_b_of_type_Bogx = this.jdField_a_of_type_Bogx;
-        this.jdField_a_of_type_Bogx = null;
+        this.jdField_b_of_type_Bpis = this.jdField_a_of_type_Bpis;
+        this.jdField_a_of_type_Bpis = null;
         localObject = localList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((bogx)((Iterator)localObject).next()).jdField_a_of_type_Boolean = false;
+          ((bpis)((Iterator)localObject).next()).jdField_a_of_type_Boolean = false;
         }
-        bnyl.a().a().jdField_c_of_type_JavaLangString = "none";
-        bnyl.a().a().jdField_a_of_type_Boolean = false;
-        bnyl.a().a().jdField_b_of_type_Int = -1;
-        bnyl.a().a().jdField_c_of_type_Int = -1;
+        bozv.a().a().jdField_c_of_type_JavaLangString = "none";
+        bozv.a().a().jdField_a_of_type_Boolean = false;
+        bozv.a().a().jdField_b_of_type_Int = -1;
+        bozv.a().a().jdField_c_of_type_Int = -1;
         m = 0;
       }
       label517:
@@ -1371,29 +1371,29 @@ public class AEEditorVideoEditFragment
   
   public String c()
   {
-    return anni.a(2131689691);
+    return anzj.a(2131689696);
   }
   
   protected void c()
   {
     this.jdField_d_of_type_JavaLangString = f();
-    this.i = bnzc.a();
+    this.i = bpan.a();
   }
   
   public void c(boolean paramBoolean)
   {
-    if ((!paramBoolean) || (this.jdField_a_of_type_Bogx == null))
+    if ((!paramBoolean) || (this.jdField_a_of_type_Bpis == null))
     {
-      QQToast.a(getActivity(), 2131689701, 0).a();
+      QQToast.a(getActivity(), 2131689706, 0).a();
       return;
     }
-    this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(this.jdField_a_of_type_Bogx, Integer.valueOf(a(this.jdField_a_of_type_Bogx.a())), (int)this.jdField_b_of_type_Long, this.g);
+    this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.a(this.jdField_a_of_type_Bpis, Integer.valueOf(a(this.jdField_a_of_type_Bpis.a())), (int)this.jdField_b_of_type_Long, this.g);
     this.g = false;
   }
   
   protected void d()
   {
-    bocc.a().a();
+    bpdx.a().a();
   }
   
   public void d(boolean paramBoolean)
@@ -1404,9 +1404,9 @@ public class AEEditorVideoEditFragment
     }
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Bogx != null)
+      if (this.jdField_a_of_type_Bpis != null)
       {
-        if (a(this.jdField_a_of_type_Bogx.d())) {
+        if (a(this.jdField_a_of_type_Bpis.d())) {
           break label51;
         }
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -1436,19 +1436,19 @@ public class AEEditorVideoEditFragment
   public boolean f()
   {
     boolean bool2 = false;
-    Object localObject = this.jdField_a_of_type_Bocy.a(this.jdField_d_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_Bpet.a(this.jdField_d_of_type_JavaLangString);
     boolean bool1;
-    if ((localObject != null) && ((localObject instanceof bodl)))
+    if ((localObject != null) && ((localObject instanceof bpfg)))
     {
-      bnzb.b(jdField_c_of_type_JavaLangString, "onAIFilterRequest: has cache");
-      bool1 = ((bodl)localObject).jdField_a_of_type_Boolean;
+      bpam.b(jdField_c_of_type_JavaLangString, "onAIFilterRequest: has cache");
+      bool1 = ((bpfg)localObject).jdField_a_of_type_Boolean;
       if (!bool1) {
         break label98;
       }
       k();
-      localObject = new bodk(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
-      ((bodk)localObject).a(this);
-      bocc.a().a(getActivity().getAppInterface(), getActivity(), (bocz)localObject);
+      localObject = new bpff(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
+      ((bpff)localObject).a(this);
+      bpdx.a().a(getActivity().getAppInterface(), getActivity(), (bpeu)localObject);
     }
     for (;;)
     {
@@ -1461,35 +1461,35 @@ public class AEEditorVideoEditFragment
       label98:
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.b(false);
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(1);
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForAI(((bode)localObject).b(), 0.8F, ((bode)localObject).a(), 0, 0.0F);
-      a(new String[] { "智能滤镜label", ((bode)localObject).a(), "智能滤镜errCode", "0" });
+      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.resetAEKitModelForAI(((bpez)localObject).b(), 0.8F, ((bpez)localObject).a(), 0, 0.0F);
+      a(new String[] { "智能滤镜label", ((bpez)localObject).a(), "智能滤镜errCode", "0" });
     }
   }
   
   public void g()
   {
     ThreadManager.getUIHandler().post(new AEEditorVideoEditFragment.10(this));
-    String str2 = bnzv.jdField_d_of_type_JavaLangString;
+    String str2 = bpbq.jdField_d_of_type_JavaLangString;
     Object localObject1 = new File(str2);
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdirs();
     }
     Object localObject2 = new File(this.jdField_d_of_type_JavaLangString);
     localObject1 = String.valueOf(System.currentTimeMillis());
-    String str1 = str2 + File.separator + "output_" + (String)localObject1 + "_" + bpye.a(((File)localObject2).getName()) + ".jpg";
-    str2 = str2 + File.separator + "output_" + (String)localObject1 + "_" + bpye.a(((File)localObject2).getName()) + ".mp4";
+    String str1 = str2 + File.separator + "output_" + (String)localObject1 + "_" + bqzz.a(((File)localObject2).getName()) + ".jpg";
+    str2 = str2 + File.separator + "output_" + (String)localObject1 + "_" + bqzz.a(((File)localObject2).getName()) + ".mp4";
     I();
     if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null)
     {
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.applyCurrentSticker();
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getEffectVideoFrame(0L, 1080, new bofd(this, str1, str2, (String)localObject1));
+      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getEffectVideoFrame(0L, 1080, new bpgy(this, str1, str2, (String)localObject1));
       return;
     }
-    localObject2 = bojb.a(bojb.a(a().getHeight(), a().getWidth(), str2, str1, (String)localObject1), getArguments().getString("material_id"), getArguments().getString("key_camera_material_name"), getArguments().getInt("ae_editor_is_show_take_same"), this.jdField_f_of_type_JavaLangString);
-    bnzw.a().a(((LocalMediaInfo)localObject2).materialID, ((LocalMediaInfo)localObject2).materialName, ((LocalMediaInfo)localObject2).filterID, ((LocalMediaInfo)localObject2).scheme, (String)localObject1, this.jdField_d_of_type_JavaLangString, str2, str1, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel());
+    localObject2 = bpkw.a(bpkw.a(this.jdField_d_of_type_JavaLangString, a().getHeight(), a().getWidth(), str2, str1, (String)localObject1), getArguments().getString("material_id"), getArguments().getString("key_camera_material_name"), getArguments().getInt("ae_editor_is_show_take_same"), this.jdField_f_of_type_JavaLangString);
+    bpbr.a().a(((LocalMediaInfo)localObject2).materialID, ((LocalMediaInfo)localObject2).materialName, ((LocalMediaInfo)localObject2).filterID, ((LocalMediaInfo)localObject2).scheme, (String)localObject1, this.jdField_d_of_type_JavaLangString, str2, str1, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel());
     if (getActivity() == null)
     {
-      boiv.a(BaseApplicationImpl.getContext(), str2, str1, a(), this.jdField_a_of_type_JavaUtilArrayList, (LocalMediaInfo)localObject2, this.jdField_b_of_type_Int);
+      bpkq.a(BaseApplicationImpl.getContext(), str2, str1, a(), this.jdField_a_of_type_JavaUtilArrayList, (LocalMediaInfo)localObject2, this.jdField_b_of_type_Int);
       return;
     }
     a(str2, str1, (LocalMediaInfo)localObject2);
@@ -1508,7 +1508,7 @@ public class AEEditorVideoEditFragment
       return;
     }
     super.j();
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anni.a(2131689691));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anzj.a(2131689696));
   }
   
   protected void m()
@@ -1519,7 +1519,7 @@ public class AEEditorVideoEditFragment
   
   public void onCreate(Bundle paramBundle)
   {
-    bnzb.b(jdField_c_of_type_JavaLangString, "onCreate");
+    bpam.b(jdField_c_of_type_JavaLangString, "onCreate");
     super.onCreate(paramBundle);
     AEEditorMusicHelper.a(getActivity());
     if ((getActivity() != null) && (getActivity().getIntent() != null))
@@ -1538,7 +1538,7 @@ public class AEEditorVideoEditFragment
         }
       }
     }
-    paramBundle = bnyl.a().a();
+    paramBundle = bozv.a().a();
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo != null) {}
     for (int m = 0;; m = 1)
     {
@@ -1559,7 +1559,7 @@ public class AEEditorVideoEditFragment
   
   public void onDestroyView()
   {
-    bnzb.b(jdField_c_of_type_JavaLangString, "onDestroyView");
+    bpam.b(jdField_c_of_type_JavaLangString, "onDestroyView");
     super.onDestroyView();
     if (getArguments() != null) {
       getArguments().clear();
@@ -1582,8 +1582,8 @@ public class AEEditorVideoEditFragment
     this.jdField_e_of_type_Boolean = false;
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_b_of_type_Float = 0.8F;
-    this.jdField_a_of_type_Bogx = null;
-    this.jdField_b_of_type_Bogx = null;
+    this.jdField_a_of_type_Bpis = null;
+    this.jdField_b_of_type_Bpis = null;
     this.jdField_a_of_type_ComTencentWeseevideoModelDataMusicData = null;
     this.jdField_a_of_type_JavaUtilMap.clear();
     this.jdField_f_of_type_Boolean = true;
@@ -1597,7 +1597,7 @@ public class AEEditorVideoEditFragment
     this.h = paramBoolean;
     if (!paramBoolean)
     {
-      bnyh.a().s();
+      bozr.a().s();
       e(true);
       a(true, true);
       this.g = true;
@@ -1609,7 +1609,7 @@ public class AEEditorVideoEditFragment
   public void onPause()
   {
     super.onPause();
-    bnzb.b(jdField_c_of_type_JavaLangString, "onPause");
+    bpam.b(jdField_c_of_type_JavaLangString, "onPause");
     if (!this.h) {
       f(false);
     }
@@ -1617,11 +1617,11 @@ public class AEEditorVideoEditFragment
   
   public void onResume()
   {
-    bnzb.b(jdField_c_of_type_JavaLangString, "onResume");
+    bpam.b(jdField_c_of_type_JavaLangString, "onResume");
     super.onResume();
     if (!this.h)
     {
-      bnyh.a().s();
+      bozr.a().s();
       f(true);
       if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null) {
         a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
@@ -1631,36 +1631,36 @@ public class AEEditorVideoEditFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    bnzb.b(jdField_c_of_type_JavaLangString, "onViewCreated");
+    bpam.b(jdField_c_of_type_JavaLangString, "onViewCreated");
     super.onViewCreated(paramView, paramBundle);
     a(paramView);
     E();
     F();
     D();
-    bnyl.a().a().jdField_c_of_type_JavaLangString = "none";
-    bnyl.a().a().jdField_a_of_type_Boolean = false;
-    bnyl.a().a().jdField_b_of_type_Int = -1;
-    bnyl.a().a().jdField_c_of_type_Int = -1;
-    bnyl.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
-    bnyl.a().a().jdField_d_of_type_JavaLangString = "none";
-    bnyl.a().a().jdField_e_of_type_JavaLangString = "none";
+    bozv.a().a().jdField_c_of_type_JavaLangString = "none";
+    bozv.a().a().jdField_a_of_type_Boolean = false;
+    bozv.a().a().jdField_b_of_type_Int = -1;
+    bozv.a().a().jdField_c_of_type_Int = -1;
+    bozv.a().a().jdField_a_of_type_Int = a(this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
+    bozv.a().a().jdField_d_of_type_JavaLangString = "none";
+    bozv.a().a().jdField_e_of_type_JavaLangString = "none";
     paramView = VideoUtil.getVideoSize(this.jdField_d_of_type_JavaLangString);
     a(this.jdField_d_of_type_JavaLangString, paramView.getWidth(), paramView.getHeight(), this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs() / 1000L);
-    a(new String[] { "设备级别", boho.a(), "视频最大预览尺寸", String.valueOf(this.jdField_a_of_type_Bohp.a()), "视频原始尺寸", String.format("width=%d, height=%d", new Object[] { Integer.valueOf(this.jdField_b_of_type_ComTencentTavcutBeanSize.getWidth()), Integer.valueOf(this.jdField_b_of_type_ComTencentTavcutBeanSize.getHeight()) }), "视频导出尺寸", String.format("width=%d, height=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutBeanSize.getWidth()), Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutBeanSize.getHeight()) }), "视频导出码率", String.valueOf(this.jdField_a_of_type_Bohp.b()), "视频导出帧率", String.valueOf(this.jdField_a_of_type_Bohp.c()) });
+    a(new String[] { "设备级别", bpjj.a(), "视频最大预览尺寸", String.valueOf(this.jdField_a_of_type_Bpjk.a()), "视频原始尺寸", String.format("width=%d, height=%d", new Object[] { Integer.valueOf(this.jdField_b_of_type_ComTencentTavcutBeanSize.getWidth()), Integer.valueOf(this.jdField_b_of_type_ComTencentTavcutBeanSize.getHeight()) }), "视频导出尺寸", String.format("width=%d, height=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutBeanSize.getWidth()), Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutBeanSize.getHeight()) }), "视频导出码率", String.valueOf(this.jdField_a_of_type_Bpjk.b()), "视频导出帧率", String.valueOf(this.jdField_a_of_type_Bpjk.c()) });
     if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (e()))
     {
-      if (bofw.a().b())
+      if (bphr.a().b())
       {
-        bnzb.b(jdField_c_of_type_JavaLangString, "single image + first time : aifilter auto request");
+        bpam.b(jdField_c_of_type_JavaLangString, "single image + first time : aifilter auto request");
         f();
         o();
-        bnyh.a().x();
+        bozr.a().x();
       }
     }
     else {
       return;
     }
-    bnzb.d(jdField_c_of_type_JavaLangString, "single image + first time : aifilter res not ready, do not request");
+    bpam.d(jdField_c_of_type_JavaLangString, "single image + first time : aifilter res not ready, do not request");
   }
   
   public void q()
@@ -1672,7 +1672,7 @@ public class AEEditorVideoEditFragment
     for (float f1 = this.jdField_a_of_type_JavaLangFloat.floatValue();; f1 = 1.0F)
     {
       localIntent.putExtra("endSpeedEdit", f1);
-      bnyh.a().l();
+      bozr.a().l();
       a().b(a(), getArguments());
       return;
     }
@@ -1683,8 +1683,8 @@ public class AEEditorVideoEditFragment
     n();
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.b(false);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.clearAEKitModel();
-    bnyl.a().a().jdField_b_of_type_JavaLangString = "effect_blank";
-    bnyl.a().a().jdField_a_of_type_Float = -1.0F;
+    bozv.a().a().jdField_b_of_type_JavaLangString = "effect_blank";
+    bozv.a().a().jdField_a_of_type_Float = -1.0F;
   }
   
   public void s() {}
@@ -1711,7 +1711,7 @@ public class AEEditorVideoEditFragment
   
   public void w()
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anni.a(2131689679));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anzj.a(2131689684));
     this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.b();
     this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelVideoControlPanel.c();
     if (this.jdField_f_of_type_Boolean)
@@ -1730,7 +1730,7 @@ public class AEEditorVideoEditFragment
       if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
       }
-      bnyh.a().k();
+      bozr.a().k();
       return;
       this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar.b();
     }
@@ -1739,11 +1739,11 @@ public class AEEditorVideoEditFragment
   public void x()
   {
     String str = "";
-    if (!TextUtils.isEmpty(bnyl.a().a().jdField_a_of_type_JavaLangString)) {
-      str = bnyl.a().a().jdField_a_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(bozv.a().a().jdField_a_of_type_JavaLangString)) {
+      str = bozv.a().a().jdField_a_of_type_JavaLangString;
     }
     AEEditorMusicHelper.a(getActivity(), str);
-    bnyh.a().p();
+    bozr.a().p();
   }
   
   public void y()
@@ -1753,7 +1753,7 @@ public class AEEditorVideoEditFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anni.a(2131689691));
+      this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anzj.a(2131689696));
       this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.a();
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);

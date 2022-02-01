@@ -1,6 +1,9 @@
-public abstract interface bbdb
+class bbdb
+  implements bbdi
 {
-  public abstract void a(String paramString);
+  bbdb(bbda parambbda) {}
+  
+  public void a(long paramLong) {}
 }
 
 

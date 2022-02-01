@@ -2,12 +2,12 @@ package com.tencent.biz.qqcircle.bizparts;
 
 import android.widget.PopupWindow;
 import com.tencent.qphone.base.util.QLog;
-import vcb;
+import vdr;
 
 public class QCirclePersonalTitleBarPart$2
   implements Runnable
 {
-  public QCirclePersonalTitleBarPart$2(vcb paramvcb, PopupWindow paramPopupWindow) {}
+  public QCirclePersonalTitleBarPart$2(vdr paramvdr, PopupWindow paramPopupWindow) {}
   
   public void run()
   {

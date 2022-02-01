@@ -1,123 +1,202 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.drawer.IntimateInfoChatDrawer.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class agiw
-  extends agis
+class agiw
+  extends avhb
 {
-  private afyw jdField_a_of_type_Afyw;
-  private boolean jdField_a_of_type_Boolean = true;
+  agiw(agiq paramagiq) {}
   
-  public agiw(BaseChatPie paramBaseChatPie)
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajpy> paramArrayList)
   {
-    super(paramBaseChatPie);
-  }
-  
-  private void m()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof ahzy))
+    if (paramBoolean)
     {
-      ahzy localahzy = (ahzy)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-      if (localahzy.a != null) {
-        localahzy.a.d(1);
-      }
+      this.a.jdField_a_of_type_Int = paramInt;
+      this.a.jdField_a_of_type_JavaUtilList = ajrx.a(paramArrayList, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ajrx.a(this.a.jdField_a_of_type_JavaLangString, paramInt);
+      ajrx.a(this.a.jdField_a_of_type_JavaLangString, paramArrayList);
+      paramArrayList = agiq.a(this.a).obtainMessage();
+      paramArrayList.what = 9;
+      paramArrayList.obj = null;
+      agiq.a(this.a).removeMessages(9);
+      agiq.a(this.a).sendMessage(paramArrayList);
+      return;
     }
-    ThreadManager.getSubThreadHandler().post(new IntimateInfoChatDrawer.2(this));
+    paramArrayList = agiq.a(this.a).obtainMessage();
+    paramArrayList.what = 10;
+    paramArrayList.obj = null;
+    agiq.a(this.a).sendMessage(paramArrayList);
   }
   
-  protected View a()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Afyw = new agix(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (this.jdField_a_of_type_Afyw.a() == null) {}
-    this.jdField_a_of_type_Afyw.a(1);
-    return this.jdField_a_of_type_Afyw.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Afyw != null) {
-      this.jdField_a_of_type_Afyw.a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Afyw != null) {
-      this.jdField_a_of_type_Afyw.a();
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
     if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened, needReqIntimateInfo: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
     }
-    if (this.jdField_a_of_type_Afyw != null)
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) || (!paramBoolean))
     {
-      this.jdField_a_of_type_Afyw.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Afyw.b();
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Afyw.d();
-        this.jdField_a_of_type_Afyw.e();
-        this.jdField_a_of_type_Afyw.o();
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+      return;
+    }
+    this.a.d();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onGetIntimateInfo");
+    }
+    if ((this.a.jdField_a_of_type_Axmv != null) && (this.a.jdField_a_of_type_Axmv.a() == 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetIntimateInfo, in card mode, return");
       }
     }
-    m();
-  }
-  
-  public void h()
-  {
-    super.h();
-    if (this.jdField_a_of_type_Afyw != null)
+    do
     {
-      this.jdField_a_of_type_Afyw.b = true;
-      this.jdField_a_of_type_Afyw.g();
-    }
-  }
-  
-  public void i()
-  {
-    super.i();
-    if (this.jdField_a_of_type_Afyw != null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Afyw.f();
-    }
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_Afyw != null)
-    {
-      if (a())
-      {
-        this.jdField_a_of_type_Afyw.d();
-        this.jdField_a_of_type_Afyw.o();
+      return;
+      if (this.a.jdField_a_of_type_Axmv != null) {
+        break;
       }
-      this.jdField_a_of_type_Afyw.i();
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetIntimateInfo, mViewDelegate == null:" + agiq.b(this.a));
+      }
+    } while (agiq.b(this.a));
+    while ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)))
+    {
+      QLog.d("intimate_relationship", 1, String.format("onGetIntimateInfo return, friendUin: %s", new Object[] { paramString }));
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetIntimateInfo, mode: " + this.a.jdField_a_of_type_Axmv.a());
+      }
     }
+    if (paramBoolean)
+    {
+      paramString = agiq.a(this.a).obtainMessage();
+      paramString.what = 0;
+      paramString.obj = paramIntimateInfo;
+      agiq.a(this.a).removeMessages(0);
+      agiq.a(this.a).sendMessage(paramString);
+      return;
+    }
+    paramString = agiq.a(this.a).obtainMessage();
+    paramString.what = 1;
+    paramString.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693090);
+    agiq.a(this.a).sendMessage(paramString);
   }
   
-  public void k()
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Afyw != null) {
-      this.jdField_a_of_type_Afyw.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onDisbandIntimateRelationship");
     }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)))
+    {
+      QLog.d("intimate_relationship", 1, String.format("onDisbandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+      return;
+    }
+    Message localMessage = agiq.a(this.a).obtainMessage();
+    if (!paramBoolean1)
+    {
+      localMessage.what = 5;
+      agiq.a(this.a).sendMessage(localMessage);
+      return;
+    }
+    if (paramBoolean2)
+    {
+      this.a.d();
+      return;
+    }
+    localMessage.what = 6;
+    localMessage.obj = paramString;
+    agiq.a(this.a).sendMessage(localMessage);
   }
   
-  public void l()
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
   {
-    if (this.jdField_a_of_type_Afyw != null) {
-      this.jdField_a_of_type_Afyw.h();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
     }
+    if ((this.a.jdField_a_of_type_Axmv != null) && (this.a.jdField_a_of_type_Axmv.a() == 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
+      }
+    }
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Axmv != null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null : " + agiq.b(this.a));
+      }
+    } while (agiq.b(this.a));
+    paramObject = null;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      long l1 = 0L;
+      try
+      {
+        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException paramObject)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err ");
+        }
+      }
+    }
+    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
+    {
+      if (paramHashMap == null) {
+        break label272;
+      }
+      paramObject = agiq.a(this.a).obtainMessage();
+      paramObject.what = 0;
+      paramObject.obj = paramHashMap;
+      agiq.a(this.a).removeMessages(0);
+      agiq.a(this.a).sendMessage(paramObject);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Axmv.a());
+      break;
+      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+    }
+    label272:
+    paramHashMap = agiq.a(this.a).obtainMessage();
+    paramHashMap.what = 1;
+    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693090);
+    agiq.a(this.a).sendMessage(paramHashMap);
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onHandleGetLoverIntimateInfo isSuccess = " + paramBoolean + " data = " + paramArrayOfObject);
+    }
+    if (paramBoolean)
+    {
+      Message localMessage = agiq.a(this.a).obtainMessage();
+      localMessage.what = 7;
+      localMessage.obj = paramArrayOfObject;
+      agiq.a(this.a).removeMessages(7);
+      agiq.a(this.a).sendMessage(localMessage);
+      return;
+    }
+    paramArrayOfObject = agiq.a(this.a).obtainMessage();
+    paramArrayOfObject.what = 8;
+    paramArrayOfObject.obj = null;
+    agiq.a(this.a).sendMessage(paramArrayOfObject);
   }
 }
 

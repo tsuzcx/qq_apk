@@ -1,16 +1,68 @@
 package com.tencent.superplayer.utils;
 
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ThreadUtil
 {
-  private static final ExecutorService mThreadPool = Executors.newCachedThreadPool();
-  private static volatile ThreadUtil.EventHandler sMainThreadHandler = null;
+  private static final int CORE_POOL_SIZE;
+  private static final int CPU_COUNT;
+  private static final int KEEP_ALIVE_SECONDS = 30;
+  private static final int MAXIMUM_POOL_SIZE;
+  public static final Executor THREAD_POOL_EXECUTOR;
+  private static volatile ThreadUtil.UIHandler sMainThreadHandler = null;
+  private static final BlockingQueue<Runnable> sPoolWorkQueue;
+  private static volatile HandlerThread sSubThread = null;
+  private static volatile Handler sSubThreadHandler = null;
+  private static final ThreadFactory sThreadFactory;
+  private static final Executor sThreadPool = THREAD_POOL_EXECUTOR;
   
-  private static void getMainThreadHandler()
+  static
+  {
+    CPU_COUNT = Runtime.getRuntime().availableProcessors();
+    CORE_POOL_SIZE = Math.max(2, Math.min(CPU_COUNT - 1, 4));
+    MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+    sThreadFactory = new ThreadUtil.1();
+    sPoolWorkQueue = new LinkedBlockingQueue(128);
+    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, 30L, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);
+    localThreadPoolExecutor.allowCoreThreadTimeOut(true);
+    THREAD_POOL_EXECUTOR = localThreadPoolExecutor;
+  }
+  
+  public static Handler getSubThreadHandler()
+  {
+    if (sSubThreadHandler == null) {}
+    try
+    {
+      if (sSubThreadHandler == null) {
+        sSubThreadHandler = new Handler(getSubThreadLooper());
+      }
+      return sSubThreadHandler;
+    }
+    finally {}
+  }
+  
+  public static Looper getSubThreadLooper()
+  {
+    initSubThreadHandler();
+    return sSubThread.getLooper();
+  }
+  
+  public static Handler getUIHandler()
+  {
+    initMainThreadHandler();
+    return sMainThreadHandler;
+  }
+  
+  private static void initMainThreadHandler()
   {
     if (sMainThreadHandler == null) {
       try
@@ -19,7 +71,7 @@ public class ThreadUtil
         {
           Looper localLooper = Looper.getMainLooper();
           if (localLooper != null) {
-            sMainThreadHandler = new ThreadUtil.EventHandler(localLooper);
+            sMainThreadHandler = new ThreadUtil.UIHandler(localLooper);
           }
         }
         else
@@ -27,28 +79,44 @@ public class ThreadUtil
           return;
         }
         sMainThreadHandler = null;
-        throw new IllegalStateException("cannot get thread looper");
+        throw new IllegalStateException("cannot get UI Thread looper!");
       }
       finally {}
     }
   }
   
-  public static void runOnSubThread(@NonNull Runnable paramRunnable)
+  private static void initSubThreadHandler()
   {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      mThreadPool.execute(paramRunnable);
-      return;
+    if (sSubThread == null) {
+      try
+      {
+        if (sSubThread == null)
+        {
+          sSubThread = new HandlerThread("SuperPlayerSubThread");
+          sSubThread.start();
+        }
+        return;
+      }
+      finally {}
     }
-    paramRunnable.run();
+  }
+  
+  public static void runOnThreadPool(@NonNull Runnable paramRunnable)
+  {
+    sThreadPool.execute(paramRunnable);
   }
   
   public static void runOnUiThread(Runnable paramRunnable)
   {
-    
-    if (sMainThreadHandler != null) {
-      sMainThreadHandler.post(paramRunnable);
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      paramRunnable.run();
     }
+    do
+    {
+      return;
+      initMainThreadHandler();
+    } while (sMainThreadHandler == null);
+    sMainThreadHandler.post(paramRunnable);
   }
 }
 

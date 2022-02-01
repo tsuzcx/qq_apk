@@ -1,27 +1,18 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akfx
-  extends niv
+  implements View.OnClickListener
 {
-  akfx(akfu paramakfu) {}
+  akfx(akfw paramakfw, akfz paramakfz) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((akfu.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
-    }
-    this.a.d();
-    if (akfu.a(this.a) != null) {
-      akfu.a(this.a).removeCallbacks(akfu.b(this.a));
-    }
-    if (paramInt == 16)
-    {
-      this.a.e();
-      return;
-    }
-    akfu.a(this.a, akfu.a(this.a));
+    String str = String.valueOf(this.jdField_a_of_type_Akfz.a.getText());
+    akfw.a(this.jdField_a_of_type_Akfw, str);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

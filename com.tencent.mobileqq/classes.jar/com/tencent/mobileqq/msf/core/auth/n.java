@@ -24,10 +24,12 @@ import oicq.wlogin_sdk.tools.util;
 public class n
 {
   static final String a = "MSF.C.WTLoginCenter.MsfProvider";
-  static ConcurrentHashMap b = new ConcurrentHashMap();
-  public static final int c = 262208;
-  public static final int d = 34869344;
-  public static final int e = 1052704;
+  public static final String b = "process";
+  public static final String c = "com.tencent.mobileqq:openSdk";
+  static ConcurrentHashMap d = new ConcurrentHashMap();
+  public static final int e = 262208;
+  public static final int f = 34869344;
+  public static final int g = 1052704;
   
   public static int a(WUserSigInfo paramWUserSigInfo, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, WtloginMsfListener paramWtloginMsfListener)
   {
@@ -41,7 +43,7 @@ public class n
     if (!paramBoolean)
     {
       paramInt = c(paramWUserSigInfo);
-      localObject = (p)b.get(Integer.valueOf(paramInt));
+      localObject = (p)d.get(Integer.valueOf(paramInt));
       if (localObject == null)
       {
         QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "can not find WtloginWrapper sendData for " + paramInt);
@@ -109,7 +111,7 @@ public class n
         localToServiceMsg1.setMsfCommand(paramWUserSigInfo);
         a(localToServiceMsg1);
         a(l.d, localToServiceMsg1);
-        localObject = (p)b.get(Integer.valueOf(localToServiceMsg1.getRequestSsoSeq()));
+        localObject = (p)d.get(Integer.valueOf(localToServiceMsg1.getRequestSsoSeq()));
         ((p)localObject).c = paramWtloginMsfListener;
         paramWtloginMsfListener = (WtloginMsfListener)localObject;
       }
@@ -122,7 +124,7 @@ public class n
     {
       if ((paramToServiceMsg.getMsfCommand() == MsfCommand.refreVerifyCode) || (paramToServiceMsg.getMsfCommand() == MsfCommand.submitVerifyCode) || (paramToServiceMsg.getMsfCommand() == MsfCommand.wt_CheckPictureAndGetSt) || (paramToServiceMsg.getMsfCommand() == MsfCommand.wt_RefreshPictureData))
       {
-        paramMsfCore = (p)b.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+        paramMsfCore = (p)d.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
         localObject = paramMsfCore;
         if (paramMsfCore != null) {
           break label119;
@@ -142,7 +144,7 @@ public class n
       paramMsfCore = (MsfCore)localObject;
       ((p)localObject).d = paramToServiceMsg;
       paramMsfCore = (MsfCore)localObject;
-      b.put(Integer.valueOf(((p)localObject).d.getRequestSsoSeq()), localObject);
+      d.put(Integer.valueOf(((p)localObject).d.getRequestSsoSeq()), localObject);
       return localObject;
     }
     catch (Exception paramToServiceMsg)
@@ -159,7 +161,7 @@ public class n
   public static p a(WUserSigInfo paramWUserSigInfo)
   {
     int i = c(paramWUserSigInfo);
-    return (p)b.get(Integer.valueOf(i));
+    return (p)d.get(Integer.valueOf(i));
   }
   
   public static String a(String paramString, byte[] paramArrayOfByte)
@@ -303,7 +305,7 @@ public class n
   
   public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    p localp = (p)b.get(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+    p localp = (p)d.get(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
     if (localp == null)
     {
       QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "can not find wtloginMsfListener onRecvData for " + paramFromServiceMsg.getRequestSsoSeq());
@@ -352,7 +354,7 @@ public class n
   public static p b(WUserSigInfo paramWUserSigInfo)
   {
     int i = c(paramWUserSigInfo);
-    return (p)b.remove(Integer.valueOf(i));
+    return (p)d.remove(Integer.valueOf(i));
   }
   
   public static WUserSigInfo b(int paramInt)
@@ -421,48 +423,48 @@ public class n
   public static WUserSigInfo c(int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 621	com/tencent/mobileqq/msf/core/a/a:bg	()Ljava/util/HashSet;
+    //   0: invokestatic 627	com/tencent/mobileqq/msf/core/a/a:bg	()Ljava/util/HashSet;
     //   3: astore_3
-    //   4: new 60	oicq/wlogin_sdk/request/WUserSigInfo
+    //   4: new 66	oicq/wlogin_sdk/request/WUserSigInfo
     //   7: dup
-    //   8: invokespecial 577	oicq/wlogin_sdk/request/WUserSigInfo:<init>	()V
+    //   8: invokespecial 583	oicq/wlogin_sdk/request/WUserSigInfo:<init>	()V
     //   11: astore_2
     //   12: aload_2
     //   13: iload_0
-    //   14: invokestatic 581	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:convertInt2Bytes	(I)[B
-    //   17: putfield 64	oicq/wlogin_sdk/request/WUserSigInfo:_reserveData	[B
+    //   14: invokestatic 587	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:convertInt2Bytes	(I)[B
+    //   17: putfield 70	oicq/wlogin_sdk/request/WUserSigInfo:_reserveData	[B
     //   20: aload_2
     //   21: astore_1
     //   22: aload_3
     //   23: ifnull +68 -> 91
     //   26: aload_3
-    //   27: invokevirtual 627	java/util/HashSet:iterator	()Ljava/util/Iterator;
+    //   27: invokevirtual 633	java/util/HashSet:iterator	()Ljava/util/Iterator;
     //   30: astore_3
     //   31: aload_2
     //   32: astore_1
     //   33: aload_3
-    //   34: invokeinterface 632 1 0
+    //   34: invokeinterface 638 1 0
     //   39: ifeq +52 -> 91
     //   42: aload_2
-    //   43: getfield 636	oicq/wlogin_sdk/request/WUserSigInfo:_domains	Ljava/util/List;
+    //   43: getfield 642	oicq/wlogin_sdk/request/WUserSigInfo:_domains	Ljava/util/List;
     //   46: aload_3
-    //   47: invokeinterface 640 1 0
-    //   52: invokeinterface 645 2 0
+    //   47: invokeinterface 646 1 0
+    //   52: invokeinterface 651 2 0
     //   57: pop
     //   58: goto -27 -> 31
     //   61: astore_1
     //   62: ldc 8
     //   64: iconst_1
-    //   65: new 37	java/lang/StringBuilder
+    //   65: new 43	java/lang/StringBuilder
     //   68: dup
-    //   69: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 583
-    //   75: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokespecial 44	java/lang/StringBuilder:<init>	()V
+    //   72: ldc_w 589
+    //   75: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: iload_0
-    //   79: invokevirtual 51	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokevirtual 57	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   85: aload_1
-    //   86: invokestatic 585	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   86: invokestatic 591	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   89: aconst_null
     //   90: astore_1
     //   91: aload_1

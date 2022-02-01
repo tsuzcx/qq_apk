@@ -1,24 +1,29 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xyt
-  implements zpp
+public final class xyt
+  extends QQUIEventReceiver<xyd, ymj>
 {
-  public xyt(ShareGroupInnerListView paramShareGroupInnerListView) {}
-  
-  public void a()
+  public xyt(@NonNull xyd paramxyd)
   {
-    if ((this.a.jdField_a_of_type_Xyu != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Xyu.a(this.a.jdField_a_of_type_JavaLangString);
+    super(paramxyd);
+  }
+  
+  public void a(@NonNull xyd paramxyd, @NonNull ymj paramymj)
+  {
+    if ((paramymj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxyd.a != null) && (TextUtils.equals(paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxyd.a.b)))
+    {
+      yuk.a(paramxyd.b, "refresh feed item , feed id :%s", paramxyd.a.b);
+      paramxyd.i();
     }
   }
   
-  public boolean a(boolean paramBoolean)
+  public Class acceptEventClass()
   {
-    if (this.a.jdField_a_of_type_Xyu != null) {
-      return this.a.jdField_a_of_type_Xyu.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return ymj.class;
   }
 }
 

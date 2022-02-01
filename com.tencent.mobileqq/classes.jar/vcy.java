@@ -1,15 +1,17 @@
-import mqq.app.QQPermissionCallback;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-class vcy
-  implements QQPermissionCallback
+public class vcy
+  implements Observer<vxq<List<QQCircleFeedBase.StTabInfo>>>
 {
-  vcy(vcw paramvcw) {}
+  public vcy(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(@Nullable vxq<List<QQCircleFeedBase.StTabInfo>> paramvxq)
   {
-    vcw.b(this.a);
+    QCircleFolderFragmentsPart.a(this.a, paramvxq);
   }
 }
 

@@ -1,22 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class ykv
+class ykv
+  extends ztl
 {
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    yqp.e(paramString, ykx.a(paramVarArgs));
-  }
+  ykv(yku paramyku) {}
   
-  public static void b(String paramString, Object... paramVarArgs)
+  public boolean a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString, 2, ykx.a(paramVarArgs));
-    }
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs)
-  {
-    yqp.d(paramString, ykx.a(paramVarArgs));
+    this.a.b();
+    return true;
   }
 }
 

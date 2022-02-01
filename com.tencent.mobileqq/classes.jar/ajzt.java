@@ -1,11 +1,17 @@
-public class ajzt
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+
+class ajzt
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  
+  ajzt(ajzs paramajzs, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377928));
+  }
 }
 
 

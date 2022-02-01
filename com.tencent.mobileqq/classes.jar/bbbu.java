@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bbbu
-  implements bkhy
+final class bbbu
+  implements DialogInterface.OnClickListener
 {
-  public bbbu(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SignatureHistoryFragment.a(this.a, null);
-    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

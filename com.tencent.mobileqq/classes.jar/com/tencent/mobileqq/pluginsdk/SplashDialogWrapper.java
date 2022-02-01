@@ -14,7 +14,7 @@ public final class SplashDialogWrapper
   private boolean mOnlyCheckID;
   private String mPluginApk;
   private String mPluginName;
-  private BroadcastReceiver mReceiver;
+  private BroadcastReceiver mReceiver = null;
   private int mTimeOut;
   
   public SplashDialogWrapper(Context paramContext, Dialog paramDialog, String paramString1, String paramString2, boolean paramBoolean, int paramInt)

@@ -1,54 +1,47 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adox
-  implements bkhw
+  extends adnc
 {
-  public adox(BaseChatPie paramBaseChatPie, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy)
   {
     switch (paramInt)
     {
+    default: 
+      return false;
     }
-    for (;;)
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    paramJSONObject = (TicketManager)paramString.getManager(2);
+    paramString = paramString.getAccount();
+    paramJSONObject = paramJSONObject.getSkey(paramString);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      do
+      localJSONObject.put("uin", paramString);
+      localJSONObject.put("skey", paramJSONObject);
+      adqf.a(paramadmy, localJSONObject);
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          return;
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
-          bcst.b(null, "dc00898", "", "", "0X800ACA3", "0X800ACA3", 0, 0, "", "0", "0", "");
-          paramView = (anvl)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
-          ArrayList localArrayList = new ArrayList();
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
-            paramView.a(localArrayList);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c == null) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c = new biau(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 0);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.show();
-          }
-          catch (NumberFormatException paramView) {}
+        paramJSONObject = paramString.getMessage();
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.innerApi", 2, paramJSONObject, paramString);
         }
-      } while (!QLog.isColorLevel());
-      QLog.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_JavaLangString, 2, "delete Stranger parseLong() error", paramView);
-      return;
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-      paramView.putExtra("url", "https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=" + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-      bcst.b(null, "dc00898", "", "", "0X800ACA4", "0X800ACA4", 0, 0, "", "0", "0", "");
+        paramString = paramJSONObject;
+        if (paramJSONObject == null) {
+          paramString = "";
+        }
+        adqf.a(paramadmy, -1, paramString);
+      }
     }
   }
 }

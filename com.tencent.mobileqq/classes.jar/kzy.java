@@ -1,65 +1,32 @@
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class kzy
-  extends kzk
+final class kzy
+  extends kzr
 {
-  kzy(kzx paramkzx, lan paramlan, Long paramLong) {}
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
-    }
-  }
+  kzy(kzp paramkzp) {}
   
   public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    paramArrayOfHeader = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
+    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
     try
     {
-      paramJSONObject = paramJSONObject.getJSONObject("data");
-      if (paramJSONObject != null)
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("translations");
-        if (paramJSONObject != null)
-        {
-          paramInt = 0;
-          while (paramInt < paramJSONObject.length())
-          {
-            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
-            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
-            if ((paramArrayOfHeader != null) && (localArrayList != null))
-            {
-              paramArrayOfHeader.add(Language.fromString(str2));
-              localArrayList.add(str1);
-            }
-            paramInt += 1;
-          }
-        }
-      }
+      paramJSONObject = paramJSONObject.getString("id");
+      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
       return;
     }
-    catch (JSONException paramJSONObject)
+    catch (JSONException paramArrayOfHeader)
     {
-      paramJSONObject.printStackTrace();
-      this.jdField_a_of_type_Lan.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
+      paramArrayOfHeader.printStackTrace();
     }
   }
   
-  public void a(Throwable paramThrowable, String paramString)
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Lan.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
+    super.a(paramThrowable, paramJSONObject);
+    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
+      this.a.a(paramThrowable, paramThrowable.getMessage());
     }
   }
 }

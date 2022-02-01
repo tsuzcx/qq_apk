@@ -1,71 +1,22 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 public class avma
-  extends QIPCModule
 {
-  private static volatile avma a;
-  
-  public avma(String paramString)
+  public static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super(paramString);
-  }
-  
-  public static avma a()
-  {
-    if (a == null) {}
-    try
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (a == null) {
-        a = new avma("TogetherBusinessIPCModule");
+      HashMap localHashMap = new HashMap();
+      acik.a(localHashMap, paramString1);
+      localHashMap.put(Integer.valueOf(1), paramString2);
+      localHashMap.put(Integer.valueOf(2), paramString1);
+      if (paramBoolean) {
+        localHashMap.put(Integer.valueOf(24), Integer.valueOf(1));
       }
-      return a;
+      acik.a(anbd.a(), "769", paramString3, paramString2, "76906", "1", "160", localHashMap);
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
-    }
-    if ("action_open_identify".equals(paramString)) {
-      TogetherBusinessServlet.a("QQAIOMediaSvc.open_identify", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new avmb(this, paramInt));
-    }
-    do
-    {
-      boolean bool2;
-      do
-      {
-        do
-        {
-          return null;
-          if ("action_open_start".equals(paramString))
-          {
-            TogetherBusinessServlet.a("QQAIOMediaSvc.open_start", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new avmb(this, paramInt));
-            return null;
-          }
-        } while (!"action_set_floating".equals(paramString));
-        boolean bool1 = paramBundle.getBoolean("BUNDLE_SET_STATUS");
-        paramString = paramBundle.getString("BUNDLE_SET_KEY_UIN", "");
-        paramInt = paramBundle.getInt("BUNDLE_SET_KEY_SESSION_TYPE", -1);
-        bool2 = paramBundle.getBoolean("BUNDLE_SET_KEY_REFRESH_UI", true);
-        avmc.a(bool1, paramString, paramInt, bool2);
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherBusinessIPCModule", 2, "ACTION_SET_FLOATING " + " isShow=" + bool1 + " uin=" + paramString + " sessionType=" + paramInt + " refresh=" + bool2);
-        }
-      } while (!bool2);
-      paramBundle = (bdrb)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(339);
-      paramString = (WatchTogetherSession)paramBundle.a(2, paramInt, paramString);
-    } while (paramString == null);
-    paramBundle.a(true, paramString, 1002, "");
-    return null;
   }
 }
 

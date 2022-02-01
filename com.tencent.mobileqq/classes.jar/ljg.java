@@ -1,51 +1,189 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.SurfaceTexture;
 
-public class ljg
-  extends Handler
+public abstract class ljg
 {
-  WeakReference<CameraUtils> a;
+  protected int a;
+  protected final lje a;
+  protected ljf a;
+  protected final ljh a;
+  protected ljt a;
   
-  public ljg(CameraUtils paramCameraUtils, Looper paramLooper)
+  public ljg(lje paramlje, ljf paramljf)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCameraUtils);
+    this.jdField_a_of_type_Ljt = new ljt();
+    this.jdField_a_of_type_Ljh = new ljh();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Lje = paramlje;
+    this.jdField_a_of_type_Ljf = paramljf;
   }
   
-  public void a(long paramLong)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    removeMessages(1);
+    byte b;
+    switch (paramInt)
+    {
+    default: 
+      b = 0;
+    }
+    while (paramBoolean)
+    {
+      return lkw.a(this.jdField_a_of_type_Lje.a, true, false, b, false) * 90;
+      b = 0;
+      continue;
+      b = 1;
+      continue;
+      b = 2;
+      continue;
+      b = 3;
+    }
+    return lkw.b(this.jdField_a_of_type_Lje.a, true, false, b, false) * 90;
   }
   
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "], seq[" + paramLong + "]");
-    a(paramLong);
-    paramString = obtainMessage(1);
-    paramString.arg1 = paramInt1;
-    paramString.arg2 = paramInt2;
-    paramString.obj = Long.valueOf(paramLong);
-    sendMessageDelayed(paramString, 1000L);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
+  public abstract void a(long paramLong, SurfaceTexture paramSurfaceTexture);
+  
+  public void a(ljh paramljh)
   {
-    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
-      if (!(paramMessage.obj instanceof Long)) {
-        break label75;
+    int i = 0;
+    int m = this.jdField_a_of_type_Lje.f();
+    int j;
+    int n;
+    label60:
+    int k;
+    if (this.jdField_a_of_type_Lje.e)
+    {
+      j = 0;
+      n = this.jdField_a_of_type_Lje.g();
+      if (this.jdField_a_of_type_Lje.f != 1) {
+        break label219;
+      }
+      i = (360 - (m + j) % 360) % 360;
+      k = i + n;
+      if ((m != 270) && (m != 90)) {
+        break label246;
+      }
+      i = k;
+      if (n % 180 == 0)
+      {
+        i = k;
+        if (this.jdField_a_of_type_Lje.f == 1) {
+          if (a())
+          {
+            i = k;
+            if (!this.jdField_a_of_type_Lje.d) {}
+          }
+          else
+          {
+            i = k + 180;
+          }
+        }
+      }
+      label134:
+      if (this.jdField_a_of_type_Lje.f != 1) {
+        break label370;
+      }
+      if (this.jdField_a_of_type_Lje.l <= 0) {
+        break label351;
+      }
+      i += 360 - this.jdField_a_of_type_Lje.l;
+    }
+    for (;;)
+    {
+      i = i % 360 / 90;
+      if (paramljh != null)
+      {
+        paramljh.jdField_a_of_type_Int = i;
+        paramljh.b = n;
+        paramljh.c = m;
+        paramljh.d = j;
+      }
+      return;
+      j = this.jdField_a_of_type_Lje.c() * 90;
+      break;
+      label219:
+      if (this.jdField_a_of_type_Lje.f != 2) {
+        break label60;
+      }
+      i = (m - j + 360) % 360;
+      break label60;
+      label246:
+      if (m != 0)
+      {
+        i = k;
+        if (m != 180) {
+          break label134;
+        }
+      }
+      if ((n == 90) || (n == 270))
+      {
+        i = k;
+        if (this.jdField_a_of_type_Lje.f != 1) {
+          break label134;
+        }
+        i = k;
+        if (this.jdField_a_of_type_Lje.c) {
+          break label134;
+        }
+        i = k + 180;
+        break label134;
+      }
+      i = k;
+      if (this.jdField_a_of_type_Lje.f != 1) {
+        break label134;
+      }
+      i = k;
+      if (!this.jdField_a_of_type_Lje.c) {
+        break label134;
+      }
+      i = k + 180;
+      break label134;
+      label351:
+      i += a(n, this.jdField_a_of_type_Lje.e);
+      continue;
+      label370:
+      if (this.jdField_a_of_type_Lje.m > 0) {
+        i += this.jdField_a_of_type_Lje.m;
+      } else {
+        i += b(n, this.jdField_a_of_type_Lje.e);
       }
     }
-    label75:
-    for (long l = Long.valueOf(0L).longValue();; l = 0L)
-    {
-      CameraUtils.a((CameraUtils)this.a.get(), l, paramMessage.arg1, paramMessage.arg2);
-      super.handleMessage(paramMessage);
-      return;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      if (!mtd.a(this.jdField_a_of_type_Lje.a, "ro.qq.orientation").equalsIgnoreCase("ZTE")) {
+        break label43;
+      }
     }
+    label43:
+    for (this.jdField_a_of_type_Int = 1; this.jdField_a_of_type_Int == 1; this.jdField_a_of_type_Int = 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  public int b(int paramInt, boolean paramBoolean)
+  {
+    byte b;
+    switch (paramInt)
+    {
+    default: 
+      b = 0;
+    }
+    while (paramBoolean)
+    {
+      return lkw.a(this.jdField_a_of_type_Lje.a, false, false, b, false) * 90;
+      b = 0;
+      continue;
+      b = 1;
+      continue;
+      b = 2;
+      continue;
+      b = 3;
+    }
+    return lkw.b(this.jdField_a_of_type_Lje.a, false, false, b, false) * 90;
   }
 }
 

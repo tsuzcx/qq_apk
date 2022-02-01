@@ -1,24 +1,69 @@
-import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.IBinder;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-public class bhvo
-  implements View.OnClickListener
+public final class bhvo
 {
-  public bhvo(ContextMenuTextView paramContextMenuTextView) {}
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Method b;
+  private static Method c;
+  private static Method d;
   
-  public void onClick(View paramView)
+  static
   {
-    if (paramView.getId() == 2131365147)
+    try
     {
-      Context localContext = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)localContext.getSystemService("clipboard")).setText(this.a.getText().toString());
+      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
+      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
+      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
+      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
+      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
+  }
+  
+  public static IBinder a(String paramString)
+  {
+    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+  }
+  
+  private static Object a(Method paramMethod, Object... paramVarArgs)
+  {
+    try
+    {
+      paramMethod = paramMethod.invoke(null, paramVarArgs);
+      return paramMethod;
+    }
+    catch (IllegalArgumentException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramMethod)
+    {
+      paramMethod.printStackTrace();
+    }
+    return null;
   }
 }
 

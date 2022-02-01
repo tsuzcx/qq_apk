@@ -12,7 +12,11 @@ public class MiniAppObserver
   public static final int MINI_APP_BATCH_GET_CONTACT = 1039;
   public static final int MINI_APP_BATCH_GET_USER_INFO = 1028;
   public static final int MINI_APP_BATCH_QUERY_APP_INFO = 1013;
+  public static final int MINI_APP_BOOKSHIEF_INSERT = 1080;
+  public static final int MINI_APP_BOOKSHIEF_QUERY = 1081;
+  public static final int MINI_APP_BOOKSHIEF_UPDATE = 1082;
   static final int MINI_APP_CHANGE_SHARE_IMAGE_URL = 1029;
+  public static final int MINI_APP_CHECK_BINDING_STATE = 1083;
   public static final int MINI_APP_CHECK_NAVIGATE_RIGHT = 1023;
   public static final int MINI_APP_CHECK_OFFER_ID = 1021;
   public static final int MINI_APP_CHECK_SESSION = 1002;
@@ -290,6 +294,9 @@ public class MiniAppObserver
     }
     if (1077 == paramInt) {
       return "MINI_APP_WX_PAY_CHECK_URL";
+    }
+    if (1083 == paramInt) {
+      return "MINI_APP_CHECK_BINDING_STATE";
     }
     return "default cmd";
   }
@@ -664,8 +671,28 @@ public class MiniAppObserver
         onDelPhoneNumber(i, paramBoolean, paramBundle);
         return;
       }
-    } while (paramInt != 1077);
-    onWxPayCheckUrlResult(i, paramBoolean, paramBundle);
+      if (paramInt == 1077)
+      {
+        onWxPayCheckUrlResult(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1080)
+      {
+        onBookShelfInsertResult(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1081)
+      {
+        onBookShelfQueryResult(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1082)
+      {
+        onBookShelfUpdateResult(i, paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 1083);
+    onCheckBindingState(i, paramBoolean, paramBundle);
   }
   
   protected void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -676,7 +703,15 @@ public class MiniAppObserver
   
   protected void onBatchQueryAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onBookShelfInsertResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onBookShelfQueryResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onBookShelfUpdateResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onChangeShareImageUrl(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onCheckBindingState(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onCheckNavigateRightServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   

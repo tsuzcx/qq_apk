@@ -1,58 +1,52 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public abstract class aoyh
-  extends Binder
-  implements aoyg
+class aoyh
+  implements yea
 {
-  public aoyh()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-  }
+  aoyh(aoyf paramaoyf) {}
   
-  public static aoyg a(IBinder paramIBinder)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aoyg))) {
-      return (aoyg)localIInterface;
-    }
-    return new aoyi(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    paramString = zmq.a();
+    String str1 = ((Activity)this.a.a).getIntent().getStringExtra("from_type");
+    paramInt = ((Activity)this.a.a).getIntent().getIntExtra("capture_intent_mode", -1);
+    int i = ((Activity)this.a.a).getIntent().getIntExtra("firsttab", -1);
+    int j = ((Activity)this.a.a).getIntent().getIntExtra("secondtab", -1);
+    String str2 = ((Activity)this.a.a).getIntent().getStringExtra("itemid");
+    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("story_game_id");
+    int k = ((Activity)this.a.a).getIntent().getIntExtra("key_finish_jump_to_page", 1);
+    String str4 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
+    String str5 = ((Activity)this.a.a).getIntent().getStringExtra("story_capture_album_id");
+    Bundle localBundle = new Bundle();
+    if (TextUtils.equals(str1, "msgTab"))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
+      localBundle.putInt("entrance_type", 103);
+      localBundle.putInt("key_finish_jump_to_page", k);
+      if (!TextUtils.isEmpty(str4)) {
+        localBundle.putString("web_dispatch_event", str4);
+      }
+      if (paramInt == -1) {
+        break label322;
+      }
+      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, str3, str5, true, 20000);
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    for (;;)
+    {
+      yuk.c("Q.qqstory.publish.QQstoryAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
+      return;
+      if (TextUtils.equals(str1, "msgTabNew"))
+      {
+        localBundle.putInt("entrance_type", 119);
+        break;
+      }
+      localBundle.putInt("entrance_type", 15);
+      break;
+      label322:
+      paramString.a((Activity)this.a.a, localBundle, 20000);
+    }
   }
 }
 

@@ -1,23 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.util.Pair;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-public class awpx
-  implements DialogInterface.OnClickListener
+public abstract interface awpx
 {
-  public awpx(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public abstract Pair<awpk, LocationRoom.Venue> a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    awnr.a().a().c();
-    awnr.a().d();
-    if (this.a.a)
-    {
-      this.a.g();
-      return;
-    }
-    this.a.a(this.a.getActivity());
-  }
+  public abstract void a(awpk paramawpk, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2);
 }
 
 

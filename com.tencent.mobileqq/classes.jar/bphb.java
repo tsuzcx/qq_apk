@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
-final class bphb
-  implements Animation.AnimationListener
+public class bphb
+  implements DialogInterface.OnClickListener
 {
-  bphb(View paramView) {}
+  public bphb(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setAnimation(null);
+    this.a.getActivity().getIntent().putExtra("startTimeEdit", AEEditorVideoEditFragment.a(this.a, false));
+    this.a.getActivity().getIntent().putExtra("endTimeEdit", AEEditorVideoEditFragment.b(this.a, false));
+    this.a.getActivity().getIntent().putExtra("endSpeedEdit", AEEditorVideoEditFragment.a(this.a, false));
+    bozr.a().q();
+    this.a.a().a(this.a.getActivity());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,159 +1,29 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
 
 public class bbiu
-  extends BaseAdapter
+  implements Animation.AnimationListener
 {
-  public static final String a;
-  public float a;
-  public int a;
-  public long a;
-  public bbnm a;
-  public HorizontalListView a;
-  public List<bbnn> a;
-  public float b;
-  public int b;
+  public bbiu(ProviderContainerView paramProviderContainerView, boolean paramBoolean) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_JavaLangString = bbiu.class.getSimpleName();
-  }
-  
-  public bbiu(bbnm parambbnm, int paramInt, HorizontalListView paramHorizontalListView)
-  {
-    this.jdField_a_of_type_Bbnm = parambbnm;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    paramHorizontalListView.setOnScrollListener(new bbiv(this, paramHorizontalListView));
-  }
-  
-  public bbnn a(int paramInt)
-  {
-    return (bbnn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<bbnn> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(List<bbnn> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Bbnm.m)) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((paramInt == this.jdField_a_of_type_JavaUtilList.size()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bbnm.m))) {
-      return 2;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    switch (getItemViewType(paramInt))
+    if (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)
     {
-    default: 
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    case 1: 
-      localObject2 = (bbnp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      label86:
-      float f;
-      if (paramView == null)
-      {
-        localObject1 = new bbvu(paramViewGroup, 0);
-        paramView = ((bbvu)localObject1).a();
-        paramView.setTag(localObject1);
-        f = this.jdField_a_of_type_Bbnm.jdField_a_of_type_Int;
-        f = (float)(bgln.k() - bggq.a(paramView.getContext(), 13.5F)) / (f + 0.5F);
-        this.jdField_a_of_type_Float = (bggq.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 3.0F) + f);
-        switch (((bbnp)localObject2).jdField_a_of_type_Bbni.jdField_a_of_type_Int)
-        {
-        default: 
-          this.jdField_b_of_type_Float = (f * 136.0F / 220.0F);
-        }
-      }
-      for (;;)
-      {
-        ((bbvu)localObject1).a().setLayoutParams(new LinearLayout.LayoutParams((int)f, -2));
-        ((bbnp)localObject2).a((bbvs)localObject1);
-        ((bbvu)localObject1).a().measure(1073741824, 0);
-        this.jdField_b_of_type_Int = Math.max(((bbvu)localObject1).a().getMeasuredHeight(), this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().height = this.jdField_b_of_type_Int;
-        this.jdField_a_of_type_Long = ((bbnp)localObject2).jdField_a_of_type_Long;
-        break;
-        localObject1 = (bbvu)paramView.getTag();
-        break label86;
-        this.jdField_b_of_type_Float = (f * 136.0F / 220.0F);
-        continue;
-        this.jdField_b_of_type_Float = f;
-        continue;
-        this.jdField_b_of_type_Float = (228.0F * f / 162.0F);
-        continue;
-        this.jdField_b_of_type_Float = f;
-      }
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setAlpha(1.0F);
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setVisibility(8);
     }
-    Object localObject1 = paramView;
-    if (paramView == null) {
-      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559826, paramViewGroup, false);
-    }
-    Object localObject2 = new FrameLayout.LayoutParams(-1, (int)this.jdField_b_of_type_Float);
-    ((FrameLayout.LayoutParams)localObject2).topMargin = bggq.a(paramViewGroup.getContext(), 6.0F);
-    paramView = (LinearLayout)((View)localObject1).findViewById(2131364961);
-    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = (ImageView)((View)localObject1).findViewById(2131371294);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131371322);
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      paramView.setBackgroundResource(2130839386);
-      localTextView.setTextColor(Color.parseColor("#4A4A4A"));
-      ((ImageView)localObject2).setImageResource(2130842301);
-    }
-    for (;;)
-    {
-      localTextView.setText(this.jdField_a_of_type_Bbnm.jdField_a_of_type_JavaLangCharSequence);
-      ((View)localObject1).setOnClickListener(new bbiw(this, paramViewGroup));
-      paramView = (View)localObject1;
-      break;
-      paramView.setBackgroundResource(2130839385);
-      localTextView.setTextColor(Color.parseColor("#737373"));
-      ((ImageView)localObject2).setImageResource(2130842300);
+    if ((!this.jdField_a_of_type_Boolean) && (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)) {
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).a(false, 150);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

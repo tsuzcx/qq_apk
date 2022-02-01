@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import aytd;
+import azlo;
 
 public class AccountPanelRootLayout
   extends RelativeLayout
@@ -20,7 +20,7 @@ public class AccountPanelRootLayout
   private int jdField_a_of_type_Int = 2;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private aytd jdField_a_of_type_Aytd;
+  private azlo jdField_a_of_type_Azlo;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -107,7 +107,7 @@ public class AccountPanelRootLayout
   private void c()
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131364996);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131365043);
     }
   }
   
@@ -119,8 +119,8 @@ public class AccountPanelRootLayout
     }
     if (i >= 0)
     {
-      if (this.jdField_a_of_type_Aytd != null) {
-        this.jdField_a_of_type_Aytd.b();
+      if (this.jdField_a_of_type_Azlo != null) {
+        this.jdField_a_of_type_Azlo.b();
       }
       return 0 - getScrollY();
     }
@@ -187,8 +187,8 @@ public class AccountPanelRootLayout
         return;
       } while (!this.c);
       this.c = false;
-    } while (this.jdField_a_of_type_Aytd == null);
-    this.jdField_a_of_type_Aytd.b(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Azlo == null);
+    this.jdField_a_of_type_Azlo.b(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -229,10 +229,10 @@ public class AccountPanelRootLayout
         if (Math.abs(f1) > 5.0F) {
           this.jdField_b_of_type_Boolean = true;
         }
-        if (this.jdField_a_of_type_Aytd == null) {
+        if (this.jdField_a_of_type_Azlo == null) {
           break;
         }
-        paramMotionEvent = this.jdField_a_of_type_Aytd;
+        paramMotionEvent = this.jdField_a_of_type_Azlo;
         bool1 = bool2;
         if (getScrollY() > 0) {
           bool1 = true;
@@ -259,7 +259,7 @@ public class AccountPanelRootLayout
         break;
       }
       label332:
-      if (this.jdField_a_of_type_Aytd != null)
+      if (this.jdField_a_of_type_Azlo != null)
       {
         this.c = true;
         a(-this.jdField_b_of_type_Int);
@@ -272,9 +272,9 @@ public class AccountPanelRootLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAccountPanelRootLayoutListener(aytd paramaytd)
+  public void setAccountPanelRootLayoutListener(azlo paramazlo)
   {
-    this.jdField_a_of_type_Aytd = paramaytd;
+    this.jdField_a_of_type_Azlo = paramazlo;
   }
   
   public void setMode(int paramInt)

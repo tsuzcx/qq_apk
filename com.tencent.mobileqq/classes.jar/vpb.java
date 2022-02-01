@@ -1,6 +1,31 @@
-public abstract interface vpb
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class vpb
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  vpb(vow paramvow) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.callOnClick();
+    }
+    vba localvba = vow.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder().append("tvTime getFeedCommentInfo is");
+    if (localvba != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("QCircleReplyMessagePresenter", 1, bool);
+      if (localvba != null) {
+        vow.a(this.a, localvba, 2);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+  }
 }
 
 

@@ -1,23 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import java.util.List;
 
 public class avur
-  implements DownloadParams.DecodeHandler
+  implements bfcb
 {
-  public avur(FloatIconLayout paramFloatIconLayout) {}
+  public avur(HotVideoData paramHotVideoData, avut paramavut, avus paramavus) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void a(bfau parambfau, bfbj parambfbj)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
+    if (parambfbj != null) {
+      if (parambfbj.a.size() > 0)
+      {
+        parambfau = (bfbx)parambfbj.a.get(0);
+        this.jdField_a_of_type_Avut.a(parambfau);
+      }
     }
-    if (paramBitmap == null) {
-      return null;
+    for (;;)
+    {
+      this.jdField_a_of_type_Avus.a(this.jdField_a_of_type_Avut);
+      return;
+      this.jdField_a_of_type_Avut.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Avut.jdField_a_of_type_JavaLangString = "Unknown error！";
+      continue;
+      this.jdField_a_of_type_Avut.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Avut.jdField_a_of_type_JavaLangString = "Unknown error！";
     }
-    return bgmo.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
   }
 }
 

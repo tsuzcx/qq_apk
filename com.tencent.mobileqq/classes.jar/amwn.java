@@ -1,23 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
 public class amwn
-  implements Animation.AnimationListener
+  implements Comparator<amwq>
 {
-  public amwn(ApolloGameActivity paramApolloGameActivity) {}
+  public amwn(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(amwq paramamwq1, amwq paramamwq2)
   {
-    ApolloGameActivity.a(this.a).d();
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.d(this.a);
+    return paramamwq1.a() - paramamwq2.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

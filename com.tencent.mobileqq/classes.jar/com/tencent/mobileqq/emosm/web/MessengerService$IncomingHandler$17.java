@@ -2,11 +2,11 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anmz;
-import arrm;
-import arro;
-import arti;
-import bgmj;
+import anyz;
+import asha;
+import ashc;
+import asiw;
+import bhml;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -24,13 +24,13 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$17
   implements Runnable
 {
-  public MessengerService$IncomingHandler$17(arti paramarti, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$17(asiw paramasiw, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    Object localObject2 = (arro)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    Object localObject3 = ((arro)localObject2).a();
+    Object localObject2 = (ashc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    Object localObject3 = ((ashc)localObject2).a();
     HashSet localHashSet;
     int i;
     if (localObject3 != null) {
@@ -95,13 +95,13 @@ public class MessengerService$IncomingHandler$17
           j = i + 1;
           if ((!((CustomEmotionData)localObject4).isMarkFace) && (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) && (!TextUtils.isEmpty(((CustomEmotionData)localObject4).emoPath)))
           {
-            ((CustomEmotionData)localObject4).md5 = bgmj.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
-            ((arro)localObject2).b((CustomEmotionBase)localObject4);
+            ((CustomEmotionData)localObject4).md5 = bhml.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
+            ((ashc)localObject2).b((CustomEmotionBase)localObject4);
           }
           if ((TextUtils.isEmpty(((CustomEmotionData)localObject4).url)) || (!((CustomEmotionData)localObject4).url.contains("qto_"))) {
             continue;
           }
-          localObject4 = anmz.a(((CustomEmotionData)localObject4).url);
+          localObject4 = anyz.a(((CustomEmotionData)localObject4).url);
           i = j;
           if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
@@ -119,13 +119,13 @@ public class MessengerService$IncomingHandler$17
     do
     {
       Object localObject1;
-      localHashSet.addAll(anmz.a);
+      localHashSet.addAll(anyz.a);
       localObject2 = localHashSet.iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
       }
       localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("remainNum", arrm.a - i);
+      ((JSONObject)localObject2).put("remainNum", asha.a - i);
       ((JSONObject)localObject2).put("uid", localObject1);
       this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
       this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject2).toString());
@@ -134,7 +134,7 @@ public class MessengerService$IncomingHandler$17
       try
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("remainNum", arrm.a);
+        ((JSONObject)localObject1).put("remainNum", asha.a);
         ((JSONObject)localObject1).put("uid", new JSONArray());
         this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
         this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject1).toString());

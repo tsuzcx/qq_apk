@@ -1,11 +1,11 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
-import aayr;
-import aays;
-import bdvs;
-import bdvu;
-import bdwu;
-import bgnt;
+import abcu;
+import abcv;
+import beum;
+import beuo;
+import bevn;
+import bhnv;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,19 +14,19 @@ import java.io.File;
 public class EditVideoSmartMusicPart$1
   implements Runnable
 {
-  public EditVideoSmartMusicPart$1(aayr paramaayr) {}
+  public EditVideoSmartMusicPart$1(abcu paramabcu) {}
   
   public void run()
   {
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = new aays(this);
-    localbdvs.jdField_a_of_type_JavaLangString = aayr.a(this.this$0);
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = aayr.a(this.this$0).getPath();
-    localbdvs.b = bgnt.a(bdwu.a().a());
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = new abcv(this);
+    localbeum.jdField_a_of_type_JavaLangString = abcu.a(this.this$0);
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = abcu.a(this.this$0).getPath();
+    localbeum.b = bhnv.a(bevn.a().a());
     QQStoryContext.a();
-    QQStoryContext.a().getNetEngine(0).a(localbdvs);
-    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + aayr.a(this.this$0));
+    QQStoryContext.a().getNetEngine(0).a(localbeum);
+    QLog.i("EditVideoSmartMusicPart", 1, "startDownloadAnim, url: " + abcu.a(this.this$0));
   }
 }
 

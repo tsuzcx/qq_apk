@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
-import bbas;
+import bbtl;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignTextEditFragment$7$1
   implements Runnable
 {
-  public SignTextEditFragment$7$1(bbas parambbas) {}
+  public SignTextEditFragment$7$1(bbtl parambbtl) {}
   
   public void run()
   {

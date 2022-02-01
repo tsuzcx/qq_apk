@@ -1,21 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-
-public class bpea
-  implements Animation.AnimationListener
+class bpea
 {
-  public bpea(EditVideoGuide paramEditVideoGuide) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.j();
-    this.a.a.a(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static bpdx a = new bpdx(null);
 }
 
 

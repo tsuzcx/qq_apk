@@ -1,261 +1,173 @@
-import android.content.Context;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.opengl.effects.AEFilterSupport;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.business.manager.Checker.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class lgn
-  extends EffectConfigBase<FilterItem>
+  implements Handler.Callback
 {
-  static boolean jdField_a_of_type_Boolean;
-  static boolean b;
-  FilterItem jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = null;
-  private FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
+  private blhq jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
+  private final ConcurrentHashMap<String, lgo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  private final ConcurrentLinkedQueue<String> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public lgn(VideoAppInterface paramVideoAppInterface)
+  private void a()
   {
-    super(paramVideoAppInterface);
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) && (!this.jdField_a_of_type_Blhq.hasMessages(1))) {
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(1);
+    }
   }
   
-  public static String a(String paramString)
+  private void b(String paramString, lgo paramlgo)
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    int i;
+    if (paramlgo == null)
+    {
+      a();
+      return;
+    }
+    if (paramlgo.a())
+    {
+      a();
+      return;
+    }
+    if (paramlgo.jdField_a_of_type_Lgr == null)
+    {
+      paramlgo.jdField_a_of_type_Int += 1;
+      a();
+      return;
+    }
+    paramlgo.jdField_a_of_type_Int += 1;
+    ThreadManager.excute(new Checker.1(this, paramlgo, paramString), 16, null, false);
+  }
+  
+  public void a(String paramString, lgo paramlgo)
+  {
+    boolean bool = paramlgo.jdField_a_of_type_Lgr.isUsable();
     int j;
-    do
+    if ((bool) && (!bhmi.a(paramlgo.jdField_b_of_type_JavaLangString))) {
+      j = 1;
+    }
+    for (;;)
     {
-      return paramString;
-      i = paramString.lastIndexOf(".");
-      j = paramString.lastIndexOf(File.separator);
-      if (j != -1) {
-        break;
-      }
-    } while (i == -1);
-    return paramString.substring(0, i);
-    if (i == -1) {
-      return paramString.substring(j + 1);
-    }
-    if (j < i) {}
-    for (paramString = paramString.substring(j + 1, i);; paramString = paramString.substring(j + 1)) {
-      return paramString;
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (b) {
-      return true;
-    }
-    if ((!loz.a(8, 1400000L)) && (!loz.a(4, 2150000L))) {
-      return false;
-    }
-    lod locallod = lod.a();
-    if ((locallod != null) && (!locallod.b()))
-    {
-      lbc.c("EffectFilterTools", "isSupportGesture false");
-      return false;
-    }
-    b = true;
-    return b;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (jdField_a_of_type_Boolean) {
-      bool1 = jdField_a_of_type_Boolean;
-    }
-    do
-    {
-      do
+      if (j != 0) {}
+      try
       {
-        return bool1;
-        if (!loz.g())
+        bhmi.a(paramlgo.jdField_a_of_type_JavaLangString, paramlgo.jdField_b_of_type_JavaLangString, false);
+        paramlgo.jdField_b_of_type_Boolean = true;
+        if ((!paramlgo.jdField_b_of_type_Boolean) && (paramlgo.a()) && (paramlgo.jdField_a_of_type_Boolean))
         {
-          lbc.c("EffectFilterTools", "isSupport Error: 1");
-          return false;
+          bhmi.d(paramlgo.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.i("Checker", 2, "realCheck, del zip id[" + paramString + "], path[" + paramlgo.jdField_a_of_type_JavaLangString + "]");
+          }
         }
-        bool1 = bool2;
-      } while (!loz.a(4, 1400000L));
-      if (paramContext == null) {
-        break;
+        return;
+        if ((bool) && (paramlgo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        {
+          i = 0;
+          label144:
+          if (i < paramlgo.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            String str = (String)paramlgo.jdField_a_of_type_JavaUtilArrayList.get(i);
+            if (TextUtils.isEmpty(str)) {}
+            label327:
+            for (;;)
+            {
+              i += 1;
+              break label144;
+              if (paramlgo.jdField_b_of_type_JavaLangString.endsWith(File.separator)) {}
+              for (str = paramlgo.jdField_b_of_type_JavaLangString + str;; str = paramlgo.jdField_b_of_type_JavaLangString + File.separator + str)
+              {
+                if (bhmi.a(str)) {
+                  break label327;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label371;
+                }
+                QLog.i("Checker", 2, "realCheck, id[" + paramString + "], unExistFile[" + str + "]");
+                i = 1;
+                j = i;
+                if (i == 0) {
+                  break;
+                }
+                bhmi.a(paramlgo.jdField_b_of_type_JavaLangString);
+                j = i;
+                break;
+              }
+            }
+          }
+        }
       }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(lbq.b(132).a));
-    paramContext = lod.a();
-    if ((paramContext != null) && (!paramContext.a()))
-    {
-      lbc.c("EffectFilterTools", "  isSupportFilter false");
-      return false;
-    }
-    jdField_a_of_type_Boolean = true;
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(PendantItem paramPendantItem)
-  {
-    if (paramPendantItem == null) {
-      return false;
-    }
-    boolean bool;
-    if (AEFilterSupport.a()) {
-      if (!PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind())) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, ptu[%s], support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(AEFilterSupport.a()), Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
-      }
-      return bool;
-      bool = false;
-      continue;
-      if (!PendantItem.isOnlySupportNewFilter(paramPendantItem.getKind())) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 132;
-  }
-  
-  public FilterDesc a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
-  }
-  
-  public Class<?> a()
-  {
-    return FilterItem.class;
-  }
-  
-  public String a(FilterItem paramFilterItem)
-  {
-    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.getResurl())) && (!TextUtils.isEmpty(paramFilterItem.getId())))
-    {
-      String str = b(paramFilterItem);
-      paramFilterItem = a(paramFilterItem.getResurl());
-      return str + paramFilterItem;
-    }
-    return null;
-  }
-  
-  public List<FilterItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramLong, null);
-  }
-  
-  public void a(long paramLong, PendantItem paramPendantItem)
-  {
-    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getFilterName())))
-    {
-      b(paramLong, (FilterItem)a(paramPendantItem.getFilterName()));
-      return;
-    }
-    b(paramLong, this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem);
-  }
-  
-  protected void a(FilterItem paramFilterItem) {}
-  
-  public boolean a(long paramLong, FilterItem paramFilterItem)
-  {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = paramFilterItem;
-    return b(paramLong, paramFilterItem);
-  }
-  
-  protected boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    super.b();
-    boolean bool1 = bool2;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = 0;
-      if (paramString.hasNext())
+      catch (IOException localIOException)
       {
-        FilterItem localFilterItem = (FilterItem)paramString.next();
-        long l = AudioHelper.b();
-        if (AudioHelper.f()) {
-          QLog.w("EffectFilterTools", 1, "preDownloadResource, seq[" + l + "], res[" + localFilterItem.getResurl() + "], icon[" + localFilterItem.getIconurl() + "]");
+        for (;;)
+        {
+          paramlgo.jdField_b_of_type_Boolean = false;
+          QLog.i("Checker", 2, "realCheck, uncompressZip fail, record[" + paramlgo + "]", localIOException);
+          continue;
+          label371:
+          int i = 1;
+          continue;
+          i = 0;
         }
-        if (localFilterItem.getPredownload() != 1) {
-          break label185;
-        }
-        j += 1;
-        if ((!TextUtils.isEmpty(localFilterItem.getResurl())) && (!localFilterItem.isUsable())) {
-          a(l, localFilterItem);
-        }
+        j = 0;
       }
-    }
-    label185:
-    for (;;)
-    {
-      break;
-      i += 1;
-      continue;
-      bool1 = bool2;
-      if (i == j) {
-        bool1 = true;
-      }
-      return bool1;
     }
   }
   
-  boolean b(long paramLong, FilterItem paramFilterItem)
+  public void a(lgr paramlgr, String paramString1, String paramString2, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    boolean bool = super.a(paramLong, paramFilterItem);
-    ley localley = VideoController.a().a();
-    if (TextUtils.isEmpty(a(paramFilterItem)))
+    Object localObject;
+    if (paramlgr == null)
     {
-      localley.a.clear(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
-    }
-    for (;;)
-    {
-      if (paramFilterItem != null) {
-        lgo.a((FilterItem)a());
+      localObject = null;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(localObject))) {
+        break label51;
       }
-      return bool;
-      localley.a.set(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResurl(), paramFilterItem.getMd5(), paramFilterItem.getIconurl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.type = paramFilterItem.getFiltertype();
     }
+    label51:
+    lgo locallgo1;
+    do
+    {
+      return;
+      localObject = paramlgr.getId();
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.i("Checker", 2, "addToCheck, item[" + paramlgr + "]");
+      }
+      lgo locallgo2 = (lgo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      locallgo1 = locallgo2;
+      if (locallgo2 == null)
+      {
+        locallgo1 = new lgo(paramlgr, paramArrayList, paramBoolean);
+        locallgo1.jdField_a_of_type_JavaLangString = paramString1;
+        locallgo1.jdField_b_of_type_JavaLangString = paramString2;
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, locallgo1);
+      }
+    } while (locallgo1.a());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(localObject);
+    a();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      paramMessage = null;
+      if (!TextUtils.isEmpty(str)) {
+        paramMessage = (lgo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      }
+      b(str, paramMessage);
+    }
+    return true;
   }
 }
 

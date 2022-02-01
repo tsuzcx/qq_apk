@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anzs
-  implements Comparator<File>
+final class anzs
+  implements View.OnClickListener
 {
-  public anzs(CleanCache paramCleanCache) {}
+  anzs(Dialog paramDialog) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(View paramView)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzs
  * JD-Core Version:    0.7.0.1
  */

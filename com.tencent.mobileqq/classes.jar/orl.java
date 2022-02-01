@@ -1,75 +1,87 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
 public class orl
+  implements blrn
 {
-  public static int a;
-  public static AtomicBoolean a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
-  public static int c = 25;
-  public static int d = 2;
-  public static int e = 2;
-  public static int f;
-  public static int g;
-  public static int h;
+  public orl(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  static
+  public View a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = 2;
-    jdField_b_of_type_Int = 10;
+    EmoticonMainPanel localEmoticonMainPanel = null;
+    if (paramInt == 3)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559123, null));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(ReadInJoyCommentComponentFragment.a(this.a));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, 1008, ReadInJoyCommentComponentFragment.a(this.a), ReadInJoyCommentComponentFragment.a(this.a).getTitleBarHeight(), null, null);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.k();
+      }
+      localEmoticonMainPanel = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
+    }
+    while (paramInt != 24) {
+      return localEmoticonMainPanel;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559615, null));
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, ReadInJoyCommentComponentFragment.a(this.a), null, this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.setPublicAccountGifListener(ReadInJoyCommentComponentFragment.a(this.a));
+    }
+    return this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
   }
   
-  public static void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_Int != 0) {
+    boolean bool;
+    if ((paramInt1 == 24) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel != null)) {
+      if (paramInt2 == 1)
+      {
+        bool = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(bool);
+        label34:
+        if (paramInt2 != 1) {
+          break label82;
+        }
+        ReadInJoyCommentComponentFragment.a(this.a, 1);
+      }
+    }
+    label82:
+    do
+    {
       return;
-    }
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(319);
-    jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("strategy", 1);
-    jdField_b_of_type_Int = localAladdinConfig.getIntegerFromString("ad_first_time", 10);
-    c = localAladdinConfig.getIntegerFromString("ad_interval_time", 25);
-    d = localAladdinConfig.getIntegerFromString("ad_pre_req", 2);
-    e = localAladdinConfig.getIntegerFromString("ad_protect_gap", 2);
-    f = localAladdinConfig.getIntegerFromString("ad_first_pos", 4);
-    g = localAladdinConfig.getIntegerFromString("ad_interval_pos", 3);
-    h = localAladdinConfig.getIntegerFromString("ad_protect_interval", 3);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-    oqh.a("VideoAdStrategy", "setAdStrategyFromAladin: strategy = " + jdField_a_of_type_Int + " adFirstTime = " + jdField_b_of_type_Int + " adIntervalTime = " + c + " adPreReq = " + d + " adProtectGap = " + e + " adFirstPos = " + f + " adIntervalPos = " + g + " adProtectInterval = " + h);
+      bool = false;
+      break;
+      if ((paramInt2 != 24) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)) {
+        break label34;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.f();
+      break label34;
+      if (paramInt2 == 3)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, 2);
+        return;
+      }
+      if (paramInt2 == 0)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, 0);
+        return;
+      }
+    } while (paramInt2 != 24);
+    ReadInJoyCommentComponentFragment.a(this.a, 3);
   }
   
-  public static boolean a()
+  public boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      oqh.a("VideoAdStrategyManager", "judge isNotVVStrategy : adStrategy = " + jdField_a_of_type_Int);
-    }
-    return (jdField_a_of_type_Int == 0) || (jdField_a_of_type_Int == 1);
+    return false;
   }
   
-  public static void b()
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-  }
-  
-  public static boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      oqh.a("VideoAdStrategyManager", "judge isNotTimeStrategy : adStrategy = " + jdField_a_of_type_Int);
-    }
-    return jdField_a_of_type_Int != 1;
-  }
-  
-  public static boolean c()
-  {
-    return (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (jdField_a_of_type_Int == 1);
-  }
+  public void s() {}
 }
 
 

@@ -1,8 +1,12 @@
 package com.tencent.qqmini.minigame.plugins;
 
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.triton.script.ScriptContextType;
 import com.tencent.qqmini.minigame.GameJsService;
 import com.tencent.qqmini.minigame.action.GetGameInfoManager;
 import com.tencent.qqmini.minigame.gpkg.MiniGamePkg;
@@ -75,7 +79,7 @@ public class OpenDataJsPlugin
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInteractiveStorage(null, str, paramArrayOfString, new OpenDataJsPlugin.2(this, paramRequestEvent));
   }
   
-  private void modifyFriendInteractiveStorage(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString8, String paramString9)
+  private void modifyFriendInteractiveStorage(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString8, String paramString9, int paramInt2)
   {
     if (this.mMiniAppInfo == null)
     {
@@ -112,8 +116,12 @@ public class OpenDataJsPlugin
       return;
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramInt + "");
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt, paramString2, localHashMap, new OpenDataJsPlugin.3(this, paramRequestEvent, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
+    localHashMap.put(paramString1, paramInt1 + "");
+    CloudStorage.StInteractiveTemplate localStInteractiveTemplate = new CloudStorage.StInteractiveTemplate();
+    localStInteractiveTemplate.action.set(paramString8);
+    localStInteractiveTemplate.object.set(paramString9);
+    localStInteractiveTemplate.ratio.set(paramInt2);
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt1, paramString2, localHashMap, paramBoolean.booleanValue(), localStInteractiveTemplate, new OpenDataJsPlugin.3(this, paramRequestEvent, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
   }
   
   private void shareMessageToFriend(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, RequestEvent paramRequestEvent)
@@ -139,23 +147,23 @@ public class OpenDataJsPlugin
       paramString5 = "miniGamePath";
       bool2 = OpenDataDomainUtil.getInstance().isDomainValid(paramString4);
       if ((TextUtils.isEmpty(paramString4)) || (!new File(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString4)).exists())) {
-        break label357;
+        break label358;
       }
     }
-    label357:
+    label358:
     for (boolean bool1 = true;; bool1 = false)
     {
       paramString2 = new ShareChatModel(0, 0L, paramString2);
       paramString1 = new InnerShareData.Builder().setShareSource(11).setShareTarget(5).setTitle(this.mMiniAppInfo.name).setSummary(paramString3).setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setEntryPath(paramString5).setShareChatModel(paramString2).setWithShareTicket(localShareState.withShareTicket).setRecvOpenId(paramString1).setShareInMiniProcess(localShareState.isShareInMiniProcess);
       if ((!StringUtil.isEmpty(paramString4)) && ((bool2) || (bool1))) {
-        break label363;
+        break label364;
       }
       paramString1.setSharePicPath(WnsUtil.defaultShareImg()).build().shareAppMessage();
       QMLog.e("OpenDataJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool2 + "] [isLocalResourceExists=" + bool1 + "] [imageUrl=" + paramString4 + "], use default share image");
       return;
       break;
     }
-    label363:
+    label364:
     if ((paramString4.startsWith("http")) || (paramString4.startsWith("https")))
     {
       paramString1.setSharePicPath(paramString4).build().shareAppMessage();
@@ -170,10 +178,10 @@ public class OpenDataJsPlugin
     if (paramInt2 > 0) {}
     for (String str1 = "确认" + paramString8 + paramString4 + paramInt1 * paramInt2 + paramString9 + "?"; paramBoolean.booleanValue(); str1 = "确认" + paramString8 + paramString4 + paramString9 + "?")
     {
-      modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9);
+      modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2);
       return;
     }
-    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataJsPlugin.4(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9), null, new OpenDataJsPlugin.5(this, paramRequestEvent));
+    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataJsPlugin.4(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2), null, new OpenDataJsPlugin.5(this, paramRequestEvent));
   }
   
   private void showQQCustomModel(String paramString1, String paramString2, String paramString3, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
@@ -265,7 +273,7 @@ public class OpenDataJsPlugin
         {
           localObject1 = ((GameInfoManager)localObject1).getMiniGamePkg();
           if (localObject1 == null) {
-            break label465;
+            break label466;
           }
           localObject2 = ((MiniGamePkg)localObject1).mGameConfigJson;
           String str3 = str4;
@@ -292,11 +300,11 @@ public class OpenDataJsPlugin
                 {
                   localObject1 = ((JSONArray)localObject2).getJSONObject(i);
                   if (localObject1 == null) {
-                    break label471;
+                    break label472;
                   }
                   str3 = ((JSONObject)localObject1).optString("key");
                   if ((TextUtils.isEmpty(str3)) || (!str3.equals(str6))) {
-                    break label471;
+                    break label472;
                   }
                   j = ((JSONObject)localObject1).optInt("ratio");
                   str3 = ((JSONObject)localObject1).optString("action");
@@ -307,7 +315,7 @@ public class OpenDataJsPlugin
           }
           if (localBoolean.booleanValue())
           {
-            modifyFriendInteractiveStorage(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, paramRequestEvent, str3, (String)localObject1);
+            modifyFriendInteractiveStorage(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, paramRequestEvent, str3, (String)localObject1, j);
             return;
           }
           showConfirmModificationModel(str6, m, str7, str1, str2, str8, str9, str10, localBoolean, paramRequestEvent, str3, (String)localObject1, j);
@@ -323,10 +331,10 @@ public class OpenDataJsPlugin
       }
       Object localObject1 = null;
       continue;
-      label465:
+      label466:
       Object localObject2 = null;
       continue;
-      label471:
+      label472:
       i += 1;
     }
   }
@@ -339,13 +347,12 @@ public class OpenDataJsPlugin
       localObject = (GameJsService)paramRequestEvent.jsService;
     }
     while (localObject != null) {
-      if (((GameJsService)localObject).getTargetContextType() == 1)
+      if (((GameJsService)localObject).getContextType() == ScriptContextType.MAIN)
       {
         localObject = this.mMiniAppInfo;
         if ((localObject != null) && (((MiniAppInfo)localObject).whiteList != null) && (((MiniAppInfo)localObject).whiteList.contains("onMessage")))
         {
           paramRequestEvent.jsService.evaluateSubscribeJS("onMessage", paramRequestEvent.jsonParams, 0);
-          sendSubscribeEvent("onMessage", paramRequestEvent.jsonParams);
           return;
           localObject = null;
         }

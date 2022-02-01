@@ -1,49 +1,54 @@
 import android.os.Bundle;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.polymerization.QCircleLbsPolymerizationHeadView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
+import qqcircle.QQCircleFeedBase.StGpsPageData;
 
-public abstract class uzv<E>
-  extends zxu<E>
-  implements zxl<QCircleReportBean>
+public class uzv
+  extends vbn
 {
-  protected QCircleReportBean a;
+  private QCircleLbsPolymerizationHeadView a;
   
   public uzv(Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  protected int a()
+  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
   {
-    return QCircleReportBean.getPageId(a(), this.a);
+    this.a = new QCircleLbsPolymerizationHeadView(paramViewGroup.getContext());
+    this.a.setReportBean(a());
+    return this.a;
   }
   
-  public QCircleReportBean a()
+  protected String a()
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
+    return "QCircleLbsPolymerizationHeadBlock";
+  }
+  
+  public void loadData(aabu paramaabu) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.mDataList == null) || (this.mDataList.size() < 1) || (this.a == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      QLog.d("QCircleLbsPolymerizationHeadBlock", 1, "QCircleLbsPolymerizationHeadView setData i" + paramInt);
+      if ((this.mDataList.get(paramInt) instanceof QQCircleFeedBase.StFeedListBusiRspData)) {
+        this.a.setData(((QQCircleFeedBase.StFeedListBusiRspData)this.mDataList.get(paramInt)).gpsPageData.get());
+      }
     }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
   }
   
-  protected abstract String a();
-  
-  public void a(QCircleReportBean paramQCircleReportBean)
-  {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
-  }
-  
-  protected int b()
-  {
-    return QCircleReportBean.getParentPageId(a(), this.a);
-  }
-  
-  protected String b()
-  {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
-    }
-    return null;
-  }
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

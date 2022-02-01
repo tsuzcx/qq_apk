@@ -1,8 +1,11 @@
 package com.tencent.mobileqq.mini.push;
 
+import android.os.Process;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniCacheFreeManager;
 import mqq.app.AppRuntime;
 
@@ -15,7 +18,9 @@ class ClearCacheAction$1
   
   public void onPostRun()
   {
-    AppLoaderFactory.g().getMiniCacheFreeManager().freeCache(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.val$appId, true);
+    AppLoaderFactory.g().getMiniCacheFreeManager().freeCache(BaseApplicationImpl.getApplication().getRuntime().getAccount(), new MiniAppInfo(), false);
+    QLog.d("ClearCacheAction", 1, "ClearCacheAction: appid:" + this.val$appId + " killSelf!!!");
+    Process.killProcess(Process.myPid());
   }
   
   public void onPreRun() {}

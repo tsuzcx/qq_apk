@@ -1,17 +1,22 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
 public class zbv
-  extends yzn
 {
-  public zbv(ElasticImageView paramElasticImageView) {}
+  public final Drawable a;
+  public final String a;
+  public final String b;
   
-  public void a(ValueAnimator paramValueAnimator)
+  public zbv(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    yqp.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public String toString()
+  {
+    return "SelectedItem{category='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + '}';
   }
 }
 

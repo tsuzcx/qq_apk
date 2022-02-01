@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
-class afeu
-  implements View.OnClickListener
+public class afeu
+  implements Comparator<afeq>
 {
-  afeu(afer paramafer, int paramInt) {}
+  public afeu(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public int a(afeq paramafeq1, afeq paramafeq2)
   {
-    if (!afen.a(this.jdField_a_of_type_Afer.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = bcnj.a(this.jdField_a_of_type_Afer.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int);
-      if (!bdoq.a(afen.a(this.jdField_a_of_type_Afer.a), str, new afev(this))) {
-        afer.a(this.jdField_a_of_type_Afer, this.jdField_a_of_type_Int);
-      }
-      blyl.a().a(str, "4", "platform898", "4", "1", 102, 1, System.currentTimeMillis());
-      bcst.b(afen.a(this.jdField_a_of_type_Afer.a).app, "dc00898", "", "", "qq_vip", "0X800B15C", Integer.decode(str).intValue(), 0, "", "", "", "");
-    }
+    long l = paramafeq1.a.certifiedGrade;
+    return (int)(paramafeq2.a.certifiedGrade - l);
   }
 }
 

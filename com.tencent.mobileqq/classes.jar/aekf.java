@@ -1,18 +1,17 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aekf
-  implements SoundPool.OnLoadCompleteListener
+class aekf
+  implements DialogInterface.OnClickListener
 {
-  public aekf(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
+  aekf(aeke paramaeke) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a.a();
+    DevlockQuickLoginActivity.b(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
   }
 }
 

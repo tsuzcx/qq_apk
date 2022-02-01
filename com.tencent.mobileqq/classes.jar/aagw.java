@@ -1,41 +1,36 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aagw
-  implements aqck
+class aagw
+  implements aanq
 {
-  public aagw(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  aagw(aagu paramaagu, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public ColorNote getColorNote()
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
-      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
-    }
-    byte[] arrayOfByte;
-    Object localObject;
-    String str1;
-    String str2;
-    String str3;
-    do
+    if (paramBoolean1)
     {
-      return null;
-      arrayOfByte = aajb.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
-      localObject = new aabx();
-      ((aabx)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
-      ((aabx)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
-      str1 = SubscribeHybirdFragment.a(this.a).id.get();
-      str2 = ((aabx)localObject).c();
-      ((aabx)localObject).d();
-      str3 = ((aabx)localObject).e();
-      localObject = ((aabx)localObject).f();
-    } while (TextUtils.isEmpty(str1));
-    return new aqcs().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
+      abbe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
+      paramString = this.jdField_a_of_type_Aagu.getDataList().iterator();
+      while (paramString.hasNext()) {
+        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
+          paramString.remove();
+        }
+      }
+      this.jdField_a_of_type_Aagu.notifyDataSetChanged();
+      QQToast.a(aagu.a(this.jdField_a_of_type_Aagu), 2, anzj.a(2131690630), 0).a();
+      if (this.jdField_a_of_type_Aagu.getDataList().size() < 5) {
+        this.jdField_a_of_type_Aagu.onRefreshData();
+      }
+    }
+    if (paramBoolean2) {
+      abbe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+    }
   }
 }
 

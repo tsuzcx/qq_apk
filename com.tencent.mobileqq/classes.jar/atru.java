@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
 
-public class atru
-  implements DialogInterface.OnClickListener
+public abstract class atru
+  extends atrs
 {
-  public atru(VideoFilePresenter.8 param8) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.this$0.n();
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atru
  * JD-Core Version:    0.7.0.1
  */

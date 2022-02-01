@@ -1,15 +1,15 @@
-import Wallet.AcsMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class aftt
+class aftt
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public AcsMsg a;
-  public MessageRecord a;
+  aftt(afts paramafts) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
+    this.a.a.finish();
   }
 }
 

@@ -1,89 +1,57 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import org.json.JSONObject;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class aoit
-  extends aojs
+class aoit
 {
-  public aoit(QQAppInterface paramQQAppInterface, Context paramContext)
+  private int jdField_a_of_type_Int;
+  private oidb_sso.OIDBSSOPkg jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  
+  public aoit(aoip paramaoip, byte[] paramArrayOfByte, int paramInt)
   {
-    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private boolean c(String paramString)
+  public int a()
   {
-    int k = 0;
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return true;
-      paramString = paramString.split("\\?");
-    } while ((paramString == null) || (paramString.length < 2));
-    long l1 = 0L;
-    paramString = paramString[1];
-    for (;;)
-    {
-      try
-      {
-        Object localObject = new JSONObject(URLDecoder.decode(paramString.substring(paramString.indexOf('=') + 1), "UTF-8"));
-        int i = ((JSONObject)localObject).optInt("gameId");
-        j = k;
-        long l2;
-        paramString.printStackTrace();
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          l2 = ((JSONObject)localObject).optLong("roomId");
-          l1 = l2;
-          j = k;
-          paramString = ((JSONObject)localObject).optString("gameName");
-          l1 = l2;
-          j = k;
-          k = ((JSONObject)localObject).optInt("gameMode");
-          l1 = l2;
-          j = k;
-          localObject = ((JSONObject)localObject).optString("extendInfo");
-          l1 = l2;
-          j = k;
-          ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, l2, k, (String)localObject, 204, paramString);
-          j = k;
-          l1 = l2;
-          QLog.i("CMShowGameInviteAction", 1, "[gotoCmShowGame], gameId:" + i + ",roomId:" + l1 + ",gameMode:" + j);
-          return true;
-        }
-        catch (Exception paramString)
-        {
-          break label212;
-        }
-        paramString = paramString;
-        i = 0;
-      }
-      label212:
-      QLog.w("CMShowGameInviteAction", 1, "[gotoCmShowGame], errInfo->" + paramString.getMessage());
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public boolean a()
+  public aoit a()
   {
+    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
     try
     {
-      QLog.i("CMShowGameInviteAction", 1, "[cmshow.game_invite], source:" + this.jdField_a_of_type_JavaLangString);
-      boolean bool = c(this.jdField_a_of_type_JavaLangString);
-      return bool;
+      this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = ((oidb_sso.OIDBSSOPkg)this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.mergeFrom(this.jdField_a_of_type_ArrayOfByte));
+      if (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg != null)
+      {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TroopHandler", 2, "oidb_sso.OIDBSSOPkg(oidb_0x88d_7): {\n" + aode.proto2String(this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg) + "}");
+          QLog.d("Q.troopdisband.", 2, "handle_oidb_0x88d_7|oidb_sso.OIDBSSOPkg.result " + this.jdField_a_of_type_Int);
+        }
+      }
+      return this;
     }
-    catch (Exception localException)
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      QLog.e("CMShowGameInviteAction", 1, "doAction error: " + localException.getMessage());
-      a("CMShowGameInviteAction");
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.troopdisband.", 2, "handle_oidb_0x88d_7|oidb_sso parseFrom byte " + localInvalidProtocolBufferMicroException.toString());
+        }
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
     }
-    return false;
+  }
+  
+  public oidb_sso.OIDBSSOPkg a()
+  {
+    return this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
   }
 }
 

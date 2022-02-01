@@ -1,25 +1,16 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xxs
-  implements bkhw
+class xxs
+  implements bljb
 {
-  public xxs(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, bkho parambkho) {}
+  xxs(xxn paramxxn, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    if (zlx.b()) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bkho.e();
-      paramView = this.jdField_a_of_type_Bkho.a(paramInt);
-    } while (!anni.a(2131709810).equals(paramView));
-    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
-    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
-    bfup.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 

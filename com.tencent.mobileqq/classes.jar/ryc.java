@@ -1,42 +1,103 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
+import android.annotation.SuppressLint;
+import android.net.TrafficStats;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.lang.reflect.Method;
 
-public final class ryc
-  extends BroadcastReceiver
+class ryc
+  implements rye
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private long jdField_a_of_type_Long;
+  private Method jdField_a_of_type_JavaLangReflectMethod;
+  private long jdField_b_of_type_Long;
+  private Method jdField_b_of_type_JavaLangReflectMethod;
+  private long c;
+  
+  @SuppressLint({"DiscouragedPrivateApi"})
+  private final long b()
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangReflectMethod == null)
+      {
+        this.jdField_a_of_type_JavaLangReflectMethod = TrafficStats.class.getDeclaredMethod("getLoopbackRxBytes", new Class[0]);
+        this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      }
+      long l = ((Long)this.jdField_a_of_type_JavaLangReflectMethod.invoke(null, new Object[0])).longValue();
+      return l;
+    }
+    catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(ryb.a(), 2, "Intent.ACTION_SCREEN_OFF");
-      }
-      if ((ryb.a().get() == 0) && (ryb.b().get() < ryb.a()))
-      {
-        ryb.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
-        ryb.a().set(1);
-        ryb.a().start();
+        QLog.e("DefaultBandwidthObtainer", 2, "getLoopbackRxBytesIn28: ", localException);
       }
     }
-    do
+    return 0L;
+  }
+  
+  @SuppressLint({"DiscouragedPrivateApi"})
+  private final long c()
+  {
+    try
     {
-      do
+      if (this.jdField_b_of_type_JavaLangReflectMethod == null)
       {
-        return;
-      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
-      if (QLog.isColorLevel()) {
-        QLog.d(ryb.a(), 2, "Intent.ACTION_SCREEN_ON");
+        this.jdField_b_of_type_JavaLangReflectMethod = TrafficStats.class.getDeclaredMethod("getRxBytes", new Class[] { String.class });
+        this.jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
       }
-    } while (ryb.a().get() != 1);
-    if ((ryb.a() != null) && (ryb.a().isAlive())) {
-      ryb.a().interrupt();
+      long l = ((Long)this.jdField_b_of_type_JavaLangReflectMethod.invoke(null, new Object[] { "lo" })).longValue();
+      return l;
     }
-    ryb.a().set(3);
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DefaultBandwidthObtainer", 2, "getLoopbackRxBytesIn14: ", localException);
+      }
+    }
+    return 0L;
+  }
+  
+  public long a()
+  {
+    int i = Build.VERSION.SDK_INT;
+    long l4 = SystemClock.elapsedRealtime();
+    long l5 = TrafficStats.getTotalRxBytes();
+    long l1;
+    long l3;
+    if (i >= 28)
+    {
+      l1 = b();
+      if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_b_of_type_Long <= 0L)) {
+        break label236;
+      }
+      long l6 = l5 - this.jdField_a_of_type_Long;
+      long l7 = l1 - this.jdField_b_of_type_Long;
+      i = (int)Math.max((l4 - this.c) / 1000L, 1L);
+      l3 = Math.max(0L, (l6 - l7) / 1024L) / i;
+      l2 = l3;
+      if (QLog.isColorLevel()) {
+        QLog.d("DefaultBandwidthObtainer", 2, "calculateBandwidth: totalBytes=" + l6 + ", loopbackBytes=" + l7 + ", bandwidth=" + l3 + "kb/s");
+      }
+    }
+    label236:
+    for (long l2 = l3;; l2 = 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DefaultBandwidthObtainer", 2, "getCurrentBandwidth: bandwidth=" + l2 + "kb/s");
+      }
+      this.jdField_a_of_type_Long = l5;
+      this.jdField_b_of_type_Long = l1;
+      this.c = l4;
+      return l2;
+      if (i >= 14)
+      {
+        l1 = c();
+        break;
+      }
+      l1 = 0L;
+      break;
+    }
   }
 }
 

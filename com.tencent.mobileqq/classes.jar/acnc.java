@@ -1,20 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import com.tencent.ark.ArkViewImplement.InputCallback;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class acnc
-  implements View.OnClickListener
+class acnc
+  implements ArkViewImplement.InputCallback
 {
-  public acnc(Function0 paramFunction0) {}
+  acnc(acmz paramacmz, AdArkAdapter.Callback paramCallback) {}
   
-  public final void onClick(View paramView)
+  public void onFocusChanged(View paramView, boolean paramBoolean)
   {
-    this.a.invoke();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
+    }
   }
+  
+  public void onHideMenu(View paramView) {}
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

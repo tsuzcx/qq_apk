@@ -1,0 +1,28 @@
+package com.tencent.qqmini.sdk.launcher.core.model;
+
+public class MiniAdPosInfo
+{
+  public int height;
+  public int left;
+  public int top;
+  public int width;
+  
+  public MiniAdPosInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.left = paramInt1;
+    this.top = paramInt2;
+    this.width = paramInt3;
+    this.height = paramInt4;
+  }
+  
+  public String toString()
+  {
+    return "MiniAdPosInfo{left=" + this.left + ", top=" + this.top + ", width=" + this.width + ", height=" + this.height + '}';
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.MiniAdPosInfo
+ * JD-Core Version:    0.7.0.1
+ */

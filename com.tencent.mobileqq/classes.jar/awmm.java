@@ -1,47 +1,19 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.Vector;
-
 public class awmm
-  implements awmo
 {
-  public awmm(ChatBackgroundManager paramChatBackgroundManager, Context paramContext) {}
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public void a(boolean paramBoolean, Vector<Integer> paramVector)
+  public awmm(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
-    {
-      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
-      {
-        ChatXListView localChatXListView = paramVector.a().a;
-        int i = localChatXListView.getFirstVisiblePosition();
-        int j = localChatXListView.getLastVisiblePosition();
-        while (i <= j)
-        {
-          Object localObject = afur.a(localChatXListView, i);
-          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof afwr)))
-          {
-            localObject = (afwr)((View)localObject).getTag();
-            if ((((afwr)localObject).jdField_a_of_type_Apwt != null) && (!((afwr)localObject).jdField_a_of_type_Apwt.a) && (((afwr)localObject).jdField_a_of_type_Apwt.b))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
-              }
-              paramVector.a().a(((afwr)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
-            }
-          }
-          i += 1;
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public String toString()
+  {
+    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
   }
 }
 

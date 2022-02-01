@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
 class bopb
-  implements banv
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  bopb(bopa parambopa, boolean paramBoolean) {}
+  bopb(boow paramboow) {}
   
-  public void a()
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    this.jdField_a_of_type_Bopa.a = new bopc(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Bopa.a);
+    if (paramRatio == null) {
+      return;
+    }
+    bpan.a();
+    Object localObject = bojy.a(paramRatio);
+    boow.a(this.a, (bpas)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).setAction("ae_editor_bottom_tab_change_style");
+    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.FULL) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((Intent)localObject).putExtra("is_full_screen_capture", bool);
+      boow.a(this.a).a().sendBroadcast((Intent)localObject);
+      return;
+    }
   }
 }
 

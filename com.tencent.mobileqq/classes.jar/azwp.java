@@ -1,51 +1,70 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.qcircle.QCircleChatMsgListFragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class azwp
-  implements Handler.Callback
+class azwp
+  extends RecyclerView.OnScrollListener
 {
-  public azwp(QCircleChatMsgListFragment paramQCircleChatMsgListFragment) {}
+  azwp(azwo paramazwo, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrollStateChanged newState:" + paramInt);
     }
-    label196:
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrolled dx:" + paramInt1 + " dy:" + paramInt2);
+    }
+    int i;
+    int j;
+    if (paramInt1 > 0)
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      paramInt2 = paramRecyclerView.getChildCount();
+      i = paramRecyclerView.getItemCount();
+      j = paramRecyclerView.findLastVisibleItemPositions(null)[0];
+      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_Azwo.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
+      if (paramRecyclerView == null) {
+        break label271;
+      }
+      if (((Integer)paramRecyclerView).intValue() != 1) {
+        break label252;
+      }
+      paramInt1 = 1;
+    }
     for (;;)
     {
-      return false;
-      if ((this.a.d()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
+      azww localazww;
+      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Azwo.a)) && (paramInt1 == 0) && (paramInt2 > 0) && (j >= i - 1))
+      {
+        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a, true);
+        QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
+        localazww = (azww)this.jdField_a_of_type_Azwo.a.app.a(112);
+        if (!PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a)) {
+          break label257;
+        }
+      }
+      label257:
+      for (paramRecyclerView = this.jdField_a_of_type_Azwo.a.app.getCurrentAccountUin();; paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a))
+      {
+        localazww.a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Azwo.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
+        return;
+        label252:
+        paramInt1 = 0;
         break;
       }
-      this.a.jdField_a_of_type_Albc.a(this.a.jdField_b_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_Albc.a(21);
-      this.a.b();
-      if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QCircleChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
-        return false;
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      }
+      label271:
+      paramInt1 = 0;
     }
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import biwe;
+import bjxd;
 
 class BaseJsCallBack$2
   implements Runnable
@@ -10,7 +10,7 @@ class BaseJsCallBack$2
   
   public void run()
   {
-    biwe.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+    bjxd.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

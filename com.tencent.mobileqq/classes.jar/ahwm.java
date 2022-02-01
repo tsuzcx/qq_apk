@@ -1,19 +1,28 @@
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class ahwm
-  implements blqq
+final class ahwm
+  implements nmg
 {
-  ahwm(ahwl paramahwl) {}
-  
-  public void a(int paramInt, String... paramVarArgs)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
-    {
-      QLog.i(ahwl.a, 2, "error get pskey...");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
     }
-    ahwl.a(this.a, paramVarArgs[0]);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      paramString = ahwi.a.entrySet().iterator();
+      while (paramString.hasNext()) {
+        ((ahwn)((Map.Entry)paramString.next()).getValue()).a(paramInt);
+      }
+      ahwi.a.clear();
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

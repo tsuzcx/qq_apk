@@ -1,7 +1,7 @@
 package cooperation.weiyun.upload;
 
-import bnaj;
-import bnal;
+import bobr;
+import bobt;
 import com.tencent.weiyun.uploader.IReporter;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
@@ -26,9 +26,9 @@ public class WyUploadJob
     return this.jdField_a_of_type_Int;
   }
   
-  bnaj a(UploadRequest paramUploadRequest)
+  bobr a(UploadRequest paramUploadRequest)
   {
-    return new bnal(paramUploadRequest, this);
+    return new bobt(paramUploadRequest, this);
   }
   
   UploadResponse a(int paramInt)

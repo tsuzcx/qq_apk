@@ -1,7 +1,7 @@
 package com.tencent.av;
 
 import com.tencent.qphone.base.util.QLog;
-import lcp;
+import lcw;
 
 class VideoController$32
   implements Runnable

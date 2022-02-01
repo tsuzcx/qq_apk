@@ -1,14 +1,14 @@
 package com.tencent.av.smallscreen;
 
 import com.tencent.av.VideoController;
-import ley;
-import lyy;
-import mbx;
+import lff;
+import lzu;
+import mct;
 
 public class SmallScreenVideoController$3
   implements Runnable
 {
-  public SmallScreenVideoController$3(lyy paramlyy, long paramLong) {}
+  public SmallScreenVideoController$3(lzu paramlzu, long paramLong) {}
   
   public void run()
   {
@@ -42,12 +42,12 @@ public class SmallScreenVideoController$3
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b(this.a, false);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c("SmallScreen.onResume", 0);
       if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().k) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ay) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S > 0)) {
-        lyy.a(this.this$0);
+        lzu.a(this.this$0);
       }
       if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 2) {
         break;
       }
-      this.this$0.jdField_a_of_type_Mbx.d();
+      this.this$0.jdField_a_of_type_Mct.d();
       return;
       if (i != 2) {
         break label143;

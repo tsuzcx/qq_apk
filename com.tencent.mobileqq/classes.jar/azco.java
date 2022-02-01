@@ -1,105 +1,260 @@
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
 
 public class azco
-  implements azcf
 {
-  private static azco jdField_a_of_type_Azco;
-  private azcg jdField_a_of_type_Azcg;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new azcp(this, "PrecoverIPCServer_MODEL");
+  private static final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect;
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private static final azcn jdField_a_of_type_Azcn = new azcn();
+  private float jdField_a_of_type_Float;
+  private final azcj jdField_a_of_type_Azcj;
+  private final azcl jdField_a_of_type_Azcl;
+  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  private azco()
+  static
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  }
+  
+  public azco(Settings paramSettings)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+    this.jdField_a_of_type_Azcl = new azcl(paramSettings);
+    this.jdField_a_of_type_Azcj = new azcj(paramSettings);
+  }
+  
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
+  {
+    if (paramFloat5 == 1.0F) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      this.jdField_a_of_type_Azcg = ((azcg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(179));
-      this.jdField_a_of_type_Azcg.a().a(this);
+      return paramFloat1;
+      float f = paramFloat3 / paramFloat5;
+      if ((paramFloat1 < paramFloat3) && (paramFloat1 < paramFloat2)) {
+        paramFloat3 = (paramFloat3 - paramFloat1) / (paramFloat3 - f);
+      }
+      while (paramFloat3 != 0.0F)
+      {
+        return paramFloat1 + (float)Math.sqrt(paramFloat3) * (paramFloat2 - paramFloat1);
+        if ((paramFloat1 > paramFloat4) && (paramFloat1 > paramFloat2)) {
+          paramFloat3 = (paramFloat1 - paramFloat4) / (paramFloat4 * paramFloat5 - paramFloat4);
+        } else {
+          paramFloat3 = 0.0F;
+        }
+      }
     }
   }
   
-  public static azco a()
+  private float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    if (jdField_a_of_type_Azco == null) {}
-    try
+    float f1 = 1.0F;
+    if (paramFloat5 == 0.0F) {}
+    for (;;)
     {
-      if (jdField_a_of_type_Azco == null) {
-        jdField_a_of_type_Azco = new azco();
+      return paramFloat1;
+      float f2 = (paramFloat1 + paramFloat2) * 0.5F;
+      if ((f2 < paramFloat3) && (paramFloat1 < paramFloat2)) {
+        paramFloat3 = (paramFloat3 - f2) / paramFloat5;
       }
-      return jdField_a_of_type_Azco;
+      while (paramFloat3 != 0.0F)
+      {
+        if (paramFloat3 > 1.0F) {
+          paramFloat3 = f1;
+        }
+        for (;;)
+        {
+          return paramFloat1 - (float)Math.sqrt(paramFloat3) * (paramFloat1 - paramFloat2);
+          if ((f2 <= paramFloat4) || (paramFloat1 <= paramFloat2)) {
+            break label98;
+          }
+          paramFloat3 = (f2 - paramFloat4) / paramFloat5;
+          break;
+        }
+        label98:
+        paramFloat3 = 0.0F;
+      }
     }
-    finally {}
   }
   
-  private EIPCResult a(Bundle paramBundle, int paramInt)
+  public azcn a(azcn paramazcn, float paramFloat1, float paramFloat2)
   {
-    Object localObject1 = null;
-    Object localObject2 = paramBundle.getString("businessId");
-    String str = paramBundle.getString("md5");
-    if (TextUtils.isEmpty(str))
+    this.jdField_a_of_type_Azcl.a(paramazcn);
+    float f2 = this.jdField_a_of_type_Azcl.c();
+    float f1;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c() > 0.0F)
     {
-      localObject1 = EIPCResult.createResult(10, paramBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverIPCServer", 2, "getResource, md5 emtpy");
+      f1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c();
+      if (paramazcn.c() >= 0.5F * (f2 + f1)) {
+        break label82;
       }
-      paramBundle.putInt("callbackId", paramInt);
-      return localObject1;
-    }
-    if (this.jdField_a_of_type_Azcg != null)
-    {
-      localObject1 = this.jdField_a_of_type_Azcg.a((String)localObject2, str);
-      if (localObject1 == null) {
-        break label100;
-      }
-      paramBundle.putParcelable("resource", (Parcelable)localObject1);
-      localObject1 = EIPCResult.createSuccessResult(paramBundle);
     }
     for (;;)
     {
-      paramBundle.putInt("callbackId", paramInt);
-      return localObject1;
-      label100:
-      localObject2 = EIPCResult.createResult(12, paramBundle);
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PrecoverIPCServer", 2, "getResource, RESULT_RESOURCE_NOT_FOUND");
-        localObject1 = localObject2;
-      }
+      paramazcn = paramazcn.a();
+      paramazcn.b(f1, paramFloat1, paramFloat2);
+      return paramazcn;
+      f1 = this.jdField_a_of_type_Azcl.b();
+      break;
+      label82:
+      f1 = f2;
     }
   }
   
-  public QIPCModule a()
+  public azcn a(azcn paramazcn1, azcn paramazcn2, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    jdField_a_of_type_Azcn.a(paramazcn1);
+    if (a(jdField_a_of_type_Azcn, paramazcn2, paramFloat1, paramFloat2, paramBoolean1, paramBoolean2, paramBoolean3)) {
+      return jdField_a_of_type_Azcn.a();
+    }
+    return null;
   }
   
-  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
+  public void a(azcn paramazcn)
   {
-    if ((paramObject != null) && ((paramObject instanceof Object[])) && ("PrecoverIPCServer_MODEL".equals(((Object[])(Object[])paramObject)[0])))
+    if (this.jdField_a_of_type_Float > 0.0F) {
+      paramazcn.a(paramazcn.a(), paramazcn.b(), paramazcn.c() * this.jdField_a_of_type_Float, paramazcn.d());
+    }
+  }
+  
+  public void a(azcn paramazcn, RectF paramRectF)
+  {
+    this.jdField_a_of_type_Azcj.a(paramazcn).a(paramRectF);
+  }
+  
+  public boolean a(azcn paramazcn)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return b(paramazcn);
+  }
+  
+  public boolean a(azcn paramazcn1, azcn paramazcn2, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i()) {
+      return false;
+    }
+    float f2;
+    float f1;
+    if (!Float.isNaN(paramFloat1))
     {
-      int i = ((Integer)((Object[])(Object[])paramObject)[1]).intValue();
-      paramObject = new Bundle();
-      paramObject.putString("key_action", azcn.b);
-      paramObject.putParcelable("resource", paramPrecoverResource);
-      paramObject.putInt("errCode", paramInt);
-      paramObject.putString("errDesc", paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverIPCServer", 2, "onDownloadFinish, errCode=" + paramInt + ", errDesc=" + paramString + ", resource" + paramPrecoverResource);
+      f2 = paramFloat1;
+      f1 = paramFloat2;
+      if (!Float.isNaN(paramFloat2)) {}
+    }
+    else
+    {
+      azcp.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsPoint);
+      f2 = jdField_a_of_type_AndroidGraphicsPoint.x;
+      f1 = jdField_a_of_type_AndroidGraphicsPoint.y;
+    }
+    if ((paramBoolean3) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f()))
+    {
+      paramFloat1 = Math.round(paramazcn1.d() / 90.0F) * 90.0F;
+      if (!azcn.a(paramFloat1, paramazcn1.d())) {
+        paramazcn1.d(paramFloat1, f2, f1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule.callbackResult(i, EIPCResult.createSuccessResult(paramObject));
+    }
+    label233:
+    label491:
+    label500:
+    for (paramBoolean3 = true;; paramBoolean3 = false)
+    {
+      this.jdField_a_of_type_Azcl.a(paramazcn1);
+      float f5 = this.jdField_a_of_type_Azcl.a();
+      float f4 = this.jdField_a_of_type_Azcl.b();
+      float f3;
+      if (paramBoolean2)
+      {
+        paramFloat1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
+        f3 = this.jdField_a_of_type_Azcl.a(paramazcn1.c(), paramFloat1);
+        paramFloat2 = f3;
+        if (paramazcn2 != null) {
+          paramFloat2 = a(f3, paramazcn2.c(), f5, f4, paramFloat1);
+        }
+        if (azcn.a(paramFloat2, paramazcn1.c())) {
+          break label510;
+        }
+        paramazcn1.b(paramFloat2, f2, f1);
+      }
+      label247:
+      label510:
+      for (paramBoolean2 = true;; paramBoolean2 = paramBoolean3)
+      {
+        if (paramBoolean1)
+        {
+          f1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
+          if (!paramBoolean1) {
+            break label491;
+          }
+          f2 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f();
+          this.jdField_a_of_type_Azcj.a(paramazcn1);
+          this.jdField_a_of_type_Azcj.a(paramazcn1.a(), paramazcn1.b(), f1, f2, jdField_a_of_type_AndroidGraphicsPointF);
+          f4 = jdField_a_of_type_AndroidGraphicsPointF.x;
+          f3 = jdField_a_of_type_AndroidGraphicsPointF.y;
+          if (paramFloat2 >= f5) {
+            break label500;
+          }
+          paramFloat1 = (float)Math.sqrt((paramFloat2 * paramFloat1 / f5 - 1.0F) / (paramFloat1 - 1.0F));
+          this.jdField_a_of_type_Azcj.a(f4, f3, jdField_a_of_type_AndroidGraphicsPointF);
+          paramFloat2 = jdField_a_of_type_AndroidGraphicsPointF.x;
+          f5 = jdField_a_of_type_AndroidGraphicsPointF.y;
+          paramFloat2 += (f4 - paramFloat2) * paramFloat1;
+        }
+        for (paramFloat1 = (f3 - f5) * paramFloat1 + f5;; paramFloat1 = f3)
+        {
+          f4 = paramFloat1;
+          f3 = paramFloat2;
+          if (paramazcn2 != null)
+          {
+            this.jdField_a_of_type_Azcj.a(jdField_a_of_type_AndroidGraphicsRectF);
+            f3 = b(paramFloat2, paramazcn2.a(), jdField_a_of_type_AndroidGraphicsRectF.left, jdField_a_of_type_AndroidGraphicsRectF.right, f1);
+            f4 = b(paramFloat1, paramazcn2.b(), jdField_a_of_type_AndroidGraphicsRectF.top, jdField_a_of_type_AndroidGraphicsRectF.bottom, f2);
+          }
+          if ((!azcn.a(f3, paramazcn1.a())) || (!azcn.a(f4, paramazcn1.b())))
+          {
+            paramazcn1.b(f3, f4);
+            return true;
+            paramFloat1 = 1.0F;
+            break;
+            f1 = 0.0F;
+            break label233;
+            f2 = 0.0F;
+            break label247;
+          }
+          return paramBoolean2;
+          paramFloat2 = f4;
+        }
+      }
     }
   }
   
-  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
+  public boolean b(azcn paramazcn)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramazcn.a(0.0F, 0.0F, this.jdField_a_of_type_Azcl.a(paramazcn).c(), 0.0F);
+      azcp.a(paramazcn, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsRect);
+      paramazcn.b(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.k()) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.l())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        if (this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        return true;
+      }
+      return false;
+    }
+    a(paramazcn, paramazcn, (0.0F / 0.0F), (0.0F / 0.0F), false, false, true);
+    return false;
+  }
 }
 
 

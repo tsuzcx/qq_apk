@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bggq;
+import bhgr;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import xzs;
-import xzv;
-import xzy;
-import ygo;
+import ydn;
+import ydq;
+import ydt;
+import ykj;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public xzs a;
-  public xzy a;
+  public ydn a;
+  public ydt a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +38,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bggq.a(paramContext, 105.0F);
-    this.jdField_a_of_type_Xzs = new xzs(getContext());
-    super.setAdapter(this.jdField_a_of_type_Xzs);
-    super.setOnItemClickListener(this.jdField_a_of_type_Xzs);
-    super.setOnScrollStateChangedListener(new xzv(this));
+    this.b = bhgr.a(paramContext, 105.0F);
+    this.jdField_a_of_type_Ydn = new ydn(getContext());
+    super.setAdapter(this.jdField_a_of_type_Ydn);
+    super.setOnItemClickListener(this.jdField_a_of_type_Ydn);
+    super.setOnScrollStateChangedListener(new ydq(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Xzs;
+    return this.jdField_a_of_type_Ydn;
   }
   
-  public void setData(List<ygo> paramList, String paramString)
+  public void setData(List<ykj> paramList, String paramString)
   {
-    this.jdField_a_of_type_Xzs.a(paramList, paramString);
+    this.jdField_a_of_type_Ydn.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,9 +63,9 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(xzy paramxzy)
+  public void setOnHorizontalScrollListener(ydt paramydt)
   {
-    this.jdField_a_of_type_Xzy = paramxzy;
+    this.jdField_a_of_type_Ydt = paramydt;
   }
 }
 

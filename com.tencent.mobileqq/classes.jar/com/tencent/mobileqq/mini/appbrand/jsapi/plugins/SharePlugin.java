@@ -9,9 +9,9 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import anni;
-import bgmo;
-import bltb;
+import anzj;
+import bhmq;
+import bmud;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -53,12 +53,12 @@ public class SharePlugin
   {
     String str1 = PublishMoodInfo.getFileSizeDesc(PublishMoodInfo.MOOD_MAX_SINGLE_PHOTO_SIZE);
     String str2 = PublishMoodInfo.getFileSizeDesc(PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_SIZE);
-    mTip.put(Integer.valueOf(1), anni.a(2131712720) + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + anni.a(2131712723));
-    mTip.put(Integer.valueOf(2), anni.a(2131712714) + str1 + anni.a(2131712724));
-    mTip.put(Integer.valueOf(4), anni.a(2131712713) + str2 + anni.a(2131712715));
-    mTip.put(Integer.valueOf(8), anni.a(2131712718) + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION / 60000 + anni.a(2131712719));
-    mTip.put(Integer.valueOf(16), anni.a(2131712717) + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + anni.a(2131712721));
-    mTip.put(Integer.valueOf(32), anni.a(2131712722) + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT + anni.a(2131712716));
+    mTip.put(Integer.valueOf(1), anzj.a(2131712829) + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + anzj.a(2131712832));
+    mTip.put(Integer.valueOf(2), anzj.a(2131712823) + str1 + anzj.a(2131712833));
+    mTip.put(Integer.valueOf(4), anzj.a(2131712822) + str2 + anzj.a(2131712824));
+    mTip.put(Integer.valueOf(8), anzj.a(2131712827) + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION / 60000 + anzj.a(2131712828));
+    mTip.put(Integer.valueOf(16), anzj.a(2131712826) + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + anzj.a(2131712830));
+    mTip.put(Integer.valueOf(32), anzj.a(2131712831) + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT + anzj.a(2131712825));
     QLog.i("[minigame] SharePlugin", 2, "textCount = " + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + ", singlePhotoSize = " + PublishMoodInfo.MOOD_MAX_SINGLE_PHOTO_SIZE + ", singleVideoSize = " + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_SIZE + ", singleVideoDuration = " + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION + ", videoCount = " + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + ", photoAndVideoCount = " + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT);
   }
   
@@ -77,7 +77,7 @@ public class SharePlugin
     localOptions.inJustDecodeBounds = true;
     try
     {
-      bgmo.a(paramString, localOptions);
+      bhmq.a(paramString, localOptions);
       localLocalMediaInfo.mediaWidth = localOptions.outWidth;
       localLocalMediaInfo.mediaHeight = localOptions.outHeight;
       localLocalMediaInfo.mMimeType = PhotoUtils.a(paramString);
@@ -327,7 +327,7 @@ public class SharePlugin
           if (!TextUtils.isEmpty(paramPublishMoodInfo.mFootnote)) {
             break label476;
           }
-          paramPublishMoodInfo = this.jsPluginEngine.activityContext.getResources().getString(2131693689);
+          paramPublishMoodInfo = this.jsPluginEngine.activityContext.getResources().getString(2131693706);
           localJSONObject = new JSONObject();
         }
       }
@@ -340,7 +340,7 @@ public class SharePlugin
         localJSONObject.put("title", this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.name);
         localJSONObject.put("summary", paramPublishMoodInfo);
         localJSONObject.put("jump_url", str2);
-        localJSONObject.put("button_txt", this.jsPluginEngine.activityContext.getResources().getString(2131693698));
+        localJSONObject.put("button_txt", this.jsPluginEngine.activityContext.getResources().getString(2131693715));
         localJSONObject.put("recom_bottom_id", 2);
         localJSONObject.put("action_type", 2);
         paramPublishMoodInfo = localJSONObject.toString();
@@ -348,7 +348,7 @@ public class SharePlugin
         QLog.d("[minigame] SharePlugin", 1, "publishMood， comm_recom_bottom： " + paramPublishMoodInfo);
         paramPublishMoodInfo = str1;
         localBundle.putString("key_mini_appid", paramPublishMoodInfo);
-        bltb.a(paramActivity, localBundle, null, -1);
+        bmud.a(paramActivity, localBundle, null, -1);
         return;
       }
       catch (Exception paramPublishMoodInfo)

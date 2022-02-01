@@ -1,14 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
 
-class xeg
-  implements DialogInterface.OnDismissListener
+public class xeg
+  extends wov
 {
-  xeg(xee paramxee) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public xeg(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
   {
-    this.a.e();
+    super(paramRspDeleteVideo.result);
   }
 }
 

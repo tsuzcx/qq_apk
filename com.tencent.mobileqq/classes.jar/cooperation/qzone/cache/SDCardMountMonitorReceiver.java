@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Environment;
-import blwf;
-import blwq;
+import bmxh;
+import bmxs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ public class SDCardMountMonitorReceiver
   extends BroadcastReceiver
 {
   private static SDCardMountMonitorReceiver jdField_a_of_type_CooperationQzoneCacheSDCardMountMonitorReceiver;
-  private List<blwq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bmxs> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
@@ -37,15 +37,15 @@ public class SDCardMountMonitorReceiver
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      blwq[] arrayOfblwq = new blwq[this.jdField_a_of_type_JavaUtilList.size()];
-      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfblwq);
-      if (arrayOfblwq != null)
+      bmxs[] arrayOfbmxs = new bmxs[this.jdField_a_of_type_JavaUtilList.size()];
+      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbmxs);
+      if (arrayOfbmxs != null)
       {
-        int j = arrayOfblwq.length;
+        int j = arrayOfbmxs.length;
         int i = 0;
         if (i < j)
         {
-          arrayOfblwq[i].a(paramBoolean);
+          arrayOfbmxs[i].a(paramBoolean);
           i += 1;
         }
       }
@@ -55,7 +55,7 @@ public class SDCardMountMonitorReceiver
   private boolean c()
   {
     if (!this.d) {
-      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!blwf.c(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
+      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!bmxh.c(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
         break label45;
       }
     }
@@ -92,15 +92,15 @@ public class SDCardMountMonitorReceiver
     }
   }
   
-  public void a(blwq paramblwq)
+  public void a(bmxs parambmxs)
   {
-    if (paramblwq == null) {
+    if (parambmxs == null) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramblwq)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramblwq);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(parambmxs)) {
+        this.jdField_a_of_type_JavaUtilList.add(parambmxs);
       }
       return;
     }
@@ -142,7 +142,7 @@ public class SDCardMountMonitorReceiver
   {
     this.b = "mounted".equals(Environment.getExternalStorageState());
     if (this.b) {
-      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!blwf.c(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
+      if ((!Environment.getExternalStorageDirectory().canWrite()) || (!bmxh.c(Environment.getExternalStorageDirectory().getAbsolutePath()))) {
         break label109;
       }
     }
@@ -152,7 +152,7 @@ public class SDCardMountMonitorReceiver
       this.c = bool;
       this.d = true;
       this.e = true;
-      blwf.a();
+      bmxh.a();
       a(this.b);
       QLog.i("CacheManager", 1, "SDCardMountMonitorReceiver onReceive mIsSDCardMount:" + this.b + ",canWrite" + this.c);
       return;

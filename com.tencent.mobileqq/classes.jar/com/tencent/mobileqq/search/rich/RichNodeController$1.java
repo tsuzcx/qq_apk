@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.search.rich;
 
-import bbrz;
+import bcks;
 
 public class RichNodeController$1
   implements Runnable
 {
-  public RichNodeController$1(bbrz parambbrz) {}
+  public RichNodeController$1(bcks parambcks) {}
   
   public void run()
   {
-    if (bbrz.a(this.this$0) == 0) {
-      bbrz.a(this.this$0, false);
+    if (bcks.a(this.this$0) == 0) {
+      bcks.a(this.this$0, false);
     }
   }
 }

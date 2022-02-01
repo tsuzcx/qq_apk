@@ -1,49 +1,52 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import com.microrapid.opencv.ImageStatisticsData;
-import java.util.HashMap;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class bodj
-  extends bode
+class bodj
+  implements bpmz
 {
-  public float a;
-  public ImageStatisticsData a;
-  public String a;
-  public HashMap<String, String> a;
-  public List<YoutuResultItem> a;
-  public float[] a;
-  public float b;
-  public String b;
-  public float c;
+  bodj(bodh parambodh) {}
   
-  public float a()
+  public void a(bpnm parambpnm) {}
+  
+  public void a(bpnm parambpnm, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Float;
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboApply: success:" + paramBoolean + ",errorCode=" + paramInt);
+    }
+    if ((paramBoolean) && ((this.a.a instanceof EffectsCameraCaptureView))) {
+      paramBundle = (EffectsCameraCaptureView)this.a.a;
+    }
+    try
+    {
+      paramBundle = (QQEmojiRedPackFilter)paramBundle.a().getQQFilterByType(185);
+      if (paramBundle != null)
+      {
+        parambpnm = bodh.a(this.a, parambpnm);
+        paramBundle.setWatermarkPath(parambpnm);
+        if (QLog.isColorLevel()) {
+          QLog.i("QIMEmojiRedPacketCameraCapture", 2, "redPackFilter setWatermarkPath:" + parambpnm);
+        }
+      }
+      return;
+    }
+    catch (Throwable parambpnm)
+    {
+      QLog.e("QIMEmojiRedPacketCameraCapture", 2, parambpnm.getStackTrace());
+    }
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void a(bpnp parambpnp, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public HashMap<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
+  public void a(bpnw parambpnw, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public float b()
+  public void a(braa parambraa)
   {
-    return this.c;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public float c()
-  {
-    return this.jdField_b_of_type_Float;
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboFilterDataUpdated");
+    }
   }
 }
 

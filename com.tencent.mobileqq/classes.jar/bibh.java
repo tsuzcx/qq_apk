@@ -1,55 +1,55 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.TextHook;
 
-public class bibh
+final class bibh
+  extends bdga
 {
-  Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bibi(this, Looper.getMainLooper());
-  Toast jdField_a_of_type_AndroidWidgetToast = null;
-  
-  public bibh(Context paramContext) {}
-  
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+    paramInt = 0;
+    Object localObject1;
+    if (paramBoolean1)
+    {
+      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
+      if (!bdgb.b()) {
+        break label48;
+      }
+      localObject2 = TextHook.getFontPath((Context)localObject1);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        bibg.a((Context)localObject1, (String)localObject2);
+        bibg.a(false);
+      }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    bibj localbibj = new bibj(null);
-    localbibj.jdField_a_of_type_Int = paramInt4;
-    localbibj.b = paramInt1;
-    localbibj.c = paramInt3;
-    localbibj.d = paramInt2;
-    localMessage.obj = localbibj;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    bibj localbibj = new bibj(null);
-    localbibj.jdField_a_of_type_Int = paramInt3;
-    localbibj.jdField_a_of_type_JavaLangString = paramString;
-    localbibj.c = paramInt2;
-    localbibj.d = paramInt1;
-    localMessage.obj = localbibj;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    label48:
+    do
+    {
+      return;
+      localObject1 = bibg.a((Context)localObject1);
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    Object localObject2 = aunj.a((String)localObject1).split("\\.");
+    try
+    {
+      int i = Integer.parseInt(localObject2[0]);
+      if (localObject2.length > 2) {
+        paramInt = Integer.parseInt(localObject2[1]);
+      }
+      bibg.b(i, paramInt);
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
+      localNumberFormatException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bibh
  * JD-Core Version:    0.7.0.1
  */

@@ -3,15 +3,15 @@ package com.tencent.sharp.jni;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
 import android.text.TextUtils;
-import bkdx;
-import bkeb;
+import blfb;
+import blff;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class TraeAudioManager$BluetoohHeadsetCheck$1
   implements Runnable
 {
-  public TraeAudioManager$BluetoohHeadsetCheck$1(bkdx parambkdx) {}
+  public TraeAudioManager$BluetoohHeadsetCheck$1(blfb paramblfb) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class TraeAudioManager$BluetoohHeadsetCheck$1
         BluetoothDevice localBluetoothDevice = (BluetoothDevice)localList.get(i);
         int j = this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectionState(localBluetoothDevice);
         if (j == 2) {
-          this.a.jdField_a_of_type_Bkeb.a(localBluetoothDevice.getName());
+          this.a.jdField_a_of_type_Blff.a(localBluetoothDevice.getName());
         }
         if (QLog.isColorLevel()) {
           QLog.w("BluetoohHeadsetCheck", 2, "   " + i + " " + localBluetoothDevice.getName() + " ConnectionState:" + j);
@@ -50,26 +50,26 @@ public class TraeAudioManager$BluetoohHeadsetCheck$1
         }
       }
     }
-    if (this.a.jdField_a_of_type_Bkeb != null) {
-      if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bkeb == null) {
+    if (this.a.jdField_a_of_type_Blff != null) {
+      if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Blff == null) {
         break label346;
       }
     }
     label346:
-    for (String str = this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bkeb.a();; str = null)
+    for (String str = this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Blff.a();; str = null)
     {
       if (TextUtils.isEmpty(str))
       {
-        this.a.jdField_a_of_type_Bkeb.a("DEVICE_BLUETOOTHHEADSET", false);
+        this.a.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", false);
         return;
       }
       if (this.a.a())
       {
-        this.a.jdField_a_of_type_Bkeb.a("DEVICE_BLUETOOTHHEADSET", true);
+        this.a.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", true);
         this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", true);
         return;
       }
-      this.a.jdField_a_of_type_Bkeb.a("DEVICE_BLUETOOTHHEADSET", false);
+      this.a.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", false);
       return;
     }
   }

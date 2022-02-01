@@ -1,167 +1,183 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Set;
+
 public class bcia
+  extends bcji
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  private bcie a;
+  protected Set<String> a;
   
-  public bcia()
+  public bcia(aoof paramaoof)
   {
-    this.jdField_a_of_type_Int = 0;
+    super(paramaoof);
   }
   
-  /* Error */
-  public int a(String paramString1, int paramInt1, int paramInt2, double paramDouble1, double paramDouble2, String paramString2)
+  public bcia(aoof paramaoof, bcie parambcie)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: iload_2
-    //   2: iload_3
-    //   3: aload 8
-    //   5: iconst_0
-    //   6: getstatic 27	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   9: invokestatic 32	com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:a	(Ljava/lang/String;IILjava/lang/String;ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
-    //   12: astore_1
-    //   13: aload_1
-    //   14: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   17: ifeq +20 -> 37
-    //   20: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   23: ifeq +11 -> 34
-    //   26: ldc 46
-    //   28: iconst_2
-    //   29: ldc 48
-    //   31: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: bipush 254
-    //   36: ireturn
-    //   37: new 54	java/io/File
-    //   40: dup
-    //   41: aload_1
-    //   42: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
-    //   45: astore 9
-    //   47: aload 9
-    //   49: invokevirtual 60	java/io/File:exists	()Z
-    //   52: ifne +6 -> 58
-    //   55: bipush 254
-    //   57: ireturn
-    //   58: aload_1
-    //   59: dload 4
-    //   61: dload 6
-    //   63: invokestatic 65	bgmo:a	(Ljava/lang/String;DD)Z
-    //   66: pop
-    //   67: new 67	java/io/FileInputStream
-    //   70: dup
-    //   71: aload_1
-    //   72: invokespecial 68	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   75: astore 8
-    //   77: aload 8
-    //   79: astore_1
-    //   80: aload_0
-    //   81: aload 8
-    //   83: aload 9
-    //   85: invokevirtual 72	java/io/File:length	()J
-    //   88: invokestatic 78	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   91: invokestatic 84	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   94: putfield 86	bcia:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   97: aload 8
-    //   99: ifnull +8 -> 107
-    //   102: aload 8
-    //   104: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   107: aload_0
-    //   108: getfield 86	bcia:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   111: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   114: ifeq +133 -> 247
-    //   117: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   120: ifeq +11 -> 131
-    //   123: ldc 46
-    //   125: iconst_2
-    //   126: ldc 91
-    //   128: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: iconst_m1
-    //   132: ireturn
-    //   133: astore_1
-    //   134: aload_1
-    //   135: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   138: goto -31 -> 107
-    //   141: astore 9
-    //   143: aconst_null
-    //   144: astore 8
-    //   146: aload 8
-    //   148: astore_1
-    //   149: aload 9
-    //   151: invokevirtual 95	java/io/FileNotFoundException:printStackTrace	()V
-    //   154: aload 8
-    //   156: ifnull +8 -> 164
-    //   159: aload 8
-    //   161: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   164: aload_0
-    //   165: getfield 86	bcia:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   168: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   171: ifeq +76 -> 247
-    //   174: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   177: ifeq +11 -> 188
-    //   180: ldc 46
-    //   182: iconst_2
-    //   183: ldc 91
-    //   185: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   188: iconst_m1
-    //   189: ireturn
-    //   190: astore_1
-    //   191: aload_1
-    //   192: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   195: goto -31 -> 164
-    //   198: astore 8
-    //   200: aconst_null
-    //   201: astore_1
-    //   202: aload_1
-    //   203: ifnull +7 -> 210
-    //   206: aload_1
-    //   207: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   210: aload_0
-    //   211: getfield 86	bcia:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   214: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   217: ifeq +27 -> 244
-    //   220: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   223: ifeq +11 -> 234
-    //   226: ldc 46
-    //   228: iconst_2
-    //   229: ldc 91
-    //   231: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   234: iconst_m1
-    //   235: ireturn
-    //   236: astore_1
-    //   237: aload_1
-    //   238: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   241: goto -31 -> 210
-    //   244: aload 8
-    //   246: athrow
-    //   247: iconst_0
-    //   248: ireturn
-    //   249: astore 8
-    //   251: goto -49 -> 202
-    //   254: astore 9
-    //   256: goto -110 -> 146
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	259	0	this	bcia
-    //   0	259	1	paramString1	String
-    //   0	259	2	paramInt1	int
-    //   0	259	3	paramInt2	int
-    //   0	259	4	paramDouble1	double
-    //   0	259	6	paramDouble2	double
-    //   0	259	8	paramString2	String
-    //   45	39	9	localFile	java.io.File
-    //   141	9	9	localFileNotFoundException1	java.io.FileNotFoundException
-    //   254	1	9	localFileNotFoundException2	java.io.FileNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   102	107	133	java/io/IOException
-    //   67	77	141	java/io/FileNotFoundException
-    //   159	164	190	java/io/IOException
-    //   67	77	198	finally
-    //   206	210	236	java/io/IOException
-    //   80	97	249	finally
-    //   149	154	249	finally
-    //   80	97	254	java/io/FileNotFoundException
+    super(paramaoof);
+    this.jdField_a_of_type_Bcie = parambcie;
+  }
+  
+  public bcia(aoof paramaoof, bcie parambcie, Set<String> paramSet)
+  {
+    super(paramaoof);
+    this.jdField_a_of_type_Bcie = parambcie;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
+  }
+  
+  private void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent(paramActivity, SelectMemberActivity.class);
+    localIntent.putExtra("param_type", 3000);
+    localIntent.putExtra("param_subtype", 0);
+    localIntent.putExtra("param_from", 1002);
+    localIntent.putExtra("param_max", 99);
+    localIntent.putExtra("param_entrance", 29);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(SelectMemberActivity.a(paramString, "", 0, paramString));
+    localIntent.putExtra("param_selected_records_for_create_discussion", localArrayList);
+    paramActivity.startActivityForResult(localIntent, 1300);
+  }
+  
+  public void a(bcfr parambcfr, bcnz parambcnz, Bitmap paramBitmap)
+  {
+    if (parambcfr.c() == 103)
+    {
+      if (parambcnz.b() != null) {
+        parambcnz.b().setImageDrawable(bcni.a(paramBitmap));
+      }
+      return;
+    }
+    super.a(parambcfr, parambcnz, paramBitmap);
+  }
+  
+  public void b(bcfr parambcfr, bcnz parambcnz)
+  {
+    super.b(parambcfr, parambcnz);
+    Object localObject;
+    if (((parambcfr instanceof bcel)) && (parambcfr.c() == null))
+    {
+      if (parambcnz.c() != null) {
+        parambcnz.c().setVisibility(8);
+      }
+      if (parambcnz.a() != null) {
+        parambcnz.a().setVisibility(8);
+      }
+      if (parambcnz.b() != null) {
+        parambcnz.b().setVisibility(8);
+      }
+      localObject = ((bcnt)parambcnz).e();
+      if (localObject != null)
+      {
+        ((TextView)localObject).setVisibility(0);
+        ((TextView)localObject).setText(parambcfr.a());
+      }
+      localObject = parambcnz.a().findViewById(2131380059);
+      if (localObject != null)
+      {
+        ((View)localObject).setVisibility(8);
+        if ((((parambcfr instanceof bceg)) || ((parambcfr instanceof bcek)) || ((parambcfr instanceof bcec))) && (bbzx.a(parambcfr.b()))) {
+          ((View)localObject).setVisibility(0);
+        }
+      }
+      if (parambcnz.c() != null)
+      {
+        localObject = parambcfr.b();
+        if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.contains(localObject))) {
+          parambcnz.c().setText(anzj.a(2131701476));
+        }
+      }
+      if ((bcni.a) && (parambcnz.a() != null) && ((parambcfr instanceof bcfn))) {
+        parambcnz.a().setOnLongClickListener(new bcib(this, parambcfr));
+      }
+      if ((parambcnz.a() != null) && ((parambcfr instanceof bcec)))
+      {
+        int i = ((bcec)parambcfr).f();
+        if (QLog.isColorLevel()) {
+          QLog.d("ContactSearchResultPresenter", 2, "add from type =" + i);
+        }
+        if ((i == 21) || (i == 1) || (i == 2))
+        {
+          parambcnz = parambcnz.a();
+          parambcnz.setContentDescription(parambcnz.getContext().getString(2131698324));
+          parambcnz.setImageResource(2130846028);
+          parambcnz.setOnClickListener(new bcic(this, parambcfr));
+        }
+      }
+      return;
+    }
+    if ((parambcnz.c() != null) && (!TextUtils.isEmpty(parambcfr.c())))
+    {
+      parambcnz.c().setVisibility(0);
+      label411:
+      if (parambcnz.a() != null) {
+        parambcnz.a().setVisibility(0);
+      }
+      if ((parambcnz.b() == null) || (parambcfr.b() == null)) {
+        break label667;
+      }
+      parambcnz.b().setVisibility(0);
+      if ((!(parambcfr instanceof bcec)) && (!(parambcfr instanceof bceb)) && (!(parambcfr instanceof bcei))) {
+        break label651;
+      }
+      localObject = parambcfr.b();
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!bhjx.b((String)localObject))) {
+        break label635;
+      }
+      localObject = parambcnz.b().getContext().getResources().getDrawable(2130841751);
+      ((Drawable)localObject).setBounds(0, 0, agej.a(15.0F, parambcnz.b().getContext().getResources()), agej.a(15.0F, parambcnz.b().getContext().getResources()));
+      ThemeUtil.setThemeFilter((Drawable)localObject, ThemeUtil.curThemeId);
+      parambcnz.b().setCompoundDrawables(null, null, (Drawable)localObject, null);
+    }
+    for (;;)
+    {
+      localObject = ((bcnt)parambcnz).e();
+      if (localObject == null) {
+        break;
+      }
+      ((TextView)localObject).setVisibility(8);
+      break;
+      if (parambcnz.c() == null) {
+        break label411;
+      }
+      parambcnz.c().setVisibility(8);
+      break label411;
+      label635:
+      parambcnz.b().setCompoundDrawables(null, null, null, null);
+      continue;
+      label651:
+      parambcnz.b().setCompoundDrawables(null, null, null, null);
+      continue;
+      label667:
+      if (parambcnz.b() != null) {
+        parambcnz.b().setVisibility(8);
+      }
+    }
+  }
+  
+  protected void c(bcfr parambcfr, bcnz parambcnz)
+  {
+    if (this.jdField_a_of_type_Bcie != null)
+    {
+      if (parambcnz.a() != null) {
+        parambcnz.a().setOnClickListener(new bcid(this));
+      }
+      return;
+    }
+    super.c(parambcfr, parambcnz);
   }
 }
 

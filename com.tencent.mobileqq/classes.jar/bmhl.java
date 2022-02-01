@@ -1,12 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 final class bmhl
-  extends bmhk
+  implements DialogInterface.OnClickListener
 {
-  public int a(String paramString, int paramInt)
+  bmhl(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
-      return -1;
-    }
-    return 0;
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 

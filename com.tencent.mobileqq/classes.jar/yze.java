@@ -1,37 +1,28 @@
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
-class yze
-  implements View.OnTouchListener
+public abstract interface yze
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  @NonNull
+  public abstract Context a();
   
-  yze(yzc paramyzc) {}
+  public abstract Intent a(zih paramzih);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    return this.jdField_a_of_type_Boolean;
-  }
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 

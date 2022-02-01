@@ -1,10 +1,17 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-public abstract interface bmjw
+public class bmjw
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  public bmjw(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public abstract void a(int paramInt, String paramString, Bitmap paramBitmap);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 

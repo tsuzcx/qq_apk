@@ -1,38 +1,94 @@
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import android.view.View;
+import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class vlq
-  extends uzb
+public class vlq
 {
-  vlq(vll paramvll) {}
+  private final HashMap<View, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a()
+  private void b()
   {
-    return 0;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      d();
+      return;
+    }
+    c();
   }
   
-  public QCirclePolyLikeAniView a()
+  private void c()
   {
-    return vll.a(this.a);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      View localView = (View)localIterator.next();
+      if (localView != null)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(localView, Integer.valueOf(localView.getVisibility()));
+        localView.setVisibility(8);
+      }
+    }
   }
   
-  public String a()
+  private void d()
   {
-    return "";
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      View localView = (View)localIterator.next();
+      if ((localView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(localView) != null)) {
+        localView.setVisibility(((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localView)).intValue());
+      }
+    }
   }
   
-  public void a(Object paramObject)
+  public void a()
   {
-    this.a.b("share_action_show_share_sheet", paramObject);
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  public void a(String paramString, uzc paramuzc)
+  public void a(int paramInt)
   {
-    this.a.a().a(paramString, paramuzc);
+    boolean bool = true;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        b();
+        if (!this.jdField_a_of_type_Boolean) {}
+        for (;;)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          return;
+          bool = false;
+        }
+      } while (this.jdField_a_of_type_Boolean);
+      c();
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    d();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(vca paramvca)
+  public void a(View paramView)
   {
-    this.a.a().a("light_interact_list_show", paramvca);
+    if (paramView == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramView, Integer.valueOf(paramView.getVisibility()));
+  }
+  
+  public void a(QCircleContentImmersiveEvent paramQCircleContentImmersiveEvent)
+  {
+    a(paramQCircleContentImmersiveEvent.getState());
   }
 }
 

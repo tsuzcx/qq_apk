@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bhmv;
-import blpw;
+import binq;
+import bmqy;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -44,7 +44,7 @@ public class ReaderCommentPageFragment
     if (!TextUtils.isEmpty(paramString)) {
       str2 = str1 + "&commentId=" + paramString;
     }
-    return blpw.a("qqreaderComment") + "&id=" + paramLong + str2;
+    return bmqy.a("qqreaderComment") + "&id=" + paramLong + str2;
   }
   
   private static String a(Intent paramIntent)
@@ -67,7 +67,7 @@ public class ReaderCommentPageFragment
     }
     for (;;)
     {
-      str = blpw.a("qqreaderReadover") + "&recommend_bid=" + l1;
+      str = bmqy.a("qqreaderReadover") + "&recommend_bid=" + l1;
       paramIntent = a(i, paramIntent, l2);
       if (bool2)
       {

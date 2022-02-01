@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import axeq;
+import axxj;
 
 class NearbyPeopleProfileActivity$23
   implements Runnable

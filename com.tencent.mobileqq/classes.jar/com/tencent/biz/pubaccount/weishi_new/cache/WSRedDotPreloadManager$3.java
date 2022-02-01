@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushVideoModel;
-import uek;
-import ups;
+import uem;
+import uqt;
 
 public class WSRedDotPreloadManager$3
   implements Runnable
 {
-  public WSRedDotPreloadManager$3(uek paramuek, WSPushVideoModel paramWSPushVideoModel) {}
+  public WSRedDotPreloadManager$3(uem paramuem, WSPushVideoModel paramWSPushVideoModel) {}
   
   public void run()
   {
-    ups.a(this.a.a);
+    uqt.a(this.a.b);
   }
 }
 

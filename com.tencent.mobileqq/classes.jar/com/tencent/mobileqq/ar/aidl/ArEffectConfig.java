@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aoxw;
+import aplm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new aoxw();
+  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new aplm();
   public int a;
   public ArrayList<String> a;
   public int b;
@@ -310,7 +310,7 @@ public class ArEffectConfig
     //   144: invokevirtual 287	java/io/BufferedOutputStream:flush	()V
     //   147: aload 7
     //   149: aload 5
-    //   151: invokestatic 292	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   151: invokestatic 292	bhmi:b	(Ljava/io/File;Ljava/io/File;)Z
     //   154: istore_2
     //   155: aload 6
     //   157: invokevirtual 295	android/os/Parcel:recycle	()V

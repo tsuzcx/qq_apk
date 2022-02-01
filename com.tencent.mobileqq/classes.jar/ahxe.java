@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-
 public class ahxe
 {
-  public String a;
-  
-  public ahxe(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 

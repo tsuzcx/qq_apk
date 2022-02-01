@@ -1,68 +1,142 @@
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
 
-class amjn
-  extends bhhe
+public class amjn
+  extends anyu
 {
-  amjn(amjl paramamjl, File paramFile, amjo paramamjo) {}
+  public amjn(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onDone(bhhf parambhhf)
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    super.onDone(parambhhf);
+    int i = 2;
     if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip task.getStatus:" + parambhhf.a());
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean + ",isFromForwardFriendActivity=" + QQSpecialFriendSettingActivity.a(this.a));
     }
-    if (3 == parambhhf.a())
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
-        try
-        {
-          parambhhf = bita.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          if (QLog.isColorLevel()) {
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadAllZip onDone dstMd5:" + parambhhf + " result.mMd5:" + this.jdField_a_of_type_Amjo.d);
-          }
-          if (amjl.a(this.jdField_a_of_type_Amjo, parambhhf))
-          {
-            if (amjl.a(this.jdField_a_of_type_Amjo))
-            {
-              nmk.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-              if (QLog.isColorLevel()) {
-                QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-              }
-            }
-            for (;;)
-            {
-              amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int, this.jdField_a_of_type_Amjo);
-              return;
-              boolean bool = bgmg.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Amjo.b() + this.jdField_a_of_type_Amjo.jdField_e_of_type_JavaLangString);
-              QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
-            }
-          }
-          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path- no exist:" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        }
-        catch (Exception parambhhf)
-        {
-          amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int);
-          this.jdField_a_of_type_JavaIoFile.delete();
-          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambhhf.getMessage());
-          return;
-          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-          amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int);
-          return;
-        }
-        catch (OutOfMemoryError parambhhf)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambhhf.getMessage());
-          }
-          this.jdField_a_of_type_JavaIoFile.delete();
-          return;
-        }
-      }
-      amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int);
+    if (QQSpecialFriendSettingActivity.a(this.a)) {
       return;
     }
-    QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambhhf.a());
+    this.a.a.sendEmptyMessage(8194);
+    paramArrayOfObject = this.a.a.obtainMessage(8195);
+    if (paramBoolean)
+    {
+      label91:
+      paramArrayOfObject.arg1 = i;
+      if (!paramBoolean) {
+        break label137;
+      }
+    }
+    label137:
+    for (i = 2131691902;; i = 2131698419)
+    {
+      paramArrayOfObject.arg2 = i;
+      this.a.a.sendMessage(paramArrayOfObject);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.finish();
+      return;
+      i = 1;
+      break label91;
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
+    }
+    if (QQSpecialFriendSettingActivity.a(this.a)) {}
+    while (paramBoolean) {
+      return;
+    }
+    paramArrayOfObject = this.a;
+    FormSwitchItem localFormSwitchItem = QQSpecialFriendSettingActivity.b(this.a);
+    if (!QQSpecialFriendSettingActivity.b(this.a).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
+      return;
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
+    }
+    if (QQSpecialFriendSettingActivity.a(this.a)) {
+      return;
+    }
+    QQSpecialFriendSettingActivity.b(this.a);
+  }
+  
+  protected void onSetSpecialCareSwitchesOfAPerson(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    int j = ((Integer)paramArrayOfObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwitchesOfAPerson isSuccess: " + paramBoolean + ",isFromForwardFriendActivity=" + QQSpecialFriendSettingActivity.a(this.a) + ",result=" + j);
+    }
+    if (!QQSpecialFriendSettingActivity.a(this.a)) {
+      return;
+    }
+    this.a.a.sendEmptyMessage(8194);
+    paramArrayOfObject = this.a.a.obtainMessage(8195);
+    if ((paramBoolean) && (j == 0))
+    {
+      i = 2;
+      label117:
+      paramArrayOfObject.arg1 = i;
+      if ((!paramBoolean) || (j != 0)) {
+        break label233;
+      }
+    }
+    label233:
+    for (int i = 2131691902;; i = 2131698416)
+    {
+      paramArrayOfObject.arg2 = i;
+      this.a.a.sendMessage(paramArrayOfObject);
+      if ((!paramBoolean) || (j != 0)) {
+        break;
+      }
+      if (!QQSpecialFriendSettingActivity.b(this.a)) {
+        break label239;
+      }
+      paramArrayOfObject = new Intent();
+      paramArrayOfObject.setClass(this.a, SpecailCareListActivity.class);
+      paramArrayOfObject.addFlags(67108864);
+      paramArrayOfObject.putExtra("selfSet_leftViewText", this.a.getString(2131694627));
+      this.a.startActivity(paramArrayOfObject);
+      this.a.finish();
+      return;
+      i = 1;
+      break label117;
+    }
+    label239:
+    QQSpecialFriendSettingActivity.a(this.a, true);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
+    }
+    if ((paramBoolean) && (QQSpecialFriendSettingActivity.a(this.a).equals(String.valueOf(paramObject)))) {
+      this.a.finish();
+    }
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
+    }
+    QQSpecialFriendSettingActivity.b(this.a);
   }
 }
 

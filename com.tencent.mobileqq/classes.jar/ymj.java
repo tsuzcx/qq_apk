@@ -1,8 +1,9 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public abstract interface ymj
+public final class ymj
+  extends wip
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  public FeedItem a;
 }
 
 

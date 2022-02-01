@@ -1,8 +1,41 @@
-public abstract interface abel
+import org.json.JSONObject;
+
+class abel
+  implements blop
 {
-  public abstract void a(int paramInt);
+  abel(abef paramabef, String paramString) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void a(bloo parambloo)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    switch (parambloo.a)
+    {
+    default: 
+      return;
+    case 0: 
+      try
+      {
+        localJSONObject.put("index", 0);
+        this.jdField_a_of_type_Abef.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception parambloo)
+      {
+        parambloo.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      localJSONObject.put("index", 1);
+      this.jdField_a_of_type_Abef.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception parambloo)
+    {
+      parambloo.printStackTrace();
+    }
+  }
 }
 
 

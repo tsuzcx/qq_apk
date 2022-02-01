@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import aagg;
-import aagh;
+import aakh;
+import aaki;
 
 public class SubscribeCommentInputPopupWindow$1$1
   implements Runnable
 {
-  public SubscribeCommentInputPopupWindow$1$1(aagh paramaagh) {}
+  public SubscribeCommentInputPopupWindow$1$1(aaki paramaaki) {}
   
   public void run()
   {

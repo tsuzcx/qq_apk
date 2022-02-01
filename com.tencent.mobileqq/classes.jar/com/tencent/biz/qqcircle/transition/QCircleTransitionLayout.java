@@ -12,8 +12,8 @@ import android.widget.FrameLayout;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
-import vta;
-import vtb;
+import vvt;
+import vvu;
 
 public class QCircleTransitionLayout
   extends FrameLayout
@@ -22,7 +22,7 @@ public class QCircleTransitionLayout
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private QCircleTransitionInnerLayout jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout;
-  private vtb jdField_a_of_type_Vtb;
+  private vvu jdField_a_of_type_Vvu;
   private boolean jdField_a_of_type_Boolean = QzoneConfig.getQQCircleEnableTransitionCloseAnim();
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int;
@@ -86,10 +86,10 @@ public class QCircleTransitionLayout
           if (this.jdField_b_of_type_Float >= this.jdField_d_of_type_Float) {
             break label413;
           }
-          if (this.jdField_a_of_type_Vtb != null)
+          if (this.jdField_a_of_type_Vvu != null)
           {
             this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(0);
-            this.jdField_a_of_type_Vtb.a(this.g, this.h);
+            this.jdField_a_of_type_Vvu.a(this.g, this.h);
             return;
           }
           break;
@@ -105,8 +105,8 @@ public class QCircleTransitionLayout
             if (this.jdField_d_of_type_Boolean)
             {
               this.jdField_d_of_type_Boolean = false;
-              if (this.jdField_a_of_type_Vtb != null) {
-                this.jdField_a_of_type_Vtb.a();
+              if (this.jdField_a_of_type_Vvu != null) {
+                this.jdField_a_of_type_Vvu.a();
               }
               this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(255);
             }
@@ -160,7 +160,7 @@ public class QCircleTransitionLayout
     this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout.animate().translationX(0.0F).setDuration(300L).setInterpolator(new DecelerateInterpolator());
     this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout.animate().translationY(0.0F).setDuration(300L).setInterpolator(new DecelerateInterpolator());
     this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout.animate().scaleX(1.0F).setDuration(300L).setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout.animate().scaleY(1.0F).setDuration(300L).setInterpolator(new DecelerateInterpolator()).setListener(new vta(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout.animate().scaleY(1.0F).setDuration(300L).setInterpolator(new DecelerateInterpolator()).setListener(new vvt(this));
   }
   
   private boolean a()
@@ -186,10 +186,10 @@ public class QCircleTransitionLayout
     this.jdField_c_of_type_Boolean = false;
   }
   
-  public void a(QCircleTransitionInnerLayout paramQCircleTransitionInnerLayout, vtb paramvtb)
+  public void a(QCircleTransitionInnerLayout paramQCircleTransitionInnerLayout, vvu paramvvu)
   {
     this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionInnerLayout = paramQCircleTransitionInnerLayout;
-    this.jdField_a_of_type_Vtb = paramvtb;
+    this.jdField_a_of_type_Vvu = paramvvu;
   }
   
   public void a(boolean paramBoolean)

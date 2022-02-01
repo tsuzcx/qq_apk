@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import ayyp;
-import com.tencent.mobileqq.data.MessageForStructing;
+import azqb;
+import azqk;
 
 class PicPreDownloader$6
   implements Runnable
 {
-  PicPreDownloader$6(PicPreDownloader paramPicPreDownloader, MessageForStructing paramMessageForStructing) {}
+  PicPreDownloader$6(PicPreDownloader paramPicPreDownloader, azqk paramazqk) {}
   
   public void run()
   {
-    ayyp.a(this.a, this.this$0.a);
+    azqb.a(this.a, PicPreDownloader.a(this.this$0));
   }
 }
 

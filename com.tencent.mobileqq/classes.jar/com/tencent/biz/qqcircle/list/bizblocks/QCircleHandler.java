@@ -1,7 +1,7 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
-import anii;
-import anil;
+import anud;
+import anui;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 
 public class QCircleHandler
-  extends anii
+  extends anud
 {
   private static final String TAG = "QCircleHandler";
   public static final int TYPE_UPDATE_RED_POINT_DISPLAY = 1;
@@ -26,7 +26,7 @@ public class QCircleHandler
     notifyUI(1, true, Integer.valueOf(0));
   }
   
-  public Class<? extends anil> observerClass()
+  public Class<? extends anui> observerClass()
   {
     return QCircleObserver.class;
   }

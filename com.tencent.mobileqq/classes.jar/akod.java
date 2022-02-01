@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
-final class akod
-  implements DialogInterface.OnClickListener
+public class akod
+  extends anyu
 {
-  akod(Activity paramActivity) {}
+  public akod(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    this.a.setResult(-1);
-    this.a.finish();
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
+    }
   }
 }
 

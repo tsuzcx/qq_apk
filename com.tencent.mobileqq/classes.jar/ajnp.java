@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajnp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ajnp(ajnk paramajnk, ArrayList paramArrayList, int paramInt) {}
+  ajnp(ajno paramajno) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ajnk.a(this.jdField_a_of_type_Ajnk, true);
-    ajnk.a(this.jdField_a_of_type_Ajnk).a(1);
-    ajnk.a(this.jdField_a_of_type_Ajnk, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (bgnt.d(BaseApplicationImpl.getContext()))
-    {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      ajnk.a(this.jdField_a_of_type_Ajnk).b(paramInt);
-    }
-    ajnk.a(this.jdField_a_of_type_Ajnk, this.jdField_a_of_type_JavaUtilArrayList);
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bguq.a(ajno.a(this.a), localRecommendTroopItem, this.a.a());
+    this.a.b(localRecommendTroopItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

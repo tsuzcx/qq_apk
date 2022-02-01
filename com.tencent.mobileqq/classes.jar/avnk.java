@@ -1,68 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avnk
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<WebView> jdField_a_of_type_JavaLangRefWeakReference;
+  public avnk(TextHeaderView paramTextHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
   
-  public avnk(WebView paramWebView, long paramLong, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("JB", 4, "onNoMatchMethod");
-    }
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localWebView == null) {
-      return;
-    }
-    localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':1,'result':'no such method'})");
-  }
-  
-  public void a(Object paramObject)
-  {
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localWebView == null) {
-      return;
-    }
-    if (paramObject == null)
+    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':0});");
-      return;
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      acik.a(anbd.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, "", "20" });
+      bnyy.a(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
     }
-    if (((paramObject instanceof Number)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof JSONObject))) {}
-    for (paramObject = paramObject.toString();; paramObject = "'" + paramObject.toString().replace("\\", "\\\\").replace("'", "\\'") + "'")
+    try
     {
-      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':0,'result':" + paramObject + "});");
+      avme.a(118, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localWebView != null) {
-      localWebView.loadUrl("javascript:" + paramString);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("JB", 4, "onPermissionDenied");
-    }
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localWebView != null) {
-      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':2,'result':'Permission denied'})");
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

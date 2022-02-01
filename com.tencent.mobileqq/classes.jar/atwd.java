@@ -1,8 +1,4 @@
-public abstract interface atwd
-{
-  public abstract void a(boolean paramBoolean);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atwd

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import affx;
-import affy;
-import afga;
-import afgc;
-import afgd;
+import afpb;
+import afpc;
+import afpe;
+import afpg;
+import afph;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -19,11 +19,11 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anmu;
-import anvp;
-import aoch;
-import bdeh;
-import bglf;
+import anyu;
+import aoib;
+import aoot;
+import bdxc;
+import bhlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormItemRelativeLayout;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -39,17 +39,17 @@ import mqq.os.MqqHandler;
 public class SubAccountBindActivity
   extends SubAccountBaseActivity
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afga(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afpe(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  anmu jdField_a_of_type_Anmu = new afgd(this);
-  anvp jdField_a_of_type_Anvp = new affy(this);
+  anyu jdField_a_of_type_Anyu = new afph(this);
+  aoib jdField_a_of_type_Aoib = new afpc(this);
   private List<SimpleAccount> jdField_a_of_type_JavaUtilList;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new affx(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new afpb(this);
   View.OnClickListener b;
   
   public SubAccountBindActivity()
   {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new afgc(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new afpg(this);
   }
   
   private SimpleAccount a(String paramString)
@@ -79,7 +79,7 @@ public class SubAccountBindActivity
       this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
       localObject = a(this.app.getAccount());
       this.jdField_a_of_type_JavaUtilList.remove(localObject);
-      localObject = ((bdeh)this.app.getManager(61)).a();
+      localObject = ((bdxc)this.app.getManager(61)).a();
       if (localObject == null) {
         break;
       }
@@ -122,11 +122,11 @@ public class SubAccountBindActivity
         if (localSimpleAccount == null) {
           break;
         }
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368138);
-        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131371539);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368212);
+        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131371647);
         TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131361856);
-        localObject1 = (ImageView)((View)localObject1).findViewById(2131364446);
-        localObject2 = bglf.h(this.app, localSimpleAccount.getUin());
+        localObject1 = (ImageView)((View)localObject1).findViewById(2131364490);
+        localObject2 = bhlg.h(this.app, localSimpleAccount.getUin());
         localObject1 = localObject2;
         if (localSimpleAccount.isLogined()) {
           if (!TextUtils.isEmpty((CharSequence)localObject2))
@@ -136,7 +136,7 @@ public class SubAccountBindActivity
           }
           else
           {
-            localObject1 = bglf.i(this.app, localSimpleAccount.getUin());
+            localObject1 = bhlg.i(this.app, localSimpleAccount.getUin());
           }
         }
         localObject2 = localObject1;
@@ -145,7 +145,7 @@ public class SubAccountBindActivity
         }
         localTextView1.setText((CharSequence)localObject2);
         localTextView2.setText(localSimpleAccount.getUin());
-        localObject1 = aoch.a(this.app, 1, localSimpleAccount.getUin());
+        localObject1 = aoot.a(this.app, 1, localSimpleAccount.getUin());
         if (localObject1 != null) {
           localImageView.setBackgroundDrawable((Drawable)localObject1);
         }
@@ -174,7 +174,7 @@ public class SubAccountBindActivity
       if (this.jdField_a_of_type_JavaUtilList.get(i) == null)
       {
         localObject = getLayoutInflater().inflate(2131558413, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        ((TextView)((View)localObject).findViewById(2131371624)).setText(2131718270);
+        ((TextView)((View)localObject).findViewById(2131371732)).setText(2131718406);
         ((View)localObject).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         ((View)localObject).setTag(null);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
@@ -190,7 +190,7 @@ public class SubAccountBindActivity
           ((FormItemRelativeLayout)localObject).setBGType(2);
         }
         ((View)localObject).setTag(Integer.valueOf(i));
-        ((ImageView)((View)localObject).findViewById(2131368138)).setScaleType(ImageView.ScaleType.FIT_CENTER);
+        ((ImageView)((View)localObject).findViewById(2131368212)).setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
       }
@@ -210,23 +210,23 @@ public class SubAccountBindActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562934);
-    setTitle(2131718280);
-    setContentBackgroundResource(2130838758);
+    super.setContentView(2131562968);
+    setTitle(2131718416);
+    setContentBackgroundResource(2130838778);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131361859));
     if (!a(true)) {
       return false;
     }
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    addObserver(this.jdField_a_of_type_Anmu);
-    addObserver(this.jdField_a_of_type_Anvp);
+    addObserver(this.jdField_a_of_type_Anyu);
+    addObserver(this.jdField_a_of_type_Aoib);
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Anvp);
-    removeObserver(this.jdField_a_of_type_Anmu);
+    removeObserver(this.jdField_a_of_type_Aoib);
+    removeObserver(this.jdField_a_of_type_Anyu);
     this.app.removeHandler(getClass());
     super.doOnDestroy();
   }

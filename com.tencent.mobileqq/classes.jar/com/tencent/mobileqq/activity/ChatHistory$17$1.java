@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adtl;
+import aecn;
 import android.app.Dialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatHistory$17$1
   implements Runnable
 {
-  public ChatHistory$17$1(adtl paramadtl) {}
+  public ChatHistory$17$1(aecn paramaecn) {}
   
   public void run()
   {

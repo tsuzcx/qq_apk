@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.common.NoticeParam;
+import android.view.View;
 
-public final class bixj
-  implements Parcelable.Creator<NoticeParam>
+public abstract interface bixj
 {
-  public NoticeParam a(Parcel paramParcel)
-  {
-    return new NoticeParam(paramParcel);
-  }
-  
-  public NoticeParam[] a(int paramInt)
-  {
-    return new NoticeParam[paramInt];
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
 }
 
 

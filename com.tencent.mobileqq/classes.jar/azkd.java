@@ -1,6 +1,17 @@
-public abstract interface azkd
+import com.tencent.qphone.base.util.QLog;
+
+class azkd
+  implements azji
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  azkd(azkc paramazkc) {}
+  
+  public void a(azld paramazld)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VehicleMovementDetector", 2, "[status][vehicle] onLocationChanged: " + paramazld);
+    }
+    this.a.a(paramazld);
+  }
 }
 
 

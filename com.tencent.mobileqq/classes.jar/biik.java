@@ -1,125 +1,98 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
-import mqq.manager.WtloginManager;
 
 public class biik
-  extends QIPCModule
 {
-  private static boolean a;
-  
-  public biik(String paramString)
+  public static int a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
   {
-    super(paramString);
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramInt = localSharedPreferences.getInt(paramQQAppInterface, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramInt);
+    }
+    return paramInt;
   }
   
-  public static biik a()
+  public static long a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
   {
-    return biin.a;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramLong = localSharedPreferences.getLong(paramQQAppInterface, paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramLong);
+    }
+    return paramLong;
   }
   
-  public static void a()
+  public static String a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
   {
-    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "registerModule isRegisterModule=" + a);
-    if (!a)
-    {
-      QIPCClientHelper.getInstance().getClient().registerModule(a());
-      QIPCClientHelper.getInstance().getClient().connect(new biil());
-      a = true;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramString1 = localSharedPreferences.getString(paramQQAppInterface, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramString1);
     }
+    return paramString1;
   }
   
-  private void a(Bundle paramBundle, int paramInt)
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, int paramInt)
   {
-    if (paramBundle == null)
-    {
-      QLog.e("Q.quicklogin.OpenSdkQIPCClient", 1, "doWtLogin params==null");
-      a("", paramInt, 1005, -102);
-      return;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    boolean bool = localSharedPreferences.edit().putInt(paramQQAppInterface, paramInt).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
     }
-    String str1 = paramBundle.getString("key_uin");
-    String str2 = paramBundle.getString("key_passwd");
-    String str3 = paramBundle.getString("key_appid");
-    if (TextUtils.isEmpty(str2)) {}
-    for (paramBundle = "empty";; paramBundle = "****")
-    {
-      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "doWtLogin uin=" + bipr.a(str1) + ", maskPasswd=" + paramBundle + ", appId=" + str3);
-      bjsy.a(str3, str1, str2, new biim(this, paramInt));
-      return;
-    }
+    return bool;
   }
   
-  public static void a(String paramString)
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, long paramLong)
   {
-    Object localObject = BaseApplicationImpl.sApplication.peekAppRuntime();
-    if (!(localObject instanceof OpenSDKAppInterface))
-    {
-      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "clearLoginData !(app instanceof OpenSDKAppInterface)");
-      return;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    boolean bool = localSharedPreferences.edit().putLong(paramQQAppInterface, paramLong).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + bool);
     }
-    ((OpenSDKAppInterface)localObject).a().a(paramString);
-    if (bipr.a(paramString, (AppRuntime)localObject, true) != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bipr.a(paramString, (AppRuntime)localObject);
-      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "clearLoginData hasA2=" + bool1 + ", hasDA2=" + bool2);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      localObject = (WtloginManager)((AppRuntime)localObject).getManager(1);
-      ((WtloginManager)localObject).ClearUserFastLoginData(paramString, 16L);
-      ((WtloginManager)localObject).RefreshMemorySig();
-      return;
-    }
+    return bool;
   }
   
-  private void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, String paramString2)
   {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "backToMainProcess uin=" + bipr.a(paramString) + ", ssoResult=" + paramInt2 + ", epicCode=" + paramInt3);
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_uin", paramString);
-      localBundle.putInt("key_sso_ret", paramInt2);
-      callbackResult(paramInt1, EIPCResult.createResult(paramInt3, localBundle));
-      return;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString1 + "_" + paramQQAppInterface.getCurrentAccountUin();
+    boolean bool = localSharedPreferences.edit().putString(paramQQAppInterface, paramString2).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramString2);
     }
-    catch (Exception paramString)
-    {
-      QLog.e("Q.quicklogin.OpenSdkQIPCClient", 1, "Exception", paramString);
-    }
+    return bool;
   }
   
-  public static void b()
+  public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
   {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "unRegisterModule isRegisterModule=" + a);
-    if (a)
-    {
-      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-      a = false;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramBoolean = localSharedPreferences.getBoolean(paramQQAppInterface, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "get sp key:" + paramQQAppInterface + " value=" + paramBoolean);
     }
+    return paramBoolean;
   }
   
-  public static void c()
+  public static boolean b(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString, boolean paramBoolean)
   {
-    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "doPtloginCancel");
-    QIPCClientHelper.getInstance().callServer("open_sdk_qipc_module", "action_ptlogin_cancel", new Bundle());
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "onCall action=" + paramString);
-    if ("action_to_wt_login".equals(paramString)) {
-      a(paramBundle, paramInt);
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qq_vip_configs", 0);
+    paramQQAppInterface = paramString + "_" + paramQQAppInterface.getCurrentAccountUin();
+    paramBoolean = localSharedPreferences.edit().putBoolean(paramQQAppInterface, paramBoolean).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVip.ConfigManager", 1, "set sp key:" + paramQQAppInterface + " value=" + paramBoolean);
     }
-    return null;
+    return paramBoolean;
   }
 }
 

@@ -1,17 +1,43 @@
-import java.io.File;
-import java.util.concurrent.Callable;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class bldu
-  implements Callable<Boolean>
+public class bldu
+  implements IRuntimeInterface
 {
-  bldu(blds paramblds, File paramFile) {}
+  private static volatile bldu a;
   
-  public Boolean a()
+  private bldu()
   {
-    if ((blds.a(this.jdField_a_of_type_Blds).exists()) && (this.jdField_a_of_type_JavaIoFile == blds.a(this.jdField_a_of_type_Blds))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    QSecFramework.a(3L, new bldv(this));
+  }
+  
+  public static bldu a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bldu();
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 1) {
+      blbg.a(paramString, paramInt2);
+    }
+    while (paramInt1 != 2) {
+      return;
+    }
+    blbg.b(paramString, paramInt2);
+  }
+  
+  public String getInterfaceName()
+  {
+    return "Rpt";
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-public abstract interface atkn
+public class atkn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
+  public atkn(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
-  
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void az_();
+  public void onGlobalLayout()
+  {
+    this.a.ax_();
+  }
 }
 
 

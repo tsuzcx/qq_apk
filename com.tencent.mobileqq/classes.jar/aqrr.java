@@ -1,61 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
 public class aqrr
-  extends aqkz<aqrq>
+  extends LottieDrawable
+  implements aqrq
 {
-  @NonNull
-  public aqrq a(int paramInt)
+  private LottieDrawable a;
+  
+  public void a(int paramInt) {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2) {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public int getIntrinsicHeight()
   {
-    return new aqrq();
+    return this.a.getIntrinsicHeight();
   }
   
-  @Nullable
-  public aqrq a(aqlg[] paramArrayOfaqlg)
+  public int getIntrinsicWidth()
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqrq.a(paramArrayOfaqlg[0].a);
-    }
-    return null;
+    return this.a.getIntrinsicWidth();
   }
   
-  public void a(aqrq paramaqrq) {}
-  
-  public Class<aqrq> clazz()
+  public void playAnimation()
   {
-    return aqrq.class;
+    this.a.playAnimation();
   }
   
-  public boolean isAccountRelated()
+  public void setRepeatCount(int paramInt)
   {
-    return false;
+    this.a.setRepeatCount(paramInt);
   }
   
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 419;
-  }
+  public void stop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrr
  * JD-Core Version:    0.7.0.1
  */

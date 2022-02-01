@@ -1,18 +1,10 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import android.view.View;
 
-class blmi
-  extends anjq
+public abstract interface blmi
 {
-  blmi(blmg paramblmg) {}
+  public abstract void a(View paramView);
   
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("result", paramInt);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
-  }
+  public abstract void b(View paramView);
 }
 
 

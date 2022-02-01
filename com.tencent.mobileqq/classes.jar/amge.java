@@ -1,8 +1,20 @@
-public abstract interface amge
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+
+public class amge
+  extends amof
 {
-  public abstract Object a();
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public abstract void invalidateSelf();
+  public amge(amfz paramamfz) {}
 }
 
 

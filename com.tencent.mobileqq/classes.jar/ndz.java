@@ -1,91 +1,31 @@
-import com.tencent.avgame.qav.AVGameCameraAssistant;
+import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.QQPermissionCallback;
 
-public class ndz
-  extends ljd
+class ndz
+  implements QQPermissionCallback
 {
-  public ndz(AVGameCameraAssistant paramAVGameCameraAssistant) {}
+  ndz(ndy paramndy, String paramString, long paramLong, int paramInt, View paramView) {}
   
-  protected void a(long paramLong)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        nea localnea = (nea)localIterator.next();
-        if (localnea != null) {
-          localnea.a(paramLong);
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("AVGameCameraAssistant", 1, "onBeforeCloseCamera", localThrowable);
-    }
+    QLog.w(this.jdField_a_of_type_Ndy.jdField_a_of_type_JavaLangString, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_Ndy.jdField_a_of_type_Boolean + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.jdField_a_of_type_Ndy.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ndy.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
-  protected void a(long paramLong, boolean paramBoolean)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        nea localnea = (nea)localIterator.next();
-        if (localnea != null) {
-          localnea.a(paramLong, paramBoolean);
-        }
-      }
+    QLog.w(this.jdField_a_of_type_Ndy.jdField_a_of_type_JavaLangString, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_Ndy.jdField_a_of_type_Boolean + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.jdField_a_of_type_Ndy.jdField_a_of_type_Boolean = false;
+    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Ndy.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView);
+    }
+    while (!"android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("AVGameCameraAssistant", 1, "onBeforeOpenCamera", localThrowable);
-    }
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    try
-    {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        nea localnea = (nea)localIterator.next();
-        if (localnea != null) {
-          localnea.b(paramLong, paramBoolean);
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("AVGameCameraAssistant", 1, "onAfterOpenCamera", localThrowable);
-    }
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean)
-  {
-    try
-    {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        nea localnea = (nea)localIterator.next();
-        if (localnea != null) {
-          localnea.c(paramLong, paramBoolean);
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("AVGameCameraAssistant", 1, "onAfterCloseCamera", localThrowable);
-    }
+    this.jdField_a_of_type_Ndy.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

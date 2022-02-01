@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/n7t" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.HorizontalListView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <Button android:textSize="12.0dip" android:textColor="@color/afx" android:gravity="center" android:id="@id/g6j" android:background="@null" android:padding="@dimen/a3w" android:layout_width="@dimen/a3x" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="@dimen/a3u" android:scaleType="centerCrop" android:text="" android:drawableTop="@drawable/db6" android:drawablePadding="4.0dip" android:layout_below="@id/d9m" android:layout_alignParentLeft="true" android:contentDescription="@string/dl8" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/bcc" android:paddingTop="@dimen/bcc" android:paddingRight="@dimen/bcc" android:paddingBottom="@dimen/bcc" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="center" android:id="@id/c2a" android:layout_width="173.0dip" android:layout_height="205.0dip" android:src="@drawable/fpe" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <ImageView android:id="@id/n1n" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/fpi" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_horizontal" android:id="@id/njq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂无数据，请刷新页面" />
+    </LinearLayout>
+</LinearLayout>

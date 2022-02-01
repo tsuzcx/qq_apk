@@ -1,98 +1,80 @@
-public class ukv
-  implements ujv
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+
+public abstract class ukv
 {
-  private uhk a;
-  
-  public void a(uif paramuif)
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, ulc paramulc)
   {
-    if ((paramuif instanceof uhk)) {
-      this.a = ((uhk)paramuif);
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate onTencentVideoDefnInfo:" + paramTVK_NetVideoInfo);
     }
   }
   
-  public void a(ukb paramukb) {}
-  
-  public void a(ukb paramukb, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(ukb paramukb, int paramInt, boolean paramBoolean) {}
-  
-  public void a(ukb paramukb, long paramLong1, long paramLong2) {}
-  
-  public void a(ukb paramukb, boolean paramBoolean) {}
-  
-  public void a(ukb paramukb, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(ulc paramulc)
   {
-    if ((this.a != null) && (paramBoolean1) && (paramBoolean2)) {
-      this.a.a(8, 400);
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onCompletion videoPlayer:" + paramulc);
     }
-    upe.e("WS_VIDEO_PRE_PLAY", "[WSFollowFeedUIDelegate.java][onPrePlayFinished] title:" + paramukb.jdField_a_of_type_Ukf.d + "\nisPreOutputFirstFrame:" + paramBoolean1 + ", isFirstFrameDrawSuccess:" + paramBoolean2 + "\nmFollowPlayableHolder:" + this.a);
   }
   
-  public boolean a(ukb paramukb)
+  public void a(ulc paramulc, long paramLong)
   {
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate videoBitRate:" + paramLong);
+    }
+  }
+  
+  public abstract void a(ulc paramulc, Object paramObject);
+  
+  public void a(ulc paramulc, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "OnDownloadCallback state:" + paramString + ", videoPlayer:" + paramulc);
+    }
+  }
+  
+  public void a(ulc paramulc, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onCaptureImage result:" + paramBoolean + ", errCode:" + paramInt1 + ", id:" + paramInt2 + ", bitmap:" + paramBitmap + ", videoPlayer:" + paramulc);
+    }
+  }
+  
+  public boolean a(ulc paramulc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onError model:" + paramInt1 + ", what:" + paramInt2 + ", extra:" + paramInt3 + ", detailInfo:" + paramString + ", info:" + paramObject);
+    }
     return false;
   }
   
-  public void b(ukb paramukb) {}
-  
-  public void c(ukb paramukb)
+  public boolean a(ulc paramulc, int paramInt, Object paramObject)
   {
-    if ((this.a != null) && (paramukb != null) && (paramukb.jdField_a_of_type_Uke != null))
-    {
-      boolean bool = paramukb.jdField_a_of_type_Uke.b();
-      this.a.a(bool);
-      if (paramukb.jdField_a_of_type_Uke.b()) {
-        this.a.a(8, 0);
-      }
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onInfo what:" + paramInt + ", extra:" + paramObject + ", videoPlayer:" + paramulc);
     }
-    else
-    {
-      return;
-    }
-    this.a.a(0, 0);
+    return false;
   }
   
-  public void d(ukb paramukb)
+  public void b(ulc paramulc)
   {
-    if (this.a != null)
-    {
-      this.a.a(true);
-      this.a.a(8, 400);
-      upe.a("WS_VIDEO_PLAYER", "[WSFollowFeedUIDelegate.java][onVideoStart] title:" + paramukb.jdField_a_of_type_Ukf.d);
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onSeekComplete videoPlayer:" + paramulc);
     }
   }
   
-  public void e(ukb paramukb)
+  public void b(ulc paramulc, String paramString)
   {
-    if (this.a != null) {
-      this.a.a(false);
+    if (QLog.isColorLevel()) {
+      uqf.d("WSPlayerListenerAdapter", 2, "onConnectQualityCallback json:" + paramString);
     }
   }
   
-  public void f(ukb paramukb)
+  public void c(ulc paramulc)
   {
-    if (this.a != null) {
-      this.a.a(true);
-    }
-  }
-  
-  public void g(ukb paramukb)
-  {
-    if (this.a != null)
-    {
-      this.a.a(false);
-      this.a.a(0, 0);
-    }
-  }
-  
-  public void h(ukb paramukb) {}
-  
-  public void i(ukb paramukb) {}
-  
-  public void j(ukb paramukb)
-  {
-    if (this.a != null) {
-      this.a.a(0, 100);
+    if (QLog.isColorLevel()) {
+      uqf.b("WSPlayerListenerAdapter", 2, "onDownloadFinish videoPlayer:" + paramulc);
     }
   }
 }

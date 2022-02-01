@@ -1,6 +1,6 @@
 package cooperation.qzone.panorama.controller;
 
-import bmbn;
+import bncp;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -9,7 +9,7 @@ public class TouchController$1
 {
   private int[] jdField_b_of_type_ArrayOfInt = { 0, 0 };
   
-  public TouchController$1(bmbn parambmbn, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  public TouchController$1(bncp parambncp, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
   public void run()
   {
@@ -30,12 +30,12 @@ public class TouchController$1
     {
       if ((this.jdField_b_of_type_ArrayOfInt[1] == 1) && (this.jdField_b_of_type_ArrayOfInt[0] == 1))
       {
-        bmbn.a(this.this$0).cancel();
+        bncp.a(this.this$0).cancel();
         cancel();
       }
       float f1 = this.jdField_a_of_type_ArrayOfInt[0];
-      float f2 = bmbn.a(this.this$0);
-      bmbn.a(this.this$0, 0.0F, f1 * f2);
+      float f2 = bncp.a(this.this$0);
+      bncp.a(this.this$0, 0.0F, f1 * f2);
       return;
       this.jdField_b_of_type_ArrayOfInt[0] = 0;
       this.jdField_a_of_type_ArrayOfInt[0] -= 3;

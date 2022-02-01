@@ -1,19 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
 
-public final class athp
-  implements Parcelable.Creator<OfflineFileInfo>
+public class athp
+  implements aupb
 {
-  public OfflineFileInfo a(Parcel paramParcel)
+  public athp(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
-    return new OfflineFileInfo(paramParcel);
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.g)) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_Atzf != null)
+    {
+      this.a.jdField_a_of_type_Atzf.k = "3";
+      this.a.jdField_a_of_type_Atzf.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
   
-  public OfflineFileInfo[] a(int paramInt)
-  {
-    return new OfflineFileInfo[paramInt];
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

@@ -1,45 +1,163 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 public class psp
-  implements URLDrawable.DownloadListener
 {
-  public psp(GifView paramGifView, AtomicLong paramAtomicLong1, AtomicLong paramAtomicLong2, long paramLong, AtomicLong paramAtomicLong3, AtomicLong paramAtomicLong4, URLDrawable paramURLDrawable) {}
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private volatile psq jdField_a_of_type_Psq;
   
-  public void onFileDownloadFailed(int paramInt)
+  public psp(ExecutorService paramExecutorService)
   {
-    if (GifView.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView))
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
+  }
+  
+  public static psp a()
+  {
+    Object localObject = (QQAppInterface)ozs.a();
+    if (localObject != null)
     {
-      if (!GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView)) {
-        break label104;
+      localObject = ((pfg)((QQAppInterface)localObject).getManager(163)).a();
+      if (localObject != null) {
+        return ((pfa)localObject).a();
       }
-      GifView.access$200(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
     }
+    return null;
+  }
+  
+  private boolean a(List<Long> paramList1, List<Long> paramList2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramList1 == null) || (paramList2 == null)) {
+      if (paramList1 == paramList2) {
+        bool1 = true;
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return bool1;
+        bool1 = false;
+      }
+      bool1 = bool2;
+    } while (paramList1.size() != paramList2.size());
+    int i = 0;
     for (;;)
     {
-      QLog.d("gifvideo.GifView", 1, "onLoadFialed! mIsBigImg=" + GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView));
-      GifView localGifView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView;
-      localGifView.mTryCounts += 1;
-      return;
-      label104:
-      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      if (i >= paramList1.size()) {
+        break label93;
+      }
+      bool1 = bool2;
+      if (!((Long)paramList1.get(i)).equals(paramList2.get(i))) {
+        break;
+      }
+      i += 1;
+    }
+    label93:
+    return true;
+  }
+  
+  psq a(qft paramqft)
+  {
+    if (paramqft != null) {}
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_Psq != null) && (this.jdField_a_of_type_Psq.a != null))
+        {
+          Object localObject = this.jdField_a_of_type_Psq.a;
+          Long localLong1 = (Long)((ToServiceMsg)localObject).getAttribute(pqj.d);
+          Long localLong2 = (Long)((ToServiceMsg)localObject).getAttribute(pqj.e);
+          long l1;
+          if (localLong1 != null)
+          {
+            l1 = localLong1.longValue();
+            if (localLong2 != null)
+            {
+              l2 = localLong2.longValue();
+              QLog.d("FeedsPreloadDataModule", 1, new Object[] { "isReqEqual: ", "cache bSeq = ", Long.valueOf(l1), ", request bSeq = ", Long.valueOf(paramqft.a), "\n", "cache eSeq = ", Long.valueOf(l2), ", request eSeq = ", Long.valueOf(paramqft.jdField_b_of_type_Long) });
+              if ((l1 == paramqft.a) && (l2 == paramqft.jdField_b_of_type_Long)) {
+                continue;
+              }
+              QLog.d("FeedsPreloadDataModule", 1, "getCache, the seq is not equal.");
+              paramqft = null;
+              return paramqft;
+            }
+          }
+          else
+          {
+            l1 = -1L;
+            continue;
+          }
+          long l2 = -1L;
+          continue;
+          paramqft = paramqft.jdField_b_of_type_JavaUtilList;
+          localObject = (List)((ToServiceMsg)localObject).getAttribute("SubscriptionArticles");
+          if ((paramqft != null) && (paramqft.size() > 0))
+          {
+            if (a(paramqft, (List)localObject))
+            {
+              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists are the same.");
+              paramqft = this.jdField_a_of_type_Psq.a();
+              continue;
+            }
+            QLog.d("FeedsPreloadDataModule", 1, "two subscriptionList are different.");
+          }
+          else
+          {
+            if ((localObject == null) || (((List)localObject).size() == 0))
+            {
+              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists both are empty.");
+              paramqft = this.jdField_a_of_type_Psq.a();
+              continue;
+            }
+            QLog.d("FeedsPreloadDataModule", 1, "cache subscriptionList is not empty.");
+          }
+        }
+      }
+      finally {}
+      paramqft = null;
     }
   }
   
-  public void onFileDownloadStarted()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+    this.jdField_a_of_type_Psq = null;
   }
   
-  public void onFileDownloadSucceed(long paramLong)
+  public void a(psq parampsq)
   {
-    this.b.set(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    this.c.set(System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
-    this.d.set(paramLong);
-    QLog.d("gifvideo.GifView", 1, "gif download success");
+    if (parampsq != null) {}
+    try
+    {
+      this.jdField_a_of_type_Psq = parampsq;
+      return;
+    }
+    finally
+    {
+      parampsq = finally;
+      throw parampsq;
+    }
+  }
+  
+  void b()
+  {
+    try
+    {
+      QLog.d("FeedsPreloadDataModule", 2, "clearCache.");
+      this.jdField_a_of_type_Psq = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

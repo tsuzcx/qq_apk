@@ -1,37 +1,23 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class afcu
-  implements View.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public afcu(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public afcu(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label36;
-      }
-      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
+    if (PhoneUnityBindInfoActivity.a(this.a) != null) {
+      PhoneUnityBindInfoActivity.a(this.a).dismiss();
     }
-    for (;;)
-    {
-      return false;
-      label36:
-      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
-        SelectedAndSearchBar.a(this.a).a();
-      }
-    }
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import bcgx;
+import bczp;
 
 class EditVideoActivity$2
   implements Runnable

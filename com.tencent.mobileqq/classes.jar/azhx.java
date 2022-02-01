@@ -1,32 +1,158 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AutoReplyText;
+import mqq.app.AppRuntime.Status;
 
-class azhx
-  implements View.OnClickListener
+public class azhx
 {
-  azhx(azhw paramazhw, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (azhw.a(this.jdField_a_of_type_Azhw) == this.jdField_a_of_type_Int) {}
+    if (paramQQAppInterface != null) {
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDA", "0X8009DDA", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i;
+    if ((paramQQAppInterface != null) && (paramStatus != null)) {
+      switch (azhy.a[paramStatus.ordinal()])
+      {
+      default: 
+        i = 0;
+      }
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      if (j != 0) {
+        bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDB", "0X8009DDB", j, 0, "", "", "", "");
+      }
       return;
-      Iterator localIterator = azhw.a(this.jdField_a_of_type_Azhw).iterator();
-      while (localIterator.hasNext()) {
-        ((azia)localIterator.next()).a = false;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong, AutoReplyText paramAutoReplyText)
+  {
+    if ((paramQQAppInterface != null) && (paramAutoReplyText != null) && (azhv.a(paramStatus)))
+    {
+      int i = 1;
+      if (paramAutoReplyText.getTextId() == 2147483647) {
+        i = 2;
       }
-      ((azia)azhw.a(this.jdField_a_of_type_Azhw).get(this.jdField_a_of_type_Int)).a = true;
-      azhw.a(this.jdField_a_of_type_Azhw, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Azhw.notifyDataSetChanged();
-      if (azhw.a(this.jdField_a_of_type_Azhw) != null) {
-        azhw.a(this.jdField_a_of_type_Azhw).a((azia)azhw.a(this.jdField_a_of_type_Azhw).get(this.jdField_a_of_type_Int));
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDC", "0X8009DDC", i, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    String str1;
+    if (paramQQAppInterface != null)
+    {
+      if (!paramBoolean) {
+        break label41;
       }
-      bcst.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
+      str1 = "0X8009DDE";
+      if (!paramBoolean) {
+        break label47;
+      }
+    }
+    label41:
+    label47:
+    for (String str2 = "0X8009DDE";; str2 = "0X8009DDF")
+    {
+      bdll.b(paramQQAppInterface, "dc00898", "", "", str1, str2, 0, 0, "", "", "", "");
+      return;
+      str1 = "0X8009DDF";
+      break;
+    }
+  }
+  
+  public static void a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i = -1;
+    switch (azhy.a[paramStatus.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      azir.a("0X800AF3D", j);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null) {
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDD", "0X8009DDD", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i = -1;
+    switch (azhy.a[paramStatus.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DE0", "0X8009DE0", j, 0, "", "", "", "");
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
     }
   }
 }

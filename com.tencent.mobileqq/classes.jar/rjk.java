@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
 
-final class rjk
-  implements DialogInterface.OnDismissListener
+class rjk
+  implements rjd<qzp>
 {
-  rjk(DialogInterface.OnDismissListener paramOnDismissListener) {}
+  rjk(rjj paramrjj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(qzp paramqzp)
   {
-    this.a.onDismiss(paramDialogInterface);
+    return TextUtils.equals("video/mp4", paramqzp.a);
   }
 }
 

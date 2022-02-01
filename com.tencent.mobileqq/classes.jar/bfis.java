@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfis
-  extends bfhq
+  implements View.OnClickListener
 {
-  public bfis(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public bfis(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.a = 10;
+    QQToast.a(this.a.a, anzj.a(2131714008), 0).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  @Nullable
-  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.avgame.util;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -92,7 +92,7 @@ public class AVGameNodeReportUtil
     paramHashMap.remove("uin");
     paramHashMap.remove("success");
     paramHashMap.remove("duration");
-    bctj.a(localBaseApplicationImpl).a(str, "actAVGameNodeReport", bool, l, 1L, paramHashMap, "", true);
+    bdmc.a(localBaseApplicationImpl).a(str, "actAVGameNodeReport", bool, l, 1L, paramHashMap, "", true);
     if (QLog.isColorLevel()) {
       QLog.i("actAVGameNodeReport", 1, "realReport sReportData:" + a);
     }

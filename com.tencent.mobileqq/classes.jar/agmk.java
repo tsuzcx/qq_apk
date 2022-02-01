@@ -1,26 +1,28 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
 
-class agmk
-  implements bkhw
+public class agmk
+  extends View
 {
-  agmk(agmj paramagmj, List paramList, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  agmk(agmi paramagmi, Context paramContext)
   {
-    switch (paramInt)
-    {
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      agmj.a(this.jdField_a_of_type_Agmj, this.jdField_a_of_type_JavaUtilList);
-      agjc.a(agmj.a(this.jdField_a_of_type_Agmj), this.jdField_a_of_type_JavaUtilList, 3);
-      continue;
-      this.jdField_a_of_type_Agmj.a(this.jdField_a_of_type_JavaUtilList, 0);
-      agjc.a(agmj.a(this.jdField_a_of_type_Agmj), this.jdField_a_of_type_JavaUtilList, 3);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
     }
+    return true;
   }
 }
 

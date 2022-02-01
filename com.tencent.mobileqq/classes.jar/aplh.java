@@ -1,43 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.WtloginManager;
-import mqq.observer.WtloginObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
-public class aplh
-  implements apld
+public final class aplh
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  private WtloginObserver a;
-  
-  private void a(long paramLong1, long paramLong2, aplk paramaplk)
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    QQAppInterface localQQAppInterface = apkf.a();
-    if (localQQAppInterface == null) {
-      paramaplk.a(null, 0L, null, null);
-    }
-    if (this.a == null) {
-      this.a = new aplj(this, paramaplk);
-    }
-    ((WtloginManager)localQQAppInterface.getManager(1)).GetOpenKeyWithoutPasswd(localQQAppInterface.c(), paramLong1, paramLong2, this.a);
+    return new ARScanStarFaceActInfo(paramParcel);
   }
   
-  public void a(Bundle paramBundle, aplf paramaplf)
+  public ARScanStarFaceActInfo[] a(int paramInt)
   {
-    if (apkf.a() == null)
-    {
-      QLog.e("ArkApp.LoginHandler", 1, "LoginHandler.onCall, qq app is null");
-      paramaplf.a(EIPCResult.createResult(-102, new Bundle()));
-      return;
-    }
-    long l1 = paramBundle.getLong("srcAppID", 0L);
-    long l2 = paramBundle.getLong("dstAppID", 0L);
-    if ((l1 == 0L) || (l2 == 0L))
-    {
-      paramaplf.a(EIPCResult.createResult(0, new Bundle()));
-      return;
-    }
-    a(l1, l2, new apli(this, paramaplf));
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 

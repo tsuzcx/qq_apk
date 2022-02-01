@@ -1,142 +1,54 @@
-import com.tencent.ims.device_lock_recommend_auth.DeviceInfo;
-import com.tencent.ims.device_lock_recommend_auth.RspBody;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class aodt
-  extends aods
+  extends LinkMovementMethod
 {
-  public aodt(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
-  
-  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.isSuccess()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "onReceive: onReceive handleRecommendDeviceList");
-      }
-    }
-    for (paramFromServiceMsg = new device_lock_recommend_auth.RspBody();; paramFromServiceMsg = null)
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      try
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
       {
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.uint64_uin.has()) {
-          paramFromServiceMsg.uint64_uin.get();
-        }
-        if (paramFromServiceMsg.uint32_seq.has()) {
-          paramFromServiceMsg.uint32_seq.get();
-        }
-        if (paramFromServiceMsg.uint32_ret.has()) {
-          paramFromServiceMsg.uint32_ret.get();
-        }
-        if (!paramFromServiceMsg.rpt_msg_devicelist.has()) {
-          continue;
-        }
-        paramFromServiceMsg = paramFromServiceMsg.rpt_msg_devicelist.get();
-        paramObject = new ArrayList();
-        if (paramFromServiceMsg == null) {}
-      }
-      catch (InvalidProtocolBufferMicroException paramObject)
-      {
-        try
+        if (i == 1)
         {
-          int j = paramFromServiceMsg.size();
-          int i = 0;
-          label135:
-          if (i < j)
+          localObject[0].onClick(paramTextView);
+          paramSpannable.setSpan(new ForegroundColorSpan(-12541697), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
           {
-            device_lock_recommend_auth.DeviceInfo localDeviceInfo = (device_lock_recommend_auth.DeviceInfo)paramFromServiceMsg.get(i);
-            if (localDeviceInfo == null) {}
-            for (;;)
-            {
-              i += 1;
-              break label135;
-              paramObject = paramObject;
-              if (QLog.isColorLevel()) {
-                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "onReceive: onReceive sec_server package:sigResult parse fail");
-              }
-              paramObject.printStackTrace();
-              break;
-              amgn localamgn = new amgn();
-              if (localDeviceInfo.bytes_appname.has())
-              {
-                localamgn.jdField_c_of_type_JavaLangString = new String(localDeviceInfo.bytes_appname.get().toByteArray(), "UTF-8");
-                if (localDeviceInfo.bytes_guid.has())
-                {
-                  localamgn.jdField_a_of_type_ArrayOfByte = localDeviceInfo.bytes_guid.get().toByteArray();
-                  if (localDeviceInfo.bytes_device_typeinfo.has())
-                  {
-                    localamgn.jdField_b_of_type_JavaLangString = new String(localDeviceInfo.bytes_device_typeinfo.get().toByteArray(), "UTF-8");
-                    new StringBuffer();
-                    if (localDeviceInfo.bytes_device_name.has())
-                    {
-                      localamgn.jdField_a_of_type_JavaLangString = new String(localDeviceInfo.bytes_device_name.get().toByteArray(), "UTF-8");
-                      if (localDeviceInfo.uint32_auth_status.has())
-                      {
-                        localamgn.jdField_c_of_type_Int = localDeviceInfo.uint32_auth_status.get();
-                        if (localDeviceInfo.uint32_appid.has())
-                        {
-                          localamgn.jdField_a_of_type_Int = localDeviceInfo.uint32_appid.get();
-                          if (localDeviceInfo.uint32_subappid.has())
-                          {
-                            localamgn.jdField_b_of_type_Int = localDeviceInfo.uint32_subappid.get();
-                            paramObject.add(localamgn);
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          if (paramObject.size() <= 0) {
-            break label441;
+            paramSpannable.setSpan(new ForegroundColorSpan(2134941951), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
           }
         }
-        catch (Exception paramFromServiceMsg) {}
-        this.a.notifyUI(69, true, paramObject);
-        return;
       }
-      label441:
-      this.a.notifyUI(69, false, null);
-      return;
+      Selection.removeSelection(paramSpannable);
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ("DevLockAuthSvc.RecommendAuth".equals(paramString)) || ("DevLockAuthSvc.ConfirmAuth".equals(paramString));
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if ("DevLockAuthSvc.RecommendAuth".equals(paramToServiceMsg)) {
-      a(paramFromServiceMsg, paramObject);
-    }
-    while (!"DevLockAuthSvc.ConfirmAuth".equals(paramToServiceMsg)) {
-      return;
-    }
+    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aodt
  * JD-Core Version:    0.7.0.1
  */

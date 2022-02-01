@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/qvip_emoji_tab_new_mgr_setting_pressed" />
-    <item android:drawable="@drawable/qvip_emoji_tab_new_mgr_setting_normal" />
-</selector>
+    <solid android:color="#fff2f2f2" />
+    <corners android:radius="3.0dip" />
+    <padding android:left="5.0dip" android:top="0.0dip" android:right="5.0dip" android:bottom="0.0dip" />
+</shape>

@@ -1,26 +1,10 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
+import android.graphics.Paint;
 
-public class bbhy
-  implements View.OnTouchListener
+public abstract interface bbhy
 {
-  public bbhy(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
+  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-    }
-    return false;
-  }
+  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
